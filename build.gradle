@@ -1,11 +1,7 @@
 plugins {
     id "architectury-plugin" version "3.4.+"
-
     id "dev.architectury.loom" version "1.2.+" apply false
-
     id "org.jetbrains.kotlin.jvm" version "1.8.0" apply false
-
-    // for template.env api keys
     id "co.uzzu.dotenv.gradle" version "2.0.0"
 }
 
@@ -17,16 +13,9 @@ subprojects {
     apply plugin: "org.jetbrains.kotlin.jvm"
     apply plugin: "dev.architectury.loom"
 
-    // Uncomment to silence the mojmap license warning
-    // loom {
-    //     silentMojangMappingsLicense()
-    // }
-
     dependencies {
         minecraft "com.mojang:minecraft:${project.minecraftVersion}"
-
         mappings "net.fabricmc:yarn:1.19.2+build.28:v2"
-        // Or feel free to use any other mappings you prefer
 
         annotationProcessor "org.ow2.asm:asm:${project.asmVersion}"
         annotationProcessor "org.ow2.asm:asm-analysis:${project.asmVersion}"
@@ -44,7 +33,6 @@ allprojects {
     apply plugin: "architectury-plugin"
     apply plugin: "maven-publish"
 
-    // disable most javadoc warnings
     javadoc.options.addStringOption('Xdoclint:none', '-quiet')
 
     version = project.modVersion
@@ -92,8 +80,6 @@ allprojects {
                 includeGroup "maven.modrinth"
             }
         }
-
-        // Add any other repositories with your cross-platform dependency mods
     }
 
     tasks.withType(JavaCompile) {
@@ -116,9 +102,6 @@ allprojects {
         it.options.release = 17
     }
 
-    // Disables Gradle's custom module metadata from being published to maven. The
-    // metadata includes mapped dependencies which are not reasonably consumable by
-    // other mod developers.
     tasks.withType(GenerateModuleMetadata) {
         enabled = false
     }
@@ -137,10 +120,7 @@ allprojects {
             "minecraftVersion": project.minecraftVersion,
         ]
 
-        // for incremental builds
         inputs.properties dependencyVersions
-
-        // expand the above variables in these files
         filesMatching(["fabric.mod.json", "META-INF/mods.toml"]) {
             expand dependencyVersions
         }
