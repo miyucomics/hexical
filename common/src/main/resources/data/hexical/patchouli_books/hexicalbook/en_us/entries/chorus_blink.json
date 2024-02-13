@@ -1,0 +1,20 @@
+{
+	"name": "Chorus Blink",
+	"icon": "minecraft:chorus_fruit",
+	"category": "hexical:hexical",
+	"pages": [
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:chorus_blink",
+			"anchor": "hexical:chorus_blink",
+			"input": "vec",
+			"output": "",
+			"hex_size": 4,
+			"text": "hexical.page.chorus_blink.1"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.chorus_blink.2"
+		}
+	]
+}

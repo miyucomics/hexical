@@ -35,7 +35,6 @@ public class HexicalConfigFabric extends PartitioningSerializer.GlobalData {
 			HexicalConfig.setClient(instance.client);
 		}
 
-		// Needed for logical server in singleplayer, do not access server configs from client code
 		HexicalConfig.setServer(instance.server);
 	}
 
@@ -56,7 +55,7 @@ public class HexicalConfigFabric extends PartitioningSerializer.GlobalData {
 		private Costs costs = new Costs();
 
 		@Override
-		public void validatePostLoad() throws ValidationException {
+		public void validatePostLoad() {
 			this.costs.signumCost = HexicalConfig.bound(this.costs.signumCost, DEF_MIN_COST, DEF_MAX_COST);
 			this.costs.congratsCost = HexicalConfig.bound(this.costs.congratsCost, DEF_MIN_COST, DEF_MAX_COST);
 		}
