@@ -9,5 +9,27 @@
 	"hexical.page.dummy_spells.congrats": "Accepts a player entity, tells them they are doing a good job.",
 	"hexical.page.dummy_actions.signum": "Accepts a $(l:casting/101)number/$, returns -1 if it is negative, 0 if 0, 1 if positive.",
 	"text.hexical.congrats": "Good job, %1$s!",
-	"text.hexical.congrats.player": "a Player"
+	"text.hexical.congrats.player": "a Player",
+
+	"item.hexical.lamp": "Genieless Lamp",
+
+	"pattern.hexical.chorus_blink": "Chorus Blink",
+	"pattern.hexical.surveil_sentinel": "Surveil Sentinel",
+	"pattern.hexical.ping": "Ping",
+
+	"hexical.category": "Hexomancy",
+	"hexical.category.desc": "I feel strangely more receptive of the ambient media around me. I can even feel it responding to certain tasks I perform, as if suggesting spells to me. Because I am essentially divining spells from the media, I shall call it hexical.",
+
+	"hexcasting.spell.hexical:chorus_blink": "Chorus Blink",
+	"hexical.page.chorus_blink.1": "Between Blink, Greater Teleport, ender pearls, and chorus fruit, this spell serves a harmonious midpoint for safe, precise, and cheap teleportation.",
+	"hexical.page.chorus_blink.2": "It consumes a chorus fruit from my inventory and teleports me up to 16 blocks using an offset vector. The cost is constant whether I teleport the full 16 blocks or less, and has no penalty for multiple casts in one hex. With a lot of chorus fruit, it can be a significantly cheaper Greater Teleport.",
+
+	"hexcasting.spell.hexical:ping": "Ping",
+	"hexical.page.ping.1": "For the price of a single dust, I can cause a voluntary hallucination of a little ripple.",
+	"hexical.page.ping.2": "I can see it through blocks and its color seems to reflect my pigment. Its size also does not seem to change much even from a far distance, making it perfect for highlighting locations.",
+
+	"hexcasting.spell.hexical:surveil_sentinel": "Surveil Sentinel",
+	"hexical.page.surveil_sentinel.1": "The name sentinel has perplexed me for a long time. My sentinel highlights locations and can even expand my reach, but not once has it kept watch... until now.",
+	"hexical.page.surveil_sentinel.2": "This spell magically displaces my vision to my sentinel's position. While dissociating, I still maintain control over my body. Once a sentinel is stationed, I can watch over anything, everything, everywhere from any distance away. I wonder what I would see if I banished my sentinel and casted the spell...$(br)$(br)It $(o)burns.",
+	"hexical.page.surveil_sentinel.3": "$(o)The Aleph's diameter was probably little more than an inch, but all space was there, actual and undiminished... I saw daybreak and nightfall... I saw all the mirrors on earth and none of them reflected me... I saw the Aleph from every point and angle, and in the Aleph I saw the earth and in the earth the Aleph and in the Aleph the earth..."
 }
