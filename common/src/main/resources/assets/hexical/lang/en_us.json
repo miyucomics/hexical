@@ -1,11 +1,4 @@
 {
-	"hexcasting.spell.hexical:congrats": "Congrats",
-	"hexcasting.spell.hexical:signum": "Signum Purification",
-	"hexcasting.spell.book.hexical:congrats": "Dum. Spell Actn.",
-	"hexcasting.spell.book.hexical:signum": "Dum. Actn.",
-	"text.hexical.congrats": "Good job, %1$s!",
-	"text.hexical.congrats.player": "a Player",
-
 	"item.hexical.lamp": "Genieless Lamp",
 
 	"pattern.hexical.chorus_blink": "Chorus Blink",
@@ -13,7 +6,7 @@
 	"pattern.hexical.ping": "Ping",
 
 	"hexical.category": "Hexomancy",
-	"hexical.category.desc": "I feel strangely more receptive of the ambient media around me. I can even feel it responding to certain tasks I perform, as if suggesting spells to me. Because I am essentially divining spells from the media, I shall call it hexical.",
+	"hexical.category.desc": "I feel strangely more receptive of the ambient media around me. I can even feel it responding to certain tasks I perform, as if suggesting spells to me. Because I am essentially divining spells from the media, I shall call it hexomancy.",
 
 	"hexcasting.spell.hexical:chorus_blink": "Chorus Blink",
 	"hexical.page.chorus_blink.1": "Between Blink, Greater Teleport, ender pearls, and chorus fruit, this spell serves a harmonious midpoint for safe, precise, and cheap teleportation.",
