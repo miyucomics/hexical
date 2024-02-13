@@ -3,11 +3,8 @@
 	"package": "miyucomics.hexical.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"minVersion": "0.8",
-	"client": [
-		"HexicalMixin"
-	],
-	"mixins": [
-	],
+	"client": [],
+	"mixins": [],
 	"injectors": {
 		"defaultRequire": 1
 	}
