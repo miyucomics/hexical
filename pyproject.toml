@@ -1,0 +1,118 @@
+[build-system]
+requires = [
+    "hatchling",
+    "hatch-gradle-version>=0.8.0",
+]
+build-backend = "hatchling.build"
+
+# project metadata
+
+[project]
+name = "hexdoc-hexical"
+description = "Python web book docgen and hexdoc plugin for Hexical."
+readme = "doc/README.md"
+authors = [
+    { name="miyucomics" },
+]
+keywords = ["hexdoc"]
+requires-python = ">=3.11"
+dynamic = ["version", "dependencies", "optional-dependencies"]
+
+[project.urls]
+Homepage = "https://miyucomics.github.io/hexical"
+Source = "https://github.com/miyucomics/hexical"
+
+# Gradle version/deps
+
+[tool.hatch.version]
+scheme = "gradle"
+source = "gradle-properties"
+py-path = "doc/src/hexdoc_hexical/__version__.py"
+key = "modVersion"
+
+[tool.hatch.metadata.hooks.gradle-properties]
+dependencies = [
+    { package="hexdoc-hexcasting", op="~=", py-version="1.0.dev20", key="hexcastingVersion" },
+]
+
+[tool.hatch.metadata.hooks.gradle-properties.optional-dependencies]
+dev = [
+    "ruff~=0.1.4",
+]
+
+# directory inclusion
+
+[tool.hatch.build]
+only-include = [
+    "doc/src/hexdoc_hexical",
+    "gradle.properties",
+]
+artifacts = [
+    "/doc/src/hexdoc_hexical/_export/generated",
+    "/doc/src/hexdoc_hexical/__gradle_version__.py",
+]
+
+[tool.hatch.build.targets.wheel]
+sources = ["doc/src"]
+
+# hexdoc entry points
+
+[project.entry-points.hexdoc]
+hexical = "hexdoc_hexical._hooks:HexicalPlugin"
+
+# linting
+
+[tool.pyright]
+pythonVersion = "3.11"
+pythonPlatform = "All"
+
+include = ["doc/src"]
+extraPaths = ["doc/src"]
+
+typeCheckingMode = "basic"
+
+strictDictionaryInference = true
+strictListInference = true
+strictSetInference = true
+
+reportAssertAlwaysTrue = "error"
+reportConstantRedefinition = "error"
+reportDeprecated = "error"
+reportDuplicateImport = "error"
+reportFunctionMemberAccess = "error"
+reportIncompatibleMethodOverride = "error"
+reportIncompatibleVariableOverride = "error"
+reportIncompleteStub = "error"
+reportInconsistentConstructor = "error"
+reportInvalidStringEscapeSequence = "error"
+reportInvalidStubStatement = "error"
+reportInvalidTypeVarUse = "error"
+reportMatchNotExhaustive = "error"
+reportMissingParameterType = "error"
+reportMissingTypeStubs = "error"
+reportOverlappingOverload = "error"
+reportSelfClsParameterName = "error"
+reportTypeCommentUsage = "error"
+reportUnknownParameterType = "error"
+reportUnnecessaryCast = "error"
+reportUnnecessaryContains = "error"
+reportUnsupportedDunderAll = "error"
+reportUntypedBaseClass = "error"
+reportUntypedClassDecorator = "error"
+reportUntypedFunctionDecorator = "error"
+reportUntypedNamedTuple = "error"
+reportWildcardImportFromLibrary = "error"
+
+reportMissingTypeArgument = "warning"
+reportPrivateUsage = "warning"
+reportUnknownArgumentType = "warning"
+reportUnknownLambdaType = "warning"
+reportUnknownMemberType = "warning"
+reportUnknownVariableType = "warning"
+reportUnnecessaryComparison = "warning"
+reportUnnecessaryIsInstance = "warning"
+reportUnusedClass = "warning"
+reportUnusedExpression = "warning"
+reportUnusedFunction = "warning"
+reportUnusedImport = "warning"
+reportUnusedVariable = "warning"

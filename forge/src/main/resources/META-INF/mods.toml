@@ -1,0 +1,41 @@
+modLoader = "javafml"
+loaderVersion = "[${forgeDependencyVersion},)"
+license = "MIT"
+
+[[mods]]
+modId = "hexical"
+version = "${version}"
+displayName = "Hexical"
+logoFile = "icon.png"
+authors = "miyucomics"
+description = '''
+A kitchen sink addon for Hexcasting
+'''
+
+[[dependencies.hexical]]
+modId = "forge"
+mandatory = true
+versionRange = "[${forgeDependencyVersion},)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.hexical]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[${minecraftVersion},)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.hexical]]
+modId = "architectury"
+mandatory = true
+versionRange = "[${architecturyVersion},)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.hexical]]
+modId = "hexcasting"
+mandatory = true
+versionRange = "[${hexcastingVersion},)"
+ordering = "NONE"
+side = "BOTH"
