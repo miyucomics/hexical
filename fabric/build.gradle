@@ -1,153 +1,96 @@
 plugins {
-    id "com.github.johnrengelman.shadow" version "7.1.2"
-    id "me.modmuss50.mod-publish-plugin" version "0.3.0"
+	id "com.github.johnrengelman.shadow" version "7.1.2"
+	id "me.modmuss50.mod-publish-plugin" version "0.3.0"
 }
 
 archivesBaseName = getArtifactId("fabric")
 
 architectury {
-    platformSetupLoomIde()
-    fabric()
+	platformSetupLoomIde()
+	fabric()
 }
 
 loom {
-    accessWidenerPath = project(":common").loom.accessWidenerPath
+	accessWidenerPath = project(":common").loom.accessWidenerPath
 }
 
 configurations {
-    common
-    shadowCommon // Don't use shadow from the shadow plugin since it *excludes* files.
-    compileClasspath.extendsFrom common
-    runtimeClasspath.extendsFrom common
-    developmentFabric.extendsFrom common
+	common
+	shadowCommon
+	compileClasspath.extendsFrom common
+	runtimeClasspath.extendsFrom common
+	developmentFabric.extendsFrom common
 }
 
 dependencies {
-    modCompileOnly(group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2') // for @Nonnull
-
-    // Loaders and base APIs
-    modImplementation "net.fabricmc:fabric-loader:${project.fabricLoaderVersion}"
-    modApi "net.fabricmc.fabric-api:fabric-api:${fabricApiVersion}"
-    modImplementation("net.fabricmc:fabric-language-kotlin:${project.fabricKotlinVersion}")
-    modApi("dev.architectury:architectury-fabric:${architecturyVersion}") {
-        // Fix for the "two fabric loaders" loading crash
-        exclude group: "net.fabricmc", module: "fabric-loader"
-    }
-
-    // Hex Casting stuff
-    modImplementation("at.petra-k.hexcasting:hexcasting-fabric-${minecraftVersion}:${hexcastingVersion}") {
-        // If not excluded here, calls a nonexistent method and crashes the dev client
-        exclude module: "phosphor"
-    }
-
-    modImplementation "at.petra-k.paucal:paucal-fabric-${minecraftVersion}:${paucalVersion}"
-    modImplementation "vazkii.patchouli:Patchouli:${minecraftVersion}-${patchouliVersion}-FABRIC"
-
-    modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-api:${cardinalComponentsVersion}"
-
-    modImplementation "com.jamieswhiteshirt:reach-entity-attributes:${entityReachVersion}"
-    include "com.jamieswhiteshirt:reach-entity-attributes:${entityReachVersion}"
-
-    modImplementation "io.github.tropheusj:serialization-hooks:${serializationHooksVersion}"
-    include "io.github.tropheusj:serialization-hooks:${serializationHooksVersion}"
-
-    modImplementation "dev.emi:trinkets:${trinketsVersion}"
-
-    common(project(path: ":common", configuration: "namedElements")) { transitive false }
-    shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
+	modCompileOnly(group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2')
+	modImplementation "net.fabricmc:fabric-loader:${project.fabricLoaderVersion}"
+	modApi "net.fabricmc.fabric-api:fabric-api:${fabricApiVersion}"
+	modImplementation("net.fabricmc:fabric-language-kotlin:${project.fabricKotlinVersion}")
+	modApi("dev.architectury:architectury-fabric:${architecturyVersion}") {
+		exclude group: "net.fabricmc", module: "fabric-loader"
+	}
+	modImplementation("at.petra-k.hexcasting:hexcasting-fabric-${minecraftVersion}:${hexcastingVersion}") {
+		exclude module: "phosphor"
+	}
+	modImplementation "at.petra-k.paucal:paucal-fabric-${minecraftVersion}:${paucalVersion}"
+	modImplementation "vazkii.patchouli:Patchouli:${minecraftVersion}-${patchouliVersion}-FABRIC"
+	modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-api:${cardinalComponentsVersion}"
+	modImplementation "com.jamieswhiteshirt:reach-entity-attributes:${entityReachVersion}"
+	include "com.jamieswhiteshirt:reach-entity-attributes:${entityReachVersion}"
+	modImplementation "io.github.tropheusj:serialization-hooks:${serializationHooksVersion}"
+	include "io.github.tropheusj:serialization-hooks:${serializationHooksVersion}"
+	modImplementation "dev.emi:trinkets:${trinketsVersion}"
+	common(project(path: ":common", configuration: "namedElements")) { transitive false }
+	shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
 }
 
 shadowJar {
-    exclude "architectury.common.json"
-
-    configurations = [project.configurations.shadowCommon]
-    archiveClassifier.set "dev-shadow"
+	exclude "architectury.common.json"
+	configurations = [project.configurations.shadowCommon]
+	archiveClassifier.set "dev-shadow"
 }
 
 remapJar {
-    injectAccessWidener = true
-    input.set shadowJar.archiveFile
-    dependsOn shadowJar
-    archiveClassifier.set null
+	injectAccessWidener = true
+	input.set shadowJar.archiveFile
+	dependsOn shadowJar
+	archiveClassifier.set null
 }
 
 jar {
-    archiveClassifier.set "dev"
+	archiveClassifier.set "dev"
 }
 
 sourcesJar {
-    def commonSources = project(":common").sourcesJar
-    dependsOn commonSources
-    from commonSources.archiveFile.map { zipTree(it) }
+	def commonSources = project(":common").sourcesJar
+	dependsOn commonSources
+	from commonSources.archiveFile.map { zipTree(it) }
 }
 
 components.java {
-    withVariantsFromConfiguration(project.configurations.shadowRuntimeElements) {
-        skip()
-    }
+	withVariantsFromConfiguration(project.configurations.shadowRuntimeElements) {
+		skip()
+	}
 }
 
 publishing {
-    publications {
-        mavenFabric(MavenPublication) {
-            artifactId = project.archivesBaseName + "-" + project.name + "-fabric"
-            from components.java
-        }
-    }
-
-    // See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
-    repositories {
-        // Add repositories to publish to here.
-    }
+	repositories {}
+	publications {
+		mavenFabric(MavenPublication) {
+			artifactId = project.archivesBaseName + "-" + project.name + "-fabric"
+			from components.java
+		}
+	}
 }
 
 publishMods {
-    file = remapJar.archiveFile
-    additionalFiles.from(sourcesJar.archiveFile)
-    changelog = getLatestChangelog()
-    type = STABLE
-    modLoaders.add("fabric")
-    modLoaders.add("quilt")
-
-    version = project.version + "-fabric"
-    displayName = "Hexical $project.version [Fabric]"
-
-    // Uncomment your desired platform(s)
-//    curseforge {
-//        accessToken = project.curseforgeApiToken
-//        projectId = project.curseforgeId
-//        minecraftVersions.add(minecraftVersion)
-//
-//        requires{
-//            slug = "fabric-api"
-//        }
-//        requires {
-//            slug = "architectury-api"
-//        }
-//        requires {
-//            slug = "fabric-language-kotlin"
-//        }
-//        requires {
-//            slug = "hexcasting"
-//        }
-//    }
-//
-//    modrinth {
-//        accessToken = project.modrinthApiToken
-//        projectId = project.modrinthId
-//        minecraftVersions.add("1.19.2")
-//
-//        requires{
-//            slug = "fabric-api"
-//        }
-//        requires {
-//            slug = "architectury-api"
-//        }
-//        requires {
-//            slug = "fabric-language-kotlin"
-//        }
-//        requires {
-//            slug = "hex-casting"
-//        }
-//    }
+	file = remapJar.archiveFile
+	additionalFiles.from(sourcesJar.archiveFile)
+	changelog = getLatestChangelog()
+	type = STABLE
+	modLoaders.add("fabric")
+	modLoaders.add("quilt")
+	version = project.version + "-fabric"
+	displayName = "Hexical $project.version [Fabric]"
 }
