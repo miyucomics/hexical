@@ -15,66 +15,66 @@ import net.fabricmc.api.EnvType;
 @SuppressWarnings({"FieldCanBeLocal", "FieldMayBeFinal"})
 @Config(name = Hexical.MOD_ID)
 public class HexicalConfigFabric extends PartitioningSerializer.GlobalData {
-    @ConfigEntry.Category("common")
-    @ConfigEntry.Gui.TransitiveObject
-    public final Common common = new Common();
-    @ConfigEntry.Category("client")
-    @ConfigEntry.Gui.TransitiveObject
-    public final Client client = new Client();
-    @ConfigEntry.Category("server")
-    @ConfigEntry.Gui.TransitiveObject
-    public final Server server = new Server();
+	@ConfigEntry.Category("common")
+	@ConfigEntry.Gui.TransitiveObject
+	public final Common common = new Common();
+	@ConfigEntry.Category("client")
+	@ConfigEntry.Gui.TransitiveObject
+	public final Client client = new Client();
+	@ConfigEntry.Category("server")
+	@ConfigEntry.Gui.TransitiveObject
+	public final Server server = new Server();
 
-    public static void init() {
-        AutoConfig.register(HexicalConfigFabric.class, PartitioningSerializer.wrap(JanksonConfigSerializer::new));
-        var instance = AutoConfig.getConfigHolder(HexicalConfigFabric.class).getConfig();
+	public static void init() {
+		AutoConfig.register(HexicalConfigFabric.class, PartitioningSerializer.wrap(JanksonConfigSerializer::new));
+		var instance = AutoConfig.getConfigHolder(HexicalConfigFabric.class).getConfig();
 
-        HexicalConfig.setCommon(instance.common);
+		HexicalConfig.setCommon(instance.common);
 
-        if (Platform.getEnv().equals(EnvType.CLIENT)) {
-            HexicalConfig.setClient(instance.client);
-        }
+		if (Platform.getEnv().equals(EnvType.CLIENT)) {
+			HexicalConfig.setClient(instance.client);
+		}
 
-        // Needed for logical server in singleplayer, do not access server configs from client code
-        HexicalConfig.setServer(instance.server);
-    }
-
-
-    @Config(name = "common")
-    private static class Common implements ConfigData, HexicalConfig.CommonConfigAccess {
-    }
-
-    @Config(name = "client")
-    private static class Client implements ConfigData, HexicalConfig.ClientConfigAccess {
-    }
+		// Needed for logical server in singleplayer, do not access server configs from client code
+		HexicalConfig.setServer(instance.server);
+	}
 
 
-    @Config(name = "server")
-    private static class Server implements ConfigData, HexicalConfig.ServerConfigAccess {
+	@Config(name = "common")
+	private static class Common implements ConfigData, HexicalConfig.CommonConfigAccess {
+	}
 
-        @ConfigEntry.Gui.CollapsibleObject
-        private Costs costs = new Costs();
+	@Config(name = "client")
+	private static class Client implements ConfigData, HexicalConfig.ClientConfigAccess {
+	}
 
-        @Override
-        public void validatePostLoad() throws ValidationException {
-            this.costs.signumCost = HexicalConfig.bound(this.costs.signumCost, DEF_MIN_COST, DEF_MAX_COST);
-            this.costs.congratsCost = HexicalConfig.bound(this.costs.congratsCost, DEF_MIN_COST, DEF_MAX_COST);
-        }
 
-        @Override
-        public int getSignumCost() {
-            return (int) (costs.signumCost * MediaConstants.DUST_UNIT);
-        }
+	@Config(name = "server")
+	private static class Server implements ConfigData, HexicalConfig.ServerConfigAccess {
 
-        @Override
-        public int getCongratsCost() {
-            return (int) (costs.congratsCost * MediaConstants.DUST_UNIT);
-        }
+		@ConfigEntry.Gui.CollapsibleObject
+		private Costs costs = new Costs();
 
-        static class Costs {
-            // costs of actions
-            double signumCost = DEFAULT_SIGNUM_COST;
-            double congratsCost = DEFAULT_CONGRATS_COST;
-        }
-    }
+		@Override
+		public void validatePostLoad() throws ValidationException {
+			this.costs.signumCost = HexicalConfig.bound(this.costs.signumCost, DEF_MIN_COST, DEF_MAX_COST);
+			this.costs.congratsCost = HexicalConfig.bound(this.costs.congratsCost, DEF_MIN_COST, DEF_MAX_COST);
+		}
+
+		@Override
+		public int getSignumCost() {
+			return (int) (costs.signumCost * MediaConstants.DUST_UNIT);
+		}
+
+		@Override
+		public int getCongratsCost() {
+			return (int) (costs.congratsCost * MediaConstants.DUST_UNIT);
+		}
+
+		static class Costs {
+			// costs of actions
+			double signumCost = DEFAULT_SIGNUM_COST;
+			double congratsCost = DEFAULT_CONGRATS_COST;
+		}
+	}
 }

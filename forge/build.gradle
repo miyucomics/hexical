@@ -12,11 +12,9 @@ architectury {
 
 loom {
     accessWidenerPath = project(":common").loom.accessWidenerPath
-
     forge {
         convertAccessWideners = true
         extraAccessWideners.add loom.accessWidenerPath.get().asFile.name
-
         mixinConfig "hexical-common.mixins.json"
         mixinConfig "hexical.mixins.json"
     }
@@ -24,7 +22,7 @@ loom {
 
 configurations {
     common
-    shadowCommon // Don't use shadow from the shadow plugin since it *excludes* files.
+    shadowCommon
     compileClasspath.extendsFrom common
     runtimeClasspath.extendsFrom common
     developmentForge.extendsFrom common
@@ -32,7 +30,6 @@ configurations {
 
 dependencies {
     modCompileOnly(group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2') // for @Nonnull
-
     forge "net.minecraftforge:forge:${project.forgeVersion}"
     modApi "dev.architectury:architectury-forge:${project.architecturyVersion}"
 
@@ -40,15 +37,11 @@ dependencies {
         transitive = false
     }
 
-    // // Hex Casting Dependencies
     modCompileOnly "at.petra-k.paucal:paucal-forge-${minecraftVersion}:${paucalVersion}"
     modCompileOnly "vazkii.patchouli:Patchouli:${minecraftVersion}-${patchouliVersion}"
-
     modRuntimeOnly "at.petra-k.paucal:paucal-forge-${minecraftVersion}:${paucalVersion}"
     modRuntimeOnly "vazkii.patchouli:Patchouli:${minecraftVersion}-${patchouliVersion}"
-
     runtimeOnly "thedarkcolour:kotlinforforge:$project.forgeKotlinVersion"
-
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
 }
@@ -56,7 +49,6 @@ dependencies {
 shadowJar {
     exclude "fabric.mod.json"
     exclude "architectury.common.json"
-
     configurations = [project.configurations.shadowCommon]
     archiveClassifier.set "dev-shadow"
 }
@@ -84,16 +76,12 @@ components.java {
 }
 
 publishing {
+    repositories {}
     publications {
         mavenForge(MavenPublication) {
             artifactId = project.archivesBaseName + "-" + project.name
             from components.java
         }
-    }
-
-    // See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
-    repositories {
-        // Add repositories to publish to here.
     }
 }
 
@@ -103,40 +91,6 @@ publishMods {
     changelog = getLatestChangelog()
     type = STABLE
     modLoaders.add("forge")
-
     version = project.version + "-forge"
     displayName = "Hexical $project.version [Forge]"
-
-    // Uncomment your desired platform(s)
-//    curseforge {
-//        accessToken = project.curseforgeApiToken
-//        projectId = project.curseforgeId
-//        minecraftVersions.add(minecraftVersion)
-//
-//        requires {
-//            slug = "architectury-api"
-//        }
-//        requires {
-//            slug = "kotlin-for-forge"
-//        }
-//        requires {
-//            slug = "hexcasting"
-//        }
-//    }
-//
-//    modrinth {
-//        accessToken = project.modrinthApiToken
-//        projectId = project.modrinthId
-//        minecraftVersions.add("1.19.2")
-//
-//        requires {
-//            slug = "architectury-api"
-//        }
-//        requires {
-//            slug = "kotlin-for-forge"
-//        }
-//        requires {
-//            slug = "hex-casting"
-//        }
-//    }
 }

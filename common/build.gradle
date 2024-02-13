@@ -1,44 +1,36 @@
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '1.8.0'
+	id 'org.jetbrains.kotlin.jvm' version '1.8.0'
 }
 archivesBaseName = getArtifactId("common")
 
 architectury {
-    common(project.enabledPlatforms.split(","))
+	common(project.enabledPlatforms.split(","))
 }
 
 loom {
-    accessWidenerPath = file("src/main/resources/hexical.accesswidener")
+	accessWidenerPath = file("src/main/resources/hexical.accesswidener")
 }
 
 dependencies {
-    // We depend on fabric loader here to use the fabric @Environment annotations and get the mixin dependencies
-    // Do NOT use other classes from fabric loader
-    modImplementation "net.fabricmc:fabric-loader:${project.fabricLoaderVersion}"
-    modApi "dev.architectury:architectury:${project.architecturyVersion}"
-
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
-    implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2' // for @Nonnull
-
-    modCompileOnly "at.petra-k.paucal:paucal-common-$minecraftVersion:$paucalVersion"
-    modCompileOnly "at.petra-k.hexcasting:hexcasting-fabric-$minecraftVersion:$hexcastingVersion"
-    modCompileOnly "vazkii.patchouli:Patchouli-xplat:$minecraftVersion-$patchouliVersion"
+	modImplementation "net.fabricmc:fabric-loader:${project.fabricLoaderVersion}"
+	modApi "dev.architectury:architectury:${project.architecturyVersion}"
+	implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
+	implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2' // for @Nonnull
+	modCompileOnly "at.petra-k.paucal:paucal-common-$minecraftVersion:$paucalVersion"
+	modCompileOnly "at.petra-k.hexcasting:hexcasting-fabric-$minecraftVersion:$hexcastingVersion"
+	modCompileOnly "vazkii.patchouli:Patchouli-xplat:$minecraftVersion-$patchouliVersion"
 }
 
 publishing {
-    publications {
-        mavenCommon(MavenPublication) {
-            artifactId = project.archivesBaseName
-            from components.java
-        }
-    }
-
-    // See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
-    repositories {
-        // Add repositories to publish to here.
-    }
+	repositories {}
+	publications {
+		mavenCommon(MavenPublication) {
+			artifactId = project.archivesBaseName
+			from components.java
+		}
+	}
 }
 
 repositories {
-    mavenCentral()
+	mavenCentral()
 }
