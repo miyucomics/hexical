@@ -1,0 +1,176 @@
+plugins {
+    id "architectury-plugin" version "3.4.+"
+
+    id "dev.architectury.loom" version "1.2.+" apply false
+
+    id "org.jetbrains.kotlin.jvm" version "1.8.0" apply false
+
+    // for template.env api keys
+    id "co.uzzu.dotenv.gradle" version "2.0.0"
+}
+
+architectury {
+    minecraft = project.minecraftVersion
+}
+
+subprojects {
+    apply plugin: "org.jetbrains.kotlin.jvm"
+    apply plugin: "dev.architectury.loom"
+
+    // Uncomment to silence the mojmap license warning
+    // loom {
+    //     silentMojangMappingsLicense()
+    // }
+
+    dependencies {
+        minecraft "com.mojang:minecraft:${project.minecraftVersion}"
+
+        mappings "net.fabricmc:yarn:1.19.2+build.28:v2"
+        // Or feel free to use any other mappings you prefer
+
+        annotationProcessor "org.ow2.asm:asm:${project.asmVersion}"
+        annotationProcessor "org.ow2.asm:asm-analysis:${project.asmVersion}"
+        annotationProcessor "org.ow2.asm:asm-commons:${project.asmVersion}"
+        annotationProcessor "org.ow2.asm:asm-tree:${project.asmVersion}"
+        annotationProcessor "org.ow2.asm:asm-util:${project.asmVersion}"
+    }
+
+    sourceSets.main.kotlin.srcDirs += 'src/main/java'
+    sourceSets.main.resources.srcDirs += "src/generated/resources"
+}
+
+allprojects {
+    apply plugin: "java"
+    apply plugin: "architectury-plugin"
+    apply plugin: "maven-publish"
+
+    // disable most javadoc warnings
+    javadoc.options.addStringOption('Xdoclint:none', '-quiet')
+
+    version = project.modVersion
+    group = project.mavenGroup
+
+    repositories {
+        maven { url 'https://jitpack.io' }
+        maven {
+            url "https://squiddev.cc/maven/"
+        }
+        maven { url "https://maven.terraformersmc.com/" }
+        maven { url "https://maven.terraformersmc.com/releases" }
+        maven { url "https://maven.shedaniel.me/" }
+
+        // Hex Casting Dependencies
+        maven { url "https://maven.blamejared.com/" }
+        maven {
+            name "entity reach"
+            url "https://maven.jamieswhiteshirt.com/libs-release/"
+        }
+        maven { url "https://mvn.devos.one/snapshots/" }
+        maven {
+            name = 'Ladysnake Mods'
+            url = 'https://maven.ladysnake.org/releases'
+        }
+        maven {
+            name = 'Kotlin for Forge'
+            url = 'https://thedarkcolour.github.io/KotlinForForge/'
+        }
+        maven {
+            url = "https://maven.theillusivec4.top/"
+        }
+        maven {
+            name = 'GeckoLib'
+            url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+        }
+        exclusiveContent {
+            forRepository {
+                maven {
+                    name = "Modrinth"
+                    url = "https://api.modrinth.com/maven"
+                }
+            }
+            filter {
+                includeGroup "maven.modrinth"
+            }
+        }
+
+        // Add any other repositories with your cross-platform dependency mods
+    }
+
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+        options.release = 17
+    }
+
+    java {
+        java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+        java.withSourcesJar()
+        java.withJavadocJar()
+    }
+
+    sourcesJar {
+        duplicatesStrategy 'exclude'
+    }
+
+    tasks.withType(JavaCompile).configureEach {
+        it.options.encoding = 'UTF-8'
+        it.options.release = 17
+    }
+
+    // Disables Gradle's custom module metadata from being published to maven. The
+    // metadata includes mapped dependencies which are not reasonably consumable by
+    // other mod developers.
+    tasks.withType(GenerateModuleMetadata) {
+        enabled = false
+    }
+
+    processResources {
+        exclude '.cache'
+
+        def dependencyVersions = [
+            "version": project.version,
+            "architecturyVersion": project.architecturyVersion,
+            "fabricKotlinVersion": project.fabricKotlinVersion,
+            "fabricLoaderVersion": project.fabricLoaderVersion,
+            "forgeDependencyVersion": project.forgeDependencyVersion,
+            "forgeKotlinVersion": project.forgeKotlinVersion,
+            "hexcastingVersion": project.hexcastingVersion,
+            "minecraftVersion": project.minecraftVersion,
+        ]
+
+        // for incremental builds
+        inputs.properties dependencyVersions
+
+        // expand the above variables in these files
+        filesMatching(["fabric.mod.json", "META-INF/mods.toml"]) {
+            expand dependencyVersions
+        }
+    }
+
+    processTestResources {
+        exclude '.cache'
+    }
+}
+
+ext.getArtifactId = { platform -> return "$modID-$platform-$minecraftVersion" }
+
+ext.getLatestChangelog = {
+    Collection<String> lines = file("$rootDir/CHANGELOG.md").readLines()
+    String changelog = ""
+    Boolean atSegment = false
+    for (String line : lines) {
+        if (line.startsWith("## ")) {
+            if (atSegment) break // hit next segment
+            atSegment = true
+        }
+        if (atSegment) changelog += "$line\n"
+    }
+    return changelog.trim()
+}
+
+tasks.register("viewLatestChangelog") {
+    group "documentation"
+    description "Print the topmost single version section from the full CHANGELOG.md file."
+    doLast {
+        println(getLatestChangelog())
+    }
+}

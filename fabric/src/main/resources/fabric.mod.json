@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "hexical",
+  "version": "${version}",
+  "name": "Hexical",
+  "description": "A kitchen sink addon for Hexcasting",
+  "authors": [
+    "miyucomics"
+  ],
+  "contact": {
+    "homepage": "https://miyucomics.github.io/hexical",
+    "sources": "https://github.com/miyucomics/hexical"
+  },
+  "license": "MIT",
+  "icon": "icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "miyucomics.hexical.fabric.HexicalFabric"
+    ],
+    "client": [
+      "miyucomics.hexical.fabric.HexicalClientFabric"
+    ]
+  },
+  "mixins": [
+    "hexical-common.mixins.json",
+    "hexical.mixins.json"
+  ],
+  "depends": {
+    "minecraft": ">=${minecraftVersion}",
+    "fabricloader": ">=${fabricLoaderVersion}",
+    "fabric-api": "*",
+    "fabric-language-kotlin": ">=${fabricKotlinVersion}",
+    "architectury": ">=${architecturyVersion}",
+    "hexcasting": ">=${hexcastingVersion}"
+  }
+}
