@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <title>Hexical Book</title>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta name="description" content="The Hexical Book, all in one place." />
+      <meta name="author" content="miyucomics" />
+        <link rel="None" type="image/ico" href="favicon.ico" />
+        <link rel="icon" type="image/png" href="favicon-16x16.png" />
+        <link rel="icon" type="image/png" href="favicon-32x32.png" />
+        <link rel="icon" type="image/png" href="favicon-64x64.png" />
+        <link rel="icon" type="image/png" href="favicon-96x96.png" />
+        <link rel="icon" type="image/png" href="favicon-180x180.png" />
+        <link rel="apple-touch-icon" type="image/png" href="apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" type="image/png" href="apple-touch-icon-60x60.png" />
+        <link rel="apple-touch-icon" type="image/png" href="apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" type="image/png" href="apple-touch-icon-76x76.png" />
+        <link rel="apple-touch-icon" type="image/png" href="apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" type="image/png" href="apple-touch-icon-120x120.png" />
+        <link rel="apple-touch-icon" type="image/png" href="apple-touch-icon-144x144.png" />
+        <link rel="apple-touch-icon" type="image/png" href="apple-touch-icon-152x152.png" />
+        <link rel="apple-touch-icon" type="image/png" href="apple-touch-icon-167x167.png" />
+        <link rel="apple-touch-icon" type="image/png" href="apple-touch-icon-180x180.png" />
+        <link rel="None" type="image/png" href="mstile-70x70.png" />
+        <link rel="None" type="image/png" href="mstile-270x270.png" />
+        <link rel="None" type="image/png" href="mstile-310x310.png" />
+        <link rel="None" type="image/png" href="mstile-310x150.png" />
+        <link rel="shortcut icon" type="image/png" href="favicon-196x196.png" />
+      <link rel="mask-icon" href="https://raw.githubusercontent.com/hexdoc-dev/hexdoc/main/media/safari-pinned-tab.svg" color="#332233">
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Hexical Book" />
+<meta property="og:image" content="https://miyucomics.github.io/hexical/v/latest/main/en_us/icon.png" />
+<meta property="og:url" content="https://miyucomics.github.io/hexical/v/latest/main/en_us" />
+<meta property="og:description" content="The Hexical Book, all in one place." />
+<meta property="og:site_name" content="Hexical (latest/main)" />
+      <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+      integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="index.css">
+      <link rel="stylesheet" href="textures.css">
+      <noscript>
+        <style>
+          /* for accessibility */
+          .spoilered {
+            filter: none !important;
+          }
+        </style>
+      </noscript>
+        <script type="module" src="index.js"></script>
+  <script type="module" src="hexcasting.js"></script>
+  </head>
+  <body>
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <!-- toggle and name -->
+    <div class="navbar-header">
+      <button
+        type="button"
+        class="navbar-toggle collapsed"
+        data-toggle="collapse"
+        data-target="#navbar-collapse"
+        aria-expanded="false"
+      >
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://miyucomics.github.io/hexical">Hexical Book</a>
+    </div>
+    <!-- content -->
+    <div class="collapse navbar-collapse" id="navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >latest/main <span class="caret"></span></a>
+          <ul class="dropdown-menu" id="version-dropdown"></ul>
+        </li>
+        <li class="dropdown">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >English (United States) <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-menu-left" id="lang-dropdown"></ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container" style="margin-top: 3em;">
+  <blockquote>
+      <h1><p>This is the online version of the Hexical documentation.</p></h1>
+        <p>This page is built from the latest code on GitHub. It may describe <strong>newer</strong> features that you may not necessarily have, even on the latest Modrinth/CurseForge version!</p>
+      <p><strong>Entries which are blurred are spoilers</strong>. Click to reveal them, but be aware that they may spoil endgame progression. Alternatively, click <a href="?nospoiler">here</a> to get a version with all spoilers showing.</p>
+      <span id="old-version-notice" class="hidden">
+        <br />
+        <p><i>The past is a foreign country; they do things differently there.</i></p>
+      </span>
+  </blockquote>
+</div>
+<div class="container">
+<div id="table-of-contents"></div>
+<nav class="toc-container">
+  <h2 class="page-header">
+    Table of <span class="nobr">Contents<a
+      href="javascript:void(0)"
+      class="permalink toggle-link small"
+      data-target="toc-category"
+      title="Toggle all"
+    ><i class="bi bi-list-nested"></i></a><a
+    href="#table-of-contents"
+    class="permalink small toc-permalink"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></span>
+  </h2>
+    <details class="toc-category">
+      <summary><a href="#hexical" class="toc-elem "><img
+      title="Genieless Lamp"
+      alt="Genieless Lamp"
+      src="https://raw.githubusercontent.com/miyucomics/hexical/2df1e401b0287d317e548bd4677060ad9e5f089e/common/src/main/resources/assets/hexical/textures/item/lamp.png"
+      loading="lazy"
+      class="item-texture  texture pixelated"
+    > Hexomancy</a></summary>
+      <ul>
+          <li><a href="#chorus_blink" class="toc-elem "><img
+      title="Chorus Fruit"
+      alt="Chorus Fruit"
+      src="https://raw.githubusercontent.com/PrismarineJS/minecraft-assets/a14c64362abe4a12c2dfd87f8d1673af9d1b09f4/data/1.19.1/items/chorus_fruit.png"
+      loading="lazy"
+      class="item-texture  texture pixelated"
+    > Chorus Blink</a></li>
+      </ul>
+    </details>
+</nav>
+  <main class="book-body">
+<section id="hexical">
+    <h2 class="category-title page-header">
+    <img
+      title="Genieless Lamp"
+      alt="Genieless Lamp"
+      src="https://raw.githubusercontent.com/miyucomics/hexical/2df1e401b0287d317e548bd4677060ad9e5f089e/common/src/main/resources/assets/hexical/textures/item/lamp.png"
+      loading="lazy"
+      class="item-texture  texture pixelated"
+    >Hexomancy<a
+    href="#table-of-contents"
+    class="permalink small"
+    title="Jump to top"
+  ><i class="bi bi-box-arrow-up"></i></a><a
+    href="#hexical"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h2>
+    <p>I feel strangely more receptive of the ambient media around me. I can even feel it responding to certain tasks I perform, as if suggesting spells to me. Because I am essentially divining spells from the media, I shall call it hexical.</p>
+<div id="chorus_blink" class="entry">
+    <h3 class="entry-title page-header">
+    <img
+      title="Chorus Fruit"
+      alt="Chorus Fruit"
+      src="https://raw.githubusercontent.com/PrismarineJS/minecraft-assets/a14c64362abe4a12c2dfd87f8d1673af9d1b09f4/data/1.19.1/items/chorus_fruit.png"
+      loading="lazy"
+      class="item-texture  texture pixelated"
+    >Chorus Blink<a
+    href="#table-of-contents"
+    class="permalink small"
+    title="Jump to top"
+  ><i class="bi bi-box-arrow-up"></i></a><a
+    href="#chorus_blink"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h3>
+  <div id="chorus_blink@hexical:chorus_blink">
+<h4 class="pattern-title">Chorus Blink (vec →)<a
+    href="#chorus_blink@hexical:chorus_blink"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="aawqqqq"
+        data-start="south_east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: aawqqqq</canvas>
+  </details>
+      <p>Between Blink, Greater Teleport, ender pearls, and chorus fruit, this spell serves a harmonious midpoint for safe, precise, and cheap teleportation.</p>
+  </div>
+<br />
+    <p>It consumes a chorus fruit from my inventory and teleports me up to 16 blocks using an offset vector. The cost is constant whether I teleport the full 16 blocks or less, and has no penalty for multiple casts in one hex. With a lot of chorus fruit, it can be a significantly cheaper Greater Teleport.</p>
+<br />
+</div>
+</section>
+  </main>
+</div>
+      <footer class="footer">
+        <div class="container">
+          <p class="text-muted">
+            Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft.<br />
+            Minecraft content and materials are the intellectual property of their respective owners.<br />
+            Made with ❤️ using <a href="https://pypi.org/project/hexdoc/" target="_blank">hexdoc</a>.
+          </p>
+        </div>
+      </footer>
+  </body>
+</html>
