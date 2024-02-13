@@ -16,7 +16,6 @@ public class Hexical {
 		HexicalItemRegistry.init();
 		HexicalIotaTypeRegistry.init();
 		HexicalPatternRegistry.init();
-		LOGGER.info(HexicalAbstractions.getConfigDirectory().toAbsolutePath().normalize().toString());
 	}
 
 	public static Identifier id(String string) {
