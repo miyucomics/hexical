@@ -12,19 +12,19 @@ import java.util.Map;
 import static miyucomics.hexical.Hexical.id;
 
 public class HexicalIotaTypeRegistry {
-    public static Map<Identifier, IotaType<?>> TYPES = new HashMap<>();
+	public static Map<Identifier, IotaType<?>> TYPES = new HashMap<>();
 
-    public static void init() {
-        for (Map.Entry<Identifier, IotaType<?>> entry : TYPES.entrySet()) {
-            Registry.register(HexIotaTypes.REGISTRY, entry.getKey(), entry.getValue());
-        }
-    }
+	public static void init() {
+		for (Map.Entry<Identifier, IotaType<?>> entry : TYPES.entrySet()) {
+			Registry.register(HexIotaTypes.REGISTRY, entry.getKey(), entry.getValue());
+		}
+	}
 
-    private static <U extends Iota, T extends IotaType<U>> T register(String name, T type) {
-        IotaType<?> old = TYPES.put(id(name), type);
-        if (old != null) {
-            throw new IllegalArgumentException("Typo? Duplicate id " + name);
-        }
-        return type;
-    }
+	private static <U extends Iota, T extends IotaType<U>> T register(String name, T type) {
+		IotaType<?> old = TYPES.put(id(name), type);
+		if (old != null) {
+			throw new IllegalArgumentException("Typo? Duplicate id " + name);
+		}
+		return type;
+	}
 }
