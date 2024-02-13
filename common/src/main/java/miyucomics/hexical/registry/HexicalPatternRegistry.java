@@ -18,9 +18,9 @@ import static miyucomics.hexical.Hexical.id;
 public class HexicalPatternRegistry {
 	public static List<Triple<HexPattern, Identifier, Action>> PATTERNS = new ArrayList<>();
 	public static List<Triple<HexPattern, Identifier, Action>> PER_WORLD_PATTERNS = new ArrayList<>();
-	public static HexPattern CONGRATS = registerPerWorld(HexPattern.fromAngles("eed", HexDir.WEST), "congrats", new OpCongrats());
 	public static HexPattern SIGNUM = register(HexPattern.fromAngles("edd", HexDir.NORTH_WEST), "signum", new OpSignum());
 	public static HexPattern CHORUS_BLINK = register(HexPattern.fromAngles("aawqqqq", HexDir.SOUTH_EAST), "chorus_blink", new OpChorusBlink());
+	public static HexPattern CONGRATS = registerPerWorld(HexPattern.fromAngles("eed", HexDir.WEST), "congrats", new OpCongrats());
 
 	public static void init() {
 		try {
