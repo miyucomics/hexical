@@ -1,5 +1,6 @@
 package miyucomics.hexical;
 
+import miyucomics.hexical.registry.HexicalBlockRegistry;
 import miyucomics.hexical.registry.HexicalIotaTypeRegistry;
 import miyucomics.hexical.registry.HexicalItemRegistry;
 import miyucomics.hexical.registry.HexicalPatternRegistry;
@@ -13,6 +14,7 @@ public class Hexical {
 
 	public static void init() {
 		HexicalAbstractions.initPlatformSpecific();
+		HexicalBlockRegistry.init();
 		HexicalItemRegistry.init();
 		HexicalIotaTypeRegistry.init();
 		HexicalPatternRegistry.init();

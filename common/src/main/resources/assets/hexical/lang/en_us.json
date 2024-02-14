@@ -12,6 +12,10 @@
 	"hexical.page.chorus_blink.1": "Between Blink, Greater Teleport, ender pearls, and chorus fruit, this spell serves a harmonious midpoint for safe, precise, and cheap teleportation.",
 	"hexical.page.chorus_blink.2": "It consumes a chorus fruit from my inventory and teleports me up to 16 blocks using an offset vector. The cost is constant whether I teleport the full 16 blocks or less, and has no penalty for multiple casts in one hex. With a lot of chorus fruit, it can be a significantly cheaper Greater Teleport.",
 
+	"hexcasting.spell.hexical:conjure_bouncy_block": "Conjure Bouncy Block",
+	"hexical.page.conjure_bouncy_block.1": "This Conjure Block variant is delightfully fun to bounce on! I notice that even if I sneak, the block bounces me upwards regardless.",
+	"hexical.page.conjure_bouncy_block.2": "It is also interestingly fully invisible unlike Conjure Block but releases a burst of particles when propelling an entity.",
+
 	"hexcasting.spell.hexical:ping": "Ping",
 	"hexical.page.ping.1": "For the price of a single dust, I can cause a voluntary hallucination of a little ripple.",
 	"hexical.page.ping.2": "I can see it through blocks and its color seems to reflect my pigment. Its size also does not seem to change much even from a far distance, making it perfect for highlighting locations.",
