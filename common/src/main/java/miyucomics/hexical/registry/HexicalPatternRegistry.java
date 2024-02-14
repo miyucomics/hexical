@@ -6,6 +6,7 @@ import at.petrak.hexcasting.api.spell.math.HexDir;
 import at.petrak.hexcasting.api.spell.math.HexPattern;
 import kotlin.Triple;
 import miyucomics.hexical.casting.patterns.spells.OpChorusBlink;
+import miyucomics.hexical.casting.patterns.spells.OpConjureBouncyBlock;
 import net.minecraft.util.Identifier;
 
 import java.util.ArrayList;
@@ -16,7 +17,9 @@ import static miyucomics.hexical.Hexical.id;
 public class HexicalPatternRegistry {
 	public static List<Triple<HexPattern, Identifier, Action>> PATTERNS = new ArrayList<>();
 	public static List<Triple<HexPattern, Identifier, Action>> PER_WORLD_PATTERNS = new ArrayList<>();
+
 	public static HexPattern CHORUS_BLINK = register(HexPattern.fromAngles("aawqqqq", HexDir.SOUTH_EAST), "chorus_blink", new OpChorusBlink());
+	public static HexPattern CONJURE_BOUNCY_BLOCK = register(HexPattern.fromAngles("dee", HexDir.NORTH_WEST), "conjure_bouncy_block", new OpConjureBouncyBlock());
 
 	public static void init() {
 		try {

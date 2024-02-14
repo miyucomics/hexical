@@ -17,7 +17,4 @@ public class HexicalItemRegistry {
 	public static void init() {
 		ITEMS.register();
 	}
-
-	public static final ItemGroup DUMMY_GROUP = CreativeTabRegistry.create(id("dummy_group"), () -> new ItemStack(HexicalItemRegistry.DUMMY_ITEM.get()));
-	public static final RegistrySupplier<Item> DUMMY_ITEM = ITEMS.register("dummy_item", () -> new Item(new Item.Settings().group(DUMMY_GROUP)));
 }

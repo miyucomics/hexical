@@ -18,8 +18,8 @@ class OpChorusBlink : SpellAction {
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		val pos = args.getVec3(0, argc);
 		if (pos.lengthSquared() > 256)
-			throw MishapLocationTooFarAway(pos, "text.hexical.congrats.player")
-		return Triple(Spell(pos), 2 * MediaConstants.DUST_UNIT, listOf(ParticleSpray.burst(pos, 1.0)))
+			throw MishapLocationTooFarAway(pos)
+		return Triple(Spell(pos), 3 * MediaConstants.DUST_UNIT, listOf(ParticleSpray.burst(pos, 1.0)))
 	}
 
 	private data class Spell(val position: Vec3d) : RenderedSpell {
@@ -27,7 +27,7 @@ class OpChorusBlink : SpellAction {
 			for (stack in DiscoveryHandlers.collectItemSlots(ctx)) {
 				if (stack.item == Items.CHORUS_FRUIT && !stack.isEmpty) {
 					stack.decrement(1)
-					ctx.caster.teleport(position.x, position.y, position.z)
+					ctx.caster.teleport(ctx.caster.pos.x + position.x, ctx.caster.pos.y + position.y, ctx.caster.pos.z + position.z)
 					break
 				}
 			}
