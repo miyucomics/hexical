@@ -22,9 +22,8 @@ public class HexicalIotaTypeRegistry {
 
 	private static <U extends Iota, T extends IotaType<U>> T register(String name, T type) {
 		IotaType<?> old = TYPES.put(id(name), type);
-		if (old != null) {
+		if (old != null)
 			throw new IllegalArgumentException("Typo? Duplicate id " + name);
-		}
 		return type;
 	}
 }
