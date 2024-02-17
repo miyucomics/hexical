@@ -1,7 +1,6 @@
 package miyucomics.hexical;
 
 import miyucomics.hexical.registry.*;
-import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,11 +11,10 @@ public class Hexical {
 
 	public static void init() {
 		HexicalAbstractions.initPlatformSpecific();
-		HexicalBlockRegistry.init();
-		HexicalItemRegistry.init();
-		HexicalIotaTypeRegistry.init();
-		HexicalPatternRegistry.init();
-		HexicalParticleRegistry.init();
+		HexicalBlocks.init();
+		HexicalItems.init();
+		HexicalPatterns.init();
+		HexicalParticles.init();
 	}
 
 	public static Identifier id(String string) {

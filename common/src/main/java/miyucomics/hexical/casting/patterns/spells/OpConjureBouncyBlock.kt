@@ -7,11 +7,12 @@ import at.petrak.hexcasting.api.spell.SpellAction
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.getBlockPos
 import at.petrak.hexcasting.api.spell.iota.Iota
+import at.petrak.hexcasting.common.blocks.BlockConjured
 import at.petrak.hexcasting.xplat.IXplatAbstractions
-import miyucomics.hexical.blocks.ConjuredBouncyBlock
-import miyucomics.hexical.registry.HexicalBlockRegistry
+import miyucomics.hexical.registry.HexicalBlocks
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d
+import net.minecraft.world.World
 
 class OpConjureBouncyBlock : SpellAction {
 	override val argc = 1
@@ -26,9 +27,9 @@ class OpConjureBouncyBlock : SpellAction {
 		override fun cast(ctx: CastingContext) {
 			if (!ctx.canEditBlockAt(pos))
 				return
-			ctx.world.setBlockState(pos, HexicalBlockRegistry.CONJURED_BOUNCY_BLOCK.get().defaultState, 5)
+			(ctx.world as World).setBlockState(pos, HexicalBlocks.CONJURED_BOUNCY_BLOCK.defaultState, 5)
 			val colorizer = IXplatAbstractions.INSTANCE.getColorizer(ctx.caster)
-			ConjuredBouncyBlock.setColor(ctx.world, pos, colorizer)
+			BlockConjured.setColor(ctx.world, pos, colorizer)
 		}
 	}
 }
