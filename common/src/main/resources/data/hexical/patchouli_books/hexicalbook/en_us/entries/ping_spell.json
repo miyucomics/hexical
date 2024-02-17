@@ -1,0 +1,20 @@
+{
+	"name": "hexcasting.spell.hexical:conjure_bouncy_block",
+	"icon": "minecraft:slime_block",
+	"category": "hexical:hexical",
+	"pages": [
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:conjure_bouncy_block",
+			"anchor": "hexical:conjure_bouncy_block",
+			"input": "vec",
+			"output": "",
+			"hex_size": 4,
+			"text": "hexical.page.conjure_bouncy_block.1"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.conjure_bouncy_block.2"
+		}
+	]
+}

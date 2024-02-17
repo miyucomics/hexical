@@ -9,9 +9,7 @@ import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.getVec3
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapLocationTooFarAway
-import net.minecraft.entity.Entity
 import net.minecraft.item.Items
-import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.math.Vec3d
 
 class OpChorusBlink : SpellAction {
@@ -29,8 +27,7 @@ class OpChorusBlink : SpellAction {
 			for (stack in DiscoveryHandlers.collectItemSlots(ctx)) {
 				if (stack.item == Items.CHORUS_FRUIT && !stack.isEmpty) {
 					stack.decrement(1)
-					val caster: ServerPlayerEntity = ctx.caster
-					caster.teleport(caster.pos.x + position.x, caster.pos.y + position.y, caster.pos.z + position.z)
+					ctx.caster.teleport(ctx.caster.pos.x + position.x, ctx.caster.pos.y + position.y, ctx.caster.pos.z + position.z)
 					break
 				}
 			}
