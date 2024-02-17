@@ -50,8 +50,6 @@ public class PingParticle extends SpriteBillboardParticle {
             quaternion2.hamiltonProduct(Vec3f.POSITIVE_Z.getRadialQuaternion(i));
         }
 
-        Vec3f Vec3f = new Vec3f(-1.0F, -1.0F, 0.0F);
-        Vec3f.rotate(quaternion2);
         Vec3f[] Vec3fs = new Vec3f[]{new Vec3f(-1.0F, -1.0F, 0.0F), new Vec3f(-1.0F, 1.0F, 0.0F), new Vec3f(1.0F, 1.0F, 0.0F), new Vec3f(1.0F, -1.0F, 0.0F)};
 
         for (int k = 0; k < 4; ++k) {
