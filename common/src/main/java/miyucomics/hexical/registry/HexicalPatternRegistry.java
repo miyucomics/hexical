@@ -9,6 +9,7 @@ import at.petrak.hexcasting.common.casting.operators.spells.OpMakePackagedSpell;
 import kotlin.Triple;
 import miyucomics.hexical.casting.patterns.spells.OpChorusBlink;
 import miyucomics.hexical.casting.patterns.spells.OpConjureBouncyBlock;
+import miyucomics.hexical.casting.patterns.spells.OpPing;
 import net.minecraft.util.Identifier;
 
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ public class HexicalPatternRegistry {
 	public static HexPattern CHORUS_BLINK = register(HexPattern.fromAngles("aawqqqq", HexDir.SOUTH_EAST), "chorus_blink", new OpChorusBlink());
 	public static HexPattern CONJURE_BOUNCY_BLOCK = register(HexPattern.fromAngles("dee", HexDir.NORTH_WEST), "conjure_bouncy_block", new OpConjureBouncyBlock());
 	public static HexPattern PROGRAM_LAMP = register(HexPattern.fromAngles("wwqqqqq", HexDir.EAST), "program_lamp", new OpMakePackagedSpell<>(HexicalItemRegistry.LAMP_ITEM, MediaConstants.CRYSTAL_UNIT));
+	public static HexPattern PING_SPELL = register(HexPattern.fromAngles("eweeewedqdeqqqqqwaeeee", HexDir.NORTH_EAST), "ping", new OpPing());
 
 	public static void init() {
 		try {
