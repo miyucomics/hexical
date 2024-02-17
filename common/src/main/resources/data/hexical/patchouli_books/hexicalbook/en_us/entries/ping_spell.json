@@ -1,6 +1,6 @@
 {
 	"name": "hexcasting.spell.hexical:ping",
-	"icon": "minecraft:eye_of_ender",
+	"icon": "minecraft:ender_eye",
 	"category": "hexical:hexical",
 	"pages": [
 		{
