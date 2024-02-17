@@ -1,20 +1,20 @@
 {
-	"name": "hexcasting.spell.hexical:conjure_bouncy_block",
-	"icon": "minecraft:slime_block",
+	"name": "hexcasting.spell.hexical:ping",
+	"icon": "minecraft:eye_of_ender",
 	"category": "hexical:hexical",
 	"pages": [
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:conjure_bouncy_block",
-			"anchor": "hexical:conjure_bouncy_block",
+			"op_id": "hexical:ping",
+			"anchor": "hexical:ping",
 			"input": "vec",
 			"output": "",
 			"hex_size": 4,
-			"text": "hexical.page.conjure_bouncy_block.1"
+			"text": "hexical.page.ping.1"
 		},
 		{
 			"type": "patchouli:text",
-			"text": "hexical.page.conjure_bouncy_block.2"
+			"text": "hexical.page.ping.2"
 		}
 	]
 }
