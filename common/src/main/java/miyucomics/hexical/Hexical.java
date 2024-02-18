@@ -14,7 +14,6 @@ public class Hexical {
 		HexicalBlocks.init();
 		HexicalItems.init();
 		HexicalPatterns.init();
-		HexicalParticles.init();
 	}
 
 	public static Identifier id(String string) {

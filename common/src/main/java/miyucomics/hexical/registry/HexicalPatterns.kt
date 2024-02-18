@@ -14,8 +14,8 @@ import miyucomics.hexical.items.LampItem
 import net.minecraft.util.Identifier
 
 object HexicalPatterns {
-	var PATTERNS: MutableList<Triple<HexPattern, Identifier, Action>> = ArrayList()
-	var PER_WORLD_PATTERNS: MutableList<Triple<HexPattern, Identifier, Action>> = ArrayList()
+	private var PATTERNS: MutableList<Triple<HexPattern, Identifier, Action>> = ArrayList()
+	private var PER_WORLD_PATTERNS: MutableList<Triple<HexPattern, Identifier, Action>> = ArrayList()
 
 	var CHORUS_BLINK: HexPattern = register(HexPattern.fromAngles("aawqqqq", HexDir.SOUTH_EAST), "chorus_blink", OpChorusBlink())
 	var CONJURE_BOUNCY_BLOCK: HexPattern = register(HexPattern.fromAngles("dee", HexDir.NORTH_WEST), "conjure_bouncy_block", OpConjureBouncyBlock())

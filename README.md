@@ -1,3 +1,3 @@
 # Hexical
 
-A kitchen sink addon for Hexcasting
+A fun addon that adds various miscellanous spells to Hexcasting.

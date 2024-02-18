@@ -1,7 +1,5 @@
 package miyucomics.hexical.api.config;
 
-import miyucomics.hexical.Hexical;
-
 public class HexicalConfig {
 	private static final CommonConfigAccess dummyCommon = new CommonConfigAccess() {};
 	private static final ClientConfigAccess dummyClient = new ClientConfigAccess() {};
