@@ -23,38 +23,14 @@ public class HexicalConfigForge {
 	}
 
 	public static class Common implements HexicalConfig.CommonConfigAccess {
-		public Common(ForgeConfigSpec.Builder builder) {
-
-		}
+		public Common(ForgeConfigSpec.Builder builder) {}
 	}
 
 	public static class Client implements HexicalConfig.ClientConfigAccess {
-		public Client(ForgeConfigSpec.Builder builder) {
-
-		}
+		public Client(ForgeConfigSpec.Builder builder) {}
 	}
 
 	public static class Server implements HexicalConfig.ServerConfigAccess {
-		private static ForgeConfigSpec.DoubleValue congratsCost;
-		private static ForgeConfigSpec.DoubleValue signumCost;
-
-		public Server(ForgeConfigSpec.Builder builder) {
-			builder.translation("text.autoconfig.hexical.option.server.costs").push("costs");
-
-			congratsCost = builder.translation("text.autoconfig.hexical.option.server.costs.congratsCost").defineInRange("congratsCost", DEFAULT_CONGRATS_COST, DEF_MIN_COST, DEF_MAX_COST);
-			signumCost = builder.translation("text.autoconfig.hexical.option.server.costs.signumCost").defineInRange("signumCost", DEFAULT_SIGNUM_COST, DEF_MIN_COST, DEF_MAX_COST);
-
-			builder.pop();
-		}
-
-		@Override
-		public int getCongratsCost() {
-			return (int) (congratsCost.get() * MediaConstants.DUST_UNIT);
-		}
-
-		@Override
-		public int getSignumCost() {
-			return (int) (signumCost.get() * MediaConstants.DUST_UNIT);
-		}
+		public Server(ForgeConfigSpec.Builder builder) {}
 	}
 }
