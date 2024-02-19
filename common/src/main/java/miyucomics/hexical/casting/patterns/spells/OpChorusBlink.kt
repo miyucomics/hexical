@@ -27,12 +27,14 @@ class OpChorusBlink : SpellAction {
 	private data class Spell(val position: Vec3d) : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
 			for (stack in DiscoveryHandlers.collectItemSlots(ctx)) {
-				if (stack.item == Items.CHORUS_FRUIT && !stack.isEmpty) {
-					stack.decrement(1)
-					val caster: ServerPlayerEntity = ctx.caster
-					caster.teleport(caster.pos.x + position.x, caster.pos.y + position.y, caster.pos.z + position.z)
-					break
-				}
+				if (stack.item != Items.CHORUS_FRUIT)
+					continue
+				if (stack.isEmpty)
+					continue
+				stack.decrement(1)
+				val caster: ServerPlayerEntity = ctx.caster
+				caster.teleport(caster.pos.x + position.x, caster.pos.y + position.y, caster.pos.z + position.z)
+				break
 			}
 		}
 	}
