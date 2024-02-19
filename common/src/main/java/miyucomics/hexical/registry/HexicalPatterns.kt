@@ -10,6 +10,7 @@ import miyucomics.hexical.Hexical
 import miyucomics.hexical.casting.patterns.spells.OpChorusBlink
 import miyucomics.hexical.casting.patterns.spells.OpConjureBouncyBlock
 import miyucomics.hexical.casting.patterns.spells.OpPing
+import miyucomics.hexical.casting.patterns.spells.OpProgramLamp
 import miyucomics.hexical.items.LampItem
 import net.minecraft.util.Identifier
 
@@ -19,7 +20,7 @@ object HexicalPatterns {
 
 	var CHORUS_BLINK: HexPattern = register(HexPattern.fromAngles("aawqqqq", HexDir.SOUTH_EAST), "chorus_blink", OpChorusBlink())
 	var CONJURE_BOUNCY_BLOCK: HexPattern = register(HexPattern.fromAngles("dee", HexDir.NORTH_WEST), "conjure_bouncy_block", OpConjureBouncyBlock())
-	var PROGRAM_LAMP: HexPattern = register(HexPattern.fromAngles("wwqqqqq", HexDir.EAST), "program_lamp", OpMakePackagedSpell<LampItem>(HexicalItems.LAMP_ITEM, MediaConstants.CRYSTAL_UNIT))
+	var PROGRAM_LAMP: HexPattern = register(HexPattern.fromAngles("wwqqqqq", HexDir.EAST), "program_lamp", OpProgramLamp())
 	var PING_SPELL: HexPattern = register(HexPattern.fromAngles("eweeewedqdeqqqqqwaeeee", HexDir.NORTH_EAST), "ping", OpPing())
 
 	@JvmStatic
