@@ -27,9 +27,8 @@ class OpConjureBouncyBlock : SpellAction {
 		override fun cast(ctx: CastingContext) {
 			if (!ctx.canEditBlockAt(pos))
 				return
-			(ctx.world as World).setBlockState(pos, HexicalBlocks.CONJURED_BOUNCY_BLOCK.defaultState, 5)
-			val colorizer = IXplatAbstractions.INSTANCE.getColorizer(ctx.caster)
-			BlockConjured.setColor(ctx.world, pos, colorizer)
+			ctx.world.setBlockState(pos, HexicalBlocks.CONJURED_BOUNCY_BLOCK.defaultState, 5)
+			BlockConjured.setColor(ctx.world, pos, IXplatAbstractions.INSTANCE.getColorizer(ctx.caster))
 		}
 	}
 }
