@@ -46,6 +46,12 @@ dependencies {
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
 }
 
+processResources {
+    from(rootProject.file("common/src/main/resources")) {
+        include("data/*/patchouli_books/")
+    }
+}
+
 shadowJar {
     exclude "fabric.mod.json"
     exclude "architectury.common.json"
