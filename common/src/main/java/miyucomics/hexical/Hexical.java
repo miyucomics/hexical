@@ -7,7 +7,6 @@ import org.apache.logging.log4j.Logger;
 
 public class Hexical {
 	public static final String MOD_ID = "hexical";
-	public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
 
 	public static void init() {
 		HexicalAbstractions.initPlatformSpecific();
