@@ -14,6 +14,7 @@ import net.minecraft.util.registry.Registry
 
 object HexicalBlocks {
 	private val BLOCKS: DeferredRegister<Block> = DeferredRegister.create(Hexical.MOD_ID, Registry.BLOCK_KEY)
+	private val BLOCK_ENTITIES: DeferredRegister<BlockEntityType<*>> = DeferredRegister.create(Hexical.MOD_ID, Registry.BLOCK_ENTITY_TYPE_KEY)
 	val CONJURED_BOUNCY_BLOCK: Block = ConjuredBouncyBlock(
 		AbstractBlock.Settings
 			.of(Material.ORGANIC_PRODUCT)
@@ -32,6 +33,8 @@ object HexicalBlocks {
 	@JvmStatic
 	fun init() {
 		BLOCKS.register("conjured_bouncy_block") { CONJURED_BOUNCY_BLOCK }
+		BLOCK_ENTITIES.register("conjured_bouncy_block") { CONJURED_BOUNCY_BLOCK_ENTITY }
+		BLOCK_ENTITIES.register()
 		BLOCKS.register()
 	}
 }

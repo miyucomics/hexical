@@ -24,7 +24,7 @@ class ConjuredBouncyBlock(properties: Settings?) : BlockConjured(properties) {
 	}
 
 	override fun <T : BlockEntity?> getTicker(pLevel: World, pState: BlockState?, pBlockEntityType: BlockEntityType<T>?): BlockEntityTicker<T>? {
-		return if (pLevel.isClient) BlockEntityTicker { level: World?, blockPos: BlockPos?, blockState: BlockState?, t: T -> tick(level, blockPos, blockState, t) } else null
+		return if (pLevel.isClient) BlockEntityTicker { _, _, _, blockEntity: T -> tick(blockEntity) } else null
 	}
 
 	override fun onSteppedOn(pLevel: World, pPos: BlockPos, pState: BlockState, pEntity: Entity) {
@@ -34,9 +34,9 @@ class ConjuredBouncyBlock(properties: Settings?) : BlockConjured(properties) {
 	}
 
 	companion object {
-		fun <T> tick(level: World?, blockPos: BlockPos?, blockState: BlockState?, t: T) {
-			if (t is ConjuredBouncyBlockEntity)
-				t.particleEffect()
+		fun <T> tick(blockEntity: T) {
+			if (blockEntity is ConjuredBouncyBlockEntity)
+				blockEntity.particleEffect()
 		}
 
 		fun setColor(pLevel: WorldAccess, pPos: BlockPos, colorizer: FrozenColorizer) {

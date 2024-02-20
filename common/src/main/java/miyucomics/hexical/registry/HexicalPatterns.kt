@@ -1,22 +1,24 @@
 package miyucomics.hexical.registry
 
 import at.petrak.hexcasting.api.PatternRegistry
-import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.Action
 import at.petrak.hexcasting.api.spell.math.HexDir
 import at.petrak.hexcasting.api.spell.math.HexPattern
-import at.petrak.hexcasting.common.casting.operators.spells.OpMakePackagedSpell
+import at.petrak.hexcasting.common.casting.operators.eval.OpEval
 import miyucomics.hexical.Hexical
+import miyucomics.hexical.casting.patterns.operators.eval.OpDiver
 import miyucomics.hexical.casting.patterns.spells.OpChorusBlink
 import miyucomics.hexical.casting.patterns.spells.OpConjureBouncyBlock
 import miyucomics.hexical.casting.patterns.spells.OpPing
 import miyucomics.hexical.casting.patterns.spells.OpProgramLamp
-import miyucomics.hexical.items.LampItem
 import net.minecraft.util.Identifier
+
 
 object HexicalPatterns {
 	private var PATTERNS: MutableList<Triple<HexPattern, Identifier, Action>> = ArrayList()
 	private var PER_WORLD_PATTERNS: MutableList<Triple<HexPattern, Identifier, Action>> = ArrayList()
+
+	var DIVER_GAMBIT = register(HexPattern.fromAngles("deaqqdq", HexDir.SOUTH_EAST), "dive", OpDiver);
 
 	var CHORUS_BLINK: HexPattern = register(HexPattern.fromAngles("aawqqqq", HexDir.SOUTH_EAST), "chorus_blink", OpChorusBlink())
 	var CONJURE_BOUNCY_BLOCK: HexPattern = register(HexPattern.fromAngles("dee", HexDir.NORTH_WEST), "conjure_bouncy_block", OpConjureBouncyBlock())
