@@ -16,7 +16,7 @@ object HexicalBlocks {
 	private val BLOCKS: DeferredRegister<Block> = DeferredRegister.create(Hexical.MOD_ID, Registry.BLOCK_KEY)
 	val CONJURED_BOUNCY_BLOCK: Block = ConjuredBouncyBlock(
 		AbstractBlock.Settings
-			.of(Material.AIR)
+			.of(Material.ORGANIC_PRODUCT)
 			.nonOpaque()
 			.dropsNothing()
 			.breakInstantly()
