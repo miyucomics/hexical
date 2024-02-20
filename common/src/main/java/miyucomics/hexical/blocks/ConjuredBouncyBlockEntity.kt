@@ -47,30 +47,12 @@ class ConjuredBouncyBlockEntity(pos: BlockPos?, state: BlockState?) : HexBlockEn
 		}
 	}
 
-	fun landParticle(entity: Entity, number: Int) {
-		for (i in 0 until number * 2) {
-			val color = colorizer.getColor(entity.age.toFloat(), entity.pos.add(Vec3d(RANDOM.nextDouble(), RANDOM.nextDouble(), RANDOM.nextDouble()).multiply(RANDOM.nextDouble() * 3)))
-			assert(world != null)
-			world!!.addParticle(
-				ConjureParticleOptions(color, false),
-				entity.x + (RANDOM.nextFloat() * 0.8) - 0.2,
-				getPos().y + (RANDOM.nextFloat() * 0.05) + 0.95,
-				entity.z + (RANDOM.nextFloat() * 0.8) - 0.2,
-				0.0, 0.0, 0.0
-			)
-		}
-	}
-
 	override fun saveModData(tag: NbtCompound) {
 		tag.put(TAG_COLORIZER, colorizer.serializeToNBT())
 	}
 
 	override fun loadModData(tag: NbtCompound) {
 		this.colorizer = FrozenColorizer.fromNBT(tag.getCompound(TAG_COLORIZER))
-	}
-
-	fun getColorizer(): FrozenColorizer {
-		return this.colorizer
 	}
 
 	fun setColorizer(colorizer: FrozenColorizer) {
