@@ -22,10 +22,6 @@ class LampItem : ItemPackagedHex(Settings()) {
 		return TypedActionResult.success(stack)
 	}
 
-	override fun getUseAction(pStack: ItemStack): UseAction {
-		return UseAction.BOW
-	}
-
 	override fun usageTick(world: World, user: LivingEntity, stack: ItemStack, remainingUseTicks: Int) {
 		if (world.isClient) return
 		if (getMedia(stack) == 0) return
@@ -35,17 +31,10 @@ class LampItem : ItemPackagedHex(Settings()) {
 		harness.executeIotas(hex, world)
 	}
 
-	override fun getMaxUseTime(stack: ItemStack): Int {
-		return 72000
-	}
-
-	override fun breakAfterDepletion(): Boolean {
-		return false
-	}
-
-	override fun canDrawMediaFromInventory(stack: ItemStack): Boolean {
-		return false
-	}
+	override fun getUseAction(pStack: ItemStack): UseAction { return UseAction.BOW }
+	override fun getMaxUseTime(stack: ItemStack): Int { return 72000 }
+	override fun breakAfterDepletion(): Boolean { return false }
+	override fun canDrawMediaFromInventory(stack: ItemStack): Boolean { return false }
 
 	companion object {
 		@JvmStatic

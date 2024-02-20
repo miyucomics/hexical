@@ -16,13 +16,8 @@ class OpProgramLamp : SpellAction {
 
 	private data class Spell(val patterns: List<Iota>) : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
-			val (handStack, _) = ctx.getHeldItemToOperateOn {
-				val hexHolder = IXplatAbstractions.INSTANCE.findHexHolder(it)
-				hexHolder != null && !hexHolder.hasHex()
-			}
-			val hexHolder = IXplatAbstractions.INSTANCE.findHexHolder(handStack)
-			if (hexHolder != null && !hexHolder.hasHex())
-				hexHolder.writeHex(patterns, 100000)
+			val (handStack, _) = ctx.getHeldItemToOperateOn { IXplatAbstractions.INSTANCE.findHexHolder(it) != null }
+			IXplatAbstractions.INSTANCE.findHexHolder(handStack)?.writeHex(patterns, 100000)
 		}
 	}
 }
