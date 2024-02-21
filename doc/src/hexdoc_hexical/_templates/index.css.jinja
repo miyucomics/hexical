@@ -1,5 +1,58 @@
 {% include "hexcasting:index.css.jinja" %}
 
-body {
-    background-color: red;
+body{
+    --light-amethyst: #b38ef3;
+
+    --mid-slate: #44354e;
+    --darkish-slate: #272036;
+    --dark-slate: #191325;
+    --lightest-slate: #77637c;
+
+    --mid-light-gloop: #cafcdd;
+    --mid-gloop: #8df2cf;
+    --mid-dark-gloop: #6acca8;
+    --mid-darker-gloop: #4fab89;
+    --dark-gloop: #388a6d;
+
+    background-color: blue;
+}
+
+::selection {
+    background: var(--dark-gloop);
+    color: white;
+}
+
+.navbar{
+    background-color: var(--darkish-slate);
+}
+
+a {
+    color: var(--mid-gloop);
+}
+
+a:hover{
+    color: var(--mid-darker-gloop);
+}
+
+.flay-recipe-block-ingredient .badge{
+position: absolute;
+    background-color: #292929;
+    bottom: -4px;
+    right: -4px;
+}
+
+.flay-recipe-result .badge{
+position: absolute;
+    background-color: #292929;
+    bottom: -4px;
+    right: -4px;
+}
+
+canvas.spell-viz {
+    --dot-color: var(--dark-gloop);
+    --start-dot-color: color-mix(in srgb, var(--light-amethyst) 75%, transparent);
+    --moving-dot-color: color-mix(in srgb, var(--mid-light-gloop) 75%, transparent);
+
+    --path-color: var(--mid-slate);
+    --visited-path-color: var(--mid-gloop);
 }
