@@ -423,3 +423,6 @@ canvas.spell-viz {
     --dark-mode: 1;
   }
 }
+body {
+    background-color: red;
+}
