@@ -6,12 +6,12 @@ import at.petrak.hexcasting.api.spell.math.HexDir
 import at.petrak.hexcasting.api.spell.math.HexPattern
 import miyucomics.hexical.Hexical
 import miyucomics.hexical.casting.patterns.operators.eval.OpNephthys
+import miyucomics.hexical.casting.patterns.operators.lamp.OpGetLampData
 import miyucomics.hexical.casting.patterns.spells.OpChorusBlink
 import miyucomics.hexical.casting.patterns.spells.OpConjureBouncyBlock
 import miyucomics.hexical.casting.patterns.spells.OpPing
 import miyucomics.hexical.casting.patterns.spells.OpProgramLamp
 import net.minecraft.util.Identifier
-
 
 object HexicalPatterns {
 	private var PATTERNS: MutableList<Triple<HexPattern, Identifier, Action>> = ArrayList()
@@ -23,6 +23,10 @@ object HexicalPatterns {
 	var CONJURE_BOUNCY_BLOCK: HexPattern = register(HexPattern.fromAngles("dee", HexDir.NORTH_WEST), "conjure_bouncy_block", OpConjureBouncyBlock())
 	var PROGRAM_LAMP: HexPattern = register(HexPattern.fromAngles("wwqqqqq", HexDir.EAST), "program_lamp", OpProgramLamp())
 	var PING: HexPattern = register(HexPattern.fromAngles("eweeewedqdeqqqqqwaeeee", HexDir.NORTH_EAST), "ping", OpPing())
+
+	var ROD_LOOK: HexPattern = register(HexPattern.fromAngles("qwddeda", HexDir.SOUTH_WEST), "get_lamp_start_position", OpGetLampData(0))
+	var ROD_POS: HexPattern = register(HexPattern.fromAngles("qwddedq", HexDir.SOUTH_WEST), "get_lamp_start_rotation", OpGetLampData(1))
+	var ROD_STAMP: HexPattern = register(HexPattern.fromAngles("qwddedw", HexDir.SOUTH_WEST), "get_lamp_use_time", OpGetLampData(2))
 
 	@JvmStatic
 	fun init() {

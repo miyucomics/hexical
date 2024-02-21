@@ -15,7 +15,6 @@ import net.minecraft.util.TypedActionResult
 import net.minecraft.util.UseAction
 import net.minecraft.world.World
 
-
 class LampItem : ItemPackagedHex(Settings()) {
 	override fun use(world: World, player: PlayerEntity, usedHand: Hand): TypedActionResult<ItemStack> {
 		val stack = player.getStackInHand(usedHand)

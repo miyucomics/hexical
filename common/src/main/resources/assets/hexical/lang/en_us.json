@@ -2,11 +2,13 @@
 	"item.hexical.lamp": "Genieless Lamp",
 	"block.hexical.conjured_bouncy_block": "Conjured Bouncy Block",
 
-	"pattern.hexical.chorus_blink": "Chorus Blink",
-	"pattern.hexical.surveil_sentinel": "Surveil Sentinel",
-	"pattern.hexical.ping": "Ping",
+	"hexcasting.mishap.hexical:lamp_needed": "Expected to be cast by Genieless Lamp.",
 
-	"hexical.page.hexical_metaevals": "Hexical Metaevaluations",
+	"hexcasting.spell.hexical:get_lamp_start_position": "Genie Reflection: Spatial",
+	"hexcasting.spell.hexical:get_lamp_start_rotation": "Genie Reflection: Rotational",
+	"hexcasting.spell.hexical:get_lamp_use_time": "Genie Reflection: Temporal",
+
+	"hexical.page.hexical_metaevals": "Hexical Meta-evaluations",
 	"hexcasting.spell.hexical:nephthys": "Nephthys Gambit",
 	"hexical.page.nephthys.1": "Pops a pattern list and a number from the stack and dives down n iota to casts the pattern list. Useful for surgery-like operations.",
 	"hexical.page.nephthys.2": "It's extremely versatile and I can mend almost any error in my stack using Bookkeeper's Gambit, pushing iota after a dive, and transforming surfaced iota. It was named after a goddess of mourning and rivers, lending to how it buries/dives down into the stack.",
