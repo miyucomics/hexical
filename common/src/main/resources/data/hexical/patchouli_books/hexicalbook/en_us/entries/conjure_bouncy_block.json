@@ -9,11 +9,7 @@
 			"anchor": "hexical:conjure_bouncy_block",
 			"input": "vec",
 			"output": "",
-			"text": "hexical.page.conjure_bouncy_block.1"
-		},
-		{
-			"type": "patchouli:text",
-			"text": "hexical.page.conjure_bouncy_block.2"
+			"text": "hexical.page.conjure_bouncy_block"
 		}
 	]
 }

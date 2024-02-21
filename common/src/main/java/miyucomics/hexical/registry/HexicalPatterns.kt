@@ -8,7 +8,7 @@ import miyucomics.hexical.Hexical
 import miyucomics.hexical.casting.patterns.operators.eval.OpNephthys
 import miyucomics.hexical.casting.patterns.operators.lamp.OpGetLampData
 import miyucomics.hexical.casting.patterns.spells.OpChorusBlink
-import miyucomics.hexical.casting.patterns.spells.OpConjureBouncyBlock
+import miyucomics.hexical.casting.patterns.spells.OpConjureBlock
 import miyucomics.hexical.casting.patterns.spells.OpPing
 import miyucomics.hexical.casting.patterns.spells.OpProgramLamp
 import net.minecraft.util.Identifier
@@ -19,8 +19,10 @@ object HexicalPatterns {
 
 	var NEPHTHYS_GAMBIT = register(HexPattern.fromAngles("deaqqdq", HexDir.SOUTH_EAST), "nephthys", OpNephthys);
 
+	var CONJURE_BOUNCY_BLOCK: HexPattern = register(HexPattern.fromAngles("dee", HexDir.NORTH_WEST), "conjure_bouncy_block", OpConjureBlock(HexicalBlocks.CONJURED_BOUNCY_BLOCK.defaultState))
+	var CONJURE_SLIPPERY_BLOCK: HexPattern = register(HexPattern.fromAngles("deea", HexDir.NORTH_WEST), "conjure_slippery_block", OpConjureBlock(HexicalBlocks.CONJURED_SLIPPERY_BLOCK.defaultState))
+
 	var CHORUS_BLINK: HexPattern = register(HexPattern.fromAngles("aawqqqq", HexDir.SOUTH_EAST), "chorus_blink", OpChorusBlink())
-	var CONJURE_BOUNCY_BLOCK: HexPattern = register(HexPattern.fromAngles("dee", HexDir.NORTH_WEST), "conjure_bouncy_block", OpConjureBouncyBlock())
 	var PROGRAM_LAMP: HexPattern = register(HexPattern.fromAngles("wwqqqqq", HexDir.EAST), "program_lamp", OpProgramLamp())
 	var PING: HexPattern = register(HexPattern.fromAngles("eweeewedqdeqqqqqwaeeee", HexDir.NORTH_EAST), "ping", OpPing())
 

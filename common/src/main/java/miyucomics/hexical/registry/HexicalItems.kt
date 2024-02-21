@@ -15,6 +15,7 @@ object HexicalItems {
 	fun init() {
 		ITEMS.register("lamp") { LAMP_ITEM }
 		ITEMS.register("conjured_bouncy_block") { BlockItem(HexicalBlocks.CONJURED_BOUNCY_BLOCK, Item.Settings()) }
+		ITEMS.register("conjured_slippery_block") { BlockItem(HexicalBlocks.CONJURED_SLIPPERY_BLOCK, Item.Settings()) }
 		ITEMS.register()
 	}
 }
