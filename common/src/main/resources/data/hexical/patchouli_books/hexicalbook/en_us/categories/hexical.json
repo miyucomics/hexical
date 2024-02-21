@@ -1,5 +1,5 @@
 {
 	"name": "hexical.category.hexomancy",
-	"icon": "hexical:lamp",
+	"icon": "minecraft:textures/mob_effect/glowing.png",
 	"description": "hexical.category.hexomancy.desc"
 }
