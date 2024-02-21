@@ -1,6 +1,7 @@
 {
 	"item.hexical.lamp": "Genieless Lamp",
 	"block.hexical.conjured_bouncy_block": "Conjured Bouncy Block",
+	"block.hexical.conjured_slippery_block": "Conjured Slippery Block",
 
 	"hexcasting.mishap.hexical:lamp_needed": "Expected to be cast by Genieless Lamp.",
 
@@ -21,8 +22,10 @@
 	"hexical.page.chorus_blink.2": "It consumes a chorus fruit from my inventory and teleports me up to 16 blocks using an offset vector. The cost is constant whether I teleport the full 16 blocks or less, and has no penalty for multiple casts in one hex. With a lot of chorus fruit, it can be a significantly cheaper Greater Teleport.",
 
 	"hexcasting.spell.hexical:conjure_bouncy_block": "Conjure Bouncy Block",
-	"hexical.page.conjure_bouncy_block.1": "This Conjure Block variant is delightfully fun to bounce on! I notice that even if I sneak, the block bounces me upwards regardless.",
-	"hexical.page.conjure_bouncy_block.2": "It is also interestingly fully invisible unlike Conjure Block but releases a burst of particles when propelling an entity.",
+	"hexical.page.conjure_bouncy_block": "This Conjure Block variant is delightfully fun to bounce on! I notice that even if I sneak, the block bounces me upwards regardless.",
+
+	"hexcasting.spell.hexical:conjure_slippery_block": "Conjure Slippery Block",
+	"hexical.page.conjure_slippery_block": "This Conjure Block variant is extremely slippery!",
 
 	"hexcasting.spell.hexical:ping": "Ping",
 	"hexical.page.ping.1": "For the price of a single dust, I can cause a voluntary hallucination of a little ripple.",
