@@ -5,6 +5,12 @@
 
 	"hexcasting.mishap.hexical:lamp_needed": "Expected to be cast by Genieless Lamp.",
 
+	"hexical.category.lamp": "Genieless Lamp",
+	"hexical.category.lamp.desc": "I have heard tales from the villagers about a magical artifact. Legends say it contains a spirit that grants wishes, but I suspect that is just embellishment evolved over centuries of storytelling. Regardless, I dedicate this chapter to my pursuit and research of it.",
+
+	"hexical.page.mysterious_lamp": "Mysterious Lamp",
+	"hexical.page.mysterious_lamp.1": "At last I've discovered the subject of a thousand years of rumor! The lamp emanates a vague residue of media, vacuous in feeling... it reminds me of the $(o)hollow media structure$() of a focus that enables it to store iota, but there is also a presence inside.",
+
 	"hexcasting.spell.hexical:get_lamp_start_position": "Genie Reflection: Spatial",
 	"hexcasting.spell.hexical:get_lamp_start_rotation": "Genie Reflection: Rotational",
 	"hexcasting.spell.hexical:get_lamp_use_time": "Genie Reflection: Temporal",
