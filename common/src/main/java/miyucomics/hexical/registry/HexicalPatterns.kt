@@ -4,9 +4,8 @@ import at.petrak.hexcasting.api.PatternRegistry
 import at.petrak.hexcasting.api.spell.Action
 import at.petrak.hexcasting.api.spell.math.HexDir
 import at.petrak.hexcasting.api.spell.math.HexPattern
-import at.petrak.hexcasting.common.casting.operators.eval.OpEval
 import miyucomics.hexical.Hexical
-import miyucomics.hexical.casting.patterns.operators.eval.OpDiver
+import miyucomics.hexical.casting.patterns.operators.eval.OpNephthys
 import miyucomics.hexical.casting.patterns.spells.OpChorusBlink
 import miyucomics.hexical.casting.patterns.spells.OpConjureBouncyBlock
 import miyucomics.hexical.casting.patterns.spells.OpPing
@@ -18,7 +17,7 @@ object HexicalPatterns {
 	private var PATTERNS: MutableList<Triple<HexPattern, Identifier, Action>> = ArrayList()
 	private var PER_WORLD_PATTERNS: MutableList<Triple<HexPattern, Identifier, Action>> = ArrayList()
 
-	var DIVER_GAMBIT = register(HexPattern.fromAngles("deaqqdq", HexDir.SOUTH_EAST), "dive", OpDiver);
+	var NEPHTHYS_GAMBIT = register(HexPattern.fromAngles("deaqqdq", HexDir.SOUTH_EAST), "nephthys", OpNephthys);
 
 	var CHORUS_BLINK: HexPattern = register(HexPattern.fromAngles("aawqqqq", HexDir.SOUTH_EAST), "chorus_blink", OpChorusBlink())
 	var CONJURE_BOUNCY_BLOCK: HexPattern = register(HexPattern.fromAngles("dee", HexDir.NORTH_WEST), "conjure_bouncy_block", OpConjureBouncyBlock())
