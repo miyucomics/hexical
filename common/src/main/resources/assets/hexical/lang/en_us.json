@@ -6,8 +6,12 @@
 	"pattern.hexical.surveil_sentinel": "Surveil Sentinel",
 	"pattern.hexical.ping": "Ping",
 
-	"hexical.category": "Hexomancy",
-	"hexical.category.desc": "I feel strangely more receptive of the ambient media around me. I can even feel it responding to certain tasks I perform, as if suggesting spells to me. Because I am essentially divining spells from the media, I shall call it hexomancy.",
+	"hexical.page.hexical_metaevals": "Hexical Metaevaluations",
+	"hexcasting.spell.hexical:nephthys": "Nephthys Gambit",
+	"hexical.page.nephthys": "Pops a pattern list and a number from the stack and dives down n iota to casts the pattern list. Useful for surgery-like operations. It's extremely versatile and I can mend almost any error in my stack using Bookkeeper's Gambit, pushing iota after a dive, and transforming surfaced iota. It was named after a goddess of mourning and rivers, lending to how it buries/dives down into the stack.",
+
+	"hexical.category.hexomancy": "Hexomancy",
+	"hexical.category.hexomancy.desc": "I feel strangely more receptive of the ambient media around me. I can even feel it responding to certain tasks I perform, as if suggesting spells to me. Because I am essentially divining spells from the media, I shall call it hexomancy.",
 
 	"hexcasting.spell.hexical:chorus_blink": "Chorus Blink",
 	"hexical.page.chorus_blink.1": "Between Blink, Greater Teleport, ender pearls, and chorus fruit, this spell serves a harmonious midpoint for safe, precise, and cheap teleportation.",

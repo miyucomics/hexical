@@ -9,7 +9,6 @@
 			"anchor": "hexical:ping",
 			"input": "vec",
 			"output": "",
-			"hex_size": 4,
 			"text": "hexical.page.ping.1"
 		},
 		{

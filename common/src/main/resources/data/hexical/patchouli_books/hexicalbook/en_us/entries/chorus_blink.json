@@ -9,7 +9,6 @@
 			"anchor": "hexical:chorus_blink",
 			"input": "vec",
 			"output": "",
-			"hex_size": 4,
 			"text": "hexical.page.chorus_blink.1"
 		},
 		{

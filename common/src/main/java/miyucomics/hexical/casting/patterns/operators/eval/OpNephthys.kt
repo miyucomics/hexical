@@ -11,16 +11,11 @@ import at.petrak.hexcasting.api.spell.math.HexDir
 import at.petrak.hexcasting.api.spell.math.HexPattern
 import at.petrak.hexcasting.api.spell.mishaps.MishapNotEnoughArgs
 
-object OpDiver : Action {
+object OpNephthys : Action {
 	override fun operate(continuation: SpellContinuation, stack: MutableList<Iota>, ravenmind: Iota?, ctx: CastingContext): OperationResult {
 		if (stack.size < 2)
 			throw MishapNotEnoughArgs(2, stack.size)
 
-		// WHY IS THE STACK INDEXED LKE THIS?
-		// IT'S A STACK
-		// YOU KNOW, WHEN YOU STACK TWO THINGS ON TOP OF EACH OTHER
-		// 0 should be the fucking top!
-		// This cost me two hours of debugging
 		val instructions = stack.getList(stack.lastIndex - 1)
 		val diveAmount = stack.getPositiveInt(stack.lastIndex)
 		stack.removeLastOrNull()
