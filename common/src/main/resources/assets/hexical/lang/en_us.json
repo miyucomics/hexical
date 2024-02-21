@@ -8,7 +8,8 @@
 
 	"hexical.page.hexical_metaevals": "Hexical Metaevaluations",
 	"hexcasting.spell.hexical:nephthys": "Nephthys Gambit",
-	"hexical.page.nephthys": "Pops a pattern list and a number from the stack and dives down n iota to casts the pattern list. Useful for surgery-like operations. It's extremely versatile and I can mend almost any error in my stack using Bookkeeper's Gambit, pushing iota after a dive, and transforming surfaced iota. It was named after a goddess of mourning and rivers, lending to how it buries/dives down into the stack.",
+	"hexical.page.nephthys.1": "Pops a pattern list and a number from the stack and dives down n iota to casts the pattern list. Useful for surgery-like operations.",
+	"hexical.page.nephthys.2": "It's extremely versatile and I can mend almost any error in my stack using Bookkeeper's Gambit, pushing iota after a dive, and transforming surfaced iota. It was named after a goddess of mourning and rivers, lending to how it buries/dives down into the stack.",
 
 	"hexical.category.hexomancy": "Hexomancy",
 	"hexical.category.hexomancy.desc": "I feel strangely more receptive of the ambient media around me. I can even feel it responding to certain tasks I perform, as if suggesting spells to me. Because I am essentially divining spells from the media, I shall call it hexomancy.",
