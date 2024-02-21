@@ -2,6 +2,7 @@ package miyucomics.hexical.items
 
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.casting.CastingHarness
+import at.petrak.hexcasting.api.utils.serializeToNBT
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
 import miyucomics.hexical.registry.HexicalItems
 import net.minecraft.entity.LivingEntity
@@ -14,10 +15,18 @@ import net.minecraft.util.TypedActionResult
 import net.minecraft.util.UseAction
 import net.minecraft.world.World
 
+
 class LampItem : ItemPackagedHex(Settings()) {
 	override fun use(world: World, player: PlayerEntity, usedHand: Hand): TypedActionResult<ItemStack> {
 		val stack = player.getStackInHand(usedHand)
 		if (!hasHex(stack)) return TypedActionResult.fail(stack)
+
+		if (!world.isClient) {
+			stack.nbt?.putLongArray("startPosition", player.eyePos.serializeToNBT().longArray);
+			stack.nbt?.putLongArray("startRotation", player.rotationVector.serializeToNBT().longArray);
+			stack.nbt?.putLong("startTime", world.time);
+		}
+
 		player.setCurrentHand(usedHand)
 		return TypedActionResult.success(stack)
 	}
