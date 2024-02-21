@@ -1,0 +1,11 @@
+{
+	"name": "hexical.page.mysterious_lamp",
+	"icon": "minecraft:sand",
+	"category": "hexical:lamp",
+	"pages": [
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.mysterious_lamp.1"
+		}
+	]
+}
