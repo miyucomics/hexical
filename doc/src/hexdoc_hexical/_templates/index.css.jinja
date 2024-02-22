@@ -1,0 +1,50 @@
+{% include "hexcasting:index.css.jinja" %}
+
+* {
+    color: #cdd6f4 !important;
+    border-color: #cdd6f4 !important;
+}
+
+body{
+    background-color: #1e1e2e;
+}
+
+::selection {
+    background: #cba6f7;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.page-header {
+    border-bottom: 1px solid #cdd6f4;
+}
+
+.navbar, .dropdown-menu {
+    background-color: #181825;
+    border: none;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover {
+    background-color: #181825;
+}
+
+a {
+    color: #89b4fa !important;
+}
+
+a:hover {
+    color: #b4befe !important;
+}
+
+canvas.spell-viz {
+    --dot-color: #45475a;
+    --start-dot-color: #f38ba8;
+    --moving-dot-color: #89b4fa;
+    --path-color: #6c7086;
+    --visited-path-color: #b4befe;
+    --line-scale: 0.05;
+    --pause-text-scale: 0.25;
+    --moving-dot-scale: 0.1;
+}
