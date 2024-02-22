@@ -23,39 +23,40 @@ import java.util.List;
 
 @Mixin(MinecraftClient.class)
 public class MinecraftClientMixin {
-	@Unique private static final int COOLDOWN = 10;
-	@Unique private int timer = 0;
+	@Unique private static final int hexical$COOLDOWN = 20;
+	@Unique private final List<Boolean> hexical$clicks = new ArrayList<>();
+	@Unique private int hexical$timer = 0;
 	@Shadow @Nullable public ClientPlayerEntity player;
-	@Unique private final List<Boolean> clicks = new ArrayList<>();
 
 	@Inject(method = "tick", at = @At("HEAD"))
 	public void tick(CallbackInfo info) {
 		if (player == null)
 			return;
-		if (timer < 0) {
-			clicks.clear();
+		if (hexical$timer < 0) {
+			player.world.playSound(player, player.getX(), player.getY(), player.getZ(), HexSounds.FAIL_PATTERN, SoundCategory.PLAYERS, 1f, 1f);
+			hexical$clicks.clear();
 			return;
 		}
-		timer--;
+		hexical$timer--;
 
 		if (!(player.getMainHandStack().getItem() instanceof ConjuredStaffItem))
 			return;
 
-		int neededLength = player.getMainHandStack().getOrCreateNbt().getInt("length");
+		int neededLength = player.getMainHandStack().getOrCreateNbt().getInt("rank");
 		if (neededLength == 0)
 			return;
 
-		if (clicks.size() == neededLength) {
-			timer = 0;
+		if (hexical$clicks.size() == neededLength) {
+			hexical$timer = 0;
 			player.world.playSound(player, player.getX(), player.getY(), player.getZ(), HexSounds.CAST_THOTH, SoundCategory.PLAYERS, 1f, 1f);
 
 			PacketByteBuf buf = new PacketByteBuf(Unpooled.buffer());
 			buf.writeInt(neededLength);
 			for (int i = 0; i < neededLength; i++)
-				buf.writeBoolean(clicks.get(i));
+				buf.writeBoolean(hexical$clicks.get(i));
 			NetworkManager.sendToServer(Hexical.CAST_CONJURED_STAFF_PACKET, buf);
 
-			clicks.clear();
+			hexical$clicks.clear();
 		}
 	}
 
@@ -64,8 +65,8 @@ public class MinecraftClientMixin {
 		if (player == null || player.isSpectator())
 			return;
 		if (player.getMainHandStack().getItem() instanceof ConjuredStaffItem) {
-			timer = COOLDOWN;
-			clicks.add(false);
+			hexical$timer = hexical$COOLDOWN;
+			hexical$clicks.add(false);
 			player.swingHand(Hand.MAIN_HAND);
 			player.world.playSound(player, player.getX(), player.getY(), player.getZ(), HexSounds.SPELL_CIRCLE_CAST, SoundCategory.PLAYERS, 1f, 1f);
 			info.cancel();
@@ -77,8 +78,8 @@ public class MinecraftClientMixin {
 		if (player == null || player.isSpectator())
 			return;
 		if (player.getMainHandStack().getItem() instanceof ConjuredStaffItem) {
-			timer = COOLDOWN;
-			clicks.add(true);
+			hexical$timer = hexical$COOLDOWN;
+			hexical$clicks.add(true);
 			player.swingHand(Hand.MAIN_HAND);
 			player.world.playSound(player, player.getX(), player.getY(), player.getZ(), HexSounds.SPELL_CIRCLE_CAST, SoundCategory.PLAYERS, 1f, 1f);
 			info.cancel();
