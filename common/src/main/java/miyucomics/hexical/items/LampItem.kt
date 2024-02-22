@@ -25,7 +25,6 @@ class LampItem : ItemPackagedHex(Settings()) {
 			stack.nbt?.putLongArray("startRotation", player.rotationVector.serializeToNBT().longArray);
 			stack.nbt?.putLong("startTime", world.time);
 		}
-
 		player.setCurrentHand(usedHand)
 		return TypedActionResult.success(stack)
 	}

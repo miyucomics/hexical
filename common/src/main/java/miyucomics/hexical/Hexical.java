@@ -1,18 +1,40 @@
 package miyucomics.hexical;
 
-import miyucomics.hexical.registry.*;
+import at.petrak.hexcasting.api.spell.iota.BooleanIota;
+import at.petrak.hexcasting.api.spell.iota.Iota;
+import dev.architectury.networking.NetworkManager;
+import miyucomics.hexical.items.ConjuredStaffItem;
+import miyucomics.hexical.registry.HexicalBlocks;
+import miyucomics.hexical.registry.HexicalItems;
+import miyucomics.hexical.registry.HexicalPatterns;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Hexical {
 	public static final String MOD_ID = "hexical";
+	public static final Identifier CAST_CONJURED_STAFF_PACKET = new Identifier(MOD_ID, "cast_conjured_staff");
 
 	public static void init() {
 		HexicalAbstractions.initPlatformSpecific();
 		HexicalBlocks.init();
 		HexicalItems.init();
 		HexicalPatterns.init();
+
+		NetworkManager.registerReceiver(NetworkManager.Side.C2S, CAST_CONJURED_STAFF_PACKET, (buf, context) -> {
+			PlayerEntity player = context.getPlayer();
+			ItemStack stack = player.getMainHandStack();
+			if (stack.getItem() instanceof ConjuredStaffItem) {
+				int size = buf.readInt();
+				List<Iota> initStack = new ArrayList<>();
+				for (int i = 0; i < size; i++)
+					initStack.add(new BooleanIota(buf.readBoolean()));
+				((ConjuredStaffItem) stack.getItem()).cast(context.getPlayer().world, player, stack, initStack);
+			}
+		});
 	}
 
 	public static Identifier id(String string) {
