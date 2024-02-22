@@ -14,17 +14,9 @@ import net.minecraft.util.TypedActionResult
 import net.minecraft.world.World
 
 class ConjuredStaffItem : ItemPackagedHex(Settings().maxCount(1)) {
-	override fun canDrawMediaFromInventory(stack: ItemStack?): Boolean {
-		return false
-	}
-
-	override fun breakAfterDepletion(): Boolean {
-		return true
-	}
-
-	override fun use(world: World?, player: PlayerEntity?, usedHand: Hand?): TypedActionResult<ItemStack> {
-		return TypedActionResult.pass(player?.getStackInHand(usedHand));
-	}
+	override fun canDrawMediaFromInventory(stack: ItemStack?): Boolean { return false }
+	override fun breakAfterDepletion(): Boolean { return true }
+	override fun use(world: World, player: PlayerEntity, usedHand: Hand): TypedActionResult<ItemStack> { return TypedActionResult.pass(player.getStackInHand(usedHand)); }
 
 	fun cast(world: World, user: LivingEntity, stack: ItemStack, initStack: MutableList<Iota>) {
 		val hex = getHex(stack, world as ServerWorld) ?: return
