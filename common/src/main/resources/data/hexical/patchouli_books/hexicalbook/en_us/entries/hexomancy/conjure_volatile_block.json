@@ -1,0 +1,15 @@
+{
+	"name": "hexcasting.spell.hexical:conjure_volatile_block",
+	"icon": "minecraft:scaffolding",
+	"category": "hexical:hexical",
+	"pages": [
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:conjure_volatile_block",
+			"anchor": "hexical:conjure_volatile_block",
+			"input": "vec",
+			"output": "",
+			"text": "hexical.page.conjure_volatile_block"
+		}
+	]
+}
