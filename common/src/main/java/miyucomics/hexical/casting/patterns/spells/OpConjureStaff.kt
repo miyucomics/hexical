@@ -15,18 +15,18 @@ class OpConjureStaff : SpellAction {
 
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		val position = args.getVec3(0, argc)
-		val media = args.getInt(1, argc)
-		val inputLength = args.getPositiveInt(2, argc)
+		val battery = args.getInt(1, argc)
+		val rank = args.getPositiveInt(2, argc)
 		val instructions = args.getList(3, argc).toList()
-		return Triple(Spell(position, media, inputLength, instructions), media + MediaConstants.SHARD_UNIT, listOf(ParticleSpray.burst(position, 1.0)))
+		return Triple(Spell(position, battery, rank, instructions), battery + MediaConstants.CRYSTAL_UNIT + MediaConstants.SHARD_UNIT * rank, listOf(ParticleSpray.burst(position, 1.0)))
 	}
 
-	private data class Spell(val position: Vec3d, val media: Int, val inputLength: Int, val instructions: List<Iota>) : RenderedSpell {
+	private data class Spell(val position: Vec3d, val battery: Int, val rank: Int, val instructions: List<Iota>) : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
 			val stack = ItemStack(HexicalItems.CONJURED_STAFF_ITEM, 1)
-			stack.orCreateNbt.putInt("length", inputLength)
+			stack.orCreateNbt.putInt("rank", rank)
 			val hexHolder = IXplatAbstractions.INSTANCE.findHexHolder(stack)
-			hexHolder?.writeHex(instructions, media)
+			hexHolder?.writeHex(instructions, battery)
 			ctx.world.spawnEntity(ItemEntity(ctx.world, position.x, position.y, position.z, stack))
 		}
 	}
