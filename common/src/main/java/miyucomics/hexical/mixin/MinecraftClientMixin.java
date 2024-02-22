@@ -32,7 +32,8 @@ public class MinecraftClientMixin {
 	public void tick(CallbackInfo info) {
 		if (player == null)
 			return;
-		if (hexical$timer < 0) {
+
+		if (hexical$timer < 0 && !hexical$clicks.isEmpty()) {
 			player.world.playSound(player, player.getX(), player.getY(), player.getZ(), HexSounds.FAIL_PATTERN, SoundCategory.PLAYERS, 1f, 1f);
 			hexical$clicks.clear();
 			return;
