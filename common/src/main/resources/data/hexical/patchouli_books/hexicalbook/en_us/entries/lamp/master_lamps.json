@@ -1,0 +1,16 @@
+{
+	"name": "hexical.page.master_lamps",
+	"icon": "hexical:lamp",
+	"category": "hexical:lamp",
+    "sortnum": 3,
+	"pages": [
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.master_lamps.1"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.master_lamps.2"
+		}
+	]
+}

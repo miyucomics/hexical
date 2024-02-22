@@ -20,6 +20,7 @@ object HexicalPatterns {
 	var NEPHTHYS_GAMBIT = register(HexPattern.fromAngles("deaqqdq", HexDir.SOUTH_EAST), "nephthys", OpNephthys);
 
 	var CONJURE_BOUNCY_BLOCK: HexPattern = register(HexPattern.fromAngles("dee", HexDir.NORTH_WEST), "conjure_bouncy_block", OpConjureBlock(HexicalBlocks.CONJURED_BOUNCY_BLOCK.defaultState))
+	var CONJURE_VOLATILE_BLOCK: HexPattern = register(HexPattern.fromAngles("deew", HexDir.NORTH_WEST), "conjure_volatile_block", OpConjureBlock(HexicalBlocks.CONJURED_VOLATILE_BLOCK.defaultState))
 	var CONJURE_SLIPPERY_BLOCK: HexPattern = register(HexPattern.fromAngles("deea", HexDir.NORTH_WEST), "conjure_slippery_block", OpConjureBlock(HexicalBlocks.CONJURED_SLIPPERY_BLOCK.defaultState))
 
 	var CHORUS_BLINK: HexPattern = register(HexPattern.fromAngles("aawqqqq", HexDir.SOUTH_EAST), "chorus_blink", OpChorusBlink())
