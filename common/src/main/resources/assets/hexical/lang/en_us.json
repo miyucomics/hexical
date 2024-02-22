@@ -1,7 +1,20 @@
 {
 	"item.hexical.lamp": "Genieless Lamp",
+
 	"block.hexical.conjured_bouncy_block": "Conjured Bouncy Block",
+	"block.hexical.conjured_falling_block": "Conjured Falling Block",
 	"block.hexical.conjured_slippery_block": "Conjured Slippery Block",
+
+	"hexcasting.spell.hexical:get_lamp_start_position": "Genie Reflection: Spatial",
+	"hexcasting.spell.hexical:get_lamp_start_rotation": "Genie Reflection: Rotational",
+	"hexcasting.spell.hexical:get_lamp_use_time": "Genie Reflection: Temporal",
+	"hexcasting.spell.hexical:chorus_blink": "Chorus Blink",
+	"hexcasting.spell.hexical:conjure_bouncy_block": "Conjure Bouncy Block",
+	"hexcasting.spell.hexical:conjure_falling_block": "Conjure Falling Block",
+	"hexcasting.spell.hexical:conjure_slippery_block": "Conjure Slippery Block",
+	"hexcasting.spell.hexical:surveil_sentinel": "Surveil Sentinel",
+	"hexcasting.spell.hexical:nephthys": "Nephthys Gambit",
+	"hexcasting.spell.hexical:ping": "Ping",
 
 	"hexcasting.mishap.hexical:lamp_needed": "Expected to be cast by Genieless Lamp.",
 
@@ -10,34 +23,31 @@
 
 	"hexical.page.mysterious_lamp": "Mysterious Lamp",
 	"hexical.page.mysterious_lamp.1": "At last I've discovered the subject of a thousand years of rumor! The lamp emanates a vague residue of media, vacuous in feeling... it reminds me of the $(o)hollow media structure$() of a focus that enables it to store iota, but there is also a presence inside.",
+	"hexical.page.new_possibilities": "New Possibilities",
+	"hexical.page.new_possibilities.1": "It casts $(o)$(l)EVERY INSTANT$(). After writing a spell into it, I was treated to a splendid gush of media. I estimate it must be around twenty times every second. The presence inside the lamp performs the casting on my behalf with extraordinarily efficience, not wasting media in the form of sound and particles that accompany other casting methods.",
+	"hexical.page.new_possibilities.2": "I have deduced some potentially useful patterns for use with the lamp, documented on the next few pages.",
 
-	"hexcasting.spell.hexical:get_lamp_start_position": "Genie Reflection: Spatial",
-	"hexcasting.spell.hexical:get_lamp_start_rotation": "Genie Reflection: Rotational",
-	"hexcasting.spell.hexical:get_lamp_use_time": "Genie Reflection: Temporal",
+	"hexical.page.get_lamp_start_position": "Pushes the original position of the caster when the lamp started.",
+	"hexical.page.get_lamp_start_rotation": "Pushes the original rotation of the caster when the lamp started.",
+	"hexical.page.get_lamp_use_time": "Pushes how many times the lamp has casted. Divided by 20, it returns how many times in seconds the lamp has been in use.",
 
 	"hexical.page.hexical_metaevals": "Hexical Meta-evaluations",
-	"hexcasting.spell.hexical:nephthys": "Nephthys Gambit",
 	"hexical.page.nephthys.1": "Pops a pattern list and a number from the stack and dives down n iota to casts the pattern list. Useful for surgery-like operations.",
 	"hexical.page.nephthys.2": "It's extremely versatile and I can mend almost any error in my stack using Bookkeeper's Gambit, pushing iota after a dive, and transforming surfaced iota. It was named after a goddess of mourning and rivers, lending to how it buries/dives down into the stack.",
 
 	"hexical.category.hexomancy": "Hexomancy",
 	"hexical.category.hexomancy.desc": "I feel strangely more receptive of the ambient media around me. I can even feel it responding to certain tasks I perform, as if suggesting spells to me. Because I am essentially divining spells from the media, I shall call it hexomancy.",
 
-	"hexcasting.spell.hexical:chorus_blink": "Chorus Blink",
 	"hexical.page.chorus_blink.1": "Between Blink, Greater Teleport, ender pearls, and chorus fruit, this spell serves a harmonious midpoint for safe, precise, and cheap teleportation.",
 	"hexical.page.chorus_blink.2": "It consumes a chorus fruit from my inventory and teleports me up to 16 blocks using an offset vector. The cost is constant whether I teleport the full 16 blocks or less, and has no penalty for multiple casts in one hex. With a lot of chorus fruit, it can be a significantly cheaper Greater Teleport.",
 
-	"hexcasting.spell.hexical:conjure_bouncy_block": "Conjure Bouncy Block",
-	"hexical.page.conjure_bouncy_block": "This Conjure Block variant is delightfully fun to bounce on! I notice that even if I sneak, the block bounces me upwards regardless.",
+	"hexical.page.conjure_bouncy_block": "This Conjure Block variant is delightfully fun to bounce on! It returns more force to me than regular slime blocks and I notice even if I sneak, the block bounces me regardless.",
+	"hexical.page.conjure_falling_block": "This Conjure Block variant is subject to gravity! It even does a hefty amount of damage when landing on a target, scaling with height fallen.",
+	"hexical.page.conjure_slippery_block": "This Conjure Block variant is even more slippery than blue ice! Not only that, it doesn't melt in hot environments, making it perfect for me.",
 
-	"hexcasting.spell.hexical:conjure_slippery_block": "Conjure Slippery Block",
-	"hexical.page.conjure_slippery_block": "This Conjure Block variant is extremely slippery!",
+	"hexical.page.ping.1": "For the price of a single dust, I can cause a voluntary hallucination of a little circular ripple of my pigment color!",
+	"hexical.page.ping.2": "I can see it through blocks and its size does not change much even from a far distance, making it perfect for reporting locations from my hexes.",
 
-	"hexcasting.spell.hexical:ping": "Ping",
-	"hexical.page.ping.1": "For the price of a single dust, I can cause a voluntary hallucination of a little ripple.",
-	"hexical.page.ping.2": "I can see it through blocks and its color seems to reflect my pigment. Its size also does not seem to change much even from a far distance, making it perfect for highlighting locations.",
-
-	"hexcasting.spell.hexical:surveil_sentinel": "Surveil Sentinel",
 	"hexical.page.surveil_sentinel.1": "The name sentinel has perplexed me for a long time. My sentinel highlights locations and can even expand my reach, but not once has it kept watch... until now.",
 	"hexical.page.surveil_sentinel.2": "This spell magically displaces my vision to my sentinel's position. While dissociating, I still maintain control over my body. Once a sentinel is stationed, I can watch over anything, everything, everywhere from any distance away. I wonder what I would see if I banished my sentinel and casted the spell...$(br)$(br)It $(o)burns.",
 	"hexical.page.surveil_sentinel.3": "$(o)The Aleph's diameter was probably little more than an inch, but all space was there, actual and undiminished... I saw daybreak and nightfall... I saw all the mirrors on earth and none of them reflected me... I saw the Aleph from every point and angle, and in the Aleph I saw the earth and in the earth the Aleph and in the Aleph the earth..."
