@@ -1,6 +1,6 @@
 {
-	"name": "hexcasting.spell.hexical:conjure_slippery_block",
-	"icon": "minecraft:ice",
+	"name": "hexcasting.spell.hexical:conjure_falling_block",
+	"icon": "minecraft:anvil",
 	"category": "hexical:hexical",
 	"pages": [
 		{
@@ -9,7 +9,7 @@
 			"anchor": "hexical:conjure_slippery_block",
 			"input": "vec",
 			"output": "",
-			"text": "hexical.page.conjure_slippery_block"
+			"text": "hexical.page.conjure_falling_block"
 		}
 	]
 }
