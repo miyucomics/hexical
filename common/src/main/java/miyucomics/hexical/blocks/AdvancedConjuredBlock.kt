@@ -51,6 +51,9 @@ class AdvancedConjuredBlock : BlockConjured(
 				entity.setVelocity(velocity.x, -velocity.y, velocity.z)
 				entity.fallDistance = 0f
 			}
+		} else {
+			val velocity = entity.velocity
+			entity.setVelocity(velocity.x, 0.0, velocity.z)
 		}
 	}
 
