@@ -1,6 +1,0 @@
-{
-	"name": "hexical.category.hexomancy",
-	"icon": "minecraft:textures/mob_effect/glowing.png",
-    "parent": "hexcasting:patterns",
-	"description": "hexical.category.hexomancy.desc"
-}

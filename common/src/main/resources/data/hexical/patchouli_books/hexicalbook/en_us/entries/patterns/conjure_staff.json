@@ -1,0 +1,27 @@
+{
+	"name": "hexcasting.spell.hexical:conjure_staff",
+	"icon": "hexical:conjured_staff",
+	"category": "hexcasting:patterns/spells",
+	"pages": [
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:conjure_staff",
+			"anchor": "hexical:conjure_staff",
+			"input": "vec, num, num, [pattern]",
+			"output": "",
+			"text": "hexical.page.conjure_staff.1"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.conjure_staff.2"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.conjure_staff.3"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.conjure_staff.4"
+		}
+	]
+}
