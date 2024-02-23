@@ -1,7 +1,7 @@
 {
 	"name": "hexcasting.spell.hexical:chorus_blink",
 	"icon": "minecraft:chorus_fruit",
-	"category": "hexical:hexical",
+	"category": "hexical:hexomancy",
 	"pages": [
 		{
 			"type": "hexcasting:pattern",

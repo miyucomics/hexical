@@ -10,9 +10,9 @@
 	"hexcasting.spell.hexical:get_lamp_start_rotation": "Genie Reflection: Rotational",
 	"hexcasting.spell.hexical:get_lamp_use_time": "Genie Reflection: Temporal",
 	"hexcasting.spell.hexical:chorus_blink": "Chorus Blink",
-	"hexcasting.spell.hexical:conjure_bouncy_block": "Conjure Bouncy Block",
-	"hexcasting.spell.hexical:conjure_slippery_block": "Conjure Slippery Block",
-	"hexcasting.spell.hexical:conjure_volatile_block": "Conjure Volatile Block",
+	"hexcasting.spell.hexical:modify_block_bouncy": "Modify Block: Bouncy",
+	"hexcasting.spell.hexical:modify_block_slippery": "Modify Block: Slippery",
+	"hexcasting.spell.hexical:modify_block_volatile": "Modify Block: Volatile",
 	"hexcasting.spell.hexical:surveil_sentinel": "Surveil Sentinel",
 	"hexcasting.spell.hexical:nephthys": "Nephthys Gambit",
 	"hexcasting.spell.hexical:ping": "Ping",
@@ -46,12 +46,14 @@
 	"hexical.category.hexomancy": "Hexomancy",
 	"hexical.category.hexomancy.desc": "I feel strangely more receptive of the ambient media around me. I can even feel it responding to certain tasks I perform, as if suggesting spells to me. Because I am essentially divining spells from the media, I shall call it hexomancy.",
 
+	"hexical.page.advanced_conjuration": "Advanced Conjuration",
+	"hexical.page.advanced_conjuration.1": "While Conjure Block is an interesting spell, it has multiple shortcomings that are... inconvenient to say the least. For one, the blocks stay around forever.$(br)Luckily, Nature offers an organic and flexible solution: Conjure Advanced Block. These advanced blocks resemble the ordinary variant but there is a suite of $(o)modifiers$() I can enchant an ordinary block with. I could even stack multiple modifiers on one block.",
+	"hexical.page.modify_block_bouncy": "This modifier makes the block delightfully fun to bounce on! It returns more force to me than regular slime blocks and I notice even if I sneak, the block bounces me regardless.",
+	"hexical.page.modify_block_slippery": "This modifier makes the block even more slippery than blue ice! Not only that, it doesn't melt in hot environments.",
+	"hexical.page.modify_block_volatile": "This modifier makes the block break other conjured blocks it's touching. Notably, if it breaks another volatile block, the chain continues down until every volatile block shatters.",
+
 	"hexical.page.chorus_blink.1": "Between Blink, Greater Teleport, ender pearls, and chorus fruit, this spell serves a harmonious midpoint for safe, precise, and cheap teleportation.",
 	"hexical.page.chorus_blink.2": "It consumes a chorus fruit from my inventory and teleports me up to 16 blocks using an offset vector. The cost is constant whether I teleport the full 16 blocks or less, and has no penalty for multiple casts in one hex. With a lot of chorus fruit, it can be a significantly cheaper Greater Teleport.",
-
-	"hexical.page.conjure_bouncy_block": "This Conjure Block variant is delightfully fun to bounce on! It returns more force to me than regular slime blocks and I notice even if I sneak, the block bounces me regardless.",
-	"hexical.page.conjure_slippery_block": "This Conjure Block variant is even more slippery than blue ice! Not only that, it doesn't melt in hot environments, making it perfect for me.",
-	"hexical.page.conjure_volatile_block": "This Conjure Block variant is extremely unstable! When just one breaks, every other connected blocks shatters instantly. It's useful for temporary bridges!",
 
 	"hexical.page.ping.1": "For the price of a single dust, I can cause a voluntary hallucination of a little circular ripple of my pigment color!",
 	"hexical.page.ping.2": "I can see it through blocks and its size does not change much even from a far distance, making it perfect for reporting locations from my hexes.",
