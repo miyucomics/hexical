@@ -1,12 +1,12 @@
 "use strict";
 import semver from 'https://cdn.jsdelivr.net/npm/semver@7.5.4/+esm';
 // these are filled by Jinja
-const BOOK_URL = "https://miyucomics.github.io/hexical";
+const RELATIVE_SITE_URL = "../../../..";
 const VERSION = "latest/main";
 const MINECRAFT_VERSION = "1.19.2";
 const FULL_VERSION = "0.0.1.1.0.dev0";
 const LANG = "en_us";
-const SHOW_DROPDOWN_MINECRAFT_VERSION = "true" === "true";
+const SHOW_DROPDOWN_MINECRAFT_VERSION = `true` === "true";
 const DROPDOWN_MINECRAFT_TEMPLATE = "Minecraft {version}";
 // https://stackoverflow.com/a/61634647
 function replaceTemplate(template, replacements) {
@@ -166,7 +166,7 @@ function versionDropdownItem(sitemap, versionKey) {
   } else {
     path = defaultPath;
   }
-  const li = dropdownItem(version, BOOK_URL + path);
+  const li = dropdownItem(version, RELATIVE_SITE_URL + path);
   if (full_version === FULL_VERSION && versionKey == VERSION && minecraft_version == MINECRAFT_VERSION) {
     li.classList.add("disabled");
   }
@@ -278,14 +278,14 @@ function addDropdowns(sitemap) {
   // languages for the current version
   const langs = Object.keys(langPaths).sort();
   document.getElementById("lang-dropdown").append(
-    ...langs.map((lang) => dropdownItem(langNames[lang], BOOK_URL + langPaths[lang])),
+    ...langs.map((lang) => dropdownItem(langNames[lang], RELATIVE_SITE_URL + langPaths[lang])),
   );
   // return sitemap for chaining, i guess
   return sitemap
 }
 document.addEventListener("DOMContentLoaded", () => {
   // fetch the sitemap from the root and use it to generate the navbar
-  fetch(`${BOOK_URL}/meta/${SHOW_DROPDOWN_MINECRAFT_VERSION ? "sitemap-minecraft" : "sitemap"}.json`)
+  fetch(`${RELATIVE_SITE_URL}/meta/${SHOW_DROPDOWN_MINECRAFT_VERSION ? "sitemap-minecraft" : "sitemap"}.json`)
     .then(r => r.json())
     .then(addDropdowns)
     .catch(e => console.error(e))
