@@ -1,7 +1,7 @@
 {
 	"name": "hexical.page.advanced_conjuration",
 	"icon": "minecraft:glass",
-	"category": "hexical:hexomancy",
+	"category": "hexcasting:patterns/spells",
 	"pages": [
 		{
 			"type": "patchouli:text",

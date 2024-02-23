@@ -1,0 +1,17 @@
+{
+	"name": "hexical.page.hexical_changes",
+	"icon": "minecraft:ender_eye",
+	"category": "hexcasting:basics",
+	"sortnum": 1,
+	"advancement": "hexcasting:root",
+	"pages": [
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.hexical_changes.1"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.hexical_changes.2"
+		}
+	]
+}
