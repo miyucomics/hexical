@@ -46,7 +46,6 @@ class AdvancedConjuredBlock : BlockConjured(
 		if (tile !is AdvancedConjuredBlockEntity)
 			return
 		if (tile.properties["bouncy"]!!) {
-			println("Entity landed with velocity of " + entity.velocity.toString())
 			val velocity = entity.velocity
 			if (velocity.y < 0) {
 				entity.setVelocity(velocity.x, -velocity.y, velocity.z)

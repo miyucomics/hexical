@@ -8,6 +8,7 @@
 	"hexcasting.spell.hexical:get_lamp_use_time": "Genie Refl.: Temporal",
 	"hexcasting.spell.hexical:chorus_blink": "Chorus Blink",
 	"hexcasting.spell.hexical:conjure_advanced_block": "Conjure Advanced Block",
+	"hexcasting.spell.hexical:conjure_staff": "Conjure Staff",
 	"hexcasting.spell.hexical:modify_block_bouncy": "Modify Block: Bouncy",
 	"hexcasting.spell.hexical:modify_block_ephemeral": "Modify Block: Ephemeral",
 	"hexcasting.spell.hexical:modify_block_invisible": "Modify Block: Invisible",
@@ -17,6 +18,10 @@
 	"hexcasting.spell.hexical:ping": "Ping",
 
 	"hexcasting.mishap.hexical:lamp_needed": "Expected to be cast by Genieless Lamp.",
+
+	"hexical.page.hexical_changes": "Hexical Changes",
+	"hexical.page.hexical_changes.1": "The media feels different somehow, almost friendly. I feel strangely more receptive of the ambient media around me. I can even feel it responding to certain tasks I perform, as if new spells are available to me.",
+	"hexical.page.hexical_changes.2": "The media has also become more adaptable, letting me manipulate it more precisely into specialized effects and even interface with items like my abacus.",
 
 	"hexical.category.lamp": "Genieless Lamp",
 	"hexical.category.lamp.desc": "I have heard tales from the villagers about a magical artifact. Legends say it contains a spirit that grants wishes, but I suspect that is just embellishment evolved over centuries of storytelling. Regardless, I dedicate this chapter to my pursuit and research of it.",
@@ -42,9 +47,6 @@
 	"hexical.page.nephthys.1": "Pops a pattern list and a number from the stack and dives down n iota to casts the pattern list. Useful for surgery-like operations.",
 	"hexical.page.nephthys.2": "It's extremely versatile and I can mend almost any error in my stack using Bookkeeper's Gambit, pushing iota after a dive, and transforming surfaced iota. It was named after a goddess of mourning and rivers, lending to how it buries/dives down into the stack.",
 
-	"hexical.category.hexomancy": "Hexomancy",
-	"hexical.category.hexomancy.desc": "I feel strangely more receptive of the ambient media around me. I can even feel it responding to certain tasks I perform, as if suggesting spells to me. Because I am essentially divining spells from the media, I shall call it hexomancy.",
-
 	"hexical.page.advanced_conjuration": "Advanced Conjuration",
 	"hexical.page.advanced_conjuration.1": "While Conjure Block is an interesting spell, it has multiple shortcomings. The blocks stay around forever, are a mess to clean up, and don't have many interesting properties.",
 	"hexical.page.conjure_advanced_block": "Luckily, Nature offers an elegant and flexible solution. These advanced blocks come with a suite of $(o)modifiers$(). I could even stack multiple modifiers on one block.",
@@ -55,6 +57,11 @@
 
 	"hexical.page.chorus_blink.1": "Between Blink, Greater Teleport, ender pearls, and chorus fruit, this spell serves a harmonious midpoint for safe, precise, and cheap teleportation.",
 	"hexical.page.chorus_blink.2": "It consumes a chorus fruit from my inventory and teleports me up to 16 blocks using an offset vector. The cost is constant whether I teleport the full 16 blocks or less, and has no penalty for multiple casts in one hex. With a lot of chorus fruit, it can be a significantly cheaper Greater Teleport.",
+
+	"hexical.page.conjure_staff.1": "Conjures a staff at the location with the amount of media, rank, and hex respectively.",
+	"hexical.page.conjure_staff.2": "A conjured staff is not unlike a cypher. It has a media bank that it relies on for casting and breaks when it runs out, unable to consume my health or my inventory's media. It is not rechargable or programmable. Using erase item on it simply destroys it. However, its true power is $(o)input interception$().",
+	"hexical.page.conjure_staff.3": "When I use my primary or secondary use keys with a staff in my main hand, it intercepts my click. Depending on the rank I assigned during creation, after that many clicks, it will cast the hex I gave it, starting the stack with false and true, corresponding to my left and right clicks respectively.",
+	"hexical.page.conjure_staff.4": "The spell is not cheap, requiring a charged amethyst, the media battery, and an additional amethyst shard for every additional rank. However, the conjured result is both speedy and versatile, with infinitely more possibilities and none of the cooldown of other casting devices.",
 
 	"hexical.page.ping.1": "For the price of a single dust, I can cause a voluntary hallucination of a little circular ripple of my pigment color!",
 	"hexical.page.ping.2": "I can see it through blocks and its size does not change much even from a far distance, making it perfect for reporting locations from my hexes.",
