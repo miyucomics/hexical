@@ -1,5 +1,6 @@
 {
 	"name": "hexical.category.lamp",
 	"icon": "hexical:lamp",
+    "parent": "hexcasting:items",
 	"description": "hexical.category.lamp.desc"
 }
