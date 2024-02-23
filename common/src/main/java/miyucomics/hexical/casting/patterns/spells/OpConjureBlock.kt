@@ -16,7 +16,7 @@ import net.minecraft.util.math.Vec3d
 class OpConjureAdvancedBlock : SpellAction {
 	override val argc = 1
 
-	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>>? {
+	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		val pos = args.getBlockPos(0, argc)
 		ctx.assertVecInRange(pos)
 		return Triple(Spell(pos), MediaConstants.DUST_UNIT, listOf(ParticleSpray.cloud(Vec3d.ofCenter(pos), 1.0)))

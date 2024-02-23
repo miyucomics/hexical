@@ -2,9 +2,8 @@ package miyucomics.hexical.blocks
 
 import at.petrak.hexcasting.api.block.HexBlockEntity
 import at.petrak.hexcasting.api.misc.FrozenColorizer
-import at.petrak.hexcasting.api.spell.iota.DoubleIota
-import at.petrak.hexcasting.api.spell.iota.Vec3Iota
-import at.petrak.hexcasting.api.utils.vecFromNBT
+import at.petrak.hexcasting.api.spell.getPositiveInt
+import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.common.particles.ConjureParticleOptions
 import miyucomics.hexical.registry.HexicalBlocks
 import net.minecraft.block.BlockState
@@ -16,13 +15,10 @@ import java.util.*
 
 class AdvancedConjuredBlockEntity(pos: BlockPos?, state: BlockState?) : HexBlockEntity(HexicalBlocks.ADVANCED_CONJURED_BLOCK_ENTITY, pos, state) {
 	private val random = Random()
-	private val colorizerTag: String = "colorizer"
-	private val bouncyTag: String = "bouncy"
-	private val slipperyTag: String = "slippery"
-	private val volatileTag: String = "volatile"
 	private var colorizer: FrozenColorizer = FrozenColorizer.DEFAULT.get()
 	var bouncy: Boolean = false
-	var slippery: Boolean = false
+	var ephemeral: Boolean = false
+	var lifespan: Int = 0
 	var volatile: Boolean = false
 
 	fun walkParticle(entity: Entity) {
@@ -62,23 +58,28 @@ class AdvancedConjuredBlockEntity(pos: BlockPos?, state: BlockState?) : HexBlock
 	}
 
 	override fun saveModData(tag: NbtCompound) {
-		tag.put(colorizerTag, colorizer.serializeToNBT())
-		tag.putBoolean(bouncyTag, this.bouncy)
-		tag.putBoolean(slipperyTag, this.slippery)
-		tag.putBoolean(volatileTag, this.volatile)
+		tag.put("colorizer", colorizer.serializeToNBT())
+		tag.putBoolean("bouncy", this.bouncy)
+		tag.putBoolean("ephemeral", this.ephemeral)
+		tag.putBoolean("volatile", this.volatile)
+		tag.putInt("lifespan", this.lifespan)
 	}
 
 	override fun loadModData(tag: NbtCompound) {
-		this.colorizer = FrozenColorizer.fromNBT(tag.getCompound(colorizerTag))
-		this.bouncy = tag.getBoolean(bouncyTag)
-		this.slippery = tag.getBoolean(slipperyTag)
-		this.volatile = tag.getBoolean(volatileTag)
+		this.colorizer = FrozenColorizer.fromNBT(tag.getCompound("colorizer"))
+		this.bouncy = tag.getBoolean("bouncy")
+		this.ephemeral = tag.getBoolean("ephemeral")
+		this.volatile = tag.getBoolean("volatile")
+		this.lifespan = tag.getInt("lifespan")
 	}
 
-	fun setProperty(property: String) {
+	fun setProperty(property: String, args: List<Iota>) {
 		when (property) {
 			"bouncy" -> this.bouncy = true
-			"slippery" -> this.slippery = true
+			"ephemeral" -> {
+				this.ephemeral = true
+				this.lifespan = args.getPositiveInt(0, args.size)
+			}
 			"volatile" -> this.volatile = true
 		}
 		this.sync()
