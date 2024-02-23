@@ -16,10 +16,12 @@ import java.util.*
 class AdvancedConjuredBlockEntity(pos: BlockPos?, state: BlockState?) : HexBlockEntity(HexicalBlocks.ADVANCED_CONJURED_BLOCK_ENTITY, pos, state) {
 	private val random = Random()
 	private var colorizer: FrozenColorizer = FrozenColorizer.DEFAULT.get()
-	var bouncy: Boolean = false
-	var ephemeral: Boolean = false
-	var invisible: Boolean = false
-	var volatile: Boolean = false
+	var properties: MutableMap<String, Boolean> = mutableMapOf(
+		"bouncy" to false,
+		"ephemeral" to false,
+		"invisible" to false,
+		"volatile" to false
+	)
 	var lifespan: Int = 0
 
 	fun walkParticle(entity: Entity) {
@@ -60,33 +62,21 @@ class AdvancedConjuredBlockEntity(pos: BlockPos?, state: BlockState?) : HexBlock
 
 	override fun saveModData(tag: NbtCompound) {
 		tag.put("colorizer", colorizer.serializeToNBT())
-		tag.putBoolean("bouncy", this.bouncy)
-		tag.putBoolean("ephemeral", this.ephemeral)
-		tag.putBoolean("invisible", this.invisible)
-		tag.putBoolean("volatile", this.volatile)
+		properties.forEach { (key, value) -> tag.putBoolean(key, value) }
 		tag.putInt("lifespan", this.lifespan)
 	}
 
 	override fun loadModData(tag: NbtCompound) {
 		this.colorizer = FrozenColorizer.fromNBT(tag.getCompound("colorizer"))
-		this.bouncy = tag.getBoolean("bouncy")
-		this.ephemeral = tag.getBoolean("ephemeral")
-		this.invisible = tag.getBoolean("invisible")
-		this.volatile = tag.getBoolean("volatile")
+		properties.keys.forEach { key -> properties[key] = tag.getBoolean(key) }
 		this.lifespan = tag.getInt("lifespan")
 	}
 
 	fun setProperty(property: String, args: List<Iota>) {
-		when (property) {
-			"bouncy" -> this.bouncy = true
-			"ephemeral" -> {
-				this.ephemeral = true
-				this.lifespan = args.getPositiveInt(0, args.size)
-			}
-			"invisible" -> this.invisible = true
-			"volatile" -> this.volatile = true
-		}
-		this.sync()
+		if (property == "ephemeral")
+			this.lifespan = args.getPositiveInt(0, args.size)
+		properties[property] = !properties[property]!!
+		sync()
 	}
 
 	fun setColorizer(colorizer: FrozenColorizer) {

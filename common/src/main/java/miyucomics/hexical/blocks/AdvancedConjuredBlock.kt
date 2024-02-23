@@ -45,7 +45,7 @@ class AdvancedConjuredBlock : BlockConjured(
 		val tile = world.getBlockEntity(pos)
 		if (tile !is AdvancedConjuredBlockEntity)
 			return
-		if (tile.bouncy) {
+		if (tile.properties["bouncy"]!!) {
 			println("Entity landed with velocity of " + entity.velocity.toString())
 			val velocity = entity.velocity
 			if (velocity.y < 0) {
@@ -61,7 +61,7 @@ class AdvancedConjuredBlock : BlockConjured(
 		if (tile !is AdvancedConjuredBlockEntity)
 			return
 		world.setBlockState(position, Blocks.AIR.defaultState)
-		if (tile.volatile) {
+		if (tile.properties["volatile"]!!) {
 			for (offset in volatileOffsets) {
 				val positionToTest = position.add(offset);
 				val otherState = world.getBlockState(positionToTest)
@@ -76,7 +76,7 @@ class AdvancedConjuredBlock : BlockConjured(
 		val tile = world.getBlockEntity(pos)
 		if (tile !is AdvancedConjuredBlockEntity)
 			return
-		if (!tile.invisible)
+		if (!tile.properties["invisible"]!!)
 			tile.walkParticle(entity)
 	}
 
@@ -92,9 +92,9 @@ class AdvancedConjuredBlock : BlockConjured(
 		fun <T> tick(world: World, position: BlockPos, state: BlockState, blockEntity: T) {
 			if (blockEntity !is AdvancedConjuredBlockEntity)
 				return
-			if (!blockEntity.invisible)
+			if (!blockEntity.properties["invisible"]!!)
 				blockEntity.particleEffect()
-			if (blockEntity.ephemeral) {
+			if (blockEntity.properties["ephemeral"]!!) {
 				blockEntity.lifespan--
 				if (blockEntity.lifespan <= 0)
 					HexicalBlocks.ADVANCED_CONJURED_BLOCK.onBreak(world, position, state, null)
