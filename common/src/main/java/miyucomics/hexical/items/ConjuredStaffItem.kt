@@ -18,11 +18,10 @@ class ConjuredStaffItem : ItemPackagedHex(Settings().maxCount(1)) {
 	override fun breakAfterDepletion(): Boolean { return true }
 	override fun use(world: World, player: PlayerEntity, usedHand: Hand): TypedActionResult<ItemStack> { return TypedActionResult.pass(player.getStackInHand(usedHand)); }
 
-	fun cast(world: World, user: LivingEntity, stack: ItemStack, initStack: MutableList<Iota>) {
+	fun cast(world: World, user: LivingEntity, stack: ItemStack, castStack: MutableList<Iota>) {
 		val hex = getHex(stack, world as ServerWorld) ?: return
 		val harness = CastingHarness(CastingContext((user as ServerPlayerEntity), user.getActiveHand(), CastingContext.CastSource.PACKAGED_HEX))
-		harness.stack = initStack
-		println(initStack)
+		harness.stack = castStack
 		harness.executeIotas(hex, world)
 	}
 }

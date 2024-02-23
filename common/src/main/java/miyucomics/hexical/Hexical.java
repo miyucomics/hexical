@@ -26,13 +26,12 @@ public class Hexical {
 
 		NetworkManager.registerReceiver(NetworkManager.Side.C2S, CAST_CONJURED_STAFF_PACKET, (buf, context) -> {
 			PlayerEntity player = context.getPlayer();
-			ItemStack stack = player.getMainHandStack();
-			if (stack.getItem() instanceof ConjuredStaffItem) {
-				int size = buf.readInt();
-				List<Iota> initStack = new ArrayList<>();
-				for (int i = 0; i < size; i++)
-					initStack.add(new BooleanIota(buf.readBoolean()));
-				((ConjuredStaffItem) stack.getItem()).cast(context.getPlayer().world, player, stack, initStack);
+			ItemStack itemInHand = player.getMainHandStack();
+			if (itemInHand.getItem() instanceof ConjuredStaffItem) {
+				List<Iota> stack = new ArrayList<>();
+				for (int i = 0; i < buf.readInt(); i++)
+					stack.add(new BooleanIota(buf.readBoolean()));
+				((ConjuredStaffItem) itemInHand.getItem()).cast(context.getPlayer().world, player, itemInHand, stack);
 			}
 		});
 	}
