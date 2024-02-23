@@ -74,7 +74,9 @@ class AdvancedConjuredBlock : BlockConjured(
 
 	override fun onSteppedOn(world: World, pos: BlockPos, state: BlockState, entity: Entity) {
 		val tile = world.getBlockEntity(pos)
-		if (tile is AdvancedConjuredBlockEntity)
+		if (tile !is AdvancedConjuredBlockEntity)
+			return
+		if (!tile.invisible)
 			tile.walkParticle(entity)
 	}
 
@@ -88,13 +90,14 @@ class AdvancedConjuredBlock : BlockConjured(
 
 	companion object {
 		fun <T> tick(world: World, position: BlockPos, state: BlockState, blockEntity: T) {
-			if (blockEntity is AdvancedConjuredBlockEntity) {
+			if (blockEntity !is AdvancedConjuredBlockEntity)
+				return
+			if (!blockEntity.invisible)
 				blockEntity.particleEffect()
-				if (blockEntity.ephemeral) {
-					blockEntity.lifespan--
-					if (blockEntity.lifespan <= 0)
-						HexicalBlocks.ADVANCED_CONJURED_BLOCK.onBreak(world, position, state, null)
-				}
+			if (blockEntity.ephemeral) {
+				blockEntity.lifespan--
+				if (blockEntity.lifespan <= 0)
+					HexicalBlocks.ADVANCED_CONJURED_BLOCK.onBreak(world, position, state, null)
 			}
 		}
 

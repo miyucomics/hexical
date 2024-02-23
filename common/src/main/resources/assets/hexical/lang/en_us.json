@@ -10,6 +10,7 @@
 	"hexcasting.spell.hexical:conjure_advanced_block": "Conjure Advanced Block",
 	"hexcasting.spell.hexical:modify_block_bouncy": "Modify Block: Bouncy",
 	"hexcasting.spell.hexical:modify_block_ephemeral": "Modify Block: Ephemeral",
+	"hexcasting.spell.hexical:modify_block_invisible": "Modify Block: Invisible",
 	"hexcasting.spell.hexical:modify_block_volatile": "Modify Block: Volatile",
 	"hexcasting.spell.hexical:surveil_sentinel": "Surveil Sentinel",
 	"hexcasting.spell.hexical:nephthys": "Nephthys Gambit",
@@ -49,6 +50,7 @@
 	"hexical.page.conjure_advanced_block": "Luckily, Nature offers an elegant and flexible solution. These advanced blocks come with a suite of $(o)modifiers$(). I could even stack multiple modifiers on one block.",
 	"hexical.page.modify_block_bouncy": "This modifier makes the block delightfully fun to bounce on! It returns more force to me than regular slime blocks and I notice even if I sneak, the block bounces me regardless.",
 	"hexical.page.modify_block_ephemeral": "This modifier takes in a number as well as a position and makes the block destroy itself after the number in twentieths of a second has passed. No more messy floating blocks!",
+	"hexical.page.modify_block_invisible": "This modifier prevents the block from emiting the telltale particles, even when being stood on.",
 	"hexical.page.modify_block_volatile": "This modifier makes the block break other conjured blocks it's touching. Notably, if it breaks another volatile block, the chain continues down until every volatile block shatters.",
 
 	"hexical.page.chorus_blink.1": "Between Blink, Greater Teleport, ender pearls, and chorus fruit, this spell serves a harmonious midpoint for safe, precise, and cheap teleportation.",
