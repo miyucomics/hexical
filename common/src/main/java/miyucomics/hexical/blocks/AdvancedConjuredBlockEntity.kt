@@ -18,8 +18,9 @@ class AdvancedConjuredBlockEntity(pos: BlockPos?, state: BlockState?) : HexBlock
 	private var colorizer: FrozenColorizer = FrozenColorizer.DEFAULT.get()
 	var bouncy: Boolean = false
 	var ephemeral: Boolean = false
-	var lifespan: Int = 0
+	var invisible: Boolean = false
 	var volatile: Boolean = false
+	var lifespan: Int = 0
 
 	fun walkParticle(entity: Entity) {
 		for (i in 0..2) {
@@ -61,6 +62,7 @@ class AdvancedConjuredBlockEntity(pos: BlockPos?, state: BlockState?) : HexBlock
 		tag.put("colorizer", colorizer.serializeToNBT())
 		tag.putBoolean("bouncy", this.bouncy)
 		tag.putBoolean("ephemeral", this.ephemeral)
+		tag.putBoolean("invisible", this.invisible)
 		tag.putBoolean("volatile", this.volatile)
 		tag.putInt("lifespan", this.lifespan)
 	}
@@ -69,6 +71,7 @@ class AdvancedConjuredBlockEntity(pos: BlockPos?, state: BlockState?) : HexBlock
 		this.colorizer = FrozenColorizer.fromNBT(tag.getCompound("colorizer"))
 		this.bouncy = tag.getBoolean("bouncy")
 		this.ephemeral = tag.getBoolean("ephemeral")
+		this.invisible = tag.getBoolean("invisible")
 		this.volatile = tag.getBoolean("volatile")
 		this.lifespan = tag.getInt("lifespan")
 	}
@@ -80,6 +83,7 @@ class AdvancedConjuredBlockEntity(pos: BlockPos?, state: BlockState?) : HexBlock
 				this.ephemeral = true
 				this.lifespan = args.getPositiveInt(0, args.size)
 			}
+			"invisible" -> this.invisible = true
 			"volatile" -> this.volatile = true
 		}
 		this.sync()
