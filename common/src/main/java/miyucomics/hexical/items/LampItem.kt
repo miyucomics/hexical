@@ -19,7 +19,6 @@ class LampItem : ItemPackagedHex(Settings()) {
 	override fun use(world: World, player: PlayerEntity, usedHand: Hand): TypedActionResult<ItemStack> {
 		val stack = player.getStackInHand(usedHand)
 		if (!hasHex(stack)) return TypedActionResult.fail(stack)
-
 		if (!world.isClient) {
 			stack.nbt?.putLongArray("startPosition", player.eyePos.serializeToNBT().longArray);
 			stack.nbt?.putLongArray("startRotation", player.rotationVector.serializeToNBT().longArray);
@@ -32,7 +31,6 @@ class LampItem : ItemPackagedHex(Settings()) {
 	override fun usageTick(world: World, user: LivingEntity, stack: ItemStack, remainingUseTicks: Int) {
 		if (world.isClient) return
 		if (getMedia(stack) == 0) return
-
 		val hex = getHex(stack, world as ServerWorld) ?: return
 		val harness = CastingHarness(CastingContext((user as ServerPlayerEntity), user.getActiveHand(), CastingContext.CastSource.PACKAGED_HEX))
 		harness.executeIotas(hex, world)

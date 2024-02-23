@@ -10,7 +10,7 @@ import net.minecraft.text.Text
 import net.minecraft.util.DyeColor
 import net.minecraft.util.Hand
 
-class MishapNeedLamp() : Mishap() {
+class MishapNeedLamp : Mishap() {
 	override fun accentColor(ctx: CastingContext, errorCtx: Context): FrozenColorizer = dyeColor(DyeColor.RED)
 	override fun particleSpray(ctx: CastingContext) = ParticleSpray.burst(ctx.caster.pos, 1.0)
 	override fun errorMessage(ctx: CastingContext, errorCtx: Context): Text = error(Hexical.MOD_ID + ":needs_lamp")
