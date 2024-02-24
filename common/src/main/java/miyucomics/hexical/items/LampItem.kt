@@ -1,10 +1,8 @@
 package miyucomics.hexical.items
 
-import at.petrak.hexcasting.api.spell.casting.CastingContext
-import at.petrak.hexcasting.api.spell.casting.CastingHarness
 import at.petrak.hexcasting.api.utils.serializeToNBT
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
-import miyucomics.hexical.interfaces.CastingContextMixinInterface
+import miyucomics.hexical.utils.CastingUtils
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
@@ -30,15 +28,10 @@ class LampItem : ItemPackagedHex(Settings().maxCount(1)) {
 		return TypedActionResult.success(stack)
 	}
 
-	@Suppress("CAST_NEVER_SUCCEEDS")
 	override fun usageTick(world: World, user: LivingEntity, stack: ItemStack, remainingUseTicks: Int) {
 		if (world.isClient) return
 		if (getMedia(stack) == 0) return
-		val hex = getHex(stack, world as ServerWorld) ?: return
-		val context = CastingContext((user as ServerPlayerEntity), user.activeHand, CastingContext.CastSource.PACKAGED_HEX)
-		(context as CastingContextMixinInterface).setCastByLamp(true)
-		val harness = CastingHarness(context)
-		harness.executeIotas(hex, world)
+		CastingUtils.castInvisibly(world as ServerWorld, user as ServerPlayerEntity, getHex(stack, world) ?: return)
 	}
 
 	override fun getUseAction(pStack: ItemStack): UseAction { return UseAction.BOW }
