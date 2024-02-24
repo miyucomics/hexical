@@ -36,13 +36,12 @@ class MasterLampItem : ItemPackagedHex(Settings().maxCount(1)) {
 			return TypedActionResult.success(stack)
 		}
 
-		state.active = true
 		stackNbt.putBoolean("active", true)
+		state.active = true
 		state.position = player.eyePos
 		state.rotation = player.rotationVector
 		state.velocity = player.velocity
 		state.time = world.time
-		player.sendMessage(Text.literal("Activated!"))
 
 		return TypedActionResult.success(stack)
 	}
