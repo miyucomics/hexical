@@ -16,6 +16,8 @@
 	"hexcasting.spell.hexical:get_master_lamp_rotation": "Archgenie Refl.: Rotational",
 	"hexcasting.spell.hexical:get_master_lamp_velocity": "Archgenie Refl.: Kinetic",
 	"hexcasting.spell.hexical:get_master_lamp_use_time": "Archgenie Refl.: Temporal",
+	"hexcasting.spell.hexical:get_master_lamp_storage": "Archgenie Refl.: Memory",
+	"hexcasting.spell.hexical:set_lamp_storage": "Archgenie Gambit",
 	"hexcasting.spell.hexical:is_using_lamp": "Archgenie Purification",
 	"hexcasting.spell.hexical:terminate_master_lamp": "Archgenie Termination",
 
@@ -63,6 +65,10 @@
 	"hexical.page.get_master_lamp_use_time": "Pushes how many times the lamp has casted. Divided by 20, it returns how many times in seconds the lamp has been in use. Can be cast by casting items or staff.",
 	"hexical.page.is_using_lamp": "Takes a player and pushes whether they currently have an active master lamp.",
 	"hexical.page.terminate_master_lamp": "Casted by a casting device, staff, or within the master lamp, deactivates the lamp's operation. Similar to Charon's.",
+
+	"hexical.page.master_lamp_storage": "Master Lamp Storage",
+	"hexical.page.set_lamp_storage": "The master lamp also supports an iota storage, which this pattern sets. Unlike the ravenmind, it is subject to the Transgress Others mishap.",
+	"hexical.page.get_master_lamp_storage": "Gets the storage iota of the lamp. Requires an active master lamp.",
 
 	"hexical.page.hexical_metaevals": "Hexical Meta-evaluations",
 	"hexical.page.nephthys.1": "Pops a pattern list and a number from the stack and dives down n iota to casts the pattern list. Useful for surgery-like operations.",
