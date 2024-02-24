@@ -26,7 +26,6 @@ object HexicalPatterns {
 
 	var CHORUS_BLINK: HexPattern = register(HexPattern.fromAngles("aawqqqq", HexDir.SOUTH_EAST), "chorus_blink", OpChorusBlink())
 	var PROGRAM_LAMP: HexPattern = register(HexPattern.fromAngles("wwqqqqq", HexDir.EAST), "program_lamp", OpProgramLamp())
-	var PING: HexPattern = register(HexPattern.fromAngles("eweeewedqdeqqqqqwaeeee", HexDir.NORTH_EAST), "ping", OpPing())
 
 	var CONJURE_STAFF: HexPattern = register(HexPattern.fromAngles("wweeeed", HexDir.NORTH_EAST), "conjure_staff", OpConjureStaff())
 
