@@ -1,0 +1,24 @@
+{
+	"name": "hexical.page.master_lamp_storage",
+	"icon": "hexcasting:focus",
+	"category": "hexical:lamp",
+    "sortnum": 4,
+	"pages": [
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:set_lamp_storage",
+			"anchor": "hexical:set_lamp_storage",
+			"input": "any",
+			"output": "",
+			"text": "hexical.page.set_lamp_storage"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:get_master_lamp_storage",
+			"anchor": "hexical:get_master_lamp_storage",
+			"input": "",
+			"output": "any",
+			"text": "hexical.page.get_master_lamp_storage"
+		}
+	]
+}
