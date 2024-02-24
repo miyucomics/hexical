@@ -25,7 +25,6 @@
 	"hexcasting.spell.hexical:modify_block_volatile": "Modify Block: Volatile",
 	"hexcasting.spell.hexical:surveil_sentinel": "Surveil Sentinel",
 	"hexcasting.spell.hexical:nephthys": "Nephthys Gambit",
-	"hexcasting.spell.hexical:ping": "Ping",
 
 	"hexcasting.mishap.hexical:needs_lamp": "Expected to be cast by Genieless Lamp.",
 	"hexcasting.mishap.hexical:needs_active_master_lamp": "Expected to have an active Master Genieless Lamp.",
@@ -81,11 +80,4 @@
 	"hexical.page.conjure_staff.2": "A conjured staff is not unlike a cypher. It has a media bank that it relies on for casting and breaks when it runs out, unable to consume my health or my inventory's media. It is not rechargable or programmable. Using erase item on it simply destroys it. However, its true power is $(o)input interception$().",
 	"hexical.page.conjure_staff.3": "When I use my primary or secondary use keys with a staff in my main hand, it intercepts my click. Depending on the rank I assigned during creation, after that many clicks, it will cast the hex I gave it, starting the stack with false and true, corresponding to my left and right clicks respectively.",
 	"hexical.page.conjure_staff.4": "The spell is not cheap, requiring a charged amethyst, the media battery, and an additional amethyst shard for every additional rank. However, the conjured result is both speedy and versatile, with infinitely more possibilities and none of the cooldown of other casting devices.",
-
-	"hexical.page.ping.1": "For the price of a single dust, I can cause a voluntary hallucination of a little circular ripple of my pigment color!",
-	"hexical.page.ping.2": "I can see it through blocks and its size does not change much even from a far distance, making it perfect for reporting locations from my hexes.",
-
-	"hexical.page.surveil_sentinel.1": "The name sentinel has perplexed me for a long time. My sentinel highlights locations and can even expand my reach, but not once has it kept watch... until now.",
-	"hexical.page.surveil_sentinel.2": "This spell magically displaces my vision to my sentinel's position. While dissociating, I still maintain control over my body. Once a sentinel is stationed, I can watch over anything, everything, everywhere from any distance away. I wonder what I would see if I banished my sentinel and casted the spell...$(br)$(br)It $(o)burns.",
-	"hexical.page.surveil_sentinel.3": "$(o)The Aleph's diameter was probably little more than an inch, but all space was there, actual and undiminished... I saw daybreak and nightfall... I saw all the mirrors on earth and none of them reflected me... I saw the Aleph from every point and angle, and in the Aleph I saw the earth and in the earth the Aleph and in the Aleph the earth..."
 }
