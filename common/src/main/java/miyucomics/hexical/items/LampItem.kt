@@ -5,7 +5,6 @@ import at.petrak.hexcasting.api.spell.casting.CastingHarness
 import at.petrak.hexcasting.api.utils.serializeToNBT
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
 import miyucomics.hexical.interfaces.CastingContextMixinInterface
-import miyucomics.hexical.registry.HexicalItems
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
@@ -22,9 +21,10 @@ class LampItem : ItemPackagedHex(Settings().maxCount(1)) {
 		if (!hasHex(stack)) return TypedActionResult.fail(stack)
 		val stackNbt = stack.orCreateNbt
 		if (!world.isClient) {
-			stackNbt.putLongArray("startPosition", player.eyePos.serializeToNBT().longArray);
-			stackNbt.putLongArray("startRotation", player.rotationVector.serializeToNBT().longArray);
-			stackNbt.putLong("startTime", world.time);
+			stackNbt.putLongArray("position", player.eyePos.serializeToNBT().longArray);
+			stackNbt.putLongArray("rotation", player.rotationVector.serializeToNBT().longArray);
+			stackNbt.putLongArray("velocity", player.velocity.serializeToNBT().longArray);
+			stackNbt.putLong("start_time", world.time);
 		}
 		player.setCurrentHand(usedHand)
 		return TypedActionResult.success(stack)

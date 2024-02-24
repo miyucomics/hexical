@@ -19,7 +19,7 @@ object HexicalBlocks {
 	fun init() {
 		BLOCKS.register("advanced_conjured_block") { ADVANCED_CONJURED_BLOCK }
 		BLOCK_ENTITIES.register("advanced_conjured_block") { ADVANCED_CONJURED_BLOCK_ENTITY }
-		BLOCK_ENTITIES.register()
 		BLOCKS.register()
+		BLOCK_ENTITIES.register()
 	}
 }

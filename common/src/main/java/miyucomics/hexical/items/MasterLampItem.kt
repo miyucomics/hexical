@@ -4,7 +4,7 @@ import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.casting.CastingHarness
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
 import miyucomics.hexical.interfaces.CastingContextMixinInterface
-import miyucomics.hexical.persistent_state.StateHandler
+import miyucomics.hexical.persistent_state.PersistentStateHandler
 import net.minecraft.entity.Entity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
@@ -22,7 +22,7 @@ class MasterLampItem : ItemPackagedHex(Settings().maxCount(1)) {
 		if (!hasHex(stack)) return TypedActionResult.fail(stack)
 		if (world.isClient) return TypedActionResult.success(stack)
 
-		val state = StateHandler.getPlayerState(player)
+		val state = PersistentStateHandler.getPlayerState(player)
 		val stackNbt = stack.orCreateNbt
 		if (!stackNbt.contains("active"))
 			stackNbt.putBoolean("active", false)
@@ -40,9 +40,10 @@ class MasterLampItem : ItemPackagedHex(Settings().maxCount(1)) {
 
 		state.active = true
 		stackNbt.putBoolean("active", true)
-		state.startPosition = player.eyePos
-		state.startRotation = player.rotationVector
-		state.startTime = world.time
+		state.position = player.eyePos
+		state.rotation = player.rotationVector
+		state.velocity = player.velocity
+		state.time = world.time
 		player.sendMessage(Text.literal("Activated!"))
 
 		return TypedActionResult.success(stack)
