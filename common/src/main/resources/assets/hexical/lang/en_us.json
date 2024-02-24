@@ -1,5 +1,6 @@
 {
 	"item.hexical.lamp": "Genieless Lamp",
+	"item.hexical.master_lamp": "Master Genieless Lamp",
 	"item.hexical.conjured_staff": "Conjured Staff",
 	"block.hexical.advanced_conjured_block": "Advanced Conjured Block",
 
@@ -17,7 +18,8 @@
 	"hexcasting.spell.hexical:nephthys": "Nephthys Gambit",
 	"hexcasting.spell.hexical:ping": "Ping",
 
-	"hexcasting.mishap.hexical:lamp_needed": "Expected to be cast by Genieless Lamp.",
+	"hexcasting.mishap.hexical:needs_lamp": "Expected to be cast by Genieless Lamp.",
+	"hexcasting.mishap.hexical:needs_active_master_lamp": "Expected to have an active Master Genieless Lamp.",
 
 	"hexical.page.hexical_changes": "Hexical Changes",
 	"hexical.page.hexical_changes.1": "The media feels different somehow, almost friendly. I feel strangely more receptive of the ambient media around me. I can even feel it responding to certain tasks I perform, as if new spells are available to me.",

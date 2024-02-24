@@ -14,14 +14,14 @@ class OpGetLampData(private val mode: Int) : ConstMediaAction {
 	override val argc = 0
 
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
-		if (!(ctx.caster.activeItem.item == HexicalItems.LAMP_ITEM.asItem() && ctx.source == CastingContext.CastSource.PACKAGED_HEX))
+		if (!(ctx.caster.activeItem.item == HexicalItems.LAMP_ITEM && ctx.source == CastingContext.CastSource.PACKAGED_HEX))
 			throw MishapNeedLamp()
 
-		val rodNbt = ctx.caster.activeItem.nbt ?: return listOf(NullIota())
+		val nbt = ctx.caster.activeItem.nbt ?: return listOf(NullIota())
 		when (mode) {
-			0 -> return listOf(Vec3Iota(vecFromNBT(rodNbt.getLongArray("startPosition"))))
-			1 -> return listOf(Vec3Iota(vecFromNBT(rodNbt.getLongArray("startRotation"))))
-			2 -> return listOf(DoubleIota(ctx.world.time - rodNbt.getDouble("startTime")))
+			0 -> return listOf(Vec3Iota(vecFromNBT(nbt.getLongArray("startPosition"))))
+			1 -> return listOf(Vec3Iota(vecFromNBT(nbt.getLongArray("startRotation"))))
+			2 -> return listOf(DoubleIota(ctx.world.time - nbt.getDouble("startTime")))
 		}
 
 		return listOf(NullIota())

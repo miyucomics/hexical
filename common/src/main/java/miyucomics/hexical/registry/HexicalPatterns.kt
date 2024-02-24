@@ -7,6 +7,7 @@ import at.petrak.hexcasting.api.spell.math.HexPattern
 import miyucomics.hexical.Hexical
 import miyucomics.hexical.casting.patterns.operators.eval.OpNephthys
 import miyucomics.hexical.casting.patterns.operators.lamp.OpGetLampData
+import miyucomics.hexical.casting.patterns.operators.lamp.OpGetMasterLampData
 import miyucomics.hexical.casting.patterns.spells.*
 import net.minecraft.util.Identifier
 
@@ -31,6 +32,10 @@ object HexicalPatterns {
 	var LAMP_POSITION: HexPattern = register(HexPattern.fromAngles("qwddeda", HexDir.SOUTH_WEST), "get_lamp_start_position", OpGetLampData(0))
 	var LAMP_ROTATION: HexPattern = register(HexPattern.fromAngles("qwddedq", HexDir.SOUTH_WEST), "get_lamp_start_rotation", OpGetLampData(1))
 	var LAMP_USE_TIME: HexPattern = register(HexPattern.fromAngles("qwddedw", HexDir.SOUTH_WEST), "get_lamp_use_time", OpGetLampData(2))
+
+	var MASTER_LAMP_POSITION: HexPattern = register(HexPattern.fromAngles("qwddedaw", HexDir.SOUTH_WEST), "get_master_lamp_start_position", OpGetMasterLampData(0))
+	var MASTER_LAMP_ROTATION: HexPattern = register(HexPattern.fromAngles("qwddedqw", HexDir.SOUTH_WEST), "get_master_lamp_start_rotation", OpGetMasterLampData(1))
+	var MASTER_LAMP_USE_TIME: HexPattern = register(HexPattern.fromAngles("qwddedww", HexDir.SOUTH_WEST), "get_master_lamp_use_time", OpGetMasterLampData(2))
 
 	@JvmStatic
 	fun init() {

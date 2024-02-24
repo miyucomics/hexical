@@ -2,38 +2,60 @@ package miyucomics.hexical.items
 
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.casting.CastingHarness
-import at.petrak.hexcasting.api.utils.serializeToNBT
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
 import miyucomics.hexical.interfaces.CastingContextMixinInterface
-import miyucomics.hexical.registry.HexicalItems
-import net.minecraft.entity.LivingEntity
+import miyucomics.hexical.persistent_state.StateHandler
+import net.minecraft.entity.Entity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld
+import net.minecraft.text.Text
 import net.minecraft.util.Hand
 import net.minecraft.util.TypedActionResult
 import net.minecraft.util.UseAction
 import net.minecraft.world.World
 
-class LampItem : ItemPackagedHex(Settings().maxCount(1)) {
+class MasterLampItem : ItemPackagedHex(Settings().maxCount(1)) {
 	override fun use(world: World, player: PlayerEntity, usedHand: Hand): TypedActionResult<ItemStack> {
 		val stack = player.getStackInHand(usedHand)
 		if (!hasHex(stack)) return TypedActionResult.fail(stack)
+		if (world.isClient) return TypedActionResult.success(stack)
+
+		val state = StateHandler.getPlayerState(player)
 		val stackNbt = stack.orCreateNbt
-		if (!world.isClient) {
-			stackNbt.putLongArray("startPosition", player.eyePos.serializeToNBT().longArray);
-			stackNbt.putLongArray("startRotation", player.rotationVector.serializeToNBT().longArray);
-			stackNbt.putLong("startTime", world.time);
+		if (!stackNbt.contains("active"))
+			stackNbt.putBoolean("active", false)
+
+		if (state.active && !stackNbt.getBoolean("active")) {
+			// there must be another lamp active. MISHAP!
+			player.sendMessage(Text.literal("You're lucky I haven't implemented a mishap yet."))
+			return TypedActionResult.fail(stack)
 		}
-		player.setCurrentHand(usedHand)
+
+		if (state.active) {
+			// deactivate lamp
+			state.active = false
+			stackNbt.putBoolean("active", false)
+			return TypedActionResult.success(stack)
+		}
+
+		// activate lamp
+		state.active = true
+		stackNbt.putBoolean("active", true)
+		state.startPosition = player.eyePos
+		state.startRotation = player.rotationVector
+		state.startTime = world.time
+		player.sendMessage(Text.literal("Activated!"))
+
 		return TypedActionResult.success(stack)
 	}
 
 	@Suppress("CAST_NEVER_SUCCEEDS")
-	override fun usageTick(world: World, user: LivingEntity, stack: ItemStack, remainingUseTicks: Int) {
+	override fun inventoryTick(stack: ItemStack, world: World, user: Entity, slot: Int, selected: Boolean) {
 		if (world.isClient) return
 		if (getMedia(stack) == 0) return
+		if (!stack.orCreateNbt.getBoolean("active")) return
 		val hex = getHex(stack, world as ServerWorld) ?: return
 		val context = CastingContext((user as ServerPlayerEntity), user.activeHand, CastingContext.CastSource.PACKAGED_HEX)
 		(context as CastingContextMixinInterface).setCastByLamp(true)
