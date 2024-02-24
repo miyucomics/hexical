@@ -5,6 +5,7 @@ import at.petrak.hexcasting.api.spell.iota.Iota;
 import dev.architectury.networking.NetworkManager;
 import miyucomics.hexical.items.ConjuredStaffItem;
 import miyucomics.hexical.registry.HexicalBlocks;
+import miyucomics.hexical.registry.HexicalEvents;
 import miyucomics.hexical.registry.HexicalItems;
 import miyucomics.hexical.registry.HexicalPatterns;
 import net.minecraft.entity.player.PlayerEntity;
@@ -23,6 +24,7 @@ public class Hexical {
 		HexicalBlocks.init();
 		HexicalItems.init();
 		HexicalPatterns.init();
+		HexicalEvents.init();
 
 		NetworkManager.registerReceiver(NetworkManager.Side.C2S, CAST_CONJURED_STAFF_PACKET, (buf, context) -> {
 			PlayerEntity player = context.getPlayer();
