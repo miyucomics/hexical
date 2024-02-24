@@ -9,6 +9,13 @@
 	"hexcasting.spell.hexical:get_lamp_velocity": "Genie Refl.: Kinetic",
 	"hexcasting.spell.hexical:get_lamp_use_time": "Genie Refl.: Temporal",
 
+	"hexcasting.spell.hexical:get_master_lamp_position": "Archgenie Refl.: Spatial",
+	"hexcasting.spell.hexical:get_master_lamp_rotation": "Archgenie Refl.: Rotational",
+	"hexcasting.spell.hexical:get_master_lamp_velocity": "Archgenie Refl.: Kinetic",
+	"hexcasting.spell.hexical:get_master_lamp_use_time": "Archgenie Refl.: Temporal",
+	"hexcasting.spell.hexical:is_using_lamp": "Archgenie Purification",
+	"hexcasting.spell.hexical:terminate_master_lamp": "Archgenie Termination",
+
 	"hexcasting.spell.hexical:chorus_blink": "Chorus Blink",
 	"hexcasting.spell.hexical:conjure_advanced_block": "Conjure Advanced Block",
 	"hexcasting.spell.hexical:conjure_staff": "Conjure Staff",
@@ -43,6 +50,13 @@
 	"hexical.page.get_lamp_rotation": "Pushes the original rotation of the caster when the lamp started casting.",
 	"hexical.page.get_lamp_velocity": "Pushes the original velocity of the caster when the lamp started casting.",
 	"hexical.page.get_lamp_use_time": "Pushes how many times the lamp has casted. Divided by 20, it returns how many times in seconds the lamp has been in use.",
+
+	"hexical.page.get_master_lamp_position": "Pushes the original position of the caster when the master lamp started casting. Can be cast by casting items or staff.",
+	"hexical.page.get_master_lamp_rotation": "Pushes the original rotation of the caster when the master lamp started casting. Can be cast by casting items or staff.",
+	"hexical.page.get_master_lamp_velocity": "Pushes the original velocity of the caster when the master lamp started casting. Can be cast by casting items or staff.",
+	"hexical.page.get_master_lamp_use_time": "Pushes how many times the lamp has casted. Divided by 20, it returns how many times in seconds the lamp has been in use. Can be cast by casting items or staff.",
+	"hexical.page.is_using_lamp": "Takes a player and pushes whether they currently have an active master lamp.",
+	"hexical.page.terminate_master_lamp": "Casted by a casting device, staff, or within the master lamp, deactivates the lamp's operation. Similar to Charon's.",
 
     "hexical.page.replacement_mind": "Replacement Mind",
     "hexical.page.replacement_mind.1": "Hex casting burns the mind from the energy of thought, flooding the mind, inundating every neuron... it's euphoric. For staffs, casting devices, and spell circles, the rate of casting is slow enough for a mind to recuperate, but with the speeds this lamp promises, even an optimized mind can only bear the burden for so long. As if to reflect the mind's deterioration, the lamp itself tarnishes until it becomes unusable. In these cases, the genie must be... replaced.",
