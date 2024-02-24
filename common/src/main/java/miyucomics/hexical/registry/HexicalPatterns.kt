@@ -8,6 +8,7 @@ import miyucomics.hexical.Hexical
 import miyucomics.hexical.casting.patterns.operators.eval.OpNephthys
 import miyucomics.hexical.casting.patterns.operators.lamp.OpGetLampData
 import miyucomics.hexical.casting.patterns.operators.lamp.OpGetMasterLampData
+import miyucomics.hexical.casting.patterns.operators.lamp.OpIsUsingMasterLamp
 import miyucomics.hexical.casting.patterns.spells.*
 import net.minecraft.util.Identifier
 
@@ -36,6 +37,9 @@ object HexicalPatterns {
 	var MASTER_LAMP_POSITION: HexPattern = register(HexPattern.fromAngles("qwddedaw", HexDir.SOUTH_WEST), "get_master_lamp_start_position", OpGetMasterLampData(0))
 	var MASTER_LAMP_ROTATION: HexPattern = register(HexPattern.fromAngles("qwddedqw", HexDir.SOUTH_WEST), "get_master_lamp_start_rotation", OpGetMasterLampData(1))
 	var MASTER_LAMP_USE_TIME: HexPattern = register(HexPattern.fromAngles("qwddedww", HexDir.SOUTH_WEST), "get_master_lamp_use_time", OpGetMasterLampData(2))
+
+	var IS_USING_LAMP: HexPattern = register(HexPattern.fromAngles("qwddedww", HexDir.SOUTH_WEST), "is_using_lamp", OpIsUsingMasterLamp())
+	var TERMINATE_LAMP: HexPattern = register(HexPattern.fromAngles("qwddedww", HexDir.SOUTH_WEST), "terminate_master_lamp", OpTerminateLamp())
 
 	@JvmStatic
 	fun init() {
