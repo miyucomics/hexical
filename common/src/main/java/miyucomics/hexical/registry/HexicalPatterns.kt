@@ -30,16 +30,16 @@ object HexicalPatterns {
 
 	var CONJURE_STAFF: HexPattern = register(HexPattern.fromAngles("wweeeed", HexDir.NORTH_EAST), "conjure_staff", OpConjureStaff())
 
-	var LAMP_POSITION: HexPattern = register(HexPattern.fromAngles("qwddeda", HexDir.SOUTH_WEST), "get_lamp_start_position", OpGetLampData(0))
-	var LAMP_ROTATION: HexPattern = register(HexPattern.fromAngles("qwddedq", HexDir.SOUTH_WEST), "get_lamp_start_rotation", OpGetLampData(1))
-	var LAMP_USE_TIME: HexPattern = register(HexPattern.fromAngles("qwddedw", HexDir.SOUTH_WEST), "get_lamp_use_time", OpGetLampData(2))
-
-	var MASTER_LAMP_POSITION: HexPattern = register(HexPattern.fromAngles("qwddedaw", HexDir.SOUTH_WEST), "get_master_lamp_start_position", OpGetMasterLampData(0))
-	var MASTER_LAMP_ROTATION: HexPattern = register(HexPattern.fromAngles("qwddedqw", HexDir.SOUTH_WEST), "get_master_lamp_start_rotation", OpGetMasterLampData(1))
-	var MASTER_LAMP_USE_TIME: HexPattern = register(HexPattern.fromAngles("qwddedww", HexDir.SOUTH_WEST), "get_master_lamp_use_time", OpGetMasterLampData(2))
-
-	var IS_USING_LAMP: HexPattern = register(HexPattern.fromAngles("qwddedww", HexDir.SOUTH_WEST), "is_using_lamp", OpIsUsingMasterLamp())
-	var TERMINATE_LAMP: HexPattern = register(HexPattern.fromAngles("qwddedww", HexDir.SOUTH_WEST), "terminate_master_lamp", OpTerminateLamp())
+	var LAMP_POSITION: HexPattern = register(HexPattern.fromAngles("qwddedqdd", HexDir.SOUTH_WEST), "get_lamp_position", OpGetLampData(0))
+	var LAMP_ROTATION: HexPattern = register(HexPattern.fromAngles("qwddedadw", HexDir.SOUTH_WEST), "get_lamp_rotation", OpGetLampData(1))
+	var LAMP_VELOCITY: HexPattern = register(HexPattern.fromAngles("qwddedqew", HexDir.SOUTH_WEST), "get_lamp_velocity", OpGetLampData(2))
+	var LAMP_USE_TIME: HexPattern = register(HexPattern.fromAngles("qwddedqwddwa", HexDir.SOUTH_WEST), "get_lamp_use_time", OpGetLampData(3))
+	var MASTER_LAMP_POSITION: HexPattern = register(HexPattern.fromAngles("qaqwddedqdd", HexDir.SOUTH_WEST), "get_master_lamp_position", OpGetMasterLampData(0))
+	var MASTER_LAMP_ROTATION: HexPattern = register(HexPattern.fromAngles("qaqwddedadw", HexDir.SOUTH_WEST), "get_master_lamp_rotation", OpGetMasterLampData(1))
+	var MASTER_LAMP_VELOCITY: HexPattern = register(HexPattern.fromAngles("qaqwddedqew", HexDir.SOUTH_WEST), "get_master_lamp_velocity", OpGetMasterLampData(2))
+	var MASTER_LAMP_USE_TIME: HexPattern = register(HexPattern.fromAngles("qaqwddedqwddwa", HexDir.SOUTH_WEST), "get_master_lamp_use_time", OpGetMasterLampData(3))
+	var IS_USING_LAMP: HexPattern = register(HexPattern.fromAngles("qaqwddedqeed", HexDir.NORTH_EAST), "is_using_lamp", OpIsUsingMasterLamp())
+	var TERMINATE_LAMP: HexPattern = register(HexPattern.fromAngles("qaqwddedwaqdee", HexDir.NORTH_EAST), "terminate_master_lamp", OpTerminateLamp())
 
 	@JvmStatic
 	fun init() {
