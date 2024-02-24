@@ -9,7 +9,6 @@ import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.getVec3
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapLocationTooFarAway
-import net.minecraft.entity.Entity
 import net.minecraft.item.Items
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.math.Vec3d
@@ -21,7 +20,7 @@ class OpChorusBlink : SpellAction {
 		val pos = args.getVec3(0, argc);
 		if (pos.lengthSquared() > 256)
 			throw MishapLocationTooFarAway(pos)
-		return Triple(Spell(pos), 3 * MediaConstants.DUST_UNIT, listOf(ParticleSpray.burst(pos, 1.0)))
+		return Triple(Spell(pos), 3 * MediaConstants.DUST_UNIT, listOf())
 	}
 
 	private data class Spell(val position: Vec3d) : RenderedSpell {

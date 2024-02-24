@@ -37,8 +37,10 @@ object HexicalPatterns {
 	var MASTER_LAMP_ROTATION: HexPattern = register(HexPattern.fromAngles("qaqwddedadw", HexDir.NORTH_EAST), "get_master_lamp_rotation", OpGetMasterLampData(1))
 	var MASTER_LAMP_VELOCITY: HexPattern = register(HexPattern.fromAngles("qaqwddedqew", HexDir.NORTH_EAST), "get_master_lamp_velocity", OpGetMasterLampData(2))
 	var MASTER_LAMP_USE_TIME: HexPattern = register(HexPattern.fromAngles("qaqwddedqwddwa", HexDir.NORTH_EAST), "get_master_lamp_use_time", OpGetMasterLampData(3))
+	var MASTER_LAMP_STORAGE: HexPattern = register(HexPattern.fromAngles("qaqwddedqwaqqqqq", HexDir.NORTH_EAST), "get_master_lamp_storage", OpGetMasterLampData(4))
 	var IS_USING_LAMP: HexPattern = register(HexPattern.fromAngles("qaqwddedqeed", HexDir.NORTH_EAST), "is_using_lamp", OpIsUsingMasterLamp())
 	var TERMINATE_LAMP: HexPattern = register(HexPattern.fromAngles("qaqwddedwaqdee", HexDir.NORTH_EAST), "terminate_master_lamp", OpTerminateLamp())
+	var SET_LAMP_STORAGE: HexPattern = register(HexPattern.fromAngles("qaqwddedqedeeeee", HexDir.NORTH_EAST), "set_lamp_storage", OpSetMasterLampStorage())
 
 	@JvmStatic
 	fun init() {

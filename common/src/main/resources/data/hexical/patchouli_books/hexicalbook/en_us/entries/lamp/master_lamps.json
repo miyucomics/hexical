@@ -1,6 +1,6 @@
 {
 	"name": "hexical.page.master_lamps",
-	"icon": "hexical:lamp",
+	"icon": "hexical:master_lamp",
 	"category": "hexical:lamp",
     "sortnum": 3,
 	"pages": [
@@ -59,6 +59,22 @@
 			"input": "",
 			"output": "",
 			"text": "hexical.page.terminate_master_lamp"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:set_lamp_storage",
+			"anchor": "hexical:set_lamp_storage",
+			"input": "entity",
+			"output": "boolean",
+			"text": "hexical.page.set_lamp_storage"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:get_master_lamp_storage",
+			"anchor": "hexical:get_master_lamp_storage",
+			"input": "",
+			"output": "",
+			"text": "hexical.page.get_master_lamp_storage"
 		}
 	]
 }
