@@ -7,6 +7,7 @@ import at.petrak.hexcasting.api.spell.SpellAction
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.getBlockPos
 import at.petrak.hexcasting.api.spell.iota.Iota
+import at.petrak.hexcasting.api.spell.mishaps.MishapBadBlock
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.blocks.AdvancedConjuredBlock
 import miyucomics.hexical.registry.HexicalBlocks
@@ -19,6 +20,8 @@ class OpConjureAdvancedBlock : SpellAction {
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		val pos = args.getBlockPos(0, argc)
 		ctx.assertVecInRange(pos)
+		if (!ctx.world.getBlockState(pos).material.isReplaceable)
+			throw MishapBadBlock.of(pos, "replaceable")
 		return Triple(Spell(pos), MediaConstants.DUST_UNIT, listOf(ParticleSpray.cloud(Vec3d.ofCenter(pos), 1.0)))
 	}
 

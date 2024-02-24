@@ -4,6 +4,8 @@
 	"item.hexical.conjured_staff": "Conjured Staff",
 	"block.hexical.advanced_conjured_block": "Advanced Conjured Block",
 
+	"hexcasting.mishap.bad_block.advanced_conjured_block": "an advanced conjured block",
+
 	"hexcasting.spell.hexical:get_lamp_position": "Genie Refl.: Spatial",
 	"hexcasting.spell.hexical:get_lamp_rotation": "Genie Refl.: Rotational",
 	"hexcasting.spell.hexical:get_lamp_velocity": "Genie Refl.: Kinetic",
