@@ -1,8 +1,8 @@
 package miyucomics.hexical.mixin;
 
-import at.petrak.hexcasting.api.spell.casting.CastingContext;
 import at.petrak.hexcasting.api.spell.casting.CastingHarness;
 import at.petrak.hexcasting.api.spell.casting.sideeffects.OperatorSideEffect;
+import com.llamalad7.mixinextras.injector.WrapWithCondition;
 import miyucomics.hexical.interfaces.CastingContextMixinInterface;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.world.ServerWorld;
@@ -11,29 +11,20 @@ import net.minecraft.sound.SoundEvent;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Redirect;
 
 import java.util.List;
 
 @Mixin(value = CastingHarness.class)
-public abstract class CastingHarnessMixin {
+public class CastingHarnessMixin {
 	@Unique private final CastingHarness hexical$harness = (CastingHarness) (Object) this;
 
-	@Redirect(method = "updateWithPattern", at = @At(value="INVOKE", target = "Ljava/util/List;add(Ljava/lang/Object;)Z"), remap = false)
+	@WrapWithCondition(method = "updateWithPattern", at = @At(value="INVOKE", target = "Ljava/util/List;add(Ljava/lang/Object;)Z"))
 	private boolean stopLampParticles (List<OperatorSideEffect> sideEffects, Object effect) {
-		if (effect instanceof OperatorSideEffect.Particles particles) {
-			CastingContext ctx = hexical$harness.getCtx();
-			if (((CastingContextMixinInterface) (Object) ctx).getCastByLamp())
-				return false;
-			return sideEffects.add(particles);
-		}
-		return sideEffects.add((OperatorSideEffect) effect);
+		return !((CastingContextMixinInterface) (Object) hexical$harness.getCtx()).getCastByLamp();
 	}
 
-	@Redirect(method = "executeIotas", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/world/ServerWorld;playSound(Lnet/minecraft/entity/player/PlayerEntity;DDDLnet/minecraft/sound/SoundEvent;Lnet/minecraft/sound/SoundCategory;FF)V", remap = true), remap = false)
-	private void silenceLamp (ServerWorld world, PlayerEntity player, double x, double y, double z, SoundEvent event, SoundCategory type, float volume, float pitch) {
-		CastingContext ctx = hexical$harness.getCtx();
-		if (!((CastingContextMixinInterface) (Object) ctx).getCastByLamp())
-			world.playSound(player, x, y, z, event, type, volume, pitch);
+	@WrapWithCondition(method = "executeIotas", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/world/ServerWorld;playSound(Lnet/minecraft/entity/player/PlayerEntity;DDDLnet/minecraft/sound/SoundEvent;Lnet/minecraft/sound/SoundCategory;FF)V"))
+	private boolean silenceLamp (ServerWorld world, PlayerEntity player, double x, double y, double z, SoundEvent event, SoundCategory type, float volume, float pitch) {
+		return !((CastingContextMixinInterface) (Object) hexical$harness.getCtx()).getCastByLamp();
 	}
 }
