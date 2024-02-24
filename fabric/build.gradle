@@ -41,7 +41,6 @@ dependencies {
 	modImplementation "io.github.tropheusj:serialization-hooks:${serializationHooksVersion}"
 	include "io.github.tropheusj:serialization-hooks:${serializationHooksVersion}"
 	modImplementation "dev.emi:trinkets:${trinketsVersion}"
-	runtimeOnly(include("com.github.llamalad7.mixinextras:mixinextras-fabric:${mixinExtrasVersion}"))
 	common(project(path: ":common", configuration: "namedElements")) { transitive false }
 	shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
 }
