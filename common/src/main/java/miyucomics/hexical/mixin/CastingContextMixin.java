@@ -8,12 +8,6 @@ import org.spongepowered.asm.mixin.Unique;
 @Mixin(value = CastingContext.class)
 public abstract class CastingContextMixin implements CastingContextMixinInterface {
 	@Unique private boolean hexical$isCastByLamp;
-
-	@Override public boolean getCastByLamp() {
-		return hexical$isCastByLamp;
-	}
-
-	@Override public void setCastByLamp(boolean value) {
-		hexical$isCastByLamp = value;
-	}
+	@Override public boolean getCastByLamp() {return hexical$isCastByLamp;}
+	@Override public void setCastByLamp(boolean value) {hexical$isCastByLamp = value;}
 }

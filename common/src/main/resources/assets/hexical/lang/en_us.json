@@ -4,9 +4,11 @@
 	"item.hexical.conjured_staff": "Conjured Staff",
 	"block.hexical.advanced_conjured_block": "Advanced Conjured Block",
 
-	"hexcasting.spell.hexical:get_lamp_start_position": "Genie Refl.: Spatial",
-	"hexcasting.spell.hexical:get_lamp_start_rotation": "Genie Refl.: Rotational",
+	"hexcasting.spell.hexical:get_lamp_position": "Genie Refl.: Spatial",
+	"hexcasting.spell.hexical:get_lamp_rotation": "Genie Refl.: Rotational",
+	"hexcasting.spell.hexical:get_lamp_velocity": "Genie Refl.: Kinetic",
 	"hexcasting.spell.hexical:get_lamp_use_time": "Genie Refl.: Temporal",
+
 	"hexcasting.spell.hexical:chorus_blink": "Chorus Blink",
 	"hexcasting.spell.hexical:conjure_advanced_block": "Conjure Advanced Block",
 	"hexcasting.spell.hexical:conjure_staff": "Conjure Staff",
@@ -37,8 +39,9 @@
 	"hexical.page.master_lamps.1": "Because a separate mind casts my spells, a lamp should be able to cast even without me holding it. I estimate any villager short of a complete master of its field would be unable to cast so often unassisted though. These $(o)master lamps$() are activated and deactivated rather than used and while they're active in my inventory, they will cast every moment without my input.",
 	"hexical.page.master_lamps.2": "The output of a master lamp is so grand that it saturates the air around me with media... it's incredible. Unfortunately, if two lamps are active at once within my inventory, the resonances clash violently and causes a runaway chain that leads to a magical explosion, sapping almost five charged amethyst and violently repelling mobs, but strangely leaving blocks unharmed. To prevent such a cascade, I should only have one master lamp active at once, although I can still simutaneously use a regular lamp.",
 
-	"hexical.page.get_lamp_start_position": "Pushes the original position of the caster when the lamp started.",
-	"hexical.page.get_lamp_start_rotation": "Pushes the original rotation of the caster when the lamp started.",
+	"hexical.page.get_lamp_position": "Pushes the original position of the caster when the lamp started casting.",
+	"hexical.page.get_lamp_rotation": "Pushes the original rotation of the caster when the lamp started casting.",
+	"hexical.page.get_lamp_velocity": "Pushes the original velocity of the caster when the lamp started casting.",
 	"hexical.page.get_lamp_use_time": "Pushes how many times the lamp has casted. Divided by 20, it returns how many times in seconds the lamp has been in use.",
 
     "hexical.page.replacement_mind": "Replacement Mind",
