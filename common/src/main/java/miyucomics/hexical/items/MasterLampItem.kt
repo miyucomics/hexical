@@ -28,19 +28,16 @@ class MasterLampItem : ItemPackagedHex(Settings().maxCount(1)) {
 			stackNbt.putBoolean("active", false)
 
 		if (state.active && !stackNbt.getBoolean("active")) {
-			// there must be another lamp active. MISHAP!
 			player.sendMessage(Text.literal("You're lucky I haven't implemented a mishap yet."))
 			return TypedActionResult.fail(stack)
 		}
 
 		if (state.active) {
-			// deactivate lamp
 			state.active = false
 			stackNbt.putBoolean("active", false)
 			return TypedActionResult.success(stack)
 		}
 
-		// activate lamp
 		state.active = true
 		stackNbt.putBoolean("active", true)
 		state.startPosition = player.eyePos
