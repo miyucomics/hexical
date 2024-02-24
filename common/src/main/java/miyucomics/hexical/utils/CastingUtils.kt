@@ -13,8 +13,7 @@ class CastingUtils {
 		fun castInvisibly(world: ServerWorld, user: ServerPlayerEntity, hex: List<Iota>) {
 			val context = CastingContext(user, user.activeHand, CastingContext.CastSource.PACKAGED_HEX)
 			(context as CastingContextMixinInterface).setCastByLamp(true)
-			val harness = CastingHarness(context)
-			harness.executeIotas(hex, world)
+			CastingHarness(context).executeIotas(hex, world)
 		}
 	}
 }

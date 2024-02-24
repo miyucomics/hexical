@@ -5,7 +5,7 @@ import at.petrak.hexcasting.api.spell.RenderedSpell
 import at.petrak.hexcasting.api.spell.SpellAction
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.Iota
-import miyucomics.hexical.casting.mishaps.MishapNeedActiveMasterLamp
+import miyucomics.hexical.casting.mishaps.NeedActiveMasterLampMishap
 import miyucomics.hexical.persistent_state.PersistentStateHandler
 import miyucomics.hexical.registry.HexicalItems
 
@@ -15,7 +15,7 @@ class OpTerminateLamp : SpellAction {
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		val state = PersistentStateHandler.getPlayerState(ctx.caster)
 		if (!state.active)
-			throw MishapNeedActiveMasterLamp()
+			throw NeedActiveMasterLampMishap()
 		return Triple(Spell(), 0, listOf())
 	}
 

@@ -1,6 +1,8 @@
 package miyucomics.hexical.items
 
+import at.petrak.hexcasting.api.spell.iota.NullIota
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
+import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import miyucomics.hexical.persistent_state.PersistentStateHandler
 import miyucomics.hexical.utils.CastingUtils
 import net.minecraft.entity.Entity
@@ -41,6 +43,7 @@ class MasterLampItem : ItemPackagedHex(Settings().maxCount(1)) {
 		state.position = player.eyePos
 		state.rotation = player.rotationVector
 		state.velocity = player.velocity
+		state.storage = HexIotaTypes.serialize(NullIota())
 		state.time = world.time
 
 		return TypedActionResult.success(stack)
