@@ -12,7 +12,6 @@ class MasterLampData {
 	var velocity: Vec3d = Vec3d.ZERO
 	var storage: NbtCompound = NbtCompound()
 	var time: Long = 0
-	var active: Boolean = false
 
 	fun toNbt(): NbtCompound {
 		val tag = NbtCompound()
@@ -21,7 +20,6 @@ class MasterLampData {
 		tag.put("velocity", velocity.serializeToNBT())
 		tag.putCompound("storage", storage)
 		tag.putLong("time", time)
-		tag.putBoolean("active", active)
 		return tag
 	}
 
@@ -33,7 +31,6 @@ class MasterLampData {
 			state.velocity = vecFromNBT(tag.getLongArray("velocity"))
 			state.storage = tag.getCompound("storage")
 			state.time = tag.getLong("time")
-			state.active = tag.getBoolean("active")
 			return state
 		}
 	}
