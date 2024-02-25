@@ -5,6 +5,9 @@
 	"item.hexical.conjured_staff": "Conjured Staff",
 	"block.hexical.advanced_conjured_block": "Advanced Conjured Block",
 
+	"subtitles.hexical.lamp_activate": "Lamp activates",
+	"subtitles.hexical.lamp_deactivate": "Lamp deactivates",
+
 	"hexcasting.mishap.bad_block.advanced_conjured_block": "an advanced conjured block",
 
 	"hexcasting.spell.hexical:program_lamp": "Educate Genie",
