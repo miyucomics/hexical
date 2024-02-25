@@ -43,17 +43,17 @@ public class MinecraftClientMixin {
 		if (!(player.getMainHandStack().getItem() instanceof ConjuredStaffItem))
 			return;
 
-		int neededLength = player.getMainHandStack().getOrCreateNbt().getInt("rank");
-		if (neededLength == 0)
+		int rankOfStaff = player.getMainHandStack().getOrCreateNbt().getInt("rank");
+		if (rankOfStaff == 0)
 			return;
 
-		if (hexical$clicks.size() == neededLength) {
+		if (hexical$clicks.size() == rankOfStaff) {
 			hexical$timer = 0;
 			player.world.playSound(player, player.getX(), player.getY(), player.getZ(), HexSounds.CAST_THOTH, SoundCategory.PLAYERS, 1f, 1f);
 
 			PacketByteBuf buf = new PacketByteBuf(Unpooled.buffer());
-			buf.writeInt(neededLength);
-			for (int i = 0; i < neededLength; i++)
+			buf.writeInt(rankOfStaff);
+			for (int i = 0; i < rankOfStaff; i++)
 				buf.writeBoolean(hexical$clicks.get(i));
 			NetworkManager.sendToServer(Hexical.CAST_CONJURED_STAFF_PACKET, buf);
 

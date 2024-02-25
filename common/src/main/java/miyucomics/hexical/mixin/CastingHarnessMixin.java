@@ -39,6 +39,10 @@ public class CastingHarnessMixin {
 	private void withdrawMediaWisp(int mediaCost, boolean allowOvercast, CallbackInfoReturnable<Integer> cir) {
 		CastingContext ctx = hexical$harness.getCtx();
 		if (((CastingContextMixinInterface) (Object) ctx).getArchlamp()) {
+			if (ctx.getCaster().isCreative()) {
+				cir.setReturnValue(0);
+				return;
+			}
 			for (ItemStack stack : ctx.getCaster().getInventory().main) {
 				if (stack.getItem() instanceof MasterLampItem && stack.getOrCreateNbt().getBoolean("active")) {
 					ADMediaHolder mediaHolder = IXplatAbstractions.INSTANCE.findMediaHolder(stack);
