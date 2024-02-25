@@ -28,6 +28,7 @@
 	"hexcasting.spell.hexical:modify_block_bouncy": "Modify Block: Bouncy",
 	"hexcasting.spell.hexical:modify_block_ephemeral": "Modify Block: Ephemeral",
 	"hexcasting.spell.hexical:modify_block_invisible": "Modify Block: Invisible",
+	"hexcasting.spell.hexical:modify_block_replaceable": "Modify Block: Replaceable",
 	"hexcasting.spell.hexical:modify_block_volatile": "Modify Block: Volatile",
 	"hexcasting.spell.hexical:surveil_sentinel": "Surveil Sentinel",
 	"hexcasting.spell.hexical:nephthys": "Nephthys Gambit",
@@ -43,7 +44,7 @@
 	"hexical.category.lamp.desc": "I have heard tales from the villagers about a magical artifact. Legends say it contains a spirit that grants wishes, but I suspect that is just embellishment evolved over centuries of storytelling. Regardless, I dedicate this chapter to my pursuit and research of it.",
 
 	"hexical.page.mysterious_lamp": "Mysterious Lamp",
-	"hexical.page.mysterious_lamp.1": "At last I've discovered the subject of a thousand years of rumor! The lamp emanates a vague residue of media, vacuous in feeling... it reminds me of the $(o)hollow media structure$() of a focus that enables it to store iota, but there is also a presence inside with spellcasting capabilities similar to my own.",
+	"hexical.page.mysterious_lamp.1": "At last I've discovered the subject of a thousand years of rumor! To think that one of those pesky wandering traders was in possession of such a strong artifact. The lamp emanates a vague residue of media, vacuous in feeling... it reminds me of the $(o)hollow media structure$() of a focus that enables it to store iota, but there is also a presence inside with spellcasting capabilities similar to my own.",
 	"hexical.page.mysterious_lamp.2": "Because I am teaching an entity my will rather than inherently etching a casting device with it, I believe I should be able to freely overwrite the hex inside at any time.",
 	"hexical.page.new_possibilities": "New Possibilities",
 	"hexical.page.new_possibilities.1": "It casts $(o)$(l)EVERY INSTANT$(). After writing a spell into it, I was treated to a splendid gush of media. I estimate it must be around twenty times every second. The presence inside the lamp performs the casting on my behalf with extraordinary efficiency, not wasting media in the form of sound and particles that accompany other casting methods.",
@@ -81,6 +82,7 @@
 	"hexical.page.modify_block_bouncy": "This modifier makes the block delightfully fun to bounce on! It returns more force to me than regular slime blocks and I notice even if I sneak, the block bounces me regardless.",
 	"hexical.page.modify_block_ephemeral": "This modifier takes in a number as well as a position and makes the block destroy itself after the number in twentieths of a second has passed. No more messy floating blocks!",
 	"hexical.page.modify_block_invisible": "This modifier prevents the block from emiting the telltale particles, even when being stood on.",
+	"hexical.page.modify_block_replaceable": "This modifier is useful for construction! With this modifier applied, I find I can easily place another block in the place of a conjured block.",
 	"hexical.page.modify_block_volatile": "This modifier makes the block break other conjured blocks it's touching. Notably, if it breaks another volatile block, the chain continues down until every volatile block shatters.",
 
 	"hexical.page.chorus_blink.1": "Between Blink, Greater Teleport, ender pearls, and chorus fruit, this spell serves a harmonious midpoint for safe, precise, and cheap teleportation.",
