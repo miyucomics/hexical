@@ -2,12 +2,15 @@ package miyucomics.hexical.items
 
 import at.petrak.hexcasting.api.utils.serializeToNBT
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
+import miyucomics.hexical.registry.HexicalItems
 import miyucomics.hexical.utils.CastingUtils
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld
+import net.minecraft.sound.SoundCategory
+import net.minecraft.sound.SoundEvents
 import net.minecraft.util.Hand
 import net.minecraft.util.TypedActionResult
 import net.minecraft.util.UseAction
@@ -32,6 +35,10 @@ class LampItem : ItemPackagedHex(Settings().maxCount(1)) {
 		if (world.isClient) return
 		if (getMedia(stack) == 0) return
 		CastingUtils.castInvisibly(world as ServerWorld, user as ServerPlayerEntity, getHex(stack, world) ?: return)
+		if (getMedia(stack) == 0) {
+			world.playSound(user.x, user.y, user.z, SoundEvents.ITEM_SHIELD_BREAK, SoundCategory.MASTER, 1f, 1f, true)
+			user.setStackInHand(user.activeHand, ItemStack(HexicalItems.TARNISHED_LAMP_ITEM))
+		}
 	}
 
 	override fun getUseAction(pStack: ItemStack): UseAction { return UseAction.BOW }
