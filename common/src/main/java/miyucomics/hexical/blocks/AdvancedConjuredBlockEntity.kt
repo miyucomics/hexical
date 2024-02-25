@@ -20,6 +20,7 @@ class AdvancedConjuredBlockEntity(pos: BlockPos?, state: BlockState?) : HexBlock
 		"bouncy" to false,
 		"ephemeral" to false,
 		"invisible" to false,
+		"replaceable" to false,
 		"volatile" to false
 	)
 	var lifespan: Int = 0
@@ -43,9 +44,7 @@ class AdvancedConjuredBlockEntity(pos: BlockPos?, state: BlockState?) : HexBlock
 	}
 
 	fun particleEffect() {
-		val color = colorizer.getColor(
-			random.nextFloat() * 16384, Vec3d(random.nextDouble(), random.nextDouble(), random.nextDouble()).multiply(
-				random.nextDouble() * 3))
+		val color = colorizer.getColor(random.nextFloat() * 16384, Vec3d(random.nextDouble(), random.nextDouble(), random.nextDouble()).multiply(random.nextDouble() * 3))
 		assert(world != null)
 		if (random.nextFloat() < 0.2) {
 			world!!.addParticle(
