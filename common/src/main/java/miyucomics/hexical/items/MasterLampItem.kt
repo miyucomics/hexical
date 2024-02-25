@@ -5,6 +5,7 @@ import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import miyucomics.hexical.persistent_state.PersistentStateHandler
 import miyucomics.hexical.registry.HexicalItems
+import miyucomics.hexical.registry.HexicalSounds
 import miyucomics.hexical.utils.CastingUtils
 import net.minecraft.entity.Entity
 import net.minecraft.entity.player.PlayerEntity
@@ -19,31 +20,33 @@ import net.minecraft.util.TypedActionResult
 import net.minecraft.world.World
 
 class MasterLampItem : ItemPackagedHex(Settings().maxCount(1)) {
-	override fun use(world: World, player: PlayerEntity, usedHand: Hand): TypedActionResult<ItemStack> {
-		val stack = player.getStackInHand(usedHand)
+	override fun use(world: World, user: PlayerEntity, usedHand: Hand): TypedActionResult<ItemStack> {
+		val stack = user.getStackInHand(usedHand)
 		if (!hasHex(stack)) return TypedActionResult.fail(stack)
 		if (world.isClient) return TypedActionResult.success(stack)
 
-		val state = PersistentStateHandler.getPlayerState(player)
+		val state = PersistentStateHandler.getPlayerState(user)
 		val stackNbt = stack.orCreateNbt
 		if (!stackNbt.contains("active"))
 			stackNbt.putBoolean("active", false)
 
-		val currentlyUsingArchLamp = CastingUtils.doesPlayerHaveActiveArchLamp(player as ServerPlayerEntity)
+		val currentlyUsingArchLamp = CastingUtils.doesPlayerHaveActiveArchLamp(user as ServerPlayerEntity)
 		if (currentlyUsingArchLamp) {
 			if (stackNbt.getBoolean("active")) {
 				stackNbt.putBoolean("active", false)
+				world.playSound(user.x, user.y, user.z, HexicalSounds.LAMP_DEACTIVATE_SOUND_EVENT, SoundCategory.MASTER, 1f, 1f, true)
 				return TypedActionResult.success(stack)
 			} else {
-				player.sendMessage(Text.literal("You're lucky I haven't implemented a mishap yet."))
+				user.sendMessage(Text.literal("You're lucky I haven't implemented a mishap yet."))
 				return TypedActionResult.fail(stack)
 			}
 		}
 
+		world.playSound(user.x, user.y, user.z, HexicalSounds.LAMP_ACTIVATE_SOUND_EVENT, SoundCategory.MASTER, 1f, 1f, true)
 		stackNbt.putBoolean("active", true)
-		state.position = player.eyePos
-		state.rotation = player.rotationVector
-		state.velocity = player.velocity
+		state.position = user.eyePos
+		state.rotation = user.rotationVector
+		state.velocity = user.velocity
 		state.storage = HexIotaTypes.serialize(NullIota())
 		state.time = world.time
 
@@ -55,7 +58,7 @@ class MasterLampItem : ItemPackagedHex(Settings().maxCount(1)) {
 		if (getMedia(stack) == 0) return
 		if (user !is ServerPlayerEntity) return
 		if (!stack.orCreateNbt.getBoolean("active")) return
-		CastingUtils.castInvisibly(world as ServerWorld, user, getHex(stack, world) ?: return)
+		CastingUtils.castInvisibly(world as ServerWorld, user, getHex(stack, world) ?: return, true)
 		if (getMedia(stack) == 0) {
 			stack.orCreateNbt.putBoolean("active", false)
 			world.playSound(user.x, user.y, user.z, SoundEvents.ITEM_SHIELD_BREAK, SoundCategory.MASTER, 1f, 1f, true)

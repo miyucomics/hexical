@@ -3,6 +3,7 @@ package miyucomics.hexical.items
 import at.petrak.hexcasting.api.utils.serializeToNBT
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
 import miyucomics.hexical.registry.HexicalItems
+import miyucomics.hexical.registry.HexicalSounds
 import miyucomics.hexical.utils.CastingUtils
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.player.PlayerEntity
@@ -17,17 +18,18 @@ import net.minecraft.util.UseAction
 import net.minecraft.world.World
 
 class LampItem : ItemPackagedHex(Settings().maxCount(1)) {
-	override fun use(world: World, player: PlayerEntity, usedHand: Hand): TypedActionResult<ItemStack> {
-		val stack = player.getStackInHand(usedHand)
+	override fun use(world: World, user: PlayerEntity, usedHand: Hand): TypedActionResult<ItemStack> {
+		val stack = user.getStackInHand(usedHand)
 		if (!hasHex(stack)) return TypedActionResult.fail(stack)
 		val stackNbt = stack.orCreateNbt
+		world.playSound(user.x, user.y, user.z, HexicalSounds.LAMP_ACTIVATE_SOUND_EVENT, SoundCategory.MASTER, 1f, 1f, true)
 		if (!world.isClient) {
-			stackNbt.putLongArray("position", player.eyePos.serializeToNBT().longArray);
-			stackNbt.putLongArray("rotation", player.rotationVector.serializeToNBT().longArray);
-			stackNbt.putLongArray("velocity", player.velocity.serializeToNBT().longArray);
+			stackNbt.putLongArray("position", user.eyePos.serializeToNBT().longArray);
+			stackNbt.putLongArray("rotation", user.rotationVector.serializeToNBT().longArray);
+			stackNbt.putLongArray("velocity", user.velocity.serializeToNBT().longArray);
 			stackNbt.putLong("start_time", world.time);
 		}
-		player.setCurrentHand(usedHand)
+		user.setCurrentHand(usedHand)
 		return TypedActionResult.success(stack)
 	}
 
@@ -39,6 +41,10 @@ class LampItem : ItemPackagedHex(Settings().maxCount(1)) {
 			world.playSound(user.x, user.y, user.z, SoundEvents.ITEM_SHIELD_BREAK, SoundCategory.MASTER, 1f, 1f, true)
 			user.setStackInHand(user.activeHand, ItemStack(HexicalItems.TARNISHED_LAMP_ITEM))
 		}
+	}
+
+	override fun onStoppedUsing(stack: ItemStack, world: World, user: LivingEntity, remainingUseTicks: Int) {
+		world.playSound(user.x, user.y, user.z, HexicalSounds.LAMP_DEACTIVATE_SOUND_EVENT, SoundCategory.MASTER, 1f, 1f, true)
 	}
 
 	override fun getUseAction(pStack: ItemStack): UseAction { return UseAction.BOW }
