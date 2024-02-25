@@ -27,7 +27,7 @@ class OpMakeGenie : SpellAction {
 		ctx.assertEntityInRange(battery)
 		if (!isMediaItem(battery.stack) || extractMedia(battery.stack, drainForBatteries = true, simulate = true) <= 0)
 			throw MishapBadItem.of(battery, "media_for_battery")
-		val (_, hand) = ctx.getHeldItemToOperateOn { it.item is HexicalItems.TARNISHED_LAMP_ITEM }
+		val (_, hand) = ctx.getHeldItemToOperateOn { true }
 		return Triple(Spell(sacrifice, battery, hand), 0, listOf())
 	}
 
