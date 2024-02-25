@@ -9,13 +9,13 @@ import at.petrak.hexcasting.api.spell.mishaps.MishapOthersName
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import miyucomics.hexical.casting.mishaps.NeedActiveMasterLampMishap
 import miyucomics.hexical.persistent_state.PersistentStateHandler
+import miyucomics.hexical.utils.CastingUtils
 
 class OpSetMasterLampStorage : SpellAction {
 	override val argc = 1
 
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>>? {
-		val state = PersistentStateHandler.getPlayerState(ctx.caster)
-		if (!state.active)
+		if (!CastingUtils.doesPlayerHaveActiveArchLamp(ctx.caster))
 			throw NeedActiveMasterLampMishap()
 		val iota = args[0]
 		val trueName = MishapOthersName.getTrueNameFromDatum(iota, ctx.caster)
