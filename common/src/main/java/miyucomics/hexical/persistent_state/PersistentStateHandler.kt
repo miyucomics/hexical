@@ -10,20 +10,20 @@ import java.util.*
 import java.util.function.Consumer
 
 class PersistentStateHandler : PersistentState() {
-	private var masterLamps: HashMap<UUID, MasterLampData> = HashMap<UUID, MasterLampData>()
+	private var archLamps: HashMap<UUID, ArchLampData> = HashMap<UUID, ArchLampData>()
 
 	override fun writeNbt(nbt: NbtCompound): NbtCompound {
-		val nbtMasterLamps = NbtCompound()
-		masterLamps.forEach { (uuid, playerData) -> nbtMasterLamps.put(uuid.toString(), playerData.toNbt()) }
-		nbt.put("master_lamp", nbtMasterLamps)
+		val nbtArchLamps = NbtCompound()
+		archLamps.forEach { (uuid, playerData) -> nbtArchLamps.put(uuid.toString(), playerData.toNbt()) }
+		nbt.put("arch_lamp", nbtArchLamps)
 		return nbt
 	}
 
 	companion object {
 		private fun createFromNbt(tag: NbtCompound): PersistentStateHandler {
 			val state = PersistentStateHandler()
-			val nbtMasterLamps = tag.getCompound("master_lamp")
-			nbtMasterLamps.keys.forEach(Consumer { key: String -> state.masterLamps[UUID.fromString(key)] = MasterLampData.createFromNbt(nbtMasterLamps.getCompound(key)) })
+			val nbtArchLamps = tag.getCompound("arch_lamp")
+			nbtArchLamps.keys.forEach(Consumer { key: String -> state.archLamps[UUID.fromString(key)] = ArchLampData.createFromNbt(nbtArchLamps.getCompound(key)) })
 			return state
 		}
 
@@ -34,9 +34,9 @@ class PersistentStateHandler : PersistentState() {
 			return state
 		}
 
-		fun getPlayerState(player: LivingEntity): MasterLampData {
+		fun getPlayerState(player: LivingEntity): ArchLampData {
 			val serverState: PersistentStateHandler = getServerState(player.getWorld().server!!)
-			val playerState: MasterLampData = serverState.masterLamps.computeIfAbsent(player.uuid) { MasterLampData() }
+			val playerState: ArchLampData = serverState.archLamps.computeIfAbsent(player.uuid) { ArchLampData() }
 			return playerState
 		}
 	}

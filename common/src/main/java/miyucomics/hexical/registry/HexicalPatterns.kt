@@ -6,9 +6,9 @@ import at.petrak.hexcasting.api.spell.math.HexDir
 import at.petrak.hexcasting.api.spell.math.HexPattern
 import miyucomics.hexical.Hexical
 import miyucomics.hexical.casting.patterns.operators.eval.OpNephthys
+import miyucomics.hexical.casting.patterns.operators.lamp.OpGetArchLampData
 import miyucomics.hexical.casting.patterns.operators.lamp.OpGetLampData
-import miyucomics.hexical.casting.patterns.operators.lamp.OpGetMasterLampData
-import miyucomics.hexical.casting.patterns.operators.lamp.OpIsUsingMasterLamp
+import miyucomics.hexical.casting.patterns.operators.lamp.OpIsUsingArchLamp
 import miyucomics.hexical.casting.patterns.spells.*
 import net.minecraft.util.Identifier
 
@@ -34,14 +34,14 @@ object HexicalPatterns {
 	var LAMP_ROTATION: HexPattern = register(HexPattern.fromAngles("qwddedadw", HexDir.SOUTH_WEST), "get_lamp_rotation", OpGetLampData(1))
 	var LAMP_VELOCITY: HexPattern = register(HexPattern.fromAngles("qwddedqew", HexDir.SOUTH_WEST), "get_lamp_velocity", OpGetLampData(2))
 	var LAMP_USE_TIME: HexPattern = register(HexPattern.fromAngles("qwddedqwddwa", HexDir.SOUTH_WEST), "get_lamp_use_time", OpGetLampData(3))
-	var MASTER_LAMP_POSITION: HexPattern = register(HexPattern.fromAngles("qaqwddedqdd", HexDir.NORTH_EAST), "get_master_lamp_position", OpGetMasterLampData(0))
-	var MASTER_LAMP_ROTATION: HexPattern = register(HexPattern.fromAngles("qaqwddedadw", HexDir.NORTH_EAST), "get_master_lamp_rotation", OpGetMasterLampData(1))
-	var MASTER_LAMP_VELOCITY: HexPattern = register(HexPattern.fromAngles("qaqwddedqew", HexDir.NORTH_EAST), "get_master_lamp_velocity", OpGetMasterLampData(2))
-	var MASTER_LAMP_USE_TIME: HexPattern = register(HexPattern.fromAngles("qaqwddedqwddwa", HexDir.NORTH_EAST), "get_master_lamp_use_time", OpGetMasterLampData(3))
-	var MASTER_LAMP_STORAGE: HexPattern = register(HexPattern.fromAngles("qaqwddedqwaqqqqq", HexDir.NORTH_EAST), "get_master_lamp_storage", OpGetMasterLampData(4))
-	var IS_USING_LAMP: HexPattern = register(HexPattern.fromAngles("qaqwddedqeed", HexDir.NORTH_EAST), "is_using_lamp", OpIsUsingMasterLamp())
-	var TERMINATE_LAMP: HexPattern = register(HexPattern.fromAngles("qaqwddedwaqdee", HexDir.NORTH_EAST), "terminate_master_lamp", OpTerminateLamp())
-	var SET_LAMP_STORAGE: HexPattern = register(HexPattern.fromAngles("qaqwddedqedeeeee", HexDir.NORTH_EAST), "set_lamp_storage", OpSetMasterLampStorage())
+	var ARCH_LAMP_POSITION: HexPattern = register(HexPattern.fromAngles("qaqwddedqdd", HexDir.NORTH_EAST), "get_arch_lamp_position", OpGetArchLampData(0))
+	var ARCH_LAMP_ROTATION: HexPattern = register(HexPattern.fromAngles("qaqwddedadw", HexDir.NORTH_EAST), "get_arch_lamp_rotation", OpGetArchLampData(1))
+	var ARCH_LAMP_VELOCITY: HexPattern = register(HexPattern.fromAngles("qaqwddedqew", HexDir.NORTH_EAST), "get_arch_lamp_velocity", OpGetArchLampData(2))
+	var ARCH_LAMP_USE_TIME: HexPattern = register(HexPattern.fromAngles("qaqwddedqwddwa", HexDir.NORTH_EAST), "get_arch_lamp_use_time", OpGetArchLampData(3))
+	var ARCH_LAMP_STORAGE: HexPattern = register(HexPattern.fromAngles("qaqwddedqwaqqqqq", HexDir.NORTH_EAST), "get_arch_lamp_storage", OpGetArchLampData(4))
+	var IS_USING_LAMP: HexPattern = register(HexPattern.fromAngles("qaqwddedqeed", HexDir.NORTH_EAST), "is_using_lamp", OpIsUsingArchLamp())
+	var TERMINATE_LAMP: HexPattern = register(HexPattern.fromAngles("qaqwddedwaqdee", HexDir.NORTH_EAST), "terminate_arch_lamp", OpTerminateLamp())
+	var SET_LAMP_STORAGE: HexPattern = register(HexPattern.fromAngles("qaqwddedqedeeeee", HexDir.NORTH_EAST), "set_lamp_storage", OpSetArchLampStorage())
 
 	@JvmStatic
 	fun init() {

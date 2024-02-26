@@ -7,7 +7,7 @@ import at.petrak.hexcasting.api.spell.iota.BooleanIota
 import at.petrak.hexcasting.api.spell.iota.Iota
 import miyucomics.hexical.utils.CastingUtils
 
-class OpIsUsingMasterLamp : ConstMediaAction {
+class OpIsUsingArchLamp : ConstMediaAction {
 	override val argc = 1
 
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {

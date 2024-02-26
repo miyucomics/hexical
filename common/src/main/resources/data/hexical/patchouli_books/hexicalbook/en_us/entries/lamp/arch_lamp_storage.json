@@ -1,5 +1,5 @@
 {
-	"name": "hexical.page.master_lamp_storage",
+	"name": "hexical.page.arch_lamp_storage",
 	"icon": "hexcasting:focus",
 	"category": "hexical:lamp",
     "sortnum": 4,
@@ -14,11 +14,11 @@
 		},
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:get_master_lamp_storage",
-			"anchor": "hexical:get_master_lamp_storage",
+			"op_id": "hexical:get_arch_lamp_storage",
+			"anchor": "hexical:get_arch_lamp_storage",
 			"input": "",
 			"output": "any",
-			"text": "hexical.page.get_master_lamp_storage"
+			"text": "hexical.page.get_arch_lamp_storage"
 		}
 	]
 }

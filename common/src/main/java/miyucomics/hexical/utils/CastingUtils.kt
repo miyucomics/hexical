@@ -21,7 +21,7 @@ class CastingUtils {
 
 		fun doesPlayerHaveActiveArchLamp(player: ServerPlayerEntity): Boolean {
 			for (stack in player.inventory.main)
-				if (stack.item == HexicalItems.MASTER_LAMP_ITEM && stack.orCreateNbt.getBoolean("active"))
+				if (stack.item == HexicalItems.ARCH_LAMP_ITEM && stack.orCreateNbt.getBoolean("active"))
 					return true
 			return false
 		}
