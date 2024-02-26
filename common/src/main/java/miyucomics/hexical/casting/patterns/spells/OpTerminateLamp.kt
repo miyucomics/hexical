@@ -20,10 +20,9 @@ class OpTerminateLamp : SpellAction {
 
 	private class Spell : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
-			for (slot in ctx.caster.inventory.main) {
+			for (slot in ctx.caster.inventory.main)
 				if (slot.item == HexicalItems.MASTER_LAMP_ITEM)
 					slot.orCreateNbt.putBoolean("active", false)
-			}
 		}
 	}
 }
