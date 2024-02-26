@@ -1,7 +1,7 @@
 {
 	"parent": "minecraft:item/generated",
 	"textures": {
-		"layer0": "hexical:item/master_lamp"
+		"layer0": "hexical:item/arch_lamp"
 	},
 	"display": {
 		"thirdperson_righthand": {

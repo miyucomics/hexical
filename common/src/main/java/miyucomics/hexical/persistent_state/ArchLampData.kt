@@ -6,7 +6,7 @@ import at.petrak.hexcasting.api.utils.vecFromNBT
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.util.math.Vec3d
 
-class MasterLampData {
+class ArchLampData {
 	var position: Vec3d = Vec3d.ZERO
 	var rotation: Vec3d = Vec3d.ZERO
 	var velocity: Vec3d = Vec3d.ZERO
@@ -24,8 +24,8 @@ class MasterLampData {
 	}
 
 	companion object {
-		fun createFromNbt(tag: NbtCompound): MasterLampData {
-			val state = MasterLampData()
+		fun createFromNbt(tag: NbtCompound): ArchLampData {
+			val state = ArchLampData()
 			state.position = vecFromNBT(tag.getLongArray("position"))
 			state.rotation = vecFromNBT(tag.getLongArray("rotation"))
 			state.velocity = vecFromNBT(tag.getLongArray("velocity"))

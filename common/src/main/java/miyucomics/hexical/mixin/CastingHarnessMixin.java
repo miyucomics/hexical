@@ -7,7 +7,7 @@ import at.petrak.hexcasting.api.spell.casting.sideeffects.OperatorSideEffect;
 import at.petrak.hexcasting.xplat.IXplatAbstractions;
 import com.llamalad7.mixinextras.injector.WrapWithCondition;
 import miyucomics.hexical.interfaces.CastingContextMixinInterface;
-import miyucomics.hexical.items.MasterLampItem;
+import miyucomics.hexical.items.ArchLampItem;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
@@ -44,7 +44,7 @@ public class CastingHarnessMixin {
 				return;
 			}
 			for (ItemStack stack : ctx.getCaster().getInventory().main) {
-				if (stack.getItem() instanceof MasterLampItem && stack.getOrCreateNbt().getBoolean("active")) {
+				if (stack.getItem() instanceof ArchLampItem && stack.getOrCreateNbt().getBoolean("active")) {
 					ADMediaHolder mediaHolder = IXplatAbstractions.INSTANCE.findMediaHolder(stack);
 					assert mediaHolder != null;
 					int mediaToTake = Math.min(mediaCost, mediaHolder.withdrawMedia(-1, true));
