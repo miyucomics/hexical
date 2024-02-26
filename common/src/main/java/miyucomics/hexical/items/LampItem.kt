@@ -11,7 +11,6 @@ import net.minecraft.item.ItemStack
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.sound.SoundCategory
-import net.minecraft.sound.SoundEvents
 import net.minecraft.util.Hand
 import net.minecraft.util.TypedActionResult
 import net.minecraft.util.UseAction
@@ -37,10 +36,8 @@ class LampItem : ItemPackagedHex(Settings().maxCount(1)) {
 		if (world.isClient) return
 		if (getMedia(stack) == 0) return
 		CastingUtils.castInvisibly(world as ServerWorld, user as ServerPlayerEntity, getHex(stack, world) ?: return)
-		if (getMedia(stack) == 0) {
-			world.playSound(user.x, user.y, user.z, SoundEvents.ITEM_SHIELD_BREAK, SoundCategory.MASTER, 1f, 1f, true)
-			user.setStackInHand(user.activeHand, ItemStack(HexicalItems.TARNISHED_LAMP_ITEM))
-		}
+		if (getMedia(stack) == 0)
+			user.setStackInHand(user.activeHand, ItemStack(HexicalItems.LAMP_ITEM))
 	}
 
 	override fun onStoppedUsing(stack: ItemStack, world: World, user: LivingEntity, remainingUseTicks: Int) {
