@@ -13,10 +13,10 @@ import net.minecraft.item.ItemStack
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.sound.SoundCategory
-import net.minecraft.text.Text
 import net.minecraft.util.Hand
 import net.minecraft.util.TypedActionResult
 import net.minecraft.world.World
+import net.minecraft.world.explosion.Explosion
 
 class MasterLampItem : ItemPackagedHex(Settings().maxCount(1)) {
 	override fun use(world: World, user: PlayerEntity, usedHand: Hand): TypedActionResult<ItemStack> {
@@ -36,7 +36,11 @@ class MasterLampItem : ItemPackagedHex(Settings().maxCount(1)) {
 				world.playSound(user.x, user.y, user.z, HexicalSounds.LAMP_DEACTIVATE_SOUND_EVENT, SoundCategory.MASTER, 1f, 1f, true)
 				return TypedActionResult.success(stack)
 			} else {
-				user.sendMessage(Text.literal("You're lucky I haven't implemented a mishap yet."))
+				for (slot in user.inventory.main)
+					if (slot.item == HexicalItems.MASTER_LAMP_ITEM)
+						slot.orCreateNbt.putBoolean("active", false)
+				world.createExplosion(user, user.x, user.y, user.z, 3f, Explosion.DestructionType.BREAK)
+				user.getItemCooldownManager()[this] = 100
 				return TypedActionResult.fail(stack)
 			}
 		}
