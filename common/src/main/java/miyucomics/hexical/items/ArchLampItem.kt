@@ -16,9 +16,8 @@ import net.minecraft.sound.SoundCategory
 import net.minecraft.util.Hand
 import net.minecraft.util.TypedActionResult
 import net.minecraft.world.World
-import net.minecraft.world.explosion.Explosion
 
-class MasterLampItem : ItemPackagedHex(Settings().maxCount(1)) {
+class ArchLampItem : ItemPackagedHex(Settings().maxCount(1)) {
 	override fun use(world: World, user: PlayerEntity, usedHand: Hand): TypedActionResult<ItemStack> {
 		val stack = user.getStackInHand(usedHand)
 		if (!hasHex(stack)) return TypedActionResult.fail(stack)
@@ -37,9 +36,8 @@ class MasterLampItem : ItemPackagedHex(Settings().maxCount(1)) {
 				return TypedActionResult.success(stack)
 			} else {
 				for (slot in user.inventory.main)
-					if (slot.item == HexicalItems.MASTER_LAMP_ITEM)
+					if (slot.item == HexicalItems.ARCH_LAMP_ITEM)
 						slot.orCreateNbt.putBoolean("active", false)
-				world.createExplosion(user, user.x, user.y, user.z, 3f, Explosion.DestructionType.BREAK)
 				user.getItemCooldownManager()[this] = 100
 				return TypedActionResult.fail(stack)
 			}
