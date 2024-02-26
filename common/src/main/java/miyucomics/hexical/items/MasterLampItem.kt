@@ -13,7 +13,6 @@ import net.minecraft.item.ItemStack
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.sound.SoundCategory
-import net.minecraft.sound.SoundEvents
 import net.minecraft.text.Text
 import net.minecraft.util.Hand
 import net.minecraft.util.TypedActionResult
@@ -59,11 +58,8 @@ class MasterLampItem : ItemPackagedHex(Settings().maxCount(1)) {
 		if (user !is ServerPlayerEntity) return
 		if (!stack.orCreateNbt.getBoolean("active")) return
 		CastingUtils.castInvisibly(world as ServerWorld, user, getHex(stack, world) ?: return, true)
-		if (getMedia(stack) == 0) {
-			stack.orCreateNbt.putBoolean("active", false)
-			world.playSound(user.x, user.y, user.z, SoundEvents.ITEM_SHIELD_BREAK, SoundCategory.MASTER, 1f, 1f, true)
-			user.inventory.setStack(slot, ItemStack(HexicalItems.TARNISHED_LAMP_ITEM))
-		}
+		if (getMedia(stack) == 0)
+			user.inventory.setStack(slot, ItemStack(HexicalItems.LAMP_ITEM))
 	}
 
 	override fun breakAfterDepletion(): Boolean { return false }
