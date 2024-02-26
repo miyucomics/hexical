@@ -7,8 +7,8 @@ import net.minecraft.util.registry.Registry
 
 object HexicalSounds {
 	private val SOUNDS: DeferredRegister<SoundEvent> = DeferredRegister.create(Hexical.MOD_ID, Registry.SOUND_EVENT_KEY)
-	var LAMP_ACTIVATE_SOUND_EVENT = register("lamp_activate")
-	var LAMP_DEACTIVATE_SOUND_EVENT = register("lamp_deactivate")
+	val LAMP_ACTIVATE_SOUND_EVENT = register("lamp_activate")
+	val LAMP_DEACTIVATE_SOUND_EVENT = register("lamp_deactivate")
 
 	@JvmStatic
 	fun init() {
