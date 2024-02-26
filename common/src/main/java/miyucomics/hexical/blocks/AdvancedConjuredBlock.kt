@@ -26,6 +26,7 @@ import net.minecraft.util.math.Vec3i
 import net.minecraft.world.BlockView
 import net.minecraft.world.World
 import net.minecraft.world.WorldAccess
+import net.minecraft.world.event.GameEvent
 
 class AdvancedConjuredBlock : BlockConjured(
 	Settings.of(Material.ORGANIC_PRODUCT).
@@ -80,11 +81,13 @@ class AdvancedConjuredBlock : BlockConjured(
 	}
 
 	override fun onBreak(world: World, position: BlockPos, state: BlockState, player: PlayerEntity?) {
-		world.playSound(position.x.toDouble(), position.y.toDouble(), position.z.toDouble(), SoundEvents.BLOCK_AMETHYST_BLOCK_BREAK, SoundCategory.BLOCKS, 1f, 1f, true)
 		val tile = world.getBlockEntity(position)
 		if (tile !is AdvancedConjuredBlockEntity)
 			return
+		world.playSound(position.x.toDouble(), position.y.toDouble(), position.z.toDouble(), SoundEvents.BLOCK_AMETHYST_BLOCK_BREAK, SoundCategory.BLOCKS, 1f, 1f, true)
+		world.emitGameEvent(GameEvent.BLOCK_DESTROY, position, GameEvent.Emitter.of(player, state))
 		world.setBlockState(position, Blocks.AIR.defaultState)
+		world.removeBlockEntity(position)
 		if (tile.properties["volatile"]!!) {
 			for (offset in volatileOffsets) {
 				val positionToTest = position.add(offset);
@@ -108,8 +111,8 @@ class AdvancedConjuredBlock : BlockConjured(
 		return AdvancedConjuredBlockEntity(pos, state)
 	}
 
-	override fun <T : BlockEntity?> getTicker(pworld: World, pstate: BlockState, type: BlockEntityType<T>): BlockEntityTicker<T>? {
-		return if (pworld.isClient) BlockEntityTicker { world, position, state, blockEntity: T -> tick(world, position, state, blockEntity) } else null
+	override fun <T : BlockEntity?> getTicker(pworld: World, pstate: BlockState, type: BlockEntityType<T>): BlockEntityTicker<T> {
+		return BlockEntityTicker { world, position, state, blockEntity: T -> tick(world, position, state, blockEntity) }
 	}
 
 	companion object {
