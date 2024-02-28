@@ -72,8 +72,8 @@
 	"hexical.page.terminate_arch_lamp": "Casted by a casting device, staff, or within the arch lamp, deactivates the lamp's operation. Similar to Charon's.",
 
 	"hexical.page.arch_lamp_storage": "Arch Lamp Storage",
-	"hexical.page.set_lamp_storage": "The arch lamp also supports an iota storage, which this pattern sets. Unlike the ravenmind, it is subject to the Transgress Others mishap.",
-	"hexical.page.get_arch_lamp_storage": "Gets the storage iota of the lamp. Requires an active arch lamp.",
+	"hexical.page.set_arch_lamp_storage": "The arch lamp also supports an iota storage similar to the Ravenmind, which this pattern sets.",
+	"hexical.page.get_arch_lamp_storage": "Supporting the last one, this pattern sets the iota storage of my current active lamp. Unlike the Ravenmind, this pattern is subject to the Transgress Others mishap.",
 
 	"hexical.page.hexical_metaevals": "Hexical Meta-evaluations",
 	"hexical.page.nephthys.1": "Pops a pattern list and a number from the stack and dives down n iota to casts the pattern list. Useful for surgery-like operations.",

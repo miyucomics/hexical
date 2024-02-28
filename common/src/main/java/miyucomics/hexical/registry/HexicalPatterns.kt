@@ -41,7 +41,7 @@ object HexicalPatterns {
 	var ARCH_LAMP_STORAGE: HexPattern = register(HexPattern.fromAngles("qaqwddedqwaqqqqq", HexDir.NORTH_EAST), "get_arch_lamp_storage", OpGetArchLampData(4))
 	var IS_USING_LAMP: HexPattern = register(HexPattern.fromAngles("qaqwddedqeed", HexDir.NORTH_EAST), "is_using_lamp", OpIsUsingArchLamp())
 	var TERMINATE_LAMP: HexPattern = register(HexPattern.fromAngles("qaqwddedwaqdee", HexDir.NORTH_EAST), "terminate_arch_lamp", OpTerminateLamp())
-	var SET_LAMP_STORAGE: HexPattern = register(HexPattern.fromAngles("qaqwddedqedeeeee", HexDir.NORTH_EAST), "set_lamp_storage", OpSetArchLampStorage())
+	var SET_LAMP_STORAGE: HexPattern = register(HexPattern.fromAngles("qaqwddedqedeeeee", HexDir.NORTH_EAST), "set_arch_lamp_storage", OpSetArchLampStorage())
 
 	@JvmStatic
 	fun init() {
