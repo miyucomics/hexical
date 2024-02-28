@@ -6,11 +6,11 @@
 	"pages": [
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:set_lamp_storage",
-			"anchor": "hexical:set_lamp_storage",
+			"op_id": "hexical:set_arch_lamp_storage",
+			"anchor": "hexical:set_arch_lamp_storage",
 			"input": "any",
 			"output": "",
-			"text": "hexical.page.set_lamp_storage"
+			"text": "hexical.page.set_arch_lamp_storage"
 		},
 		{
 			"type": "hexcasting:pattern",

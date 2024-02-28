@@ -21,7 +21,7 @@
 	"hexcasting.spell.hexical:get_arch_lamp_velocity": "Archgenie Refl.: Kinetic",
 	"hexcasting.spell.hexical:get_arch_lamp_use_time": "Archgenie Refl.: Temporal",
 	"hexcasting.spell.hexical:get_arch_lamp_storage": "Archgenie Refl.: Memory",
-	"hexcasting.spell.hexical:set_lamp_storage": "Archgenie Gambit",
+	"hexcasting.spell.hexical:set_arch_lamp_storage": "Archgenie Gambit",
 	"hexcasting.spell.hexical:is_using_lamp": "Archgenie Purification",
 	"hexcasting.spell.hexical:terminate_arch_lamp": "Archgenie Termination",
 
