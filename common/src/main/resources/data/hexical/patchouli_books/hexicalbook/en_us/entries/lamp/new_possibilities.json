@@ -1,16 +1,16 @@
 {
-	"name": "hexical.page.new_possibilities",
+	"name": "hexical.page.new_possibilities.title",
 	"icon": "minecraft:sand",
 	"category": "hexical:lamp",
     "sortnum": 1,
 	"pages": [
 		{
 			"type": "patchouli:text",
-			"text": "hexical.page.new_possibilities.1"
+			"text": "hexical.page.new_possibilities.0"
 		},
 		{
 			"type": "patchouli:text",
-			"text": "hexical.page.new_possibilities.2"
+			"text": "hexical.page.new_possibilities.1"
 		},
 		{
 			"type": "hexcasting:pattern",
