@@ -1,16 +1,16 @@
 {
-	"name": "hexical.page.replacement_mind",
+	"name": "hexical.page.replacement_mind.title",
 	"icon": "minecraft:textures/particle/soul_7.png",
 	"category": "hexical:lamp",
     "sortnum": 2,
 	"pages": [
 		{
 			"type": "patchouli:text",
-			"text": "hexical.page.replacement_mind.1"
+			"text": "hexical.page.replacement_mind.0"
 		},
         {
 			"type": "patchouli:text",
-			"text": "hexical.page.replacement_mind.2"
+			"text": "hexical.page.replacement_mind.1"
         }
 	]
 }

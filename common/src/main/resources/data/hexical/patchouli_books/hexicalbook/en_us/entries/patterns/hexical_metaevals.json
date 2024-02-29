@@ -9,11 +9,11 @@
 			"anchor": "hexical:nephthys",
 			"input": "list of patterns, num",
 			"output": "vary",
-			"text": "hexical.page.nephthys.1"
+			"text": "hexical.page.nephthys.0"
 		},
 		{
 			"type": "patchouli:text",
-			"text": "hexical.page.nephthys.2"
+			"text": "hexical.page.nephthys.1"
 		}
 	]
 }
