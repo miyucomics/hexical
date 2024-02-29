@@ -9,7 +9,8 @@
 	"mixins": [
 		"CastingContextMixin",
 		"CastingHarnessMixin",
-		"ItemAbacusMixin"
+		"ItemAbacusMixin",
+		"WanderingTraderEntityMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
