@@ -1,12 +1,12 @@
 {
-	"name": "hexical.page.mysterious_lamp",
+	"name": "hexical.page.mysterious_lamp.title",
 	"icon": "minecraft:sand",
 	"category": "hexical:lamp",
     "sortnum": 0,
 	"pages": [
 		{
 			"type": "patchouli:text",
-			"text": "hexical.page.mysterious_lamp.1"
+			"text": "hexical.page.mysterious_lamp.0"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -14,7 +14,7 @@
 			"anchor": "hexical:program_lamp",
 			"input": "[pattern]",
 			"output": "",
-			"text": "hexical.page.mysterious_lamp.2"
+			"text": "hexical.page.mysterious_lamp.1"
 		}
 	]
 }

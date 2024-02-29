@@ -9,11 +9,11 @@
 			"anchor": "hexical:chorus_blink",
 			"input": "vec",
 			"output": "",
-			"text": "hexical.page.chorus_blink.1"
+			"text": "hexical.page.chorus_blink.0"
 		},
 		{
 			"type": "patchouli:text",
-			"text": "hexical.page.chorus_blink.2"
+			"text": "hexical.page.chorus_blink.1"
 		}
 	]
 }

@@ -1,16 +1,16 @@
 {
-	"name": "hexical.page.arch_lamps",
+	"name": "hexical.page.arch_lamps.title",
 	"icon": "hexical:arch_lamp",
 	"category": "hexical:lamp",
     "sortnum": 3,
 	"pages": [
 		{
 			"type": "patchouli:text",
-			"text": "hexical.page.arch_lamps.1"
+			"text": "hexical.page.arch_lamps.0"
 		},
 		{
 			"type": "patchouli:text",
-			"text": "hexical.page.arch_lamps.2"
+			"text": "hexical.page.arch_lamps.1"
 		},
 		{
 			"type": "hexcasting:pattern",
