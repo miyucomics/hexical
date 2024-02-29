@@ -1,5 +1,4 @@
 {
-	"item.hexical.tarnished_lamp": "Tarnished Lamp",
 	"item.hexical.lamp": "Genieless Lamp",
 	"item.hexical.arch_lamp": "Arch Genieless Lamp",
 	"item.hexical.conjured_staff": "Conjured Staff",
@@ -8,14 +7,11 @@
 	"subtitles.hexical.lamp_activate": "Lamp activates",
 	"subtitles.hexical.lamp_deactivate": "Lamp deactivates",
 
-	"hexcasting.mishap.bad_block.advanced_conjured_block": "an advanced conjured block",
-
 	"hexcasting.spell.hexical:program_lamp": "Educate Genie",
 	"hexcasting.spell.hexical:get_lamp_position": "Genie Refl.: Spatial",
 	"hexcasting.spell.hexical:get_lamp_rotation": "Genie Refl.: Rotational",
 	"hexcasting.spell.hexical:get_lamp_velocity": "Genie Refl.: Kinetic",
 	"hexcasting.spell.hexical:get_lamp_use_time": "Genie Refl.: Temporal",
-
 	"hexcasting.spell.hexical:get_arch_lamp_position": "Archgenie Refl.: Spatial",
 	"hexcasting.spell.hexical:get_arch_lamp_rotation": "Archgenie Refl.: Rotational",
 	"hexcasting.spell.hexical:get_arch_lamp_velocity": "Archgenie Refl.: Kinetic",
@@ -24,7 +20,6 @@
 	"hexcasting.spell.hexical:set_arch_lamp_storage": "Archgenie Gambit",
 	"hexcasting.spell.hexical:is_using_lamp": "Archgenie Purification",
 	"hexcasting.spell.hexical:terminate_arch_lamp": "Archgenie Termination",
-
 	"hexcasting.spell.hexical:chorus_blink": "Chorus Blink",
 	"hexcasting.spell.hexical:conjure_advanced_block": "Conjure Advanced Block",
 	"hexcasting.spell.hexical:conjure_staff": "Conjure Staff",
@@ -36,6 +31,7 @@
 	"hexcasting.spell.hexical:surveil_sentinel": "Surveil Sentinel",
 	"hexcasting.spell.hexical:nephthys": "Nephthys Gambit",
 
+	"hexcasting.mishap.bad_block.advanced_conjured_block": "an advanced conjured block",
 	"hexcasting.mishap.hexical:needs_lamp": "Expected to be cast by Genieless Lamp.",
 	"hexcasting.mishap.hexical:needs_active_arch_lamp": "Expected to have an active Arch Genieless Lamp.",
 
