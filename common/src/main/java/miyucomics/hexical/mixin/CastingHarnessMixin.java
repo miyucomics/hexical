@@ -38,7 +38,7 @@ public class CastingHarnessMixin {
 	@Inject(method = "withdrawMedia", at = @At("HEAD"), cancellable = true, remap = false)
 	private void withdrawMediaWisp(int mediaCost, boolean allowOvercast, CallbackInfoReturnable<Integer> cir) {
 		CastingContext ctx = hexical$harness.getCtx();
-		if (((CastingContextMixinInterface) (Object) ctx).getArchlamp()) {
+		if (((CastingContextMixinInterface) (Object) ctx).getArchLamp()) {
 			if (ctx.getCaster().isCreative()) {
 				cir.setReturnValue(0);
 				return;

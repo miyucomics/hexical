@@ -7,7 +7,7 @@ import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.NullIota
 import at.petrak.hexcasting.api.spell.iota.Vec3Iota
 import at.petrak.hexcasting.api.utils.vecFromNBT
-import miyucomics.hexical.casting.mishaps.NeedLampMishap
+import miyucomics.hexical.casting.mishaps.NeedsLampMishap
 import miyucomics.hexical.registry.HexicalItems
 
 class OpGetLampData(private val mode: Int) : ConstMediaAction {
@@ -15,7 +15,7 @@ class OpGetLampData(private val mode: Int) : ConstMediaAction {
 
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
 		if (!(ctx.caster.activeItem.item == HexicalItems.LAMP_ITEM && ctx.source == CastingContext.CastSource.PACKAGED_HEX))
-			throw NeedLampMishap()
+			throw NeedsLampMishap()
 		val nbt = ctx.caster.activeItem.nbt ?: return listOf(NullIota())
 		when (mode) {
 			0 -> return listOf(Vec3Iota(vecFromNBT(nbt.getLongArray("position"))))
