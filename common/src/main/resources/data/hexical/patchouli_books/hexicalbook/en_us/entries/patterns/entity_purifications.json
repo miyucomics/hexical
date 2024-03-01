@@ -1,0 +1,15 @@
+{
+	"name": "hexical.page.entity_purifications",
+	"icon": "minecraft:spyglass",
+	"category": "hexcasting:patterns",
+	"pages": [
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:is_sprinting",
+			"anchor": "hexical:is_sprinting",
+			"input": "entity",
+			"output": "boolean",
+			"text": "hexical.page.is_sprinting"
+		}
+	]
+}

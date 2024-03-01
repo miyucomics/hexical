@@ -29,6 +29,7 @@
 	"hexcasting.spell.hexical:modify_block_replaceable": "Modify Block: Replaceable",
 	"hexcasting.spell.hexical:modify_block_volatile": "Modify Block: Volatile",
 	"hexcasting.spell.hexical:surveil_sentinel": "Surveil Sentinel",
+	"hexcasting.spell.hexical:is_sprinting": "Sprinter's Purification",
 	"hexcasting.spell.hexical:nephthys": "Nephthys Gambit",
 
 	"hexcasting.mishap.bad_block.advanced_conjured_block": "an advanced conjured block",
@@ -44,7 +45,7 @@
 
 	"hexical.page.mysterious_lamp.title": "Mysterious Lamp",
 	"hexical.page.mysterious_lamp.0": "At last I've discovered the subject of a thousand years of rumor! To think a mere wandering trader was in possession of such a strong artifact. The lamp emanates a vague residue of media, vacuous in feeling... it reminds me of the $(o)hollow media structure$() of a focus that enables it to store iota, but there is also a presence inside with spellcasting capabilities similar to my own.",
-	"hexical.page.mysterious_lamp.1": "I've developed a pattern to educate the entity inside of my intentions. Because I am teaching an entity my will rather than inherently etching a casting device with it, I believe I should be able to freely overwrite the hex inside at any time.",
+	"hexical.page.mysterious_lamp.1": "I've developed a pattern to educate the presence of my intentions. Because I am teaching my will rather than etching a casting device with it, I should be able to freely revise the hex at any time without losing media.",
 
 	"hexical.page.new_possibilities.title": "New Possibilities",
 	"hexical.page.new_possibilities.0": "It casts $(o)$(l)EVERY INSTANT$(). After writing a spell into it, I was treated to a splendid gush of media. I estimate the casting speed must be around twenty times every second. The presence inside the lamp performs the casting on my behalf with extraordinary efficiency, not producing the sound and particles that accompany other casting methods.",
@@ -89,6 +90,9 @@
 
 	"hexical.page.chorus_blink.0": "Between Blink, Greater Teleport, ender pearls, and chorus fruit, this spell serves a harmonious midpoint for safe, precise, and cheap teleportation.",
 	"hexical.page.chorus_blink.1": "It consumes a chorus fruit from my inventory and teleports me up to 16 blocks using an offset vector. The cost is constant whether I teleport the full 16 blocks or less, and has no penalty for multiple casts in one hex. With a lot of chorus fruit, it can be a significantly cheaper Greater Teleport.",
+
+	"hexical.page.entity_purifications": "Entity Purifications",
+	"hexical.page.is_sprinting": "Pushes whether the entity is sprinting. Interestingly, that includes swimming and if I start sprinting before lifting off the ground.",
 
 	"hexical.page.conjure_staff.0": "Conjures a staff at the location with the amount of media, rank, and hex respectively.",
 	"hexical.page.conjure_staff.1": "A conjured staff is not unlike a cypher. It has a media bank that it relies on for casting and breaks when it runs out, unable to consume my health or my inventory's media. It is not rechargable or programmable. Using erase item on it simply destroys it. However, its true power is $(o)input interception$().",
