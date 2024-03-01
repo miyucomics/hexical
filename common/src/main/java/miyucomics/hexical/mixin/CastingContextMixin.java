@@ -11,6 +11,6 @@ public abstract class CastingContextMixin implements CastingContextMixinInterfac
 	@Unique private boolean hexical$archlamp = false;
 	@Override public boolean getCastByLamp() {return hexical$isCastByLamp;}
 	@Override public void setCastByLamp(boolean value) {hexical$isCastByLamp = value;}
-	@Override public boolean getArchlamp() {return hexical$archlamp;}
-	@Override public void setArchlamp(boolean value) {hexical$archlamp = value;}
+	@Override public boolean getArchLamp() {return hexical$archlamp;}
+	@Override public void setArchLamp(boolean value) {hexical$archlamp = value;}
 }

@@ -15,7 +15,7 @@ class CastingUtils {
 			val context = CastingContext(user, user.activeHand, CastingContext.CastSource.PACKAGED_HEX)
 			(context as CastingContextMixinInterface).setCastByLamp(true)
 			if (archlamp)
-				(context as CastingContextMixinInterface).setArchlamp(true)
+				(context as CastingContextMixinInterface).setArchLamp(true)
 			CastingHarness(context).executeIotas(hex, world)
 		}
 

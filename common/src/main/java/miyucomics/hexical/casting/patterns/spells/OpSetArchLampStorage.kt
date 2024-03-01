@@ -7,7 +7,7 @@ import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapOthersName
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
-import miyucomics.hexical.casting.mishaps.NeedActiveArchLampMishap
+import miyucomics.hexical.casting.mishaps.NeedsActiveArchLampMishap
 import miyucomics.hexical.persistent_state.PersistentStateHandler
 import miyucomics.hexical.utils.CastingUtils
 
@@ -16,7 +16,7 @@ class OpSetArchLampStorage : SpellAction {
 
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>>? {
 		if (!CastingUtils.doesPlayerHaveActiveArchLamp(ctx.caster))
-			throw NeedActiveArchLampMishap()
+			throw NeedsActiveArchLampMishap()
 		val iota = args[0]
 		val trueName = MishapOthersName.getTrueNameFromDatum(iota, ctx.caster)
 		if (trueName != null)

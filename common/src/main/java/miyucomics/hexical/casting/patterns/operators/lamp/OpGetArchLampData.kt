@@ -7,7 +7,7 @@ import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.NullIota
 import at.petrak.hexcasting.api.spell.iota.Vec3Iota
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
-import miyucomics.hexical.casting.mishaps.NeedActiveArchLampMishap
+import miyucomics.hexical.casting.mishaps.NeedsActiveArchLampMishap
 import miyucomics.hexical.persistent_state.PersistentStateHandler
 import miyucomics.hexical.utils.CastingUtils
 
@@ -16,7 +16,7 @@ class OpGetArchLampData(private val mode: Int) : ConstMediaAction {
 
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
 		if (!CastingUtils.doesPlayerHaveActiveArchLamp(ctx.caster))
-			throw NeedActiveArchLampMishap()
+			throw NeedsActiveArchLampMishap()
 		val state = PersistentStateHandler.getPlayerState(ctx.caster)
 		when (mode) {
 			0 -> return listOf(Vec3Iota(state.position))
