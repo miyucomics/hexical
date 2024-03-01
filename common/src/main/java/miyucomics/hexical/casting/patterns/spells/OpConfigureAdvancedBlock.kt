@@ -8,7 +8,7 @@ import miyucomics.hexical.blocks.AdvancedConjuredBlock
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d
 
-class OpConfigureBlock(private val property: String, arguments: Int = 0) : SpellAction {
+class OpConfigureAdvancedBlock(private val property: String, arguments: Int = 0) : SpellAction {
 	override val argc = arguments + 1
 
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
