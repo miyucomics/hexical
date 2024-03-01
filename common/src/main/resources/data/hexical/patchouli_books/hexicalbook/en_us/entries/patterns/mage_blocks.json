@@ -1,19 +1,19 @@
 {
-	"name": "hexical.page.advanced_conjuration.title",
+	"name": "hexical.page.mage_block.title",
 	"icon": "minecraft:glass",
 	"category": "hexcasting:patterns/spells",
 	"pages": [
 		{
 			"type": "patchouli:text",
-			"text": "hexical.page.advanced_conjuration"
+			"text": "hexical.page.mage_block"
 		},
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:conjure_advanced_block",
-			"anchor": "hexical:conjure_advanced_block",
+			"op_id": "hexical:conjure_mage_block",
+			"anchor": "hexical:conjure_mage_block",
 			"input": "vec",
 			"output": "",
-			"text": "hexical.page.conjure_advanced_block"
+			"text": "hexical.page.conjure_mage_block"
 		},
 		{
 			"type": "hexcasting:pattern",
