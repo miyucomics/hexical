@@ -21,18 +21,21 @@ class ArchLampItem : ItemPackagedHex(Settings().maxCount(1)) {
 	override fun use(world: World, user: PlayerEntity, usedHand: Hand): TypedActionResult<ItemStack> {
 		val stack = user.getStackInHand(usedHand)
 		if (!hasHex(stack)) return TypedActionResult.fail(stack)
-		if (world.isClient) return TypedActionResult.success(stack)
 
-		val state = PersistentStateHandler.getPlayerState(user)
+
 		val stackNbt = stack.orCreateNbt
 		if (!stackNbt.contains("active"))
 			stackNbt.putBoolean("active", false)
+
+		if (world.isClient) {
+			world.playSound(user.x, user.y, user.z, if (stackNbt.getBoolean("active")) HexicalSounds.LAMP_DEACTIVATE_SOUND_EVENT else HexicalSounds.LAMP_ACTIVATE_SOUND_EVENT, SoundCategory.MASTER, 1f, 1f, true)
+			return TypedActionResult.success(stack)
+		}
 
 		val currentlyUsingArchLamp = CastingUtils.doesPlayerHaveActiveArchLamp(user as ServerPlayerEntity)
 		if (currentlyUsingArchLamp) {
 			if (stackNbt.getBoolean("active")) {
 				stackNbt.putBoolean("active", false)
-				world.playSound(user.x, user.y, user.z, HexicalSounds.LAMP_DEACTIVATE_SOUND_EVENT, SoundCategory.MASTER, 1f, 1f, true)
 				return TypedActionResult.success(stack)
 			} else {
 				for (slot in user.inventory.main)
@@ -43,8 +46,8 @@ class ArchLampItem : ItemPackagedHex(Settings().maxCount(1)) {
 			}
 		}
 
-		world.playSound(user.x, user.y, user.z, HexicalSounds.LAMP_ACTIVATE_SOUND_EVENT, SoundCategory.MASTER, 1f, 1f, true)
 		stackNbt.putBoolean("active", true)
+		val state = PersistentStateHandler.getPlayerState(user)
 		state.position = user.eyePos
 		state.rotation = user.rotationVector
 		state.velocity = user.velocity
