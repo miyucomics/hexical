@@ -13,7 +13,7 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d
 import java.util.*
 
-class AdvancedConjuredBlockEntity(pos: BlockPos?, state: BlockState?) : HexBlockEntity(HexicalBlocks.ADVANCED_CONJURED_BLOCK_ENTITY, pos, state) {
+class MageBlockEntity(pos: BlockPos?, state: BlockState?) : HexBlockEntity(HexicalBlocks.MAGE_BLOCK_ENTITY, pos, state) {
 	private val random = Random()
 	private var colorizer: FrozenColorizer = FrozenColorizer.DEFAULT.get()
 	var properties: MutableMap<String, Boolean> = mutableMapOf(
