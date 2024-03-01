@@ -8,6 +8,7 @@ import miyucomics.hexical.Hexical
 import miyucomics.hexical.casting.patterns.operators.eval.OpNephthys
 import miyucomics.hexical.casting.patterns.operators.lamp.OpGetArchLampData
 import miyucomics.hexical.casting.patterns.operators.lamp.OpGetLampData
+import miyucomics.hexical.casting.patterns.operators.lamp.OpGetPlayerSprinting
 import miyucomics.hexical.casting.patterns.operators.lamp.OpIsUsingArchLamp
 import miyucomics.hexical.casting.patterns.spells.*
 import net.minecraft.util.Identifier
@@ -29,6 +30,7 @@ object HexicalPatterns {
 	var PROGRAM_LAMP: HexPattern = register(HexPattern.fromAngles("wwqqqqq", HexDir.EAST), "program_lamp", OpProgramLamp())
 
 	var CONJURE_STAFF: HexPattern = register(HexPattern.fromAngles("wweeeed", HexDir.NORTH_EAST), "conjure_staff", OpConjureStaff())
+	var PLAYER_SPRINTING: HexPattern = register(HexPattern.fromAngles("eaq", HexDir.WEST), "is_sprinting", OpGetPlayerSprinting())
 
 	var LAMP_POSITION: HexPattern = register(HexPattern.fromAngles("qwddedqdd", HexDir.SOUTH_WEST), "get_lamp_position", OpGetLampData(0))
 	var LAMP_ROTATION: HexPattern = register(HexPattern.fromAngles("qwddedadw", HexDir.SOUTH_WEST), "get_lamp_rotation", OpGetLampData(1))
