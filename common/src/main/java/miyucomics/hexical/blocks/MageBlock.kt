@@ -28,7 +28,7 @@ import net.minecraft.world.World
 import net.minecraft.world.WorldAccess
 import net.minecraft.world.event.GameEvent
 
-class AdvancedConjuredBlock : BlockConjured(
+class MageBlock : BlockConjured(
 	Settings.of(Material.ORGANIC_PRODUCT).
 	nonOpaque().
 	dropsNothing().
@@ -49,7 +49,7 @@ class AdvancedConjuredBlock : BlockConjured(
 	override fun onEntityLand(world: BlockView, entity: Entity) {
 		val pos = entity.blockPos.add(0, -1, 0)
 		val tile = world.getBlockEntity(pos)
-		if (tile !is AdvancedConjuredBlockEntity)
+		if (tile !is MageBlockEntity)
 			return
 		if (tile.properties["bouncy"]!!) {
 			val velocity = entity.velocity
@@ -65,7 +65,7 @@ class AdvancedConjuredBlock : BlockConjured(
 
 	override fun onUse(state: BlockState, world: World, pos: BlockPos, player: PlayerEntity, hand: Hand, hit: BlockHitResult): ActionResult {
 		val tile = world.getBlockEntity(pos)
-		if (tile !is AdvancedConjuredBlockEntity)
+		if (tile !is MageBlockEntity)
 			return ActionResult.PASS;
 		if (!tile.properties["replaceable"]!!)
 			return ActionResult.PASS;
@@ -82,7 +82,7 @@ class AdvancedConjuredBlock : BlockConjured(
 
 	override fun onBreak(world: World, position: BlockPos, state: BlockState, player: PlayerEntity?) {
 		val tile = world.getBlockEntity(position)
-		if (tile !is AdvancedConjuredBlockEntity)
+		if (tile !is MageBlockEntity)
 			return
 		world.playSound(position.x.toDouble(), position.y.toDouble(), position.z.toDouble(), SoundEvents.BLOCK_AMETHYST_BLOCK_BREAK, SoundCategory.BLOCKS, 1f, 1f, true)
 		world.emitGameEvent(GameEvent.BLOCK_DESTROY, position, GameEvent.Emitter.of(player, state))
@@ -93,7 +93,7 @@ class AdvancedConjuredBlock : BlockConjured(
 				val positionToTest = position.add(offset);
 				val otherState = world.getBlockState(positionToTest)
 				val block = otherState.block
-				if (block == HexicalBlocks.ADVANCED_CONJURED_BLOCK)
+				if (block == HexicalBlocks.MAGE_BLOCK)
 					block.onBreak(world, positionToTest, otherState, player)
 			}
 		}
@@ -101,14 +101,14 @@ class AdvancedConjuredBlock : BlockConjured(
 
 	override fun onSteppedOn(world: World, pos: BlockPos, state: BlockState, entity: Entity) {
 		val tile = world.getBlockEntity(pos)
-		if (tile !is AdvancedConjuredBlockEntity)
+		if (tile !is MageBlockEntity)
 			return
 		if (!tile.properties["invisible"]!!)
 			tile.walkParticle(entity)
 	}
 
 	override fun createBlockEntity(pos: BlockPos, state: BlockState): BlockEntity {
-		return AdvancedConjuredBlockEntity(pos, state)
+		return MageBlockEntity(pos, state)
 	}
 
 	override fun <T : BlockEntity?> getTicker(pworld: World, pstate: BlockState, type: BlockEntityType<T>): BlockEntityTicker<T> {
@@ -117,26 +117,26 @@ class AdvancedConjuredBlock : BlockConjured(
 
 	companion object {
 		fun <T> tick(world: World, position: BlockPos, state: BlockState, blockEntity: T) {
-			if (blockEntity !is AdvancedConjuredBlockEntity)
+			if (blockEntity !is MageBlockEntity)
 				return
 			if (!blockEntity.properties["invisible"]!!)
 				blockEntity.particleEffect()
 			if (blockEntity.properties["ephemeral"]!!) {
 				blockEntity.lifespan--
 				if (blockEntity.lifespan <= 0)
-					HexicalBlocks.ADVANCED_CONJURED_BLOCK.onBreak(world, position, state, null)
+					HexicalBlocks.MAGE_BLOCK.onBreak(world, position, state, null)
 			}
 		}
 
 		fun setProperty(world: WorldAccess, pos: BlockPos, property: String, args: List<Iota>) {
 			val blockEntity = world.getBlockEntity(pos)
-			if (blockEntity is AdvancedConjuredBlockEntity)
+			if (blockEntity is MageBlockEntity)
 				blockEntity.setProperty(property, args)
 		}
 
 		fun setColor(world: WorldAccess, pos: BlockPos, colorizer: FrozenColorizer) {
 			val blockEntity = world.getBlockEntity(pos)
-			if (blockEntity is AdvancedConjuredBlockEntity)
+			if (blockEntity is MageBlockEntity)
 				blockEntity.setColorizer(colorizer)
 		}
 	}
