@@ -37,8 +37,8 @@
 	"hexcasting.mishap.hexical:needs_active_arch_lamp": "Expected to have an active Arch Genieless Lamp.",
 
 	"hexical.page.hexical_changes.title": "Hexical Changes",
-	"hexical.page.hexical_changes.0": "The media feels friendlier somehow. I feel strangely more receptive of the ambient media around me. I can even feel it responding to certain tasks I perform, as if new spells are available to me.",
-	"hexical.page.hexical_changes.1": "The media has also become more adaptable, letting me manipulate it more precisely into specialized effects and even interface with items like my abacus.",
+	"hexical.page.hexical_changes.0": "I feel strangely more receptive of the ambient media around me. It feels $(o)friendlier$() somehow... I can even feel it responding to certain actions, as if suggesting new spells to me. I also notice I require less concentration with my staff and can move around while using it. Unfortunately, Nature has not become more forgiving of my mishaps.",
+	"hexical.page.hexical_changes.1": "The media has also become more malleable, letting me manipulate it precisely into specific specialized effects. I can also interface with my abacus using Scribe's Gambit.",
 
 	"hexical.category.lamp": "Genieless Lamp",
 	"hexical.category.lamp.desc": "I have heard tales from the villagers about a magical artifact. Legends say it contains a spirit that grants wishes, but I suspect that is just embellishment evolved over centuries of storytelling. Regardless, I dedicate this chapter to my pursuit and research of it.",
@@ -55,9 +55,9 @@
 	"hexical.page.replacement_mind.0": "Hex casting burns out the mind from the energy of thought, flooding the consciousness, inundating every neuron... it's euphoric. For staffs, casting devices, and spell circles, the rate of casting is slow enough that a mind can recuperate; I will never need to replace my mind or an impetus. With the speeds this lamp operates at, though, even an optimized mind can only bear the burden for so long. Luckily, the lamp is able to somehow support the mind until its media battery runs out, where the genie finally perishes and the lamp visibly tarnishes. In these cases, the genie must be... replaced.",
 	"hexical.page.replacement_mind.1": "Basing off the shape of the other genie patterns and the $(o)feeling$() of the media, I have developed this highly specialized pattern that extracts the mind of a villager and transforms it into a genie. The stress of nonstop casting requires highly trained villagers, I estimate of Journeyman-class or greater. The lamp may not be recharged without sacrificing a new mind, discarding the previous genie in the process, so I should aim to gather as much media as I can before casting.",
 
-	"hexical.page.arch_lamps.title": "Arch Lamps",
-	"hexical.page.arch_lamps.0": "Because a separate mind casts my spells, a lamp should be able to cast even without me holding it. I estimate any villager short of a complete master of its field would be unable to cast so often unassisted though. These $(o)arch lamps$() are activated and deactivated rather than used and while they're active in my inventory, they will cast every moment without my input.",
-	"hexical.page.arch_lamps.1": "The output of a arch lamp is so grand that it saturates the air around me with media... it's incredible. Unfortunately, if two lamps are active at once within my inventory, the resonances clash and deactivate both lamps, as well as rendering every arch lamp in my inventory useless for a few seconds. To prevent such a mishap, I should only have one arch lamp active at once, although I can still simutaneously use a regular lamp.",
+	"hexical.page.arch_lamps.title": "Archgenie Lamps",
+	"hexical.page.arch_lamps.0": "Because a separate mind casts my spells, a lamp should be able to cast even without me holding it. I estimate any villager short of a complete master of its field would be unable to cast so often unassisted though. These $(o)archgenie lamps$() are activated and deactivated rather than used and while active in my inventory, they cast every moment even without my input.",
+	"hexical.page.arch_lamps.1": "The output of an arch lamp is so grand that it saturates the air around me with media... it's incredible. Unfortunately, if two lamps are active at once within my inventory, the resonances clash and deactivate both lamps, as well as rendering every arch lamp in my inventory useless for a few seconds. I should only have one archgenie lamp active at once, although I can still simutaneously use a regular lamp.",
 
 	"hexical.page.get_lamp_position": "Pushes the original position of the caster when the lamp started casting.",
 	"hexical.page.get_lamp_rotation": "Pushes the original rotation of the caster when the lamp started casting.",
@@ -71,9 +71,10 @@
 	"hexical.page.is_using_lamp": "Takes a player and pushes whether they currently have an active arch lamp.",
 	"hexical.page.terminate_arch_lamp": "Casted by a casting device, staff, or within the arch lamp, deactivates the lamp's operation. Similar to Charon's.",
 
-	"hexical.page.arch_lamp_storage": "Arch Lamp Storage",
-	"hexical.page.set_arch_lamp_storage": "The arch lamp also supports an iota storage similar to the Ravenmind, which this pattern sets.",
-	"hexical.page.get_arch_lamp_storage": "Supporting the last one, this pattern sets the iota storage of my current active lamp. Unlike the Ravenmind, this pattern is subject to the Transgress Others mishap.",
+	"hexical.page.arch_lamp_storage.title": "Archgenie Lamp Storage",
+	"hexical.page.arch_lamp_storage": "The arch lamp continues to impress me with its capabilities! It supports an iota storage similar to the Ravenmind, persisting between ticks. If I need to remember any important information between casts of the lamp, I can stash it in here. The two patterns responsible can also be cast by a staff or casting device if an arch lamp is active.",
+	"hexical.page.set_arch_lamp_storage": "Sets the lamp's iota storage. Subject to Transgress Others mishap unfortunately.",
+	"hexical.page.get_arch_lamp_storage": "Gets the lamp's iota storage.",
 
 	"hexical.page.hexical_metaevals": "Hexical Meta-evaluations",
 	"hexical.page.nephthys.0": "Pops a pattern list and a number from the stack and dives down n iota to casts the pattern list. Useful for surgery-like operations.",

@@ -1,9 +1,13 @@
 {
-	"name": "hexical.page.arch_lamp_storage",
+	"name": "hexical.page.arch_lamp_storage.title",
 	"icon": "hexcasting:focus",
 	"category": "hexical:lamp",
     "sortnum": 4,
 	"pages": [
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.arch_lamp_storage"
+		},
 		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:set_arch_lamp_storage",
