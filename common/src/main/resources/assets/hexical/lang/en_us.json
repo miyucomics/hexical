@@ -29,6 +29,9 @@
 	"hexcasting.spell.hexical:modify_block_replaceable": "Modify Block: Replaceable",
 	"hexcasting.spell.hexical:modify_block_volatile": "Modify Block: Volatile",
 	"hexcasting.spell.hexical:surveil_sentinel": "Surveil Sentinel",
+	"hexcasting.spell.hexical:is_burning": "Inferno Purification",
+	"hexcasting.spell.hexical:burning_time": "Inferno Purification II",
+	"hexcasting.spell.hexical:is_wet": "Enderman's Purification",
 	"hexcasting.spell.hexical:is_sprinting": "Sprinter's Purification",
 	"hexcasting.spell.hexical:nephthys": "Nephthys Gambit",
 
@@ -92,8 +95,12 @@
 	"hexical.page.chorus_blink.0": "Between Blink, Greater Teleport, ender pearls, and chorus fruit, this spell serves a harmonious midpoint for safe, precise, and cheap teleportation.",
 	"hexical.page.chorus_blink.1": "It consumes a chorus fruit from my inventory and teleports me up to 16 blocks using an offset vector. The cost is constant whether I teleport the full 16 blocks or less, and has no penalty for multiple casts in one hex. With a lot of chorus fruit, it can be a significantly cheaper Greater Teleport.",
 
-	"hexical.page.entity_purifications": "Entity Purifications",
-	"hexical.page.is_sprinting": "Pushes whether the entity is sprinting. Interestingly, that includes swimming and if I start sprinting before lifting off the ground.",
+	"hexical.page.entity_purifications.title": "Entity Purifications",
+	"hexical.page.entity_purifications": "I have discovered a few more specialized entity purifications that allow me to divine extra information about an entity.",
+	"hexical.page.is_burning": "Pushes whether the entity is burning.",
+	"hexical.page.burning_time": "Pushes how long the entity will continue burning if not put out.",
+	"hexical.page.is_wet": "Pushes whether the entity is touching rain, water, or in a bubble column.",
+	"hexical.page.is_sprinting": "Pushes whether the player is sprinting. Interestingly, that includes swimming or if I started sprinting but left the ground.",
 
 	"hexical.page.conjure_staff.0": "Conjures a staff at the location with the amount of media, rank, and hex respectively.",
 	"hexical.page.conjure_staff.1": "A conjured staff is not unlike a cypher. It has a media bank that it relies on for casting and breaks when it runs out, unable to consume my health or my inventory's media. It is not rechargable or programmable. Using erase item on it simply destroys it. However, its true power is $(o)input interception$().",
