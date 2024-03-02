@@ -5,10 +5,13 @@ import at.petrak.hexcasting.api.spell.Action
 import at.petrak.hexcasting.api.spell.math.HexDir
 import at.petrak.hexcasting.api.spell.math.HexPattern
 import miyucomics.hexical.Hexical
+import miyucomics.hexical.casting.patterns.operators.OpGetEntityBurning
+import miyucomics.hexical.casting.patterns.operators.OpGetEntityBurningTime
+import miyucomics.hexical.casting.patterns.operators.OpGetEntityWet
+import miyucomics.hexical.casting.patterns.operators.OpGetPlayerSprinting
 import miyucomics.hexical.casting.patterns.operators.eval.OpNephthys
 import miyucomics.hexical.casting.patterns.operators.lamp.OpGetArchLampData
 import miyucomics.hexical.casting.patterns.operators.lamp.OpGetLampData
-import miyucomics.hexical.casting.patterns.operators.lamp.OpGetPlayerSprinting
 import miyucomics.hexical.casting.patterns.operators.lamp.OpIsUsingArchLamp
 import miyucomics.hexical.casting.patterns.spells.*
 import net.minecraft.util.Identifier
@@ -20,18 +23,22 @@ object HexicalPatterns {
 	var NEPHTHYS_GAMBIT = register(HexPattern.fromAngles("deaqqdq", HexDir.SOUTH_EAST), "nephthys", OpNephthys);
 
 	var CONJURE_ADVANCED_BLOCK: HexPattern = register(HexPattern.fromAngles("dee", HexDir.NORTH_WEST), "conjure_mage_block", OpConjureMageBlock())
-	var CONFIGURE_BLOCK_BOUNCY: HexPattern = register(HexPattern.fromAngles("deeqa", HexDir.NORTH_WEST), "modify_block_bouncy", OpConfigureMageBlock("bouncy"))
-	var CONFIGURE_BLOCK_EPHEMERAL: HexPattern = register(HexPattern.fromAngles("deewwaawd", HexDir.NORTH_WEST), "modify_block_ephemeral", OpConfigureMageBlock("ephemeral", 1))
-	var CONFIGURE_BLOCK_INVISIBLE: HexPattern = register(HexPattern.fromAngles("deeqedeaqqqwqqq", HexDir.NORTH_WEST), "modify_block_invisible", OpConfigureMageBlock("invisible"))
-	var CONFIGURE_BLOCK_REPLACEABLE: HexPattern = register(HexPattern.fromAngles("deewqaqqqqq", HexDir.NORTH_WEST), "modify_block_replaceable", OpConfigureMageBlock("replaceable"))
-	var CONFIGURE_BLOCK_VOLATILE: HexPattern = register(HexPattern.fromAngles("deewedeeeee", HexDir.NORTH_WEST), "modify_block_volatile", OpConfigureMageBlock("volatile"))
+	var MODIFY_BLOCK_BOUNCY: HexPattern = register(HexPattern.fromAngles("deeqa", HexDir.NORTH_WEST), "modify_block_bouncy", OpModifyMageBlock("bouncy"))
+	var MODIFY_BLOCK_EPHEMERAL: HexPattern = register(HexPattern.fromAngles("deewwaawd", HexDir.NORTH_WEST), "modify_block_ephemeral", OpModifyMageBlock("ephemeral", 1))
+	var MODIFY_BLOCK_INVISIBLE: HexPattern = register(HexPattern.fromAngles("deeqedeaqqqwqqq", HexDir.NORTH_WEST), "modify_block_invisible", OpModifyMageBlock("invisible"))
+	var MODIFY_BLOCK_REPLACEABLE: HexPattern = register(HexPattern.fromAngles("deewqaqqqqq", HexDir.NORTH_WEST), "modify_block_replaceable", OpModifyMageBlock("replaceable"))
+	var MODIFY_BLOCK_VOLATILE: HexPattern = register(HexPattern.fromAngles("deewedeeeee", HexDir.NORTH_WEST), "modify_block_volatile", OpModifyMageBlock("volatile"))
 
 	var CHORUS_BLINK: HexPattern = register(HexPattern.fromAngles("aawqqqq", HexDir.SOUTH_EAST), "chorus_blink", OpChorusBlink())
-	var PROGRAM_LAMP: HexPattern = register(HexPattern.fromAngles("wwqqqqq", HexDir.EAST), "program_lamp", OpProgramLamp())
 
-	var CONJURE_STAFF: HexPattern = register(HexPattern.fromAngles("wweeeed", HexDir.NORTH_EAST), "conjure_staff", OpConjureStaff())
+	var CONJURE_STAFF: HexPattern = register(HexPattern.fromAngles("wwwwwaqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST), "conjure_staff", OpConjureStaff())
+
+	var ENTITY_BURNING: HexPattern = register(HexPattern.fromAngles("qqwaqda", HexDir.EAST), "is_burning", OpGetEntityBurning())
+	var ENTITY_BURNING_TIME: HexPattern = register(HexPattern.fromAngles("eewdead", HexDir.WEST), "burning_time", OpGetEntityBurningTime())
+	var ENTITY_WET: HexPattern = register(HexPattern.fromAngles("qqqqwaadq", HexDir.SOUTH_WEST), "is_wet", OpGetEntityWet())
 	var PLAYER_SPRINTING: HexPattern = register(HexPattern.fromAngles("eaq", HexDir.WEST), "is_sprinting", OpGetPlayerSprinting())
 
+	var PROGRAM_LAMP: HexPattern = register(HexPattern.fromAngles("wwqqqqq", HexDir.EAST), "program_lamp", OpProgramLamp())
 	var LAMP_POSITION: HexPattern = register(HexPattern.fromAngles("qwddedqdd", HexDir.SOUTH_WEST), "get_lamp_position", OpGetLampData(0))
 	var LAMP_ROTATION: HexPattern = register(HexPattern.fromAngles("qwddedadw", HexDir.SOUTH_WEST), "get_lamp_rotation", OpGetLampData(1))
 	var LAMP_VELOCITY: HexPattern = register(HexPattern.fromAngles("qwddedqew", HexDir.SOUTH_WEST), "get_lamp_velocity", OpGetLampData(2))
