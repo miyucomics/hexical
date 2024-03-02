@@ -150,7 +150,7 @@
       <summary><a href="#lamp" class="toc-elem "><img
       title="Genie Lamp"
       alt="Genie Lamp"
-      src="https://raw.githubusercontent.com/miyucomics/hexical/e1582b67a07750aada0fb64222be6abbcc8b2e4a/common/src/main/resources/assets/hexical/textures/item/lamp.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexical/e8ce4af820f0c346f241276c27a22b16190fdb2b/common/src/main/resources/assets/hexical/textures/item/lamp.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     > Genieless Lamp</a></summary>
@@ -179,7 +179,7 @@
           <li><a href="#lamp/arch_lamps" class="toc-elem "><img
       title="Archgenie Lamp"
       alt="Archgenie Lamp"
-      src="https://raw.githubusercontent.com/miyucomics/hexical/e1582b67a07750aada0fb64222be6abbcc8b2e4a/common/src/main/resources/assets/hexical/textures/item/arch_lamp.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexical/e8ce4af820f0c346f241276c27a22b16190fdb2b/common/src/main/resources/assets/hexical/textures/item/arch_lamp.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     > Archgenie Lamps</a></li>
@@ -236,7 +236,7 @@
           <li><a href="#patterns/conjure_staff" class="toc-elem "><img
       title="Conjured Staff"
       alt="Conjured Staff"
-      src="https://raw.githubusercontent.com/miyucomics/hexical/e1582b67a07750aada0fb64222be6abbcc8b2e4a/common/src/main/resources/assets/hexical/textures/item/conjured_staff.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexical/e8ce4af820f0c346f241276c27a22b16190fdb2b/common/src/main/resources/assets/hexical/textures/item/conjured_staff.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     > Conjure Staff</a></li>
@@ -297,7 +297,7 @@
     <img
       title="Genie Lamp"
       alt="Genie Lamp"
-      src="https://raw.githubusercontent.com/miyucomics/hexical/e1582b67a07750aada0fb64222be6abbcc8b2e4a/common/src/main/resources/assets/hexical/textures/item/lamp.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexical/e8ce4af820f0c346f241276c27a22b16190fdb2b/common/src/main/resources/assets/hexical/textures/item/lamp.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     >Genieless Lamp<a
@@ -479,7 +479,7 @@
     <img
       title="Archgenie Lamp"
       alt="Archgenie Lamp"
-      src="https://raw.githubusercontent.com/miyucomics/hexical/e1582b67a07750aada0fb64222be6abbcc8b2e4a/common/src/main/resources/assets/hexical/textures/item/arch_lamp.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexical/e8ce4af820f0c346f241276c27a22b16190fdb2b/common/src/main/resources/assets/hexical/textures/item/arch_lamp.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     >Archgenie Lamps<a
@@ -712,8 +712,70 @@
     class="permalink small"
     title="Permalink"
   ><i class="bi bi-link-45deg"></i></a></h3>
+    <p>I have discovered a few more specialized entity purifications that allow me to divine extra information about an entity.</p>
+<br />
+  <div id="patterns/entity_purifications@hexical:is_burning">
+<h4 class="pattern-title">Inferno Purification (entity → boolean)<a
+    href="#patterns/entity_purifications@hexical:is_burning"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="qqwaqda"
+        data-start="east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: qqwaqda</canvas>
+  </details>
+      <p>Pushes whether the entity is burning.</p>
+  </div>
+<br />
+  <div id="patterns/entity_purifications@hexical:burning_time">
+<h4 class="pattern-title">Inferno Purification II (entity → number)<a
+    href="#patterns/entity_purifications@hexical:burning_time"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="eewdead"
+        data-start="west"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: eewdead</canvas>
+  </details>
+      <p>Pushes how long the entity will continue burning if not put out.</p>
+  </div>
+<br />
+  <div id="patterns/entity_purifications@hexical:is_wet">
+<h4 class="pattern-title">Enderman&#39;s Purification (entity → boolean)<a
+    href="#patterns/entity_purifications@hexical:is_wet"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="qqqqwaadq"
+        data-start="south_west"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: qqqqwaadq</canvas>
+  </details>
+      <p>Pushes whether the entity is touching rain, water, or in a bubble column.</p>
+  </div>
+<br />
   <div id="patterns/entity_purifications@hexical:is_sprinting">
-<h4 class="pattern-title">Sprinter&#39;s Purification (entity → boolean)<a
+<h4 class="pattern-title">Sprinter&#39;s Purification (player entity → boolean)<a
     href="#patterns/entity_purifications@hexical:is_sprinting"
     class="permalink small"
     title="Permalink"
@@ -729,7 +791,7 @@
         data-per-world="False"
       >Your browser does not support visualizing patterns. Pattern code: eaq</canvas>
   </details>
-      <p>Pushes whether the entity is sprinting. Interestingly, that includes swimming and if I start sprinting before lifting off the ground.</p>
+      <p>Pushes whether the player is sprinting. Interestingly, that includes swimming or if I started sprinting but left the ground.</p>
   </div>
 <br />
 </div>
@@ -837,7 +899,7 @@
     <img
       title="Conjured Staff"
       alt="Conjured Staff"
-      src="https://raw.githubusercontent.com/miyucomics/hexical/e1582b67a07750aada0fb64222be6abbcc8b2e4a/common/src/main/resources/assets/hexical/textures/item/conjured_staff.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexical/e8ce4af820f0c346f241276c27a22b16190fdb2b/common/src/main/resources/assets/hexical/textures/item/conjured_staff.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     >Conjure Staff<a
@@ -861,10 +923,10 @@
         class="spell-viz"
         width="216"
         height="216"
-        data-string="wweeeed"
+        data-string="wwwwwaqqqqqeaqeaeaeaeaeq"
         data-start="north_east"
         data-per-world="False"
-      >Your browser does not support visualizing patterns. Pattern code: wweeeed</canvas>
+      >Your browser does not support visualizing patterns. Pattern code: wwwwwaqqqqqeaqeaeaeaeaeq</canvas>
   </details>
       <p>Conjures a staff at the location with the amount of media, rank, and hex respectively.</p>
   </div>
