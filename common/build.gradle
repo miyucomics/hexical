@@ -15,9 +15,13 @@ dependencies {
 	modImplementation "net.fabricmc:fabric-loader:${project.fabricLoaderVersion}"
 	modApi "dev.architectury:architectury:${project.architecturyVersion}"
 	implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
-	implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2' // for @Nonnull
+	implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2'
 	modCompileOnly "at.petra-k.paucal:paucal-common-$minecraftVersion:$paucalVersion"
-	modCompileOnly "at.petra-k.hexcasting:hexcasting-fabric-$minecraftVersion:$hexcastingVersion"
+	implementation("at.petra-k.hexcasting:hexcasting-fabric-$minecraftVersion:$hexcastingVersion") {
+		exclude module: "phosphor"
+		exclude module: "emi"
+		exclude module: "pehkui"
+	}
 	modCompileOnly "vazkii.patchouli:Patchouli-xplat:$minecraftVersion-$patchouliVersion"
 	compileOnly(annotationProcessor("com.github.llamalad7.mixinextras:mixinextras-common:${mixinExtrasVersion}"))
 }
