@@ -14,6 +14,10 @@ loom {
 	accessWidenerPath = project(":common").loom.accessWidenerPath
 }
 
+afterEvaluate {
+	tasks.genSourcesWithCfr.dependsOn ':common:unpickJar'
+}
+
 configurations {
 	common
 	shadowCommon
@@ -31,9 +35,7 @@ dependencies {
 		exclude group: "net.fabricmc", module: "fabric-loader"
 	}
 	modImplementation("at.petra-k.hexcasting:hexcasting-fabric-${minecraftVersion}:${hexcastingVersion}") {
-		exclude module: "Pehkui"
 		exclude module: "phosphor"
-		exclude module: "emi"
 	}
 	modImplementation "at.petra-k.paucal:paucal-fabric-${minecraftVersion}:${paucalVersion}"
 	modImplementation "vazkii.patchouli:Patchouli:${minecraftVersion}-${patchouliVersion}-FABRIC"
