@@ -20,7 +20,6 @@ dependencies {
 	implementation("at.petra-k.hexcasting:hexcasting-fabric-$minecraftVersion:$hexcastingVersion") {
 		exclude module: "phosphor"
 		exclude module: "emi"
-		exclude module: "pehkui"
 	}
 	modCompileOnly "vazkii.patchouli:Patchouli-xplat:$minecraftVersion-$patchouliVersion"
 	compileOnly(annotationProcessor("com.github.llamalad7.mixinextras:mixinextras-common:${mixinExtrasVersion}"))
