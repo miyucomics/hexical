@@ -17,9 +17,8 @@ dependencies {
 	implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
 	implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2'
 	modCompileOnly "at.petra-k.paucal:paucal-common-$minecraftVersion:$paucalVersion"
-	implementation("at.petra-k.hexcasting:hexcasting-fabric-$minecraftVersion:$hexcastingVersion") {
+	modCompileOnly("at.petra-k.hexcasting:hexcasting-fabric-$minecraftVersion:$hexcastingVersion") {
 		exclude module: "phosphor"
-		exclude module: "emi"
 	}
 	modCompileOnly "vazkii.patchouli:Patchouli-xplat:$minecraftVersion-$patchouliVersion"
 	compileOnly(annotationProcessor("com.github.llamalad7.mixinextras:mixinextras-common:${mixinExtrasVersion}"))
