@@ -3,6 +3,7 @@ package miyucomics.hexical.items
 import at.petrak.hexcasting.api.spell.iota.NullIota
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
+import miyucomics.hexical.interfaces.PlayerEntityMixinInterface
 import miyucomics.hexical.persistent_state.PersistentStateHandler
 import miyucomics.hexical.registry.HexicalItems
 import miyucomics.hexical.registry.HexicalSounds
@@ -22,7 +23,6 @@ class ArchLampItem : ItemPackagedHex(Settings().maxCount(1)) {
 		val stack = user.getStackInHand(usedHand)
 		if (!hasHex(stack)) return TypedActionResult.fail(stack)
 
-
 		val stackNbt = stack.orCreateNbt
 		if (!stackNbt.contains("active"))
 			stackNbt.putBoolean("active", false)
@@ -32,21 +32,13 @@ class ArchLampItem : ItemPackagedHex(Settings().maxCount(1)) {
 			return TypedActionResult.success(stack)
 		}
 
-		val currentlyUsingArchLamp = CastingUtils.doesPlayerHaveActiveArchLamp(user as ServerPlayerEntity)
-		if (currentlyUsingArchLamp) {
-			if (stackNbt.getBoolean("active")) {
-				stackNbt.putBoolean("active", false)
-				return TypedActionResult.success(stack)
-			} else {
-				for (slot in user.inventory.main)
-					if (slot.item == HexicalItems.ARCH_LAMP_ITEM)
-						slot.orCreateNbt.putBoolean("active", false)
-				user.getItemCooldownManager()[this] = 100
-				return TypedActionResult.fail(stack)
-			}
+		if (stackNbt.getBoolean("active")) {
+			stackNbt.putBoolean("active", false)
+			return TypedActionResult.success(stack)
 		}
 
 		stackNbt.putBoolean("active", true)
+
 		val state = PersistentStateHandler.getPlayerState(user)
 		state.position = user.eyePos
 		state.rotation = user.rotationVector
@@ -62,7 +54,17 @@ class ArchLampItem : ItemPackagedHex(Settings().maxCount(1)) {
 		if (getMedia(stack) == 0) return
 		if (user !is ServerPlayerEntity) return
 		if (!stack.orCreateNbt.getBoolean("active")) return
+
+		if ((user as PlayerEntityMixinInterface).archLampCastedThisTick) {
+			for (itemSlot in user.inventory.main)
+				if (itemSlot.item == HexicalItems.ARCH_LAMP_ITEM)
+					itemSlot.orCreateNbt.putBoolean("active", false)
+			user.itemCooldownManager[this] = 100
+			return
+		}
+
 		CastingUtils.castInvisibly(world as ServerWorld, user, getHex(stack, world) ?: return, true)
+		(user as PlayerEntityMixinInterface).lampCastedThisTick()
 		if (getMedia(stack) == 0)
 			user.inventory.setStack(slot, ItemStack(HexicalItems.LAMP_ITEM))
 	}
