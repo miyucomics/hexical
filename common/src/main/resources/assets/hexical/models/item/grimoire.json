@@ -1,6 +1,6 @@
 {
 	"parent": "minecraft:item/generated",
 	"textures": {
-		"layer0": "minecraft:item/knowledge_book"
+		"layer0": "hexical:item/grimoire"
 	}
 }
