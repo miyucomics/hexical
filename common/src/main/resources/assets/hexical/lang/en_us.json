@@ -1,5 +1,6 @@
 {
 	"item.hexical.lamp": "Genie Lamp",
+	"item.hexical.grimoire": "Grimoire",
 	"item.hexical.arch_lamp": "Archgenie Lamp",
 	"item.hexical.conjured_staff": "Conjured Staff",
 	"block.hexical.mage_block": "Mage Block",
@@ -7,6 +8,7 @@
 	"subtitles.hexical.lamp_activate": "Lamp activates",
 	"subtitles.hexical.lamp_deactivate": "Lamp deactivates",
 
+	"hexcasting.spell.hexical:write_grimoire": "Write Grimoire",
 	"hexcasting.spell.hexical:program_lamp": "Educate Genie",
 	"hexcasting.spell.hexical:get_lamp_position": "Genie Refl.: Spatial",
 	"hexcasting.spell.hexical:get_lamp_rotation": "Genie Refl.: Rotational",
