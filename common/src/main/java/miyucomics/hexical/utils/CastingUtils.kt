@@ -7,6 +7,7 @@ import at.petrak.hexcasting.api.spell.math.HexPattern
 import miyucomics.hexical.interfaces.CastingContextMixinInterface
 import miyucomics.hexical.items.GrimoireItem
 import miyucomics.hexical.registry.HexicalItems
+import net.minecraft.item.ItemStack
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.text.Text
@@ -29,18 +30,12 @@ class CastingUtils {
 			return false
 		}
 
-		fun grimoireLookup(player: ServerPlayerEntity, pattern: HexPattern): List<Iota>? {
-			for (stack in player.inventory.main) {
+		fun grimoireLookup(player: ServerPlayerEntity, pattern: HexPattern, slots: List<ItemStack>): List<Iota>? {
+			for (stack in slots) {
 				if (stack.item != HexicalItems.GRIMOIRE_ITEM)
 					continue
 				val value = GrimoireItem.getPatternInGrimoire(stack, pattern, player.getWorld())
-				if (value != null)
-					return value
-			}
-			for (stack in player.inventory.offHand) {
-				if (stack.item != HexicalItems.GRIMOIRE_ITEM)
-					continue
-				val value = GrimoireItem.getPatternInGrimoire(stack, pattern, player.getWorld())
+				player.sendMessage(Text.literal(value.toString()))
 				if (value != null)
 					return value
 			}

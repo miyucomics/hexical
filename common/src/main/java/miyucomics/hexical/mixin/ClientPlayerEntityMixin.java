@@ -30,7 +30,7 @@ public class ClientPlayerEntityMixin {
 		input.pressingRight = keys.rightKey.isPressed();
 		input.jumping = keys.jumpKey.isPressed();
 		input.sneaking = keys.sneakKey.isPressed();
-		if (!client.player.isSprinting())
+		if (client.player != null)
 			client.player.setSprinting(keys.sprintKey.isPressed());
 	}
 }

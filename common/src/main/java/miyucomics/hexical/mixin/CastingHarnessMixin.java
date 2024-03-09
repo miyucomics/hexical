@@ -1,6 +1,7 @@
 package miyucomics.hexical.mixin;
 
 import at.petrak.hexcasting.api.addldata.ADMediaHolder;
+import at.petrak.hexcasting.api.misc.DiscoveryHandlers;
 import at.petrak.hexcasting.api.spell.casting.CastingContext;
 import at.petrak.hexcasting.api.spell.casting.CastingHarness;
 import at.petrak.hexcasting.api.spell.casting.ControllerInfo;
@@ -31,7 +32,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-@Mixin(value = CastingHarness.class)
+@Mixin(value = CastingHarness.class, priority = 1005)
 public class CastingHarnessMixin {
 	@Unique private final CastingHarness hexical$harness = (CastingHarness) (Object) this;
 
@@ -67,15 +68,15 @@ public class CastingHarnessMixin {
 		}
 	}
 
-	@Inject(method = "executeIota", at = @At("HEAD"), cancellable = true, locals = LocalCapture.CAPTURE_FAILEXCEPTION, remap = false)
-	private void executeIotaMacro (Iota iota, ServerWorld world, CallbackInfoReturnable<ControllerInfo> cir) {
+	@Inject(method = "executeIota", at = @At("HEAD"), cancellable = true, remap = false)
+	private void expandGrimoire (Iota iota, ServerWorld world, CallbackInfoReturnable<ControllerInfo> cir) {
 		CastingContext ctx = hexical$harness.getCtx();
 		List<Iota> toExecute = new ArrayList<>(Collections.singleton(iota));
 		if (ctx.getSpellCircle() != null)
 			return;
 		if (!hexical$harness.getEscapeNext() && iota.getType() == HexIotaTypes.PATTERN && !((PatternIota) iota).getPattern().sigsEqual(HexPattern.fromAngles("qqqaw", HexDir.EAST))) {
 			HexPattern pattern = ((PatternIota) iota).getPattern();
-			toExecute = CastingUtils.Companion.grimoireLookup(ctx.getCaster(), pattern);
+			toExecute = CastingUtils.Companion.grimoireLookup(ctx.getCaster(), pattern, DiscoveryHandlers.collectItemSlots(ctx));
 			if (toExecute == null)
 				toExecute = new ArrayList<>(Collections.singleton(iota));
 		}
