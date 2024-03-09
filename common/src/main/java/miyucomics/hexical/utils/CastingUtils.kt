@@ -35,7 +35,6 @@ class CastingUtils {
 				if (stack.item != HexicalItems.GRIMOIRE_ITEM)
 					continue
 				val value = GrimoireItem.getPatternInGrimoire(stack, pattern, player.getWorld())
-				player.sendMessage(Text.literal(value.toString()))
 				if (value != null)
 					return value
 			}

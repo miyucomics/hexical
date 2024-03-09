@@ -1,21 +1,15 @@
-package miyucomics.hexical.casting.patterns.spells
+package miyucomics.hexical.casting.patterns.spells.grimoire
 
-import at.petrak.hexcasting.api.misc.DiscoveryHandlers
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.*
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.math.HexPattern
-import at.petrak.hexcasting.api.spell.mishaps.MishapLocationTooFarAway
 import at.petrak.hexcasting.api.spell.mishaps.MishapOthersName
 import miyucomics.hexical.items.GrimoireItem
-import miyucomics.hexical.registry.HexicalItems
 import net.minecraft.item.ItemStack
-import net.minecraft.item.Items
-import net.minecraft.server.network.ServerPlayerEntity
-import net.minecraft.util.math.Vec3d
 
-class OpInscribeInGrimoire : SpellAction {
+class OpGrimoireWrite : SpellAction {
 	override val argc = 2
 
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
@@ -25,7 +19,7 @@ class OpInscribeInGrimoire : SpellAction {
 		val trueName = MishapOthersName.getTrueNameFromArgs(hex, ctx.caster)
 		if (trueName != null)
 			throw MishapOthersName(trueName)
-		return Triple(Spell(pattern, hex, stack), MediaConstants.SHARD_UNIT, listOf())
+		return Triple(Spell(pattern, hex, stack), 0, listOf())
 	}
 
 	private data class Spell(val pattern: HexPattern, val hex: List<Iota>, val stack: ItemStack) : RenderedSpell {
