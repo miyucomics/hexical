@@ -38,6 +38,8 @@ object HexicalPatterns {
 	var ENTITY_WET: HexPattern = register(HexPattern.fromAngles("qqqqwaadq", HexDir.SOUTH_WEST), "is_wet", OpGetEntityWet())
 	var PLAYER_SPRINTING: HexPattern = register(HexPattern.fromAngles("eaq", HexDir.WEST), "is_sprinting", OpGetPlayerSprinting())
 
+	var WRITE_TO_GRIMOIRE: HexPattern = register(HexPattern.fromAngles("waqwa", HexDir.SOUTH_WEST), "write_grimoire", OpInscribeInGrimoire())
+
 	var PROGRAM_LAMP: HexPattern = register(HexPattern.fromAngles("wwqqqqq", HexDir.EAST), "program_lamp", OpProgramLamp())
 	var LAMP_POSITION: HexPattern = register(HexPattern.fromAngles("qwddedqdd", HexDir.SOUTH_WEST), "get_lamp_position", OpGetLampData(0))
 	var LAMP_ROTATION: HexPattern = register(HexPattern.fromAngles("qwddedadw", HexDir.SOUTH_WEST), "get_lamp_rotation", OpGetLampData(1))
