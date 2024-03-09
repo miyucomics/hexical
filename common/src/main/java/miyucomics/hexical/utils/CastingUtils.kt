@@ -3,10 +3,13 @@ package miyucomics.hexical.utils
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.casting.CastingHarness
 import at.petrak.hexcasting.api.spell.iota.Iota
+import at.petrak.hexcasting.api.spell.math.HexPattern
 import miyucomics.hexical.interfaces.CastingContextMixinInterface
+import miyucomics.hexical.items.GrimoireItem
 import miyucomics.hexical.registry.HexicalItems
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld
+import net.minecraft.text.Text
 
 class CastingUtils {
 	companion object {
@@ -24,6 +27,19 @@ class CastingUtils {
 				if (stack.item == HexicalItems.ARCH_LAMP_ITEM && stack.orCreateNbt.getBoolean("active"))
 					return true
 			return false
+		}
+
+		fun grimoireLookup(player: ServerPlayerEntity, pattern: HexPattern): List<Iota>? {
+			for (stack in player.inventory.main) {
+				if (stack.item != HexicalItems.GRIMOIRE_ITEM)
+					continue
+				val value = GrimoireItem.getPatternInGrimoire(stack, pattern, player.getWorld())
+				if (value != null) {
+					player.sendMessage(Text.literal("WOO, IT HAD A PATTERN LIST"))
+					return value
+				}
+			}
+			return null
 		}
 	}
 }

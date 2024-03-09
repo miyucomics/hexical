@@ -3,11 +3,18 @@ package miyucomics.hexical.mixin;
 import at.petrak.hexcasting.api.addldata.ADMediaHolder;
 import at.petrak.hexcasting.api.spell.casting.CastingContext;
 import at.petrak.hexcasting.api.spell.casting.CastingHarness;
+import at.petrak.hexcasting.api.spell.casting.ControllerInfo;
 import at.petrak.hexcasting.api.spell.casting.sideeffects.OperatorSideEffect;
+import at.petrak.hexcasting.api.spell.iota.Iota;
+import at.petrak.hexcasting.api.spell.iota.PatternIota;
+import at.petrak.hexcasting.api.spell.math.HexDir;
+import at.petrak.hexcasting.api.spell.math.HexPattern;
+import at.petrak.hexcasting.common.lib.hex.HexIotaTypes;
 import at.petrak.hexcasting.xplat.IXplatAbstractions;
 import com.llamalad7.mixinextras.injector.WrapWithCondition;
 import miyucomics.hexical.interfaces.CastingContextMixinInterface;
 import miyucomics.hexical.items.ArchLampItem;
+import miyucomics.hexical.utils.CastingUtils;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
@@ -18,7 +25,10 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Mixin(value = CastingHarness.class)
@@ -55,5 +65,20 @@ public class CastingHarnessMixin {
 				}
 			}
 		}
+	}
+
+	@Inject(method = "executeIota", at = @At("HEAD"), cancellable = true, locals = LocalCapture.CAPTURE_FAILEXCEPTION, remap = false)
+	private void executeIotaMacro (Iota iota, ServerWorld world, CallbackInfoReturnable<ControllerInfo> cir) {
+		CastingContext ctx = hexical$harness.getCtx();
+		List<Iota> toExecute = new ArrayList<>(Collections.singleton(iota));
+		if (ctx.getSpellCircle() != null)
+			return;
+		if (!hexical$harness.getEscapeNext() && iota.getType() == HexIotaTypes.PATTERN && !((PatternIota) iota).getPattern().sigsEqual(HexPattern.fromAngles("qqqaw", HexDir.EAST))) {
+			HexPattern pattern = ((PatternIota) iota).getPattern();
+			toExecute = CastingUtils.Companion.grimoireLookup(ctx.getCaster(), pattern);
+			if (toExecute == null)
+				toExecute = new ArrayList<>(Collections.singleton(iota));
+		}
+		cir.setReturnValue(hexical$harness.executeIotas(toExecute, world));
 	}
 }
