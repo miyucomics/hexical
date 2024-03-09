@@ -10,6 +10,7 @@ import at.petrak.hexcasting.api.spell.iota.Iota;
 import at.petrak.hexcasting.api.spell.iota.PatternIota;
 import at.petrak.hexcasting.api.spell.math.HexDir;
 import at.petrak.hexcasting.api.spell.math.HexPattern;
+import at.petrak.hexcasting.common.lib.HexSounds;
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes;
 import at.petrak.hexcasting.xplat.IXplatAbstractions;
 import com.llamalad7.mixinextras.injector.WrapWithCondition;
@@ -76,9 +77,11 @@ public class CastingHarnessMixin {
 			return;
 		if (!hexical$harness.getEscapeNext() && iota.getType() == HexIotaTypes.PATTERN && !((PatternIota) iota).getPattern().sigsEqual(HexPattern.fromAngles("qqqaw", HexDir.EAST))) {
 			HexPattern pattern = ((PatternIota) iota).getPattern();
-			toExecute = CastingUtils.Companion.grimoireLookup(ctx.getCaster(), pattern, DiscoveryHandlers.collectItemSlots(ctx));
-			if (toExecute == null)
-				toExecute = new ArrayList<>(Collections.singleton(iota));
+			List<Iota> lookupResult = CastingUtils.Companion.grimoireLookup(ctx.getCaster(), pattern, DiscoveryHandlers.collectItemSlots(ctx));
+			if (lookupResult != null) {
+				toExecute = lookupResult;
+				ctx.getCaster().playSound(HexSounds.CAST_HERMES, SoundCategory.MASTER, 0.25f, 1.25f);
+			}
 		}
 		cir.setReturnValue(hexical$harness.executeIotas(toExecute, world));
 	}
