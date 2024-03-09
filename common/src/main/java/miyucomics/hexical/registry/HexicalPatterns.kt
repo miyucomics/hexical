@@ -14,6 +14,8 @@ import miyucomics.hexical.casting.patterns.operators.lamp.OpGetArchLampData
 import miyucomics.hexical.casting.patterns.operators.lamp.OpGetLampData
 import miyucomics.hexical.casting.patterns.operators.lamp.OpIsUsingArchLamp
 import miyucomics.hexical.casting.patterns.spells.*
+import miyucomics.hexical.casting.patterns.spells.grimoire.OpGrimoireErase
+import miyucomics.hexical.casting.patterns.spells.grimoire.OpGrimoireWrite
 import net.minecraft.util.Identifier
 
 object HexicalPatterns {
@@ -38,7 +40,8 @@ object HexicalPatterns {
 	var ENTITY_WET: HexPattern = register(HexPattern.fromAngles("qqqqwaadq", HexDir.SOUTH_WEST), "is_wet", OpGetEntityWet())
 	var PLAYER_SPRINTING: HexPattern = register(HexPattern.fromAngles("eaq", HexDir.WEST), "is_sprinting", OpGetPlayerSprinting())
 
-	var WRITE_TO_GRIMOIRE: HexPattern = register(HexPattern.fromAngles("waqwa", HexDir.SOUTH_WEST), "write_grimoire", OpInscribeInGrimoire())
+	var WRITE_TO_GRIMOIRE: HexPattern = register(HexPattern.fromAngles("waqwa", HexDir.SOUTH_WEST), "write_grimoire", OpGrimoireWrite())
+	var ERASE_GRIMOIRE: HexPattern = register(HexPattern.fromAngles("wedwe", HexDir.SOUTH_WEST), "erase_grimoire", OpGrimoireErase())
 
 	var PROGRAM_LAMP: HexPattern = register(HexPattern.fromAngles("wwqqqqq", HexDir.EAST), "program_lamp", OpProgramLamp())
 	var LAMP_POSITION: HexPattern = register(HexPattern.fromAngles("qwddedqdd", HexDir.SOUTH_WEST), "get_lamp_position", OpGetLampData(0))

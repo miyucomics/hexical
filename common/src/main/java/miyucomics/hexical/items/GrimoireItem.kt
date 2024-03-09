@@ -11,7 +11,6 @@ import net.minecraft.nbt.NbtElement
 import net.minecraft.nbt.NbtList
 import net.minecraft.server.world.ServerWorld
 
-
 class GrimoireItem : Item(Settings().maxCount(1)) {
 	companion object {
 		fun writeToGrimoire (stack: ItemStack, key: HexPattern, information: List<Iota>) {
@@ -19,6 +18,10 @@ class GrimoireItem : Item(Settings().maxCount(1)) {
 			for (iota in information)
 				patterns.add(HexIotaTypes.serialize(iota));
 			stack.orCreateNbt.putList(key.anglesSignature(), patterns)
+		}
+
+		fun eraseInGrimoire (stack: ItemStack, key: HexPattern) {
+			stack.orCreateNbt.remove(key.anglesSignature())
 		}
 
 		fun getPatternInGrimoire (stack: ItemStack, key: HexPattern, world: ServerWorld): List<Iota>? {
