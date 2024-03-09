@@ -22,7 +22,9 @@ class GrimoireItem : Item(Settings().maxCount(1)) {
 		}
 
 		fun getPatternInGrimoire (stack: ItemStack, key: HexPattern, world: ServerWorld): List<Iota>? {
-			val patsTag = stack.orCreateNbt.getList(key.anglesSignature(), NbtElement.COMPOUND_TYPE.toInt()) ?: return null;
+			val patsTag = stack.orCreateNbt.getList(key.anglesSignature(), NbtElement.COMPOUND_TYPE.toInt())
+			if (patsTag.isEmpty())
+				return null
 			val out = ArrayList<Iota>()
 			for (patTag in patsTag)
 				out.add(HexIotaTypes.deserialize(patTag as NbtCompound, world));

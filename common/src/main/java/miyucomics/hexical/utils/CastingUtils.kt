@@ -34,10 +34,15 @@ class CastingUtils {
 				if (stack.item != HexicalItems.GRIMOIRE_ITEM)
 					continue
 				val value = GrimoireItem.getPatternInGrimoire(stack, pattern, player.getWorld())
-				if (value != null) {
-					player.sendMessage(Text.literal("WOO, IT HAD A PATTERN LIST"))
+				if (value != null)
 					return value
-				}
+			}
+			for (stack in player.inventory.offHand) {
+				if (stack.item != HexicalItems.GRIMOIRE_ITEM)
+					continue
+				val value = GrimoireItem.getPatternInGrimoire(stack, pattern, player.getWorld())
+				if (value != null)
+					return value
 			}
 			return null
 		}
