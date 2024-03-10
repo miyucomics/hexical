@@ -13,8 +13,8 @@ class OpGrimoireWrite : SpellAction {
 	override val argc = 2
 
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
-		val pattern = args.getPattern(0, argc);
-		val hex = args.getList(1, argc).toList();
+		val pattern = args.getPattern(0, argc)
+		val hex = args.getList(1, argc).toList()
 		val (stack, _) = ctx.getHeldItemToOperateOn { it.item is GrimoireItem }
 		val trueName = MishapOthersName.getTrueNameFromArgs(hex, ctx.caster)
 		if (trueName != null)
