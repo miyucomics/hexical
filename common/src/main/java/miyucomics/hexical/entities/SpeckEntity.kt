@@ -40,7 +40,8 @@ class SpeckEntity(entityType: EntityType<SpeckEntity?>?, world: World?) : Entity
 	}
 
 	fun getPattern(): List<Vec2f> {
-		return getCenteredPattern(HexPattern.fromNBT(dataTracker.get(patternNbtDataTracker)), 1f, 1f, 0.25f).second
+		val pattern = HexPattern.fromNBT(dataTracker.get(patternNbtDataTracker))
+		return pattern.toLines(0.25f, pattern.getCenter(1f).multiply(-1f))
 	}
 
 	override fun createSpawnPacket(): Packet<*> {
