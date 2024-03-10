@@ -1,9 +1,6 @@
 package miyucomics.hexical;
 
-import miyucomics.hexical.registry.HexicalBlocks;
-import miyucomics.hexical.registry.HexicalItems;
-import miyucomics.hexical.registry.HexicalNetworking;
-import miyucomics.hexical.registry.HexicalPatterns;
+import miyucomics.hexical.registry.*;
 import net.minecraft.util.Identifier;
 
 public class Hexical {
@@ -13,6 +10,7 @@ public class Hexical {
 	public static void init() {
 		HexicalAbstractions.initPlatformSpecific();
 		HexicalBlocks.init();
+		HexicalEntities.init();
 		HexicalItems.init();
 		HexicalPatterns.init();
 		HexicalNetworking.init();

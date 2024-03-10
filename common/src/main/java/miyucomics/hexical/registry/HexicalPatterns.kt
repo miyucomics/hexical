@@ -34,6 +34,7 @@ object HexicalPatterns {
 	var CHORUS_BLINK: HexPattern = register(HexPattern.fromAngles("aawqqqq", HexDir.SOUTH_EAST), "chorus_blink", OpChorusBlink())
 
 	var CONJURE_STAFF: HexPattern = register(HexPattern.fromAngles("wwwwwaqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST), "conjure_staff", OpConjureStaff())
+	var CONJURE_SPECK: HexPattern = register(HexPattern.fromAngles("eeeee", HexDir.EAST), "conjure_speck", OpConjureSpeck())
 
 	var ENTITY_BURNING: HexPattern = register(HexPattern.fromAngles("qqwaqda", HexDir.EAST), "is_burning", OpGetEntityBurning())
 	var ENTITY_BURNING_TIME: HexPattern = register(HexPattern.fromAngles("eewdead", HexDir.WEST), "burning_time", OpGetEntityBurningTime())
