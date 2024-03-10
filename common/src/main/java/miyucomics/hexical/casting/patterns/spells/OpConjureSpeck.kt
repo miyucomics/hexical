@@ -28,6 +28,7 @@ class OpConjureSpeck : SpellAction {
 			val speck = SpeckEntity(HexicalEntities.SPECK_ENTITY, ctx.world)
 			speck.setPosition(position)
 			speck.setPattern(pattern)
+			speck.setPigment(IXplatAbstractions.INSTANCE.getColorizer(ctx.caster))
 			ctx.world.spawnEntity(speck)
 		}
 	}
