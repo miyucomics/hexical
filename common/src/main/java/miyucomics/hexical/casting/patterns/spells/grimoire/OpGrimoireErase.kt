@@ -1,11 +1,9 @@
 package miyucomics.hexical.casting.patterns.spells.grimoire
 
-import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.*
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.math.HexPattern
-import at.petrak.hexcasting.api.spell.mishaps.MishapOthersName
 import miyucomics.hexical.items.GrimoireItem
 import net.minecraft.item.ItemStack
 
