@@ -41,16 +41,17 @@
 	"hexcasting.mishap.bad_block.advanced_conjured_block": "an advanced conjured block",
 	"hexcasting.mishap.hexical:needs_lamp": "Expected to be cast by Genieless Lamp.",
 	"hexcasting.mishap.hexical:needs_active_arch_lamp": "Expected to have an active Arch Genieless Lamp.",
+	"hexcasting.mishap.hexical:access_denied": "Tried to increase the amount of a restricted binding.",
 
 	"hexical.page.hexical_changes.title": "Hexical Changes",
 	"hexical.page.hexical_changes.0": "I feel strangely more receptive of the ambient media around me. It feels $(o)friendlier$() somehow... I can even feel it responding to certain actions, as if suggesting new spells to me. I also notice I require less concentration with my staff and can move around while using it. Unfortunately, Nature has not become more forgiving of my mishaps.",
 	"hexical.page.hexical_changes.1": "The media has also become more malleable, letting me manipulate it precisely into specific specialized effects. I can also interface with my abacus using Scribe's Gambit.",
 
-	"hexical.page.grimoire.title": "Grimoire",
+	"hexical.page.grimoire.title": "Grimoires",
 	"hexical.page.grimoire.0": "By encrusting my spellbook with charged amethyst and edified wood, it traps media within the pages like an echo chamber. I can then introduce a pattern-to-pattern-list association, or a binding, for the grimoire to keep bouncing endlessly inside.",
 	"hexical.page.grimoire.1": "When I then cast the pattern associated with a pattern list with my staff and the grimoire in my inventory, it empowers the pattern, allowing it to break free from the grimoire's pages with a faint sound of a hex being cast. This allows me to create $(o)shortcuts$() for my staff by associating a short pattern with a common task, such as the raycast mantra.",
 	"hexical.page.grimoire.2": "While stable with only a few abstract strands of media wizzing around inside, a single grimoire can not hold more than sixteen pattern associations. When attempting to introduce more, the grimoire simply rejects it and throws itself onto the ground with a shower of blue sparks.",
-	"hexical.page.grimoire.3": "I can also mark a pattern inside the grimoire as volatile, meaning it destroys itself after a certain number of uses. I shall find this aspect of the grimoire quite useful if I ever need to lend out my true name. I can simply give them a grimoire a set number of references to my name.",
+	"hexical.page.grimoire.3": "I can also restrict a pattern inside the grimoire so it destroys itself after a certain number of uses. I shall find this aspect of the grimoire quite useful if I ever need to lend out my true name. I can simply give them a grimoire a set number of references to my name.",
     "hexical.page.write_grimoire": "Writes a pattern-to-pattern-list binding into the grimoire in my offhand.",
     "hexical.page.erase_grimoire": "Erases the pattern-list binding to the pattern in the grimoire in my offhand if it exists.",
 

@@ -1,4 +1,4 @@
-package miyucomics.hexical.casting.patterns.operators.lamp
+package miyucomics.hexical.casting.operators.lamp
 
 import at.petrak.hexcasting.api.spell.ConstMediaAction
 import at.petrak.hexcasting.api.spell.casting.CastingContext
@@ -12,7 +12,6 @@ import miyucomics.hexical.registry.HexicalItems
 
 class OpGetLampData(private val mode: Int) : ConstMediaAction {
 	override val argc = 0
-
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
 		if (!(ctx.caster.activeItem.item == HexicalItems.LAMP_ITEM && ctx.source == CastingContext.CastSource.PACKAGED_HEX))
 			throw NeedsLampMishap()

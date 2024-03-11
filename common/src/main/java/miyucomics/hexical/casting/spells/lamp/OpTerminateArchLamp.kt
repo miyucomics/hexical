@@ -1,4 +1,4 @@
-package miyucomics.hexical.casting.patterns.spells
+package miyucomics.hexical.casting.spells.lamp
 
 import at.petrak.hexcasting.api.spell.ParticleSpray
 import at.petrak.hexcasting.api.spell.RenderedSpell
