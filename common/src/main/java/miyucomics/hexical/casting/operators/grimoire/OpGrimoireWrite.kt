@@ -6,6 +6,7 @@ import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.math.HexPattern
 import at.petrak.hexcasting.api.spell.mishaps.MishapOthersName
+import miyucomics.hexical.casting.mishaps.GrimoireTooFullMishap
 import miyucomics.hexical.items.GrimoireItem
 import net.minecraft.item.ItemStack
 
@@ -19,6 +20,8 @@ class OpGrimoireWrite : SpellAction {
 		val trueName = MishapOthersName.getTrueNameFromArgs(hex, ctx.caster)
 		if (trueName != null)
 			throw MishapOthersName(trueName)
+		if (GrimoireItem.getPatternsInGrimoire(stack).size >= 16)
+			throw GrimoireTooFullMishap()
 		return Triple(Spell(pattern, hex, stack), 0, listOf())
 	}
 
