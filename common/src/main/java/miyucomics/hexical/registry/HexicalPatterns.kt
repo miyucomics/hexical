@@ -41,7 +41,7 @@ object HexicalPatterns {
 	val PLAYER_SPRINTING: HexPattern = register(HexPattern.fromAngles("eaq", HexDir.WEST), "is_sprinting", OpGetPlayerSprinting())
 
 	val WRITE_TO_GRIMOIRE: HexPattern = register(HexPattern.fromAngles("aqwqaeaqa", HexDir.WEST), "write_grimoire", OpGrimoireWrite())
-	val ERASE_GRIMOIRE: HexPattern = register(HexPattern.fromAngles("aqwqaqded", HexDir.EAST), "erase_grimoire", OpGrimoireErase())
+	val ERASE_GRIMOIRE: HexPattern = register(HexPattern.fromAngles("aqwqaqded", HexDir.WEST), "erase_grimoire", OpGrimoireErase())
 	val INDEX_GRIMOIRE: HexPattern = register(HexPattern.fromAngles("aqaeaqwqa", HexDir.SOUTH_EAST), "index_grimoire", OpGrimoireIndex())
 	val RESTRICT_GRIMOIRE: HexPattern = register(HexPattern.fromAngles("dedqdewed", HexDir.SOUTH_WEST), "restrict_grimoire", OpGrimoireRestrict())
 	val QUERY_GRIMOIRE: HexPattern = register(HexPattern.fromAngles("aqaedewed", HexDir.NORTH_WEST), "query_grimoire", OpGrimoireQuery())
