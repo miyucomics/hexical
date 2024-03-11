@@ -4,8 +4,6 @@ import at.petrak.hexcasting.api.misc.FrozenColorizer
 import at.petrak.hexcasting.api.spell.math.HexDir
 import at.petrak.hexcasting.api.spell.math.HexPattern
 import at.petrak.hexcasting.api.utils.putCompound
-import at.petrak.hexcasting.client.getCenteredPattern
-import net.minecraft.block.Block
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.data.DataTracker
@@ -14,7 +12,6 @@ import net.minecraft.entity.data.TrackedDataHandlerRegistry
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.network.Packet
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket
-import net.minecraft.util.math.Vec2f
 import net.minecraft.world.World
 
 val patternDataTracker: TrackedData<NbtCompound> = DataTracker.registerData(SpeckEntity::class.java, TrackedDataHandlerRegistry.NBT_COMPOUND)
@@ -33,7 +30,7 @@ class SpeckEntity(entityType: EntityType<SpeckEntity?>?, world: World?) : Entity
 		pattern = HexPattern.fromNBT(nbt.getCompound("pattern"))
 		pigment = FrozenColorizer.fromNBT(nbt.getCompound("pigment"))
 		dataTracker.set(patternDataTracker, nbt.getCompound("pattern"))
-		dataTracker.set(pigmentDataTracker, nbt.getCompound("pattern"))
+		dataTracker.set(pigmentDataTracker, nbt.getCompound("pigment"))
 	}
 
 	override fun writeCustomDataToNbt(nbt: NbtCompound) {
