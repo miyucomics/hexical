@@ -12,14 +12,6 @@
 			"text": "hexical.page.grimoire.1"
 		},
 		{
-			"type": "patchouli:text",
-			"text": "hexical.page.grimoire.2"
-		},
-		{
-			"type": "patchouli:text",
-			"text": "hexical.page.grimoire.3"
-		},
-		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:write_grimoire",
 			"anchor": "hexical:write_grimoire",
@@ -34,6 +26,38 @@
 			"input": "pattern",
 			"output": "",
 			"text": "hexical.page.erase_grimoire"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.grimoire.2"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:index_grimoire",
+			"anchor": "hexical:index_grimoire",
+			"input": "",
+			"output": "[pattern]",
+			"text": "hexical.page.index_grimoire"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.grimoire.3"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:restrict_grimoire",
+			"anchor": "hexical:restrict_grimoire",
+			"input": "pattern, number",
+			"output": "",
+			"text": "hexical.page.restrict_grimoire"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:query_grimoire",
+			"anchor": "hexical:query_grimoire",
+			"input": "pattern",
+			"output": "number",
+			"text": "hexical.page.query_grimoire"
 		}
 	]
 }

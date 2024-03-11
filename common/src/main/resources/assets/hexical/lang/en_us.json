@@ -10,6 +10,9 @@
 
 	"hexcasting.spell.hexical:write_grimoire": "Write Grimoire",
 	"hexcasting.spell.hexical:erase_grimoire": "Erase Grimoire",
+	"hexcasting.spell.hexical:index_grimoire": "Archivist Reflection",
+	"hexcasting.spell.hexical:restrict_grimoire": "Restrict Grimoire",
+	"hexcasting.spell.hexical:query_grimoire": "Archivist Purification",
 	"hexcasting.spell.hexical:program_lamp": "Educate Genie",
 	"hexcasting.spell.hexical:get_lamp_position": "Genie Refl.: Spatial",
 	"hexcasting.spell.hexical:get_lamp_rotation": "Genie Refl.: Rotational",
@@ -41,7 +44,7 @@
 	"hexcasting.mishap.bad_block.advanced_conjured_block": "an advanced conjured block",
 	"hexcasting.mishap.hexical:needs_lamp": "Expected to be cast by Genieless Lamp.",
 	"hexcasting.mishap.hexical:needs_active_arch_lamp": "Expected to have an active Arch Genieless Lamp.",
-	"hexcasting.mishap.hexical:access_denied": "Tried to increase the amount of a restricted binding.",
+	"hexcasting.mishap.hexical:grimoire_access_denied": "Tried to increase the amount of a restricted binding.",
 
 	"hexical.page.hexical_changes.title": "Hexical Changes",
 	"hexical.page.hexical_changes.0": "I feel strangely more receptive of the ambient media around me. It feels $(o)friendlier$() somehow... I can even feel it responding to certain actions, as if suggesting new spells to me. I also notice I require less concentration with my staff and can move around while using it. Unfortunately, Nature has not become more forgiving of my mishaps.",
@@ -54,6 +57,9 @@
 	"hexical.page.grimoire.3": "I can also restrict a pattern inside the grimoire so it destroys itself after a certain number of uses. I shall find this aspect of the grimoire quite useful if I ever need to lend out my true name. I can simply give them a grimoire a set number of references to my name.",
     "hexical.page.write_grimoire": "Writes a pattern-to-pattern-list binding into the grimoire in my offhand.",
     "hexical.page.erase_grimoire": "Erases the pattern-list binding to the pattern in the grimoire in my offhand if it exists.",
+	"hexical.page.index_grimoire": "Gets a list of all patterns stored in the grimoire.",
+	"hexical.page.query_grimoire": "Gets how many times you can use that grimoire binding.",
+	"hexical.page.restrict_grimoire": "Restrict a grimoire binding to be only usable that number of times.",
 
 	"hexical.category.lamp": "Genieless Lamp",
 	"hexical.category.lamp.desc": "I have heard tales from the villagers about a magical artifact. Legends say it contains a spirit that grants wishes, but I suspect that is just embellishment evolved over centuries of storytelling. Regardless, I dedicate this chapter to my pursuit and research of it.",
