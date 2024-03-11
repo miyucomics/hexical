@@ -5,6 +5,9 @@
 	"item.hexical.conjured_staff": "Conjured Staff",
 	"block.hexical.mage_block": "Mage Block",
 
+	"key.categories.hexical": "Hexical",
+	"key.hexical.telepathy": "Telepathy",
+
 	"subtitles.hexical.lamp_activate": "Lamp activates",
 	"subtitles.hexical.lamp_deactivate": "Lamp deactivates",
 
@@ -44,7 +47,7 @@
 	"hexcasting.mishap.bad_block.advanced_conjured_block": "an advanced conjured block",
 	"hexcasting.mishap.hexical:needs_lamp": "Expected to be cast by Genieless Lamp.",
 	"hexcasting.mishap.hexical:needs_active_arch_lamp": "Expected to have an active Arch Genieless Lamp.",
-	"hexcasting.mishap.hexical:grimoire_access_denied": "Tried to increase the amount of a restricted binding.",
+	"hexcasting.mishap.hexical:grimoire_access_denied": "Tried to increase the uses of a restricted binding.",
 	"hexcasting.mishap.hexical:grimoire_too_full": "Tried to fit too many bindings in a grimoire.",
 
 	"hexical.page.hexical_changes.title": "Hexical Changes",
@@ -52,8 +55,8 @@
 	"hexical.page.hexical_changes.1": "The media has also become more malleable, letting me manipulate it precisely into specific specialized effects. I can also interface with my abacus using Scribe's Gambit.",
 
 	"hexical.page.grimoire.title": "Grimoires",
-	"hexical.page.grimoire.0": "By encrusting my spellbook with charged amethyst and edified wood, it traps media within the pages like an echo chamber. I can then introduce a pattern-to-pattern-list association, or a binding, for the grimoire to keep bouncing endlessly inside.",
-	"hexical.page.grimoire.1": "When I then cast the pattern associated with a pattern list with my staff and the grimoire in my inventory, it empowers the pattern, allowing it to break free from the grimoire's pages with a faint sound of a hex being cast. This allows me to create $(o)shortcuts$() for my staff by associating a short pattern with a common task, such as the raycast mantra.",
+	"hexical.page.grimoire.0": "By encrusting my spellbook with charged amethyst and edified wood, it traps media within the pages like an echo chamber. I can then introduce a pattern-to-pattern-list binding for the grimoire to keep bouncing endlessly inside.",
+	"hexical.page.grimoire.1": "When I then cast the pattern associated with a pattern list with my staff and the grimoire in my inventory, it empowers the pattern, allowing it to break free from the grimoire's pages with a faint sound of a hex being cast. This allows me to create $(o)shortcuts$() for my staff by associating a short pattern with a common task, such as the raycast mantra. Interestingly, the grimoire can even overwrite base patterns, allowing me to hijack and add extra functionality to them.",
 	"hexical.page.grimoire.2": "While stable with only a few abstract strands of media wizzing around inside, a single grimoire can not hold more than sixteen pattern associations. When attempting to introduce more, the grimoire simply rejects it and throws itself onto the ground with a shower of blue sparks.",
 	"hexical.page.grimoire.3": "I can also restrict a pattern inside the grimoire so it destroys itself after a certain number of uses. I shall find this aspect of the grimoire quite useful if I ever need to lend out my true name. I can simply give them a grimoire a set number of references to my name.",
     "hexical.page.write_grimoire": "Writes a pattern-to-pattern-list binding into the grimoire in my offhand.",
