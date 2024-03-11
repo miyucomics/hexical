@@ -45,6 +45,7 @@
 	"hexcasting.mishap.hexical:needs_lamp": "Expected to be cast by Genieless Lamp.",
 	"hexcasting.mishap.hexical:needs_active_arch_lamp": "Expected to have an active Arch Genieless Lamp.",
 	"hexcasting.mishap.hexical:grimoire_access_denied": "Tried to increase the amount of a restricted binding.",
+	"hexcasting.mishap.hexical:grimoire_too_full": "Tried to fit too many bindings in a grimoire.",
 
 	"hexical.page.hexical_changes.title": "Hexical Changes",
 	"hexical.page.hexical_changes.0": "I feel strangely more receptive of the ambient media around me. It feels $(o)friendlier$() somehow... I can even feel it responding to certain actions, as if suggesting new spells to me. I also notice I require less concentration with my staff and can move around while using it. Unfortunately, Nature has not become more forgiving of my mishaps.",
