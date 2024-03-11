@@ -1,4 +1,4 @@
-package miyucomics.hexical.casting.patterns.operators.eval
+package miyucomics.hexical.casting.operators.eval
 
 import at.petrak.hexcasting.api.spell.*
 import at.petrak.hexcasting.api.spell.casting.CastingContext

@@ -9,7 +9,7 @@ import net.minecraft.util.registry.Registry
 
 object HexicalEntities {
 	private val ENTITIES: DeferredRegister<EntityType<*>> = DeferredRegister.create(Hexical.MOD_ID, Registry.ENTITY_TYPE_KEY)
-	val SPECK_ENTITY: EntityType<SpeckEntity?> = EntityType.Builder.create<SpeckEntity?>(::SpeckEntity, SpawnGroup.MISC).setDimensions(0.5f, 0.5f).maxTrackingRange(10).trackingTickInterval(Int.MAX_VALUE).build(Hexical.MOD_ID + ":speck")
+	val SPECK_ENTITY: EntityType<SpeckEntity?> = EntityType.Builder.create<SpeckEntity?>(::SpeckEntity, SpawnGroup.MISC).setDimensions(0.5f, 0.5f).maxTrackingRange(10).trackingTickInterval(20).build(Hexical.MOD_ID + ":speck")
 
 	@JvmStatic
 	fun init() {

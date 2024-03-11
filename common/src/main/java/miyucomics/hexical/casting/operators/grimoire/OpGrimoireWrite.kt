@@ -1,4 +1,4 @@
-package miyucomics.hexical.casting.patterns.spells.grimoire
+package miyucomics.hexical.casting.operators.grimoire
 
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.*

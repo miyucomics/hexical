@@ -1,4 +1,4 @@
-package miyucomics.hexical.casting.patterns.operators.lamp
+package miyucomics.hexical.casting.operators.lamp
 
 import at.petrak.hexcasting.api.spell.ConstMediaAction
 import at.petrak.hexcasting.api.spell.casting.CastingContext
@@ -13,7 +13,6 @@ import miyucomics.hexical.utils.CastingUtils
 
 class OpGetArchLampData(private val mode: Int) : ConstMediaAction {
 	override val argc = 0
-
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
 		if (!CastingUtils.doesPlayerHaveActiveArchLamp(ctx.caster))
 			throw NeedsActiveArchLampMishap()
