@@ -158,7 +158,7 @@
           <li><a href="#grimoire" class="toc-elem "><img
       title="Grimoire"
       alt="Grimoire"
-      src="https://raw.githubusercontent.com/miyucomics/hexical/8f91c3e2a7892bf3acf5668ef2b2901e556582ad/common/src/main/resources/assets/hexical/textures/item/grimoire.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexical/ce036c0c09d8977587beef18ca75e443cb0f6a66/common/src/main/resources/assets/hexical/textures/item/grimoire.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     > Grimoires</a></li>
@@ -168,7 +168,7 @@
       <summary><a href="#lamp" class="toc-elem "><img
       title="Genie Lamp"
       alt="Genie Lamp"
-      src="https://raw.githubusercontent.com/miyucomics/hexical/8f91c3e2a7892bf3acf5668ef2b2901e556582ad/common/src/main/resources/assets/hexical/textures/item/lamp.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexical/ce036c0c09d8977587beef18ca75e443cb0f6a66/common/src/main/resources/assets/hexical/textures/item/lamp.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     > Genieless Lamp</a></summary>
@@ -197,7 +197,7 @@
           <li><a href="#lamp/arch_lamps" class="toc-elem "><img
       title="Archgenie Lamp"
       alt="Archgenie Lamp"
-      src="https://raw.githubusercontent.com/miyucomics/hexical/8f91c3e2a7892bf3acf5668ef2b2901e556582ad/common/src/main/resources/assets/hexical/textures/item/arch_lamp.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexical/ce036c0c09d8977587beef18ca75e443cb0f6a66/common/src/main/resources/assets/hexical/textures/item/arch_lamp.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     > Archgenie Lamps</a></li>
@@ -254,7 +254,7 @@
           <li><a href="#patterns/conjure_staff" class="toc-elem "><img
       title="Conjured Staff"
       alt="Conjured Staff"
-      src="https://raw.githubusercontent.com/miyucomics/hexical/8f91c3e2a7892bf3acf5668ef2b2901e556582ad/common/src/main/resources/assets/hexical/textures/item/conjured_staff.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexical/ce036c0c09d8977587beef18ca75e443cb0f6a66/common/src/main/resources/assets/hexical/textures/item/conjured_staff.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     > Conjure Staff</a></li>
@@ -333,7 +333,7 @@
     <img
       title="Grimoire"
       alt="Grimoire"
-      src="https://raw.githubusercontent.com/miyucomics/hexical/8f91c3e2a7892bf3acf5668ef2b2901e556582ad/common/src/main/resources/assets/hexical/textures/item/grimoire.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexical/ce036c0c09d8977587beef18ca75e443cb0f6a66/common/src/main/resources/assets/hexical/textures/item/grimoire.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     >Grimoires<a
@@ -348,10 +348,6 @@
     <p>By encrusting my spellbook with charged amethyst and edified wood, it traps media within the pages like an echo chamber. I can then introduce a pattern-to-pattern-list association, or a binding, for the grimoire to keep bouncing endlessly inside.</p>
 <br />
     <p>When I then cast the pattern associated with a pattern list with my staff and the grimoire in my inventory, it empowers the pattern, allowing it to break free from the grimoire&#39;s pages with a faint sound of a hex being cast. This allows me to create <i>shortcuts</i> for my staff by associating a short pattern with a common task, such as the raycast mantra.</p>
-<br />
-    <p>While stable with only a few abstract strands of media wizzing around inside, a single grimoire can not hold more than sixteen pattern associations. When attempting to introduce more, the grimoire simply rejects it and throws itself onto the ground with a shower of blue sparks.</p>
-<br />
-    <p>I can also restrict a pattern inside the grimoire so it destroys itself after a certain number of uses. I shall find this aspect of the grimoire quite useful if I ever need to lend out my true name. I can simply give them a grimoire a set number of references to my name.</p>
 <br />
   <div id="grimoire@hexical:write_grimoire">
 <h4 class="pattern-title">Write Grimoire (pattern, [pattern] →)<a
@@ -386,11 +382,75 @@
         width="216"
         height="216"
         data-string="aqwqaqded"
-        data-start="east"
+        data-start="west"
         data-per-world="False"
       >Your browser does not support visualizing patterns. Pattern code: aqwqaqded</canvas>
   </details>
       <p>Erases the pattern-list binding to the pattern in the grimoire in my offhand if it exists.</p>
+  </div>
+<br />
+    <p>While stable with only a few abstract strands of media wizzing around inside, a single grimoire can not hold more than sixteen pattern associations. When attempting to introduce more, the grimoire simply rejects it and throws itself onto the ground with a shower of blue sparks.</p>
+<br />
+  <div id="grimoire@hexical:index_grimoire">
+<h4 class="pattern-title">Archivist Reflection (→ [pattern])<a
+    href="#grimoire@hexical:index_grimoire"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="aqaeaqwqa"
+        data-start="south_east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: aqaeaqwqa</canvas>
+  </details>
+      <p>Gets a list of all patterns stored in the grimoire.</p>
+  </div>
+<br />
+    <p>I can also restrict a pattern inside the grimoire so it destroys itself after a certain number of uses. I shall find this aspect of the grimoire quite useful if I ever need to lend out my true name. I can simply give them a grimoire a set number of references to my name.</p>
+<br />
+  <div id="grimoire@hexical:restrict_grimoire">
+<h4 class="pattern-title">Restrict Grimoire (pattern, number →)<a
+    href="#grimoire@hexical:restrict_grimoire"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="dedqdewed"
+        data-start="south_west"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: dedqdewed</canvas>
+  </details>
+      <p>Restrict a grimoire binding to be only usable that number of times.</p>
+  </div>
+<br />
+  <div id="grimoire@hexical:query_grimoire">
+<h4 class="pattern-title">Archivist Purification (pattern → number)<a
+    href="#grimoire@hexical:query_grimoire"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="aqaedewed"
+        data-start="north_west"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: aqaedewed</canvas>
+  </details>
+      <p>Gets how many times you can use that grimoire binding.</p>
   </div>
 <br />
 </div>
@@ -400,7 +460,7 @@
     <img
       title="Genie Lamp"
       alt="Genie Lamp"
-      src="https://raw.githubusercontent.com/miyucomics/hexical/8f91c3e2a7892bf3acf5668ef2b2901e556582ad/common/src/main/resources/assets/hexical/textures/item/lamp.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexical/ce036c0c09d8977587beef18ca75e443cb0f6a66/common/src/main/resources/assets/hexical/textures/item/lamp.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     >Genieless Lamp<a
@@ -582,7 +642,7 @@
     <img
       title="Archgenie Lamp"
       alt="Archgenie Lamp"
-      src="https://raw.githubusercontent.com/miyucomics/hexical/8f91c3e2a7892bf3acf5668ef2b2901e556582ad/common/src/main/resources/assets/hexical/textures/item/arch_lamp.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexical/ce036c0c09d8977587beef18ca75e443cb0f6a66/common/src/main/resources/assets/hexical/textures/item/arch_lamp.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     >Archgenie Lamps<a
@@ -1002,7 +1062,7 @@
     <img
       title="Conjured Staff"
       alt="Conjured Staff"
-      src="https://raw.githubusercontent.com/miyucomics/hexical/8f91c3e2a7892bf3acf5668ef2b2901e556582ad/common/src/main/resources/assets/hexical/textures/item/conjured_staff.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexical/ce036c0c09d8977587beef18ca75e443cb0f6a66/common/src/main/resources/assets/hexical/textures/item/conjured_staff.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     >Conjure Staff<a
