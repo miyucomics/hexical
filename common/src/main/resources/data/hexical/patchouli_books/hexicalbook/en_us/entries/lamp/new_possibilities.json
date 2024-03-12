@@ -43,6 +43,14 @@
 			"input": "",
 			"output": "number",
 			"text": "hexical.page.get_lamp_use_time"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:get_lamp_media",
+			"anchor": "hexical:get_lamp_media",
+			"input": "",
+			"output": "number",
+			"text": "hexical.page.get_lamp_media"
 		}
 	]
 }
