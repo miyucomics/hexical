@@ -51,6 +51,7 @@ object HexicalPatterns {
 	val LAMP_ROTATION: HexPattern = register(HexPattern.fromAngles("qwddedadw", HexDir.SOUTH_WEST), "get_lamp_rotation", OpGetLampData(1))
 	val LAMP_VELOCITY: HexPattern = register(HexPattern.fromAngles("qwddedqew", HexDir.SOUTH_WEST), "get_lamp_velocity", OpGetLampData(2))
 	val LAMP_USE_TIME: HexPattern = register(HexPattern.fromAngles("qwddedqwddwa", HexDir.SOUTH_WEST), "get_lamp_use_time", OpGetLampData(3))
+	val LAMP_MEDIA: HexPattern = register(HexPattern.fromAngles("qwddedqwwaqqqqqeaqeaeqqqeaeq", HexDir.SOUTH_WEST), "get_lamp_media", OpGetLampData(4))
 	val ARCH_LAMP_POSITION: HexPattern = register(HexPattern.fromAngles("qaqwddedqdd", HexDir.NORTH_EAST), "get_arch_lamp_position", OpGetArchLampData(0))
 	val ARCH_LAMP_ROTATION: HexPattern = register(HexPattern.fromAngles("qaqwddedadw", HexDir.NORTH_EAST), "get_arch_lamp_rotation", OpGetArchLampData(1))
 	val ARCH_LAMP_VELOCITY: HexPattern = register(HexPattern.fromAngles("qaqwddedqew", HexDir.NORTH_EAST), "get_arch_lamp_velocity", OpGetArchLampData(2))
