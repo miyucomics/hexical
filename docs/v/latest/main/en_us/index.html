@@ -158,7 +158,7 @@
           <li><a href="#grimoire" class="toc-elem "><img
       title="Grimoire"
       alt="Grimoire"
-      src="https://raw.githubusercontent.com/miyucomics/hexical/1c975254e9c3e746d80ff832c9eda5bc344dd9fe/common/src/main/resources/assets/hexical/textures/item/grimoire.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexical/e1135853a50ce8b75e6b26bff2b527f5f6e03410/common/src/main/resources/assets/hexical/textures/item/grimoire.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     > Grimoires</a></li>
@@ -168,7 +168,7 @@
       <summary><a href="#lamp" class="toc-elem "><img
       title="Genie Lamp"
       alt="Genie Lamp"
-      src="https://raw.githubusercontent.com/miyucomics/hexical/1c975254e9c3e746d80ff832c9eda5bc344dd9fe/common/src/main/resources/assets/hexical/textures/item/lamp.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexical/e1135853a50ce8b75e6b26bff2b527f5f6e03410/common/src/main/resources/assets/hexical/textures/item/lamp.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     > Genieless Lamp</a></summary>
@@ -197,10 +197,10 @@
           <li><a href="#lamp/arch_lamps" class="toc-elem "><img
       title="Archgenie Lamp"
       alt="Archgenie Lamp"
-      src="https://raw.githubusercontent.com/miyucomics/hexical/1c975254e9c3e746d80ff832c9eda5bc344dd9fe/common/src/main/resources/assets/hexical/textures/item/arch_lamp.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexical/e1135853a50ce8b75e6b26bff2b527f5f6e03410/common/src/main/resources/assets/hexical/textures/item/arch_lamp.png"
       loading="lazy"
       class="item-texture  texture pixelated"
-    > Archgenie Lamps</a></li>
+    > Arch Lamps</a></li>
           <li><a href="#lamp/arch_lamp_storage" class="toc-elem "><img
       title="Focus"
       alt="Focus"
@@ -254,7 +254,7 @@
           <li><a href="#patterns/conjure_staff" class="toc-elem "><img
       title="Conjured Staff"
       alt="Conjured Staff"
-      src="https://raw.githubusercontent.com/miyucomics/hexical/1c975254e9c3e746d80ff832c9eda5bc344dd9fe/common/src/main/resources/assets/hexical/textures/item/conjured_staff.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexical/e1135853a50ce8b75e6b26bff2b527f5f6e03410/common/src/main/resources/assets/hexical/textures/item/conjured_staff.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     > Conjure Staff</a></li>
@@ -333,7 +333,7 @@
     <img
       title="Grimoire"
       alt="Grimoire"
-      src="https://raw.githubusercontent.com/miyucomics/hexical/1c975254e9c3e746d80ff832c9eda5bc344dd9fe/common/src/main/resources/assets/hexical/textures/item/grimoire.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexical/e1135853a50ce8b75e6b26bff2b527f5f6e03410/common/src/main/resources/assets/hexical/textures/item/grimoire.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     >Grimoires<a
@@ -460,7 +460,7 @@
     <img
       title="Genie Lamp"
       alt="Genie Lamp"
-      src="https://raw.githubusercontent.com/miyucomics/hexical/1c975254e9c3e746d80ff832c9eda5bc344dd9fe/common/src/main/resources/assets/hexical/textures/item/lamp.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexical/e1135853a50ce8b75e6b26bff2b527f5f6e03410/common/src/main/resources/assets/hexical/textures/item/lamp.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     >Genieless Lamp<a
@@ -532,7 +532,7 @@
   ><i class="bi bi-link-45deg"></i></a></h3>
     <p>It casts <i><strong>EVERY INSTANT</strong></i>. After writing a spell into it, I was treated to a splendid gush of media. I estimate the casting speed must be around twenty times every second. The presence inside the lamp performs the casting on my behalf with extraordinary efficiency, not producing the sound and particles that accompany other casting methods.</p>
 <br />
-    <p>I have developed some useful patterns for use with the lamp, documented on the next few pages.</p>
+    <p>I have developed some useful patterns for use with the lamp, documented on the next few pages. These patterns should only be cast from within the lamp, lest I succumb to the Missing Genie mishap, which emits red sparks and flings my casting item from my hand.</p>
 <br />
   <div id="lamp/new_possibilities@hexical:get_lamp_position">
 <h4 class="pattern-title">Genie Refl.: Spatial (→ vector)<a
@@ -614,6 +614,26 @@
       <p>Pushes how many times the lamp has casted. Divided by 20, it returns how many times in seconds the lamp has been in use.</p>
   </div>
 <br />
+  <div id="lamp/new_possibilities@hexical:get_lamp_media">
+<h4 class="pattern-title">Genie Refl.: Media (→ number)<a
+    href="#lamp/new_possibilities@hexical:get_lamp_media"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="qwddedqwwaqqqqqeaqeaeqqqeaeq"
+        data-start="south_west"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: qwddedqwwaqqqqqeaqeaeqqqeaeq</canvas>
+  </details>
+      <p>Pushes the remaining media of the lamp in dust.</p>
+  </div>
+<br />
 </div>
 <div id="lamp/replacement_mind" class="entry">
     <h3 class="entry-title page-header">
@@ -642,10 +662,10 @@
     <img
       title="Archgenie Lamp"
       alt="Archgenie Lamp"
-      src="https://raw.githubusercontent.com/miyucomics/hexical/1c975254e9c3e746d80ff832c9eda5bc344dd9fe/common/src/main/resources/assets/hexical/textures/item/arch_lamp.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexical/e1135853a50ce8b75e6b26bff2b527f5f6e03410/common/src/main/resources/assets/hexical/textures/item/arch_lamp.png"
       loading="lazy"
       class="item-texture  texture pixelated"
-    >Archgenie Lamps<a
+    >Arch Lamps<a
     href="#table-of-contents"
     class="permalink small"
     title="Jump to top"
@@ -654,7 +674,7 @@
     class="permalink small"
     title="Permalink"
   ><i class="bi bi-link-45deg"></i></a></h3>
-    <p>Because a separate mind casts my spells, a lamp should be able to cast even without me holding it. I estimate any villager short of a complete master of its field would be unable to cast so often unassisted though. These <i>archgenie lamps</i> are activated and deactivated rather than used and while active in my inventory, they cast every moment even without my input.</p>
+    <p>Because a separate mind casts my spells, a lamp should be able to cast even without me holding it. I estimate any villager short of a complete master of its field would be unable to cast so often unassisted though. These <i>arch lamps</i> are activated and deactivated rather than used and while active in my inventory, they cast every moment even without my input.</p>
 <br />
     <p>The output of an arch lamp is so grand that it saturates the air around me with media... it&#39;s incredible. Unfortunately, if two lamps are active at once within my inventory, the resonances clash and deactivate both lamps, as well as rendering every arch lamp in my inventory useless for a few seconds. I should only have one archgenie lamp active at once, although I can still simutaneously use a regular lamp.</p>
 <br />
@@ -755,7 +775,7 @@
         data-per-world="False"
       >Your browser does not support visualizing patterns. Pattern code: qaqwddedqeed</canvas>
   </details>
-      <p>Takes a player and pushes whether they currently have an active arch lamp.</p>
+      <p>Pushes whether a player currently has an active arch lamp.</p>
   </div>
 <br />
   <div id="lamp/arch_lamps@hexical:terminate_arch_lamp">
@@ -775,7 +795,7 @@
         data-per-world="False"
       >Your browser does not support visualizing patterns. Pattern code: qaqwddedwaqdee</canvas>
   </details>
-      <p>Casted by a casting device, staff, or within the arch lamp, deactivates the lamp&#39;s operation. Similar to Charon&#39;s.</p>
+      <p>Can be casted by a casting device, staff, or within the arch lamp itself. Deactivates the lamp&#39;s operation, similar to Charon&#39;s.</p>
   </div>
 <br />
 </div>
@@ -1062,7 +1082,7 @@
     <img
       title="Conjured Staff"
       alt="Conjured Staff"
-      src="https://raw.githubusercontent.com/miyucomics/hexical/1c975254e9c3e746d80ff832c9eda5bc344dd9fe/common/src/main/resources/assets/hexical/textures/item/conjured_staff.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexical/e1135853a50ce8b75e6b26bff2b527f5f6e03410/common/src/main/resources/assets/hexical/textures/item/conjured_staff.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     >Conjure Staff<a
