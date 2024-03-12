@@ -33,7 +33,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-@Mixin(value = CastingHarness.class, priority = 1005)
+@Mixin(value = CastingHarness.class, priority = 900)
 public class CastingHarnessMixin {
 	@Unique private final CastingHarness hexical$harness = (CastingHarness) (Object) this;
 
