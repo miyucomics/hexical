@@ -72,17 +72,15 @@ public class CastingHarnessMixin {
 	@Inject(method = "executeIota", at = @At("HEAD"), cancellable = true, remap = false)
 	private void expandGrimoire (Iota iota, ServerWorld world, CallbackInfoReturnable<ControllerInfo> cir) {
 		CastingContext ctx = hexical$harness.getCtx();
-		List<Iota> toExecute = new ArrayList<>(Collections.singleton(iota));
 		if (ctx.getSpellCircle() != null)
 			return;
 		if (!hexical$harness.getEscapeNext() && iota.getType() == HexIotaTypes.PATTERN && !((PatternIota) iota).getPattern().sigsEqual(HexPattern.fromAngles("qqqaw", HexDir.EAST))) {
 			HexPattern pattern = ((PatternIota) iota).getPattern();
 			List<Iota> lookupResult = CastingUtils.Companion.grimoireLookup(ctx.getCaster(), pattern, DiscoveryHandlers.collectItemSlots(ctx));
 			if (lookupResult != null) {
-				toExecute = lookupResult;
 				ctx.getCaster().playSound(HexSounds.CAST_HERMES, SoundCategory.MASTER, 0.25f, 1.25f);
+				cir.setReturnValue(hexical$harness.executeIotas(lookupResult, world));
 			}
 		}
-		cir.setReturnValue(hexical$harness.executeIotas(toExecute, world));
 	}
 }
