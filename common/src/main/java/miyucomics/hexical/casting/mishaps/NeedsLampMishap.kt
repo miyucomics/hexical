@@ -16,7 +16,6 @@ class NeedsLampMishap : Mishap() {
 	override fun errorMessage(ctx: CastingContext, errorCtx: Context): Text = error(Hexical.MOD_ID + ":needs_lamp")
 
 	override fun execute(ctx: CastingContext, errorCtx: Context, stack: MutableList<Iota>) {
-		yeetHeldItem(ctx, Hand.MAIN_HAND)
-		yeetHeldItem(ctx, Hand.OFF_HAND)
+		yeetHeldItem(ctx, ctx.castingHand)
 	}
 }

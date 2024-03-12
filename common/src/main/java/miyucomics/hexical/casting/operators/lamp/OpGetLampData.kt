@@ -1,5 +1,6 @@
 package miyucomics.hexical.casting.operators.lamp
 
+import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.ConstMediaAction
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.DoubleIota
@@ -7,7 +8,10 @@ import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.NullIota
 import at.petrak.hexcasting.api.spell.iota.Vec3Iota
 import at.petrak.hexcasting.api.utils.vecFromNBT
+import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
+import at.petrak.paucal.xplat.IXplatAbstractions
 import miyucomics.hexical.casting.mishaps.NeedsLampMishap
+import miyucomics.hexical.items.LampItem
 import miyucomics.hexical.registry.HexicalItems
 
 class OpGetLampData(private val mode: Int) : ConstMediaAction {
@@ -21,6 +25,7 @@ class OpGetLampData(private val mode: Int) : ConstMediaAction {
 			1 -> return listOf(Vec3Iota(vecFromNBT(nbt.getLongArray("rotation"))))
 			2 -> return listOf(Vec3Iota(vecFromNBT(nbt.getLongArray("velocity"))))
 			3 -> return listOf(DoubleIota(ctx.world.time - nbt.getDouble("start_time")))
+			4 -> return listOf(DoubleIota((ctx.caster.activeItem.item as LampItem).getMedia(ctx.caster.activeItem).toDouble() / MediaConstants.DUST_UNIT))
 		}
 		return listOf(NullIota())
 	}
