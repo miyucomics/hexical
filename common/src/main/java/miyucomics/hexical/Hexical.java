@@ -13,6 +13,7 @@ public class Hexical {
 		HexicalEntities.init();
 		HexicalItems.init();
 		HexicalPatterns.init();
+		HexicalKeybinds.init();
 		HexicalNetworking.init();
 	}
 

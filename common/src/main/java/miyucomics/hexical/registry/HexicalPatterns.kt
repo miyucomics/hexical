@@ -39,6 +39,7 @@ object HexicalPatterns {
 	val ENTITY_BURNING_TIME: HexPattern = register(HexPattern.fromAngles("eewdead", HexDir.WEST), "burning_time", OpGetEntityBurningTime())
 	val ENTITY_WET: HexPattern = register(HexPattern.fromAngles("qqqqwaadq", HexDir.SOUTH_WEST), "is_wet", OpGetEntityWet())
 	val PLAYER_SPRINTING: HexPattern = register(HexPattern.fromAngles("eaq", HexDir.WEST), "is_sprinting", OpGetPlayerSprinting())
+	val TELEPATHY: HexPattern = register(HexPattern.fromAngles("qaqqqqded", HexDir.NORTH_EAST), "telepathy", OpTelepathy())
 
 	val WRITE_TO_GRIMOIRE: HexPattern = register(HexPattern.fromAngles("aqwqaeaqa", HexDir.WEST), "write_grimoire", OpGrimoireWrite())
 	val ERASE_GRIMOIRE: HexPattern = register(HexPattern.fromAngles("aqwqaqded", HexDir.WEST), "erase_grimoire", OpGrimoireErase())
