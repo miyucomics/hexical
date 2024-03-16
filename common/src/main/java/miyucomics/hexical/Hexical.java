@@ -13,6 +13,7 @@ public class Hexical {
 		HexicalAbstractions.initPlatformSpecific();
 		HexicalBlocks.init();
 		HexicalEntities.init();
+		HexicalEvents.init();
 		HexicalItems.init();
 		HexicalPatterns.init();
 		HexicalKeybinds.init();
