@@ -1,13 +1,12 @@
 package miyucomics.hexical.entities
 
 import at.petrak.hexcasting.api.misc.FrozenColorizer
-import at.petrak.hexcasting.client.*
+import at.petrak.hexcasting.client.CAP_THETA
+import at.petrak.hexcasting.client.findDupIndices
+import at.petrak.hexcasting.client.makeZappy
+import at.petrak.hexcasting.client.rotate
 import com.mojang.blaze3d.systems.RenderSystem
-import net.minecraft.client.render.GameRenderer
-import net.minecraft.client.render.Tessellator
-import net.minecraft.client.render.VertexConsumerProvider
-import net.minecraft.client.render.VertexFormat
-import net.minecraft.client.render.VertexFormats
+import net.minecraft.client.render.*
 import net.minecraft.client.render.entity.EntityRenderer
 import net.minecraft.client.render.entity.EntityRendererFactory
 import net.minecraft.client.util.math.MatrixStack
@@ -28,11 +27,10 @@ class SpeckEntityRenderer(ctx: EntityRendererFactory.Context?) : EntityRenderer<
 		for (i in lines.indices)
 			lines[i] = Vec2f(lines[i].x, -lines[i].y)
 		val zappy = makeZappy(lines, findDupIndices(pattern.positions()), 10, 1.5f, 0.1f, 0.2f, 0f, 1f, hashCode().toDouble())
-		if (entity.yaw > 90 || entity.yaw < -90)
-			matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(-entity.pitch))
-		else
+		if (entity.yaw != 0.0f)
+			matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(-entity.yaw))
+		if (entity.pitch != 0.0f)
 			matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(entity.pitch))
-		matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(-entity.yaw))
 		drawPattern(matrices.peek().positionMatrix, zappy, 0.05f, entity.getPigment())
 		matrices.pop()
 		RenderSystem.setShader { oldShader }
