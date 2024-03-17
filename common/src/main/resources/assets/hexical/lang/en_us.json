@@ -12,6 +12,8 @@
 	"subtitles.hexical.lamp_activate": "Lamp activates",
 	"subtitles.hexical.lamp_deactivate": "Lamp deactivates",
 
+	"hexcasting.spell.hexical:get_weather": "Meterologist's Reflection",
+	"hexcasting.spell.hexical:conjure_speck": "Conjure Speck",
 	"hexcasting.spell.hexical:write_grimoire": "Write Grimoire",
 	"hexcasting.spell.hexical:erase_grimoire": "Erase Grimoire",
 	"hexcasting.spell.hexical:index_grimoire": "Archivist Reflection",
@@ -43,7 +45,7 @@
 	"hexcasting.spell.hexical:is_burning": "Inferno Purification",
 	"hexcasting.spell.hexical:burning_time": "Inferno Purification II",
 	"hexcasting.spell.hexical:is_wet": "Enderman's Purification",
-	"hexcasting.spell.hexical:is_sprinting": "Sprinter's Purification",
+	"hexcasting.spell.hexical:is_sprinting": "Racer's Purification",
 	"hexcasting.spell.hexical:nephthys": "Nephthys Gambit",
 
 	"hexcasting.mishap.bad_block.advanced_conjured_block": "an advanced conjured block",
