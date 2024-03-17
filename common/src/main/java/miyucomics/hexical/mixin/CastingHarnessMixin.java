@@ -38,17 +38,17 @@ public class CastingHarnessMixin {
 	@Unique private final CastingHarness hexical$harness = (CastingHarness) (Object) this;
 
 	@WrapWithCondition(method = "updateWithPattern", at = @At(value="INVOKE", target = "Ljava/util/List;add(Ljava/lang/Object;)Z"))
-	private boolean stopLampParticles (List<OperatorSideEffect> sideEffects, Object effect) {
+	private boolean stopLampParticles(List<OperatorSideEffect> sideEffects, Object effect) {
 		return !((CastingContextMixinInterface) (Object) hexical$harness.getCtx()).getCastByLamp();
 	}
 
 	@WrapWithCondition(method = "executeIotas", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/world/ServerWorld;playSound(Lnet/minecraft/entity/player/PlayerEntity;DDDLnet/minecraft/sound/SoundEvent;Lnet/minecraft/sound/SoundCategory;FF)V"))
-	private boolean silenceLamp (ServerWorld world, PlayerEntity player, double x, double y, double z, SoundEvent event, SoundCategory type, float volume, float pitch) {
+	private boolean silenceLamp(ServerWorld world, PlayerEntity player, double x, double y, double z, SoundEvent event, SoundCategory type, float volume, float pitch) {
 		return !((CastingContextMixinInterface) (Object) hexical$harness.getCtx()).getCastByLamp();
 	}
 
 	@Inject(method = "withdrawMedia", at = @At("HEAD"), cancellable = true, remap = false)
-	private void withdrawMediaWisp(int mediaCost, boolean allowOvercast, CallbackInfoReturnable<Integer> cir) {
+	private void takeMediaFromArchLamp(int mediaCost, boolean allowOvercast, CallbackInfoReturnable<Integer> cir) {
 		CastingContext ctx = hexical$harness.getCtx();
 		if (((CastingContextMixinInterface) (Object) ctx).getArchLamp()) {
 			if (ctx.getCaster().isCreative()) {
@@ -70,7 +70,7 @@ public class CastingHarnessMixin {
 	}
 
 	@Inject(method = "executeIota", at = @At("HEAD"), cancellable = true, remap = false)
-	private void expandGrimoire (Iota iota, ServerWorld world, CallbackInfoReturnable<ControllerInfo> cir) {
+	private void expandGrimoire(Iota iota, ServerWorld world, CallbackInfoReturnable<ControllerInfo> cir) {
 		CastingContext ctx = hexical$harness.getCtx();
 		if (ctx.getSpellCircle() != null)
 			return;

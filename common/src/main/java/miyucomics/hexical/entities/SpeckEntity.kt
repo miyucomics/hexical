@@ -25,6 +25,8 @@ class SpeckEntity(entityType: EntityType<SpeckEntity?>?, world: World?) : Entity
 	private var size: Float = 1f
 	private var thickness: Float = 1f
 
+	override fun shouldRender(distance: Double) = true
+
 	override fun initDataTracker() {
 		dataTracker.startTracking(patternDataTracker, NbtCompound())
 		dataTracker.startTracking(pigmentDataTracker, NbtCompound())

@@ -14,6 +14,22 @@
 		},
 		{
 			"type": "hexcasting:pattern",
+			"op_id": "hexical:is_using_lamp",
+			"anchor": "hexical:is_using_lamp",
+			"input": "entity",
+			"output": "boolean",
+			"text": "hexical.page.is_using_lamp"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:terminate_arch_lamp",
+			"anchor": "hexical:terminate_arch_lamp",
+			"input": "",
+			"output": "",
+			"text": "hexical.page.terminate_arch_lamp"
+		},
+		{
+			"type": "hexcasting:pattern",
 			"op_id": "hexical:get_arch_lamp_position",
 			"anchor": "hexical:get_arch_lamp_position",
 			"input": "",
@@ -38,27 +54,19 @@
 		},
 		{
 			"type": "hexcasting:pattern",
+			"op_id": "hexical:get_arch_lamp_media",
+			"anchor": "hexical:get_arch_lamp_media",
+			"input": "",
+			"output": "number",
+			"text": "hexical.page.get_arch_lamp_media"
+		},
+		{
+			"type": "hexcasting:pattern",
 			"op_id": "hexical:get_arch_lamp_use_time",
 			"anchor": "hexical:get_arch_lamp_use_time",
 			"input": "",
 			"output": "number",
 			"text": "hexical.page.get_arch_lamp_use_time"
-		},
-		{
-			"type": "hexcasting:pattern",
-			"op_id": "hexical:is_using_lamp",
-			"anchor": "hexical:is_using_lamp",
-			"input": "entity",
-			"output": "boolean",
-			"text": "hexical.page.is_using_lamp"
-		},
-		{
-			"type": "hexcasting:pattern",
-			"op_id": "hexical:terminate_arch_lamp",
-			"anchor": "hexical:terminate_arch_lamp",
-			"input": "",
-			"output": "",
-			"text": "hexical.page.terminate_arch_lamp"
 		}
 	]
 }
