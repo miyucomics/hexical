@@ -4,7 +4,8 @@
 	"category": "hexcasting:items",
 	"pages": [
 		{
-			"type": "patchouli:text",
+			"type": "patchouli:crafting",
+			"recipe": "hexical:grimoire",
 			"text": "hexical.page.grimoire.0"
 		},
 		{

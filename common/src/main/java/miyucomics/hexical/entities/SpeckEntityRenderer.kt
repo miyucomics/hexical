@@ -15,23 +15,26 @@ import net.minecraft.util.math.*
 import kotlin.math.*
 
 class SpeckEntityRenderer(ctx: EntityRendererFactory.Context?) : EntityRenderer<SpeckEntity?>(ctx) {
+	override fun shouldRender(entity: SpeckEntity?, frustum: Frustum?, x: Double, y: Double, z: Double) = true
 	override fun render(entity: SpeckEntity?, yaw: Float, tickDelta: Float, matrices: MatrixStack?, vertexConsumers: VertexConsumerProvider?, light: Int) {
 		val oldShader = RenderSystem.getShader()
 		RenderSystem.setShader(GameRenderer::getPositionColorShader)
 		RenderSystem.enableDepthTest()
 		matrices!!.push()
 
-		val pattern = entity!!.getPattern()
-		val lines = pattern.toLines(0.25f, pattern.getCenter(0.25f).negate()).toMutableList()
-		for (i in lines.indices)
-			lines[i] = Vec2f(lines[i].x, -lines[i].y)
-		val zappy = makeZappy(lines, findDupIndices(pattern.positions()), 10, 1.5f, 0.1f, 0.2f, 0f, 1f, hashCode().toDouble())
-		if (entity.yaw != 0.0f)
+		if (entity!!.yaw != 0.0f)
 			matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(-entity.yaw))
 		if (entity.pitch != 0.0f)
 			matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(entity.pitch))
 		matrices.scale(entity.getSize(), entity.getSize(), entity.getSize())
+
+		val pattern = entity.getPattern()
+		val lines = pattern.toLines(0.25f, pattern.getCenter(0.25f).negate()).toMutableList()
+		for (i in lines.indices)
+			lines[i] = Vec2f(lines[i].x, -lines[i].y)
+		val zappy = makeZappy(lines, findDupIndices(pattern.positions()), 10, 1.5f, 0.1f, 0.2f, 0f, 1f, hashCode().toDouble())
 		drawPattern(matrices.peek().positionMatrix, zappy, entity.getThickness() * 0.05f, entity.getPigment())
+
 		matrices.pop()
 		RenderSystem.setShader { oldShader }
 	}

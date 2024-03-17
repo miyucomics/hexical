@@ -4,8 +4,7 @@ import net.fabricmc.api.ClientModInitializer;
 import miyucomics.hexical.HexicalClient;
 
 public class HexicalClientFabric implements ClientModInitializer {
-	@Override
-	public void onInitializeClient() {
+	@Override public void onInitializeClient() {
 		HexicalClient.init();
 	}
 }

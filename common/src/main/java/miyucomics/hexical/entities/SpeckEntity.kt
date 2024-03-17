@@ -25,8 +25,6 @@ class SpeckEntity(entityType: EntityType<SpeckEntity?>?, world: World?) : Entity
 	private var size: Float = 1f
 	private var thickness: Float = 1f
 
-	override fun shouldRender(distance: Double) = true
-
 	override fun initDataTracker() {
 		dataTracker.startTracking(patternDataTracker, NbtCompound())
 		dataTracker.startTracking(pigmentDataTracker, NbtCompound())
@@ -76,8 +74,5 @@ class SpeckEntity(entityType: EntityType<SpeckEntity?>?, world: World?) : Entity
 	fun getPigment(): FrozenColorizer = FrozenColorizer.fromNBT(dataTracker.get(pigmentDataTracker))
 	fun getSize(): Float = dataTracker.get(sizeDataTracker)
 	fun getThickness(): Float = dataTracker.get(thicknessDataTracker)
-
-	override fun createSpawnPacket(): Packet<*> {
-		return EntitySpawnS2CPacket(this)
-	}
+	override fun createSpawnPacket() = EntitySpawnS2CPacket(this)
 }

@@ -31,18 +31,17 @@ object HexicalPatterns {
 		register(HexPattern.fromAngles("deewqaqqqqq", HexDir.NORTH_WEST), "modify_block_replaceable", OpModifyMageBlock("replaceable"))
 		register(HexPattern.fromAngles("deewedeeeee", HexDir.NORTH_WEST), "modify_block_volatile", OpModifyMageBlock("volatile"))
 
-		register(HexPattern.fromAngles("aawqqqq", HexDir.SOUTH_EAST), "chorus_blink", OpChorusBlink())
-
-		register(HexPattern.fromAngles("deedqad", HexDir.WEST), "get_weather", OpGetWeather())
-
 		register(HexPattern.fromAngles("wwwwwaqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST), "conjure_staff", OpConjureStaff())
+		register(HexPattern.fromAngles("aawqqqq", HexDir.SOUTH_EAST), "chorus_blink", OpChorusBlink())
 		register(HexPattern.fromAngles("eeeee", HexDir.EAST), "conjure_speck", OpConjureSpeck())
 
 		register(HexPattern.fromAngles("qqwaqda", HexDir.EAST), "is_burning", OpGetEntityBurning())
 		register(HexPattern.fromAngles("eewdead", HexDir.WEST), "burning_time", OpGetEntityBurningTime())
 		register(HexPattern.fromAngles("qqqqwaadq", HexDir.SOUTH_WEST), "is_wet", OpGetEntityWet())
-		register(HexPattern.fromAngles("eaq", HexDir.WEST), "is_sprinting", OpGetPlayerSprinting())
+		register(HexPattern.fromAngles("eaq", HexDir.WEST), "is_sprinting", OpGetSprinting())
+		register(HexPattern.fromAngles("aqaew", HexDir.NORTH_WEST), "is_sleeping", OpGetSleeping())
 		register(HexPattern.fromAngles("qaqqqqded", HexDir.NORTH_EAST), "telepathy", OpTelepathy())
+		register(HexPattern.fromAngles("deedqad", HexDir.WEST), "get_weather", OpGetWeather())
 
 		register(HexPattern.fromAngles("aqwqaeaqa", HexDir.WEST), "write_grimoire", OpGrimoireWrite())
 		register(HexPattern.fromAngles("aqwqaqded", HexDir.WEST), "erase_grimoire", OpGrimoireErase())

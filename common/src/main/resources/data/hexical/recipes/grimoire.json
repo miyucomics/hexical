@@ -1,0 +1,22 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"key": {
+		"A": {
+			"item": "hexcasting:charged_amethyst"
+		},
+		"N": {
+			"item": "hexcasting:spellbook"
+		},
+		"W": {
+			"item": "hexcasting:edified_pressure_plate"
+		}
+	},
+	"pattern": [
+		"AWA",
+		"AN ",
+		"AWA"
+	],
+	"result": {
+		"item": "hexical:grimoire"
+	}
+}

@@ -2,16 +2,13 @@ package miyucomics.hexical.casting.operators
 
 import at.petrak.hexcasting.api.spell.ConstMediaAction
 import at.petrak.hexcasting.api.spell.casting.CastingContext
-import at.petrak.hexcasting.api.spell.iota.DoubleIota
+import at.petrak.hexcasting.api.spell.getLivingEntityButNotArmorStand
+import at.petrak.hexcasting.api.spell.iota.BooleanIota
 import at.petrak.hexcasting.api.spell.iota.Iota
 
-class OpGetWeather : ConstMediaAction {
-	override val argc = 0
+class OpGetSprinting : ConstMediaAction {
+	override val argc = 1
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
-		if (ctx.caster.world.isThundering)
-			return listOf(DoubleIota(2.0))
-		if (ctx.caster.world.isRaining)
-			return listOf(DoubleIota(1.0))
-		return listOf(DoubleIota(0.0))
+		return listOf(BooleanIota(args.getLivingEntityButNotArmorStand(0, argc).isSprinting))
 	}
 }
