@@ -8,10 +8,7 @@ import miyucomics.hexical.Hexical
 import miyucomics.hexical.casting.operators.*
 import miyucomics.hexical.casting.operators.eval.OpNephthys
 import miyucomics.hexical.casting.operators.grimoire.*
-import miyucomics.hexical.casting.operators.lamp.OpGetArchLampData
-import miyucomics.hexical.casting.operators.lamp.OpGetArchLampMedia
-import miyucomics.hexical.casting.operators.lamp.OpGetLampData
-import miyucomics.hexical.casting.operators.lamp.OpIsUsingArchLamp
+import miyucomics.hexical.casting.operators.lamp.*
 import miyucomics.hexical.casting.spells.*
 import miyucomics.hexical.casting.spells.lamp.OpProgramLamp
 import miyucomics.hexical.casting.spells.lamp.OpSetArchLampStorage
@@ -68,6 +65,7 @@ object HexicalPatterns {
 		register(HexPattern.fromAngles("qaqwddedqeed", HexDir.NORTH_EAST), "is_using_lamp", OpIsUsingArchLamp())
 		register(HexPattern.fromAngles("qaqwddedwaqdee", HexDir.NORTH_EAST), "terminate_arch_lamp", OpTerminateArchLamp())
 		register(HexPattern.fromAngles("qaqwddedqedeeeee", HexDir.NORTH_EAST), "set_arch_lamp_storage", OpSetArchLampStorage())
+		register(HexPattern.fromAngles("aaddaddad", HexDir.EAST), "lamp_finale", OpGetFinale())
 
 		try {
 			for ((first, second, third) in PATTERNS)
