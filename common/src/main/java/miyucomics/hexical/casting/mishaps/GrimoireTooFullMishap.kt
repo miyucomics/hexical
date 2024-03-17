@@ -16,6 +16,6 @@ class GrimoireTooFullMishap : Mishap() {
 	override fun errorMessage(ctx: CastingContext, errorCtx: Context): Text = error(Hexical.MOD_ID + ":grimoire_too_full")
 
 	override fun execute(ctx: CastingContext, errorCtx: Context, stack: MutableList<Iota>) {
-		yeetHeldItem(ctx, Hand.OFF_HAND)
+		yeetHeldItem(ctx, ctx.otherHand)
 	}
 }

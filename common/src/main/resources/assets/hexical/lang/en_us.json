@@ -30,6 +30,7 @@
 	"hexcasting.spell.hexical:get_arch_lamp_velocity": "Archgenie Refl.: Kinetic",
 	"hexcasting.spell.hexical:get_arch_lamp_use_time": "Archgenie Refl.: Temporal",
 	"hexcasting.spell.hexical:get_arch_lamp_storage": "Archgenie Refl.: Memory",
+	"hexcasting.spell.hexical:get_arch_lamp_media": "Archgenie Refl.: Media",
 	"hexcasting.spell.hexical:set_arch_lamp_storage": "Archgenie Gambit",
 	"hexcasting.spell.hexical:is_using_lamp": "Archgenie Purification",
 	"hexcasting.spell.hexical:terminate_arch_lamp": "Archgenie Termination",
@@ -67,14 +68,14 @@
     "hexical.page.erase_grimoire": "Erases the pattern-list binding to the pattern in the grimoire in my offhand if it exists.",
 	"hexical.page.index_grimoire": "Gets a list of all patterns stored in the grimoire.",
 	"hexical.page.query_grimoire": "Gets how many times you can use that grimoire binding.",
-	"hexical.page.restrict_grimoire": "Restrict a grimoire binding to be only usable that number of times.",
+	"hexical.page.restrict_grimoire": "Restrict a grimoire binding to be only usable that number of times, mishaps if you attempt to increase the uses.",
 
 	"hexical.category.lamp": "Genieless Lamp",
 	"hexical.category.lamp.desc": "I have heard tales from the villagers about a magical artifact. Legends say it contains a spirit that grants wishes, but I suspect that is just embellishment evolved over centuries of storytelling. Regardless, I dedicate this chapter to my pursuit and research of it.",
 
 	"hexical.page.mysterious_lamp.title": "Mysterious Lamp",
-	"hexical.page.mysterious_lamp.0": "At last I've discovered the subject of a thousand years of rumor! To think a mere wandering trader was in possession of such a strong artifact. The lamp emanates a vague residue of media, vacuous in feeling... it reminds me of the $(o)hollow media structure$() of a focus that enables it to store iota, but there is also a presence inside with spellcasting capabilities similar to my own.",
-	"hexical.page.mysterious_lamp.1": "I've developed a pattern to educate the presence of my intentions. Because I am teaching my will rather than etching a casting device with it, I should be able to freely revise the hex at any time without losing media.",
+	"hexical.page.mysterious_lamp.0": "At last I've discovered the subject of a thousand years of rumor! To think a wandering trader was in possession of such a strong artifact. The lamp emanates a vague residue of media, vacuous in feeling... it reminds me of the $(o)hollow media structure$() of a focus that enables it to store iota, but there is also a presence inside with spellcasting capabilities similar to my own.",
+	"hexical.page.mysterious_lamp.1": "Teaches the genie my intentions. Because I am teaching rather than etching a casting device with my will, I can freely revise the hex any time without losing the media.",
 
 	"hexical.page.new_possibilities.title": "New Possibilities",
 	"hexical.page.new_possibilities.0": "It casts $(o)$(l)EVERY INSTANT$(). After writing a spell into it, I was treated to a splendid gush of media. I estimate the casting speed must be around twenty times every second. The presence inside the lamp performs the casting on my behalf with extraordinary efficiency, not producing the sound and particles that accompany other casting methods.",
@@ -83,7 +84,7 @@
 	"hexical.page.get_lamp_rotation": "Pushes the original rotation of the caster when the lamp started casting.",
 	"hexical.page.get_lamp_velocity": "Pushes the original velocity of the caster when the lamp started casting.",
 	"hexical.page.get_lamp_use_time": "Pushes how many times the lamp has casted. Divided by 20, it returns how many times in seconds the lamp has been in use.",
-	"hexical.page.get_lamp_media": "Pushes the remaining media of the lamp in dust.",
+	"hexical.page.get_lamp_media": "Pushes the remaining media of the lamp in dust, in terms of dust.",
 
 	"hexical.page.replacement_mind.title": "Replacement Mind",
 	"hexical.page.replacement_mind.0": "Hex casting burns out the mind from the energy of thought, flooding the consciousness, inundating every neuron... it's euphoric. For staffs, casting devices, and spell circles, the rate of casting is slow enough that a mind can recuperate; I will never need to replace my mind or an impetus. With the speeds this lamp operates at, though, even an optimized mind can only bear the burden for so long. Luckily, the lamp is able to somehow support the mind until its media battery runs out, where the genie finally perishes and the lamp visibly tarnishes. In these cases, the genie must be... replaced.",
@@ -93,15 +94,16 @@
 	"hexical.page.arch_lamps.0": "Because a separate mind casts my spells, a lamp should be able to cast even without me holding it. I estimate any villager short of a complete master of its field would be unable to cast so often unassisted though. These $(o)arch lamps$() are activated and deactivated rather than used and while active in my inventory, they cast every moment even without my input.",
 	"hexical.page.arch_lamps.1": "The output of an arch lamp is so grand that it saturates the air around me with media... it's incredible. Unfortunately, if two lamps are active at once within my inventory, the resonances clash and deactivate both lamps, as well as rendering every arch lamp in my inventory useless for a few seconds. I should only have one archgenie lamp active at once, although I can still simutaneously use a regular lamp.",
 
-	"hexical.page.get_arch_lamp_position": "Pushes the original position of the caster when the arch lamp started casting. Can be cast by casting items or staff.",
-	"hexical.page.get_arch_lamp_rotation": "Pushes the original rotation of the caster when the arch lamp started casting. Can be cast by casting items or staff.",
-	"hexical.page.get_arch_lamp_velocity": "Pushes the original velocity of the caster when the arch lamp started casting. Can be cast by casting items or staff.",
-	"hexical.page.get_arch_lamp_use_time": "Pushes how many times the lamp has casted. Divided by 20, it returns how many times in seconds the lamp has been in use. Can be cast by casting items or staff.",
+	"hexical.page.get_arch_lamp_position": "Pushes the original position of the caster when the arch lamp started casting.",
+	"hexical.page.get_arch_lamp_rotation": "Pushes the original rotation of the caster when the arch lamp started casting.",
+	"hexical.page.get_arch_lamp_velocity": "Pushes the original velocity of the caster when the arch lamp started casting.",
+	"hexical.page.get_arch_lamp_use_time": "Pushes how many times the lamp has casted. Divided by 20, it returns how many times in seconds the lamp has been in use.",
+	"hexical.page.get_arch_lamp_media": "Pushes the remaining amount of media left in the lamp, in terms of dust.",
 	"hexical.page.is_using_lamp": "Pushes whether a player currently has an active arch lamp.",
 	"hexical.page.terminate_arch_lamp": "Can be casted by a casting device, staff, or within the arch lamp itself. Deactivates the lamp's operation, similar to Charon's.",
 
-	"hexical.page.arch_lamp_storage.title": "Archgenie Lamp Storage",
-	"hexical.page.arch_lamp_storage": "The arch lamp continues to impress me with its capabilities! It supports an iota storage similar to the Ravenmind, persisting between ticks. If I need to remember any important information between casts of the lamp, I can stash it in here. The two patterns responsible can also be cast by a staff or casting device if an arch lamp is active.",
+	"hexical.page.arch_lamp_storage.title": "Arch Lamp Memory",
+	"hexical.page.arch_lamp_storage": "The arch lamp continues to impress me with its capabilities! It supports an iota storage similar to the Ravenmind, persisting between ticks. If I need to remember an iota between casts of the lamp, I can stash it in here. The two patterns responsible can also be cast by a staff or casting device if an arch lamp is active.",
 	"hexical.page.set_arch_lamp_storage": "Sets the lamp's iota storage. Subject to Transgress Others mishap unfortunately.",
 	"hexical.page.get_arch_lamp_storage": "Gets the lamp's iota storage.",
 
@@ -129,7 +131,7 @@
 	"hexical.page.is_sprinting": "Pushes whether the player is sprinting. Interestingly, that includes swimming or if I started sprinting but left the ground.",
 
 	"hexical.page.conjure_staff.0": "Conjures a staff at the location with the amount of media, rank, and hex respectively.",
-	"hexical.page.conjure_staff.1": "A conjured staff is not unlike a cypher. It has a media bank that it relies on for casting and breaks when it runs out, unable to consume my health or my inventory's media. It is not rechargable or programmable. Using erase item on it simply destroys it. However, its true power is $(o)input interception$().",
+	"hexical.page.conjure_staff.1": "Conjured staves are not unlike cyphers. They have a media battery for casting and when they run out, unable to consume my health or my inventory's stash for media. They are not rechargable or reprogrammable, and using Erase Item on it simply destroys it. However, its true power is $(o)input interception$().",
 	"hexical.page.conjure_staff.2": "When I use my primary or secondary use keys with a staff in my main hand, it intercepts my click. Depending on the rank I assigned during creation, after that many clicks, it will cast the hex I gave it, starting the stack with false and true, corresponding to my left and right clicks respectively.",
-	"hexical.page.conjure_staff.3": "The spell is not cheap, requiring a charged amethyst, the media battery, and an additional amethyst shard for every additional rank. However, the conjured result is both speedy and versatile, with infinitely more possibilities and none of the cooldown of other casting devices."
+	"hexical.page.conjure_staff.3": "The spell is not cheap, requiring a charged amethyst, the amount of media for the media battery, and an additional amethyst shard for every additional rank. However, the result allows for speedy and versatile casting, with infinitely more possibilities and no cooldown that other casting devices have."
 }
