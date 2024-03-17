@@ -26,14 +26,23 @@ class SpeckEntityRenderer(ctx: EntityRendererFactory.Context?) : EntityRenderer<
 			matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(-entity.yaw))
 		if (entity.pitch != 0.0f)
 			matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(entity.pitch))
+		matrices.translate(0.0, 0.25, 0.0)
 		matrices.scale(entity.getSize(), entity.getSize(), entity.getSize())
 
-		val pattern = entity.getPattern()
-		val lines = pattern.toLines(0.25f, pattern.getCenter(0.25f).negate()).toMutableList()
-		for (i in lines.indices)
-			lines[i] = Vec2f(lines[i].x, -lines[i].y)
-		val zappy = makeZappy(lines, findDupIndices(pattern.positions()), 10, 1.5f, 0.1f, 0.2f, 0f, 1f, hashCode().toDouble())
-		drawPattern(matrices.peek().positionMatrix, zappy, entity.getThickness() * 0.05f, entity.getPigment())
+		RenderSystem.disableCull()
+		if (entity.getLabel() == "") {
+			val pattern = entity.getPattern()
+			val lines = pattern.toLines(0.25f, pattern.getCenter(0.25f).negate()).toMutableList()
+			for (i in lines.indices)
+				lines[i] = Vec2f(lines[i].x, -lines[i].y)
+			val zappy = makeZappy(lines, findDupIndices(pattern.positions()), 10, 1.5f, 0.1f, 0.2f, 0f, 1f, hashCode().toDouble())
+			drawPattern(matrices.peek().positionMatrix, zappy, entity.getThickness() * 0.05f, entity.getPigment())
+		} else {
+			matrices.scale(0.1f / 3f, -0.1f / 3f, -0.1f / 3f)
+			val q = (-textRenderer.getWidth(entity.getLabel()) / 2).toFloat()
+			textRenderer.draw(matrices, entity.getLabel(), q, -textRenderer.fontHeight.toFloat() / 2f, entity.getPigment().getColor(0f, entity.pos))
+		}
+		RenderSystem.enableCull()
 
 		matrices.pop()
 		RenderSystem.setShader { oldShader }
@@ -135,7 +144,6 @@ class SpeckEntityRenderer(ctx: EntityRendererFactory.Context?) : EntityRenderer<
 				}
 			}
 		}
-		RenderSystem.disableCull()
 		tess.draw()
 		fun drawCaps(point: Vec2f, prev: Vec2f) {
 			val tangent = point.add(prev.negate()).normalize().multiply(0.5f * width)
@@ -151,7 +159,6 @@ class SpeckEntityRenderer(ctx: EntityRendererFactory.Context?) : EntityRenderer<
 		}
 		drawCaps(points[0], points[1])
 		drawCaps(points[n - 1], points[n - 2])
-		RenderSystem.enableCull()
 	}
 	override fun getTexture(entity: SpeckEntity?): Identifier? = null
 }
