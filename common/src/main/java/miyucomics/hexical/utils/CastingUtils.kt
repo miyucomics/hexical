@@ -10,17 +10,16 @@ import miyucomics.hexical.registry.HexicalItems
 import net.minecraft.item.ItemStack
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld
-import net.minecraft.text.Text
 
 class CastingUtils {
 	companion object {
 		@Suppress("CAST_NEVER_SUCCEEDS")
-		fun castInvisibly(world: ServerWorld, user: ServerPlayerEntity, hex: List<Iota>, archlamp: Boolean = false) {
-			val context = CastingContext(user, user.activeHand, CastingContext.CastSource.PACKAGED_HEX)
-			(context as CastingContextMixinInterface).setCastByLamp(true)
-			if (archlamp)
-				(context as CastingContextMixinInterface).setArchLamp(true)
-			CastingHarness(context).executeIotas(hex, world)
+		fun lampCast(world: ServerWorld, user: ServerPlayerEntity, hex: List<Iota>, archLamp: Boolean = false, finale: Boolean = false) {
+			val ctx = CastingContext(user, user.activeHand, CastingContext.CastSource.PACKAGED_HEX)
+			(ctx as CastingContextMixinInterface).setCastByLamp(true)
+			(ctx as CastingContextMixinInterface).setArchLamp(archLamp)
+			(ctx as CastingContextMixinInterface).setFinale(finale)
+			CastingHarness(ctx).executeIotas(hex, world)
 		}
 
 		fun doesPlayerHaveActiveArchLamp(player: ServerPlayerEntity): Boolean {

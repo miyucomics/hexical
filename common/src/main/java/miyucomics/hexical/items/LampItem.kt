@@ -35,12 +35,14 @@ class LampItem : ItemPackagedHex(Settings().maxCount(1)) {
 	override fun usageTick(world: World, user: LivingEntity, stack: ItemStack, remainingUseTicks: Int) {
 		if (world.isClient) return
 		if (getMedia(stack) == 0) return
-		CastingUtils.castInvisibly(world as ServerWorld, user as ServerPlayerEntity, getHex(stack, world) ?: return)
+		CastingUtils.lampCast(world as ServerWorld, user as ServerPlayerEntity, getHex(stack, world) ?: return)
 		if (getMedia(stack) == 0)
 			user.setStackInHand(user.activeHand, ItemStack(HexicalItems.LAMP_ITEM))
 	}
 
 	override fun onStoppedUsing(stack: ItemStack, world: World, user: LivingEntity, remainingUseTicks: Int) {
+		if (!world.isClient)
+			CastingUtils.lampCast(world as ServerWorld, user as ServerPlayerEntity, getHex(stack, world) ?: return, false, true)
 		world.playSound(user.x, user.y, user.z, HexicalSounds.LAMP_DEACTIVATE_SOUND_EVENT, SoundCategory.MASTER, 1f, 1f, true)
 	}
 
