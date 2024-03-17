@@ -21,9 +21,8 @@ class SpeckEntityRenderer(ctx: EntityRendererFactory.Context?) : EntityRenderer<
 		RenderSystem.enableDepthTest()
 		matrices!!.push()
 
-		val size = 0.25f
 		val pattern = entity!!.getPattern()
-		val lines = pattern.toLines(size, pattern.getCenter(size).negate()).toMutableList()
+		val lines = pattern.toLines(0.25f, pattern.getCenter(0.25f).negate()).toMutableList()
 		for (i in lines.indices)
 			lines[i] = Vec2f(lines[i].x, -lines[i].y)
 		val zappy = makeZappy(lines, findDupIndices(pattern.positions()), 10, 1.5f, 0.1f, 0.2f, 0f, 1f, hashCode().toDouble())
@@ -31,7 +30,8 @@ class SpeckEntityRenderer(ctx: EntityRendererFactory.Context?) : EntityRenderer<
 			matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(-entity.yaw))
 		if (entity.pitch != 0.0f)
 			matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(entity.pitch))
-		drawPattern(matrices.peek().positionMatrix, zappy, 0.05f, entity.getPigment())
+		matrices.scale(entity.getSize(), entity.getSize(), entity.getSize())
+		drawPattern(matrices.peek().positionMatrix, zappy, entity.getThickness() * 0.05f, entity.getPigment())
 		matrices.pop()
 		RenderSystem.setShader { oldShader }
 	}
@@ -129,5 +129,19 @@ fun drawPattern(mat: Matrix4f, points: List<Vec2f>, width: Float, colorizer: Fro
 	}
 	RenderSystem.disableCull()
 	tess.draw()
+	fun drawCaps(point: Vec2f, prev: Vec2f) {
+		val tangent = point.add(prev.negate()).normalize().multiply(0.5f * width)
+		val normal = Vec2f(-tangent.y, tangent.x)
+		val joinSteps = MathHelper.ceil(180f / CAP_THETA)
+		buf.begin(VertexFormat.DrawMode.TRIANGLE_FAN, VertexFormats.POSITION_COLOR)
+		vertex(point)
+		for (j in joinSteps downTo 0) {
+			val fan = rotate(normal, -MathHelper.PI * (j.toFloat() / joinSteps))
+			vertex(Vec2f(point.x + fan.x, point.y + fan.y))
+		}
+		tess.draw()
+	}
+	drawCaps(points[0], points[1])
+	drawCaps(points[n - 1], points[n - 2])
 	RenderSystem.enableCull()
 }

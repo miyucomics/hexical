@@ -1,4 +1,4 @@
-package miyucomics.hexical.casting.spells
+package miyucomics.hexical.casting.spells.specks
 
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.*
@@ -8,9 +8,6 @@ import at.petrak.hexcasting.api.spell.math.HexPattern
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.entities.SpeckEntity
 import miyucomics.hexical.registry.HexicalEntities
-import miyucomics.hexical.registry.HexicalItems
-import net.minecraft.entity.ItemEntity
-import net.minecraft.item.ItemStack
 import net.minecraft.util.math.Vec3d
 
 class OpConjureSpeck : SpellAction {
@@ -29,6 +26,8 @@ class OpConjureSpeck : SpellAction {
 			speck.setPosition(position)
 			speck.setPattern(pattern)
 			speck.setPigment(IXplatAbstractions.INSTANCE.getColorizer(ctx.caster))
+			speck.setSize(1f)
+			speck.setThickness(1f)
 			ctx.world.spawnEntity(speck)
 		}
 	}
