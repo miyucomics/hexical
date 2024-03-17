@@ -27,6 +27,9 @@ class CastingUtils {
 			for (stack in player.inventory.main)
 				if (stack.item == HexicalItems.ARCH_LAMP_ITEM && stack.orCreateNbt.getBoolean("active"))
 					return true
+			for (stack in player.inventory.offHand)
+				if (stack.item == HexicalItems.ARCH_LAMP_ITEM && stack.orCreateNbt.getBoolean("active"))
+					return true
 			return false
 		}
 

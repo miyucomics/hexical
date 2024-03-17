@@ -9,6 +9,7 @@ import miyucomics.hexical.casting.operators.*
 import miyucomics.hexical.casting.operators.eval.OpNephthys
 import miyucomics.hexical.casting.operators.grimoire.*
 import miyucomics.hexical.casting.operators.lamp.OpGetArchLampData
+import miyucomics.hexical.casting.operators.lamp.OpGetArchLampMedia
 import miyucomics.hexical.casting.operators.lamp.OpGetLampData
 import miyucomics.hexical.casting.operators.lamp.OpIsUsingArchLamp
 import miyucomics.hexical.casting.spells.*
@@ -63,6 +64,7 @@ object HexicalPatterns {
 		register(HexPattern.fromAngles("qaqwddedqew", HexDir.NORTH_EAST), "get_arch_lamp_velocity", OpGetArchLampData(2))
 		register(HexPattern.fromAngles("qaqwddedqwddwa", HexDir.NORTH_EAST), "get_arch_lamp_use_time", OpGetArchLampData(3))
 		register(HexPattern.fromAngles("qaqwddedqwaqqqqq", HexDir.NORTH_EAST), "get_arch_lamp_storage", OpGetArchLampData(4))
+		register(HexPattern.fromAngles("qaqwddedqwwaqqqqqeaqeaeqqqeaeq", HexDir.NORTH_EAST), "get_arch_lamp_media", OpGetArchLampMedia())
 		register(HexPattern.fromAngles("qaqwddedqeed", HexDir.NORTH_EAST), "is_using_lamp", OpIsUsingArchLamp())
 		register(HexPattern.fromAngles("qaqwddedwaqdee", HexDir.NORTH_EAST), "terminate_arch_lamp", OpTerminateArchLamp())
 		register(HexPattern.fromAngles("qaqwddedqedeeeee", HexDir.NORTH_EAST), "set_arch_lamp_storage", OpSetArchLampStorage())
