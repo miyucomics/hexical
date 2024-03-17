@@ -12,22 +12,26 @@ import net.minecraft.entity.data.TrackedDataHandlerRegistry
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.network.Packet
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket
+import net.minecraft.text.Text
 import net.minecraft.world.World
 
 private val patternDataTracker: TrackedData<NbtCompound> = DataTracker.registerData(SpeckEntity::class.java, TrackedDataHandlerRegistry.NBT_COMPOUND)
 private val pigmentDataTracker: TrackedData<NbtCompound> = DataTracker.registerData(SpeckEntity::class.java, TrackedDataHandlerRegistry.NBT_COMPOUND)
+private val labelDataTracker: TrackedData<String> = DataTracker.registerData(SpeckEntity::class.java, TrackedDataHandlerRegistry.STRING)
 private val sizeDataTracker: TrackedData<Float> = DataTracker.registerData(SpeckEntity::class.java, TrackedDataHandlerRegistry.FLOAT)
 private val thicknessDataTracker: TrackedData<Float> = DataTracker.registerData(SpeckEntity::class.java, TrackedDataHandlerRegistry.FLOAT)
 
 class SpeckEntity(entityType: EntityType<SpeckEntity?>?, world: World?) : Entity(entityType, world) {
 	private var pattern: HexPattern = HexPattern.fromAngles("w", HexDir.WEST)
 	private var pigment: FrozenColorizer = FrozenColorizer.DEFAULT.get()
+	private var label: String = ""
 	private var size: Float = 1f
 	private var thickness: Float = 1f
 
 	override fun initDataTracker() {
 		dataTracker.startTracking(patternDataTracker, NbtCompound())
 		dataTracker.startTracking(pigmentDataTracker, NbtCompound())
+		dataTracker.startTracking(labelDataTracker, "")
 		dataTracker.startTracking(sizeDataTracker, 1f)
 		dataTracker.startTracking(thicknessDataTracker, 1f)
 	}
@@ -35,10 +39,12 @@ class SpeckEntity(entityType: EntityType<SpeckEntity?>?, world: World?) : Entity
 	override fun readCustomDataFromNbt(nbt: NbtCompound) {
 		pattern = HexPattern.fromNBT(nbt.getCompound("pattern"))
 		pigment = FrozenColorizer.fromNBT(nbt.getCompound("pigment"))
+		label = nbt.getString("label")
 		size = nbt.getFloat("size")
 		thickness = nbt.getFloat("thickness")
 		dataTracker.set(patternDataTracker, nbt.getCompound("pattern"))
 		dataTracker.set(pigmentDataTracker, nbt.getCompound("pigment"))
+		dataTracker.set(labelDataTracker, label)
 		dataTracker.set(sizeDataTracker, size)
 		dataTracker.set(thicknessDataTracker, thickness)
 	}
@@ -46,6 +52,7 @@ class SpeckEntity(entityType: EntityType<SpeckEntity?>?, world: World?) : Entity
 	override fun writeCustomDataToNbt(nbt: NbtCompound) {
 		nbt.putCompound("pattern", pattern.serializeToNBT())
 		nbt.putCompound("pigment", pigment.serializeToNBT())
+		nbt.putString("label", label)
 		nbt.putFloat("size", size)
 		nbt.putFloat("thickness", thickness)
 	}
@@ -60,6 +67,11 @@ class SpeckEntity(entityType: EntityType<SpeckEntity?>?, world: World?) : Entity
 		dataTracker.set(pigmentDataTracker, pigment.serializeToNBT())
 	}
 
+	fun setLabel(label: String) {
+		this.label = label
+		dataTracker.set(labelDataTracker, label)
+	}
+
 	fun setSize(size: Float) {
 		this.size = size
 		dataTracker.set(sizeDataTracker, size)
@@ -72,6 +84,7 @@ class SpeckEntity(entityType: EntityType<SpeckEntity?>?, world: World?) : Entity
 
 	fun getPattern(): HexPattern = HexPattern.fromNBT(dataTracker.get(patternDataTracker))
 	fun getPigment(): FrozenColorizer = FrozenColorizer.fromNBT(dataTracker.get(pigmentDataTracker))
+	fun getLabel(): String = dataTracker.get(labelDataTracker)
 	fun getSize(): Float = dataTracker.get(sizeDataTracker)
 	fun getThickness(): Float = dataTracker.get(thicknessDataTracker)
 	override fun createSpawnPacket() = EntitySpawnS2CPacket(this)
