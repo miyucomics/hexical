@@ -11,13 +11,14 @@ import at.petrak.hexcasting.api.utils.vecFromNBT
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
 import at.petrak.paucal.xplat.IXplatAbstractions
 import miyucomics.hexical.casting.mishaps.NeedsLampMishap
+import miyucomics.hexical.interfaces.CastingContextMixinInterface
 import miyucomics.hexical.items.LampItem
 import miyucomics.hexical.registry.HexicalItems
 
 class OpGetLampData(private val mode: Int) : ConstMediaAction {
 	override val argc = 0
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
-		if (!(ctx.caster.activeItem.item == HexicalItems.LAMP_ITEM && ctx.source == CastingContext.CastSource.PACKAGED_HEX))
+		if (!(ctx as CastingContextMixinInterface).getCastByLamp() || (ctx as CastingContextMixinInterface).getArchLamp())
 			throw NeedsLampMishap()
 		val nbt = ctx.caster.activeItem.nbt ?: return listOf(NullIota())
 		when (mode) {

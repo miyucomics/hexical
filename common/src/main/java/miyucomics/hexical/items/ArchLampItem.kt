@@ -33,6 +33,7 @@ class ArchLampItem : ItemPackagedHex(Settings().maxCount(1)) {
 		}
 
 		if (stackNbt.getBoolean("active")) {
+			CastingUtils.lampCast(world as ServerWorld, user as ServerPlayerEntity, getHex(stack, world)!!, true, true)
 			stackNbt.putBoolean("active", false)
 			return TypedActionResult.success(stack)
 		}
@@ -63,7 +64,7 @@ class ArchLampItem : ItemPackagedHex(Settings().maxCount(1)) {
 			return
 		}
 
-		CastingUtils.castInvisibly(world as ServerWorld, user, getHex(stack, world) ?: return, true)
+		CastingUtils.lampCast(world as ServerWorld, user, getHex(stack, world) ?: return, true)
 		(user as PlayerEntityMixinInterface).lampCastedThisTick()
 		if (getMedia(stack) == 0)
 			user.inventory.setStack(slot, ItemStack(HexicalItems.LAMP_ITEM))
