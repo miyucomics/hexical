@@ -11,7 +11,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ItemEntity.class)
 public abstract class ItemEntityMixin {
-	@Shadow public abstract ItemStack getStack();
+	@Shadow
+	public abstract ItemStack getStack();
 
 	@Inject(method = "tick", at = @At("HEAD"))
 	void deactivateLamp(CallbackInfo ci) {

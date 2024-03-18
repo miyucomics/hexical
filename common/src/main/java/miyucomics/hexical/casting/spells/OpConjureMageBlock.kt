@@ -16,7 +16,6 @@ import net.minecraft.util.math.Vec3d
 
 class OpConjureMageBlock : SpellAction {
 	override val argc = 1
-
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		val pos = args.getBlockPos(0, argc)
 		ctx.assertVecInRange(pos)

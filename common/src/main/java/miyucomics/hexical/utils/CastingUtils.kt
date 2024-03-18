@@ -14,7 +14,7 @@ import net.minecraft.server.world.ServerWorld
 class CastingUtils {
 	companion object {
 		@Suppress("CAST_NEVER_SUCCEEDS")
-		fun lampCast(world: ServerWorld, user: ServerPlayerEntity, hex: List<Iota>, archLamp: Boolean = false, finale: Boolean = false) {
+		fun lampCast(world: ServerWorld, user: ServerPlayerEntity, hex: List<Iota>, archLamp: Boolean, finale: Boolean) {
 			val ctx = CastingContext(user, user.activeHand, CastingContext.CastSource.PACKAGED_HEX)
 			(ctx as CastingContextMixinInterface).setCastByLamp(true)
 			(ctx as CastingContextMixinInterface).setArchLamp(archLamp)

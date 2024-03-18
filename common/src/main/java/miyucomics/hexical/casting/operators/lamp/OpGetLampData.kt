@@ -8,12 +8,9 @@ import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.NullIota
 import at.petrak.hexcasting.api.spell.iota.Vec3Iota
 import at.petrak.hexcasting.api.utils.vecFromNBT
-import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
-import at.petrak.paucal.xplat.IXplatAbstractions
 import miyucomics.hexical.casting.mishaps.NeedsLampMishap
 import miyucomics.hexical.interfaces.CastingContextMixinInterface
 import miyucomics.hexical.items.LampItem
-import miyucomics.hexical.registry.HexicalItems
 
 class OpGetLampData(private val mode: Int) : ConstMediaAction {
 	override val argc = 0

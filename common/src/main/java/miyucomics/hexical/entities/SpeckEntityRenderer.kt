@@ -56,9 +56,9 @@ class SpeckEntityRenderer(ctx: EntityRendererFactory.Context?) : EntityRenderer<
 		val joinAngles = FloatArray(n)
 		val joinOffsets = FloatArray(n)
 		for (i in 2 until n) {
-			val p0 = points[i - 2];
-			val p1 = points[i - 1];
-			val p2 = points[i];
+			val p0 = points[i - 2]
+			val p1 = points[i - 1]
+			val p2 = points[i]
 			val prev = p1.add(p0.negate())
 			val next = p2.add(p1.negate())
 			val angle = atan2(
@@ -66,7 +66,7 @@ class SpeckEntityRenderer(ctx: EntityRendererFactory.Context?) : EntityRenderer<
 				(prev.x * next.x + prev.y * next.y).toDouble()
 			).toFloat()
 			joinAngles[i - 1] = angle
-			val clamp = min(prev.length(), next.length()) / (width * 0.5f);
+			val clamp = min(prev.length(), next.length()) / (width * 0.5f)
 			joinOffsets[i - 1] = MathHelper.clamp(sin(angle) / (1 + cos(angle)), -clamp, clamp)
 		}
 
@@ -160,5 +160,6 @@ class SpeckEntityRenderer(ctx: EntityRendererFactory.Context?) : EntityRenderer<
 		drawCaps(points[0], points[1])
 		drawCaps(points[n - 1], points[n - 2])
 	}
+
 	override fun getTexture(entity: SpeckEntity?): Identifier? = null
 }

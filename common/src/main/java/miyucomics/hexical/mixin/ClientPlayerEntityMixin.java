@@ -14,7 +14,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ClientPlayerEntity.class)
 public class ClientPlayerEntityMixin {
-	@Shadow public Input input;
+	@Shadow
+	public Input input;
 
 	@Inject(method = "tickMovement", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/tutorial/TutorialManager;onMovement(Lnet/minecraft/client/input/Input;)V"))
 	private void onInputUpdate(CallbackInfo info) {

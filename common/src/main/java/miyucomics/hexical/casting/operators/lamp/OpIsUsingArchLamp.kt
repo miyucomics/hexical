@@ -9,7 +9,5 @@ import miyucomics.hexical.utils.CastingUtils
 
 class OpIsUsingArchLamp : ConstMediaAction {
 	override val argc = 1
-	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
-		return listOf(BooleanIota(CastingUtils.doesPlayerHaveActiveArchLamp(args.getPlayer(0, argc))))
-	}
+	override fun execute(args: List<Iota>, ctx: CastingContext) = listOf(BooleanIota(CastingUtils.doesPlayerHaveActiveArchLamp(args.getPlayer(0, argc))))
 }

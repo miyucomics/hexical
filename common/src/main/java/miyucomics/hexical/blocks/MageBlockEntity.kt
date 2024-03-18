@@ -13,7 +13,8 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d
 import java.util.*
 
-class MageBlockEntity(pos: BlockPos?, state: BlockState?) : HexBlockEntity(HexicalBlocks.MAGE_BLOCK_ENTITY, pos, state) {
+class MageBlockEntity(pos: BlockPos?, state: BlockState?) :
+	HexBlockEntity(HexicalBlocks.MAGE_BLOCK_ENTITY, pos, state) {
 	private val random = Random()
 	private var colorizer: FrozenColorizer = FrozenColorizer.DEFAULT.get()
 	var properties: MutableMap<String, Boolean> = mutableMapOf(
@@ -27,9 +28,13 @@ class MageBlockEntity(pos: BlockPos?, state: BlockState?) : HexBlockEntity(Hexic
 
 	fun walkParticle(entity: Entity) {
 		for (i in 0..2) {
-			val color = colorizer.getColor(entity.age.toFloat(), entity.pos.add(
-				Vec3d(random.nextDouble(), random.nextDouble(), random.nextDouble()).multiply(
-				random.nextDouble() * 3)))
+			val color = colorizer.getColor(
+				entity.age.toFloat(), entity.pos.add(
+					Vec3d(random.nextDouble(), random.nextDouble(), random.nextDouble()).multiply(
+						random.nextDouble() * 3
+					)
+				)
+			)
 			assert(world != null)
 			world!!.addParticle(
 				ConjureParticleOptions(color, false),
@@ -44,7 +49,10 @@ class MageBlockEntity(pos: BlockPos?, state: BlockState?) : HexBlockEntity(Hexic
 	}
 
 	fun particleEffect() {
-		val color = colorizer.getColor(random.nextFloat() * 16384, Vec3d(random.nextDouble(), random.nextDouble(), random.nextDouble()).multiply(random.nextDouble() * 3))
+		val color = colorizer.getColor(
+			random.nextFloat() * 16384,
+			Vec3d(random.nextDouble(), random.nextDouble(), random.nextDouble()).multiply(random.nextDouble() * 3)
+		)
 		assert(world != null)
 		if (random.nextFloat() < 0.2) {
 			world!!.addParticle(

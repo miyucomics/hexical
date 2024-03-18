@@ -11,7 +11,6 @@ import miyucomics.hexical.utils.CastingUtils
 
 class OpTerminateArchLamp : SpellAction {
 	override val argc = 0
-
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		if (!CastingUtils.doesPlayerHaveActiveArchLamp(ctx.caster))
 			throw NeedsActiveArchLampMishap()

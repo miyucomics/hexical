@@ -10,12 +10,12 @@ import net.minecraft.item.ItemStack
 
 class OpGrimoireRestrict : SpellAction {
 	override val argc = 2
-
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		val pattern = args.getPattern(0, argc)
 		val uses = args.getPositiveInt(1, argc)
 		val (stack, _) = ctx.getHeldItemToOperateOn { it.item is GrimoireItem }
-		val currentUses = GrimoireItem.getUses(stack, pattern) ?: return Triple(Spell(pattern, stack, uses), 0, listOf())
+		val currentUses =
+			GrimoireItem.getUses(stack, pattern) ?: return Triple(Spell(pattern, stack, uses), 0, listOf())
 		if (uses > currentUses)
 			throw GrimoireAccessDeniedMishap()
 		return Triple(Spell(pattern, stack, uses), 0, listOf())

@@ -13,7 +13,6 @@ import net.minecraft.util.math.Vec3d
 
 class OpConjureStaff : SpellAction {
 	override val argc = 4
-
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		val position = args.getVec3(0, argc)
 		val battery = args.getInt(1, argc)

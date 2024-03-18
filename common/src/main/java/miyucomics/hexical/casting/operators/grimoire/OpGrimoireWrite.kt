@@ -1,6 +1,5 @@
 package miyucomics.hexical.casting.operators.grimoire
 
-import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.*
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.Iota
@@ -12,7 +11,6 @@ import net.minecraft.item.ItemStack
 
 class OpGrimoireWrite : SpellAction {
 	override val argc = 2
-
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		val pattern = args.getPattern(0, argc)
 		val hex = args.getList(1, argc).toList()
@@ -27,7 +25,7 @@ class OpGrimoireWrite : SpellAction {
 
 	private data class Spell(val pattern: HexPattern, val hex: List<Iota>, val stack: ItemStack) : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
-			GrimoireItem.writeToGrimoire(stack, pattern, hex)
+			GrimoireItem.write(stack, pattern, hex)
 		}
 	}
 }

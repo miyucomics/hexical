@@ -17,8 +17,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(WanderingTraderEntity.class)
 public abstract class WanderingTraderEntityMixin extends MerchantEntity {
-	@Shadow protected native void fillRecipes();
-	@Shadow protected native void afterUsing(TradeOffer offer);
+	@Shadow
+	protected native void fillRecipes();
+
+	@Shadow
+	protected native void afterUsing(TradeOffer offer);
 
 	public WanderingTraderEntityMixin(EntityType<? extends MerchantEntity> entityType, World world) {
 		super(entityType, world);

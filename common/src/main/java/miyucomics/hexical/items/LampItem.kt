@@ -23,10 +23,10 @@ class LampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.HEXIC
 		val stackNbt = stack.orCreateNbt
 		world.playSound(user.x, user.y, user.z, HexicalSounds.LAMP_ACTIVATE_SOUND_EVENT, SoundCategory.MASTER, 1f, 1f, true)
 		if (!world.isClient) {
-			stackNbt.putLongArray("position", user.eyePos.serializeToNBT().longArray);
-			stackNbt.putLongArray("rotation", user.rotationVector.serializeToNBT().longArray);
-			stackNbt.putLongArray("velocity", user.velocity.serializeToNBT().longArray);
-			stackNbt.putLong("start_time", world.time);
+			stackNbt.putLongArray("position", user.eyePos.serializeToNBT().longArray)
+			stackNbt.putLongArray("rotation", user.rotationVector.serializeToNBT().longArray)
+			stackNbt.putLongArray("velocity", user.velocity.serializeToNBT().longArray)
+			stackNbt.putLong("start_time", world.time)
 		}
 		user.setCurrentHand(usedHand)
 		return TypedActionResult.success(stack)
@@ -35,7 +35,7 @@ class LampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.HEXIC
 	override fun usageTick(world: World, user: LivingEntity, stack: ItemStack, remainingUseTicks: Int) {
 		if (world.isClient) return
 		if (getMedia(stack) == 0) return
-		CastingUtils.lampCast(world as ServerWorld, user as ServerPlayerEntity, getHex(stack, world) ?: return)
+		CastingUtils.lampCast(world as ServerWorld, user as ServerPlayerEntity, getHex(stack, world) ?: return, false, false)
 		if (getMedia(stack) == 0)
 			user.setStackInHand(user.activeHand, ItemStack(HexicalItems.LAMP_ITEM))
 	}
@@ -46,8 +46,19 @@ class LampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.HEXIC
 		world.playSound(user.x, user.y, user.z, HexicalSounds.LAMP_DEACTIVATE_SOUND_EVENT, SoundCategory.MASTER, 1f, 1f, true)
 	}
 
-	override fun getUseAction(pStack: ItemStack): UseAction { return UseAction.BOW }
-	override fun getMaxUseTime(stack: ItemStack): Int { return 72000 }
-	override fun breakAfterDepletion(): Boolean { return false }
-	override fun canDrawMediaFromInventory(stack: ItemStack): Boolean { return false }
+	override fun getUseAction(pStack: ItemStack): UseAction {
+		return UseAction.BOW
+	}
+
+	override fun getMaxUseTime(stack: ItemStack): Int {
+		return 72000
+	}
+
+	override fun breakAfterDepletion(): Boolean {
+		return false
+	}
+
+	override fun canDrawMediaFromInventory(stack: ItemStack): Boolean {
+		return false
+	}
 }

@@ -10,10 +10,6 @@ import miyucomics.hexical.casting.mishaps.NeedsActiveArchLampMishap
 import miyucomics.hexical.items.ArchLampItem
 import miyucomics.hexical.registry.HexicalItems
 import miyucomics.hexical.utils.CastingUtils
-import net.minecraft.entity.ai.pathing.PathNodeType
-import net.minecraft.entity.attribute.EntityAttributes
-import net.minecraft.entity.mob.ZombieEntity
-import net.minecraft.util.math.BlockPos
 
 class OpGetArchLampMedia : ConstMediaAction {
 	override val argc = 0

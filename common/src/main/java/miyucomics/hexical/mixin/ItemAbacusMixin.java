@@ -15,7 +15,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(ItemAbacus.class)
 public class ItemAbacusMixin {
-	@Shadow @Final public static String TAG_VALUE;
+	@Shadow
+	@Final
+	public static String TAG_VALUE;
 
 	@Inject(method = "canWrite", at = @At(value = "HEAD"), cancellable = true)
 	public void makeWriteable(ItemStack stack, Iota datum, CallbackInfoReturnable<Boolean> cir) {
