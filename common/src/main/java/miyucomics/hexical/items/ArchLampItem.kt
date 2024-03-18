@@ -64,12 +64,17 @@ class ArchLampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.H
 			return
 		}
 
-		CastingUtils.lampCast(world as ServerWorld, user, getHex(stack, world) ?: return, true)
+		CastingUtils.lampCast(world as ServerWorld, user, getHex(stack, world) ?: return, true, false)
 		(user as PlayerEntityMixinInterface).lampCastedThisTick()
 		if (getMedia(stack) == 0)
 			user.inventory.setStack(slot, ItemStack(HexicalItems.LAMP_ITEM))
 	}
 
-	override fun breakAfterDepletion(): Boolean { return false }
-	override fun canDrawMediaFromInventory(stack: ItemStack): Boolean { return false }
+	override fun breakAfterDepletion(): Boolean {
+		return false
+	}
+
+	override fun canDrawMediaFromInventory(stack: ItemStack): Boolean {
+		return false
+	}
 }

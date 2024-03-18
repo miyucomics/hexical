@@ -7,6 +7,7 @@ import at.petrak.hexcasting.api.spell.math.HexPattern
 import miyucomics.hexical.Hexical
 import miyucomics.hexical.casting.operators.*
 import miyucomics.hexical.casting.operators.eval.OpNephthys
+import miyucomics.hexical.casting.operators.getters.*
 import miyucomics.hexical.casting.operators.grimoire.*
 import miyucomics.hexical.casting.operators.lamp.*
 import miyucomics.hexical.casting.spells.*

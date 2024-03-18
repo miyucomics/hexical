@@ -13,7 +13,6 @@ import miyucomics.hexical.utils.CastingUtils
 
 class OpSetArchLampStorage : SpellAction {
 	override val argc = 1
-
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>>? {
 		if (!CastingUtils.doesPlayerHaveActiveArchLamp(ctx.caster))
 			throw NeedsActiveArchLampMishap()

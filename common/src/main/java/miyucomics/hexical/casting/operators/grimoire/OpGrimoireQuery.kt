@@ -1,10 +1,10 @@
 package miyucomics.hexical.casting.operators.grimoire
 
-import at.petrak.hexcasting.api.spell.*
+import at.petrak.hexcasting.api.spell.ConstMediaAction
 import at.petrak.hexcasting.api.spell.casting.CastingContext
+import at.petrak.hexcasting.api.spell.getPattern
 import at.petrak.hexcasting.api.spell.iota.DoubleIota
 import at.petrak.hexcasting.api.spell.iota.Iota
-import at.petrak.hexcasting.api.spell.iota.ListIota
 import at.petrak.hexcasting.api.spell.iota.NullIota
 import miyucomics.hexical.items.GrimoireItem
 

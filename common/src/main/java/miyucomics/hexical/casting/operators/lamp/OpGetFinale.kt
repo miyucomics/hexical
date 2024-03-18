@@ -6,7 +6,6 @@ import at.petrak.hexcasting.api.spell.iota.BooleanIota
 import at.petrak.hexcasting.api.spell.iota.Iota
 import miyucomics.hexical.casting.mishaps.NeedsLampMishap
 import miyucomics.hexical.interfaces.CastingContextMixinInterface
-import miyucomics.hexical.registry.HexicalItems
 
 class OpGetFinale : ConstMediaAction {
 	override val argc = 0

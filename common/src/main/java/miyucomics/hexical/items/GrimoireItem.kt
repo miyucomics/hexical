@@ -18,7 +18,7 @@ import net.minecraft.server.world.ServerWorld
 
 class GrimoireItem : Item(Settings().maxCount(1).group(HexicalItems.HEXICAL_GROUP)) {
 	companion object {
-		fun writeToGrimoire (stack: ItemStack, key: HexPattern, information: List<Iota>) {
+		fun write(stack: ItemStack, key: HexPattern, information: List<Iota>) {
 			val patterns = NbtList()
 			for (iota in information)
 				patterns.add(HexIotaTypes.serialize(iota))
@@ -28,20 +28,20 @@ class GrimoireItem : Item(Settings().maxCount(1).group(HexicalItems.HEXICAL_GROU
 			stack.orCreateNbt.getCompound("patterns").getCompound(key.anglesSignature()).putList("expansion", patterns)
 		}
 
-		fun getPatternsInGrimoire (stack: ItemStack): List<PatternIota> {
+		fun getPatternsInGrimoire(stack: ItemStack): List<PatternIota> {
 			val result = ArrayList<PatternIota>()
 			for (pattern in stack.orCreateNbt.getOrCreateCompound("patterns").keys)
 				result.add(PatternIota(HexPattern.fromAngles(pattern, HexDir.WEST)))
 			return result
 		}
 
-		fun getUses (stack: ItemStack, key: HexPattern): Int? {
+		fun getUses(stack: ItemStack, key: HexPattern): Int? {
 			if (!stack.orCreateNbt.getCompound("patterns").getCompound(key.anglesSignature()).contains("uses"))
 				return null
 			return stack.orCreateNbt.getCompound("patterns").getCompound(key.anglesSignature()).getInt("uses")
 		}
 
-		fun restrict (stack: ItemStack, key: HexPattern, uses: Int) {
+		fun restrict(stack: ItemStack, key: HexPattern, uses: Int) {
 			if (!stack.orCreateNbt.contains("patterns"))
 				return
 			if (!stack.orCreateNbt.getCompound("patterns").contains(key.anglesSignature()))
@@ -49,13 +49,13 @@ class GrimoireItem : Item(Settings().maxCount(1).group(HexicalItems.HEXICAL_GROU
 			stack.orCreateNbt.getCompound("patterns").getCompound(key.anglesSignature()).putInt("uses", uses)
 		}
 
-		fun eraseInGrimoire (stack: ItemStack, key: HexPattern) {
+		fun erase(stack: ItemStack, key: HexPattern) {
 			if (!stack.orCreateNbt.contains("patterns"))
 				return
 			stack.orCreateNbt.getCompound("patterns").remove(key.anglesSignature())
 		}
 
-		fun getPatternInGrimoire (stack: ItemStack, key: HexPattern, world: ServerWorld): List<Iota>? {
+		fun getPatternInGrimoire(stack: ItemStack, key: HexPattern, world: ServerWorld): List<Iota>? {
 			val data = stack.orCreateNbt.getOrCreateCompound("patterns").getCompound(key.anglesSignature())
 			val patsTag = data.getList("expansion", NbtElement.COMPOUND_TYPE.toInt())
 			if (patsTag.isEmpty())
@@ -66,7 +66,7 @@ class GrimoireItem : Item(Settings().maxCount(1).group(HexicalItems.HEXICAL_GROU
 			if (data.contains("uses")) {
 				data.putInt("uses", data.getInt("uses") - 1)
 				if (data.getInt("uses") <= 0)
-					eraseInGrimoire(stack, key)
+					erase(stack, key)
 			}
 			return out
 		}

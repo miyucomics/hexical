@@ -1,14 +1,16 @@
 package miyucomics.hexical.casting.spells.lamp
 
 import at.petrak.hexcasting.api.misc.MediaConstants
-import at.petrak.hexcasting.api.spell.*
+import at.petrak.hexcasting.api.spell.ParticleSpray
+import at.petrak.hexcasting.api.spell.RenderedSpell
+import at.petrak.hexcasting.api.spell.SpellAction
 import at.petrak.hexcasting.api.spell.casting.CastingContext
+import at.petrak.hexcasting.api.spell.getList
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 
 class OpProgramLamp : SpellAction {
 	override val argc = 1
-
 	// Right now, this pattern is extremely overpowered
 	// Later it'll be specialized to program only the lamp
 	// But for debug purposes, it lets you program any casting item for free

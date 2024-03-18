@@ -10,13 +10,16 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(PlayerEntity.class)
 public class PlayerEntityMixin implements PlayerEntityMixinInterface {
-	@Unique private boolean hexical$archLampCastedThisTick = false;
+	@Unique
+	private boolean hexical$archLampCastedThisTick = false;
 
-	@Override public boolean getArchLampCastedThisTick() {
+	@Override
+	public boolean getArchLampCastedThisTick() {
 		return hexical$archLampCastedThisTick;
 	}
 
-	@Override public void lampCastedThisTick() {
+	@Override
+	public void lampCastedThisTick() {
 		hexical$archLampCastedThisTick = true;
 	}
 
