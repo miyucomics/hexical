@@ -23,10 +23,15 @@ import java.util.List;
 
 @Mixin(MinecraftClient.class)
 public class MinecraftClientMixin {
-	@Unique private static final int hexical$COOLDOWN = 20;
-	@Unique private final List<Boolean> hexical$clicks = new ArrayList<>();
-	@Unique private int hexical$timer = 0;
-	@Shadow @Nullable public ClientPlayerEntity player;
+	@Unique
+	private static final int hexical$COOLDOWN = 20;
+	@Unique
+	private final List<Boolean> hexical$clicks = new ArrayList<>();
+	@Unique
+	private int hexical$timer = 0;
+	@Shadow
+	@Nullable
+	public ClientPlayerEntity player;
 
 	@Inject(method = "tick", at = @At("HEAD"))
 	public void tick(CallbackInfo info) {

@@ -17,22 +17,20 @@ object OpNephthys : Action {
 			throw MishapNotEnoughArgs(2, stack.size)
 
 		val instructions = stack.getList(stack.lastIndex - 1)
-		val diveAmount = stack.getPositiveInt(stack.lastIndex)
+		val depth = stack.getPositiveInt(stack.lastIndex)
 		stack.removeLastOrNull()
 		stack.removeLastOrNull()
 
-		val constructedList = mutableListOf<Iota>();
+		val constructedList = mutableListOf<Iota>()
 		constructedList.add(PatternIota(HexPattern.fromAngles("qqqaw", HexDir.WEST)))
-		constructedList.add(ListIota(stack.popStack(diveAmount)))
+		constructedList.add(ListIota(stack.popStack(depth)))
 		constructedList.add(PatternIota(HexPattern.fromAngles("qwaeawq", HexDir.WEST)))
 
 		return OperationResult(
 			continuation
 				.pushFrame(FrameEvaluate(SpellList.LList(0, constructedList), true))
 				.pushFrame(FrameEvaluate(instructions, true)),
-			stack,
-			ravenmind,
-			listOf()
+			stack, ravenmind, listOf()
 		)
 	}
 

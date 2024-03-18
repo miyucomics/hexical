@@ -1,4 +1,4 @@
-package miyucomics.hexical.casting.operators
+package miyucomics.hexical.casting.operators.getters
 
 import at.petrak.hexcasting.api.spell.ConstMediaAction
 import at.petrak.hexcasting.api.spell.casting.CastingContext

@@ -29,16 +29,9 @@ import net.minecraft.world.WorldAccess
 import net.minecraft.world.event.GameEvent
 
 class MageBlock : BlockConjured(
-	Settings.of(Material.ORGANIC_PRODUCT).
-	nonOpaque().
-	dropsNothing().
-	breakInstantly().
-	luminance { _ -> 2 }.
-	mapColor(MapColor.CLEAR).
-	suffocates { _, _, _ -> false }.
-	blockVision { _, _, _ -> false }.
-	allowsSpawning { _, _, _, _ -> false }.
-	sounds(BlockSoundGroup.AMETHYST_CLUSTER)
+	Settings.of(Material.ORGANIC_PRODUCT).nonOpaque().dropsNothing().breakInstantly().luminance { _ -> 2 }
+		.mapColor(MapColor.CLEAR).suffocates { _, _, _ -> false }.blockVision { _, _, _ -> false }
+		.allowsSpawning { _, _, _, _ -> false }.sounds(BlockSoundGroup.AMETHYST_CLUSTER)
 ) {
 	private val volatileOffsets: List<Vec3i> = listOf(
 		Vec3i(-1, 0, 0), Vec3i(1, 0, 0),
@@ -63,19 +56,35 @@ class MageBlock : BlockConjured(
 		}
 	}
 
-	override fun onUse(state: BlockState, world: World, pos: BlockPos, player: PlayerEntity, hand: Hand, hit: BlockHitResult): ActionResult {
+	override fun onUse(
+		state: BlockState,
+		world: World,
+		pos: BlockPos,
+		player: PlayerEntity,
+		hand: Hand,
+		hit: BlockHitResult
+	): ActionResult {
 		val tile = world.getBlockEntity(pos)
 		if (tile !is MageBlockEntity)
-			return ActionResult.PASS;
+			return ActionResult.PASS
 		if (!tile.properties["replaceable"]!!)
-			return ActionResult.PASS;
+			return ActionResult.PASS
 		val stack = player.getStackInHand(hand)
 		val item = stack.item
 		if (item !is BlockItem)
-			return ActionResult.PASS;
+			return ActionResult.PASS
 		if (!player.isCreative)
 			stack.decrement(1)
-		world.playSound(pos.x.toDouble(), pos.y.toDouble(), pos.z.toDouble(), SoundEvents.BLOCK_AMETHYST_BLOCK_BREAK, SoundCategory.BLOCKS, 1f, 1f, true)
+		world.playSound(
+			pos.x.toDouble(),
+			pos.y.toDouble(),
+			pos.z.toDouble(),
+			SoundEvents.BLOCK_AMETHYST_BLOCK_BREAK,
+			SoundCategory.BLOCKS,
+			1f,
+			1f,
+			true
+		)
 		world.setBlockState(pos, item.block.getPlacementState(ItemPlacementContext(player, hand, stack, hit)))
 		return ActionResult.SUCCESS
 	}
@@ -84,13 +93,22 @@ class MageBlock : BlockConjured(
 		val tile = world.getBlockEntity(position)
 		if (tile !is MageBlockEntity)
 			return
-		world.playSound(position.x.toDouble(), position.y.toDouble(), position.z.toDouble(), SoundEvents.BLOCK_AMETHYST_BLOCK_BREAK, SoundCategory.BLOCKS, 1f, 1f, true)
+		world.playSound(
+			position.x.toDouble(),
+			position.y.toDouble(),
+			position.z.toDouble(),
+			SoundEvents.BLOCK_AMETHYST_BLOCK_BREAK,
+			SoundCategory.BLOCKS,
+			1f,
+			1f,
+			true
+		)
 		world.emitGameEvent(GameEvent.BLOCK_DESTROY, position, GameEvent.Emitter.of(player, state))
 		world.setBlockState(position, Blocks.AIR.defaultState)
 		world.removeBlockEntity(position)
 		if (tile.properties["volatile"]!!) {
 			for (offset in volatileOffsets) {
-				val positionToTest = position.add(offset);
+				val positionToTest = position.add(offset)
 				val otherState = world.getBlockState(positionToTest)
 				val block = otherState.block
 				if (block == HexicalBlocks.MAGE_BLOCK)
@@ -111,7 +129,11 @@ class MageBlock : BlockConjured(
 		return MageBlockEntity(pos, state)
 	}
 
-	override fun <T : BlockEntity?> getTicker(pworld: World, pstate: BlockState, type: BlockEntityType<T>): BlockEntityTicker<T> {
+	override fun <T : BlockEntity?> getTicker(
+		pworld: World,
+		pstate: BlockState,
+		type: BlockEntityType<T>
+	): BlockEntityTicker<T> {
 		return BlockEntityTicker { world, position, state, blockEntity: T -> tick(world, position, state, blockEntity) }
 	}
 

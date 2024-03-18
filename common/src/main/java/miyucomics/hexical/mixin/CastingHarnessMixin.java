@@ -27,17 +27,15 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @Mixin(value = CastingHarness.class, priority = 900)
 public class CastingHarnessMixin {
-	@Unique private final CastingHarness hexical$harness = (CastingHarness) (Object) this;
+	@Unique
+	private final CastingHarness hexical$harness = (CastingHarness) (Object) this;
 
-	@WrapWithCondition(method = "updateWithPattern", at = @At(value="INVOKE", target = "Ljava/util/List;add(Ljava/lang/Object;)Z"))
+	@WrapWithCondition(method = "updateWithPattern", at = @At(value = "INVOKE", target = "Ljava/util/List;add(Ljava/lang/Object;)Z"))
 	private boolean stopLampParticles(List<OperatorSideEffect> sideEffects, Object effect) {
 		return !((CastingContextMixinInterface) (Object) hexical$harness.getCtx()).getCastByLamp();
 	}
