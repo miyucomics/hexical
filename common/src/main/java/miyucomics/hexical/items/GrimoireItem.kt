@@ -8,6 +8,7 @@ import at.petrak.hexcasting.api.utils.getOrCreateCompound
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.api.utils.putList
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
+import miyucomics.hexical.registry.HexicalItems
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
@@ -15,7 +16,7 @@ import net.minecraft.nbt.NbtElement
 import net.minecraft.nbt.NbtList
 import net.minecraft.server.world.ServerWorld
 
-class GrimoireItem : Item(Settings().maxCount(1)) {
+class GrimoireItem : Item(Settings().maxCount(1).group(HexicalItems.HEXICAL_GROUP)) {
 	companion object {
 		fun writeToGrimoire (stack: ItemStack, key: HexPattern, information: List<Iota>) {
 			val patterns = NbtList()

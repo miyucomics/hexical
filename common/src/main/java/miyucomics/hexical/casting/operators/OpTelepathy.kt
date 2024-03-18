@@ -6,6 +6,7 @@ import at.petrak.hexcasting.api.spell.getEntity
 import at.petrak.hexcasting.api.spell.iota.BooleanIota
 import at.petrak.hexcasting.api.spell.iota.DoubleIota
 import at.petrak.hexcasting.api.spell.iota.Iota
+import at.petrak.hexcasting.api.spell.iota.NullIota
 import miyucomics.hexical.persistent_state.TelepathyData
 import net.minecraft.text.Text
 
@@ -14,9 +15,9 @@ class OpTelepathy : ConstMediaAction {
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
 		val caster = ctx.caster.uuid
 		if (!TelepathyData.active.contains(caster))
-			return listOf(DoubleIota(-1.0))
+			return listOf(NullIota())
 		if (!TelepathyData.active[caster]!!)
-			return listOf(DoubleIota(-1.0))
+			return listOf(NullIota())
 		return listOf(DoubleIota(TelepathyData.timer[caster]!!.toDouble()))
 	}
 }
