@@ -1,7 +1,8 @@
 {
+	"itemGroup.hexical.general": "Hexical",
 	"item.hexical.lamp": "Genie Lamp",
-	"item.hexical.grimoire": "Grimoire",
 	"item.hexical.arch_lamp": "Archgenie Lamp",
+	"item.hexical.grimoire": "Grimoire",
 	"item.hexical.conjured_staff": "Conjured Staff",
 	"block.hexical.mage_block": "Mage Block",
 	"entity.hexical.speck": "Speck",

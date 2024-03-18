@@ -16,10 +16,10 @@ class OpGrimoireWrite : SpellAction {
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		val pattern = args.getPattern(0, argc)
 		val hex = args.getList(1, argc).toList()
-		val (stack, _) = ctx.getHeldItemToOperateOn { it.item is GrimoireItem }
-		val trueName = MishapOthersName.getTrueNameFromArgs(hex, ctx.caster)
+		val trueName = MishapOthersName.getTrueNameFromDatum(args[1], ctx.caster)
 		if (trueName != null)
 			throw MishapOthersName(trueName)
+		val (stack, _) = ctx.getHeldItemToOperateOn { it.item is GrimoireItem }
 		if (GrimoireItem.getPatternsInGrimoire(stack).size >= 16)
 			throw GrimoireTooFullMishap()
 		return Triple(Spell(pattern, hex, stack), 0, listOf())

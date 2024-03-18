@@ -1,0 +1,16 @@
+{
+	"parent": "hexcasting:root",
+	"criteria": {
+		"requirement": {
+			"trigger": "minecraft:using_item",
+			"conditions": {
+				"item": {
+					"items": [
+						"hexical:lamp"
+					]
+				}
+			}
+		}
+	},
+	"sends_telemetry_event": false
+}

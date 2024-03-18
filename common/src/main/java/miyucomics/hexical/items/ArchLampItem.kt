@@ -18,7 +18,7 @@ import net.minecraft.util.Hand
 import net.minecraft.util.TypedActionResult
 import net.minecraft.world.World
 
-class ArchLampItem : ItemPackagedHex(Settings().maxCount(1)) {
+class ArchLampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.HEXICAL_GROUP)) {
 	override fun use(world: World, user: PlayerEntity, usedHand: Hand): TypedActionResult<ItemStack> {
 		val stack = user.getStackInHand(usedHand)
 		if (!hasHex(stack)) return TypedActionResult.fail(stack)
