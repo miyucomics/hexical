@@ -1,0 +1,19 @@
+{
+	"name": "hexical.page.world_scrying.title",
+	"icon": "minecraft:spyglass",
+	"category": "hexcasting:patterns",
+	"pages": [
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.world_scrying"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:get_weather",
+			"anchor": "hexical:get_weather",
+			"input": "",
+			"output": "number",
+			"text": "hexical.page.get_weather"
+		}
+	]
+}
