@@ -41,7 +41,8 @@ object HexicalPatterns {
 		register(HexPattern.fromAngles("qqqqwaadq", HexDir.SOUTH_WEST), "is_wet", OpGetEntityWet())
 		register(HexPattern.fromAngles("eaq", HexDir.WEST), "is_sprinting", OpGetSprinting())
 		register(HexPattern.fromAngles("aqaew", HexDir.NORTH_WEST), "is_sleeping", OpGetSleeping())
-		register(HexPattern.fromAngles("qaqqqqded", HexDir.NORTH_EAST), "telepathy", OpTelepathy())
+		register(HexPattern.fromAngles("qaqqqqded", HexDir.NORTH_EAST), "get_telepathy", OpGetTelepathy())
+		register(HexPattern.fromAngles("qaqqqeaqa", HexDir.NORTH_EAST), "send_telepathy", OpSendTelepathy())
 		register(HexPattern.fromAngles("deedqad", HexDir.WEST), "get_weather", OpGetWeather())
 
 		register(HexPattern.fromAngles("aqwqaeaqa", HexDir.WEST), "write_grimoire", OpGrimoireWrite())
