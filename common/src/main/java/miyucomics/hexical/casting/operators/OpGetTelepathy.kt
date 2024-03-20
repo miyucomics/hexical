@@ -2,15 +2,12 @@ package miyucomics.hexical.casting.operators
 
 import at.petrak.hexcasting.api.spell.ConstMediaAction
 import at.petrak.hexcasting.api.spell.casting.CastingContext
-import at.petrak.hexcasting.api.spell.getEntity
-import at.petrak.hexcasting.api.spell.iota.BooleanIota
 import at.petrak.hexcasting.api.spell.iota.DoubleIota
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.NullIota
 import miyucomics.hexical.persistent_state.TelepathyData
-import net.minecraft.text.Text
 
-class OpTelepathy : ConstMediaAction {
+class OpGetTelepathy : ConstMediaAction {
 	override val argc = 0
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
 		val caster = ctx.caster.uuid
