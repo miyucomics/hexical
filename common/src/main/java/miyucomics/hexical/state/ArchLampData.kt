@@ -1,4 +1,4 @@
-package miyucomics.hexical.persistent_state
+package miyucomics.hexical.state
 
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.api.utils.serializeToNBT

@@ -1,7 +1,7 @@
 package miyucomics.hexical.registry
 
 import dev.architectury.event.events.common.TickEvent
-import miyucomics.hexical.persistent_state.TelepathyData
+import miyucomics.hexical.state.TelepathyData
 
 object HexicalEvents {
 	@JvmStatic

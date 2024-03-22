@@ -16,7 +16,6 @@ import at.petrak.hexcasting.xplat.IXplatAbstractions;
 import com.llamalad7.mixinextras.injector.WrapWithCondition;
 import miyucomics.hexical.interfaces.CastingContextMixinInterface;
 import miyucomics.hexical.items.ArchLampItem;
-import miyucomics.hexical.utils.CastingUtils;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
@@ -29,6 +28,8 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.List;
+
+import static miyucomics.hexical.items.GrimoireItemKt.grimoireLookup;
 
 @Mixin(value = CastingHarness.class, priority = 900)
 public class CastingHarnessMixin {
@@ -74,7 +75,7 @@ public class CastingHarnessMixin {
 			return;
 		if (!hexical$harness.getEscapeNext() && iota.getType() == HexIotaTypes.PATTERN && !((PatternIota) iota).getPattern().sigsEqual(HexPattern.fromAngles("qqqaw", HexDir.EAST))) {
 			HexPattern pattern = ((PatternIota) iota).getPattern();
-			List<Iota> lookupResult = CastingUtils.Companion.grimoireLookup(ctx.getCaster(), pattern, DiscoveryHandlers.collectItemSlots(ctx));
+			List<Iota> lookupResult = grimoireLookup(ctx.getCaster(), pattern, DiscoveryHandlers.collectItemSlots(ctx));
 			if (lookupResult != null) {
 				ctx.getCaster().playSound(HexSounds.CAST_HERMES, SoundCategory.MASTER, 0.25f, 1.25f);
 				cir.setReturnValue(hexical$harness.executeIotas(lookupResult, world));

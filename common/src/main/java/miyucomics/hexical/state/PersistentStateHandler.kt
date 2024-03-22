@@ -1,4 +1,4 @@
-package miyucomics.hexical.persistent_state
+package miyucomics.hexical.state
 
 import miyucomics.hexical.Hexical
 import net.minecraft.entity.LivingEntity
