@@ -1,4 +1,4 @@
-package miyucomics.hexical.persistent_state
+package miyucomics.hexical.state
 
 import java.util.*
 

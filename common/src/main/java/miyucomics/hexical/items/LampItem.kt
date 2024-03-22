@@ -1,10 +1,13 @@
 package miyucomics.hexical.items
 
+import at.petrak.hexcasting.api.spell.casting.CastingContext
+import at.petrak.hexcasting.api.spell.casting.CastingHarness
+import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.utils.serializeToNBT
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
+import miyucomics.hexical.interfaces.CastingContextMixinInterface
 import miyucomics.hexical.registry.HexicalItems
 import miyucomics.hexical.registry.HexicalSounds
-import miyucomics.hexical.utils.CastingUtils
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
@@ -35,14 +38,14 @@ class LampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.HEXIC
 	override fun usageTick(world: World, user: LivingEntity, stack: ItemStack, remainingUseTicks: Int) {
 		if (world.isClient) return
 		if (getMedia(stack) == 0) return
-		CastingUtils.lampCast(world as ServerWorld, user as ServerPlayerEntity, getHex(stack, world) ?: return, false, false)
+		lampCast(world as ServerWorld, user as ServerPlayerEntity, getHex(stack, world) ?: return, false, false)
 		if (getMedia(stack) == 0)
 			user.setStackInHand(user.activeHand, ItemStack(HexicalItems.LAMP_ITEM))
 	}
 
 	override fun onStoppedUsing(stack: ItemStack, world: World, user: LivingEntity, remainingUseTicks: Int) {
 		if (!world.isClient)
-			CastingUtils.lampCast(world as ServerWorld, user as ServerPlayerEntity, getHex(stack, world) ?: return, false, true)
+			lampCast(world as ServerWorld, user as ServerPlayerEntity, getHex(stack, world) ?: return, false, true)
 		world.playSound(user.x, user.y, user.z, HexicalSounds.LAMP_DEACTIVATE_SOUND_EVENT, SoundCategory.MASTER, 1f, 1f, true)
 	}
 
@@ -61,4 +64,13 @@ class LampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.HEXIC
 	override fun canDrawMediaFromInventory(stack: ItemStack): Boolean {
 		return false
 	}
+}
+
+@Suppress("CAST_NEVER_SUCCEEDS")
+fun lampCast(world: ServerWorld, user: ServerPlayerEntity, hex: List<Iota>, archLamp: Boolean, finale: Boolean) {
+	val ctx = CastingContext(user, user.activeHand, CastingContext.CastSource.PACKAGED_HEX)
+	(ctx as CastingContextMixinInterface).setCastByLamp(true)
+	(ctx as CastingContextMixinInterface).setArchLamp(archLamp)
+	(ctx as CastingContextMixinInterface).setFinale(finale)
+	CastingHarness(ctx).executeIotas(hex, world)
 }

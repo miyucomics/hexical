@@ -8,13 +8,13 @@ import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.NullIota
 import miyucomics.hexical.casting.mishaps.NeedsActiveArchLampMishap
 import miyucomics.hexical.items.ArchLampItem
+import miyucomics.hexical.items.hasActiveArchLamp
 import miyucomics.hexical.registry.HexicalItems
-import miyucomics.hexical.utils.CastingUtils
 
 class OpGetArchLampMedia : ConstMediaAction {
 	override val argc = 0
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
-		if (!CastingUtils.doesPlayerHaveActiveArchLamp(ctx.caster))
+		if (!hasActiveArchLamp(ctx.caster))
 			throw NeedsActiveArchLampMishap()
 		for (stack in ctx.caster.inventory.main)
 			if (stack.item == HexicalItems.ARCH_LAMP_ITEM && stack.orCreateNbt.getBoolean("active"))

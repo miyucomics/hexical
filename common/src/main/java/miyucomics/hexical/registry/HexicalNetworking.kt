@@ -5,8 +5,7 @@ import at.petrak.hexcasting.api.spell.iota.Iota
 import dev.architectury.networking.NetworkManager
 import miyucomics.hexical.Hexical
 import miyucomics.hexical.items.ConjuredStaffItem
-import miyucomics.hexical.persistent_state.TelepathyData
-import net.minecraft.text.Text
+import miyucomics.hexical.state.TelepathyData
 
 object HexicalNetworking {
 	@JvmStatic
