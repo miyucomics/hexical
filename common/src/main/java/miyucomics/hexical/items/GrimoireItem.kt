@@ -14,6 +14,7 @@ import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.nbt.NbtElement
 import net.minecraft.nbt.NbtList
+import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld
 
 class GrimoireItem : Item(Settings().maxCount(1).group(HexicalItems.HEXICAL_GROUP)) {
@@ -71,4 +72,15 @@ class GrimoireItem : Item(Settings().maxCount(1).group(HexicalItems.HEXICAL_GROU
 			return out
 		}
 	}
+}
+
+fun grimoireLookup(player: ServerPlayerEntity, pattern: HexPattern, slots: List<ItemStack>): List<Iota>? {
+	for (stack in slots) {
+		if (stack.item != HexicalItems.GRIMOIRE_ITEM)
+			continue
+		val value = GrimoireItem.getPatternInGrimoire(stack, pattern, player.getWorld())
+		if (value != null)
+			return value
+	}
+	return null
 }

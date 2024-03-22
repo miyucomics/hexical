@@ -4,10 +4,9 @@ import at.petrak.hexcasting.api.spell.iota.NullIota
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import miyucomics.hexical.interfaces.PlayerEntityMixinInterface
-import miyucomics.hexical.persistent_state.PersistentStateHandler
+import miyucomics.hexical.state.PersistentStateHandler
 import miyucomics.hexical.registry.HexicalItems
 import miyucomics.hexical.registry.HexicalSounds
-import miyucomics.hexical.utils.CastingUtils
 import net.minecraft.entity.Entity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
@@ -33,7 +32,7 @@ class ArchLampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.H
 		}
 
 		if (stackNbt.getBoolean("active")) {
-			CastingUtils.lampCast(world as ServerWorld, user as ServerPlayerEntity, getHex(stack, world)!!, true, true)
+			lampCast(world as ServerWorld, user as ServerPlayerEntity, getHex(stack, world)!!, true, true)
 			stackNbt.putBoolean("active", false)
 			return TypedActionResult.success(stack)
 		}
@@ -64,7 +63,7 @@ class ArchLampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.H
 			return
 		}
 
-		CastingUtils.lampCast(world as ServerWorld, user, getHex(stack, world) ?: return, true, false)
+		lampCast(world as ServerWorld, user, getHex(stack, world) ?: return, true, false)
 		(user as PlayerEntityMixinInterface).lampCastedThisTick()
 		if (getMedia(stack) == 0)
 			user.inventory.setStack(slot, ItemStack(HexicalItems.LAMP_ITEM))
@@ -77,4 +76,14 @@ class ArchLampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.H
 	override fun canDrawMediaFromInventory(stack: ItemStack): Boolean {
 		return false
 	}
+}
+
+fun hasActiveArchLamp(player: ServerPlayerEntity): Boolean {
+	for (stack in player.inventory.main)
+		if (stack.item == HexicalItems.ARCH_LAMP_ITEM && stack.orCreateNbt.getBoolean("active"))
+			return true
+	for (stack in player.inventory.offHand)
+		if (stack.item == HexicalItems.ARCH_LAMP_ITEM && stack.orCreateNbt.getBoolean("active"))
+			return true
+	return false
 }
