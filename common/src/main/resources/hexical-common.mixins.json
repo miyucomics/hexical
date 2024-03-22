@@ -8,6 +8,7 @@
 		"MinecraftClientMixin"
 	],
 	"mixins": [
+		"BookItemMixin",
 		"CastingContextMixin",
 		"CastingHarnessMixin",
 		"ItemAbacusMixin",
