@@ -26,7 +26,8 @@
 	"hexcasting.spell.hexical:index_grimoire": "Archivist Reflection",
 	"hexcasting.spell.hexical:restrict_grimoire": "Restrict Grimoire",
 	"hexcasting.spell.hexical:query_grimoire": "Archivist Purification",
-	"hexcasting.spell.hexical:program_lamp": "Educate Genie",
+	"hexcasting.spell.hexical:make_genie": "Make Genie",
+	"hexcasting.spell.hexical:educate_genie": "Educate Genie",
 	"hexcasting.spell.hexical:get_lamp_position": "Genie Refl.: Spatial",
 	"hexcasting.spell.hexical:get_lamp_rotation": "Genie Refl.: Rotational",
 	"hexcasting.spell.hexical:get_lamp_velocity": "Genie Refl.: Kinetic",
@@ -62,6 +63,8 @@
 
 	"hexcasting.mishap.bad_block.advanced_conjured_block": "an advanced conjured block",
 	"hexcasting.mishap.bad_item.speck": "a speck",
+	"hexcasting.mishap.bad_item.lamp": "an empty lamp",
+	"hexcasting.mishap.bad_item.lamp_flay": "a villager of Journeyman status or greater",
 	"hexcasting.mishap.hexical:needs_lamp": "Expected to be cast by Genieless Lamp.",
 	"hexcasting.mishap.hexical:needs_active_arch_lamp": "Expected to have an active Arch Genieless Lamp.",
 	"hexcasting.mishap.hexical:grimoire_access_denied": "Tried to increase the uses of a restricted binding.",
@@ -91,7 +94,7 @@
 
 	"hexical.page.new_possibilities.title": "New Possibilities",
 	"hexical.page.new_possibilities.0": "It casts $(o)$(l)EVERY INSTANT$(). After writing a spell into it, I was treated to a splendid gush of media. I estimate the casting speed must be around twenty times every second. The presence inside the lamp performs the casting on my behalf with extraordinary efficiency, not producing the sound and particles that accompany other casting methods.",
-	"hexical.page.new_possibilities.1": "I have developed some useful patterns for use with the lamp, documented on the next few pages. These patterns should only be cast from within the lamp, lest I succumb to the Missing Genie mishap, which emits red sparks and flings my casting item from my hand.",
+	"hexical.page.new_possibilities.1": "I have developed some useful patterns for use with the lamp, documented on the next few pages. These patterns should only be cast by the genie within the lamp, lest I succumb to the Impersonate Genie mishap, which emits red sparks and flings my casting item from my hand.",
 	"hexical.page.get_lamp_position": "Pushes the original position of the caster when the lamp started casting.",
 	"hexical.page.get_lamp_rotation": "Pushes the original rotation of the caster when the lamp started casting.",
 	"hexical.page.get_lamp_velocity": "Pushes the original velocity of the caster when the lamp started casting.",
@@ -100,8 +103,9 @@
 	"hexical.page.lamp_finale.0": "The instant I let go of my lamp, it casts twice: once for the usual cast and once as a sort of *finale*. I can use this pattern to recognize when whether a cast is that finale.",
 
 	"hexical.page.replacement_mind.title": "Replacement Mind",
-	"hexical.page.replacement_mind.0": "Hex casting burns out the mind from the energy of thought, flooding the consciousness, inundating every neuron... it's euphoric. For staffs, casting devices, and spell circles, the rate of casting is slow enough that a mind can recuperate; I will never need to replace my mind or an impetus. With the speeds this lamp operates at, though, even an optimized mind can only bear the burden for so long. Luckily, the lamp is able to somehow support the mind until its media battery runs out, where the genie finally perishes and the lamp visibly tarnishes. In these cases, the genie must be... replaced.",
-	"hexical.page.replacement_mind.1": "Basing off the shape of the other genie patterns and the $(o)feeling$() of the media, I have developed this highly specialized pattern that extracts the mind of a villager and transforms it into a genie. The stress of nonstop casting requires highly trained villagers, I estimate of Journeyman-class or greater. The lamp may not be recharged without sacrificing a new mind, discarding the previous genie in the process, so I should aim to gather as much media as I can before casting.",
+	"hexical.page.replacement_mind.0": "Hex casting burns out the mind from the energy of thought, flooding the consciousness, inundating every neuron... it's euphoric. For staffs, casting devices, and spell circles, the rate of casting is slow enough that a mind can recuperate; I will never need to replace an impetus. With the speeds lamps operates at, though, even an optimized mind can only bear the burden for so long.",
+	"hexical.page.replacement_mind.1": "Luckily, the lamp somehow sustains the mind until its media battery runs out, where the genie finally perishes. In these cases, the lamo must be... reloaded.",
+	"hexical.page.replacement_mind.2": "I have developed this highly specialized pattern that extracts the mind of a villager and transforms it into a genie. The stress of nonstop casting requires highly trained minds, I estimate of Journeyman-grade or greater. The lamp may not be recharged without sacrificing a new mind, discarding the previous genie, so I should aim to gather as much media as I can before casting.",
 
 	"hexical.page.arch_lamps.title": "Arch Lamps",
 	"hexical.page.arch_lamps.0": "Because a separate mind casts my spells, a lamp should be able to cast even without me holding it. I estimate any villager short of a complete master of its field would be unable to cast so often unassisted though. These $(o)arch lamps$() are activated and deactivated rather than used and while active in my inventory, they cast every moment even without my input.",
