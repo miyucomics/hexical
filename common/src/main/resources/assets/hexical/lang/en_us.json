@@ -29,6 +29,7 @@
 	"hexcasting.spell.hexical:get_lamp_velocity": "Genie Refl.: Kinetic",
 	"hexcasting.spell.hexical:get_lamp_use_time": "Genie Refl.: Temporal",
 	"hexcasting.spell.hexical:get_lamp_media": "Genie Refl.: Media",
+	"hexcasting.spell.hexical:lamp_finale": "Finale Reflection",
 	"hexcasting.spell.hexical:get_arch_lamp_position": "Archgenie Refl.: Spatial",
 	"hexcasting.spell.hexical:get_arch_lamp_rotation": "Archgenie Refl.: Rotational",
 	"hexcasting.spell.hexical:get_arch_lamp_velocity": "Archgenie Refl.: Kinetic",
@@ -92,6 +93,7 @@
 	"hexical.page.get_lamp_velocity": "Pushes the original velocity of the caster when the lamp started casting.",
 	"hexical.page.get_lamp_use_time": "Pushes how many times the lamp has casted. Divided by 20, it returns how many times in seconds the lamp has been in use.",
 	"hexical.page.get_lamp_media": "Pushes the remaining media of the lamp in dust, in terms of dust.",
+	"hexical.page.lamp_finale.0": "The instant I let go of my lamp, it casts twice: once for the usual cast and once as a sort of *finale*. I can use this pattern to recognize when whether a cast is that finale.",
 
 	"hexical.page.replacement_mind.title": "Replacement Mind",
 	"hexical.page.replacement_mind.0": "Hex casting burns out the mind from the energy of thought, flooding the consciousness, inundating every neuron... it's euphoric. For staffs, casting devices, and spell circles, the rate of casting is slow enough that a mind can recuperate; I will never need to replace my mind or an impetus. With the speeds this lamp operates at, though, even an optimized mind can only bear the burden for so long. Luckily, the lamp is able to somehow support the mind until its media battery runs out, where the genie finally perishes and the lamp visibly tarnishes. In these cases, the genie must be... replaced.",
@@ -100,6 +102,7 @@
 	"hexical.page.arch_lamps.title": "Arch Lamps",
 	"hexical.page.arch_lamps.0": "Because a separate mind casts my spells, a lamp should be able to cast even without me holding it. I estimate any villager short of a complete master of its field would be unable to cast so often unassisted though. These $(o)arch lamps$() are activated and deactivated rather than used and while active in my inventory, they cast every moment even without my input.",
 	"hexical.page.arch_lamps.1": "The output of an arch lamp is so grand that it saturates the air around me with media... it's incredible. Unfortunately, if two lamps are active at once within my inventory, the resonances clash and deactivate both lamps, as well as rendering every arch lamp in my inventory useless for a few seconds. I should only have one archgenie lamp active at once, although I can still simutaneously use a regular lamp.",
+	"hexical.page.lamp_finale.1": "When a master lamp is turned off, it casts an additional time. I can use this pattern to recognize when whether a cast is that last burst of energy.",
 
 	"hexical.page.get_arch_lamp_position": "Pushes the original position of the caster when the arch lamp started casting.",
 	"hexical.page.get_arch_lamp_rotation": "Pushes the original rotation of the caster when the arch lamp started casting.",
