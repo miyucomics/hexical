@@ -11,9 +11,7 @@ import miyucomics.hexical.casting.operators.getters.*
 import miyucomics.hexical.casting.operators.grimoire.*
 import miyucomics.hexical.casting.operators.lamp.*
 import miyucomics.hexical.casting.spells.*
-import miyucomics.hexical.casting.spells.lamp.OpProgramLamp
-import miyucomics.hexical.casting.spells.lamp.OpSetArchLampStorage
-import miyucomics.hexical.casting.spells.lamp.OpTerminateArchLamp
+import miyucomics.hexical.casting.spells.lamp.*
 import miyucomics.hexical.casting.spells.specks.OpConjureSpeck
 import miyucomics.hexical.casting.spells.specks.OpMoveSpeck
 import miyucomics.hexical.casting.spells.specks.OpRotateSpeck
@@ -58,31 +56,28 @@ object HexicalPatterns {
 		register(HexPattern.fromAngles("dedqdewed", HexDir.SOUTH_WEST), "restrict_grimoire", OpGrimoireRestrict())
 		register(HexPattern.fromAngles("aqaedewed", HexDir.NORTH_WEST), "query_grimoire", OpGrimoireQuery())
 
-		register(HexPattern.fromAngles("wwqqqqq", HexDir.EAST), "program_lamp", OpProgramLamp())
+		register(HexPattern.fromAngles("qaqwawqwqqwqwqwqwqwqq", HexDir.EAST), "make_genie", OpMakeGenie())
+		register(HexPattern.fromAngles("eweweweweweewedeaqqqd", HexDir.NORTH_WEST), "educate_genie", OpEducateGenie())
 		register(HexPattern.fromAngles("qwddedqdd", HexDir.SOUTH_WEST), "get_lamp_position", OpGetLampData(0))
 		register(HexPattern.fromAngles("qwddedadw", HexDir.SOUTH_WEST), "get_lamp_rotation", OpGetLampData(1))
 		register(HexPattern.fromAngles("qwddedqew", HexDir.SOUTH_WEST), "get_lamp_velocity", OpGetLampData(2))
 		register(HexPattern.fromAngles("qwddedqwddwa", HexDir.SOUTH_WEST), "get_lamp_use_time", OpGetLampData(3))
-		register(HexPattern.fromAngles("qwddedqwwaqqqqqeaqeaeqqqeaeq", HexDir.SOUTH_WEST), "get_lamp_media", OpGetLampData(4))
+		register(HexPattern.fromAngles("qwddedaeeeee", HexDir.SOUTH_WEST), "get_lamp_media", OpGetLampData(4))
 		register(HexPattern.fromAngles("qaqwddedqdd", HexDir.NORTH_EAST), "get_arch_lamp_position", OpGetArchLampData(0))
 		register(HexPattern.fromAngles("qaqwddedadw", HexDir.NORTH_EAST), "get_arch_lamp_rotation", OpGetArchLampData(1))
 		register(HexPattern.fromAngles("qaqwddedqew", HexDir.NORTH_EAST), "get_arch_lamp_velocity", OpGetArchLampData(2))
 		register(HexPattern.fromAngles("qaqwddedqwddwa", HexDir.NORTH_EAST), "get_arch_lamp_use_time", OpGetArchLampData(3))
 		register(HexPattern.fromAngles("qaqwddedqwaqqqqq", HexDir.NORTH_EAST), "get_arch_lamp_storage", OpGetArchLampData(4))
-		register(HexPattern.fromAngles("qaqwddedqwwaqqqqqeaqeaeqqqeaeq", HexDir.NORTH_EAST), "get_arch_lamp_media", OpGetArchLampMedia())
+		register(HexPattern.fromAngles("qaqwddedaeeeee", HexDir.NORTH_EAST), "get_arch_lamp_media", OpGetArchLampMedia())
 		register(HexPattern.fromAngles("qaqwddedqeed", HexDir.NORTH_EAST), "is_using_lamp", OpIsUsingArchLamp())
 		register(HexPattern.fromAngles("qaqwddedwaqdee", HexDir.NORTH_EAST), "terminate_arch_lamp", OpTerminateArchLamp())
 		register(HexPattern.fromAngles("qaqwddedqedeeeee", HexDir.NORTH_EAST), "set_arch_lamp_storage", OpSetArchLampStorage())
 		register(HexPattern.fromAngles("aaddaddad", HexDir.EAST), "lamp_finale", OpGetFinale())
 
-		try {
-			for ((first, second, third) in PATTERNS)
-				PatternRegistry.mapPattern(first, second, third)
-			for ((first, second, third) in PER_WORLD_PATTERNS)
-				PatternRegistry.mapPattern(first, second, third, true)
-		} catch (e: PatternRegistry.RegisterPatternException) {
-			e.printStackTrace()
-		}
+		for ((first, second, third) in PATTERNS)
+			PatternRegistry.mapPattern(first, second, third)
+		for ((first, second, third) in PER_WORLD_PATTERNS)
+			PatternRegistry.mapPattern(first, second, third, true)
 	}
 
 	private fun register(pattern: HexPattern, name: String, action: Action): HexPattern {
