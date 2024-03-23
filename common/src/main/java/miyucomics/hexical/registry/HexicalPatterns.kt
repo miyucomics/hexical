@@ -15,6 +15,8 @@ import miyucomics.hexical.casting.spells.lamp.OpProgramLamp
 import miyucomics.hexical.casting.spells.lamp.OpSetArchLampStorage
 import miyucomics.hexical.casting.spells.lamp.OpTerminateArchLamp
 import miyucomics.hexical.casting.spells.specks.OpConjureSpeck
+import miyucomics.hexical.casting.spells.specks.OpMoveSpeck
+import miyucomics.hexical.casting.spells.specks.OpRotateSpeck
 import net.minecraft.util.Identifier
 
 object HexicalPatterns {
@@ -34,7 +36,10 @@ object HexicalPatterns {
 
 		register(HexPattern.fromAngles("wwwwwaqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST), "conjure_staff", OpConjureStaff())
 		register(HexPattern.fromAngles("aawqqqq", HexDir.SOUTH_EAST), "chorus_blink", OpChorusBlink())
-		register(HexPattern.fromAngles("eeeee", HexDir.EAST), "conjure_speck", OpConjureSpeck())
+
+		register(HexPattern.fromAngles("ade", HexDir.SOUTH_WEST), "conjure_speck", OpConjureSpeck())
+		register(HexPattern.fromAngles("adeqaa", HexDir.SOUTH_WEST), "move_speck", OpMoveSpeck())
+		register(HexPattern.fromAngles("adeaw", HexDir.SOUTH_WEST), "rotate_speck", OpRotateSpeck())
 
 		register(HexPattern.fromAngles("qqwaqda", HexDir.EAST), "is_burning", OpGetEntityBurning())
 		register(HexPattern.fromAngles("eewdead", HexDir.WEST), "burning_time", OpGetEntityBurningTime())
