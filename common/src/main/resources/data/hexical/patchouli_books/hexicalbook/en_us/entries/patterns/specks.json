@@ -1,0 +1,35 @@
+{
+	"name": "hexical.page.specks.title",
+	"icon": "minecraft:beacon",
+	"category": "hexcasting:patterns/spells",
+	"pages": [
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.specks.0"
+		},
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "hexical:conjure_speck",
+            "anchor": "hexical:conjure_speck",
+            "input": "any, vector",
+            "output": "",
+			"text": "hexical.page.conjure_speck"
+		},
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "hexical:move_speck",
+            "anchor": "hexical:move_speck",
+            "input": "speck entity, vector",
+            "output": "",
+			"text": "hexical.page.move_speck"
+		},
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "hexical:rotate_speck",
+            "anchor": "hexical:rotate_speck",
+            "input": "speck entity, vector",
+            "output": "",
+			"text": "hexical.page.rotate_speck"
+		}
+	]
+}

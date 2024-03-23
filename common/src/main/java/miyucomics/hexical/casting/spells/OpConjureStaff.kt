@@ -23,7 +23,7 @@ class OpConjureStaff : SpellAction {
 		val trueName = MishapOthersName.getTrueNameFromDatum(args[3], ctx.caster)
 		if (trueName != null)
 			throw MishapOthersName(trueName)
-		return Triple(Spell(position, battery, rank, instructions), battery + MediaConstants.CRYSTAL_UNIT + MediaConstants.SHARD_UNIT * rank, listOf(ParticleSpray.burst(position, 1.0)))
+		return Triple(Spell(position, battery, rank, instructions), MediaConstants.SHARD_UNIT + MediaConstants.DUST_UNIT * rank + battery, listOf(ParticleSpray.burst(position, 1.0)))
 	}
 
 	private data class Spell(val position: Vec3d, val battery: Int, val rank: Int, val instructions: List<Iota>) : RenderedSpell {
