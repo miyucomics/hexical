@@ -21,6 +21,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.ArrayList;
 import java.util.List;
 
+import static miyucomics.hexical.items.ConjuredStaffItemKt.getConjuredStaff;
+
 @Mixin(MinecraftClient.class)
 public class MinecraftClientMixin {
 	@Unique
@@ -45,23 +47,21 @@ public class MinecraftClientMixin {
 		}
 		hexical$timer--;
 
-		if (!(player.getMainHandStack().getItem() instanceof ConjuredStaffItem))
+		Hand hand = getConjuredStaff(player);
+		if (hand == null)
 			return;
-
-		int rankOfStaff = player.getMainHandStack().getOrCreateNbt().getInt("rank");
+		int rankOfStaff = player.getStackInHand(hand).getOrCreateNbt().getInt("rank");
 		if (rankOfStaff == 0)
 			return;
 
 		if (hexical$clicks.size() == rankOfStaff) {
 			hexical$timer = 0;
 			player.world.playSound(player, player.getX(), player.getY(), player.getZ(), HexSounds.CAST_THOTH, SoundCategory.PLAYERS, 1f, 1f);
-
 			PacketByteBuf buf = new PacketByteBuf(Unpooled.buffer());
 			buf.writeInt(rankOfStaff);
 			for (int i = 0; i < rankOfStaff; i++)
 				buf.writeBoolean(hexical$clicks.get(i));
 			NetworkManager.sendToServer(Hexical.CAST_CONJURED_STAFF_PACKET, buf);
-
 			hexical$clicks.clear();
 		}
 	}
@@ -70,25 +70,27 @@ public class MinecraftClientMixin {
 	public void onLeftClick(CallbackInfo info) {
 		if (player == null || player.isSpectator())
 			return;
-		if (player.getMainHandStack().getItem() instanceof ConjuredStaffItem) {
-			hexical$timer = hexical$COOLDOWN;
-			hexical$clicks.add(false);
-			player.swingHand(Hand.MAIN_HAND);
-			player.world.playSound(player, player.getX(), player.getY(), player.getZ(), HexSounds.SPELL_CIRCLE_CAST, SoundCategory.PLAYERS, 1f, 1f);
-			info.cancel();
-		}
+		Hand hand = getConjuredStaff(player);
+		if (hand == null)
+			return;
+		hexical$timer = hexical$COOLDOWN;
+		hexical$clicks.add(false);
+		player.swingHand(hand);
+		player.world.playSound(player, player.getX(), player.getY(), player.getZ(), HexSounds.SPELL_CIRCLE_CAST, SoundCategory.PLAYERS, 1f, 1f);
+		info.cancel();
 	}
 
 	@Inject(method = "handleInputEvents", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/MinecraftClient;doItemUse()V", ordinal = 0), cancellable = true)
 	public void onRightClick(CallbackInfo info) {
 		if (player == null || player.isSpectator())
 			return;
-		if (player.getMainHandStack().getItem() instanceof ConjuredStaffItem) {
-			hexical$timer = hexical$COOLDOWN;
-			hexical$clicks.add(true);
-			player.swingHand(Hand.MAIN_HAND);
-			player.world.playSound(player, player.getX(), player.getY(), player.getZ(), HexSounds.SPELL_CIRCLE_CAST, SoundCategory.PLAYERS, 1f, 1f);
-			info.cancel();
-		}
+		Hand hand = getConjuredStaff(player);
+		if (hand == null)
+			return;
+		hexical$timer = hexical$COOLDOWN;
+		hexical$clicks.add(true);
+		player.swingHand(hand);
+		player.world.playSound(player, player.getX(), player.getY(), player.getZ(), HexSounds.SPELL_CIRCLE_CAST, SoundCategory.PLAYERS, 1f, 1f);
+		info.cancel();
 	}
 }
