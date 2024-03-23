@@ -40,6 +40,8 @@ object HexicalPatterns {
 		register(HexPattern.fromAngles("eewdead", HexDir.WEST), "burning_time", OpGetEntityBurningTime())
 		register(HexPattern.fromAngles("qqqqwaadq", HexDir.SOUTH_WEST), "is_wet", OpGetEntityWet())
 		register(HexPattern.fromAngles("eaq", HexDir.WEST), "is_sprinting", OpGetSprinting())
+		register(HexPattern.fromAngles("qaqqqqqeeeeedq", HexDir.EAST), "block_hardness", OpGetBlockData(0))
+		register(HexPattern.fromAngles("qaqqqqqewaaqddqa", HexDir.EAST), "block_blast_resistance", OpGetBlockData(1))
 		register(HexPattern.fromAngles("aqaew", HexDir.NORTH_WEST), "is_sleeping", OpGetSleeping())
 		register(HexPattern.fromAngles("qaqqqqded", HexDir.NORTH_EAST), "get_telepathy", OpGetTelepathy())
 		register(HexPattern.fromAngles("qaqqqeaqa", HexDir.NORTH_EAST), "send_telepathy", OpSendTelepathy())
