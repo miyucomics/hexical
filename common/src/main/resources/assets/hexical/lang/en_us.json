@@ -16,8 +16,11 @@
 	"subtitles.hexical.lamp_activate": "Lamp activates",
 	"subtitles.hexical.lamp_deactivate": "Lamp deactivates",
 
-	"hexcasting.spell.hexical:get_weather": "Meterologist's Reflection",
 	"hexcasting.spell.hexical:conjure_speck": "Conjure Speck",
+	"hexcasting.spell.hexical:move_speck": "Move Speck",
+	"hexcasting.spell.hexical:rotate_speck": "Rotate Speck",
+
+	"hexcasting.spell.hexical:get_weather": "Meterologist's Reflection",
 	"hexcasting.spell.hexical:write_grimoire": "Write Grimoire",
 	"hexcasting.spell.hexical:erase_grimoire": "Erase Grimoire",
 	"hexcasting.spell.hexical:index_grimoire": "Archivist Reflection",
@@ -58,6 +61,7 @@
 	"hexcasting.spell.hexical:nephthys": "Nephthys Gambit",
 
 	"hexcasting.mishap.bad_block.advanced_conjured_block": "an advanced conjured block",
+	"hexcasting.mishap.bad_item.speck": "a speck",
 	"hexcasting.mishap.hexical:needs_lamp": "Expected to be cast by Genieless Lamp.",
 	"hexcasting.mishap.hexical:needs_active_arch_lamp": "Expected to have an active Arch Genieless Lamp.",
 	"hexcasting.mishap.hexical:grimoire_access_denied": "Tried to increase the uses of a restricted binding.",
