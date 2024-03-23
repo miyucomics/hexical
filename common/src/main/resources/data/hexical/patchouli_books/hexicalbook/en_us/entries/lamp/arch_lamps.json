@@ -54,6 +54,14 @@
 		},
 		{
 			"type": "hexcasting:pattern",
+			"op_id": "hexical:get_arch_lamp_use_time",
+			"anchor": "hexical:get_arch_lamp_use_time",
+			"input": "",
+			"output": "number",
+			"text": "hexical.page.get_arch_lamp_use_time"
+		},
+		{
+			"type": "hexcasting:pattern",
 			"op_id": "hexical:get_arch_lamp_media",
 			"anchor": "hexical:get_arch_lamp_media",
 			"input": "",
@@ -62,11 +70,11 @@
 		},
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:get_arch_lamp_use_time",
-			"anchor": "hexical:get_arch_lamp_use_time",
+			"op_id": "hexical:lamp_finale",
+			"anchor": "hexical:lamp_finale",
 			"input": "",
-			"output": "number",
-			"text": "hexical.page.get_arch_lamp_use_time"
+			"output": "boolean",
+			"text": "hexical.page.lamp_finale.1"
 		}
 	]
 }

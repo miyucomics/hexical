@@ -51,6 +51,14 @@
 			"input": "",
 			"output": "number",
 			"text": "hexical.page.get_lamp_media"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:lamp_finale",
+			"anchor": "hexical:lamp_finale",
+			"input": "",
+			"output": "boolean",
+			"text": "hexical.page.lamp_finale.0"
 		}
 	]
 }
