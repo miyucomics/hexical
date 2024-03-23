@@ -32,7 +32,7 @@ class OpChorusBlink : SpellAction {
 				stack.decrement(1)
 				val caster: ServerPlayerEntity = ctx.caster
 				caster.teleport(caster.pos.x + position.x, caster.pos.y + position.y, caster.pos.z + position.z)
-				break
+				return
 			}
 		}
 	}

@@ -3,13 +3,17 @@ package miyucomics.hexical.items
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.casting.CastingHarness
 import at.petrak.hexcasting.api.spell.iota.Iota
+import at.petrak.hexcasting.api.spell.math.HexPattern
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
+import at.petrak.hexcasting.xplat.IXplatAbstractions
+import miyucomics.hexical.registry.HexicalItems
 import net.minecraft.entity.Entity
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld
+import net.minecraft.text.Text
 import net.minecraft.util.Hand
 import net.minecraft.util.TypedActionResult
 import net.minecraft.world.World
@@ -27,18 +31,26 @@ class ConjuredStaffItem : ItemPackagedHex(Settings().maxCount(1)) {
 		return true
 	}
 
-	override fun use(world: World, player: PlayerEntity, usedHand: Hand): TypedActionResult<ItemStack> {
-		return TypedActionResult.pass(player.getStackInHand(usedHand)); }
+	override fun use(world: World, player: PlayerEntity, usedHand: Hand) = TypedActionResult.success(player.getStackInHand(usedHand))
 
 	override fun inventoryTick(stack: ItemStack, world: World, entity: Entity, slot: Int, selected: Boolean) {
 		if (!hasHex(stack) || getMedia(stack) == 0)
 			stack.decrement(1)
 	}
 
-	fun cast(world: World, user: LivingEntity, stack: ItemStack, castStack: MutableList<Iota>) {
-		val hex = getHex(stack, world as ServerWorld) ?: return
-		val harness = CastingHarness(CastingContext((user as ServerPlayerEntity), user.getActiveHand(), CastingContext.CastSource.PACKAGED_HEX))
-		harness.stack = castStack
-		harness.executeIotas(hex, world)
+	companion object {
+		fun cast(world: ServerWorld, user: ServerPlayerEntity, hand: Hand, stack: ItemStack, castStack: MutableList<Iota>) {
+			val harness = CastingHarness(CastingContext(user, hand, CastingContext.CastSource.PACKAGED_HEX))
+			harness.stack = castStack
+			IXplatAbstractions.INSTANCE.findHexHolder(stack)?.getHex(world)?.toList()?.let { harness.executeIotas(it, world) }
+		}
 	}
+}
+
+fun getConjuredStaff(player: PlayerEntity): Hand? {
+	if (player.getStackInHand(Hand.OFF_HAND).item is ConjuredStaffItem)
+		return Hand.OFF_HAND
+	if (player.getStackInHand(Hand.MAIN_HAND).item is ConjuredStaffItem)
+		return Hand.MAIN_HAND
+	return null
 }
