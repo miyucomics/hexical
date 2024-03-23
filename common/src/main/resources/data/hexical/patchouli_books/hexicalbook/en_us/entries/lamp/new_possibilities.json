@@ -1,6 +1,6 @@
 {
 	"name": "hexical.page.new_possibilities.title",
-	"icon": "minecraft:sand",
+	"icon": "hexical:lamp",
 	"category": "hexical:lamp",
     "sortnum": 1,
 	"pages": [

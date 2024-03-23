@@ -48,6 +48,7 @@ object HexicalPatterns {
 		register(HexPattern.fromAngles("aqaew", HexDir.NORTH_WEST), "is_sleeping", OpGetSleeping())
 		register(HexPattern.fromAngles("qaqqqqded", HexDir.NORTH_EAST), "get_telepathy", OpGetTelepathy())
 		register(HexPattern.fromAngles("qaqqqeaqa", HexDir.NORTH_EAST), "send_telepathy", OpSendTelepathy())
+		register(HexPattern.fromAngles("qaqqqewaqwa", HexDir.NORTH_EAST), "shout_telepathy", OpShoutTelepathy())
 		register(HexPattern.fromAngles("deedqad", HexDir.WEST), "get_weather", OpGetWeather())
 
 		register(HexPattern.fromAngles("aqwqaeaqa", HexDir.WEST), "write_grimoire", OpGrimoireWrite())
@@ -80,15 +81,11 @@ object HexicalPatterns {
 			PatternRegistry.mapPattern(first, second, third, true)
 	}
 
-	private fun register(pattern: HexPattern, name: String, action: Action): HexPattern {
-		val triple = Triple(pattern, Hexical.id(name), action)
-		PATTERNS.add(triple)
-		return pattern
+	private fun register(pattern: HexPattern, name: String, action: Action) {
+		PATTERNS.add(Triple(pattern, Hexical.id(name), action))
 	}
 
-	private fun registerPerWorld(pattern: HexPattern, name: String, action: Action): HexPattern {
-		val triple = Triple(pattern, Hexical.id(name), action)
-		PER_WORLD_PATTERNS.add(triple)
-		return pattern
+	private fun registerPerWorld(pattern: HexPattern, name: String, action: Action) {
+		PER_WORLD_PATTERNS.add(Triple(pattern, Hexical.id(name), action))
 	}
 }

@@ -1,5 +1,6 @@
 {
 	"itemGroup.hexical.general": "Hexical",
+    "particle.minecraft.soul_7": "Soul",
 
 	"item.hexical.lamp": "Genie Lamp",
 	"item.hexical.arch_lamp": "Archgenie Lamp",
@@ -19,6 +20,10 @@
 	"hexcasting.spell.hexical:conjure_speck": "Conjure Speck",
 	"hexcasting.spell.hexical:move_speck": "Move Speck",
 	"hexcasting.spell.hexical:rotate_speck": "Rotate Speck",
+
+	"hexcasting.spell.hexical:get_telepathy": "Telepathic Reflection",
+	"hexcasting.spell.hexical:send_telepathy": "Send Thought",
+	"hexcasting.spell.hexical:shout_telepathy": "Send Warning",
 
 	"hexcasting.spell.hexical:get_weather": "Meterologist's Reflection",
 	"hexcasting.spell.hexical:write_grimoire": "Write Grimoire",
@@ -105,7 +110,7 @@
 	"hexical.page.replacement_mind.title": "Replacement Mind",
 	"hexical.page.replacement_mind.0": "Hex casting burns out the mind from the energy of thought, flooding the consciousness, inundating every neuron... it's euphoric. For staffs, casting devices, and spell circles, the rate of casting is slow enough that a mind can recuperate; I will never need to replace an impetus. With the speeds lamps operates at, though, even an optimized mind can only bear the burden for so long.",
 	"hexical.page.replacement_mind.1": "Luckily, the lamp somehow sustains the mind until its media battery runs out, where the genie finally perishes. In these cases, the lamo must be... reloaded.",
-	"hexical.page.replacement_mind.2": "I have developed this highly specialized pattern that extracts the mind of a villager and transforms it into a genie. The stress of nonstop casting requires highly trained minds, I estimate of Journeyman-grade or greater. The lamp may not be recharged without sacrificing a new mind, discarding the previous genie, so I should aim to gather as much media as I can before casting.",
+	"hexical.page.replacement_mind.2": "I have developed this highly specialized pattern that extracts the mind of a villager and transforms it into a genie. The stress of nonstop casting requires highly trained minds, I estimate of Journeyman-grade or greater. The lamp may not be recharged without sacrificing a new mind, discarding the previous genie, so I should aim to gather as much media as I can before casting. The pattern itself costs 10 charged amethyst.",
 
 	"hexical.page.arch_lamps.title": "Arch Lamps",
 	"hexical.page.arch_lamps.0": "Because a separate mind casts my spells, a lamp should be able to cast even without me holding it. I estimate any villager short of a complete master of its field would be unable to cast so often unassisted though. These $(o)arch lamps$() are activated and deactivated rather than used and while active in my inventory, they cast every moment even without my input.",
@@ -129,6 +134,15 @@
 	"hexical.page.nephthys.0": "Pops a pattern list and a number from the stack and dives down n iota to casts the pattern list. Useful for surgery-like operations.",
 	"hexical.page.nephthys.1": "It's extremely versatile and I can mend almost any error in my stack using Bookkeeper's Gambit, pushing iota after a dive, and transforming surfaced iota. It was named after a goddess of mourning and rivers, lending to how it buries/dives down into the stack.",
 
+    "hexical.page.telepathy.title": "Telepathy",
+    "hexical.page.telepathy": "Media is the energy of thought and consequently, it is able to interact with thoughts too. Unfortunately, or fortunately, the minds of players seem too resistant to be swayed by mental urges and even the minds of mere villagers are hard to tamper with. My own mind however seems to be quite simple to manipulate.",
+    "hexical.page.get_telepathy": "By focusing my thoughts on a particular image, I can detect that concentration via this telepathy spell. This pattern pushes how long I have been holding down the G key, or null if I am not holding it.",
+    "hexical.page.send_telepathy": "Similarly, I can write to my mind. This spell costs a neglegible amount of media and momentarily displays the iota above my hotbar above my hotbar. If this spell is cast repeatedly, each cast overwrites the previous message instantly.",
+    "hexical.page.shout_telepathy": "Similar to Send Thought, Send Warning displays a iota for a negelible amount of media, but the text is much larger and urgent. I find it can get annoying since it obstructs my vision, so I shall only use it sparingly.",
+
+	"hexical.page.chorus_blink.0": "Between Blink, Greater Teleport, ender pearls, and chorus fruit, this spell serves a harmonious midpoint for safe, precise, and cheap teleportation.",
+	"hexical.page.chorus_blink.1": "It consumes a chorus fruit from my inventory and teleports me up to 16 blocks using an offset vector. The cost is constant whether I teleport the full 16 blocks or less, and has no penalty for multiple casts in one hex. With a lot of chorus fruit, it can be a significantly cheaper Greater Teleport.",
+
 	"hexical.page.mage_block.title": "Mage Blocks",
 	"hexical.page.mage_block": "While interesting, Conjure Block has multiple shortcomings. The blocks last forever, are consequently a pain to clean up, and lack interesting properties. Luckily, Nature offers an elegant and flexible solution. These mage blocks come with a suite of $(o)modifiers$(). I could even stack multiple modifiers on one block.",
 	"hexical.page.conjure_mage_block": "Conjures a generic mage block at the location. Costs three dust.",
@@ -138,11 +152,14 @@
 	"hexical.page.modify_block_replaceable": "This modifier is useful for construction! With this modifier applied, I find I can easily place another block in the place of a conjured block.",
 	"hexical.page.modify_block_volatile": "This modifier makes the block break other conjured blocks it's touching. Notably, if it breaks another volatile block, the chain continues down until every volatile block shatters.",
 
-	"hexical.page.chorus_blink.0": "Between Blink, Greater Teleport, ender pearls, and chorus fruit, this spell serves a harmonious midpoint for safe, precise, and cheap teleportation.",
-	"hexical.page.chorus_blink.1": "It consumes a chorus fruit from my inventory and teleports me up to 16 blocks using an offset vector. The cost is constant whether I teleport the full 16 blocks or less, and has no penalty for multiple casts in one hex. With a lot of chorus fruit, it can be a significantly cheaper Greater Teleport.",
+	"hexical.page.specks.title": "Specks",
+    "hexical.page.specks.0": "Through the media, I can conjure an image of an iota into the world, called a speck. Nature allows me to customize them quite extensively, altering their size, thickness of stroke, how much they vibrate, and more. They also take on my pigment color. Not only that, once they are in the world, I can move and rotate them for free.",
+    "hexical.page.conjure_speck": "Conjures a speck with the iota and position.",
+    "hexical.page.move_speck": "Moves a speck entity to the position.",
+    "hexical.page.rotate_speck": "Rotates a speck entity to face that vector.",
 
 	"hexical.page.world_scrying.title": "World Scrying",
-	"hexical.page.world_scrying": "I have discovered some additional patterns to scry information about the world. These are significantly more specialized than most other patterns I've encountered.",
+	"hexical.page.world_scrying": "I have discovered some additional patterns to scry information about the world. These are highly specialized for specific tasks, like checking the weather and block hardness.",
 	"hexical.page.block_hardness": "Pushes how hard the block is to mine.",
 	"hexical.page.block_blast_resistance": "Pushes how resistant the block is to explosions.",
 	"hexical.page.is_burning": "Pushes whether the entity is burning.",
@@ -154,6 +171,6 @@
 
 	"hexical.page.conjure_staff.0": "Conjures a staff at the location with the amount of media, rank, and hex respectively.",
 	"hexical.page.conjure_staff.1": "Conjured staves are not unlike cyphers. They have a media battery for casting and when they run out, unable to consume my health or my inventory's stash for media. They are not rechargable or reprogrammable, and using Erase Item on it simply destroys it. However, its true power is $(o)input interception$().",
-	"hexical.page.conjure_staff.2": "When I use my primary or secondary use keys with a staff in my main hand, it intercepts my click. Depending on the rank I assigned during creation, after that many clicks, it will cast the hex I gave it, starting the stack with false and true, corresponding to my left and right clicks respectively.",
-	"hexical.page.conjure_staff.3": "The spell is not cheap, requiring a charged amethyst, the amount of media for the media battery, and an additional amethyst shard for every additional rank. However, the result allows for speedy and versatile casting, with infinitely more possibilities and no cooldown that other casting devices have."
+	"hexical.page.conjure_staff.2": "When I use my primary or secondary use keys while holding a conjured staff, it intercepts my click. After a number of clicks corresponding to the rank I assigned at conjuration, it will cast the hex I gave it, starting the stack with false and true, corresponding to the left and right clicks respectively.",
+	"hexical.page.conjure_staff.3": "The spell is not too expensive, requiring only an amethyst shard, an amethyst dust for every rank, and the media for the battery. The result is a speedy and versatile casting device, with infinitely more possibilities and no cooldown compared to other casting devices."
 }
