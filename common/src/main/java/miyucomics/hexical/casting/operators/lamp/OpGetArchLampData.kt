@@ -21,7 +21,7 @@ class OpGetArchLampData(private val mode: Int) : ConstMediaAction {
 			0 -> return listOf(Vec3Iota(state.position))
 			1 -> return listOf(Vec3Iota(state.rotation))
 			2 -> return listOf(Vec3Iota(state.velocity))
-			3 -> return listOf(DoubleIota((ctx.world.time - state.time).toDouble()))
+			3 -> return listOf(DoubleIota((ctx.world.time - (state.time + 1)).toDouble()))
 			4 -> return listOf(HexIotaTypes.deserialize(state.storage, ctx.world))
 		}
 		return listOf(NullIota())

@@ -8,9 +8,17 @@
 			"type": "patchouli:text",
 			"text": "hexical.page.replacement_mind.0"
 		},
-        {
+		{
 			"type": "patchouli:text",
 			"text": "hexical.page.replacement_mind.1"
-        }
+        },
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:make_genie",
+			"anchor": "hexical:make_genie",
+			"input": "villager entity",
+			"output": "",
+			"text": "hexical.page.replacement_mind.2"
+		}
 	]
 }

@@ -7,8 +7,7 @@ import at.petrak.hexcasting.api.spell.iota.Iota
 class OpSendTelepathy : ConstMediaAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
-		val iota = args[0]
-		ctx.caster.sendMessage(iota.display(), true)
+		ctx.caster.sendMessage(args[0].display(), true)
 		return listOf()
 	}
 }
