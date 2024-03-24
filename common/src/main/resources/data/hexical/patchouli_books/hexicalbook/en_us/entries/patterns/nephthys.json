@@ -1,6 +1,6 @@
 {
-	"name": "hexical.page.hexical_metaevals",
-	"icon": "minecraft:ender_eye",
+	"name": "hexical.page.nephthys.title",
+	"icon": "minecraft:water_bucket",
 	"category": "hexcasting:patterns",
 	"pages": [
 		{
