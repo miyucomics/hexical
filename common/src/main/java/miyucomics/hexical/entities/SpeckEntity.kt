@@ -66,7 +66,9 @@ class SpeckEntity(entityType: EntityType<SpeckEntity?>?, world: World?) : Entity
 	}
 
 	fun setPattern(pattern: HexPattern) {
+		this.label = ""
 		this.pattern = pattern
+		dataTracker.set(labelDataTracker, label)
 		dataTracker.set(patternDataTracker, pattern.serializeToNBT())
 	}
 
@@ -75,9 +77,7 @@ class SpeckEntity(entityType: EntityType<SpeckEntity?>?, world: World?) : Entity
 	}
 
 	fun setPigment(pigment: FrozenColorizer) {
-		this.label = ""
 		this.pigment = pigment
-		dataTracker.set(labelDataTracker, label)
 		dataTracker.set(pigmentDataTracker, pigment.serializeToNBT())
 	}
 

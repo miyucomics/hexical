@@ -32,7 +32,10 @@
 	"hexcasting.spell.hexical:rotate_speck": "Rotate Speck",
 	"hexcasting.spell.hexical:iota_speck": "Iota Speck",
 	"hexcasting.spell.hexical:lifetime_speck": "Lifetime Speck",
+	"hexcasting.spell.hexical:size_speck": "Size Speck",
+	"hexcasting.spell.hexical:thickness_speck": "Thickness Speck",
 	"hexcasting.spell.hexical:kill_speck": "Dismiss Speck",
+	"hexcasting.spell.hexical:zone_speck": "Zone Dstl.: Speck",
 
 	"hexcasting.spell.hexical:write_grimoire": "Write Grimoire",
 	"hexcasting.spell.hexical:erase_grimoire": "Erase Grimoire",
@@ -113,7 +116,7 @@
 
 	"hexical.page.replacement_mind.title": "Replacement Mind",
 	"hexical.page.replacement_mind.0": "Hex casting burns out the mind from the energy of thought, flooding the consciousness, inundating every neuron... it's euphoric. For staffs, casting devices, and spell circles, the rate of casting is slow enough that a mind can recuperate; I will never need to replace an impetus. With the speeds lamps operates at, though, even an optimized mind can only bear the burden for so long.",
-	"hexical.page.replacement_mind.1": "Luckily, the lamp somehow sustains the mind until its media battery runs out, where the genie finally perishes. In these cases, the lamo must be... reloaded.",
+	"hexical.page.replacement_mind.1": "Luckily, the lamp somehow sustains the mind until its media battery runs out, where the genie finally perishes. In these cases, the lamp must be... reloaded.",
 	"hexical.page.replacement_mind.2": "I have developed this highly specialized pattern that extracts the mind of a villager and transforms it into a genie. The stress of nonstop casting requires highly trained minds, I estimate of Journeyman-grade or greater. The lamp may not be recharged without sacrificing a new mind, discarding the previous genie, so I should aim to gather as much media as I can before casting. The pattern itself costs 10 charged amethyst.",
 
 	"hexical.page.arch_lamps.title": "Arch Lamps",
@@ -159,13 +162,16 @@
 	"hexical.page.modify_block_volatile": "This modifier makes the block break other conjured blocks it's touching. Notably, if it breaks another volatile block, the chain continues down until every volatile block shatters.",
 
 	"hexical.page.specks.title": "Specks",
-    "hexical.page.specks.0": "Through the media, I can conjure an image of an iota into the world, called a speck. Nature allows me to customize them quite extensively, altering their size, thickness of stroke, how much they vibrate, and more. They also take on my pigment color. Not only that, once they are in the world, I can move and rotate them for free.",
+    "hexical.page.specks.0": "Through the media, I can conjure an image of an iota into the world, called a speck. Nature allows me to customize them quite extensively, altering their size, thickness of stroke, and more. They also take on my pigment color. Not only that, once they are in the world, I can move, rotate, and otherwise alter them for free.",
     "hexical.page.conjure_speck": "Conjures a speck with the iota and position.",
     "hexical.page.move_speck": "Moves a speck entity to the position.",
     "hexical.page.rotate_speck": "Rotates a speck entity to face that vector.",
     "hexical.page.iota_speck": "Changes the iota of that speck.",
     "hexical.page.lifetime_speck": "Changes the speck to disappear after that many twentieths of a second.",
-    "hexical.page.kill_speck": "Destroys a speck entity.",
+    "hexical.page.size_speck": "Changes the size of the speck.",
+    "hexical.page.thickness_speck": "Changes the thickness of the speck. Applies only when iota is a pattern.",
+    "hexical.page.kill_speck": "Dismisses a speck entity.",
+    "hexical.page.zone_speck": "Returns specks similar to other zone distillation spells. ( Add link to them )",
 
 	"hexical.page.world_scrying.title": "World Scrying",
 	"hexical.page.world_scrying": "I have discovered some additional patterns to scry information about the world. These are highly specialized for specific tasks, like checking the weather and block hardness.",
