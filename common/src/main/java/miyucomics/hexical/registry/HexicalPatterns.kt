@@ -14,6 +14,9 @@ import miyucomics.hexical.casting.operators.lamp.*
 import miyucomics.hexical.casting.spells.*
 import miyucomics.hexical.casting.spells.lamp.*
 import miyucomics.hexical.casting.spells.specks.*
+import miyucomics.hexical.casting.spells.telepathy.OpSendTelepathy
+import miyucomics.hexical.casting.spells.telepathy.OpShoutTelepathy
+import miyucomics.hexical.casting.spells.telepathy.OpSoundPing
 import net.minecraft.util.Identifier
 
 object HexicalPatterns {
@@ -50,10 +53,13 @@ object HexicalPatterns {
 		register(HexPattern.fromAngles("qaqqqqqeeeeedq", HexDir.EAST), "block_hardness", OpGetBlockData(0))
 		register(HexPattern.fromAngles("qaqqqqqewaaqddqa", HexDir.EAST), "block_blast_resistance", OpGetBlockData(1))
 		register(HexPattern.fromAngles("aqaew", HexDir.NORTH_WEST), "is_sleeping", OpGetSleeping())
+		register(HexPattern.fromAngles("deedqad", HexDir.WEST), "get_weather", OpGetWeather())
+
 		register(HexPattern.fromAngles("qaqqqqded", HexDir.NORTH_EAST), "get_telepathy", OpGetTelepathy())
 		register(HexPattern.fromAngles("qaqqqeaqa", HexDir.NORTH_EAST), "send_telepathy", OpSendTelepathy())
 		register(HexPattern.fromAngles("qaqqqewaqwa", HexDir.NORTH_EAST), "shout_telepathy", OpShoutTelepathy())
-		register(HexPattern.fromAngles("deedqad", HexDir.WEST), "get_weather", OpGetWeather())
+		register(HexPattern.fromAngles("qaqdee", HexDir.NORTH_EAST), "ping_telepathy", OpSoundPing(0))
+		register(HexPattern.fromAngles("qaqdew", HexDir.NORTH_EAST), "click_telepathy", OpSoundPing(1))
 
 		register(HexPattern.fromAngles("aqwqaeaqa", HexDir.WEST), "write_grimoire", OpGrimoireWrite())
 		register(HexPattern.fromAngles("aqwqaqded", HexDir.WEST), "erase_grimoire", OpGrimoireErase())
