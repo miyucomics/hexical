@@ -1,5 +1,9 @@
 package miyucomics.hexical.mixin;
 
+import at.petrak.hexcasting.api.misc.MediaConstants;
+import at.petrak.hexcasting.api.spell.iota.Iota;
+import at.petrak.hexcasting.xplat.IXplatAbstractions;
+import miyucomics.hexical.Hexical;
 import miyucomics.hexical.registry.HexicalItems;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.passive.MerchantEntity;
@@ -14,6 +18,10 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 @Mixin(WanderingTraderEntity.class)
 public abstract class WanderingTraderEntityMixin extends MerchantEntity {
@@ -32,7 +40,11 @@ public abstract class WanderingTraderEntityMixin extends MerchantEntity {
 		TradeOfferList tradeOfferList = getOffers();
 		if (tradeOfferList == null)
 			return;
-		if (random.nextFloat() < 0.1f)
-			tradeOfferList.add(new TradeOffer(new ItemStack(Items.EMERALD, 32), new ItemStack(HexicalItems.INSTANCE.getLAMP_ITEM(), 1), 1, 1, 1));
+		if (random.nextFloat() < 0.1f) {
+			ItemStack trade = new ItemStack(HexicalItems.INSTANCE.getLAMP_ITEM());
+			Objects.requireNonNull(IXplatAbstractions.INSTANCE.findHexHolder(trade)).writeHex(new ArrayList<>(), MediaConstants.DUST_UNIT * 640);
+			Objects.requireNonNull(IXplatAbstractions.INSTANCE.findMediaHolder(trade)).withdrawMedia((int) (Hexical.RANDOM.nextFloat() * 320f) * MediaConstants.DUST_UNIT, false);
+			tradeOfferList.add(new TradeOffer(new ItemStack(Items.EMERALD, 32), trade, 1, 1, 1));
+		}
 	}
 }
