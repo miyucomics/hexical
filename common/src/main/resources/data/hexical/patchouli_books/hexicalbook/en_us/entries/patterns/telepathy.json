@@ -30,6 +30,22 @@
             "input": "any",
             "output": "",
             "text": "hexical.page.shout_telepathy"
-        }
+        },
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:ping_telepathy",
+			"anchor": "hexical:ping_telepathy",
+			"input": "",
+			"output": "",
+			"text": "hexical.page.ping_telepathy"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:click_telepathy",
+			"anchor": "hexical:click_telepathy",
+			"input": "",
+			"output": "",
+			"text": "hexical.page.click_telepathy"
+		}
 	]
 }
