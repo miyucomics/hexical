@@ -35,8 +35,8 @@ class SpeckEntityRenderer(ctx: EntityRendererFactory.Context?) : EntityRenderer<
 			val lines = pattern.toLines(0.25f, pattern.getCenter(0.25f).negate()).toMutableList()
 			for (i in lines.indices)
 				lines[i] = Vec2f(lines[i].x, -lines[i].y)
-			val zappy = makeZappy(lines, findDupIndices(pattern.positions()), 10, 1.5f, 0.1f, 0.2f, 0f, 1f, hashCode().toDouble())
-			drawPattern(matrices.peek().positionMatrix, zappy, entity.getThickness() * 0.05f, entity.getPigment())
+//			val zappy = makeZappy(lines, findDupIndices(pattern.positions()), 10, 1.5f, 0.1f, 0.2f, 0f, 1f, hashCode().toDouble())
+			drawPattern(matrices.peek().positionMatrix, lines, entity.getThickness() * 0.05f, entity.getPigment())
 		} else {
 			matrices.scale(0.1f / 3f, -0.1f / 3f, -0.1f / 3f)
 			val q = (-textRenderer.getWidth(entity.getLabel()) / 2).toFloat()

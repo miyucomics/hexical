@@ -4,6 +4,7 @@ import at.petrak.hexcasting.api.PatternRegistry
 import at.petrak.hexcasting.api.spell.Action
 import at.petrak.hexcasting.api.spell.math.HexDir
 import at.petrak.hexcasting.api.spell.math.HexPattern
+import at.petrak.hexcasting.common.casting.operators.selectors.OpGetEntitiesBy
 import miyucomics.hexical.Hexical
 import miyucomics.hexical.casting.OpProgram
 import miyucomics.hexical.casting.operators.*
@@ -17,6 +18,7 @@ import miyucomics.hexical.casting.spells.specks.*
 import miyucomics.hexical.casting.spells.telepathy.OpSendTelepathy
 import miyucomics.hexical.casting.spells.telepathy.OpShoutTelepathy
 import miyucomics.hexical.casting.spells.telepathy.OpSoundPing
+import miyucomics.hexical.entities.SpeckEntity
 import net.minecraft.util.Identifier
 
 object HexicalPatterns {
@@ -45,6 +47,9 @@ object HexicalPatterns {
 		register(HexPattern.fromAngles("adeeaqa", HexDir.SOUTH_WEST), "iota_speck", OpIotaSpeck())
 		register(HexPattern.fromAngles("adeqqaawdd", HexDir.SOUTH_WEST), "lifetime_speck", OpLifetimeSpeck())
 		register(HexPattern.fromAngles("adeaqde", HexDir.SOUTH_WEST), "kill_speck", OpKillSpeck())
+		register(HexPattern.fromAngles("adeeqed", HexDir.SOUTH_WEST), "size_speck", OpSizeSpeck())
+		register(HexPattern.fromAngles("adeeqw", HexDir.SOUTH_WEST), "thickness_speck", OpThicknessSpeck())
+		register(HexPattern.fromAngles("qqqqqwdeddwqde", HexDir.SOUTH_EAST), "zone_speck", OpGetEntitiesBy({ entity -> entity is SpeckEntity }, false))
 
 		register(HexPattern.fromAngles("qqwaqda", HexDir.EAST), "is_burning", OpGetEntityBurning())
 		register(HexPattern.fromAngles("eewdead", HexDir.WEST), "burning_time", OpGetEntityBurningTime())
