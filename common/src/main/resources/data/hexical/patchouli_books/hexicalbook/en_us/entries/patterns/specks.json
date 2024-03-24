@@ -30,6 +30,30 @@
             "input": "speck entity, vector",
             "output": "",
 			"text": "hexical.page.rotate_speck"
-		}
+		},
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "hexical:iota_speck",
+            "anchor": "hexical:iota_speck",
+            "input": "speck entity, any",
+            "output": "",
+			"text": "hexical.page.iota_speck"
+		},
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "hexical:lifetime_speck",
+            "anchor": "hexical:lifetime_speck",
+            "input": "speck entity, number",
+            "output": "",
+			"text": "hexical.page.lifetime_speck"
+		},
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "hexical:kill_speck",
+            "anchor": "hexical:kill_speck",
+            "input": "speck entity",
+            "output": "",
+			"text": "hexical.page.kill_speck"
+		},
 	]
 }
