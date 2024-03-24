@@ -9,21 +9,24 @@ import at.petrak.hexcasting.api.spell.math.HexPattern
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.entities.SpeckEntity
 import miyucomics.hexical.registry.HexicalEntities
+import net.minecraft.command.argument.EntityAnchorArgumentType
 import net.minecraft.util.math.Vec3d
 
 class OpConjureSpeck : SpellAction {
-	override val argc = 2
+	override val argc = 3
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		val iota = args[0]
 		val position = args.getVec3(1, argc)
+		val rotation = args.getVec3(2, argc)
 		ctx.assertVecInRange(position)
-		return Triple(Spell(iota, position), MediaConstants.DUST_UNIT / 1000, listOf())
+		return Triple(Spell(iota, position, rotation), MediaConstants.DUST_UNIT / 1000, listOf())
 	}
 
-	private data class Spell(val iota: Iota, val position: Vec3d) : RenderedSpell {
+	private data class Spell(val iota: Iota, val position: Vec3d, val rotation: Vec3d) : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
 			val speck = SpeckEntity(HexicalEntities.SPECK_ENTITY, ctx.world)
 			speck.setPosition(position)
+			speck.lookAt(EntityAnchorArgumentType.EntityAnchor.FEET, speck.pos.add(rotation))
 			if (iota.type == PatternIota.TYPE)
 				speck.setPattern((iota as PatternIota).pattern)
 			else

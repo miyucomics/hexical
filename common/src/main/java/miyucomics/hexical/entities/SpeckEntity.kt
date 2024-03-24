@@ -25,6 +25,14 @@ class SpeckEntity(entityType: EntityType<SpeckEntity?>?, world: World?) : Entity
 	private var label: String = ""
 	private var size: Float = 1f
 	private var thickness: Float = 1f
+	private var lifespan: Int = -1
+
+	override fun tick() {
+		lifespan--
+		if (lifespan == 0)
+			discard()
+		super.tick()
+	}
 
 	override fun initDataTracker() {
 		dataTracker.startTracking(patternDataTracker, NbtCompound())
@@ -40,6 +48,7 @@ class SpeckEntity(entityType: EntityType<SpeckEntity?>?, world: World?) : Entity
 		label = nbt.getString("label")
 		size = nbt.getFloat("size")
 		thickness = nbt.getFloat("thickness")
+		lifespan = nbt.getInt("lifespan")
 		dataTracker.set(patternDataTracker, nbt.getCompound("pattern"))
 		dataTracker.set(pigmentDataTracker, nbt.getCompound("pigment"))
 		dataTracker.set(labelDataTracker, label)
@@ -53,6 +62,7 @@ class SpeckEntity(entityType: EntityType<SpeckEntity?>?, world: World?) : Entity
 		nbt.putString("label", label)
 		nbt.putFloat("size", size)
 		nbt.putFloat("thickness", thickness)
+		nbt.putInt("lifespan", lifespan)
 	}
 
 	fun setPattern(pattern: HexPattern) {
@@ -60,8 +70,14 @@ class SpeckEntity(entityType: EntityType<SpeckEntity?>?, world: World?) : Entity
 		dataTracker.set(patternDataTracker, pattern.serializeToNBT())
 	}
 
+	fun setLifespan(lifespan: Int) {
+		this.lifespan = lifespan
+	}
+
 	fun setPigment(pigment: FrozenColorizer) {
+		this.label = ""
 		this.pigment = pigment
+		dataTracker.set(labelDataTracker, label)
 		dataTracker.set(pigmentDataTracker, pigment.serializeToNBT())
 	}
 

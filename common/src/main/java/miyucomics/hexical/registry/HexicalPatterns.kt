@@ -5,6 +5,7 @@ import at.petrak.hexcasting.api.spell.Action
 import at.petrak.hexcasting.api.spell.math.HexDir
 import at.petrak.hexcasting.api.spell.math.HexPattern
 import miyucomics.hexical.Hexical
+import miyucomics.hexical.casting.OpProgram
 import miyucomics.hexical.casting.operators.*
 import miyucomics.hexical.casting.operators.eval.OpNephthys
 import miyucomics.hexical.casting.operators.getters.*
@@ -12,9 +13,7 @@ import miyucomics.hexical.casting.operators.grimoire.*
 import miyucomics.hexical.casting.operators.lamp.*
 import miyucomics.hexical.casting.spells.*
 import miyucomics.hexical.casting.spells.lamp.*
-import miyucomics.hexical.casting.spells.specks.OpConjureSpeck
-import miyucomics.hexical.casting.spells.specks.OpMoveSpeck
-import miyucomics.hexical.casting.spells.specks.OpRotateSpeck
+import miyucomics.hexical.casting.spells.specks.*
 import net.minecraft.util.Identifier
 
 object HexicalPatterns {
@@ -23,6 +22,8 @@ object HexicalPatterns {
 
 	@JvmStatic
 	fun init() {
+		register(HexPattern.fromAngles("wwqqqqq", HexDir.EAST), "program_lamp", OpProgram())
+
 		register(HexPattern.fromAngles("deaqqdq", HexDir.SOUTH_EAST), "nephthys", OpNephthys)
 
 		register(HexPattern.fromAngles("dee", HexDir.NORTH_WEST), "conjure_mage_block", OpConjureMageBlock())
@@ -38,6 +39,9 @@ object HexicalPatterns {
 		register(HexPattern.fromAngles("ade", HexDir.SOUTH_WEST), "conjure_speck", OpConjureSpeck())
 		register(HexPattern.fromAngles("adeqaa", HexDir.SOUTH_WEST), "move_speck", OpMoveSpeck())
 		register(HexPattern.fromAngles("adeaw", HexDir.SOUTH_WEST), "rotate_speck", OpRotateSpeck())
+		register(HexPattern.fromAngles("adeeaqa", HexDir.SOUTH_WEST), "iota_speck", OpIotaSpeck())
+		register(HexPattern.fromAngles("adeqqaawdd", HexDir.SOUTH_WEST), "lifetime_speck", OpLifetimeSpeck())
+		register(HexPattern.fromAngles("adeaqde", HexDir.SOUTH_WEST), "kill_speck", OpKillSpeck())
 
 		register(HexPattern.fromAngles("qqwaqda", HexDir.EAST), "is_burning", OpGetEntityBurning())
 		register(HexPattern.fromAngles("eewdead", HexDir.WEST), "burning_time", OpGetEntityBurningTime())
