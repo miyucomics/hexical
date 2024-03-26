@@ -33,19 +33,19 @@
         },
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:ping_telepathy",
-			"anchor": "hexical:ping_telepathy",
+			"op_id": "hexical:pling",
+			"anchor": "hexical:pling",
 			"input": "",
 			"output": "",
-			"text": "hexical.page.ping_telepathy"
+			"text": "hexical.page.pling"
 		},
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:click_telepathy",
-			"anchor": "hexical:click_telepathy",
+			"op_id": "hexical:click",
+			"anchor": "hexical:click",
 			"input": "",
 			"output": "",
-			"text": "hexical.page.click_telepathy"
+			"text": "hexical.page.click"
 		}
 	]
 }

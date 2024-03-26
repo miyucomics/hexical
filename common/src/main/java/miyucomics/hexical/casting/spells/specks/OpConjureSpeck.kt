@@ -19,7 +19,7 @@ class OpConjureSpeck : SpellAction {
 		val position = args.getVec3(1, argc)
 		val rotation = args.getVec3(2, argc)
 		ctx.assertVecInRange(position)
-		return Triple(Spell(iota, position, rotation), MediaConstants.DUST_UNIT / 1000, listOf())
+		return Triple(Spell(iota, position, rotation), MediaConstants.DUST_UNIT / 100, listOf())
 	}
 
 	private data class Spell(val iota: Iota, val position: Vec3d, val rotation: Vec3d) : RenderedSpell {

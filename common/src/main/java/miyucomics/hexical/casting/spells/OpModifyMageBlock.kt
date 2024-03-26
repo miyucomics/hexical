@@ -14,7 +14,7 @@ class OpModifyMageBlock(private val property: String, arguments: Int = 0) : Spel
 		val pos = args.getBlockPos(0, argc)
 		ctx.assertVecInRange(pos)
 		if (ctx.world.getBlockState(pos).block !is MageBlock)
-			throw MishapBadBlock.of(pos, "advanced_conjured_block")
+			throw MishapBadBlock.of(pos, "mage_block")
 		if (property == "ephemeral")
 			args.getPositiveInt(1, argc)
 		return Triple(Spell(pos, property, args.subList(1, args.size).toList()), 0, listOf(ParticleSpray.cloud(Vec3d.ofCenter(pos), 1.0)))
