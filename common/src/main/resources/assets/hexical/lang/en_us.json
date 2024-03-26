@@ -83,8 +83,8 @@
 	"hexcasting.spell.hexical:nephthys": "Nephthys Gambit",
 
 	"hexical.page.hexical_changes.title": "Hexical Changes",
-	"hexical.page.hexical_changes.0": "I feel strangely more receptive of the ambient media around me. It feels $(o)friendlier$() somehow... I can even feel it responding to certain actions, as if suggesting new spells to me. I also notice I require less concentration with my staff and can move around while using it. Unfortunately, Nature has not become more forgiving of my mishaps.",
-	"hexical.page.hexical_changes.1": "The media has also become more malleable, letting me manipulate it precisely into specific specialized effects. I can also interface with my abacus using Scribe's Gambit.",
+	"hexical.page.hexical_changes.0": "I feel strangely more in tune with the ambient media around me. It feels $(o)friendlier$() somehow... I can even feel it rippling, responding to my actions, as if suggesting new spells to me. The media itself also feels more malleable, more $(o)workable$(), allowing me to manipulate it into precise specialized effects.",
+	"hexical.page.hexical_changes.1": "I also find my tools more familar. I notice I require less concentration with my staff and can move around while using it, handy for chasing down targets that get out of my line of sight before I can finish my raycast. I shouldn't become too relaxed though, Nature has not become more forgiving of my mistakes. I can also write directly into my abacus with Scribe's Gambit.",
 
 	"hexical.page.grimoire.title": "Grimoires",
 	"hexical.page.grimoire.0": "By encrusting my spellbook with charged amethyst and edified wood, it traps media within the pages like an echo chamber. I can then introduce a pattern-to-pattern-list binding for the grimoire to keep bouncing endlessly inside.",
@@ -101,8 +101,8 @@
 	"hexical.category.lamp.desc": "I have heard tales from the villagers about a magical artifact. Legends say it contains a spirit that grants wishes, but I suspect that is just embellishment evolved over centuries of storytelling. Regardless, I dedicate this chapter to my pursuit and research of it.",
 
 	"hexical.page.mysterious_lamp.title": "Mysterious Lamp",
-	"hexical.page.mysterious_lamp.0": "At last I've discovered the subject of a thousand years of rumor! To think a wandering trader was in possession of such a strong artifact. The lamp emanates a vague residue of media, vacuous in feeling... it reminds me of the $(o)hollow media structure$() of a $(l:items/focus)focus$() that enables it to store iota, but there is also a presence inside with spellcasting capabilities similar to my own.",
-	"hexical.page.mysterious_lamp.1": "Teaches the genie my intentions. Because I am teaching rather than etching a casting device with my will, I can freely revise the hex any time without losing the media.",
+	"hexical.page.mysterious_lamp.0": "At last I've obtained the subject of a thousand years of rumor! To think a mere wandering trader was in possession of such a strong artifact. The oil lamp emanates a vague residue of media, vacuous in feeling... it reminds me of the $(o)hollow media structure$() of a $(l:items/focus)focus$() that allows it to store iota. There is also a presence inside with casting capabilities similar to my own.",
+	"hexical.page.mysterious_lamp.1": "Teaches the presence my intentions. Because I am $(o)teaching$() an entity rather than $(o)etching$() a casting device, I can freely revise the hex and reteach the genie any time without losing the media.",
 
 	"hexical.page.new_possibilities.title": "New Possibilities",
 	"hexical.page.new_possibilities.0": "It casts $(o)$(l)EVERY INSTANT$(). After writing a spell into it, I was treated to a splendid gush of media. I estimate the casting speed must be around twenty times every second. The presence inside the lamp performs the casting on my behalf with extraordinary efficiency, not producing the sound and particles that accompany other casting methods.",
