@@ -19,6 +19,7 @@ import miyucomics.hexical.casting.spells.telepathy.OpSendTelepathy
 import miyucomics.hexical.casting.spells.telepathy.OpShoutTelepathy
 import miyucomics.hexical.casting.spells.telepathy.OpSoundPing
 import miyucomics.hexical.entities.SpeckEntity
+import net.minecraft.sound.SoundEvents
 import net.minecraft.util.Identifier
 
 object HexicalPatterns {
@@ -63,8 +64,8 @@ object HexicalPatterns {
 		register(HexPattern.fromAngles("qaqqqqded", HexDir.NORTH_EAST), "get_telepathy", OpGetTelepathy())
 		register(HexPattern.fromAngles("qaqqqeaqa", HexDir.NORTH_EAST), "send_telepathy", OpSendTelepathy())
 		register(HexPattern.fromAngles("qaqqqewaqwa", HexDir.NORTH_EAST), "shout_telepathy", OpShoutTelepathy())
-		register(HexPattern.fromAngles("qaqdee", HexDir.NORTH_EAST), "ping_telepathy", OpSoundPing(0))
-		register(HexPattern.fromAngles("qaqdew", HexDir.NORTH_EAST), "click_telepathy", OpSoundPing(1))
+		register(HexPattern.fromAngles("qaqdee", HexDir.NORTH_EAST), "pling", OpSoundPing(SoundEvents.ENTITY_PLAYER_LEVELUP))
+		register(HexPattern.fromAngles("qaqdew", HexDir.NORTH_EAST), "click", OpSoundPing(SoundEvents.UI_BUTTON_CLICK))
 
 		register(HexPattern.fromAngles("aqwqaeaqa", HexDir.WEST), "write_grimoire", OpGrimoireWrite())
 		register(HexPattern.fromAngles("aqwqaqded", HexDir.WEST), "erase_grimoire", OpGrimoireErase())
@@ -85,7 +86,7 @@ object HexicalPatterns {
 		register(HexPattern.fromAngles("qaqwddedqwddwa", HexDir.NORTH_EAST), "get_arch_lamp_use_time", OpGetArchLampData(3))
 		register(HexPattern.fromAngles("qaqwddedqwaqqqqq", HexDir.NORTH_EAST), "get_arch_lamp_storage", OpGetArchLampData(4))
 		register(HexPattern.fromAngles("qaqwddedaeeeee", HexDir.NORTH_EAST), "get_arch_lamp_media", OpGetArchLampMedia())
-		register(HexPattern.fromAngles("qaqwddedqeed", HexDir.NORTH_EAST), "is_using_lamp", OpIsUsingArchLamp())
+		register(HexPattern.fromAngles("qaqwddedqeed", HexDir.NORTH_EAST), "has_arch_lamp", OpIsUsingArchLamp())
 		register(HexPattern.fromAngles("qaqwddedwaqdee", HexDir.NORTH_EAST), "terminate_arch_lamp", OpTerminateArchLamp())
 		register(HexPattern.fromAngles("qaqwddedqedeeeee", HexDir.NORTH_EAST), "set_arch_lamp_storage", OpSetArchLampStorage())
 		register(HexPattern.fromAngles("aaddaddad", HexDir.EAST), "lamp_finale", OpGetFinale())
