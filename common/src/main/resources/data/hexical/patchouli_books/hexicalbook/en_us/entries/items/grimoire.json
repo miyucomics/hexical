@@ -1,6 +1,7 @@
 {
 	"name": "hexical.page.grimoire.title",
 	"icon": "hexical:grimoire",
+    "advancement": "hexcasting:root",
 	"category": "hexcasting:items",
 	"pages": [
 		{

@@ -2,6 +2,7 @@
 	"name": "hexical.page.replacement_mind.title",
 	"icon": "minecraft:textures/particle/soul_7.png",
 	"category": "hexical:lamp",
+    "advancement": "hexcasting:enlightenment",
     "sortnum": 2,
 	"pages": [
 		{

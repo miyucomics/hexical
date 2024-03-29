@@ -2,6 +2,7 @@
 	"name": "hexcasting.spell.hexical:conjure_staff",
 	"icon": "hexical:conjured_staff",
 	"category": "hexcasting:patterns/spells",
+    "advancement": "hexcasting:root",
 	"pages": [
 		{
 			"type": "hexcasting:pattern",
