@@ -31,16 +31,6 @@
 	"hexcasting.spell.hexical:pling": "Hallucinate Pling",
 	"hexcasting.spell.hexical:click": "Hallucinate Click",
 
-	"hexcasting.spell.hexical:conjure_speck": "Conjure Speck",
-	"hexcasting.spell.hexical:move_speck": "Move Speck",
-	"hexcasting.spell.hexical:rotate_speck": "Rotate Speck",
-	"hexcasting.spell.hexical:iota_speck": "Iota Speck",
-	"hexcasting.spell.hexical:lifetime_speck": "Lifetime Speck",
-	"hexcasting.spell.hexical:size_speck": "Size Speck",
-	"hexcasting.spell.hexical:thickness_speck": "Thickness Speck",
-	"hexcasting.spell.hexical:kill_speck": "Dismiss Speck",
-	"hexcasting.spell.hexical:zone_speck": "Zone Dstl.: Speck",
-
 	"hexcasting.spell.hexical:write_grimoire": "Write Grimoire",
 	"hexcasting.spell.hexical:erase_grimoire": "Erase Grimoire",
 	"hexcasting.spell.hexical:index_grimoire": "Archivist Reflection",
@@ -86,6 +76,16 @@
 
 	"hexcasting.spell.hexical:nephthys": "Nephthys Gambit",
 
+	"hexcasting.spell.hexical:conjure_speck": "Conjure Speck",
+	"hexcasting.spell.hexical:move_speck": "Move Speck",
+	"hexcasting.spell.hexical:rotate_speck": "Rotate Speck",
+	"hexcasting.spell.hexical:iota_speck": "Iota Speck",
+	"hexcasting.spell.hexical:lifetime_speck": "Lifetime Speck",
+	"hexcasting.spell.hexical:size_speck": "Size Speck",
+	"hexcasting.spell.hexical:thickness_speck": "Thickness Speck",
+	"hexcasting.spell.hexical:kill_speck": "Dismiss Speck",
+	"hexcasting.spell.hexical:zone_speck": "Zone Dstl.: Speck",
+
 	"hexical.page.hexical_changes.title": "Hexical Changes",
 	"hexical.page.hexical_changes.0": "I feel strangely more in tune with the ambient _media around me. It feels $(o)friendlier$() somehow... I can even feel it rippling, responding to my actions, as if suggesting new spells to me. The media itself also feels more malleable, more $(o)workable$(), allowing me to manipulate it into precise specialized effects.",
 	"hexical.page.hexical_changes.1": "I also find my tools more familar. I notice I require less concentration with my $(l:items/staff)$(item)staff$() and can move around while using it, handy for chasing down targets that get out of my line of sight before I can finish my raycast. I shouldn't become too relaxed though, Nature has not become more forgiving of my mistakes. I can also write directly into my $(l:items/abacus)$(item)abacus$() with Scribe's Gambit.",
@@ -119,9 +119,10 @@
 	"hexical.page.lamp_finale.0": "The instant I let go of my lamp, it casts twice: once for the usual cast and a second time as a final burst of media. I can use this pattern to recognize whether a cast is that finale, and react accordingly.",
 
 	"hexical.page.replacement_mind.title": "Replacement Mind",
-	"hexical.page.replacement_mind.0": "Hex casting burns out the mind from the energy of thought, flooding the consciousness, inundating every neuron... it's euphoric. For staffs, casting devices, and spell circles, the rate of casting is slow enough that a mind can recuperate; I will never need to replace an impetus. With the speeds lamps operates at, though, even an optimized mind can only bear the burden for so long.",
-	"hexical.page.replacement_mind.1": "Luckily, the lamp somehow sustains the mind until its media battery runs out, where the genie finally perishes. In these cases, the lamp must be... reloaded.",
+	"hexical.page.replacement_mind.0": "Hex casting burns out the mind from the energy of thought, flooding the consciousness, inundating every neuron... it's euphoric. For staffs, casting devices, and spell circles, the rate of casting is slow enough that a mind can recuperate; I will never need to replace an impetus.",
+	"hexical.page.replacement_mind.1": "With the speeds lamps operates at, though, even an optimized mind can only bear the burden for so long. Luckily, the lamp somehow sustains the mind until its media battery runs out, where the genie finally perishes. In these cases, the lamp must be... reloaded.",
 	"hexical.page.replacement_mind.2": "I have developed this highly specialized pattern that extracts the mind of a villager and transforms it into a genie. The stress of nonstop casting requires highly trained minds, I estimate of Journeyman-grade or greater. The lamp may not be recharged without sacrificing a new mind, discarding the previous genie, so I should aim to gather as much media as I can before casting. The pattern itself costs five charged amethyst.",
+    "hexical.page.replacement_mind.3": "Because a mind is casting, highly trained villagers should become better genies. I doubt the difference between a Journeyman and an Expert would survive the $(l)optimization$(), but the difference between an Expert and a Master is magnitudes greater. Perhaps great enough to make a meaningful difference in the quality of casting.",
 
 	"hexical.page.arch_lamps.title": "Arch Lamps",
 	"hexical.page.arch_lamps.0": "Because a separate mind casts my spells, a lamp should be able to cast even without me holding it. I estimate any villager short of a complete master of its field would be unable to cast so often unassisted though. These $(item)arch lamps$() are activated and deactivated rather than used and while active in my inventory, they cast every moment even without my input.",

@@ -2,7 +2,6 @@
 	"name": "hexical.page.replacement_mind.title",
 	"icon": "minecraft:textures/particle/soul_7.png",
 	"category": "hexical:lamp",
-    "advancement": "hexcasting:enlightenment",
     "sortnum": 2,
 	"pages": [
 		{
@@ -20,6 +19,10 @@
 			"input": "villager entity",
 			"output": "",
 			"text": "hexical.page.replacement_mind.2"
-		}
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.replacement_mind.3"
+        }
 	]
 }
