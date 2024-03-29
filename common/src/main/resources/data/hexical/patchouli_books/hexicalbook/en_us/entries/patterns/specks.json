@@ -2,6 +2,7 @@
 	"name": "hexical.page.specks.title",
 	"icon": "minecraft:beacon",
 	"category": "hexcasting:patterns/spells",
+    "advancement": "hexcasting:root",
 	"pages": [
 		{
 			"type": "patchouli:text",
