@@ -2,7 +2,6 @@
 	"name": "hexical.page.arch_lamps.title",
 	"icon": "hexical:arch_lamp",
 	"category": "hexical:lamp",
-    "advancement": "hexcasting:enlightenment",
     "sortnum": 3,
 	"pages": [
 		{
