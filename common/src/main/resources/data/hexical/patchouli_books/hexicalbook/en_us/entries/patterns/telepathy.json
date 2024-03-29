@@ -2,6 +2,7 @@
 	"name": "hexical.page.telepathy.title",
 	"icon": "minecraft:apple",
 	"category": "hexcasting:patterns",
+    "advancement": "hexcasting:root",
 	"pages": [
 		{
 			"type": "patchouli:text",

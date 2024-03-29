@@ -2,6 +2,7 @@
 	"name": "hexical.page.nephthys.title",
 	"icon": "minecraft:water_bucket",
 	"category": "hexcasting:patterns",
+    "advancement": "hexcasting:root",
 	"pages": [
 		{
 			"type": "hexcasting:pattern",

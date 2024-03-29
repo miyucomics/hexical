@@ -2,6 +2,7 @@
 	"name": "hexical.page.world_scrying.title",
 	"icon": "minecraft:spyglass",
 	"category": "hexcasting:patterns",
+    "advancement": "hexcasting:root",
 	"pages": [
 		{
 			"type": "patchouli:text",
