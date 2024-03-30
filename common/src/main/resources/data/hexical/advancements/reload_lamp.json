@@ -1,0 +1,24 @@
+{
+  "parent": "hexical:broken_mind",
+  "criteria": {
+    "reload": {
+      "trigger": "hexical:reload_lamp"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "title": {
+      "translate": "advancements.hexical.reload_lamp.title"
+    },
+    "description": {
+      "translate": "advancements.hexical.reload_lamp.description"
+    },
+    "frame": "goal",
+    "hidden": true,
+    "icon": {
+      "item": "minecraft:copper_block"
+    },
+    "show_toast": true
+  },
+  "requirements": [["reload"]]
+}

@@ -1,11 +1,13 @@
 {
-  "parent": "hexcasting:root",
+  "parent": "hexical:acquired_lamp",
   "criteria": {
     "arch_lamp": {
       "conditions": {
-        "item": {
-          "items": ["hexical:arch_lamp"]
-        }
+        "items": [
+          {
+            "items": ["hexical:arch_lamp"]
+          }
+        ]
       },
       "trigger": "minecraft:inventory_changed"
     }
@@ -18,13 +20,12 @@
     "description": {
       "translate": "advancements.hexical.arch_lamp.description"
     },
-    "frame": "task",
+    "frame": "challenge",
     "hidden": true,
     "icon": {
       "item": "hexical:arch_lamp"
     },
     "show_toast": true
   },
-  "requirements": [["arch_lamp"]],
-  "sends_telemetry_event": false
+  "requirements": [["arch_lamp"]]
 }

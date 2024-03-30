@@ -19,7 +19,7 @@ class OpChorusBlink : SpellAction {
 		val pos = args.getVec3(0, argc);
 		if (pos.lengthSquared() > 256)
 			throw MishapLocationTooFarAway(pos)
-		return Triple(Spell(pos), 3 * MediaConstants.DUST_UNIT, listOf())
+		return Triple(Spell(pos), MediaConstants.DUST_UNIT, listOf())
 	}
 
 	private data class Spell(val position: Vec3d) : RenderedSpell {
