@@ -1,3 +1,8 @@
 {
-	"accessWidener": "hexical.accesswidener"
+	"accessWidener": "hexical.accesswidener",
+	"injected_interfaces": {
+		"at/petrak/hexcasting/api/spell/casting/CastingContext": [
+			"miyucomics/hexical/interfaces/CastingContextMixinInterface"
+		]
+	}
 }

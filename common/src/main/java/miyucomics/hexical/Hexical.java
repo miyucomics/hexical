@@ -14,6 +14,7 @@ public class Hexical {
 
 	public static void init() {
 		HexicalAbstractions.initPlatformSpecific();
+		HexicalAdvancements.init();
 		HexicalBlocks.init();
 		HexicalEntities.init();
 		HexicalEvents.init();

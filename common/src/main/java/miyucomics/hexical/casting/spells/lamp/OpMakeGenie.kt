@@ -13,6 +13,7 @@ import at.petrak.hexcasting.common.misc.Brainsweeping
 import at.petrak.hexcasting.ktxt.tellWitnessesThatIWasMurdered
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.items.LampItem
+import miyucomics.hexical.registry.HexicalAdvancements
 import miyucomics.hexical.registry.HexicalItems
 import net.minecraft.entity.ItemEntity
 import net.minecraft.entity.passive.VillagerEntity
@@ -50,6 +51,7 @@ class OpMakeGenie : SpellAction {
 				sacrifice.tellWitnessesThatIWasMurdered(ctx.caster)
 			if (master)
 				ctx.caster.setStackInHand(hand, ItemStack(HexicalItems.ARCH_LAMP_ITEM))
+			HexicalAdvancements.RELOAD_LAMP.trigger(ctx.caster)
 			val lamp = ctx.caster.getStackInHand(hand)
 			val hexHolder = IXplatAbstractions.INSTANCE.findHexHolder(lamp)
 			if (hexHolder != null && !hexHolder.hasHex() && battery.isAlive) {

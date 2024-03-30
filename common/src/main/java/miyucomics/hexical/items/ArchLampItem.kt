@@ -4,6 +4,7 @@ import at.petrak.hexcasting.api.spell.iota.NullIota
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import miyucomics.hexical.interfaces.PlayerEntityMixinInterface
+import miyucomics.hexical.registry.HexicalAdvancements
 import miyucomics.hexical.state.PersistentStateHandler
 import miyucomics.hexical.registry.HexicalItems
 import miyucomics.hexical.registry.HexicalSounds
@@ -65,8 +66,10 @@ class ArchLampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.H
 
 		lampCast(world as ServerWorld, user, getHex(stack, world) ?: return, true, false)
 		(user as PlayerEntityMixinInterface).lampCastedThisTick()
-		if (getMedia(stack) == 0)
+		if (getMedia(stack) == 0) {
 			user.inventory.setStack(slot, ItemStack(HexicalItems.LAMP_ITEM))
+			HexicalAdvancements.USE_UP_LAMP.trigger(user)
+		}
 	}
 
 	override fun breakAfterDepletion(): Boolean {

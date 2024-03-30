@@ -24,14 +24,11 @@ public class ClientPlayerEntityMixin {
 			return;
 		KeyBinding.updatePressedStates();
 		GameOptions keys = client.options;
-		keys.dropKey.setPressed(false);
 		input.pressingForward = keys.forwardKey.isPressed();
 		input.pressingBack = keys.backKey.isPressed();
 		input.pressingLeft = keys.leftKey.isPressed();
 		input.pressingRight = keys.rightKey.isPressed();
 		input.jumping = keys.jumpKey.isPressed();
 		input.sneaking = keys.sneakKey.isPressed();
-		if (client.player != null)
-			client.player.setSprinting(keys.sprintKey.isPressed());
 	}
 }

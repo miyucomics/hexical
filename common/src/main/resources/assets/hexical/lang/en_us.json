@@ -1,8 +1,14 @@
 {
     "advancements.hexical.lamp.title": "Diamond in the Rough",
     "advancements.hexical.lamp.description": "Acquire a genie lamp.",
-    "advancements.hexical.arch_lamp.title": "Diamond in the Rough",
-    "advancements.hexical.arch_lamp.description": "Acquire a genie lamp.",
+    "advancements.hexical.educate_genie.title": "New Order",
+    "advancements.hexical.educate_genie.description": "Educate the genie with new instructions.",
+    "advancements.hexical.broken_mind.title": "Out with the Old...",
+    "advancements.hexical.broken_mind.description": "Use up a lamp's media.",
+    "advancements.hexical.reload_lamp.title": "In with the New!",
+    "advancements.hexical.reload_lamp.description": "Reload the lamp.",
+    "advancements.hexical.arch_lamp.title": "Phenomenal Cosmic Powers!",
+    "advancements.hexical.arch_lamp.description": "Acquire an archgenie lamp.",
 	"block.hexical.mage_block": "Mage Block",
 	"entity.hexical.speck": "Speck",
 	"key.categories.hexical": "Hexical",
@@ -18,6 +24,7 @@
 
 	"hexcasting.mishap.bad_block.mage_block": "a mage block",
 	"hexcasting.mishap.bad_item.lamp": "an empty lamp",
+	"hexcasting.mishap.bad_item.lamp_full": "a lamp with media",
 	"hexcasting.mishap.bad_item.lamp_flay": "a villager of Journeyman status or greater",
 	"hexcasting.mishap.bad_item.speck": "a speck",
 	"hexcasting.mishap.hexical:needs_lamp": "Expected to be cast by Genieless Lamp.",
@@ -87,12 +94,12 @@
 	"hexcasting.spell.hexical:zone_speck": "Zone Dstl.: Speck",
 
 	"hexical.page.hexical_changes.title": "Hexical Changes",
-	"hexical.page.hexical_changes.0": "I feel strangely more in tune with the ambient _media around me. It feels $(o)friendlier$() somehow... I can even feel it rippling, responding to my actions, as if suggesting new spells to me. The media itself also feels more malleable, more $(o)workable$(), allowing me to manipulate it into precise specialized effects.",
+	"hexical.page.hexical_changes.0": "I feel strangely more in tune with the ambient _media around me. It feels $(o)friendlier$() somehow... I can even feel it rippling around me, responding to my actions, as if suggesting new spells to me. The media itself also feels more malleable, more $(o)workable$(), allowing me to manipulate it into precise specialized effects.",
 	"hexical.page.hexical_changes.1": "I also find my tools more familar. I notice I require less concentration with my $(l:items/staff)$(item)staff$() and can move around while using it, handy for chasing down targets that get out of my line of sight before I can finish my raycast. I shouldn't become too relaxed though, Nature has not become more forgiving of my mistakes. I can also write directly into my $(l:items/abacus)$(item)abacus$() with Scribe's Gambit.",
 
 	"hexical.page.grimoire.title": "Grimoires",
 	"hexical.page.grimoire.0": "By encrusting an enchanted book with charged amethyst and edified wood, it traps media within the pages like an echo chamber. I can then introduce a pattern-to-pattern-list binding for the grimoire to keep bouncing endlessly inside.",
-	"hexical.page.grimoire.1": "When I then cast the $(l:patterns/patterns_as_iotas)pattern$() associated with a pattern list with my $(l:items/staff)$(item)staff$() and the grimoire in my inventory, it empowers the pattern, allowing it to break free from the grimoire's pages with a faint sound of a _Hex being cast. This allows me to create $(o)shortcuts$() for my staff by associating a short pattern with a common task, such as the raycast mantra. Interestingly, the grimoire can even overwrite base patterns, allowing me to hijack and add extra functionality to them.",
+	"hexical.page.grimoire.1": "When I then cast the $(l:patterns/patterns_as_iotas)pattern$() associated with a pattern list with my $(l:items/staff)$(item)staff$() and the $(item)grimoire$() in my inventory, the pattern breaks free with a faint sound of a _Hex being cast. I create $(o)shortcuts$() for tedious tasks, like the raycast mantra or large patterns. The grimoire can even hijack Nature's patterns, to overwrite or add extra functionality.$(br2)$(o)If there's a book that you want to read, but it hasn't been written yet, then you must write it.$()",
 	"hexical.page.grimoire.2": "While stable with only a few strands of _media wizzing around inside, a single grimoire can not hold more than sixteen pattern bindings. When attempting to introduce more, the grimoire simply rejects it and throws itself onto the ground with a shower of blue sparks.",
 	"hexical.page.grimoire.3": "I can also restrict a pattern inside the grimoire so it destroys itself after a certain number of uses. I shall find this aspect of the grimoire quite useful if I ever need to lend out my true name. I can simply give them a grimoire a set number of references to my name.",
     "hexical.page.write_grimoire": "Writes a pattern-to-pattern-list binding into the grimoire in my offhand.",
@@ -101,7 +108,7 @@
 	"hexical.page.restrict_grimoire": "Restrict a grimoire binding to be only usable that number of times, mishaps if you attempt to increase the uses.",
 	"hexical.page.query_grimoire": "Gets how many times you can use that grimoire binding before it erases itself.",
 
-	"hexical.category.lamp": "Genieless Lamp",
+	"hexical.category.lamp": "Genie Lamp",
 	"hexical.category.lamp.desc": "I have heard tales from the villagers about a magical artifact. Legends say it contains a spirit that grants wishes, but I suspect that is just embellishment evolved over centuries of storytelling. Regardless, I dedicate this chapter to my pursuit and research of it.",
 
 	"hexical.page.mysterious_lamp.title": "Mysterious Lamp",
@@ -110,7 +117,7 @@
 
 	"hexical.page.new_possibilities.title": "New Possibilities",
 	"hexical.page.new_possibilities.0": "It casts $(o)$(l)EVERY INSTANT$(). After writing a spell into it, I was treated to a splendid unceasing gush of media. I estimate the casting speed must be around twenty times every second. The presence inside the lamp performs the casting with extraordinary efficiency, not producing most of the sound and particles that accompany other casting methods.",
-	"hexical.page.new_possibilities.1": "I have developed some useful patterns for use with the lamp, documented on the next few pages. These patterns should only be cast by the genie within the lamp, lest I succumb to the Impersonate Genie mishap, which emits red sparks and yanks my casting item from my hand.",
+	"hexical.page.new_possibilities.1": "I have developed some useful patterns for use with the lamp, documented on the next few pages. These patterns should only be cast by the genie within the lamp, lest I succumb to the Impersonate Genie mishap, which emits red sparks and yanks my casting item from my hand.$(br2)$(o)Yeah, but your $(l)$(o)hexcasters$()$(o) were so preoccupied with whether or not they could, they didn't stop to think if they should.$()",
 	"hexical.page.get_lamp_position": "Pushes my original position when I began using the lamp.",
 	"hexical.page.get_lamp_rotation": "Pushes my original rotation when I began using the lamp.",
 	"hexical.page.get_lamp_velocity": "Pushes my original velocity when I began using the lamp.",
@@ -119,10 +126,10 @@
 	"hexical.page.lamp_finale.0": "The instant I let go of my lamp, it casts twice: once for the usual cast and a second time as a final burst of media. I can use this pattern to recognize whether a cast is that finale, and react accordingly.",
 
 	"hexical.page.replacement_mind.title": "Replacement Mind",
-	"hexical.page.replacement_mind.0": "Hex casting burns out the mind from the energy of thought, flooding the consciousness, inundating every neuron... it's euphoric. For staffs, casting devices, and spell circles, the rate of casting is slow enough that a mind can recuperate; I will never need to replace an impetus.",
-	"hexical.page.replacement_mind.1": "With the speeds lamps operates at, though, even an optimized mind can only bear the burden for so long. Luckily, the lamp somehow sustains the mind until its media battery runs out, where the genie finally perishes. In these cases, the lamp must be... reloaded.",
-	"hexical.page.replacement_mind.2": "I have developed this highly specialized pattern that extracts the mind of a villager and transforms it into a genie. The stress of nonstop casting requires highly trained minds, I estimate of Journeyman-grade or greater. The lamp may not be recharged without sacrificing a new mind, discarding the previous genie, so I should aim to gather as much media as I can before casting. The pattern itself costs five charged amethyst.",
-    "hexical.page.replacement_mind.3": "Because a mind is casting, highly trained villagers should become better genies. I doubt the difference between a Journeyman and an Expert would survive the $(l)optimization$(), but the difference between an Expert and a Master is magnitudes greater. Perhaps great enough to make a meaningful difference in the quality of casting.",
+	"hexical.page.replacement_mind.0": "Hex casting burns out the mind from the energy of thought, flooding the consciousness, inundating every neuron... it's euphoric. For staffs, casting devices, and spell circles, the rate of casting is slow enough that a mind can recuperate; I will never need to replace an impetus. With the speeds lamps operates at, though, even an optimized mind can only bear the burden for so long.",
+	"hexical.page.replacement_mind.1": "Luckily, the lamp somehow sustains the mind until its media battery runs out. When the genie finally perishes, the lamp must be... reloaded.$(br2)$(o)I am a great soft jelly thing. Smoothly rounded, with no mouth, with pulsing white holes filled by fog where my eyes used to be. Rubbery appendages that were once my arms; bulks rounding down into legless humps of soft slippery matter.$(br2)I have no mouth. And I must scream.$()",
+	"hexical.page.replacement_mind.2": "I have developed this pattern to transform the mind of a villager into a genie. Recharging requires a new mind each time, so I should gather as much media as I can beforehand. The pattern itself costs five charged amethyst.",
+    "hexical.page.replacement_mind.3": "The stress of nonstop casting requires highly trained minds, I estimate of Journeyman-grade or greater. Highly trained villagers should become better genies. I doubt the difference between a Journeyman and an Expert would survive the $(o)optimization$(), but the difference between an Expert and a Master is magnitudes greater. Perhaps great enough to make a meaningful difference in the quality of casting.",
 
 	"hexical.page.arch_lamps.title": "Arch Lamps",
 	"hexical.page.arch_lamps.0": "Because a separate mind casts my spells, a lamp should be able to cast even without me holding it. I estimate any villager short of a complete master of its field would be unable to cast so often unassisted though. These $(item)arch lamps$() are activated and deactivated rather than used and while active in my inventory, they cast every moment even without my input.",
@@ -142,8 +149,8 @@
 	"hexical.page.get_arch_lamp_storage": "Gets the lamp's iota storage.",
 
 	"hexical.page.nephthys.title": "Nephthys' Gambit",
-	"hexical.page.nephthys.0": "Pops a pattern list and a number from the stack and dives down n iota to casts the pattern list. Useful for surgery-like operations.",
-	"hexical.page.nephthys.1": "It's extremely versatile and I can mend almost any error in my stack using Bookkeeper's Gambit, pushing iota after a dive, and transforming surfaced iota. It was named after a goddess of mourning and rivers, lending to how it buries/dives down into the stack.",
+	"hexical.page.nephthys.0": "Pops a pattern list and a number from the stack and dives down n iota to cast the pattern list. Useful for surgery-like operations.",
+	"hexical.page.nephthys.1": "It's extremely versatile and I can mend almost any error in my stack using Bookkeeper's Gambit, pushing iota after a dive, and transforming surfaced iota. It was named after a goddess of mourning and rivers, lending to how it buries/dives down into the stack.$(br2)$(o)... the unknowns of time travel... is akin to descending blindly into the depths of the freezing water and reappearing as an acorn.$()",
 
     "hexical.page.telepathy.title": "Telepathy",
     "hexical.page.telepathy": "Media is the energy of thought and consequently, it can interact with thoughts as well. Unfortunately or perhaps fortunately for me, the minds of players are too resistant to be swayed by hexes and even the minds of villagers resist tampering. There is a notable exception though: my own mind is open to my own media, allowing me to read and write thoughts.",
@@ -154,11 +161,11 @@
 	"hexical.page.click": "Causes me to hear a click sound that is inaudible to other players.",
 
 	"hexical.page.chorus_blink.0": "Between Blink, Greater Teleport, ender pearls, and chorus fruit, this spell serves a harmonious midpoint for safe, precise, and cheap teleportation.",
-	"hexical.page.chorus_blink.1": "It consumes a chorus fruit from my inventory and teleports me up to 16 blocks using an offset vector. The cost is constant whether I teleport the full 16 blocks or less, and has no penalty for multiple casts in one hex. With a lot of chorus fruit, it can be a significantly cheaper Greater Teleport.",
+	"hexical.page.chorus_blink.1": "It consumes a chorus fruit from my inventory and teleports me up to 16 blocks using an offset vector. The cost is a single dust whether I teleport the full 16 blocks or less, and has no penalty for multiple casts in one hex. Ambit works strangely with repeated casts of this spell because each $(o)blink$() shifts my ambit to my new position.$(br2)$(o)I could be there in a heartbeat.$()",
 
 	"hexical.page.mage_block.title": "Mage Blocks",
 	"hexical.page.mage_block": "The blocks from Conjure Block last forever, are consequently a pain to clean up, and are not too versatile. Luckily, Nature offers an elegant and flexible alternative. These mage blocks come with a suite of $(o)modifiers$(). I could even stack multiple modifiers on one block.",
-	"hexical.page.conjure_mage_block": "Conjures a mage block at the location. Costs three dust.",
+	"hexical.page.conjure_mage_block": "Conjures a mage block at the location. Costs three dust.$(br2)$(o)I can create a city out of nothing, or I can cover it in volcanic rock.$()",
 	"hexical.page.modify_block_bouncy": "This modifier makes the block delightfully fun to bounce on! It returns more force to me than regular slime blocks and I notice even if I sneak, the block bounces me regardless.",
 	"hexical.page.modify_block_ephemeral": "This modifier takes in a number as well as a position and shatters the block after the number in twentieths of a second has passed. Subsequent casts can lengthen or shorten the duration.",
 	"hexical.page.modify_block_invisible": "This modifier prevents the block from emitting the telltale particles that accompany my casting, even when being stood on.",
@@ -167,7 +174,7 @@
 
 	"hexical.page.specks.title": "Specks",
     "hexical.page.specks.0": "I can conjure an image of an iota into the world, called a speck. Nature allows me to customize them quite extensively, altering their size, thickness of stroke, and more. They also take on my pigment color. Once they are in the world, I can move, rotate, and otherwise alter them for free.",
-    "hexical.page.conjure_speck": "Conjures a speck with the iota, position, and rotation. Costs one-hundredth of a dust.",
+    "hexical.page.conjure_speck": "Conjures a speck with the iota, position, and rotation. Costs one-hundredth of a dust.$(br2)$(o)Because you saw things from every angle, you understood them for what they really were.$()",
     "hexical.page.move_speck": "Moves a speck entity to the position.",
     "hexical.page.rotate_speck": "Rotates a speck entity to face the vector.",
     "hexical.page.iota_speck": "Changes the speck's iota.",
@@ -188,8 +195,8 @@
 	"hexical.page.is_sleeping": "Pushes whether the entity is sleeping. Applies to players, cats, foxes, and a variety of other creatures.",
 	"hexical.page.is_sprinting": "Pushes whether the entity is sprinting. Includes if I am swimming or if I have left the ground since sprinting, extends to cats, foxes, and more.",
 
-	"hexical.page.conjure_staff.0": "Conjures a staff at the location with the amount of media, rank, and hex respectively.",
-	"hexical.page.conjure_staff.1": "Conjured staves are not unlike $(l:items/hexcasting)$(item)cyphers$(). They have a media battery for casting and when they run out, unable to consume my health or my inventory's stash for _media. They are not rechargable or reprogrammable, and using $(l:patterns/spells/hexcasting#hexcasting:erase)$(action)Erase Item$() on it simply destroys it. However, its true power is $(o)input interception$().",
+	"hexical.page.conjure_staff.0": "Conjured staves are not unlike $(l:items/hexcasting)$(item)cyphers$(). They have a media battery for casting and when they run out, unable to consume my health or my inventory's stash for _media. They are not rechargable or reprogrammable, and using $(l:patterns/spells/hexcasting#hexcasting:erase)$(action)Erase Item$() on it simply destroys it. However, its true power is $(o)input interception$().",
+	"hexical.page.conjure_staff.1": "Conjures a staff at the location with the amount of media, rank, and hex respectively.$(br2)$(o)This is my $(l)staff$()$(o). There are many like it, but this one is mine.$()",
 	"hexical.page.conjure_staff.2": "When I use my primary or secondary use keys while holding a conjured staff, it intercepts my click. After a number of clicks corresponding to the rank I assigned at conjuration, it will cast the hex I gave it, starting the stack with false and true, corresponding to the left and right clicks respectively. If I pause for too long between clicks, it simply cancels the current \"cast\".",
 	"hexical.page.conjure_staff.3": "The spell is not too expensive, requiring only an amethyst shard, an amethyst dust for every rank, and the media for the battery. The result is a speedy and versatile casting device, with infinitely more possibilities and no cooldown compared to other casting devices."
 }

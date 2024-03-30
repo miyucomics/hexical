@@ -3,17 +3,18 @@
 	"icon": "hexical:conjured_staff",
 	"category": "hexcasting:patterns/spells",
     "advancement": "hexcasting:root",
+    "sortnum": 5,
 	"pages": [
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.conjure_staff.0"
+		},
 		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:conjure_staff",
 			"anchor": "hexical:conjure_staff",
 			"input": "vec, num, num, [pattern]",
 			"output": "",
-			"text": "hexical.page.conjure_staff.0"
-		},
-		{
-			"type": "patchouli:text",
 			"text": "hexical.page.conjure_staff.1"
 		},
 		{

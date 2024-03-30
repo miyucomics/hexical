@@ -6,7 +6,6 @@ import at.petrak.hexcasting.api.spell.math.HexDir
 import at.petrak.hexcasting.api.spell.math.HexPattern
 import at.petrak.hexcasting.common.casting.operators.selectors.OpGetEntitiesBy
 import miyucomics.hexical.Hexical
-import miyucomics.hexical.casting.OpProgram
 import miyucomics.hexical.casting.operators.*
 import miyucomics.hexical.casting.operators.eval.OpNephthys
 import miyucomics.hexical.casting.operators.getters.*
@@ -28,8 +27,6 @@ object HexicalPatterns {
 
 	@JvmStatic
 	fun init() {
-		register(HexPattern.fromAngles("wwqqqqq", HexDir.EAST), "program_lamp", OpProgram())
-
 		register(HexPattern.fromAngles("deaqqdq", HexDir.SOUTH_EAST), "nephthys", OpNephthys)
 
 		register(HexPattern.fromAngles("dee", HexDir.NORTH_WEST), "conjure_mage_block", OpConjureMageBlock())

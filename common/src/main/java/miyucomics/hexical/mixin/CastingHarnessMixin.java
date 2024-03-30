@@ -14,6 +14,8 @@ import at.petrak.hexcasting.common.lib.HexSounds;
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes;
 import at.petrak.hexcasting.xplat.IXplatAbstractions;
 import com.llamalad7.mixinextras.injector.WrapWithCondition;
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import miyucomics.hexical.interfaces.CastingContextMixinInterface;
 import miyucomics.hexical.items.ArchLampItem;
 import net.minecraft.entity.player.PlayerEntity;
@@ -36,9 +38,11 @@ public class CastingHarnessMixin {
 	@Unique
 	private final CastingHarness hexical$harness = (CastingHarness) (Object) this;
 
-	@WrapWithCondition(method = "updateWithPattern", at = @At(value = "INVOKE", target = "Ljava/util/List;add(Ljava/lang/Object;)Z"))
-	private boolean stopLampParticles(List<OperatorSideEffect> sideEffects, Object effect) {
-		return !((CastingContextMixinInterface) (Object) hexical$harness.getCtx()).getCastByLamp();
+	@WrapOperation(method = "updateWithPattern", at = @At(value = "INVOKE", target = "Ljava/util/List;add(Ljava/lang/Object;)Z"))
+	private boolean stopLampParticles(List<OperatorSideEffect> instance, Object effect, Operation<Boolean> original) {
+		if (((CastingContextMixinInterface) (Object) hexical$harness.getCtx()).getCastByLamp())
+			return true;
+		return original.call(instance, effect);
 	}
 
 	@WrapWithCondition(method = "executeIotas", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/world/ServerWorld;playSound(Lnet/minecraft/entity/player/PlayerEntity;DDDLnet/minecraft/sound/SoundEvent;Lnet/minecraft/sound/SoundCategory;FF)V"))
