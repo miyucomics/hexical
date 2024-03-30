@@ -53,6 +53,7 @@
       </noscript>
         <script type="module" src="index.js"></script>
   <script type="module" src="hexcasting.js"></script>
+  <script type="module" src="hexcasting_render.js"></script>
   </head>
   <body>
 <nav class="navbar navbar-default navbar-static-top">
@@ -150,7 +151,7 @@
       <summary><a href="#items" class="toc-elem "><img
       title="Focus"
       alt="Focus"
-      src="https://raw.githubusercontent.com/object-Object/HexMod/327ad0bfa8585800a0334d6a0fbd4c96460c414e/Common/src/main/resources/assets/hexcasting/textures/item/focus_empty.png"
+      src="https://raw.githubusercontent.com/object-Object/HexMod/f06c99242fa74e30d9904fa75109d90137e64378/Common/src/main/resources/assets/hexcasting/textures/item/focus_empty.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     > Items</a></summary>
@@ -158,7 +159,7 @@
           <li><a href="#items/grimoire" class="toc-elem "><img
       title="Grimoire"
       alt="Grimoire"
-      src="https://raw.githubusercontent.com/miyucomics/hexical/b422c8b0e905c9a98276bd2c585c63ce2b4c2909/common/src/main/resources/assets/hexical/textures/item/grimoire.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexical/66b82410b86e7d067254c960f86386b312472cb3/common/src/main/resources/assets/hexical/textures/item/grimoire.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     > Grimoires</a></li>
@@ -168,10 +169,10 @@
       <summary><a href="#lamp" class="toc-elem "><img
       title="Genie Lamp"
       alt="Genie Lamp"
-      src="https://raw.githubusercontent.com/miyucomics/hexical/b422c8b0e905c9a98276bd2c585c63ce2b4c2909/common/src/main/resources/assets/hexical/textures/item/lamp.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexical/66b82410b86e7d067254c960f86386b312472cb3/common/src/main/resources/assets/hexical/textures/item/lamp.png"
       loading="lazy"
       class="item-texture  texture pixelated"
-    > Genieless Lamp</a></summary>
+    > Genie Lamp</a></summary>
       <ul>
           <li><a href="#lamp/mysterious_lamp" class="toc-elem "><img
       title="Sand"
@@ -183,7 +184,7 @@
           <li><a href="#lamp/new_possibilities" class="toc-elem "><img
       title="Genie Lamp"
       alt="Genie Lamp"
-      src="https://raw.githubusercontent.com/miyucomics/hexical/b422c8b0e905c9a98276bd2c585c63ce2b4c2909/common/src/main/resources/assets/hexical/textures/item/lamp.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexical/66b82410b86e7d067254c960f86386b312472cb3/common/src/main/resources/assets/hexical/textures/item/lamp.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     > New Possibilities</a></li>
@@ -197,14 +198,14 @@
           <li><a href="#lamp/arch_lamps" class="toc-elem "><img
       title="Archgenie Lamp"
       alt="Archgenie Lamp"
-      src="https://raw.githubusercontent.com/miyucomics/hexical/b422c8b0e905c9a98276bd2c585c63ce2b4c2909/common/src/main/resources/assets/hexical/textures/item/arch_lamp.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexical/66b82410b86e7d067254c960f86386b312472cb3/common/src/main/resources/assets/hexical/textures/item/arch_lamp.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     > Arch Lamps</a></li>
           <li><a href="#lamp/arch_lamp_storage" class="toc-elem "><img
       title="Focus"
       alt="Focus"
-      src="https://raw.githubusercontent.com/object-Object/HexMod/327ad0bfa8585800a0334d6a0fbd4c96460c414e/Common/src/main/resources/assets/hexcasting/textures/item/focus_empty.png"
+      src="https://raw.githubusercontent.com/object-Object/HexMod/f06c99242fa74e30d9904fa75109d90137e64378/Common/src/main/resources/assets/hexcasting/textures/item/focus_empty.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     > Arch Lamp Memory</a></li>
@@ -219,13 +220,6 @@
       class="item-texture  texture "
     > Patterns</a></summary>
       <ul>
-          <li><a href="#patterns/nephthys" class="toc-elem "><img
-      title="Water Bucket"
-      alt="Water Bucket"
-      src="https://raw.githubusercontent.com/PrismarineJS/minecraft-assets/a14c64362abe4a12c2dfd87f8d1673af9d1b09f4/data/1.19.1/items/water_bucket.png"
-      loading="lazy"
-      class="item-texture  texture pixelated"
-    > Nephthys&#39; Gambit</a></li>
           <li><a href="#patterns/telepathy" class="toc-elem "><img
       title="Apple"
       alt="Apple"
@@ -240,6 +234,13 @@
       loading="lazy"
       class="item-texture  texture pixelated"
     > World Scrying</a></li>
+          <li><a href="#patterns/nephthys" class="toc-elem "><img
+      title="Water Bucket"
+      alt="Water Bucket"
+      src="https://raw.githubusercontent.com/PrismarineJS/minecraft-assets/a14c64362abe4a12c2dfd87f8d1673af9d1b09f4/data/1.19.1/items/water_bucket.png"
+      loading="lazy"
+      class="item-texture  texture pixelated"
+    > Nephthys&#39; Gambit</a></li>
       </ul>
     </details>
     <details class="toc-category">
@@ -251,6 +252,13 @@
       class="item-texture  texture pixelated"
     > Spells</a></summary>
       <ul>
+          <li><a href="#patterns/mage_blocks" class="toc-elem "><img
+      title="Glass"
+      alt="Glass"
+      src="https://hexdoc-dev.github.io/hexdoc-minecraft/v/1.19.2/1.0.dev1/assets/minecraft/textures/block/glass.png"
+      loading="lazy"
+      class="item-texture  texture "
+    > Mage Blocks</a></li>
           <li><a href="#patterns/chorus_blink" class="toc-elem "><img
       title="Chorus Fruit"
       alt="Chorus Fruit"
@@ -261,17 +269,10 @@
           <li><a href="#patterns/conjure_staff" class="toc-elem "><img
       title="Conjured Staff"
       alt="Conjured Staff"
-      src="https://raw.githubusercontent.com/miyucomics/hexical/b422c8b0e905c9a98276bd2c585c63ce2b4c2909/common/src/main/resources/assets/hexical/textures/item/conjured_staff.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexical/66b82410b86e7d067254c960f86386b312472cb3/common/src/main/resources/assets/hexical/textures/item/conjured_staff.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     > Conjure Staff</a></li>
-          <li><a href="#patterns/mage_blocks" class="toc-elem "><img
-      title="Glass"
-      alt="Glass"
-      src="https://hexdoc-dev.github.io/hexdoc-minecraft/v/1.19.2/1.0.dev1/assets/minecraft/textures/block/glass.png"
-      loading="lazy"
-      class="item-texture  texture "
-    > Mage Blocks</a></li>
           <li><a href="#patterns/specks" class="toc-elem "><img
       title="Beacon"
       alt="Beacon"
@@ -300,7 +301,7 @@
     class="permalink small"
     title="Permalink"
   ><i class="bi bi-link-45deg"></i></a></h2>
-    <p>The practitioners of this art would cast their so-called <span style="color: #b38ef3">Hexes</span> by drawing strange patterns in the air with a <a href="https://hexcasting.hexxy.media/v/0.10.3/1.0.dev22/en_us#items/staff"><span style="color: #b0b">staff</span></a>-- or craft <a href="https://hexcasting.hexxy.media/v/0.10.3/1.0.dev22/en_us#items/hexcasting"><span style="color: #b0b">powerful magical items</span></a> to do the casting for them. How might I do the same?</p>
+    <p>The practitioners of this art would cast their so-called <span style="color: #b38ef3">Hexes</span> by drawing strange patterns in the air with a <a href="https://hexcasting.hexxy.media/v/0.10.3/1.0.dev24/en_us#items/staff"><span style="color: #b0b">staff</span></a>-- or craft <a href="https://hexcasting.hexxy.media/v/0.10.3/1.0.dev24/en_us#items/hexcasting"><span style="color: #b0b">powerful magical items</span></a> to do the casting for them. How might I do the same?</p>
 <div id="hexical_changes" class="entry">
     <h3 class="entry-title page-header">
     <img
@@ -318,9 +319,9 @@
     class="permalink small"
     title="Permalink"
   ><i class="bi bi-link-45deg"></i></a></h3>
-    <p>I feel strangely more in tune with the ambient <span style="color: #74b3f2">media</span> around me. It feels <i>friendlier</i> somehow... I can even feel it rippling, responding to my actions, as if suggesting new spells to me. The media itself also feels more malleable, more <i>workable</i>, allowing me to manipulate it into precise specialized effects.</p>
+    <p>I feel strangely more in tune with the ambient <span style="color: #74b3f2">media</span> around me. It feels <i>friendlier</i> somehow... I can even feel it rippling around me, responding to my actions, as if suggesting new spells to me. The media itself also feels more malleable, more <i>workable</i>, allowing me to manipulate it into precise specialized effects.</p>
 <br />
-    <p>I also find my tools more familar. I notice I require less concentration with my <a href="https://hexcasting.hexxy.media/v/0.10.3/1.0.dev22/en_us#items/staff"><span style="color: #b0b">staff</span></a> and can move around while using it, handy for chasing down targets that get out of my line of sight before I can finish my raycast. I shouldn&#39;t become too relaxed though, Nature has not become more forgiving of my mistakes. I can also write directly into my <a href="https://hexcasting.hexxy.media/v/0.10.3/1.0.dev22/en_us#items/abacus"><span style="color: #b0b">abacus</span></a> with Scribe&#39;s Gambit.</p>
+    <p>I also find my tools more familar. I notice I require less concentration with my <a href="https://hexcasting.hexxy.media/v/0.10.3/1.0.dev24/en_us#items/staff"><span style="color: #b0b">staff</span></a> and can move around while using it, handy for chasing down targets that get out of my line of sight before I can finish my raycast. I shouldn&#39;t become too relaxed though, Nature has not become more forgiving of my mistakes. I can also write directly into my <a href="https://hexcasting.hexxy.media/v/0.10.3/1.0.dev24/en_us#items/abacus"><span style="color: #b0b">abacus</span></a> with Scribe&#39;s Gambit.</p>
 <br />
 </div>
 </section>
@@ -329,7 +330,7 @@
     <img
       title="Focus"
       alt="Focus"
-      src="https://raw.githubusercontent.com/object-Object/HexMod/327ad0bfa8585800a0334d6a0fbd4c96460c414e/Common/src/main/resources/assets/hexcasting/textures/item/focus_empty.png"
+      src="https://raw.githubusercontent.com/object-Object/HexMod/f06c99242fa74e30d9904fa75109d90137e64378/Common/src/main/resources/assets/hexcasting/textures/item/focus_empty.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     >Items<a
@@ -341,13 +342,13 @@
     class="permalink small"
     title="Permalink"
   ><i class="bi bi-link-45deg"></i></a></h2>
-    <p>I devote this section to the magical and mysterious items I might encounter in my studies.</p><p>It seems like many of these items have uses when held alongside my <a href="https://hexcasting.hexxy.media/v/0.10.3/1.0.dev22/en_us#items/staff"><span style="color: #b0b">staff</span></a>. I suppose I will have to choose what goes in my other hand carefully.</p>
+    <p>I devote this section to the magical and mysterious items I might encounter in my studies.</p><p>It seems like many of these items have uses when held alongside my <a href="https://hexcasting.hexxy.media/v/0.10.3/1.0.dev24/en_us#items/staff"><span style="color: #b0b">staff</span></a>. I suppose I will have to choose what goes in my other hand carefully.</p>
 <div id="items/grimoire" class="entry">
     <h3 class="entry-title page-header">
     <img
       title="Grimoire"
       alt="Grimoire"
-      src="https://raw.githubusercontent.com/miyucomics/hexical/b422c8b0e905c9a98276bd2c585c63ce2b4c2909/common/src/main/resources/assets/hexical/textures/item/grimoire.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexical/66b82410b86e7d067254c960f86386b312472cb3/common/src/main/resources/assets/hexical/textures/item/grimoire.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     >Grimoires<a
@@ -371,7 +372,7 @@
         <img
       title="Crafting Table"
       alt="Crafting Table"
-      src="https://raw.githubusercontent.com/hexdoc-dev/hexdoc/c608af606202b5b78d83148d30227909bad40cbb/src/hexdoc/_export/resources/assets/minecraft/textures/gui/hexdoc/crafting_table.png"
+      src="https://raw.githubusercontent.com/hexdoc-dev/hexdoc/b8f02baecb125f795ea3cbedeb7a096812e49aa9/src/hexdoc/_export/resources/assets/minecraft/textures/gui/hexdoc/crafting_table.png"
       class="texture pixelated"
     >
   <div class="crafting-table-grid">
@@ -379,7 +380,7 @@
                 <img
       title="Charged Amethyst"
       alt="Charged Amethyst"
-      src="https://raw.githubusercontent.com/object-Object/HexMod/327ad0bfa8585800a0334d6a0fbd4c96460c414e/Common/src/main/resources/assets/hexcasting/textures/item/charged_amethyst.png"
+      src="https://raw.githubusercontent.com/object-Object/HexMod/f06c99242fa74e30d9904fa75109d90137e64378/Common/src/main/resources/assets/hexcasting/textures/item/charged_amethyst.png"
       loading="lazy"
       class="item-texture multi-texture-active texture pixelated"
     >
@@ -388,7 +389,7 @@
                 <img
       title="Edified Pressure Plate"
       alt="Edified Pressure Plate"
-      src="https://hexcasting.hexxy.media/v/0.10.3/1.0.dev22/assets/hexcasting/textures/block/edified_pressure_plate.png"
+      src="https://hexcasting.hexxy.media/v/0.10.3/1.0.dev24/assets/hexcasting/textures/block/edified_pressure_plate.png"
       loading="lazy"
       class="item-texture multi-texture-active texture "
     >
@@ -397,7 +398,7 @@
                 <img
       title="Charged Amethyst"
       alt="Charged Amethyst"
-      src="https://raw.githubusercontent.com/object-Object/HexMod/327ad0bfa8585800a0334d6a0fbd4c96460c414e/Common/src/main/resources/assets/hexcasting/textures/item/charged_amethyst.png"
+      src="https://raw.githubusercontent.com/object-Object/HexMod/f06c99242fa74e30d9904fa75109d90137e64378/Common/src/main/resources/assets/hexcasting/textures/item/charged_amethyst.png"
       loading="lazy"
       class="item-texture multi-texture-active texture pixelated"
     >
@@ -406,7 +407,7 @@
                 <img
       title="Charged Amethyst"
       alt="Charged Amethyst"
-      src="https://raw.githubusercontent.com/object-Object/HexMod/327ad0bfa8585800a0334d6a0fbd4c96460c414e/Common/src/main/resources/assets/hexcasting/textures/item/charged_amethyst.png"
+      src="https://raw.githubusercontent.com/object-Object/HexMod/f06c99242fa74e30d9904fa75109d90137e64378/Common/src/main/resources/assets/hexcasting/textures/item/charged_amethyst.png"
       loading="lazy"
       class="item-texture multi-texture-active texture pixelated"
     >
@@ -424,7 +425,7 @@
                 <img
       title="Charged Amethyst"
       alt="Charged Amethyst"
-      src="https://raw.githubusercontent.com/object-Object/HexMod/327ad0bfa8585800a0334d6a0fbd4c96460c414e/Common/src/main/resources/assets/hexcasting/textures/item/charged_amethyst.png"
+      src="https://raw.githubusercontent.com/object-Object/HexMod/f06c99242fa74e30d9904fa75109d90137e64378/Common/src/main/resources/assets/hexcasting/textures/item/charged_amethyst.png"
       loading="lazy"
       class="item-texture multi-texture-active texture pixelated"
     >
@@ -433,7 +434,7 @@
                 <img
       title="Edified Pressure Plate"
       alt="Edified Pressure Plate"
-      src="https://hexcasting.hexxy.media/v/0.10.3/1.0.dev22/assets/hexcasting/textures/block/edified_pressure_plate.png"
+      src="https://hexcasting.hexxy.media/v/0.10.3/1.0.dev24/assets/hexcasting/textures/block/edified_pressure_plate.png"
       loading="lazy"
       class="item-texture multi-texture-active texture "
     >
@@ -442,7 +443,7 @@
                 <img
       title="Charged Amethyst"
       alt="Charged Amethyst"
-      src="https://raw.githubusercontent.com/object-Object/HexMod/327ad0bfa8585800a0334d6a0fbd4c96460c414e/Common/src/main/resources/assets/hexcasting/textures/item/charged_amethyst.png"
+      src="https://raw.githubusercontent.com/object-Object/HexMod/f06c99242fa74e30d9904fa75109d90137e64378/Common/src/main/resources/assets/hexcasting/textures/item/charged_amethyst.png"
       loading="lazy"
       class="item-texture multi-texture-active texture pixelated"
     >
@@ -452,7 +453,7 @@
     <img
       title="Grimoire"
       alt="Grimoire"
-      src="https://raw.githubusercontent.com/miyucomics/hexical/b422c8b0e905c9a98276bd2c585c63ce2b4c2909/common/src/main/resources/assets/hexical/textures/item/grimoire.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexical/66b82410b86e7d067254c960f86386b312472cb3/common/src/main/resources/assets/hexical/textures/item/grimoire.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     >
@@ -462,9 +463,9 @@
   </details>
       <p>By encrusting an enchanted book with charged amethyst and edified wood, it traps media within the pages like an echo chamber. I can then introduce a pattern-to-pattern-list binding for the grimoire to keep bouncing endlessly inside.</p>
 <br />
-    <p>When I then cast the <a href="https://hexcasting.hexxy.media/v/0.10.3/1.0.dev22/en_us#patterns/patterns_as_iotas">pattern</a> associated with a pattern list with my <a href="https://hexcasting.hexxy.media/v/0.10.3/1.0.dev22/en_us#items/staff"><span style="color: #b0b">staff</span></a> and the grimoire in my inventory, it empowers the pattern, allowing it to break free from the grimoire&#39;s pages with a faint sound of a <span style="color: #b38ef3">Hex</span> being cast. This allows me to create <i>shortcuts</i> for my staff by associating a short pattern with a common task, such as the raycast mantra. Interestingly, the grimoire can even overwrite base patterns, allowing me to hijack and add extra functionality to them.</p>
+    <p>When I then cast the <a href="https://hexcasting.hexxy.media/v/0.10.3/1.0.dev24/en_us#patterns/patterns_as_iotas">pattern</a> associated with a pattern list with my <a href="https://hexcasting.hexxy.media/v/0.10.3/1.0.dev24/en_us#items/staff"><span style="color: #b0b">staff</span></a> and the <span style="color: #b0b">grimoire</span> in my inventory, the pattern breaks free with a faint sound of a <span style="color: #b38ef3">Hex</span> being cast. I create <i>shortcuts</i> for tedious tasks, like the raycast mantra or large patterns. The grimoire can even hijack Nature&#39;s patterns, to overwrite or add extra functionality.</p><p><i>If there&#39;s a book that you want to read, but it hasn&#39;t been written yet, then you must write it.</i></p>
 <br />
-  <div id="items/grimoire@hexical:write_grimoire">
+  <div id="items/grimoire@hexical:write_grimoire" class="">
 <h4 class="pattern-title">Write Grimoire (pattern, [pattern] →)<a
     href="#items/grimoire@hexical:write_grimoire"
     class="permalink small"
@@ -472,6 +473,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -484,7 +521,7 @@
       <p>Writes a pattern-to-pattern-list binding into the grimoire in my offhand.</p>
   </div>
 <br />
-  <div id="items/grimoire@hexical:erase_grimoire">
+  <div id="items/grimoire@hexical:erase_grimoire" class="">
 <h4 class="pattern-title">Erase Grimoire (pattern →)<a
     href="#items/grimoire@hexical:erase_grimoire"
     class="permalink small"
@@ -492,6 +529,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -506,7 +579,7 @@
 <br />
     <p>While stable with only a few strands of <span style="color: #74b3f2">media</span> wizzing around inside, a single grimoire can not hold more than sixteen pattern bindings. When attempting to introduce more, the grimoire simply rejects it and throws itself onto the ground with a shower of blue sparks.</p>
 <br />
-  <div id="items/grimoire@hexical:index_grimoire">
+  <div id="items/grimoire@hexical:index_grimoire" class="">
 <h4 class="pattern-title">Archivist Reflection (→ [pattern])<a
     href="#items/grimoire@hexical:index_grimoire"
     class="permalink small"
@@ -514,6 +587,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -528,7 +637,7 @@
 <br />
     <p>I can also restrict a pattern inside the grimoire so it destroys itself after a certain number of uses. I shall find this aspect of the grimoire quite useful if I ever need to lend out my true name. I can simply give them a grimoire a set number of references to my name.</p>
 <br />
-  <div id="items/grimoire@hexical:restrict_grimoire">
+  <div id="items/grimoire@hexical:restrict_grimoire" class="">
 <h4 class="pattern-title">Restrict Grimoire (pattern, number →)<a
     href="#items/grimoire@hexical:restrict_grimoire"
     class="permalink small"
@@ -536,6 +645,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -548,7 +693,7 @@
       <p>Restrict a grimoire binding to be only usable that number of times, mishaps if you attempt to increase the uses.</p>
   </div>
 <br />
-  <div id="items/grimoire@hexical:query_grimoire">
+  <div id="items/grimoire@hexical:query_grimoire" class="">
 <h4 class="pattern-title">Archivist Purification (pattern → number)<a
     href="#items/grimoire@hexical:query_grimoire"
     class="permalink small"
@@ -556,6 +701,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -575,10 +756,10 @@
     <img
       title="Genie Lamp"
       alt="Genie Lamp"
-      src="https://raw.githubusercontent.com/miyucomics/hexical/b422c8b0e905c9a98276bd2c585c63ce2b4c2909/common/src/main/resources/assets/hexical/textures/item/lamp.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexical/66b82410b86e7d067254c960f86386b312472cb3/common/src/main/resources/assets/hexical/textures/item/lamp.png"
       loading="lazy"
       class="item-texture  texture pixelated"
-    >Genieless Lamp<a
+    >Genie Lamp<a
     href="#table-of-contents"
     class="permalink small"
     title="Jump to top"
@@ -605,9 +786,9 @@
     class="permalink small"
     title="Permalink"
   ><i class="bi bi-link-45deg"></i></a></h3>
-    <p>At last I&#39;ve obtained the subject of a thousand years of rumor! To think a mere wandering trader was in possession of such a strong artifact. The oil lamp emanates a vague residue of <span style="color: #74b3f2">media</span>, vacuous in feeling... it reminds me of the <i>hollow media structure</i> of a <a href="https://hexcasting.hexxy.media/v/0.10.3/1.0.dev22/en_us#items/focus"><span style="color: #b0b">focus</span></a> that allows it to store iota. There is also a presence inside with casting capabilities similar to my own.</p>
+    <p>At last I&#39;ve obtained the subject of a thousand years of rumor! To think a mere wandering trader was in possession of such a strong artifact. The oil lamp emanates a vague residue of <span style="color: #74b3f2">media</span>, vacuous in feeling... it reminds me of the <i>hollow media structure</i> of a <a href="https://hexcasting.hexxy.media/v/0.10.3/1.0.dev24/en_us#items/focus"><span style="color: #b0b">focus</span></a> that allows it to store iota. There is also a presence inside with casting capabilities similar to my own.</p>
 <br />
-  <div id="lamp/mysterious_lamp@hexical:educate_genie">
+  <div id="lamp/mysterious_lamp@hexical:educate_genie" class="">
 <h4 class="pattern-title">Educate Genie ([pattern] →)<a
     href="#lamp/mysterious_lamp@hexical:educate_genie"
     class="permalink small"
@@ -615,6 +796,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -633,7 +850,7 @@
     <img
       title="Genie Lamp"
       alt="Genie Lamp"
-      src="https://raw.githubusercontent.com/miyucomics/hexical/b422c8b0e905c9a98276bd2c585c63ce2b4c2909/common/src/main/resources/assets/hexical/textures/item/lamp.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexical/66b82410b86e7d067254c960f86386b312472cb3/common/src/main/resources/assets/hexical/textures/item/lamp.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     >New Possibilities<a
@@ -647,9 +864,9 @@
   ><i class="bi bi-link-45deg"></i></a></h3>
     <p>It casts <i><strong>EVERY INSTANT</strong></i>. After writing a spell into it, I was treated to a splendid unceasing gush of media. I estimate the casting speed must be around twenty times every second. The presence inside the lamp performs the casting with extraordinary efficiency, not producing most of the sound and particles that accompany other casting methods.</p>
 <br />
-    <p>I have developed some useful patterns for use with the lamp, documented on the next few pages. These patterns should only be cast by the genie within the lamp, lest I succumb to the Impersonate Genie mishap, which emits red sparks and yanks my casting item from my hand.</p>
+    <p>I have developed some useful patterns for use with the lamp, documented on the next few pages. These patterns should only be cast by the genie within the lamp, lest I succumb to the Impersonate Genie mishap, which emits red sparks and yanks my casting item from my hand.</p><p><i>Yeah, but your <strong></strong></i><strong><i>hexcasters</i></strong><i> were so preoccupied with whether or not they could, they didn&#39;t stop to think if they should.</i></p>
 <br />
-  <div id="lamp/new_possibilities@hexical:get_lamp_position">
+  <div id="lamp/new_possibilities@hexical:get_lamp_position" class="">
 <h4 class="pattern-title">Genie Refl.: Spatial (→ vector)<a
     href="#lamp/new_possibilities@hexical:get_lamp_position"
     class="permalink small"
@@ -657,6 +874,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -669,7 +922,7 @@
       <p>Pushes my original position when I began using the lamp.</p>
   </div>
 <br />
-  <div id="lamp/new_possibilities@hexical:get_lamp_rotation">
+  <div id="lamp/new_possibilities@hexical:get_lamp_rotation" class="">
 <h4 class="pattern-title">Genie Refl.: Rotational (→ vector)<a
     href="#lamp/new_possibilities@hexical:get_lamp_rotation"
     class="permalink small"
@@ -677,6 +930,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -689,7 +978,7 @@
       <p>Pushes my original rotation when I began using the lamp.</p>
   </div>
 <br />
-  <div id="lamp/new_possibilities@hexical:get_lamp_velocity">
+  <div id="lamp/new_possibilities@hexical:get_lamp_velocity" class="">
 <h4 class="pattern-title">Genie Refl.: Kinetic (→ vector)<a
     href="#lamp/new_possibilities@hexical:get_lamp_velocity"
     class="permalink small"
@@ -697,6 +986,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -709,7 +1034,7 @@
       <p>Pushes my original velocity when I began using the lamp.</p>
   </div>
 <br />
-  <div id="lamp/new_possibilities@hexical:get_lamp_use_time">
+  <div id="lamp/new_possibilities@hexical:get_lamp_use_time" class="">
 <h4 class="pattern-title">Genie Refl.: Temporal (→ number)<a
     href="#lamp/new_possibilities@hexical:get_lamp_use_time"
     class="permalink small"
@@ -717,6 +1042,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -729,7 +1090,7 @@
       <p>Pushes how many times the lamp has casted. Divided by 20, it is the number of seconds since I began using the lamp.</p>
   </div>
 <br />
-  <div id="lamp/new_possibilities@hexical:get_lamp_media">
+  <div id="lamp/new_possibilities@hexical:get_lamp_media" class="">
 <h4 class="pattern-title">Genie Refl.: Media (→ number)<a
     href="#lamp/new_possibilities@hexical:get_lamp_media"
     class="permalink small"
@@ -737,6 +1098,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -749,7 +1146,7 @@
       <p>Pushes the remaining media of the lamp in dust, in terms of dust.</p>
   </div>
 <br />
-  <div id="lamp/new_possibilities@hexical:lamp_finale">
+  <div id="lamp/new_possibilities@hexical:lamp_finale" class="">
 <h4 class="pattern-title">Finale Reflection (→ boolean)<a
     href="#lamp/new_possibilities@hexical:lamp_finale"
     class="permalink small"
@@ -757,6 +1154,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -787,18 +1220,54 @@
     class="permalink small"
     title="Permalink"
   ><i class="bi bi-link-45deg"></i></a></h3>
-    <p>Hex casting burns out the mind from the energy of thought, flooding the consciousness, inundating every neuron... it&#39;s euphoric. For staffs, casting devices, and spell circles, the rate of casting is slow enough that a mind can recuperate; I will never need to replace an impetus.</p>
+    <p>Hex casting burns out the mind from the energy of thought, flooding the consciousness, inundating every neuron... it&#39;s euphoric. For staffs, casting devices, and spell circles, the rate of casting is slow enough that a mind can recuperate; I will never need to replace an impetus. With the speeds lamps operates at, though, even an optimized mind can only bear the burden for so long.</p>
 <br />
-    <p>With the speeds lamps operates at, though, even an optimized mind can only bear the burden for so long. Luckily, the lamp somehow sustains the mind until its media battery runs out, where the genie finally perishes. In these cases, the lamp must be... reloaded.</p>
+    <p>Luckily, the lamp somehow sustains the mind until its media battery runs out. When the genie finally perishes, the lamp must be... reloaded.</p><p><i>I am a great soft jelly thing. Smoothly rounded, with no mouth, with pulsing white holes filled by fog where my eyes used to be. Rubbery appendages that were once my arms; bulks rounding down into legless humps of soft slippery matter.</i></p><i><p>I have no mouth. And I must scream.</p></i>
 <br />
-  <div id="lamp/replacement_mind@hexical:make_genie">
-<h4 class="pattern-title">Make Genie (villager entity →)<a
+  <div id="lamp/replacement_mind@hexical:make_genie" class="">
+<h4 class="pattern-title">Make Genie (villager entity, item entity →)<a
     href="#lamp/replacement_mind@hexical:make_genie"
     class="permalink small"
     title="Permalink"
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -808,10 +1277,10 @@
         data-per-world="False"
       >Your browser does not support visualizing patterns. Pattern code: qaqwawqwqqwqwqwqwqwqq</canvas>
   </details>
-      <p>I have developed this highly specialized pattern that extracts the mind of a villager and transforms it into a genie. The stress of nonstop casting requires highly trained minds, I estimate of Journeyman-grade or greater. The lamp may not be recharged without sacrificing a new mind, discarding the previous genie, so I should aim to gather as much media as I can before casting. The pattern itself costs five charged amethyst.</p>
+      <p>I have developed this pattern to transform the mind of a villager into a genie. Recharging requires a new mind each time, so I should gather as much media as I can beforehand. The pattern itself costs five charged amethyst.</p>
   </div>
 <br />
-    <p>Because a mind is casting, highly trained villagers should become better genies. I doubt the difference between a Journeyman and an Expert would survive the <strong>optimization</strong>, but the difference between an Expert and a Master is magnitudes greater. Perhaps great enough to make a meaningful difference in the quality of casting.</p>
+    <p>The stress of nonstop casting requires highly trained minds, I estimate of Journeyman-grade or greater. Highly trained villagers should become better genies. I doubt the difference between a Journeyman and an Expert would survive the <i>optimization</i>, but the difference between an Expert and a Master is magnitudes greater. Perhaps great enough to make a meaningful difference in the quality of casting.</p>
 <br />
 </div>
 <div id="lamp/arch_lamps" class="entry">
@@ -819,7 +1288,7 @@
     <img
       title="Archgenie Lamp"
       alt="Archgenie Lamp"
-      src="https://raw.githubusercontent.com/miyucomics/hexical/b422c8b0e905c9a98276bd2c585c63ce2b4c2909/common/src/main/resources/assets/hexical/textures/item/arch_lamp.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexical/66b82410b86e7d067254c960f86386b312472cb3/common/src/main/resources/assets/hexical/textures/item/arch_lamp.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     >Arch Lamps<a
@@ -835,7 +1304,7 @@
 <br />
     <p>The output of an arch lamp is so grand that it saturates the air around me with <span style="color: #74b3f2">media</span>... it&#39;s incredible. Unfortunately, if two lamps are active at once within my inventory, the resonances clash and deactivate both lamps, as well as rendering every arch lamp in my inventory useless for a few seconds. I should only have one archgenie lamp active at once, although I can still simutaneously use a regular lamp.</p>
 <br />
-  <div id="lamp/arch_lamps@hexical:has_arch_lamp">
+  <div id="lamp/arch_lamps@hexical:has_arch_lamp" class="">
 <h4 class="pattern-title">Archgenie Purification (entity → boolean)<a
     href="#lamp/arch_lamps@hexical:has_arch_lamp"
     class="permalink small"
@@ -843,6 +1312,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -855,7 +1360,7 @@
       <p>Pushes whether a player currently has an active arch lamp.</p>
   </div>
 <br />
-  <div id="lamp/arch_lamps@hexical:terminate_arch_lamp">
+  <div id="lamp/arch_lamps@hexical:terminate_arch_lamp" class="">
 <h4 class="pattern-title">Archgenie Termination<a
     href="#lamp/arch_lamps@hexical:terminate_arch_lamp"
     class="permalink small"
@@ -863,6 +1368,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -875,7 +1416,7 @@
       <p>Can be casted by a casting device, staff, or within the arch lamp itself. Deactivates the lamp&#39;s operation, similar to Charon&#39;s.</p>
   </div>
 <br />
-  <div id="lamp/arch_lamps@hexical:get_arch_lamp_position">
+  <div id="lamp/arch_lamps@hexical:get_arch_lamp_position" class="">
 <h4 class="pattern-title">Arch. Refl.: Spatial (→ vector)<a
     href="#lamp/arch_lamps@hexical:get_arch_lamp_position"
     class="permalink small"
@@ -883,6 +1424,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -895,7 +1472,7 @@
       <p>Pushes the original position of the caster when the arch lamp started casting.</p>
   </div>
 <br />
-  <div id="lamp/arch_lamps@hexical:get_arch_lamp_rotation">
+  <div id="lamp/arch_lamps@hexical:get_arch_lamp_rotation" class="">
 <h4 class="pattern-title">Arch. Refl.: Rotational (→ vector)<a
     href="#lamp/arch_lamps@hexical:get_arch_lamp_rotation"
     class="permalink small"
@@ -903,6 +1480,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -915,7 +1528,7 @@
       <p>Pushes the original rotation of the caster when the arch lamp started casting.</p>
   </div>
 <br />
-  <div id="lamp/arch_lamps@hexical:get_arch_lamp_velocity">
+  <div id="lamp/arch_lamps@hexical:get_arch_lamp_velocity" class="">
 <h4 class="pattern-title">Arch. Refl.: Kinetic (→ vector)<a
     href="#lamp/arch_lamps@hexical:get_arch_lamp_velocity"
     class="permalink small"
@@ -923,6 +1536,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -935,7 +1584,7 @@
       <p>Pushes the original velocity of the caster when the arch lamp started casting.</p>
   </div>
 <br />
-  <div id="lamp/arch_lamps@hexical:get_arch_lamp_use_time">
+  <div id="lamp/arch_lamps@hexical:get_arch_lamp_use_time" class="">
 <h4 class="pattern-title">Arch. Refl.: Temporal (→ number)<a
     href="#lamp/arch_lamps@hexical:get_arch_lamp_use_time"
     class="permalink small"
@@ -943,6 +1592,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -955,7 +1640,7 @@
       <p>Pushes how many times the lamp has casted. Divided by 20, it returns how many times in seconds the lamp has been in use.</p>
   </div>
 <br />
-  <div id="lamp/arch_lamps@hexical:get_arch_lamp_media">
+  <div id="lamp/arch_lamps@hexical:get_arch_lamp_media" class="">
 <h4 class="pattern-title">Arch. Refl.: Media (→ number)<a
     href="#lamp/arch_lamps@hexical:get_arch_lamp_media"
     class="permalink small"
@@ -963,6 +1648,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -975,7 +1696,7 @@
       <p>Pushes the remaining amount of media left in the lamp, in terms of dust.</p>
   </div>
 <br />
-  <div id="lamp/arch_lamps@hexical:lamp_finale">
+  <div id="lamp/arch_lamps@hexical:lamp_finale" class="">
 <h4 class="pattern-title">Finale Reflection (→ boolean)<a
     href="#lamp/arch_lamps@hexical:lamp_finale"
     class="permalink small"
@@ -983,6 +1704,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -1001,7 +1758,7 @@
     <img
       title="Focus"
       alt="Focus"
-      src="https://raw.githubusercontent.com/object-Object/HexMod/327ad0bfa8585800a0334d6a0fbd4c96460c414e/Common/src/main/resources/assets/hexcasting/textures/item/focus_empty.png"
+      src="https://raw.githubusercontent.com/object-Object/HexMod/f06c99242fa74e30d9904fa75109d90137e64378/Common/src/main/resources/assets/hexcasting/textures/item/focus_empty.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     >Arch Lamp Memory<a
@@ -1015,7 +1772,7 @@
   ><i class="bi bi-link-45deg"></i></a></h3>
     <p>An archgenie can remember an iota, persisting between casts. If I need to save an iota between casts of the lamp, I can stash it in its memory. The two patterns responsible for interacting with the memory can also be cast by a staff or casting device if an arch lamp is active.</p>
 <br />
-  <div id="lamp/arch_lamp_storage@hexical:set_arch_lamp_storage">
+  <div id="lamp/arch_lamp_storage@hexical:set_arch_lamp_storage" class="">
 <h4 class="pattern-title">Archgenie Gambit (any →)<a
     href="#lamp/arch_lamp_storage@hexical:set_arch_lamp_storage"
     class="permalink small"
@@ -1023,6 +1780,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -1035,7 +1828,7 @@
       <p>Sets the lamp&#39;s iota storage. Subject to Transgress Others mishap.</p>
   </div>
 <br />
-  <div id="lamp/arch_lamp_storage@hexical:get_arch_lamp_storage">
+  <div id="lamp/arch_lamp_storage@hexical:get_arch_lamp_storage" class="">
 <h4 class="pattern-title">Arch. Refl.: Memory (→ any)<a
     href="#lamp/arch_lamp_storage@hexical:get_arch_lamp_storage"
     class="permalink small"
@@ -1043,6 +1836,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -1075,46 +1904,6 @@
     title="Permalink"
   ><i class="bi bi-link-45deg"></i></a></h2>
     <p>A list of all the patterns I&#39;ve discovered, as well as what they do.</p>
-<div id="patterns/nephthys" class="entry">
-    <h3 class="entry-title page-header">
-    <img
-      title="Water Bucket"
-      alt="Water Bucket"
-      src="https://raw.githubusercontent.com/PrismarineJS/minecraft-assets/a14c64362abe4a12c2dfd87f8d1673af9d1b09f4/data/1.19.1/items/water_bucket.png"
-      loading="lazy"
-      class="item-texture  texture pixelated"
-    >Nephthys&#39; Gambit<a
-    href="#table-of-contents"
-    class="permalink small"
-    title="Jump to top"
-  ><i class="bi bi-box-arrow-up"></i></a><a
-    href="#patterns/nephthys"
-    class="permalink small"
-    title="Permalink"
-  ><i class="bi bi-link-45deg"></i></a></h3>
-  <div id="patterns/nephthys@hexical:nephthys">
-<h4 class="pattern-title">Nephthys Gambit (list of patterns, num → vary)<a
-    href="#patterns/nephthys@hexical:nephthys"
-    class="permalink small"
-    title="Permalink"
-  ><i class="bi bi-link-45deg"></i></a></h4>
-  <details class="details-collapsible">
-    <summary class="collapse-details collapse-spell"></summary>
-      <canvas
-        class="spell-viz"
-        width="216"
-        height="216"
-        data-string="deaqqdq"
-        data-start="south_east"
-        data-per-world="False"
-      >Your browser does not support visualizing patterns. Pattern code: deaqqdq</canvas>
-  </details>
-      <p>Pops a pattern list and a number from the stack and dives down n iota to casts the pattern list. Useful for surgery-like operations.</p>
-  </div>
-<br />
-    <p>It&#39;s extremely versatile and I can mend almost any error in my stack using Bookkeeper&#39;s Gambit, pushing iota after a dive, and transforming surfaced iota. It was named after a goddess of mourning and rivers, lending to how it buries/dives down into the stack.</p>
-<br />
-</div>
 <div id="patterns/telepathy" class="entry">
     <h3 class="entry-title page-header">
     <img
@@ -1134,7 +1923,7 @@
   ><i class="bi bi-link-45deg"></i></a></h3>
     <p>Media is the energy of thought and consequently, it can interact with thoughts as well. Unfortunately or perhaps fortunately for me, the minds of players are too resistant to be swayed by hexes and even the minds of villagers resist tampering. There is a notable exception though: my own mind is open to my own media, allowing me to read and write thoughts.</p>
 <br />
-  <div id="patterns/telepathy@hexical:get_telepathy">
+  <div id="patterns/telepathy@hexical:get_telepathy" class="">
 <h4 class="pattern-title">Telepathic Reflection (→ null/number)<a
     href="#patterns/telepathy@hexical:get_telepathy"
     class="permalink small"
@@ -1142,6 +1931,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -1154,7 +1979,7 @@
       <p>By focusing on a particular image, I can detect that concentration via this telepathy spell. This pattern pushes how long I have been holding down the G key, or null if I am not holding it.</p>
   </div>
 <br />
-  <div id="patterns/telepathy@hexical:send_telepathy">
+  <div id="patterns/telepathy@hexical:send_telepathy" class="">
 <h4 class="pattern-title">Send Thought (any →)<a
     href="#patterns/telepathy@hexical:send_telepathy"
     class="permalink small"
@@ -1162,6 +1987,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -1174,7 +2035,7 @@
       <p>Momentarily displays the iota above my hotbar above my hotbar. If cast repeatedly, each cast overwrites the previous message instantly.</p>
   </div>
 <br />
-  <div id="patterns/telepathy@hexical:shout_telepathy">
+  <div id="patterns/telepathy@hexical:shout_telepathy" class="">
 <h4 class="pattern-title">Shout Thought (any →)<a
     href="#patterns/telepathy@hexical:shout_telepathy"
     class="permalink small"
@@ -1182,6 +2043,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -1194,7 +2091,7 @@
       <p>Displays a iota across my screen. I find it can get annoying since it obstructs my vision, so I shall only use it sparingly.</p>
   </div>
 <br />
-  <div id="patterns/telepathy@hexical:pling">
+  <div id="patterns/telepathy@hexical:pling" class="">
 <h4 class="pattern-title">Hallucinate Pling<a
     href="#patterns/telepathy@hexical:pling"
     class="permalink small"
@@ -1202,6 +2099,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -1214,7 +2147,7 @@
       <p>Causes me to hear a pling sound that is inaudible to other players.</p>
   </div>
 <br />
-  <div id="patterns/telepathy@hexical:click">
+  <div id="patterns/telepathy@hexical:click" class="">
 <h4 class="pattern-title">Hallucinate Click<a
     href="#patterns/telepathy@hexical:click"
     class="permalink small"
@@ -1222,6 +2155,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -1254,7 +2223,7 @@
   ><i class="bi bi-link-45deg"></i></a></h3>
     <p>I have discovered some additional patterns to scry information about the world. These are highly specialized for specific tasks, like checking the weather and block hardness.</p>
 <br />
-  <div id="patterns/world_scrying@hexical:get_weather">
+  <div id="patterns/world_scrying@hexical:get_weather" class="">
 <h4 class="pattern-title">Meterologist&#39;s Refl. (→ number)<a
     href="#patterns/world_scrying@hexical:get_weather"
     class="permalink small"
@@ -1262,6 +2231,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -1274,7 +2279,7 @@
       <p>Pushes a number corresponding to the weather. 0 for clear, 1 for rain, and 2 for thundering.</p>
   </div>
 <br />
-  <div id="patterns/world_scrying@hexical:block_hardness">
+  <div id="patterns/world_scrying@hexical:block_hardness" class="">
 <h4 class="pattern-title">Miner&#39;s Purification (vector → number)<a
     href="#patterns/world_scrying@hexical:block_hardness"
     class="permalink small"
@@ -1282,6 +2287,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -1294,7 +2335,7 @@
       <p>Pushes how hard the block is to mine.</p>
   </div>
 <br />
-  <div id="patterns/world_scrying@hexical:block_blast_resistance">
+  <div id="patterns/world_scrying@hexical:block_blast_resistance" class="">
 <h4 class="pattern-title">Demoman&#39;s Purification (vector → number)<a
     href="#patterns/world_scrying@hexical:block_blast_resistance"
     class="permalink small"
@@ -1302,6 +2343,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -1314,7 +2391,7 @@
       <p>Pushes how resistant the block is to explosions.</p>
   </div>
 <br />
-  <div id="patterns/world_scrying@hexical:is_burning">
+  <div id="patterns/world_scrying@hexical:is_burning" class="">
 <h4 class="pattern-title">Inferno Purification (entity → boolean)<a
     href="#patterns/world_scrying@hexical:is_burning"
     class="permalink small"
@@ -1322,6 +2399,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -1334,7 +2447,7 @@
       <p>Pushes whether the entity is burning. Also applies to entities that are visually on fire, even if they are immune to fire like blazes attacking.</p>
   </div>
 <br />
-  <div id="patterns/world_scrying@hexical:burning_time">
+  <div id="patterns/world_scrying@hexical:burning_time" class="">
 <h4 class="pattern-title">Inferno Purification II (entity → number)<a
     href="#patterns/world_scrying@hexical:burning_time"
     class="permalink small"
@@ -1342,6 +2455,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -1354,7 +2503,7 @@
       <p>Pushes how long the entity will continue burning if not put out.</p>
   </div>
 <br />
-  <div id="patterns/world_scrying@hexical:is_wet">
+  <div id="patterns/world_scrying@hexical:is_wet" class="">
 <h4 class="pattern-title">Enderman&#39;s Purification (entity → boolean)<a
     href="#patterns/world_scrying@hexical:is_wet"
     class="permalink small"
@@ -1362,6 +2511,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -1374,7 +2559,7 @@
       <p>Pushes whether the entity is touching rain, water, or in a bubble column.</p>
   </div>
 <br />
-  <div id="patterns/world_scrying@hexical:is_sleeping">
+  <div id="patterns/world_scrying@hexical:is_sleeping" class="">
 <h4 class="pattern-title">Sloth&#39;s Purification (entity → boolean)<a
     href="#patterns/world_scrying@hexical:is_sleeping"
     class="permalink small"
@@ -1382,6 +2567,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -1394,7 +2615,7 @@
       <p>Pushes whether the entity is sleeping. Applies to players, cats, foxes, and a variety of other creatures.</p>
   </div>
 <br />
-  <div id="patterns/world_scrying@hexical:is_sprinting">
+  <div id="patterns/world_scrying@hexical:is_sprinting" class="">
 <h4 class="pattern-title">Racer&#39;s Purification (player entity → boolean)<a
     href="#patterns/world_scrying@hexical:is_sprinting"
     class="permalink small"
@@ -1402,6 +2623,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -1413,6 +2670,82 @@
   </details>
       <p>Pushes whether the entity is sprinting. Includes if I am swimming or if I have left the ground since sprinting, extends to cats, foxes, and more.</p>
   </div>
+<br />
+</div>
+<div id="patterns/nephthys" class="entry">
+    <h3 class="entry-title page-header">
+    <img
+      title="Water Bucket"
+      alt="Water Bucket"
+      src="https://raw.githubusercontent.com/PrismarineJS/minecraft-assets/a14c64362abe4a12c2dfd87f8d1673af9d1b09f4/data/1.19.1/items/water_bucket.png"
+      loading="lazy"
+      class="item-texture  texture pixelated"
+    >Nephthys&#39; Gambit<a
+    href="#table-of-contents"
+    class="permalink small"
+    title="Jump to top"
+  ><i class="bi bi-box-arrow-up"></i></a><a
+    href="#patterns/nephthys"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h3>
+  <div id="patterns/nephthys@hexical:nephthys" class="">
+<h4 class="pattern-title">Nephthys Gambit (list of patterns, num → vary)<a
+    href="#patterns/nephthys@hexical:nephthys"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="deaqqdq"
+        data-start="south_east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: deaqqdq</canvas>
+  </details>
+      <p>Pops a pattern list and a number from the stack and dives down n iota to cast the pattern list. Useful for surgery-like operations.</p>
+  </div>
+<br />
+    <p>It&#39;s extremely versatile and I can mend almost any error in my stack using Bookkeeper&#39;s Gambit, pushing iota after a dive, and transforming surfaced iota. It was named after a goddess of mourning and rivers, lending to how it buries/dives down into the stack.</p><p><i>... the unknowns of time travel... is akin to descending blindly into the depths of the freezing water and reappearing as an acorn.</i></p>
 <br />
 </div>
 </section>
@@ -1434,90 +2767,6 @@
     title="Permalink"
   ><i class="bi bi-link-45deg"></i></a></h2>
     <p>Patterns and actions that perform a magical effect on the world.</p>
-<div id="patterns/chorus_blink" class="entry">
-    <h3 class="entry-title page-header">
-    <img
-      title="Chorus Fruit"
-      alt="Chorus Fruit"
-      src="https://raw.githubusercontent.com/PrismarineJS/minecraft-assets/a14c64362abe4a12c2dfd87f8d1673af9d1b09f4/data/1.19.1/items/chorus_fruit.png"
-      loading="lazy"
-      class="item-texture  texture pixelated"
-    >Chorus Blink<a
-    href="#table-of-contents"
-    class="permalink small"
-    title="Jump to top"
-  ><i class="bi bi-box-arrow-up"></i></a><a
-    href="#patterns/chorus_blink"
-    class="permalink small"
-    title="Permalink"
-  ><i class="bi bi-link-45deg"></i></a></h3>
-  <div id="patterns/chorus_blink@hexical:chorus_blink">
-<h4 class="pattern-title">Chorus Blink (vec →)<a
-    href="#patterns/chorus_blink@hexical:chorus_blink"
-    class="permalink small"
-    title="Permalink"
-  ><i class="bi bi-link-45deg"></i></a></h4>
-  <details class="details-collapsible">
-    <summary class="collapse-details collapse-spell"></summary>
-      <canvas
-        class="spell-viz"
-        width="216"
-        height="216"
-        data-string="aawqqqq"
-        data-start="south_east"
-        data-per-world="False"
-      >Your browser does not support visualizing patterns. Pattern code: aawqqqq</canvas>
-  </details>
-      <p>Between Blink, Greater Teleport, ender pearls, and chorus fruit, this spell serves a harmonious midpoint for safe, precise, and cheap teleportation.</p>
-  </div>
-<br />
-    <p>It consumes a chorus fruit from my inventory and teleports me up to 16 blocks using an offset vector. The cost is constant whether I teleport the full 16 blocks or less, and has no penalty for multiple casts in one hex. With a lot of chorus fruit, it can be a significantly cheaper Greater Teleport.</p>
-<br />
-</div>
-<div id="patterns/conjure_staff" class="entry">
-    <h3 class="entry-title page-header">
-    <img
-      title="Conjured Staff"
-      alt="Conjured Staff"
-      src="https://raw.githubusercontent.com/miyucomics/hexical/b422c8b0e905c9a98276bd2c585c63ce2b4c2909/common/src/main/resources/assets/hexical/textures/item/conjured_staff.png"
-      loading="lazy"
-      class="item-texture  texture pixelated"
-    >Conjure Staff<a
-    href="#table-of-contents"
-    class="permalink small"
-    title="Jump to top"
-  ><i class="bi bi-box-arrow-up"></i></a><a
-    href="#patterns/conjure_staff"
-    class="permalink small"
-    title="Permalink"
-  ><i class="bi bi-link-45deg"></i></a></h3>
-  <div id="patterns/conjure_staff@hexical:conjure_staff">
-<h4 class="pattern-title">Conjure Staff (vec, num, num, [pattern] →)<a
-    href="#patterns/conjure_staff@hexical:conjure_staff"
-    class="permalink small"
-    title="Permalink"
-  ><i class="bi bi-link-45deg"></i></a></h4>
-  <details class="details-collapsible">
-    <summary class="collapse-details collapse-spell"></summary>
-      <canvas
-        class="spell-viz"
-        width="216"
-        height="216"
-        data-string="wwwwwaqqqqqeaqeaeaeaeaeq"
-        data-start="north_east"
-        data-per-world="False"
-      >Your browser does not support visualizing patterns. Pattern code: wwwwwaqqqqqeaqeaeaeaeaeq</canvas>
-  </details>
-      <p>Conjures a staff at the location with the amount of media, rank, and hex respectively.</p>
-  </div>
-<br />
-    <p>Conjured staves are not unlike <a href="https://hexcasting.hexxy.media/v/0.10.3/1.0.dev22/en_us#items/hexcasting"><span style="color: #b0b">cyphers</span></a>. They have a media battery for casting and when they run out, unable to consume my health or my inventory&#39;s stash for <span style="color: #74b3f2">media</span>. They are not rechargable or reprogrammable, and using <a href="https://hexcasting.hexxy.media/v/0.10.3/1.0.dev22/en_us#patterns/spells/hexcasting@hexcasting:erase"><span style="color: #fc77be">Erase Item</span></a> on it simply destroys it. However, its true power is <i>input interception</i>.</p>
-<br />
-    <p>When I use my primary or secondary use keys while holding a conjured staff, it intercepts my click. After a number of clicks corresponding to the rank I assigned at conjuration, it will cast the hex I gave it, starting the stack with false and true, corresponding to the left and right clicks respectively. If I pause for too long between clicks, it simply cancels the current &#34;cast&#34;.</p>
-<br />
-    <p>The spell is not too expensive, requiring only an amethyst shard, an amethyst dust for every rank, and the media for the battery. The result is a speedy and versatile casting device, with infinitely more possibilities and no cooldown compared to other casting devices.</p>
-<br />
-</div>
 <div id="patterns/mage_blocks" class="entry">
     <h3 class="entry-title page-header">
     <img
@@ -1537,7 +2786,7 @@
   ><i class="bi bi-link-45deg"></i></a></h3>
     <p>The blocks from Conjure Block last forever, are consequently a pain to clean up, and are not too versatile. Luckily, Nature offers an elegant and flexible alternative. These mage blocks come with a suite of <i>modifiers</i>. I could even stack multiple modifiers on one block.</p>
 <br />
-  <div id="patterns/mage_blocks@hexical:conjure_mage_block">
+  <div id="patterns/mage_blocks@hexical:conjure_mage_block" class="">
 <h4 class="pattern-title">Conjure Mage Block (vec →)<a
     href="#patterns/mage_blocks@hexical:conjure_mage_block"
     class="permalink small"
@@ -1545,6 +2794,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -1554,10 +2839,10 @@
         data-per-world="False"
       >Your browser does not support visualizing patterns. Pattern code: dee</canvas>
   </details>
-      <p>Conjures a mage block at the location. Costs three dust.</p>
+      <p>Conjures a mage block at the location. Costs three dust.</p><p><i>I can create a city out of nothing, or I can cover it in volcanic rock.</i></p>
   </div>
 <br />
-  <div id="patterns/mage_blocks@hexical:modify_block_bouncy">
+  <div id="patterns/mage_blocks@hexical:modify_block_bouncy" class="">
 <h4 class="pattern-title">Modify Block: Bouncy (vec →)<a
     href="#patterns/mage_blocks@hexical:modify_block_bouncy"
     class="permalink small"
@@ -1565,6 +2850,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -1577,7 +2898,7 @@
       <p>This modifier makes the block delightfully fun to bounce on! It returns more force to me than regular slime blocks and I notice even if I sneak, the block bounces me regardless.</p>
   </div>
 <br />
-  <div id="patterns/mage_blocks@hexical:modify_block_ephemeral">
+  <div id="patterns/mage_blocks@hexical:modify_block_ephemeral" class="">
 <h4 class="pattern-title">Modify Block: Ephemeral (vec, num →)<a
     href="#patterns/mage_blocks@hexical:modify_block_ephemeral"
     class="permalink small"
@@ -1585,6 +2906,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -1597,7 +2954,7 @@
       <p>This modifier takes in a number as well as a position and shatters the block after the number in twentieths of a second has passed. Subsequent casts can lengthen or shorten the duration.</p>
   </div>
 <br />
-  <div id="patterns/mage_blocks@hexical:modify_block_invisible">
+  <div id="patterns/mage_blocks@hexical:modify_block_invisible" class="">
 <h4 class="pattern-title">Modify Block: Invisible (vec →)<a
     href="#patterns/mage_blocks@hexical:modify_block_invisible"
     class="permalink small"
@@ -1605,6 +2962,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -1617,7 +3010,7 @@
       <p>This modifier prevents the block from emitting the telltale particles that accompany my casting, even when being stood on.</p>
   </div>
 <br />
-  <div id="patterns/mage_blocks@hexical:modify_block_replaceable">
+  <div id="patterns/mage_blocks@hexical:modify_block_replaceable" class="">
 <h4 class="pattern-title">Modify Block: Replaceable (vec →)<a
     href="#patterns/mage_blocks@hexical:modify_block_replaceable"
     class="permalink small"
@@ -1625,6 +3018,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -1637,7 +3066,7 @@
       <p>This modifier is useful for construction! With this modifier applied, I find I can easily place another block in the place of the mage block.</p>
   </div>
 <br />
-  <div id="patterns/mage_blocks@hexical:modify_block_volatile">
+  <div id="patterns/mage_blocks@hexical:modify_block_volatile" class="">
 <h4 class="pattern-title">Modify Block: Volatile (vec →)<a
     href="#patterns/mage_blocks@hexical:modify_block_volatile"
     class="permalink small"
@@ -1645,6 +3074,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -1656,6 +3121,162 @@
   </details>
       <p>This modifier makes the block break other conjured blocks it&#39;s touching. Notably, if it breaks another volatile block, that block breaks and so on until every volatile block shatters.</p>
   </div>
+<br />
+</div>
+<div id="patterns/chorus_blink" class="entry">
+    <h3 class="entry-title page-header">
+    <img
+      title="Chorus Fruit"
+      alt="Chorus Fruit"
+      src="https://raw.githubusercontent.com/PrismarineJS/minecraft-assets/a14c64362abe4a12c2dfd87f8d1673af9d1b09f4/data/1.19.1/items/chorus_fruit.png"
+      loading="lazy"
+      class="item-texture  texture pixelated"
+    >Chorus Blink<a
+    href="#table-of-contents"
+    class="permalink small"
+    title="Jump to top"
+  ><i class="bi bi-box-arrow-up"></i></a><a
+    href="#patterns/chorus_blink"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h3>
+  <div id="patterns/chorus_blink@hexical:chorus_blink" class="">
+<h4 class="pattern-title">Chorus Blink (vec →)<a
+    href="#patterns/chorus_blink@hexical:chorus_blink"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="aawqqqq"
+        data-start="south_east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: aawqqqq</canvas>
+  </details>
+      <p>Between Blink, Greater Teleport, ender pearls, and chorus fruit, this spell serves a harmonious midpoint for safe, precise, and cheap teleportation.</p>
+  </div>
+<br />
+    <p>It consumes a chorus fruit from my inventory and teleports me up to 16 blocks using an offset vector. The cost is a single dust whether I teleport the full 16 blocks or less, and has no penalty for multiple casts in one hex. Ambit works strangely with repeated casts of this spell because each <i>blink</i> shifts my ambit to my new position.</p><p><i>I could be there in a heartbeat.</i></p>
+<br />
+</div>
+<div id="patterns/conjure_staff" class="entry">
+    <h3 class="entry-title page-header">
+    <img
+      title="Conjured Staff"
+      alt="Conjured Staff"
+      src="https://raw.githubusercontent.com/miyucomics/hexical/66b82410b86e7d067254c960f86386b312472cb3/common/src/main/resources/assets/hexical/textures/item/conjured_staff.png"
+      loading="lazy"
+      class="item-texture  texture pixelated"
+    >Conjure Staff<a
+    href="#table-of-contents"
+    class="permalink small"
+    title="Jump to top"
+  ><i class="bi bi-box-arrow-up"></i></a><a
+    href="#patterns/conjure_staff"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h3>
+    <p>Conjured staves are not unlike <a href="https://hexcasting.hexxy.media/v/0.10.3/1.0.dev24/en_us#items/hexcasting"><span style="color: #b0b">cyphers</span></a>. They have a media battery for casting and when they run out, unable to consume my health or my inventory&#39;s stash for <span style="color: #74b3f2">media</span>. They are not rechargable or reprogrammable, and using <a href="https://hexcasting.hexxy.media/v/0.10.3/1.0.dev24/en_us#patterns/spells/hexcasting@hexcasting:erase"><span style="color: #fc77be">Erase Item</span></a> on it simply destroys it. However, its true power is <i>input interception</i>.</p>
+<br />
+  <div id="patterns/conjure_staff@hexical:conjure_staff" class="">
+<h4 class="pattern-title">Conjure Staff (vec, num, num, [pattern] →)<a
+    href="#patterns/conjure_staff@hexical:conjure_staff"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="wwwwwaqqqqqeaqeaeaeaeaeq"
+        data-start="north_east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: wwwwwaqqqqqeaqeaeaeaeaeq</canvas>
+  </details>
+      <p>Conjures a staff at the location with the amount of media, rank, and hex respectively.</p><p><i>This is my <strong>staff</strong></i><i>. There are many like it, but this one is mine.</i></p>
+  </div>
+<br />
+    <p>When I use my primary or secondary use keys while holding a conjured staff, it intercepts my click. After a number of clicks corresponding to the rank I assigned at conjuration, it will cast the hex I gave it, starting the stack with false and true, corresponding to the left and right clicks respectively. If I pause for too long between clicks, it simply cancels the current &#34;cast&#34;.</p>
+<br />
+    <p>The spell is not too expensive, requiring only an amethyst shard, an amethyst dust for every rank, and the media for the battery. The result is a speedy and versatile casting device, with infinitely more possibilities and no cooldown compared to other casting devices.</p>
 <br />
 </div>
 <div id="patterns/specks" class="entry">
@@ -1677,7 +3298,7 @@
   ><i class="bi bi-link-45deg"></i></a></h3>
     <p>I can conjure an image of an iota into the world, called a speck. Nature allows me to customize them quite extensively, altering their size, thickness of stroke, and more. They also take on my pigment color. Once they are in the world, I can move, rotate, and otherwise alter them for free.</p>
 <br />
-  <div id="patterns/specks@hexical:conjure_speck">
+  <div id="patterns/specks@hexical:conjure_speck" class="">
 <h4 class="pattern-title">Conjure Speck (any, vector →)<a
     href="#patterns/specks@hexical:conjure_speck"
     class="permalink small"
@@ -1685,6 +3306,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -1694,10 +3351,10 @@
         data-per-world="False"
       >Your browser does not support visualizing patterns. Pattern code: ade</canvas>
   </details>
-      <p>Conjures a speck with the iota, position, and rotation. Costs one-hundredth of a dust.</p>
+      <p>Conjures a speck with the iota, position, and rotation. Costs one-hundredth of a dust.</p><p><i>Because you saw things from every angle, you understood them for what they really were.</i></p>
   </div>
 <br />
-  <div id="patterns/specks@hexical:move_speck">
+  <div id="patterns/specks@hexical:move_speck" class="">
 <h4 class="pattern-title">Move Speck (speck entity, vector →)<a
     href="#patterns/specks@hexical:move_speck"
     class="permalink small"
@@ -1705,6 +3362,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -1717,7 +3410,7 @@
       <p>Moves a speck entity to the position.</p>
   </div>
 <br />
-  <div id="patterns/specks@hexical:rotate_speck">
+  <div id="patterns/specks@hexical:rotate_speck" class="">
 <h4 class="pattern-title">Rotate Speck (speck entity, vector →)<a
     href="#patterns/specks@hexical:rotate_speck"
     class="permalink small"
@@ -1725,6 +3418,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -1737,7 +3466,7 @@
       <p>Rotates a speck entity to face the vector.</p>
   </div>
 <br />
-  <div id="patterns/specks@hexical:iota_speck">
+  <div id="patterns/specks@hexical:iota_speck" class="">
 <h4 class="pattern-title">Iota Speck (speck entity, any →)<a
     href="#patterns/specks@hexical:iota_speck"
     class="permalink small"
@@ -1745,6 +3474,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -1757,7 +3522,7 @@
       <p>Changes the speck&#39;s iota.</p>
   </div>
 <br />
-  <div id="patterns/specks@hexical:lifetime_speck">
+  <div id="patterns/specks@hexical:lifetime_speck" class="">
 <h4 class="pattern-title">Lifetime Speck (speck entity, number →)<a
     href="#patterns/specks@hexical:lifetime_speck"
     class="permalink small"
@@ -1765,6 +3530,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -1777,7 +3578,7 @@
       <p>Changes the speck to disappear after that many twentieths of a second.</p>
   </div>
 <br />
-  <div id="patterns/specks@hexical:size_speck">
+  <div id="patterns/specks@hexical:size_speck" class="">
 <h4 class="pattern-title">Size Speck (speck entity, number →)<a
     href="#patterns/specks@hexical:size_speck"
     class="permalink small"
@@ -1785,6 +3586,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -1797,7 +3634,7 @@
       <p>Changes the size of the speck, must be less than 10.</p>
   </div>
 <br />
-  <div id="patterns/specks@hexical:thickness_speck">
+  <div id="patterns/specks@hexical:thickness_speck" class="">
 <h4 class="pattern-title">Thickness Speck (speck entity, number →)<a
     href="#patterns/specks@hexical:thickness_speck"
     class="permalink small"
@@ -1805,6 +3642,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -1817,7 +3690,7 @@
       <p>Changes the thickness of the speck, must be less than 5. Applies only when iota is a pattern.</p>
   </div>
 <br />
-  <div id="patterns/specks@hexical:kill_speck">
+  <div id="patterns/specks@hexical:kill_speck" class="">
 <h4 class="pattern-title">Dismiss Speck (speck entity →)<a
     href="#patterns/specks@hexical:kill_speck"
     class="permalink small"
@@ -1825,6 +3698,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -1837,7 +3746,7 @@
       <p>Forces a speck entity to disappear.</p>
   </div>
 <br />
-  <div id="patterns/specks@hexical:zone_speck">
+  <div id="patterns/specks@hexical:zone_speck" class="">
 <h4 class="pattern-title">Zone Dstl.: Speck (vector, number →)<a
     href="#patterns/specks@hexical:zone_speck"
     class="permalink small"
@@ -1845,6 +3754,42 @@
   ><i class="bi bi-link-45deg"></i></a></h4>
   <details class="details-collapsible">
     <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
       <canvas
         class="spell-viz"
         width="216"
@@ -1854,7 +3799,7 @@
         data-per-world="False"
       >Your browser does not support visualizing patterns. Pattern code: qqqqqwdeddwqde</canvas>
   </details>
-      <p>Returns specks similarly to other <a href="https://hexcasting.hexxy.media/v/0.10.3/1.0.dev22/en_us#patterns/entities">zone distillation</a> patterns.</p>
+      <p>Returns specks similarly to other <a href="https://hexcasting.hexxy.media/v/0.10.3/1.0.dev24/en_us#patterns/entities">zone distillation</a> patterns.</p>
   </div>
 <br />
 </div>

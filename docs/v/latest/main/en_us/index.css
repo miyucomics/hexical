@@ -423,6 +423,22 @@ canvas.spell-viz {
     --dark-mode: 1;
   }
 }
+/* For hexcasting_render */
+img.spell-viz {
+  object-fit: contain;
+}
+.render-option {
+  cursor: pointer;
+}
+.palette-option {
+  cursor: pointer;
+}
+.spell-settings-dropdown {
+  position: absolute;
+}
+.spell-settings-toggle {
+  font-size: large;
+}
 * {
     color: #cdd6f4;
     border-color: #cdd6f4 !important;
