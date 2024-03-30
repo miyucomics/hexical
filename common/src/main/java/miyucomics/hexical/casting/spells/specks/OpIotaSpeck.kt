@@ -19,11 +19,6 @@ class OpIotaSpeck : SpellAction {
 	}
 
 	private data class Spell(val speck: SpeckEntity, val iota: Iota) : RenderedSpell {
-		override fun cast(ctx: CastingContext) {
-			if (iota.type == PatternIota.TYPE)
-				speck.setPattern((iota as PatternIota).pattern)
-			else
-				speck.setLabel(iota.display().string)
-		}
+		override fun cast(ctx: CastingContext) = speck.setIota(iota)
 	}
 }
