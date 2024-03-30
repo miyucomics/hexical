@@ -2,6 +2,7 @@
 	"name": "hexical.page.arch_lamps.title",
 	"icon": "hexical:arch_lamp",
 	"category": "hexical:lamp",
+    "advancement": "hexical:arch_lamp",
     "sortnum": 3,
 	"pages": [
 		{

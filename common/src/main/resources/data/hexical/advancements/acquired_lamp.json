@@ -3,9 +3,11 @@
   "criteria": {
     "lamp": {
       "conditions": {
-        "item": {
-          "items": ["hexical:lamp"]
-        }
+        "items": [
+          {
+            "items": ["hexical:lamp"]
+          }
+        ]
       },
       "trigger": "minecraft:inventory_changed"
     }
@@ -19,12 +21,11 @@
       "translate": "advancements.hexical.lamp.description"
     },
     "frame": "task",
-    "hidden": false,
+    "hidden": true,
     "icon": {
       "item": "hexical:lamp"
     },
     "show_toast": true
   },
-  "requirements": [["lamp"]],
-  "sends_telemetry_event": false
+  "requirements": [["lamp"]]
 }

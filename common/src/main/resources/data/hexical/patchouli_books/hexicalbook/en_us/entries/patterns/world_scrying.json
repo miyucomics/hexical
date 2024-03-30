@@ -3,6 +3,7 @@
 	"icon": "minecraft:spyglass",
 	"category": "hexcasting:patterns",
     "advancement": "hexcasting:root",
+    "sortnum": 6,
 	"pages": [
 		{
 			"type": "patchouli:text",

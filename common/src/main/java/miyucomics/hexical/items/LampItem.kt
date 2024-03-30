@@ -6,6 +6,7 @@ import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.utils.serializeToNBT
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
 import miyucomics.hexical.interfaces.CastingContextMixinInterface
+import miyucomics.hexical.registry.HexicalAdvancements
 import miyucomics.hexical.registry.HexicalItems
 import miyucomics.hexical.registry.HexicalSounds
 import net.minecraft.entity.LivingEntity
@@ -39,8 +40,10 @@ class LampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.HEXIC
 		if (world.isClient) return
 		if (getMedia(stack) == 0) return
 		lampCast(world as ServerWorld, user as ServerPlayerEntity, getHex(stack, world) ?: return, false, false)
-		if (getMedia(stack) == 0)
+		if (getMedia(stack) == 0) {
 			user.setStackInHand(user.activeHand, ItemStack(HexicalItems.LAMP_ITEM))
+			HexicalAdvancements.USE_UP_LAMP.trigger(user)
+		}
 	}
 
 	override fun onStoppedUsing(stack: ItemStack, world: World, user: LivingEntity, remainingUseTicks: Int) {

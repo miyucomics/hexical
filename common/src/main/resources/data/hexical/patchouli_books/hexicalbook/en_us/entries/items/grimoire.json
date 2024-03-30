@@ -3,6 +3,7 @@
 	"icon": "hexical:grimoire",
     "advancement": "hexcasting:root",
 	"category": "hexcasting:items",
+    "sortnum": 3,
 	"pages": [
 		{
 			"type": "patchouli:crafting",
