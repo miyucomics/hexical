@@ -1,0 +1,33 @@
+{
+	"name": "hexical.page.identifiers.title",
+	"icon": "hexcasting:lens",
+	"category": "hexcasting:patterns",
+    "advancement": "hexcasting:root",
+    "sortnum": 6,
+	"pages": [
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.identifiers.0"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:identify",
+			"anchor": "hexical:identify",
+			"input": "block/entity",
+			"output": "identifier",
+			"text": "hexical.page.identifiers.1"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.identifiers.2"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:recognize",
+			"anchor": "hexical:recognize",
+			"input": "entity",
+			"output": "identifier",
+			"text": "hexical.page.identifiers.3"
+		}
+	]
+}

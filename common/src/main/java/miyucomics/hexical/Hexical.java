@@ -21,7 +21,6 @@ public class Hexical {
 		HexicalIota.init();
 		HexicalItems.init();
 		HexicalPatterns.init();
-		HexicalKeybinds.init();
 		HexicalNetworking.init();
 	}
 
