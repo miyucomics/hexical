@@ -1,16 +1,19 @@
 package miyucomics.hexical.items
 
+import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.casting.CastingHarness
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.utils.serializeToNBT
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
+import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.interfaces.CastingContextMixinInterface
 import miyucomics.hexical.registry.HexicalAdvancements
 import miyucomics.hexical.registry.HexicalItems
 import miyucomics.hexical.registry.HexicalSounds
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.player.PlayerEntity
+import net.minecraft.item.ItemGroup
 import net.minecraft.item.ItemStack
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld
@@ -18,9 +21,19 @@ import net.minecraft.sound.SoundCategory
 import net.minecraft.util.Hand
 import net.minecraft.util.TypedActionResult
 import net.minecraft.util.UseAction
+import net.minecraft.util.collection.DefaultedList
 import net.minecraft.world.World
 
 class LampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.HEXICAL_GROUP)) {
+	override fun appendStacks(group: ItemGroup?, stacks: DefaultedList<ItemStack>?) {
+		if (this.isIn(group)) {
+			val lampStack = ItemStack(HexicalItems.LAMP_ITEM)
+			val lampHexHolder = IXplatAbstractions.INSTANCE.findHexHolder(lampStack)
+			lampHexHolder!!.writeHex(listOf(), MediaConstants.DUST_UNIT * 64000)
+			stacks!!.add(lampStack)
+		}
+	}
+
 	override fun use(world: World, user: PlayerEntity, usedHand: Hand): TypedActionResult<ItemStack> {
 		val stack = user.getStackInHand(usedHand)
 		if (!hasHex(stack)) return TypedActionResult.fail(stack)

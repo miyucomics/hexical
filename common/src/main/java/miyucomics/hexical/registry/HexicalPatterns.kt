@@ -10,6 +10,7 @@ import miyucomics.hexical.casting.operators.*
 import miyucomics.hexical.casting.operators.eval.OpNephthys
 import miyucomics.hexical.casting.operators.getters.*
 import miyucomics.hexical.casting.operators.grimoire.*
+import miyucomics.hexical.casting.operators.identifier.OpIdentify
 import miyucomics.hexical.casting.operators.lamp.*
 import miyucomics.hexical.casting.spells.*
 import miyucomics.hexical.casting.spells.lamp.*

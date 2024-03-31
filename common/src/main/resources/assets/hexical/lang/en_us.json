@@ -22,6 +22,7 @@
 	"subtitles.hexical.lamp_activate": "Lamp activates",
 	"subtitles.hexical.lamp_deactivate": "Lamp deactivates",
 
+	"hexcasting.mishap.bad_item.grimoire": "a grimoire",
 	"hexcasting.mishap.bad_block.mage_block": "a mage block",
 	"hexcasting.mishap.bad_item.lamp": "an empty lamp",
 	"hexcasting.mishap.bad_item.lamp_full": "a lamp with media",
