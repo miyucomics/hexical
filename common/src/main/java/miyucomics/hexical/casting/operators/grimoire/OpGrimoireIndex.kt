@@ -12,7 +12,7 @@ class OpGrimoireIndex : ConstMediaAction {
 	override val argc = 0
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
 		val (stack, hand) = ctx.getHeldItemToOperateOn { it.item is GrimoireItem }
-		if (stack.item !is LampItem)
+		if (stack.item !is GrimoireItem)
 			throw MishapBadOffhandItem.of(stack, hand, "grimoire")
 		return listOf(ListIota(GrimoireItem.getPatternsInGrimoire(stack)))
 	}

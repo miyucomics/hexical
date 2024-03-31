@@ -28,10 +28,15 @@
 	"hexcasting.mishap.bad_item.lamp_full": "a lamp with media",
 	"hexcasting.mishap.bad_item.lamp_flay": "a villager of Journeyman status or greater",
 	"hexcasting.mishap.bad_item.speck": "a speck",
+	"hexcasting.mishap.invalid_value.identifiable": "an identifiable target",
+	"hexcasting.mishap.invalid_value.recognizable": "a target with extra information",
 	"hexcasting.mishap.hexical:needs_lamp": "Expected to be cast by Genieless Lamp.",
 	"hexcasting.mishap.hexical:needs_arch_lamp": "Expected to have an active Arch Genieless Lamp.",
 	"hexcasting.mishap.hexical:grimoire_access_denied": "Tried to increase the uses of a restricted binding.",
 	"hexcasting.mishap.hexical:grimoire_too_full": "Tried to fit too many bindings in a grimoire.",
+
+	"hexcasting.spell.hexical:identify": "Detective's Purification",
+	"hexcasting.spell.hexical:recognize": "Recognizer's Purification",
 
 	"hexcasting.spell.hexical:get_telepathy": "Telepathic Reflection",
 	"hexcasting.spell.hexical:send_telepathy": "Send Thought",
