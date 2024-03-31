@@ -16,7 +16,7 @@ class OpGrimoireRestrict : SpellAction {
 		val pattern = args.getPattern(0, argc)
 		val uses = args.getPositiveInt(1, argc)
 		val (stack, hand) = ctx.getHeldItemToOperateOn { it.item is GrimoireItem }
-		if (stack.item !is LampItem)
+		if (stack.item !is GrimoireItem)
 			throw MishapBadOffhandItem.of(stack, hand, "grimoire")
 		val currentUses = GrimoireItem.getUses(stack, pattern) ?: return Triple(Spell(pattern, stack, uses), 0, listOf())
 		if (uses > currentUses)

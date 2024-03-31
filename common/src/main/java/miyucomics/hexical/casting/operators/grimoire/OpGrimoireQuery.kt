@@ -14,7 +14,7 @@ class OpGrimoireQuery : ConstMediaAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
 		val (stack, hand) = ctx.getHeldItemToOperateOn { it.item is GrimoireItem }
-		if (stack.item !is LampItem)
+		if (stack.item !is GrimoireItem)
 			throw MishapBadOffhandItem.of(stack, hand, "grimoire")
 		val uses = GrimoireItem.getUses(stack, args.getPattern(0, argc)) ?: return listOf(NullIota())
 		return listOf(DoubleIota(uses.toDouble()))

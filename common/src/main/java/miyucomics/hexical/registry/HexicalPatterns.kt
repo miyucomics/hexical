@@ -11,6 +11,7 @@ import miyucomics.hexical.casting.operators.eval.OpNephthys
 import miyucomics.hexical.casting.operators.getters.*
 import miyucomics.hexical.casting.operators.grimoire.*
 import miyucomics.hexical.casting.operators.identifier.OpIdentify
+import miyucomics.hexical.casting.operators.identifier.OpRecognize
 import miyucomics.hexical.casting.operators.lamp.*
 import miyucomics.hexical.casting.spells.*
 import miyucomics.hexical.casting.spells.lamp.*
@@ -31,6 +32,7 @@ object HexicalPatterns {
 		register(HexPattern.fromAngles("deaqqdq", HexDir.SOUTH_EAST), "nephthys", OpNephthys)
 
 		register(HexPattern.fromAngles("qqqqqe", HexDir.NORTH_EAST), "identify", OpIdentify())
+		register(HexPattern.fromAngles("eeeeeq", HexDir.WEST), "recognize", OpRecognize())
 
 		register(HexPattern.fromAngles("dee", HexDir.NORTH_WEST), "conjure_mage_block", OpConjureMageBlock())
 		register(HexPattern.fromAngles("deeqa", HexDir.NORTH_WEST), "modify_block_bouncy", OpModifyMageBlock("bouncy"))

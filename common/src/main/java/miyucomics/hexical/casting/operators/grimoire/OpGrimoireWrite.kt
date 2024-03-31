@@ -20,7 +20,7 @@ class OpGrimoireWrite : SpellAction {
 		if (trueName != null)
 			throw MishapOthersName(trueName)
 		val (stack, hand) = ctx.getHeldItemToOperateOn { it.item is GrimoireItem }
-		if (stack.item !is LampItem)
+		if (stack.item !is GrimoireItem)
 			throw MishapBadOffhandItem.of(stack, hand, "grimoire")
 		if (GrimoireItem.getPatternsInGrimoire(stack).size >= 16)
 			throw GrimoireTooFullMishap()
