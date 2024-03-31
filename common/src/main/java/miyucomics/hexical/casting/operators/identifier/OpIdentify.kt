@@ -1,4 +1,4 @@
-package miyucomics.hexical.casting.operators
+package miyucomics.hexical.casting.operators.identifier
 
 import at.petrak.hexcasting.api.spell.ConstMediaAction
 import at.petrak.hexcasting.api.spell.casting.CastingContext
@@ -23,7 +23,7 @@ class OpIdentify : ConstMediaAction {
 					listOf(NullIota())
 				listOf(IdentifierIota(Registry.BLOCK.getId(ctx.world.getBlockState(BlockPos(arg.vec3)).block)))
 			}
-			else -> throw MishapInvalidIota.of(arg, 0, "can_not_be_identified")
+			else -> throw MishapInvalidIota.of(arg, 0, "not_identifiable")
 		}
 	}
 }
