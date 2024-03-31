@@ -18,6 +18,7 @@ public class Hexical {
 		HexicalBlocks.init();
 		HexicalEntities.init();
 		HexicalEvents.init();
+		HexicalIota.init();
 		HexicalItems.init();
 		HexicalPatterns.init();
 		HexicalKeybinds.init();

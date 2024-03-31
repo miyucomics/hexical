@@ -15,6 +15,7 @@ import net.minecraft.util.math.*
 import kotlin.math.*
 
 class SpeckEntityRenderer(ctx: EntityRendererFactory.Context?) : EntityRenderer<SpeckEntity?>(ctx) {
+	override fun getTexture(entity: SpeckEntity?): Identifier? = null
 	override fun shouldRender(entity: SpeckEntity?, frustum: Frustum?, x: Double, y: Double, z: Double) = true
 	override fun render(entity: SpeckEntity?, yaw: Float, tickDelta: Float, matrices: MatrixStack?, vertexConsumers: VertexConsumerProvider?, light: Int) {
 		val oldShader = RenderSystem.getShader()
@@ -30,17 +31,16 @@ class SpeckEntityRenderer(ctx: EntityRendererFactory.Context?) : EntityRenderer<
 		matrices.scale(entity.getSize(), entity.getSize(), entity.getSize())
 
 		RenderSystem.disableCull()
-		if (entity.getLabel() == "") {
+		if (entity.getIsPattern()) {
 			val pattern = entity.getPattern()
 			val lines = pattern.toLines(0.25f, pattern.getCenter(0.25f).negate()).toMutableList()
 			for (i in lines.indices)
 				lines[i] = Vec2f(lines[i].x, -lines[i].y)
-//			val zappy = makeZappy(lines, findDupIndices(pattern.positions()), 10, 1.5f, 0.1f, 0.2f, 0f, 1f, hashCode().toDouble())
 			drawPattern(matrices.peek().positionMatrix, lines, entity.getThickness() * 0.05f, entity.getPigment())
 		} else {
 			matrices.scale(0.1f / 3f, -0.1f / 3f, -0.1f / 3f)
-			val q = (-textRenderer.getWidth(entity.getLabel()) / 2).toFloat()
-			textRenderer.draw(matrices, entity.getLabel(), q, -textRenderer.fontHeight.toFloat() / 2f, entity.getPigment().getColor(0f, entity.pos))
+			val q = (-textRenderer.getWidth(entity.getText()) / 2).toFloat()
+			textRenderer.draw(matrices, entity.getText(), q, -textRenderer.fontHeight.toFloat() / 2f, entity.getPigment().getColor(0f, entity.pos))
 		}
 		RenderSystem.enableCull()
 
@@ -160,6 +160,4 @@ class SpeckEntityRenderer(ctx: EntityRendererFactory.Context?) : EntityRenderer<
 		drawCaps(points[0], points[1])
 		drawCaps(points[n - 1], points[n - 2])
 	}
-
-	override fun getTexture(entity: SpeckEntity?): Identifier? = null
 }
