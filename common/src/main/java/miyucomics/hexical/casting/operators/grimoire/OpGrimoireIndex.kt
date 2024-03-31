@@ -4,12 +4,16 @@ import at.petrak.hexcasting.api.spell.ConstMediaAction
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.ListIota
+import at.petrak.hexcasting.api.spell.mishaps.MishapBadOffhandItem
 import miyucomics.hexical.items.GrimoireItem
+import miyucomics.hexical.items.LampItem
 
 class OpGrimoireIndex : ConstMediaAction {
 	override val argc = 0
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
-		val (stack, _) = ctx.getHeldItemToOperateOn { it.item is GrimoireItem }
+		val (stack, hand) = ctx.getHeldItemToOperateOn { it.item is GrimoireItem }
+		if (stack.item !is LampItem)
+			throw MishapBadOffhandItem.of(stack, hand, "grimoire")
 		return listOf(ListIota(GrimoireItem.getPatternsInGrimoire(stack)))
 	}
 }

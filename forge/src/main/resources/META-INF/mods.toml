@@ -9,7 +9,7 @@ displayName = "Hexical"
 logoFile = "icon.png"
 authors = "miyucomics"
 description = '''
-A kitchen sink addon for Hexcasting
+A Hexcasting addon with various fun and/or convenient features!
 '''
 
 [[dependencies.hexical]]

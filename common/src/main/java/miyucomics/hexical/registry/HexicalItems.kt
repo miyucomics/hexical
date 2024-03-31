@@ -14,7 +14,7 @@ import net.minecraft.util.registry.Registry
 
 object HexicalItems {
 	private val ITEMS: DeferredRegister<Item> = DeferredRegister.create(Hexical.MOD_ID, Registry.ITEM_KEY)
-	val HEXICAL_GROUP: ItemGroup = CreativeTabRegistry.create(Hexical.id("general")) { LAMP_ITEM.getDefaultStack() }
+	val HEXICAL_GROUP: ItemGroup = CreativeTabRegistry.create(Hexical.id("general")) { LAMP_ITEM.defaultStack }
 	val LAMP_ITEM: LampItem = LampItem()
 	val ARCH_LAMP_ITEM: ArchLampItem = ArchLampItem()
 	val GRIMOIRE_ITEM: GrimoireItem = GrimoireItem()

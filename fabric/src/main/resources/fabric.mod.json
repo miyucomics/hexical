@@ -3,7 +3,7 @@
 	"id": "hexical",
 	"version": "${version}",
 	"name": "Hexical",
-	"description": "A kitchen sink addon for Hexcasting",
+	"description": "A Hexcasting addon with various fun and/or convenient features!",
 	"authors": [
 		"miyucomics"
 	],
