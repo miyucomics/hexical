@@ -9,21 +9,24 @@ import at.petrak.hexcasting.api.spell.iota.NullIota
 import at.petrak.hexcasting.api.spell.iota.Vec3Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
 import miyucomics.hexical.iota.IdentifierIota
+import net.minecraft.entity.ItemEntity
+import net.minecraft.entity.decoration.ItemFrameEntity
 import net.minecraft.util.Identifier
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.registry.Registry
 
-class OpIdentify : ConstMediaAction {
+class OpRecognize : ConstMediaAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
 		return when (val arg = args[0]) {
-			is EntityIota -> listOf(IdentifierIota(Registry.ENTITY_TYPE.getId(args.getEntity(0, argc).type)))
-			is Vec3Iota -> {
-				if (!ctx.isVecInRange(arg.vec3))
-					listOf(NullIota())
-				listOf(IdentifierIota(Registry.BLOCK.getId(ctx.world.getBlockState(BlockPos(arg.vec3)).block)))
+			is EntityIota -> {
+				when (arg.entity) {
+					is ItemEntity -> listOf(IdentifierIota(Registry.ITEM.getId((arg.entity as ItemEntity).stack.item)))
+					is ItemFrameEntity -> listOf(IdentifierIota(Registry.ITEM.getId((arg.entity as ItemFrameEntity).heldItemStack.item)))
+					else -> throw MishapInvalidIota.of(arg, 0, "recognizable")
+				}
 			}
-			else -> throw MishapInvalidIota.of(arg, 0, "identifiable")
+			else -> throw MishapInvalidIota.of(arg, 0, "recognizable")
 		}
 	}
 }
