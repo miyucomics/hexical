@@ -1,8 +1,10 @@
 package miyucomics.hexical.items
 
+import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.iota.NullIota
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
+import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.interfaces.PlayerEntityMixinInterface
 import miyucomics.hexical.registry.HexicalAdvancements
 import miyucomics.hexical.state.PersistentStateHandler
@@ -10,15 +12,26 @@ import miyucomics.hexical.registry.HexicalItems
 import miyucomics.hexical.registry.HexicalSounds
 import net.minecraft.entity.Entity
 import net.minecraft.entity.player.PlayerEntity
+import net.minecraft.item.ItemGroup
 import net.minecraft.item.ItemStack
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.sound.SoundCategory
 import net.minecraft.util.Hand
 import net.minecraft.util.TypedActionResult
+import net.minecraft.util.collection.DefaultedList
 import net.minecraft.world.World
 
 class ArchLampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.HEXICAL_GROUP)) {
+	override fun appendStacks(group: ItemGroup?, stacks: DefaultedList<ItemStack>?) {
+		if (this.isIn(group)) {
+			val archLampStack = ItemStack(HexicalItems.ARCH_LAMP_ITEM)
+			val archLampHexHolder = IXplatAbstractions.INSTANCE.findHexHolder(archLampStack)
+			archLampHexHolder!!.writeHex(listOf(), MediaConstants.DUST_UNIT * 64000)
+			stacks!!.add(archLampStack)
+		}
+	}
+
 	override fun use(world: World, user: PlayerEntity, usedHand: Hand): TypedActionResult<ItemStack> {
 		val stack = user.getStackInHand(usedHand)
 		if (!hasHex(stack)) return TypedActionResult.fail(stack)
