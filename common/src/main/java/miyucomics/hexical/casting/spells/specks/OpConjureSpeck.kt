@@ -27,10 +27,7 @@ class OpConjureSpeck : SpellAction {
 			val speck = SpeckEntity(HexicalEntities.SPECK_ENTITY, ctx.world)
 			speck.setPosition(position)
 			speck.lookAt(EntityAnchorArgumentType.EntityAnchor.FEET, speck.pos.add(rotation))
-			if (iota.type == PatternIota.TYPE)
-				speck.setPattern((iota as PatternIota).pattern)
-			else
-				speck.setLabel(iota.display().string)
+			speck.setIota(iota)
 			speck.setPigment(IXplatAbstractions.INSTANCE.getColorizer(ctx.caster))
 			speck.setSize(1f)
 			speck.setThickness(1f)
