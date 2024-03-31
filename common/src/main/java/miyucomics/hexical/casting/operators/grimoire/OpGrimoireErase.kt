@@ -17,7 +17,7 @@ class OpGrimoireErase : SpellAction {
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		val pattern = args.getPattern(0, argc)
 		val (stack, hand) = ctx.getHeldItemToOperateOn { it.item is GrimoireItem }
-		if (stack.item !is LampItem)
+		if (stack.item !is GrimoireItem)
 			throw MishapBadOffhandItem.of(stack, hand, "grimoire")
 		return Triple(Spell(pattern, stack), 0, listOf())
 	}
