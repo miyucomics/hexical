@@ -51,13 +51,13 @@ object HexicalPatterns {
 		register(HexPattern.fromAngles("adeeqw", HexDir.SOUTH_WEST), "thickness_speck", OpThicknessSpeck())
 		register(HexPattern.fromAngles("qqqqqwdeddwqde", HexDir.SOUTH_EAST), "zone_speck", OpGetEntitiesBy({ entity -> entity is SpeckEntity }, false))
 
-		register(HexPattern.fromAngles("qqwaqda", HexDir.EAST), "is_burning", OpGetEntityBurning())
+		register(HexPattern.fromAngles("qqwaqda", HexDir.EAST), "is_burning", OpGetEntityData(0))
+		register(HexPattern.fromAngles("qqqqwaadq", HexDir.SOUTH_WEST), "is_wet", OpGetEntityData(1))
 		register(HexPattern.fromAngles("eewdead", HexDir.WEST), "burning_time", OpGetEntityBurningTime())
-		register(HexPattern.fromAngles("qqqqwaadq", HexDir.SOUTH_WEST), "is_wet", OpGetEntityWet())
-		register(HexPattern.fromAngles("eaq", HexDir.WEST), "is_sprinting", OpGetSprinting())
+		register(HexPattern.fromAngles("eaq", HexDir.WEST), "is_sprinting", OpGetLivingEntityData(0))
+		register(HexPattern.fromAngles("aqaew", HexDir.NORTH_WEST), "is_sleeping", OpGetLivingEntityData(1))
 		register(HexPattern.fromAngles("qaqqqqqeeeeedq", HexDir.EAST), "block_hardness", OpGetBlockData(0))
 		register(HexPattern.fromAngles("qaqqqqqewaaqddqa", HexDir.EAST), "block_blast_resistance", OpGetBlockData(1))
-		register(HexPattern.fromAngles("aqaew", HexDir.NORTH_WEST), "is_sleeping", OpGetSleeping())
 		register(HexPattern.fromAngles("deedqad", HexDir.WEST), "get_weather", OpGetWeather())
 
 		register(HexPattern.fromAngles("qaqqqqded", HexDir.NORTH_EAST), "get_telepathy", OpGetTelepathy())
@@ -79,15 +79,17 @@ object HexicalPatterns {
 		register(HexPattern.fromAngles("qwddedqew", HexDir.SOUTH_WEST), "get_lamp_velocity", OpGetLampData(2))
 		register(HexPattern.fromAngles("qwddedqwddwa", HexDir.SOUTH_WEST), "get_lamp_use_time", OpGetLampData(3))
 		register(HexPattern.fromAngles("qwddedaeeeee", HexDir.SOUTH_WEST), "get_lamp_media", OpGetLampData(4))
+
 		register(HexPattern.fromAngles("qaqwddedqdd", HexDir.NORTH_EAST), "get_arch_lamp_position", OpGetArchLampData(0))
 		register(HexPattern.fromAngles("qaqwddedadw", HexDir.NORTH_EAST), "get_arch_lamp_rotation", OpGetArchLampData(1))
 		register(HexPattern.fromAngles("qaqwddedqew", HexDir.NORTH_EAST), "get_arch_lamp_velocity", OpGetArchLampData(2))
 		register(HexPattern.fromAngles("qaqwddedqwddwa", HexDir.NORTH_EAST), "get_arch_lamp_use_time", OpGetArchLampData(3))
 		register(HexPattern.fromAngles("qaqwddedqwaqqqqq", HexDir.NORTH_EAST), "get_arch_lamp_storage", OpGetArchLampData(4))
-		register(HexPattern.fromAngles("qaqwddedaeeeee", HexDir.NORTH_EAST), "get_arch_lamp_media", OpGetArchLampMedia())
-		register(HexPattern.fromAngles("qaqwddedqeed", HexDir.NORTH_EAST), "has_arch_lamp", OpIsUsingArchLamp())
-		register(HexPattern.fromAngles("qaqwddedwaqdee", HexDir.NORTH_EAST), "terminate_arch_lamp", OpTerminateArchLamp())
 		register(HexPattern.fromAngles("qaqwddedqedeeeee", HexDir.NORTH_EAST), "set_arch_lamp_storage", OpSetArchLampStorage())
+		register(HexPattern.fromAngles("qaqwddedaeeeee", HexDir.NORTH_EAST), "get_arch_lamp_media", OpGetArchLampMedia())
+		register(HexPattern.fromAngles("qaqwddedwaqdee", HexDir.NORTH_EAST), "terminate_arch_lamp", OpTerminateArchLamp())
+		register(HexPattern.fromAngles("qaqwddedqeed", HexDir.NORTH_EAST), "has_arch_lamp", OpIsUsingArchLamp())
+
 		register(HexPattern.fromAngles("aaddaddad", HexDir.EAST), "lamp_finale", OpGetFinale())
 
 		for ((first, second, third) in PATTERNS)
@@ -96,11 +98,6 @@ object HexicalPatterns {
 			PatternRegistry.mapPattern(first, second, third, true)
 	}
 
-	private fun register(pattern: HexPattern, name: String, action: Action) {
-		PATTERNS.add(Triple(pattern, Hexical.id(name), action))
-	}
-
-	private fun registerPerWorld(pattern: HexPattern, name: String, action: Action) {
-		PER_WORLD_PATTERNS.add(Triple(pattern, Hexical.id(name), action))
-	}
+	private fun register(pattern: HexPattern, name: String, action: Action) = PATTERNS.add(Triple(pattern, Hexical.id(name), action))
+	private fun registerPerWorld(pattern: HexPattern, name: String, action: Action) = PER_WORLD_PATTERNS.add(Triple(pattern, Hexical.id(name), action))
 }
