@@ -13,10 +13,12 @@ class OpGetBlockData(private val mode: Int) : ConstMediaAction {
 		val position = args.getBlockPos(0, argc)
 		ctx.assertVecInRange(position)
 		val block = ctx.world.getBlockState(position).block
-		return when (mode) {
-			0 -> listOf(DoubleIota(block.hardness.toDouble()))
-			1 -> listOf(DoubleIota(block.blastResistance.toDouble()))
-			else -> listOf(NullIota())
-		}
+		return listOf(
+			when (mode) {
+				0 -> DoubleIota(block.hardness.toDouble())
+				1 -> DoubleIota(block.blastResistance.toDouble())
+				else -> NullIota()
+			}
+		)
 	}
 }

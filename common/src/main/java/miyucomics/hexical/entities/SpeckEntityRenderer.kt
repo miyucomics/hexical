@@ -2,8 +2,6 @@ package miyucomics.hexical.entities
 
 import at.petrak.hexcasting.api.misc.FrozenColorizer
 import at.petrak.hexcasting.client.CAP_THETA
-import at.petrak.hexcasting.client.findDupIndices
-import at.petrak.hexcasting.client.makeZappy
 import at.petrak.hexcasting.client.rotate
 import com.mojang.blaze3d.systems.RenderSystem
 import net.minecraft.client.render.*

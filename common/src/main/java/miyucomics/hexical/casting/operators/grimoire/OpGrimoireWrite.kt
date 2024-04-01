@@ -8,7 +8,6 @@ import at.petrak.hexcasting.api.spell.mishaps.MishapBadOffhandItem
 import at.petrak.hexcasting.api.spell.mishaps.MishapOthersName
 import miyucomics.hexical.casting.mishaps.GrimoireTooFullMishap
 import miyucomics.hexical.items.GrimoireItem
-import miyucomics.hexical.items.LampItem
 import net.minecraft.item.ItemStack
 
 class OpGrimoireWrite : SpellAction {

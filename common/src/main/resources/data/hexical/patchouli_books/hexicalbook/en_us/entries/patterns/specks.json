@@ -2,83 +2,83 @@
 	"name": "hexical.page.specks.title",
 	"icon": "minecraft:beacon",
 	"category": "hexcasting:patterns/spells",
-    "advancement": "hexcasting:root",
-    "sortnum": 5,
+	"advancement": "hexcasting:root",
+	"sortnum": 5,
 	"pages": [
 		{
 			"type": "patchouli:text",
 			"text": "hexical.page.specks.0"
 		},
-        {
-            "type": "hexcasting:pattern",
-            "op_id": "hexical:conjure_speck",
-            "anchor": "hexical:conjure_speck",
-            "input": "any, vector, vector",
-            "output": "",
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:conjure_speck",
+			"anchor": "hexical:conjure_speck",
+			"input": "any, vector, vector",
+			"output": "",
 			"text": "hexical.page.conjure_speck"
 		},
-        {
-            "type": "hexcasting:pattern",
-            "op_id": "hexical:move_speck",
-            "anchor": "hexical:move_speck",
-            "input": "speck entity, vector",
-            "output": "",
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:move_speck",
+			"anchor": "hexical:move_speck",
+			"input": "speck entity, vector",
+			"output": "",
 			"text": "hexical.page.move_speck"
 		},
-        {
-            "type": "hexcasting:pattern",
-            "op_id": "hexical:rotate_speck",
-            "anchor": "hexical:rotate_speck",
-            "input": "speck entity, vector",
-            "output": "",
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:rotate_speck",
+			"anchor": "hexical:rotate_speck",
+			"input": "speck entity, vector",
+			"output": "",
 			"text": "hexical.page.rotate_speck"
 		},
-        {
-            "type": "hexcasting:pattern",
-            "op_id": "hexical:iota_speck",
-            "anchor": "hexical:iota_speck",
-            "input": "speck entity, any",
-            "output": "",
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:iota_speck",
+			"anchor": "hexical:iota_speck",
+			"input": "speck entity, any",
+			"output": "",
 			"text": "hexical.page.iota_speck"
 		},
-        {
-            "type": "hexcasting:pattern",
-            "op_id": "hexical:lifetime_speck",
-            "anchor": "hexical:lifetime_speck",
-            "input": "speck entity, number",
-            "output": "",
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:lifetime_speck",
+			"anchor": "hexical:lifetime_speck",
+			"input": "speck entity, number",
+			"output": "",
 			"text": "hexical.page.lifetime_speck"
 		},
-        {
-            "type": "hexcasting:pattern",
-            "op_id": "hexical:size_speck",
-            "anchor": "hexical:size_speck",
-            "input": "speck entity, number",
-            "output": "",
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:size_speck",
+			"anchor": "hexical:size_speck",
+			"input": "speck entity, number",
+			"output": "",
 			"text": "hexical.page.size_speck"
 		},
-        {
-            "type": "hexcasting:pattern",
-            "op_id": "hexical:thickness_speck",
-            "anchor": "hexical:thickness_speck",
-            "input": "speck entity, number",
-            "output": "",
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:thickness_speck",
+			"anchor": "hexical:thickness_speck",
+			"input": "speck entity, number",
+			"output": "",
 			"text": "hexical.page.thickness_speck"
 		},
-        {
-            "type": "hexcasting:pattern",
-            "op_id": "hexical:kill_speck",
-            "anchor": "hexical:kill_speck",
-            "input": "speck entity",
-            "output": "",
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:kill_speck",
+			"anchor": "hexical:kill_speck",
+			"input": "speck entity",
+			"output": "",
 			"text": "hexical.page.kill_speck"
 		},
-        {
-            "type": "hexcasting:pattern",
-            "op_id": "hexical:zone_speck",
-            "anchor": "hexical:zone_speck",
-            "input": "vector, number",
-            "output": "",
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:zone_speck",
+			"anchor": "hexical:zone_speck",
+			"input": "vector, number",
+			"output": "",
 			"text": "hexical.page.zone_speck"
 		}
 	]
