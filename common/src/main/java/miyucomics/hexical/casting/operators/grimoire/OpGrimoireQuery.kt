@@ -8,7 +8,6 @@ import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.NullIota
 import at.petrak.hexcasting.api.spell.mishaps.MishapBadOffhandItem
 import miyucomics.hexical.items.GrimoireItem
-import miyucomics.hexical.items.LampItem
 
 class OpGrimoireQuery : ConstMediaAction {
 	override val argc = 1

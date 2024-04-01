@@ -1,31 +1,31 @@
 {
-  "parent": "hexical:acquired_lamp",
-  "criteria": {
-    "arch_lamp": {
-      "conditions": {
-        "items": [
-          {
-            "items": ["hexical:arch_lamp"]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    }
-  },
-  "display": {
-    "announce_to_chat": true,
-    "title": {
-      "translate": "advancements.hexical.arch_lamp.title"
-    },
-    "description": {
-      "translate": "advancements.hexical.arch_lamp.description"
-    },
-    "frame": "challenge",
-    "hidden": true,
-    "icon": {
-      "item": "hexical:arch_lamp"
-    },
-    "show_toast": true
-  },
-  "requirements": [["arch_lamp"]]
+	"parent": "hexical:acquired_lamp",
+	"criteria": {
+		"arch_lamp": {
+			"conditions": {
+				"items": [
+					{
+						"items": ["hexical:arch_lamp"]
+					}
+				]
+			},
+			"trigger": "minecraft:inventory_changed"
+		}
+	},
+	"display": {
+		"announce_to_chat": true,
+		"title": {
+			"translate": "advancements.hexical.arch_lamp.title"
+		},
+		"description": {
+			"translate": "advancements.hexical.arch_lamp.description"
+		},
+		"frame": "challenge",
+		"hidden": true,
+		"icon": {
+			"item": "hexical:arch_lamp"
+		},
+		"show_toast": true
+	},
+	"requirements": [["arch_lamp"]]
 }

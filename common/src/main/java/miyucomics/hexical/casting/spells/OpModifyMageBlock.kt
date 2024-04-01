@@ -21,8 +21,6 @@ class OpModifyMageBlock(private val property: String, arguments: Int = 0) : Spel
 	}
 
 	private data class Spell(val pos: BlockPos, val property: String, val args: List<Iota>) : RenderedSpell {
-		override fun cast(ctx: CastingContext) {
-			MageBlock.setProperty(ctx.world, pos, property, args)
-		}
+		override fun cast(ctx: CastingContext) = MageBlock.setProperty(ctx.world, pos, property, args)
 	}
 }

@@ -10,5 +10,7 @@ object HexicalAdvancements {
 	val RELOAD_LAMP: ReloadLampCriterion = Criteria.register(ReloadLampCriterion())
 	val USE_UP_LAMP: UseUpLampCriterion = Criteria.register(UseUpLampCriterion())
 
-	@JvmStatic fun init() {}
+	@JvmStatic
+	fun init() {
+	}
 }

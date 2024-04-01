@@ -1,24 +1,24 @@
 {
-  "parent": "hexical:acquired_lamp",
-  "criteria": {
-    "education": {
-      "trigger": "hexical:educate_genie"
-    }
-  },
-  "display": {
-    "announce_to_chat": true,
-    "title": {
-      "translate": "advancements.hexical.educate_genie.title"
-    },
-    "description": {
-      "translate": "advancements.hexical.educate_genie.description"
-    },
-    "frame": "task",
-    "hidden": true,
-    "icon": {
-      "item": "minecraft:enchanted_book"
-    },
-    "show_toast": true
-  },
-  "requirements": [["education"]]
+	"parent": "hexical:acquired_lamp",
+	"criteria": {
+		"education": {
+			"trigger": "hexical:educate_genie"
+		}
+	},
+	"display": {
+		"announce_to_chat": true,
+		"title": {
+			"translate": "advancements.hexical.educate_genie.title"
+		},
+		"description": {
+			"translate": "advancements.hexical.educate_genie.description"
+		},
+		"frame": "task",
+		"hidden": true,
+		"icon": {
+			"item": "minecraft:enchanted_book"
+		},
+		"show_toast": true
+	},
+	"requirements": [["education"]]
 }

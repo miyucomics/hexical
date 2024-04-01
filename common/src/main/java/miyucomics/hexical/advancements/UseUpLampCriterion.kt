@@ -10,17 +10,9 @@ import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.Identifier
 
 class UseUpLampCriterion : AbstractCriterion<UseUpLampCriterion.Condition>() {
-	override fun conditionsFromJson(obj: JsonObject, playerPredicate: EntityPredicate.Extended, predicateDeserializer: AdvancementEntityPredicateDeserializer): Condition {
-		return Condition()
-	}
-
-	override fun getId(): Identifier {
-		return ID
-	}
-
-	fun trigger(player: ServerPlayerEntity?) {
-		trigger(player) { true }
-	}
+	override fun conditionsFromJson(obj: JsonObject, playerPredicate: EntityPredicate.Extended, predicateDeserializer: AdvancementEntityPredicateDeserializer) = Condition()
+	fun trigger(player: ServerPlayerEntity?) = trigger(player) { true }
+	override fun getId() = ID
 
 	class Condition : AbstractCriterionConditions(ID, EntityPredicate.Extended.EMPTY)
 	companion object {

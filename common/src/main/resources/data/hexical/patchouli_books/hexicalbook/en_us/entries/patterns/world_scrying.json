@@ -2,8 +2,8 @@
 	"name": "hexical.page.world_scrying.title",
 	"icon": "minecraft:spyglass",
 	"category": "hexcasting:patterns",
-    "advancement": "hexcasting:root",
-    "sortnum": 6,
+	"advancement": "hexcasting:root",
+	"sortnum": 6,
 	"pages": [
 		{
 			"type": "patchouli:text",
@@ -33,45 +33,45 @@
 			"output": "number",
 			"text": "hexical.page.block_blast_resistance"
 		},
-        {
-            "type": "hexcasting:pattern",
-            "op_id": "hexical:is_burning",
-            "anchor": "hexical:is_burning",
-            "input": "entity",
-            "output": "boolean",
-            "text": "hexical.page.is_burning"
-        },
-        {
-            "type": "hexcasting:pattern",
-            "op_id": "hexical:burning_time",
-            "anchor": "hexical:burning_time",
-            "input": "entity",
-            "output": "number",
-            "text": "hexical.page.burning_time"
-        },
-        {
-            "type": "hexcasting:pattern",
-            "op_id": "hexical:is_wet",
-            "anchor": "hexical:is_wet",
-            "input": "entity",
-            "output": "boolean",
-            "text": "hexical.page.is_wet"
-        },
-        {
-            "type": "hexcasting:pattern",
-            "op_id": "hexical:is_sleeping",
-            "anchor": "hexical:is_sleeping",
-            "input": "entity",
-            "output": "boolean",
-            "text": "hexical.page.is_sleeping"
-        },
-        {
-            "type": "hexcasting:pattern",
-            "op_id": "hexical:is_sprinting",
-            "anchor": "hexical:is_sprinting",
-            "input": "player entity",
-            "output": "boolean",
-            "text": "hexical.page.is_sprinting"
-        }
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:is_burning",
+			"anchor": "hexical:is_burning",
+			"input": "entity",
+			"output": "boolean",
+			"text": "hexical.page.is_burning"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:burning_time",
+			"anchor": "hexical:burning_time",
+			"input": "entity",
+			"output": "number",
+			"text": "hexical.page.burning_time"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:is_wet",
+			"anchor": "hexical:is_wet",
+			"input": "entity",
+			"output": "boolean",
+			"text": "hexical.page.is_wet"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:is_sleeping",
+			"anchor": "hexical:is_sleeping",
+			"input": "entity",
+			"output": "boolean",
+			"text": "hexical.page.is_sleeping"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:is_sprinting",
+			"anchor": "hexical:is_sprinting",
+			"input": "player entity",
+			"output": "boolean",
+			"text": "hexical.page.is_sprinting"
+		}
 	]
 }

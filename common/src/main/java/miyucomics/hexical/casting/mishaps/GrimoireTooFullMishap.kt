@@ -8,7 +8,6 @@ import at.petrak.hexcasting.api.spell.mishaps.Mishap
 import miyucomics.hexical.Hexical
 import net.minecraft.text.Text
 import net.minecraft.util.DyeColor
-import net.minecraft.util.Hand
 
 class GrimoireTooFullMishap : Mishap() {
 	override fun accentColor(ctx: CastingContext, errorCtx: Context): FrozenColorizer = dyeColor(DyeColor.BLUE)

@@ -1,7 +1,6 @@
 package miyucomics.hexical.mixin;
 
 import at.petrak.hexcasting.api.misc.MediaConstants;
-import at.petrak.hexcasting.api.spell.iota.Iota;
 import at.petrak.hexcasting.xplat.IXplatAbstractions;
 import miyucomics.hexical.Hexical;
 import miyucomics.hexical.registry.HexicalItems;
@@ -20,7 +19,6 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 @Mixin(WanderingTraderEntity.class)

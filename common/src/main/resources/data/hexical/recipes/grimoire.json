@@ -11,11 +11,7 @@
 			"item": "hexcasting:edified_pressure_plate"
 		}
 	},
-	"pattern": [
-		"AWA",
-		"AN ",
-		"AWA"
-	],
+	"pattern": ["AWA", "AN ", "AWA"],
 	"result": {
 		"item": "hexical:grimoire"
 	}
