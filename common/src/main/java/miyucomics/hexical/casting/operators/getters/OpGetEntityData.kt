@@ -4,6 +4,7 @@ import at.petrak.hexcasting.api.spell.ConstMediaAction
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.getEntity
 import at.petrak.hexcasting.api.spell.iota.BooleanIota
+import at.petrak.hexcasting.api.spell.iota.DoubleIota
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.NullIota
 
@@ -14,7 +15,8 @@ class OpGetEntityData(private val mode: Int) : ConstMediaAction {
 		return listOf(
 			when (mode) {
 				0 -> BooleanIota(entity.isOnFire)
-				1 -> BooleanIota(entity.isWet)
+				1 -> DoubleIota(args.getEntity(0, argc).fireTicks.toDouble())
+				2 -> BooleanIota(entity.isWet)
 				else -> NullIota()
 			}
 		)
