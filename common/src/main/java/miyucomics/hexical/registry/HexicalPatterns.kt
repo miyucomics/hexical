@@ -61,8 +61,8 @@ object HexicalPatterns {
 		register(HexPattern.fromAngles("qqqqqwdeddwqde", HexDir.SOUTH_EAST), "zone_speck", OpGetEntitiesBy({ entity -> entity is SpeckEntity }, false))
 
 		register(HexPattern.fromAngles("qqwaqda", HexDir.EAST), "is_burning", OpGetEntityData(0))
-		register(HexPattern.fromAngles("qqqqwaadq", HexDir.SOUTH_WEST), "is_wet", OpGetEntityData(1))
-		register(HexPattern.fromAngles("eewdead", HexDir.WEST), "burning_time", OpGetEntityBurningTime())
+		register(HexPattern.fromAngles("eewdead", HexDir.WEST), "burning_time", OpGetEntityData(1))
+		register(HexPattern.fromAngles("qqqqwaadq", HexDir.SOUTH_WEST), "is_wet", OpGetEntityData(2))
 		register(HexPattern.fromAngles("eaq", HexDir.WEST), "is_sprinting", OpGetLivingEntityData(0))
 		register(HexPattern.fromAngles("aqaew", HexDir.NORTH_WEST), "is_sleeping", OpGetLivingEntityData(1))
 		register(HexPattern.fromAngles("qaqqqqqeeeeedq", HexDir.EAST), "block_hardness", OpGetBlockData(0))
