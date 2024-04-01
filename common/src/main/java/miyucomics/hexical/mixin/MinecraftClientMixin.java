@@ -4,7 +4,6 @@ import at.petrak.hexcasting.common.lib.HexSounds;
 import dev.architectury.networking.NetworkManager;
 import io.netty.buffer.Unpooled;
 import miyucomics.hexical.Hexical;
-import miyucomics.hexical.items.ConjuredStaffItem;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.network.PacketByteBuf;

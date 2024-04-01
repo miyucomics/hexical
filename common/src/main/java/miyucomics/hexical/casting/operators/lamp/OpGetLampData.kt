@@ -18,13 +18,15 @@ class OpGetLampData(private val mode: Int) : ConstMediaAction {
 		if (!(ctx as CastingContextMixinInterface).getCastByLamp() || (ctx as CastingContextMixinInterface).getArchLamp())
 			throw NeedsLampMishap()
 		val nbt = ctx.caster.activeItem.nbt ?: return listOf(NullIota())
-		when (mode) {
-			0 -> return listOf(Vec3Iota(vecFromNBT(nbt.getLongArray("position"))))
-			1 -> return listOf(Vec3Iota(vecFromNBT(nbt.getLongArray("rotation"))))
-			2 -> return listOf(Vec3Iota(vecFromNBT(nbt.getLongArray("velocity"))))
-			3 -> return listOf(DoubleIota(ctx.world.time - (nbt.getDouble("start_time") + 1.0)))
-			4 -> return listOf(DoubleIota((ctx.caster.activeItem.item as LampItem).getMedia(ctx.caster.activeItem).toDouble() / MediaConstants.DUST_UNIT))
-		}
-		return listOf(NullIota())
+		return listOf(
+			when (mode) {
+				0 -> Vec3Iota(vecFromNBT(nbt.getLongArray("position")))
+				1 -> Vec3Iota(vecFromNBT(nbt.getLongArray("rotation")))
+				2 -> Vec3Iota(vecFromNBT(nbt.getLongArray("velocity")))
+				3 -> DoubleIota(ctx.world.time - (nbt.getDouble("start_time") + 1.0))
+				4 -> DoubleIota((ctx.caster.activeItem.item as LampItem).getMedia(ctx.caster.activeItem).toDouble() / MediaConstants.DUST_UNIT)
+				else -> NullIota()
+			}
+		)
 	}
 }

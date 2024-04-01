@@ -2,37 +2,37 @@
 	"name": "hexical.page.telepathy.title",
 	"icon": "minecraft:apple",
 	"category": "hexcasting:patterns",
-    "advancement": "hexcasting:root",
-    "sortnum": 6,
+	"advancement": "hexcasting:root",
+	"sortnum": 6,
 	"pages": [
 		{
 			"type": "patchouli:text",
 			"text": "hexical.page.telepathy"
 		},
-        {
-            "type": "hexcasting:pattern",
-            "op_id": "hexical:get_telepathy",
-            "anchor": "hexical:get_telepathy",
-            "input": "",
-            "output": "null/number",
-            "text": "hexical.page.get_telepathy"
-        },
-        {
-            "type": "hexcasting:pattern",
-            "op_id": "hexical:send_telepathy",
-            "anchor": "hexical:send_telepathy",
-            "input": "any",
-            "output": "",
-            "text": "hexical.page.send_telepathy"
-        },
-        {
-            "type": "hexcasting:pattern",
-            "op_id": "hexical:shout_telepathy",
-            "anchor": "hexical:shout_telepathy",
-            "input": "any",
-            "output": "",
-            "text": "hexical.page.shout_telepathy"
-        },
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:get_telepathy",
+			"anchor": "hexical:get_telepathy",
+			"input": "",
+			"output": "null/number",
+			"text": "hexical.page.get_telepathy"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:send_telepathy",
+			"anchor": "hexical:send_telepathy",
+			"input": "any",
+			"output": "",
+			"text": "hexical.page.send_telepathy"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:shout_telepathy",
+			"anchor": "hexical:shout_telepathy",
+			"input": "any",
+			"output": "",
+			"text": "hexical.page.shout_telepathy"
+		},
 		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:pling",

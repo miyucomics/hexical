@@ -2,8 +2,8 @@
 	"name": "hexical.page.mage_block.title",
 	"icon": "minecraft:glass",
 	"category": "hexcasting:patterns/spells",
-    "advancement": "hexcasting:root",
-    "sortnum": 1,
+	"advancement": "hexcasting:root",
+	"sortnum": 1,
 	"pages": [
 		{
 			"type": "patchouli:text",

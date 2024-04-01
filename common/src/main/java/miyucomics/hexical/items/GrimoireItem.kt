@@ -1,6 +1,5 @@
 package miyucomics.hexical.items
 
-import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.PatternIota
 import at.petrak.hexcasting.api.spell.math.HexDir
@@ -9,17 +8,14 @@ import at.petrak.hexcasting.api.utils.getOrCreateCompound
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.api.utils.putList
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
-import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.registry.HexicalItems
 import net.minecraft.item.Item
-import net.minecraft.item.ItemGroup
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.nbt.NbtElement
 import net.minecraft.nbt.NbtList
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld
-import net.minecraft.util.collection.DefaultedList
 
 class GrimoireItem : Item(Settings().maxCount(1).group(HexicalItems.HEXICAL_GROUP)) {
 	companion object {
