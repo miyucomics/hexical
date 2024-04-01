@@ -1,12 +1,8 @@
 {
-    "watch": [
-        "doc/src",
-        "doc/resources",
-        "doc/hexdoc.toml",
-        "common/src/main/resources/assets/hexical/lang/en_us.json",
-        "common/src/main/resources/data/hexical/patchouli_books/hexicalbook/en_us/"
-    ],
-    "ignore": ["**/generated/**"],
-    "ext": "jinja,html,css,js,ts,toml,json,json5,py",
-    "exec": "hexdoc serve"
+	"watch": [
+		"doc/src", "doc/resources", "doc/hexdoc.toml", "common/src/main/resources/assets/hexical/lang/en_us.json", "common/src/main/resources/data/hexical/patchouli_books/hexicalbook/en_us/"
+	],
+	"ignore": ["**/generated/**"],
+	"ext": "jinja,html,css,js,ts,toml,json,json5,py",
+	"exec": "hexdoc serve"
 }
