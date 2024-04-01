@@ -85,13 +85,9 @@ class ArchLampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.H
 		}
 	}
 
-	override fun breakAfterDepletion(): Boolean {
-		return false
-	}
-
-	override fun canDrawMediaFromInventory(stack: ItemStack): Boolean {
-		return false
-	}
+	override fun canDrawMediaFromInventory(stack: ItemStack) = false
+	override fun canRecharge(stack: ItemStack?) = false
+	override fun breakAfterDepletion() = false
 }
 
 fun hasActiveArchLamp(player: ServerPlayerEntity): Boolean {

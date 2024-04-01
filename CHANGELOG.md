@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.1.1
+- fixed being able to use Recharge Item to recharge lamps
+
 ## 1.1.0
 - added mishap to grimoire patterns if you are not holding a grimoire in your offhand
 - added `zh_cn` translation

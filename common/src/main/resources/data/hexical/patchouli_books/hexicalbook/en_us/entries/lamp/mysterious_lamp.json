@@ -2,8 +2,8 @@
 	"name": "hexical.page.mysterious_lamp.title",
 	"icon": "minecraft:sand",
 	"category": "hexical:lamp",
-    "advancement": "hexical:acquired_lamp",
-    "sortnum": 0,
+	"advancement": "hexical:acquired_lamp",
+	"sortnum": 0,
 	"pages": [
 		{
 			"type": "patchouli:text",

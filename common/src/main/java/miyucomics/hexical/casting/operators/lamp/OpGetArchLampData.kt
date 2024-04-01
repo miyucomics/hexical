@@ -17,13 +17,15 @@ class OpGetArchLampData(private val mode: Int) : ConstMediaAction {
 		if (!hasActiveArchLamp(ctx.caster))
 			throw NeedsActiveArchLampMishap()
 		val state = PersistentStateHandler.getPlayerState(ctx.caster)
-		when (mode) {
-			0 -> return listOf(Vec3Iota(state.position))
-			1 -> return listOf(Vec3Iota(state.rotation))
-			2 -> return listOf(Vec3Iota(state.velocity))
-			3 -> return listOf(DoubleIota((ctx.world.time - (state.time + 1)).toDouble()))
-			4 -> return listOf(HexIotaTypes.deserialize(state.storage, ctx.world))
-		}
-		return listOf(NullIota())
+		return listOf(
+			when (mode) {
+				0 -> Vec3Iota(state.position)
+				1 -> Vec3Iota(state.rotation)
+				2 -> Vec3Iota(state.velocity)
+				3 -> DoubleIota((ctx.world.time - (state.time + 1)).toDouble())
+				4 -> HexIotaTypes.deserialize(state.storage, ctx.world)
+				else -> NullIota()
+			}
+		)
 	}
 }

@@ -2,8 +2,8 @@
 	"name": "hexical.page.new_possibilities.title",
 	"icon": "hexical:lamp",
 	"category": "hexical:lamp",
-    "advancement": "hexical:acquired_lamp",
-    "sortnum": 1,
+	"advancement": "hexical:acquired_lamp",
+	"sortnum": 1,
 	"pages": [
 		{
 			"type": "patchouli:text",
