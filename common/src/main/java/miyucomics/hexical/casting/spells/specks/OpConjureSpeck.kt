@@ -9,6 +9,7 @@ import at.petrak.hexcasting.api.spell.getVec3
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.entities.SpeckEntity
+import miyucomics.hexical.registry.HexicalAdvancements
 import miyucomics.hexical.registry.HexicalEntities
 import net.minecraft.command.argument.EntityAnchorArgumentType
 import net.minecraft.util.math.Vec3d
@@ -33,6 +34,7 @@ class OpConjureSpeck : SpellAction {
 			speck.setSize(1f)
 			speck.setThickness(1f)
 			ctx.world.spawnEntity(speck)
+			HexicalAdvancements.AR.trigger(ctx.caster)
 		}
 	}
 }

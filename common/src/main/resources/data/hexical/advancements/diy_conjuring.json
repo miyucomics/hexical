@@ -1,0 +1,24 @@
+{
+	"parent": "hexcasting:root",
+	"criteria": {
+		"conjure": {
+			"trigger": "hexical:diy_conjuring"
+		}
+	},
+	"display": {
+		"announce_to_chat": true,
+		"title": {
+			"translate": "advancements.hexical.diy_conjuring.title"
+		},
+		"description": {
+			"translate": "advancements.hexical.diy_conjuring.description"
+		},
+		"frame": "task",
+		"hidden": false,
+		"icon": {
+			"item": "minecraft:glass"
+		},
+		"show_toast": true
+	},
+	"requirements": [["conjure"]]
+}
