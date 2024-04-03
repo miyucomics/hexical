@@ -28,6 +28,7 @@
 	"hexcasting.mishap.bad_item.lamp_full": "a lamp with media",
 	"hexcasting.mishap.bad_item.lamp_flay": "a villager of Journeyman status or greater",
 	"hexcasting.mishap.bad_item.speck": "a speck",
+	"hexcasting.mishap.invalid_value.identifier": "an identifier",
 	"hexcasting.mishap.invalid_value.identifiable": "an identifiable target",
 	"hexcasting.mishap.invalid_value.recognizable": "a target with extra information",
 	"hexcasting.mishap.hexical:needs_lamp": "Expected to be cast by Genieless Lamp.",

@@ -1,9 +1,11 @@
 package miyucomics.hexical.registry
 
+import dev.architectury.registry.client.rendering.BlockEntityRendererRegistry
 import dev.architectury.registry.registries.DeferredRegister
 import miyucomics.hexical.Hexical
 import miyucomics.hexical.blocks.MageBlock
 import miyucomics.hexical.blocks.MageBlockEntity
+import miyucomics.hexical.blocks.MageBlockRenderer
 import net.minecraft.block.Block
 import net.minecraft.block.entity.BlockEntityType
 import net.minecraft.util.registry.Registry
@@ -21,5 +23,10 @@ object HexicalBlocks {
 		BLOCK_ENTITIES.register("mage_block") { MAGE_BLOCK_ENTITY }
 		BLOCKS.register()
 		BLOCK_ENTITIES.register()
+	}
+
+	@JvmStatic
+	fun clientInit() {
+		BlockEntityRendererRegistry.register(MAGE_BLOCK_ENTITY, ::MageBlockRenderer);
 	}
 }
