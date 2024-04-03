@@ -24,7 +24,7 @@ import miyucomics.hexical.casting.spells.lamp.OpTerminateArchLamp
 import miyucomics.hexical.casting.spells.specks.*
 import miyucomics.hexical.casting.spells.telepathy.OpSendTelepathy
 import miyucomics.hexical.casting.spells.telepathy.OpShoutTelepathy
-import miyucomics.hexical.casting.spells.telepathy.OpSoundPing
+import miyucomics.hexical.casting.spells.telepathy.OpHallucinateSound
 import miyucomics.hexical.entities.SpeckEntity
 import net.minecraft.sound.SoundEvents
 import net.minecraft.util.Identifier
@@ -73,8 +73,8 @@ object HexicalPatterns {
 		register(HexPattern.fromAngles("qaqqqqded", HexDir.NORTH_EAST), "get_telepathy", OpGetTelepathy())
 		register(HexPattern.fromAngles("qaqqqeaqa", HexDir.NORTH_EAST), "send_telepathy", OpSendTelepathy())
 		register(HexPattern.fromAngles("qaqqqewaqwa", HexDir.NORTH_EAST), "shout_telepathy", OpShoutTelepathy())
-		register(HexPattern.fromAngles("qaqdee", HexDir.NORTH_EAST), "pling", OpSoundPing(SoundEvents.ENTITY_PLAYER_LEVELUP))
-		register(HexPattern.fromAngles("qaqdew", HexDir.NORTH_EAST), "click", OpSoundPing(SoundEvents.UI_BUTTON_CLICK))
+		register(HexPattern.fromAngles("qaqdee", HexDir.NORTH_EAST), "pling", OpHallucinateSound(SoundEvents.ENTITY_PLAYER_LEVELUP))
+		register(HexPattern.fromAngles("qaqdew", HexDir.NORTH_EAST), "click", OpHallucinateSound(SoundEvents.UI_BUTTON_CLICK))
 
 		register(HexPattern.fromAngles("aqwqaeaqa", HexDir.WEST), "write_grimoire", OpGrimoireWrite())
 		register(HexPattern.fromAngles("aqwqaqded", HexDir.WEST), "erase_grimoire", OpGrimoireErase())
