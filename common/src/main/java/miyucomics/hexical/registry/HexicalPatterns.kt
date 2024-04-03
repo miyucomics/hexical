@@ -42,6 +42,7 @@ object HexicalPatterns {
 
 		register(HexPattern.fromAngles("dee", HexDir.NORTH_WEST), "conjure_mage_block", OpConjureMageBlock())
 		register(HexPattern.fromAngles("deeqa", HexDir.NORTH_WEST), "modify_block_bouncy", OpModifyMageBlock("bouncy"))
+		register(HexPattern.fromAngles("eeeee", HexDir.NORTH_WEST), "modify_block_chameleon", OpModifyMageBlock("chameleon", 1))
 		register(HexPattern.fromAngles("deewwaawd", HexDir.NORTH_WEST), "modify_block_ephemeral", OpModifyMageBlock("ephemeral", 1))
 		register(HexPattern.fromAngles("deeqedeaqqqwqqq", HexDir.NORTH_WEST), "modify_block_invisible", OpModifyMageBlock("invisible"))
 		register(HexPattern.fromAngles("deewqaqqqqq", HexDir.NORTH_WEST), "modify_block_replaceable", OpModifyMageBlock("replaceable"))

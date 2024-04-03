@@ -2,6 +2,8 @@ package miyucomics.hexical.iota
 
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.IotaType
+import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
+import at.petrak.hexcasting.api.spell.mishaps.MishapNotEnoughArgs
 import at.petrak.hexcasting.api.utils.styledWith
 import miyucomics.hexical.registry.HexicalIota
 import net.minecraft.nbt.NbtCompound
@@ -37,4 +39,11 @@ class IdentifierIota(identifier: Identifier) : Iota(HexicalIota.IDENTIFIER_IOTA,
 			}
 		}
 	}
+}
+
+fun List<Iota>.getIdentifier(idx: Int, argc: Int = 0): Identifier {
+	val x = this.getOrElse(idx) { throw MishapNotEnoughArgs(idx + 1, this.size) }
+	if (x is IdentifierIota)
+		return x.identifier
+	throw MishapInvalidIota.ofType(x, if (argc == 0) idx else argc - (idx + 1), "identifier")
 }

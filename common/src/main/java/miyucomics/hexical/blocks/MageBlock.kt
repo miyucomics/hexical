@@ -15,6 +15,7 @@ import net.minecraft.entity.Entity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.BlockItem
 import net.minecraft.item.ItemPlacementContext
+import net.minecraft.server.world.ServerWorld
 import net.minecraft.sound.BlockSoundGroup
 import net.minecraft.sound.SoundCategory
 import net.minecraft.sound.SoundEvents
@@ -56,14 +57,7 @@ class MageBlock : BlockConjured(
 		}
 	}
 
-	override fun onUse(
-		state: BlockState,
-		world: World,
-		pos: BlockPos,
-		player: PlayerEntity,
-		hand: Hand,
-		hit: BlockHitResult
-	): ActionResult {
+	override fun onUse(state: BlockState, world: World, pos: BlockPos, player: PlayerEntity, hand: Hand, hit: BlockHitResult): ActionResult {
 		val tile = world.getBlockEntity(pos)
 		if (tile !is MageBlockEntity)
 			return ActionResult.PASS
@@ -75,16 +69,7 @@ class MageBlock : BlockConjured(
 			return ActionResult.PASS
 		if (!player.isCreative)
 			stack.decrement(1)
-		world.playSound(
-			pos.x.toDouble(),
-			pos.y.toDouble(),
-			pos.z.toDouble(),
-			SoundEvents.BLOCK_AMETHYST_BLOCK_BREAK,
-			SoundCategory.BLOCKS,
-			1f,
-			1f,
-			true
-		)
+		world.playSound(pos.x.toDouble(), pos.y.toDouble(), pos.z.toDouble(), SoundEvents.BLOCK_AMETHYST_BLOCK_BREAK, SoundCategory.BLOCKS, 1f, 1f, true)
 		world.setBlockState(pos, item.block.getPlacementState(ItemPlacementContext(player, hand, stack, hit)))
 		return ActionResult.SUCCESS
 	}
@@ -93,16 +78,7 @@ class MageBlock : BlockConjured(
 		val tile = world.getBlockEntity(position)
 		if (tile !is MageBlockEntity)
 			return
-		world.playSound(
-			position.x.toDouble(),
-			position.y.toDouble(),
-			position.z.toDouble(),
-			SoundEvents.BLOCK_AMETHYST_BLOCK_BREAK,
-			SoundCategory.BLOCKS,
-			1f,
-			1f,
-			true
-		)
+		world.playSound(position.x.toDouble(), position.y.toDouble(), position.z.toDouble(), SoundEvents.BLOCK_AMETHYST_BLOCK_BREAK, SoundCategory.BLOCKS, 1f, 1f, true)
 		world.emitGameEvent(GameEvent.BLOCK_DESTROY, position, GameEvent.Emitter.of(player, state))
 		world.setBlockState(position, Blocks.AIR.defaultState)
 		world.removeBlockEntity(position)
@@ -125,17 +101,8 @@ class MageBlock : BlockConjured(
 			tile.walkParticle(entity)
 	}
 
-	override fun createBlockEntity(pos: BlockPos, state: BlockState): BlockEntity {
-		return MageBlockEntity(pos, state)
-	}
-
-	override fun <T : BlockEntity?> getTicker(
-		pworld: World,
-		pstate: BlockState,
-		type: BlockEntityType<T>
-	): BlockEntityTicker<T> {
-		return BlockEntityTicker { world, position, state, blockEntity: T -> tick(world, position, state, blockEntity) }
-	}
+	override fun createBlockEntity(pos: BlockPos, state: BlockState) = MageBlockEntity(pos, state)
+	override fun <T : BlockEntity?> getTicker(pworld: World, pstate: BlockState, type: BlockEntityType<T>) = BlockEntityTicker { world, position, state, blockEntity: T -> tick(world, position, state, blockEntity) }
 
 	companion object {
 		fun <T> tick(world: World, position: BlockPos, state: BlockState, blockEntity: T) {
@@ -150,13 +117,13 @@ class MageBlock : BlockConjured(
 			}
 		}
 
-		fun setProperty(world: WorldAccess, pos: BlockPos, property: String, args: List<Iota>) {
+		fun setProperty(world: ServerWorld, pos: BlockPos, property: String, args: List<Iota>) {
 			val blockEntity = world.getBlockEntity(pos)
 			if (blockEntity is MageBlockEntity)
 				blockEntity.setProperty(property, args)
 		}
 
-		fun setColor(world: WorldAccess, pos: BlockPos, colorizer: FrozenColorizer) {
+		fun setColor(world: ServerWorld, pos: BlockPos, colorizer: FrozenColorizer) {
 			val blockEntity = world.getBlockEntity(pos)
 			if (blockEntity is MageBlockEntity)
 				blockEntity.setColorizer(colorizer)
