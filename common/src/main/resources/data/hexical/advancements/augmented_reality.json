@@ -1,0 +1,24 @@
+{
+	"parent": "hexcasting:root",
+	"criteria": {
+		"conjure": {
+			"trigger": "hexical:augmented_reality"
+		}
+	},
+	"display": {
+		"announce_to_chat": true,
+		"title": {
+			"translate": "advancements.hexical.augmented_reality.title"
+		},
+		"description": {
+			"translate": "advancements.hexical.augmented_reality.description"
+		},
+		"frame": "task",
+		"hidden": false,
+		"icon": {
+			"item": "hexcasting:lens"
+		},
+		"show_toast": true
+	},
+	"requirements": [["conjure"]]
+}
