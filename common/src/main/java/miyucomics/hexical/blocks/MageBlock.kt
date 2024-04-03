@@ -23,10 +23,10 @@ import net.minecraft.util.ActionResult
 import net.minecraft.util.Hand
 import net.minecraft.util.hit.BlockHitResult
 import net.minecraft.util.math.BlockPos
+import net.minecraft.util.math.Direction
 import net.minecraft.util.math.Vec3i
 import net.minecraft.world.BlockView
 import net.minecraft.world.World
-import net.minecraft.world.WorldAccess
 import net.minecraft.world.event.GameEvent
 
 class MageBlock : BlockConjured(
@@ -39,6 +39,16 @@ class MageBlock : BlockConjured(
 		Vec3i(0, -1, 0), Vec3i(0, 1, 0),
 		Vec3i(0, 0, -1), Vec3i(0, 0, 1),
 	)
+
+	override fun emitsRedstonePower(state: BlockState?) = true
+	override fun getWeakRedstonePower(state: BlockState?, world: BlockView?, pos: BlockPos?, direction: Direction?): Int {
+		val tile = world!!.getBlockEntity(pos)
+		if (tile !is MageBlockEntity)
+			return 0
+		if (tile.properties["energized"]!!)
+			return tile.redstone
+		return 0
+	}
 
 	override fun onEntityLand(world: BlockView, entity: Entity) {
 		val pos = entity.blockPos.add(0, -1, 0)
