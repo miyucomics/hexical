@@ -4,6 +4,7 @@
 - added random achievements for fun
 - added z-axis rotation for specks
 - added energized modifier to mage blocks to make them emit Redstone power
+- fixed accidental swapping of Sloth and Racer's Purification
 - fixed being able to use Recharge Item to recharge lamps
 - fixed speck pattern saving
 

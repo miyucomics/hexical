@@ -25,12 +25,10 @@ class ConjuredStaffItem : ItemPackagedHex(Settings().maxCount(1)) {
 			stack.decrement(1)
 	}
 
-	companion object {
-		fun cast(world: ServerWorld, user: ServerPlayerEntity, hand: Hand, stack: ItemStack, castStack: MutableList<Iota>) {
-			val harness = CastingHarness(CastingContext(user, hand, CastingContext.CastSource.PACKAGED_HEX))
-			harness.stack = castStack
-			IXplatAbstractions.INSTANCE.findHexHolder(stack)?.getHex(world)?.toList()?.let { harness.executeIotas(it, world) }
-		}
+	fun cast(world: ServerWorld, user: ServerPlayerEntity, hand: Hand, stack: ItemStack, castStack: MutableList<Iota>) {
+		val harness = CastingHarness(CastingContext(user, hand, CastingContext.CastSource.PACKAGED_HEX))
+		harness.stack = castStack
+		harness.executeIota(getHex(stack, world), world)
 	}
 }
 

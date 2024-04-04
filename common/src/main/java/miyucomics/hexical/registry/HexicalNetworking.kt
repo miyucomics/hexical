@@ -28,7 +28,7 @@ object HexicalNetworking {
 			val staffRank = buf.readInt()
 			for (i in 0 until staffRank)
 				constructedStack.add(BooleanIota(buf.readBoolean()))
-			ConjuredStaffItem.cast(context.player.world as ServerWorld, player as ServerPlayerEntity, hand, player.getStackInHand(hand), constructedStack)
+			(player.getStackInHand(hand).item as ConjuredStaffItem).cast(context.player.world as ServerWorld, player as ServerPlayerEntity, hand, player.getStackInHand(hand), constructedStack)
 		}
 	}
 }
