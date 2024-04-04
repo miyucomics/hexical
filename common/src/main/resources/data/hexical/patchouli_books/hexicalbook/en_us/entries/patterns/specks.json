@@ -35,6 +35,14 @@
 		},
 		{
 			"type": "hexcasting:pattern",
+			"op_id": "hexical:z_rotation_speck",
+			"anchor": "hexical:z_rotation_speck",
+			"input": "speck entity, number",
+			"output": "",
+			"text": "hexical.page.z_rotation_speck"
+		},
+		{
+			"type": "hexcasting:pattern",
 			"op_id": "hexical:iota_speck",
 			"anchor": "hexical:iota_speck",
 			"input": "speck entity, any",

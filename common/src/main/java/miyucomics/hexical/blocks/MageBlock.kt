@@ -12,6 +12,7 @@ import net.minecraft.block.entity.BlockEntity
 import net.minecraft.block.entity.BlockEntityTicker
 import net.minecraft.block.entity.BlockEntityType
 import net.minecraft.entity.Entity
+import net.minecraft.entity.damage.DamageSource
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.BlockItem
 import net.minecraft.item.ItemPlacementContext
@@ -48,6 +49,10 @@ class MageBlock : BlockConjured(
 		if (tile.properties["energized"]!!)
 			return tile.redstone
 		return 0
+	}
+
+	override fun onLandedUpon(world: World?, state: BlockState?, pos: BlockPos?, entity: Entity?, fallDistance: Float) {
+		entity!!.handleFallDamage(fallDistance, 0.0f, DamageSource.FALL)
 	}
 
 	override fun onEntityLand(world: BlockView, entity: Entity) {
