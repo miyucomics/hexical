@@ -26,6 +26,8 @@ class SpeckEntityRenderer(ctx: EntityRendererFactory.Context?) : EntityRenderer<
 		if (entity.pitch != 0.0f)
 			matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(entity.pitch))
 		matrices.translate(0.0, 0.25, 0.0)
+		if (entity.getZRotation() != 0.0f)
+			matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(entity.getZRotation()))
 		matrices.scale(entity.getSize(), entity.getSize(), entity.getSize())
 
 		RenderSystem.disableCull()
