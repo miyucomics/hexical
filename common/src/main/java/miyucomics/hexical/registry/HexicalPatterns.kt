@@ -59,6 +59,7 @@ object HexicalPatterns {
 		register(HexPattern.fromAngles("adeaqde", HexDir.SOUTH_WEST), "kill_speck", OpKillSpeck())
 		register(HexPattern.fromAngles("adeeqed", HexDir.SOUTH_WEST), "size_speck", OpSizeSpeck())
 		register(HexPattern.fromAngles("adeeqw", HexDir.SOUTH_WEST), "thickness_speck", OpThicknessSpeck())
+		register(HexPattern.fromAngles("adeqqqqq", HexDir.SOUTH_WEST), "z_rotation_speck", OpZRotationSpeck())
 		register(HexPattern.fromAngles("qqqqqwdeddwqde", HexDir.SOUTH_EAST), "zone_speck", OpGetEntitiesBy({ entity -> entity is SpeckEntity }, false))
 
 		register(HexPattern.fromAngles("qqwaqda", HexDir.EAST), "is_burning", OpGetEntityData(0))
