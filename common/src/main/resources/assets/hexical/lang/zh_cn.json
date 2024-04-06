@@ -30,7 +30,7 @@
 	"hexcasting.mishap.bad_item.speck": "一个视斑",
 	"hexcasting.mishap.invalid_value.identifiable": "一个可标识目标",
 	"hexcasting.mishap.invalid_value.recognizable": "一个带有额外信息的目标",
-	"hexcasting.mishap.hexical:needs_lamp": "本应由精灵神灯施放。",
+	"hexcasting.mishap.hexical:needs_regular_lamp": "本应由精灵神灯施放。",
 	"hexcasting.mishap.hexical:needs_arch_lamp": "本应拥有一个启动的大精灵神灯。",
 	"hexcasting.mishap.hexical:grimoire_access_denied": "试图继续使用超出限制的绑定关系。",
 	"hexcasting.mishap.hexical:grimoire_too_full": "试图向咒典添加过多绑定关系。",
