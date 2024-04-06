@@ -37,7 +37,7 @@
 	"hexcasting.mishap.invalid_value.identifier": "an identifier",
 	"hexcasting.mishap.invalid_value.identifiable": "an identifiable target",
 	"hexcasting.mishap.invalid_value.recognizable": "a target with extra information",
-	"hexcasting.mishap.hexical:needs_lamp": "Expected to be cast by regular Genie Lamp.",
+	"hexcasting.mishap.hexical:needs_regular_lamp": "Expected to be cast by regular Genie Lamp.",
 	"hexcasting.mishap.hexical:needs_arch_lamp": "Expected an active Arch Genieless Lamp in the inventory.",
 	"hexcasting.mishap.hexical:grimoire_access_denied": "Tried to increase the uses of a restricted binding.",
 	"hexcasting.mishap.hexical:grimoire_too_full": "Tried to fit too many bindings in a grimoire.",
