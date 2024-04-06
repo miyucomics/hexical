@@ -19,7 +19,6 @@ object HexicalNetworking {
 		}
 		NetworkManager.registerReceiver(NetworkManager.Side.C2S, Hexical.STOP_TELEPATHY_PACKET) { _, context ->
 			TelepathyData.active[context.player.uuid] = false
-			TelepathyData.timer[context.player.uuid] = -1
 		}
 		NetworkManager.registerReceiver(NetworkManager.Side.C2S, Hexical.CAST_CONJURED_STAFF_PACKET) { buf, context ->
 			val player = context.player
