@@ -16,7 +16,7 @@ import net.minecraft.util.math.Vec3d
 class OpChorusBlink : SpellAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
-		val pos = args.getVec3(0, argc);
+		val pos = args.getVec3(0, argc)
 		if (pos.lengthSquared() > 256)
 			throw MishapLocationTooFarAway(pos)
 		return Triple(Spell(pos), MediaConstants.DUST_UNIT, listOf())
