@@ -41,6 +41,7 @@
 	"hexcasting.mishap.hexical:needs_arch_lamp": "Expected an active Arch Genieless Lamp in the inventory.",
 	"hexcasting.mishap.hexical:grimoire_access_denied": "Tried to increase the uses of a restricted binding.",
 	"hexcasting.mishap.hexical:grimoire_too_full": "Tried to fit too many bindings in a grimoire.",
+	"hexcasting.mishap.hexical:outside_domain": "Spell exceeds the domains of the spell circle.",
 
 	"hexcasting.spell.hexical:identify": "Detective's Purification",
 	"hexcasting.spell.hexical:recognize": "Recognizer's Purif.",
