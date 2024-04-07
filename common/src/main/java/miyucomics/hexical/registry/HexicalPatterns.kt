@@ -13,10 +13,7 @@ import miyucomics.hexical.casting.operators.grimoire.*
 import miyucomics.hexical.casting.operators.identifier.OpIdentify
 import miyucomics.hexical.casting.operators.identifier.OpRecognize
 import miyucomics.hexical.casting.operators.lamp.*
-import miyucomics.hexical.casting.spells.OpChorusBlink
-import miyucomics.hexical.casting.spells.OpConjureMageBlock
-import miyucomics.hexical.casting.spells.OpConjureStaff
-import miyucomics.hexical.casting.spells.OpModifyMageBlock
+import miyucomics.hexical.casting.spells.*
 import miyucomics.hexical.casting.spells.lamp.OpEducateGenie
 import miyucomics.hexical.casting.spells.lamp.OpMakeGenie
 import miyucomics.hexical.casting.spells.lamp.OpSetArchLampStorage
@@ -36,6 +33,8 @@ object HexicalPatterns {
 	@JvmStatic
 	fun init() {
 		register(HexPattern.fromAngles("deaqqdq", HexDir.SOUTH_EAST), "nephthys", OpNephthys)
+
+		register(HexPattern.fromAngles("qqqqqaeeqaeadeeed", HexDir.NORTH_WEST), "displace", OpDisplace())
 
 		register(HexPattern.fromAngles("qqqqqe", HexDir.NORTH_EAST), "identify", OpIdentify())
 		register(HexPattern.fromAngles("eeeeeq", HexDir.WEST), "recognize", OpRecognize())
