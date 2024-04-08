@@ -52,6 +52,8 @@
 	"hexcasting.spell.hexical:pling": "Hallucinate Pling",
 	"hexcasting.spell.hexical:click": "Hallucinate Click",
 
+	"hexcasting.spell.hexical:displace": "Displace",
+
 	"hexcasting.spell.hexical:write_grimoire": "Write Grimoire",
 	"hexcasting.spell.hexical:erase_grimoire": "Erase Grimoire",
 	"hexcasting.spell.hexical:index_grimoire": "Archivist Reflection",
@@ -113,11 +115,15 @@
 	"hexical.page.hexical_changes.0": "I feel strangely more in tune with the ambient _media around me. It feels $(o)friendlier$() somehow... I can even feel it rippling around me, responding to my actions, as if suggesting new spells to me. The media itself also feels more malleable, more $(o)workable$(), allowing me to manipulate it into precise specialized effects.",
 	"hexical.page.hexical_changes.1": "I also find my tools more familar. I notice I require less concentration with my $(l:items/staff)$(item)staff$() and can move around while using it, handy for chasing down targets that get out of my line of sight before I can finish my raycast. I shouldn't become too relaxed though, Nature has not become more forgiving of my mistakes. I can also write directly into my $(l:items/abacus)$(item)abacus$() with Scribe's Gambit.",
 
+	"hexical.page.circle_spells.title": "Circle Spells",
+	"hexical.page.circle_spells.0": "When a spell circle casts, it saturates the enclosed space with a grand amount of media, which enables certain manipulations which would be impossible outside a circle.",
+	"hexical.page.displace": "",
+
 	"hexical.page.identifiers.title": "Identifiers",
 	"hexical.page.identifiers.0": "My hexes has so far been quite blind to the world. I can get a creature's height, velocity, whether it's burning, etc... but I can't directly identify that entity. Nature's solution to the problem is the $(o)identifier iota$(). Every entity, block, status effect, enchantment, sound, etc... has a unique identifier that my hexes can identify. Once I have two identifiers, I can compare them with each other.",
 	"hexical.page.identifiers.1": "Pushes the identifier of an entity or block at a vector.",
-	"hexical.page.identifiers.2": "I notice that if I were to use Detective's Purification on an item, it returns that it's an item entity, but if I were to use Recognizer's Purification on that same entity, it would return the type of item. This type of item matches with a block identifier returned by Detective's Purification. I can imagine Recognizer's as returning $(o)additional$() if possible.",
-	"hexical.page.identifiers.3": "Pushes extra identifier information of an entity, mainly the item type of an item entity and the item type inside an item frame entity.",
+	"hexical.page.identifiers.2": "I notice that if I were to use Detective's Purification on an item, it returns that it's an item entity, but if I were to use Recognizer's Purification on that same entity, it would return the type of item. This type of item matches with a block identifier returned by Detective's Purification. I can imagine Recognizer's as returning $(o)additional$() information if possible.",
+	"hexical.page.identifiers.3": "Pushes extra identifier information of an entity, mainly the item type of an item entity or the item type inside an item frame entity.",
 
 	"hexical.page.grimoire.title": "Grimoires",
 	"hexical.page.grimoire.0": "By encrusting an enchanted book with charged amethyst and edified wood, it traps media within the pages like an echo chamber. I can then introduce a pattern-to-pattern-list binding for the grimoire to keep bouncing endlessly inside.",
