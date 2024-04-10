@@ -13,7 +13,7 @@
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:conjure_mage_block",
 			"anchor": "hexical:conjure_mage_block",
-			"input": "vec",
+			"input": "vector",
 			"output": "",
 			"text": "hexical.page.conjure_mage_block"
 		},
@@ -21,7 +21,7 @@
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:modify_block_bouncy",
 			"anchor": "hexical:modify_block_bouncy",
-			"input": "vec",
+			"input": "vector",
 			"output": "",
 			"text": "hexical.page.modify_block_bouncy"
 		},
@@ -29,7 +29,7 @@
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:modify_block_energized",
 			"anchor": "hexical:modify_block_energized",
-			"input": "vec, num",
+			"input": "vector, number",
 			"output": "",
 			"text": "hexical.page.modify_block_energized"
 		},
@@ -37,7 +37,7 @@
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:modify_block_ephemeral",
 			"anchor": "hexical:modify_block_ephemeral",
-			"input": "vec, num",
+			"input": "vector, number",
 			"output": "",
 			"text": "hexical.page.modify_block_ephemeral"
 		},
@@ -45,7 +45,7 @@
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:modify_block_invisible",
 			"anchor": "hexical:modify_block_invisible",
-			"input": "vec",
+			"input": "vector",
 			"output": "",
 			"text": "hexical.page.modify_block_invisible"
 		},
@@ -53,7 +53,7 @@
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:modify_block_replaceable",
 			"anchor": "hexical:modify_block_replaceable",
-			"input": "vec",
+			"input": "vector",
 			"output": "",
 			"text": "hexical.page.modify_block_replaceable"
 		},
@@ -61,7 +61,7 @@
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:modify_block_volatile",
 			"anchor": "hexical:modify_block_volatile",
-			"input": "vec",
+			"input": "vector",
 			"output": "",
 			"text": "hexical.page.modify_block_volatile"
 		}

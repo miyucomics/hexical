@@ -17,15 +17,14 @@ class OpDisplace : SpellAction {
 		val entity = args.getEntity(0, argc)
 		if (!ctx.spellCircle!!.aabb.contains(entity.pos))
 			throw OutsideDomainMishap()
-		val displacement = args.getVec3(1, argc)
-		if (!ctx.spellCircle!!.aabb.contains(entity.pos.add(displacement)))
+		val destination = args.getVec3(1, argc)
+		if (!ctx.spellCircle!!.aabb.contains(destination))
 			throw OutsideDomainMishap()
-		return Triple(Spell(entity, displacement), MediaConstants.SHARD_UNIT * 3, listOf())
+		return Triple(Spell(entity, destination), MediaConstants.SHARD_UNIT * 3, listOf())
 	}
 
-	private data class Spell(val entity: Entity, val displacement: Vec3d) : RenderedSpell {
+	private data class Spell(val entity: Entity, val destination: Vec3d) : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
-			val destination = entity.pos.add(displacement)
 			entity.teleport(destination.x, destination.y, destination.z)
 		}
 	}
