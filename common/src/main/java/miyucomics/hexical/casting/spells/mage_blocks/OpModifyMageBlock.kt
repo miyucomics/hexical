@@ -1,4 +1,4 @@
-package miyucomics.hexical.casting.spells
+package miyucomics.hexical.casting.spells.mage_blocks
 
 import at.petrak.hexcasting.api.spell.*
 import at.petrak.hexcasting.api.spell.casting.CastingContext
