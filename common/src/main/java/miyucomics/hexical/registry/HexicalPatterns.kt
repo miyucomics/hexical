@@ -14,10 +14,13 @@ import miyucomics.hexical.casting.operators.identifier.OpIdentify
 import miyucomics.hexical.casting.operators.identifier.OpRecognize
 import miyucomics.hexical.casting.operators.lamp.*
 import miyucomics.hexical.casting.spells.*
+import miyucomics.hexical.casting.spells.circle.OpDisplace
 import miyucomics.hexical.casting.spells.lamp.OpEducateGenie
 import miyucomics.hexical.casting.spells.lamp.OpMakeGenie
 import miyucomics.hexical.casting.spells.lamp.OpSetArchLampStorage
 import miyucomics.hexical.casting.spells.lamp.OpTerminateArchLamp
+import miyucomics.hexical.casting.spells.mage_blocks.OpConjureMageBlock
+import miyucomics.hexical.casting.spells.mage_blocks.OpModifyMageBlock
 import miyucomics.hexical.casting.spells.specks.*
 import miyucomics.hexical.casting.spells.telepathy.OpSendTelepathy
 import miyucomics.hexical.casting.spells.telepathy.OpShoutTelepathy

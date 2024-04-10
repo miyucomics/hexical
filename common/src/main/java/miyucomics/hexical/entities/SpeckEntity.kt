@@ -15,6 +15,8 @@ import net.minecraft.entity.data.TrackedDataHandlerRegistry
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket
 import net.minecraft.server.world.ServerWorld
+import net.minecraft.text.MutableText
+import net.minecraft.text.Text
 import net.minecraft.world.World
 
 val isPatternDataTracker: TrackedData<Boolean> = DataTracker.registerData(SpeckEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
@@ -83,7 +85,7 @@ class SpeckEntity(entityType: EntityType<SpeckEntity?>?, world: World?) : Entity
 			display = (iota as PatternIota).pattern.serializeToNBT()
 		} else {
 			val compound = NbtCompound()
-			compound.putString("text", iota.display().string)
+			compound.putString("text", Text.Serializer.toJson(iota.display()))
 			display = compound
 		}
 		dataTracker.set(displayDataTracker, display)
@@ -119,7 +121,7 @@ class SpeckEntity(entityType: EntityType<SpeckEntity?>?, world: World?) : Entity
 	fun getZRotation(): Float = dataTracker.get(zRotationDataTracker)
 	fun getPigment(): FrozenColorizer = FrozenColorizer.fromNBT(dataTracker.get(pigmentDataTracker))
 
-	fun getText(): String = dataTracker.get(displayDataTracker).getString("text")
+	fun getText(): MutableText = Text.Serializer.fromJson(dataTracker.get(displayDataTracker).getString("text"))!!
 	fun getPattern(): HexPattern = HexPattern.fromNBT(dataTracker.get(displayDataTracker))
 	fun getIsPattern(): Boolean = dataTracker.get(isPatternDataTracker)
 
