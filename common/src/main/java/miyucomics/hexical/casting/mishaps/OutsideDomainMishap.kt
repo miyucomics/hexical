@@ -17,6 +17,6 @@ class OutsideDomainMishap : Mishap() {
 	override fun errorMessage(ctx: CastingContext, errorCtx: Context): Text = error(Hexical.MOD_ID + ":outside_domain")
 
 	override fun execute(ctx: CastingContext, errorCtx: Context, stack: MutableList<Iota>) {
-		ctx.caster.addStatusEffect(StatusEffectInstance(StatusEffects.BLINDNESS, 3))
+		ctx.caster.addStatusEffect(StatusEffectInstance(StatusEffects.BLINDNESS, 20))
 	}
 }

@@ -116,8 +116,8 @@
 	"hexical.page.hexical_changes.1": "I also find my tools more familar. I notice I require less concentration with my $(l:items/staff)$(item)staff$() and can move around while using it, handy for chasing down targets that get out of my line of sight before I can finish my raycast. I shouldn't become too relaxed though, Nature has not become more forgiving of my mistakes. I can also write directly into my $(l:items/abacus)$(item)abacus$() with Scribe's Gambit.",
 
 	"hexical.page.circle_spells.title": "Circle Spells",
-	"hexical.page.circle_spells.0": "When a spell circle casts, it saturates the enclosed space with a grand amount of media, which enables certain manipulations which would be impossible outside a circle.",
-	"hexical.page.displace": "",
+	"hexical.page.circle_spells.0": "When the media courses through the boundaries of a circle, it saturates the domain inside the circle with media, allowing me to manipulate the environment inside far more flexibly than I am used to.",
+	"hexical.page.displace": "For just three amethyst shards, I can teleport an entity from anywhere in my circle to anywhere else inside. Unlike $(l:patterns/great_spells/teleport)Greater Teleport$(), this spell takes in exact coordinates.",
 
 	"hexical.page.identifiers.title": "Identifiers",
 	"hexical.page.identifiers.0": "My hexes has so far been quite blind to the world. I can get a creature's height, velocity, whether it's burning, etc... but I can't directly identify that entity. Nature's solution to the problem is the $(o)identifier iota$(). Every entity, block, status effect, enchantment, sound, etc... has a unique identifier that my hexes can identify. Once I have two identifiers, I can compare them with each other.",
