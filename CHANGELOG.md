@@ -6,6 +6,7 @@
 - added energized modifier to mage blocks to make them emit Redstone power
 - fixed accidental swapping of Sloth and Racer's Purification
 - fixed being able to use Recharge Item to recharge lamps
+- fixed conjured staves not casting properly
 - fixed speck pattern saving
 
 ## 1.1.0
