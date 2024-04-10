@@ -21,13 +21,16 @@ object HexicalNetworking {
 			TelepathyData.active[context.player.uuid] = false
 		}
 		NetworkManager.registerReceiver(NetworkManager.Side.C2S, Hexical.CAST_CONJURED_STAFF_PACKET) { buf, context ->
-			val player = context.player
+			val player = context.player as ServerPlayerEntity
 			val hand = getConjuredStaff(player) ?: return@registerReceiver
+			val world = player.world as ServerWorld
 			val constructedStack: MutableList<Iota> = ArrayList()
 			val staffRank = buf.readInt()
 			for (i in 0 until staffRank)
 				constructedStack.add(BooleanIota(buf.readBoolean()))
-			(player.getStackInHand(hand).item as ConjuredStaffItem).cast(context.player.world as ServerWorld, player as ServerPlayerEntity, hand, player.getStackInHand(hand), constructedStack)
+			context.queue {
+				(player.getStackInHand(hand).item as ConjuredStaffItem).cast(world, player, hand, player.getStackInHand(hand), constructedStack)
+			}
 		}
 	}
 }
