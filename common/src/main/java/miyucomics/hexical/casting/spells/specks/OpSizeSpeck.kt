@@ -10,7 +10,6 @@ class OpSizeSpeck : SpellAction {
 	override val argc = 2
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		val entity = args.getEntity(0, argc)
-		ctx.assertEntityInRange(entity)
 		val size = args.getPositiveDoubleUnder(1, 10.0, argc)
 		if (entity !is SpeckEntity)
 			throw MishapBadEntity.of(entity, "speck")

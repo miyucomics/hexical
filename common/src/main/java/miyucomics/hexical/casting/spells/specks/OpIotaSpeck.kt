@@ -13,7 +13,6 @@ class OpIotaSpeck : SpellAction {
 	override val argc = 2
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		val entity = args.getEntity(0, argc)
-		ctx.assertEntityInRange(entity)
 		val iota = args[1]
 		if (entity !is SpeckEntity)
 			throw MishapBadEntity.of(entity, "speck")
