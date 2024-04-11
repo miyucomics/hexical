@@ -12,7 +12,6 @@ class OpMoveSpeck : SpellAction {
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		val entity = args.getEntity(0, argc)
 		val position = args.getVec3(1, argc)
-		ctx.assertEntityInRange(entity)
 		ctx.assertVecInRange(position)
 		if (entity !is SpeckEntity)
 			throw MishapBadEntity.of(entity, "speck")

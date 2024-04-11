@@ -12,7 +12,6 @@ class OpZRotationSpeck : SpellAction {
 		val entity = args.getEntity(0, argc)
 		if (entity !is SpeckEntity)
 			throw MishapBadEntity.of(entity, "speck")
-		ctx.assertEntityInRange(entity)
 		val rotation = args.getDoubleBetween(1, 0.0, 1.0, argc)
 		return Triple(Spell(entity, rotation), 0, listOf())
 	}
