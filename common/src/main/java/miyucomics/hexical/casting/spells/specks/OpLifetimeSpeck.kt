@@ -11,7 +11,6 @@ class OpLifetimeSpeck : SpellAction {
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		val entity = args.getEntity(0, argc)
 		val lifespan = args.getInt(1, argc)
-		ctx.assertEntityInRange(entity)
 		if (entity !is SpeckEntity)
 			throw MishapBadEntity.of(entity, "speck")
 		return Triple(Spell(entity, lifespan), 0, listOf())
