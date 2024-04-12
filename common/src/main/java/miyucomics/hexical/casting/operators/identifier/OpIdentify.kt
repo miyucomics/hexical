@@ -9,6 +9,7 @@ import at.petrak.hexcasting.api.spell.iota.NullIota
 import at.petrak.hexcasting.api.spell.iota.Vec3Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
 import miyucomics.hexical.iota.IdentifierIota
+import miyucomics.hexical.iota.ItemStackIota
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.registry.Registry
 
@@ -17,6 +18,7 @@ class OpIdentify : ConstMediaAction {
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
 		return when (val arg = args[0]) {
 			is EntityIota -> listOf(IdentifierIota(Registry.ENTITY_TYPE.getId(args.getEntity(0, argc).type)))
+			is ItemStackIota -> listOf(IdentifierIota(Registry.ITEM.getId(arg.stack.item)))
 			is Vec3Iota -> {
 				if (!ctx.isVecInRange(arg.vec3))
 					listOf(NullIota())
