@@ -16,7 +16,6 @@ import miyucomics.hexical.casting.operators.identifier.OpRecognize
 import miyucomics.hexical.casting.operators.item_stack.OpForager
 import miyucomics.hexical.casting.operators.lamp.*
 import miyucomics.hexical.casting.operators.specks.*
-import miyucomics.hexical.casting.operators.status.OpGetStatusEffects
 import miyucomics.hexical.casting.spells.*
 import miyucomics.hexical.casting.spells.circle.OpDisplace
 import miyucomics.hexical.casting.spells.lamp.OpEducateGenie
