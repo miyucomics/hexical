@@ -12,11 +12,15 @@ import net.minecraft.entity.EntityType
 import net.minecraft.entity.data.DataTracker
 import net.minecraft.entity.data.TrackedData
 import net.minecraft.entity.data.TrackedDataHandlerRegistry
+import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.nbt.NbtCompound
+import net.minecraft.nbt.NbtList
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.text.MutableText
 import net.minecraft.text.Text
+import net.minecraft.util.ActionResult
+import net.minecraft.util.Hand
 import net.minecraft.world.World
 
 val isPatternDataTracker: TrackedData<Boolean> = DataTracker.registerData(SpeckEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
@@ -27,6 +31,7 @@ val thicknessDataTracker: TrackedData<Float> = DataTracker.registerData(SpeckEnt
 val zRotationDataTracker: TrackedData<Float> = DataTracker.registerData(SpeckEntity::class.java, TrackedDataHandlerRegistry.FLOAT)
 
 class SpeckEntity(entityType: EntityType<SpeckEntity?>?, world: World?) : Entity(entityType, world) {
+	private var hex = arrayListOf<Iota>()
 	private var display = NbtCompound()
 	private var isPattern = false
 	private var pigment = NbtCompound()
@@ -59,6 +64,12 @@ class SpeckEntity(entityType: EntityType<SpeckEntity?>?, world: World?) : Entity
 		thickness = nbt.getFloat("thickness")
 		lifespan = nbt.getInt("lifespan")
 		zRotation = nbt.getFloat("z_rotation")
+
+		val patterns = nbt.get("hex") as NbtList
+		hex = arrayListOf()
+		for (pattern in patterns)
+			hex.add(HexIotaTypes.deserialize(pattern as NbtCompound, world as ServerWorld))
+
 		dataTracker.set(displayDataTracker, display)
 		dataTracker.set(isPatternDataTracker, isPattern)
 		dataTracker.set(pigmentDataTracker, pigment)
@@ -71,6 +82,10 @@ class SpeckEntity(entityType: EntityType<SpeckEntity?>?, world: World?) : Entity
 	}
 
 	override fun writeCustomDataToNbt(nbt: NbtCompound) {
+		val patterns = NbtList()
+		for (iota in hex)
+			patterns.add(HexIotaTypes.serialize(iota))
+		nbt.put("hex", patterns)
 		nbt.putCompound("display", display)
 		nbt.putCompound("pigment", pigment)
 		nbt.putFloat("size", size)

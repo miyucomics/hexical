@@ -12,6 +12,7 @@ import miyucomics.hexical.casting.operators.getters.*
 import miyucomics.hexical.casting.operators.grimoire.*
 import miyucomics.hexical.casting.operators.identifier.OpIdentify
 import miyucomics.hexical.casting.operators.identifier.OpRecognize
+import miyucomics.hexical.casting.operators.item_stack.OpForager
 import miyucomics.hexical.casting.operators.lamp.*
 import miyucomics.hexical.casting.spells.*
 import miyucomics.hexical.casting.spells.circle.OpDisplace
@@ -41,6 +42,14 @@ object HexicalPatterns {
 
 		register(HexPattern.fromAngles("qqqqqe", HexDir.NORTH_EAST), "identify", OpIdentify())
 		register(HexPattern.fromAngles("eeeeeq", HexDir.WEST), "recognize", OpRecognize())
+
+		register(HexPattern.fromAngles("qaqqqqqeaq", HexDir.EAST), "forage", OpForager())
+		// edeeeeeqde - inventory purification
+		register(HexPattern.fromAngles("qaqqwqqqw", HexDir.EAST), "count_stack", OpGetItemStackData(0))
+		register(HexPattern.fromAngles("edeeweeew", HexDir.WEST), "count_max_stack", OpGetItemStackData(1))
+		register(HexPattern.fromAngles("eeweeewdeq", HexDir.NORTH_EAST), "damage_stack", OpGetItemStackData(2))
+		register(HexPattern.fromAngles("qqwqqqwaqe", HexDir.NORTH_WEST), "damage_max_stack", OpGetItemStackData(3))
+		register(HexPattern.fromAngles("eaqqqqq", HexDir.SOUTH_EAST), "edible", OpGetItemStackData(4))
 
 		register(HexPattern.fromAngles("dee", HexDir.NORTH_WEST), "conjure_mage_block", OpConjureMageBlock())
 		register(HexPattern.fromAngles("deeqa", HexDir.NORTH_WEST), "modify_block_bouncy", OpModifyMageBlock("bouncy"))

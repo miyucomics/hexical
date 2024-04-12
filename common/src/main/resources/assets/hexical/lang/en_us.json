@@ -35,6 +35,7 @@
 	"hexcasting.mishap.bad_item.lamp_flay": "a villager of Journeyman status or greater",
 	"hexcasting.mishap.bad_item.speck": "a speck",
 	"hexcasting.mishap.invalid_value.identifier": "an identifier",
+	"hexcasting.mishap.invalid_value.item_stack": "an item stack",
 	"hexcasting.mishap.invalid_value.identifiable": "an identifiable target",
 	"hexcasting.mishap.invalid_value.recognizable": "a target with extra information",
 	"hexcasting.mishap.hexical:needs_regular_lamp": "Expected to be cast by regular Genie Lamp.",
@@ -45,6 +46,12 @@
 
 	"hexcasting.spell.hexical:identify": "Detective's Purification",
 	"hexcasting.spell.hexical:recognize": "Recognizer's Purif.",
+	"hexcasting.spell.hexical:forage": "Forager's Purification",
+	"hexcasting.spell.hexical:count_stack": "Storage Purification",
+	"hexcasting.spell.hexical:count_max_stack": "Warehouse Purification",
+	"hexcasting.spell.hexical:damage_stack": "Deterioration Purif.",
+	"hexcasting.spell.hexical:damage_max_stack": "Fragility Purification",
+	"hexcasting.spell.hexical:edible": "Edibility Purification",
 
 	"hexcasting.spell.hexical:get_telepathy": "Telepathic Reflection",
 	"hexcasting.spell.hexical:send_telepathy": "Send Thought",
@@ -118,6 +125,15 @@
 	"hexical.page.circle_spells.title": "Circle Spells",
 	"hexical.page.circle_spells.0": "When the media courses through the boundaries of a circle, it saturates the domain inside the circle with media, allowing me to manipulate the environment inside far more flexibly than I am used to.",
 	"hexical.page.displace": "For just three amethyst shards, I can teleport an entity from anywhere in my circle to anywhere else inside. Unlike $(l:patterns/great_spells/teleport)Greater Teleport$(), this spell takes in exact coordinates.",
+
+	"hexical.page.item_stacks.title": "Item Stacks",
+	"hexical.page.item_stacks.0": "I can get representations of entities on the stack, why not items? This set of patterns allows me to divine information from an item stack, like durability, amount of items, and enchantments. The item stack can be from my inventory, in an item frame, or on the ground. However, it seems the iota is merely a $(o)copy$(). It does not update if I pick up the item stack or drop some.",
+	"hexical.page.forage": "Takes in an item entity and returns the item stack that it is.",
+	"hexical.page.count_stack": "Takes in an item stack and returns how many items are in it.",
+	"hexical.page.count_max_stack": "Takes in an item stack and returns how many items that can stack in it.",
+	"hexical.page.damage_stack": "Takes in an item stack and returns how much durability the item has left.",
+	"hexical.page.damage_max_stack": "Takes in an item entity and returns how much durability the item can have at its peak.",
+	"hexical.page.edible": "Takes in an item entity and returns whether you can eat it.",
 
 	"hexical.page.identifiers.title": "Identifiers",
 	"hexical.page.identifiers.0": "My hexes has so far been quite blind to the world. I can get a creature's height, velocity, whether it's burning, etc... but I can't directly identify that entity. Nature's solution to the problem is the $(o)identifier iota$(). Every entity, block, status effect, enchantment, sound, etc... has a unique identifier that my hexes can identify. Once I have two identifiers, I can compare them with each other.",
