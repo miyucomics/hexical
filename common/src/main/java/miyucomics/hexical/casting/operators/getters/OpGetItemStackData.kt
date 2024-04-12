@@ -13,7 +13,6 @@ class OpGetItemStackData(private val mode: Int) : ConstMediaAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
 		val stack = args.getItemStack(0, argc)
-		stack.isDamageable
 		return listOf(
 			when (mode) {
 				0 -> DoubleIota(stack.count.toDouble())
