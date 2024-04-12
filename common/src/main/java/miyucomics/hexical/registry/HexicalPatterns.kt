@@ -53,7 +53,7 @@ object HexicalPatterns {
 		register(HexPattern.fromAngles("qqwqqqwaqe", HexDir.NORTH_WEST), "damage_max_stack", OpGetItemStackData(3))
 		register(HexPattern.fromAngles("eaqqqqq", HexDir.SOUTH_EAST), "edible", OpGetItemStackData(4))
 
-		register(HexPattern.fromAngles("awqwaeqqqqq", HexDir.NORTH_EAST), "get_effect", OpGetStatusEffects())
+		register(HexPattern.fromAngles("awqwaeqqqqq", HexDir.NORTH_EAST), "get_effect", OpGetLivingEntityData(2))
 
 		register(HexPattern.fromAngles("dee", HexDir.NORTH_WEST), "conjure_mage_block", OpConjureMageBlock())
 		register(HexPattern.fromAngles("deeqa", HexDir.NORTH_WEST), "modify_block_bouncy", OpModifyMageBlock("bouncy"))
