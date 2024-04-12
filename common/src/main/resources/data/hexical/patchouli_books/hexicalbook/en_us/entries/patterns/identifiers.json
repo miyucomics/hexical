@@ -9,19 +9,19 @@
 			"type": "patchouli:text",
 			"text": "hexical.page.identifiers.0"
 		},
-		{
+        {
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:identify",
 			"anchor": "hexical:identify",
-			"input": "block/entity",
+			"input": "block/entity/item stack",
 			"output": "identifier",
 			"text": "hexical.page.identifiers.1"
 		},
-		{
+        {
 			"type": "patchouli:text",
 			"text": "hexical.page.identifiers.2"
 		},
-		{
+        {
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:recognize",
 			"anchor": "hexical:recognize",
