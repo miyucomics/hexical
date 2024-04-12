@@ -14,7 +14,7 @@
 			"op_id": "hexical:conjure_speck",
 			"anchor": "hexical:conjure_speck",
 			"input": "any, vector, vector",
-			"output": "",
+			"output": "entity",
 			"text": "hexical.page.conjure_speck"
 		},
 		{
@@ -86,7 +86,7 @@
 			"op_id": "hexical:zone_speck",
 			"anchor": "hexical:zone_speck",
 			"input": "vector, number",
-			"output": "",
+			"output": "[entity]",
 			"text": "hexical.page.zone_speck"
 		}
 	]

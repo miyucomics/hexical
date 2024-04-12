@@ -6,6 +6,7 @@ import at.petrak.hexcasting.api.spell.math.HexDir
 import at.petrak.hexcasting.api.spell.math.HexPattern
 import at.petrak.hexcasting.common.casting.operators.selectors.OpGetEntitiesBy
 import miyucomics.hexical.Hexical
+import miyucomics.hexical.casting.operators.specks.OpConjureSpeck
 import miyucomics.hexical.casting.operators.OpGetTelepathy
 import miyucomics.hexical.casting.operators.eval.OpNephthys
 import miyucomics.hexical.casting.operators.getters.*
@@ -14,6 +15,8 @@ import miyucomics.hexical.casting.operators.identifier.OpIdentify
 import miyucomics.hexical.casting.operators.identifier.OpRecognize
 import miyucomics.hexical.casting.operators.item_stack.OpForager
 import miyucomics.hexical.casting.operators.lamp.*
+import miyucomics.hexical.casting.operators.specks.*
+import miyucomics.hexical.casting.operators.status.OpGetStatusEffects
 import miyucomics.hexical.casting.spells.*
 import miyucomics.hexical.casting.spells.circle.OpDisplace
 import miyucomics.hexical.casting.spells.lamp.OpEducateGenie
@@ -22,7 +25,6 @@ import miyucomics.hexical.casting.spells.lamp.OpSetArchLampStorage
 import miyucomics.hexical.casting.spells.lamp.OpTerminateArchLamp
 import miyucomics.hexical.casting.spells.mage_blocks.OpConjureMageBlock
 import miyucomics.hexical.casting.spells.mage_blocks.OpModifyMageBlock
-import miyucomics.hexical.casting.spells.specks.*
 import miyucomics.hexical.casting.spells.telepathy.OpSendTelepathy
 import miyucomics.hexical.casting.spells.telepathy.OpShoutTelepathy
 import miyucomics.hexical.casting.spells.telepathy.OpHallucinateSound
@@ -50,6 +52,8 @@ object HexicalPatterns {
 		register(HexPattern.fromAngles("eeweeewdeq", HexDir.NORTH_EAST), "damage_stack", OpGetItemStackData(2))
 		register(HexPattern.fromAngles("qqwqqqwaqe", HexDir.NORTH_WEST), "damage_max_stack", OpGetItemStackData(3))
 		register(HexPattern.fromAngles("eaqqqqq", HexDir.SOUTH_EAST), "edible", OpGetItemStackData(4))
+
+		register(HexPattern.fromAngles("awqwaeqqqqq", HexDir.NORTH_EAST), "get_effect", OpGetStatusEffects())
 
 		register(HexPattern.fromAngles("dee", HexDir.NORTH_WEST), "conjure_mage_block", OpConjureMageBlock())
 		register(HexPattern.fromAngles("deeqa", HexDir.NORTH_WEST), "modify_block_bouncy", OpModifyMageBlock("bouncy"))
