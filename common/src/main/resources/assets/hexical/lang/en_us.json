@@ -202,7 +202,7 @@
 	"hexical.page.modify_block_volatile": "This modifier makes the block break other conjured blocks it's touching. Notably, if it breaks another volatile block, that block breaks and so on until every volatile block shatters.",
 
 	"hexical.page.specks.title": "Specks",
-	"hexical.page.specks.0": "I can conjure an image of an iota into the world, called a speck. Nature allows me to customize them quite extensively, altering their size, thickness of stroke, and more. They also take on my pigment color. Once they are in the world, I can move, rotate, and otherwise alter them for free.",
+	"hexical.page.specks.0": "I can conjure an image of an iota into the world, called a speck. Nature allows me to customize them quite extensively, altering their size, thickness of stroke, and more. They also take on my pigment color. Once they are in the world, I can move, rotate, and otherwise alter them for free, regardless of range.",
 	"hexical.page.conjure_speck": "Conjures a speck with the iota, position, and rotation. Costs one-hundredth of a dust.$(br2)$(o)Because you saw things from every angle, you understood them for what they really were.$()",
 	"hexical.page.move_speck": "Moves a speck entity to the position.",
 	"hexical.page.rotate_speck": "Rotates a speck entity to face the vector.",
