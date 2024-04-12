@@ -8,8 +8,11 @@
 - fixed accidental swapping of Sloth and Racer's Purification
 - fixed being able to use Recharge Item to recharge lamps
 - fixed conjured staves not casting properly
+- fixed mage block breaking particles
 - fixed speck text rendering
 - fixed speck pattern saving
+- remove range requirement for altering specks
+- updated some documentation
 
 ## 1.1.0
 - added mishap to grimoire patterns if you are not holding a grimoire in your offhand
