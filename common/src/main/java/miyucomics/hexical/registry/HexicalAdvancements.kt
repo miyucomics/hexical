@@ -25,7 +25,7 @@ object HexicalAdvancements {
 
 class CriterionTemplate(val data: Identifier) : AbstractCriterion<CriterionTemplate.Condition>() {
 	override fun conditionsFromJson(obj: JsonObject, playerPredicate: EntityPredicate.Extended, predicateDeserializer: AdvancementEntityPredicateDeserializer) = Condition()
+	inner class Condition : AbstractCriterionConditions(data, EntityPredicate.Extended.EMPTY)
 	fun trigger(player: ServerPlayerEntity?) = trigger(player) { true }
 	override fun getId() = data
-	inner class Condition : AbstractCriterionConditions(data, EntityPredicate.Extended.EMPTY)
 }
