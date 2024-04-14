@@ -50,7 +50,21 @@ object HexicalPatterns {
 		register("count_max_stack", "edeeweeew", HexDir.WEST, OpGetItemStackData(1))
 		register("damage_stack", "eeweeewdeq", HexDir.NORTH_EAST, OpGetItemStackData(2))
 		register("damage_max_stack", "qqwqqqwaqe", HexDir.NORTH_WEST, OpGetItemStackData(3))
-		register("edible", "eaqqqqq", HexDir.SOUTH_EAST, OpGetItemStackData(4))
+
+		register("edible", "adaqqqdd", HexDir.WEST, OpGetItemStackData(4))
+		register("get_hunger", "adaqqqddqe", HexDir.WEST, OpGetFoodData(0))
+		register("get_saturation", "adaqqqddqw", HexDir.WEST, OpGetFoodData(1))
+		register("is_meat", "adaqqqddaed", HexDir.WEST, OpGetFoodData(2))
+		register("is_snack", "adaqqqddaq", HexDir.WEST, OpGetFoodData(3))
+
+		register("get_enchantments", "waqeaeqawqwawaw", HexDir.WEST, OpGetItemStackData(5))
+		register("get_enchantment_strength", "waqwwqaweede", HexDir.WEST, OpGetEnchantmentStrength())
+
+		register("get_effects_entity", "wqqq", HexDir.SOUTH_WEST, OpGetLivingEntityData(2))
+		register("get_effects_item", "wqqqadee", HexDir.SOUTH_WEST, OpGetItemEffects())
+		register("get_effect_category", "wqqqaawd", HexDir.SOUTH_WEST, OpGetStatusEffectCategory())
+		register("get_effect_amplifier", "wqqqaqwa", HexDir.SOUTH_WEST, OpGetStatusEffectInstanceData(0))
+		register("get_effect_duration", "wqqqaqwdd", HexDir.SOUTH_WEST, OpGetStatusEffectInstanceData(1))
 
 		register("paint_scroll", "awqwaeqqqqq", HexDir.NORTH_EAST, OpPaintScroll())
 

@@ -1,37 +1,12 @@
 {
-	"name": "hexical.page.world_scrying.title",
-	"icon": "minecraft:spyglass",
-	"category": "hexcasting:patterns",
+	"name": "hexical.page.entities.title",
+	"icon": "minecraft:egg",
+	"category": "hexical:scrying",
 	"advancement": "hexcasting:root",
-	"sortnum": 6,
 	"pages": [
 		{
 			"type": "patchouli:text",
-			"text": "hexical.page.world_scrying"
-		},
-		{
-			"type": "hexcasting:pattern",
-			"op_id": "hexical:get_weather",
-			"anchor": "hexical:get_weather",
-			"input": "",
-			"output": "number",
-			"text": "hexical.page.get_weather"
-		},
-		{
-			"type": "hexcasting:pattern",
-			"op_id": "hexical:block_hardness",
-			"anchor": "hexical:block_hardness",
-			"input": "vector",
-			"output": "number",
-			"text": "hexical.page.block_hardness"
-		},
-		{
-			"type": "hexcasting:pattern",
-			"op_id": "hexical:block_blast_resistance",
-			"anchor": "hexical:block_blast_resistance",
-			"input": "vector",
-			"output": "number",
-			"text": "hexical.page.block_blast_resistance"
+			"text": "hexical.page.entities.0"
 		},
 		{
 			"type": "hexcasting:pattern",

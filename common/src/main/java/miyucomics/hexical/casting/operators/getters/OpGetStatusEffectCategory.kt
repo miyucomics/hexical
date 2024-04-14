@@ -10,22 +10,17 @@ import miyucomics.hexical.iota.getIdentifier
 import net.minecraft.entity.effect.StatusEffectCategory
 import net.minecraft.util.registry.Registry
 
-class OpGetStatusEffectCategory(private val mode: Int) : ConstMediaAction {
+class OpGetStatusEffectCategory : ConstMediaAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
 		val effect = args.getIdentifier(0, argc)
 		if (!Registry.STATUS_EFFECT.containsId(effect))
 			throw MishapInvalidIota.of(args[0], 0, "status_effect")
-		return listOf(
-			when (mode) {
-				0 -> when (Registry.STATUS_EFFECT.get(effect)!!.category) {
-					StatusEffectCategory.BENEFICIAL -> DoubleIota(1.0)
-					StatusEffectCategory.NEUTRAL -> DoubleIota(0.0)
-					StatusEffectCategory.HARMFUL -> DoubleIota(-1.0)
-					else -> NullIota()
-				}
-				else -> NullIota()
-			}
-		)
+		return listOf(when (Registry.STATUS_EFFECT.get(effect)!!.category) {
+			StatusEffectCategory.BENEFICIAL -> DoubleIota(1.0)
+			StatusEffectCategory.NEUTRAL -> DoubleIota(0.0)
+			StatusEffectCategory.HARMFUL -> DoubleIota(-1.0)
+			else -> NullIota()
+		})
 	}
 }

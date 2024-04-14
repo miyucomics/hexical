@@ -32,14 +32,16 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: Wo
 	var size: Int = 1
 
 	constructor(world: World, position: BlockPos, dir: Direction, size: Int) : this(HexicalEntities.LIVING_SCROLL_ENTITY, world) {
+		this.patterns = mutableListOf(HexPattern.fromAngles("eeeee", HexDir.EAST))
 		this.attachmentPos = position
 		this.setFacing(dir)
 		this.size = size
 		updateAttachmentPosition()
+		updateRender()
 	}
 
 	override fun initDataTracker() {
-		this.dataTracker.startTracking(renderDataTracker, HexPattern.fromAngles("eeeee", HexDir.EAST).serializeToNBT())
+		this.dataTracker.startTracking(renderDataTracker, NbtCompound())
 		super.initDataTracker()
 	}
 

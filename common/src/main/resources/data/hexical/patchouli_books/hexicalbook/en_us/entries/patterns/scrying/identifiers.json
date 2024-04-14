@@ -1,9 +1,8 @@
 {
 	"name": "hexical.page.identifiers.title",
 	"icon": "hexcasting:lens",
-	"category": "hexcasting:patterns",
+	"category": "hexical:scrying",
 	"advancement": "hexcasting:root",
-	"sortnum": 6,
 	"pages": [
 		{
 			"type": "patchouli:text",
