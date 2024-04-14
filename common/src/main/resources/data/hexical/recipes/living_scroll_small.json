@@ -1,0 +1,14 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "hexcasting:scroll_small"
+		},
+		{
+			"item": "hexcasting:amethyst_dust"
+		}
+	],
+	"result": {
+		"item": "hexical:living_scroll_small"
+	}
+}
