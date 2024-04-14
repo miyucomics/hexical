@@ -1,0 +1,52 @@
+{
+	"name": "hexical.page.food.title",
+	"icon": "minecraft:apple",
+	"category": "hexical:scrying",
+	"advancement": "hexcasting:root",
+	"pages": [
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.food.0"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:edible",
+			"anchor": "hexical:edible",
+			"input": "item stack",
+			"output": "boolean",
+			"text": "hexical.page.edible"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:get_hunger",
+			"anchor": "hexical:get_hunger",
+			"input": "item stack",
+			"output": "number",
+			"text": "hexical.page.get_hunger"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:get_saturation",
+			"anchor": "hexical:get_saturation",
+			"input": "item stack",
+			"output": "number",
+			"text": "hexical.page.get_saturation"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:is_meat",
+			"anchor": "hexical:is_meat",
+			"input": "item stack",
+			"output": "boolean",
+			"text": "hexical.page.is_meat"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:is_snack",
+			"anchor": "hexical:is_snack",
+			"input": "item stack",
+			"output": "boolean",
+			"text": "hexical.page.is_snack"
+		}
+	]
+}

@@ -1,7 +1,7 @@
 {
 	"name": "hexical.page.item_stacks.title",
 	"icon": "minecraft:glow_berries",
-	"category": "hexcasting:patterns",
+	"category": "hexical:scrying",
 	"advancement": "hexcasting:root",
 	"pages": [
 		{
@@ -47,14 +47,6 @@
 			"input": "item stack",
 			"output": "number",
 			"text": "hexical.page.damage_max_stack"
-		},
-		{
-			"type": "hexcasting:pattern",
-			"op_id": "hexical:edible",
-			"anchor": "hexical:edible",
-			"input": "item stack",
-			"output": "boolean",
-			"text": "hexical.page.edible"
 		}
 	]
 }
