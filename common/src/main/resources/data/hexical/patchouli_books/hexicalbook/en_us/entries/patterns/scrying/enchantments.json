@@ -1,0 +1,28 @@
+{
+	"name": "hexical.page.enchantments.title",
+	"icon": "minecraft:enchanted_book",
+	"category": "hexical:scrying",
+	"advancement": "hexcasting:root",
+	"pages": [
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.enchantments.0"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:get_enchantments",
+			"anchor": "hexical:get_enchantments",
+			"input": "item stack",
+			"output": "",
+			"text": "hexical.page.get_enchantments"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:get_enchantment_strength",
+			"anchor": "hexical:get_enchantment_strength",
+			"input": "item stack, identifier",
+			"output": "number",
+			"text": "hexical.page.get_enchantment_strength"
+		}
+	]
+}

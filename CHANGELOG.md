@@ -5,6 +5,7 @@
 - added status effect patterns
 - added random achievements for fun
 - added z-axis rotation for specks
+- added living scrolls
 - added energized modifier to mage blocks to make them emit Redstone power
 - added Displace spell for circles that lets them teleport entities for cheap
 - changed Conjure Speck to push the speck entity to the stack
