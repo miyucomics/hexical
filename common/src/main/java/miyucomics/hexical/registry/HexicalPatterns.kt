@@ -52,7 +52,7 @@ object HexicalPatterns {
 		register("damage_max_stack", "qqwqqqwaqe", HexDir.NORTH_WEST, OpGetItemStackData(3))
 		register("edible", "eaqqqqq", HexDir.SOUTH_EAST, OpGetItemStackData(4))
 
-		register("get_effect", "awqwaeqqqqq", HexDir.NORTH_EAST, OpGetItemStackData(5))
+		register("paint_scroll", "awqwaeqqqqq", HexDir.NORTH_EAST, OpPaintScroll())
 
 		register("conjure_mage_block", "dee", HexDir.NORTH_WEST, OpConjureMageBlock())
 		register("modify_block_bouncy", "deeqa", HexDir.NORTH_WEST, OpModifyMageBlock("bouncy"))
