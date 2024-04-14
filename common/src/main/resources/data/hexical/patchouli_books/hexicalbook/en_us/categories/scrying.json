@@ -1,0 +1,7 @@
+{
+	"name": "hexical.category.scrying",
+	"icon": "minecraft:spyglass",
+    "parent": "hexcasting:patterns",
+	"sortnum": 2,
+	"description": "hexical.category.scrying.desc"
+}
