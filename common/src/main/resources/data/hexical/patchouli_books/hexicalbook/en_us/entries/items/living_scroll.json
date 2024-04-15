@@ -1,6 +1,6 @@
 {
 	"name": "hexical.page.living_scroll.title",
-	"icon": "hexcasting:scroll_small",
+	"icon": "hexical:living_scroll_large",
     "advancement": "hexcasting:root",
 	"category": "hexcasting:items",
     "sortnum": 3,
@@ -8,14 +8,6 @@
 		{
 			"type": "patchouli:text",
 			"text": "hexical.page.living_scroll.0"
-		},
-		{
-			"type": "hexcasting:pattern",
-			"op_id": "hexical:paint_scroll",
-			"anchor": "hexical:paint_scroll",
-			"input": "entity, [pattern]",
-			"output": "",
-			"text": "hexical.page.paint_scroll"
 		},
 		{
 			"type": "patchouli:crafting",
