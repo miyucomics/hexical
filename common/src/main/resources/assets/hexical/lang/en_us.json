@@ -147,7 +147,7 @@
 	"hexical.page.hexical_changes.1": "I also find my tools more familar. I notice I require less concentration with my $(l:items/staff)$(item)staff$() and can move around while using it, handy for chasing down targets that get out of my line of sight before I can finish my raycast. I shouldn't become too relaxed though, Nature has not become more forgiving of my mistakes. I can also write directly into my $(l:items/abacus)$(item)abacus$() with Scribe's Gambit.",
 
 	"hexical.page.living_scroll.title": "Living Scrolls",
-	"hexical.page.living_scroll.0": "Living ink scrolls are enchanted with a bit of amethyst, allowing the ink to move and vibrate. Not only that, living ink scrolls can also cycle through a list of patterns.$(br2)$(o)You can't be a proper writer without a touch of madness, can you?$()",
+	"hexical.page.living_scroll.0": "Living scrolls are mixed with a touch of amethyst, enchanting the ink to move and vibrate similar to the patterns I draw with my staff. Not only that, living scrolls can display a list of patterns, cycling through them one at a time.$(br2)$(o)You can't be a proper writer without a touch of madness, can you?$()",
 	"hexical.page.paint_scroll": "Takes in a living ink scroll in the world and a pattern list, and forces the scroll to take on the patterns.",
 	"hexical.page.living_scroll.1": "",
 

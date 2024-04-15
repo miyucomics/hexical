@@ -1,9 +1,7 @@
 package miyucomics.hexical.entities
 
-import at.petrak.hexcasting.api.spell.math.HexDir
 import at.petrak.hexcasting.api.spell.math.HexPattern
 import at.petrak.hexcasting.xplat.IXplatAbstractions
-import dev.architectury.event.events.common.TickEvent.Player
 import miyucomics.hexical.networking.SpawnLivingScrollPacket
 import miyucomics.hexical.registry.HexicalEntities
 import miyucomics.hexical.registry.HexicalItems
@@ -31,9 +29,9 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: Wo
 	var patterns: MutableList<HexPattern> = mutableListOf()
 	var size: Int = 1
 
-	constructor(world: World, position: BlockPos, dir: Direction, size: Int) : this(HexicalEntities.LIVING_SCROLL_ENTITY, world) {
-		this.patterns = mutableListOf(HexPattern.fromAngles("eeeee", HexDir.EAST))
+	constructor(world: World, position: BlockPos, dir: Direction, size: Int, patterns: MutableList<HexPattern>) : this(HexicalEntities.LIVING_SCROLL_ENTITY, world) {
 		this.attachmentPos = position
+		this.patterns = patterns
 		this.setFacing(dir)
 		this.size = size
 		updateAttachmentPosition()
