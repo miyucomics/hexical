@@ -147,9 +147,11 @@
 	"hexical.page.hexical_changes.1": "I also find my tools more familar. I notice I require less concentration with my $(l:items/staff)$(item)staff$() and can move around while using it, handy for chasing down targets that get out of my line of sight before I can finish my raycast. I shouldn't become too relaxed though, Nature has not become more forgiving of my mistakes. I can also write directly into my $(l:items/abacus)$(item)abacus$() with Scribe's Gambit.",
 
 	"hexical.page.living_scroll.title": "Living Scrolls",
-	"hexical.page.living_scroll.0": "Living scrolls are mixed with a touch of amethyst, enchanting the ink to move and vibrate similar to the patterns I draw with my staff. Not only that, living scrolls can display a list of patterns, cycling through them one at a time.$(br2)$(o)You can't be a proper writer without a touch of madness, can you?$()",
+	"hexical.page.living_scroll.0": "Living scrolls are mixed with a pinch of amethyst, enchanting the ink to move and wiggle like the patterns I draw with my staff. Not only that, living scrolls can display lists of patterns, cycling through them once every second and in magical sync with every other living scroll.$(br2)$(o)You can't be a proper writer without a touch of madness, can you?$()",
 	"hexical.page.paint_scroll": "Takes in a living ink scroll in the world and a pattern list, and forces the scroll to take on the patterns.",
-	"hexical.page.living_scroll.1": "",
+	"hexical.page.living_scroll.1": "I can freely write and rewrite the scroll's patterns at any time, along with reading it back out. The scroll is very specific and will only accept either a pattern iota or a list of patterns.",
+	"hexical.page.living_scroll.2": "",
+	"hexical.page.living_scroll.3": "",
 
 	"hexical.page.circle_spells.title": "Circle Spells",
 	"hexical.page.circle_spells.0": "When the media courses through the boundaries of a circle, it saturates the domain inside the circle with media, allowing me to manipulate the environment inside far more flexibly than I am used to.",

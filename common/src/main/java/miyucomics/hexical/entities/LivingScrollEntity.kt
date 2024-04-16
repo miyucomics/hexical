@@ -1,5 +1,9 @@
 package miyucomics.hexical.entities
 
+import at.petrak.hexcasting.api.addldata.ADIotaHolder
+import at.petrak.hexcasting.api.spell.iota.Iota
+import at.petrak.hexcasting.api.spell.iota.ListIota
+import at.petrak.hexcasting.api.spell.iota.PatternIota
 import at.petrak.hexcasting.api.spell.math.HexPattern
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.networking.SpawnLivingScrollPacket
@@ -49,7 +53,7 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: Wo
 		super.tick()
 	}
 
-	private fun updateRender () {
+	private fun updateRender() {
 		this.dataTracker.set(renderDataTracker, patterns[((world.time / 20).toInt() % patterns.size)].serializeToNBT())
 	}
 
@@ -91,21 +95,23 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: Wo
 			this.playSound(SoundEvents.ENTITY_PAINTING_BREAK, 1.0f, 1.0f)
 			if (entity is PlayerEntity && entity.abilities.creativeMode)
 				return
-			this.dropItem(when (size) {
-				1 -> HexicalItems.LIVING_SCROLL_SMALL_ITEM
-				2 -> HexicalItems.LIVING_SCROLL_MEDIUM_ITEM
-				3 -> HexicalItems.LIVING_SCROLL_LARGE_ITEM
-				else -> HexicalItems.LIVING_SCROLL_SMALL_ITEM
-			})
+			this.dropStack(pickBlockStack)
 		}
 	}
 
-	override fun getPickBlockStack() = ItemStack(when (size) {
-		1 -> HexicalItems.LIVING_SCROLL_SMALL_ITEM
-		2 -> HexicalItems.LIVING_SCROLL_MEDIUM_ITEM
-		3 -> HexicalItems.LIVING_SCROLL_LARGE_ITEM
-		else -> HexicalItems.LIVING_SCROLL_SMALL_ITEM
-	})
+	override fun getPickBlockStack(): ItemStack {
+		val stack = ItemStack(when (size) {
+			1 -> HexicalItems.LIVING_SCROLL_SMALL_ITEM
+			2 -> HexicalItems.LIVING_SCROLL_MEDIUM_ITEM
+			3 -> HexicalItems.LIVING_SCROLL_LARGE_ITEM
+			else -> HexicalItems.LIVING_SCROLL_SMALL_ITEM
+		})
+		val pats = mutableListOf<PatternIota>()
+		for (pattern in patterns)
+			pats.add(PatternIota(pattern))
+		IXplatAbstractions.INSTANCE.findDataHolder(stack)!!.writeIota(ListIota(pats.toList()), true)
+		return stack
+	}
 
 	override fun getWidthPixels() = 16 * size
 	override fun getHeightPixels() = 16 * size

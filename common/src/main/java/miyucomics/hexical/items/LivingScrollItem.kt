@@ -1,9 +1,9 @@
 package miyucomics.hexical.items
 
 import at.petrak.hexcasting.api.item.IotaHolderItem
-import at.petrak.hexcasting.api.spell.SpellList
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.ListIota
+import at.petrak.hexcasting.api.spell.iota.NullIota
 import at.petrak.hexcasting.api.spell.iota.PatternIota
 import at.petrak.hexcasting.api.spell.math.HexDir
 import at.petrak.hexcasting.api.spell.math.HexPattern
@@ -15,12 +15,9 @@ import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.item.ItemUsageContext
 import net.minecraft.nbt.NbtCompound
-import net.minecraft.nbt.NbtElement
-import net.minecraft.nbt.NbtList
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.util.ActionResult
 import net.minecraft.world.event.GameEvent
-import java.util.regex.Pattern
 
 class LivingScrollItem(private val size: Int) : Item(Settings().group(HexicalItems.HEXICAL_GROUP)), IotaHolderItem {
 	override fun useOnBlock(ctx: ItemUsageContext?): ActionResult {
@@ -56,12 +53,18 @@ class LivingScrollItem(private val size: Int) : Item(Settings().group(HexicalIte
 		return ActionResult.success(world.isClient)
 	}
 
-	override fun readIotaTag(stack: ItemStack?) = stack!!.getCompound("patterns")
+	override fun readIotaTag(stack: ItemStack?): NbtCompound? {
+		if (stack!!.hasCompound("patterns"))
+			return stack.getCompound("patterns")
+		return HexIotaTypes.serialize(NullIota())
+	}
 
 	override fun canWrite(stack: ItemStack?, iota: Iota?): Boolean {
-		if (iota !is ListIota)
+		if (iota!!.type == HexIotaTypes.PATTERN)
+			return true
+		if (iota.type != HexIotaTypes.LIST)
 			return false
-		iota.list.forEach {
+		(iota as ListIota).list.forEach {
 			if (it.type != HexIotaTypes.PATTERN)
 				return false
 		}
@@ -69,7 +72,11 @@ class LivingScrollItem(private val size: Int) : Item(Settings().group(HexicalIte
 	}
 
 	override fun writeDatum(stack: ItemStack?, iota: Iota?) {
-		if (canWrite(stack, iota))
-			stack!!.orCreateNbt.put("patterns", iota!!.serialize())
+		if (canWrite(stack, iota)) {
+			var toSerialize = iota!!
+			if (iota.type == HexIotaTypes.PATTERN)
+				toSerialize = ListIota(listOf(iota))
+			stack!!.orCreateNbt.put("patterns", HexIotaTypes.serialize(toSerialize))
+		}
 	}
 }

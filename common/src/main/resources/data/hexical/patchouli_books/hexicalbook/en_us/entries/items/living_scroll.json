@@ -17,12 +17,12 @@
 		{
 			"type": "patchouli:crafting",
 			"recipe": "hexical:living_scroll_medium",
-			"text": "hexical.page.living_scroll.1"
+			"text": "hexical.page.living_scroll.2"
 		},
 		{
 			"type": "patchouli:crafting",
 			"recipe": "hexical:living_scroll_large",
-			"text": "hexical.page.living_scroll.1"
+			"text": "hexical.page.living_scroll.3"
 		}
 	]
 }
