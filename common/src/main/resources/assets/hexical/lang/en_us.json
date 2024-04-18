@@ -149,9 +149,9 @@
 	"hexical.page.living_scroll.title": "Living Scrolls",
 	"hexical.page.living_scroll.0": "Living scrolls are mixed with a pinch of amethyst, enchanting the ink to move and wiggle like the patterns I draw with my staff. Not only that, living scrolls can display lists of patterns, cycling through them once every second and in magical sync with every other living scroll.$(br2)$(o)You can't be a proper writer without a touch of madness, can you?$()",
 	"hexical.page.paint_scroll": "Takes in a living ink scroll in the world and a pattern list, and forces the scroll to take on the patterns.",
-	"hexical.page.living_scroll.1": "I can freely write and rewrite the scroll's patterns at any time, along with reading it back out. The scroll is very specific and will only accept either a pattern iota or a list of patterns.",
-	"hexical.page.living_scroll.2": "",
-	"hexical.page.living_scroll.3": "",
+	"hexical.page.living_scroll.1": "I can freely write and rewrite the scroll's patterns at any time, along with reading it back out. The scroll accepts only a pattern iota or a list of pattern iotas.",
+	"hexical.page.living_scroll.2": "When displaying a list of patterns, a living scroll shows one pattern at a time. It changes once per second and is in magical sync with other living scrolls.",
+	"hexical.page.living_scroll.3": "Even when I write the same pattern list to two of them at two different moments of their cycle, they end up in sync.",
 
 	"hexical.page.circle_spells.title": "Circle Spells",
 	"hexical.page.circle_spells.0": "When the media courses through the boundaries of a circle, it saturates the domain inside the circle with media, allowing me to manipulate the environment inside far more flexibly than I am used to.",
