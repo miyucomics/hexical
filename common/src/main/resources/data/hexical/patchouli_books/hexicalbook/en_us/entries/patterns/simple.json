@@ -1,0 +1,16 @@
+{
+	"name": "hexical.page.simple.title",
+	"icon": "minecraft:water_bucket",
+	"category": "hexcasting:patterns",
+	"advancement": "hexcasting:root",
+	"pages": [
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:dioscuri_gambit",
+			"anchor": "hexical:dioscuri_gambit",
+			"input": "many, number",
+			"output": "many",
+			"text": "hexical.page.dioscuri_gambit"
+	    }
+	]
+}

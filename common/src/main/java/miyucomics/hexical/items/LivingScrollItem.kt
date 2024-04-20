@@ -31,7 +31,6 @@ class LivingScrollItem(private val size: Int) : Item(Settings().group(HexicalIte
 			return ActionResult.FAIL
 
 		val world = ctx.world
-
 		val patternList = mutableListOf(HexPattern.fromAngles("eeeee", HexDir.EAST))
 		if (stack.hasCompound("patterns") && !world.isClient) {
 			patternList.clear()
@@ -40,7 +39,7 @@ class LivingScrollItem(private val size: Int) : Item(Settings().group(HexicalIte
 				patternList.add((iota as PatternIota).pattern)
 		}
 
-		val scrollEntity = LivingScrollEntity(world, position, direction, size, patternList)
+		val scrollEntity = LivingScrollEntity(world, position, direction, size, stack, patternList)
 		if (!scrollEntity.canStayAttached())
 			return ActionResult.CONSUME
 
