@@ -5,6 +5,7 @@ import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.ListIota
 import at.petrak.hexcasting.api.spell.iota.PatternIota
 import at.petrak.hexcasting.api.spell.math.HexPattern
+import at.petrak.hexcasting.api.utils.serializeToNBT
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.networking.SpawnLivingScrollPacket
 import miyucomics.hexical.registry.HexicalEntities
@@ -32,12 +33,14 @@ val renderDataTracker: TrackedData<NbtCompound> = DataTracker.registerData(Speck
 class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: World?) : AbstractDecorationEntity(entityType, world) {
 	var patterns: MutableList<HexPattern> = mutableListOf()
 	var size: Int = 1
+	var stack: ItemStack = ItemStack.EMPTY
 
-	constructor(world: World, position: BlockPos, dir: Direction, size: Int, patterns: MutableList<HexPattern>) : this(HexicalEntities.LIVING_SCROLL_ENTITY, world) {
+	constructor(world: World, position: BlockPos, dir: Direction, size: Int, stack: ItemStack, patterns: MutableList<HexPattern>) : this(HexicalEntities.LIVING_SCROLL_ENTITY, world) {
 		this.attachmentPos = position
 		this.patterns = patterns
 		this.setFacing(dir)
 		this.size = size
+		this.stack = stack
 		updateAttachmentPosition()
 		updateRender()
 	}
@@ -66,12 +69,15 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: Wo
 
 	override fun readCustomDataFromNbt(nbt: NbtCompound?) {
 		setFacing(Direction.values()[nbt!!.getByte("direction").toInt()])
+		this.stack = ItemStack.fromNbt(nbt.getCompound("stack"))
 		this.size = nbt.getInt("size")
 		updateAttachmentPosition()
+
 		val data = nbt.get("patterns") as NbtList
-		patterns = mutableListOf()
+		this.patterns = mutableListOf()
 		for (pattern in data)
-			patterns.add(HexPattern.fromNBT(pattern as NbtCompound))
+			this.patterns.add(HexPattern.fromNBT(pattern as NbtCompound))
+
 		updateRender()
 		super.readCustomDataFromNbt(nbt)
 	}
@@ -83,6 +89,7 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: Wo
 		for (pattern in patterns)
 			data.add(pattern.serializeToNBT())
 		nbt.put("patterns", data)
+		nbt.put("stack", stack.serializeToNBT())
 		super.writeCustomDataToNbt(nbt)
 	}
 
@@ -95,25 +102,12 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: Wo
 			this.playSound(SoundEvents.ENTITY_PAINTING_BREAK, 1.0f, 1.0f)
 			if (entity is PlayerEntity && entity.abilities.creativeMode)
 				return
-			this.dropStack(pickBlockStack)
+			this.dropStack(this.stack)
 		}
 	}
 
-	override fun getPickBlockStack(): ItemStack {
-		val stack = ItemStack(when (size) {
-			1 -> HexicalItems.LIVING_SCROLL_SMALL_ITEM
-			2 -> HexicalItems.LIVING_SCROLL_MEDIUM_ITEM
-			3 -> HexicalItems.LIVING_SCROLL_LARGE_ITEM
-			else -> HexicalItems.LIVING_SCROLL_SMALL_ITEM
-		})
-		val pats = mutableListOf<PatternIota>()
-		for (pattern in patterns)
-			pats.add(PatternIota(pattern))
-		IXplatAbstractions.INSTANCE.findDataHolder(stack)!!.writeIota(ListIota(pats.toList()), true)
-		return stack
-	}
-
-	override fun getWidthPixels() = 16 * size
-	override fun getHeightPixels() = 16 * size
-	override fun createSpawnPacket(): Packet<*> = IXplatAbstractions.INSTANCE.toVanillaClientboundPacket(SpawnLivingScrollPacket(EntitySpawnS2CPacket(this), this.blockPos, this.facing, size))
+	override fun getPickBlockStack() = this.stack
+	override fun getWidthPixels() = 16 * this.size
+	override fun getHeightPixels() = 16 * this.size
+	override fun createSpawnPacket(): Packet<*> = IXplatAbstractions.INSTANCE.toVanillaClientboundPacket(SpawnLivingScrollPacket(EntitySpawnS2CPacket(this), this.blockPos, this.facing, this.size))
 }

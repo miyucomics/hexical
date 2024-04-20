@@ -6,6 +6,7 @@ import at.petrak.hexcasting.api.spell.math.HexDir
 import at.petrak.hexcasting.api.spell.math.HexPattern
 import at.petrak.hexcasting.common.casting.operators.selectors.OpGetEntitiesBy
 import miyucomics.hexical.Hexical
+import miyucomics.hexical.casting.operators.OpDioscuriGambit
 import miyucomics.hexical.casting.operators.specks.OpConjureSpeck
 import miyucomics.hexical.casting.operators.OpGetTelepathy
 import miyucomics.hexical.casting.operators.eval.OpNephthys
@@ -38,6 +39,7 @@ object HexicalPatterns {
 	@JvmStatic
 	fun init() {
 		register("nephthys", "deaqqdq", HexDir.SOUTH_EAST, OpNephthys)
+		register("dioscuri_gambit", "waadadaa", HexDir.EAST, OpDioscuriGambit())
 
 		register("displace", "qqqqqaeeqaeadeeed", HexDir.NORTH_WEST, OpDisplace())
 
