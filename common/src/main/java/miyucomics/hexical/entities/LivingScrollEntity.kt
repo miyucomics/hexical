@@ -5,6 +5,7 @@ import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.ListIota
 import at.petrak.hexcasting.api.spell.iota.PatternIota
 import at.petrak.hexcasting.api.spell.math.HexPattern
+import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.api.utils.serializeToNBT
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.networking.SpawnLivingScrollPacket
@@ -32,8 +33,8 @@ val renderDataTracker: TrackedData<NbtCompound> = DataTracker.registerData(Speck
 
 class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: World?) : AbstractDecorationEntity(entityType, world) {
 	var patterns: MutableList<HexPattern> = mutableListOf()
+	var stack: ItemStack = ItemStack(HexicalItems.LIVING_SCROLL_SMALL_ITEM)
 	var size: Int = 1
-	var stack: ItemStack = ItemStack.EMPTY
 
 	constructor(world: World, position: BlockPos, dir: Direction, size: Int, stack: ItemStack, patterns: MutableList<HexPattern>) : this(HexicalEntities.LIVING_SCROLL_ENTITY, world) {
 		this.attachmentPos = position
@@ -46,8 +47,8 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: Wo
 	}
 
 	override fun initDataTracker() {
-		this.dataTracker.startTracking(renderDataTracker, NbtCompound())
 		super.initDataTracker()
+		this.dataTracker.startTracking(renderDataTracker, NbtCompound())
 	}
 
 	override fun tick() {
@@ -60,6 +61,7 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: Wo
 		this.dataTracker.set(renderDataTracker, patterns[((world.time / 20).toInt() % patterns.size)].serializeToNBT())
 	}
 
+	// called on client only
 	fun readSpawnData(pos: BlockPos?, dir: Direction?, size: Int) {
 		this.setPos(pos!!.x.toDouble(), pos.y.toDouble(), pos.z.toDouble())
 		this.size = size
@@ -89,7 +91,11 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: Wo
 		for (pattern in patterns)
 			data.add(pattern.serializeToNBT())
 		nbt.put("patterns", data)
-		nbt.put("stack", stack.serializeToNBT())
+
+		val compound = NbtCompound()
+		stack.writeNbt(nbt)
+		nbt.putCompound("stack", compound)
+
 		super.writeCustomDataToNbt(nbt)
 	}
 

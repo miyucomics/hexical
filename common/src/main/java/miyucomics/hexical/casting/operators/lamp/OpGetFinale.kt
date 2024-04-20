@@ -10,8 +10,8 @@ import miyucomics.hexical.interfaces.CastingContextMixinInterface
 class OpGetFinale : ConstMediaAction {
 	override val argc = 0
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
-		if (!(ctx as CastingContextMixinInterface).getCastByLamp())
+		if (!(ctx as CastingContextMixinInterface).`hexical$getCastByLamp`())
 			throw NeedsLampMishap()
-		return listOf(BooleanIota((ctx as CastingContextMixinInterface).getFinale()))
+		return listOf(BooleanIota((ctx as CastingContextMixinInterface).`hexical$getFinale`()))
 	}
 }

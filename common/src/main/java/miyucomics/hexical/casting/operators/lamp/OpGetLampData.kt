@@ -15,7 +15,7 @@ import miyucomics.hexical.items.LampItem
 class OpGetLampData(private val mode: Int) : ConstMediaAction {
 	override val argc = 0
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
-		if (!(ctx as CastingContextMixinInterface).getCastByLamp() || (ctx as CastingContextMixinInterface).getArchLamp())
+		if (!(ctx as CastingContextMixinInterface).`hexical$getCastByLamp`() || (ctx as CastingContextMixinInterface).`hexical$getArchLamp`())
 			throw NeedsLampMishap()
 		val nbt = ctx.caster.activeItem.nbt ?: return listOf(NullIota())
 		return listOf(
