@@ -40,20 +40,20 @@ public class CastingHarnessMixin {
 
 	@WrapOperation(method = "updateWithPattern", at = @At(value = "INVOKE", target = "Ljava/util/List;add(Ljava/lang/Object;)Z"))
 	private boolean stopLampParticles(List<OperatorSideEffect> instance, Object effect, Operation<Boolean> original) {
-		if (((CastingContextMixinInterface) (Object) hexical$harness.getCtx()).getCastByLamp())
+		if (((CastingContextMixinInterface) (Object) hexical$harness.getCtx()).hexical$getCastByLamp())
 			return true;
 		return original.call(instance, effect);
 	}
 
 	@WrapWithCondition(method = "executeIotas", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/world/ServerWorld;playSound(Lnet/minecraft/entity/player/PlayerEntity;DDDLnet/minecraft/sound/SoundEvent;Lnet/minecraft/sound/SoundCategory;FF)V"))
 	private boolean silenceLamp(ServerWorld world, PlayerEntity player, double x, double y, double z, SoundEvent event, SoundCategory type, float volume, float pitch) {
-		return !((CastingContextMixinInterface) (Object) hexical$harness.getCtx()).getCastByLamp();
+		return !((CastingContextMixinInterface) (Object) hexical$harness.getCtx()).hexical$getCastByLamp();
 	}
 
 	@Inject(method = "withdrawMedia", at = @At("HEAD"), cancellable = true, remap = false)
 	private void takeMediaFromArchLamp(int mediaCost, boolean allowOvercast, CallbackInfoReturnable<Integer> cir) {
 		CastingContext ctx = hexical$harness.getCtx();
-		if (((CastingContextMixinInterface) (Object) ctx).getArchLamp()) {
+		if (((CastingContextMixinInterface) (Object) ctx).hexical$getArchLamp()) {
 			if (ctx.getCaster().isCreative()) {
 				cir.setReturnValue(0);
 				return;

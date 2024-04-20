@@ -1,11 +1,13 @@
 package miyucomics.hexical.registry
 
+import at.petrak.hexcasting.common.items.ItemStaff
 import dev.architectury.registry.CreativeTabRegistry
 import dev.architectury.registry.registries.DeferredRegister
 import miyucomics.hexical.Hexical
 import miyucomics.hexical.items.*
 import net.minecraft.item.BlockItem
 import net.minecraft.item.Item
+import net.minecraft.item.Item.Settings
 import net.minecraft.item.ItemGroup
 import net.minecraft.util.registry.Registry
 
@@ -22,6 +24,8 @@ object HexicalItems {
 
 	@JvmStatic
 	fun init() {
+		ITEMS.register("copper_staff") { ItemStaff(Settings().maxCount(1).group(HEXICAL_GROUP)) }
+
 		ITEMS.register("grimoire") { GRIMOIRE_ITEM }
 		ITEMS.register("lamp") { LAMP_ITEM }
 		ITEMS.register("arch_lamp") { ARCH_LAMP_ITEM }

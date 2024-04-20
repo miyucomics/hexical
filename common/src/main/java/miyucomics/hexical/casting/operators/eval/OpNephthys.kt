@@ -16,19 +16,21 @@ object OpNephthys : Action {
 		if (stack.size < 2)
 			throw MishapNotEnoughArgs(2, stack.size)
 
-		val instructions = stack.getList(stack.lastIndex - 1)
+		val rawInstructions = stack[stack.lastIndex - 1]
+		val instructions = evaluatable(rawInstructions, 1).map({ SpellList.LList(0, listOf(PatternIota(it))) }, { it })
 		val depth = stack.getPositiveInt(stack.lastIndex)
-		stack.removeLastOrNull()
-		stack.removeLastOrNull()
+		stack.removeLast()
+		stack.removeLast()
 
-		val constructedList = mutableListOf<Iota>()
-		constructedList.add(PatternIota(HexPattern.fromAngles("qqqaw", HexDir.WEST)))
-		constructedList.add(ListIota(stack.popStack(depth)))
-		constructedList.add(PatternIota(HexPattern.fromAngles("qwaeawq", HexDir.WEST)))
+		val restoreIota = SpellList.LList(0, listOf(
+			PatternIota(HexPattern.fromAngles("qqqaw", HexDir.WEST)),
+			ListIota(stack.popStack(depth)),
+			PatternIota(HexPattern.fromAngles("qwaeawq", HexDir.WEST))
+		))
 
 		return OperationResult(
 			continuation
-				.pushFrame(FrameEvaluate(SpellList.LList(0, constructedList), true))
+				.pushFrame(FrameEvaluate(restoreIota, true))
 				.pushFrame(FrameEvaluate(instructions, true)),
 			stack, ravenmind, listOf()
 		)

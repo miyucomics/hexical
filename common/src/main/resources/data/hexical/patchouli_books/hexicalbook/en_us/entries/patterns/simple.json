@@ -1,6 +1,6 @@
 {
 	"name": "hexical.page.simple.title",
-	"icon": "minecraft:water_bucket",
+	"icon": "minecraft:snowball",
 	"category": "hexcasting:patterns",
 	"advancement": "hexcasting:root",
 	"pages": [

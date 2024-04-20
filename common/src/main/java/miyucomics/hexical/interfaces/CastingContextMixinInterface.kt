@@ -1,10 +1,10 @@
 package miyucomics.hexical.interfaces
 
 interface CastingContextMixinInterface {
-	fun getCastByLamp(): Boolean
-	fun getArchLamp(): Boolean
-	fun getFinale(): Boolean
-	fun setCastByLamp(castByLamp: Boolean)
-	fun setArchLamp(archLamp: Boolean)
-	fun setFinale(finale: Boolean)
+	fun `hexical$getCastByLamp`(): Boolean
+	fun `hexical$getArchLamp`(): Boolean
+	fun `hexical$getFinale`(): Boolean
+	fun `hexical$setCastByLamp`(castByLamp: Boolean)
+	fun `hexical$setArchLamp`(archLamp: Boolean)
+	fun `hexical$setFinale`(finale: Boolean)
 }

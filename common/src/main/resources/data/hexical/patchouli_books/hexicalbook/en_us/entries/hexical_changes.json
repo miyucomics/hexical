@@ -1,6 +1,6 @@
 {
 	"name": "hexical.page.hexical_changes.title",
-	"icon": "minecraft:ender_eye",
+	"icon": "hexical:conjured_staff",
 	"category": "hexcasting:basics",
 	"sortnum": 1,
 	"advancement": "hexcasting:root",

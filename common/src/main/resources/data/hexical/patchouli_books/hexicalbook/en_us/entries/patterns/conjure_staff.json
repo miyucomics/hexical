@@ -1,5 +1,5 @@
 {
-	"name": "hexcasting.spell.hexical:conjure_staff",
+	"name": "hexical.page.conjure_staff.title",
 	"icon": "hexical:conjured_staff",
 	"category": "hexcasting:patterns/spells",
 	"advancement": "hexcasting:root",

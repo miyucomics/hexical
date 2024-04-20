@@ -15,32 +15,32 @@ public abstract class CastingContextMixin implements CastingContextMixinInterfac
 	private boolean hexical$finale = false;
 
 	@Override
-	public boolean getCastByLamp() {
+	public boolean hexical$getCastByLamp() {
 		return hexical$isCastByLamp;
 	}
 
 	@Override
-	public boolean getArchLamp() {
+	public boolean hexical$getArchLamp() {
 		return hexical$archLamp;
 	}
 
 	@Override
-	public boolean getFinale() {
+	public boolean hexical$getFinale() {
 		return hexical$finale;
 	}
 
 	@Override
-	public void setCastByLamp(boolean value) {
+	public void hexical$setCastByLamp(boolean value) {
 		hexical$isCastByLamp = value;
 	}
 
 	@Override
-	public void setArchLamp(boolean value) {
+	public void hexical$setArchLamp(boolean value) {
 		hexical$archLamp = value;
 	}
 
 	@Override
-	public void setFinale(boolean value) {
+	public void hexical$setFinale(boolean value) {
 		hexical$finale = value;
 	}
 }

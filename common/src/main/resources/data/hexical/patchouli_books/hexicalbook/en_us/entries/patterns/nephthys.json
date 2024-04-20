@@ -1,10 +1,22 @@
 {
-	"name": "hexical.page.nephthys.title",
-	"icon": "minecraft:water_bucket",
+	"name": "hexical.page.metaevals.title",
+	"icon": "minecraft:obsidian",
 	"category": "hexcasting:patterns",
 	"advancement": "hexcasting:root",
 	"sortnum": 12,
 	"pages": [
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:janus",
+			"anchor": "hexical:janus",
+			"input": "",
+			"output": "",
+			"text": "hexical.page.janus.0"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.janus.1"
+		},
 		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:nephthys",
@@ -16,6 +28,18 @@
 		{
 			"type": "patchouli:text",
 			"text": "hexical.page.nephthys.1"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:themis",
+			"anchor": "hexical:themis",
+			"input": "[any], pattern/[pattern]",
+			"output": "vary",
+			"text": "hexical.page.themis.0"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.themis.1"
 		}
 	]
 }
