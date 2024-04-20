@@ -9,6 +9,8 @@ import miyucomics.hexical.Hexical
 import miyucomics.hexical.casting.operators.OpDioscuriGambit
 import miyucomics.hexical.casting.operators.specks.OpConjureSpeck
 import miyucomics.hexical.casting.operators.OpGetTelepathy
+import miyucomics.hexical.casting.operators.OpSortList
+import miyucomics.hexical.casting.operators.eval.OpJanus
 import miyucomics.hexical.casting.operators.eval.OpNephthys
 import miyucomics.hexical.casting.operators.getters.*
 import miyucomics.hexical.casting.operators.grimoire.*
@@ -38,8 +40,10 @@ object HexicalPatterns {
 
 	@JvmStatic
 	fun init() {
+		register("janus", "aadee", HexDir.SOUTH_WEST, OpJanus)
 		register("nephthys", "deaqqdq", HexDir.SOUTH_EAST, OpNephthys)
 		register("dioscuri_gambit", "waadadaa", HexDir.EAST, OpDioscuriGambit())
+		register("themis", "daqqqwqd", HexDir.EAST, OpSortList())
 
 		register("displace", "qqqqqaeeqaeadeeed", HexDir.NORTH_WEST, OpDisplace())
 

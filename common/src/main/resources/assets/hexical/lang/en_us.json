@@ -23,6 +23,7 @@
 	"item.hexical.grimoire": "Grimoire",
 	"item.hexical.lamp": "Genie Lamp",
 	"item.hexical.arch_lamp": "Archgenie Lamp",
+	"item.hexical.copper_staff": "Copper Staff",
 	"item.hexical.conjured_staff": "Conjured Staff",
 	"item.hexical.living_scroll_small": "Small Living Scroll",
 	"item.hexical.living_scroll_medium": "Medium Living Scroll",
@@ -46,11 +47,12 @@
 	"hexcasting.mishap.invalid_value.item_stack": "an item stack",
 	"hexcasting.mishap.invalid_value.identifiable": "an identifiable target",
 	"hexcasting.mishap.invalid_value.recognizable": "a target with extra information",
+	"hexcasting.mishap.hexical:grimoire_too_full": "Tried to fit too many bindings in a grimoire.",
 	"hexcasting.mishap.hexical:needs_regular_lamp": "Expected to be cast by regular Genie Lamp.",
 	"hexcasting.mishap.hexical:needs_arch_lamp": "Expected an active Arch Lamp in the inventory.",
 	"hexcasting.mishap.hexical:grimoire_access_denied": "Tried to increase the uses of a restricted binding.",
-	"hexcasting.mishap.hexical:grimoire_too_full": "Tried to fit too many bindings in a grimoire.",
 	"hexcasting.mishap.hexical:outside_domain": "Spell exceeds the domains of the spell circle.",
+	"hexcasting.mishap.hexical:themis": "Expected a number at the top of the pseudo-stack.",
 
 	"hexcasting.spell.book.hexical:recognize": "Recognizer's Purif.",
 	"hexcasting.spell.book.hexical:damage_stack": "Deterioration Purif.",
@@ -147,7 +149,8 @@
 	"hexcasting.spell.hexical:is_sleeping": "Sloth's Purification",
 	"hexcasting.spell.hexical:is_sprinting": "Racer's Purification",
 
-	"hexcasting.spell.hexical:nephthys": "Nephthys Gambit",
+	"hexcasting.spell.hexical:janus": "Janus' Gambit",
+	"hexcasting.spell.hexical:nephthys": "Nephthys' Gambit",
 
 	"hexcasting.spell.hexical:conjure_speck": "Conjure Speck",
 	"hexcasting.spell.hexical:move_speck": "Move Speck",
@@ -280,9 +283,13 @@
 	"hexical.page.set_arch_lamp_storage": "Sets the lamp's iota storage. Subject to Transgress Others mishap.",
 	"hexical.page.get_arch_lamp_storage": "Gets the lamp's iota storage.",
 
-	"hexical.page.nephthys.title": "Nephthys' Gambit",
+	"hexical.page.metaevals.title": "Hexical Meta-evaluations",
+    "hexical.page.janus.0": "Instantly terminates the _Hex regardless of the current circumstances, breaking even through Thoth's and Hermes' Gambit unlike Charon's.",
+    "hexical.page.janus.1": "It's useful to end a _Hex early once it has reached some desired state, without the difficulty of using Charon's Gambit because Janus' can bypass the \"containment\" of Hermes' and Thoth's.$(br2)$(o)It is always important to know when something has reached its end.$()",
 	"hexical.page.nephthys.0": "Pops a pattern list and a number from the stack and dives down n iota to cast the pattern list. Useful for surgery-like operations.",
 	"hexical.page.nephthys.1": "It's extremely versatile and I can mend almost any error in my stack using Bookkeeper's Gambit, pushing iota after a dive, and transforming surfaced iota. It was named after a goddess of mourning and rivers, lending to how it buries/dives down into the stack.$(br2)$(o)... the unknowns of time travel... is akin to descending blindly into the depths of the freezing water and reappearing as an acorn.$()",
+    "hexical.page.themis.0": "Takes a list and an list of patterns or a single one and uses it to sort the list.",
+    "hexical.page.themis.1": "Casts the evaluatable over the list similar to Thoth's but demands a number iota at the top of the stack. After finishing execution, uses the numbers corresponding to each iota to sort the list.",
 
 	"hexical.page.telepathy.title": "Telepathy",
 	"hexical.page.telepathy": "Media is the energy of thought and consequently, it can interact with thoughts as well. Unfortunately or perhaps fortunately for me, the minds of players are too resistant to be swayed by hexes and even the minds of villagers resist tampering. There is a notable exception though: my own mind is open to my own media, allowing me to read and write thoughts.",
@@ -318,6 +325,7 @@
 	"hexical.page.kill_speck": "Forces a speck entity to disappear.",
 	"hexical.page.zone_speck": "Returns specks similarly to other $(l:patterns/entities)zone distillation$() patterns.",
 
+	"hexical.page.conjure_staff.title": "Conjured Staves",
 	"hexical.page.conjure_staff.0": "Conjured staves are not unlike $(l:items/hexcasting)$(item)cyphers$(). They have a media battery for casting and when they run out, unable to consume my health or my inventory's stash for _media. They are not rechargable or reprogrammable, and using $(l:patterns/spells/hexcasting#hexcasting:erase)$(action)Erase Item$() on it simply destroys it. However, its true power is $(o)input interception$().",
 	"hexical.page.conjure_staff.1": "Conjures a staff at the location with the amount of media, rank, and hex respectively.$(br2)$(o)This is my $(l)staff$()$(o). There are many like it, but this one is mine.$()",
 	"hexical.page.conjure_staff.2": "When I use my primary or secondary use keys while holding a conjured staff, it intercepts my click. After a number of clicks corresponding to the rank I assigned at conjuration, it will cast the hex I gave it, starting the stack with false and true, corresponding to the left and right clicks respectively. If I pause for too long between clicks, it simply cancels the current \"cast\".",

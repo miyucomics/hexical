@@ -75,8 +75,8 @@ class LampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.HEXIC
 @Suppress("CAST_NEVER_SUCCEEDS")
 fun lampCast(world: ServerWorld, user: ServerPlayerEntity, hex: List<Iota>, archLamp: Boolean, finale: Boolean) {
 	val ctx = CastingContext(user, user.activeHand, CastingContext.CastSource.PACKAGED_HEX)
-	(ctx as CastingContextMixinInterface).setCastByLamp(true)
-	(ctx as CastingContextMixinInterface).setArchLamp(archLamp)
-	(ctx as CastingContextMixinInterface).setFinale(finale)
+	(ctx as CastingContextMixinInterface).`hexical$setCastByLamp`(true)
+	(ctx as CastingContextMixinInterface).`hexical$setArchLamp`(archLamp)
+	(ctx as CastingContextMixinInterface).`hexical$setFinale`(finale)
 	CastingHarness(ctx).executeIotas(hex, world)
 }
