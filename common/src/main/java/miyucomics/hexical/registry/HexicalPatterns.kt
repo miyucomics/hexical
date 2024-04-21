@@ -9,6 +9,7 @@ import miyucomics.hexical.Hexical
 import miyucomics.hexical.casting.operators.OpDioscuriGambit
 import miyucomics.hexical.casting.operators.specks.OpConjureSpeck
 import miyucomics.hexical.casting.operators.OpGetTelepathy
+import miyucomics.hexical.casting.operators.OpShufflePattern
 import miyucomics.hexical.casting.operators.eval.OpThemis
 import miyucomics.hexical.casting.operators.eval.OpJanus
 import miyucomics.hexical.casting.operators.eval.OpNephthys
@@ -47,13 +48,16 @@ object HexicalPatterns {
 		register("sisyphus", "eeeeewqqqqq", HexDir.NORTH_EAST, OpSisyphus)
 		register("dioscuri_gambit", "waadadaa", HexDir.EAST, OpDioscuriGambit())
 
+		register("shuffle_pattern", "deawawwa", HexDir.WEST, OpShufflePattern())
+
 		register("displace", "qqqqqaeeqaeadeeed", HexDir.NORTH_WEST, OpDisplace())
 
 		register("identify", "qqqqqe", HexDir.NORTH_EAST, OpIdentify())
 		register("recognize", "eeeeeq", HexDir.WEST, OpRecognize())
 
 		register("forage", "qaqqqqqeaq", HexDir.EAST, OpForager())
-		// edeeeeeqde - inventory purification
+		register("stack_mainhand", "qaqqqq", HexDir.NORTH_EAST, OpGetPlayerData(0))
+		register("stack_offhand", "edeeee", HexDir.NORTH_WEST, OpGetPlayerData(1))
 		register("count_stack", "qaqqwqqqw", HexDir.EAST, OpGetItemStackData(0))
 		register("count_max_stack", "edeeweeew", HexDir.WEST, OpGetItemStackData(1))
 		register("damage_stack", "eeweeewdeq", HexDir.NORTH_EAST, OpGetItemStackData(2))

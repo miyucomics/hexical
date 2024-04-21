@@ -15,7 +15,7 @@ import net.minecraft.util.Identifier
 import net.minecraft.util.math.*
 import kotlin.math.*
 
-class LivingScrollEntityRenderer(ctx: EntityRendererFactory.Context?) : EntityRenderer<LivingScrollEntity?>(ctx) {
+class LivingScrollRenderer(ctx: EntityRendererFactory.Context?) : EntityRenderer<LivingScrollEntity?>(ctx) {
 	override fun render(scroll: LivingScrollEntity?, yaw: Float, deltaTick: Float, matrices: MatrixStack, vertexConsumers: VertexConsumerProvider, light: Int) {
 		RenderSystem.setShader { GameRenderer.getPositionTexShader() }
 		matrices.push()
