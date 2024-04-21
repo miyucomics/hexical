@@ -16,7 +16,7 @@ object HexicalKeybinds {
 
 	@JvmStatic
 	fun init() {
-		KeyMappingRegistry.register(TELEPATHY_KEYBIND);
+		KeyMappingRegistry.register(TELEPATHY_KEYBIND)
 		ClientTickEvent.CLIENT_POST.register(ClientTickEvent.Client { client: MinecraftClient ->
 			if (client.player == null)
 				return@Client

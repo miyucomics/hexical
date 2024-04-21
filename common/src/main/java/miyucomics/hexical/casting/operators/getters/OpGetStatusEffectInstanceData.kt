@@ -2,14 +2,12 @@ package miyucomics.hexical.casting.operators.getters
 
 import at.petrak.hexcasting.api.spell.ConstMediaAction
 import at.petrak.hexcasting.api.spell.casting.CastingContext
-import at.petrak.hexcasting.api.spell.getBlockPos
 import at.petrak.hexcasting.api.spell.getLivingEntityButNotArmorStand
 import at.petrak.hexcasting.api.spell.iota.DoubleIota
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.NullIota
 import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
 import miyucomics.hexical.iota.getIdentifier
-import net.minecraft.entity.effect.StatusEffectCategory
 import net.minecraft.util.registry.Registry
 
 class OpGetStatusEffectInstanceData(private val mode: Int) : ConstMediaAction {

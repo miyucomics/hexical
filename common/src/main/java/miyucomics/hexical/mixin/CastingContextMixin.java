@@ -1,12 +1,12 @@
 package miyucomics.hexical.mixin;
 
 import at.petrak.hexcasting.api.spell.casting.CastingContext;
-import miyucomics.hexical.interfaces.CastingContextMixinInterface;
+import miyucomics.hexical.interfaces.CastingContextMinterface;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 
 @Mixin(value = CastingContext.class)
-public abstract class CastingContextMixin implements CastingContextMixinInterface {
+public abstract class CastingContextMixin implements CastingContextMinterface {
 	@Unique
 	private boolean hexical$isCastByLamp = false;
 	@Unique
@@ -15,32 +15,32 @@ public abstract class CastingContextMixin implements CastingContextMixinInterfac
 	private boolean hexical$finale = false;
 
 	@Override
-	public boolean hexical$getCastByLamp() {
+	public boolean getCastByLamp() {
 		return hexical$isCastByLamp;
 	}
 
 	@Override
-	public boolean hexical$getArchLamp() {
+	public boolean getArchLamp() {
 		return hexical$archLamp;
 	}
 
 	@Override
-	public boolean hexical$getFinale() {
+	public boolean getFinale() {
 		return hexical$finale;
 	}
 
 	@Override
-	public void hexical$setCastByLamp(boolean value) {
+	public void setCastByLamp(boolean value) {
 		hexical$isCastByLamp = value;
 	}
 
 	@Override
-	public void hexical$setArchLamp(boolean value) {
+	public void setArchLamp(boolean value) {
 		hexical$archLamp = value;
 	}
 
 	@Override
-	public void hexical$setFinale(boolean value) {
+	public void setFinale(boolean value) {
 		hexical$finale = value;
 	}
 }
