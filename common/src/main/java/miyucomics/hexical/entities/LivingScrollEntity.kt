@@ -106,7 +106,6 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: Wo
 		}
 	}
 
-	override fun getPickBlockStack() = this.stack
 	override fun getWidthPixels() = 16 * this.size
 	override fun getHeightPixels() = 16 * this.size
 	override fun createSpawnPacket(): Packet<*> = IXplatAbstractions.INSTANCE.toVanillaClientboundPacket(SpawnLivingScrollPacket(EntitySpawnS2CPacket(this), this.blockPos, this.facing, this.size))
