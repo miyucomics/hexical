@@ -2,15 +2,9 @@ package miyucomics.hexical.casting.operators.getters
 
 import at.petrak.hexcasting.api.spell.ConstMediaAction
 import at.petrak.hexcasting.api.spell.casting.CastingContext
-import at.petrak.hexcasting.api.spell.getEntity
 import at.petrak.hexcasting.api.spell.iota.*
-import at.petrak.hexcasting.api.spell.mishaps.MishapBadItem
 import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
-import miyucomics.hexical.iota.IdentifierIota
 import miyucomics.hexical.iota.getItemStack
-import net.minecraft.enchantment.EnchantmentHelper
-import net.minecraft.item.FoodComponent
-import net.minecraft.util.registry.Registry
 
 class OpGetFoodData(private val mode: Int) : ConstMediaAction {
 	override val argc = 1
