@@ -288,6 +288,9 @@
     "hexical.page.janus.1": "It's useful to end a _Hex early once it has reached some desired state, without the difficulty of using Charon's Gambit because Janus' can bypass the \"containment\" of Hermes' and Thoth's.$(br2)$(o)It is always important to know when something has reached its end.$()",
 	"hexical.page.nephthys.0": "Pops a pattern list and a number from the stack and dives down n iota to cast the pattern list. Useful for surgery-like operations.",
 	"hexical.page.nephthys.1": "It's extremely versatile and I can mend almost any error in my stack using Bookkeeper's Gambit, pushing iota after a dive, and transforming surfaced iota. It was named after a goddess of mourning and rivers, lending to how it buries/dives down into the stack.$(br2)$(o)... the unknowns of time travel... is akin to descending blindly into the depths of the freezing water and reappearing as an acorn.$()",
+	"hexical.page.sisyphus.0": "Takes a pattern list and casts it over and over forever until it encounters either a Charon's Gambit or a Janus' Gambit.",
+	"hexical.page.sisyphus.1": "While I have heard of hexcasters using self referencing hexes called *quines* to make infinite loops, they can be slightly unwieldy to work with. This gambit takes a pattern list and repeatedly casts it until it either runs out of meta-evaluations or encounters a Charon's Gambit. Similar to Thoth's, the ravenmind is persisted and the loop always starts with the base stack.$(br2)$(o)One always finds one's burden again... One must imagine Sisyphus happy.$()",
+
     "hexical.page.themis.0": "Takes a list and an list of patterns or a single one and uses it to sort the list.",
     "hexical.page.themis.1": "Casts the evaluatable over the list similar to Thoth's but demands a number iota at the top of the stack. After finishing execution, uses the numbers corresponding to each iota to sort the list.",
 
