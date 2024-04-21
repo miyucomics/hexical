@@ -9,5 +9,6 @@ import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRe
 public class HexicalFabric implements ModInitializer {
 	@Override public void onInitialize() {
 		Hexical.init();
+		FabricDefaultAttributeRegistry.register(HexicalEntities.INSTANCE.getSTATUE_ENTITY(), StatueEntity.Companion.createMobAttribute());
 	}
 }

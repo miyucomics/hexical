@@ -1,5 +1,6 @@
 package miyucomics.hexical.entities
 
+import miyucomics.hexical.Hexical
 import net.minecraft.client.render.entity.EntityRendererFactory
 import net.minecraft.client.render.entity.LivingEntityRenderer
 import net.minecraft.client.render.entity.feature.HeadFeatureRenderer
@@ -21,7 +22,8 @@ class StatueRenderer(context: EntityRendererFactory.Context?) : LivingEntityRend
 	}
 
 	override fun getTexture(entity: StatueEntity?) = TEXTURE
+	override fun hasLabel(livingEntity: StatueEntity?) = false
 	companion object {
-		private val TEXTURE = Identifier("textures/entity/villager/villager.png")
+		private val TEXTURE = Identifier(Hexical.MOD_ID, "textures/entity/statue.png")
 	}
 }
