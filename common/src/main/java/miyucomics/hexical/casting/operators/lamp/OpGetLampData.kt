@@ -9,13 +9,13 @@ import at.petrak.hexcasting.api.spell.iota.NullIota
 import at.petrak.hexcasting.api.spell.iota.Vec3Iota
 import at.petrak.hexcasting.api.utils.vecFromNBT
 import miyucomics.hexical.casting.mishaps.NeedsLampMishap
-import miyucomics.hexical.interfaces.CastingContextMixinInterface
+import miyucomics.hexical.interfaces.CastingContextMinterface
 import miyucomics.hexical.items.LampItem
 
 class OpGetLampData(private val mode: Int) : ConstMediaAction {
 	override val argc = 0
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
-		if (!(ctx as CastingContextMixinInterface).`hexical$getCastByLamp`() || (ctx as CastingContextMixinInterface).`hexical$getArchLamp`())
+		if (!(ctx as CastingContextMinterface).getCastByLamp() || (ctx as CastingContextMinterface).getArchLamp())
 			throw NeedsLampMishap()
 		val nbt = ctx.caster.activeItem.nbt ?: return listOf(NullIota())
 		return listOf(

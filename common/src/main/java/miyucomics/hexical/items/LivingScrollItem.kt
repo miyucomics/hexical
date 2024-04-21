@@ -39,7 +39,7 @@ class LivingScrollItem(private val size: Int) : Item(Settings().group(HexicalIte
 				patternList.add((iota as PatternIota).pattern)
 		}
 
-		val scrollStack = stack.copy();
+		val scrollStack = stack.copy()
 		scrollStack.setCount(1)
 		val scrollEntity = LivingScrollEntity(world, position, direction, size, scrollStack, patternList)
 		if (!scrollEntity.canStayAttached())

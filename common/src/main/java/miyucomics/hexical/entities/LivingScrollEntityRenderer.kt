@@ -97,7 +97,7 @@ class LivingScrollEntityRenderer(ctx: EntityRendererFactory.Context?) : EntityRe
 			matrices.scale(scale, scale, 1f)
 			val lines = pattern.toLines(0.25f, pattern.getCenter(0.25f).negate()).toMutableList()
 			val verts2 = vertexConsumers.getBuffer(RenderLayer.getEntityCutout(WHITE))
-			val zappy = makeZappy(lines, findDupIndices(pattern.positions()), 10, 2.5f, 0.1f, 0.2f, 0f, 1f, hashCode().toDouble());
+			val zappy = makeZappy(lines, findDupIndices(pattern.positions()), 10, 2.5f, 0.1f, 0.2f, 0f, 1f, hashCode().toDouble())
 			val peek = matrices.peek()
 			val mat2 = peek.positionMatrix
 			val norm2 = peek.normalMatrix
