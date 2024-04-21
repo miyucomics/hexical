@@ -1,0 +1,53 @@
+package miyucomics.hexical.mixin;
+
+import at.petrak.hexcasting.api.spell.SpellList;
+import at.petrak.hexcasting.api.spell.casting.CastingHarness;
+import at.petrak.hexcasting.api.spell.casting.eval.FrameForEach;
+import at.petrak.hexcasting.api.spell.casting.eval.SpellContinuation;
+import at.petrak.hexcasting.api.spell.iota.Iota;
+import kotlin.Pair;
+import miyucomics.hexical.casting.operators.eval.OpSisyphus;
+import miyucomics.hexical.enums.InjectedGambit;
+import miyucomics.hexical.interfaces.FrameForEachMinterface;
+import net.minecraft.item.ItemStack;
+import net.minecraft.server.world.ServerWorld;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+import java.util.List;
+
+@Mixin(value = FrameForEach.class, remap = false)
+public abstract class FrameForEachMixin implements FrameForEachMinterface {
+	@Unique
+	private InjectedGambit hexical$injectedGambit = InjectedGambit.NONE;
+	@Shadow
+	public abstract SpellList getCode();
+	@Shadow
+	public abstract List<Iota> getBaseStack();
+
+	@Inject(method = "breakDownwards", at = @At("HEAD"), cancellable = true)
+	void hijackBreaking(List<? extends Iota> stack, CallbackInfoReturnable<Pair<Boolean, List<Iota>>> cir) {
+		if (hexical$injectedGambit == InjectedGambit.NONE)
+			return;
+		if (hexical$injectedGambit == InjectedGambit.SISYPHUS)
+			cir.setReturnValue(OpSisyphus.INSTANCE.breakDownwards(stack));
+	}
+
+	@Inject(method = "evaluate", at = @At("HEAD"), cancellable = true)
+	void hijackEvaluate(SpellContinuation continuation, ServerWorld level, CastingHarness harness, CallbackInfoReturnable<CastingHarness.CastResult> cir) {
+		if (hexical$injectedGambit == InjectedGambit.NONE)
+			return;
+		if (hexical$injectedGambit == InjectedGambit.SISYPHUS)
+			cir.setReturnValue(OpSisyphus.INSTANCE.evaluate(continuation, harness, getCode(), getBaseStack()));
+	}
+
+	@Override public void overwrite(@NotNull InjectedGambit gambit) {
+		hexical$injectedGambit = gambit;
+	}
+}
