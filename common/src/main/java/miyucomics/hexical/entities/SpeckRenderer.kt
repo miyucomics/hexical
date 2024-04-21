@@ -12,7 +12,7 @@ import net.minecraft.util.Identifier
 import net.minecraft.util.math.*
 import kotlin.math.*
 
-class SpeckEntityRenderer(ctx: EntityRendererFactory.Context?) : EntityRenderer<SpeckEntity?>(ctx) {
+class SpeckRenderer(ctx: EntityRendererFactory.Context?) : EntityRenderer<SpeckEntity?>(ctx) {
 	override fun getTexture(entity: SpeckEntity?): Identifier? = null
 	override fun shouldRender(entity: SpeckEntity?, frustum: Frustum?, x: Double, y: Double, z: Double) = true
 	override fun render(entity: SpeckEntity?, yaw: Float, tickDelta: Float, matrices: MatrixStack?, vertexConsumers: VertexConsumerProvider?, light: Int) {

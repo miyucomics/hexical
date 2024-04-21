@@ -16,7 +16,6 @@ import at.petrak.hexcasting.api.spell.mishaps.MishapNotEnoughArgs
 import at.petrak.hexcasting.common.lib.hex.HexEvalSounds
 import miyucomics.hexical.enums.InjectedGambit
 import miyucomics.hexical.interfaces.FrameForEachMinterface
-import net.minecraft.server.world.ServerWorld
 
 object OpSisyphus : Action {
 	override fun operate(continuation: SpellContinuation, stack: MutableList<Iota>, ravenmind: Iota?, ctx: CastingContext): OperationResult {
@@ -24,12 +23,14 @@ object OpSisyphus : Action {
 			throw MishapNotEnoughArgs(1, 0)
 		val code = stack.getList(stack.lastIndex)
 		stack.removeLastOrNull()
+		if (code.size() == 0)
+			return OperationResult(continuation, stack, ravenmind, listOf())
 		val frame = FrameForEach(SpellList.LList(0, listOf()), code, stack, mutableListOf())
 		(frame as FrameForEachMinterface).overwrite(InjectedGambit.SISYPHUS)
 		return OperationResult(continuation.pushFrame(frame), stack, ravenmind, listOf())
 	}
 
-	fun breakDownwards(stack: List<Iota>): Pair<Boolean, List<Iota>> = true to stack
+	fun breakDownwards(baseStack: List<Iota>): Pair<Boolean, List<Iota>> = true to baseStack
 
 	fun evaluate(continuation: SpellContinuation, harness: CastingHarness, code: SpellList, baseStack: List<Iota>): CastingHarness.CastResult {
 		harness.ctx.incDepth()
