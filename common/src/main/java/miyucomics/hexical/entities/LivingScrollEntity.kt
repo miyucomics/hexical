@@ -1,16 +1,10 @@
 package miyucomics.hexical.entities
 
-import at.petrak.hexcasting.api.addldata.ADIotaHolder
-import at.petrak.hexcasting.api.spell.iota.Iota
-import at.petrak.hexcasting.api.spell.iota.ListIota
-import at.petrak.hexcasting.api.spell.iota.PatternIota
 import at.petrak.hexcasting.api.spell.math.HexPattern
 import at.petrak.hexcasting.api.utils.putCompound
-import at.petrak.hexcasting.api.utils.serializeToNBT
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.networking.SpawnLivingScrollPacket
 import miyucomics.hexical.registry.HexicalEntities
-import miyucomics.hexical.registry.HexicalItems
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.data.DataTracker
@@ -33,7 +27,7 @@ val renderDataTracker: TrackedData<NbtCompound> = DataTracker.registerData(Speck
 
 class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: World?) : AbstractDecorationEntity(entityType, world) {
 	var patterns: MutableList<HexPattern> = mutableListOf()
-	var stack: ItemStack = ItemStack(HexicalItems.LIVING_SCROLL_SMALL_ITEM)
+	var stack: ItemStack = ItemStack.EMPTY
 	var size: Int = 1
 
 	constructor(world: World, position: BlockPos, dir: Direction, size: Int, stack: ItemStack, patterns: MutableList<HexPattern>) : this(HexicalEntities.LIVING_SCROLL_ENTITY, world) {
@@ -100,7 +94,7 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: Wo
 	}
 
 	override fun onPlace() {
-		playSound(SoundEvents.ENTITY_PAINTING_PLACE, 1.0F, 1.0F);
+		playSound(SoundEvents.ENTITY_PAINTING_PLACE, 1.0F, 1.0F)
 	}
 
 	override fun onBreak(entity: Entity?) {

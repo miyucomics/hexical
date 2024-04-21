@@ -13,7 +13,7 @@ import miyucomics.hexical.state.PersistentStateHandler
 
 class OpSetArchLampStorage : SpellAction {
 	override val argc = 1
-	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>>? {
+	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		if (!hasActiveArchLamp(ctx.caster))
 			throw NeedsActiveArchLampMishap()
 		val iota = args[0]

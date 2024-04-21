@@ -1,6 +1,5 @@
 package miyucomics.hexical.registry
 
-import dev.architectury.registry.client.rendering.BlockEntityRendererRegistry
 import dev.architectury.registry.registries.DeferredRegister
 import miyucomics.hexical.Hexical
 import miyucomics.hexical.blocks.MageBlock

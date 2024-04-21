@@ -5,13 +5,13 @@ import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.BooleanIota
 import at.petrak.hexcasting.api.spell.iota.Iota
 import miyucomics.hexical.casting.mishaps.NeedsLampMishap
-import miyucomics.hexical.interfaces.CastingContextMixinInterface
+import miyucomics.hexical.interfaces.CastingContextMinterface
 
 class OpGetFinale : ConstMediaAction {
 	override val argc = 0
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
-		if (!(ctx as CastingContextMixinInterface).`hexical$getCastByLamp`())
+		if (!(ctx as CastingContextMinterface).getCastByLamp())
 			throw NeedsLampMishap()
-		return listOf(BooleanIota((ctx as CastingContextMixinInterface).`hexical$getFinale`()))
+		return listOf(BooleanIota((ctx as CastingContextMinterface).getFinale()))
 	}
 }

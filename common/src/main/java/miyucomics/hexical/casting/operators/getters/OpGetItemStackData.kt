@@ -2,12 +2,10 @@ package miyucomics.hexical.casting.operators.getters
 
 import at.petrak.hexcasting.api.spell.ConstMediaAction
 import at.petrak.hexcasting.api.spell.casting.CastingContext
-import at.petrak.hexcasting.api.spell.getEntity
 import at.petrak.hexcasting.api.spell.iota.*
 import miyucomics.hexical.iota.IdentifierIota
 import miyucomics.hexical.iota.getItemStack
 import net.minecraft.enchantment.EnchantmentHelper
-import net.minecraft.item.FoodComponent
 import net.minecraft.util.registry.Registry
 
 class OpGetItemStackData(private val mode: Int) : ConstMediaAction {

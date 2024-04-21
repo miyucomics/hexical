@@ -14,7 +14,6 @@ import net.minecraft.nbt.NbtElement
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.text.Text
 import net.minecraft.util.Formatting
-import net.minecraft.util.Identifier
 
 class ItemStackIota(identifier: ItemStack) : Iota(HexicalIota.ITEM_STACK_IOTA, identifier) {
 	override fun isTruthy() = true

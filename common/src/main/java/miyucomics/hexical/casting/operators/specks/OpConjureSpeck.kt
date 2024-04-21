@@ -3,15 +3,12 @@ package miyucomics.hexical.casting.operators.specks
 import at.petrak.hexcasting.api.spell.ConstMediaAction
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.getVec3
-import at.petrak.hexcasting.api.spell.iota.DoubleIota
 import at.petrak.hexcasting.api.spell.iota.EntityIota
 import at.petrak.hexcasting.api.spell.iota.Iota
-import at.petrak.hexcasting.api.spell.iota.NullIota
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.entities.SpeckEntity
 import miyucomics.hexical.registry.HexicalAdvancements
 import miyucomics.hexical.registry.HexicalEntities
-import miyucomics.hexical.state.TelepathyData
 import net.minecraft.command.argument.EntityAnchorArgumentType
 
 class OpConjureSpeck : ConstMediaAction {

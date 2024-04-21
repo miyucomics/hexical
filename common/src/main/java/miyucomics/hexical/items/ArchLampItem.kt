@@ -5,7 +5,7 @@ import at.petrak.hexcasting.api.spell.iota.NullIota
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import at.petrak.hexcasting.xplat.IXplatAbstractions
-import miyucomics.hexical.interfaces.PlayerEntityMixinInterface
+import miyucomics.hexical.interfaces.PlayerEntityMinterface
 import miyucomics.hexical.registry.HexicalAdvancements
 import miyucomics.hexical.state.PersistentStateHandler
 import miyucomics.hexical.registry.HexicalItems
@@ -46,7 +46,7 @@ class ArchLampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.H
 		}
 
 		if (stackNbt.getBoolean("active")) {
-			lampCast(world as ServerWorld, user as ServerPlayerEntity, getHex(stack, world)!!, true, true)
+			lampCast(world as ServerWorld, user as ServerPlayerEntity, getHex(stack, world)!!, archLamp = true, finale = true)
 			stackNbt.putBoolean("active", false)
 			return TypedActionResult.success(stack)
 		}
@@ -69,7 +69,7 @@ class ArchLampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.H
 		if (user !is ServerPlayerEntity) return
 		if (!stack.orCreateNbt.getBoolean("active")) return
 
-		if ((user as PlayerEntityMixinInterface).archLampCastedThisTick) {
+		if ((user as PlayerEntityMinterface).getArchLampCastedThisTick()) {
 			for (itemSlot in user.inventory.main)
 				if (itemSlot.item == HexicalItems.ARCH_LAMP_ITEM)
 					itemSlot.orCreateNbt.putBoolean("active", false)
@@ -77,8 +77,8 @@ class ArchLampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.H
 			return
 		}
 
-		lampCast(world as ServerWorld, user, getHex(stack, world) ?: return, true, false)
-		(user as PlayerEntityMixinInterface).lampCastedThisTick()
+		lampCast(world as ServerWorld, user, getHex(stack, world) ?: return, archLamp = true, finale = false)
+		(user as PlayerEntityMinterface).lampCastedThisTick()
 		if (getMedia(stack) == 0) {
 			user.inventory.setStack(slot, ItemStack(HexicalItems.LAMP_ITEM))
 			HexicalAdvancements.USE_UP_LAMP.trigger(user)

@@ -3,7 +3,7 @@
 	"id": "hexical",
 	"version": "${version}",
 	"name": "Hexical",
-	"description": "A Hexcasting addon with various fun and/or convenient features!",
+	"description": "A fun addon containing genie lamps, mage blocks, specks, world scrying, and more!",
 	"authors": [
 		"miyucomics"
 	],

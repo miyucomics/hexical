@@ -1,4 +1,4 @@
-package miyucomics.hexical.casting.operators
+package miyucomics.hexical.casting.operators.eval
 
 import at.petrak.hexcasting.api.spell.ConstMediaAction
 import at.petrak.hexcasting.api.spell.casting.CastingContext
@@ -13,7 +13,7 @@ import at.petrak.hexcasting.api.spell.iota.NullIota
 import at.petrak.hexcasting.api.spell.iota.PatternIota
 import miyucomics.hexical.casting.mishaps.ThemisMishap
 
-class OpSortList : ConstMediaAction {
+class OpThemis : ConstMediaAction {
 	override val argc = 2
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
 		val toSort = args.getList(0, argc).toMutableList()

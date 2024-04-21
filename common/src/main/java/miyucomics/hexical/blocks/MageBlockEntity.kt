@@ -6,12 +6,10 @@ import at.petrak.hexcasting.api.spell.getPositiveInt
 import at.petrak.hexcasting.api.spell.getPositiveIntUnder
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.common.particles.ConjureParticleOptions
-import miyucomics.hexical.iota.getIdentifier
 import miyucomics.hexical.registry.HexicalBlocks
 import net.minecraft.block.BlockState
 import net.minecraft.entity.Entity
 import net.minecraft.nbt.NbtCompound
-import net.minecraft.util.Identifier
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d
 import java.util.*

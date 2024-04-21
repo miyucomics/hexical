@@ -18,22 +18,18 @@ object HexicalItems {
 	val ARCH_LAMP_ITEM: ArchLampItem = ArchLampItem()
 	val GRIMOIRE_ITEM: GrimoireItem = GrimoireItem()
 	val CONJURED_STAFF_ITEM: ConjuredStaffItem = ConjuredStaffItem()
-	val LIVING_SCROLL_SMALL_ITEM: LivingScrollItem = LivingScrollItem(1)
-	val LIVING_SCROLL_MEDIUM_ITEM: LivingScrollItem = LivingScrollItem(2)
-	val LIVING_SCROLL_LARGE_ITEM: LivingScrollItem = LivingScrollItem(3)
 
 	@JvmStatic
 	fun init() {
 		ITEMS.register("copper_staff") { ItemStaff(Settings().maxCount(1).group(HEXICAL_GROUP)) }
-
 		ITEMS.register("grimoire") { GRIMOIRE_ITEM }
 		ITEMS.register("lamp") { LAMP_ITEM }
 		ITEMS.register("arch_lamp") { ARCH_LAMP_ITEM }
-		ITEMS.register("living_scroll_small") { LIVING_SCROLL_SMALL_ITEM }
-		ITEMS.register("living_scroll_medium") { LIVING_SCROLL_MEDIUM_ITEM }
-		ITEMS.register("living_scroll_large") { LIVING_SCROLL_LARGE_ITEM }
+		ITEMS.register("living_scroll_small") { LivingScrollItem(1) }
+		ITEMS.register("living_scroll_medium") { LivingScrollItem(2) }
+		ITEMS.register("living_scroll_large") { LivingScrollItem(3) }
 		ITEMS.register("conjured_staff") { CONJURED_STAFF_ITEM }
-		ITEMS.register("mage_block") { BlockItem(HexicalBlocks.MAGE_BLOCK, Item.Settings()) }
+		ITEMS.register("mage_block") { BlockItem(HexicalBlocks.MAGE_BLOCK, Settings()) }
 		ITEMS.register()
 	}
 }

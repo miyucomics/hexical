@@ -6,7 +6,6 @@ import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapBadEntity
 import miyucomics.hexical.entities.SpeckEntity
 import net.minecraft.command.argument.EntityAnchorArgumentType
-import net.minecraft.util.math.Vec3d
 
 class OpRotateSpeck : ConstMediaAction {
 	override val argc = 2

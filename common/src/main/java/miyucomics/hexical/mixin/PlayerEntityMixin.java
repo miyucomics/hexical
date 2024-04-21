@@ -1,6 +1,6 @@
 package miyucomics.hexical.mixin;
 
-import miyucomics.hexical.interfaces.PlayerEntityMixinInterface;
+import miyucomics.hexical.interfaces.PlayerEntityMinterface;
 import net.minecraft.entity.player.PlayerEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -9,11 +9,10 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(PlayerEntity.class)
-public class PlayerEntityMixin implements PlayerEntityMixinInterface {
+public class PlayerEntityMixin implements PlayerEntityMinterface {
 	@Unique
 	private boolean hexical$archLampCastedThisTick = false;
 
-	@Override
 	public boolean getArchLampCastedThisTick() {
 		return hexical$archLampCastedThisTick;
 	}

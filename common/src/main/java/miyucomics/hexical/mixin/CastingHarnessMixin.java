@@ -16,7 +16,7 @@ import at.petrak.hexcasting.xplat.IXplatAbstractions;
 import com.llamalad7.mixinextras.injector.WrapWithCondition;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import miyucomics.hexical.interfaces.CastingContextMixinInterface;
+import miyucomics.hexical.interfaces.CastingContextMinterface;
 import miyucomics.hexical.items.ArchLampItem;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -40,20 +40,20 @@ public class CastingHarnessMixin {
 
 	@WrapOperation(method = "updateWithPattern", at = @At(value = "INVOKE", target = "Ljava/util/List;add(Ljava/lang/Object;)Z"))
 	private boolean stopLampParticles(List<OperatorSideEffect> instance, Object effect, Operation<Boolean> original) {
-		if (((CastingContextMixinInterface) (Object) hexical$harness.getCtx()).hexical$getCastByLamp())
+		if (((CastingContextMinterface) (Object) hexical$harness.getCtx()).getCastByLamp())
 			return true;
 		return original.call(instance, effect);
 	}
 
 	@WrapWithCondition(method = "executeIotas", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/world/ServerWorld;playSound(Lnet/minecraft/entity/player/PlayerEntity;DDDLnet/minecraft/sound/SoundEvent;Lnet/minecraft/sound/SoundCategory;FF)V"))
 	private boolean silenceLamp(ServerWorld world, PlayerEntity player, double x, double y, double z, SoundEvent event, SoundCategory type, float volume, float pitch) {
-		return !((CastingContextMixinInterface) (Object) hexical$harness.getCtx()).hexical$getCastByLamp();
+		return !((CastingContextMinterface) (Object) hexical$harness.getCtx()).getCastByLamp();
 	}
 
 	@Inject(method = "withdrawMedia", at = @At("HEAD"), cancellable = true, remap = false)
 	private void takeMediaFromArchLamp(int mediaCost, boolean allowOvercast, CallbackInfoReturnable<Integer> cir) {
 		CastingContext ctx = hexical$harness.getCtx();
-		if (((CastingContextMixinInterface) (Object) ctx).hexical$getArchLamp()) {
+		if (((CastingContextMinterface) (Object) ctx).getArchLamp()) {
 			if (ctx.getCaster().isCreative()) {
 				cir.setReturnValue(0);
 				return;

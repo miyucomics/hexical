@@ -9,7 +9,7 @@ displayName = "Hexical"
 logoFile = "icon.png"
 authors = "miyucomics"
 description = '''
-A Hexcasting addon with various fun and/or convenient features!
+A fun addon containing genie lamps, mage blocks, specks, world scrying, and more!
 '''
 
 [[dependencies.hexical]]
