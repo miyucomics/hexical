@@ -3,6 +3,9 @@ package miyucomics.hexical.entities
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.EquipmentSlot
 import net.minecraft.entity.LivingEntity
+import net.minecraft.entity.attribute.DefaultAttributeContainer
+import net.minecraft.entity.attribute.EntityAttributes
+import net.minecraft.entity.mob.MobEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.item.Items
 import net.minecraft.util.Arm
@@ -17,7 +20,9 @@ class StatueEntity(entityType: EntityType<out LivingEntity?>?, world: World?) : 
 	}
 
 	override fun getEquippedStack(slot: EquipmentSlot?): ItemStack {
-		return ItemStack(Items.CRYING_OBSIDIAN)
+		if (slot == EquipmentSlot.MAINHAND)
+			return ItemStack(Items.CRYING_OBSIDIAN)
+		return ItemStack.EMPTY
 	}
 
 	override fun getMainArm(): Arm {
@@ -25,8 +30,8 @@ class StatueEntity(entityType: EntityType<out LivingEntity?>?, world: World?) : 
 	}
 
 	companion object {
-		fun createMobAttribute() {
-
+		fun createMobAttribute(): DefaultAttributeContainer.Builder {
+			return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.5).add(EntityAttributes.GENERIC_FOLLOW_RANGE, 48.0)
 		}
 	}
 }
