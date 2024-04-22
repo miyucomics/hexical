@@ -289,7 +289,7 @@
 	"hexical.page.nephthys.0": "Pops a pattern list and a number from the stack and dives down n iota to cast the pattern list. Useful for surgery-like operations.",
 	"hexical.page.nephthys.1": "It's extremely versatile and I can mend almost any error in my stack using Bookkeeper's Gambit, pushing iota after a dive, and transforming surfaced iota. It was named after a goddess of mourning and rivers, lending to how it buries/dives down into the stack.$(br2)$(o)... the unknowns of time travel... is akin to descending blindly into the depths of the freezing water and reappearing as an acorn.$()",
 	"hexical.page.sisyphus.0": "Takes a pattern list and casts it over and over forever until it encounters either a Charon's Gambit or a Janus' Gambit.",
-	"hexical.page.sisyphus.1": "While I have heard of hexcasters using self referencing hexes called *quines* to make infinite loops, they can be slightly unwieldy to work with. This gambit takes a pattern list and repeatedly casts it until it either runs out of meta-evaluations or encounters a Charon's Gambit. Similar to Thoth's, the ravenmind is persisted and the loop always starts with the base stack.$(br2)$(o)One always finds one's burden again... One must imagine Sisyphus happy.$()",
+	"hexical.page.sisyphus.1": "While I have heard of self-producing _Hexes called $(o)quines$() used to make infinite loops, they can be slightly unwieldy to work with. This gambit simplifies that process by just repeatedly casting a list until it runs out of evaluations or encounters a Charon's Gambit. The ravenmind is persisted between iterations and it always casts with the base stack.$(br2)$(o)One always finds one's burden again... One must imagine Sisyphus happy.$()",
 
     "hexical.page.themis.0": "Takes a list and an list of patterns or a single one and uses it to sort the list.",
     "hexical.page.themis.1": "Casts the evaluatable over the list similar to Thoth's but demands a number iota at the top of the stack. After finishing execution, uses the numbers corresponding to each iota to sort the list.",
@@ -314,6 +314,9 @@
 	"hexical.page.modify_block_invisible": "This modifier prevents the block from emitting the telltale particles that accompany my casting, even when being stood on.",
 	"hexical.page.modify_block_replaceable": "This modifier is useful for construction! With this modifier applied, I find I can easily place another block in the place of the mage block.",
 	"hexical.page.modify_block_volatile": "This modifier makes the block break other conjured blocks it's touching. Notably, if it breaks another volatile block, that block breaks and so on until every volatile block shatters.",
+
+    "hexical.page.patterns.title": "Pattern Studies",
+    "hexical.page.shuffle_pattern": "Takes in a pattern and a number and produces a pattern of the same shape, but different stroke order. My notes reveal that ancient hexcasters used this for some $(o)grand library$().",
 
 	"hexical.page.specks.title": "Specks",
 	"hexical.page.specks.0": "I can conjure an image of an iota into the world, called a speck. Nature allows me to customize them quite extensively, altering their size, thickness of stroke, and more. They also take on my pigment color. Once they are in the world, I can move, rotate, and otherwise alter them for free, regardless of range.",
