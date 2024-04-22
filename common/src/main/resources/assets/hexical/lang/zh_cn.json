@@ -160,7 +160,6 @@
 	"hexical.page.set_arch_lamp_storage": "设定神灯的 iota 存储。可能招致违犯他人事故。",
 	"hexical.page.get_arch_lamp_storage": "获取神灯的 iota 存储。",
 
-	"hexical.page.nephthys.title": "奈芙蒂斯之策略",
 	"hexical.page.nephthys.0": "弹出一个图案列表和一个数，在栈顶往下所给数个 iota 处施放所给列表。达成的效果与外科医师之提整类似。",
 	"hexical.page.nephthys.1": "这个图案非常好用，与簿记员之策略配合几乎能处理栈中的所有问题，潜入栈中后压入 iota，再处理“栈顶”的 iota。这一操作的名字来源于哀悼和河流的女神，意指其“深埋”或“潜入”栈中的操作。$(br2)$(o)……时间旅行的未知……类似于盲目潜入冰冷水域的深处，再像颗橡子一样任由浮沉。$()",
 
@@ -196,8 +195,6 @@
 	"hexical.page.kill_speck": "强令视斑实体消失。",
 	"hexical.page.zone_speck": "返回视斑实体，效果与其他$(l:patterns/entities)区域之馏化$()类似。",
 
-	"hexical.page.world_scrying.title": "世界探知",
-	"hexical.page.world_scrying": "我发现了探知世界信息的若干图案。这些图案专精于特定的需求，比如检查天气和方块硬度等。",
 	"hexical.page.get_weather": "压入一个代表天气的数。0 为晴天，1 为降雨，2 为雷暴。",
 	"hexical.page.block_hardness": "压入方块挖掘时展现的硬度。",
 	"hexical.page.block_blast_resistance": "压入方块对爆炸的抗性。",

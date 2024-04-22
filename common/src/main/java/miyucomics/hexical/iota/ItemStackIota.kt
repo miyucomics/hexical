@@ -15,7 +15,7 @@ import net.minecraft.server.world.ServerWorld
 import net.minecraft.text.Text
 import net.minecraft.util.Formatting
 
-class ItemStackIota(identifier: ItemStack) : Iota(HexicalIota.ITEM_STACK_IOTA, identifier) {
+class ItemStackIota(stack: ItemStack) : Iota(HexicalIota.ITEM_STACK_IOTA, stack) {
 	override fun isTruthy() = true
 	val stack = this.payload as ItemStack
 	override fun toleratesOther(that: Iota) = (typesMatch(this, that) && that is ItemStackIota) && this.stack == that.stack
