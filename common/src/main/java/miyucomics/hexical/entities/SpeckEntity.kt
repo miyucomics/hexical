@@ -6,16 +6,14 @@ import at.petrak.hexcasting.api.spell.iota.PatternIota
 import at.petrak.hexcasting.api.spell.math.HexPattern
 import at.petrak.hexcasting.api.utils.hasString
 import at.petrak.hexcasting.api.utils.putCompound
-import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
+import com.google.gson.JsonParseException
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.data.DataTracker
 import net.minecraft.entity.data.TrackedData
 import net.minecraft.entity.data.TrackedDataHandlerRegistry
 import net.minecraft.nbt.NbtCompound
-import net.minecraft.nbt.NbtList
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket
-import net.minecraft.server.world.ServerWorld
 import net.minecraft.text.MutableText
 import net.minecraft.text.Text
 import net.minecraft.world.World
@@ -28,7 +26,6 @@ val thicknessDataTracker: TrackedData<Float> = DataTracker.registerData(SpeckEnt
 val zRotationDataTracker: TrackedData<Float> = DataTracker.registerData(SpeckEntity::class.java, TrackedDataHandlerRegistry.FLOAT)
 
 class SpeckEntity(entityType: EntityType<SpeckEntity?>?, world: World?) : Entity(entityType, world) {
-	private var hex = arrayListOf<Iota>()
 	private var display = NbtCompound()
 	private var isPattern = false
 	private var pigment = NbtCompound()
@@ -62,11 +59,6 @@ class SpeckEntity(entityType: EntityType<SpeckEntity?>?, world: World?) : Entity
 		lifespan = nbt.getInt("lifespan")
 		zRotation = nbt.getFloat("z_rotation")
 
-		val patterns = nbt.get("hex") as NbtList
-		hex = arrayListOf()
-		for (pattern in patterns)
-			hex.add(HexIotaTypes.deserialize(pattern as NbtCompound, world as ServerWorld))
-
 		dataTracker.set(displayDataTracker, display)
 		dataTracker.set(isPatternDataTracker, isPattern)
 		dataTracker.set(pigmentDataTracker, pigment)
@@ -79,10 +71,6 @@ class SpeckEntity(entityType: EntityType<SpeckEntity?>?, world: World?) : Entity
 	}
 
 	override fun writeCustomDataToNbt(nbt: NbtCompound) {
-		val patterns = NbtList()
-		for (iota in hex)
-			patterns.add(HexIotaTypes.serialize(iota))
-		nbt.put("hex", patterns)
 		nbt.putCompound("display", display)
 		nbt.putCompound("pigment", pigment)
 		nbt.putFloat("size", size)
@@ -133,7 +121,13 @@ class SpeckEntity(entityType: EntityType<SpeckEntity?>?, world: World?) : Entity
 	fun getZRotation(): Float = dataTracker.get(zRotationDataTracker)
 	fun getPigment(): FrozenColorizer = FrozenColorizer.fromNBT(dataTracker.get(pigmentDataTracker))
 
-	fun getText(): MutableText = Text.Serializer.fromJson(dataTracker.get(displayDataTracker).getString("text"))!!
+	fun getText(): MutableText {
+		return try {
+			Text.Serializer.fromJson(dataTracker.get(displayDataTracker).getString("text"))!!
+		} catch (exception: JsonParseException) {
+			Text.literal("This speck is old.")
+		}
+	}
 	fun getPattern(): HexPattern = HexPattern.fromNBT(dataTracker.get(displayDataTracker))
 	fun getIsPattern(): Boolean = dataTracker.get(isPatternDataTracker)
 
