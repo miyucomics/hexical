@@ -10,10 +10,7 @@ import miyucomics.hexical.casting.operators.OpDioscuriGambit
 import miyucomics.hexical.casting.operators.specks.OpConjureSpeck
 import miyucomics.hexical.casting.operators.OpGetTelepathy
 import miyucomics.hexical.casting.operators.OpShufflePattern
-import miyucomics.hexical.casting.operators.eval.OpThemis2
-import miyucomics.hexical.casting.operators.eval.OpJanus
-import miyucomics.hexical.casting.operators.eval.OpNephthys
-import miyucomics.hexical.casting.operators.eval.OpSisyphus
+import miyucomics.hexical.casting.operators.eval.*
 import miyucomics.hexical.casting.operators.getters.*
 import miyucomics.hexical.casting.operators.grimoire.*
 import miyucomics.hexical.casting.operators.identifier.OpIdentify
@@ -43,9 +40,9 @@ object HexicalPatterns {
 	@JvmStatic
 	fun init() {
 		register("janus", "aadee", HexDir.SOUTH_WEST, OpJanus)
-		register("themis", "daqqqwqd", HexDir.EAST, OpThemis2())
 		register("nephthys", "deaqqdq", HexDir.SOUTH_EAST, OpNephthys)
 		register("sisyphus", "eeeeewqqqqq", HexDir.NORTH_EAST, OpSisyphus)
+		register("themis", "daqqqwqd", HexDir.EAST, OpThemis)
 		register("dioscuri_gambit", "waadadaa", HexDir.EAST, OpDioscuriGambit())
 
 		register("shuffle_pattern", "deawawwa", HexDir.WEST, OpShufflePattern())

@@ -42,7 +42,7 @@ public abstract class FrameForEachMixin implements FrameForEachMinterface {
 		if (hexical$injectedGambit == InjectedGambit.SISYPHUS)
 			cir.setReturnValue(OpSisyphus.INSTANCE.breakDownwards(getBaseStack()));
 		if (hexical$injectedGambit == InjectedGambit.THEMIS)
-			cir.setReturnValue(OpThemis.INSTANCE.breakDownwards(stack, getBaseStack()));
+			cir.setReturnValue(OpThemis.INSTANCE.breakDownwards(getBaseStack(), getAcc()));
 	}
 
 	@Inject(method = "evaluate", at = @At("HEAD"), cancellable = true)
