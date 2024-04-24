@@ -11,6 +11,7 @@ import at.petrak.hexcasting.api.spell.casting.eval.SpellContinuation
 import at.petrak.hexcasting.api.spell.iota.DoubleIota
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.ListIota
+import at.petrak.hexcasting.api.spell.iota.PatternIota
 import at.petrak.hexcasting.api.spell.mishaps.MishapNotEnoughArgs
 import at.petrak.hexcasting.common.lib.hex.HexEvalSounds
 import miyucomics.hexical.casting.mishaps.ThemisMishap
@@ -22,7 +23,8 @@ object OpThemis : Action {
 		if (stack.size < 2)
 			throw MishapNotEnoughArgs(1, 0)
 		val data = stack.getList(stack.lastIndex - 1)
-		val code = stack.getList(stack.lastIndex)
+		val rawCode = stack[stack.lastIndex]
+		evaluatable(rawCode, 0)
 		stack.removeLastOrNull()
 		stack.removeLastOrNull()
 
@@ -31,6 +33,7 @@ object OpThemis : Action {
 			return OperationResult(continuation, stack, ravenmind, listOf())
 		}
 
+		val code = if (rawCode is ListIota) rawCode.list else SpellList.LList(listOf(rawCode as PatternIota))
 		val frame = FrameForEach(data, code, null, mutableListOf())
 		(frame as FrameForEachMinterface).overwrite(InjectedGambit.THEMIS)
 		return OperationResult(continuation.pushFrame(frame), stack, ravenmind, listOf())

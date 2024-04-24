@@ -29,7 +29,7 @@ class ItemStackIota(stack: ItemStack) : Iota(HexicalIota.ITEM_STACK_IOTA, stack)
 
 	companion object {
 		var TYPE: IotaType<ItemStackIota> = object : IotaType<ItemStackIota>() {
-			override fun color() = -0x2155e3
+			override fun color() = 0xff_3a5fcf.toInt()
 			override fun display(tag: NbtElement) = Text.literal((tag as NbtCompound).getString("name")).styledWith(Formatting.BLUE)
 			override fun deserialize(tag: NbtElement?, world: ServerWorld?) = ItemStackIota(ItemStack.fromNbt((tag as NbtCompound).getCompound("stack")))
 		}
