@@ -45,8 +45,8 @@
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:themis",
 			"anchor": "hexical:themis",
-			"input": "[any], pattern/[pattern]",
-			"output": "vary",
+			"input": "list, pattern/[pattern]",
+			"output": "list",
 			"text": "hexical.page.themis.0"
 		},
 		{
