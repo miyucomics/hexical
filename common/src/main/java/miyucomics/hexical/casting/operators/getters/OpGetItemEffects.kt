@@ -6,7 +6,6 @@ import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.ListIota
 import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
 import miyucomics.hexical.iota.IdentifierIota
-import miyucomics.hexical.iota.getItemStack
 import net.minecraft.item.PotionItem
 import net.minecraft.potion.PotionUtil
 import net.minecraft.util.registry.Registry

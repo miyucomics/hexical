@@ -6,7 +6,6 @@ import at.petrak.hexcasting.api.spell.getPlayer
 import at.petrak.hexcasting.api.spell.iota.DoubleIota
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.NullIota
-import miyucomics.hexical.iota.ItemStackIota
 
 class OpGetPlayerData(private val mode: Int) : ConstMediaAction {
 	override val argc = 1
@@ -14,10 +13,8 @@ class OpGetPlayerData(private val mode: Int) : ConstMediaAction {
 		val entity = args.getPlayer(0, argc)
 		return listOf(
 			when (mode) {
-				0 -> ItemStackIota(entity.mainHandStack)
-				1 -> ItemStackIota(entity.offHandStack)
-				2 -> DoubleIota(entity.hungerManager.foodLevel.toDouble())
-				3 -> DoubleIota(entity.hungerManager.saturationLevel.toDouble())
+				0 -> DoubleIota(entity.hungerManager.foodLevel.toDouble())
+				1 -> DoubleIota(entity.hungerManager.saturationLevel.toDouble())
 				else -> NullIota()
 			}
 		)
