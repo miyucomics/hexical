@@ -4,7 +4,6 @@ import at.petrak.hexcasting.api.spell.ConstMediaAction
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.*
 import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
-import miyucomics.hexical.iota.getItemStack
 
 class OpGetFoodData(private val mode: Int) : ConstMediaAction {
 	override val argc = 1

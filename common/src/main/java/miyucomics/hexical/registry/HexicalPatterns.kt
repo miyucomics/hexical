@@ -15,7 +15,6 @@ import miyucomics.hexical.casting.operators.getters.*
 import miyucomics.hexical.casting.operators.grimoire.*
 import miyucomics.hexical.casting.operators.identifier.OpIdentify
 import miyucomics.hexical.casting.operators.identifier.OpRecognize
-import miyucomics.hexical.casting.operators.item_stack.OpForager
 import miyucomics.hexical.casting.operators.lamp.*
 import miyucomics.hexical.casting.operators.specks.*
 import miyucomics.hexical.casting.spells.*
@@ -52,9 +51,6 @@ object HexicalPatterns {
 		register("identify", "qqqqqe", HexDir.NORTH_EAST, OpIdentify())
 		register("recognize", "eeeeeq", HexDir.WEST, OpRecognize())
 
-		register("forage", "qaqqqqqeaq", HexDir.EAST, OpForager())
-		register("stack_mainhand", "qaqqqq", HexDir.NORTH_EAST, OpGetPlayerData(0))
-		register("stack_offhand", "edeeee", HexDir.NORTH_WEST, OpGetPlayerData(1))
 		register("count_stack", "qaqqwqqqw", HexDir.EAST, OpGetItemStackData(0))
 		register("count_max_stack", "edeeweeew", HexDir.WEST, OpGetItemStackData(1))
 		register("damage_stack", "eeweeewdeq", HexDir.NORTH_EAST, OpGetItemStackData(2))
@@ -74,8 +70,6 @@ object HexicalPatterns {
 		register("get_effect_category", "wqqqaawd", HexDir.SOUTH_WEST, OpGetStatusEffectCategory())
 		register("get_effect_amplifier", "wqqqaqwa", HexDir.SOUTH_WEST, OpGetStatusEffectInstanceData(0))
 		register("get_effect_duration", "wqqqaqwdd", HexDir.SOUTH_WEST, OpGetStatusEffectInstanceData(1))
-
-		register("paint_scroll", "awqwaeqqqqq", HexDir.NORTH_EAST, OpPaintScroll())
 
 		register("conjure_mage_block", "dee", HexDir.NORTH_WEST, OpConjureMageBlock())
 		register("modify_block_bouncy", "deeqa", HexDir.NORTH_WEST, OpModifyMageBlock("bouncy"))
