@@ -6,18 +6,21 @@ import at.petrak.hexcasting.api.spell.math.HexDir
 import at.petrak.hexcasting.api.spell.math.HexPattern
 import at.petrak.hexcasting.common.casting.operators.selectors.OpGetEntitiesBy
 import miyucomics.hexical.Hexical
-import miyucomics.hexical.casting.operators.OpDioscuriGambit
-import miyucomics.hexical.casting.operators.specks.OpConjureSpeck
+import miyucomics.hexical.casting.operators.OpDupMany
 import miyucomics.hexical.casting.operators.OpGetTelepathy
 import miyucomics.hexical.casting.operators.OpShufflePattern
-import miyucomics.hexical.casting.operators.eval.*
+import miyucomics.hexical.casting.operators.eval.OpJanus
+import miyucomics.hexical.casting.operators.eval.OpNephthys
+import miyucomics.hexical.casting.operators.eval.OpSisyphus
+import miyucomics.hexical.casting.operators.eval.OpThemis
 import miyucomics.hexical.casting.operators.getters.*
 import miyucomics.hexical.casting.operators.grimoire.*
 import miyucomics.hexical.casting.operators.identifier.OpIdentify
 import miyucomics.hexical.casting.operators.identifier.OpRecognize
 import miyucomics.hexical.casting.operators.lamp.*
 import miyucomics.hexical.casting.operators.specks.*
-import miyucomics.hexical.casting.spells.*
+import miyucomics.hexical.casting.spells.OpChorusBlink
+import miyucomics.hexical.casting.spells.OpConjureStaff
 import miyucomics.hexical.casting.spells.circle.OpDisplace
 import miyucomics.hexical.casting.spells.lamp.OpEducateGenie
 import miyucomics.hexical.casting.spells.lamp.OpMakeGenie
@@ -25,9 +28,9 @@ import miyucomics.hexical.casting.spells.lamp.OpSetArchLampStorage
 import miyucomics.hexical.casting.spells.lamp.OpTerminateArchLamp
 import miyucomics.hexical.casting.spells.mage_blocks.OpConjureMageBlock
 import miyucomics.hexical.casting.spells.mage_blocks.OpModifyMageBlock
+import miyucomics.hexical.casting.spells.telepathy.OpHallucinateSound
 import miyucomics.hexical.casting.spells.telepathy.OpSendTelepathy
 import miyucomics.hexical.casting.spells.telepathy.OpShoutTelepathy
-import miyucomics.hexical.casting.spells.telepathy.OpHallucinateSound
 import miyucomics.hexical.entities.SpeckEntity
 import net.minecraft.sound.SoundEvents
 import net.minecraft.util.Identifier
@@ -39,10 +42,10 @@ object HexicalPatterns {
 	@JvmStatic
 	fun init() {
 		register("janus", "aadee", HexDir.SOUTH_WEST, OpJanus)
-		register("nephthys", "deaqqdq", HexDir.SOUTH_EAST, OpNephthys)
 		register("sisyphus", "eeeeewqqqqq", HexDir.NORTH_EAST, OpSisyphus)
 		register("themis", "daqqqwqd", HexDir.EAST, OpThemis)
-		register("dioscuri_gambit", "waadadaa", HexDir.EAST, OpDioscuriGambit())
+
+		register("dup_many", "waadadaa", HexDir.EAST, OpDupMany())
 
 		register("shuffle_pattern", "deawawwa", HexDir.WEST, OpShufflePattern())
 
@@ -133,6 +136,21 @@ object HexicalPatterns {
 		register("has_arch_lamp", "qaqwddedqeed", HexDir.NORTH_EAST, OpIsUsingArchLamp())
 
 		register("lamp_finale", "aaddaddad", HexDir.EAST, OpGetFinale())
+
+		PatternRegistry.addSpecialHandler(Hexical.id("nephthys")) { pat ->
+			val sig = pat.anglesSignature()
+			if (sig.startsWith("deaqqd")) {
+				val chars = sig.substring(6)
+				var depth = 1
+				chars.forEachIndexed { index, char ->
+					if (char != "qe"[index % 2])
+						return@addSpecialHandler null
+					depth += 1
+				}
+				return@addSpecialHandler OpNephthys(depth)
+			}
+			return@addSpecialHandler null
+		}
 
 		for ((first, second, third) in PATTERNS)
 			PatternRegistry.mapPattern(first, second, third)
