@@ -8,8 +8,10 @@
 - added speck text rendering
 - added Dioscuri's Gambit
 - added Janus' Gambit
+- added Sisyphus' Gambit
 - added z-axis rotation for specks
 - changed Conjure Speck to push the speck to the stack
+- changed Nephthys' Gambit to no longer need a number, instead relying on tail length
 - fixed accidental swapping of Sloth and Racer's Purification
 - fixed being able to use Recharge Item to recharge lamps
 - fixed conjured staves not casting properly

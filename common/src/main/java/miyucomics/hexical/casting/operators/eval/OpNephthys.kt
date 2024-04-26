@@ -11,22 +11,22 @@ import at.petrak.hexcasting.api.spell.math.HexDir
 import at.petrak.hexcasting.api.spell.math.HexPattern
 import at.petrak.hexcasting.api.spell.mishaps.MishapNotEnoughArgs
 
-object OpNephthys : Action {
+class OpNephthys(private val depth: Int) : Action {
 	override fun operate(continuation: SpellContinuation, stack: MutableList<Iota>, ravenmind: Iota?, ctx: CastingContext): OperationResult {
-		if (stack.size < 2)
-			throw MishapNotEnoughArgs(2, stack.size)
+		if (stack.size < depth + 1)
+			throw MishapNotEnoughArgs(depth + 1, stack.size)
 
-		val rawInstructions = stack[stack.lastIndex - 1]
-		val instructions = evaluatable(rawInstructions, 1).map({ SpellList.LList(0, listOf(PatternIota(it))) }, { it })
-		val depth = stack.getPositiveInt(stack.lastIndex)
-		stack.removeLast()
+		val rawInstructions = stack[stack.lastIndex]
+		val instructions = evaluatable(rawInstructions, 0).map({ SpellList.LList(0, listOf(PatternIota(it))) }, { it })
 		stack.removeLast()
 
-		val restoreIota = SpellList.LList(0, listOf(
-			PatternIota(HexPattern.fromAngles("qqqaw", HexDir.WEST)),
-			ListIota(stack.popStack(depth)),
-			PatternIota(HexPattern.fromAngles("qwaeawq", HexDir.WEST))
-		))
+		val restoreIota = SpellList.LList(
+			0, listOf(
+				PatternIota(HexPattern.fromAngles("qqqaw", HexDir.WEST)),
+				ListIota(stack.popStack(depth)),
+				PatternIota(HexPattern.fromAngles("qwaeawq", HexDir.WEST))
+			)
+		)
 
 		return OperationResult(
 			continuation
