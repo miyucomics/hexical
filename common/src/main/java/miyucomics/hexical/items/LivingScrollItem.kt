@@ -17,6 +17,7 @@ import net.minecraft.item.ItemUsageContext
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.util.ActionResult
+import net.minecraft.util.math.Direction
 import net.minecraft.world.event.GameEvent
 
 class LivingScrollItem(private val size: Int) : Item(Settings().group(HexicalItems.HEXICAL_GROUP)), IotaHolderItem {
@@ -42,7 +43,6 @@ class LivingScrollItem(private val size: Int) : Item(Settings().group(HexicalIte
 		val scrollStack = stack.copy()
 		scrollStack.setCount(1)
 		val scrollEntity = LivingScrollEntity(world, position, direction, size, scrollStack, patternList)
-		scrollEntity.updateTrackedPositionAndAngles(scrollEntity.pos.x, scrollEntity.pos.y, scrollEntity.pos.z, scrollEntity.yaw, scrollEntity.pitch, 0, false)
 		if (!scrollEntity.canStayAttached())
 			return ActionResult.CONSUME
 

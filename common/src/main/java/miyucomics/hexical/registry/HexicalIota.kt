@@ -5,14 +5,12 @@ import at.petrak.hexcasting.api.spell.iota.IotaType
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import miyucomics.hexical.Hexical
 import miyucomics.hexical.iota.IdentifierIota
-import miyucomics.hexical.iota.ItemStackIota
 import net.minecraft.util.Identifier
 import net.minecraft.util.registry.Registry
 
 object HexicalIota {
 	private val TYPES: MutableMap<Identifier, IotaType<*>> = HashMap()
 	val IDENTIFIER_IOTA = type("identifier", IdentifierIota.TYPE)
-	val ITEM_STACK_IOTA = type("item_stack", ItemStackIota.TYPE)
 
 	@JvmStatic
 	fun init() {
