@@ -101,7 +101,7 @@
 	"hexcasting.spell.hexical:click": "Hallucinate Click",
 
 	"hexcasting.spell.hexical:displace": "Displace",
-	"hexcasting.spell.hexical:dioscuri_gambit": "Dioscuri Gambit II",
+	"hexcasting.spell.hexical:dup_many": "Dioscuri Gambit II",
 
 	"hexcasting.spell.hexical:write_grimoire": "Write Grimoire",
 	"hexcasting.spell.hexical:erase_grimoire": "Erase Grimoire",
@@ -168,7 +168,7 @@
 	"hexical.page.hexical_changes.1": "I also find my tools more familar. I notice I require less concentration with my $(l:items/staff)$(item)staff$() and can move around while using it, handy for chasing down targets that get out of my line of sight before I can finish my raycast. I shouldn't become too relaxed though, Nature has not become more forgiving of my mistakes. I can also write directly into my $(l:items/abacus)$(item)abacus$() with Scribe's Gambit.",
 
 	"hexical.page.simple.title": "Hexical Patterns",
-	"hexical.page.dioscuri_gambit": "Takes a number and duplicates that many elements of the stack on top of the stack. For example, a, b, c, 3 turns into a, b, c, a, b, c.",
+	"hexical.page.dup_many": "Takes a number and duplicates that many elements of the stack on top of the stack. For example, a, b, c, 3 turns into a, b, c, a, b, c.",
 
 	"hexical.page.living_scroll.title": "Living Scrolls",
 	"hexical.page.living_scroll.0": "Living scrolls are mixed with a pinch of amethyst, enchanting the ink to move and wiggle like the patterns I draw with my staff. Not only that, living scrolls can display lists of patterns.$(br2)$(o)You can't be a proper writer without a touch of madness, can you?$()",
@@ -284,7 +284,7 @@
 	"hexical.page.metaevals.title": "Hexical Meta-evaluations",
     "hexical.page.janus.0": "Instantly terminates the _Hex regardless of the current circumstances, breaking even through Thoth's and Hermes' Gambit unlike Charon's.",
     "hexical.page.janus.1": "It's useful to end a _Hex early once it has reached some desired state, without the difficulty of using Charon's Gambit because Janus' can bypass the \"containment\" of Hermes' and Thoth's.$(br2)$(o)It is always important to know when something has reached its end.$()",
-	"hexical.page.nephthys.0": "Pops a pattern list and a number from the stack and dives down n iota to cast the pattern list. Useful for surgery-like operations.",
+	"hexical.page.nephthys.0": "Pops a pattern or pattern list and dives down an amount corresponding to the tail length to cast the pattern list. Useful for surgery-like operations.",
 	"hexical.page.nephthys.1": "It's extremely versatile and I can mend almost any error in my stack using Bookkeeper's Gambit, pushing iota after a dive, and transforming surfaced iota. It was named after a goddess of mourning and rivers, lending to how it buries/dives down into the stack.$(br2)$(o)... the unknowns of time travel... is akin to descending blindly into the depths of the freezing water and reappearing as an acorn.$()",
 	"hexical.page.sisyphus.0": "Takes a pattern list and casts it over and over forever until it encounters either a Charon's Gambit or a Janus' Gambit.",
 	"hexical.page.sisyphus.1": "While I have heard of self-producing _Hexes called $(o)quines$() used to make infinite loops, they can be slightly unwieldy to work with. This gambit simplifies that process by just repeatedly casting a list until it runs out of evaluations or encounters a Charon's Gambit. The ravenmind is persisted between iterations and it always casts with the base stack.$(br2)$(o)One always finds one's burden again... One must imagine Sisyphus happy.$()",

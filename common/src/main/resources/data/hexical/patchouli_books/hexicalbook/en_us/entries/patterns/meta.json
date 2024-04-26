@@ -17,14 +17,32 @@
 			"type": "patchouli:text",
 			"text": "hexical.page.janus.1"
 		},
-		{
-			"type": "hexcasting:pattern",
-			"op_id": "hexical:nephthys",
-			"anchor": "hexical:nephthys",
-			"input": "[pattern], number",
-			"output": "vary",
-			"text": "hexical.page.nephthys.0"
-		},
+        {
+            "type": "hexcasting:manual_pattern",
+            "op_id": "hexical:nephthys",
+            "anchor": "hexical:nephthys",
+            "input": "list of patterns/pattern",
+            "output": "varies",
+            "text": "hexical.page.nephthys.0",
+            "patterns": [
+                {
+                    "startdir": "SOUTH_EAST",
+                    "signature": "deaqqd"
+                },
+                {
+                    "startdir": "SOUTH_EAST",
+                    "signature": "deaqqdq",
+                    "q": 1,
+                    "r": 2
+                },
+                {
+                    "startdir": "SOUTH_EAST",
+                    "signature": "deaqqdqeqe",
+                    "q": 2,
+                    "r": 4
+                }
+            ]
+        },
 		{
 			"type": "patchouli:text",
 			"text": "hexical.page.nephthys.1"
