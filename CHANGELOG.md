@@ -21,7 +21,7 @@
 - overhauled world scrying
     - added enchantment patterns
     - added food patterns
-    - added item stack iota and patterns
+    - added item stack patterns
     - added status effect patterns
 
 ## 1.1.0
