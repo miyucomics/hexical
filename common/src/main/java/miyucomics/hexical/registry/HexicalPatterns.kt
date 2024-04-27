@@ -19,6 +19,8 @@ import miyucomics.hexical.casting.operators.identifier.OpIdentify
 import miyucomics.hexical.casting.operators.identifier.OpRecognize
 import miyucomics.hexical.casting.operators.lamp.*
 import miyucomics.hexical.casting.operators.specks.*
+import miyucomics.hexical.casting.operators.staff.OpReadStaff
+import miyucomics.hexical.casting.operators.staff.OpWriteStaff
 import miyucomics.hexical.casting.spells.OpChorusBlink
 import miyucomics.hexical.casting.spells.OpConjureStaff
 import miyucomics.hexical.casting.spells.circle.OpDisplace
@@ -83,6 +85,9 @@ object HexicalPatterns {
 		register("modify_block_volatile", "deewedeeeee", HexDir.NORTH_WEST, OpModifyMageBlock("volatile"))
 
 		register("conjure_staff", "wwwwwaqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpConjureStaff())
+		register("write_staff", "waqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpWriteStaff())
+		register("read_staff", "waqqqqqedeqdqdqdqdqe", HexDir.NORTH_EAST, OpReadStaff())
+
 		register("chorus_blink", "aawqqqq", HexDir.SOUTH_EAST, OpChorusBlink())
 
 		register("conjure_speck", "ade", HexDir.SOUTH_WEST, OpConjureSpeck())
@@ -103,6 +108,7 @@ object HexicalPatterns {
 		register("is_sprinting", "eaq", HexDir.WEST, OpGetLivingEntityData(1))
 		register("block_hardness", "qaqqqqqeeeeedq", HexDir.EAST, OpGetBlockData(0))
 		register("block_blast_resistance", "qaqqqqqewaaqddqa", HexDir.EAST, OpGetBlockData(1))
+		register("get_dimension", "qwqwqwqwqwqqaedwaqd", HexDir.WEST, OpGetDimension())
 		register("get_weather", "deedqad", HexDir.WEST, OpGetWeather())
 
 		register("get_telepathy", "wqqqqw", HexDir.EAST, OpGetTelepathy())

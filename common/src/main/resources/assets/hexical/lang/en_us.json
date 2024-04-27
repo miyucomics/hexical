@@ -138,6 +138,7 @@
 	"hexcasting.spell.hexical:modify_block_replaceable": "Modify Block: Replaceable",
 	"hexcasting.spell.hexical:modify_block_volatile": "Modify Block: Volatile",
 
+	"hexcasting.spell.hexical:get_dimension": "Plane Reflection",
 	"hexcasting.spell.hexical:get_weather": "Meterologist's Reflection",
 	"hexcasting.spell.hexical:block_hardness": "Miner's Purification",
 	"hexcasting.spell.hexical:block_blast_resistance": "Demoman's Purification",
@@ -221,6 +222,7 @@
 
 	"hexical.page.world.title": "World",
 	"hexical.page.world": "I have discovered some additional patterns to scry information about the world. These are highly specialized for specific tasks, like checking the weather and block hardness.",
+	"hexical.page.get_dimension": "Pushes the identifier of the current dimension the hex is being cast in.",
 	"hexical.page.get_weather": "Pushes a number corresponding to the weather. 0 for clear, 1 for rain, and 2 for thundering.",
 	"hexical.page.block_hardness": "Pushes how hard the block is to mine.",
 	"hexical.page.block_blast_resistance": "Pushes how resistant the block is to explosions.",

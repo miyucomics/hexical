@@ -1,14 +1,17 @@
 # Changelog
 
 ## 1.2.0
-- added Displace spell for circles to teleport entities for cheap
-- added more fun achievements
+- added more achievements
+- spell circle spells
+    - added Displace spell for circles to teleport entities for cheap
+    - added Transpose spell for circles to swap areas of the world
 - added energized mage blocks modifier to emit Redstone power
 - added living scrolls
 - added speck text rendering
-- added Dioscuri's Gambit
-- added Janus' Gambit
-- added Sisyphus' Gambit
+- added more meta-evals
+    - added Dioscuri's Gambit
+    - added Janus' Gambit
+    - added Sisyphus' Gambit
 - added z-axis rotation for specks
 - changed Conjure Speck to push the speck to the stack
 - changed Nephthys' Gambit to no longer need a number, instead relying on tail length
@@ -22,9 +25,12 @@
 - updated documentation
 - overhauled world scrying
     - added enchantment patterns
+    - added entity patterns
     - added food patterns
-    - added item stack patterns
+    - added identifier patterns
+    - added item patterns
     - added status effect patterns
+    - added world patterns
 
 ## 1.1.0
 - added mishap to grimoire patterns if you are not holding a grimoire in your offhand

@@ -15,7 +15,7 @@ class OpGetEntityData(private val mode: Int) : ConstMediaAction {
 		return listOf(
 			when (mode) {
 				0 -> BooleanIota(entity.isOnFire)
-				1 -> DoubleIota(args.getEntity(0, argc).fireTicks.toDouble())
+				1 -> DoubleIota(entity.fireTicks.toDouble())
 				2 -> BooleanIota(entity.isWet)
 				else -> NullIota()
 			}
