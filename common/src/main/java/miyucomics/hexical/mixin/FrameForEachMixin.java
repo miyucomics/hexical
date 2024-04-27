@@ -7,6 +7,7 @@ import at.petrak.hexcasting.api.spell.casting.eval.SpellContinuation;
 import at.petrak.hexcasting.api.spell.iota.Iota;
 import kotlin.Pair;
 import miyucomics.hexical.casting.operators.eval.OpSisyphus;
+import miyucomics.hexical.casting.operators.eval.OpThemis;
 import miyucomics.hexical.enums.InjectedGambit;
 import miyucomics.hexical.interfaces.FrameForEachMinterface;
 import net.minecraft.server.world.ServerWorld;
@@ -25,9 +26,13 @@ public abstract class FrameForEachMixin implements FrameForEachMinterface {
 	@Unique
 	private InjectedGambit hexical$injectedGambit = InjectedGambit.NONE;
 	@Shadow
+	public abstract SpellList getData();
+	@Shadow
 	public abstract SpellList getCode();
 	@Shadow
 	public abstract List<Iota> getBaseStack();
+	@Shadow
+	public abstract List<Iota> getAcc();
 
 	@Inject(method = "breakDownwards", at = @At("HEAD"), cancellable = true)
 	void hijackBreaking(List<? extends Iota> stack, CallbackInfoReturnable<Pair<Boolean, List<Iota>>> cir) {
@@ -35,6 +40,8 @@ public abstract class FrameForEachMixin implements FrameForEachMinterface {
 			return;
 		if (hexical$injectedGambit == InjectedGambit.SISYPHUS)
 			cir.setReturnValue(OpSisyphus.INSTANCE.breakDownwards(getBaseStack()));
+		if (hexical$injectedGambit == InjectedGambit.THEMIS)
+			cir.setReturnValue(OpThemis.INSTANCE.breakDownwards(getBaseStack(), getAcc()));
 	}
 
 	@Inject(method = "evaluate", at = @At("HEAD"), cancellable = true)
@@ -43,6 +50,8 @@ public abstract class FrameForEachMixin implements FrameForEachMinterface {
 			return;
 		if (hexical$injectedGambit == InjectedGambit.SISYPHUS)
 			cir.setReturnValue(OpSisyphus.INSTANCE.evaluate(continuation, harness, getCode(), getBaseStack()));
+		if (hexical$injectedGambit == InjectedGambit.THEMIS)
+			cir.setReturnValue(OpThemis.INSTANCE.evaluate(continuation, harness, getData(), getCode(), getBaseStack(), getAcc()));
 	}
 
 	@Override public void overwrite(@NotNull InjectedGambit gambit) {

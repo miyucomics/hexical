@@ -55,11 +55,10 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: Wo
 		this.dataTracker.set(renderDataTracker, patterns[((world.time / 20).toInt() % patterns.size)].serializeToNBT())
 	}
 
-	// called on client only
-	fun readSpawnData(pos: BlockPos?, dir: Direction?, size: Int) {
-		this.setPos(pos!!.x.toDouble(), pos.y.toDouble(), pos.z.toDouble())
+	fun readSpawnData(pos: BlockPos, dir: Direction, size: Int) {
 		this.size = size
 		this.setFacing(dir)
+		this.setPos(pos.x.toDouble(), pos.y.toDouble(), pos.z.toDouble())
 		this.updateAttachmentPosition()
 	}
 
@@ -68,12 +67,10 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: Wo
 		this.stack = ItemStack.fromNbt(nbt.getCompound("stack"))
 		this.size = nbt.getInt("size")
 		updateAttachmentPosition()
-
 		val data = nbt.get("patterns") as NbtList
 		this.patterns = mutableListOf()
 		for (pattern in data)
 			this.patterns.add(HexPattern.fromNBT(pattern as NbtCompound))
-
 		updateRender()
 		super.readCustomDataFromNbt(nbt)
 	}
@@ -85,21 +82,16 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: Wo
 		for (pattern in patterns)
 			data.add(pattern.serializeToNBT())
 		nbt.put("patterns", data)
-
 		val compound = NbtCompound()
 		stack.writeNbt(nbt)
 		nbt.putCompound("stack", compound)
-
 		super.writeCustomDataToNbt(nbt)
 	}
 
-	override fun onPlace() {
-		playSound(SoundEvents.ENTITY_PAINTING_PLACE, 1.0F, 1.0F)
-	}
-
+	override fun onPlace() = playSound(SoundEvents.ENTITY_PAINTING_PLACE, 1.0F, 1.0F)
 	override fun onBreak(entity: Entity?) {
+		this.playSound(SoundEvents.ENTITY_PAINTING_BREAK, 1.0f, 1.0f)
 		if (this.world.gameRules.getBoolean(GameRules.DO_ENTITY_DROPS)) {
-			this.playSound(SoundEvents.ENTITY_PAINTING_BREAK, 1.0f, 1.0f)
 			if (entity is PlayerEntity && entity.abilities.creativeMode)
 				return
 			this.dropStack(this.stack)

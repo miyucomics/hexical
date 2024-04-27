@@ -26,7 +26,6 @@ object HexicalItems {
 		ITEMS.register("lamp") { LAMP_ITEM }
 		ITEMS.register("arch_lamp") { ARCH_LAMP_ITEM }
 		ITEMS.register("living_scroll_small") { LivingScrollItem(1) }
-		ITEMS.register("living_scroll_medium") { LivingScrollItem(2) }
 		ITEMS.register("living_scroll_large") { LivingScrollItem(3) }
 		ITEMS.register("conjured_staff") { CONJURED_STAFF_ITEM }
 		ITEMS.register("mage_block") { BlockItem(HexicalBlocks.MAGE_BLOCK, Settings()) }

@@ -5,7 +5,7 @@ import at.petrak.hexcasting.api.spell.*
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapNoSpellCircle
-import miyucomics.hexical.casting.mishaps.OutsideDomainMishap
+import miyucomics.hexical.casting.mishaps.OutsideCircleMishap
 import net.minecraft.entity.Entity
 import net.minecraft.util.math.Vec3d
 
@@ -16,10 +16,10 @@ class OpDisplace : SpellAction {
 			throw MishapNoSpellCircle()
 		val entity = args.getEntity(0, argc)
 		if (!ctx.spellCircle!!.aabb.contains(entity.pos))
-			throw OutsideDomainMishap()
+			throw OutsideCircleMishap()
 		val destination = args.getVec3(1, argc)
 		if (!ctx.spellCircle!!.aabb.contains(destination))
-			throw OutsideDomainMishap()
+			throw OutsideCircleMishap()
 		return Triple(Spell(entity, destination), MediaConstants.SHARD_UNIT * 3, listOf())
 	}
 

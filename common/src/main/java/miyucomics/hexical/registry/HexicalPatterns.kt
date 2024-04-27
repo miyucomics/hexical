@@ -6,22 +6,21 @@ import at.petrak.hexcasting.api.spell.math.HexDir
 import at.petrak.hexcasting.api.spell.math.HexPattern
 import at.petrak.hexcasting.common.casting.operators.selectors.OpGetEntitiesBy
 import miyucomics.hexical.Hexical
-import miyucomics.hexical.casting.operators.OpDioscuriGambit
-import miyucomics.hexical.casting.operators.specks.OpConjureSpeck
+import miyucomics.hexical.casting.operators.OpDupMany
 import miyucomics.hexical.casting.operators.OpGetTelepathy
 import miyucomics.hexical.casting.operators.OpShufflePattern
-import miyucomics.hexical.casting.operators.eval.OpThemis
 import miyucomics.hexical.casting.operators.eval.OpJanus
 import miyucomics.hexical.casting.operators.eval.OpNephthys
 import miyucomics.hexical.casting.operators.eval.OpSisyphus
+import miyucomics.hexical.casting.operators.eval.OpThemis
 import miyucomics.hexical.casting.operators.getters.*
 import miyucomics.hexical.casting.operators.grimoire.*
 import miyucomics.hexical.casting.operators.identifier.OpIdentify
 import miyucomics.hexical.casting.operators.identifier.OpRecognize
-import miyucomics.hexical.casting.operators.item_stack.OpForager
 import miyucomics.hexical.casting.operators.lamp.*
 import miyucomics.hexical.casting.operators.specks.*
-import miyucomics.hexical.casting.spells.*
+import miyucomics.hexical.casting.spells.OpChorusBlink
+import miyucomics.hexical.casting.spells.OpConjureStaff
 import miyucomics.hexical.casting.spells.circle.OpDisplace
 import miyucomics.hexical.casting.spells.lamp.OpEducateGenie
 import miyucomics.hexical.casting.spells.lamp.OpMakeGenie
@@ -29,9 +28,9 @@ import miyucomics.hexical.casting.spells.lamp.OpSetArchLampStorage
 import miyucomics.hexical.casting.spells.lamp.OpTerminateArchLamp
 import miyucomics.hexical.casting.spells.mage_blocks.OpConjureMageBlock
 import miyucomics.hexical.casting.spells.mage_blocks.OpModifyMageBlock
+import miyucomics.hexical.casting.spells.telepathy.OpHallucinateSound
 import miyucomics.hexical.casting.spells.telepathy.OpSendTelepathy
 import miyucomics.hexical.casting.spells.telepathy.OpShoutTelepathy
-import miyucomics.hexical.casting.spells.telepathy.OpHallucinateSound
 import miyucomics.hexical.entities.SpeckEntity
 import net.minecraft.sound.SoundEvents
 import net.minecraft.util.Identifier
@@ -43,10 +42,10 @@ object HexicalPatterns {
 	@JvmStatic
 	fun init() {
 		register("janus", "aadee", HexDir.SOUTH_WEST, OpJanus)
-		register("themis", "daqqqwqd", HexDir.EAST, OpThemis())
-		register("nephthys", "deaqqdq", HexDir.SOUTH_EAST, OpNephthys)
-		register("sisyphus", "eeeeewqqqqq", HexDir.NORTH_EAST, OpSisyphus)
-		register("dioscuri_gambit", "waadadaa", HexDir.EAST, OpDioscuriGambit())
+		register("sisyphus", "qaqwede", HexDir.NORTH_EAST, OpSisyphus)
+		register("themis", "dwaad", HexDir.WEST, OpThemis)
+
+		register("dup_many", "waadadaa", HexDir.EAST, OpDupMany())
 
 		register("shuffle_pattern", "deawawwa", HexDir.WEST, OpShufflePattern())
 
@@ -55,9 +54,6 @@ object HexicalPatterns {
 		register("identify", "qqqqqe", HexDir.NORTH_EAST, OpIdentify())
 		register("recognize", "eeeeeq", HexDir.WEST, OpRecognize())
 
-		register("forage", "qaqqqqqeaq", HexDir.EAST, OpForager())
-		register("stack_mainhand", "qaqqqq", HexDir.NORTH_EAST, OpGetPlayerData(0))
-		register("stack_offhand", "edeeee", HexDir.NORTH_WEST, OpGetPlayerData(1))
 		register("count_stack", "qaqqwqqqw", HexDir.EAST, OpGetItemStackData(0))
 		register("count_max_stack", "edeeweeew", HexDir.WEST, OpGetItemStackData(1))
 		register("damage_stack", "eeweeewdeq", HexDir.NORTH_EAST, OpGetItemStackData(2))
@@ -77,8 +73,6 @@ object HexicalPatterns {
 		register("get_effect_category", "wqqqaawd", HexDir.SOUTH_WEST, OpGetStatusEffectCategory())
 		register("get_effect_amplifier", "wqqqaqwa", HexDir.SOUTH_WEST, OpGetStatusEffectInstanceData(0))
 		register("get_effect_duration", "wqqqaqwdd", HexDir.SOUTH_WEST, OpGetStatusEffectInstanceData(1))
-
-		register("paint_scroll", "awqwaeqqqqq", HexDir.NORTH_EAST, OpPaintScroll())
 
 		register("conjure_mage_block", "dee", HexDir.NORTH_WEST, OpConjureMageBlock())
 		register("modify_block_bouncy", "deeqa", HexDir.NORTH_WEST, OpModifyMageBlock("bouncy"))
@@ -111,9 +105,9 @@ object HexicalPatterns {
 		register("block_blast_resistance", "qaqqqqqewaaqddqa", HexDir.EAST, OpGetBlockData(1))
 		register("get_weather", "deedqad", HexDir.WEST, OpGetWeather())
 
-		register("get_telepathy", "qaqqqqded", HexDir.NORTH_EAST, OpGetTelepathy())
-		register("send_telepathy", "qaqqqeaqa", HexDir.NORTH_EAST, OpSendTelepathy())
-		register("shout_telepathy", "qaqqqewaqwa", HexDir.NORTH_EAST, OpShoutTelepathy())
+		register("get_telepathy", "wqqqqw", HexDir.EAST, OpGetTelepathy())
+		register("send_telepathy", "qqqqwaqa", HexDir.EAST, OpSendTelepathy())
+		register("shout_telepathy", "daqqqqwa", HexDir.EAST, OpShoutTelepathy())
 		register("pling", "qaqdee", HexDir.NORTH_EAST, OpHallucinateSound(SoundEvents.ENTITY_PLAYER_LEVELUP))
 		register("click", "qaqdew", HexDir.NORTH_EAST, OpHallucinateSound(SoundEvents.UI_BUTTON_CLICK))
 
@@ -130,7 +124,6 @@ object HexicalPatterns {
 		register("get_lamp_velocity", "qwddedqew", HexDir.SOUTH_WEST, OpGetLampData(2))
 		register("get_lamp_use_time", "qwddedqwddwa", HexDir.SOUTH_WEST, OpGetLampData(3))
 		register("get_lamp_media", "qwddedaeeeee", HexDir.SOUTH_WEST, OpGetLampData(4))
-
 		register("get_arch_lamp_position", "qaqwddedqdd", HexDir.NORTH_EAST, OpGetArchLampData(0))
 		register("get_arch_lamp_rotation", "qaqwddedadw", HexDir.NORTH_EAST, OpGetArchLampData(1))
 		register("get_arch_lamp_velocity", "qaqwddedqew", HexDir.NORTH_EAST, OpGetArchLampData(2))
@@ -140,8 +133,22 @@ object HexicalPatterns {
 		register("get_arch_lamp_media", "qaqwddedaeeeee", HexDir.NORTH_EAST, OpGetArchLampMedia())
 		register("terminate_arch_lamp", "qaqwddedwaqdee", HexDir.NORTH_EAST, OpTerminateArchLamp())
 		register("has_arch_lamp", "qaqwddedqeed", HexDir.NORTH_EAST, OpIsUsingArchLamp())
-
 		register("lamp_finale", "aaddaddad", HexDir.EAST, OpGetFinale())
+
+		PatternRegistry.addSpecialHandler(Hexical.id("nephthys")) { pat ->
+			val sig = pat.anglesSignature()
+			if (sig.startsWith("deaqqd")) {
+				val chars = sig.substring(6)
+				var depth = 1
+				chars.forEachIndexed { index, char ->
+					if (char != "qe"[index % 2])
+						return@addSpecialHandler null
+					depth += 1
+				}
+				return@addSpecialHandler OpNephthys(depth)
+			}
+			return@addSpecialHandler null
+		}
 
 		for ((first, second, third) in PATTERNS)
 			PatternRegistry.mapPattern(first, second, third)
