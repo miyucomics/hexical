@@ -1,17 +1,15 @@
-package miyucomics.hexical.casting.operators.getters
+package miyucomics.hexical.casting.operators.staff
 
 import at.petrak.hexcasting.api.spell.ConstMediaAction
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.DoubleIota
 import at.petrak.hexcasting.api.spell.iota.Iota
+import at.petrak.hexcasting.api.spell.iota.NullIota
+import miyucomics.hexical.state.TelepathyData
 
-class OpGetWeather : ConstMediaAction {
-	override val argc = 0
+class OpWriteStaff : ConstMediaAction {
+	override val argc = 1
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
-		if (ctx.world.isThundering)
-			return listOf(DoubleIota(2.0))
-		if (ctx.world.isRaining)
-			return listOf(DoubleIota(1.0))
-		return listOf(DoubleIota(0.0))
+		return listOf(NullIota())
 	}
 }
