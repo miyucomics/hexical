@@ -70,7 +70,7 @@
 	"hexcasting.spell.book.hexical:get_weather": "Meterologist's Refl.",
 	"hexcasting.spell.book.hexical:zone_speck": "Zone Dstl.: Speck",
 
-	"hexcasting.spell.hexical:paint_scroll": "Paint Scroll",
+	"hexcasting.spell.hexical:shuffle_pattern": "Glyphmaker's Purification",
 
 	"hexcasting.spell.hexical:identify": "Detective's Purification",
 	"hexcasting.spell.hexical:recognize": "Recognizer's Purification",
@@ -179,8 +179,8 @@
 	"hexical.page.circle_spells.0": "When the media courses through the boundaries of a circle, it saturates the domain inside the circle with media, allowing me to manipulate the environment inside far more flexibly than I am used to.",
 	"hexical.page.displace": "For just three amethyst shards, I can teleport an entity from anywhere in my circle to anywhere else inside. Unlike $(l:patterns/great_spells/teleport)Greater Teleport$(), this spell takes in exact coordinates.",
 
-	"hexical.category.scrying": "World Scrying",
-	"hexical.category.scrying.desc": "I have stumbled upon a branch of manipulating media entirely focused around information. I can use the media to divine a surprising amount of information about a surprising number of things. While likely not too useful, these will be nice to have, should I ever need them.",
+	"hexical.category.scrying": "Scrying",
+	"hexical.category.scrying.desc": "I have stumbled upon a branch of manipulating media entirely focused around information. These patterns can divine a surprising amount of information like types of blocks and entities, potion effects, the weather, the nutritional value of food, whether I am sprinting, $(o)block explosion resistance$(), and more. While likely not too useful for the majority of _Hexes, these will be convenient to have, should I ever need them.",
 
 	"hexical.page.identifiers.title": "Identifiers",
 	"hexical.page.identifiers.0": "My hexes has so far been quite blind to the world. I can get a creature's height, velocity, whether it's burning, etc... but I can't directly identify that entity. Nature's solution to the problem is the $(o)identifier iota$(). Every entity, block, status effect, enchantment, sound, etc... has a unique identifier that my hexes can identify. Once I have two identifiers, I can compare them with each other.",
@@ -304,14 +304,14 @@
 	"hexical.page.chorus_blink.1": "It consumes a chorus fruit from my inventory and teleports me up to 16 blocks using an offset vector. The cost is a single dust whether I teleport the full 16 blocks or less, and has no penalty for multiple casts in one hex. Ambit works strangely with repeated casts of this spell because each $(o)blink$() shifts my ambit to my new position.$(br2)$(o)I could be there in a heartbeat.$()",
 
 	"hexical.page.mage_block.title": "Mage Blocks",
-	"hexical.page.mage_block": "The blocks from Conjure Block last forever, are consequently a pain to clean up, and are not too versatile. Luckily, Nature offers an elegant and flexible alternative. These mage blocks come with a suite of $(o)modifiers$(). I could even stack multiple modifiers on one block.",
+	"hexical.page.mage_block": "The blocks from Conjure Block last forever, are consequently a pain to clean up, and are not too versatile. Luckily, Nature offers an elegant and flexible alternative. These mage blocks come with a suite of $(o)modifiers$(). I could even stack multiple modifiers on one block or reapply a modifier to toggle it off.",
 	"hexical.page.conjure_mage_block": "Conjures a mage block at the location. Costs three dust.$(br2)$(o)I can create a city out of nothing, or I can cover it in volcanic rock.$()",
 	"hexical.page.modify_block_bouncy": "This modifier makes the block delightfully fun to bounce on! It returns more force to me than regular slime blocks and I notice even if I sneak, the block bounces me regardless.",
-	"hexical.page.modify_block_energized": "This modifier makes the block emit a Redstone signal, with the number reacting to the power level.",
-	"hexical.page.modify_block_ephemeral": "This modifier takes in a number as well as the usual position and shatters the block after the number in twentieths of a second has passed. Subsequent casts can lengthen or shorten the duration.",
+	"hexical.page.modify_block_energized": "This modifier makes the block emit a Redstone signal, with the number corresponding to the power level of the output.",
+	"hexical.page.modify_block_ephemeral": "This modifier takes in a number in addition to a position and shatters the block after many twentieths of a second. Subsequent casts can lengthen or shorten the duration.",
 	"hexical.page.modify_block_invisible": "This modifier prevents the block from emitting the telltale particles that accompany my casting, even when being stood on.",
 	"hexical.page.modify_block_replaceable": "This modifier is useful for construction! With this modifier applied, I find I can easily place another block in the place of the mage block.",
-	"hexical.page.modify_block_volatile": "This modifier makes the block break other conjured blocks it's touching. Notably, if it breaks another volatile block, that block breaks and so on until every volatile block shatters.",
+	"hexical.page.modify_block_volatile": "This modifier makes the block break other mage blocks it's touching. Notably, if it breaks another volatile block, that block breaks and so on until every volatile block shatters.",
 
     "hexical.page.patterns.title": "Pattern Studies",
     "hexical.page.shuffle_pattern": "Takes in a pattern and a number and produces a pattern of the same shape, but different stroke order. My notes reveal that ancient hexcasters used this for some $(o)grand library$().",
