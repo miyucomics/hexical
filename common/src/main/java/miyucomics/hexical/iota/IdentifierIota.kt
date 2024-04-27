@@ -27,7 +27,7 @@ class IdentifierIota(identifier: Identifier) : Iota(HexicalIota.IDENTIFIER_IOTA,
 
 	companion object {
 		var TYPE: IotaType<IdentifierIota> = object : IotaType<IdentifierIota>() {
-			override fun color() = -0x2155e3
+			override fun color() = 0xff_e6c24c.toInt()
 			override fun display(tag: NbtElement): Text {
 				val compound = (tag as NbtCompound)
 				return Text.literal(compound.getString("namespace") + ":" + compound.getString("path")).styledWith(Formatting.GOLD)
