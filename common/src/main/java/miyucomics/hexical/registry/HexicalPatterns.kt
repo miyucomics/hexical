@@ -42,8 +42,8 @@ object HexicalPatterns {
 	@JvmStatic
 	fun init() {
 		register("janus", "aadee", HexDir.SOUTH_WEST, OpJanus)
-		register("sisyphus", "eeeeewqqqqq", HexDir.NORTH_EAST, OpSisyphus)
-		register("themis", "daqqqwqd", HexDir.EAST, OpThemis)
+		register("sisyphus", "qaqwede", HexDir.NORTH_EAST, OpSisyphus)
+		register("themis", "dwaad", HexDir.WEST, OpThemis)
 
 		register("dup_many", "waadadaa", HexDir.EAST, OpDupMany())
 
@@ -105,9 +105,9 @@ object HexicalPatterns {
 		register("block_blast_resistance", "qaqqqqqewaaqddqa", HexDir.EAST, OpGetBlockData(1))
 		register("get_weather", "deedqad", HexDir.WEST, OpGetWeather())
 
-		register("get_telepathy", "qaqqqqded", HexDir.NORTH_EAST, OpGetTelepathy())
-		register("send_telepathy", "qaqqqeaqa", HexDir.NORTH_EAST, OpSendTelepathy())
-		register("shout_telepathy", "qaqqqewaqwa", HexDir.NORTH_EAST, OpShoutTelepathy())
+		register("get_telepathy", "wqqqqw", HexDir.EAST, OpGetTelepathy())
+		register("send_telepathy", "qqqqwaqa", HexDir.EAST, OpSendTelepathy())
+		register("shout_telepathy", "daqqqqwa", HexDir.EAST, OpShoutTelepathy())
 		register("pling", "qaqdee", HexDir.NORTH_EAST, OpHallucinateSound(SoundEvents.ENTITY_PLAYER_LEVELUP))
 		register("click", "qaqdew", HexDir.NORTH_EAST, OpHallucinateSound(SoundEvents.UI_BUTTON_CLICK))
 
@@ -124,7 +124,6 @@ object HexicalPatterns {
 		register("get_lamp_velocity", "qwddedqew", HexDir.SOUTH_WEST, OpGetLampData(2))
 		register("get_lamp_use_time", "qwddedqwddwa", HexDir.SOUTH_WEST, OpGetLampData(3))
 		register("get_lamp_media", "qwddedaeeeee", HexDir.SOUTH_WEST, OpGetLampData(4))
-
 		register("get_arch_lamp_position", "qaqwddedqdd", HexDir.NORTH_EAST, OpGetArchLampData(0))
 		register("get_arch_lamp_rotation", "qaqwddedadw", HexDir.NORTH_EAST, OpGetArchLampData(1))
 		register("get_arch_lamp_velocity", "qaqwddedqew", HexDir.NORTH_EAST, OpGetArchLampData(2))
@@ -134,7 +133,6 @@ object HexicalPatterns {
 		register("get_arch_lamp_media", "qaqwddedaeeeee", HexDir.NORTH_EAST, OpGetArchLampMedia())
 		register("terminate_arch_lamp", "qaqwddedwaqdee", HexDir.NORTH_EAST, OpTerminateArchLamp())
 		register("has_arch_lamp", "qaqwddedqeed", HexDir.NORTH_EAST, OpIsUsingArchLamp())
-
 		register("lamp_finale", "aaddaddad", HexDir.EAST, OpGetFinale())
 
 		PatternRegistry.addSpecialHandler(Hexical.id("nephthys")) { pat ->
