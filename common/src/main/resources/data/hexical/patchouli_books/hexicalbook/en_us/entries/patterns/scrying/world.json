@@ -31,6 +31,14 @@
 			"input": "vector",
 			"output": "number",
 			"text": "hexical.page.block_blast_resistance"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:get_dimension",
+			"anchor": "hexical:get_dimension",
+			"input": "",
+			"output": "identifier",
+			"text": "hexical.page.get_dimension"
 		}
 	]
 }
