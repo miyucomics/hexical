@@ -6,11 +6,11 @@
 	"pages": [
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:dioscuri_gambit",
-			"anchor": "hexical:dioscuri_gambit",
+			"op_id": "hexical:dup_many",
+			"anchor": "hexical:dup_many",
 			"input": "many, number",
 			"output": "many",
-			"text": "hexical.page.dioscuri_gambit"
+			"text": "hexical.page.dup_many"
 	    }
 	]
 }

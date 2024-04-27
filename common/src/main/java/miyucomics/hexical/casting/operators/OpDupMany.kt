@@ -8,7 +8,7 @@ import at.petrak.hexcasting.api.spell.getPositiveIntUnderInclusive
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapNotEnoughArgs
 
-class OpDioscuriGambit : Action {
+class OpDupMany : Action {
 	override fun operate(continuation: SpellContinuation, stack: MutableList<Iota>, ravenmind: Iota?, ctx: CastingContext): OperationResult {
 		if (stack.isEmpty())
 			throw MishapNotEnoughArgs(1, 0)

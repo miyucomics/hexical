@@ -11,10 +11,10 @@ import net.minecraft.entity.effect.StatusEffects
 import net.minecraft.text.Text
 import net.minecraft.util.DyeColor
 
-class OutsideDomainMishap : Mishap() {
+class OutsideCircleMishap : Mishap() {
 	override fun accentColor(ctx: CastingContext, errorCtx: Context): FrozenColorizer = dyeColor(DyeColor.GREEN)
 	override fun particleSpray(ctx: CastingContext) = ParticleSpray.burst(ctx.caster.pos, 1.0)
-	override fun errorMessage(ctx: CastingContext, errorCtx: Context): Text = error(Hexical.MOD_ID + ":outside_domain")
+	override fun errorMessage(ctx: CastingContext, errorCtx: Context): Text = error(Hexical.MOD_ID + ":outside_circle")
 
 	override fun execute(ctx: CastingContext, errorCtx: Context, stack: MutableList<Iota>) {
 		ctx.caster.addStatusEffect(StatusEffectInstance(StatusEffects.SLOWNESS, 60))
