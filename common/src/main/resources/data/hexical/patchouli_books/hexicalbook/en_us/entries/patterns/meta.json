@@ -21,7 +21,7 @@
             "type": "hexcasting:manual_pattern",
             "op_id": "hexical:nephthys",
             "anchor": "hexical:nephthys",
-            "input": "list of patterns/pattern",
+            "input": "pattern/[pattern]",
             "output": "varies",
             "text": "hexical.page.nephthys.0",
             "patterns": [
@@ -37,7 +37,7 @@
                 },
                 {
                     "startdir": "SOUTH_EAST",
-                    "signature": "deaqqdqeqe",
+                    "signature": "deaqqdqe",
                     "q": 2,
                     "r": 4
                 }
