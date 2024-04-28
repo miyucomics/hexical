@@ -5,6 +5,7 @@ import at.petrak.hexcasting.api.spell.iota.NullIota
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import at.petrak.hexcasting.xplat.IXplatAbstractions
+import miyucomics.hexical.enums.SpecializedSource
 import miyucomics.hexical.interfaces.PlayerEntityMinterface
 import miyucomics.hexical.registry.HexicalAdvancements
 import miyucomics.hexical.state.PersistentStateHandler
@@ -46,7 +47,7 @@ class ArchLampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.H
 		}
 
 		if (stackNbt.getBoolean("active")) {
-			lampCast(world as ServerWorld, user as ServerPlayerEntity, getHex(stack, world)!!, archLamp = true, finale = true)
+			lampCast(world as ServerWorld, user as ServerPlayerEntity, getHex(stack, world)!!, SpecializedSource.ARCH_LAMP, finale = true)
 			stackNbt.putBoolean("active", false)
 			return TypedActionResult.success(stack)
 		}
@@ -77,7 +78,7 @@ class ArchLampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.H
 			return
 		}
 
-		lampCast(world as ServerWorld, user, getHex(stack, world) ?: return, archLamp = true, finale = false)
+		lampCast(world as ServerWorld, user, getHex(stack, world) ?: return, SpecializedSource.ARCH_LAMP, finale = false)
 		(user as PlayerEntityMinterface).lampCastedThisTick()
 		if (getMedia(stack) == 0) {
 			user.inventory.setStack(slot, ItemStack(HexicalItems.LAMP_ITEM))

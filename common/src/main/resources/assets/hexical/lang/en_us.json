@@ -47,8 +47,8 @@
 	"hexcasting.mishap.invalid_value.identifiable": "an identifiable target",
 	"hexcasting.mishap.invalid_value.recognizable": "a target with extra information",
 	"hexcasting.mishap.hexical:grimoire_too_full": "Tried to fit too many bindings in a grimoire.",
-	"hexcasting.mishap.hexical:needs_regular_lamp": "Expected to be cast by regular Genie Lamp.",
-	"hexcasting.mishap.hexical:needs_arch_lamp": "Expected an active Arch Lamp in the inventory.",
+	"hexcasting.mishap.hexical:needs_lamp": "Expected to be cast by regular Genie Lamp.",
+	"hexcasting.mishap.hexical:active_arch_lamp": "Expected an active Arch Lamp in the inventory.",
 	"hexcasting.mishap.hexical:grimoire_access_denied": "Tried to increase the uses of a restricted binding.",
 	"hexcasting.mishap.hexical:outside_circle": "Spell exceeds the domain of the spell circle.",
 	"hexcasting.mishap.hexical:themis": "Expected a number at the top of the pseudo-stack.",
@@ -128,7 +128,10 @@
 	"hexcasting.spell.hexical:terminate_arch_lamp": "Archgenie Termination",
 
 	"hexcasting.spell.hexical:chorus_blink": "Chorus Blink",
+
 	"hexcasting.spell.hexical:conjure_staff": "Conjure Staff",
+	"hexcasting.spell.hexical:read_staff": "Staff Reflection",
+	"hexcasting.spell.hexical:write_staff": "Staff Gambit",
 
 	"hexcasting.spell.hexical:conjure_mage_block": "Conjure Mage Block",
 	"hexcasting.spell.hexical:modify_block_bouncy": "Modify Block: Bouncy",
@@ -333,7 +336,9 @@
 
 	"hexical.page.conjure_staff.title": "Conjured Staves",
 	"hexical.page.conjure_staff.0": "Conjured staves are not unlike $(l:items/hexcasting)$(item)cyphers$(). They have a media battery for casting and when they run out, unable to consume my health or my inventory's stash for _media. They are not rechargable or reprogrammable, and using $(l:patterns/spells/hexcasting#hexcasting:erase)$(action)Erase Item$() on it simply destroys it. However, its true power is $(o)input interception$().",
-	"hexical.page.conjure_staff.1": "Conjures a staff at the location with the amount of media, rank, and hex respectively.$(br2)$(o)This is my $(l)staff$()$(o). There are many like it, but this one is mine.$()",
-	"hexical.page.conjure_staff.2": "When I use my primary or secondary use keys while holding a conjured staff, it intercepts my click. After a number of clicks corresponding to the rank I assigned at conjuration, it will cast the hex I gave it, starting the stack with false and true, corresponding to the left and right clicks respectively. If I pause for too long between clicks, it simply cancels the current \"cast\".",
-	"hexical.page.conjure_staff.3": "The spell is not too expensive, requiring only an amethyst shard, an amethyst dust for every rank, and the media for the battery. The result is a speedy and versatile casting device, with infinitely more possibilities and no cooldown compared to other casting devices."
+	"hexical.page.conjure_staff": "Conjures a staff at the location with the amount of media, rank, and hex respectively.$(br2)$(o)This is my $(l)staff$()$(o). There are many like it, but this one is mine.$()",
+	"hexical.page.conjure_staff.1": "When I use my primary or secondary use keys while holding a conjured staff, it intercepts my click. After a number of clicks corresponding to the rank I assigned at conjuration, it will cast the hex I gave it, starting the stack with false and true, corresponding to the left and right clicks respectively. If I pause for too long between clicks, it simply cancels the current \"cast\".",
+	"hexical.page.conjure_staff.2": "The spell is not too expensive, requiring only an amethyst shard, an amethyst dust for every rank, and the media for the battery. The result is a speedy and versatile casting device, with infinitely more possibilities and no cooldown compared to other casting devices.$(br2)Not only that, conjured staves feature an iota storage that can only be edited from the staff itself.",
+	"hexical.page.write_staff": "Writes an iota to the conjured staff's inner storage.",
+	"hexical.page.read_staff": "Reads the iota from the conjured staff's inner storage."
 }

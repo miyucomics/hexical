@@ -12,7 +12,7 @@ import net.minecraft.util.DyeColor
 class NeedsActiveArchLampMishap : Mishap() {
 	override fun accentColor(ctx: CastingContext, errorCtx: Context): FrozenColorizer = dyeColor(DyeColor.RED)
 	override fun particleSpray(ctx: CastingContext) = ParticleSpray.burst(ctx.caster.pos, 1.0)
-	override fun errorMessage(ctx: CastingContext, errorCtx: Context): Text = error(Hexical.MOD_ID + ":needs_arch_lamp")
+	override fun errorMessage(ctx: CastingContext, errorCtx: Context): Text = error(Hexical.MOD_ID + ":active_arch_lamp")
 
 	override fun execute(ctx: CastingContext, errorCtx: Context, stack: MutableList<Iota>) {
 		yeetHeldItem(ctx, ctx.castingHand)

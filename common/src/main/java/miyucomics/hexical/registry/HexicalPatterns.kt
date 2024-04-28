@@ -24,6 +24,7 @@ import miyucomics.hexical.casting.operators.staff.OpWriteStaff
 import miyucomics.hexical.casting.spells.OpChorusBlink
 import miyucomics.hexical.casting.spells.OpConjureStaff
 import miyucomics.hexical.casting.spells.circle.OpDisplace
+import miyucomics.hexical.casting.spells.circle.OpTranspose
 import miyucomics.hexical.casting.spells.lamp.OpEducateGenie
 import miyucomics.hexical.casting.spells.lamp.OpMakeGenie
 import miyucomics.hexical.casting.spells.lamp.OpSetArchLampStorage
@@ -51,7 +52,8 @@ object HexicalPatterns {
 
 		register("shuffle_pattern", "deawawwa", HexDir.WEST, OpShufflePattern())
 
-		register("displace", "qqqqqaeeqaeadeeed", HexDir.NORTH_WEST, OpDisplace())
+		register("displace", "qaqqqqeedaqqqa", HexDir.NORTH_EAST, OpDisplace())
+		register("transpose", "qqqqqaeeqaeadeeed", HexDir.NORTH_WEST, OpTranspose())
 
 		register("identify", "qqqqqe", HexDir.NORTH_EAST, OpIdentify())
 		register("recognize", "eeeeeq", HexDir.WEST, OpRecognize())

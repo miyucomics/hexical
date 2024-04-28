@@ -1,10 +1,10 @@
 package miyucomics.hexical.interfaces
 
+import miyucomics.hexical.enums.SpecializedSource
+
 interface CastingContextMinterface {
-	fun getCastByLamp(): Boolean
-	fun getArchLamp(): Boolean
-	fun getFinale(): Boolean
-	fun setCastByLamp(castByLamp: Boolean)
-	fun setArchLamp(archLamp: Boolean)
+	fun setSpecializedSource(source: SpecializedSource)
+	fun getSpecializedSource(): SpecializedSource?
 	fun setFinale(finale: Boolean)
+	fun getFinale(): Boolean
 }

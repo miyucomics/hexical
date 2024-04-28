@@ -15,6 +15,14 @@
 			"input": "entity, vector",
 			"output": "",
 			"text": "hexical.page.displace"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:transpose",
+			"anchor": "hexical:transpose",
+			"input": "vector, vector, vector, vector",
+			"output": "",
+			"text": "hexical.page.transpose"
 		}
 	]
 }
