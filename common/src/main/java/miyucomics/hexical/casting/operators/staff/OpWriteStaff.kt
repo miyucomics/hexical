@@ -2,10 +2,8 @@ package miyucomics.hexical.casting.operators.staff
 
 import at.petrak.hexcasting.api.spell.ConstMediaAction
 import at.petrak.hexcasting.api.spell.casting.CastingContext
-import at.petrak.hexcasting.api.spell.iota.DoubleIota
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.NullIota
-import miyucomics.hexical.state.TelepathyData
 
 class OpWriteStaff : ConstMediaAction {
 	override val argc = 1
