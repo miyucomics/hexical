@@ -34,6 +34,22 @@
 		},
 		{
 			"type": "hexcasting:pattern",
+			"op_id": "hexical:get_player_hunger",
+			"anchor": "hexical:get_player_hunger",
+			"input": "player entity",
+			"output": "number",
+			"text": "hexical.page.get_player_hunger"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:get_player_saturation",
+			"anchor": "hexical:get_player_saturation",
+			"input": "entity entity",
+			"output": "number",
+			"text": "hexical.page.get_player_saturation"
+		},
+		{
+			"type": "hexcasting:pattern",
 			"op_id": "hexical:is_meat",
 			"anchor": "hexical:is_meat",
 			"input": "item entity",

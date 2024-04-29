@@ -21,23 +21,22 @@
 	"key.categories.hexical": "Hexical",
 	"key.hexical.telepathy": "Telepathy",
 	"item.hexical.grimoire": "Grimoire",
-	"item.hexical.lamp": "Genie Lamp",
+	"item.hexical.lamp": "Hand Genie Lamp",
 	"item.hexical.arch_lamp": "Archgenie Lamp",
 	"item.hexical.copper_staff": "Copper Staff",
 	"item.hexical.conjured_staff": "Conjured Staff",
 	"item.hexical.living_scroll_small": "Small Living Scroll",
-	"item.hexical.living_scroll_medium": "Medium Living Scroll",
 	"item.hexical.living_scroll_large": "Large Living Scroll",
 	"itemGroup.hexical.general": "Hexical",
-	"particle.minecraft.soul_7": "",
 	"subtitles.hexical.lamp_activate": "Lamp activates",
 	"subtitles.hexical.lamp_deactivate": "Lamp deactivates",
+	"particle.minecraft.soul_7": "",
 
-	"hexcasting.mishap.bad_item.grimoire": "a grimoire",
 	"hexcasting.mishap.bad_block.mage_block": "a mage block",
+	"hexcasting.mishap.bad_item.grimoire": "a grimoire",
 	"hexcasting.mishap.bad_item.lamp": "an empty lamp",
 	"hexcasting.mishap.bad_item.lamp_full": "a lamp with media",
-	"hexcasting.mishap.bad_item.lamp_flay": "a villager of Journeyman status or greater",
+	"hexcasting.mishap.bad_item.lamp_flay": "a Journeyman or greater level villager",
 	"hexcasting.mishap.bad_item.speck": "a speck",
 	"hexcasting.mishap.bad_item.living_scroll": "a living scroll",
 	"hexcasting.mishap.invalid_value.pattern_list": "a list with only patterns",
@@ -46,9 +45,10 @@
 	"hexcasting.mishap.invalid_value.potion_food": "a food or potion item entity",
 	"hexcasting.mishap.invalid_value.identifiable": "an identifiable target",
 	"hexcasting.mishap.invalid_value.recognizable": "a target with extra information",
-	"hexcasting.mishap.hexical:grimoire_too_full": "Tried to fit too many bindings in a grimoire.",
-	"hexcasting.mishap.hexical:needs_lamp": "Expected to be cast by regular Genie Lamp.",
+	"hexcasting.mishap.hexical:needs_lamp": "Expected to be cast by a Hand Genie Lamp.",
 	"hexcasting.mishap.hexical:active_arch_lamp": "Expected an active Arch Lamp in the inventory.",
+	"hexcasting.mishap.hexical:needs_conjured_staff": "Expected to be cast by a Conjured Staff.",
+	"hexcasting.mishap.hexical:grimoire_too_full": "Tried to fit too many bindings in a grimoire.",
 	"hexcasting.mishap.hexical:grimoire_access_denied": "Tried to increase the uses of a restricted binding.",
 	"hexcasting.mishap.hexical:outside_circle": "Spell exceeds the domain of the spell circle.",
 	"hexcasting.mishap.hexical:themis": "Expected a number at the top of the pseudo-stack.",
@@ -101,6 +101,7 @@
 	"hexcasting.spell.hexical:click": "Hallucinate Click",
 
 	"hexcasting.spell.hexical:displace": "Displace",
+
 	"hexcasting.spell.hexical:dup_many": "Dioscuri Gambit II",
 
 	"hexcasting.spell.hexical:write_grimoire": "Write Grimoire",
@@ -125,7 +126,7 @@
 	"hexcasting.spell.hexical:get_arch_lamp_storage": "Archgenie Reflection: Memory",
 	"hexcasting.spell.hexical:set_arch_lamp_storage": "Archgenie Gambit",
 	"hexcasting.spell.hexical:has_arch_lamp": "Archgenie Purification",
-	"hexcasting.spell.hexical:terminate_arch_lamp": "Archgenie Termination",
+	"hexcasting.spell.hexical:terminate_arch_lamp": "Terminate Archgenie",
 
 	"hexcasting.spell.hexical:chorus_blink": "Chorus Blink",
 
@@ -167,12 +168,17 @@
 	"hexcasting.spell.hexical:kill_speck": "Dismiss Speck",
 	"hexcasting.spell.hexical:zone_speck": "Zone Distillation: Speck",
 
+	"hexcasting.spell.hexical:get_mainhand_stack": "Tool Purification",
+	"hexcasting.spell.hexical:get_offhand_stack": "Accessory Purification",
+
 	"hexical.page.hexical_changes.title": "Hexical Changes",
 	"hexical.page.hexical_changes.0": "I feel strangely more in tune with the ambient _media around me. It feels $(o)friendlier$() somehow... I can even feel it rippling around me, responding to my actions, as if suggesting new spells to me. The media itself also feels more malleable, more $(o)workable$(), allowing me to manipulate it into precise specialized effects.",
 	"hexical.page.hexical_changes.1": "I also find my tools more familar. I notice I require less concentration with my $(l:items/staff)$(item)staff$() and can move around while using it, handy for chasing down targets that get out of my line of sight before I can finish my raycast. I shouldn't become too relaxed though, Nature has not become more forgiving of my mistakes. I can also write directly into my $(l:items/abacus)$(item)abacus$() with Scribe's Gambit.",
+	"hexical.page.copper_staff": "By fixing a block of amethyst to the end of a lightning rod, I can create this unusually mechanical staff. It has no real benefit other than being very stylish and feeling absolutely electrifying to use.",
 
 	"hexical.page.simple.title": "Hexical Patterns",
-	"hexical.page.dup_many": "Takes a number and duplicates that many elements of the stack on top of the stack. For example, a, b, c, 3 turns into a, b, c, a, b, c.",
+	"hexical.page.dup_many": "Takes a number and duplicates that many elements of the stack while perserving order.",
+    "hexical.page.shuffle_pattern": "Takes in a pattern and a number and produces a pattern of the same shape, but different stroke order. My notes reveal that ancient hexcasters used this for some $(o)grand library$().",
 
 	"hexical.page.living_scroll.title": "Living Scrolls",
 	"hexical.page.living_scroll.0": "Living scrolls are mixed with a pinch of amethyst, enchanting the ink to move and wiggle like the patterns I draw with my staff. Not only that, living scrolls can display lists of patterns.$(br2)$(o)You can't be a proper writer without a touch of madness, can you?$()",
@@ -191,6 +197,8 @@
 	"hexical.page.identifiers.1": "Pushes the identifier of an entity or block at a vector.",
 	"hexical.page.identifiers.2": "I notice that if I were to use Detective's Purification on an item, it returns that it's an item entity, but if I were to use Recognizer's Purification on that same entity, it would return the type of item. This type of item matches with a block identifier returned by Detective's Purification. I can imagine Recognizer's as returning $(o)additional$() information if possible.",
 	"hexical.page.identifiers.3": "Pushes extra identifier information of an entity, mainly the item type of an item entity or the item type inside an item frame entity.",
+	"hexical.page.get_mainhand_stack": "Returns the type of item in my mainhand.",
+	"hexical.page.get_offhand_stack": "Returns the type of item in my offhand.",
 
 	"hexical.page.item.title": "Items",
 	"hexical.page.item.0": "This set of patterns allows me to divine additional information from an item entity, like durability and amount of items.",
@@ -212,6 +220,8 @@
 	"hexical.page.edible": "Takes in an item entity and returns whether you can eat it.",
 	"hexical.page.get_hunger": "Takes in an item entity and pushes the amount it will fill you.",
 	"hexical.page.get_saturation": "Takes in an item entity and pushes the saturation value, which roughly affects how long it will fill you.",
+	"hexical.page.get_player_hunger": "Returns how full a player is.",
+	"hexical.page.get_player_saturation": "Returns my saturation, which roughly correlates to how long the player will remain full.",
 	"hexical.page.is_meat": "Takes in an item entity and pushes whether it's considered a meat ( whether wolves can eat it ).",
 	"hexical.page.is_snack": "Takes in an item entity and pushes whether it's a snack ( you can eat it really quickly ).",
 
@@ -318,9 +328,6 @@
 	"hexical.page.modify_block_replaceable": "This modifier is useful for construction! With this modifier applied, I find I can easily place another block in the place of the mage block.",
 	"hexical.page.modify_block_volatile": "This modifier makes the block break other mage blocks it's touching. Notably, if it breaks another volatile block, that block breaks and so on until every volatile block shatters.",
 
-    "hexical.page.patterns.title": "Pattern Studies",
-    "hexical.page.shuffle_pattern": "Takes in a pattern and a number and produces a pattern of the same shape, but different stroke order. My notes reveal that ancient hexcasters used this for some $(o)grand library$().",
-
 	"hexical.page.specks.title": "Specks",
 	"hexical.page.specks.0": "I can conjure an image of an iota into the world, called a speck. Nature allows me to customize them quite extensively, altering their size, thickness of stroke, and more. They also take on my pigment color. Once they are in the world, I can move, rotate, and otherwise alter them for free, regardless of range.",
 	"hexical.page.conjure_speck": "Conjures a speck with the iota, position, and rotation. Costs one-hundredth of a dust.$(br2)$(o)Because you saw things from every angle, you understood them for what they really were.$()",
@@ -339,6 +346,6 @@
 	"hexical.page.conjure_staff": "Conjures a staff at the location with the amount of media, rank, and hex respectively.$(br2)$(o)This is my $(l)staff$()$(o). There are many like it, but this one is mine.$()",
 	"hexical.page.conjure_staff.1": "When I use my primary or secondary use keys while holding a conjured staff, it intercepts my click. After a number of clicks corresponding to the rank I assigned at conjuration, it will cast the hex I gave it, starting the stack with false and true, corresponding to the left and right clicks respectively. If I pause for too long between clicks, it simply cancels the current \"cast\".",
 	"hexical.page.conjure_staff.2": "The spell is not too expensive, requiring only an amethyst shard, an amethyst dust for every rank, and the media for the battery. The result is a speedy and versatile casting device, with infinitely more possibilities and no cooldown compared to other casting devices.$(br2)Not only that, conjured staves feature an iota storage that can only be edited from the staff itself.",
-	"hexical.page.write_staff": "Writes an iota to the conjured staff's inner storage.",
+	"hexical.page.write_staff": "Writes an iota to the conjured staff's inner storage. Does not allow player references.",
 	"hexical.page.read_staff": "Reads the iota from the conjured staff's inner storage."
 }
