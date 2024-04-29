@@ -118,8 +118,8 @@ object HexicalPatterns {
 		register("get_telepathy", "wqqqqw", HexDir.EAST, OpGetTelepathy())
 		register("send_telepathy", "qqqqwaqa", HexDir.EAST, OpSendTelepathy())
 		register("shout_telepathy", "daqqqqwa", HexDir.EAST, OpShoutTelepathy())
-		register("pling", "waqa", HexDir.NORTH_EAST, OpHallucinateSound(SoundEvents.ENTITY_PLAYER_LEVELUP))
-		register("click", "waqaa", HexDir.NORTH_EAST, OpHallucinateSound(SoundEvents.UI_BUTTON_CLICK))
+		register("pling", "eqqqada", HexDir.NORTH_EAST, OpHallucinateSound(SoundEvents.ENTITY_PLAYER_LEVELUP))
+		register("click", "eqqadaq", HexDir.NORTH_EAST, OpHallucinateSound(SoundEvents.UI_BUTTON_CLICK))
 
 		register("write_grimoire", "aqwqaeaqa", HexDir.WEST, OpGrimoireWrite())
 		register("erase_grimoire", "aqwqaqded", HexDir.WEST, OpGrimoireErase())
