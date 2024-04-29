@@ -171,6 +171,9 @@
 	"hexcasting.spell.hexical:get_mainhand_stack": "Tool Purification",
 	"hexcasting.spell.hexical:get_offhand_stack": "Accessory Purification",
 
+	"hexcasting.spell.hexical:get_player_hunger": "Hunger Purification",
+	"hexcasting.spell.hexical:get_player_saturation": "Stamina Purification",
+
 	"hexical.page.hexical_changes.title": "Hexical Changes",
 	"hexical.page.hexical_changes.0": "I feel strangely more in tune with the ambient _media around me. It feels $(o)friendlier$() somehow... I can even feel it rippling around me, responding to my actions, as if suggesting new spells to me. The media itself also feels more malleable, more $(o)workable$(), allowing me to manipulate it into precise specialized effects.",
 	"hexical.page.hexical_changes.1": "I also find my tools more familar. I notice I require less concentration with my $(l:items/staff)$(item)staff$() and can move around while using it, handy for chasing down targets that get out of my line of sight before I can finish my raycast. I shouldn't become too relaxed though, Nature has not become more forgiving of my mistakes. I can also write directly into my $(l:items/abacus)$(item)abacus$() with Scribe's Gambit.",
@@ -204,7 +207,7 @@
 	"hexical.page.item.0": "This set of patterns allows me to divine additional information from an item entity, like durability and amount of items.",
 	"hexical.page.count_stack": "Takes in an item entity and returns how many items are in it.",
 	"hexical.page.count_max_stack": "Takes in an item entity and returns how many items that can stack in it.",
-	"hexical.page.damage_stack": "Takes in an item entity and returns how much durability the item has left.",
+	"hexical.page.damage_stack": "Takes in an item entity and returns how much damage the item has sustained.",
 	"hexical.page.damage_max_stack": "Takes in an item entity and returns how much durability the item can have at its peak.",
 
 	"hexical.page.enchantments.title": "Enchantments",
