@@ -48,11 +48,9 @@ object HexicalPatterns {
 		register("themis", "dwaad", HexDir.WEST, OpThemis)
 
 		register("dup_many", "waadadaa", HexDir.EAST, OpDupMany())
-
-		register("shuffle_pattern", "deawawwa", HexDir.WEST, OpShufflePattern())
+		register("shuffle_pattern", "aqqqdae", HexDir.NORTH_EAST, OpShufflePattern())
 
 		register("displace", "qaqqqqeedaqqqa", HexDir.NORTH_EAST, OpDisplace())
-//		register("transpose", "qqqqqaeeqaeadeeed", HexDir.NORTH_WEST, OpTranspose())
 
 		register("identify", "qqqqqe", HexDir.NORTH_EAST, OpIdentify())
 		register("recognize", "eeeeeq", HexDir.WEST, OpRecognize())
@@ -76,6 +74,11 @@ object HexicalPatterns {
 		register("get_effect_category", "wqqqaawd", HexDir.SOUTH_WEST, OpGetStatusEffectCategory())
 		register("get_effect_amplifier", "wqqqaqwa", HexDir.SOUTH_WEST, OpGetStatusEffectInstanceData(0))
 		register("get_effect_duration", "wqqqaqwdd", HexDir.SOUTH_WEST, OpGetStatusEffectInstanceData(1))
+
+		register("get_mainhand_stack", "qaqqqq", HexDir.NORTH_EAST, OpGetPlayerData(0))
+		register("get_offhand_stack", "edeeee", HexDir.NORTH_WEST, OpGetPlayerData(1))
+		register("get_player_hunger", "qqqadaddw", HexDir.WEST, OpGetPlayerData(2))
+		register("get_player_saturation", "qqqadaddq", HexDir.WEST, OpGetPlayerData(3))
 
 		register("conjure_mage_block", "dee", HexDir.NORTH_WEST, OpConjureMageBlock())
 		register("modify_block_bouncy", "deeqa", HexDir.NORTH_WEST, OpModifyMageBlock("bouncy"))
@@ -115,8 +118,8 @@ object HexicalPatterns {
 		register("get_telepathy", "wqqqqw", HexDir.EAST, OpGetTelepathy())
 		register("send_telepathy", "qqqqwaqa", HexDir.EAST, OpSendTelepathy())
 		register("shout_telepathy", "daqqqqwa", HexDir.EAST, OpShoutTelepathy())
-		register("pling", "qaqdee", HexDir.NORTH_EAST, OpHallucinateSound(SoundEvents.ENTITY_PLAYER_LEVELUP))
-		register("click", "qaqdew", HexDir.NORTH_EAST, OpHallucinateSound(SoundEvents.UI_BUTTON_CLICK))
+		register("pling", "waqa", HexDir.NORTH_EAST, OpHallucinateSound(SoundEvents.ENTITY_PLAYER_LEVELUP))
+		register("click", "waqaa", HexDir.NORTH_EAST, OpHallucinateSound(SoundEvents.UI_BUTTON_CLICK))
 
 		register("write_grimoire", "aqwqaeaqa", HexDir.WEST, OpGrimoireWrite())
 		register("erase_grimoire", "aqwqaqded", HexDir.WEST, OpGrimoireErase())

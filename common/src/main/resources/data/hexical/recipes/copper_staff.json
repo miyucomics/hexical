@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"key": {
+		"I": {
+			"item": "minecraft:copper_ingot"
+		},
+		"A": {
+			"item": "minecraft:amethyst_block"
+		},
+		"L": {
+			"item": "minecraft:lightning_rod"
+		}
+	},
+	"pattern": ["  I", " A ", "L  "],
+	"result": {
+		"item": "hexical:copper_staff"
+	}
+}
