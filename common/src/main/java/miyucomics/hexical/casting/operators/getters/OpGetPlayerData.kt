@@ -7,6 +7,7 @@ import at.petrak.hexcasting.api.spell.iota.DoubleIota
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.NullIota
 import miyucomics.hexical.iota.IdentifierIota
+import net.minecraft.item.Items
 import net.minecraft.util.registry.Registry
 
 class OpGetPlayerData(private val mode: Int) : ConstMediaAction {
@@ -15,8 +16,18 @@ class OpGetPlayerData(private val mode: Int) : ConstMediaAction {
 		val entity = args.getPlayer(0, argc)
 		return listOf(
 			when (mode) {
-				0 -> IdentifierIota(Registry.ITEM.getId(entity.mainHandStack.item))
-				1 -> IdentifierIota(Registry.ITEM.getId(entity.offHandStack.item))
+				0 -> {
+					val item = entity.mainHandStack.item
+					if (item == Items.AIR)
+						NullIota()
+					IdentifierIota(Registry.ITEM.getId(item))
+				}
+				1 -> {
+					val item = entity.offHandStack.item
+					if (item == Items.AIR)
+						NullIota()
+					IdentifierIota(Registry.ITEM.getId(item))
+				}
 				2 -> DoubleIota(entity.hungerManager.foodLevel.toDouble())
 				3 -> DoubleIota(entity.hungerManager.saturationLevel.toDouble())
 				else -> NullIota()

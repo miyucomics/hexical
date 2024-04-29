@@ -1,6 +1,6 @@
 {
 	"name": "hexical.page.simple.title",
-	"icon": "minecraft:snowball",
+	"icon": "minecraft:feather",
 	"category": "hexcasting:patterns",
 	"advancement": "hexcasting:root",
 	"pages": [
@@ -11,6 +11,14 @@
 			"input": "many, number",
 			"output": "many",
 			"text": "hexical.page.dup_many"
-	    }
+	    },
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:shuffle_pattern",
+			"anchor": "hexical:shuffle_pattern",
+			"input": "pattern, number",
+			"output": "pattern",
+			"text": "hexical.page.shuffle_pattern"
+		}
 	]
 }
