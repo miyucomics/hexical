@@ -8,15 +8,16 @@ import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.NullIota
 import at.petrak.hexcasting.api.spell.iota.Vec3Iota
 import at.petrak.hexcasting.api.utils.vecFromNBT
-import miyucomics.hexical.casting.mishaps.NeedsLampMishap
+import miyucomics.hexical.casting.mishaps.NeedsSourceMishap
+import miyucomics.hexical.enums.SpecializedSource
 import miyucomics.hexical.interfaces.CastingContextMinterface
 import miyucomics.hexical.items.LampItem
 
 class OpGetLampData(private val mode: Int) : ConstMediaAction {
 	override val argc = 0
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
-		if (!(ctx as CastingContextMinterface).getCastByLamp() || (ctx as CastingContextMinterface).getArchLamp())
-			throw NeedsLampMishap()
+		if ((ctx as CastingContextMinterface).getSpecializedSource() != SpecializedSource.HAND_LAMP)
+			throw NeedsSourceMishap("lamp")
 		val nbt = ctx.caster.activeItem.nbt ?: return listOf(NullIota())
 		return listOf(
 			when (mode) {

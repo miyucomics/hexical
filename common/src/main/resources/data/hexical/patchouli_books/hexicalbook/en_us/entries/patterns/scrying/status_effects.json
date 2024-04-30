@@ -5,10 +5,6 @@
 	"advancement": "hexcasting:root",
 	"pages": [
 		{
-			"type": "patchouli:text",
-			"text": "hexical.page.status_effects.0"
-		},
-		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:get_effects_entity",
 			"anchor": "hexical:get_effects_entity",

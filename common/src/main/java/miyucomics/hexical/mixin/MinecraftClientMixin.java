@@ -49,15 +49,15 @@ public class MinecraftClientMixin {
 		Hand hand = getConjuredStaff(player);
 		if (hand == null)
 			return;
-		int rankOfStaff = player.getStackInHand(hand).getOrCreateNbt().getInt("rank");
-		if (rankOfStaff == 0)
+		int rank = player.getStackInHand(hand).getOrCreateNbt().getInt("rank");
+		if (rank == 0)
 			return;
 
-		if (hexical$clicks.size() == rankOfStaff) {
+		if (hexical$clicks.size() == rank) {
 			hexical$timer = 0;
 			PacketByteBuf buf = new PacketByteBuf(Unpooled.buffer());
-			buf.writeInt(rankOfStaff);
-			for (int i = 0; i < rankOfStaff; i++)
+			buf.writeInt(rank);
+			for (int i = 0; i < rank; i++)
 				buf.writeBoolean(hexical$clicks.get(i));
 			NetworkManager.sendToServer(Hexical.CAST_CONJURED_STAFF_PACKET, buf);
 			hexical$clicks.clear();
@@ -71,10 +71,10 @@ public class MinecraftClientMixin {
 		Hand hand = getConjuredStaff(player);
 		if (hand == null)
 			return;
-		hexical$timer = hexical$COOLDOWN;
-		hexical$clicks.add(false);
 		player.swingHand(hand);
-		player.world.playSound(player, player.getX(), player.getY(), player.getZ(), HexSounds.SPELL_CIRCLE_CAST, SoundCategory.PLAYERS, 1f, 1f);
+		hexical$clicks.add(false);
+		hexical$timer = hexical$COOLDOWN;
+		player.world.playSound(player, player.getX(), player.getY(), player.getZ(), HexSounds.ADD_LINE, SoundCategory.PLAYERS, 1f, 1f);
 		info.cancel();
 	}
 
@@ -85,10 +85,10 @@ public class MinecraftClientMixin {
 		Hand hand = getConjuredStaff(player);
 		if (hand == null)
 			return;
-		hexical$timer = hexical$COOLDOWN;
-		hexical$clicks.add(true);
 		player.swingHand(hand);
-		player.world.playSound(player, player.getX(), player.getY(), player.getZ(), HexSounds.SPELL_CIRCLE_CAST, SoundCategory.PLAYERS, 1f, 1f);
+		hexical$clicks.add(true);
+		hexical$timer = hexical$COOLDOWN;
+		player.world.playSound(player, player.getX(), player.getY(), player.getZ(), HexSounds.ADD_LINE, SoundCategory.PLAYERS, 1f, 1f);
 		info.cancel();
 	}
 }

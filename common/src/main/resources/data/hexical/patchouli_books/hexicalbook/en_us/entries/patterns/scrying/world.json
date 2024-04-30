@@ -5,10 +5,6 @@
 	"advancement": "hexcasting:root",
 	"pages": [
 		{
-			"type": "patchouli:text",
-			"text": "hexical.page.world"
-		},
-		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:get_weather",
 			"anchor": "hexical:get_weather",
@@ -31,6 +27,14 @@
 			"input": "vector",
 			"output": "number",
 			"text": "hexical.page.block_blast_resistance"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:get_dimension",
+			"anchor": "hexical:get_dimension",
+			"input": "",
+			"output": "identifier",
+			"text": "hexical.page.get_dimension"
 		}
 	]
 }

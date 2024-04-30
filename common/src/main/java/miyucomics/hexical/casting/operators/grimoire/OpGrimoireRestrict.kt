@@ -7,6 +7,7 @@ import at.petrak.hexcasting.api.spell.math.HexPattern
 import at.petrak.hexcasting.api.spell.mishaps.MishapBadOffhandItem
 import miyucomics.hexical.casting.mishaps.GrimoireAccessDeniedMishap
 import miyucomics.hexical.items.GrimoireItem
+import miyucomics.hexical.registry.HexicalItems
 import net.minecraft.item.ItemStack
 
 class OpGrimoireRestrict : SpellAction {
@@ -14,7 +15,7 @@ class OpGrimoireRestrict : SpellAction {
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		val pattern = args.getPattern(0, argc)
 		val uses = args.getPositiveInt(1, argc)
-		val (stack, hand) = ctx.getHeldItemToOperateOn { it.item is GrimoireItem }
+		val (stack, hand) = ctx.getHeldItemToOperateOn { it.isOf(HexicalItems.GRIMOIRE_ITEM) }
 		if (stack.item !is GrimoireItem)
 			throw MishapBadOffhandItem.of(stack, hand, "grimoire")
 		val currentUses = GrimoireItem.getUses(stack, pattern) ?: return Triple(Spell(pattern, stack, uses), 0, listOf())

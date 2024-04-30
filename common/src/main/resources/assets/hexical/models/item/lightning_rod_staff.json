@@ -1,7 +1,7 @@
 {
 	"parent": "minecraft:item/handheld_rod",
 	"textures": {
-		"layer0": "hexical:item/copper_staff"
+		"layer0": "hexical:item/lightning_rod_staff"
 	},
 	"display": {
 		"thirdperson_righthand": {
