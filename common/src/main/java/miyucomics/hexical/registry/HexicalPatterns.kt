@@ -71,7 +71,7 @@ object HexicalPatterns {
 		register("z_rotation_speck", "adeqqqqq", HexDir.SOUTH_WEST, OpZRotationSpeck())
 		register("zone_speck", "qqqqqwdeddwqde", HexDir.SOUTH_EAST, OpGetEntitiesBy({ entity -> entity is SpeckEntity }, false))
 
-		register("get_telepathy", "wqqqqw", HexDir.EAST, OpGetTelepathy())
+		register("get_telepathy", "wqqadaw", HexDir.EAST, OpGetTelepathy())
 		register("send_telepathy", "qqqqwaqa", HexDir.EAST, OpSendTelepathy())
 		register("shout_telepathy", "daqqqqwa", HexDir.EAST, OpShoutTelepathy())
 		register("pling", "eqqqada", HexDir.NORTH_EAST, OpHallucinateSound(SoundEvents.ENTITY_PLAYER_LEVELUP))
