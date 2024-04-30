@@ -34,6 +34,9 @@ show_landing_text = false
 _pattern_regex = { "!Raw" = '(?P<is_per_world>register|registerPerWorld)\("(?P<name>[^"]+)"?,\s"(?P<signature>[qweasd]+)",\sHexDir\.(?P<startdir>\w+)' }
 _per_world_value = "registerPerWorld"
 
+[textures.override]
+"hexical:lightning_rod_staff" = { texture="hexical:textures/item/lightning_rod_staff.png" }
+
 [[extra.hexcasting.pattern_stubs]]
 path = "{^^^_common.package}/registry/HexicalPatterns.kt"
 regex = "{^_pattern_regex}"
