@@ -10,6 +10,6 @@
 	},
 	"pattern": ["  A", " L ", "L  "],
 	"result": {
-		"item": "hexical:copper_staff"
+		"item": "hexical:lightning_rod_staff"
 	}
 }

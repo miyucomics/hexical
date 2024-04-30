@@ -21,7 +21,7 @@ object HexicalItems {
 
 	@JvmStatic
 	fun init() {
-		ITEMS.register("copper_staff") { ItemStaff(Settings().maxCount(1).group(HEXICAL_GROUP)) }
+		ITEMS.register("lightning_rod_staff") { ItemStaff(Settings().maxCount(1).group(HEXICAL_GROUP)) }
 		ITEMS.register("grimoire") { GRIMOIRE_ITEM }
 		ITEMS.register("lamp") { LAMP_ITEM }
 		ITEMS.register("arch_lamp") { ARCH_LAMP_ITEM }
