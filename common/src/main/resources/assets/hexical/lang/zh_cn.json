@@ -43,7 +43,6 @@
 	"hexcasting.mishap.invalid_value.identifier": "一个标识",
 	"hexcasting.mishap.invalid_value.enchantment": "一个魔咒类型",
 	"hexcasting.mishap.invalid_value.food": "一个食物物品实体",
-	"hexcasting.mishap.invalid_value.potion_food": "一个食物、药水、或药箭物品实体",
 	"hexcasting.mishap.invalid_value.identifiable": "一个可标识目标",
 	"hexcasting.mishap.invalid_value.recognizable": "一个带有额外信息的目标",
 	"hexcasting.mishap.hexical:needs_lamp": "本应由手持式精灵神灯施放。",
