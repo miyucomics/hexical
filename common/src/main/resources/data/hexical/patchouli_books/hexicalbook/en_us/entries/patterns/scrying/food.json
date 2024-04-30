@@ -5,10 +5,6 @@
 	"advancement": "hexcasting:root",
 	"pages": [
 		{
-			"type": "patchouli:text",
-			"text": "hexical.page.food.0"
-		},
-		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:edible",
 			"anchor": "hexical:edible",
@@ -31,6 +27,22 @@
 			"input": "item entity",
 			"output": "number",
 			"text": "hexical.page.get_saturation"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:get_player_hunger",
+			"anchor": "hexical:get_player_hunger",
+			"input": "player entity",
+			"output": "number",
+			"text": "hexical.page.get_player_hunger"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:get_player_saturation",
+			"anchor": "hexical:get_player_saturation",
+			"input": "entity entity",
+			"output": "number",
+			"text": "hexical.page.get_player_saturation"
 		},
 		{
 			"type": "hexcasting:pattern",

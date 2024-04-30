@@ -1,0 +1,15 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"key": {
+		"A": {
+			"item": "minecraft:amethyst_block"
+		},
+		"L": {
+			"item": "minecraft:lightning_rod"
+		}
+	},
+	"pattern": ["  A", " L ", "L  "],
+	"result": {
+		"item": "hexical:lightning_rod_staff"
+	}
+}

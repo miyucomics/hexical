@@ -1,1 +1,3 @@
 accessWidener   v2  named
+accessible field net/minecraft/entity/projectile/ArrowEntity potion Lnet/minecraft/potion/Potion;
+accessible field net/minecraft/entity/projectile/ArrowEntity effects Ljava/util/Set;
