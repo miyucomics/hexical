@@ -10,14 +10,13 @@
 			"text": "hexical.page.living_scroll.0"
 		},
 		{
-			"type": "patchouli:crafting",
-			"recipe": "hexical:living_scroll_small",
+			"type": "patchouli:text",
 			"text": "hexical.page.living_scroll.1"
 		},
 		{
 			"type": "patchouli:crafting",
-			"recipe": "hexical:living_scroll_large",
-			"text": "hexical.page.living_scroll.2"
+			"recipe": "hexical:living_scroll_small",
+			"recipe2": "hexical:living_scroll_large"
 		}
 	]
 }

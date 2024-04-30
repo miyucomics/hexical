@@ -16,18 +16,8 @@ class OpGetPlayerData(private val mode: Int) : ConstMediaAction {
 		val entity = args.getPlayer(0, argc)
 		return listOf(
 			when (mode) {
-				0 -> {
-					val item = entity.mainHandStack.item
-					if (item == Items.AIR)
-						NullIota()
-					IdentifierIota(Registry.ITEM.getId(item))
-				}
-				1 -> {
-					val item = entity.offHandStack.item
-					if (item == Items.AIR)
-						NullIota()
-					IdentifierIota(Registry.ITEM.getId(item))
-				}
+				0 -> if (entity.mainHandStack.isEmpty) NullIota() else IdentifierIota(Registry.ITEM.getId(entity.mainHandStack.item))
+				1 -> if (entity.offHandStack.isEmpty) NullIota() else IdentifierIota(Registry.ITEM.getId(entity.offHandStack.item))
 				2 -> DoubleIota(entity.hungerManager.foodLevel.toDouble())
 				3 -> DoubleIota(entity.hungerManager.saturationLevel.toDouble())
 				else -> NullIota()
