@@ -4,6 +4,9 @@ import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.casting.CastingHarness
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
+import miyucomics.hexical.enums.SpecializedSource
+import miyucomics.hexical.interfaces.CastingContextMinterface
+import miyucomics.hexical.registry.HexicalItems
 import net.minecraft.entity.Entity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
@@ -25,16 +28,18 @@ class ConjuredStaffItem : ItemPackagedHex(Settings().maxCount(1)) {
 	}
 
 	fun cast(world: ServerWorld, user: ServerPlayerEntity, hand: Hand, stack: ItemStack, castStack: MutableList<Iota>) {
-		val harness = CastingHarness(CastingContext(user, hand, CastingContext.CastSource.PACKAGED_HEX))
+		val context = CastingContext(user, hand, CastingContext.CastSource.PACKAGED_HEX)
+		(context as CastingContextMinterface).setSpecializedSource(SpecializedSource.CONJURED_STAFF)
+		val harness = CastingHarness(context)
 		harness.stack = castStack
 		harness.executeIotas(getHex(stack, world)!!, world)
 	}
 }
 
 fun getConjuredStaff(player: PlayerEntity): Hand? {
-	if (player.getStackInHand(Hand.OFF_HAND).item is ConjuredStaffItem)
+	if (player.getStackInHand(Hand.OFF_HAND).isOf(HexicalItems.CONJURED_STAFF_ITEM))
 		return Hand.OFF_HAND
-	if (player.getStackInHand(Hand.MAIN_HAND).item is ConjuredStaffItem)
+	if (player.getStackInHand(Hand.MAIN_HAND).isOf(HexicalItems.CONJURED_STAFF_ITEM))
 		return Hand.MAIN_HAND
 	return null
 }

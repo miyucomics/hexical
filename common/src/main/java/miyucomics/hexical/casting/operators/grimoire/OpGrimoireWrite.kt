@@ -8,6 +8,7 @@ import at.petrak.hexcasting.api.spell.mishaps.MishapBadOffhandItem
 import at.petrak.hexcasting.api.spell.mishaps.MishapOthersName
 import miyucomics.hexical.casting.mishaps.GrimoireTooFullMishap
 import miyucomics.hexical.items.GrimoireItem
+import miyucomics.hexical.registry.HexicalItems
 import net.minecraft.item.ItemStack
 
 class OpGrimoireWrite : SpellAction {
@@ -18,7 +19,7 @@ class OpGrimoireWrite : SpellAction {
 		val trueName = MishapOthersName.getTrueNameFromDatum(args[1], ctx.caster)
 		if (trueName != null)
 			throw MishapOthersName(trueName)
-		val (stack, hand) = ctx.getHeldItemToOperateOn { it.item is GrimoireItem }
+		val (stack, hand) = ctx.getHeldItemToOperateOn { it.isOf(HexicalItems.GRIMOIRE_ITEM) }
 		if (stack.item !is GrimoireItem)
 			throw MishapBadOffhandItem.of(stack, hand, "grimoire")
 		if (GrimoireItem.getPatternsInGrimoire(stack).size >= 16)

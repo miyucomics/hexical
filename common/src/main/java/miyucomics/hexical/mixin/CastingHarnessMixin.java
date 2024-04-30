@@ -16,6 +16,7 @@ import at.petrak.hexcasting.xplat.IXplatAbstractions;
 import com.llamalad7.mixinextras.injector.WrapWithCondition;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import miyucomics.hexical.enums.SpecializedSource;
 import miyucomics.hexical.interfaces.CastingContextMinterface;
 import miyucomics.hexical.items.ArchLampItem;
 import net.minecraft.entity.player.PlayerEntity;
@@ -40,20 +41,22 @@ public class CastingHarnessMixin {
 
 	@WrapOperation(method = "updateWithPattern", at = @At(value = "INVOKE", target = "Ljava/util/List;add(Ljava/lang/Object;)Z"))
 	private boolean stopLampParticles(List<OperatorSideEffect> instance, Object effect, Operation<Boolean> original) {
-		if (((CastingContextMinterface) (Object) hexical$harness.getCtx()).getCastByLamp())
+		SpecializedSource source = ((CastingContextMinterface) (Object) hexical$harness.getCtx()).getSpecializedSource();
+		if (source == SpecializedSource.HAND_LAMP || source == SpecializedSource.ARCH_LAMP)
 			return true;
 		return original.call(instance, effect);
 	}
 
 	@WrapWithCondition(method = "executeIotas", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/world/ServerWorld;playSound(Lnet/minecraft/entity/player/PlayerEntity;DDDLnet/minecraft/sound/SoundEvent;Lnet/minecraft/sound/SoundCategory;FF)V"))
 	private boolean silenceLamp(ServerWorld world, PlayerEntity player, double x, double y, double z, SoundEvent event, SoundCategory type, float volume, float pitch) {
-		return !((CastingContextMinterface) (Object) hexical$harness.getCtx()).getCastByLamp();
+		SpecializedSource source = ((CastingContextMinterface) (Object) hexical$harness.getCtx()).getSpecializedSource();
+		return !(source == SpecializedSource.HAND_LAMP || source == SpecializedSource.ARCH_LAMP);
 	}
 
 	@Inject(method = "withdrawMedia", at = @At("HEAD"), cancellable = true, remap = false)
 	private void takeMediaFromArchLamp(int mediaCost, boolean allowOvercast, CallbackInfoReturnable<Integer> cir) {
 		CastingContext ctx = hexical$harness.getCtx();
-		if (((CastingContextMinterface) (Object) ctx).getArchLamp()) {
+		if (((CastingContextMinterface) (Object) hexical$harness.getCtx()).getSpecializedSource() == SpecializedSource.ARCH_LAMP) {
 			if (ctx.getCaster().isCreative()) {
 				cir.setReturnValue(0);
 				return;

@@ -17,7 +17,6 @@ import net.minecraft.item.ItemUsageContext
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.util.ActionResult
-import net.minecraft.util.math.Direction
 import net.minecraft.world.event.GameEvent
 
 class LivingScrollItem(private val size: Int) : Item(Settings().group(HexicalItems.HEXICAL_GROUP)), IotaHolderItem {
@@ -55,13 +54,13 @@ class LivingScrollItem(private val size: Int) : Item(Settings().group(HexicalIte
 		return ActionResult.success(world.isClient)
 	}
 
-	override fun readIotaTag(stack: ItemStack?): NbtCompound? {
-		if (stack!!.hasCompound("patterns"))
-			return stack.getCompound("patterns")
+	override fun readIotaTag(stack: ItemStack): NbtCompound? {
+		if (stack.orCreateNbt.hasCompound("patterns"))
+			return stack.orCreateNbt.getCompound("patterns")
 		return HexIotaTypes.serialize(NullIota())
 	}
 
-	override fun canWrite(stack: ItemStack?, iota: Iota?): Boolean {
+	override fun canWrite(stack: ItemStack, iota: Iota?): Boolean {
 		if (iota!!.type == HexIotaTypes.PATTERN)
 			return true
 		if (iota.type != HexIotaTypes.LIST)
@@ -73,12 +72,12 @@ class LivingScrollItem(private val size: Int) : Item(Settings().group(HexicalIte
 		return true
 	}
 
-	override fun writeDatum(stack: ItemStack?, iota: Iota?) {
+	override fun writeDatum(stack: ItemStack, iota: Iota?) {
 		if (canWrite(stack, iota)) {
 			var toSerialize = iota!!
 			if (iota.type == HexIotaTypes.PATTERN)
 				toSerialize = ListIota(listOf(iota))
-			stack!!.orCreateNbt.put("patterns", HexIotaTypes.serialize(toSerialize))
+			stack.orCreateNbt.put("patterns", HexIotaTypes.serialize(toSerialize))
 		}
 	}
 }

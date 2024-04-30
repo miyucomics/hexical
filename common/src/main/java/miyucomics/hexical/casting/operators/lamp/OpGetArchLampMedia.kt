@@ -19,9 +19,8 @@ class OpGetArchLampMedia : ConstMediaAction {
 		for (stack in ctx.caster.inventory.main)
 			if (stack.item == HexicalItems.ARCH_LAMP_ITEM && stack.orCreateNbt.getBoolean("active"))
 				return listOf(DoubleIota((stack.item as ArchLampItem).getMedia(stack).toDouble() / MediaConstants.DUST_UNIT))
-		for (stack in ctx.caster.inventory.offHand)
-			if (stack.item == HexicalItems.ARCH_LAMP_ITEM && stack.orCreateNbt.getBoolean("active"))
-				return listOf(DoubleIota((stack.item as ArchLampItem).getMedia(stack).toDouble() / MediaConstants.DUST_UNIT))
+		if (ctx.caster.offHandStack.item == HexicalItems.ARCH_LAMP_ITEM && ctx.caster.offHandStack.orCreateNbt.getBoolean("active"))
+			return listOf(DoubleIota((ctx.caster.offHandStack.item as ArchLampItem).getMedia(ctx.caster.offHandStack).toDouble() / MediaConstants.DUST_UNIT))
 		return listOf(NullIota())
 	}
 }
