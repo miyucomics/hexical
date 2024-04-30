@@ -1,6 +1,6 @@
 {
 	"name": "hexical.page.hexical_changes.title",
-	"icon": "hexical:copper_staff",
+	"icon": "hexical:lightning_rod_staff",
 	"category": "hexcasting:basics",
 	"sortnum": 1,
 	"advancement": "hexcasting:root",
@@ -15,8 +15,8 @@
 		},
 		{
 			"type": "patchouli:crafting",
-			"recipe": "hexical:copper_staff",
-			"text": "hexical.page.copper_staff"
+			"recipe": "hexical:lightning_rod_staff",
+			"text": "hexical.page.lightning_rod_staff"
 		}
 	]
 }
