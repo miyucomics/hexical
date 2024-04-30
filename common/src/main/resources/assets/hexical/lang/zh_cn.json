@@ -172,7 +172,7 @@
 	"hexical.page.hexical_changes.title": "Hexical 中的变化",
 	"hexical.page.hexical_changes.0": "我和周围环境中的$(media)媒质$()貌似更同调了。也可以说是更$(o)友好$()……甚至可以感受到它们在我身边流动，对我的操作做出回应，就像是在向我展示新的法术。$(media)媒质$()本身也变得更可塑$(o)可操纵$()了，我便能以此产生更为精确精细的媒质效果。",
 	"hexical.page.hexical_changes.1": "我的工具也更顺手了。我注意到在使用$(l:items/staff)$(item)法杖$()时耗费的注意力减少了，也能在使用时四处走动，之后射线追踪的时候目标就再也跑不出我的视线范围了。不过我也不能太过放松，自然对我失误的惩罚力度依然如旧。我现在还可以用$(l:patterns/readwrite#hexcasting:write)书吏之策略$()直接向$(l:items/abacus)$(item)算盘$()写入。",
-	"hexical.page.lightning_rod_staff": "我往一支避雷针的末端嵌了一整块紫水晶，就得到了这种长得惊人的机械风法杖。当然，它并没有什么增益效果，但看上去非常时髦，用起来感觉就像在操控闪电。",
+	"hexical.page.lightning_rod_staff": "我往一支避雷针的末端嵌了一整块紫水晶，就得到了这种能给人留下深刻印象的法杖。它拿起来有些沉重，但在攻击目标时有很不错的击退力，用起来仿佛在操控闪电。",
 
 	"hexical.page.living_scroll.title": "活线卷轴",
 	"hexical.page.living_scroll.0": "活线卷轴中混有一小份紫水晶，其上墨迹会像法杖绘制出的图案那样颤动。活线卷轴的神奇之处还不止于此，它还能展示图案列表。$(br2)$(o)不带点疯劲，怎么能叫作家呢？$()",
