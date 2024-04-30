@@ -2,17 +2,18 @@
 
 ## 1.2.0
 - added more achievements
-- spell circle spells
-    - added Displace spell for circles to teleport entities for cheap
-    - added Transpose spell for circles to swap areas of the world
+- added copper staff
+- added Displace spell for circles to teleport entities for cheap
 - added energized mage blocks modifier to emit Redstone power
 - added living scrolls
-- added speck text rendering
+- added proper speck text rendering
 - added more meta-evals
     - added Dioscuri's Gambit
     - added Janus' Gambit
     - added Sisyphus' Gambit
 - added z-axis rotation for specks
+- added iota storage for conjured staves
+- added Dioscuri Gambit II
 - changed Conjure Speck to push the speck to the stack
 - changed Nephthys' Gambit to no longer need a number, instead relying on tail length
 - fixed accidental swapping of Sloth and Racer's Purification
@@ -23,6 +24,7 @@
 - fixed speck pattern saving
 - remove ambit requirement for altering specks
 - updated documentation
+- overhauled a lot of code
 - overhauled world scrying
     - added enchantment patterns
     - added entity patterns
