@@ -6,7 +6,9 @@ import at.petrak.hexcasting.api.spell.getItemEntity
 import at.petrak.hexcasting.api.spell.iota.*
 import miyucomics.hexical.iota.IdentifierIota
 import net.minecraft.enchantment.EnchantmentHelper
+import net.minecraft.item.EnchantedBookItem
 import net.minecraft.item.ItemStack
+import net.minecraft.item.Items
 import net.minecraft.util.registry.Registry
 
 class OpGetItemStackData(private val mode: Int) : ConstMediaAction {
@@ -21,8 +23,11 @@ class OpGetItemStackData(private val mode: Int) : ConstMediaAction {
 				3 -> DoubleIota(stack.maxDamage.toDouble())
 				4 -> BooleanIota(stack.isFood)
 				5 -> {
+					var data = stack.enchantments
+					if (stack.isOf(Items.ENCHANTED_BOOK))
+						data = EnchantedBookItem.getEnchantmentNbt(stack)
 					val enchantments = mutableListOf<IdentifierIota>()
-					for ((enchantment, _) in EnchantmentHelper.fromNbt(stack.enchantments))
+					for ((enchantment, _) in EnchantmentHelper.fromNbt(data))
 						enchantments.add(IdentifierIota(Registry.ENCHANTMENT.getId(enchantment)!!))
 					ListIota(enchantments.toList())
 				}

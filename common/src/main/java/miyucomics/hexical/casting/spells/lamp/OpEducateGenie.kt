@@ -8,6 +8,7 @@ import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.items.ArchLampItem
 import miyucomics.hexical.items.LampItem
 import miyucomics.hexical.registry.HexicalAdvancements
+import miyucomics.hexical.registry.HexicalItems
 import net.minecraft.item.ItemStack
 
 class OpEducateGenie : SpellAction {
@@ -17,7 +18,7 @@ class OpEducateGenie : SpellAction {
 		val (stack, hand) = ctx.getHeldItemToOperateOn { IXplatAbstractions.INSTANCE.findHexHolder(it) != null }
 		if (stack.isEmpty)
 			throw MishapBadOffhandItem.of(stack, hand, "lamp_full")
-		if (!(stack.item is ArchLampItem || stack.item is LampItem))
+		if (!(stack.isOf(HexicalItems.LAMP_ITEM) || stack.isOf(HexicalItems.ARCH_LAMP_ITEM)))
 			throw MishapBadOffhandItem.of(stack, hand, "lamp_full")
 		return Triple(Spell(patterns, stack), 0, listOf())
 	}

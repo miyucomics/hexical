@@ -5,10 +5,6 @@
 	"advancement": "hexcasting:root",
 	"pages": [
 		{
-			"type": "patchouli:text",
-			"text": "hexical.page.entities.0"
-		},
-		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:is_burning",
 			"anchor": "hexical:is_burning",
