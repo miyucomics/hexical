@@ -2,7 +2,7 @@
 
 ## 1.2.0
 - added more achievements
-- added copper staff
+- added lightning rod staff, with strong knockback and slow swing speed
 - added Displace spell for circles to teleport entities for cheap
 - added energized mage blocks modifier to emit Redstone power
 - added living scrolls

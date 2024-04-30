@@ -7,7 +7,6 @@ import at.petrak.hexcasting.api.spell.iota.DoubleIota
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.NullIota
 import miyucomics.hexical.iota.IdentifierIota
-import net.minecraft.item.Items
 import net.minecraft.util.registry.Registry
 
 class OpGetPlayerData(private val mode: Int) : ConstMediaAction {

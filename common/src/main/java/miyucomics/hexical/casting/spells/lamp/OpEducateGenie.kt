@@ -5,8 +5,6 @@ import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapBadOffhandItem
 import at.petrak.hexcasting.xplat.IXplatAbstractions
-import miyucomics.hexical.items.ArchLampItem
-import miyucomics.hexical.items.LampItem
 import miyucomics.hexical.registry.HexicalAdvancements
 import miyucomics.hexical.registry.HexicalItems
 import net.minecraft.item.ItemStack
