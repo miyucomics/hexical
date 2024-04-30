@@ -8,7 +8,6 @@ import net.minecraft.entity.EquipmentSlot
 import net.minecraft.entity.attribute.EntityAttribute
 import net.minecraft.entity.attribute.EntityAttributeModifier
 import net.minecraft.entity.attribute.EntityAttributes
-import java.util.*
 
 class LightningRodStaff : ItemStaff(Settings().maxCount(1).group(HexicalItems.HEXICAL_GROUP)) {
 	private val attributeModifiers: Multimap<EntityAttribute, EntityAttributeModifier>
