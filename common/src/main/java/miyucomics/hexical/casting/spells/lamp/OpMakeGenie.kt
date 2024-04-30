@@ -31,7 +31,7 @@ class OpMakeGenie : SpellAction {
 			throw MishapAlreadyBrainswept(sacrifice)
 		val (handStack, hand) = ctx.getHeldItemToOperateOn {
 			val hexHolder = IXplatAbstractions.INSTANCE.findHexHolder(it)
-			it.item is LampItem && hexHolder != null && !hexHolder.hasHex()
+			it.isOf(HexicalItems.LAMP_ITEM) && hexHolder != null && !hexHolder.hasHex()
 		}
 		val hexHolder = IXplatAbstractions.INSTANCE.findHexHolder(handStack)
 		if (handStack.item !is LampItem)
