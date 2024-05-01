@@ -71,11 +71,11 @@
 	"hexcasting.spell.book.hexical:get_arch_lamp_media": "Arch. Refl.: Media",
 	"hexcasting.spell.book.hexical:get_arch_lamp_storage": "Arch. Refl.: Memory",
 	"hexcasting.spell.book.hexical:get_weather": "Meterologist's Refl.",
-	"hexcasting.spell.book.hexical:shuffle_pattern": "Glyphmaker's Purif.",
+	"hexcasting.spell.book.hexical:shuffle_pattern": "Glyphmaker's Dstl.",
 	"hexcasting.spell.book.hexical:zone_speck": "Zone Dstl.: Speck",
 
 	"hexcasting.spell.hexical:dup_many": "Dioscuri Gambit II",
-	"hexcasting.spell.hexical:shuffle_pattern": "Glyphmaker's Purification",
+	"hexcasting.spell.hexical:shuffle_pattern": "Glyphmaker's Distillation",
 	"hexcasting.spell.hexical:chorus_blink": "Chorus Blink",
 	"hexcasting.spell.hexical:displace": "Displace",
 
@@ -175,7 +175,7 @@
 	"hexical.page.lightning_rod_staff": "By fixing a block of amethyst to some lightning rods, I can make quite the impressive staff. It is quite weighty to wield, but has an great amount of knockback when striking a target, as well as feeling absolutely electrifying to use.",
 
 	"hexical.page.living_scroll.title": "Living Scrolls",
-	"hexical.page.living_scroll.0": "Living scrolls are mixed with a pinch of amethyst, enchanting the ink to move and wiggle like the patterns I draw with my staff. Not only that, living scrolls can display lists of patterns.$(br2)$(o)You can't be a proper writer without a touch of madness, can you?$()",
+	"hexical.page.living_scroll.0": "Living scrolls are mixed with a pinch of amethyst, enchanting the ink to move and wiggle like the patterns I draw with my $(l:items/staff)staff$(). Not only that, living scrolls can display lists of patterns.$(br2)$(o)You can't be a proper writer without a touch of madness, can you?$()",
 	"hexical.page.living_scroll.1": "I can freely write and rewrite the scroll's patterns at any time, along with reading it back out. The scroll accepts only a list of pattern iotas, or a pattern iota which is automatically wrapped in a list. When displaying a list of patterns, a living scroll shows one pattern at a time. It changes once per second. Even when I write the same pattern list to two of them at two different moments of their cycle, they end up in sync.",
 
 	"hexical.page.grimoire.title": "Grimoires",
@@ -232,7 +232,7 @@
 	"hexical.page.simple.title": "Hexical Patterns",
 	"hexical.page.dup_many": "Takes a number and duplicates that many elements of the stack while perserving order.",
     "hexical.page.shuffle_pattern": "Takes in a pattern and a number and produces a pattern of the same shape, but different stroke order. My notes reveal that ancient hexcasters used this for some $(o)grand library$().",
-    "hexical.page.janus.0": "Instantly terminates the _Hex regardless of the current circumstances, breaking even through $(l:patterns/meta#hexcasting:for_each)Thoth's$(), Themis', and $(l:patterns/meta#hexcasting:eval)Hermes' Gambit$() unlike $(l:patterns/meta#hexcasting:halt)Charon's Gambit().",
+    "hexical.page.janus.0": "Instantly terminates the _Hex regardless of the current circumstances, breaking even through $(l:patterns/meta#hexcasting:for_each)Thoth's$(), Themis', and $(l:patterns/meta#hexcasting:eval)Hermes' Gambit$() unlike $(l:patterns/meta#hexcasting:halt)Charon's Gambit$().",
     "hexical.page.janus.1": "It's useful to end a _Hex early once it has reached some desired state, without the difficulty of using $(l:patterns/meta#hexcasting:halt)Charon's Gambit$() because Janus' can bypass the \"containment\" of $(l:patterns/meta#hexcasting:eval)Hermes'$() and $(l:patterns/meta#hexcasting:for_each)Thoth's$().$(br2)$(o)It is always important to know when something has reached its end.$()",
 	"hexical.page.nephthys.0": "Pops a pattern or pattern list and dives down an amount corresponding to the tail length to cast the pattern list. Useful for surgery-like operations.",
 	"hexical.page.nephthys.1": "It's extremely versatile and I can mend almost any error in my stack using Bookkeeper's Gambit, pushing iota after a dive, and transforming surfaced iota. It was named after a goddess of mourning and rivers, lending to how it buries/dives down into the stack.$(br2)$(o)... the unknowns of time travel... is akin to descending blindly into the depths of the freezing water and reappearing as an acorn.$()",
@@ -325,7 +325,7 @@
 	"hexical.page.modify_block_volatile": "This modifier makes the block break other mage blocks it's touching. Notably, if it breaks another volatile block, that block breaks and so on until every volatile block shatters.",
 
 	"hexical.page.specks.title": "Specks",
-	"hexical.page.specks.0": "I can conjure an image of an iota into the world, called a speck. Nature allows me to customize them quite extensively, altering their size, thickness of stroke, and more. They also take on my pigment color. Once they are in the world, I can move, rotate, and otherwise alter them for free, regardless of range.",
+	"hexical.page.specks.0": "I can conjure an image of an iota into the world, called a $(thing)speck$(). Nature allows me to customize them quite extensively, altering their size, thickness of stroke, and more. They also take on my pigment color. Once they are in the world, I can move, rotate, and otherwise alter them for free, regardless of range.",
 	"hexical.page.conjure_speck": "Conjures a speck with the iota, position, and rotation. Costs one-hundredth of a dust.$(br2)$(o)Because you saw things from every angle, you understood them for what they really were.$()",
 	"hexical.page.move_speck": "Moves a speck entity to the position.",
 	"hexical.page.rotate_speck": "Rotates a speck entity to face the vector.",
