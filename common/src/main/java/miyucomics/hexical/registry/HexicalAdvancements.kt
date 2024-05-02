@@ -17,10 +17,6 @@ object HexicalAdvancements {
 	val EDUCATE_GENIE: CriterionTemplate = Criteria.register(CriterionTemplate(Hexical.id("educate_genie")))
 	val RELOAD_LAMP: CriterionTemplate = Criteria.register(CriterionTemplate(Hexical.id("reload_lamp")))
 	val USE_UP_LAMP: CriterionTemplate = Criteria.register(CriterionTemplate(Hexical.id("use_up_lamp")))
-
-	@JvmStatic
-	fun init() {
-	}
 }
 
 class CriterionTemplate(val data: Identifier) : AbstractCriterion<CriterionTemplate.Condition>() {
