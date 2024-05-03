@@ -22,6 +22,7 @@ import miyucomics.hexical.casting.operators.specks.*
 import miyucomics.hexical.casting.operators.staff.OpReadStaff
 import miyucomics.hexical.casting.operators.staff.OpWriteStaff
 import miyucomics.hexical.casting.spells.OpChorusBlink
+import miyucomics.hexical.casting.spells.OpConjureHexburst
 import miyucomics.hexical.casting.spells.OpConjureStaff
 import miyucomics.hexical.casting.spells.circle.OpDisplace
 import miyucomics.hexical.casting.spells.lamp.OpEducateGenie
@@ -59,6 +60,7 @@ object HexicalPatterns {
 		register("conjure_staff", "wwwwwaqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpConjureStaff())
 		register("write_staff", "waqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpWriteStaff())
 		register("read_staff", "waqqqqqedeqdqdqdqdqe", HexDir.NORTH_EAST, OpReadStaff())
+		register("conjure_hexburst", "edeqaawaa", HexDir.SOUTH_WEST, OpConjureHexburst())
 
 		register("conjure_speck", "ade", HexDir.SOUTH_WEST, OpConjureSpeck())
 		register("move_speck", "adeqaa", HexDir.SOUTH_WEST, OpMoveSpeck())
