@@ -1,6 +1,5 @@
 package miyucomics.hexical.items
 
-import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.ListIota
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
@@ -11,7 +10,6 @@ import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld
-import net.minecraft.text.Text
 import net.minecraft.world.World
 
 class HextitoItem : Item(Settings().maxCount(16).food(FoodComponent.Builder().alwaysEdible().snack().build())) {
@@ -27,8 +25,8 @@ class HextitoItem : Item(Settings().maxCount(16).food(FoodComponent.Builder().al
 			if (stack.orCreateNbt.contains("hex"))
 				hex = (HexIotaTypes.deserialize(stack.orCreateNbt.getCompound("hex")!!, world as ServerWorld) as ListIota).list.toList()
 			harness.executeIotas(hex, world as ServerWorld)
-			IXplatAbstractions.INSTANCE.setHarness(user, harness)
 		}
+		IXplatAbstractions.INSTANCE.setHarness(user, harness)
 		return super.finishUsing(stack, world, user)
 	}
 }
