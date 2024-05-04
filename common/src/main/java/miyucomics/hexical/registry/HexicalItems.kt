@@ -18,6 +18,7 @@ object HexicalItems {
 	val GRIMOIRE_ITEM: GrimoireItem = GrimoireItem()
 	val CONJURED_STAFF_ITEM: ConjuredStaffItem = ConjuredStaffItem()
 	val HEXBURST_ITEM: HexburstItem = HexburstItem()
+	val HEXTITO_ITEM: HextitoItem = HextitoItem()
 
 	@JvmStatic
 	fun init() {
@@ -29,6 +30,7 @@ object HexicalItems {
 		ITEMS.register("lightning_rod_staff") { LightningRodStaff() }
 		ITEMS.register("conjured_staff") { CONJURED_STAFF_ITEM }
 		ITEMS.register("hexburst") { HEXBURST_ITEM }
+		ITEMS.register("hextito") { HEXTITO_ITEM }
 		ITEMS.register("mage_block") { BlockItem(HexicalBlocks.MAGE_BLOCK, Settings()) }
 		ITEMS.register()
 	}
