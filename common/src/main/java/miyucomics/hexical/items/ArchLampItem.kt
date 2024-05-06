@@ -54,7 +54,7 @@ class ArchLampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.H
 
 		stackNbt.putBoolean("active", true)
 
-		val state = PersistentStateHandler.getPlayerState(user)
+		val state = PersistentStateHandler.getPlayerArchLampData(user)
 		state.position = user.eyePos
 		state.rotation = user.rotationVector
 		state.velocity = user.velocity
