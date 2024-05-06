@@ -4,6 +4,7 @@ import miyucomics.hexical.Hexical
 import net.minecraft.entity.LivingEntity
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.server.MinecraftServer
+import net.minecraft.util.math.BlockPos
 import net.minecraft.world.PersistentState
 import net.minecraft.world.World
 import java.util.*
@@ -11,6 +12,7 @@ import java.util.function.Consumer
 
 class PersistentStateHandler : PersistentState() {
 	private var archLamps: HashMap<UUID, ArchLampData> = HashMap<UUID, ArchLampData>()
+	private var boundLibrary: HashMap<UUID, BlockPos?> = HashMap<UUID, BlockPos?>()
 
 	override fun writeNbt(nbt: NbtCompound): NbtCompound {
 		val nbtArchLamps = NbtCompound()
@@ -34,7 +36,7 @@ class PersistentStateHandler : PersistentState() {
 			return state
 		}
 
-		fun getPlayerState(player: LivingEntity): ArchLampData {
+		fun getPlayerArchLampData(player: LivingEntity): ArchLampData {
 			val serverState: PersistentStateHandler = getServerState(player.getWorld().server!!)
 			val playerState: ArchLampData = serverState.archLamps.computeIfAbsent(player.uuid) { ArchLampData() }
 			return playerState

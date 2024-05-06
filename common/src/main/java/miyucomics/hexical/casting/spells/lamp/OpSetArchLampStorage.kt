@@ -25,7 +25,7 @@ class OpSetArchLampStorage : SpellAction {
 
 	private data class Spell(val iota: Iota) : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
-			val state = PersistentStateHandler.getPlayerState(ctx.caster)
+			val state = PersistentStateHandler.getPlayerArchLampData(ctx.caster)
 			state.storage = HexIotaTypes.serialize(iota)
 		}
 	}
