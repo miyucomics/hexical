@@ -34,6 +34,9 @@
 	"subtitles.hexical.lamp_deactivate": "Lamp deactivates",
 	"particle.minecraft.soul_7": "",
 
+	"hexical.message.library_bound": "Your bound library has been set.",
+	"hexical.message.library_unbound": "Your bound library has been cleared.",
+
 	"hexcasting.mishap.bad_block.mage_block": "a mage block",
 	"hexcasting.mishap.bad_item.grimoire": "a grimoire",
 	"hexcasting.mishap.bad_item.lamp": "an empty lamp",

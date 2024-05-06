@@ -31,6 +31,7 @@ object HexicalItems {
 		ITEMS.register("conjured_staff") { CONJURED_STAFF_ITEM }
 		ITEMS.register("hexburst") { HEXBURST_ITEM }
 		ITEMS.register("hextito") { HEXTITO_ITEM }
+		ITEMS.register("akashic_terminal") { BlockItem(HexicalBlocks.AKASHIC_TERMINAL_BLOCK, Settings()) }
 		ITEMS.register("mage_block") { BlockItem(HexicalBlocks.MAGE_BLOCK, Settings()) }
 		ITEMS.register()
 	}
