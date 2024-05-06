@@ -16,7 +16,7 @@ class OpGetArchLampData(private val mode: Int) : ConstMediaAction {
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
 		if (!hasActiveArchLamp(ctx.caster))
 			throw NeedsActiveArchLampMishap()
-		val state = PersistentStateHandler.getPlayerState(ctx.caster)
+		val state = PersistentStateHandler.getPlayerArchLampData(ctx.caster)
 		return listOf(
 			when (mode) {
 				0 -> Vec3Iota(state.position)
