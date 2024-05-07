@@ -21,6 +21,8 @@ import miyucomics.hexical.casting.operators.lamp.*
 import miyucomics.hexical.casting.operators.specks.*
 import miyucomics.hexical.casting.operators.staff.OpReadStaff
 import miyucomics.hexical.casting.operators.staff.OpWriteStaff
+import miyucomics.hexical.casting.operators.stash.OpStashRead
+import miyucomics.hexical.casting.operators.stash.OpStashWrite
 import miyucomics.hexical.casting.spells.OpChorusBlink
 import miyucomics.hexical.casting.spells.OpConjureHexburst
 import miyucomics.hexical.casting.spells.OpConjureHextito
@@ -152,6 +154,19 @@ object HexicalPatterns {
 				}
 				return@addSpecialHandler OpNephthys(depth)
 			}
+			return@addSpecialHandler null
+		}
+
+		PatternRegistry.addSpecialHandler(Hexical.id("stash_write")) { pat ->
+			val sig = pat.anglesSignature()
+			if (sig.startsWith("qaawae"))
+				return@addSpecialHandler OpStashWrite(HexPattern.fromAngles(pat.anglesSignature().substring(6), pat.startDir))
+			return@addSpecialHandler null
+		}
+		PatternRegistry.addSpecialHandler(Hexical.id("stash_read")) { pat ->
+			val sig = pat.anglesSignature()
+			if (sig.startsWith("addqae"))
+				return@addSpecialHandler OpStashRead(HexPattern.fromAngles(pat.anglesSignature().substring(6), pat.startDir))
 			return@addSpecialHandler null
 		}
 

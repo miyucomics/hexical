@@ -29,7 +29,7 @@ class AkashicTerminalBlock : Block(Settings.copy(Blocks.OAK_LOG).mapColor(MapCol
 		} else {
 			for (search in searches) {
 				if (world.getBlockState(pos.add(search)).block is BlockAkashicRecord) {
-					if (PersistentStateHandler.getPlayerBoundLibrary(player) == null) {
+					if (PersistentStateHandler.getPlayerBoundLibrary(player) == null || PersistentStateHandler.getPlayerBoundLibrary(player) == pos.add(search)) {
 						PersistentStateHandler.setPlayerBoundLibrary(player, pos)
 						player.sendMessage(Text.translatable("hexical.message.library_bound"))
 					} else {
