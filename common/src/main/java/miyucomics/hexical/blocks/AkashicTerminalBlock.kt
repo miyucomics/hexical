@@ -1,5 +1,6 @@
 package miyucomics.hexical.blocks
 
+import at.petrak.hexcasting.common.blocks.akashic.AkashicFloodfiller
 import at.petrak.hexcasting.common.blocks.akashic.BlockAkashicRecord
 import miyucomics.hexical.state.PersistentStateHandler
 import net.minecraft.block.*
@@ -13,7 +14,7 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3i
 import net.minecraft.world.World
 
-class AkashicTerminalBlock : Block(Settings.copy(Blocks.OAK_LOG).mapColor(MapColor.PURPLE).sounds(BlockSoundGroup.WOOD).strength(2f)) {
+class AkashicTerminalBlock : Block(Settings.copy(Blocks.OAK_LOG).mapColor(MapColor.PURPLE).sounds(BlockSoundGroup.WOOD).strength(2f)), AkashicFloodfiller {
 	private val searches: List<Vec3i> = listOf(
 		Vec3i(-1, 0, 0), Vec3i(1, 0, 0),
 		Vec3i(0, -1, 0), Vec3i(0, 1, 0),
