@@ -311,11 +311,11 @@
 	"hexical.page.pling": "Causes me to hear a pling that is inaudible to other players.",
 	"hexical.page.click": "Causes me to hear a click that is inaudible to other players.",
 
-	"hexical.page.conjure_hexburst.title": "Conjured Snacks",
-	"hexical.page.conjure_hexburst.0": "Hexbursts are edible items created by taking an iota and wrapping _media around it, over and over until it gains size. When eaten, a hexburst instantly adds the iota it was made from to the consumer's stack. I shall find this property considerably useful if I ever want to trade my entity reference.",
-	"hexical.page.conjure_hexburst": "Conjures a hexburst at the location with the given iota. Always costs three dust. Is subject to the Transgress Others mishap.",
-	"hexical.page.conjure_hexburst.1": "Hextitos are triangular crunchy snacks I can conjure. When consumed, I feel the sudden desire to cast the hex used in its creation, using my caster's stack rather than an isolated stack like a regular casting device. I shall find it useful to make simple actions like raycasts, especially in conjunction with hexbursts. If a consumer's stack has an unclosed Introspection, it will not cast, making it quite safe to hand out to other people.",
-	"hexical.page.conjure_hextito": "Conjures a hextito at the location. Always costs one shard. Is subject to the Transgress Others mishap.",
+	"hexical.page.edible_conveniences.title": "Edible Conveniences",
+	"hexical.page.conjure_hexburst.description": "Hexbursts are edible items created by taking an iota and wrapping _media around it, over and over until it gains size. When eaten, a hexburst instantly adds the iota it was made from to the consumer's stack. I shall find this property considerably useful if I ever want to trade my entity reference.",
+	"hexical.page.conjure_hexburst.summary": "Conjures a hexburst at the location with the given iota. Always costs three dust. Is subject to the Transgress Others mishap.",
+	"hexical.page.conjure_hextito.description": "Hextitos are triangular crunchy snacks I can conjure. When consumed, I feel the sudden desire to cast the hex used in its creation, using my caster's stack rather than an isolated stack like a regular casting device. I shall find it useful to make simple actions like raycasts, especially in conjunction with hexbursts. If a consumer's stack has an unclosed Introspection, it will not cast, making it quite safe to hand out to other people.",
+	"hexical.page.conjure_hextito.summary": "Conjures a hextito at the location. Always costs one shard. Is subject to the Transgress Others mishap.",
 
 	"hexical.page.conjure_staff.title": "Conjured Staves",
 	"hexical.page.conjure_staff.0": "Conjured staves are not unlike $(l:items/hexcasting)$(item)cyphers$(). They have a media battery for casting and when they run out, unable to consume my health or my inventory's stash for _media. They are not rechargable or reprogrammable, and using $(l:patterns/spells/hexcasting#hexcasting:erase)$(action)Erase Item$() on it simply destroys it. However, its true power is $(o)input interception$().",

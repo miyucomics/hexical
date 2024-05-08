@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.0
+- added akashic terminal
+- added hexbursts
+- added hextitos
+- added staff-stashing patterns
+
 ## 1.2.0
 - added more achievements
 - added lightning rod staff, with strong knockback and slow swing speed
