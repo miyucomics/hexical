@@ -8,16 +8,30 @@ import miyucomics.hexical.Hexical
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.option.KeyBinding
 import net.minecraft.network.PacketByteBuf
+import net.minecraft.text.Text
 import org.lwjgl.glfw.GLFW
 
 object HexicalKeybinds {
 	private val TELEPATHY_KEYBIND = KeyBinding("key.hexical.telepathy", GLFW.GLFW_KEY_G, "key.categories.hexical")
 	private var previouslyHeld = false
 
+	private var states = mutableMapOf<String, Boolean>()
+
 	@JvmStatic
 	fun init() {
 		KeyMappingRegistry.register(TELEPATHY_KEYBIND)
 		ClientTickEvent.CLIENT_POST.register(ClientTickEvent.Client { client: MinecraftClient ->
+			for (key in listOf(client.options.forwardKey, client.options.leftKey, client.options.rightKey, client.options.backKey)) {
+				if (states.keys.contains(key.translationKey)) {
+					if (states[key.translationKey] == true && !key.isPressed) {
+						client.player!!.sendMessage(Text.literal(key.translationKey + " released"))
+					} else if (states[key.translationKey] == false && key.isPressed) {
+						client.player!!.sendMessage(Text.literal(key.translationKey + " first pressed"))
+					}
+				}
+				states[key.translationKey] = key.isPressed
+			}
+
 			if (client.player == null)
 				return@Client
 			if (TELEPATHY_KEYBIND.isPressed) {
