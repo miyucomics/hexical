@@ -48,6 +48,38 @@
 			"input": "",
 			"output": "",
 			"text": "hexical.page.click"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:moving_up",
+			"anchor": "hexical:moving_up",
+			"input": "",
+			"output": "boolean",
+			"text": "hexical.page.moving_up"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:moving_down",
+			"anchor": "hexical:moving_down",
+			"input": "",
+			"output": "boolean",
+			"text": "hexical.page.moving_down"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:moving_left",
+			"anchor": "hexical:moving_left",
+			"input": "",
+			"output": "boolean",
+			"text": "hexical.page.moving_left"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:moving_right",
+			"anchor": "hexical:moving_right",
+			"input": "",
+			"output": "boolean",
+			"text": "hexical.page.moving_right"
 		}
 	]
 }

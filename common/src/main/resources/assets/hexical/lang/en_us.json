@@ -172,6 +172,15 @@
 	"hexcasting.spell.hexical:get_effect_amplifier": "Concentration Distillation",
 	"hexcasting.spell.hexical:get_effect_duration": "Clearance Distillation",
 
+	"hexcasting.spell.hexical:moving_up": "Charge Reflection",
+	"hexcasting.spell.hexical:moving_down": "Retreat Reflection",
+	"hexcasting.spell.hexical:moving_left": "Dodge Reflection",
+	"hexcasting.spell.hexical:moving_right": "Evade Reflection",
+	"hexical.page.moving_up": "Pushes whether I am currently intending to move forwards.",
+	"hexical.page.moving_down": "Pushes whether I am currently intending to move backwards.",
+	"hexical.page.moving_left": "Pushes whether I am currently intending to move leftwards. Can be easily differentiated from Evade Reflection because d comes to the left of e.",
+	"hexical.page.moving_right": "Pushes whether I am currently intending to move rightwards. Can be easily differentiated from Dodge Reflection because e comes to the right of d.",
+
 	"hexcasting.spell.hexical:janus": "Janus' Gambit",
 	"hexcasting.spell.hexical:nephthys": "Nephthys' Gambit",
 	"hexcasting.spell.hexical:sisyphus": "Sisyphus' Gambit",
