@@ -24,6 +24,7 @@ object HexicalKeybinds {
 			for (key in listOf(client.options.forwardKey, client.options.leftKey, client.options.rightKey, client.options.backKey)) {
 				if (states.keys.contains(key.translationKey)) {
 					if (states[key.translationKey] == true && !key.isPressed) {
+<<<<<<< HEAD
 						val buf = PacketByteBuf(Unpooled.buffer())
 						buf.writeString(key.translationKey)
 						NetworkManager.sendToServer(Hexical.RELEASED_KEY, buf)
@@ -31,6 +32,11 @@ object HexicalKeybinds {
 						val buf = PacketByteBuf(Unpooled.buffer())
 						buf.writeString(key.translationKey)
 						NetworkManager.sendToServer(Hexical.PRESSED_KEY, buf)
+=======
+						client.player!!.sendMessage(Text.literal(key.translationKey + " released"))
+					} else if (states[key.translationKey] == false && key.isPressed) {
+						client.player!!.sendMessage(Text.literal(key.translationKey + " first pressed"))
+>>>>>>> 98b706fe1599f12dffa1b8540d01eb03887e3fb2
 					}
 				}
 				states[key.translationKey] = key.isPressed
