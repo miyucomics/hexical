@@ -139,6 +139,11 @@ object HexicalPatterns {
 		register("get_effect_amplifier", "wqqqaqwa", HexDir.SOUTH_WEST, OpGetStatusEffectInstanceData(0))
 		register("get_effect_duration", "wqqqaqwdd", HexDir.SOUTH_WEST, OpGetStatusEffectInstanceData(1))
 
+		register("moving_left", "edead", HexDir.SOUTH_EAST, OpGetKeybind("key.left"))
+		register("moving_right", "qaqda", HexDir.SOUTH_WEST, OpGetKeybind("key.right"))
+		register("moving_up", "aqaddq", HexDir.SOUTH_EAST, OpGetKeybind("key.forward"))
+		register("moving_down", "dedwdq", HexDir.SOUTH_WEST, OpGetKeybind("key.back"))
+
 		register("janus", "aadee", HexDir.SOUTH_WEST, OpJanus)
 		register("sisyphus", "qaqwede", HexDir.NORTH_EAST, OpSisyphus)
 		register("themis", "dwaad", HexDir.WEST, OpThemis)
