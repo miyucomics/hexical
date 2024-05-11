@@ -16,10 +16,13 @@
 	"advancements.hexical.hallucinate.title": "只在我的脑海里",
 	"advancements.hexical.hallucinate.description": "播放一段只有你能听见的声音！",
 
+	"block.hexical.akashic_terminal": "阿卡夏终端",
 	"block.hexical.mage_block": "术师方块",
 	"entity.hexical.speck": "视斑",
 	"key.categories.hexical": "Hexical",
 	"key.hexical.telepathy": "心灵感应",
+	"item.hexical.hexburst": "咒术星爆糖",
+	"item.hexical.hextito": "咒力多滋",
 	"item.hexical.grimoire": "咒典",
 	"item.hexical.lamp": "手持式精灵神灯",
 	"item.hexical.arch_lamp": "大精灵神灯",
@@ -31,6 +34,9 @@
 	"subtitles.hexical.lamp_activate": "神灯：启动",
 	"subtitles.hexical.lamp_deactivate": "神灯：终止",
 	"particle.minecraft.soul_7": "",
+
+	"hexical.message.library_bound": "已设置绑定的图书馆。",
+	"hexical.message.library_unbound": "已清除绑定的图书馆。",
 
 	"hexcasting.mishap.bad_block.mage_block": "一个术师方块",
 	"hexcasting.mishap.bad_item.grimoire": "一个咒典",
@@ -87,6 +93,8 @@
 	"hexcasting.spell.hexical:modify_block_replaceable": "改进方块：可替",
 	"hexcasting.spell.hexical:modify_block_volatile": "改进方块：失稳",
 
+	"hexcasting.spell.hexical:conjure_hexburst": "构筑咒术星爆糖",
+	"hexcasting.spell.hexical:conjure_hextito": "构筑咒力多滋",
 	"hexcasting.spell.hexical:conjure_staff": "构筑法杖",
 	"hexcasting.spell.hexical:read_staff": "法杖之精思",
 	"hexcasting.spell.hexical:write_staff": "法杖之策略",
@@ -302,6 +310,12 @@
 	"hexical.page.shout_telepathy": "在屏幕中央显示 iota。这么做会阻碍视野，比较烦人，因此不应经常使用。",
 	"hexical.page.pling": "使我听到一段扣弦声，其他玩家无法听见。",
 	"hexical.page.click": "使我听到一段咔哒声，其他玩家无法听见。",
+
+	"hexical.page.edible_conveniences.title": "便捷的零嘴",
+	"hexical.page.conjure_hexburst.description": "取出一个 iota，再在周围包裹$(media)媒质$()，直至它具备物理形态，就得到了可食用的咒术星爆糖。食用时，这种糖会将其中的 iota 压入食用者的栈。如果我想要交易代表我的 iota，咒术星爆糖应该会很有用。",
+	"hexical.page.conjure_hexburst.summary": "使用所给 iota 在给定位置构筑一枚咒术星爆糖。消耗 3 个紫水晶粉。可能招致违犯他人事故。",
+	"hexical.page.conjure_hextito.description": "咒力多滋是一种三角形的酥脆零食。食用时，我会突然生出施放其中咒术的想法，使用的是我的施法栈，而非和普通施法设备那样使用独立的栈。它大概很适合简单的操作集合，比如射线追踪，和咒术星爆糖配合进行构筑更是如此。如果食用者的栈存在未闭合的内省，其中咒术便不会施放，交予他人使用的安全性也就有了保障。",
+	"hexical.page.conjure_hextito.summary": "在给定位置构筑一片咒力多滋。消耗 1 个紫水晶碎片。可能招致违犯他人事故。",
 
 	"hexical.page.conjure_staff.title": "构筑的法杖",
 	"hexical.page.conjure_staff.0": "构筑的法杖和$(l:items/hexcasting)$(item)杂件$()比较相像。它们都有施法用的媒质储库，该储库耗尽后也不会消耗我的生命值和物品栏中的$(media)媒质$()物品。它们都无法重新充能，无法重新写入，对其使用$(l:patterns/spells/hexcasting#hexcasting:erase)$(action)清除物品$()也都会将其毁灭。这种法杖的真正力量在于$(o)输入拦截$()。",
