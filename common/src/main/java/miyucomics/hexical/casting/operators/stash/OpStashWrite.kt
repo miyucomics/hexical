@@ -4,8 +4,10 @@ import at.petrak.hexcasting.api.spell.*
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.math.HexPattern
+import at.petrak.hexcasting.api.spell.mishaps.MishapNoAkashicRecord
 import at.petrak.hexcasting.api.spell.mishaps.MishapOthersName
 import at.petrak.hexcasting.common.blocks.akashic.AkashicFloodfiller
+import at.petrak.hexcasting.common.blocks.akashic.BlockAkashicRecord
 import at.petrak.hexcasting.common.blocks.akashic.BlockEntityAkashicBookshelf
 import miyucomics.hexical.casting.mishaps.NoBoundLibraryMishap
 import miyucomics.hexical.state.PersistentStateHandler
@@ -26,6 +28,10 @@ class OpStashWrite(private val key: HexPattern) : ConstMediaAction {
 	}
 
 	fun write(start: BlockPos, key: HexPattern, world: ServerWorld, iota: Iota) {
+		val record = world.getBlockState(start).block
+		if (record !is BlockAkashicRecord)
+			throw MishapNoAkashicRecord(start)
+
 		val existingShelf = AkashicFloodfiller.floodFillFor(start, world) { pos: BlockPos?, _: BlockState?, world2: World -> world2.getBlockEntity(pos) is BlockEntityAkashicBookshelf && (world2.getBlockEntity(pos) as BlockEntityAkashicBookshelf).pattern == key }
 		if (existingShelf != null) {
 			(world.getBlockEntity(existingShelf) as BlockEntityAkashicBookshelf).setNewMapping(key, iota)
