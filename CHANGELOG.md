@@ -5,6 +5,9 @@
 - added hexbursts
 - added hextitos
 - added staff-stashing patterns
+- added Charge, Retreat, Dodge, and Evade reflections, which return whether you are pressing the w, s, a, or d key respectively
+- fixed Janus' Gambit to actually terminate the hex now
+- updated documentation
 
 ## 1.2.0
 - added more achievements
