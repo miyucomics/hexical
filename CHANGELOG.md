@@ -8,6 +8,7 @@
 - added Charge, Retreat, Dodge, and Evade reflections, which return whether you are pressing the w, s, a, or d key respectively
 - fixed Janus' Gambit to actually terminate the hex now
 - updated documentation
+- removed casting sounds from conjured staves and replaced it with staff sounds
 
 ## 1.2.0
 - added more achievements
