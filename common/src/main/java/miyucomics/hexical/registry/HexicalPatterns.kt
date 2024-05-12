@@ -23,10 +23,7 @@ import miyucomics.hexical.casting.operators.staff.OpReadStaff
 import miyucomics.hexical.casting.operators.staff.OpWriteStaff
 import miyucomics.hexical.casting.operators.stash.OpStashRead
 import miyucomics.hexical.casting.operators.stash.OpStashWrite
-import miyucomics.hexical.casting.spells.OpChorusBlink
-import miyucomics.hexical.casting.spells.OpConjureHexburst
-import miyucomics.hexical.casting.spells.OpConjureHextito
-import miyucomics.hexical.casting.spells.OpConjureStaff
+import miyucomics.hexical.casting.spells.*
 import miyucomics.hexical.casting.spells.circle.OpDisplace
 import miyucomics.hexical.casting.spells.lamp.OpEducateGenie
 import miyucomics.hexical.casting.spells.lamp.OpMakeGenie
@@ -143,6 +140,8 @@ object HexicalPatterns {
 		register("moving_right", "qaqda", HexDir.SOUTH_WEST, OpGetKeybind("key.right"))
 		register("moving_up", "aqaddq", HexDir.SOUTH_EAST, OpGetKeybind("key.forward"))
 		register("moving_down", "dedwdq", HexDir.SOUTH_WEST, OpGetKeybind("key.back"))
+
+		register("magic_missile", "wadeeed", HexDir.NORTH_EAST, OpMagicMissile())
 
 		register("janus", "aadee", HexDir.SOUTH_WEST, OpJanus)
 		register("sisyphus", "qaqwede", HexDir.NORTH_EAST, OpSisyphus)

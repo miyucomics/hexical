@@ -8,7 +8,6 @@ import miyucomics.hexical.Hexical
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.option.KeyBinding
 import net.minecraft.network.PacketByteBuf
-import net.minecraft.text.Text
 import org.lwjgl.glfw.GLFW
 
 object HexicalKeybinds {
@@ -26,11 +25,11 @@ object HexicalKeybinds {
 					if (states[key.translationKey] == true && !key.isPressed) {
 						val buf = PacketByteBuf(Unpooled.buffer())
 						buf.writeString(key.translationKey)
-						NetworkManager.sendToServer(Hexical.RELEASED_KEY, buf)
+						NetworkManager.sendToServer(HexicalNetworking.RELEASED_KEY_PACKET, buf)
 					} else if (states[key.translationKey] == false && key.isPressed) {
 						val buf = PacketByteBuf(Unpooled.buffer())
 						buf.writeString(key.translationKey)
-						NetworkManager.sendToServer(Hexical.PRESSED_KEY, buf)
+						NetworkManager.sendToServer(HexicalNetworking.PRESSED_KEY_PACKET, buf)
 					}
 				}
 				states[key.translationKey] = key.isPressed
@@ -40,10 +39,10 @@ object HexicalKeybinds {
 				return@Client
 			if (TELEPATHY_KEYBIND.isPressed) {
 				if (!previouslyHeld)
-					NetworkManager.sendToServer(Hexical.START_TELEPATHY_PACKET, PacketByteBuf(Unpooled.buffer()))
+					NetworkManager.sendToServer(HexicalNetworking.START_TELEPATHY_PACKET, PacketByteBuf(Unpooled.buffer()))
 				previouslyHeld = true
 			} else if (previouslyHeld) {
-				NetworkManager.sendToServer(Hexical.STOP_TELEPATHY_PACKET, PacketByteBuf(Unpooled.buffer()))
+				NetworkManager.sendToServer(HexicalNetworking.STOP_TELEPATHY_PACKET, PacketByteBuf(Unpooled.buffer()))
 				previouslyHeld = false
 			}
 		})
