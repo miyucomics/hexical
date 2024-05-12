@@ -4,6 +4,7 @@ import at.petrak.hexcasting.common.lib.HexSounds;
 import dev.architectury.networking.NetworkManager;
 import io.netty.buffer.Unpooled;
 import miyucomics.hexical.Hexical;
+import miyucomics.hexical.registry.HexicalNetworking;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.network.PacketByteBuf;
@@ -60,7 +61,7 @@ public class MinecraftClientMixin {
 			buf.writeInt(rank);
 			for (int i = 0; i < rank; i++)
 				buf.writeBoolean(hexical$clicks.get(i));
-			NetworkManager.sendToServer(Hexical.CAST_CONJURED_STAFF_PACKET, buf);
+			NetworkManager.sendToServer(HexicalNetworking.INSTANCE.getCAST_CONJURED_STAFF_PACKET(), buf);
 			hexical$clicks.clear();
 		}
 	}
