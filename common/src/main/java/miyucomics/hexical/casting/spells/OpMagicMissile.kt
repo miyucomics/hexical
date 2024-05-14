@@ -4,10 +4,9 @@ import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.*
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.Iota
+import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.entities.MagicMissileEntity
 import miyucomics.hexical.registry.HexicalEntities
-import net.minecraft.entity.projectile.ArrowEntity
-import net.minecraft.entity.projectile.thrown.SnowballEntity
 import net.minecraft.util.math.MathHelper
 import net.minecraft.util.math.Vec3d
 
@@ -41,8 +40,10 @@ class OpMagicMissile : SpellAction {
 	private data class Spell(val position: Vec3d, val velocity: Vec3d) : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
 			val missile = MagicMissileEntity(HexicalEntities.MAGIC_MISSILE_ENTITY, ctx.world)
+			missile.setPigment(IXplatAbstractions.INSTANCE.getColorizer(ctx.caster))
 			missile.setPos(position.x, position.y, position.z)
 			missile.setVelocity(velocity.x, velocity.y, velocity.z)
+			missile.owner = ctx.caster
 			ctx.world.spawnEntity(missile)
 		}
 	}
