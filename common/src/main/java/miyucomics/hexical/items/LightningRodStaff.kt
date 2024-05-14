@@ -9,9 +9,13 @@ import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.attribute.EntityAttribute
 import net.minecraft.entity.attribute.EntityAttributeModifier
 import net.minecraft.entity.attribute.EntityAttributes
+import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.sound.SoundCategory
 import net.minecraft.sound.SoundEvents
+import net.minecraft.util.Hand
+import net.minecraft.util.TypedActionResult
+import net.minecraft.world.World
 
 class LightningRodStaff : ItemStaff(Settings().maxCount(1).group(HexicalItems.HEXICAL_GROUP)) {
 	private val attributeModifiers: Multimap<EntityAttribute, EntityAttributeModifier>
@@ -20,6 +24,12 @@ class LightningRodStaff : ItemStaff(Settings().maxCount(1).group(HexicalItems.HE
 		val builder = ImmutableMultimap.builder<EntityAttribute, EntityAttributeModifier>()
 		builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, EntityAttributeModifier(ATTACK_SPEED_MODIFIER_ID, "Tool modifier", -3.2, EntityAttributeModifier.Operation.ADDITION))
 		this.attributeModifiers = builder.build()
+	}
+
+	override fun use(world: World, player: PlayerEntity, hand: Hand): TypedActionResult<ItemStack> {
+		super.use(world, player, hand)
+		if (world.isClient)
+			player.playSound(if (player.isSneaking) SoundEvents.BLOCK_AMETHYST_BLOCK_CHIME else SoundEvents.BLOCK_AMETHYST_BLOCK_BREAK, 0.75f, 1f)
 	}
 
 	override fun getAttributeModifiers(slot: EquipmentSlot?): Multimap<EntityAttribute, EntityAttributeModifier> {

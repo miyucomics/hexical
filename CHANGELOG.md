@@ -4,11 +4,14 @@
 - added akashic terminal
 - added hexbursts
 - added hextitos
-- added staff-stashing patterns
+- added Magic Missile spell
+- added library stashing patterns
 - added Charge, Retreat, Dodge, and Evade reflections, which return whether you are pressing the w, s, a, or d key respectively
+- added amethyst block chime and break sounds for when using lightning rod staff
 - fixed Janus' Gambit to actually terminate the hex now
+- fixed specks being slightly off-center
 - updated documentation
-- removed casting sounds from conjured staves and replaced it with staff sounds
+- removed casting sounds from conjured staves and replaced it with pattern drawing sounds
 
 ## 1.2.0
 - added more achievements
