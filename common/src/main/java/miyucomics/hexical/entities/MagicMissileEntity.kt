@@ -11,6 +11,9 @@ import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityStatuses
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.damage.DamageSource
+import net.minecraft.entity.data.DataTracker
+import net.minecraft.entity.data.TrackedData
+import net.minecraft.entity.data.TrackedDataHandlerRegistry
 import net.minecraft.entity.projectile.ProjectileEntity
 import net.minecraft.entity.projectile.ProjectileUtil
 import net.minecraft.nbt.NbtCompound
@@ -24,11 +27,14 @@ import net.minecraft.world.event.GameEvent
 
 class MagicMissileEntity(entityType: EntityType<MagicMissileEntity?>?, world: World?) : ProjectileEntity(entityType, world) {
 	private var pigment: FrozenColorizer = FrozenColorizer.DEFAULT.get()
+	companion object {
+		private val pigmentDataTracker: TrackedData<NbtCompound> = DataTracker.registerData(MagicMissileEntity::class.java, TrackedDataHandlerRegistry.NBT_COMPOUND)
+	}
 
 	override fun tick() {
 		if (world.isClient)
 			MinecraftClient.getInstance().particleManager.addParticle(
-				ConjureParticleOptions(pigment.getColor(Hexical.RANDOM.nextFloat(), pos), false),
+				ConjureParticleOptions(FrozenColorizer.fromNBT(dataTracker.get(pigmentDataTracker)).getColor(Hexical.RANDOM.nextFloat() * 100, pos), false),
 				pos.x, pos.y, pos.z,
 				0.0, 0.0, 0.0
 			)
@@ -58,11 +64,13 @@ class MagicMissileEntity(entityType: EntityType<MagicMissileEntity?>?, world: Wo
 
 	override fun readCustomDataFromNbt(nbt: NbtCompound?) {
 		super.readCustomDataFromNbt(nbt)
-		pigment = FrozenColorizer.fromNBT(nbt!!.getCompound("pigment"))
+		this.pigment = FrozenColorizer.fromNBT(nbt!!.getCompound("pigment"))
+		this.dataTracker.set(pigmentDataTracker, nbt.getCompound("pigment"))
 	}
 
 	fun setPigment(pigment: FrozenColorizer) {
 		this.pigment = pigment
+		this.dataTracker.set(pigmentDataTracker, pigment.serializeToNBT())
 	}
 
 	override fun onEntityHit(entityHitResult: EntityHitResult) {
@@ -81,5 +89,7 @@ class MagicMissileEntity(entityType: EntityType<MagicMissileEntity?>?, world: Wo
 		}
 	}
 
-	override fun initDataTracker() {}
+	override fun initDataTracker() {
+		this.dataTracker.startTracking(pigmentDataTracker, NbtCompound())
+	}
 }
