@@ -20,7 +20,7 @@ class OpSetArchLampStorage : SpellAction {
 		val trueName = MishapOthersName.getTrueNameFromDatum(iota, ctx.caster)
 		if (trueName != null)
 			throw MishapOthersName(trueName)
-		return Triple(Spell(iota), 0, listOf(ParticleSpray.burst(ctx.caster.pos, 1.0)))
+		return Triple(Spell(iota), 0, listOf())
 	}
 
 	private data class Spell(val iota: Iota) : RenderedSpell {

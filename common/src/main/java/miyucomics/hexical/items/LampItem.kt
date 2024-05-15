@@ -4,8 +4,11 @@ import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.casting.CastingHarness
 import at.petrak.hexcasting.api.spell.iota.Iota
+import at.petrak.hexcasting.api.spell.iota.NullIota
+import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.api.utils.serializeToNBT
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
+import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.enums.SpecializedSource
 import miyucomics.hexical.interfaces.CastingContextMinterface
@@ -44,6 +47,7 @@ class LampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.HEXIC
 			stackNbt.putLongArray("position", user.eyePos.serializeToNBT().longArray)
 			stackNbt.putLongArray("rotation", user.rotationVector.serializeToNBT().longArray)
 			stackNbt.putLongArray("velocity", user.velocity.serializeToNBT().longArray)
+			stackNbt.putCompound("storage", HexIotaTypes.serialize(NullIota()))
 			stackNbt.putLong("start_time", world.time)
 		}
 		user.setCurrentHand(usedHand)

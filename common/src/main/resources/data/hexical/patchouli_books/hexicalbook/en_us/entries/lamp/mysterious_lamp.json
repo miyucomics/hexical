@@ -1,6 +1,6 @@
 {
 	"name": "hexical.page.mysterious_lamp.title",
-	"icon": "minecraft:sand",
+	"icon": "minecraft:torch",
 	"category": "hexical:lamp",
 	"advancement": "hexical:acquired_lamp",
 	"sortnum": 0,

@@ -26,12 +26,6 @@ class LightningRodStaff : ItemStaff(Settings().maxCount(1).group(HexicalItems.HE
 		this.attributeModifiers = builder.build()
 	}
 
-	override fun use(world: World, player: PlayerEntity, hand: Hand): TypedActionResult<ItemStack> {
-		super.use(world, player, hand)
-		if (world.isClient)
-			player.playSound(if (player.isSneaking) SoundEvents.BLOCK_AMETHYST_BLOCK_CHIME else SoundEvents.BLOCK_AMETHYST_BLOCK_BREAK, 0.75f, 1f)
-	}
-
 	override fun getAttributeModifiers(slot: EquipmentSlot?): Multimap<EntityAttribute, EntityAttributeModifier> {
 		if (slot == EquipmentSlot.MAINHAND)
 			return this.attributeModifiers
