@@ -25,10 +25,7 @@ import miyucomics.hexical.casting.operators.stash.OpStashRead
 import miyucomics.hexical.casting.operators.stash.OpStashWrite
 import miyucomics.hexical.casting.spells.*
 import miyucomics.hexical.casting.spells.circle.OpDisplace
-import miyucomics.hexical.casting.spells.lamp.OpEducateGenie
-import miyucomics.hexical.casting.spells.lamp.OpMakeGenie
-import miyucomics.hexical.casting.spells.lamp.OpSetArchLampStorage
-import miyucomics.hexical.casting.spells.lamp.OpTerminateArchLamp
+import miyucomics.hexical.casting.spells.lamp.*
 import miyucomics.hexical.casting.spells.mage_blocks.OpConjureMageBlock
 import miyucomics.hexical.casting.spells.mage_blocks.OpModifyMageBlock
 import miyucomics.hexical.casting.spells.telepathy.OpHallucinateSound
@@ -88,11 +85,13 @@ object HexicalPatterns {
 
 		register("make_genie", "qaqwawqwqqwqwqwqwqwqq", HexDir.EAST, OpMakeGenie())
 		register("educate_genie", "eweweweweweewedeaqqqd", HexDir.NORTH_WEST, OpEducateGenie())
-		register("get_lamp_position", "qwddedqdd", HexDir.SOUTH_WEST, OpGetLampData(0))
-		register("get_lamp_rotation", "qwddedadw", HexDir.SOUTH_WEST, OpGetLampData(1))
-		register("get_lamp_velocity", "qwddedqew", HexDir.SOUTH_WEST, OpGetLampData(2))
-		register("get_lamp_use_time", "qwddedqwddwa", HexDir.SOUTH_WEST, OpGetLampData(3))
-		register("get_lamp_media", "qwddedaeeeee", HexDir.SOUTH_WEST, OpGetLampData(4))
+		register("get_hand_lamp_position", "qwddedqdd", HexDir.SOUTH_WEST, OpGetHandLampData(0))
+		register("get_hand_lamp_rotation", "qwddedadw", HexDir.SOUTH_WEST, OpGetHandLampData(1))
+		register("get_hand_lamp_velocity", "qwddedqew", HexDir.SOUTH_WEST, OpGetHandLampData(2))
+		register("get_hand_lamp_use_time", "qwddedqwddwa", HexDir.SOUTH_WEST, OpGetHandLampData(3))
+		register("get_hand_lamp_media", "qwddedaeeeee", HexDir.SOUTH_WEST, OpGetHandLampData(4))
+		register("get_hand_lamp_storage", "qwddedqwaqqqqq", HexDir.SOUTH_WEST, OpGetHandLampData(5))
+		register("set_hand_lamp_storage", "qwddedqedeeeee", HexDir.SOUTH_WEST, OpSetHandLampStorage())
 		register("get_arch_lamp_position", "qaqwddedqdd", HexDir.NORTH_EAST, OpGetArchLampData(0))
 		register("get_arch_lamp_rotation", "qaqwddedadw", HexDir.NORTH_EAST, OpGetArchLampData(1))
 		register("get_arch_lamp_velocity", "qaqwddedqew", HexDir.NORTH_EAST, OpGetArchLampData(2))

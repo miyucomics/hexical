@@ -15,43 +15,59 @@
 		},
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:get_lamp_position",
-			"anchor": "hexical:get_lamp_position",
+			"op_id": "hexical:get_hand_lamp_position",
+			"anchor": "hexical:get_hand_lamp_position",
 			"input": "",
 			"output": "vector",
-			"text": "hexical.page.get_lamp_position"
+			"text": "hexical.page.get_hand_lamp_position"
 		},
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:get_lamp_rotation",
-			"anchor": "hexical:get_lamp_rotation",
+			"op_id": "hexical:get_hand_lamp_rotation",
+			"anchor": "hexical:get_hand_lamp_rotation",
 			"input": "",
 			"output": "vector",
-			"text": "hexical.page.get_lamp_rotation"
+			"text": "hexical.page.get_hand_lamp_rotation"
 		},
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:get_lamp_velocity",
-			"anchor": "hexical:get_lamp_velocity",
+			"op_id": "hexical:get_hand_lamp_velocity",
+			"anchor": "hexical:get_hand_lamp_velocity",
 			"input": "",
 			"output": "vector",
-			"text": "hexical.page.get_lamp_velocity"
+			"text": "hexical.page.get_hand_lamp_velocity"
 		},
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:get_lamp_use_time",
-			"anchor": "hexical:get_lamp_use_time",
+			"op_id": "hexical:get_hand_lamp_use_time",
+			"anchor": "hexical:get_hand_lamp_use_time",
 			"input": "",
 			"output": "number",
-			"text": "hexical.page.get_lamp_use_time"
+			"text": "hexical.page.get_hand_lamp_use_time"
 		},
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:get_lamp_media",
-			"anchor": "hexical:get_lamp_media",
+			"op_id": "hexical:get_hand_lamp_media",
+			"anchor": "hexical:get_hand_lamp_media",
 			"input": "",
 			"output": "number",
-			"text": "hexical.page.get_lamp_media"
+			"text": "hexical.page.get_hand_lamp_media"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:set_hand_lamp_storage",
+			"anchor": "hexical:set_hand_lamp_storage",
+			"input": "any",
+			"output": "",
+			"text": "hexical.page.set_hand_lamp_storage"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:get_hand_lamp_storage",
+			"anchor": "hexical:get_hand_lamp_storage",
+			"input": "",
+			"output": "any",
+			"text": "hexical.page.get_hand_lamp_storage"
 		},
 		{
 			"type": "hexcasting:pattern",
