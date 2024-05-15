@@ -54,7 +54,7 @@
 			"op_id": "hexical:moving_up",
 			"anchor": "hexical:moving_up",
 			"input": "",
-			"output": "boolean",
+			"output": "number",
 			"text": "hexical.page.moving_up"
 		},
 		{
@@ -62,7 +62,7 @@
 			"op_id": "hexical:moving_down",
 			"anchor": "hexical:moving_down",
 			"input": "",
-			"output": "boolean",
+			"output": "number",
 			"text": "hexical.page.moving_down"
 		},
 		{
@@ -70,7 +70,7 @@
 			"op_id": "hexical:moving_left",
 			"anchor": "hexical:moving_left",
 			"input": "",
-			"output": "boolean",
+			"output": "number",
 			"text": "hexical.page.moving_left"
 		},
 		{
@@ -78,7 +78,7 @@
 			"op_id": "hexical:moving_right",
 			"anchor": "hexical:moving_right",
 			"input": "",
-			"output": "boolean",
+			"output": "number",
 			"text": "hexical.page.moving_right"
 		}
 	]

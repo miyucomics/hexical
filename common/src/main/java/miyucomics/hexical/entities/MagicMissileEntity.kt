@@ -19,34 +19,29 @@ import net.minecraft.util.hit.BlockHitResult
 import net.minecraft.util.hit.EntityHitResult
 import net.minecraft.util.hit.HitResult
 import net.minecraft.world.World
+import net.minecraft.world.event.GameEvent
 
 class MagicMissileEntity(entityType: EntityType<MagicMissileEntity?>?, world: World?) : ProjectileEntity(entityType, world) {
 	private var pigment: FrozenColorizer = FrozenColorizer.DEFAULT.get()
 
 	override fun tick() {
-		val hitResult = ProjectileUtil.getCollision(this) { entity: Entity? -> this.canHit(entity) }
-		var bl = false
-		if (hitResult.type == HitResult.Type.BLOCK) {
-			val blockPos = (hitResult as BlockHitResult).blockPos
-			val blockState = world.getBlockState(blockPos)
-			if (blockState.isOf(Blocks.NETHER_PORTAL)) {
-				this.setInNetherPortal(blockPos)
-				bl = true
-			} else if (blockState.isOf(Blocks.END_GATEWAY)) {
-				val blockEntity = world.getBlockEntity(blockPos)
-				if (blockEntity is EndGatewayBlockEntity && EndGatewayBlockEntity.canTeleport(this))
-					EndGatewayBlockEntity.tryTeleportingEntity(this.world, blockPos, blockState, this, blockEntity as EndGatewayBlockEntity?)
-				bl = true
+		val hitResult = ProjectileUtil.getCollision(this) { entity: Entity -> entity != this && this.canHit(entity) }
+		onCollision(hitResult)
+		when (hitResult.type) {
+			HitResult.Type.BLOCK -> {
+				val blockHitResult = hitResult as BlockHitResult
+				this.onBlockHit(blockHitResult)
+				val blockPos = blockHitResult.blockPos
+				world.emitGameEvent(GameEvent.PROJECTILE_LAND, blockPos, GameEvent.Emitter.of(this, world.getBlockState(blockPos)))
 			}
+			HitResult.Type.ENTITY -> {
+				this.onEntityHit((hitResult as EntityHitResult))
+				world.emitGameEvent(GameEvent.PROJECTILE_LAND, hitResult.getPos(), GameEvent.Emitter.of(this, null))
+			}
+			HitResult.Type.MISS -> {}
+			null -> {}
 		}
-		if (hitResult.type != HitResult.Type.MISS && !bl)
-			this.onCollision(hitResult)
-		this.checkBlockCollision()
-		val vec3d = this.velocity
-		val d = this.x + vec3d.x
-		val e = this.y + vec3d.y
-		val f = this.z + vec3d.z
-		setPos(d, e, f)
+		setPos(this.x + this.velocity.x, this.y + this.velocity.y, this.z + this.velocity.z)
 	}
 
 	override fun writeCustomDataToNbt(nbt: NbtCompound?) {

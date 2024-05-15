@@ -22,14 +22,22 @@ object HexicalNetworking {
 	@JvmStatic
 	fun init() {
 		NetworkManager.registerReceiver(NetworkManager.Side.C2S, PRESSED_KEY_PACKET) { buf, context ->
-			if (!KeybindData.lookup.containsKey(context.player.uuid))
-				KeybindData.lookup[context.player.uuid] = HashMap()
-			KeybindData.lookup[context.player.uuid]!![buf.readString()] = true
+			if (!KeybindData.active.containsKey(context.player.uuid)) {
+				KeybindData.active[context.player.uuid] = HashMap()
+				KeybindData.duration[context.player.uuid] = HashMap()
+			}
+			val key = buf.readString()
+			KeybindData.active[context.player.uuid]!![key] = true
+			KeybindData.duration[context.player.uuid]!![key] = 0
 		}
 		NetworkManager.registerReceiver(NetworkManager.Side.C2S, RELEASED_KEY_PACKET) { buf, context ->
-			if (!KeybindData.lookup.containsKey(context.player.uuid))
-				KeybindData.lookup[context.player.uuid] = HashMap()
-			KeybindData.lookup[context.player.uuid]!![buf.readString()] = false
+			if (!KeybindData.active.containsKey(context.player.uuid)) {
+				KeybindData.active[context.player.uuid] = HashMap()
+				KeybindData.duration[context.player.uuid] = HashMap()
+			}
+			val key = buf.readString()
+			KeybindData.active[context.player.uuid]!![key] = false
+			KeybindData.duration[context.player.uuid]!![key] = 0
 		}
 		NetworkManager.registerReceiver(NetworkManager.Side.C2S, START_TELEPATHY_PACKET) { _, context ->
 			TelepathyData.active[context.player.uuid] = true
