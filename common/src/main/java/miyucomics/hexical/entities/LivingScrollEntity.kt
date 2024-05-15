@@ -23,9 +23,11 @@ import net.minecraft.util.math.Direction
 import net.minecraft.world.GameRules
 import net.minecraft.world.World
 
-val renderDataTracker: TrackedData<NbtCompound> = DataTracker.registerData(SpeckEntity::class.java, TrackedDataHandlerRegistry.NBT_COMPOUND)
-
 class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: World?) : AbstractDecorationEntity(entityType, world) {
+	companion object {
+		private val renderDataTracker: TrackedData<NbtCompound> = DataTracker.registerData(SpeckEntity::class.java, TrackedDataHandlerRegistry.NBT_COMPOUND)
+	}
+
 	var patterns: MutableList<HexPattern> = mutableListOf()
 	var stack: ItemStack = ItemStack.EMPTY
 	var size: Int = 1
@@ -96,6 +98,10 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: Wo
 				return
 			this.dropStack(this.stack)
 		}
+	}
+
+	fun getRender(): HexPattern {
+		return HexPattern.fromNBT(dataTracker.get(renderDataTracker))
 	}
 
 	override fun getWidthPixels() = 16 * this.size
