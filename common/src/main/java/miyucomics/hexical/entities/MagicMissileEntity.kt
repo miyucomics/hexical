@@ -1,8 +1,9 @@
 package miyucomics.hexical.entities
 
 import at.petrak.hexcasting.api.misc.FrozenColorizer
+import at.petrak.hexcasting.common.particles.ConjureParticleOptions
+import miyucomics.hexical.Hexical
 import net.minecraft.block.Blocks
-import net.minecraft.block.entity.EndGatewayBlockEntity
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.particle.BlockDustParticle
 import net.minecraft.client.world.ClientWorld
@@ -25,6 +26,12 @@ class MagicMissileEntity(entityType: EntityType<MagicMissileEntity?>?, world: Wo
 	private var pigment: FrozenColorizer = FrozenColorizer.DEFAULT.get()
 
 	override fun tick() {
+		if (world.isClient)
+			MinecraftClient.getInstance().particleManager.addParticle(
+				ConjureParticleOptions(pigment.getColor(Hexical.RANDOM.nextFloat(), pos), false),
+				pos.x, pos.y, pos.z,
+				0.0, 0.0, 0.0
+			)
 		val hitResult = ProjectileUtil.getCollision(this) { entity: Entity -> entity != this && this.canHit(entity) }
 		onCollision(hitResult)
 		when (hitResult.type) {
