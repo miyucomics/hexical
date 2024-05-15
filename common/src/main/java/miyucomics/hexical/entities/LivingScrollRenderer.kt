@@ -21,12 +21,9 @@ class LivingScrollRenderer(ctx: EntityRendererFactory.Context?) : EntityRenderer
 		matrices.push()
 		matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180f - yaw))
 		matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(180f))
-
 		val worldLight = WorldRenderer.getLightmapCoordinates(scroll!!.world, scroll.blockPos)
 		drawFrame(matrices, vertexConsumers, getTexture(scroll), scroll.size.toFloat(), worldLight)
-		val pattern = HexPattern.fromNBT(scroll.dataTracker.get(renderDataTracker))
-		drawPattern(matrices, vertexConsumers, pattern, scroll.size, worldLight)
-
+		drawPattern(matrices, vertexConsumers, scroll.getRender(), scroll.size, worldLight)
 		matrices.pop()
 	}
 
