@@ -38,17 +38,18 @@ class MagicMissileEntity(entityType: EntityType<MagicMissileEntity?>?, world: Wo
 				pos.x, pos.y, pos.z,
 				0.0, 0.0, 0.0
 			)
-		val hitResult = ProjectileUtil.getCollision(this) { entity: Entity -> entity != this && this.canHit(entity) }
-		onCollision(hitResult)
+		val hitResult = ProjectileUtil.getCollision(this) { entity: Entity -> entity !is MagicMissileEntity && this.canHit(entity) }
 		when (hitResult.type) {
 			HitResult.Type.BLOCK -> {
 				val blockHitResult = hitResult as BlockHitResult
 				this.onBlockHit(blockHitResult)
+				onCollision(hitResult)
 				val blockPos = blockHitResult.blockPos
 				world.emitGameEvent(GameEvent.PROJECTILE_LAND, blockPos, GameEvent.Emitter.of(this, world.getBlockState(blockPos)))
 			}
 			HitResult.Type.ENTITY -> {
 				this.onEntityHit((hitResult as EntityHitResult))
+				onCollision(hitResult)
 				world.emitGameEvent(GameEvent.PROJECTILE_LAND, hitResult.getPos(), GameEvent.Emitter.of(this, null))
 			}
 			HitResult.Type.MISS -> {}

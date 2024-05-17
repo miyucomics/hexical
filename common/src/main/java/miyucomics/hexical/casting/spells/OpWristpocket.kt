@@ -4,18 +4,20 @@ import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.*
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.Iota
+import net.minecraft.util.Hand
 import net.minecraft.util.math.Vec3d
 
-class OpPrestidigitation : SpellAction {
-	override val argc = 1
+class OpWristpocket : SpellAction {
+	override val argc = 0
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
-		val position = args.getVec3(0, argc)
-		return Triple(Spell(position), MediaConstants.DUST_UNIT * 3, listOf())
+		// make this cost three dust if adding the item
+		// otherwise make it free
+		return Triple(Spell(ctx.otherHand), MediaConstants.DUST_UNIT * 3, listOf())
 	}
 
-	private data class Spell(val position: Vec3d) : RenderedSpell {
+	private data class Spell(val hand: Hand) : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
-
+			// disappear the item
 		}
 	}
 }

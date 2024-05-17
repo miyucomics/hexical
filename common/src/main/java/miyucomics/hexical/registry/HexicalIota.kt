@@ -4,6 +4,7 @@ import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.IotaType
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import miyucomics.hexical.Hexical
+import miyucomics.hexical.iota.DyeIota
 import miyucomics.hexical.iota.IdentifierIota
 import net.minecraft.util.Identifier
 import net.minecraft.util.registry.Registry
@@ -11,6 +12,7 @@ import net.minecraft.util.registry.Registry
 object HexicalIota {
 	private val TYPES: MutableMap<Identifier, IotaType<*>> = HashMap()
 	val IDENTIFIER_IOTA = type("identifier", IdentifierIota.TYPE)
+	val DYE_IOTA = type("dye", DyeIota.TYPE)
 
 	@JvmStatic
 	fun init() {
