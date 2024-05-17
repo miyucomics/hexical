@@ -18,8 +18,7 @@ class OpIdentify : ConstMediaAction {
 		return when (val arg = args[0]) {
 			is EntityIota -> listOf(IdentifierIota(Registry.ENTITY_TYPE.getId(args.getEntity(0, argc).type)))
 			is Vec3Iota -> {
-				if (!ctx.isVecInRange(arg.vec3))
-					listOf(NullIota())
+				ctx.assertVecInRange(arg.vec3)
 				listOf(IdentifierIota(Registry.BLOCK.getId(ctx.world.getBlockState(BlockPos(arg.vec3)).block)))
 			}
 			else -> throw MishapInvalidIota.of(arg, 0, "identifiable")
