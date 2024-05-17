@@ -41,6 +41,8 @@ object HexicalPatterns {
 
 	@JvmStatic
 	fun init() {
+		register("wristpocket", "aaqqa", HexDir.WEST, OpWristpocket())
+
 		register("dup_many", "waadadaa", HexDir.EAST, OpDupMany())
 		register("shuffle_pattern", "aqqqdae", HexDir.NORTH_EAST, OpShufflePattern())
 		register("chorus_blink", "aawqqqq", HexDir.SOUTH_EAST, OpChorusBlink())
