@@ -5,6 +5,7 @@ import at.petrak.hexcasting.api.spell.*
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.Iota
 import miyucomics.hexical.interfaces.PlayerEntityMinterface
+import miyucomics.hexical.state.PersistentStateHandler
 import net.minecraft.item.AirBlockItem
 import net.minecraft.item.ItemStack
 import net.minecraft.item.Items
@@ -19,14 +20,13 @@ class OpWristpocket : SpellAction {
 
 	private data class Spell(val hand: Hand) : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
-			print(ctx.caster.getStackInHand(hand))
-			val minterface = (ctx.caster as PlayerEntityMinterface)
-			if (minterface.wristpocketItem() == ItemStack.EMPTY || minterface.wristpocketItem().item == Items.AIR) {
-				(ctx.caster as PlayerEntityMinterface).stashWristpocket(ctx.caster.getStackInHand(hand))
+			val item = PersistentStateHandler.wristpocketItem(ctx.caster)
+			if (item == ItemStack.EMPTY || item.item == Items.AIR) {
+				PersistentStateHandler.stashWristpocket(ctx.caster, ctx.caster.getStackInHand(hand))
 				ctx.caster.setStackInHand(hand, ItemStack.EMPTY)
 			} else {
-				ctx.caster.setStackInHand(hand, (ctx.caster as PlayerEntityMinterface).wristpocketItem())
-				minterface.stashWristpocket(ItemStack.EMPTY)
+				ctx.caster.setStackInHand(hand, item)
+				PersistentStateHandler.stashWristpocket(ctx.caster, ItemStack.EMPTY)
 			}
 		}
 	}
