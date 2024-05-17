@@ -31,6 +31,7 @@ import miyucomics.hexical.casting.spells.mage_blocks.OpModifyMageBlock
 import miyucomics.hexical.casting.spells.telepathy.OpHallucinateSound
 import miyucomics.hexical.casting.spells.telepathy.OpSendTelepathy
 import miyucomics.hexical.casting.spells.telepathy.OpShoutTelepathy
+import miyucomics.hexical.casting.spells.wristpocket.OpWristpocket
 import miyucomics.hexical.entities.SpeckEntity
 import net.minecraft.sound.SoundEvents
 import net.minecraft.util.Identifier
