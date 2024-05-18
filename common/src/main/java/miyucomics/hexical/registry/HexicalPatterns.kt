@@ -29,6 +29,7 @@ import miyucomics.hexical.casting.spells.mage_blocks.OpModifyMageBlock
 import miyucomics.hexical.casting.spells.telepathy.OpHallucinateSound
 import miyucomics.hexical.casting.spells.telepathy.OpSendTelepathy
 import miyucomics.hexical.casting.spells.telepathy.OpShoutTelepathy
+import miyucomics.hexical.casting.spells.wristpocket.OpIngest
 import miyucomics.hexical.casting.spells.wristpocket.OpMageHand
 import miyucomics.hexical.casting.spells.wristpocket.OpWristpocket
 import miyucomics.hexical.entities.SpeckEntity
@@ -45,6 +46,7 @@ object HexicalPatterns {
 		register("wristpocket_item", "aaqqada", HexDir.WEST, OpGetWristpocket(0))
 		register("wristpocket_count", "aaqqaaw", HexDir.WEST, OpGetWristpocket(1))
 		register("mage_hand", "aaqqaeea", HexDir.WEST, OpMageHand())
+		register("ingest", "aaqqadaa", HexDir.WEST, OpIngest())
 
 		register("dup_many", "waadadaa", HexDir.EAST, OpDupMany())
 		register("shuffle_pattern", "aqqqdae", HexDir.NORTH_EAST, OpShufflePattern())

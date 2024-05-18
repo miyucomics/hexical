@@ -58,6 +58,7 @@
 	"hexcasting.mishap.hexical:grimoire_access_denied": "Tried to increase the uses of a restricted binding.",
 	"hexcasting.mishap.hexical:outside_circle": "Spell exceeds the domain of the spell circle.",
 	"hexcasting.mishap.hexical:themis": "Expected a number at the top of the pseudo-stack.",
+	"hexcasting.mishap.hexical:inedible": "Wristpocketed item is not edible.",
 
 	"hexcasting.spell.book.hexical:recognize": "Recognizer's Purif.",
 	"hexcasting.spell.book.hexical:damage_stack": "Deterioration Purif.",
@@ -79,6 +80,22 @@
 	"hexcasting.spell.book.hexical:get_weather": "Meterologist's Refl.",
 	"hexcasting.spell.book.hexical:shuffle_pattern": "Glyphmaker's Dstl.",
 	"hexcasting.spell.book.hexical:zone_speck": "Zone Dstl.: Speck",
+
+    "hexical.page.wristpocket.title": "Wristpocket",
+    "hexical.page.wristpocket.0": "I can perform the standard magic trick of vanishing an item and bringing it back. The item hides in an extradimensional space called the wristpocket, where I can use the media to manipulate it. Wristpocketed items stay with me even after death and I can recall them once I have a staff again.$(br2)$(o)Because making something disappear isn't enough; you have to bring it back.$()",
+
+	"hexcasting.spell.hexical:wristpocket": "Wristpocket",
+	"hexical.page.wristpocket": "This spell vanishes the stack of items in my other hand, or conjures it back, swapping if my other hand is holding something. Costs three dust if an item is inserted or swapped in.",
+	"hexcasting.spell.hexical:ingest": "Assimilate Food",
+    "hexical.page.ingest": "This spell makes me eat my wristpocketed item, nourishing or applying potions to me. Regardless of the item's time to eat or if I'm full, this spell makes me consume it instantly.",
+	"hexcasting.spell.hexical:wristpocket_item": "Pocket Reflection",
+    "hexical.page.wristpocket_item": "Returns the identifier of the item in my wristpocket, or null if it is empty.",
+	"hexcasting.spell.hexical:wristpocket_count": "Pocket Reflection II",
+    "hexical.page.wristpocket_count": "Returns how many items I have in my wristpocket, or 0 if it is empty.",
+	"hexcasting.spell.hexical:mage_hand": "Mage Hand",
+    "hexical.page.mage_hand": "Conjures a magical hand that uses my wristpocketed item to interact with the world. If my wristpocket is empty, acts as though I had interacted with the world.",
+    "hexical.page.mage_hand.0": "- if taking an entity, interacts with the entity with the item.$(br)- if taking a vector, interacts with the block with the item.$(br2)$(o)A spectral, floating hand appears at a point you choose within range.$()",
+	"hexcasting.spell.hexical:sleight": "Sleight",
 
 	"hexcasting.spell.hexical:dup_many": "Dioscuri Gambit II",
 	"hexcasting.spell.hexical:shuffle_pattern": "Glyphmaker's Distillation",

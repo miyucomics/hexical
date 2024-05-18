@@ -5,7 +5,9 @@ import miyucomics.hexical.Hexical
 import miyucomics.hexical.blocks.MageBlock
 import miyucomics.hexical.blocks.MageBlockEntity
 import net.minecraft.block.Block
+import net.minecraft.block.FlowerBlock
 import net.minecraft.block.entity.BlockEntityType
+import net.minecraft.entity.effect.StatusEffects
 import net.minecraft.util.registry.Registry
 
 object HexicalBlocks {

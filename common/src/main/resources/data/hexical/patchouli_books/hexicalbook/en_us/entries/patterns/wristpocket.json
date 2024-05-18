@@ -1,0 +1,56 @@
+{
+	"name": "hexical.page.wristpocket.title",
+	"icon": "minecraft:barrel",
+	"category": "hexcasting:patterns/spells",
+	"advancement": "hexcasting:root",
+	"pages": [
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.wristpocket.0"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:wristpocket",
+			"anchor": "hexical:wristpocket",
+			"input": "",
+			"output": "",
+			"text": "hexical.page.wristpocket"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:wristpocket_item",
+			"anchor": "hexical:wristpocket_item",
+			"input": "",
+			"output": "",
+			"text": "hexical.page.wristpocket_item"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:wristpocket_count",
+			"anchor": "hexical:wristpocket_count",
+			"input": "",
+			"output": "",
+			"text": "hexical.page.wristpocket_count"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:mage_hand",
+			"anchor": "hexical:mage_hand",
+			"input": "entity/vector",
+			"output": "",
+			"text": "hexical.page.mage_hand"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.mage_hand.0"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:ingest",
+			"anchor": "hexical:ingest",
+			"input": "",
+			"output": "",
+			"text": "hexical.page.ingest"
+		}
+	]
+}

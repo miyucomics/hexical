@@ -9,6 +9,7 @@ import at.petrak.hexcasting.api.spell.iota.Vec3Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
 import miyucomics.hexical.state.PersistentStateHandler
 import net.minecraft.entity.Entity
+import net.minecraft.item.ItemUsageContext
 import net.minecraft.util.Hand
 import net.minecraft.util.hit.BlockHitResult
 import net.minecraft.util.math.BlockPos
@@ -40,6 +41,7 @@ class OpMageHand : SpellAction {
 			ctx.caster.setStackInHand(ctx.castingHand, stack)
 			val block = ctx.world.getBlockState(position)
 			block.onUse(ctx.world, ctx.caster, ctx.castingHand, BlockHitResult(Vec3d.ofCenter(position), Direction.UP, position, false))
+			stack.useOnBlock(ItemUsageContext(ctx.caster, ctx.castingHand, BlockHitResult(Vec3d.ofCenter(position), Direction.UP, position, false)))
 			PersistentStateHandler.stashWristpocket(ctx.caster, ctx.caster.getStackInHand(ctx.castingHand))
 			ctx.caster.setStackInHand(ctx.castingHand, originalItem)
 		}
@@ -47,7 +49,7 @@ class OpMageHand : SpellAction {
 
 	private data class EntitySpell(val entity: Entity) : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
-			val stack = PersistentStateHandler.wristpocketItem(ctx.caster)
+		val stack = PersistentStateHandler.wristpocketItem(ctx.caster)
 			val originalItem = ctx.caster.getStackInHand(ctx.castingHand)
 			ctx.caster.setStackInHand(ctx.castingHand, stack)
 			entity.interact(ctx.caster, Hand.MAIN_HAND)
