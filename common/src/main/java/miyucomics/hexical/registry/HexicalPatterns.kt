@@ -21,8 +21,6 @@ import miyucomics.hexical.casting.operators.lamp.*
 import miyucomics.hexical.casting.operators.specks.*
 import miyucomics.hexical.casting.operators.staff.OpReadStaff
 import miyucomics.hexical.casting.operators.staff.OpWriteStaff
-import miyucomics.hexical.casting.operators.stash.OpStashRead
-import miyucomics.hexical.casting.operators.stash.OpStashWrite
 import miyucomics.hexical.casting.spells.*
 import miyucomics.hexical.casting.spells.circle.OpDisplace
 import miyucomics.hexical.casting.spells.lamp.*
@@ -31,6 +29,7 @@ import miyucomics.hexical.casting.spells.mage_blocks.OpModifyMageBlock
 import miyucomics.hexical.casting.spells.telepathy.OpHallucinateSound
 import miyucomics.hexical.casting.spells.telepathy.OpSendTelepathy
 import miyucomics.hexical.casting.spells.telepathy.OpShoutTelepathy
+import miyucomics.hexical.casting.spells.wristpocket.OpMageHand
 import miyucomics.hexical.casting.spells.wristpocket.OpWristpocket
 import miyucomics.hexical.entities.SpeckEntity
 import net.minecraft.sound.SoundEvents
@@ -43,6 +42,9 @@ object HexicalPatterns {
 	@JvmStatic
 	fun init() {
 		register("wristpocket", "aaqqa", HexDir.WEST, OpWristpocket())
+		register("wristpocket_item", "aaqqada", HexDir.WEST, OpGetWristpocket(0))
+		register("wristpocket_count", "aaqqaaw", HexDir.WEST, OpGetWristpocket(1))
+		register("mage_hand", "aaqqaeea", HexDir.WEST, OpMageHand())
 
 		register("dup_many", "waadadaa", HexDir.EAST, OpDupMany())
 		register("shuffle_pattern", "aqqqdae", HexDir.NORTH_EAST, OpShufflePattern())
@@ -160,19 +162,6 @@ object HexicalPatterns {
 				}
 				return@addSpecialHandler OpNephthys(depth)
 			}
-			return@addSpecialHandler null
-		}
-
-		PatternRegistry.addSpecialHandler(Hexical.id("stash_write")) { pat ->
-			val sig = pat.anglesSignature()
-			if (sig.startsWith("qaawae"))
-				return@addSpecialHandler OpStashWrite(HexPattern.fromAngles(pat.anglesSignature().substring(6), pat.startDir))
-			return@addSpecialHandler null
-		}
-		PatternRegistry.addSpecialHandler(Hexical.id("stash_read")) { pat ->
-			val sig = pat.anglesSignature()
-			if (sig.startsWith("addqae"))
-				return@addSpecialHandler OpStashRead(HexPattern.fromAngles(pat.anglesSignature().substring(6), pat.startDir))
 			return@addSpecialHandler null
 		}
 
