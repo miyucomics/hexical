@@ -16,7 +16,6 @@
 	"advancements.hexical.hallucinate.title": "Only in my Head",
 	"advancements.hexical.hallucinate.description": "Play a sound only you can hear!",
 
-	"block.hexical.akashic_terminal": "Akashic Terminal",
 	"block.hexical.mage_block": "Mage Block",
 	"entity.hexical.speck": "Speck",
 	"key.categories.hexical": "Hexical",
@@ -35,9 +34,6 @@
 	"subtitles.hexical.lamp_deactivate": "Lamp deactivates",
 	"particle.minecraft.soul_7": "",
 
-	"hexical.message.library_bound": "Your bound library has been set.",
-	"hexical.message.library_unbound": "Your bound library has been cleared.",
-
 	"hexcasting.mishap.bad_block.mage_block": "a mage block",
 	"hexcasting.mishap.bad_item.grimoire": "a grimoire",
 	"hexcasting.mishap.bad_item.lamp": "an empty lamp",
@@ -45,6 +41,7 @@
 	"hexcasting.mishap.bad_item.lamp_flay": "a Journeyman or greater level villager",
 	"hexcasting.mishap.bad_item.speck": "a speck",
 	"hexcasting.mishap.bad_item.living_scroll": "a living scroll",
+	"hexcasting.mishap.invalid_value.entity_or_vector": "an entity or a vector",
 	"hexcasting.mishap.invalid_value.pattern_list": "a list with only patterns",
 	"hexcasting.mishap.invalid_value.identifier": "an identifier",
 	"hexcasting.mishap.invalid_value.enchantment": "an enchantment type",
