@@ -7,6 +7,7 @@ import at.petrak.hexcasting.api.spell.math.HexPattern
 import at.petrak.hexcasting.common.casting.operators.selectors.OpGetEntitiesBy
 import miyucomics.hexical.Hexical
 import miyucomics.hexical.casting.operators.OpDupMany
+import miyucomics.hexical.casting.operators.OpGetDye
 import miyucomics.hexical.casting.operators.OpGetTelepathy
 import miyucomics.hexical.casting.operators.OpShufflePattern
 import miyucomics.hexical.casting.operators.eval.OpJanus
@@ -47,6 +48,8 @@ object HexicalPatterns {
 		register("wristpocket_count", "aaqqaaw", HexDir.WEST, OpGetWristpocket(1))
 		register("mage_hand", "aaqqaeea", HexDir.WEST, OpMageHand())
 		register("ingest", "aaqqadaa", HexDir.WEST, OpIngest())
+
+		register("get_dye", "weedwa", HexDir.NORTH_EAST, OpGetDye())
 
 		register("dup_many", "waadadaa", HexDir.EAST, OpDupMany())
 		register("shuffle_pattern", "aqqqdae", HexDir.NORTH_EAST, OpShufflePattern())
