@@ -3,13 +3,26 @@ package miyucomics.hexical.casting.operators
 import at.petrak.hexcasting.api.spell.ConstMediaAction
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.getBlockPos
+import at.petrak.hexcasting.api.spell.getEntity
+import at.petrak.hexcasting.api.spell.iota.EntityIota
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.NullIota
+import at.petrak.hexcasting.api.spell.iota.Vec3Iota
 import miyucomics.hexical.iota.DyeIota
 import miyucomics.hexical.registry.HexicalTags
+import net.minecraft.block.Block
 import net.minecraft.block.Blocks
+import net.minecraft.block.SignBlock
+import net.minecraft.block.entity.SignBlockEntity
+import net.minecraft.entity.Entity
+import net.minecraft.entity.ItemEntity
+import net.minecraft.entity.passive.SheepEntity
+import net.minecraft.item.BlockItem
+import net.minecraft.item.DyeItem
+import net.minecraft.server.world.ServerWorld
 import net.minecraft.tag.BlockTags
 import net.minecraft.util.DyeColor
+import net.minecraft.util.math.BlockPos
 
 class OpGetDye : ConstMediaAction {
 	private val beds = mapOf(
@@ -210,6 +223,12 @@ class OpGetDye : ConstMediaAction {
 		Blocks.RED_TERRACOTTA to DyeColor.RED,
 		Blocks.BLACK_TERRACOTTA to DyeColor.BLACK
 	)
+	private val tulips = mapOf(
+		Blocks.ORANGE_TULIP to DyeColor.ORANGE,
+		Blocks.PINK_TULIP to DyeColor.PINK,
+		Blocks.RED_TULIP to DyeColor.RED,
+		Blocks.WHITE_TULIP to DyeColor.WHITE
+	)
 	private val wools = mapOf(
 		Blocks.WHITE_WOOL to DyeColor.WHITE,
 		Blocks.ORANGE_WOOL to DyeColor.ORANGE,
@@ -231,33 +250,68 @@ class OpGetDye : ConstMediaAction {
 
 	override val argc = 1
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
-		val position = args.getBlockPos(0, argc)
-		ctx.assertVecInRange(position)
-		val state = ctx.world.getBlockState(position)
-		if (state.isIn(BlockTags.BEDS))
-			return listOf(DyeIota(beds[state.block]!!))
-		if (state.isIn(BlockTags.CANDLE_CAKES))
-			return listOf(DyeIota(cakeCandles[state.block]!!))
-		if (state.isIn(BlockTags.CANDLES))
-			return listOf(DyeIota(candles[state.block]!!))
-		if (state.isIn(HexicalTags.CONCRETES))
-			return listOf(DyeIota(concretes[state.block]!!))
-		if (state.isIn(HexicalTags.CONCRETE_POWDERS))
-			return listOf(DyeIota(concretePowders[state.block]!!))
-		if (state.isIn(HexicalTags.GLAZED_TERRACOTTA))
-			return listOf(DyeIota(glazedTerracotta[state.block]!!))
-		if (state.isIn(BlockTags.SHULKER_BOXES))
-			return listOf(DyeIota(shulkerBoxes[state.block]!!))
-		if (state.isIn(HexicalTags.STAINED_GLASS))
-			return listOf(DyeIota(stainedGlass[state.block]!!))
-		if (state.isIn(HexicalTags.STAINED_GLASS_PANES))
-			return listOf(DyeIota(stainedGlassPanes[state.block]!!))
-		if (state.isIn(HexicalTags.TERRACOTTA))
-			return listOf(DyeIota(terracotta[state.block]!!))
-		if (state.isIn(BlockTags.WOOL_CARPETS))
-			return listOf(DyeIota(carpets[state.block]!!))
-		if (state.isIn(BlockTags.WOOL))
-			return listOf(DyeIota(wools[state.block]!!))
-		return listOf(NullIota())
+		return listOf(when (args[0]) {
+			is EntityIota -> {
+				val entity = args.getEntity(0, argc)
+				ctx.assertEntityInRange(entity)
+				processEntity(entity)
+			}
+			is Vec3Iota -> {
+				val position = args.getBlockPos(0, argc)
+				ctx.assertVecInRange(position)
+				processVec3d(position, ctx.world)
+			}
+			else -> NullIota()
+		})
+	}
+
+	private fun processEntity(entity: Entity): Iota {
+		return when (entity) {
+			is ItemEntity -> {
+				when (val item = entity.stack.item) {
+					is BlockItem -> getDyeFromBlock(item.block)
+					is DyeItem -> DyeIota(item.color)
+					else -> NullIota()
+				}
+			}
+			is SheepEntity -> DyeIota(entity.color)
+			else -> NullIota()
+		}
+	}
+	private fun processVec3d(position: BlockPos, world: ServerWorld): Iota {
+		val state = world.getBlockState(position)
+		if (state.block is SignBlock)
+			return DyeIota((world.getBlockEntity(position) as SignBlockEntity).textColor)
+		return getDyeFromBlock(world.getBlockState(position).block)
+	}
+	private fun getDyeFromBlock(block: Block): Iota {
+		val entry = block.getRegistryEntry()
+		if (entry.isIn(BlockTags.BEDS))
+			return DyeIota(beds[block]!!)
+		if (entry.isIn(BlockTags.CANDLE_CAKES))
+			return DyeIota(cakeCandles[block]!!)
+		if (entry.isIn(BlockTags.CANDLES))
+			return DyeIota(candles[block]!!)
+		if (entry.isIn(HexicalTags.CONCRETES))
+			return DyeIota(concretes[block]!!)
+		if (entry.isIn(HexicalTags.CONCRETE_POWDERS))
+			return DyeIota(concretePowders[block]!!)
+		if (entry.isIn(HexicalTags.GLAZED_TERRACOTTA))
+			return DyeIota(glazedTerracotta[block]!!)
+		if (entry.isIn(BlockTags.SHULKER_BOXES))
+			return DyeIota(shulkerBoxes[block]!!)
+		if (entry.isIn(HexicalTags.STAINED_GLASS))
+			return DyeIota(stainedGlass[block]!!)
+		if (entry.isIn(HexicalTags.STAINED_GLASS_PANES))
+			return DyeIota(stainedGlassPanes[block]!!)
+		if (entry.isIn(HexicalTags.TERRACOTTA))
+			return DyeIota(terracotta[block]!!)
+		if (entry.isIn(HexicalTags.TULIPS))
+			return DyeIota(tulips[block]!!)
+		if (entry.isIn(BlockTags.WOOL_CARPETS))
+			return DyeIota(carpets[block]!!)
+		if (entry.isIn(BlockTags.WOOL))
+			return DyeIota(wools[block]!!)
+		return NullIota()
 	}
 }

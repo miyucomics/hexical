@@ -13,4 +13,5 @@ object HexicalTags {
 	val STAINED_GLASS_PANES: TagKey<Block> = TagKey.of(Registry.BLOCK_KEY, Identifier(Hexical.MOD_ID, "stained_glass_panes"))
 	val STAINED_GLASS: TagKey<Block> = TagKey.of(Registry.BLOCK_KEY, Identifier(Hexical.MOD_ID, "stained_glasses"))
 	val TERRACOTTA: TagKey<Block> = TagKey.of(Registry.BLOCK_KEY, Identifier(Hexical.MOD_ID, "terracotta"))
+	val TULIPS: TagKey<Block> = TagKey.of(Registry.BLOCK_KEY, Identifier(Hexical.MOD_ID, "tulips"))
 }
