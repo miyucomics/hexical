@@ -4,15 +4,15 @@
 - added akashic terminal
 - added hexbursts
 - added hextitos
-- added dye iota
 - added wristpocket spell
 - added Magic Missile spell
 - added akashic stashing patterns
+- added dye iota and patterns to get and set dyes
 - added internal iota storage to hand lamp and patterns to interact with it
 - added Charge, Retreat, Dodge, and Evade reflections, which return how long you've been pressing the w, s, a, or d key respectively
+- changed Identify pattern to have ambit limitation
 - fixed Janus' Gambit to actually terminate the hex now
 - fixed specks being slightly off-center
-- make Identify pattern have ambit limitation
 - updated documentation
 - removed casting sounds from conjured staves and replaced it with pattern drawing sounds
 
