@@ -10,6 +10,7 @@
 - added dye iota and patterns to get and set dyes
 - added internal iota storage to hand lamp and patterns to interact with it
 - added Charge, Retreat, Dodge, and Evade reflections, which return how long you've been pressing the w, s, a, or d key respectively
+- added mishap to Chorus Blink if you don't have chorus fruit in your inventory
 - changed Identify pattern to have ambit limitation
 - fixed Janus' Gambit to actually terminate the hex now
 - fixed specks being slightly off-center
