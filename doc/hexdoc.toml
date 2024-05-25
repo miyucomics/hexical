@@ -6,14 +6,10 @@ default_branch = "main"
 resource_dirs = [
     "resources",
     "{_common.src}/main/resources",
-    { path = "{^_common.src}/generated/resources", required = false },
-    "{_fabric.src}/main/resources",
-    { path = "{^_fabric.src}/generated/resources", required = false },
-    "{_forge.src}/main/resources",
-    { path = "{^_forge.src}/generated/resources", required = false },
-    { modid = "hexcasting" },
-    { modid = "minecraft" },
-    { modid = "hexdoc" },
+    { path="{^_common.src}/generated/resources", required=false },
+    { modid="hexcasting" },
+    { modid="minecraft" },
+    { modid="hexdoc" },
 ]
 export_dir = "src/hexdoc_hexical/_export/generated"
 
@@ -22,7 +18,7 @@ icon = "icon.png"
 include = [
     "hexical",
     "hexcasting",
-    "hexdoc"
+    "hexdoc",
 ]
 
 [template.args]
@@ -43,13 +39,5 @@ regex = "{^_pattern_regex}"
 per_world_value = "{^_per_world_value}"
 
 [_common]
-src = "../common/src"
+src = "../src"
 package = "{src}/main/java/miyucomics/hexical"
-
-[_fabric]
-src = "../fabric/src"
-package = "{src}/main/java/miyucomics/hexical/fabric"
-
-[_forge]
-src = "../forge/src"
-package = "{src}/main/java/miyucomics/hexical/forge"
