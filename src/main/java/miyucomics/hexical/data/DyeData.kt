@@ -12,6 +12,10 @@ object DyeData {
 	val blocks = HashMap<String, DyeColor>()
 	val families = HashMap<String, EnumMap<DyeColor, String>>()
 
+	fun isDyeable(block: Block): Boolean {
+		return blocks.containsKey(Registry.BLOCK.getId(block).toString())
+	}
+
 	fun getDye(block: Block): DyeColor? {
 		return blocks.getOrDefault(Registry.BLOCK.getId(block).toString(), null)
 	}
