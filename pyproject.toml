@@ -19,7 +19,7 @@ requires-python = ">=3.11"
 dynamic = ["version", "dependencies", "optional-dependencies"]
 
 [project.urls]
-Homepage = "https://miyucomics.github.io/hexical"
+Homepage = "https://miyucomics.github.io/hexical/"
 Source = "https://github.com/miyucomics/hexical"
 
 # Gradle version/deps
@@ -28,7 +28,7 @@ Source = "https://github.com/miyucomics/hexical"
 scheme = "gradle"
 source = "gradle-properties"
 py-path = "doc/src/hexdoc_hexical/__version__.py"
-key = "modVersion"
+key = "mod_version"
 
 [tool.hatch.metadata.hooks.gradle-properties]
 dependencies = [
