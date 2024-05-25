@@ -6,10 +6,11 @@ import at.petrak.hexcasting.api.spell.math.HexDir
 import at.petrak.hexcasting.api.spell.math.HexPattern
 import at.petrak.hexcasting.common.casting.operators.selectors.OpGetEntitiesBy
 import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.casting.operators.OpDupMany
-import miyucomics.hexical.casting.operators.OpGetDye
-import miyucomics.hexical.casting.operators.OpGetTelepathy
-import miyucomics.hexical.casting.operators.OpShufflePattern
+import miyucomics.hexical.casting.operators.*
+import miyucomics.hexical.casting.operators.basic.OpCongruentPattern
+import miyucomics.hexical.casting.operators.basic.OpDupMany
+import miyucomics.hexical.casting.operators.basic.OpShufflePattern
+import miyucomics.hexical.casting.operators.basic.OpSimilar
 import miyucomics.hexical.casting.operators.eval.OpJanus
 import miyucomics.hexical.casting.operators.eval.OpNephthys
 import miyucomics.hexical.casting.operators.eval.OpSisyphus
@@ -20,19 +21,21 @@ import miyucomics.hexical.casting.operators.identifier.OpIdentify
 import miyucomics.hexical.casting.operators.identifier.OpRecognize
 import miyucomics.hexical.casting.operators.lamp.*
 import miyucomics.hexical.casting.operators.specks.*
-import miyucomics.hexical.casting.operators.staff.OpReadStaff
-import miyucomics.hexical.casting.operators.staff.OpWriteStaff
-import miyucomics.hexical.casting.spells.*
-import miyucomics.hexical.casting.spells.circle.OpDisplace
-import miyucomics.hexical.casting.spells.lamp.*
-import miyucomics.hexical.casting.spells.mage_blocks.OpConjureMageBlock
-import miyucomics.hexical.casting.spells.mage_blocks.OpModifyMageBlock
-import miyucomics.hexical.casting.spells.telepathy.OpHallucinateSound
-import miyucomics.hexical.casting.spells.telepathy.OpSendTelepathy
-import miyucomics.hexical.casting.spells.telepathy.OpShoutTelepathy
-import miyucomics.hexical.casting.spells.wristpocket.OpIngest
-import miyucomics.hexical.casting.spells.wristpocket.OpMageHand
-import miyucomics.hexical.casting.spells.wristpocket.OpWristpocket
+import miyucomics.hexical.casting.operators.conjured_staff.OpReadStaff
+import miyucomics.hexical.casting.operators.conjured_staff.OpWriteStaff
+import miyucomics.hexical.casting.operators.circle.OpDisplace
+import miyucomics.hexical.casting.operators.dye.OpDye
+import miyucomics.hexical.casting.operators.dye.OpGetDye
+import miyucomics.hexical.casting.operators.mage_blocks.OpConjureMageBlock
+import miyucomics.hexical.casting.operators.mage_blocks.OpModifyMageBlock
+import miyucomics.hexical.casting.operators.conjured_staff.OpConjureStaff
+import miyucomics.hexical.casting.operators.telepathy.OpGetTelepathy
+import miyucomics.hexical.casting.operators.telepathy.OpHallucinateSound
+import miyucomics.hexical.casting.operators.telepathy.OpSendTelepathy
+import miyucomics.hexical.casting.operators.telepathy.OpShoutTelepathy
+import miyucomics.hexical.casting.operators.wristpocket.OpIngest
+import miyucomics.hexical.casting.operators.wristpocket.OpMageHand
+import miyucomics.hexical.casting.operators.wristpocket.OpWristpocket
 import miyucomics.hexical.entities.SpeckEntity
 import net.minecraft.sound.SoundEvents
 import net.minecraft.util.Identifier
@@ -52,6 +55,8 @@ object HexicalPatterns {
 		register("get_dye", "weedwa", HexDir.NORTH_EAST, OpGetDye())
 		register("dye", "dwaqqw", HexDir.NORTH_WEST, OpDye())
 
+		register("similar", "dew", HexDir.NORTH_WEST, OpSimilar())
+		register("congruent", "aaqd", HexDir.EAST, OpCongruentPattern())
 		register("dup_many", "waadadaa", HexDir.EAST, OpDupMany())
 		register("shuffle_pattern", "aqqqdae", HexDir.NORTH_EAST, OpShufflePattern())
 		register("chorus_blink", "aawqqqq", HexDir.SOUTH_EAST, OpChorusBlink())

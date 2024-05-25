@@ -1,3 +1,4 @@
 accessWidener   v2  named
 accessible field net/minecraft/entity/projectile/ArrowEntity potion Lnet/minecraft/potion/Potion;
 accessible field net/minecraft/entity/projectile/ArrowEntity effects Ljava/util/Set;
+accessible method net/minecraft/entity/mob/ShulkerEntity setColor (Lnet/minecraft/util/DyeColor;)V

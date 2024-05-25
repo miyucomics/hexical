@@ -14,6 +14,7 @@
 - changed Identify pattern to have ambit limitation
 - fixed Janus' Gambit to actually terminate the hex now
 - fixed specks being slightly off-center
+- overhauled project structure completely
 - updated documentation
 - removed casting sounds from conjured staves and replaced it with pattern drawing sounds
 
