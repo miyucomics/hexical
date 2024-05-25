@@ -4,6 +4,7 @@ import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.*
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.Iota
+import miyucomics.hexical.data.DyeData
 import miyucomics.hexical.iota.getDye
 import net.minecraft.entity.mob.ShulkerEntity
 import net.minecraft.entity.passive.SheepEntity
@@ -20,7 +21,7 @@ class OpDye : SpellAction {
 
 	private data class BlockSpell(val position: BlockPos, val dye: DyeColor) : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
-
+			ctx.world.setBlockState(position, DyeData.getNewBlock(ctx.world.getBlockState(position).block, dye))
 		}
 	}
 
