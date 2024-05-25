@@ -13,6 +13,7 @@ public class HexicalMain implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		HexicalBlocks.init();
+		HexicalData.init();
 		HexicalEntities.init();
 		HexicalEvents.init();
 		HexicalIota.init();
