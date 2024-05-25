@@ -285,7 +285,7 @@ class OpGetDye : ConstMediaAction {
 		return getDyeFromBlock(world.getBlockState(position).block)
 	}
 	private fun getDyeFromBlock(block: Block): Iota {
-		val entry = block.getRegistryEntry()
+		val entry = block.registryEntry
 		if (entry.isIn(BlockTags.BEDS))
 			return DyeIota(beds[block]!!)
 		if (entry.isIn(BlockTags.CANDLE_CAKES))

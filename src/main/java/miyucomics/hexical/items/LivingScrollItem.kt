@@ -40,7 +40,7 @@ class LivingScrollItem(private val size: Int) : Item(Settings().group(HexicalIte
 		}
 
 		val scrollStack = stack.copy()
-		scrollStack.setCount(1)
+		scrollStack.count = 1
 		val scrollEntity = LivingScrollEntity(world, position, direction, size, scrollStack, patternList)
 		if (!scrollEntity.canStayAttached())
 			return ActionResult.CONSUME

@@ -65,7 +65,7 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: Wo
 	}
 
 	override fun readCustomDataFromNbt(nbt: NbtCompound?) {
-		setFacing(Direction.values()[nbt!!.getByte("direction").toInt()])
+		setFacing(Direction.entries[nbt!!.getByte("direction").toInt()])
 		this.stack = ItemStack.fromNbt(nbt.getCompound("stack"))
 		this.size = nbt.getInt("size")
 		updateAttachmentPosition()
