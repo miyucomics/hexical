@@ -1,156 +1,105 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
-    id "architectury-plugin" version "3.4.+"
-    id "dev.architectury.loom" version "1.2.+" apply false
-    id "org.jetbrains.kotlin.jvm" version "1.8.0" apply false
-    id "co.uzzu.dotenv.gradle" version "2.0.0"
+	id 'fabric-loom' version '1.6-SNAPSHOT'
+	id 'maven-publish'
+	id "org.jetbrains.kotlin.jvm" version "2.0.0"
 }
 
-architectury {
-    minecraft = project.minecraftVersion
+version = project.mod_version
+group = project.maven_group
+
+base {
+	archivesName = project.archives_base_name
 }
 
-subprojects {
-    apply plugin: "org.jetbrains.kotlin.jvm"
-    apply plugin: "dev.architectury.loom"
-
-    dependencies {
-        minecraft "com.mojang:minecraft:${project.minecraftVersion}"
-        mappings "net.fabricmc:yarn:1.19.2+build.28:v2"
-
-        annotationProcessor "org.ow2.asm:asm:${project.asmVersion}"
-        annotationProcessor "org.ow2.asm:asm-analysis:${project.asmVersion}"
-        annotationProcessor "org.ow2.asm:asm-commons:${project.asmVersion}"
-        annotationProcessor "org.ow2.asm:asm-tree:${project.asmVersion}"
-        annotationProcessor "org.ow2.asm:asm-util:${project.asmVersion}"
-    }
-
-    sourceSets.main.kotlin.srcDirs += 'src/main/java'
-    sourceSets.main.resources.srcDirs += "src/generated/resources"
+loom {
+	accessWidenerPath = file("src/main/resources/hexical.accesswidener")
 }
 
-allprojects {
-    apply plugin: "java"
-    apply plugin: "architectury-plugin"
-    apply plugin: "maven-publish"
+repositories {
+    maven { url 'https://jitpack.io' }
+    maven { url "https://squiddev.cc/maven/" }
+    maven { url "https://maven.terraformersmc.com/" }
+    maven { url "https://maven.terraformersmc.com/releases" }
+    maven { url "https://maven.shedaniel.me/" }
 
-    javadoc.options.addStringOption('Xdoclint:none', '-quiet')
-
-    version = project.modVersion
-    group = project.mavenGroup
-
-    repositories {
-        maven { url 'https://jitpack.io' }
-        maven {
-            url "https://squiddev.cc/maven/"
-        }
-        maven { url "https://maven.terraformersmc.com/" }
-        maven { url "https://maven.terraformersmc.com/releases" }
-        maven { url "https://maven.shedaniel.me/" }
-
-        // Hex Casting Dependencies
-        maven { url "https://maven.blamejared.com/" }
-        maven {
-            name "entity reach"
-            url "https://maven.jamieswhiteshirt.com/libs-release/"
-        }
-        maven { url "https://mvn.devos.one/snapshots/" }
-        maven {
-            name = 'Ladysnake Mods'
-            url = 'https://maven.ladysnake.org/releases'
-        }
-        maven {
-            name = 'Kotlin for Forge'
-            url = 'https://thedarkcolour.github.io/KotlinForForge/'
-        }
-        maven {
-            url = "https://maven.theillusivec4.top/"
-        }
-        maven {
-            name = 'GeckoLib'
-            url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
-        }
-        exclusiveContent {
-            forRepository {
-                maven {
-                    name = "Modrinth"
-                    url = "https://api.modrinth.com/maven"
-                }
-            }
-            filter {
-                includeGroup "maven.modrinth"
-            }
-        }
+    // Hex Casting Dependencies
+    maven { url "https://maven.blamejared.com/" }
+    maven {
+        name "entity reach"
+        url "https://maven.jamieswhiteshirt.com/libs-release/"
     }
-
-    tasks.withType(JavaCompile) {
-        options.encoding = "UTF-8"
-        options.release = 17
+    maven { url "https://mvn.devos.one/snapshots/" }
+    maven {
+        name = 'Ladysnake Mods'
+        url = 'https://maven.ladysnake.org/releases'
     }
-
-    java {
-        java.toolchain.languageVersion = JavaLanguageVersion.of(17)
-        java.withSourcesJar()
-        java.withJavadocJar()
+    maven {
+        url = "https://maven.theillusivec4.top/"
     }
-
-    sourcesJar {
-        duplicatesStrategy 'exclude'
+    maven {
+        name = 'GeckoLib'
+        url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
     }
-
-    tasks.withType(JavaCompile).configureEach {
-        it.options.encoding = 'UTF-8'
-        it.options.release = 17
-    }
-
-    tasks.withType(GenerateModuleMetadata) {
-        enabled = false
-    }
-
-    processResources {
-        exclude '.cache'
-
-        def dependencyVersions = [
-            "version": project.version,
-            "architecturyVersion": project.architecturyVersion,
-            "fabricKotlinVersion": project.fabricKotlinVersion,
-            "fabricLoaderVersion": project.fabricLoaderVersion,
-            "forgeDependencyVersion": project.forgeDependencyVersion,
-            "forgeKotlinVersion": project.forgeKotlinVersion,
-            "hexcastingVersion": project.hexcastingVersion,
-            "minecraftVersion": project.minecraftVersion,
-        ]
-
-        inputs.properties dependencyVersions
-        filesMatching(["fabric.mod.json", "META-INF/mods.toml"]) {
-            expand dependencyVersions
-        }
-    }
-
-    processTestResources {
-        exclude '.cache'
-    }
+	maven {
+		name = "Modrinth"
+		url = "https://api.modrinth.com/maven"
+	}
 }
 
-ext.getArtifactId = { platform -> return "$modID-$platform-$minecraftVersion" }
+dependencies {
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
-ext.getLatestChangelog = {
-    Collection<String> lines = file("$rootDir/CHANGELOG.md").readLines()
-    String changelog = ""
-    Boolean atSegment = false
-    for (String line : lines) {
-        if (line.startsWith("## ")) {
-            if (atSegment) break // hit next segment
-            atSegment = true
-        }
-        if (atSegment) changelog += "$line\n"
-    }
-    return changelog.trim()
+	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+	modImplementation "net.fabricmc:fabric-language-kotlin:${project.fabric_kotlin_version}"
+
+	modImplementation "at.petra-k.paucal:paucal-common-$minecraft_version:$paucalVersion"
+    modImplementation "vazkii.patchouli:Patchouli:$minecraft_version-$patchouliVersion-FABRIC"
+	modImplementation("at.petra-k.hexcasting:hexcasting-fabric-$minecraft_version:$hexcastingVersion") {
+		exclude module: "phosphor"
+        exclude module: "lithium"
+		exclude module: "emi"
+	}
+	compileOnly(annotationProcessor("com.github.llamalad7.mixinextras:mixinextras-common:${mixinExtrasVersion}"))
 }
 
-tasks.register("viewLatestChangelog") {
-    group "documentation"
-    description "Print the topmost single version section from the full CHANGELOG.md file."
-    doLast {
-        println(getLatestChangelog())
-    }
+processResources {
+	inputs.property "version", project.version
+	filesMatching("fabric.mod.json") {
+		expand "version": project.version
+	}
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.release = 17
+}
+
+tasks.withType(KotlinCompile).configureEach {
+	kotlinOptions {
+		jvmTarget = 17
+	}
+}
+
+java {
+	withSourcesJar()
+	sourceCompatibility = JavaVersion.VERSION_17
+	targetCompatibility = JavaVersion.VERSION_17
+}
+
+jar {
+	from("LICENSE") {
+		rename { "${it}_${project.base.archivesName.get()}"}
+	}
+}
+
+publishing {
+	repositories {}
+	publications {
+		create("mavenJava", MavenPublication) {
+			from components.java
+		}
+	}
 }

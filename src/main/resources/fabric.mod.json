@@ -1,0 +1,35 @@
+{
+	"schemaVersion": 1,
+	"id": "hexical",
+	"version": "${version}",
+	"name": "Hexical",
+	"description": "A fun addon containing genie lamps, mage blocks, specks, world scrying, and more!",
+	"authors": [
+		"miyucomics"
+	],
+	"contact": {
+		"homepage": "https://miyucomics.github.io/hexical",
+		"sources": "https://github.com/miyucomics/hexical"
+	},
+	"license": "MIT",
+	"icon": "assets/hexical/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"miyucomics.hexical.HexicalMain"
+		],
+		"client": [
+			"miyucomics.hexical.HexicalClient"
+		]
+	},
+	"mixins": [
+		"hexical.mixins.json"
+	],
+	"depends": {
+		"minecraft": ">=1.19.2",
+		"fabricloader": ">=0.15.11",
+		"fabric-api": "*",
+		"fabric-language-kotlin": ">=1.11.0+kotlin.2.0.0",
+		"hexcasting": ">=0.10.3"
+	}
+}
