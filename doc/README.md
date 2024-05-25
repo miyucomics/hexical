@@ -34,7 +34,7 @@ For local testing, create a file called `.env` in the repo root following this t
 ```sh
 GITHUB_REPOSITORY=miyucomics/hexical
 GITHUB_SHA=main
-GITHUB_PAGES_URL=https://miyucomics.github.io/hexical
+GITHUB_PAGES_URL=https://miyucomics.github.io/hexical/
 ```
 
 Useful commands:
