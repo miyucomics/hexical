@@ -1,6 +1,5 @@
 package miyucomics.hexical.networking
 
-import at.petrak.hexcasting.api.utils.getSafe
 import at.petrak.hexcasting.common.network.IMessage
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.entities.LivingScrollEntity
@@ -27,7 +26,7 @@ class SpawnLivingScrollPacket(val inner: EntitySpawnS2CPacket, val pos: BlockPos
 		fun deserialize(buf: PacketByteBuf): SpawnLivingScrollPacket {
 			val inner = EntitySpawnS2CPacket(buf)
 			val pos = buf.readBlockPos()
-			val dir = Direction.values().getSafe(buf.readVarInt(), Direction.DOWN)
+			val dir = Direction.entries[buf.readVarInt()]
 			val blockSize = buf.readVarInt()
 			return SpawnLivingScrollPacket(inner, pos, dir, blockSize)
 		}
