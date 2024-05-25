@@ -50,6 +50,7 @@ object HexicalPatterns {
 		register("ingest", "aaqqadaa", HexDir.WEST, OpIngest())
 
 		register("get_dye", "weedwa", HexDir.NORTH_EAST, OpGetDye())
+		register("dye", "dwaqqw", HexDir.NORTH_WEST, OpDye())
 
 		register("dup_many", "waadadaa", HexDir.EAST, OpDupMany())
 		register("shuffle_pattern", "aqqqdae", HexDir.NORTH_EAST, OpShufflePattern())
