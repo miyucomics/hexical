@@ -15,7 +15,9 @@ import net.minecraft.block.SignBlock
 import net.minecraft.block.entity.SignBlockEntity
 import net.minecraft.entity.Entity
 import net.minecraft.entity.ItemEntity
+import net.minecraft.entity.passive.CatEntity
 import net.minecraft.entity.passive.SheepEntity
+import net.minecraft.entity.passive.WolfEntity
 import net.minecraft.item.BlockItem
 import net.minecraft.item.DyeItem
 import net.minecraft.server.world.ServerWorld
@@ -41,6 +43,7 @@ class OpGetDye : ConstMediaAction {
 
 	private fun processEntity(entity: Entity): Iota {
 		return when (entity) {
+			is CatEntity -> DyeIota(entity.collarColor)
 			is ItemEntity -> {
 				when (val item = entity.stack.item) {
 					is BlockItem -> getDyeFromBlock(item.block)
@@ -49,6 +52,7 @@ class OpGetDye : ConstMediaAction {
 				}
 			}
 			is SheepEntity -> DyeIota(entity.color)
+			is WolfEntity -> DyeIota(entity.collarColor)
 			else -> NullIota()
 		}
 	}
