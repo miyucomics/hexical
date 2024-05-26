@@ -1,0 +1,25 @@
+{
+	"name": "hexcasting.spell.hexical:greater_blink",
+	"icon": "minecraft:ender_eye",
+	"category": "hexcasting:patterns/great_spells",
+	"advancement": "hexcasting:root",
+	"sortnum": 5,
+	"pages": [
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.greater_blink.0"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:greater_blink",
+			"anchor": "hexical:greater_blink",
+			"input": "vector",
+			"output": "",
+			"text": "hexical.page.greater_blink.desc"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.greater_blink.1"
+		}
+	]
+}
