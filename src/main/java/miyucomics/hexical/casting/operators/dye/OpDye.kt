@@ -15,7 +15,9 @@ import net.minecraft.block.ShulkerBoxBlock
 import net.minecraft.block.StainedGlassPaneBlock
 import net.minecraft.block.entity.ShulkerBoxBlockEntity
 import net.minecraft.entity.mob.ShulkerEntity
+import net.minecraft.entity.passive.CatEntity
 import net.minecraft.entity.passive.SheepEntity
+import net.minecraft.entity.passive.WolfEntity
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.util.DyeColor
 import net.minecraft.util.math.BlockPos
@@ -30,8 +32,10 @@ class OpDye : SpellAction {
 				val entity = args.getEntity(0, argc)
 				ctx.assertEntityInRange(entity)
 				return when (entity) {
+					is CatEntity -> Triple(CatSpell(entity, dye), cost, listOf())
 					is SheepEntity -> Triple(SheepSpell(entity, dye), cost, listOf())
 					is ShulkerEntity -> Triple(ShulkerSpell(entity, dye), cost, listOf())
+					is WolfEntity -> Triple(WolfSpell(entity, dye), cost, listOf())
 					else -> throw DyeableMishap()
 				}
 			}
@@ -86,6 +90,18 @@ class OpDye : SpellAction {
 	private data class ShulkerSpell(val shulker: ShulkerEntity, val dye: DyeColor) : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
 			shulker.color = dye
+		}
+	}
+
+	private data class CatSpell(val cat: CatEntity, val dye: DyeColor) : RenderedSpell {
+		override fun cast(ctx: CastingContext) {
+			cat.collarColor = dye
+		}
+	}
+
+	private data class WolfSpell(val wolf: WolfEntity, val dye: DyeColor) : RenderedSpell {
+		override fun cast(ctx: CastingContext) {
+			wolf.collarColor = dye
 		}
 	}
 }

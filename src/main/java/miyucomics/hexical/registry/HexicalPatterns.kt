@@ -46,6 +46,8 @@ object HexicalPatterns {
 
 	@JvmStatic
 	fun init() {
+		registerPerWorld("greater_blink", "wqawawaqwqwqawawaqw", HexDir.SOUTH_WEST, OpGreaterBlink())
+
 		register("wristpocket", "aaqqa", HexDir.WEST, OpWristpocket())
 		register("wristpocket_item", "aaqqada", HexDir.WEST, OpGetWristpocket(0))
 		register("wristpocket_count", "aaqqaaw", HexDir.WEST, OpGetWristpocket(1))
@@ -183,5 +185,5 @@ object HexicalPatterns {
 	}
 
 	private fun register(name: String, signature: String, startDir: HexDir, action: Action) = PATTERNS.add(Triple(HexPattern.fromAngles(signature, startDir), HexicalMain.id(name), action))
-	private fun registerPerWorld(pattern: HexPattern, name: String, action: Action) = PER_WORLD_PATTERNS.add(Triple(pattern, HexicalMain.id(name), action))
+	private fun registerPerWorld(name: String, signature: String, startDir: HexDir, action: Action) = PER_WORLD_PATTERNS.add(Triple(HexPattern.fromAngles(signature, startDir), HexicalMain.id(name), action))
 }
