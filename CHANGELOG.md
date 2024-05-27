@@ -1,17 +1,18 @@
 # Changelog
 
 ## 1.3.0
-- added akashic terminal
 - added hexbursts
 - added hextitos
 - added wristpocket spell
 - added Magic Missile spell
-- added akashic stashing patterns
 - added dye iota and patterns to get and set dyes
 - added internal iota storage to hand lamp and patterns to interact with it
+- added Similarity Distillation - get if two iota are of the same type
+- added Congruence Distillation - get if two patterns are the same, regardless of orientation
 - added Charge, Retreat, Dodge, and Evade reflections, which return how long you've been pressing the w, s, a, or d key respectively
 - added mishap to Chorus Blink if you don't have chorus fruit in your inventory
 - changed Identify pattern to have ambit limitation
+- changed Make Genie spell to take a number representing media to draw from your inventory
 - fixed Janus' Gambit to actually terminate the hex now
 - fixed specks being slightly off-center
 - overhauled project structure completely
