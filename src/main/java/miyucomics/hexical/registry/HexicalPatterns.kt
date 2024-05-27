@@ -6,36 +6,36 @@ import at.petrak.hexcasting.api.spell.math.HexDir
 import at.petrak.hexcasting.api.spell.math.HexPattern
 import at.petrak.hexcasting.common.casting.operators.selectors.OpGetEntitiesBy
 import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.casting.operators.*
-import miyucomics.hexical.casting.operators.basic.OpCongruentPattern
-import miyucomics.hexical.casting.operators.basic.OpDupMany
-import miyucomics.hexical.casting.operators.basic.OpShufflePattern
-import miyucomics.hexical.casting.operators.basic.OpSimilar
-import miyucomics.hexical.casting.operators.eval.OpJanus
-import miyucomics.hexical.casting.operators.eval.OpNephthys
-import miyucomics.hexical.casting.operators.eval.OpSisyphus
-import miyucomics.hexical.casting.operators.eval.OpThemis
-import miyucomics.hexical.casting.operators.getters.*
-import miyucomics.hexical.casting.operators.grimoire.*
-import miyucomics.hexical.casting.operators.identifier.OpIdentify
-import miyucomics.hexical.casting.operators.identifier.OpRecognize
-import miyucomics.hexical.casting.operators.lamp.*
-import miyucomics.hexical.casting.operators.specks.*
-import miyucomics.hexical.casting.operators.conjured_staff.OpReadStaff
-import miyucomics.hexical.casting.operators.conjured_staff.OpWriteStaff
-import miyucomics.hexical.casting.operators.circle.OpDisplace
-import miyucomics.hexical.casting.operators.dye.OpDye
-import miyucomics.hexical.casting.operators.dye.OpGetDye
-import miyucomics.hexical.casting.operators.mage_blocks.OpConjureMageBlock
-import miyucomics.hexical.casting.operators.mage_blocks.OpModifyMageBlock
-import miyucomics.hexical.casting.operators.conjured_staff.OpConjureStaff
-import miyucomics.hexical.casting.operators.telepathy.OpGetTelepathy
-import miyucomics.hexical.casting.operators.telepathy.OpHallucinateSound
-import miyucomics.hexical.casting.operators.telepathy.OpSendTelepathy
-import miyucomics.hexical.casting.operators.telepathy.OpShoutTelepathy
-import miyucomics.hexical.casting.operators.wristpocket.OpIngest
-import miyucomics.hexical.casting.operators.wristpocket.OpMageHand
-import miyucomics.hexical.casting.operators.wristpocket.OpWristpocket
+import miyucomics.hexical.casting.patterns.*
+import miyucomics.hexical.casting.patterns.basic.OpCongruentPattern
+import miyucomics.hexical.casting.patterns.basic.OpDupMany
+import miyucomics.hexical.casting.patterns.basic.OpShufflePattern
+import miyucomics.hexical.casting.patterns.basic.OpSimilar
+import miyucomics.hexical.casting.patterns.eval.OpJanus
+import miyucomics.hexical.casting.patterns.eval.OpNephthys
+import miyucomics.hexical.casting.patterns.eval.OpSisyphus
+import miyucomics.hexical.casting.patterns.eval.OpThemis
+import miyucomics.hexical.casting.patterns.getters.*
+import miyucomics.hexical.casting.patterns.grimoire.*
+import miyucomics.hexical.casting.patterns.identifier.OpIdentify
+import miyucomics.hexical.casting.patterns.identifier.OpRecognize
+import miyucomics.hexical.casting.patterns.lamp.*
+import miyucomics.hexical.casting.patterns.specks.*
+import miyucomics.hexical.casting.patterns.conjured_staff.OpReadStaff
+import miyucomics.hexical.casting.patterns.conjured_staff.OpWriteStaff
+import miyucomics.hexical.casting.patterns.circle.OpDisplace
+import miyucomics.hexical.casting.patterns.dye.OpDye
+import miyucomics.hexical.casting.patterns.dye.OpGetDye
+import miyucomics.hexical.casting.patterns.mage_blocks.OpConjureMageBlock
+import miyucomics.hexical.casting.patterns.mage_blocks.OpModifyMageBlock
+import miyucomics.hexical.casting.patterns.conjured_staff.OpConjureStaff
+import miyucomics.hexical.casting.patterns.telepathy.OpGetTelepathy
+import miyucomics.hexical.casting.patterns.telepathy.OpHallucinateSound
+import miyucomics.hexical.casting.patterns.telepathy.OpSendTelepathy
+import miyucomics.hexical.casting.patterns.telepathy.OpShoutTelepathy
+import miyucomics.hexical.casting.patterns.wristpocket.OpIngest
+import miyucomics.hexical.casting.patterns.wristpocket.OpMageHand
+import miyucomics.hexical.casting.patterns.wristpocket.OpWristpocket
 import miyucomics.hexical.entities.SpeckEntity
 import net.minecraft.sound.SoundEvents
 import net.minecraft.util.Identifier
@@ -86,7 +86,7 @@ object HexicalPatterns {
 		register("kill_speck", "adeaqde", HexDir.SOUTH_WEST, OpKillSpeck())
 		register("size_speck", "adeeqed", HexDir.SOUTH_WEST, OpSizeSpeck())
 		register("thickness_speck", "adeeqw", HexDir.SOUTH_WEST, OpThicknessSpeck())
-		register("z_rotation_speck", "adeqqqqq", HexDir.SOUTH_WEST, OpZRotationSpeck())
+		register("z_rotation_speck", "adeqqqqq", HexDir.SOUTH_WEST, OpRollSpeck())
 		register("zone_speck", "qqqqqwdeddwqde", HexDir.SOUTH_EAST, OpGetEntitiesBy({ entity -> entity is SpeckEntity }, false))
 
 		register("get_telepathy", "wqqadaw", HexDir.EAST, OpGetTelepathy())

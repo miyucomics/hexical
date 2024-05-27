@@ -56,7 +56,7 @@ public class MinecraftClientMixin {
 		if (hexical$clicks.size() == rank) {
 			hexical$timer = 0;
 			PacketByteBuf buf = PacketByteBufs.create();
-			player.world.playSound(player, player.getX(), player.getY(), player.getZ(), HexSounds.CAST_HERMES, SoundCategory.PLAYERS, 1f, 1f);
+			player.world.playSound(player, player.getX(), player.getY(), player.getZ(), HexSounds.CAST_HERMES, SoundCategory.PLAYERS, 0.25f, 1f);
 			buf.writeInt(rank);
 			for (int i = 0; i < rank; i++)
 				buf.writeBoolean(hexical$clicks.get(i));

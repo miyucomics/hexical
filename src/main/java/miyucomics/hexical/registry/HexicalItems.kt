@@ -30,6 +30,7 @@ object HexicalItems {
 		Registry.register(Registry.ITEM, HexicalMain.id("conjured_staff"), CONJURED_STAFF_ITEM)
 		Registry.register(Registry.ITEM, HexicalMain.id("hexburst"), HEXBURST_ITEM)
 		Registry.register(Registry.ITEM, HexicalMain.id("hextito"), HEXTITO_ITEM)
+		Registry.register(Registry.ITEM, HexicalMain.id("memory_berries"), MemoryBerriesItem())
 		Registry.register(Registry.ITEM, HexicalMain.id("mage_block"), BlockItem(HexicalBlocks.MAGE_BLOCK, Settings()))
 	}
 }
