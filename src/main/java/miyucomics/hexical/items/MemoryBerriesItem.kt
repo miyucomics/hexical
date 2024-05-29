@@ -9,7 +9,7 @@ import net.minecraft.item.ItemStack
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.world.World
 
-class MemoryBerriesItem : Item(Settings().maxCount(64).group(HexicalItems.HEXICAL_GROUP).food(FoodComponent.Builder().alwaysEdible().snack().build())) {
+class MemoryBerriesItem : Item(Settings().maxCount(16).group(HexicalItems.HEXICAL_GROUP).food(FoodComponent.Builder().alwaysEdible().snack().build())) {
 	override fun getMaxUseTime(stack: ItemStack?) = 10
 	override fun finishUsing(stack: ItemStack, world: World, user: LivingEntity): ItemStack {
 		if (world.isClient)
