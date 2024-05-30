@@ -13,10 +13,12 @@ import net.minecraft.block.BlockState
 import net.minecraft.block.CandleBlock
 import net.minecraft.block.ShulkerBoxBlock
 import net.minecraft.block.StainedGlassPaneBlock
+import net.minecraft.block.entity.ShulkerBoxBlockEntity
 import net.minecraft.entity.mob.ShulkerEntity
 import net.minecraft.entity.passive.CatEntity
 import net.minecraft.entity.passive.SheepEntity
 import net.minecraft.entity.passive.WolfEntity
+import net.minecraft.nbt.NbtCompound
 import net.minecraft.util.DyeColor
 import net.minecraft.util.math.BlockPos
 
@@ -59,6 +61,10 @@ class OpDye : SpellAction {
 						.with(CandleBlock.CANDLES, state.get(CandleBlock.CANDLES))
 				)
 				is ShulkerBoxBlock -> {
+					val blockEntity = ctx.world.getBlockEntity(position)!! as ShulkerBoxBlockEntity
+					val inventoryNbt = NbtCompound()
+					blockEntity.readInventoryNbt(inventoryNbt)
+					print(inventoryNbt)
 					ctx.world.setBlockState(
 						position,
 						DyeData.getNewBlock(state.block, dye)
