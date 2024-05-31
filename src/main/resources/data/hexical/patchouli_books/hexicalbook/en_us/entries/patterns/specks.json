@@ -35,11 +35,11 @@
 		},
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:z_rotation_specklike",
-			"anchor": "hexical:z_rotation_specklike",
+			"op_id": "hexical:roll_specklike",
+			"anchor": "hexical:roll_specklike",
 			"input": "speck entity, number",
 			"output": "",
-			"text": "hexical.page.z_rotation_specklike"
+			"text": "hexical.page.roll_specklike"
 		},
 		{
 			"type": "hexcasting:pattern",
