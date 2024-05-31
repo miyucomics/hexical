@@ -79,7 +79,6 @@ object HexicalPatterns {
 		register("conjure_hexburst", "edeqaawaa", HexDir.SOUTH_WEST, OpConjureHexburst())
 		register("conjure_hextito", "edeaddadd", HexDir.SOUTH_WEST, OpConjureHextito())
 
-		register("conjure_speck", "ade", HexDir.SOUTH_WEST, OpConjureSpeck())
 		register("kill_specklike", "adeaqde", HexDir.SOUTH_WEST, OpKillSpecklike())
 		register("move_specklike", "adeqaa", HexDir.SOUTH_WEST, OpSpecklikeProperty(0))
 		register("rotate_specklike", "adeaw", HexDir.SOUTH_WEST, OpSpecklikeProperty(1))
@@ -87,8 +86,9 @@ object HexicalPatterns {
 		register("size_specklike", "adeeqed", HexDir.SOUTH_WEST, OpSpecklikeProperty(3))
 		register("thickness_specklike", "adeeqw", HexDir.SOUTH_WEST, OpSpecklikeProperty(4))
 		register("lifetime_specklike", "adeqqaawdd", HexDir.SOUTH_WEST, OpSpecklikeProperty(5))
-		register("zone_speck", "qqqqqwdeddwqde", HexDir.SOUTH_EAST, OpGetEntitiesBy({ entity -> entity is Specklike }, false))
+		register("zone_specklike", "qqqqqwdeddwqde", HexDir.SOUTH_EAST, OpGetEntitiesBy({ entity -> entity is Specklike }, false))
 
+		register("conjure_speck", "ade", HexDir.SOUTH_WEST, OpConjureSpeck())
 		register("iota_speck", "adeeaqa", HexDir.SOUTH_WEST, OpIotaSpeck())
 
 		register("get_telepathy", "wqqadaw", HexDir.EAST, OpGetTelepathy())
