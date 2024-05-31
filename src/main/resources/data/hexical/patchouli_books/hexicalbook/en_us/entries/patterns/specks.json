@@ -19,27 +19,27 @@
 		},
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:move_speck",
-			"anchor": "hexical:move_speck",
+			"op_id": "hexical:move_specklike",
+			"anchor": "hexical:move_specklike",
 			"input": "speck entity, vector",
 			"output": "",
-			"text": "hexical.page.move_speck"
+			"text": "hexical.page.move_specklike"
 		},
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:rotate_speck",
-			"anchor": "hexical:rotate_speck",
+			"op_id": "hexical:rotate_specklike",
+			"anchor": "hexical:rotate_specklike",
 			"input": "speck entity, vector",
 			"output": "",
-			"text": "hexical.page.rotate_speck"
+			"text": "hexical.page.rotate_specklike"
 		},
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:z_rotation_speck",
-			"anchor": "hexical:z_rotation_speck",
+			"op_id": "hexical:z_rotation_specklike",
+			"anchor": "hexical:z_rotation_specklike",
 			"input": "speck entity, number",
 			"output": "",
-			"text": "hexical.page.z_rotation_speck"
+			"text": "hexical.page.z_rotation_specklike"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -51,43 +51,43 @@
 		},
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:lifetime_speck",
-			"anchor": "hexical:lifetime_speck",
+			"op_id": "hexical:lifetime_specklike",
+			"anchor": "hexical:lifetime_specklike",
 			"input": "speck entity, number",
 			"output": "",
-			"text": "hexical.page.lifetime_speck"
+			"text": "hexical.page.lifetime_specklike"
 		},
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:size_speck",
-			"anchor": "hexical:size_speck",
+			"op_id": "hexical:size_specklike",
+			"anchor": "hexical:size_specklike",
 			"input": "speck entity, number",
 			"output": "",
-			"text": "hexical.page.size_speck"
+			"text": "hexical.page.size_specklike"
 		},
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:thickness_speck",
-			"anchor": "hexical:thickness_speck",
+			"op_id": "hexical:thickness_specklike",
+			"anchor": "hexical:thickness_specklike",
 			"input": "speck entity, number",
 			"output": "",
-			"text": "hexical.page.thickness_speck"
+			"text": "hexical.page.thickness_specklike"
 		},
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:kill_speck",
-			"anchor": "hexical:kill_speck",
+			"op_id": "hexical:kill_specklike",
+			"anchor": "hexical:kill_specklike",
 			"input": "speck entity",
 			"output": "",
-			"text": "hexical.page.kill_speck"
+			"text": "hexical.page.kill_specklike"
 		},
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:zone_speck",
-			"anchor": "hexical:zone_speck",
+			"op_id": "hexical:zone_specklike",
+			"anchor": "hexical:zone_specklike",
 			"input": "vector, number",
 			"output": "[entity]",
-			"text": "hexical.page.zone_speck"
+			"text": "hexical.page.zone_specklike"
 		}
 	]
 }
