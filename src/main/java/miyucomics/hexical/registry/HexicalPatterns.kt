@@ -37,6 +37,7 @@ import miyucomics.hexical.casting.patterns.wristpocket.OpIngest
 import miyucomics.hexical.casting.patterns.wristpocket.OpMageHand
 import miyucomics.hexical.casting.patterns.wristpocket.OpWristpocket
 import miyucomics.hexical.entities.SpeckEntity
+import miyucomics.hexical.interfaces.Specklike
 import net.minecraft.sound.SoundEvents
 import net.minecraft.util.Identifier
 
@@ -79,15 +80,16 @@ object HexicalPatterns {
 		register("conjure_hextito", "edeaddadd", HexDir.SOUTH_WEST, OpConjureHextito())
 
 		register("conjure_speck", "ade", HexDir.SOUTH_WEST, OpConjureSpeck())
-		register("move_speck", "adeqaa", HexDir.SOUTH_WEST, OpMoveSpeck())
-		register("rotate_speck", "adeaw", HexDir.SOUTH_WEST, OpRotateSpeck())
+		register("kill_specklike", "adeaqde", HexDir.SOUTH_WEST, OpKillSpecklike())
+		register("move_specklike", "adeqaa", HexDir.SOUTH_WEST, OpSpecklikeProperty(0))
+		register("rotate_specklike", "adeaw", HexDir.SOUTH_WEST, OpSpecklikeProperty(1))
+		register("z_rotation_specklike", "adeqqqqq", HexDir.SOUTH_WEST, OpSpecklikeProperty(2))
+		register("size_specklike", "adeeqed", HexDir.SOUTH_WEST, OpSpecklikeProperty(3))
+		register("thickness_specklike", "adeeqw", HexDir.SOUTH_WEST, OpSpecklikeProperty(4))
+		register("lifetime_specklike", "adeqqaawdd", HexDir.SOUTH_WEST, OpSpecklikeProperty(5))
+		register("zone_speck", "qqqqqwdeddwqde", HexDir.SOUTH_EAST, OpGetEntitiesBy({ entity -> entity is Specklike }, false))
+
 		register("iota_speck", "adeeaqa", HexDir.SOUTH_WEST, OpIotaSpeck())
-		register("lifetime_speck", "adeqqaawdd", HexDir.SOUTH_WEST, OpLifetimeSpeck())
-		register("kill_speck", "adeaqde", HexDir.SOUTH_WEST, OpKillSpeck())
-		register("size_speck", "adeeqed", HexDir.SOUTH_WEST, OpSizeSpeck())
-		register("thickness_speck", "adeeqw", HexDir.SOUTH_WEST, OpThicknessSpeck())
-		register("z_rotation_speck", "adeqqqqq", HexDir.SOUTH_WEST, OpRollSpeck())
-		register("zone_speck", "qqqqqwdeddwqde", HexDir.SOUTH_EAST, OpGetEntitiesBy({ entity -> entity is SpeckEntity }, false))
 
 		register("get_telepathy", "wqqadaw", HexDir.EAST, OpGetTelepathy())
 		register("send_telepathy", "qqqqwaqa", HexDir.EAST, OpSendTelepathy())
