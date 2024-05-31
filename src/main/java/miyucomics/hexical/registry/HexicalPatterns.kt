@@ -82,7 +82,7 @@ object HexicalPatterns {
 		register("kill_specklike", "adeaqde", HexDir.SOUTH_WEST, OpKillSpecklike())
 		register("move_specklike", "adeqaa", HexDir.SOUTH_WEST, OpSpecklikeProperty(0))
 		register("rotate_specklike", "adeaw", HexDir.SOUTH_WEST, OpSpecklikeProperty(1))
-		register("z_rotation_specklike", "adeqqqqq", HexDir.SOUTH_WEST, OpSpecklikeProperty(2))
+		register("roll_specklike", "adeqqqqq", HexDir.SOUTH_WEST, OpSpecklikeProperty(2))
 		register("size_specklike", "adeeqed", HexDir.SOUTH_WEST, OpSpecklikeProperty(3))
 		register("thickness_specklike", "adeeqw", HexDir.SOUTH_WEST, OpSpecklikeProperty(4))
 		register("lifetime_specklike", "adeqqaawdd", HexDir.SOUTH_WEST, OpSpecklikeProperty(5))
