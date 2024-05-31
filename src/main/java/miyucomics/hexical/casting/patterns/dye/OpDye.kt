@@ -3,21 +3,23 @@ package miyucomics.hexical.casting.patterns.dye
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.*
 import at.petrak.hexcasting.api.spell.casting.CastingContext
+import at.petrak.hexcasting.api.spell.casting.sideeffects.OperatorSideEffect
 import at.petrak.hexcasting.api.spell.iota.EntityIota
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.Vec3Iota
 import miyucomics.hexical.casting.mishaps.DyeableMishap
 import miyucomics.hexical.data.DyeData
 import miyucomics.hexical.iota.getDye
-import net.minecraft.block.BlockState
-import net.minecraft.block.CandleBlock
-import net.minecraft.block.ShulkerBoxBlock
-import net.minecraft.block.StainedGlassPaneBlock
+import net.minecraft.block.*
 import net.minecraft.block.entity.ShulkerBoxBlockEntity
+import net.minecraft.entity.ItemEntity
 import net.minecraft.entity.mob.ShulkerEntity
 import net.minecraft.entity.passive.CatEntity
 import net.minecraft.entity.passive.SheepEntity
 import net.minecraft.entity.passive.WolfEntity
+import net.minecraft.item.BlockItem
+import net.minecraft.item.DyeItem
+import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.util.DyeColor
 import net.minecraft.util.math.BlockPos
@@ -35,6 +37,16 @@ class OpDye : SpellAction {
 					is CatEntity -> Triple(CatSpell(entity, dye), cost, listOf())
 					is SheepEntity -> Triple(SheepSpell(entity, dye), cost, listOf())
 					is ShulkerEntity -> Triple(ShulkerSpell(entity, dye), cost, listOf())
+					is ItemEntity -> {
+						when (val item = entity.stack.item) {
+							is BlockItem -> {
+								if (DyeData.isDyeable(item.block))
+									Triple(BlockItemSpell(entity, item.block, dye), cost, listOf<ParticleSpray>())
+								throw DyeableMishap()
+							}
+							else -> throw DyeableMishap()
+						}
+					}
 					is WolfEntity -> Triple(WolfSpell(entity, dye), cost, listOf())
 					else -> throw DyeableMishap()
 				}
@@ -82,6 +94,13 @@ class OpDye : SpellAction {
 				)
 				else -> ctx.world.setBlockState(position, DyeData.getNewBlock(state.block, dye))
 			}
+		}
+	}
+
+	private data class BlockItemSpell(val item: ItemEntity, val block: Block, val dye: DyeColor) : RenderedSpell {
+		override fun cast(ctx: CastingContext) {
+			val newBlock = DyeData.getNewBlock(block, dye).block
+			item.stack = ItemStack(BlockItem.fromBlock(newBlock), item.stack.count)
 		}
 	}
 
