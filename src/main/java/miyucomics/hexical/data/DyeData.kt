@@ -13,8 +13,8 @@ import java.util.*
 import kotlin.collections.HashMap
 
 object DyeData {
-	val blocks = HashMap<String, DyeColor>()
-	val families = HashMap<String, EnumMap<DyeColor, String>>()
+	private val blocks = HashMap<String, DyeColor>()
+	private val families = HashMap<String, EnumMap<DyeColor, String>>()
 
 	fun isDyeable(block: Block): Boolean {
 		return blocks.containsKey(Registry.BLOCK.getId(block).toString())
