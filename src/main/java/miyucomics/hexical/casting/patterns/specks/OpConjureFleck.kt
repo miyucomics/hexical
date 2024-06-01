@@ -1,5 +1,6 @@
 package miyucomics.hexical.casting.patterns.specks
 
+import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.ConstMediaAction
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.getList
@@ -17,15 +18,20 @@ import net.minecraft.util.math.Vec2f
 
 class OpConjureFleck : ConstMediaAction {
 	override val argc = 3
+	override val mediaCost: Int = MediaConstants.DUST_UNIT / 2
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
-		val points = args.getList(0, argc)
-		val constructedPoints = mutableListOf<Vec2f>()
-		for (point in points) {
+		val design = args.getList(0, argc)
+		if (design.size() > 25)
+			throw MishapInvalidIota.of(args[0], 0, "fleck_vector_list")
+		val points = mutableListOf<Vec2f>()
+		for (point in design) {
 			if (point.type != Vec3Iota.TYPE)
-				throw MishapInvalidIota.of(args[0], 0, "vector_list")
+				throw MishapInvalidIota.of(args[0], 0, "fleck_vector_list")
 			else {
 				val vector = (point as Vec3Iota).vec3
-				constructedPoints.add(Vec2f(vector.x.toFloat(), vector.y.toFloat()))
+				if (vector.lengthSquared() > 3*3)
+					throw MishapInvalidIota.of(args[0], 0, "fleck_vector_list")
+				points.add(Vec2f(vector.x.toFloat(), vector.y.toFloat()))
 			}
 		}
 
@@ -36,7 +42,7 @@ class OpConjureFleck : ConstMediaAction {
 		fleck.setPosition(position)
 		fleck.lookAt(EntityAnchorArgumentType.EntityAnchor.FEET, fleck.pos.add(rotation))
 		fleck.setPigment(IXplatAbstractions.INSTANCE.getColorizer(ctx.caster))
-		fleck.setShape(constructedPoints)
+		fleck.setShape(points)
 		fleck.setSize(1f)
 		fleck.setThickness(1f)
 		ctx.world.spawnEntity(fleck)

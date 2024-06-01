@@ -17,6 +17,7 @@
 	"advancements.hexical.hallucinate.description": "Play a sound only you can hear!",
 
 	"block.hexical.mage_block": "Mage Block",
+	"entity.hexical.fleck": "Fleck",
 	"entity.hexical.speck": "Speck",
 	"key.categories.hexical": "Hexical",
 	"key.hexical.telepathy": "Telepathy",
@@ -39,6 +40,8 @@
 	"hexcasting.mishap.bad_item.lamp": "an empty lamp",
 	"hexcasting.mishap.bad_item.lamp_full": "a lamp with media",
 	"hexcasting.mishap.bad_item.lamp_flay": "a Journeyman or greater level villager",
+	"hexcasting.mishap.bad_item.specklike": "a specklike entity",
+	"hexcasting.mishap.bad_item.fleck": "a fleck",
 	"hexcasting.mishap.bad_item.speck": "a speck",
 	"hexcasting.mishap.bad_item.living_scroll": "a living scroll",
 	"hexcasting.mishap.invalid_value.entity_or_vector": "an entity or a vector",
@@ -49,6 +52,7 @@
 	"hexcasting.mishap.invalid_value.potion_holding": "a food, potion, or tipped arrow item entity",
 	"hexcasting.mishap.invalid_value.identifiable": "an identifiable target",
 	"hexcasting.mishap.invalid_value.recognizable": "a target with extra information",
+	"hexcasting.mishap.invalid_value.fleck_vector_list": "a list of up to 24 vectors with magnitudes less than 3",
 	"hexcasting.mishap.hexical:can_not_dye": "Expected a dyeable target",
 	"hexcasting.mishap.hexical:needs_lamp": "Expected to be cast by a Genie Lamp.",
 	"hexcasting.mishap.hexical:needs_chorus_fruit": "Needs chorus fruit within inventory.",
@@ -133,7 +137,10 @@
 	"hexcasting.spell.hexical:write_staff": "Staff Gambit",
 
 	"hexcasting.spell.hexical:conjure_speck": "Conjure Speck",
-	"hexical.page.conjure_speck": "Conjures a speck with the iota, position, and rotation. Costs one-hundredth of a dust.",
+	"hexical.page.conjure_speck": "Conjures a speck with the iota, position, and rotation. Costs one-hundredth of a dust. Pushes the speck iota to the stack.",
+	"hexcasting.spell.hexical:conjure_fleck": "Conjure Fleck",
+	"hexical.page.conjure_fleck": "Conjures a fleck with the iota, position, and rotation. Costs half of a dust. Pushes the fleck iota to the stack.",
+	"hexical.page.conjure_fleck.0": "Flecks are special kind of speck, but rather than displaying an iota, they accept a list of up to 24 vectors. The z value is discarded while the x and y values are used to determine points, with a line connecting adjacent ones.$(br2)Each vector must have a magnitude of three or less.",
 	"hexcasting.spell.hexical:iota_speck": "Iota Speck",
 	"hexical.page.iota_speck": "Changes the speck's iota.",
 
