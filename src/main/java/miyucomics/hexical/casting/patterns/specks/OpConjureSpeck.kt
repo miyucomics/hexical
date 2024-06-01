@@ -1,5 +1,6 @@
 package miyucomics.hexical.casting.patterns.specks
 
+import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.ConstMediaAction
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.getVec3
@@ -13,6 +14,7 @@ import net.minecraft.command.argument.EntityAnchorArgumentType
 
 class OpConjureSpeck : ConstMediaAction {
 	override val argc = 3
+	override val mediaCost: Int = MediaConstants.DUST_UNIT / 100
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
 		val iota = args[0]
 		val position = args.getVec3(1, argc)

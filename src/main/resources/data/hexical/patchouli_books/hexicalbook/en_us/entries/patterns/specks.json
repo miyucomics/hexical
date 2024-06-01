@@ -19,6 +19,18 @@
 		},
 		{
 			"type": "hexcasting:pattern",
+			"op_id": "hexical:conjure_fleck",
+			"anchor": "hexical:conjure_fleck",
+			"input": "list, vector, vector",
+			"output": "entity",
+			"text": "hexical.page.conjure_fleck"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.conjure_fleck.0"
+		},
+		{
+			"type": "hexcasting:pattern",
 			"op_id": "hexical:move_specklike",
 			"anchor": "hexical:move_specklike",
 			"input": "speck entity, vector",

@@ -89,6 +89,7 @@ object HexicalPatterns {
 		register("zone_specklike", "qqqqqwdeddwqde", HexDir.SOUTH_EAST, OpGetEntitiesBy({ entity -> entity is Specklike }, false))
 
 		register("conjure_speck", "ade", HexDir.SOUTH_WEST, OpConjureSpeck())
+		register("conjure_fleck", "aedwwd", HexDir.SOUTH_WEST, OpConjureFleck())
 		register("iota_speck", "adeeaqa", HexDir.SOUTH_WEST, OpIotaSpeck())
 
 		register("get_telepathy", "wqqadaw", HexDir.EAST, OpGetTelepathy())
