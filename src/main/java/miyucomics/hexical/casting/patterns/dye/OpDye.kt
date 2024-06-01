@@ -41,8 +41,9 @@ class OpDye : SpellAction {
 						when (val item = entity.stack.item) {
 							is BlockItem -> {
 								if (DyeData.isDyeable(item.block))
-									Triple(BlockItemSpell(entity, item.block, dye), cost, listOf<ParticleSpray>())
-								throw DyeableMishap()
+									Triple(BlockItemSpell(entity, item.block, dye), cost, listOf())
+								else
+									throw DyeableMishap()
 							}
 							else -> throw DyeableMishap()
 						}
@@ -99,8 +100,9 @@ class OpDye : SpellAction {
 
 	private data class BlockItemSpell(val item: ItemEntity, val block: Block, val dye: DyeColor) : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
-			val newBlock = DyeData.getNewBlock(block, dye).block
-			item.stack = ItemStack(BlockItem.fromBlock(newBlock), item.stack.count)
+			val newStack = ItemStack(DyeData.getNewBlock(block, dye).block.asItem(), item.stack.count)
+			newStack.nbt = item.stack.nbt
+			item.stack = newStack
 		}
 	}
 

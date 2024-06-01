@@ -133,7 +133,7 @@
 	"hexcasting.spell.hexical:write_staff": "Staff Gambit",
 
 	"hexcasting.spell.hexical:conjure_speck": "Conjure Speck",
-	"hexical.page.conjure_speck": "Conjures a speck with the iota, position, and rotation. Costs one-hundredth of a dust.$(br2)$(o)Because you saw things from every angle, you understood them for what they really were.$()",
+	"hexical.page.conjure_speck": "Conjures a speck with the iota, position, and rotation. Costs one-hundredth of a dust.",
 	"hexcasting.spell.hexical:iota_speck": "Iota Speck",
 	"hexical.page.iota_speck": "Changes the speck's iota.",
 
