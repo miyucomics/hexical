@@ -10,12 +10,14 @@
 - added Similarity Distillation - get if two iota are of the same type
 - added Congruence Distillation - get if two patterns are the same, regardless of orientation
 - added Charge, Retreat, Dodge, and Evade reflections, which return how long you've been pressing the w, s, a, or d key respectively
-- added Memory Berries that erase the most recent pattern of an unclosed Introspection, useful for small mistakes
+- added flecks: similar to specks, but they use a list of vectors to determine their shape
 - added mishap to Chorus Blink if you don't have chorus fruit in your inventory
 - changed Identify pattern to have ambit limitation
 - changed Make Genie spell to take a number representing media to draw from your inventory
+- dropped support for Forge ( not that it worked on Forge to begin with )
 - fixed Janus' Gambit to actually terminate the hex now
 - fixed specks being slightly off-center
+- made Conjure Speck spell cost the right amount
 - overhauled project structure completely
 - updated documentation
 - removed casting sounds from conjured staves and replaced it with pattern drawing sounds

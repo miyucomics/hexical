@@ -85,6 +85,7 @@ class FleckEntity(entityType: EntityType<FleckEntity?>?, world: World?) : Entity
 		}
 		serialized.put("points", list)
 		shape = serialized
+		dataTracker.set(shapeDataTracker, serialized)
 	}
 
 	fun getShape(): List<Vec2f> {
