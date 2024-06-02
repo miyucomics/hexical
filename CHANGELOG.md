@@ -5,22 +5,25 @@
 - added hextitos
 - added wristpocket spell
 - added Magic Missile spell
-- added dye iota and patterns to get and set dyes
+- added dye iota and patterns to get and change dyes
+- added data-driven way to specify targets for dye spell
 - added internal iota storage to hand lamp and patterns to interact with it
+- added flecks: similar to specks, but they use a list of vectors to determine their shape
 - added Similarity Distillation - get if two iota are of the same type
 - added Congruence Distillation - get if two patterns are the same, regardless of orientation
-- added Charge, Retreat, Dodge, and Evade reflections, which return how long you've been pressing the w, s, a, or d key respectively
-- added flecks: similar to specks, but they use a list of vectors to determine their shape
+- added Greater Blink spell: Blink with a relative positional and rotational offset for much cheaper than GTP
+- added Charge, Retreat, Dodge, and Evade Reflections, which return how long you've been pressing the w, s, a, or d key respectively
 - added mishap to Chorus Blink if you don't have chorus fruit in your inventory
 - changed Identify pattern to have ambit limitation
 - changed Make Genie spell to take a number representing media to draw from your inventory
 - dropped support for Forge ( not that it worked on Forge to begin with )
+- fixed advancements occasionally breaking
+- fixed Conjure Speck spell costing too little
 - fixed Janus' Gambit to actually terminate the hex now
 - fixed specks being slightly off-center
-- made Conjure Speck spell cost the right amount
 - overhauled project structure completely
-- updated documentation
 - removed casting sounds from conjured staves and replaced it with pattern drawing sounds
+- updated documentation
 
 ## 1.2.0
 - added more achievements
