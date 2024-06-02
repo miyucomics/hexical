@@ -20,7 +20,7 @@ public class HexicalMain implements ModInitializer {
 		HexicalIota.init();
 		HexicalItems.init();
 		HexicalPatterns.init();
-		HexicalNetworking.init();
+		HexicalNetworking.serverInit();
 	}
 
 	public static Identifier id(String string) {

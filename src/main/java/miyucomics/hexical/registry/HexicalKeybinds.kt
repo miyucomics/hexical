@@ -1,26 +1,33 @@
 package miyucomics.hexical.registry
 
-import io.netty.buffer.Unpooled
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
 import net.minecraft.client.MinecraftClient
+import net.minecraft.client.input.KeyboardInput
 import net.minecraft.client.option.KeyBinding
-import net.minecraft.network.PacketByteBuf
 import org.lwjgl.glfw.GLFW
 
 object HexicalKeybinds {
 	private val TELEPATHY_KEYBIND = KeyBinding("key.hexical.telepathy", GLFW.GLFW_KEY_G, "key.categories.hexical")
-	private var previouslyHeld = false
-
+	private val EXIT_SCRYING_KEYBIND = KeyBinding("key.hexical.stop_scrying", GLFW.GLFW_KEY_J, "key.categories.hexical")
 	private var states = mutableMapOf<String, Boolean>()
 
 	@JvmStatic
 	fun init() {
 		KeyBindingHelper.registerKeyBinding(TELEPATHY_KEYBIND)
+		KeyBindingHelper.registerKeyBinding(EXIT_SCRYING_KEYBIND)
 		ClientTickEvents.END_CLIENT_TICK.register { client: MinecraftClient ->
-			for (key in listOf(client.options.forwardKey, client.options.leftKey, client.options.rightKey, client.options.backKey)) {
+			if (client.player == null)
+				return@register
+
+			if (EXIT_SCRYING_KEYBIND.isPressed) {
+				client.setCameraEntity(client.player);
+				client.player!!.input = KeyboardInput(client.options);
+			}
+
+			for (key in listOf(client.options.forwardKey, client.options.leftKey, client.options.rightKey, client.options.backKey, TELEPATHY_KEYBIND)) {
 				if (states.keys.contains(key.translationKey)) {
 					if (states[key.translationKey] == true && !key.isPressed) {
 						val buf = PacketByteBufs.create()
@@ -33,17 +40,6 @@ object HexicalKeybinds {
 					}
 				}
 				states[key.translationKey] = key.isPressed
-			}
-
-			if (client.player == null)
-				return@register
-			if (TELEPATHY_KEYBIND.isPressed) {
-				if (!previouslyHeld)
-					ClientPlayNetworking.send(HexicalNetworking.START_TELEPATHY_PACKET, PacketByteBuf(Unpooled.buffer()))
-				previouslyHeld = true
-			} else if (previouslyHeld) {
-				ClientPlayNetworking.send(HexicalNetworking.STOP_TELEPATHY_PACKET, PacketByteBuf(Unpooled.buffer()))
-				previouslyHeld = false
 			}
 		}
 	}

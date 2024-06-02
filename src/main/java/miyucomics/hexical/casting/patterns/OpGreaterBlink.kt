@@ -25,7 +25,7 @@ class OpGreaterBlink : SpellAction {
 			.add(zAxis.multiply(headOffset.z))
 		if (offset.length() > 128)
 			throw MishapLocationTooFarAway(ctx.caster.eyePos.add(offset))
-		return Triple(Spell(ctx.caster.eyePos.add(offset)), MediaConstants.DUST_UNIT, listOf())
+		return Triple(Spell(ctx.caster.eyePos.add(offset)), MediaConstants.SHARD_UNIT * 2, listOf())
 	}
 
 	private data class Spell(val position: Vec3d) : RenderedSpell {
