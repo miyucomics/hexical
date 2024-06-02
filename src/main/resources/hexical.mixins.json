@@ -3,18 +3,9 @@
 	"package": "miyucomics.hexical.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"minVersion": "0.8",
-	"client": [
-		"ClientPlayerEntityMixin",
-		"MinecraftClientMixin"
-	],
+	"client": ["ClientPlayerEntityMixin", "GameRendererMixin", "MinecraftClientMixin", "MouseMixin", "WorldRendererMixin"],
 	"mixins": [
-		"CastingContextMixin",
-		"CastingHarnessMixin",
-		"FrameForEachMixin",
-		"ItemAbacusMixin",
-		"ItemEntityMixin",
-		"PlayerEntityMixin",
-		"WanderingTraderEntityMixin"
+		"CastingContextMixin", "CastingHarnessMixin", "FrameForEachMixin", "ItemAbacusMixin", "ItemEntityMixin", "PlayerEntityMixin", "WanderingTraderEntityMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
