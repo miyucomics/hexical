@@ -29,7 +29,6 @@ import miyucomics.hexical.casting.patterns.dye.OpGetDye
 import miyucomics.hexical.casting.patterns.mage_blocks.OpConjureMageBlock
 import miyucomics.hexical.casting.patterns.mage_blocks.OpModifyMageBlock
 import miyucomics.hexical.casting.patterns.conjured_staff.OpConjureStaff
-import miyucomics.hexical.casting.patterns.telepathy.OpGetTelepathy
 import miyucomics.hexical.casting.patterns.telepathy.OpHallucinateSound
 import miyucomics.hexical.casting.patterns.telepathy.OpSendTelepathy
 import miyucomics.hexical.casting.patterns.telepathy.OpShoutTelepathy
@@ -48,6 +47,8 @@ object HexicalPatterns {
 	@JvmStatic
 	fun init() {
 		registerPerWorld("greater_blink", "wqawawaqwqwqawawaqw", HexDir.SOUTH_WEST, OpGreaterBlink())
+
+		register("scry_sentinel", "awawaewawwaw", HexDir.SOUTH_WEST, OpScrySentinel())
 
 		register("wristpocket", "aaqqa", HexDir.WEST, OpWristpocket())
 		register("wristpocket_item", "aaqqada", HexDir.WEST, OpGetWristpocket(0))
@@ -92,11 +93,15 @@ object HexicalPatterns {
 		register("conjure_fleck", "aedwwd", HexDir.SOUTH_WEST, OpConjureFleck())
 		register("iota_speck", "adeeaqa", HexDir.SOUTH_WEST, OpIotaSpeck())
 
-		register("get_telepathy", "wqqadaw", HexDir.EAST, OpGetTelepathy())
+		register("get_telepathy", "wqqadaw", HexDir.EAST, OpGetKeybind("key.hexical.telepathy"))
 		register("send_telepathy", "qqqqwaqa", HexDir.EAST, OpSendTelepathy())
 		register("shout_telepathy", "daqqqqwa", HexDir.EAST, OpShoutTelepathy())
 		register("pling", "eqqqada", HexDir.NORTH_EAST, OpHallucinateSound(SoundEvents.ENTITY_PLAYER_LEVELUP))
 		register("click", "eqqadaq", HexDir.NORTH_EAST, OpHallucinateSound(SoundEvents.UI_BUTTON_CLICK))
+		register("moving_left", "edead", HexDir.SOUTH_EAST, OpGetKeybind("key.left"))
+		register("moving_right", "qaqda", HexDir.SOUTH_WEST, OpGetKeybind("key.right"))
+		register("moving_up", "aqaddq", HexDir.SOUTH_EAST, OpGetKeybind("key.forward"))
+		register("moving_down", "dedwdq", HexDir.SOUTH_WEST, OpGetKeybind("key.back"))
 
 		register("write_grimoire", "aqwqaeaqa", HexDir.WEST, OpGrimoireWrite())
 		register("erase_grimoire", "aqwqaqded", HexDir.WEST, OpGrimoireErase())
@@ -155,11 +160,6 @@ object HexicalPatterns {
 		register("get_effect_category", "wqqqaawd", HexDir.SOUTH_WEST, OpGetStatusEffectCategory())
 		register("get_effect_amplifier", "wqqqaqwa", HexDir.SOUTH_WEST, OpGetStatusEffectInstanceData(0))
 		register("get_effect_duration", "wqqqaqwdd", HexDir.SOUTH_WEST, OpGetStatusEffectInstanceData(1))
-
-		register("moving_left", "edead", HexDir.SOUTH_EAST, OpGetKeybind("key.left"))
-		register("moving_right", "qaqda", HexDir.SOUTH_WEST, OpGetKeybind("key.right"))
-		register("moving_up", "aqaddq", HexDir.SOUTH_EAST, OpGetKeybind("key.forward"))
-		register("moving_down", "dedwdq", HexDir.SOUTH_WEST, OpGetKeybind("key.back"))
 
 		register("magic_missile", "wadeeed", HexDir.NORTH_EAST, OpMagicMissile())
 
