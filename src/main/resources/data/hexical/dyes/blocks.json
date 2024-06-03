@@ -18,6 +18,7 @@
 		"minecraft:black_bed": "black"
 	},
 	"candles": {
+		"minecraft:candle": "uncolored",
 		"minecraft:white_candle": "white",
 		"minecraft:orange_candle": "orange",
 		"minecraft:magenta_candle": "magenta",
@@ -36,6 +37,7 @@
 		"minecraft:black_candle": "black"
 	},
 	"candle_cakes": {
+		"minecraft:candle_cake": "uncolored",
 		"minecraft:white_candle_cake": "white",
 		"minecraft:orange_candle_cake": "orange",
 		"minecraft:magenta_candle_cake": "magenta",
@@ -126,10 +128,11 @@
 		"minecraft:black_glazed_terracotta": "black"
 	},
 	"sands": {
-		"minecraft:sand": "white",
+		"minecraft:sand": "uncolored",
 		"minecraft:red_sand": "red"
 	},
 	"shulker_boxes": {
+		"minecraft:shulker_box": "uncolored",
 		"minecraft:white_shulker_box": "white",
 		"minecraft:orange_shulker_box": "orange",
 		"minecraft:magenta_shulker_box": "magenta",
@@ -184,6 +187,7 @@
 		"minecraft:black_stained_glass_pane": "black"
 	},
 	"terracotta": {
+		"minecraft:terracotta": "uncolored",
 		"minecraft:white_terracotta": "white",
 		"minecraft:orange_terracotta": "orange",
 		"minecraft:magenta_terracotta": "magenta",
