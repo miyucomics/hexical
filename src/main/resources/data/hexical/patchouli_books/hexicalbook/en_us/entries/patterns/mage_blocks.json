@@ -1,6 +1,6 @@
 {
 	"name": "hexical.page.mage_block.title",
-	"icon": "minecraft:glass",
+	"icon": "minecraft:scaffolding",
 	"category": "hexcasting:patterns/spells",
 	"advancement": "hexcasting:root",
 	"sortnum": 1,

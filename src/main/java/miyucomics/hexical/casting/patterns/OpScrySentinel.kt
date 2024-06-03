@@ -9,6 +9,7 @@ import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.casting.mishaps.NoSentinelMishap
+import miyucomics.hexical.registry.HexicalAdvancements
 import miyucomics.hexical.registry.HexicalItems
 import miyucomics.hexical.registry.HexicalNetworking
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
@@ -36,6 +37,7 @@ class OpScrySentinel : SpellAction {
 			buf.writeDouble(position.y)
 			buf.writeDouble(position.z)
 			ServerPlayNetworking.send(ctx.caster, HexicalNetworking.SCRY_SENTINEL, buf)
+			HexicalAdvancements.SCRY.trigger(ctx.caster)
 		}
 	}
 }
