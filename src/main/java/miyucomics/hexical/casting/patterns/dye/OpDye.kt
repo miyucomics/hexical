@@ -19,6 +19,7 @@ import net.minecraft.entity.passive.SheepEntity
 import net.minecraft.entity.passive.WolfEntity
 import net.minecraft.item.BlockItem
 import net.minecraft.item.DyeItem
+import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.util.DyeColor
@@ -45,7 +46,12 @@ class OpDye : SpellAction {
 								else
 									throw DyeableMishap()
 							}
-							else -> throw DyeableMishap()
+							else -> {
+								if (DyeData.isDyeable(item))
+									Triple(ItemSpell(entity, item, dye), cost, listOf())
+								else
+									throw DyeableMishap()
+							}
 						}
 					}
 					is WolfEntity -> Triple(WolfSpell(entity, dye), cost, listOf())
@@ -72,6 +78,11 @@ class OpDye : SpellAction {
 					DyeData.getNewBlock(state.block, dye)
 						.with(CandleBlock.LIT, state.get(CandleBlock.LIT))
 						.with(CandleBlock.CANDLES, state.get(CandleBlock.CANDLES))
+				)
+				is CandleCakeBlock -> ctx.world.setBlockState(
+					position,
+					DyeData.getNewBlock(state.block, dye)
+						.with(CandleCakeBlock.LIT, state.get(CandleCakeBlock.LIT))
 				)
 				is ShulkerBoxBlock -> {
 					val blockEntity = ctx.world.getBlockEntity(position)!! as ShulkerBoxBlockEntity
@@ -103,6 +114,14 @@ class OpDye : SpellAction {
 			val newStack = ItemStack(DyeData.getNewBlock(block, dye).block.asItem(), item.stack.count)
 			newStack.nbt = item.stack.nbt
 			item.stack = newStack
+		}
+	}
+
+	private data class ItemSpell(val entity: ItemEntity, val item: Item, val dye: DyeColor) : RenderedSpell {
+		override fun cast(ctx: CastingContext) {
+			val newStack = ItemStack(DyeData.getNewItem(item, dye), entity.stack.count)
+			newStack.nbt = entity.stack.nbt
+			entity.stack = newStack
 		}
 	}
 
