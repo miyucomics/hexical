@@ -16,7 +16,7 @@
 		"frame": "task",
 		"hidden": false,
 		"icon": {
-			"item": "minecraft:glass"
+			"item": "minecraft:scaffolding"
 		},
 		"show_toast": true
 	},

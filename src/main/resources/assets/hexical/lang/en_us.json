@@ -15,6 +15,8 @@
 	"advancements.hexical.diy_conjuring.description": "Add a custom modifier to a mage block.",
 	"advancements.hexical.hallucinate.title": "Only in my Head",
 	"advancements.hexical.hallucinate.description": "Play a sound only you can hear!",
+	"advancements.hexical.scry.title": "I Scry",
+	"advancements.hexical.scry.description": "Spy through your sentinel.",
 
 	"block.hexical.mage_block": "Mage Block",
 	"entity.hexical.fleck": "Fleck",
