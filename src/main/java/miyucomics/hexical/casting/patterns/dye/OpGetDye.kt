@@ -15,6 +15,7 @@ import net.minecraft.block.SignBlock
 import net.minecraft.block.entity.SignBlockEntity
 import net.minecraft.entity.Entity
 import net.minecraft.entity.ItemEntity
+import net.minecraft.entity.mob.ShulkerEntity
 import net.minecraft.entity.passive.CatEntity
 import net.minecraft.entity.passive.SheepEntity
 import net.minecraft.entity.passive.WolfEntity
@@ -47,11 +48,21 @@ class OpGetDye : ConstMediaAction {
 			is ItemEntity -> {
 				when (val item = entity.stack.item) {
 					is BlockItem -> getDyeFromBlock(item.block)
-					is DyeItem -> DyeIota(item.color)
-					else -> NullIota()
+					else -> {
+						if (DyeData.getDye(item) != null)
+							DyeIota(DyeData.getDye(item)!!)
+						else
+							NullIota()
+					}
 				}
 			}
 			is SheepEntity -> DyeIota(entity.color)
+			is ShulkerEntity -> {
+				if (entity.color == null)
+					NullIota()
+				else
+					DyeIota(entity.color!!)
+			}
 			is WolfEntity -> DyeIota(entity.collarColor)
 			else -> NullIota()
 		}
