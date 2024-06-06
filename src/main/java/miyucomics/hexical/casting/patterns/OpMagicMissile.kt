@@ -40,7 +40,6 @@ class OpMagicMissile : SpellAction {
 	private data class Spell(val position: Vec3d, val velocity: Vec3d) : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
 			val missile = MagicMissileEntity(HexicalEntities.MAGIC_MISSILE_ENTITY, ctx.world)
-			missile.setPigment(IXplatAbstractions.INSTANCE.getColorizer(ctx.caster))
 			missile.setPos(position.x, position.y, position.z)
 			missile.setVelocity(velocity.x, velocity.y, velocity.z)
 			missile.owner = ctx.caster
