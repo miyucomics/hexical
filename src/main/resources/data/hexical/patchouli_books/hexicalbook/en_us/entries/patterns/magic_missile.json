@@ -1,0 +1,24 @@
+{
+	"name": "hexcasting.spell.hexical:magic_missile",
+	"icon": "minecraft:spectral_arrow",
+	"category": "hexcasting:patterns/spells",
+	"advancement": "hexcasting:root",
+	"pages": [
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:magic_missile",
+			"anchor": "hexical:magic_missile",
+			"input": "vector, vector",
+			"output": "",
+			"text": "hexical.page.magic_missile.desc"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.magic_missile.0"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.magic_missile.1"
+		}
+	]
+}
