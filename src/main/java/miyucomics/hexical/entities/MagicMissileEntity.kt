@@ -21,24 +21,23 @@ import net.minecraft.world.World
 import kotlin.math.max
 
 class MagicMissileEntity(entityType: EntityType<out MagicMissileEntity?>?, world: World?) : PersistentProjectileEntity(entityType, world) {
-	override fun getPunch() = 0
-	override fun getDamage() = 0.1
+	override fun getDamage() = 2.0
 	override fun asItemStack() = null
 	override fun hasNoGravity() = true
+	override fun getDragInWater() = 1f
 	override fun tryPickup(player: PlayerEntity) = false
 	override fun getHitSound(): SoundEvent = SoundEvents.BLOCK_AMETHYST_BLOCK_BREAK
 
 	private fun shatter() {
 		(world as ServerWorld).spawnParticles(ItemStackParticleEffect(ParticleTypes.ITEM, ItemStack(Items.AMETHYST_BLOCK, 1)), this.x, this.y, this.z, 8, HexicalMain.RANDOM.nextGaussian() / 20f, HexicalMain.RANDOM.nextGaussian() / 20f, HexicalMain.RANDOM.nextGaussian() / 20f, HexicalMain.RANDOM.nextGaussian() / 10f)
-		world.playSound(null, this.blockPos, SoundEvents.BLOCK_AMETHYST_BLOCK_BREAK, SoundCategory.NEUTRAL, 1.0f, 1.5f)
+		world.playSound(null, this.blockPos, SoundEvents.BLOCK_AMETHYST_BLOCK_BREAK, SoundCategory.NEUTRAL, 0.5f, 1.5f)
 		discard()
 	}
 
 	override fun tick() {
 		super.tick()
-		if (!world.isClient && (this.inGround || this.age > 200)) {
+		if (!world.isClient && (this.inGround || this.age > 200))
 			shatter()
-		}
 	}
 
 	override fun onCollision(hitResult: HitResult) {
@@ -51,10 +50,8 @@ class MagicMissileEntity(entityType: EntityType<out MagicMissileEntity?>?, world
 		val target = entityHitResult.entity
 		if (target.isInvulnerable)
 			return
-
-		val isEnderman = target.type === EntityType.ENDERMAN
-		if (this.isOnFire && !isEnderman)
-			target.extinguish()
+		if (target.type === EntityType.ENDERMAN)
+			return
 
 		val damageSource = if (owner == null) {
 			DamageSource.arrow(this, this)
@@ -65,15 +62,11 @@ class MagicMissileEntity(entityType: EntityType<out MagicMissileEntity?>?, world
 		}
 
 		if (target.damage(damageSource, damage.toFloat())) {
-			if (isEnderman)
-				return
 			if (target is LivingEntity) {
-				if (this.punch > 0) {
-					val d = max(0.0, 1.0 - target.getAttributeValue(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE))
-					val vec3d = velocity.multiply(1.0, 0.0, 1.0).normalize().multiply(punch.toDouble() * 0.6 * d)
-					if (vec3d.lengthSquared() > 0.0)
-						target.addVelocity(vec3d.x, 0.1, vec3d.z)
-				}
+				val knockbackResistance = max(0.0, 1.0 - target.getAttributeValue(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE))
+				val vector = velocity.multiply(1.0, 0.0, 1.0).normalize().multiply(0.6 * knockbackResistance)
+				if (vector.lengthSquared() > 0.0)
+					target.addVelocity(vector.x, 0.1, vector.z)
 				this.onHit(target)
 			}
 		} else {

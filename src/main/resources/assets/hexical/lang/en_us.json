@@ -21,6 +21,7 @@
 	"block.hexical.mage_block": "Mage Block",
 	"entity.hexical.fleck": "Fleck",
 	"entity.hexical.speck": "Speck",
+	"entity.hexical.magic_missile": "Magic Missile",
 	"key.categories.hexical": "Hexical",
 	"key.hexical.telepathy": "Telepathy",
 	"item.hexical.hexburst": "Hexburst",
@@ -103,6 +104,11 @@
 	"hexcasting.spell.hexical:mage_hand": "Mage Hand",
     "hexical.page.mage_hand": "Conjures a magical hand that uses my wristpocketed item to interact with the world. If my wristpocket is empty, acts as though I had interacted with the world.",
     "hexical.page.mage_hand.0": "- if taking an entity, interacts with the entity with the item.$(br)- if taking a vector, interacts with the block with the item.$(br2)$(o)A spectral, floating hand appears at a point you choose within range.$()",
+
+	"hexcasting.spell.hexical:magic_missile": "Magic Missile",
+	"hexical.page.magic_missile.desc": "Conjures a small silver of amethyst that deals a full heart of damage and as much knockback as a fist punch.",
+	"hexical.page.magic_missile.0": "The projectile has a few interesting properties. It automatically disappears after roughly ten seconds or shatters upon hitting an entity or block. It is also unaffected by gravity and water drag.$(br2)The signature combat spell of mages...",
+	"hexical.page.magic_missile.1": "The conjuration location is quite esoteric: no wonder most users stick to conjuring it in front of them. The basic gist is a vector, where my head's position is the origin, my facing is the X+ axis, the vector pointing up from my head is the Y+ axis, and the vector from my head pointing rightwards is the Z+ axis. For basic purposes, Vector Reflection Zero conjures it inside my head and a vector resembling (n, 0, 0) conjures it it n blocks in front of me.",
 
 	"hexcasting.spell.hexical:similar": "Similarity Distillation",
 	"hexical.page.similar": "Pushes whether two iota are of the same type.",

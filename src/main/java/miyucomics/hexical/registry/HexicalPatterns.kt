@@ -49,6 +49,7 @@ object HexicalPatterns {
 		registerPerWorld("greater_blink", "wqawawaqwqwqawawaqw", HexDir.SOUTH_WEST, OpGreaterBlink())
 
 		register("scry_sentinel", "awawaewawwaw", HexDir.SOUTH_WEST, OpScrySentinel())
+		register("magic_missile", "qaqww", HexDir.WEST, OpMagicMissile())
 
 		register("wristpocket", "aaqqa", HexDir.WEST, OpWristpocket())
 		register("wristpocket_item", "aaqqada", HexDir.WEST, OpGetWristpocket(0))
@@ -160,8 +161,6 @@ object HexicalPatterns {
 		register("get_effect_category", "wqqqaawd", HexDir.SOUTH_WEST, OpGetStatusEffectCategory())
 		register("get_effect_amplifier", "wqqqaqwa", HexDir.SOUTH_WEST, OpGetStatusEffectInstanceData(0))
 		register("get_effect_duration", "wqqqaqwdd", HexDir.SOUTH_WEST, OpGetStatusEffectInstanceData(1))
-
-		register("magic_missile", "wadeeed", HexDir.NORTH_EAST, OpMagicMissile())
 
 		register("janus", "aadee", HexDir.SOUTH_WEST, OpJanus)
 		register("sisyphus", "qaqwede", HexDir.NORTH_EAST, OpSisyphus)
