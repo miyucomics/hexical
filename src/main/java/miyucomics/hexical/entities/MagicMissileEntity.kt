@@ -18,7 +18,6 @@ import net.minecraft.sound.SoundEvents
 import net.minecraft.util.hit.EntityHitResult
 import net.minecraft.util.hit.HitResult
 import net.minecraft.world.World
-import kotlin.math.max
 
 class MagicMissileEntity(entityType: EntityType<out MagicMissileEntity?>?, world: World?) : PersistentProjectileEntity(entityType, world) {
 	override fun getDamage() = 2.0
@@ -63,8 +62,7 @@ class MagicMissileEntity(entityType: EntityType<out MagicMissileEntity?>?, world
 
 		if (target.damage(damageSource, damage.toFloat())) {
 			if (target is LivingEntity) {
-				val knockbackResistance = max(0.0, 1.0 - target.getAttributeValue(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE))
-				val vector = velocity.multiply(1.0, 0.0, 1.0).normalize().multiply(0.6 * knockbackResistance)
+				val vector = velocity.multiply(1.0, 0.0, 1.0).normalize().multiply(0.6)
 				if (vector.lengthSquared() > 0.0)
 					target.addVelocity(vector.x, 0.1, vector.z)
 				this.onHit(target)
