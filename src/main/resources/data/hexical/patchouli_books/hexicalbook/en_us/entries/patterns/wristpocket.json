@@ -14,7 +14,7 @@
 			"anchor": "hexical:wristpocket",
 			"input": "",
 			"output": "",
-			"text": "hexical.page.wristpocket"
+			"text": "hexical.page.wristpocket.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -22,7 +22,7 @@
 			"anchor": "hexical:wristpocket_item",
 			"input": "",
 			"output": "",
-			"text": "hexical.page.wristpocket_item"
+			"text": "hexical.page.wristpocket_item.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -30,7 +30,7 @@
 			"anchor": "hexical:wristpocket_count",
 			"input": "",
 			"output": "",
-			"text": "hexical.page.wristpocket_count"
+			"text": "hexical.page.wristpocket_count.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -38,7 +38,7 @@
 			"anchor": "hexical:mage_hand",
 			"input": "entity/vector",
 			"output": "",
-			"text": "hexical.page.mage_hand"
+			"text": "hexical.page.mage_hand.summary"
 		},
 		{
 			"type": "patchouli:text",
@@ -50,7 +50,7 @@
 			"anchor": "hexical:ingest",
 			"input": "",
 			"output": "",
-			"text": "hexical.page.ingest"
+			"text": "hexical.page.ingest.summary"
 		}
 	]
 }

@@ -10,7 +10,7 @@
 			"anchor": "hexical:magic_missile",
 			"input": "vector, vector",
 			"output": "",
-			"text": "hexical.page.magic_missile.desc"
+			"text": "hexical.page.magic_missile.summary"
 		},
 		{
 			"type": "patchouli:text",
