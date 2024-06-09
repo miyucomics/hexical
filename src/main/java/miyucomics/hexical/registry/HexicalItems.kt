@@ -3,10 +3,9 @@ package miyucomics.hexical.registry
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.items.*
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder
-import net.minecraft.item.BlockItem
+import net.minecraft.entity.EquipmentSlot
+import net.minecraft.item.*
 import net.minecraft.item.Item.Settings
-import net.minecraft.item.ItemGroup
-import net.minecraft.item.ItemStack
 import net.minecraft.util.registry.Registry
 
 object HexicalItems {
@@ -16,6 +15,7 @@ object HexicalItems {
 	val ARCH_LAMP_ITEM: ArchLampItem = ArchLampItem()
 	val GRIMOIRE_ITEM: GrimoireItem = GrimoireItem()
 	val CONJURED_STAFF_ITEM: ConjuredStaffItem = ConjuredStaffItem()
+	val CONJURER_HAT_ITEM: Item = ConjurerHatItem()
 	val HEXBURST_ITEM: HexburstItem = HexburstItem()
 	val HEXTITO_ITEM: HextitoItem = HextitoItem()
 
@@ -24,6 +24,7 @@ object HexicalItems {
 		Registry.register(Registry.ITEM, HexicalMain.id("grimoire"), GRIMOIRE_ITEM)
 		Registry.register(Registry.ITEM, HexicalMain.id("lamp"), LAMP_ITEM)
 		Registry.register(Registry.ITEM, HexicalMain.id("arch_lamp"), ARCH_LAMP_ITEM)
+		Registry.register(Registry.ITEM, HexicalMain.id("conjurer_hat"), CONJURER_HAT_ITEM)
 		Registry.register(Registry.ITEM, HexicalMain.id("living_scroll_small"), LivingScrollItem(1))
 		Registry.register(Registry.ITEM, HexicalMain.id("living_scroll_large"), LivingScrollItem(3))
 		Registry.register(Registry.ITEM, HexicalMain.id("lightning_rod_staff"), LightningRodStaff())
