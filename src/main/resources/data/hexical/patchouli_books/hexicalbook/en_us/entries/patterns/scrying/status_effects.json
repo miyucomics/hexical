@@ -10,7 +10,7 @@
 			"anchor": "hexical:get_effects_entity",
 			"input": "entity",
 			"output": "[identifier]",
-			"text": "hexical.page.get_effects_entity"
+			"text": "hexical.page.get_effects_entity.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -18,7 +18,7 @@
 			"anchor": "hexical:get_effects_item",
 			"input": "item entity",
 			"output": "[identifier]",
-			"text": "hexical.page.get_effects_item"
+			"text": "hexical.page.get_effects_item.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -26,7 +26,7 @@
 			"anchor": "hexical:get_effect_category",
 			"input": "identifier",
 			"output": "number",
-			"text": "hexical.page.get_effect_category"
+			"text": "hexical.page.get_effect_category.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -34,7 +34,7 @@
 			"anchor": "hexical:get_effect_amplifier",
 			"input": "entity, identifier",
 			"output": "number",
-			"text": "hexical.page.get_effect_amplifier"
+			"text": "hexical.page.get_effect_amplifier.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -42,7 +42,7 @@
 			"anchor": "hexical:get_effect_duration",
 			"input": "entity, identifier",
 			"output": "number",
-			"text": "hexical.page.get_effect_duration"
+			"text": "hexical.page.get_effect_duration.summary"
 		}
 	]
 }

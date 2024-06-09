@@ -14,7 +14,7 @@
 			"anchor": "hexical:displace",
 			"input": "entity, vector",
 			"output": "",
-			"text": "hexical.page.displace"
+			"text": "hexical.page.displace.summary"
 		}
 	]
 }

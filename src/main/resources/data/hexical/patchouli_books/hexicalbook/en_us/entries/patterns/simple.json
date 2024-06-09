@@ -10,7 +10,7 @@
 			"anchor": "hexical:similar",
 			"input": "any, any",
 			"output": "boolean",
-			"text": "hexical.page.similar"
+			"text": "hexical.page.similar.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -18,7 +18,7 @@
 			"anchor": "hexical:dup_many",
 			"input": "many, number",
 			"output": "many",
-			"text": "hexical.page.dup_many"
+			"text": "hexical.page.dup_many.summary"
 	    },
 		{
 			"type": "hexcasting:pattern",
@@ -26,7 +26,7 @@
 			"anchor": "hexical:congruent",
 			"input": "pattern, pattern",
 			"output": "boolean",
-			"text": "hexical.page.congruent"
+			"text": "hexical.page.congruent.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -34,7 +34,7 @@
 			"anchor": "hexical:shuffle_pattern",
 			"input": "pattern, number",
 			"output": "pattern",
-			"text": "hexical.page.shuffle_pattern"
+			"text": "hexical.page.shuffle_pattern.summary"
 		},
 		{
 			"type": "hexcasting:pattern",

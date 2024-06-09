@@ -15,7 +15,7 @@
 			"anchor": "hexical:get_telepathy",
 			"input": "",
 			"output": "null/number",
-			"text": "hexical.page.get_telepathy"
+			"text": "hexical.page.get_telepathy.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -23,7 +23,7 @@
 			"anchor": "hexical:send_telepathy",
 			"input": "any",
 			"output": "",
-			"text": "hexical.page.send_telepathy"
+			"text": "hexical.page.send_telepathy.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -31,7 +31,7 @@
 			"anchor": "hexical:shout_telepathy",
 			"input": "any",
 			"output": "",
-			"text": "hexical.page.shout_telepathy"
+			"text": "hexical.page.shout_telepathy.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -39,7 +39,7 @@
 			"anchor": "hexical:pling",
 			"input": "",
 			"output": "",
-			"text": "hexical.page.pling"
+			"text": "hexical.page.pling.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -47,7 +47,7 @@
 			"anchor": "hexical:click",
 			"input": "",
 			"output": "",
-			"text": "hexical.page.click"
+			"text": "hexical.page.click.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -55,7 +55,7 @@
 			"anchor": "hexical:moving_up",
 			"input": "",
 			"output": "number",
-			"text": "hexical.page.moving_up"
+			"text": "hexical.page.moving_up.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -63,7 +63,7 @@
 			"anchor": "hexical:moving_down",
 			"input": "",
 			"output": "number",
-			"text": "hexical.page.moving_down"
+			"text": "hexical.page.moving_down.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -71,7 +71,7 @@
 			"anchor": "hexical:moving_left",
 			"input": "",
 			"output": "number",
-			"text": "hexical.page.moving_left"
+			"text": "hexical.page.moving_left.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -79,7 +79,7 @@
 			"anchor": "hexical:moving_right",
 			"input": "",
 			"output": "number",
-			"text": "hexical.page.moving_right"
+			"text": "hexical.page.moving_right.summary"
 		}
 	]
 }
