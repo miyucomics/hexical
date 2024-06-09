@@ -6,6 +6,7 @@ import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.client.FakeCameraEntity
 import miyucomics.hexical.items.ConjuredStaffItem
 import miyucomics.hexical.items.getConjuredStaff
+import miyucomics.hexical.state.EvokeState
 import miyucomics.hexical.state.KeybindData
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
@@ -18,6 +19,8 @@ object HexicalNetworking {
 	val CAST_CONJURED_STAFF_PACKET: Identifier = HexicalMain.id("cast_conjured_staff")
 	val PRESSED_KEY_PACKET: Identifier = HexicalMain.id("press_key")
 	val RELEASED_KEY_PACKET: Identifier = HexicalMain.id("release_key")
+	val START_EVOKING_PACKET: Identifier = HexicalMain.id("start_evoking")
+	val END_EVOKING_PACKET: Identifier = HexicalMain.id("end_evoking")
 	val SCRY_SENTINEL: Identifier = HexicalMain.id("scry_sentinel")
 
 	@JvmStatic
@@ -39,6 +42,14 @@ object HexicalNetworking {
 			val key = buf.readString()
 			KeybindData.active[player.uuid]!![key] = false
 			KeybindData.duration[player.uuid]!![key] = 0
+		}
+		ServerPlayNetworking.registerGlobalReceiver(START_EVOKING_PACKET) { _, player, _, _, _ ->
+			EvokeState.active[player.uuid] = true
+			EvokeState.duration[player.uuid] = 0
+		}
+		ServerPlayNetworking.registerGlobalReceiver(END_EVOKING_PACKET) { _, player, _, _, _ ->
+			EvokeState.active[player.uuid] = false
+			EvokeState.duration[player.uuid] = -1
 		}
 		ServerPlayNetworking.registerGlobalReceiver(CAST_CONJURED_STAFF_PACKET) { _, player, _, buf, _ ->
 			val hand = getConjuredStaff(player) ?: return@registerGlobalReceiver
