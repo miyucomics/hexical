@@ -23,6 +23,8 @@
 	"entity.hexical.speck": "Speck",
 	"entity.hexical.magic_missile": "Magic Missile",
 	"key.categories.hexical": "Hexical",
+	"key.hexical.evoke": "Evoke",
+	"key.hexical.stop_scrying": "Stop Scrying",
 	"key.hexical.telepathy": "Telepathy",
 	"item.hexical.hexburst": "Hexburst",
 	"item.hexical.hextito": "Hextito",
