@@ -20,7 +20,7 @@
 			"anchor": "hexical:write_grimoire",
 			"input": "pattern, [pattern]",
 			"output": "",
-			"text": "hexical.page.write_grimoire"
+			"text": "hexical.page.write_grimoire.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -28,7 +28,7 @@
 			"anchor": "hexical:erase_grimoire",
 			"input": "pattern",
 			"output": "",
-			"text": "hexical.page.erase_grimoire"
+			"text": "hexical.page.erase_grimoire.summary"
 		},
 		{
 			"type": "patchouli:text",
@@ -40,7 +40,7 @@
 			"anchor": "hexical:index_grimoire",
 			"input": "",
 			"output": "[pattern]",
-			"text": "hexical.page.index_grimoire"
+			"text": "hexical.page.index_grimoire.summary"
 		},
 		{
 			"type": "patchouli:text",
@@ -52,7 +52,7 @@
 			"anchor": "hexical:restrict_grimoire",
 			"input": "pattern, number",
 			"output": "",
-			"text": "hexical.page.restrict_grimoire"
+			"text": "hexical.page.restrict_grimoire.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -60,7 +60,7 @@
 			"anchor": "hexical:query_grimoire",
 			"input": "pattern",
 			"output": "number",
-			"text": "hexical.page.query_grimoire"
+			"text": "hexical.page.query_grimoire.summary"
 		}
 	]
 }

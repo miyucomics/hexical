@@ -10,7 +10,7 @@
 			"anchor": "hexical:edible",
 			"input": "item entity",
 			"output": "boolean",
-			"text": "hexical.page.edible"
+			"text": "hexical.page.edible.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -18,7 +18,7 @@
 			"anchor": "hexical:get_hunger",
 			"input": "item entity",
 			"output": "number",
-			"text": "hexical.page.get_hunger"
+			"text": "hexical.page.get_hunger.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -26,7 +26,7 @@
 			"anchor": "hexical:get_saturation",
 			"input": "item entity",
 			"output": "number",
-			"text": "hexical.page.get_saturation"
+			"text": "hexical.page.get_saturation.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -34,7 +34,7 @@
 			"anchor": "hexical:get_player_hunger",
 			"input": "player entity",
 			"output": "number",
-			"text": "hexical.page.get_player_hunger"
+			"text": "hexical.page.get_player_hunger.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -42,7 +42,7 @@
 			"anchor": "hexical:get_player_saturation",
 			"input": "entity entity",
 			"output": "number",
-			"text": "hexical.page.get_player_saturation"
+			"text": "hexical.page.get_player_saturation.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -50,7 +50,7 @@
 			"anchor": "hexical:is_meat",
 			"input": "item entity",
 			"output": "boolean",
-			"text": "hexical.page.is_meat"
+			"text": "hexical.page.is_meat.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -58,7 +58,7 @@
 			"anchor": "hexical:is_snack",
 			"input": "item entity",
 			"output": "boolean",
-			"text": "hexical.page.is_snack"
+			"text": "hexical.page.is_snack.summary"
 		}
 	]
 }

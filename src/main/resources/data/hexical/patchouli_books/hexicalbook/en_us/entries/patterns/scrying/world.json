@@ -10,7 +10,7 @@
 			"anchor": "hexical:get_weather",
 			"input": "",
 			"output": "number",
-			"text": "hexical.page.get_weather"
+			"text": "hexical.page.get_weather.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -18,7 +18,7 @@
 			"anchor": "hexical:block_hardness",
 			"input": "vector",
 			"output": "number",
-			"text": "hexical.page.block_hardness"
+			"text": "hexical.page.block_hardness.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -26,7 +26,7 @@
 			"anchor": "hexical:block_blast_resistance",
 			"input": "vector",
 			"output": "number",
-			"text": "hexical.page.block_blast_resistance"
+			"text": "hexical.page.block_blast_resistance.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -34,7 +34,7 @@
 			"anchor": "hexical:get_dimension",
 			"input": "",
 			"output": "identifier",
-			"text": "hexical.page.get_dimension"
+			"text": "hexical.page.get_dimension.summary"
 		}
 	]
 }
