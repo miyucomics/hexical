@@ -2,14 +2,14 @@
 	"format_version": "1.8.0",
 	"animations": {
 		"cast_end": {
-			"animation_length": 0.25,
+			"animation_length": 0.125,
 			"bones": {
 				"right_arm": {
 					"rotation": {
 						"0.0": {
 							"vector": [-180, 0, -10]
 						},
-						"0.5": {
+						"0.125": {
 							"vector": [0, 0, 0]
 						}
 					}
@@ -19,7 +19,7 @@
 						"0.0": {
 							"vector": [-180, 0, 10]
 						},
-						"0.5": {
+						"0.125": {
 							"vector": [0, 0, 0]
 						}
 					}

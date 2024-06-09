@@ -22,7 +22,7 @@ public class AbstractClientPlayerEntityMixin implements PlayerAnimations {
 
 	@Inject(method = "<init>", at = @At(value = "RETURN"))
 	private void init(ClientWorld world, GameProfile profile, PlayerPublicKey publicKey, CallbackInfo ci) {
-		PlayerAnimationAccess.getPlayerAnimLayer((AbstractClientPlayerEntity) (Object)this).addAnimLayer(1000, modAnimationContainer);
+		PlayerAnimationAccess.getPlayerAnimLayer((AbstractClientPlayerEntity) (Object)this).addAnimLayer(50, modAnimationContainer);
 	}
 
 	@NotNull

@@ -7,12 +7,14 @@ import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.server.MinecraftServer
+import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.world.PersistentState
 import net.minecraft.world.World
 import java.util.*
 
 class PersistentStateHandler : PersistentState() {
 	private var archLamps: HashMap<UUID, ArchLampData> = HashMap<UUID, ArchLampData>()
+	private var evocation: HashMap<UUID, NbtCompound> = HashMap<UUID, NbtCompound>()
 	private var scryingSentinel: HashMap<UUID, Boolean> = HashMap<UUID, Boolean>()
 	private var wristpockets: HashMap<UUID, ItemStack> = HashMap<UUID, ItemStack>()
 
@@ -20,6 +22,10 @@ class PersistentStateHandler : PersistentState() {
 		val nbtArchLamps = NbtCompound()
 		archLamps.forEach { (uuid, archData) -> nbtArchLamps.put(uuid.toString(), archData.toNbt()) }
 		nbt.put("arch_lamp", nbtArchLamps)
+
+		val nbtEvocation = NbtCompound()
+		evocation.forEach { (uuid, compound) -> nbtEvocation.putCompound(uuid.toString(), compound) }
+		nbt.put("evocation", nbtEvocation)
 
 		val nbtScryingSentinel = NbtCompound()
 		scryingSentinel.forEach { (uuid, scrying) -> nbtScryingSentinel.putBoolean(uuid.toString(), scrying) }
@@ -39,6 +45,9 @@ class PersistentStateHandler : PersistentState() {
 			val nbtArchLamps = tag.getCompound("arch_lamp")
 			nbtArchLamps.keys.forEach { key: String -> state.archLamps[UUID.fromString(key)] = ArchLampData.createFromNbt(nbtArchLamps.getCompound(key)) }
 
+			val nbtEvocation = tag.getCompound("evocation")
+			nbtEvocation.keys.forEach { key: String -> state.evocation[UUID.fromString(key)] = nbtEvocation.getCompound(key) }
+
 			val nbtScryingSentinel = tag.getCompound("scrying_sentinel")
 			nbtScryingSentinel.keys.forEach { key: String -> state.scryingSentinel[UUID.fromString(key)] = nbtScryingSentinel.getBoolean(key) }
 
@@ -53,6 +62,16 @@ class PersistentStateHandler : PersistentState() {
 			val state = persistentStateManager.getOrCreate(PersistentStateHandler::createFromNbt, ::PersistentStateHandler, HexicalMain.MOD_ID)
 			state.markDirty()
 			return state
+		}
+
+		fun setEvocation(player: ServerPlayerEntity, hex: NbtCompound) {
+			val serverState = getServerState(player.getWorld().server)
+			serverState.evocation[player.uuid] = hex
+		}
+
+		fun getEvocation(player: ServerPlayerEntity): NbtCompound? {
+			val serverState = getServerState(player.getWorld().server)
+			return serverState.evocation[player.uuid]
 		}
 
 		fun getPlayerArchLampData(player: PlayerEntity): ArchLampData {
