@@ -51,6 +51,8 @@ object HexicalPatterns {
 		register("scry_sentinel", "awawaewawwaw", HexDir.SOUTH_WEST, OpScrySentinel())
 		register("magic_missile", "qaqww", HexDir.WEST, OpMagicMissile())
 
+		register("evoke", "waeqqqqedeqdqdqdqeqdwwd", HexDir.EAST, OpInternalizeHex())
+
 		register("wristpocket", "aaqqa", HexDir.WEST, OpWristpocket())
 		register("wristpocket_item", "aaqqada", HexDir.WEST, OpGetWristpocket(0))
 		register("wristpocket_count", "aaqqaaw", HexDir.WEST, OpGetWristpocket(1))

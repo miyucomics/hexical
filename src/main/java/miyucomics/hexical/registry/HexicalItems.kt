@@ -16,6 +16,7 @@ object HexicalItems {
 	val CONJURED_STAFF_ITEM: ConjuredStaffItem = ConjuredStaffItem()
 	val HEXBURST_ITEM: HexburstItem = HexburstItem()
 	val HEXTITO_ITEM: HextitoItem = HextitoItem()
+	val NULL_MEDIA_ITEM: IHaveNoFormAndIMustOvercast = IHaveNoFormAndIMustOvercast()
 
 	@JvmStatic
 	fun init() {
@@ -28,6 +29,7 @@ object HexicalItems {
 		Registry.register(Registry.ITEM, HexicalMain.id("conjured_staff"), CONJURED_STAFF_ITEM)
 		Registry.register(Registry.ITEM, HexicalMain.id("hexburst"), HEXBURST_ITEM)
 		Registry.register(Registry.ITEM, HexicalMain.id("hextito"), HEXTITO_ITEM)
+		Registry.register(Registry.ITEM, HexicalMain.id("null_media"), NULL_MEDIA_ITEM)
 		Registry.register(Registry.ITEM, HexicalMain.id("mage_block"), BlockItem(HexicalBlocks.MAGE_BLOCK, Settings()))
 	}
 }
