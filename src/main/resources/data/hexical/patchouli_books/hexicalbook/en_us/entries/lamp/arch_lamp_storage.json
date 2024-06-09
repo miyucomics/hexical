@@ -15,7 +15,7 @@
 			"anchor": "hexical:set_arch_lamp_storage",
 			"input": "any",
 			"output": "",
-			"text": "hexical.page.set_arch_lamp_storage"
+			"text": "hexical.page.set_arch_lamp_storage.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -23,7 +23,7 @@
 			"anchor": "hexical:get_arch_lamp_storage",
 			"input": "",
 			"output": "any",
-			"text": "hexical.page.get_arch_lamp_storage"
+			"text": "hexical.page.get_arch_lamp_storage.summary"
 		}
 	]
 }

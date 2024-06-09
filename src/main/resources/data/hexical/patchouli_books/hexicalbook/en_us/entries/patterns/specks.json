@@ -15,7 +15,11 @@
 			"anchor": "hexical:conjure_speck",
 			"input": "any, vector, vector",
 			"output": "entity",
-			"text": "hexical.page.conjure_speck"
+			"text": "hexical.page.conjure_speck.summary"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.specks.1"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -23,11 +27,7 @@
 			"anchor": "hexical:conjure_fleck",
 			"input": "list, vector, vector",
 			"output": "entity",
-			"text": "hexical.page.conjure_fleck"
-		},
-		{
-			"type": "patchouli:text",
-			"text": "hexical.page.conjure_fleck.0"
+			"text": "hexical.page.conjure_fleck.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -35,7 +35,7 @@
 			"anchor": "hexical:move_specklike",
 			"input": "speck entity, vector",
 			"output": "",
-			"text": "hexical.page.move_specklike"
+			"text": "hexical.page.move_specklike.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -43,7 +43,7 @@
 			"anchor": "hexical:rotate_specklike",
 			"input": "speck entity, vector",
 			"output": "",
-			"text": "hexical.page.rotate_specklike"
+			"text": "hexical.page.rotate_specklike.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -51,7 +51,7 @@
 			"anchor": "hexical:roll_specklike",
 			"input": "speck entity, number",
 			"output": "",
-			"text": "hexical.page.roll_specklike"
+			"text": "hexical.page.roll_specklike.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -59,7 +59,7 @@
 			"anchor": "hexical:iota_speck",
 			"input": "speck entity, any",
 			"output": "",
-			"text": "hexical.page.iota_speck"
+			"text": "hexical.page.iota_speck.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -67,7 +67,7 @@
 			"anchor": "hexical:lifetime_specklike",
 			"input": "speck entity, number",
 			"output": "",
-			"text": "hexical.page.lifetime_specklike"
+			"text": "hexical.page.lifetime_specklike.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -75,7 +75,7 @@
 			"anchor": "hexical:size_specklike",
 			"input": "speck entity, number",
 			"output": "",
-			"text": "hexical.page.size_specklike"
+			"text": "hexical.page.size_specklike.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -83,7 +83,7 @@
 			"anchor": "hexical:thickness_specklike",
 			"input": "speck entity, number",
 			"output": "",
-			"text": "hexical.page.thickness_specklike"
+			"text": "hexical.page.thickness_specklike.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -91,7 +91,7 @@
 			"anchor": "hexical:kill_specklike",
 			"input": "speck entity",
 			"output": "",
-			"text": "hexical.page.kill_specklike"
+			"text": "hexical.page.kill_specklike.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -99,7 +99,7 @@
 			"anchor": "hexical:zone_specklike",
 			"input": "vector, number",
 			"output": "[entity]",
-			"text": "hexical.page.zone_specklike"
+			"text": "hexical.page.zone_specklike.summary"
 		}
 	]
 }
