@@ -19,11 +19,11 @@
 			"anchor": "hexical:make_genie",
 			"input": "villager entity, number",
 			"output": "",
-			"text": "hexical.page.replacement_mind.2"
+			"text": "hexical.page.make_genie.summary"
 		},
 		{
 			"type": "patchouli:text",
-			"text": "hexical.page.replacement_mind.3"
+			"text": "hexical.page.replacement_mind.2"
 		}
 	]
 }

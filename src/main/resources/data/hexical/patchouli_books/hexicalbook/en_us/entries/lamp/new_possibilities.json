@@ -19,7 +19,7 @@
 			"anchor": "hexical:get_hand_lamp_position",
 			"input": "",
 			"output": "vector",
-			"text": "hexical.page.get_hand_lamp_position"
+			"text": "hexical.page.get_hand_lamp_position.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -27,7 +27,7 @@
 			"anchor": "hexical:get_hand_lamp_rotation",
 			"input": "",
 			"output": "vector",
-			"text": "hexical.page.get_hand_lamp_rotation"
+			"text": "hexical.page.get_hand_lamp_rotation.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -35,7 +35,7 @@
 			"anchor": "hexical:get_hand_lamp_velocity",
 			"input": "",
 			"output": "vector",
-			"text": "hexical.page.get_hand_lamp_velocity"
+			"text": "hexical.page.get_hand_lamp_velocity.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -43,7 +43,7 @@
 			"anchor": "hexical:get_hand_lamp_use_time",
 			"input": "",
 			"output": "number",
-			"text": "hexical.page.get_hand_lamp_use_time"
+			"text": "hexical.page.get_hand_lamp_use_time.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -51,7 +51,7 @@
 			"anchor": "hexical:get_hand_lamp_media",
 			"input": "",
 			"output": "number",
-			"text": "hexical.page.get_hand_lamp_media"
+			"text": "hexical.page.get_hand_lamp_media.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -59,7 +59,7 @@
 			"anchor": "hexical:set_hand_lamp_storage",
 			"input": "any",
 			"output": "",
-			"text": "hexical.page.set_hand_lamp_storage"
+			"text": "hexical.page.set_hand_lamp_storage.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -67,7 +67,7 @@
 			"anchor": "hexical:get_hand_lamp_storage",
 			"input": "",
 			"output": "any",
-			"text": "hexical.page.get_hand_lamp_storage"
+			"text": "hexical.page.get_hand_lamp_storage.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -75,7 +75,7 @@
 			"anchor": "hexical:lamp_finale",
 			"input": "",
 			"output": "boolean",
-			"text": "hexical.page.lamp_finale.0"
+			"text": "hexical.page.lamp_finale.hand"
 		}
 	]
 }

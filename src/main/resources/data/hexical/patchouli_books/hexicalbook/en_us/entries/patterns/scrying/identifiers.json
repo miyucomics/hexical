@@ -14,11 +14,11 @@
 			"anchor": "hexical:identify",
 			"input": "identifiable",
 			"output": "identifier",
-			"text": "hexical.page.identifiers.1"
+			"text": "hexical.page.identify.summary"
 		},
         {
 			"type": "patchouli:text",
-			"text": "hexical.page.identifiers.2"
+			"text": "hexical.page.identifiers.1"
 		},
         {
 			"type": "hexcasting:pattern",
@@ -26,7 +26,7 @@
 			"anchor": "hexical:recognize",
 			"input": "entity",
 			"output": "identifier",
-			"text": "hexical.page.identifiers.3"
+			"text": "hexical.page.recognize.summary"
 		},
         {
 			"type": "hexcasting:pattern",
@@ -34,7 +34,7 @@
 			"anchor": "hexical:get_mainhand_stack",
 			"input": "player entity",
 			"output": "identifier",
-			"text": "hexical.page.get_mainhand_stack"
+			"text": "hexical.page.get_mainhand_stack.summary"
 		},
         {
 			"type": "hexcasting:pattern",
@@ -42,7 +42,7 @@
 			"anchor": "hexical:get_offhand_stack",
 			"input": "player entity",
 			"output": "identifier",
-			"text": "hexical.page.get_offhand_stack"
+			"text": "hexical.page.get_offhand_stack.summary"
 		}
 	]
 }

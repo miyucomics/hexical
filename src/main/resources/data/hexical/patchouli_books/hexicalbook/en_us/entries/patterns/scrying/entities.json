@@ -10,7 +10,7 @@
 			"anchor": "hexical:is_burning",
 			"input": "entity",
 			"output": "boolean",
-			"text": "hexical.page.is_burning"
+			"text": "hexical.page.is_burning.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -18,7 +18,7 @@
 			"anchor": "hexical:burning_time",
 			"input": "entity",
 			"output": "number",
-			"text": "hexical.page.burning_time"
+			"text": "hexical.page.burning_time.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -26,7 +26,7 @@
 			"anchor": "hexical:is_wet",
 			"input": "entity",
 			"output": "boolean",
-			"text": "hexical.page.is_wet"
+			"text": "hexical.page.is_wet.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -34,7 +34,7 @@
 			"anchor": "hexical:is_sleeping",
 			"input": "entity",
 			"output": "boolean",
-			"text": "hexical.page.is_sleeping"
+			"text": "hexical.page.is_sleeping.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -42,7 +42,7 @@
 			"anchor": "hexical:is_sprinting",
 			"input": "player entity",
 			"output": "boolean",
-			"text": "hexical.page.is_sprinting"
+			"text": "hexical.page.is_sprinting.summary"
 		}
 	]
 }

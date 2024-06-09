@@ -10,7 +10,7 @@
 			"anchor": "hexical:get_enchantments",
 			"input": "item entity",
 			"output": "",
-			"text": "hexical.page.get_enchantments"
+			"text": "hexical.page.get_enchantments.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -18,7 +18,7 @@
 			"anchor": "hexical:get_enchantment_strength",
 			"input": "item entity, identifier",
 			"output": "number",
-			"text": "hexical.page.get_enchantment_strength"
+			"text": "hexical.page.get_enchantment_strength.summary"
 		}
 	]
 }

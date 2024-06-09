@@ -10,7 +10,7 @@
 			"anchor": "hexical:count_stack",
 			"input": "item entity",
 			"output": "number",
-			"text": "hexical.page.count_stack"
+			"text": "hexical.page.count_stack.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -18,7 +18,7 @@
 			"anchor": "hexical:count_max_stack",
 			"input": "item entity",
 			"output": "number",
-			"text": "hexical.page.count_max_stack"
+			"text": "hexical.page.count_max_stack.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -26,7 +26,7 @@
 			"anchor": "hexical:damage_stack",
 			"input": "item entity",
 			"output": "number",
-			"text": "hexical.page.damage_stack"
+			"text": "hexical.page.damage_stack.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -34,7 +34,7 @@
 			"anchor": "hexical:damage_max_stack",
 			"input": "item entity",
 			"output": "number",
-			"text": "hexical.page.damage_max_stack"
+			"text": "hexical.page.damage_max_stack.summary"
 		}
 	]
 }
