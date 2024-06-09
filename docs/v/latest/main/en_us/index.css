@@ -225,10 +225,15 @@ p {
 }
 p.fake-li {
   margin: 0;
+  --level: 1;
 }
 p.fake-li::before {
   content: "\2022";
   margin: 1ex;
+  margin-left: calc(1ex + (var(--level) - 1) * 2ex);
+}
+p.fake-li-alt::before {
+  content: "\25E6";
 }
 .linkout::before {
   content: "Link: ";
