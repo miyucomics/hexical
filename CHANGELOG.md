@@ -4,7 +4,7 @@
 - added hexbursts
 - added hextitos
 - added wristpocket spell
-- added Magic Missile spell
+- added Magic Missile spell - fire silver of amethyst that deals knockback and weak damage
 - added dye iota and patterns to get and change dyes
 - added data-driven way to specify targets for dye spell
 - added internal iota storage to hand lamp and patterns to interact with it
@@ -19,6 +19,7 @@
 - dropped support for Forge ( not that it worked on Forge to begin with )
 - fixed advancements occasionally breaking
 - fixed Conjure Speck spell costing too little
+- fixed bug with Archgenie Lamp where it can cast for free if it wasn't in your main inventory
 - fixed Janus' Gambit to actually terminate the hex now
 - fixed specks being slightly off-center
 - overhauled project structure completely
