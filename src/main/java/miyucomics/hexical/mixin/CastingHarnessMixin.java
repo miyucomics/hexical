@@ -72,6 +72,28 @@ public class CastingHarnessMixin {
 					return;
 				}
 			}
+			for (ItemStack stack : ctx.getCaster().getInventory().offHand) {
+				if (stack.getItem() instanceof ArchLampItem && stack.getOrCreateNbt().getBoolean("active")) {
+					ADMediaHolder mediaHolder = IXplatAbstractions.INSTANCE.findMediaHolder(stack);
+					assert mediaHolder != null;
+					int mediaToTake = Math.min(mediaCost, mediaHolder.withdrawMedia(-1, true));
+					mediaCost -= mediaToTake;
+					mediaHolder.withdrawMedia(mediaToTake, false);
+					cir.setReturnValue(mediaCost);
+					return;
+				}
+			}
+			for (ItemStack stack : ctx.getCaster().getInventory().armor) {
+				if (stack.getItem() instanceof ArchLampItem && stack.getOrCreateNbt().getBoolean("active")) {
+					ADMediaHolder mediaHolder = IXplatAbstractions.INSTANCE.findMediaHolder(stack);
+					assert mediaHolder != null;
+					int mediaToTake = Math.min(mediaCost, mediaHolder.withdrawMedia(-1, true));
+					mediaCost -= mediaToTake;
+					mediaHolder.withdrawMedia(mediaToTake, false);
+					cir.setReturnValue(mediaCost);
+					return;
+				}
+			}
 		}
 	}
 

@@ -24,7 +24,12 @@ repositories {
     maven { url "https://maven.terraformersmc.com/releases" }
     maven { url "https://maven.shedaniel.me/" }
 
-    // Hex Casting Dependencies
+	maven {
+		name "KosmX's maven"
+		url 'https://maven.kosmx.dev/'
+	}
+
+	// Hex Casting Dependencies
     maven { url "https://maven.blamejared.com/" }
     maven {
         name "entity reach"
@@ -64,6 +69,8 @@ dependencies {
 		exclude module: "emi"
 	}
 	compileOnly(annotationProcessor("com.github.llamalad7.mixinextras:mixinextras-common:${mixinExtrasVersion}"))
+
+	include modImplementation("dev.kosmx.player-anim:player-animation-lib-fabric:${project.player_anim}")
 }
 
 processResources {
