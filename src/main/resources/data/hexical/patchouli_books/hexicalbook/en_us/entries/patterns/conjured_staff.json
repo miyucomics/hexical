@@ -15,7 +15,7 @@
 			"anchor": "hexical:conjure_staff",
 			"input": "vec, num, num, [pattern]",
 			"output": "",
-			"text": "hexical.page.conjure_staff"
+			"text": "hexical.page.conjure_staff.summary"
 		},
 		{
 			"type": "patchouli:text",
@@ -31,7 +31,7 @@
 			"anchor": "hexical:read_staff",
 			"input": "",
 			"output": "any",
-			"text": "hexical.page.read_staff"
+			"text": "hexical.page.read_staff.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -39,7 +39,7 @@
 			"anchor": "hexical:write_staff",
 			"input": "any",
 			"output": "",
-			"text": "hexical.page.write_staff"
+			"text": "hexical.page.write_staff.summary"
 		}
 	]
 }
