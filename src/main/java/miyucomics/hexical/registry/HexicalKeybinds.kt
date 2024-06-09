@@ -1,5 +1,9 @@
 package miyucomics.hexical.registry
 
+import dev.kosmx.playerAnim.api.layered.KeyframeAnimationPlayer
+import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationRegistry
+import miyucomics.hexical.HexicalMain
+import miyucomics.hexical.client.PlayerAnimations
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
@@ -33,10 +37,18 @@ object HexicalKeybinds {
 						val buf = PacketByteBufs.create()
 						buf.writeString(key.translationKey)
 						ClientPlayNetworking.send(HexicalNetworking.RELEASED_KEY_PACKET, buf)
+
+						val animationContainer = (client.player as PlayerAnimations).hexical_getModAnimation()
+						val anim = PlayerAnimationRegistry.getAnimation(HexicalMain.id("cast_end"))
+						animationContainer.setAnimation(KeyframeAnimationPlayer(anim!!))
 					} else if (states[key.translationKey] == false && key.isPressed) {
 						val buf = PacketByteBufs.create()
 						buf.writeString(key.translationKey)
 						ClientPlayNetworking.send(HexicalNetworking.PRESSED_KEY_PACKET, buf)
+
+						val animationContainer = (client.player as PlayerAnimations).hexical_getModAnimation()
+						val anim = PlayerAnimationRegistry.getAnimation(HexicalMain.id("cast_loop"))
+						animationContainer.setAnimation(KeyframeAnimationPlayer(anim!!))
 					}
 				}
 				states[key.translationKey] = key.isPressed
