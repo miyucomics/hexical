@@ -9,12 +9,10 @@ import java.util.Random;
 public class HexicalMain implements ModInitializer {
 	public static final String MOD_ID = "hexical";
 	public static final Random RANDOM = new Random();
-
 	public static final Integer EVOKE_DURATION = 60;
 
 	@Override
 	public void onInitialize() {
-		HexicalAdvancements.init();
 		HexicalBlocks.init();
 		HexicalData.init();
 		HexicalEntities.init();
