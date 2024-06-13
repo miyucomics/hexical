@@ -24,6 +24,7 @@ object HexicalKeybinds {
 		KeyBindingHelper.registerKeyBinding(EVOKE_KEYBIND)
 		KeyBindingHelper.registerKeyBinding(TELEPATHY_KEYBIND)
 		KeyBindingHelper.registerKeyBinding(EXIT_SCRYING_KEYBIND)
+
 		ClientTickEvents.END_CLIENT_TICK.register { client: MinecraftClient ->
 			if (client.player == null)
 				return@register

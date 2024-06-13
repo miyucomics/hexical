@@ -11,6 +11,7 @@ import at.petrak.hexcasting.api.spell.mishaps.MishapOthersName
 import at.petrak.hexcasting.api.utils.serializeToNBT
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import miyucomics.hexical.registry.HexicalItems.NULL_MEDIA_ITEM
+import miyucomics.hexical.state.EvokeState
 import miyucomics.hexical.state.PersistentStateHandler
 import miyucomics.hexical.state.PersistentStateHandler.Companion.getEvocation
 import net.minecraft.item.ItemStack
@@ -43,6 +44,7 @@ class OpInternalizeHex : SpellAction {
 			val ctx = CastingContext((player as ServerPlayerEntity?)!!, Hand.MAIN_HAND, CastSource.PACKAGED_HEX)
 			CastingHarness(ctx).executeIotas((HexIotaTypes.deserialize(hex, player.world as ServerWorld) as ListIota).list.toList(), player.world as ServerWorld)
 			player.setStackInHand(Hand.MAIN_HAND, stack)
+			EvokeState.duration[player.uuid] = 0
 		}
 	}
 }

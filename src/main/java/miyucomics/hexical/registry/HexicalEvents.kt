@@ -10,13 +10,9 @@ object HexicalEvents {
 	@JvmStatic
 	fun init() {
 		ServerTickEvents.END_SERVER_TICK.register {
-			for (player in EvokeState.active.keys) {
-				if (EvokeState.active[player]!!) {
+			for (player in EvokeState.active.keys)
+				if (EvokeState.active[player]!!)
 					EvokeState.duration[player] = EvokeState.duration[player]!! + 1
-					if (EvokeState.duration[player]!! > HexicalMain.EVOKE_DURATION)
-						EvokeState.duration[player] = -1
-				}
-			}
 			for (player in KeybindData.duration.keys) {
 				val binds = KeybindData.active[player]!!
 				for (key in binds.keys)
