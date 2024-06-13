@@ -13,6 +13,8 @@ import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
 import net.minecraft.client.input.Input
 import net.minecraft.client.input.KeyboardInput
 import net.minecraft.server.world.ServerWorld
+import net.minecraft.sound.SoundCategory
+import net.minecraft.sound.SoundEvents
 import net.minecraft.util.Identifier
 
 object HexicalNetworking {
@@ -46,6 +48,7 @@ object HexicalNetworking {
 		ServerPlayNetworking.registerGlobalReceiver(START_EVOKING_PACKET) { _, player, _, _, _ ->
 			EvokeState.active[player.uuid] = true
 			EvokeState.duration[player.uuid] = 0
+			player.playSound(SoundEvents.ENTITY_EVOKER_PREPARE_WOLOLO, SoundCategory.PLAYERS, 1f, 1f)
 		}
 		ServerPlayNetworking.registerGlobalReceiver(END_EVOKING_PACKET) { _, player, _, _, _ ->
 			EvokeState.active[player.uuid] = false
