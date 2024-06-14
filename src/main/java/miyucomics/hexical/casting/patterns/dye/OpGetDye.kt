@@ -44,7 +44,7 @@ class OpGetDye : ConstMediaAction {
 
 	private fun processEntity(entity: Entity): Iota {
 		return when (entity) {
-			is CatEntity -> DyeIota(entity.collarColor)
+			is CatEntity -> DyeIota(entity.collarColor.getName())
 			is ItemEntity -> {
 				when (val item = entity.stack.item) {
 					is BlockItem -> getDyeFromBlock(item.block)
@@ -56,21 +56,21 @@ class OpGetDye : ConstMediaAction {
 					}
 				}
 			}
-			is SheepEntity -> DyeIota(entity.color)
+			is SheepEntity -> DyeIota(entity.color.getName())
 			is ShulkerEntity -> {
 				if (entity.color == null)
 					NullIota()
 				else
-					DyeIota(entity.color!!)
+					DyeIota(entity.color!!.getName())
 			}
-			is WolfEntity -> DyeIota(entity.collarColor)
+			is WolfEntity -> DyeIota(entity.collarColor.getName())
 			else -> NullIota()
 		}
 	}
 	private fun processVec3d(position: BlockPos, world: ServerWorld): Iota {
 		val state = world.getBlockState(position)
 		if (state.block is SignBlock)
-			return DyeIota((world.getBlockEntity(position) as SignBlockEntity).textColor)
+			return DyeIota((world.getBlockEntity(position) as SignBlockEntity).textColor.getName())
 		return getDyeFromBlock(world.getBlockState(position).block)
 	}
 	private fun getDyeFromBlock(block: Block): Iota {
