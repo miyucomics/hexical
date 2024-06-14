@@ -14,14 +14,14 @@ import net.minecraft.text.Text
 import net.minecraft.util.DyeColor
 import java.util.*
 
-class DyeIota(color: DyeColor) : Iota(HexicalIota.DYE_IOTA, color) {
+class DyeIota(color: String) : Iota(HexicalIota.DYE_IOTA, color) {
 	override fun isTruthy() = true
-	val dye: DyeColor = this.payload as DyeColor
+	val dye: String = this.payload as String
 	override fun toleratesOther(that: Iota) = (typesMatch(this, that) && that is DyeIota) && this.dye == that.dye
 
 	override fun serialize(): NbtElement {
 		val compound = NbtCompound()
-		compound.putString("color", dye.getName())
+		compound.putString("color", dye)
 		return compound
 	}
 
@@ -42,12 +42,13 @@ class DyeIota(color: DyeColor) : Iota(HexicalIota.DYE_IOTA, color) {
 			"brown" to 8606770,
 			"green" to 6192150,
 			"red" to 11546150,
-			"black" to 0x1D1D21
+			"black" to 0x1D1D21,
+			"uncolored" to 0xff_ff00ff.toInt(),
 		)
 
 		var TYPE: IotaType<DyeIota> = object : IotaType<DyeIota>() {
 			override fun color() = 0xff_ffffff.toInt()
-			override fun deserialize(tag: NbtElement?, world: ServerWorld?) = DyeIota(DyeColor.byName((tag!! as NbtCompound).getString("color").lowercase(Locale.getDefault()), DyeColor.BLACK)!!)
+			override fun deserialize(tag: NbtElement?, world: ServerWorld?) = DyeIota((tag!! as NbtCompound).getString("color"))
 			override fun display(tag: NbtElement): Text {
 				val color = (tag as NbtCompound).getString("color")
 				return Text.literal(color.replace("_", " ")).styledWith(Style.EMPTY.withColor(MAP[color]!!))
@@ -56,7 +57,14 @@ class DyeIota(color: DyeColor) : Iota(HexicalIota.DYE_IOTA, color) {
 	}
 }
 
-fun List<Iota>.getDye(idx: Int, argc: Int = 0): DyeColor {
+fun List<Iota>.getTrueDye(idx: Int, argc: Int = 0): DyeColor {
+	val x = this.getOrElse(idx) { throw MishapNotEnoughArgs(idx + 1, this.size) }
+	if (x is DyeIota && x.dye != "uncolored")
+		return DyeColor.byName(x.dye, DyeColor.BLACK)!!
+	throw MishapInvalidIota.ofType(x, if (argc == 0) idx else argc - (idx + 1), "uncolored_dye")
+}
+
+fun List<Iota>.getDye(idx: Int, argc: Int = 0): String {
 	val x = this.getOrElse(idx) { throw MishapNotEnoughArgs(idx + 1, this.size) }
 	if (x is DyeIota)
 		return x.dye
