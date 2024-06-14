@@ -10,6 +10,9 @@ import at.petrak.hexcasting.api.spell.iota.ListIota
 import at.petrak.hexcasting.api.spell.mishaps.MishapOthersName
 import at.petrak.hexcasting.api.utils.serializeToNBT
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
+import miyucomics.hexical.enums.SpecializedSource
+import miyucomics.hexical.interfaces.CastingContextMinterface
+import miyucomics.hexical.items.lampCast
 import miyucomics.hexical.registry.HexicalItems.NULL_MEDIA_ITEM
 import miyucomics.hexical.state.EvokeState
 import miyucomics.hexical.state.PersistentStateHandler
@@ -38,13 +41,12 @@ class OpInternalizeHex : SpellAction {
 
 	companion object {
 		fun evoke(player: ServerPlayerEntity) {
+			EvokeState.duration[player.uuid] = 0
 			val hex = getEvocation((player as ServerPlayerEntity?)!!) ?: return
 			val stack: ItemStack = player.mainHandStack
-			player.setStackInHand(Hand.MAIN_HAND, ItemStack(NULL_MEDIA_ITEM, 1))
-			val ctx = CastingContext((player as ServerPlayerEntity?)!!, Hand.MAIN_HAND, CastSource.PACKAGED_HEX)
-			CastingHarness(ctx).executeIotas((HexIotaTypes.deserialize(hex, player.world as ServerWorld) as ListIota).list.toList(), player.world as ServerWorld)
+			player.setStackInHand(Hand.MAIN_HAND, ItemStack(NULL_MEDIA_ITEM))
+			lampCast(player.world as ServerWorld, player, (HexIotaTypes.deserialize(hex, player.world as ServerWorld) as ListIota).list.toList(), SpecializedSource.EVOCATION, false)
 			player.setStackInHand(Hand.MAIN_HAND, stack)
-			EvokeState.duration[player.uuid] = 0
 		}
 	}
 }

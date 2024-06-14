@@ -313,8 +313,10 @@
 	"hexcasting.spell.hexical:modify_block_volatile": "Modify Block: Volatile",
 	"hexical.page.modify_block_volatile.summary": "This modifier makes the block break other mage blocks it's touching. Notably, if it breaks another volatile block, that block breaks and so on until every volatile block shatters.",
 
-	"hexical.page.evoking.title": "Evoking",
-	"hexical.page.internalize_hex.summary": "Internalizes a hex, allowing me to use evocation to use it, even without a staff.",
+	"hexical.page.evoking.title": "Evocation",
+    "hexical.page.evoking.0": "Media is the energy of thought, so it stands to reason that I should be able to simply $(o)think$() magic into existence rather than waving around a staff. Unfortunately, my mind is not great enough shift arbitrary effects into reality. However, by etching a predetermined hex into my torn mind, I can bring it forth into existence by waving my arms similarly to an evoker, taking media from my inventory.",
+	"hexcasting.spell.hexical:internalize_hex": "Internalize Hex",
+	"hexical.page.internalize_hex.summary": "Internalizes a hex, allowing me to use evocation to use it even without a staff.",
 
 	"hexical.category.scrying": "Scrying",
 	"hexical.category.scrying.desc": "I have stumbled upon a branch of manipulating _media entirely focused around information. These patterns can divine a surprising amount of information like types of blocks, status effects, the weather, the nutritional value of food, whether I am sprinting, $(o)block explosion resistance$(), and more. While likely not too useful for the majority of _Hexes, these will be convenient to have, should I ever need them.",

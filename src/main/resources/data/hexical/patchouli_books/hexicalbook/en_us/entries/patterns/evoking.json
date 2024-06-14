@@ -7,13 +7,13 @@
 	"pages": [
 		{
 			"type": "patchouli:text",
-			"text": "hexical.page.conjure_hexburst.description"
+			"text": "hexical.page.evoking.0"
 		},
 		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:internalize_hex",
 			"anchor": "hexical:internalize_hex",
-			"input": "list",
+			"input": "list of patterns",
 			"output": "",
 			"text": "hexical.page.internalize_hex.summary"
 	    }
