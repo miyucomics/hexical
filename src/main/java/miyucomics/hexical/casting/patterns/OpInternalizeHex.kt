@@ -21,6 +21,8 @@ import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld
+import net.minecraft.sound.SoundCategory
+import net.minecraft.sound.SoundEvents
 import net.minecraft.util.Hand
 
 class OpInternalizeHex : SpellAction {
@@ -46,6 +48,7 @@ class OpInternalizeHex : SpellAction {
 			val stack: ItemStack = player.mainHandStack
 			player.setStackInHand(Hand.MAIN_HAND, ItemStack(NULL_MEDIA_ITEM))
 			lampCast(player.world as ServerWorld, player, (HexIotaTypes.deserialize(hex, player.world as ServerWorld) as ListIota).list.toList(), SpecializedSource.EVOCATION, false)
+			player.playSound(SoundEvents.ENTITY_EVOKER_CAST_SPELL, SoundCategory.PLAYERS, 1f, 1f)
 			player.setStackInHand(Hand.MAIN_HAND, stack)
 		}
 	}

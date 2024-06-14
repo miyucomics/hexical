@@ -1,5 +1,5 @@
 {
-	"beds": {
+	"bed": {
 		"minecraft:white_bed": "white",
 		"minecraft:orange_bed": "orange",
 		"minecraft:magenta_bed": "magenta",
@@ -17,7 +17,7 @@
 		"minecraft:red_bed": "red",
 		"minecraft:black_bed": "black"
 	},
-	"candles": {
+	"candle": {
 		"minecraft:candle": "uncolored",
 		"minecraft:white_candle": "white",
 		"minecraft:orange_candle": "orange",
@@ -36,7 +36,7 @@
 		"minecraft:red_candle": "red",
 		"minecraft:black_candle": "black"
 	},
-	"candle_cakes": {
+	"candle_cake": {
 		"minecraft:candle_cake": "uncolored",
 		"minecraft:white_candle_cake": "white",
 		"minecraft:orange_candle_cake": "orange",
@@ -55,7 +55,7 @@
 		"minecraft:red_candle_cake": "red",
 		"minecraft:black_candle_cake": "black"
 	},
-	"carpets": {
+	"carpet": {
 		"minecraft:white_carpet": "white",
 		"minecraft:orange_carpet": "orange",
 		"minecraft:magenta_carpet": "magenta",
@@ -73,7 +73,7 @@
 		"minecraft:red_carpet": "red",
 		"minecraft:black_carpet": "black"
 	},
-	"concretes": {
+	"concrete": {
 		"minecraft:white_concrete": "white",
 		"minecraft:orange_concrete": "orange",
 		"minecraft:magenta_concrete": "magenta",
@@ -91,7 +91,7 @@
 		"minecraft:red_concrete": "red",
 		"minecraft:black_concrete": "black"
 	},
-	"concrete_powders": {
+	"concrete_powder": {
 		"minecraft:white_concrete_powder": "white",
 		"minecraft:orange_concrete_powder": "orange",
 		"minecraft:magenta_concrete_powder": "magenta",
@@ -127,11 +127,51 @@
 		"minecraft:red_glazed_terracotta": "red",
 		"minecraft:black_glazed_terracotta": "black"
 	},
-	"sands": {
+	"sand": {
 		"minecraft:sand": "uncolored",
 		"minecraft:red_sand": "red"
 	},
-	"shulker_boxes": {
+	"sandstone": {
+		"minecraft:sandstone": "uncolored",
+		"minecraft:red_sandstone": "red"
+	},
+	"cut_sandstone": {
+		"minecraft:cut_sandstone": "uncolored",
+		"minecraft:cut_red_sandstone": "red"
+	},
+	"smooth_sandstone": {
+		"minecraft:smooth_sandstone": "uncolored",
+		"minecraft:smooth_red_sandstone": "red"
+	},
+	"chiseled_sandstone": {
+		"minecraft:chiseled_sandstone": "uncolored",
+		"minecraft:chiseled_red_sandstone": "red"
+	},
+	"sandstone_slab": {
+		"minecraft:sandstone_slab": "uncolored",
+		"minecraft:red_sandstone_slab": "red"
+	},
+	"cut_sandstone_slab": {
+		"minecraft:cut_sandstone_slab": "uncolored",
+		"minecraft:cut_red_sandstone_slab": "red"
+	},
+	"smooth_sandstone_slab": {
+		"minecraft:smooth_sandstone_slab": "uncolored",
+		"minecraft:smooth_red_sandstone_slab": "red"
+	},
+	"sandstone_stairs": {
+		"minecraft:sandstone_stairs": "uncolored",
+		"minecraft:red_sandstone_stairs": "red"
+	},
+	"smooth_sandstone_stairs": {
+		"minecraft:smooth_sandstone_stairs": "uncolored",
+		"minecraft:smooth_red_sandstone_stairs": "red"
+	},
+	"sandstone_walls": {
+		"minecraft:sandstone_wall": "uncolored",
+		"minecraft:red_sandstone_wall": "red"
+	},
+	"shulker_box": {
 		"minecraft:shulker_box": "uncolored",
 		"minecraft:white_shulker_box": "white",
 		"minecraft:orange_shulker_box": "orange",
@@ -205,13 +245,13 @@
 		"minecraft:red_terracotta": "red",
 		"minecraft:black_terracotta": "black"
 	},
-	"tulips": {
+	"tulip": {
 		"minecraft:orange_tulip": "orange",
 		"minecraft:white_tulip": "white",
 		"minecraft:pink_tulip": "pink",
 		"minecraft:red_tulip": "red"
 	},
-	"wools": {
+	"wool": {
 		"minecraft:white_wool": "white",
 		"minecraft:orange_wool": "orange",
 		"minecraft:magenta_wool": "magenta",
