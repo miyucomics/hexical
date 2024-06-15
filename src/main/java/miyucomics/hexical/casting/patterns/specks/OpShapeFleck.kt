@@ -23,7 +23,7 @@ class OpShapeFleck : ConstMediaAction {
 				throw MishapInvalidIota.of(args[0], 0, "fleck_vector_list")
 			else {
 				val vector = (point as Vec3Iota).vec3
-				if (vector.lengthSquared() > 3*3)
+				if (vector.lengthSquared() > 3 * 3)
 					throw MishapInvalidIota.of(args[0], 0, "fleck_vector_list")
 				points.add(Vec2f(vector.x.toFloat(), vector.y.toFloat()))
 			}
