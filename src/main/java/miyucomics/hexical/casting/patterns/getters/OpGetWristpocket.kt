@@ -5,7 +5,7 @@ import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.DoubleIota
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.NullIota
-import miyucomics.hexical.iota.IdentifierIota
+import miyucomics.hexical.casting.iota.IdentifierIota
 import miyucomics.hexical.state.PersistentStateHandler
 import net.minecraft.item.ItemStack
 import net.minecraft.item.Items

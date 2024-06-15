@@ -1,4 +1,4 @@
-package miyucomics.hexical.iota
+package miyucomics.hexical.casting.iota
 
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.IotaType
@@ -12,7 +12,6 @@ import net.minecraft.server.world.ServerWorld
 import net.minecraft.text.Style
 import net.minecraft.text.Text
 import net.minecraft.util.DyeColor
-import java.util.*
 
 class DyeIota(color: String) : Iota(HexicalIota.DYE_IOTA, color) {
 	override fun isTruthy() = true
@@ -58,10 +57,10 @@ class DyeIota(color: String) : Iota(HexicalIota.DYE_IOTA, color) {
 }
 
 fun List<Iota>.getTrueDye(idx: Int, argc: Int = 0): DyeColor {
-	val x = this.getOrElse(idx) { throw MishapNotEnoughArgs(idx + 1, this.size) }
-	if (x is DyeIota && x.dye != "uncolored")
-		return DyeColor.byName(x.dye, DyeColor.BLACK)!!
-	throw MishapInvalidIota.ofType(x, if (argc == 0) idx else argc - (idx + 1), "uncolored_dye")
+	val dye = getDye(idx, argc)
+	if (dye != "uncolored")
+		return DyeColor.byName(dye, DyeColor.BLACK)!!
+	throw MishapInvalidIota.of(this[idx], if (argc == 0) idx else argc - (idx + 1), "true_dye")
 }
 
 fun List<Iota>.getDye(idx: Int, argc: Int = 0): String {
