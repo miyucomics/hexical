@@ -3,7 +3,7 @@ package miyucomics.hexical.casting.patterns.getters
 import at.petrak.hexcasting.api.spell.ConstMediaAction
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.Iota
-import miyucomics.hexical.iota.IdentifierIota
+import miyucomics.hexical.casting.iota.IdentifierIota
 
 class OpGetDimension : ConstMediaAction {
 	override val argc = 0

@@ -7,7 +7,7 @@ import at.petrak.hexcasting.api.spell.iota.BooleanIota
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.ListIota
 import at.petrak.hexcasting.api.spell.iota.NullIota
-import miyucomics.hexical.iota.IdentifierIota
+import miyucomics.hexical.casting.iota.IdentifierIota
 import net.minecraft.util.registry.Registry
 
 class OpGetLivingEntityData(private val mode: Int) : ConstMediaAction {

@@ -8,8 +8,8 @@ import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.Vec3Iota
 import miyucomics.hexical.casting.mishaps.DyeableMishap
 import miyucomics.hexical.data.DyeData
-import miyucomics.hexical.iota.getDye
-import miyucomics.hexical.iota.getTrueDye
+import miyucomics.hexical.casting.iota.getDye
+import miyucomics.hexical.casting.iota.getTrueDye
 import net.minecraft.block.*
 import net.minecraft.block.entity.ShulkerBoxBlockEntity
 import net.minecraft.entity.ItemEntity

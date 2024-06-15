@@ -1,0 +1,5 @@
+{
+	"entities": {
+		"minecraft:armor_stand": "hexical:armor_stand_arms"
+	}
+}

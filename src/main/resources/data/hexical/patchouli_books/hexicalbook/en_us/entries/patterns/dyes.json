@@ -1,0 +1,32 @@
+{
+	"name": "hexical.page.dyes.title",
+	"icon": "minecraft:red_dye",
+	"category": "hexcasting:patterns/spells",
+	"advancement": "hexcasting:root",
+	"pages": [
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.dyes.0"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:get_dye",
+			"anchor": "hexical:get_dye",
+			"input": "vector/entity",
+			"output": "dye/null",
+			"text": "hexical.page.get_dye.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:dye",
+			"anchor": "hexical:dye",
+			"input": "vector/entity, dye",
+			"output": "",
+			"text": "hexical.page.dye.summary"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.dyes.1"
+		}
+	]
+}

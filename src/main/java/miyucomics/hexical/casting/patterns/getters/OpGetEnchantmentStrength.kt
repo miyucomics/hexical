@@ -5,7 +5,7 @@ import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.DoubleIota
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
-import miyucomics.hexical.iota.getIdentifier
+import miyucomics.hexical.casting.iota.getIdentifier
 import net.minecraft.enchantment.EnchantmentHelper
 import net.minecraft.util.registry.Registry
 

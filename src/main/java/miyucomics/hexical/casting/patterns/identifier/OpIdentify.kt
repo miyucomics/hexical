@@ -7,7 +7,7 @@ import at.petrak.hexcasting.api.spell.iota.EntityIota
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.Vec3Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
-import miyucomics.hexical.iota.IdentifierIota
+import miyucomics.hexical.casting.iota.IdentifierIota
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.registry.Registry
 

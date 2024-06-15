@@ -1,4 +1,4 @@
-package miyucomics.hexical.iota
+package miyucomics.hexical.casting.iota
 
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.IotaType

@@ -7,7 +7,7 @@ import at.petrak.hexcasting.api.spell.iota.DoubleIota
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.NullIota
 import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
-import miyucomics.hexical.iota.getIdentifier
+import miyucomics.hexical.casting.iota.getIdentifier
 import net.minecraft.util.registry.Registry
 
 class OpGetStatusEffectInstanceData(private val mode: Int) : ConstMediaAction {
