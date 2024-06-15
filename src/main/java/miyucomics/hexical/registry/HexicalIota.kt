@@ -4,8 +4,8 @@ import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.IotaType
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.iota.DyeIota
-import miyucomics.hexical.iota.IdentifierIota
+import miyucomics.hexical.casting.iota.DyeIota
+import miyucomics.hexical.casting.iota.IdentifierIota
 import net.minecraft.util.Identifier
 import net.minecraft.util.registry.Registry
 

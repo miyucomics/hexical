@@ -6,7 +6,7 @@ import at.petrak.hexcasting.api.spell.getEntity
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.ListIota
 import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
-import miyucomics.hexical.iota.IdentifierIota
+import miyucomics.hexical.casting.iota.IdentifierIota
 import net.minecraft.entity.ItemEntity
 import net.minecraft.entity.effect.StatusEffects
 import net.minecraft.entity.projectile.ArrowEntity

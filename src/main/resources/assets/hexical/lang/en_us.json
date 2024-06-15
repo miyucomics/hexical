@@ -52,6 +52,8 @@
 	"hexcasting.mishap.invalid_value.entity_or_vector": "an entity or a vector",
 	"hexcasting.mishap.invalid_value.pattern_list": "a list with only patterns",
 	"hexcasting.mishap.invalid_value.identifier": "an identifier",
+	"hexcasting.mishap.invalid_value.class.dye": "a dye",
+	"hexcasting.mishap.invalid_value.true_dye": "a colored dye",
 	"hexcasting.mishap.invalid_value.enchantment": "an enchantment type",
 	"hexcasting.mishap.invalid_value.food": "a food item entity",
 	"hexcasting.mishap.invalid_value.potion_holding": "a food, potion, or tipped arrow item entity",
@@ -312,6 +314,14 @@
 	"hexical.page.modify_block_replaceable.summary": "This modifier is useful for construction! With this modifier applied, I find I can easily place another block in the place of the mage block.",
 	"hexcasting.spell.hexical:modify_block_volatile": "Modify Block: Volatile",
 	"hexical.page.modify_block_volatile.summary": "This modifier makes the block break other mage blocks it's touching. Notably, if it breaks another volatile block, that block breaks and so on until every volatile block shatters.",
+
+    "hexical.page.dyes.title": "Dyes",
+    "hexical.page.dyes.0": "The dye spell and its specialized iota allows me to alter the color of blocks and entities. The dye iota represents a color, but also seems to represent the $(o)potential$() to be colored. For example, attempting to get the dye of grass returns null but getting the dye of terracotta returns $(thing)uncolored$(), which I can use to \"bleach\" dyeable blocks.",
+	"hexcasting.spell.hexical:get_dye": "Chromatic Purification",
+    "hexical.page.get_dye.summary": "Gets the dye of a block or entity.",
+	"hexcasting.spell.hexical:dye": "Dye",
+    "hexical.page.dye.summary": "Dyes a dyeable block or entity.",
+    "hexical.page.dyes.1": "The following pages will be a somewhat complete list of its capabilities, although I have heard rumors that certain forces can add more functionality than is shown here.",
 
 	"hexical.page.evoking.title": "Evocation",
     "hexical.page.evoking.0": "Media is the energy of thought, so it stands to reason that I should be able to simply $(o)think$() magic into existence rather than waving around a staff. Unfortunately, my mind is not great enough shift arbitrary effects into reality. However, by etching a predetermined hex into my torn mind, I can bring it forth into existence by waving my arms similarly to an evoker, taking media from my inventory.",

@@ -9,7 +9,7 @@ import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.NullIota
 import at.petrak.hexcasting.api.spell.iota.Vec3Iota
 import miyucomics.hexical.data.DyeData
-import miyucomics.hexical.iota.DyeIota
+import miyucomics.hexical.casting.iota.DyeIota
 import net.minecraft.block.Block
 import net.minecraft.block.SignBlock
 import net.minecraft.block.entity.SignBlockEntity
@@ -20,7 +20,6 @@ import net.minecraft.entity.passive.CatEntity
 import net.minecraft.entity.passive.SheepEntity
 import net.minecraft.entity.passive.WolfEntity
 import net.minecraft.item.BlockItem
-import net.minecraft.item.DyeItem
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.util.math.BlockPos
 

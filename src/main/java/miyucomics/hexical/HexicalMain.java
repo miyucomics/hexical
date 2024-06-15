@@ -1,5 +1,6 @@
 package miyucomics.hexical;
 
+import miyucomics.hexical.data.PrestidigitationData;
 import miyucomics.hexical.registry.*;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
@@ -9,7 +10,7 @@ import java.util.Random;
 public class HexicalMain implements ModInitializer {
 	public static final String MOD_ID = "hexical";
 	public static final Random RANDOM = new Random();
-	public static final Integer EVOKE_DURATION = 35;
+	public static final Integer EVOKE_DURATION = 30;
 
 	@Override
 	public void onInitialize() {
@@ -22,6 +23,7 @@ public class HexicalMain implements ModInitializer {
 		HexicalItems.init();
 		HexicalPatterns.init();
 		HexicalNetworking.serverInit();
+		PrestidigitationData.init();
 	}
 
 	public static Identifier id(String string) {
