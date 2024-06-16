@@ -1,13 +1,16 @@
 package miyucomics.hexical.casting.patterns
 
-import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.*
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.EntityIota
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.Vec3Iota
+import at.petrak.hexcasting.api.spell.mishaps.MishapBadBlock
+import at.petrak.hexcasting.api.spell.mishaps.MishapBadEntity
+import miyucomics.hexical.data.PrestidigitationData
+import miyucomics.hexical.interfaces.PrestidigitationEffect
 import net.minecraft.entity.Entity
-import net.minecraft.util.math.Vec3d
+import net.minecraft.util.math.BlockPos
 import java.lang.IllegalStateException
 
 class OpPrestidigitation : SpellAction {
@@ -16,25 +19,29 @@ class OpPrestidigitation : SpellAction {
 		return when (args[0]) {
 			is EntityIota -> {
 				val entity = args.getEntity(0, argc)
-				Triple(EntitySpell(entity), MediaConstants.DUST_UNIT * 3, listOf())
+				ctx.assertEntityInRange(entity)
+				val effect = PrestidigitationData.entityEffect(entity) ?: throw MishapBadEntity.of(entity, "prestidigitation")
+				Triple(EntitySpell(entity, effect), effect.getCost(), listOf())
 			}
 			is Vec3Iota -> {
-				val position = args.getVec3(0, argc)
-				Triple(BlockSpell(position), MediaConstants.DUST_UNIT * 3, listOf())
+				val position = args.getBlockPos(0, argc)
+				ctx.assertVecInRange(position)
+				val effect = PrestidigitationData.blockEffect(ctx.world.getBlockState(position).block) ?: throw MishapBadBlock.of(position, "prestidigitation")
+				Triple(BlockSpell(position, effect), effect.getCost(), listOf())
 			}
 			else -> throw IllegalStateException()
 		}
 	}
 
-	private data class BlockSpell(val position: Vec3d) : RenderedSpell {
+	private data class BlockSpell(val position: BlockPos, val effect: PrestidigitationEffect) : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
-
+			effect.effectBlock(ctx.caster, position)
 		}
 	}
 
-	private data class EntitySpell(val entity: Entity) : RenderedSpell {
+	private data class EntitySpell(val entity: Entity, val effect: PrestidigitationEffect) : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
-
+			effect.effectEntity(ctx.caster, entity)
 		}
 	}
 }

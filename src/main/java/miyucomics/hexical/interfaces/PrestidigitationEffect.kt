@@ -1,9 +1,11 @@
 package miyucomics.hexical.interfaces
 
 import net.minecraft.entity.Entity
-import net.minecraft.util.math.Vec3d
+import net.minecraft.server.network.ServerPlayerEntity
+import net.minecraft.util.math.BlockPos
 
 interface PrestidigitationEffect {
-	fun effectBlock(position: Vec3d)
-	fun effectEntity(entity: Entity)
+	fun getCost(): Int
+	fun effectBlock(caster: ServerPlayerEntity, position: BlockPos)
+	fun effectEntity(caster: ServerPlayerEntity, entity: Entity)
 }
