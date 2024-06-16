@@ -4,9 +4,14 @@ import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.interfaces.PrestidigitationEffect
-import miyucomics.hexical.prestidigitation.ArmorStandEffect
+import miyucomics.hexical.prestidigitation.ArmStandsEffect
+import miyucomics.hexical.prestidigitation.DeprimeTntEffect
+import miyucomics.hexical.prestidigitation.PrimeTntEffect
+import miyucomics.hexical.prestidigitation.ShearSheepEffect
 import net.fabricmc.fabric.api.event.registry.FabricRegistryBuilder
 import net.fabricmc.fabric.api.event.registry.RegistryAttribute
+import net.minecraft.block.Block
+import net.minecraft.entity.Entity
 import net.minecraft.util.Identifier
 import net.minecraft.util.registry.Registry
 import net.minecraft.util.registry.SimpleRegistry
@@ -20,7 +25,18 @@ object PrestidigitationData {
 
 	@JvmStatic
 	fun init() {
-		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("armor_stand_arms"), ArmorStandEffect())
+		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("arm_stands"), ArmStandsEffect())
+		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("prime_tnt"), PrimeTntEffect())
+		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("deprime_tnt"), DeprimeTntEffect())
+		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("shear_sheep"), ShearSheepEffect())
+	}
+
+	fun blockEffect(block: Block): PrestidigitationEffect? {
+		return PRESTIDIGITATION_EFFECTS.get(BLOCK_LOOKUP[Registry.BLOCK.getId(block)])
+	}
+
+	fun entityEffect(entity: Entity): PrestidigitationEffect? {
+		return PRESTIDIGITATION_EFFECTS.get(ENTITY_LOOKUP[Registry.ENTITY_TYPE.getId(entity.type)])
 	}
 
 	fun loadData(stream: InputStream) {

@@ -1,5 +1,10 @@
 {
+	"blocks": {
+		"minecraft:tnt": "hexical:prime_tnt"
+	},
 	"entities": {
-		"minecraft:armor_stand": "hexical:armor_stand_arms"
+		"minecraft:armor_stand": "hexical:arm_stands",
+		"minecraft:sheep": "hexical:shear_sheep",
+		"minecraft:tnt": "hexical:deprime_tnt"
 	}
 }
