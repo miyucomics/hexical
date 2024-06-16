@@ -6,6 +6,7 @@ import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.EntityIota
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.Vec3Iota
+import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
 import miyucomics.hexical.casting.mishaps.DyeableMishap
 import miyucomics.hexical.data.DyeData
 import miyucomics.hexical.casting.iota.getDye
@@ -77,7 +78,7 @@ class OpDye : SpellAction {
 					throw DyeableMishap()
 				return Triple(BlockSpell(position, state, dye), cost, listOf())
 			}
-			else -> throw DyeableMishap()
+			else -> throw MishapInvalidIota.of(args[0], 0, "entity_or_vector")
 		}
 	}
 

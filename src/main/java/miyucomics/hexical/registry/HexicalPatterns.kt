@@ -48,6 +48,8 @@ object HexicalPatterns {
 	fun init() {
 		registerPerWorld("greater_blink", "wqawawaqwqwqawawaqw", HexDir.SOUTH_WEST, OpGreaterBlink())
 
+		register("prestidigitation", "wedewedew", HexDir.NORTH_WEST, OpPrestidigitation())
+
 		register("scry_sentinel", "awawaewawwaw", HexDir.SOUTH_WEST, OpScrySentinel())
 		register("magic_missile", "qaqww", HexDir.WEST, OpMagicMissile())
 
