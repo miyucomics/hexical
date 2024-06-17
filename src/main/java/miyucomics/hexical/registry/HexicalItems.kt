@@ -16,7 +16,7 @@ object HexicalItems {
 	val CONJURED_STAFF_ITEM: ConjuredStaffItem = ConjuredStaffItem()
 	val HEXBURST_ITEM: HexburstItem = HexburstItem()
 	val HEXTITO_ITEM: HextitoItem = HextitoItem()
-	val NULL_MEDIA_ITEM: IHaveNoFormAndIMustOvercast = IHaveNoFormAndIMustOvercast()
+	val NULL_MEDIA_ITEM: NullMediaItem = NullMediaItem()
 
 	@JvmStatic
 	fun init() {

@@ -6,7 +6,7 @@ import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.server.world.ServerWorld
 
-class IHaveNoFormAndIMustOvercast : Item(Settings()), HexHolderItem {
+class NullMediaItem : Item(Settings()), HexHolderItem {
 	override fun getMedia(stack: ItemStack?) = 0
 	override fun getMaxMedia(stack: ItemStack?) = 0
 	override fun setMedia(stack: ItemStack?, media: Int) {}
