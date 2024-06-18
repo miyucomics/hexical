@@ -11,7 +11,6 @@
     - added data-pack based method to add custom color associations to blocks so you can add support for mods with simple datapacks
 - added evocation - a keybind that allows you to cast spells by holding a keybind for some time
 - added Scry Sentinel - see through your sentinel!
-- added Command Golem - command player-made golems to attack a target
 - added Similarity Distillation - get if two iota are of the same type
 - added Congruence Distillation - get if two patterns are the same, regardless of orientation
 - added internal iota storage to hand lamp and patterns to interact with it
