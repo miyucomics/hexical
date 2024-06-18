@@ -4,14 +4,12 @@ import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.interfaces.PrestidigitationEffect
-import miyucomics.hexical.prestidigitation.ArmStandsEffect
-import miyucomics.hexical.prestidigitation.DeprimeTntEffect
-import miyucomics.hexical.prestidigitation.PrimeTntEffect
-import miyucomics.hexical.prestidigitation.ShearSheepEffect
+import miyucomics.hexical.prestidigitation.*
 import net.fabricmc.fabric.api.event.registry.FabricRegistryBuilder
 import net.fabricmc.fabric.api.event.registry.RegistryAttribute
 import net.minecraft.block.Block
 import net.minecraft.entity.Entity
+import net.minecraft.item.ItemStack
 import net.minecraft.util.Identifier
 import net.minecraft.util.registry.Registry
 import net.minecraft.util.registry.SimpleRegistry
@@ -29,6 +27,9 @@ object PrestidigitationData {
 		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("prime_tnt"), PrimeTntEffect())
 		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("deprime_tnt"), DeprimeTntEffect())
 		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("shear_sheep"), ShearSheepEffect())
+
+		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("ring_bell"), RingBellEffect())
+		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("right_click"), UseItemOnEffect(ItemStack.EMPTY))
 	}
 
 	fun blockEffect(block: Block): PrestidigitationEffect? {

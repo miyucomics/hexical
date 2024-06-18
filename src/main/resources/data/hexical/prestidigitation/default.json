@@ -1,6 +1,8 @@
 {
 	"blocks": {
-		"minecraft:tnt": "hexical:prime_tnt"
+		"minecraft:bell": "hexical:ring_bell",
+		"minecraft:tnt": "hexical:prime_tnt",
+		"minecraft:lever": "hexical:right_click"
 	},
 	"entities": {
 		"minecraft:armor_stand": "hexical:arm_stands",
