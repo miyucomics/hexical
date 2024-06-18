@@ -1,6 +1,7 @@
 package miyucomics.hexical.prestidigitation
 
 import at.petrak.hexcasting.api.block.circle.BlockAbstractImpetus
+import at.petrak.hexcasting.api.block.circle.BlockEntityAbstractImpetus
 import at.petrak.hexcasting.api.misc.MediaConstants
 import miyucomics.hexical.interfaces.PrestidigitationEffect
 import net.minecraft.entity.Entity
@@ -12,6 +13,7 @@ class TriggerImpetusEffect : PrestidigitationEffect {
 	override fun effectBlock(caster: ServerPlayerEntity, position: BlockPos) {
 		val state = caster.world.getBlockState(position)
 		if (state.block is BlockAbstractImpetus)
+			(caster.world.getBlockEntity(position) as BlockEntityAbstractImpetus).activateSpellCircle(caster)
 	}
 	override fun effectEntity(caster: ServerPlayerEntity, entity: Entity) {}
 }

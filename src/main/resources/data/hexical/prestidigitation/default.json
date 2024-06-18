@@ -1,11 +1,43 @@
 {
 	"blocks": {
 		"minecraft:bell": "hexical:ring_bell",
-		"minecraft:tnt": "hexical:prime_tnt",
-		"minecraft:lever": "hexical:right_click"
+		"minecraft:lever": "hexical:right_click",
+		"minecraft:tnt": "hexical:ignite",
+
+		"hexcasting:impetus_rightclick": "hexical:trigger_impetus",
+		"hexcasting:impetus_look": "hexical:trigger_impetus",
+		"hexcasting:impetus_storedplayer": "hexical:trigger_impetus",
+
+		"minecraft:daylight_detector": "hexical:right_click",
+		"minecraft:comparator": "hexical:right_click",
+		"minecraft:repeater": "hexical:right_click",
+
+		"hexcasting:edified_button": "hexical:right_click",
+		"minecraft:stone_button": "hexical:right_click",
+		"minecraft:polished_blackstone_button": "hexical:right_click",
+		"minecraft:oak_button": "hexical:right_click",
+		"minecraft:spruce_button": "hexical:right_click",
+		"minecraft:birch_button": "hexical:right_click",
+		"minecraft:jungle_button": "hexical:right_click",
+		"minecraft:acacia_button": "hexical:right_click",
+		"minecraft:dark_oak_button": "hexical:right_click",
+		"minecraft:crimson_button": "hexical:right_click",
+		"minecraft:warped_button": "hexical:right_click",
+		"minecraft:mangrove_button": "hexical:right_click",
+
+		"minecraft:acacia_fence_gate": "hexical:right_click",
+		"minecraft:birch_fence_gate": "hexical:right_click",
+		"minecraft:dark_oak_fence_gate": "hexical:right_click",
+		"minecraft:jungle_fence_gate": "hexical:right_click",
+		"minecraft:oak_fence_gate": "hexical:right_click",
+		"minecraft:spruce_fence_gate": "hexical:right_click",
+		"minecraft:crimson_fence_gate": "hexical:right_click",
+		"minecraft:warped_fence_gate": "hexical:right_click",
+		"minecraft:mangrove_fence_gate": "hexical:right_click"
 	},
 	"entities": {
 		"minecraft:armor_stand": "hexical:arm_stands",
+		"minecraft:creeper": "hexical:ignite",
 		"minecraft:sheep": "hexical:shear_sheep",
 		"minecraft:tnt": "hexical:deprime_tnt"
 	}
