@@ -12,8 +12,10 @@ class TriggerImpetusEffect : PrestidigitationEffect {
 	override fun getCost() = MediaConstants.DUST_UNIT
 	override fun effectBlock(caster: ServerPlayerEntity, position: BlockPos) {
 		val state = caster.world.getBlockState(position)
-		if (state.block is BlockAbstractImpetus)
-			(caster.world.getBlockEntity(position) as BlockEntityAbstractImpetus).activateSpellCircle(caster)
+		if (state.block is BlockAbstractImpetus) {
+			val impetus: BlockEntityAbstractImpetus = (caster.world.getBlockEntity(position)?: return) as BlockEntityAbstractImpetus
+			impetus.activateSpellCircle(caster)
+		}
 	}
 	override fun effectEntity(caster: ServerPlayerEntity, entity: Entity) {}
 }

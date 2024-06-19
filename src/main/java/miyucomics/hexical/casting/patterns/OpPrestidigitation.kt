@@ -7,11 +7,11 @@ import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.Vec3Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapBadBlock
 import at.petrak.hexcasting.api.spell.mishaps.MishapBadEntity
+import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
 import miyucomics.hexical.data.PrestidigitationData
 import miyucomics.hexical.interfaces.PrestidigitationEffect
 import net.minecraft.entity.Entity
 import net.minecraft.util.math.BlockPos
-import java.lang.IllegalStateException
 
 class OpPrestidigitation : SpellAction {
 	override val argc = 1
@@ -29,7 +29,7 @@ class OpPrestidigitation : SpellAction {
 				val effect = PrestidigitationData.blockEffect(ctx.world.getBlockState(position).block) ?: throw MishapBadBlock.of(position, "prestidigitation")
 				Triple(BlockSpell(position, effect), effect.getCost(), listOf())
 			}
-			else -> throw IllegalStateException()
+			else -> throw MishapInvalidIota.of(args[0], 0, "entity_or_vector")
 		}
 	}
 
