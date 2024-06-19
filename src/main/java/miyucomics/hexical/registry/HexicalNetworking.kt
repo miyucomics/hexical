@@ -54,14 +54,15 @@ object HexicalNetworking {
 			EvokeState.active[player.uuid] = false
 			EvokeState.duration[player.uuid] = -1
 		}
-		ServerPlayNetworking.registerGlobalReceiver(CAST_CONJURED_STAFF_PACKET) { _, player, _, buf, _ ->
+		ServerPlayNetworking.registerGlobalReceiver(CAST_CONJURED_STAFF_PACKET) { server, player, _, buf, _ ->
 			val hand = getConjuredStaff(player) ?: return@registerGlobalReceiver
-			val world = player.world as ServerWorld
 			val constructedStack: MutableList<Iota> = ArrayList()
 			val staffRank = buf.readInt()
 			for (i in 0 until staffRank)
 				constructedStack.add(BooleanIota(buf.readBoolean()))
-			(player.getStackInHand(hand).item as ConjuredStaffItem).cast(world, player, hand, player.getStackInHand(hand), constructedStack)
+			server.execute {
+				(player.getStackInHand(hand).item as ConjuredStaffItem).cast(player, hand, player.getStackInHand(hand), constructedStack)
+			}
 		}
 	}
 

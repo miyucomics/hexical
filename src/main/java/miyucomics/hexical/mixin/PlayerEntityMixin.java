@@ -45,8 +45,8 @@ public class PlayerEntityMixin implements PlayerEntityMinterface {
 
 			int color = IXplatAbstractions.INSTANCE.getColorizer(player).getColor(player.world.getTime() * 10, player.getPos());
 			float r = ColorHelper.Argb.getRed(color) / 255f;
-			float g = ColorHelper.Argb.getBlue(color) / 255f;
-			float b = ColorHelper.Argb.getGreen(color) / 255f;
+			float g = ColorHelper.Argb.getGreen(color) / 255f;
+			float b = ColorHelper.Argb.getBlue(color) / 255f;
 
 			player.world.addParticle(ParticleTypes.ENTITY_EFFECT, player.getX() + (double) cos * 0.6, player.getY() + 1.8, player.getZ() + (double) sin * 0.6, r, g, b);
 			player.world.addParticle(ParticleTypes.ENTITY_EFFECT, player.getX() - (double) cos * 0.6, player.getY() + 1.8, player.getZ() - (double) sin * 0.6, r, g, b);
