@@ -1,13 +1,13 @@
 {
-	"name": "hexical.page.evoking.title",
-	"icon": "hexical:hexburst",
+	"name": "hexical.page.evocation.title",
+	"icon": "minecraft:totem_of_undying",
 	"category": "hexcasting:patterns/spells",
-	"advancement": "hexcasting:root",
+	"advancement": "hexcasting:enlightenment",
 	"sortnum": 5,
 	"pages": [
 		{
 			"type": "patchouli:text",
-			"text": "hexical.page.evoking.0"
+			"text": "hexical.page.evocation.0"
 		},
 		{
 			"type": "hexcasting:pattern",
