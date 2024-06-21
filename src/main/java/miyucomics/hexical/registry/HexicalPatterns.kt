@@ -82,6 +82,8 @@ object HexicalPatterns {
 		register("conjure_staff", "wwwwwaqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpConjureStaff())
 		register("write_staff", "waqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpWriteStaff())
 		register("read_staff", "waqqqqqedeqdqdqdqdqe", HexDir.NORTH_EAST, OpReadStaff())
+
+		register("conjure_compass", "aqwawqwqqwqwqeawwa", HexDir.SOUTH_WEST, OpConjureCompass())
 		register("conjure_hexburst", "edeqaawaa", HexDir.SOUTH_WEST, OpConjureHexburst())
 		register("conjure_hextito", "edeaddadd", HexDir.SOUTH_WEST, OpConjureHextito())
 
