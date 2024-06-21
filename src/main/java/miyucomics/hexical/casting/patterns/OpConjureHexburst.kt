@@ -21,7 +21,7 @@ class OpConjureHexburst : SpellAction {
 		val trueName = MishapOthersName.getTrueNameFromDatum(args[1], ctx.caster)
 		if (trueName != null)
 			throw MishapOthersName(trueName)
-		return Triple(Spell(position, iota), MediaConstants.DUST_UNIT * 3, listOf(ParticleSpray.burst(position, 1.0)))
+		return Triple(Spell(position, iota), MediaConstants.DUST_UNIT, listOf(ParticleSpray.burst(position, 1.0)))
 	}
 
 	private data class Spell(val position: Vec3d, val iota: Iota) : RenderedSpell {
