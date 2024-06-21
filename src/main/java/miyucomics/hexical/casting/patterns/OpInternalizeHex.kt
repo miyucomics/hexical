@@ -10,6 +10,7 @@ import at.petrak.hexcasting.api.spell.iota.ListIota
 import at.petrak.hexcasting.api.spell.mishaps.MishapOthersName
 import at.petrak.hexcasting.api.utils.serializeToNBT
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
+import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.enums.SpecializedSource
 import miyucomics.hexical.interfaces.CastingContextMinterface
 import miyucomics.hexical.items.lampCast
