@@ -27,6 +27,10 @@
 		{
 			"type": "patchouli:text",
 			"text": "hexical.page.dyes.1"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.dyes.2"
 		}
 	]
 }
