@@ -1,5 +1,6 @@
 package miyucomics.hexical.mixin;
 
+import at.petrak.hexcasting.api.HexAPI;
 import at.petrak.hexcasting.api.spell.casting.CastingContext;
 import at.petrak.hexcasting.api.spell.casting.CastingHarness;
 import at.petrak.hexcasting.api.spell.iota.ListIota;
@@ -11,6 +12,8 @@ import miyucomics.hexical.interfaces.PlayerEntityMinterface;
 import miyucomics.hexical.registry.HexicalItems;
 import miyucomics.hexical.state.EvokeState;
 import miyucomics.hexical.state.PersistentStateHandler;
+import net.minecraft.advancement.Advancement;
+import net.minecraft.advancement.PlayerAdvancementTracker;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
@@ -38,7 +41,16 @@ public class PlayerEntityMixin implements PlayerEntityMinterface {
 	void tick(CallbackInfo ci) {
 		hexical$archLampCastedThisTick = false;
 		PlayerEntity player = ((PlayerEntity) (Object) this);
-		if (EvokeState.INSTANCE.getActive().getOrDefault(player.getUuid(), false)) {
+		if (player.world.isClient)
+			return;
+
+		boolean isEnlightened = false;
+		Advancement advancement = Objects.requireNonNull(player.getServer()).getAdvancementLoader().get(HexAPI.modLoc("enlightenment"));
+		PlayerAdvancementTracker tracker = ((ServerPlayerEntity) player).getAdvancementTracker();
+		if(tracker.getProgress(advancement) != null)
+			isEnlightened = tracker.getProgress(advancement).isDone();
+
+		if (EvokeState.INSTANCE.getActive().getOrDefault(player.getUuid(), false) && isEnlightened) {
 			float rot = player.bodyYaw * ((float) Math.PI / 180) + MathHelper.cos((float)player.age * 0.6662f) * 0.25f;
 			float cos = MathHelper.cos(rot);
 			float sin = MathHelper.sin(rot);
@@ -50,7 +62,7 @@ public class PlayerEntityMixin implements PlayerEntityMinterface {
 
 			player.world.addParticle(ParticleTypes.ENTITY_EFFECT, player.getX() + (double) cos * 0.6, player.getY() + 1.8, player.getZ() + (double) sin * 0.6, r, g, b);
 			player.world.addParticle(ParticleTypes.ENTITY_EFFECT, player.getX() - (double) cos * 0.6, player.getY() + 1.8, player.getZ() - (double) sin * 0.6, r, g, b);
-			if (!player.world.isClient && EvokeState.INSTANCE.getDuration().getOrDefault(player.getUuid(), 0).equals(HexicalMain.EVOKE_DURATION))
+			if (EvokeState.INSTANCE.getDuration().getOrDefault(player.getUuid(), 0).equals(HexicalMain.EVOKE_DURATION))
 				OpInternalizeHex.Companion.evoke((ServerPlayerEntity) player);
 		}
 	}

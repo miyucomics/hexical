@@ -4,6 +4,7 @@ import at.petrak.hexcasting.api.misc.MediaConstants
 import miyucomics.hexical.interfaces.PrestidigitationEffect
 import net.minecraft.block.BellBlock
 import net.minecraft.block.entity.BellBlockEntity
+import net.minecraft.block.enums.Attachment
 import net.minecraft.entity.Entity
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.sound.SoundCategory
@@ -17,7 +18,13 @@ class RingBellEffect : PrestidigitationEffect {
 		val state = caster.world.getBlockState(position)
 		if (state.block is BellBlock) {
 			val bell: BellBlockEntity = (caster.world.getBlockEntity(position)?: return) as BellBlockEntity
-			bell.activate(state.get(BellBlock.FACING))
+			val facing = state.get(BellBlock.FACING)
+			val ringDirection = when (state.get(BellBlock.ATTACHMENT)) {
+				Attachment.SINGLE_WALL -> facing.rotateYClockwise()
+				Attachment.DOUBLE_WALL -> facing.rotateYClockwise()
+				else -> facing
+			}
+			bell.activate(ringDirection)
 			caster.world.playSound(null, position, SoundEvents.BLOCK_BELL_USE, SoundCategory.BLOCKS, 2.0f, 1.0f)
 			caster.world.emitGameEvent(caster, GameEvent.BLOCK_CHANGE, position)
 		}

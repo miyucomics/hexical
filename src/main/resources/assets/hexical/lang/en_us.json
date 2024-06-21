@@ -294,7 +294,7 @@
 	"hexical.page.circle_spells.title": "Circle Spells",
 	"hexical.page.circle_spells.0": "When the media courses through the boundaries of a circle, it saturates the domain inside the circle with _media, allowing me to manipulate the environment inside far more flexibly than I am used to. The following are some spells I've come across or developed, which are to only be cast by a $(l:greatwork/spellcircles)spell circle$().",
 	"hexcasting.spell.hexical:displace": "Displace",
-	"hexical.page.displace.summary": "For just three amethyst shards, I can teleport an entity from anywhere in my circle to anywhere else inside. Unlike $(l:patterns/great_spells/teleport)Greater Teleport$(), this spell takes in world coordinates rather than an offset.",
+	"hexical.page.displace.summary": "For just three amethyst shards, I can teleport an entity from anywhere in my circle to anywhere else inside within the same circle. Unlike $(l:patterns/great_spells/teleport)Greater Teleport$(), this spell takes in world coordinates rather than an offset.",
 
 	"hexcasting.spell.hexical:chorus_blink": "Chorus Blink",
 	"hexical.page.chorus_blink.summary": "Between $(l:patterns/spells/basic#hexcasting:blink)Blink$(), $(l:patterns/great_spells/teleport)Greater Teleport$(), $(item)ender pearls$(), and $(item)chorus fruit$(), this spell serves a harmonious midpoint for safe, precise, and cheap teleportation.",
@@ -326,8 +326,8 @@
     "hexical.page.dyes.1": "The following pages will be a somewhat complete list of its targets, although I have heard rumors that certain forces can add more functionality than is shown here.",
     "hexical.page.dyes.2": "The valid block targets for this spell include beds, candles, cakes with candles, carpets, concrete, concrete powder, glazed terracotta, sand into red sand and vice versa, sandstone and all blocks derived from it into its red variant and vice versa, shulker boxes, stained glass, stained glass panes, terracotta, tulips into their multiple colors, and wool blocks. As for entities, cat collars, dog collars, shulkers, and item entities of all of the above blocks are valid.",
 
-	"hexical.page.evoking.title": "Evocation",
-    "hexical.page.evoking.0": "Media is the energy of thought, so it stands to reason that I should be able to simply $(o)think$() magic into existence rather than waving around a staff. Unfortunately, my mind is not great enough shift arbitrary effects into reality. However, by etching a predetermined hex into my torn mind, I can bring it forth into existence by waving my arms similarly to an evoker, taking media from my inventory.",
+	"hexical.page.evocation.title": "Evocation",
+    "hexical.page.evocation.0": "Media is the energy of thought, so it stands to reason that I should be able to simply $(o)think$() magic into existence rather than waving around a staff. Unfortunately, my mind is not yet great enough shift arbitrary effects into reality. However, by etching a prepared hex into my torn mind, I can bring it forth into existence by waving my arms similarly to an evoker, taking media from my inventory.",
 	"hexcasting.spell.hexical:internalize_hex": "Internalize Hex",
 	"hexical.page.internalize_hex.summary": "Internalizes a hex, allowing me to use evocation to use it even without a staff.",
 
