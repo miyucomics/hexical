@@ -16,7 +16,11 @@
 		{
 			"type": "patchouli:crafting",
 			"recipe": "hexical:living_scroll_small",
-			"recipe2": "hexical:living_scroll_large"
+			"recipe2": "hexical:living_scroll_medium"
+		},
+		{
+			"type": "patchouli:crafting",
+			"recipe": "hexical:living_scroll_large"
 		}
 	]
 }
