@@ -20,15 +20,14 @@ public class ClientPlayerEntityMixin {
 	@Inject(method = "tickMovement", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/tutorial/TutorialManager;onMovement(Lnet/minecraft/client/input/Input;)V"))
 	private void onInputUpdate(CallbackInfo info) {
 		MinecraftClient client = MinecraftClient.getInstance();
-		if (!(client.currentScreen instanceof GuiSpellcasting))
-			return;
-		KeyBinding.updatePressedStates();
-		GameOptions keys = client.options;
-		input.pressingForward = keys.forwardKey.isPressed();
-		input.pressingBack = keys.backKey.isPressed();
-		input.pressingLeft = keys.leftKey.isPressed();
-		input.pressingRight = keys.rightKey.isPressed();
-		input.jumping = keys.jumpKey.isPressed();
-		input.sneaking = keys.sneakKey.isPressed();
+		if (client.currentScreen instanceof GuiSpellcasting) {
+			GameOptions keys = client.options;
+			input.pressingForward = keys.forwardKey.isPressed();
+			input.pressingBack = keys.backKey.isPressed();
+			input.pressingLeft = keys.leftKey.isPressed();
+			input.pressingRight = keys.rightKey.isPressed();
+			input.jumping = keys.jumpKey.isPressed();
+			input.sneaking = keys.sneakKey.isPressed();
+		}
 	}
 }
