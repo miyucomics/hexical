@@ -37,8 +37,8 @@
 	},
 	"entities": {
 		"minecraft:armor_stand": "hexical:arm_stands",
-		"minecraft:creeper": "hexical:ignite",
 		"minecraft:sheep": "hexical:shear_sheep",
+		"minecraft:creeper": "hexical:creeper",
 		"minecraft:tnt": "hexical:deprime_tnt"
 	}
 }

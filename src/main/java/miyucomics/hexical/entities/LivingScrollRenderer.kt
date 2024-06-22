@@ -11,6 +11,8 @@ import net.minecraft.client.render.*
 import net.minecraft.client.render.entity.EntityRenderer
 import net.minecraft.client.render.entity.EntityRendererFactory
 import net.minecraft.client.util.math.MatrixStack
+import net.minecraft.entity.Entity
+import net.minecraft.entity.decoration.AbstractDecorationEntity
 import net.minecraft.util.Identifier
 import net.minecraft.util.math.*
 import kotlin.math.*
@@ -19,15 +21,15 @@ class LivingScrollRenderer(ctx: EntityRendererFactory.Context?) : EntityRenderer
 	override fun render(scroll: LivingScrollEntity?, yaw: Float, deltaTick: Float, matrices: MatrixStack, vertexConsumers: VertexConsumerProvider, light: Int) {
 		RenderSystem.setShader { GameRenderer.getPositionTexShader() }
 		matrices.push()
-		matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180f - yaw))
-		matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(180f))
-		val worldLight = WorldRenderer.getLightmapCoordinates(scroll!!.world, scroll.blockPos)
-		drawFrame(matrices, vertexConsumers, getTexture(scroll), scroll.size.toFloat(), worldLight)
-		drawPattern(matrices, vertexConsumers, scroll.getRender(), scroll.size, worldLight)
+		matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion((scroll as Entity).pitch))
+		matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180.0f - (scroll as Entity).yaw))
+		val worldLight = WorldRenderer.getLightmapCoordinates(scroll.world, scroll.blockPos)
+		drawFrame(matrices, vertexConsumers, getTexture(scroll), scroll.getSize().toFloat(), worldLight)
+		drawPattern(matrices, vertexConsumers, scroll.getRender(), scroll.getSize(), worldLight)
 		matrices.pop()
 	}
 
-	override fun getTexture(scroll: LivingScrollEntity?) = when (scroll!!.size) {
+	override fun getTexture(scroll: LivingScrollEntity?) = when (scroll!!.getSize()) {
 		1 -> PRISTINE_BG_SMOL
 		2 -> PRISTINE_BG_MEDIUM
 		3 -> PRISTINE_BG_LARGE
