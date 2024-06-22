@@ -1,6 +1,7 @@
 package miyucomics.hexical.mixin;
 
 import at.petrak.hexcasting.common.lib.HexSounds;
+import miyucomics.hexical.interfaces.MinecraftClientMinterface;
 import miyucomics.hexical.registry.HexicalNetworking;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
@@ -23,7 +24,7 @@ import java.util.List;
 import static miyucomics.hexical.items.ConjuredStaffItemKt.getConjuredStaff;
 
 @Mixin(MinecraftClient.class)
-public class MinecraftClientMixin {
+public class MinecraftClientMixin implements MinecraftClientMinterface {
 	@Unique
 	private static final int hexical$COOLDOWN = 20;
 	@Unique
@@ -65,8 +66,8 @@ public class MinecraftClientMixin {
 		}
 	}
 
-	@Inject(method = "handleInputEvents", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/MinecraftClient;doAttack()Z", ordinal = 0), cancellable = true)
-	public void onLeftClick(CallbackInfo info) {
+	@Override
+	public void leftClick() {
 		if (player == null || player.isSpectator())
 			return;
 		Hand hand = getConjuredStaff(player);
@@ -76,11 +77,10 @@ public class MinecraftClientMixin {
 		hexical$clicks.add(false);
 		hexical$timer = hexical$COOLDOWN;
 		player.world.playSound(player, player.getX(), player.getY(), player.getZ(), HexSounds.ADD_LINE, SoundCategory.PLAYERS, 1f, 1f);
-		info.cancel();
 	}
 
-	@Inject(method = "handleInputEvents", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/MinecraftClient;doItemUse()V", ordinal = 0), cancellable = true)
-	public void onRightClick(CallbackInfo info) {
+	@Override
+	public void rightClick() {
 		if (player == null || player.isSpectator())
 			return;
 		Hand hand = getConjuredStaff(player);
@@ -90,6 +90,5 @@ public class MinecraftClientMixin {
 		hexical$clicks.add(true);
 		hexical$timer = hexical$COOLDOWN;
 		player.world.playSound(player, player.getX(), player.getY(), player.getZ(), HexSounds.ADD_LINE, SoundCategory.PLAYERS, 1f, 1f);
-		info.cancel();
 	}
 }
