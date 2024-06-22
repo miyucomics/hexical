@@ -29,8 +29,12 @@ object PrestidigitationData {
 		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("shear_sheep"), ShearSheepEffect())
 		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("trigger_impetus"), TriggerImpetusEffect())
 		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("ring_bell"), RingBellEffect())
+
 		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("right_click"), UseItemOnEffect(ItemStack.EMPTY))
+		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("use_axe"), UseItemOnEffect(ItemStack(Items.DIAMOND_AXE)))
 		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("ignite"), UseItemOnEffect(ItemStack(Items.FLINT_AND_STEEL)))
+
+		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("creeper"), CreeperEffect())
 	}
 
 	fun blockEffect(block: Block): PrestidigitationEffect? {
