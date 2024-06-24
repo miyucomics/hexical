@@ -21,6 +21,7 @@ public class ClientPlayerEntityMixin {
 	private void onInputUpdate(CallbackInfo info) {
 		MinecraftClient client = MinecraftClient.getInstance();
 		if (client.currentScreen instanceof GuiSpellcasting) {
+			KeyBinding.updatePressedStates();
 			GameOptions keys = client.options;
 			input.pressingForward = keys.forwardKey.isPressed();
 			input.pressingBack = keys.backKey.isPressed();

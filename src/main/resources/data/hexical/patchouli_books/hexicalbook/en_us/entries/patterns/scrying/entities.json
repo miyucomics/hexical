@@ -6,6 +6,54 @@
 	"pages": [
 		{
 			"type": "hexcasting:pattern",
+			"op_id": "hexical:get_health",
+			"anchor": "hexical:get_health",
+			"input": "entity",
+			"output": "number",
+			"text": "hexical.page.get_health.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:get_max_health",
+			"anchor": "hexical:get_max_health",
+			"input": "entity",
+			"output": "number",
+			"text": "hexical.page.get_max_health.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:get_air",
+			"anchor": "hexical:get_air",
+			"input": "entity",
+			"output": "number",
+			"text": "hexical.page.get_air.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:get_max_air",
+			"anchor": "hexical:get_max_air",
+			"input": "entity",
+			"output": "number",
+			"text": "hexical.page.get_max_air.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:get_player_hunger",
+			"anchor": "hexical:get_player_hunger",
+			"input": "player entity",
+			"output": "number",
+			"text": "hexical.page.get_player_hunger.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:get_player_saturation",
+			"anchor": "hexical:get_player_saturation",
+			"input": "entity entity",
+			"output": "number",
+			"text": "hexical.page.get_player_saturation.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
 			"op_id": "hexical:is_burning",
 			"anchor": "hexical:is_burning",
 			"input": "entity",

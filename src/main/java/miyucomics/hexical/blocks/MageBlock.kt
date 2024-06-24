@@ -35,12 +35,6 @@ class MageBlock : BlockConjured(
 		.mapColor(MapColor.CLEAR).suffocates { _, _, _ -> false }.blockVision { _, _, _ -> false }
 		.allowsSpawning { _, _, _, _ -> false }.sounds(BlockSoundGroup.AMETHYST_CLUSTER)
 ) {
-	private val volatileOffsets: List<Vec3i> = listOf(
-		Vec3i(-1, 0, 0), Vec3i(1, 0, 0),
-		Vec3i(0, -1, 0), Vec3i(0, 1, 0),
-		Vec3i(0, 0, -1), Vec3i(0, 0, 1),
-	)
-
 	override fun emitsRedstonePower(state: BlockState?) = true
 	override fun getWeakRedstonePower(state: BlockState?, world: BlockView?, pos: BlockPos?, direction: Direction?): Int {
 		val tile = world!!.getBlockEntity(pos)
@@ -98,8 +92,8 @@ class MageBlock : BlockConjured(
 		world.setBlockState(position, Blocks.AIR.defaultState)
 		world.removeBlockEntity(position)
 		if (tile.properties["volatile"]!!) {
-			for (offset in volatileOffsets) {
-				val positionToTest = position.add(offset)
+			for (offset in Direction.entries) {
+				val positionToTest = position.add(offset.vector)
 				val otherState = world.getBlockState(positionToTest)
 				val block = otherState.block
 				if (block == HexicalBlocks.MAGE_BLOCK)

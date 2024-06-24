@@ -24,11 +24,10 @@ class OpConjureCompass : SpellAction {
 	private data class Spell(val position: Vec3d, val target: BlockPos) : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
 			val stack = ItemStack(HexicalItems.CONJURED_COMPASS_ITEM, 1)
-			val nbt = NbtCompound()
+			val nbt = stack.orCreateNbt
 			nbt.putInt("x", target.x)
 			nbt.putInt("y", target.y)
 			nbt.putInt("z", target.z)
-			stack.orCreateNbt.putCompound("location", nbt)
 			ctx.world.spawnEntity(ItemEntity(ctx.world, position.x, position.y, position.z, stack))
 		}
 	}

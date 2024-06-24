@@ -27,12 +27,14 @@ class ConjuredStaffItem : ItemPackagedHex(Settings().maxCount(1)) {
 			stack.decrement(1)
 	}
 
-	fun cast(user: ServerPlayerEntity, hand: Hand, stack: ItemStack, castStack: MutableList<Iota>) {
-		val context = CastingContext(user, hand, CastingContext.CastSource.PACKAGED_HEX)
-		(context as CastingContextMinterface).setSpecializedSource(SpecializedSource.CONJURED_STAFF)
-		val harness = CastingHarness(context)
-		harness.stack = castStack
-		harness.executeIotas(getHex(stack, user.getWorld())!!, user.getWorld())
+	companion object {
+		fun cast(user: ServerPlayerEntity, hand: Hand, stack: ItemStack, castStack: MutableList<Iota>) {
+			val context = CastingContext(user, hand, CastingContext.CastSource.PACKAGED_HEX)
+			(context as CastingContextMinterface).setSpecializedSource(SpecializedSource.CONJURED_STAFF)
+			val harness = CastingHarness(context)
+			harness.stack = castStack
+			harness.executeIotas((stack.item as ConjuredStaffItem).getHex(stack, user.getWorld())!!, user.getWorld())
+		}
 	}
 }
 

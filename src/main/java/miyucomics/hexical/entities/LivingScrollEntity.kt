@@ -29,7 +29,7 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: Wo
 		private val renderDataTracker: TrackedData<NbtCompound> = DataTracker.registerData(LivingScrollEntity::class.java, TrackedDataHandlerRegistry.NBT_COMPOUND)
 	}
 
-	var patterns: MutableList<HexPattern> = mutableListOf()
+	var patterns: MutableList<NbtCompound> = mutableListOf()
 
 	override fun getTargetingMargin() = 0f
 	override fun getEyeHeight(pose: EntityPose?) = 0f
@@ -65,29 +65,28 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: Wo
 	}
 
 	override fun updateAttachmentPosition() {
-		if (this.facing == null) {
+		if (this.facing == null)
 			return
-		}
-		val e = attachmentPos.x.toDouble() + 0.5 - facing.offsetX.toDouble() * 0.46875
-		val f = attachmentPos.y.toDouble() + 0.5 - facing.offsetY.toDouble() * 0.46875
-		val g = attachmentPos.z.toDouble() + 0.5 - facing.offsetZ.toDouble() * 0.46875
-		this.setPos(e, f, g)
-		var h = this.widthPixels.toDouble()
-		var i = this.heightPixels.toDouble()
-		var j = this.widthPixels.toDouble()
+		val x = attachmentPos.x.toDouble() + 0.5 - facing.offsetX.toDouble() * (15f / 32f)
+		val y = attachmentPos.y.toDouble() + 0.5 - facing.offsetY.toDouble() * (15f / 32f)
+		val z = attachmentPos.z.toDouble() + 0.5 - facing.offsetZ.toDouble() * (15f / 32f)
+		this.setPos(x, y, z)
+		var sizeX = this.widthPixels.toDouble()
+		var sizeY = this.heightPixels.toDouble()
+		var sizeZ = this.widthPixels.toDouble()
 		when (facing.axis) {
 			Direction.Axis.X -> {
-				h = 1.0
+				sizeX = 1.0
 			}
 			Direction.Axis.Y -> {
-				i = 1.0
+				sizeY = 1.0
 			}
 			Direction.Axis.Z -> {
-				j = 1.0
+				sizeZ = 1.0
 			}
 			null -> throw IllegalStateException()
 		}
-		this.boundingBox = Box(e - h / 32, f - i / 32, g - j / 32, e + h / 32, f + i / 32, g + j / 32)
+		this.boundingBox = Box(x - sizeX / 32, y - sizeY / 32, z - sizeZ / 32, x + sizeX / 32, y + sizeY / 32, z + sizeZ / 32)
 	}
 
 	override fun refreshPositionAndAngles(x: Double, y: Double, z: Double, yaw: Float, pitch: Float) {
@@ -107,7 +106,7 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: Wo
 		return Vec3d.of(this.attachmentPos)
 	}
 
-	constructor(world: World, position: BlockPos, dir: Direction, size: Int, patterns: MutableList<HexPattern>) : this(HexicalEntities.LIVING_SCROLL_ENTITY, world) {
+	constructor(world: World, position: BlockPos, dir: Direction, size: Int, patterns: MutableList<NbtCompound>) : this(HexicalEntities.LIVING_SCROLL_ENTITY, world) {
 		this.attachmentPos = position
 		this.patterns = patterns
 		this.dataTracker.set(sizeDataTracker, size)
@@ -122,7 +121,7 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: Wo
 	}
 
 	private fun updateRender() {
-		this.dataTracker.set(renderDataTracker, patterns[((world.time / 20).toInt() % patterns.size)].serializeToNBT())
+		this.dataTracker.set(renderDataTracker, patterns[((world.time / 20).toInt() % patterns.size)])
 	}
 
 	override fun writeCustomDataToNbt(nbt: NbtCompound?) {
@@ -130,8 +129,8 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: Wo
 		nbt.putInt("size", this.dataTracker.get(sizeDataTracker))
 
 		val data = NbtList()
-		for (pattern in patterns)
-			data.add(pattern.serializeToNBT())
+		for (pattern in this.patterns)
+			data.add(pattern)
 		nbt.put("patterns", data)
 
 		super.writeCustomDataToNbt(nbt)
@@ -146,7 +145,7 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: Wo
 		val data = nbt.get("patterns") as NbtList
 		this.patterns = mutableListOf()
 		for (pattern in data)
-			this.patterns.add(HexPattern.fromNBT(pattern as NbtCompound))
+			this.patterns.add(pattern as NbtCompound)
 		updateRender()
 
 		super.readCustomDataFromNbt(nbt)

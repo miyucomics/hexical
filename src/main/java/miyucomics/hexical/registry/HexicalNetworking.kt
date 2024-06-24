@@ -61,7 +61,7 @@ object HexicalNetworking {
 			for (i in 0 until staffRank)
 				constructedStack.add(BooleanIota(buf.readBoolean()))
 			server.execute {
-				(player.getStackInHand(hand).item as ConjuredStaffItem).cast(player, hand, player.getStackInHand(hand), constructedStack)
+				ConjuredStaffItem.cast(player, hand, player.getStackInHand(hand), constructedStack)
 			}
 		}
 	}
