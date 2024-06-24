@@ -2,8 +2,9 @@
 
 ## 1.3.0
 - added hexbursts - add iota to your stack when eaten
-- added hextitos - cast spell when eaten, using player stack
-- added wristpocket spell - hide items magically
+- added hextitos - cast spell when eaten, uses the player stack
+- added Conjure Compass spell - conjure a compass that always points towards a location
+- added Wristpocket spell - hide items magically
     - added Ingest spell - eat wristpocketed item
     - added Mage Hand spell - use your wristpocketed item to interact with blocks and entities
 - added dye iota
@@ -31,6 +32,7 @@
 - fixed Conjure Speck spell costing too little
 - fixed Janus' Gambit to actually terminate the hex now
 - fixed bug with Archgenie Lamp where it can cast for free if it wasn't in your main inventory
+- improved conjured staff input interception so you don't accidentally break blocks
 - overhauled project structure completely
 - removed casting sounds from conjured staves and replaced it with pattern drawing sounds
 - updated documentation

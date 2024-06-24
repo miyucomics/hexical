@@ -25,8 +25,8 @@ public class OpReadMixin {
 			if (!stack.getOrCreateNbt().contains("location")) {
 				cir.setReturnValue(List.of(new NullIota()));
 			} else {
-				NbtCompound location = stack.getOrCreateNbt().getCompound("location");
-				cir.setReturnValue(List.of(new Vec3Iota(new Vec3d(location.getInt("x"), location.getInt("y"), location.getInt("z")).subtract(ctx.getCaster().getEyePos()).normalize())));
+				NbtCompound nbt = stack.getOrCreateNbt();
+				cir.setReturnValue(List.of(new Vec3Iota(new Vec3d(nbt.getInt("x"), nbt.getInt("y"), nbt.getInt("z")).subtract(ctx.getCaster().getEyePos()).normalize())));
 			}
 		}
 	}

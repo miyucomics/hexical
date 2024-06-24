@@ -48,8 +48,8 @@ object HexicalItems {
 	fun clientInit() {
 		ModelPredicateProviderRegistry.register(CONJURED_COMPASS_ITEM, Identifier("angle"), CompassAnglePredicateProvider(CompassTarget { _: ClientWorld?, stack: ItemStack?, player: Entity? ->
 			if (player != null && stack != null && stack.hasNbt()) {
-				val raw = stack.nbt!!.getCompound("location")
-				return@CompassTarget GlobalPos.create(player.world.registryKey, BlockPos(raw.getInt("x"), raw.getInt("y"), raw.getInt("z")))
+				val nbt = stack.nbt!!
+				return@CompassTarget GlobalPos.create(player.world.registryKey, BlockPos(nbt.getInt("x"), nbt.getInt("y"), nbt.getInt("z")))
 			}
 			null
 		}))
