@@ -25,8 +25,8 @@ object HexicalEntities {
 	@JvmStatic
 	fun clientInit() {
 		EntityRendererRegistry.register(LIVING_SCROLL_ENTITY) { ctx: EntityRendererFactory.Context? -> LivingScrollRenderer(ctx) }
-		EntityRendererRegistry.register(FLECK_ENTITY) { ctx: EntityRendererFactory.Context? -> FleckRenderer(ctx) }
 		EntityRendererRegistry.register(MAGIC_MISSILE_ENTITY) { ctx: EntityRendererFactory.Context? -> MagicMissileRenderer(ctx) }
+		EntityRendererRegistry.register(FLECK_ENTITY) { ctx: EntityRendererFactory.Context? -> FleckRenderer(ctx) }
 		EntityRendererRegistry.register(SPECK_ENTITY) { ctx: EntityRendererFactory.Context? -> SpeckRenderer(ctx) }
 	}
 }

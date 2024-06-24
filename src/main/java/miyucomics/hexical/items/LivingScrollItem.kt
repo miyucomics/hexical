@@ -31,26 +31,24 @@ class LivingScrollItem(private val size: Int) : Item(Settings().group(HexicalIte
 
 	override fun useOnBlock(context: ItemUsageContext): ActionResult {
 		val direction = context.side
-		val adjustedPosition = context.blockPos.offset(direction)
+		val position = context.blockPos.offset(direction)
 		val player = context.player
 		val stack = context.stack
 
-		if (player != null && !canPlaceOn(player, direction, stack, adjustedPosition))
+		if (player != null && !canPlaceOn(player, direction, stack, position))
 			return ActionResult.FAIL
 
 		val world = context.world
-		val patternList = mutableListOf(HexPattern.fromAngles("eeeee", HexDir.EAST))
+		val patternList = mutableListOf(HexPattern.fromAngles("eeeee", HexDir.EAST).serializeToNBT())
 		if (stack.hasCompound("patterns") && !world.isClient) {
 			patternList.clear()
 			val list = (HexIotaTypes.deserialize(stack.orCreateNbt.getCompound("patterns")!!, world as ServerWorld) as ListIota).list
 			for (iota in list)
-				patternList.add((iota as PatternIota).pattern)
+				patternList.add((iota as PatternIota).pattern.serializeToNBT())
 		}
 
-		val scroll = LivingScrollEntity(world, adjustedPosition, direction, size, patternList)
-		val nbtCompound = stack.nbt
-		if (nbtCompound != null)
-			EntityType.loadFromEntityNbt(world, player, scroll, nbtCompound)
+		val scroll = LivingScrollEntity(world, position, direction, size, patternList)
+		EntityType.loadFromEntityNbt(world, player, scroll, stack.nbt)
 
 		if (scroll.canStayAttached()) {
 			if (!world.isClient) {
