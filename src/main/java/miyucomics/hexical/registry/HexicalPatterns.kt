@@ -7,10 +7,7 @@ import at.petrak.hexcasting.api.spell.math.HexPattern
 import at.petrak.hexcasting.common.casting.operators.selectors.OpGetEntitiesBy
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.casting.patterns.*
-import miyucomics.hexical.casting.patterns.basic.OpCongruentPattern
-import miyucomics.hexical.casting.patterns.basic.OpDupMany
-import miyucomics.hexical.casting.patterns.basic.OpShufflePattern
-import miyucomics.hexical.casting.patterns.basic.OpSimilar
+import miyucomics.hexical.casting.patterns.basic.*
 import miyucomics.hexical.casting.patterns.circle.OpDisplace
 import miyucomics.hexical.casting.patterns.conjured_staff.OpConjureStaff
 import miyucomics.hexical.casting.patterns.conjured_staff.OpReadStaff
@@ -67,6 +64,7 @@ object HexicalPatterns {
 		register("congruent", "aaqd", HexDir.EAST, OpCongruentPattern())
 		register("dup_many", "waadadaa", HexDir.EAST, OpDupMany())
 		register("shuffle_pattern", "aqqqdae", HexDir.NORTH_EAST, OpShufflePattern())
+
 		register("chorus_blink", "aawqqqq", HexDir.SOUTH_EAST, OpChorusBlink())
 		register("displace", "qaqqqqeedaqqqa", HexDir.NORTH_EAST, OpDisplace())
 
@@ -139,7 +137,7 @@ object HexicalPatterns {
 		register("recognize", "eeeeeq", HexDir.WEST, OpRecognize())
 		register("get_mainhand_stack", "qaqqqq", HexDir.NORTH_EAST, OpGetPlayerData(0))
 		register("get_offhand_stack", "edeeee", HexDir.NORTH_WEST, OpGetPlayerData(1))
-		register("get_weather", "deedqad", HexDir.WEST, OpGetWorldData(0))
+		register("get_weather", "eweweweweweeeaedqdqde", HexDir.WEST, OpGetWorldData(0))
 		register("get_dimension", "qwqwqwqwqwqqaedwaqd", HexDir.WEST, OpGetWorldData(1))
 		register("get_time", "wddwaqqwqqqaqqqqwddwaqqwqqqaqqq", HexDir.SOUTH_EAST, OpGetWorldData(2))
 		register("get_light", "wqwqwqwqwqwaeqqqqaeqaeaeaeaw", HexDir.SOUTH_WEST, OpGetPositionData(0))
