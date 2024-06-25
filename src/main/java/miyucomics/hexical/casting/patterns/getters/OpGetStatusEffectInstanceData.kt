@@ -9,6 +9,7 @@ import at.petrak.hexcasting.api.spell.iota.NullIota
 import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
 import miyucomics.hexical.casting.iota.getIdentifier
 import net.minecraft.util.registry.Registry
+import java.lang.IllegalStateException
 
 class OpGetStatusEffectInstanceData(private val mode: Int) : ConstMediaAction {
 	override val argc = 2
@@ -23,7 +24,7 @@ class OpGetStatusEffectInstanceData(private val mode: Int) : ConstMediaAction {
 			when (mode) {
 				0 -> DoubleIota(instance.amplifier.toDouble())
 				1 -> DoubleIota(instance.duration.toDouble())
-				else -> NullIota()
+				else -> throw IllegalStateException()
 			}
 		)
 	}

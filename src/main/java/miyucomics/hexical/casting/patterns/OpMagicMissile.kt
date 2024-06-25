@@ -4,7 +4,6 @@ import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.*
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.Iota
-import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.entities.MagicMissileEntity
 import miyucomics.hexical.registry.HexicalEntities
 import net.minecraft.util.math.MathHelper

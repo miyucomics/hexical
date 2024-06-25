@@ -30,8 +30,8 @@ object HexicalKeybinds {
 				return@register
 
 			if (EXIT_SCRYING_KEYBIND.isPressed) {
-				client.setCameraEntity(client.player);
-				client.player!!.input = KeyboardInput(client.options);
+				client.setCameraEntity(client.player)
+				client.player!!.input = KeyboardInput(client.options)
 			}
 
 			if (states.keys.contains(EVOKE_KEYBIND.translationKey)) {

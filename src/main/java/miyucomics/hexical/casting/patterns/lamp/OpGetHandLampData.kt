@@ -13,6 +13,7 @@ import miyucomics.hexical.casting.mishaps.NeedsSourceMishap
 import miyucomics.hexical.enums.SpecializedSource
 import miyucomics.hexical.interfaces.CastingContextMinterface
 import miyucomics.hexical.items.LampItem
+import java.lang.IllegalStateException
 
 class OpGetHandLampData(private val mode: Int) : ConstMediaAction {
 	override val argc = 0
@@ -28,7 +29,7 @@ class OpGetHandLampData(private val mode: Int) : ConstMediaAction {
 				3 -> DoubleIota(ctx.world.time - (nbt.getDouble("start_time") + 1.0))
 				4 -> DoubleIota((ctx.caster.activeItem.item as LampItem).getMedia(ctx.caster.activeItem).toDouble() / MediaConstants.DUST_UNIT)
 				5 -> HexIotaTypes.deserialize(ctx.caster.activeItem.nbt!!.getCompound("storage"), ctx.world)
-				else -> NullIota()
+				else -> throw IllegalStateException()
 			}
 		)
 	}

@@ -4,7 +4,6 @@ import at.petrak.hexcasting.api.spell.ConstMediaAction
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.DoubleIota
 import at.petrak.hexcasting.api.spell.iota.Iota
-import at.petrak.hexcasting.api.spell.iota.NullIota
 import at.petrak.hexcasting.api.spell.iota.Vec3Iota
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import miyucomics.hexical.casting.mishaps.NeedsActiveArchLampMishap
@@ -24,7 +23,7 @@ class OpGetArchLampData(private val mode: Int) : ConstMediaAction {
 				2 -> Vec3Iota(state.velocity)
 				3 -> DoubleIota((ctx.world.time - (state.time + 1)).toDouble())
 				4 -> HexIotaTypes.deserialize(state.storage, ctx.world)
-				else -> NullIota()
+				else -> throw IllegalStateException()
 			}
 		)
 	}

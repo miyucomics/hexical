@@ -5,9 +5,7 @@ import miyucomics.hexical.interfaces.PrestidigitationEffect
 import net.minecraft.block.Blocks
 import net.minecraft.entity.Entity
 import net.minecraft.entity.TntEntity
-import net.minecraft.entity.decoration.ArmorStandEntity
 import net.minecraft.server.network.ServerPlayerEntity
-import net.minecraft.sound.SoundEvents
 import net.minecraft.util.math.BlockPos
 
 class DeprimeTntEffect : PrestidigitationEffect {

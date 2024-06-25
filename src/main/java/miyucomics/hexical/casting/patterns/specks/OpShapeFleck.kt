@@ -7,7 +7,6 @@ import at.petrak.hexcasting.api.spell.iota.Vec3Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapBadEntity
 import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
 import miyucomics.hexical.entities.FleckEntity
-import miyucomics.hexical.entities.SpeckEntity
 import net.minecraft.util.math.Vec2f
 
 class OpShapeFleck : ConstMediaAction {

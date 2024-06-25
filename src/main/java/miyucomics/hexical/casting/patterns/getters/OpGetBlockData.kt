@@ -5,7 +5,6 @@ import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.getBlockPos
 import at.petrak.hexcasting.api.spell.iota.DoubleIota
 import at.petrak.hexcasting.api.spell.iota.Iota
-import at.petrak.hexcasting.api.spell.iota.NullIota
 
 class OpGetBlockData(private val mode: Int) : ConstMediaAction {
 	override val argc = 1
@@ -17,7 +16,7 @@ class OpGetBlockData(private val mode: Int) : ConstMediaAction {
 			when (mode) {
 				0 -> DoubleIota(block.hardness.toDouble())
 				1 -> DoubleIota(block.blastResistance.toDouble())
-				else -> NullIota()
+				else -> throw IllegalStateException()
 			}
 		)
 	}

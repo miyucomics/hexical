@@ -4,9 +4,9 @@ import at.petrak.hexcasting.api.spell.*
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapBadEntity
-import miyucomics.hexical.entities.SpeckEntity
 import miyucomics.hexical.interfaces.Specklike
 import net.minecraft.command.argument.EntityAnchorArgumentType
+import java.lang.IllegalStateException
 
 class OpSpecklikeProperty(val mode: Int) : ConstMediaAction {
 	override val argc = 2
@@ -25,7 +25,7 @@ class OpSpecklikeProperty(val mode: Int) : ConstMediaAction {
 			3 -> (specklike as Specklike).setSize(args.getPositiveDoubleUnder(1, 10.0, argc).toFloat())
 			4 -> (specklike as Specklike).setThickness(args.getPositiveDoubleUnder(1, 5.0, argc).toFloat())
 			5 -> (specklike as Specklike).setLifespan(args.getInt(1, argc))
-			else -> throw Error()
+			else -> throw IllegalStateException()
 		}
 		return listOf()
 	}

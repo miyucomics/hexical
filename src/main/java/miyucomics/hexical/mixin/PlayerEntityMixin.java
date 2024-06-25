@@ -1,27 +1,16 @@
 package miyucomics.hexical.mixin;
 
 import at.petrak.hexcasting.api.HexAPI;
-import at.petrak.hexcasting.api.spell.casting.CastingContext;
-import at.petrak.hexcasting.api.spell.casting.CastingHarness;
-import at.petrak.hexcasting.api.spell.iota.ListIota;
-import at.petrak.hexcasting.common.lib.hex.HexIotaTypes;
 import at.petrak.hexcasting.xplat.IXplatAbstractions;
 import miyucomics.hexical.HexicalMain;
 import miyucomics.hexical.casting.patterns.OpInternalizeHex;
 import miyucomics.hexical.interfaces.PlayerEntityMinterface;
-import miyucomics.hexical.registry.HexicalItems;
 import miyucomics.hexical.state.EvokeState;
-import miyucomics.hexical.state.PersistentStateHandler;
 import net.minecraft.advancement.Advancement;
 import net.minecraft.advancement.PlayerAdvancementTracker;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NbtCompound;
-import net.minecraft.nbt.NbtList;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.Hand;
 import net.minecraft.util.math.ColorHelper;
 import net.minecraft.util.math.MathHelper;
 import org.spongepowered.asm.mixin.Mixin;
