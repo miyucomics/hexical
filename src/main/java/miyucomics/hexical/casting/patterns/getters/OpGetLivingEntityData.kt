@@ -6,6 +6,7 @@ import at.petrak.hexcasting.api.spell.getLivingEntityButNotArmorStand
 import at.petrak.hexcasting.api.spell.iota.*
 import miyucomics.hexical.casting.iota.IdentifierIota
 import net.minecraft.util.registry.Registry
+import java.lang.IllegalStateException
 
 class OpGetLivingEntityData(private val mode: Int) : ConstMediaAction {
 	override val argc = 1
@@ -25,7 +26,7 @@ class OpGetLivingEntityData(private val mode: Int) : ConstMediaAction {
 						list.add(IdentifierIota(Registry.STATUS_EFFECT.getId(effect.effectType)!!))
 					ListIota(list)
 				}
-				else -> NullIota()
+				else -> throw IllegalStateException()
 			}
 		)
 	}

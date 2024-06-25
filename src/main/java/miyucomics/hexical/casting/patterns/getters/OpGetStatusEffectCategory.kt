@@ -4,7 +4,6 @@ import at.petrak.hexcasting.api.spell.ConstMediaAction
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.DoubleIota
 import at.petrak.hexcasting.api.spell.iota.Iota
-import at.petrak.hexcasting.api.spell.iota.NullIota
 import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
 import miyucomics.hexical.casting.iota.getIdentifier
 import net.minecraft.entity.effect.StatusEffectCategory
@@ -20,7 +19,7 @@ class OpGetStatusEffectCategory : ConstMediaAction {
 			StatusEffectCategory.BENEFICIAL -> DoubleIota(1.0)
 			StatusEffectCategory.NEUTRAL -> DoubleIota(0.0)
 			StatusEffectCategory.HARMFUL -> DoubleIota(-1.0)
-			else -> NullIota()
+			else -> throw IllegalStateException()
 		})
 	}
 }

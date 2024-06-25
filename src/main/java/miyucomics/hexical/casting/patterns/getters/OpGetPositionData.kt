@@ -5,7 +5,6 @@ import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.getBlockPos
 import at.petrak.hexcasting.api.spell.iota.DoubleIota
 import at.petrak.hexcasting.api.spell.iota.Iota
-import at.petrak.hexcasting.api.spell.iota.NullIota
 import miyucomics.hexical.casting.iota.IdentifierIota
 
 class OpGetPositionData(private val mode: Int) : ConstMediaAction {
@@ -17,7 +16,7 @@ class OpGetPositionData(private val mode: Int) : ConstMediaAction {
 			when (mode) {
 				0 -> DoubleIota(ctx.world.getLightLevel(position).toDouble())
 				1 -> IdentifierIota(ctx.world.getBiome(position).key.get().value)
-				else -> NullIota()
+				else -> throw IllegalStateException()
 			}
 		)
 	}

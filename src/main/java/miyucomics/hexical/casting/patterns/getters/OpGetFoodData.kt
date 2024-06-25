@@ -4,6 +4,7 @@ import at.petrak.hexcasting.api.spell.ConstMediaAction
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.*
 import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
+import java.lang.IllegalStateException
 
 class OpGetFoodData(private val mode: Int) : ConstMediaAction {
 	override val argc = 1
@@ -17,7 +18,7 @@ class OpGetFoodData(private val mode: Int) : ConstMediaAction {
 				1 -> DoubleIota(stack.item.foodComponent!!.saturationModifier.toDouble())
 				2 -> BooleanIota(stack.item.foodComponent!!.isMeat)
 				3 -> BooleanIota(stack.item.foodComponent!!.isSnack)
-				else -> NullIota()
+				else -> throw IllegalStateException()
 			}
 		)
 	}
