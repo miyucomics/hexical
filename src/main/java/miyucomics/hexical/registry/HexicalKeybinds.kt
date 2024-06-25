@@ -35,14 +35,9 @@ object HexicalKeybinds {
 			}
 
 			if (states.keys.contains(EVOKE_KEYBIND.translationKey)) {
-				val container = (client.player as PlayerAnimations).hexical_getModAnimation()
 				if (states[EVOKE_KEYBIND.translationKey] == true && !EVOKE_KEYBIND.isPressed) {
-					val frame = PlayerAnimationRegistry.getAnimation(HexicalMain.id("cast_end"))!!
-					container.setAnimation(KeyframeAnimationPlayer(frame))
 					ClientPlayNetworking.send(HexicalNetworking.END_EVOKING_PACKET, PacketByteBufs.empty())
 				} else if (states[EVOKE_KEYBIND.translationKey] == false && EVOKE_KEYBIND.isPressed) {
-					val frame = PlayerAnimationRegistry.getAnimation(HexicalMain.id("cast_loop"))!!
-					container.setAnimation(KeyframeAnimationPlayer(frame))
 					ClientPlayNetworking.send(HexicalNetworking.START_EVOKING_PACKET, PacketByteBufs.empty())
 				}
 			}
