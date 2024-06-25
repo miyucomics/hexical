@@ -3,6 +3,7 @@ package miyucomics.hexical.mixin;
 import at.petrak.hexcasting.api.HexAPI;
 import at.petrak.hexcasting.xplat.IXplatAbstractions;
 import miyucomics.hexical.HexicalMain;
+import miyucomics.hexical.HexicalUtils;
 import miyucomics.hexical.casting.patterns.OpInternalizeHex;
 import miyucomics.hexical.interfaces.PlayerEntityMinterface;
 import miyucomics.hexical.state.EvokeState;
@@ -28,29 +29,25 @@ public class PlayerEntityMixin implements PlayerEntityMinterface {
 
 	@Inject(method = "tick", at = @At("TAIL"))
 	void tick(CallbackInfo ci) {
-		hexical$archLampCastedThisTick = false;
 		PlayerEntity player = ((PlayerEntity) (Object) this);
-		if (player.world.isClient)
-			return;
-
-		boolean isEnlightened = false;
-		Advancement advancement = Objects.requireNonNull(player.getServer()).getAdvancementLoader().get(HexAPI.modLoc("enlightenment"));
-		PlayerAdvancementTracker tracker = ((ServerPlayerEntity) player).getAdvancementTracker();
-		if(tracker.getProgress(advancement) != null)
-			isEnlightened = tracker.getProgress(advancement).isDone();
-
-		if (EvokeState.INSTANCE.getActive().getOrDefault(player.getUuid(), false) && isEnlightened) {
-			float rot = player.bodyYaw * ((float) Math.PI / 180) + MathHelper.cos((float)player.age * 0.6662f) * 0.25f;
+		if (player.world.isClient && EvokeState.INSTANCE.getActive().getOrDefault(player.getUuid(), false)) {
+			float rot = player.bodyYaw * ((float) Math.PI / 180) + MathHelper.cos((float) player.age * 0.6662f) * 0.25f;
 			float cos = MathHelper.cos(rot);
 			float sin = MathHelper.sin(rot);
-
 			int color = IXplatAbstractions.INSTANCE.getColorizer(player).getColor(player.world.getTime() * 10, player.getPos());
 			float r = ColorHelper.Argb.getRed(color) / 255f;
 			float g = ColorHelper.Argb.getGreen(color) / 255f;
 			float b = ColorHelper.Argb.getBlue(color) / 255f;
-
 			player.world.addParticle(ParticleTypes.ENTITY_EFFECT, player.getX() + (double) cos * 0.6, player.getY() + 1.8, player.getZ() + (double) sin * 0.6, r, g, b);
 			player.world.addParticle(ParticleTypes.ENTITY_EFFECT, player.getX() - (double) cos * 0.6, player.getY() + 1.8, player.getZ() - (double) sin * 0.6, r, g, b);
+		}
+
+		if (player.world.isClient)
+			return;
+
+		hexical$archLampCastedThisTick = false;
+
+		if (EvokeState.INSTANCE.getActive().getOrDefault(player.getUuid(), false) && HexicalUtils.isEnlightened((ServerPlayerEntity) player)) {
 			if (EvokeState.INSTANCE.getDuration().getOrDefault(player.getUuid(), 0).equals(HexicalMain.EVOKE_DURATION))
 				OpInternalizeHex.Companion.evoke((ServerPlayerEntity) player);
 		}
