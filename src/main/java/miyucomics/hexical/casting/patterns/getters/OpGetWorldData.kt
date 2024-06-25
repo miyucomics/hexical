@@ -4,7 +4,6 @@ import at.petrak.hexcasting.api.spell.ConstMediaAction
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.DoubleIota
 import at.petrak.hexcasting.api.spell.iota.Iota
-import at.petrak.hexcasting.api.spell.iota.NullIota
 import miyucomics.hexical.casting.iota.IdentifierIota
 
 class OpGetWorldData(private val mode: Int) : ConstMediaAction {
@@ -22,7 +21,7 @@ class OpGetWorldData(private val mode: Int) : ConstMediaAction {
 				}
 				1 -> IdentifierIota(ctx.world.registryKey.value)
 				2 -> DoubleIota(ctx.world.time.toDouble() / 20)
-				else -> NullIota()
+				else -> throw IllegalStateException()
 			}
 		)
 	}

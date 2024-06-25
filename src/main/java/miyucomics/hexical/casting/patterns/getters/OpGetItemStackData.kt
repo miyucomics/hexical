@@ -10,6 +10,7 @@ import net.minecraft.item.EnchantedBookItem
 import net.minecraft.item.ItemStack
 import net.minecraft.item.Items
 import net.minecraft.util.registry.Registry
+import java.lang.IllegalStateException
 
 class OpGetItemStackData(private val mode: Int) : ConstMediaAction {
 	override val argc = 1
@@ -31,7 +32,7 @@ class OpGetItemStackData(private val mode: Int) : ConstMediaAction {
 						enchantments.add(IdentifierIota(Registry.ENCHANTMENT.getId(enchantment)!!))
 					ListIota(enchantments.toList())
 				}
-				else -> NullIota()
+				else -> throw IllegalStateException()
 			}
 		)
 	}

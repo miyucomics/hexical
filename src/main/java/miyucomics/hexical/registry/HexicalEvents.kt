@@ -1,10 +1,8 @@
 package miyucomics.hexical.registry
 
-import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.state.EvokeState
 import miyucomics.hexical.state.KeybindData
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents
-import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
 
 object HexicalEvents {
 	@JvmStatic
