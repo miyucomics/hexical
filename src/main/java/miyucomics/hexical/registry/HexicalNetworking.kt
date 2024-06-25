@@ -67,16 +67,16 @@ object HexicalNetworking {
 
 	@JvmStatic
 	fun clientInit() {
-		ClientPlayNetworking.registerGlobalReceiver(SCRY_SENTINEL) { client, _, buf, _ ->
-			val x = buf.readDouble()
-			val y = buf.readDouble()
-			val z = buf.readDouble()
-			val camera = FakeCameraEntity(client, client.world!!)
-			camera.updatePositionAndAngles(x, y, z, client.player!!.headYaw, client.player!!.pitch)
-			camera.input = KeyboardInput(client.options)
-			client.player!!.input = Input()
-			client.setCameraEntity(camera)
-			camera.noClip = true
-		}
+//		ClientPlayNetworking.registerGlobalReceiver(SCRY_SENTINEL) { client, _, buf, _ ->
+//			val x = buf.readDouble()
+//			val y = buf.readDouble()
+//			val z = buf.readDouble()
+//			val camera = FakeCameraEntity(client, client.world!!)
+//			camera.updatePositionAndAngles(x, y, z, client.player!!.headYaw, client.player!!.pitch)
+//			camera.input = KeyboardInput(client.options)
+//			client.player!!.input = Input()
+//			client.setCameraEntity(camera)
+//			camera.noClip = true
+//		}
 	}
 }
