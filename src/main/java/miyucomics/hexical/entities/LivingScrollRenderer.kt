@@ -12,7 +12,6 @@ import net.minecraft.client.render.entity.EntityRenderer
 import net.minecraft.client.render.entity.EntityRendererFactory
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.entity.Entity
-import net.minecraft.entity.decoration.AbstractDecorationEntity
 import net.minecraft.util.Identifier
 import net.minecraft.util.math.*
 import kotlin.math.*

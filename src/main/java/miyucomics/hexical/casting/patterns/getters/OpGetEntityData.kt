@@ -6,7 +6,6 @@ import at.petrak.hexcasting.api.spell.getEntity
 import at.petrak.hexcasting.api.spell.iota.BooleanIota
 import at.petrak.hexcasting.api.spell.iota.DoubleIota
 import at.petrak.hexcasting.api.spell.iota.Iota
-import at.petrak.hexcasting.api.spell.iota.NullIota
 
 class OpGetEntityData(private val mode: Int) : ConstMediaAction {
 	override val argc = 1
@@ -17,7 +16,7 @@ class OpGetEntityData(private val mode: Int) : ConstMediaAction {
 				0 -> BooleanIota(entity.isOnFire)
 				1 -> DoubleIota(entity.fireTicks.toDouble() / 20)
 				2 -> BooleanIota(entity.isWet)
-				else -> NullIota()
+				else -> throw IllegalStateException()
 			}
 		)
 	}

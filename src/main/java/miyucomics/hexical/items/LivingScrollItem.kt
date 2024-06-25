@@ -7,11 +7,10 @@ import at.petrak.hexcasting.api.spell.iota.NullIota
 import at.petrak.hexcasting.api.spell.iota.PatternIota
 import at.petrak.hexcasting.api.spell.math.HexDir
 import at.petrak.hexcasting.api.spell.math.HexPattern
-import at.petrak.hexcasting.api.utils.*
+import at.petrak.hexcasting.api.utils.hasCompound
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import miyucomics.hexical.entities.LivingScrollEntity
 import miyucomics.hexical.registry.HexicalItems
-import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.Item

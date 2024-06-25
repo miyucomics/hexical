@@ -10,6 +10,7 @@ import miyucomics.hexical.state.PersistentStateHandler
 import net.minecraft.item.ItemStack
 import net.minecraft.item.Items
 import net.minecraft.util.registry.Registry
+import java.lang.IllegalStateException
 
 class OpGetWristpocket(private val mode: Int) : ConstMediaAction {
 	override val argc = 0
@@ -19,12 +20,12 @@ class OpGetWristpocket(private val mode: Int) : ConstMediaAction {
 			return listOf(when (mode) {
 				0 -> NullIota()
 				1 -> DoubleIota(0.0)
-				else -> NullIota()
+				else -> throw IllegalStateException()
 			})
 		return listOf(when (mode) {
 			0 -> IdentifierIota(Registry.ITEM.getId(wristpocket.item))
 			1 -> DoubleIota(wristpocket.count.toDouble())
-			else -> NullIota()
+			else -> throw IllegalStateException()
 		})
 	}
 }

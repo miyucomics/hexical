@@ -8,6 +8,7 @@ import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.NullIota
 import miyucomics.hexical.casting.iota.IdentifierIota
 import net.minecraft.util.registry.Registry
+import java.lang.IllegalStateException
 
 class OpGetPlayerData(private val mode: Int) : ConstMediaAction {
 	override val argc = 1
@@ -19,7 +20,7 @@ class OpGetPlayerData(private val mode: Int) : ConstMediaAction {
 				1 -> if (entity.offHandStack.isEmpty) NullIota() else IdentifierIota(Registry.ITEM.getId(entity.offHandStack.item))
 				2 -> DoubleIota(entity.hungerManager.foodLevel.toDouble())
 				3 -> DoubleIota(entity.hungerManager.saturationLevel.toDouble())
-				else -> NullIota()
+				else -> throw IllegalStateException()
 			}
 		)
 	}

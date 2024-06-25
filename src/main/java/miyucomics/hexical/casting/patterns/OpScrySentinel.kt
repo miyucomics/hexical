@@ -4,20 +4,12 @@ import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.*
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.Iota
-import at.petrak.hexcasting.api.spell.mishaps.MishapOthersName
-import at.petrak.hexcasting.api.utils.putCompound
-import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.casting.mishaps.NoSentinelMishap
 import miyucomics.hexical.registry.HexicalAdvancements
-import miyucomics.hexical.registry.HexicalItems
 import miyucomics.hexical.registry.HexicalNetworking
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
-import net.minecraft.block.Blocks
-import net.minecraft.entity.ItemEntity
-import net.minecraft.item.ItemStack
-import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d
 
 class OpScrySentinel : SpellAction {
