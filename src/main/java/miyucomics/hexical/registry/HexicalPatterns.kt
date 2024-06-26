@@ -19,6 +19,7 @@ import miyucomics.hexical.casting.patterns.eval.OpNephthys
 import miyucomics.hexical.casting.patterns.eval.OpSisyphus
 import miyucomics.hexical.casting.patterns.eval.OpThemis
 import miyucomics.hexical.casting.patterns.fireworks.OpConjureFirework
+import miyucomics.hexical.casting.patterns.fireworks.OpSimulateFirework
 import miyucomics.hexical.casting.patterns.getters.*
 import miyucomics.hexical.casting.patterns.grimoire.*
 import miyucomics.hexical.casting.patterns.identifier.OpIdentify
@@ -45,7 +46,8 @@ object HexicalPatterns {
 	fun init() {
 		registerPerWorld("greater_blink", "wqawawaqwqwqawawaqw", HexDir.SOUTH_WEST, OpGreaterBlink())
 
-		register("conjure_firework", "wwaqqqqww", HexDir.EAST, OpConjureFirework())
+		register("conjure_firework", "dedwaqwwawwqa", HexDir.SOUTH_WEST, OpConjureFirework())
+		register("simulate_firework", "dedwaqwqqwqa", HexDir.SOUTH_WEST, OpSimulateFirework())
 
 		register("prestidigitation", "wedewedew", HexDir.NORTH_EAST, OpPrestidigitation())
 
