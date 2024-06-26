@@ -1,9 +1,5 @@
 package miyucomics.hexical.registry
 
-import dev.kosmx.playerAnim.api.layered.KeyframeAnimationPlayer
-import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationRegistry
-import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.client.PlayerAnimations
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking

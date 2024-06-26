@@ -62,6 +62,8 @@
 	"hexcasting.mishap.invalid_value.food": "a food item entity",
 	"hexcasting.mishap.invalid_value.potion_holding": "a food, potion, or tipped arrow item entity",
 	"hexcasting.mishap.invalid_value.identifiable": "an identifiable target",
+	"hexcasting.mishap.invalid_value.nonempty_list": "a non-empty list",
+	"hexcasting.mishap.invalid_value.true_dye_list": "a list of colored dyes",
 	"hexcasting.mishap.invalid_value.recognizable": "a target with extra information",
 	"hexcasting.mishap.invalid_value.fleck_vector_list": "a list of up to 24 vectors with magnitudes less than 3",
 	"hexcasting.mishap.hexical:active_arch_lamp": "Expected an active Arch Lamp in the inventory.",
