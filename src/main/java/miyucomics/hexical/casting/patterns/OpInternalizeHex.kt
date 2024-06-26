@@ -10,6 +10,7 @@ import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.ListIota
 import at.petrak.hexcasting.api.spell.mishaps.MishapOthersName
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
+import miyucomics.hexical.HexicalUtils
 import miyucomics.hexical.enums.SpecializedSource
 import miyucomics.hexical.items.lampCast
 import miyucomics.hexical.registry.HexicalItems.NULL_MEDIA_ITEM
@@ -25,6 +26,7 @@ import net.minecraft.util.Hand
 
 class OpInternalizeHex : SpellAction {
 	override val argc = 1
+	override val isGreat = true
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		args.getList(0, argc)
 		val trueName = MishapOthersName.getTrueNameFromDatum(args[0], ctx.caster)
@@ -43,7 +45,7 @@ class OpInternalizeHex : SpellAction {
 		fun evoke(player: ServerPlayerEntity) {
 			EvokeState.duration[player.uuid] = 0
 			val hex = getEvocation((player as ServerPlayerEntity?)!!) ?: return
-			val stack: ItemStack = player.mainHandStack
+			val stack = player.mainHandStack
 			player.setStackInHand(Hand.MAIN_HAND, ItemStack(NULL_MEDIA_ITEM))
 			lampCast(player.world as ServerWorld, player, (HexIotaTypes.deserialize(hex, player.world as ServerWorld) as ListIota).list.toList(), SpecializedSource.EVOCATION, false)
 			player.world.playSound(null, player.x, player.y, player.z, SoundEvents.ENTITY_EVOKER_CAST_SPELL, SoundCategory.PLAYERS, 1f, 1f)
