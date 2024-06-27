@@ -224,6 +224,15 @@
 	"hexical.page.conjure_hextito.description": "Hextitos are triangular crunchy snacks I can conjure. When consumed, I feel the sudden desire to cast the hex used in its creation, using my caster's stack rather than an isolated stack like a regular casting device. I shall find it useful to make simple actions like raycasts, especially in conjunction with hexbursts. If a consumer's stack has an unclosed Introspection, it will not cast, making it quite safe to hand out to other people.",
 	"hexical.page.conjure_hextito.summary": "Conjures a hextito at the location. Costs two dust. Is subject to the Transgress Others mishap.",
 
+	"hexical.page.soroban.title": "Soroban Patterns",
+	"hexical.page.soroban.0": "These patterns manipulate an imaginary counter. I shall find them useful when my Ravenmind is occupied or overkill, for example to count iterations in a Thoth's loop. Some ancient scraps recommend its use for some sort of $(o)recursive depth$().$(br2)I shall also note that they don't work properly when drawn by themselves with my staff. It seems memory is maintained only for an instant.",
+	"hexcasting.spell.hexical:soroban_increment": "Soroban Reflection",
+	"hexical.page.soroban_increment.summary": "Pushes the current soroban counter and then increases it.",
+	"hexcasting.spell.hexical:soroban_decrement": "Soroban Reflection II",
+	"hexical.page.soroban_decrement.summary": "Pushes the current soroban counter and then decreases it.",
+	"hexcasting.spell.hexical:soroban_reset": "Soroban Gambit",
+	"hexical.page.soroban_reset.summary": "Resets the soroban counter.",
+
 	"hexcasting.spell.hexical:magic_missile": "Magic Missile",
 	"hexical.page.magic_missile.summary": "Conjures a small silver of amethyst that deals a full heart of damage and as much knockback as a fist punch. Costs one amethyst dust.",
 	"hexical.page.magic_missile.0": "The projectile has a few interesting properties. It automatically disappears after roughly ten seconds or shatters upon hitting an entity or block. It is also unaffected by gravity and water drag.$(br2)The signature combat spell of mages...",
@@ -324,6 +333,8 @@
 	"hexical.page.modify_block_invisible.summary": "This modifier prevents the block from emitting the telltale particles that accompany my casting, even when being stood on.",
 	"hexcasting.spell.hexical:modify_block_replaceable": "Modify Block: Replaceable",
 	"hexical.page.modify_block_replaceable.summary": "This modifier is useful for construction! With this modifier applied, I find I can easily place another block in the place of the mage block.",
+	"hexcasting.spell.hexical:modify_block_semipermeable": "Modify Block: Semi-Permeable",
+	"hexical.page.modify_block_semipermeable.summary": "This modifier makes the block semi-permeable, only having collision with things that are sprinting. All other entities fall through.",
 	"hexcasting.spell.hexical:modify_block_volatile": "Modify Block: Volatile",
 	"hexical.page.modify_block_volatile.summary": "This modifier makes the block break other mage blocks it's touching. Notably, if it breaks another volatile block, that block breaks and so on until every volatile block shatters.",
 
