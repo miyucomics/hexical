@@ -9,7 +9,6 @@ object HexicalAdvancements {
 	val HALLUCINATE: HallucinateCriterion = Criteria.register(HallucinateCriterion())
 	val EDUCATE_GENIE: EducateGenieCriterion = Criteria.register(EducateGenieCriterion())
 	val RELOAD_LAMP: ReloadLampCriterion = Criteria.register(ReloadLampCriterion())
-	val SCRY: ScryCriterion = Criteria.register(ScryCriterion())
 	val USE_UP_LAMP: UseUpLampCriterion = Criteria.register(UseUpLampCriterion())
 
 	@JvmStatic
