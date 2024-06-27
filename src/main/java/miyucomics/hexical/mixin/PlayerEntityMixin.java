@@ -2,7 +2,7 @@ package miyucomics.hexical.mixin;
 
 import at.petrak.hexcasting.xplat.IXplatAbstractions;
 import miyucomics.hexical.HexicalMain;
-import miyucomics.hexical.HexicalUtils;
+import miyucomics.hexical.utils.HexicalUtils;
 import miyucomics.hexical.casting.patterns.OpInternalizeHex;
 import miyucomics.hexical.interfaces.PlayerEntityMinterface;
 import miyucomics.hexical.state.EvokeState;

@@ -24,7 +24,7 @@ class OpSimulateFirework : SpellAction {
 		val star = ctx.caster.getStackInHand(ctx.otherHand)
 		if (star.item !is FireworkStarItem)
 			throw MishapBadOffhandItem.of(star, ctx.otherHand, "firework_star")
-		return Triple(Spell(position, velocity, duration, star.orCreateNbt), MediaConstants.SHARD_UNIT + MediaConstants.DUST_UNIT * (duration - 1), listOf(ParticleSpray.burst(position, 1.0)))
+		return Triple(Spell(position, velocity, duration, star.orCreateNbt.getCompound(FireworkRocketItem.EXPLOSION_KEY)), MediaConstants.SHARD_UNIT + MediaConstants.DUST_UNIT * (duration - 1), listOf(ParticleSpray.burst(position, 1.0)))
 	}
 
 	private data class Spell(val position: Vec3d, val velocity: Vec3d, val duration: Int, val template: NbtCompound) : RenderedSpell {
