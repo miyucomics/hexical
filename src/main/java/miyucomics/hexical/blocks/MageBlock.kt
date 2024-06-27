@@ -4,14 +4,12 @@ import at.petrak.hexcasting.api.misc.FrozenColorizer
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.common.blocks.BlockConjured
 import miyucomics.hexical.registry.HexicalBlocks
-import net.minecraft.block.BlockState
-import net.minecraft.block.Blocks
-import net.minecraft.block.MapColor
-import net.minecraft.block.Material
+import net.minecraft.block.*
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.block.entity.BlockEntityTicker
 import net.minecraft.block.entity.BlockEntityType
 import net.minecraft.entity.Entity
+import net.minecraft.entity.FallingBlockEntity
 import net.minecraft.entity.damage.DamageSource
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.BlockItem
@@ -25,6 +23,8 @@ import net.minecraft.util.Hand
 import net.minecraft.util.hit.BlockHitResult
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
+import net.minecraft.util.shape.VoxelShape
+import net.minecraft.util.shape.VoxelShapes
 import net.minecraft.world.BlockView
 import net.minecraft.world.World
 import net.minecraft.world.event.GameEvent
@@ -107,6 +107,20 @@ class MageBlock : BlockConjured(
 			return
 		if (!tile.properties["invisible"]!!)
 			tile.walkParticle(entity)
+	}
+
+	override fun getCollisionShape(state: BlockState?, world: BlockView?, pos: BlockPos?, context: ShapeContext): VoxelShape {
+		if (((world!!.getBlockEntity(pos)?: return super.getCollisionShape(state, world, pos, context)) as MageBlockEntity).properties["semipermeable"] == true) {
+			if (context is EntityShapeContext && context.entity != null) {
+				val entity = context.entity!!
+				if (entity is FallingBlockEntity || entity.isSprinting && context.isAbove(VoxelShapes.fullCube(), pos, false) && !context.isDescending()) {
+					return super.getCollisionShape(state, world, pos, context)
+				}
+			}
+			return VoxelShapes.empty()
+		} else {
+			return super.getCollisionShape(state, world, pos, context)
+		}
 	}
 
 	override fun spawnBreakParticles(pLevel: World?, pPlayer: PlayerEntity?, pPos: BlockPos?, pState: BlockState?) {}
