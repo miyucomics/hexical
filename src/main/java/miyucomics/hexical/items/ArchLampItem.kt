@@ -81,10 +81,8 @@ class ArchLampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.H
 
 		HexicalUtils.castSpecial(world as ServerWorld, user, getHex(stack, world) ?: return, SpecializedSource.ARCH_LAMP, finale = false)
 		(user as PlayerEntityMinterface).lampCastedThisTick()
-		if (getMedia(stack) == 0) {
-			user.inventory.setStack(slot, ItemStack(HexicalItems.LAMP_ITEM))
+		if (getMedia(stack) == 0)
 			HexicalAdvancements.USE_UP_LAMP.trigger(user)
-		}
 	}
 
 	override fun canDrawMediaFromInventory(stack: ItemStack) = false

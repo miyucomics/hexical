@@ -1,9 +1,6 @@
 package miyucomics.hexical.items
 
 import at.petrak.hexcasting.api.misc.MediaConstants
-import at.petrak.hexcasting.api.spell.casting.CastingContext
-import at.petrak.hexcasting.api.spell.casting.CastingHarness
-import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.NullIota
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.api.utils.serializeToNBT
@@ -11,7 +8,6 @@ import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.enums.SpecializedSource
-import miyucomics.hexical.interfaces.CastingContextMinterface
 import miyucomics.hexical.registry.HexicalAdvancements
 import miyucomics.hexical.registry.HexicalItems
 import miyucomics.hexical.registry.HexicalSounds
@@ -59,10 +55,8 @@ class LampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.HEXIC
 		if (world.isClient) return
 		if (getMedia(stack) == 0) return
 		HexicalUtils.castSpecial(world as ServerWorld, user as ServerPlayerEntity, getHex(stack, world) ?: return, SpecializedSource.HAND_LAMP, finale = false)
-		if (getMedia(stack) == 0) {
-			user.setStackInHand(user.activeHand, ItemStack(HexicalItems.LAMP_ITEM))
+		if (getMedia(stack) == 0)
 			HexicalAdvancements.USE_UP_LAMP.trigger(user)
-		}
 	}
 
 	override fun onStoppedUsing(stack: ItemStack, world: World, user: LivingEntity, remainingUseTicks: Int) {

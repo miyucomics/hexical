@@ -1,5 +1,5 @@
 {
-	"name": "hexical.page.replacement_mind.title",
+	"name": "hexical.page.offerings.title",
 	"icon": "minecraft:textures/particle/soul_7.png",
 	"category": "hexical:lamp",
 	"advancement": "hexical:broken_mind",
@@ -7,23 +7,23 @@
 	"pages": [
 		{
 			"type": "patchouli:text",
-			"text": "hexical.page.replacement_mind.0"
+			"text": "hexical.page.offerings.0"
 		},
 		{
 			"type": "patchouli:text",
-			"text": "hexical.page.replacement_mind.1"
+			"text": "hexical.page.offerings.1"
 		},
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:make_genie",
-			"anchor": "hexical:make_genie",
+			"op_id": "hexical:offer_mind",
+			"anchor": "hexical:offer_mind",
 			"input": "villager entity, number",
 			"output": "",
-			"text": "hexical.page.make_genie.summary"
+			"text": "hexical.page.offer_mind.summary"
 		},
 		{
 			"type": "patchouli:text",
-			"text": "hexical.page.replacement_mind.2"
+			"text": "hexical.page.offerings.2"
 		}
 	]
 }

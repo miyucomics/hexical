@@ -117,7 +117,7 @@ object HexicalPatterns {
 		register("restrict_grimoire", "dedqdewed", HexDir.SOUTH_WEST, OpGrimoireRestrict())
 		register("query_grimoire", "aqaedewed", HexDir.NORTH_WEST, OpGrimoireQuery())
 
-		register("make_genie", "qaqwawqwqqwqwqwqwqwqq", HexDir.EAST, OpMakeGenie())
+		register("offer_mind", "qaqwawqwqqwqwqwqwqwqq", HexDir.EAST, OpReloadLamp())
 		register("educate_genie", "eweweweweweewedeaqqqd", HexDir.NORTH_WEST, OpEducateGenie())
 		register("get_hand_lamp_position", "qwddedqdd", HexDir.SOUTH_WEST, OpGetHandLampData(0))
 		register("get_hand_lamp_rotation", "qwddedadw", HexDir.SOUTH_WEST, OpGetHandLampData(1))

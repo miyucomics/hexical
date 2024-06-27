@@ -1,11 +1,8 @@
 package miyucomics.hexical.mixin;
 
-import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
-import miyucomics.hexical.client.FakeCameraEntity;
 import miyucomics.hexical.interfaces.MinecraftClientMinterface;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.Mouse;
-import net.minecraft.client.network.ClientPlayerEntity;
 import org.lwjgl.glfw.GLFW;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;

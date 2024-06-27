@@ -11,7 +11,6 @@ import at.petrak.hexcasting.api.spell.iota.ListIota
 import at.petrak.hexcasting.api.spell.mishaps.MishapOthersName
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import miyucomics.hexical.enums.SpecializedSource
-import miyucomics.hexical.items.lampCast
 import miyucomics.hexical.registry.HexicalItems.NULL_MEDIA_ITEM
 import miyucomics.hexical.state.EvokeState
 import miyucomics.hexical.state.PersistentStateHandler
