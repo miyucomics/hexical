@@ -5,15 +5,12 @@ import at.petrak.hexcasting.api.spell.*
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
-import at.petrak.hexcasting.api.utils.putList
 import miyucomics.hexical.casting.iota.DyeIota
 import net.minecraft.entity.projectile.FireworkRocketEntity
 import net.minecraft.item.FireworkRocketItem
 import net.minecraft.item.ItemStack
 import net.minecraft.item.Items
 import net.minecraft.nbt.NbtCompound
-import net.minecraft.nbt.NbtInt
-import net.minecraft.nbt.NbtIntArray
 import net.minecraft.nbt.NbtList
 import net.minecraft.util.DyeColor
 import net.minecraft.util.math.Vec3d

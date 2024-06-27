@@ -27,7 +27,7 @@ public class AbstractClientPlayerEntityMixin implements PlayerAnimations {
 
 	@NotNull
 	@Override
-	public ModifierLayer<IAnimation> hexical_getModAnimation() {
+	public ModifierLayer<IAnimation> hexicalModAnimations() {
 		return modAnimationContainer;
 	}
 }

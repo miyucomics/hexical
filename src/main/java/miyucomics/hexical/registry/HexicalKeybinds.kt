@@ -12,29 +12,22 @@ import org.lwjgl.glfw.GLFW
 object HexicalKeybinds {
 	private val EVOKE_KEYBIND = KeyBinding("key.hexical.evoke", GLFW.GLFW_KEY_R, "key.categories.hexical")
 	private val TELEPATHY_KEYBIND = KeyBinding("key.hexical.telepathy", GLFW.GLFW_KEY_G, "key.categories.hexical")
-	private val EXIT_SCRYING_KEYBIND = KeyBinding("key.hexical.stop_scrying", GLFW.GLFW_KEY_J, "key.categories.hexical")
 	private var states = mutableMapOf<String, Boolean>()
 
 	@JvmStatic
 	fun init() {
 		KeyBindingHelper.registerKeyBinding(EVOKE_KEYBIND)
 		KeyBindingHelper.registerKeyBinding(TELEPATHY_KEYBIND)
-		KeyBindingHelper.registerKeyBinding(EXIT_SCRYING_KEYBIND)
 
 		ClientTickEvents.END_CLIENT_TICK.register { client: MinecraftClient ->
 			if (client.player == null)
 				return@register
 
-			if (EXIT_SCRYING_KEYBIND.isPressed) {
-				client.setCameraEntity(client.player)
-				client.player!!.input = KeyboardInput(client.options)
-			}
-
 			if (states.keys.contains(EVOKE_KEYBIND.translationKey)) {
 				if (states[EVOKE_KEYBIND.translationKey] == true && !EVOKE_KEYBIND.isPressed) {
-					ClientPlayNetworking.send(HexicalNetworking.END_EVOKING_PACKET, PacketByteBufs.empty())
+					ClientPlayNetworking.send(HexicalNetworking.REQUEST_END_EVOKING_PACKET, PacketByteBufs.empty())
 				} else if (states[EVOKE_KEYBIND.translationKey] == false && EVOKE_KEYBIND.isPressed) {
-					ClientPlayNetworking.send(HexicalNetworking.START_EVOKING_PACKET, PacketByteBufs.empty())
+					ClientPlayNetworking.send(HexicalNetworking.REQUEST_START_EVOKING_PACKET, PacketByteBufs.empty())
 				}
 			}
 			states[EVOKE_KEYBIND.translationKey] = EVOKE_KEYBIND.isPressed
