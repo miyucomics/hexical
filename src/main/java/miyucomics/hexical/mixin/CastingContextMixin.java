@@ -14,6 +14,8 @@ public class CastingContextMixin implements CastingContextMinterface {
 	private boolean hexical$finale = false;
 	@Unique
 	private SpecializedSource hexical$castSource = null;
+	@Unique
+	private int hexical$soroban = 0;
 
 	@Override
 	public boolean getFinale() {
@@ -34,5 +36,25 @@ public class CastingContextMixin implements CastingContextMinterface {
 	@Override
 	public SpecializedSource getSpecializedSource() {
 		return hexical$castSource;
+	}
+
+	@Override
+	public int getSoroban() {
+		return hexical$soroban;
+	}
+
+	@Override
+	public void incrementSoroban() {
+		hexical$soroban += 1;
+	}
+
+	@Override
+	public void decrementSoroban() {
+		hexical$soroban -= 1;
+	}
+
+	@Override
+	public void resetSoroban() {
+		hexical$soroban = 0;
 	}
 }

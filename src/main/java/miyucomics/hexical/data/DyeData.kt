@@ -37,30 +37,24 @@ object DyeData {
 		return item
 	}
 
-	fun loadData(stream: InputStream, name: String) {
+	fun loadData(stream: InputStream) {
 		val json = JsonParser.parseReader(InputStreamReader(stream, "UTF-8")) as JsonObject
-		when (name) {
-			"dyes/blocks.json" -> {
-				json.keySet().forEach { familyKey ->
-					val family = json.get(familyKey) as JsonObject
-					family.keySet().forEach { block ->
-						flatBlockLookup[block] = family.get(block).asString
-						if (!blockFamilies.containsKey(familyKey))
-							blockFamilies[familyKey] = mutableMapOf()
-						blockFamilies[familyKey]!![family.get(block).asString] = block
-					}
-				}
+		json.getAsJsonObject("blocks").keySet().forEach { familyKey ->
+			val family = json.get(familyKey) as JsonObject
+			family.keySet().forEach { block ->
+				flatBlockLookup[block] = family.get(block).asString
+				if (!blockFamilies.containsKey(familyKey))
+					blockFamilies[familyKey] = mutableMapOf()
+				blockFamilies[familyKey]!![family.get(block).asString] = block
 			}
-			"dyes/items.json" -> {
-				json.keySet().forEach { familyKey ->
-					val family = json.get(familyKey) as JsonObject
-					family.keySet().forEach { item ->
-						flatItemLookup[item] = family.get(item).asString
-						if (!itemFamilies.containsKey(familyKey))
-							itemFamilies[familyKey] = mutableMapOf()
-						itemFamilies[familyKey]!![family.get(item).asString] = item
-					}
-				}
+		}
+		json.getAsJsonObject("items").keySet().forEach { familyKey ->
+			val family = json.get(familyKey) as JsonObject
+			family.keySet().forEach { item ->
+				flatItemLookup[item] = family.get(item).asString
+				if (!itemFamilies.containsKey(familyKey))
+					itemFamilies[familyKey] = mutableMapOf()
+				itemFamilies[familyKey]!![family.get(item).asString] = item
 			}
 		}
 	}

@@ -12,8 +12,8 @@ import kotlin.math.*
 object RenderUtils {
 	fun drawFigure(mat: Matrix4f, points: List<Vec2f>, width: Float, colorizer: FrozenColorizer) {
 		if (points.size <= 1) return
-		val tess = Tessellator.getInstance()
-		val buf = tess.buffer
+		val tessellator = Tessellator.getInstance()
+		val buf = tessellator.buffer
 		val n = points.size
 		val joinAngles = FloatArray(n)
 		val joinOffsets = FloatArray(n)
@@ -21,25 +21,20 @@ object RenderUtils {
 			val p0 = points[i - 2]
 			val p1 = points[i - 1]
 			val p2 = points[i]
-			val prev = p1.add(p0.negate())
-			val next = p2.add(p1.negate())
+			val offsetA = p1.add(p0.negate())
+			val offsetB = p2.add(p1.negate())
 			val angle = atan2(
-				(prev.x * next.y - prev.y * next.x).toDouble(),
-				(prev.x * next.x + prev.y * next.y).toDouble()
+				(offsetA.x * offsetB.y - offsetA.y * offsetB.x).toDouble(),
+				(offsetA.x * offsetB.x + offsetA.y * offsetB.y).toDouble()
 			).toFloat()
 			joinAngles[i - 1] = angle
-			val clamp = min(prev.length(), next.length()) / (width * 0.5f)
+			val clamp = min(offsetA.length(), offsetB.length()) / (width * 0.5f)
 			joinOffsets[i - 1] = MathHelper.clamp(sin(angle) / (1 + cos(angle)), -clamp, clamp)
 		}
 
 		fun vertex(pos: Vec2f) {
 			val color = colorizer.getColor(0f, Vec3d(pos.x.toDouble(), pos.y.toDouble(), 0.0))
-			buf.vertex(mat, pos.x, pos.y, 0f).color(
-				ColorHelper.Argb.getRed(color),
-				ColorHelper.Argb.getGreen(color),
-				ColorHelper.Argb.getBlue(color),
-				1
-			).next()
+			buf.vertex(mat, pos.x, pos.y, 0f).color(ColorHelper.Argb.getRed(color), ColorHelper.Argb.getGreen(color), ColorHelper.Argb.getBlue(color), 1).next()
 		}
 
 		buf.begin(VertexFormat.DrawMode.TRIANGLES, VertexFormats.POSITION_COLOR)
@@ -106,7 +101,8 @@ object RenderUtils {
 				}
 			}
 		}
-		tess.draw()
+		tessellator.draw()
+
 		fun drawCaps(point: Vec2f, prev: Vec2f) {
 			val tangent = point.add(prev.negate()).normalize().multiply(0.5f * width)
 			val normal = Vec2f(-tangent.y, tangent.x)
@@ -117,7 +113,7 @@ object RenderUtils {
 				val fan = rotate(normal, -MathHelper.PI * (j.toFloat() / joinSteps))
 				vertex(Vec2f(point.x + fan.x, point.y + fan.y))
 			}
-			tess.draw()
+			tessellator.draw()
 		}
 		drawCaps(points[0], points[1])
 		drawCaps(points[n - 1], points[n - 2])
