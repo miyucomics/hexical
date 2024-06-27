@@ -22,12 +22,11 @@
 - added Wristpocket spell - hide items magically
   - added Ingest spell - eat wristpocketed item
   - added Mage Hand spell - use your wristpocketed item to interact with blocks and entities
-
 - added flecks - similar to specks, but they use a list of vectors to determine their shape
 - added mishap to Chorus Blink if you don't have chorus fruit in your inventory
+- added semi-permeable modifier for : only sprinting creatures have collision
+- added semi-permeable mage block modifier: only sprinting creatures have collision
 - changed Identify pattern to have ambit limitation
-- changed Make Genie spell to take a number representing media to draw from your inventory
-    - this is a massive buff to the Make Genie spell since you can now give virtually endless media to it
 - dropped support for Forge in order to prioritize development speed and features
 - fixed specks being slightly off-center
 - fixed advancements occasionally breaking
@@ -36,6 +35,7 @@
 - fixed bug with archgenie lamps where it can cast for free if it wasn't in your main inventory
 - fixed bug with conjured staff where inputs aren't always neatly intercepted and you can accidentally break blocks
 - overhauled project structure completely
+- overhauled genie lamps completely and entirely
 - removed casting sounds from conjured staves and replaced it with staff drawing sounds
 - updated documentation
 - updated telepathy code to share code with movement reflections

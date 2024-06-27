@@ -23,6 +23,7 @@ class MageBlockEntity(pos: BlockPos?, state: BlockState?) : HexBlockEntity(Hexic
 		"ephemeral" to false,
 		"invisible" to false,
 		"replaceable" to false,
+		"semipermeable" to false,
 		"volatile" to false
 	)
 	var redstone: Int = 0

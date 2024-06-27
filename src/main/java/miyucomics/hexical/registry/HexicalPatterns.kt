@@ -27,6 +27,9 @@ import miyucomics.hexical.casting.patterns.identifier.OpRecognize
 import miyucomics.hexical.casting.patterns.lamp.*
 import miyucomics.hexical.casting.patterns.mage_blocks.OpConjureMageBlock
 import miyucomics.hexical.casting.patterns.mage_blocks.OpModifyMageBlock
+import miyucomics.hexical.casting.patterns.soroban.OpSorobanDecrement
+import miyucomics.hexical.casting.patterns.soroban.OpSorobanIncrement
+import miyucomics.hexical.casting.patterns.soroban.OpSorobanReset
 import miyucomics.hexical.casting.patterns.specks.*
 import miyucomics.hexical.casting.patterns.telepathy.OpHallucinateSound
 import miyucomics.hexical.casting.patterns.telepathy.OpSendTelepathy
@@ -48,6 +51,10 @@ object HexicalPatterns {
 
 		register("conjure_firework", "dedwaqwwawwqa", HexDir.SOUTH_WEST, OpConjureFirework())
 		register("simulate_firework", "dedwaqwqqwqa", HexDir.SOUTH_WEST, OpSimulateFirework())
+
+		register("soroban_decrement", "waqdee", HexDir.SOUTH_EAST, OpSorobanDecrement())
+		register("soroban_increment", "wdeaqq", HexDir.NORTH_EAST, OpSorobanIncrement())
+		register("soroban_reset", "qdeeaae", HexDir.NORTH_EAST, OpSorobanReset())
 
 		register("prestidigitation", "wedewedew", HexDir.NORTH_EAST, OpPrestidigitation())
 
@@ -78,6 +85,7 @@ object HexicalPatterns {
 		register("modify_block_ephemeral", "deewwaawd", HexDir.NORTH_WEST, OpModifyMageBlock("ephemeral", 1))
 		register("modify_block_invisible", "deeqedeaqqqwqqq", HexDir.NORTH_WEST, OpModifyMageBlock("invisible"))
 		register("modify_block_replaceable", "deewqaqqqqq", HexDir.NORTH_WEST, OpModifyMageBlock("replaceable"))
+		register("modify_block_semipermeable", "deeeqawde", HexDir.NORTH_WEST, OpModifyMageBlock("semipermeable"))
 		register("modify_block_volatile", "deewedeeeee", HexDir.NORTH_WEST, OpModifyMageBlock("volatile"))
 
 		register("conjure_staff", "wwwwwaqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpConjureStaff())
