@@ -22,7 +22,6 @@
 - added Wristpocket spell - hide items magically
   - added Ingest spell - eat wristpocketed item
   - added Mage Hand spell - use your wristpocketed item to interact with blocks and entities
-- added flecks - similar to specks, but they use a list of vectors to determine their shape
 - added mishap to Chorus Blink if you don't have chorus fruit in your inventory
 - added semi-permeable modifier for : only sprinting creatures have collision
 - added semi-permeable mage block modifier: only sprinting creatures have collision
