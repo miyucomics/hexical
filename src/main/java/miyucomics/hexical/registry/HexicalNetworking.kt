@@ -5,7 +5,7 @@ import at.petrak.hexcasting.api.spell.iota.Iota
 import dev.kosmx.playerAnim.api.layered.KeyframeAnimationPlayer
 import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationRegistry
 import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.HexicalUtils
+import miyucomics.hexical.utils.HexicalUtils
 import miyucomics.hexical.client.PlayerAnimations
 import miyucomics.hexical.items.ConjuredStaffItem
 import miyucomics.hexical.items.getConjuredStaff
@@ -23,12 +23,10 @@ object HexicalNetworking {
 	val PRESSED_KEY_PACKET: Identifier = HexicalMain.id("press_key")
 	val RELEASED_KEY_PACKET: Identifier = HexicalMain.id("release_key")
 
-	val START_EVOKING_PACKET: Identifier = HexicalMain.id("start_evoking")
-	val END_EVOKING_PACKET: Identifier = HexicalMain.id("end_evoking")
-	val CONFIRM_START_EVOKING_PACKET: Identifier = HexicalMain.id("confirm_start_evoking")
-	val CONFIRM_END_EVOKING_PACKET: Identifier = HexicalMain.id("confirm_end_evoking")
-
-	val SCRY_SENTINEL: Identifier = HexicalMain.id("scry_sentinel")
+	val REQUEST_START_EVOKING_PACKET: Identifier = HexicalMain.id("request_start_evoking")
+	val REQUEST_END_EVOKING_PACKET: Identifier = HexicalMain.id("request_end_evoking")
+	private val CONFIRM_START_EVOKING_PACKET: Identifier = HexicalMain.id("confirm_start_evoking")
+	private val CONFIRM_END_EVOKING_PACKET: Identifier = HexicalMain.id("confirm_end_evoking")
 
 	@JvmStatic
 	fun serverInit() {
@@ -62,7 +60,7 @@ object HexicalNetworking {
 			KeybindData.duration[player.uuid]!![key] = 0
 		}
 
-		ServerPlayNetworking.registerGlobalReceiver(START_EVOKING_PACKET) { server, player, _, _, _ ->
+		ServerPlayNetworking.registerGlobalReceiver(REQUEST_START_EVOKING_PACKET) { server, player, _, _, _ ->
 			if (!HexicalUtils.isEnlightened(player))
 				return@registerGlobalReceiver
 			EvokeState.active[player.uuid] = true
@@ -74,7 +72,7 @@ object HexicalNetworking {
 				ServerPlayNetworking.send(otherPlayer, CONFIRM_START_EVOKING_PACKET, packet)
 			}
 		}
-		ServerPlayNetworking.registerGlobalReceiver(END_EVOKING_PACKET) { server, player, _, _, _ ->
+		ServerPlayNetworking.registerGlobalReceiver(REQUEST_END_EVOKING_PACKET) { server, player, _, _, _ ->
 			if (!HexicalUtils.isEnlightened(player))
 				return@registerGlobalReceiver
 			EvokeState.active[player.uuid] = false
@@ -92,14 +90,14 @@ object HexicalNetworking {
 		ClientPlayNetworking.registerGlobalReceiver(CONFIRM_START_EVOKING_PACKET) { client, _, packet, _ ->
 			val uuid = packet.readUuid()
 			val player = client.world!!.getPlayerByUuid(uuid)?: return@registerGlobalReceiver
-			val container = (player as PlayerAnimations).hexical_getModAnimation()
+			val container = (player as PlayerAnimations).hexicalModAnimations()
 			val frame = PlayerAnimationRegistry.getAnimation(HexicalMain.id("cast_loop"))!!
 			container.setAnimation(KeyframeAnimationPlayer(frame))
 			EvokeState.active[uuid] = true
 		}
 		ClientPlayNetworking.registerGlobalReceiver(CONFIRM_END_EVOKING_PACKET) { client, _, packet, _ ->
 			val uuid = packet.readUuid()
-			val container = (client.world!!.getPlayerByUuid(uuid) as PlayerAnimations).hexical_getModAnimation()
+			val container = (client.world!!.getPlayerByUuid(uuid) as PlayerAnimations).hexicalModAnimations()
 			val frame = PlayerAnimationRegistry.getAnimation(HexicalMain.id("cast_end"))!!
 			container.setAnimation(KeyframeAnimationPlayer(frame))
 			EvokeState.active[uuid] = false

@@ -51,7 +51,6 @@ object HexicalPatterns {
 
 		register("prestidigitation", "wedewedew", HexDir.NORTH_EAST, OpPrestidigitation())
 
-		register("scry_sentinel", "awawaewawwaw", HexDir.SOUTH_WEST, OpScrySentinel())
 		register("magic_missile", "qaqww", HexDir.WEST, OpMagicMissile())
 
 		register("internalize_hex", "waeqqqqedeqdqdqdqeqdwwd", HexDir.EAST, OpInternalizeHex())

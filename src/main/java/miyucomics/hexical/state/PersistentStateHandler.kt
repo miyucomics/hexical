@@ -15,7 +15,6 @@ import java.util.*
 class PersistentStateHandler : PersistentState() {
 	private var archLamps: HashMap<UUID, ArchLampData> = HashMap<UUID, ArchLampData>()
 	private var evocation: HashMap<UUID, NbtCompound> = HashMap<UUID, NbtCompound>()
-	private var scryingSentinel: HashMap<UUID, Boolean> = HashMap<UUID, Boolean>()
 	private var wristpockets: HashMap<UUID, ItemStack> = HashMap<UUID, ItemStack>()
 
 	override fun writeNbt(nbt: NbtCompound): NbtCompound {
@@ -26,10 +25,6 @@ class PersistentStateHandler : PersistentState() {
 		val nbtEvocation = NbtCompound()
 		evocation.forEach { (uuid, compound) -> nbtEvocation.putCompound(uuid.toString(), compound) }
 		nbt.put("evocation", nbtEvocation)
-
-		val nbtScryingSentinel = NbtCompound()
-		scryingSentinel.forEach { (uuid, scrying) -> nbtScryingSentinel.putBoolean(uuid.toString(), scrying) }
-		nbt.put("scrying_sentinel", nbtArchLamps)
 
 		val nbtWristpockets = NbtCompound()
 		wristpockets.forEach { (uuid, stack) -> nbtWristpockets.putCompound(uuid.toString(), stack.serializeToNBT()) }
@@ -47,9 +42,6 @@ class PersistentStateHandler : PersistentState() {
 
 			val nbtEvocation = tag.getCompound("evocation")
 			nbtEvocation.keys.forEach { key: String -> state.evocation[UUID.fromString(key)] = nbtEvocation.getCompound(key) }
-
-			val nbtScryingSentinel = tag.getCompound("scrying_sentinel")
-			nbtScryingSentinel.keys.forEach { key: String -> state.scryingSentinel[UUID.fromString(key)] = nbtScryingSentinel.getBoolean(key) }
 
 			val nbtWristpockets = tag.getCompound("wristpockets")
 			nbtWristpockets.keys.forEach { key: String -> state.wristpockets[UUID.fromString(key)] = ItemStack.fromNbt(nbtWristpockets.getCompound(key)) }

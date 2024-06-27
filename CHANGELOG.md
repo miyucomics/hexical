@@ -1,27 +1,29 @@
 # Changelog
 
 ## 1.3.0
-- added hexbursts - add iota to your stack when eaten
-- added hextitos - cast spell when eaten, uses the player stack
-- added Conjure Compass spell - conjure a compass that always points towards a location
-- added Wristpocket spell - hide items magically
-    - added Ingest spell - eat wristpocketed item
-    - added Mage Hand spell - use your wristpocketed item to interact with blocks and entities
+- added hexbursts - adds an iota to your stack when eaten
+- added hextitos - casts a hex using the player stack when eaten
 - added dye iota
-    - added Chromatic Purification and Dye spell to get and set dyes
-    - added data-pack based method to add custom color associations to blocks so you can add support for mods with simple datapacks
-- added evocation - a keybind that allows you to cast spells by holding a keybind for some time
-- added Scry Sentinel - see through your sentinel!
+    - added Chromatic Purification and Dye spell to get and set dyes of blocks and entities
+    - added data-driven process to add color associations to blocks so you can add support for mods with simple datapacks
+- added evocation - enlightened players can cast spells by holding a keybind for some time
+- added internal iota storage to handheld lamp and patterns to interact with it
 - added Similarity Distillation - get if two iota are of the same type
 - added Congruence Distillation - get if two patterns are the same, regardless of orientation
-- added internal iota storage to hand lamp and patterns to interact with it
+- added Charge, Dodge, Retreat, and Evade Reflection patterns - pushes how long you've pressed the wasd keys
+- added Conjure Compass spell - conjure a compass that always points towards a location
+- added Conjure Firework spell - conjures a firework with a vast number of options and possibilities
+- added Simulate Firework spell - conjures a firework based off the firework star in your offhand
 - added Magic Missile spell - fire silver of amethyst that deals knockback and weak damage
+- added Greater Blink spell - blink with a relative positional and rotational offset for much cheaper than GTP
+- added Prestidigitation spell - dozens of small magical effect on blocks and entities
+  - added data-driven process to add prestidigitation associations
+  - exposed registry for prestidigitation effects, allowing you to make an addon for custom magical effects
+- added Wristpocket spell - hide items magically
+  - added Ingest spell - eat wristpocketed item
+  - added Mage Hand spell - use your wristpocketed item to interact with blocks and entities
+
 - added flecks - similar to specks, but they use a list of vectors to determine their shape
-- added Greater Blink spell: Blink with a relative positional and rotational offset for much cheaper than GTP
-- added Charge, Retreat, Dodge, and Evade Reflections - return how long you've pressed the w, s, a, or d key
-- added Prestidigitation spell, which has dozens of small magical effect. Think Sonic Screwdriver, but magic
-    - Prestidigitation is also data-driven, allowing you to add simple effects to any block.
-    - exposed registry for prestidigitation effects, allowing you to make an addon that adds your own magical effects.
 - added mishap to Chorus Blink if you don't have chorus fruit in your inventory
 - changed Identify pattern to have ambit limitation
 - changed Make Genie spell to take a number representing media to draw from your inventory
@@ -31,10 +33,10 @@
 - fixed advancements occasionally breaking
 - fixed Conjure Speck spell costing too little
 - fixed Janus' Gambit to actually terminate the hex now
-- fixed bug with Archgenie Lamp where it can cast for free if it wasn't in your main inventory
-- improved conjured staff input interception so you don't accidentally break blocks
+- fixed bug with archgenie lamps where it can cast for free if it wasn't in your main inventory
+- fixed bug with conjured staff where inputs aren't always neatly intercepted and you can accidentally break blocks
 - overhauled project structure completely
-- removed casting sounds from conjured staves and replaced it with pattern drawing sounds
+- removed casting sounds from conjured staves and replaced it with staff drawing sounds
 - updated documentation
 - updated telepathy code to share code with movement reflections
 

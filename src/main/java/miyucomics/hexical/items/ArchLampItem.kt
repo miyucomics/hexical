@@ -11,6 +11,7 @@ import miyucomics.hexical.registry.HexicalAdvancements
 import miyucomics.hexical.state.PersistentStateHandler
 import miyucomics.hexical.registry.HexicalItems
 import miyucomics.hexical.registry.HexicalSounds
+import miyucomics.hexical.utils.HexicalUtils
 import net.minecraft.entity.Entity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemGroup
@@ -47,7 +48,7 @@ class ArchLampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.H
 		}
 
 		if (stackNbt.getBoolean("active")) {
-			lampCast(world as ServerWorld, user as ServerPlayerEntity, getHex(stack, world)!!, SpecializedSource.ARCH_LAMP, finale = true)
+			HexicalUtils.castSpecial(world as ServerWorld, user as ServerPlayerEntity, getHex(stack, world)!!, SpecializedSource.ARCH_LAMP, finale = true)
 			stackNbt.putBoolean("active", false)
 			return TypedActionResult.success(stack)
 		}
@@ -78,7 +79,7 @@ class ArchLampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.H
 			return
 		}
 
-		lampCast(world as ServerWorld, user, getHex(stack, world) ?: return, SpecializedSource.ARCH_LAMP, finale = false)
+		HexicalUtils.castSpecial(world as ServerWorld, user, getHex(stack, world) ?: return, SpecializedSource.ARCH_LAMP, finale = false)
 		(user as PlayerEntityMinterface).lampCastedThisTick()
 		if (getMedia(stack) == 0) {
 			user.inventory.setStack(slot, ItemStack(HexicalItems.LAMP_ITEM))

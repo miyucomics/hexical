@@ -15,8 +15,6 @@
 	"advancements.hexical.lamp.description": "Acquire a genie lamp.",
 	"advancements.hexical.reload_lamp.title": "In with the New!",
 	"advancements.hexical.reload_lamp.description": "Reload the lamp.",
-	"advancements.hexical.scry.title": "I Scry",
-	"advancements.hexical.scry.description": "Spy through your sentinel.",
 
 	"block.hexical.mage_block": "Mage Block",
 	"entity.hexical.fleck": "Fleck",
@@ -24,7 +22,6 @@
 	"entity.hexical.speck": "Speck",
 	"key.categories.hexical": "Hexical",
 	"key.hexical.evoke": "Evoke",
-	"key.hexical.stop_scrying": "Stop Scrying",
 	"key.hexical.telepathy": "Telepathy",
 	"item.hexical.arch_lamp": "Archgenie Lamp",
 	"item.hexical.conjured_compass": "Conjured Compass",

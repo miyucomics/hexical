@@ -22,13 +22,6 @@ public class MouseMixin {
 	@Final
 	private MinecraftClient client;
 
-	@ModifyExpressionValue(method = "updateMouse", at = @At(value = "FIELD", target = "Lnet/minecraft/client/MinecraftClient;player:Lnet/minecraft/client/network/ClientPlayerEntity;"))
-	private ClientPlayerEntity moveCamera(ClientPlayerEntity original) {
-		if (client.getCameraEntity() instanceof FakeCameraEntity camera)
-			return camera;
-		return original;
-	}
-
 	@Inject(method = "onMouseButton", at = @At("HEAD"), cancellable = true)
 	private void onMouseButton(long window, int button, int action, int mods, CallbackInfo ci) {
 		if (this.client.currentScreen != null || this.client.getOverlay() != null)
