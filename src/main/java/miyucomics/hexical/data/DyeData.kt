@@ -39,8 +39,10 @@ object DyeData {
 
 	fun loadData(stream: InputStream) {
 		val json = JsonParser.parseReader(InputStreamReader(stream, "UTF-8")) as JsonObject
-		json.getAsJsonObject("blocks").keySet().forEach { familyKey ->
-			val family = json.get(familyKey) as JsonObject
+
+		val blocks = json.getAsJsonObject("blocks")
+		blocks.keySet().forEach { familyKey ->
+			val family = blocks.getAsJsonObject(familyKey)
 			family.keySet().forEach { block ->
 				flatBlockLookup[block] = family.get(block).asString
 				if (!blockFamilies.containsKey(familyKey))
@@ -48,8 +50,10 @@ object DyeData {
 				blockFamilies[familyKey]!![family.get(block).asString] = block
 			}
 		}
-		json.getAsJsonObject("items").keySet().forEach { familyKey ->
-			val family = json.get(familyKey) as JsonObject
+
+		val items = json.getAsJsonObject("items")
+		items.keySet().forEach { familyKey ->
+			val family = items.getAsJsonObject(familyKey)
 			family.keySet().forEach { item ->
 				flatItemLookup[item] = family.get(item).asString
 				if (!itemFamilies.containsKey(familyKey))
