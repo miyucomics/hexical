@@ -111,6 +111,7 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: Wo
 		this.dataTracker.set(sizeDataTracker, size)
 		setFacing(dir)
 		updateRender()
+
 	}
 
 	override fun tick() {

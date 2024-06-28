@@ -8,9 +8,11 @@ import miyucomics.hexical.prestidigitation.*
 import net.fabricmc.fabric.api.event.registry.FabricRegistryBuilder
 import net.fabricmc.fabric.api.event.registry.RegistryAttribute
 import net.minecraft.block.Block
+import net.minecraft.block.Blocks
 import net.minecraft.entity.Entity
 import net.minecraft.item.ItemStack
 import net.minecraft.item.Items
+import net.minecraft.state.property.Properties
 import net.minecraft.util.Identifier
 import net.minecraft.util.registry.Registry
 import net.minecraft.util.registry.SimpleRegistry
@@ -26,14 +28,21 @@ object PrestidigitationData {
 	fun init() {
 		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("arm_stands"), ArmStandsEffect())
 		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("deprime_tnt"), DeprimeTntEffect())
-		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("shear_sheep"), ShearSheepEffect())
 		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("trigger_impetus"), TriggerImpetusEffect())
 		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("ring_bell"), RingBellEffect())
 
 		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("right_click"), UseItemOnEffect(ItemStack.EMPTY))
+		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("use_shears"), UseItemOnEffect(ItemStack(Items.SHEARS)))
 		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("use_axe"), UseItemOnEffect(ItemStack(Items.DIAMOND_AXE)))
 		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("ignite"), UseItemOnEffect(ItemStack(Items.FLINT_AND_STEEL)))
 
+		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("delete"), TransformBlockEffect(Blocks.AIR.defaultState))
+		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("drain_cauldron"), TransformBlockEffect(Blocks.CAULDRON.defaultState))
+		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("light"), BooleanPropertyEffect(Properties.LIT))
+		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("open"), BooleanPropertyEffect(Properties.OPEN))
+		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("squirt_squid"), SquirtSquidsEffect())
+		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("sneeze_panda"), PandaSneezeEffect())
+		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("puff_fish"), InflatePufferfishEffect())
 		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("creeper"), CreeperEffect())
 	}
 

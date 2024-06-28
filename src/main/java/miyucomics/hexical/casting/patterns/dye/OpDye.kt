@@ -22,6 +22,7 @@ import net.minecraft.item.BlockItem
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
+import net.minecraft.tag.BlockTags
 import net.minecraft.util.DyeColor
 import net.minecraft.util.math.BlockPos
 
@@ -127,14 +128,13 @@ class OpDye : SpellAction {
 				)
 				is ShulkerBoxBlock -> {
 					val blockEntity = ctx.world.getBlockEntity(position)!! as ShulkerBoxBlockEntity
-					val inventoryNbt = NbtCompound()
-					blockEntity.readInventoryNbt(inventoryNbt)
-					print(inventoryNbt)
+					val nbt = blockEntity.createNbt()
 					ctx.world.setBlockState(
 						position,
 						DyeData.getNewBlock(state.block, dye)
 							.with(ShulkerBoxBlock.FACING, state.get(ShulkerBoxBlock.FACING))
 					)
+					(ctx.world.getBlockEntity(position)!! as ShulkerBoxBlockEntity).readNbt(nbt)
 				}
 				is StainedGlassPaneBlock -> ctx.world.setBlockState(
 					position,

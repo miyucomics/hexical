@@ -18,16 +18,12 @@
 			"text": "hexical.page.conjure_speck.summary"
 		},
 		{
-			"type": "patchouli:text",
-			"text": "hexical.page.specks.1"
-		},
-		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:move_specklike",
 			"anchor": "hexical:move_specklike",
 			"input": "speck entity, vector",
 			"output": "",
-			"text": "hexical.page.move_specklike.summary"
+			"text": "hexical.page.move_speck.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -35,7 +31,7 @@
 			"anchor": "hexical:rotate_specklike",
 			"input": "speck entity, vector",
 			"output": "",
-			"text": "hexical.page.rotate_specklike.summary"
+			"text": "hexical.page.rotate_speck.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -43,7 +39,7 @@
 			"anchor": "hexical:roll_specklike",
 			"input": "speck entity, number",
 			"output": "",
-			"text": "hexical.page.roll_specklike.summary"
+			"text": "hexical.page.roll_speck.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -59,7 +55,7 @@
 			"anchor": "hexical:lifetime_specklike",
 			"input": "speck entity, number",
 			"output": "",
-			"text": "hexical.page.lifetime_specklike.summary"
+			"text": "hexical.page.lifetime_speck.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -67,7 +63,7 @@
 			"anchor": "hexical:size_specklike",
 			"input": "speck entity, number",
 			"output": "",
-			"text": "hexical.page.size_specklike.summary"
+			"text": "hexical.page.size_speck.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -75,7 +71,7 @@
 			"anchor": "hexical:thickness_specklike",
 			"input": "speck entity, number",
 			"output": "",
-			"text": "hexical.page.thickness_specklike.summary"
+			"text": "hexical.page.thickness_speck.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -83,7 +79,7 @@
 			"anchor": "hexical:kill_specklike",
 			"input": "speck entity",
 			"output": "",
-			"text": "hexical.page.kill_specklike.summary"
+			"text": "hexical.page.kill_speck.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -91,7 +87,7 @@
 			"anchor": "hexical:zone_specklike",
 			"input": "vector, number",
 			"output": "[entity]",
-			"text": "hexical.page.zone_specklike.summary"
+			"text": "hexical.page.zone_speck.summary"
 		}
 	]
 }

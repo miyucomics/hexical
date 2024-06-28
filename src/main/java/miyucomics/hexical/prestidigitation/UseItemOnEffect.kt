@@ -3,7 +3,9 @@ package miyucomics.hexical.prestidigitation
 import at.petrak.hexcasting.api.misc.MediaConstants
 import miyucomics.hexical.interfaces.PrestidigitationEffect
 import net.minecraft.entity.Entity
+import net.minecraft.entity.LivingEntity
 import net.minecraft.item.ItemStack
+import net.minecraft.item.ItemUsageContext
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.Hand
 import net.minecraft.util.hit.BlockHitResult
@@ -17,12 +19,15 @@ class UseItemOnEffect(val stack: ItemStack) : PrestidigitationEffect {
 		val oldStack = caster.mainHandStack
 		caster.setStackInHand(Hand.MAIN_HAND, stack)
 		caster.world.getBlockState(position).onUse(caster.world, caster, Hand.MAIN_HAND, BlockHitResult(Vec3d.of(position), Direction.DOWN, position, false))
+		caster.mainHandStack.useOnBlock(ItemUsageContext(caster, Hand.MAIN_HAND, BlockHitResult(Vec3d.ofCenter(position), Direction.UP, position, true)))
 		caster.setStackInHand(Hand.MAIN_HAND, oldStack)
 	}
 	override fun effectEntity(caster: ServerPlayerEntity, entity: Entity) {
 		val oldStack = caster.mainHandStack
 		caster.setStackInHand(Hand.MAIN_HAND, stack)
 		entity.interact(caster, Hand.MAIN_HAND)
+		if (entity is LivingEntity)
+			caster.mainHandStack.useOnEntity(caster, entity, Hand.MAIN_HAND)
 		caster.setStackInHand(Hand.MAIN_HAND, oldStack)
 	}
 }
