@@ -65,6 +65,7 @@
 		"minecraft:crimson_door": "hexical:open",
 		"minecraft:warped_door": "hexical:open",
 		"minecraft:mangrove_door": "hexical:open",
+		"minecraft:iron_door": "hexical:open",
 
 		"hexcasting:edified_trapdoor": "hexical:open",
 		"minecraft:acacia_trapdoor": "hexical:open",
@@ -76,6 +77,9 @@
 		"minecraft:crimson_trapdoor": "hexical:open",
 		"minecraft:warped_trapdoor": "hexical:open",
 		"minecraft:mangrove_trapdoor": "hexical:open",
+		"minecraft:iron_trapdoor": "hexical:open",
+
+		"minecraft:redstone_lamp": "hexical:light",
 
 		"minecraft:candle": "hexical:light",
 		"minecraft:white_candle": "hexical:light",
