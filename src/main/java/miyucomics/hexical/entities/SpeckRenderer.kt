@@ -37,8 +37,9 @@ class SpeckRenderer(ctx: EntityRendererFactory.Context?) : EntityRenderer<SpeckE
 			RenderUtils.drawFigure(matrices.peek().positionMatrix, lines, entity.getThickness() * 0.05f, entity.getPigment())
 		} else {
 			matrices.scale(0.1f / 3f, -0.1f / 3f, -0.1f / 3f)
-			val q = (-textRenderer.getWidth(entity.getText()) / 2).toFloat()
-			textRenderer.draw(matrices, entity.getText(), q, -textRenderer.fontHeight.toFloat() / 2f, entity.getPigment().getColor(0f, entity.pos))
+			val text = entity.getText()
+			val height = (-textRenderer.getWidth(text) / 2).toFloat()
+			textRenderer.draw(matrices, text, height, -textRenderer.fontHeight.toFloat() / 2f, entity.getPigment().getColor(0f, entity.pos))
 		}
 		RenderSystem.enableCull()
 

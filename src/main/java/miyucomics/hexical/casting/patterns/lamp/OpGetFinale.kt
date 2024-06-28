@@ -12,7 +12,7 @@ class OpGetFinale : ConstMediaAction {
 	override val argc = 0
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
 		val minterface = ctx as CastingContextMinterface
-		if (minterface.getSpecializedSource() == SpecializedSource.HAND_LAMP && minterface.getSpecializedSource() == SpecializedSource.ARCH_LAMP)
+		if (minterface.getSpecializedSource() == SpecializedSource.HAND_LAMP || minterface.getSpecializedSource() == SpecializedSource.ARCH_LAMP)
 			return listOf(BooleanIota(minterface.getFinale()))
 		return listOf(NullIota())
 	}
