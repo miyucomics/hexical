@@ -38,9 +38,12 @@ class OpMagicMissile : SpellAction {
 
 	private data class Spell(val position: Vec3d, val velocity: Vec3d) : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
+			if (velocity == Vec3d.ZERO)
+				return
 			val missile = MagicMissileEntity(HexicalEntities.MAGIC_MISSILE_ENTITY, ctx.world)
 			missile.setPos(position.x, position.y, position.z)
-			missile.setVelocity(velocity.x, velocity.y, velocity.z)
+			val newVelocity = velocity.normalize().multiply(3.0)
+			missile.setVelocity(newVelocity.x, newVelocity.y, newVelocity.z)
 			missile.owner = ctx.caster
 			ctx.world.spawnEntity(missile)
 		}
