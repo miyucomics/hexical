@@ -127,7 +127,7 @@ class SpeckEntity(entityType: EntityType<SpeckEntity?>?, world: World?) : Entity
 	fun getText(): MutableText {
 		return try {
 			Text.Serializer.fromJson(dataTracker.get(displayDataTracker).getString("text"))!!
-		} catch (exception: JsonParseException) {
+		} catch (exception: Exception) {
 			Text.literal("This speck is broken.")
 		}
 	}
