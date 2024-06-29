@@ -5,7 +5,6 @@ import at.petrak.hexcasting.api.mod.HexConfig
 import at.petrak.hexcasting.api.spell.*
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.Iota
-import at.petrak.hexcasting.api.spell.mishaps.MishapAlreadyBrainswept
 import at.petrak.hexcasting.api.spell.mishaps.MishapBadEntity
 import at.petrak.hexcasting.api.spell.mishaps.MishapBadOffhandItem
 import at.petrak.hexcasting.common.misc.Brainsweeping
@@ -16,7 +15,6 @@ import miyucomics.hexical.registry.HexicalAdvancements
 import miyucomics.hexical.registry.HexicalItems
 import net.minecraft.entity.passive.VillagerEntity
 import net.minecraft.item.ItemStack
-import net.minecraft.util.Hand
 import net.minecraft.village.VillageGossipType
 import net.minecraft.village.VillagerData
 
