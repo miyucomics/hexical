@@ -7,10 +7,10 @@ import at.petrak.hexcasting.api.spell.iota.EntityIota
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.Vec3Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
-import miyucomics.hexical.casting.mishaps.DyeableMishap
-import miyucomics.hexical.data.DyeData
 import miyucomics.hexical.casting.iota.getDye
 import miyucomics.hexical.casting.iota.getTrueDye
+import miyucomics.hexical.casting.mishaps.DyeableMishap
+import miyucomics.hexical.data.DyeData
 import net.minecraft.block.*
 import net.minecraft.block.entity.ShulkerBoxBlockEntity
 import net.minecraft.entity.ItemEntity
@@ -21,8 +21,6 @@ import net.minecraft.entity.passive.WolfEntity
 import net.minecraft.item.BlockItem
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
-import net.minecraft.nbt.NbtCompound
-import net.minecraft.tag.BlockTags
 import net.minecraft.util.DyeColor
 import net.minecraft.util.math.BlockPos
 

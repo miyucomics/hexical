@@ -36,6 +36,7 @@ object HexicalItems {
 		Registry.register(Registry.ITEM, HexicalMain.id("living_scroll_medium"), LivingScrollItem(2))
 		Registry.register(Registry.ITEM, HexicalMain.id("living_scroll_large"), LivingScrollItem(3))
 		Registry.register(Registry.ITEM, HexicalMain.id("lightning_rod_staff"), LightningRodStaff())
+		Registry.register(Registry.ITEM, HexicalMain.id("sonic_screwdriver"), SonicScrewdriverItem())
 		Registry.register(Registry.ITEM, HexicalMain.id("conjured_staff"), CONJURED_STAFF_ITEM)
 		Registry.register(Registry.ITEM, HexicalMain.id("conjured_compass"), CONJURED_COMPASS_ITEM)
 		Registry.register(Registry.ITEM, HexicalMain.id("hexburst"), HEXBURST_ITEM)
