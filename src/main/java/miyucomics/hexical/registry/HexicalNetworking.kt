@@ -25,7 +25,7 @@ object HexicalNetworking {
 
 	val REQUEST_START_EVOKING_PACKET: Identifier = HexicalMain.id("request_start_evoking")
 	val REQUEST_END_EVOKING_PACKET: Identifier = HexicalMain.id("request_end_evoking")
-	private val CONFIRM_START_EVOKING_PACKET: Identifier = HexicalMain.id("confirm_start_evoking")
+	val CONFIRM_START_EVOKING_PACKET: Identifier = HexicalMain.id("confirm_start_evoking")
 	private val CONFIRM_END_EVOKING_PACKET: Identifier = HexicalMain.id("confirm_end_evoking")
 
 	@JvmStatic
@@ -51,10 +51,6 @@ object HexicalNetworking {
 			KeybindData.duration[player.uuid]!![key] = 0
 		}
 		ServerPlayNetworking.registerGlobalReceiver(RELEASED_KEY_PACKET) { _, player, _, buf, _ ->
-			if (!KeybindData.active.containsKey(player.uuid)) {
-				KeybindData.active[player.uuid] = HashMap()
-				KeybindData.duration[player.uuid] = HashMap()
-			}
 			val key = buf.readString()
 			KeybindData.active[player.uuid]!![key] = false
 			KeybindData.duration[player.uuid]!![key] = 0

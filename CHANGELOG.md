@@ -33,6 +33,7 @@
 - fixed Janus' Gambit to actually terminate the hex now
 - fixed bug with archgenie lamps where it can cast for free if it wasn't in your main inventory
 - fixed bug with conjured staff where inputs aren't always neatly intercepted and you can accidentally break blocks
+- fixed Finale Reflection that always returned null
 - overhauled project structure completely
 - overhauled genie lamps completely and entirely
 - removed casting sounds from conjured staves and replaced it with staff drawing sounds

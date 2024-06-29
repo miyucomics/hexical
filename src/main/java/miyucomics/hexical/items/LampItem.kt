@@ -35,8 +35,8 @@ class LampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.HEXIC
 		}
 	}
 
-	override fun use(world: World, user: PlayerEntity, usedHand: Hand): TypedActionResult<ItemStack> {
-		val stack = user.getStackInHand(usedHand)
+	override fun use(world: World, user: PlayerEntity, hand: Hand): TypedActionResult<ItemStack> {
+		val stack = user.getStackInHand(hand)
 		if (!hasHex(stack)) return TypedActionResult.fail(stack)
 		val stackNbt = stack.orCreateNbt
 		world.playSound(user.x, user.y, user.z, HexicalSounds.LAMP_ACTIVATE_SOUND_EVENT, SoundCategory.MASTER, 1f, 1f, true)
@@ -47,7 +47,7 @@ class LampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.HEXIC
 			stackNbt.putCompound("storage", HexIotaTypes.serialize(NullIota()))
 			stackNbt.putLong("start_time", world.time)
 		}
-		user.setCurrentHand(usedHand)
+		user.setCurrentHand(hand)
 		return TypedActionResult.success(stack)
 	}
 
@@ -66,7 +66,7 @@ class LampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.HEXIC
 	}
 
 	override fun canDrawMediaFromInventory(stack: ItemStack) = false
-	override fun getUseAction(pStack: ItemStack) = UseAction.BOW
+	override fun getUseAction(stack: ItemStack) = UseAction.BOW
 	override fun getMaxUseTime(stack: ItemStack) = 72000
 	override fun canRecharge(stack: ItemStack?) = false
 	override fun breakAfterDepletion() = false
