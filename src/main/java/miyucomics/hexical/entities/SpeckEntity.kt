@@ -6,7 +6,6 @@ import at.petrak.hexcasting.api.spell.iota.PatternIota
 import at.petrak.hexcasting.api.spell.math.HexPattern
 import at.petrak.hexcasting.api.utils.hasString
 import at.petrak.hexcasting.api.utils.putCompound
-import com.google.gson.JsonParseException
 import miyucomics.hexical.interfaces.Specklike
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityType

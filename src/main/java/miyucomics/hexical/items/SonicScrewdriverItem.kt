@@ -10,6 +10,7 @@ import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.server.world.ServerWorld
+import net.minecraft.text.Text
 import net.minecraft.util.Hand
 import net.minecraft.util.TypedActionResult
 import net.minecraft.util.UseAction
@@ -22,7 +23,8 @@ class SonicScrewdriverItem : Item(Settings().maxCount(1).group(HexicalItems.HEXI
 	}
 	override fun getUseAction(stack: ItemStack) = UseAction.BOW
 	override fun getMaxUseTime(stack: ItemStack) = 20 * 2
-	override fun finishUsing(stack: ItemStack?, world: World?, user: LivingEntity?): ItemStack {
+	override fun finishUsing(stack: ItemStack, world: World, user: LivingEntity): ItemStack {
+		user.sendMessage(Text.literal("you just got sonic-ed"))
 		return super.finishUsing(stack, world, user)
 	}
 
