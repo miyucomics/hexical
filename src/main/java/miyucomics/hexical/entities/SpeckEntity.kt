@@ -62,7 +62,6 @@ class SpeckEntity(entityType: EntityType<SpeckEntity?>?, world: World?) : Entity
 		lifespan = nbt.getInt("lifespan")
 
 		dataTracker.set(displayDataTracker, display)
-		dataTracker.set(isPatternDataTracker, isPattern)
 		dataTracker.set(pigmentDataTracker, pigment)
 		dataTracker.set(rollDataTracker, roll)
 		dataTracker.set(sizeDataTracker, size)

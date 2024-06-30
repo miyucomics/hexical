@@ -2,6 +2,7 @@ package miyucomics.hexical.items
 
 import at.petrak.hexcasting.api.item.HexHolderItem
 import at.petrak.hexcasting.api.item.IotaHolderItem
+import at.petrak.hexcasting.api.item.MediaHolderItem
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.iota.Iota
 import miyucomics.hexical.registry.HexicalItems
@@ -16,7 +17,7 @@ import net.minecraft.util.TypedActionResult
 import net.minecraft.util.UseAction
 import net.minecraft.world.World
 
-class SonicScrewdriverItem : Item(Settings().maxCount(1).group(HexicalItems.HEXICAL_GROUP)), HexHolderItem, IotaHolderItem {
+class SonicScrewdriverItem : Item(Settings().maxCount(1).group(HexicalItems.HEXICAL_GROUP)), MediaHolderItem, IotaHolderItem {
 	override fun use(world: World?, user: PlayerEntity?, hand: Hand?): TypedActionResult<ItemStack> {
 		user!!.setCurrentHand(hand)
 		return TypedActionResult.success(user.getStackInHand(hand))
@@ -32,13 +33,7 @@ class SonicScrewdriverItem : Item(Settings().maxCount(1).group(HexicalItems.HEXI
 	override fun getMedia(stack: ItemStack?) = stack!!.orCreateNbt.getInt("media")
 	override fun getMaxMedia(stack: ItemStack?) = MediaConstants.CRYSTAL_UNIT * 512
 	override fun setMedia(stack: ItemStack?, media: Int) = stack!!.orCreateNbt.putInt("media", media)
-
-	override fun hasHex(stack: ItemStack?) = false
 	override fun canProvideMedia(stack: ItemStack?) = false
-	override fun canDrawMediaFromInventory(stack: ItemStack?) = false
-	override fun getHex(stack: ItemStack?, level: ServerWorld?) = listOf<Iota>()
-	override fun writeHex(stack: ItemStack?, program: MutableList<Iota>?, media: Int) {}
-	override fun clearHex(stack: ItemStack?) {}
 
 	override fun readIotaTag(stack: ItemStack?) = null
 	override fun canWrite(stack: ItemStack?, iota: Iota?): Boolean {
