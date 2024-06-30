@@ -27,6 +27,8 @@ import miyucomics.hexical.casting.patterns.identifier.OpRecognize
 import miyucomics.hexical.casting.patterns.lamp.*
 import miyucomics.hexical.casting.patterns.mage_blocks.OpConjureMageBlock
 import miyucomics.hexical.casting.patterns.mage_blocks.OpModifyMageBlock
+import miyucomics.hexical.casting.patterns.prestidigitation.OpCanPrestidigitation
+import miyucomics.hexical.casting.patterns.prestidigitation.OpPrestidigitation
 import miyucomics.hexical.casting.patterns.soroban.OpSorobanDecrement
 import miyucomics.hexical.casting.patterns.soroban.OpSorobanIncrement
 import miyucomics.hexical.casting.patterns.soroban.OpSorobanReset
@@ -57,6 +59,7 @@ object HexicalPatterns {
 		register("soroban_reset", "qdeeaae", HexDir.NORTH_EAST, OpSorobanReset())
 
 		register("prestidigitation", "wedewedew", HexDir.NORTH_EAST, OpPrestidigitation())
+		register("can_prestidigitate", "wqaqwqaqw", HexDir.NORTH_WEST, OpCanPrestidigitation())
 
 		register("magic_missile", "qaqww", HexDir.WEST, OpMagicMissile())
 

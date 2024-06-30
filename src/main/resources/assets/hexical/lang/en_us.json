@@ -96,6 +96,13 @@
 	"hexcasting.spell.book.hexical:recognize": "Recognizer's Purif.",
 	"hexcasting.spell.book.hexical:shuffle_pattern": "Glyphmaker's Dstl.",
 	"hexcasting.spell.book.hexical:zone_specklike": "Zone Dstl.: Specklike",
+	"hexcasting.spell.book.hexical:modify_block_bouncy": "Bouncy",
+	"hexcasting.spell.book.hexical:modify_block_energized": "Energized",
+	"hexcasting.spell.book.hexical:modify_block_ephemeral": "Ephemeral",
+	"hexcasting.spell.book.hexical:modify_block_invisible": "Invisible",
+	"hexcasting.spell.book.hexical:modify_block_replaceable": "Replaceable",
+	"hexcasting.spell.book.hexical:modify_block_semipermeable": "Semi-Permeable",
+	"hexcasting.spell.book.hexical:modify_block_volatile": "Volatile",
 
 	"hexical.page.hexical_changes.title": "Hexical Changes",
 	"hexical.page.hexical_changes.0": "I feel strangely more in tune with the ambient _media around me. It feels $(o)friendlier$() somehow... I can even feel it rippling around me, responding to my actions, as if suggesting new spells to me. The _media itself also feels more malleable, more $(o)workable$(), allowing me to manipulate it into precise specialized effects.",

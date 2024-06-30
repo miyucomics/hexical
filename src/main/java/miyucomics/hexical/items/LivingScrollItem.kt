@@ -34,10 +34,13 @@ class LivingScrollItem(private val size: Int) : Item(Settings().group(HexicalIte
 		val player = context.player
 		val stack = context.stack
 
+		val world = context.world
+		if (world.isClient)
+			return ActionResult.SUCCESS
+
 		if (player != null && !canPlaceOn(player, direction, stack, position))
 			return ActionResult.FAIL
 
-		val world = context.world
 		val patternList = mutableListOf(HexPattern.fromAngles("eeeee", HexDir.EAST).serializeToNBT())
 		if (stack.hasCompound("patterns") && !world.isClient) {
 			patternList.clear()
@@ -50,11 +53,9 @@ class LivingScrollItem(private val size: Int) : Item(Settings().group(HexicalIte
 		EntityType.loadFromEntityNbt(world, player, scroll, stack.nbt)
 
 		if (scroll.canStayAttached()) {
-			if (!world.isClient) {
-				scroll.onPlace()
-				world.emitGameEvent(player, GameEvent.ENTITY_PLACE, scroll.pos)
-				world.spawnEntity(scroll)
-			}
+			scroll.onPlace()
+			world.emitGameEvent(player, GameEvent.ENTITY_PLACE, scroll.pos)
+			world.spawnEntity(scroll)
 			stack.decrement(1)
 			return ActionResult.success(world.isClient)
 		}
@@ -62,7 +63,7 @@ class LivingScrollItem(private val size: Int) : Item(Settings().group(HexicalIte
 		return ActionResult.CONSUME
 	}
 
-	override fun readIotaTag(stack: ItemStack): NbtCompound? {
+	override fun readIotaTag(stack: ItemStack): NbtCompound {
 		if (stack.orCreateNbt.hasCompound("patterns"))
 			return stack.orCreateNbt.getCompound("patterns")
 		return HexIotaTypes.serialize(NullIota())

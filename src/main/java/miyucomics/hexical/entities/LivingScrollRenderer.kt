@@ -179,7 +179,7 @@ class LivingScrollRenderer(ctx: EntityRendererFactory.Context?) : EntityRenderer
 
 				val sideLength = point.add(prev.negate()).normalize().multiply(0.025f)
 				val normal = Vec2f(-sideLength.y, sideLength.x)
-				val joinSteps = 20 / 2
+				val joinSteps = CIRCLE_RESOLUTION / 2
 				for (j in joinSteps downTo 1) {
 					val fan0 = rotate(normal, -PI.toFloat() * (j.toFloat() / joinSteps))
 					val fan1 = rotate(normal, -PI.toFloat() * ((j - 1).toFloat() / joinSteps))
