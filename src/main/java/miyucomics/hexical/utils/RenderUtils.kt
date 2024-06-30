@@ -1,7 +1,6 @@
 package miyucomics.hexical.utils
 
 import at.petrak.hexcasting.api.misc.FrozenColorizer
-import at.petrak.hexcasting.client.CAP_THETA
 import at.petrak.hexcasting.client.rotate
 import com.mojang.blaze3d.systems.RenderSystem
 import net.minecraft.client.render.GameRenderer
@@ -13,6 +12,8 @@ import net.minecraft.util.math.*
 import kotlin.math.*
 
 object RenderUtils {
+	const val CIRCLE_RESOLUTION: Int = 20
+
 	// this rendering function draws some points similar to a sentinel: it will always be the same width regardless of distance
 	fun sentinelLike(matrices: MatrixStack, points: List<Vec3d>, width: Float, colorizer: FrozenColorizer) {
 		if (points.size <= 1) return
@@ -44,22 +45,18 @@ object RenderUtils {
 	}
 
 	fun drawFigure(mat: Matrix4f, points: List<Vec2f>, width: Float, colorizer: FrozenColorizer) {
-		if (points.size <= 1) return
+		val pointCount = points.size
+		if (pointCount <= 1)
+			return
 
 		val tessellator = Tessellator.getInstance()
 		val buf = tessellator.buffer
-		val n = points.size
-		val joinAngles = FloatArray(n)
-		for (i in 2 until n) {
-			val previousPoint = points[i - 2]
+		val joinAngles = FloatArray(pointCount)
+		for (i in 2 until pointCount) {
 			val currentPoint = points[i - 1]
-			val nextPoint = points[i]
-			val offsetFromLast = currentPoint.add(previousPoint.negate())
-			val offsetToNext = nextPoint.add(currentPoint.negate())
-
-			// angle of "vector from previous point to current point" and "vector from current point to next point"
-			val angle = atan2(offsetFromLast.x * offsetToNext.y - offsetFromLast.y * offsetToNext.x, offsetFromLast.x * offsetToNext.x + offsetFromLast.y * offsetToNext.y)
-			joinAngles[i - 1] = angle
+			val offsetFromLast = currentPoint.add(points[i - 2].negate())
+			val offsetToNext = points[i].add(currentPoint.negate())
+			joinAngles[i - 1] = atan2(offsetFromLast.x * offsetToNext.y - offsetFromLast.y * offsetToNext.x, offsetFromLast.x * offsetToNext.x + offsetFromLast.y * offsetToNext.y)
 		}
 
 		fun vertex(pos: Vec2f) {
@@ -68,75 +65,70 @@ object RenderUtils {
 		}
 
 		buf.begin(VertexFormat.DrawMode.TRIANGLES, VertexFormats.POSITION_COLOR)
-		for (i in 0 until points.size - 1) {
+		for (i in 0 until pointCount - 1) {
 			val currentPoint = points[i]
 			val nextPoint = points[i + 1]
 
 			val sideLength = nextPoint.add(currentPoint.negate()).normalize().multiply(width * 0.5f)
 			val normal = Vec2f(-sideLength.y, sideLength.x)
 
-			val p1Down = currentPoint.add(normal)
-			val p1Up = currentPoint.add(normal.negate())
-			val p2Down = nextPoint.add(normal)
-			val p2Up = nextPoint.add(normal.negate())
+			val currentDown = currentPoint.add(normal)
+			val currentUp = currentPoint.add(normal.negate())
+			val nextDown = nextPoint.add(normal)
+			val nextUp = nextPoint.add(normal.negate())
 
-			vertex(p1Down)
-			vertex(p1Up)
-			vertex(p2Up)
+			vertex(currentDown)
+			vertex(currentUp)
+			vertex(nextUp)
 
-			vertex(p1Down)
-			vertex(p2Up)
-			vertex(p2Down)
+			vertex(currentDown)
+			vertex(nextUp)
+			vertex(nextDown)
 
 			if (i > 0) {
-				val sangle = joinAngles[i]
-				val angle = abs(sangle)
-				val rnormal = normal.negate()
-				val joinSteps = ceil(angle * 180 / (CAP_THETA * MathHelper.PI)).toInt()
-				if (joinSteps < 1) {
+				val angle = joinAngles[i]
+				val joinSteps = ceil(angle / (2 * MathHelper.PI) * CIRCLE_RESOLUTION).toInt()
+				if (joinSteps < 1)
 					continue
-				}
 
-				if (sangle < 0) {
-					var prevVert = Vec2f(currentPoint.x - rnormal.x, currentPoint.y - rnormal.y)
+				if (angle < 0) {
+					var previous = currentPoint.add(normal.negate())
 					for (j in 1..joinSteps) {
-						val fan = rotate(rnormal, -sangle * (j.toFloat() / joinSteps.toFloat()))
-						val fanShift = Vec2f(currentPoint.x - fan.x, currentPoint.y - fan.y)
+						val fan = rotate(normal, angle * (j.toFloat() / joinSteps))
+						val fanShift = currentPoint.add(fan.negate())
+
 						vertex(currentPoint)
-						vertex(prevVert)
+						vertex(previous)
 						vertex(fanShift)
-						prevVert = fanShift
+						previous = fanShift
 					}
 				} else {
-					val startFan = rotate(normal, -sangle)
-					var prevVert = Vec2f(currentPoint.x - startFan.x, currentPoint.y - startFan.y)
+					var previous = currentPoint.add(rotate(normal, -angle).negate())
 					for (j in joinSteps - 1 downTo 0) {
-						val fan = rotate(normal, -sangle * (j.toFloat() / joinSteps))
-						val fanShift = Vec2f(currentPoint.x - fan.x, currentPoint.y - fan.y)
+						val fan = rotate(normal, -angle * (j.toFloat() / joinSteps))
+						val fanShift = currentPoint.add(fan.negate())
 
 						vertex(currentPoint)
-						vertex(prevVert)
+						vertex(previous)
 						vertex(fanShift)
-						prevVert = fanShift
+						previous = fanShift
 					}
 				}
 			}
 		}
 		tessellator.draw()
 
-		fun drawCaps(point: Vec2f, prev: Vec2f) {
-			val sideLength = point.add(prev.negate()).normalize().multiply(0.5f * width)
+		fun drawCaps(currentPoint: Vec2f, previousPoint: Vec2f) {
+			val sideLength = currentPoint.add(previousPoint.negate()).normalize().multiply(0.5f * width)
 			val normal = Vec2f(-sideLength.y, sideLength.x)
-			val joinSteps = MathHelper.ceil(180f / CAP_THETA)
+			val joinSteps = CIRCLE_RESOLUTION / 2
 			buf.begin(VertexFormat.DrawMode.TRIANGLE_FAN, VertexFormats.POSITION_COLOR)
-			vertex(point)
-			for (j in joinSteps downTo 0) {
-				val fan = rotate(normal, -MathHelper.PI * (j.toFloat() / joinSteps))
-				vertex(Vec2f(point.x + fan.x, point.y + fan.y))
-			}
+			vertex(currentPoint)
+			for (j in joinSteps downTo 0)
+				vertex(currentPoint.add(rotate(normal, -MathHelper.PI * (j.toFloat() / joinSteps))))
 			tessellator.draw()
 		}
 		drawCaps(points[0], points[1])
-		drawCaps(points[n - 1], points[n - 2])
+		drawCaps(points[pointCount - 1], points[pointCount - 2])
 	}
 }

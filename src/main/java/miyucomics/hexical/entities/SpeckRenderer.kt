@@ -34,7 +34,6 @@ class SpeckRenderer(ctx: EntityRendererFactory.Context?) : EntityRenderer<SpeckE
 			val lines = pattern.toLines(0.25f, pattern.getCenter(0.25f).negate()).toMutableList()
 			for (i in lines.indices)
 				lines[i] = Vec2f(lines[i].x, -lines[i].y)
-//			RenderUtils.testRendering(matrices, lines, entity.getThickness() * 0.05f, entity.getPigment())
 			RenderUtils.drawFigure(matrices.peek().positionMatrix, lines, entity.getThickness() * 0.05f, entity.getPigment())
 		} else {
 			matrices.scale(0.1f / 3f, -0.1f / 3f, -0.1f / 3f)
