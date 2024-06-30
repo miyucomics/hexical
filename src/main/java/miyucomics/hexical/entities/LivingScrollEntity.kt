@@ -2,8 +2,8 @@ package miyucomics.hexical.entities
 
 import at.petrak.hexcasting.api.spell.math.HexPattern
 import miyucomics.hexical.registry.HexicalEntities
+import net.minecraft.block.AbstractRedstoneGateBlock
 import net.minecraft.entity.Entity
-import net.minecraft.entity.EntityPose
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.data.DataTracker
 import net.minecraft.entity.data.TrackedData
@@ -30,9 +30,6 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: Wo
 
 	var patterns: MutableList<NbtCompound> = mutableListOf()
 
-	override fun getTargetingMargin() = 0f
-	override fun getEyeHeight(pose: EntityPose?) = 0f
-
 	override fun createSpawnPacket(): Packet<*> {
 		return EntitySpawnS2CPacket(this, facing.id, this.decorationBlockPos)
 	}
@@ -45,11 +42,30 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: Wo
 	override fun canStayAttached(): Boolean {
 		if (!world.isSpaceEmpty(this))
 			return false
-		val blockState = world.getBlockState(attachmentPos.offset(facing.opposite))
-		return blockState.material.isSolid
+		val blockPos = attachmentPos.offset(facing.opposite)
+		val direction = facing.rotateYCounterclockwise()
+		val mutable = BlockPos.Mutable()
+		val size = dataTracker.get(sizeDataTracker)
+		for (i in 0 until size) {
+			for (j in 0 until size) {
+				val m = (size - 1) / -2
+				val n = (size - 1) / -2
+				mutable.set(blockPos).move(direction, i + m).move(Direction.UP, j + n)
+				val blockState = world.getBlockState(mutable)
+				if (blockState.material.isSolid || AbstractRedstoneGateBlock.isRedstoneGate(blockState)) continue
+				return false
+			}
+		}
+		return world.getOtherEntities(this, this.boundingBox, PREDICATE).isEmpty()
 	}
 
-	override fun setFacing(facing: Direction) {
+	override fun onTrackedDataSet(data: TrackedData<*>) {
+		if (sizeDataTracker == data) {
+			this.updateAttachmentPosition()
+		}
+	}
+
+	public override fun setFacing(facing: Direction) {
 		this.facing = facing
 		if (facing.axis.isHorizontal) {
 			this.pitch = 0.0f
@@ -61,31 +77,6 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: Wo
 		this.prevPitch = this.pitch
 		this.prevYaw = this.yaw
 		updateAttachmentPosition()
-	}
-
-	override fun updateAttachmentPosition() {
-		if (this.facing == null)
-			return
-		val x = attachmentPos.x.toDouble() + 0.5 - facing.offsetX.toDouble() * (15f / 32f)
-		val y = attachmentPos.y.toDouble() + 0.5 - facing.offsetY.toDouble() * (15f / 32f)
-		val z = attachmentPos.z.toDouble() + 0.5 - facing.offsetZ.toDouble() * (15f / 32f)
-		this.setPos(x, y, z)
-		var sizeX = this.widthPixels.toDouble()
-		var sizeY = this.heightPixels.toDouble()
-		var sizeZ = this.widthPixels.toDouble()
-		when (facing.axis) {
-			Direction.Axis.X -> {
-				sizeX = 1.0
-			}
-			Direction.Axis.Y -> {
-				sizeY = 1.0
-			}
-			Direction.Axis.Z -> {
-				sizeZ = 1.0
-			}
-			null -> throw IllegalStateException()
-		}
-		this.boundingBox = Box(x - sizeX / 32, y - sizeY / 32, z - sizeZ / 32, x + sizeX / 32, y + sizeY / 32, z + sizeZ / 32)
 	}
 
 	override fun refreshPositionAndAngles(x: Double, y: Double, z: Double, yaw: Float, pitch: Float) {
@@ -111,7 +102,6 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: Wo
 		this.dataTracker.set(sizeDataTracker, size)
 		setFacing(dir)
 		updateRender()
-
 	}
 
 	override fun tick() {
@@ -158,6 +148,10 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: Wo
 			if (entity is PlayerEntity && entity.abilities.creativeMode)
 				return
 		}
+	}
+
+	fun setSize(size: Int) {
+		this.dataTracker.set(sizeDataTracker, size)
 	}
 
 	fun getSize(): Int {
