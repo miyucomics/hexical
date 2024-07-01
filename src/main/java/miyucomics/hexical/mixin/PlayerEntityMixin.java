@@ -2,10 +2,10 @@ package miyucomics.hexical.mixin;
 
 import at.petrak.hexcasting.xplat.IXplatAbstractions;
 import miyucomics.hexical.HexicalMain;
-import miyucomics.hexical.utils.HexicalUtils;
 import miyucomics.hexical.casting.patterns.OpInternalizeHex;
 import miyucomics.hexical.interfaces.PlayerEntityMinterface;
 import miyucomics.hexical.state.EvokeState;
+import miyucomics.hexical.utils.CastingUtils;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -42,7 +42,7 @@ public class PlayerEntityMixin implements PlayerEntityMinterface {
 
 		hexical$archLampCastedThisTick = false;
 
-		if (EvokeState.INSTANCE.getActive().getOrDefault(player.getUuid(), false) && HexicalUtils.isEnlightened((ServerPlayerEntity) player)) {
+		if (EvokeState.INSTANCE.getActive().getOrDefault(player.getUuid(), false) && CastingUtils.isEnlightened((ServerPlayerEntity) player)) {
 			if (EvokeState.INSTANCE.getDuration().getOrDefault(player.getUuid(), 0).equals(HexicalMain.EVOKE_DURATION))
 				OpInternalizeHex.Companion.evoke((ServerPlayerEntity) player);
 		}

@@ -11,7 +11,6 @@ import at.petrak.hexcasting.api.utils.hasCompound
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import miyucomics.hexical.entities.LivingScrollEntity
 import miyucomics.hexical.registry.HexicalItems
-import net.minecraft.entity.EntityType
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
@@ -50,7 +49,6 @@ class LivingScrollItem(private val size: Int) : Item(Settings().group(HexicalIte
 		}
 
 		val scroll = LivingScrollEntity(world, position, direction, size, patternList)
-		EntityType.loadFromEntityNbt(world, player, scroll, stack.nbt)
 
 		if (scroll.canStayAttached()) {
 			scroll.onPlace()
@@ -70,7 +68,9 @@ class LivingScrollItem(private val size: Int) : Item(Settings().group(HexicalIte
 	}
 
 	override fun canWrite(stack: ItemStack, iota: Iota?): Boolean {
-		if (iota!!.type == HexIotaTypes.PATTERN)
+		if (iota == null)
+			return true
+		if (iota.type == HexIotaTypes.PATTERN)
 			return true
 		if (iota.type != HexIotaTypes.LIST)
 			return false
@@ -82,8 +82,10 @@ class LivingScrollItem(private val size: Int) : Item(Settings().group(HexicalIte
 	}
 
 	override fun writeDatum(stack: ItemStack, iota: Iota?) {
-		if (canWrite(stack, iota)) {
-			var toSerialize = iota!!
+		if (iota == null) {
+			stack.orCreateNbt.remove("patterns")
+		} else {
+			var toSerialize = iota
 			if (iota.type == HexIotaTypes.PATTERN)
 				toSerialize = ListIota(listOf(iota))
 			stack.orCreateNbt.put("patterns", HexIotaTypes.serialize(toSerialize))

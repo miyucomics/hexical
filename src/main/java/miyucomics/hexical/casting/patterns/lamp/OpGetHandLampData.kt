@@ -13,7 +13,6 @@ import miyucomics.hexical.casting.mishaps.NeedsSourceMishap
 import miyucomics.hexical.enums.SpecializedSource
 import miyucomics.hexical.interfaces.CastingContextMinterface
 import miyucomics.hexical.items.LampItem
-import java.lang.IllegalStateException
 
 class OpGetHandLampData(private val mode: Int) : ConstMediaAction {
 	override val argc = 0

@@ -8,8 +8,11 @@ import net.minecraft.client.item.CompassAnglePredicateProvider.CompassTarget
 import net.minecraft.client.item.ModelPredicateProviderRegistry
 import net.minecraft.client.world.ClientWorld
 import net.minecraft.entity.Entity
-import net.minecraft.item.*
+import net.minecraft.item.BlockItem
+import net.minecraft.item.Item
 import net.minecraft.item.Item.Settings
+import net.minecraft.item.ItemGroup
+import net.minecraft.item.ItemStack
 import net.minecraft.util.Identifier
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.GlobalPos
@@ -18,14 +21,15 @@ import net.minecraft.util.registry.Registry
 object HexicalItems {
 	val HEXICAL_GROUP: ItemGroup = FabricItemGroupBuilder.create(HexicalMain.id("general")).icon { ItemStack(CONJURED_STAFF_ITEM) }.build()
 
-	val LAMP_ITEM: LampItem = LampItem()
-	val ARCH_LAMP_ITEM: ArchLampItem = ArchLampItem()
+	val LAMP_ITEM = LampItem()
+	val ARCH_LAMP_ITEM = ArchLampItem()
 	val CONJURED_COMPASS_ITEM = Item(Settings())
-	val GRIMOIRE_ITEM: GrimoireItem = GrimoireItem()
-	val CONJURED_STAFF_ITEM: ConjuredStaffItem = ConjuredStaffItem()
-	val HEXBURST_ITEM: HexburstItem = HexburstItem()
-	val HEXTITO_ITEM: HextitoItem = HextitoItem()
-	val NULL_MEDIA_ITEM: NullMediaItem = NullMediaItem()
+	val GRIMOIRE_ITEM = GrimoireItem()
+	val CONJURED_STAFF_ITEM = ConjuredStaffItem()
+	val SONIC_SCREWDRIVER_ITEM = SonicScrewdriverItem()
+	val HEXBURST_ITEM = HexburstItem()
+	val HEXTITO_ITEM = HextitoItem()
+	val NULL_MEDIA_ITEM = NullMediaItem()
 
 	@JvmStatic
 	fun init() {
@@ -36,7 +40,7 @@ object HexicalItems {
 		Registry.register(Registry.ITEM, HexicalMain.id("living_scroll_medium"), LivingScrollItem(2))
 		Registry.register(Registry.ITEM, HexicalMain.id("living_scroll_large"), LivingScrollItem(3))
 		Registry.register(Registry.ITEM, HexicalMain.id("lightning_rod_staff"), LightningRodStaff())
-		Registry.register(Registry.ITEM, HexicalMain.id("sonic_screwdriver"), SonicScrewdriverItem())
+		Registry.register(Registry.ITEM, HexicalMain.id("sonic_screwdriver"), SONIC_SCREWDRIVER_ITEM)
 		Registry.register(Registry.ITEM, HexicalMain.id("conjured_staff"), CONJURED_STAFF_ITEM)
 		Registry.register(Registry.ITEM, HexicalMain.id("conjured_compass"), CONJURED_COMPASS_ITEM)
 		Registry.register(Registry.ITEM, HexicalMain.id("hexburst"), HEXBURST_ITEM)

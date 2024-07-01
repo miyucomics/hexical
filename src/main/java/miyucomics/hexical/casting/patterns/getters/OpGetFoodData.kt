@@ -2,9 +2,10 @@ package miyucomics.hexical.casting.patterns.getters
 
 import at.petrak.hexcasting.api.spell.ConstMediaAction
 import at.petrak.hexcasting.api.spell.casting.CastingContext
-import at.petrak.hexcasting.api.spell.iota.*
+import at.petrak.hexcasting.api.spell.iota.BooleanIota
+import at.petrak.hexcasting.api.spell.iota.DoubleIota
+import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
-import java.lang.IllegalStateException
 
 class OpGetFoodData(private val mode: Int) : ConstMediaAction {
 	override val argc = 1

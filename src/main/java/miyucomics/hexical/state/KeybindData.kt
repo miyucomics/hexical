@@ -1,6 +1,6 @@
 package miyucomics.hexical.state
 
-import java.util.UUID
+import java.util.*
 
 object KeybindData {
 	val active: HashMap<UUID, HashMap<String, Boolean>> = HashMap()

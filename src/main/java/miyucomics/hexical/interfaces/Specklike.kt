@@ -8,9 +8,4 @@ interface Specklike {
 	fun setThickness(thickness: Float)
 	fun setLifespan(lifespan: Int)
 	fun setPigment(pigment: FrozenColorizer)
-
-	fun getRoll(): Float
-	fun getSize(): Float
-	fun getThickness(): Float
-	fun getPigment(): FrozenColorizer
 }
