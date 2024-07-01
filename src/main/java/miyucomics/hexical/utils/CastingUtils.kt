@@ -10,7 +10,7 @@ import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld
 
 @Suppress("CAST_NEVER_SUCCEEDS")
-object HexicalUtils {
+object CastingUtils {
 	@JvmStatic
 	fun isEnlightened(player: ServerPlayerEntity): Boolean {
 		val advancement = player.getServer()!!.advancementLoader[HexAPI.modLoc("enlightenment")]

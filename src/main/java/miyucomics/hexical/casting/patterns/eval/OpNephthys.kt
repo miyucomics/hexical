@@ -1,9 +1,12 @@
 package miyucomics.hexical.casting.patterns.eval
 
-import at.petrak.hexcasting.api.spell.*
+import at.petrak.hexcasting.api.spell.Action
+import at.petrak.hexcasting.api.spell.OperationResult
+import at.petrak.hexcasting.api.spell.SpellList
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.casting.eval.FrameEvaluate
 import at.petrak.hexcasting.api.spell.casting.eval.SpellContinuation
+import at.petrak.hexcasting.api.spell.evaluatable
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.ListIota
 import at.petrak.hexcasting.api.spell.iota.PatternIota

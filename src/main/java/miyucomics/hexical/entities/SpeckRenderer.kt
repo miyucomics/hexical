@@ -2,12 +2,14 @@ package miyucomics.hexical.entities
 
 import com.mojang.blaze3d.systems.RenderSystem
 import miyucomics.hexical.utils.RenderUtils
-import net.minecraft.client.render.*
+import net.minecraft.client.render.Frustum
+import net.minecraft.client.render.GameRenderer
+import net.minecraft.client.render.VertexConsumerProvider
 import net.minecraft.client.render.entity.EntityRenderer
 import net.minecraft.client.render.entity.EntityRendererFactory
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.util.Identifier
-import net.minecraft.util.math.*
+import net.minecraft.util.math.Vec3f
 
 class SpeckRenderer(ctx: EntityRendererFactory.Context?) : EntityRenderer<SpeckEntity?>(ctx) {
 	override fun getTexture(entity: SpeckEntity?): Identifier? = null
@@ -16,30 +18,25 @@ class SpeckRenderer(ctx: EntityRendererFactory.Context?) : EntityRenderer<SpeckE
 		val oldShader = RenderSystem.getShader()
 		RenderSystem.setShader(GameRenderer::getPositionColorShader)
 		RenderSystem.enableDepthTest()
-		matrices!!.push()
+		matrices.push()
 
-		if (entity!!.yaw != 0.0f)
+		if (!entity!!.clientIsText)
+			matrices.translate(0.0, 0.25, 0.0)
+		if (entity.yaw != 0.0f)
 			matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(-entity.yaw))
 		if (entity.pitch != 0.0f)
 			matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(entity.pitch))
-		if (!entity.getIsPattern())
-			matrices.translate(0.0, 0.25, 0.0)
-		if (entity.getRoll() != 0.0f)
-			matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(entity.getRoll()))
-		matrices.scale(entity.getSize(), entity.getSize(), entity.getSize())
+		if (entity.clientRoll != 0.0f)
+			matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(entity.clientRoll))
+		matrices.scale(entity.clientSize, entity.clientSize, entity.clientSize)
 
 		RenderSystem.disableCull()
-		if (entity.getIsPattern()) {
-			val pattern = entity.getPattern()
-			val lines = pattern.toLines(0.25f, pattern.getCenter(0.25f).negate()).toMutableList()
-			for (i in lines.indices)
-				lines[i] = Vec2f(lines[i].x, -lines[i].y)
-			RenderUtils.drawFigure(matrices.peek().positionMatrix, lines, entity.getThickness() * 0.05f, entity.getPigment())
+		if (entity.clientIsText) {
+			val height = (-textRenderer.getWidth(entity.clientText) / 2).toFloat()
+			matrices.scale(0.025f, -0.025f, 0.025f)
+			textRenderer.draw(matrices, entity.clientText, height, -textRenderer.fontHeight.toFloat() / 2f, entity.clientPigment.getColor(0f, entity.pos))
 		} else {
-			matrices.scale(0.1f / 3f, -0.1f / 3f, -0.1f / 3f)
-			val text = entity.getText()
-			val height = (-textRenderer.getWidth(text) / 2).toFloat()
-			textRenderer.draw(matrices, text, height, -textRenderer.fontHeight.toFloat() / 2f, entity.getPigment().getColor(0f, entity.pos))
+			RenderUtils.drawFigure(matrices.peek().positionMatrix, RenderUtils.getNormalizedStrokes(entity.clientPattern), entity.clientThickness * 0.05f, entity.clientPigment, entity.pos)
 		}
 		RenderSystem.enableCull()
 

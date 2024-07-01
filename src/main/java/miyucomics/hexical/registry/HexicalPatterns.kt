@@ -7,7 +7,10 @@ import at.petrak.hexcasting.api.spell.math.HexPattern
 import at.petrak.hexcasting.common.casting.operators.selectors.OpGetEntitiesBy
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.casting.patterns.*
-import miyucomics.hexical.casting.patterns.basic.*
+import miyucomics.hexical.casting.patterns.basic.OpCongruentPattern
+import miyucomics.hexical.casting.patterns.basic.OpDupMany
+import miyucomics.hexical.casting.patterns.basic.OpShufflePattern
+import miyucomics.hexical.casting.patterns.basic.OpSimilar
 import miyucomics.hexical.casting.patterns.circle.OpDisplace
 import miyucomics.hexical.casting.patterns.conjured_staff.OpConjureStaff
 import miyucomics.hexical.casting.patterns.conjured_staff.OpReadStaff
@@ -32,7 +35,10 @@ import miyucomics.hexical.casting.patterns.prestidigitation.OpPrestidigitation
 import miyucomics.hexical.casting.patterns.soroban.OpSorobanDecrement
 import miyucomics.hexical.casting.patterns.soroban.OpSorobanIncrement
 import miyucomics.hexical.casting.patterns.soroban.OpSorobanReset
-import miyucomics.hexical.casting.patterns.specks.*
+import miyucomics.hexical.casting.patterns.specks.OpConjureSpeck
+import miyucomics.hexical.casting.patterns.specks.OpIotaSpeck
+import miyucomics.hexical.casting.patterns.specks.OpKillSpecklike
+import miyucomics.hexical.casting.patterns.specks.OpSpecklikeProperty
 import miyucomics.hexical.casting.patterns.telepathy.OpHallucinateSound
 import miyucomics.hexical.casting.patterns.telepathy.OpSendTelepathy
 import miyucomics.hexical.casting.patterns.telepathy.OpShoutTelepathy

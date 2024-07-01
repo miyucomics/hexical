@@ -15,7 +15,7 @@ import miyucomics.hexical.registry.HexicalItems.NULL_MEDIA_ITEM
 import miyucomics.hexical.state.EvokeState
 import miyucomics.hexical.state.PersistentStateHandler
 import miyucomics.hexical.state.PersistentStateHandler.Companion.getEvocation
-import miyucomics.hexical.utils.HexicalUtils
+import miyucomics.hexical.utils.CastingUtils
 import net.minecraft.item.ItemStack
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld
@@ -46,7 +46,7 @@ class OpInternalizeHex : SpellAction {
 			val hex = getEvocation((player as ServerPlayerEntity?)!!) ?: return
 			val stack = player.mainHandStack
 			player.setStackInHand(Hand.MAIN_HAND, ItemStack(NULL_MEDIA_ITEM))
-			HexicalUtils.castSpecial(player.world as ServerWorld, player, (HexIotaTypes.deserialize(hex, player.world as ServerWorld) as ListIota).list.toList(), SpecializedSource.EVOCATION, false)
+			CastingUtils.castSpecial(player.world as ServerWorld, player, (HexIotaTypes.deserialize(hex, player.world as ServerWorld) as ListIota).list.toList(), SpecializedSource.EVOCATION, false)
 			player.world.playSound(null, player.x, player.y, player.z, SoundEvents.ENTITY_EVOKER_CAST_SPELL, SoundCategory.PLAYERS, 1f, 1f)
 			player.setStackInHand(Hand.MAIN_HAND, stack)
 		}

@@ -10,7 +10,6 @@ import miyucomics.hexical.state.PersistentStateHandler
 import net.minecraft.item.ItemStack
 import net.minecraft.item.Items
 import net.minecraft.util.registry.Registry
-import java.lang.IllegalStateException
 
 class OpGetWristpocket(private val mode: Int) : ConstMediaAction {
 	override val argc = 0

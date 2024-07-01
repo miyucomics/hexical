@@ -8,10 +8,10 @@ import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.enums.SpecializedSource
 import miyucomics.hexical.interfaces.PlayerEntityMinterface
 import miyucomics.hexical.registry.HexicalAdvancements
-import miyucomics.hexical.state.PersistentStateHandler
 import miyucomics.hexical.registry.HexicalItems
 import miyucomics.hexical.registry.HexicalSounds
-import miyucomics.hexical.utils.HexicalUtils
+import miyucomics.hexical.state.PersistentStateHandler
+import miyucomics.hexical.utils.CastingUtils
 import net.minecraft.entity.Entity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemGroup
@@ -27,10 +27,10 @@ import net.minecraft.world.World
 class ArchLampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.HEXICAL_GROUP)) {
 	override fun appendStacks(group: ItemGroup?, stacks: DefaultedList<ItemStack>?) {
 		if (this.isIn(group)) {
-			val archLampStack = ItemStack(HexicalItems.ARCH_LAMP_ITEM)
-			val archLampHexHolder = IXplatAbstractions.INSTANCE.findHexHolder(archLampStack)
-			archLampHexHolder!!.writeHex(listOf(), MediaConstants.DUST_UNIT * 64000)
-			stacks!!.add(archLampStack)
+			val stack = ItemStack(HexicalItems.ARCH_LAMP_ITEM)
+			val holder = IXplatAbstractions.INSTANCE.findHexHolder(stack)
+			holder!!.writeHex(listOf(), MediaConstants.DUST_UNIT * 64000)
+			stacks!!.add(stack)
 		}
 	}
 
@@ -48,7 +48,7 @@ class ArchLampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.H
 		}
 
 		if (stackNbt.getBoolean("active")) {
-			HexicalUtils.castSpecial(world as ServerWorld, user as ServerPlayerEntity, getHex(stack, world)!!, SpecializedSource.ARCH_LAMP, finale = true)
+			CastingUtils.castSpecial(world as ServerWorld, user as ServerPlayerEntity, getHex(stack, world)!!, SpecializedSource.ARCH_LAMP, finale = true)
 			stackNbt.putBoolean("active", false)
 			return TypedActionResult.success(stack)
 		}
@@ -79,7 +79,7 @@ class ArchLampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.H
 			return
 		}
 
-		HexicalUtils.castSpecial(world as ServerWorld, user, getHex(stack, world) ?: return, SpecializedSource.ARCH_LAMP, finale = false)
+		CastingUtils.castSpecial(world as ServerWorld, user, getHex(stack, world) ?: return, SpecializedSource.ARCH_LAMP, finale = false)
 		(user as PlayerEntityMinterface).lampCastedThisTick()
 		if (getMedia(stack) == 0)
 			HexicalAdvancements.USE_UP_LAMP.trigger(user)

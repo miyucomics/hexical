@@ -9,7 +9,6 @@ import at.petrak.hexcasting.api.spell.iota.NullIota
 import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
 import miyucomics.hexical.casting.iota.getIdentifier
 import net.minecraft.util.registry.Registry
-import java.lang.IllegalStateException
 
 class OpGetStatusEffectInstanceData(private val mode: Int) : ConstMediaAction {
 	override val argc = 2

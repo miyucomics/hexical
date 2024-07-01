@@ -26,6 +26,8 @@
 - added semi-permeable modifier for : only sprinting creatures have collision
 - added semi-permeable mage block modifier: only sprinting creatures have collision
 - changed Identify pattern to have ambit limitation
+- changed speed and variance of living scroll patterns
+- changed specks to be one block big by default, can be scaled
 - dropped support for Forge in order to prioritize development speed and features
 - fixed specks being slightly off-center
 - fixed advancements occasionally breaking
@@ -34,6 +36,7 @@
 - fixed bug with archgenie lamps where it can cast for free if it wasn't in your main inventory
 - fixed bug with conjured staff where inputs aren't always neatly intercepted and you can accidentally break blocks
 - fixed Finale Reflection that always returned null
+- optimize speck and living scroll rendering massively
 - overhauled project structure completely
 - overhauled genie lamps completely and entirely
 - removed casting sounds from conjured staves and replaced it with staff drawing sounds

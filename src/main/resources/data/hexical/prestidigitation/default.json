@@ -9,6 +9,17 @@
 		"minecraft:fire": "hexical:delete",
 		"minecraft:soul_fire": "hexical:delete",
 
+		"minecraft:mud": "hexical:dry_mud",
+
+		"minecraft:grass_block": "hexical:use_shovel",
+		"minecraft:coarse_dirt": "hexical:use_shovel",
+		"minecraft:podzol": "hexical:use_shovel",
+		"minecraft:dirt": "hexical:use_shovel",
+		"minecraft:mycelium": "hexical:use_shovel",
+		"minecraft:rooted_dirt": "hexical:use_shovel",
+
+		"minecraft:dirt_path": "hexical:use_hoe",
+
 		"minecraft:lava_cauldron": "hexical:drain_cauldron",
 		"minecraft:water_cauldron": "hexical:drain_cauldron",
 		"minecraft:powder_snow_cauldron": "hexical:drain_cauldron",

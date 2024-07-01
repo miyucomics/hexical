@@ -1,6 +1,7 @@
 package miyucomics.hexical.utils
 
 import at.petrak.hexcasting.api.misc.FrozenColorizer
+import at.petrak.hexcasting.api.spell.math.HexPattern
 import at.petrak.hexcasting.client.rotate
 import com.mojang.blaze3d.systems.RenderSystem
 import net.minecraft.client.render.GameRenderer
@@ -8,11 +9,28 @@ import net.minecraft.client.render.Tessellator
 import net.minecraft.client.render.VertexFormat
 import net.minecraft.client.render.VertexFormats
 import net.minecraft.client.util.math.MatrixStack
-import net.minecraft.util.math.*
-import kotlin.math.*
+import net.minecraft.util.math.MathHelper
+import net.minecraft.util.math.Matrix4f
+import net.minecraft.util.math.Vec2f
+import net.minecraft.util.math.Vec3d
+import kotlin.math.abs
+import kotlin.math.atan2
+import kotlin.math.ceil
+import kotlin.math.max
 
 object RenderUtils {
 	const val CIRCLE_RESOLUTION: Int = 20
+
+	fun getNormalizedStrokes(pattern: HexPattern): List<Vec2f> {
+		val lines = pattern.toLines(1f, pattern.getCenter(1f).negate()).toMutableList()
+		val scaling = max(
+			lines.maxBy { vector -> vector.x }.x - lines.minBy { vector -> vector.x }.x,
+			lines.maxBy { vector -> vector.y }.y - lines.minBy { vector -> vector.y }.y
+		)
+		for (i in lines.indices)
+			lines[i] = Vec2f(lines[i].x, -lines[i].y).multiply(1 / scaling)
+		return lines.toList()
+	}
 
 	// this rendering function draws some points similar to a sentinel: it will always be the same width regardless of distance
 	fun sentinelLike(matrices: MatrixStack, points: List<Vec3d>, width: Float, colorizer: FrozenColorizer) {
@@ -44,7 +62,7 @@ object RenderUtils {
 		tessellator.draw()
 	}
 
-	fun drawFigure(mat: Matrix4f, points: List<Vec2f>, width: Float, colorizer: FrozenColorizer) {
+	fun drawFigure(mat: Matrix4f, points: List<Vec2f>, width: Float, colorizer: FrozenColorizer, colorizerOffset: Vec3d) {
 		val pointCount = points.size
 		if (pointCount <= 1)
 			return
@@ -59,10 +77,9 @@ object RenderUtils {
 			joinAngles[i - 1] = atan2(offsetFromLast.x * offsetToNext.y - offsetFromLast.y * offsetToNext.x, offsetFromLast.x * offsetToNext.x + offsetFromLast.y * offsetToNext.y)
 		}
 
-		fun vertex(pos: Vec2f) {
-			val color = colorizer.getColor(0f, Vec3d(pos.x.toDouble(), pos.y.toDouble(), 0.0))
-			buf.vertex(mat, pos.x, pos.y, 0f).color(color).next()
-		}
+		fun vertex(pos: Vec2f) = buf.vertex(mat, pos.x, pos.y, 0f)
+			.color(colorizer.getColor(0f, Vec3d(pos.x.toDouble(), pos.y.toDouble(), 0.0).multiply(2.0).add(colorizerOffset)))
+			.next()
 
 		buf.begin(VertexFormat.DrawMode.TRIANGLES, VertexFormats.POSITION_COLOR)
 		for (i in 0 until pointCount - 1) {
@@ -87,26 +104,27 @@ object RenderUtils {
 
 			if (i > 0) {
 				val angle = joinAngles[i]
-				val joinSteps = ceil(angle / (2 * MathHelper.PI) * CIRCLE_RESOLUTION).toInt()
+				val joinSteps = ceil(abs(angle) / (2 * MathHelper.PI) * CIRCLE_RESOLUTION).toInt()
 				if (joinSteps < 1)
 					continue
 
 				if (angle < 0) {
-					var previous = currentPoint.add(normal.negate())
+					var previous = currentPoint.add(normal)
 					for (j in 1..joinSteps) {
-						val fan = rotate(normal, angle * (j.toFloat() / joinSteps))
-						val fanShift = currentPoint.add(fan.negate())
+						val fan = rotate(normal, -angle * (j.toFloat() / joinSteps))
+						val fanShift = currentPoint.add(fan)
 
 						vertex(currentPoint)
-						vertex(previous)
 						vertex(fanShift)
+						vertex(previous)
 						previous = fanShift
 					}
-				} else {
-					var previous = currentPoint.add(rotate(normal, -angle).negate())
-					for (j in joinSteps - 1 downTo 0) {
-						val fan = rotate(normal, -angle * (j.toFloat() / joinSteps))
-						val fanShift = currentPoint.add(fan.negate())
+				} else if (angle > 0) {
+					val reversedNormal = normal.negate()
+					var previous = currentPoint.add(reversedNormal)
+					for (j in 1..joinSteps) {
+						val fan = rotate(reversedNormal, -angle * (j.toFloat() / joinSteps))
+						val fanShift = currentPoint.add(fan)
 
 						vertex(currentPoint)
 						vertex(previous)

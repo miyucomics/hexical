@@ -11,7 +11,7 @@ import miyucomics.hexical.enums.SpecializedSource
 import miyucomics.hexical.registry.HexicalAdvancements
 import miyucomics.hexical.registry.HexicalItems
 import miyucomics.hexical.registry.HexicalSounds
-import miyucomics.hexical.utils.HexicalUtils
+import miyucomics.hexical.utils.CastingUtils
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemGroup
@@ -28,10 +28,10 @@ import net.minecraft.world.World
 class LampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.HEXICAL_GROUP)) {
 	override fun appendStacks(group: ItemGroup?, stacks: DefaultedList<ItemStack>?) {
 		if (this.isIn(group)) {
-			val lampStack = ItemStack(HexicalItems.LAMP_ITEM)
-			val lampHexHolder = IXplatAbstractions.INSTANCE.findHexHolder(lampStack)
-			lampHexHolder!!.writeHex(listOf(), MediaConstants.DUST_UNIT * 64000)
-			stacks!!.add(lampStack)
+			val stack = ItemStack(HexicalItems.LAMP_ITEM)
+			val holder = IXplatAbstractions.INSTANCE.findHexHolder(stack)
+			holder!!.writeHex(listOf(), MediaConstants.DUST_UNIT * 64000)
+			stacks!!.add(stack)
 		}
 	}
 
@@ -54,14 +54,14 @@ class LampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.HEXIC
 	override fun usageTick(world: World, user: LivingEntity, stack: ItemStack, remainingUseTicks: Int) {
 		if (world.isClient) return
 		if (getMedia(stack) == 0) return
-		HexicalUtils.castSpecial(world as ServerWorld, user as ServerPlayerEntity, getHex(stack, world) ?: return, SpecializedSource.HAND_LAMP, finale = false)
+		CastingUtils.castSpecial(world as ServerWorld, user as ServerPlayerEntity, getHex(stack, world) ?: return, SpecializedSource.HAND_LAMP, finale = false)
 		if (getMedia(stack) == 0)
 			HexicalAdvancements.USE_UP_LAMP.trigger(user)
 	}
 
 	override fun onStoppedUsing(stack: ItemStack, world: World, user: LivingEntity, remainingUseTicks: Int) {
 		if (!world.isClient)
-			HexicalUtils.castSpecial(world as ServerWorld, user as ServerPlayerEntity, getHex(stack, world) ?: return, SpecializedSource.HAND_LAMP, finale = true)
+			CastingUtils.castSpecial(world as ServerWorld, user as ServerPlayerEntity, getHex(stack, world) ?: return, SpecializedSource.HAND_LAMP, finale = true)
 		world.playSound(user.x, user.y, user.z, HexicalSounds.LAMP_DEACTIVATE_SOUND_EVENT, SoundCategory.MASTER, 1f, 1f, true)
 	}
 

@@ -2,11 +2,11 @@ package miyucomics.hexical.entities
 
 import at.petrak.hexcasting.api.HexAPI.modLoc
 import at.petrak.hexcasting.api.spell.math.HexPattern
-import at.petrak.hexcasting.client.CAP_THETA
 import at.petrak.hexcasting.client.findDupIndices
 import at.petrak.hexcasting.client.makeZappy
 import at.petrak.hexcasting.client.rotate
 import com.mojang.blaze3d.systems.RenderSystem
+import miyucomics.hexical.utils.RenderUtils
 import miyucomics.hexical.utils.RenderUtils.CIRCLE_RESOLUTION
 import net.minecraft.client.render.*
 import net.minecraft.client.render.entity.EntityRenderer
@@ -15,7 +15,10 @@ import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.entity.Entity
 import net.minecraft.util.Identifier
 import net.minecraft.util.math.*
-import kotlin.math.*
+import kotlin.math.PI
+import kotlin.math.abs
+import kotlin.math.atan2
+import kotlin.math.ceil
 
 class LivingScrollRenderer(ctx: EntityRendererFactory.Context?) : EntityRenderer<LivingScrollEntity?>(ctx) {
 	override fun render(scroll: LivingScrollEntity?, yaw: Float, deltaTick: Float, matrices: MatrixStack, vertexConsumers: VertexConsumerProvider, light: Int) {
@@ -25,21 +28,21 @@ class LivingScrollRenderer(ctx: EntityRendererFactory.Context?) : EntityRenderer
 		matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180.0f - (scroll as Entity).yaw))
 		val worldLight = WorldRenderer.getLightmapCoordinates(scroll.world, scroll.blockPos)
 		drawFrame(matrices, vertexConsumers, getTexture(scroll), scroll.getSize().toFloat(), worldLight)
-		drawPattern(matrices, vertexConsumers, scroll.getRender(), scroll.getSize(), worldLight)
+		drawPattern(matrices, vertexConsumers, scroll.cachedPattern, scroll.getSize(), worldLight)
 		matrices.pop()
 	}
 
 	override fun getTexture(scroll: LivingScrollEntity?) = when (scroll!!.getSize()) {
-		1 -> PRISTINE_BG_SMOL
-		2 -> PRISTINE_BG_MEDIUM
-		3 -> PRISTINE_BG_LARGE
-		else -> PRISTINE_BG_SMOL
+		1 -> PRISTINE_SMALL
+		2 -> PRISTINE_MEDIUM
+		3 -> PRISTINE_LARGE
+		else -> PRISTINE_SMALL
 	}
 
 	companion object {
-		private val PRISTINE_BG_SMOL: Identifier = modLoc("textures/block/scroll_paper.png")
-		private val PRISTINE_BG_MEDIUM: Identifier = modLoc("textures/entity/scroll_medium.png")
-		private val PRISTINE_BG_LARGE: Identifier = modLoc("textures/entity/scroll_large.png")
+		private val PRISTINE_SMALL: Identifier = modLoc("textures/block/scroll_paper.png")
+		private val PRISTINE_MEDIUM: Identifier = modLoc("textures/entity/scroll_medium.png")
+		private val PRISTINE_LARGE: Identifier = modLoc("textures/entity/scroll_large.png")
 		private val WHITE: Identifier = modLoc("textures/entity/white.png")
 
 		private fun vertex(mat: Matrix4f, normal: Matrix3f, light: Int, verts: VertexConsumer, x: Float, y: Float, z: Float, u: Float, v: Float, nx: Float, ny: Float, nz: Float) = verts.vertex(mat, x, y, z).color(-0x1).texture(u, v).overlay(OverlayTexture.DEFAULT_UV).light(light).normal(normal, nx, ny, nz).next()
@@ -94,25 +97,27 @@ class LivingScrollRenderer(ctx: EntityRendererFactory.Context?) : EntityRenderer
 			matrices.translate(0.0, 0.0, 0.75 / 16.0)
 			val scale = when (size) {
 				1 -> 0.5f
-				2 -> 1f
-				3 -> 1.5f
+				2 -> 1.25f
+				3 -> 2f
 				else -> 1f
 			}
 			matrices.scale(scale, scale, 1f)
-			val lines = pattern.toLines(0.25f, pattern.getCenter(0.25f).negate()).toMutableList()
+			val lines = RenderUtils.getNormalizedStrokes(pattern)
 			val peek = matrices.peek()
 			val mat = peek.positionMatrix
 			val norm = peek.normalMatrix
 			val verts = vertexConsumers.getBuffer(RenderLayer.getEntityCutout(WHITE))
-			val zappy = makeZappy(lines, findDupIndices(pattern.positions()), 10, 2.5f, 0.1f, 0.2f, 0f, 1f, hashCode().toDouble())
-			drawLineSequence(mat, norm, light, verts, zappy)
+			val zappy = makeZappy(lines, null, 10, 1f, 0.1f, 0.2f, 0.1f, 0.9f, hashCode().toDouble())
+			drawLineSequence(mat, norm, light, size, verts, zappy.toMutableList())
 			matrices.pop()
 		}
 
-		private fun drawLineSequence(mat: Matrix4f, normalMat: Matrix3f, light: Int, verts: VertexConsumer, points: List<Vec2f>) {
+		private fun drawLineSequence(mat: Matrix4f, normalMat: Matrix3f, light: Int, size: Int, verts: VertexConsumer, points: MutableList<Vec2f>) {
 			val pointCount = points.size
 			if (pointCount <= 1)
 				return
+			for (i in points.indices)
+				points[i] = Vec2f(-points[i].x, points[i].y)
 
 			val joinAngles = FloatArray(points.size)
 			for (i in 2 until points.size) {
@@ -126,7 +131,7 @@ class LivingScrollRenderer(ctx: EntityRendererFactory.Context?) : EntityRenderer
 				val currentPoint = points[i]
 				val nextPoint = points[i + 1]
 
-				val sideLength = nextPoint.add(currentPoint.negate()).normalize().multiply(0.025f)
+				val sideLength = nextPoint.add(currentPoint.negate()).normalize().multiply(0.025f / size)
 				val normal = Vec2f(-sideLength.y, sideLength.x)
 
 				val currentDown = currentPoint.add(normal)
@@ -177,7 +182,7 @@ class LivingScrollRenderer(ctx: EntityRendererFactory.Context?) : EntityRenderer
 				val point = pair[0]
 				val prev = pair[1]
 
-				val sideLength = point.add(prev.negate()).normalize().multiply(0.025f)
+				val sideLength = point.add(prev.negate()).normalize().multiply(0.025f / size)
 				val normal = Vec2f(-sideLength.y, sideLength.x)
 				val joinSteps = CIRCLE_RESOLUTION / 2
 				for (j in joinSteps downTo 1) {

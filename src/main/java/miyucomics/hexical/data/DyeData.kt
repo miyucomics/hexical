@@ -9,7 +9,6 @@ import net.minecraft.util.Identifier
 import net.minecraft.util.registry.Registry
 import java.io.InputStream
 import java.io.InputStreamReader
-import kotlin.collections.HashMap
 
 object DyeData {
 	private val flatBlockLookup = HashMap<String, String>()
