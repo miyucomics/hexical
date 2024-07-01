@@ -8,8 +8,8 @@ import at.petrak.hexcasting.api.spell.iota.EntityIota
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.NullIota
 import at.petrak.hexcasting.api.spell.iota.Vec3Iota
-import miyucomics.hexical.data.DyeData
 import miyucomics.hexical.casting.iota.DyeIota
+import miyucomics.hexical.data.DyeData
 import net.minecraft.block.Block
 import net.minecraft.block.SignBlock
 import net.minecraft.block.entity.SignBlockEntity
