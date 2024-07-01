@@ -6,7 +6,6 @@ import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapBadEntity
 import miyucomics.hexical.interfaces.Specklike
 import net.minecraft.command.argument.EntityAnchorArgumentType
-import java.lang.IllegalStateException
 
 class OpSpecklikeProperty(val mode: Int) : ConstMediaAction {
 	override val argc = 2

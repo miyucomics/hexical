@@ -5,16 +5,15 @@ import at.petrak.hexcasting.api.spell.iota.Iota
 import dev.kosmx.playerAnim.api.layered.KeyframeAnimationPlayer
 import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationRegistry
 import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.utils.HexicalUtils
 import miyucomics.hexical.client.PlayerAnimations
 import miyucomics.hexical.items.ConjuredStaffItem
 import miyucomics.hexical.items.getConjuredStaff
 import miyucomics.hexical.state.EvokeState
 import miyucomics.hexical.state.KeybindData
+import miyucomics.hexical.utils.CastingUtils
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
-import net.minecraft.server.PlayerManager
 import net.minecraft.sound.SoundCategory
 import net.minecraft.sound.SoundEvents
 import net.minecraft.util.Identifier
@@ -58,7 +57,7 @@ object HexicalNetworking {
 		}
 
 		ServerPlayNetworking.registerGlobalReceiver(REQUEST_START_EVOKING_PACKET) { server, player, _, _, _ ->
-			if (!HexicalUtils.isEnlightened(player))
+			if (!CastingUtils.isEnlightened(player))
 				return@registerGlobalReceiver
 			EvokeState.active[player.uuid] = true
 			EvokeState.duration[player.uuid] = 0
@@ -70,7 +69,7 @@ object HexicalNetworking {
 			}
 		}
 		ServerPlayNetworking.registerGlobalReceiver(REQUEST_END_EVOKING_PACKET) { server, player, _, _, _ ->
-			if (!HexicalUtils.isEnlightened(player))
+			if (!CastingUtils.isEnlightened(player))
 				return@registerGlobalReceiver
 			EvokeState.active[player.uuid] = false
 			EvokeState.duration[player.uuid] = -1

@@ -32,12 +32,15 @@ object PrestidigitationData {
 		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("ring_bell"), RingBellEffect())
 
 		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("right_click"), UseItemOnEffect(ItemStack.EMPTY))
-		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("use_shears"), UseItemOnEffect(ItemStack(Items.SHEARS)))
 		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("use_axe"), UseItemOnEffect(ItemStack(Items.DIAMOND_AXE)))
+		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("use_hoe"), UseItemOnEffect(ItemStack(Items.DIAMOND_HOE)))
+		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("use_shears"), UseItemOnEffect(ItemStack(Items.SHEARS)))
+		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("use_shovel"), UseItemOnEffect(ItemStack(Items.DIAMOND_SHOVEL)))
 		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("ignite"), UseItemOnEffect(ItemStack(Items.FLINT_AND_STEEL)))
 
 		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("delete"), TransformBlockEffect(Blocks.AIR.defaultState))
 		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("drain_cauldron"), TransformBlockEffect(Blocks.CAULDRON.defaultState))
+		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("dry_mud"), TransformBlockEffect(Blocks.CLAY.defaultState))
 		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("light"), BooleanPropertyEffect(Properties.LIT))
 		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("open"), BooleanPropertyEffect(Properties.OPEN))
 		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("squirt_squid"), SquirtSquidsEffect())
