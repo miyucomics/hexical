@@ -2,7 +2,6 @@ package miyucomics.hexical.entities
 
 import at.petrak.hexcasting.api.HexAPI.modLoc
 import at.petrak.hexcasting.api.spell.math.HexPattern
-import at.petrak.hexcasting.client.findDupIndices
 import at.petrak.hexcasting.client.makeZappy
 import at.petrak.hexcasting.client.rotate
 import com.mojang.blaze3d.systems.RenderSystem
