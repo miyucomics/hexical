@@ -1,11 +1,13 @@
 package miyucomics.hexical.entities
 
+import at.petrak.hexcasting.api.spell.iota.ListIota
+import at.petrak.hexcasting.api.spell.iota.PatternIota
 import at.petrak.hexcasting.api.spell.math.HexDir
 import at.petrak.hexcasting.api.spell.math.HexPattern
-import at.petrak.hexcasting.client.findDupIndices
-import at.petrak.hexcasting.client.makeZappy
+import at.petrak.hexcasting.api.utils.putCompound
+import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import miyucomics.hexical.registry.HexicalEntities
-import miyucomics.hexical.utils.RenderUtils
+import miyucomics.hexical.registry.HexicalItems
 import net.minecraft.block.AbstractRedstoneGateBlock
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityDimensions
@@ -16,16 +18,17 @@ import net.minecraft.entity.data.TrackedData
 import net.minecraft.entity.data.TrackedDataHandlerRegistry
 import net.minecraft.entity.decoration.AbstractDecorationEntity
 import net.minecraft.entity.player.PlayerEntity
+import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.nbt.NbtList
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket
 import net.minecraft.sound.SoundEvents
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
-import net.minecraft.util.math.Vec2f
 import net.minecraft.util.math.Vec3d
 import net.minecraft.world.GameRules
 import net.minecraft.world.World
+import java.lang.IllegalStateException
 
 class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: World?) : AbstractDecorationEntity(entityType, world) {
 	var patterns: MutableList<NbtCompound> = mutableListOf()
@@ -133,8 +136,26 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: Wo
 		if (this.world.gameRules.getBoolean(GameRules.DO_ENTITY_DROPS)) {
 			if (entity is PlayerEntity && entity.abilities.creativeMode)
 				return
+			val stack = ItemStack(when (this.dataTracker.get(sizeDataTracker)) {
+				1 -> HexicalItems.SMALL_LIVING_SCROLL_ITEM
+				2 -> HexicalItems.MEDIUM_LIVING_SCROLL_ITEM
+				3 -> HexicalItems.LARGE_LIVING_SCROLL_ITEM
+				else -> throw IllegalStateException()
+			})
+			val constructed = mutableListOf<PatternIota>()
+			for (pattern in this.patterns)
+				constructed.add(PatternIota(HexPattern.fromNBT(pattern)))
+			stack.orCreateNbt.putCompound("patterns", HexIotaTypes.serialize(ListIota(constructed.toList())))
+			this.dropStack(stack)
 		}
 	}
+
+	override fun getPickBlockStack() = ItemStack(when (this.dataTracker.get(sizeDataTracker)) {
+			1 -> HexicalItems.SMALL_LIVING_SCROLL_ITEM
+			2 -> HexicalItems.MEDIUM_LIVING_SCROLL_ITEM
+			3 -> HexicalItems.LARGE_LIVING_SCROLL_ITEM
+			else -> throw IllegalStateException("Invalid size")
+		})
 
 	fun getSize(): Int = this.dataTracker.get(sizeDataTracker)
 	override fun getSyncedPos(): Vec3d = Vec3d.of(this.attachmentPos)

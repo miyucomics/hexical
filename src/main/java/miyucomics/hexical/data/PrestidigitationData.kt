@@ -20,7 +20,7 @@ import java.io.InputStream
 import java.io.InputStreamReader
 
 object PrestidigitationData {
-	val PRESTIDIGITATION_EFFECTS: SimpleRegistry<PrestidigitationEffect> = FabricRegistryBuilder.createSimple(PrestidigitationEffect::class.java, HexicalMain.id("prestidigitation")).attribute(RegistryAttribute.MODDED).buildAndRegister()
+	private val PRESTIDIGITATION_EFFECTS: SimpleRegistry<PrestidigitationEffect> = FabricRegistryBuilder.createSimple(PrestidigitationEffect::class.java, HexicalMain.id("prestidigitation")).attribute(RegistryAttribute.MODDED).buildAndRegister()
 	private val BLOCK_LOOKUP: HashMap<Identifier, Identifier> = HashMap()
 	private val ENTITY_LOOKUP: HashMap<Identifier, Identifier> = HashMap()
 
