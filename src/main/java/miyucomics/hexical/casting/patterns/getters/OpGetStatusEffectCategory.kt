@@ -1,8 +1,8 @@
 package miyucomics.hexical.casting.patterns.getters
 
 import at.petrak.hexcasting.api.spell.ConstMediaAction
+import at.petrak.hexcasting.api.spell.asActionResult
 import at.petrak.hexcasting.api.spell.casting.CastingContext
-import at.petrak.hexcasting.api.spell.iota.DoubleIota
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
 import miyucomics.hexical.casting.iota.getIdentifier
@@ -15,11 +15,11 @@ class OpGetStatusEffectCategory : ConstMediaAction {
 		val effect = args.getIdentifier(0, argc)
 		if (!Registry.STATUS_EFFECT.containsId(effect))
 			throw MishapInvalidIota.of(args[0], 0, "status_effect")
-		return listOf(when (Registry.STATUS_EFFECT.get(effect)!!.category) {
-			StatusEffectCategory.BENEFICIAL -> DoubleIota(1.0)
-			StatusEffectCategory.NEUTRAL -> DoubleIota(0.0)
-			StatusEffectCategory.HARMFUL -> DoubleIota(-1.0)
+		return when (Registry.STATUS_EFFECT.get(effect)!!.category) {
+			StatusEffectCategory.BENEFICIAL -> (1).asActionResult
+			StatusEffectCategory.NEUTRAL -> (0).asActionResult
+			StatusEffectCategory.HARMFUL -> (-1).asActionResult
 			else -> throw IllegalStateException()
-		})
+		}
 	}
 }

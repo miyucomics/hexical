@@ -1,12 +1,13 @@
 package miyucomics.hexical.casting.patterns.getters
 
 import at.petrak.hexcasting.api.spell.ConstMediaAction
+import at.petrak.hexcasting.api.spell.asActionResult
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.getEntity
 import at.petrak.hexcasting.api.spell.iota.Iota
-import at.petrak.hexcasting.api.spell.iota.ListIota
 import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
 import miyucomics.hexical.casting.iota.IdentifierIota
+import miyucomics.hexical.casting.iota.asActionResult
 import net.minecraft.entity.ItemEntity
 import net.minecraft.entity.effect.StatusEffects
 import net.minecraft.entity.projectile.ArrowEntity
@@ -20,7 +21,7 @@ import net.minecraft.util.registry.Registry
 class OpGetPrescription : ConstMediaAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
-		return listOf(ListIota(when (val entity = args.getEntity(0, argc)) {
+		return when (val entity = args.getEntity(0, argc)) {
 			is ItemEntity -> {
 				val stack = entity.stack
 				if (!(stack.isOf(Items.POTION) || stack.isOf(Items.SPLASH_POTION) || stack.isOf(Items.LINGERING_POTION) || stack.item.isFood || stack.isOf(Items.TIPPED_ARROW)))
@@ -54,9 +55,9 @@ class OpGetPrescription : ConstMediaAction {
 					effects.add(IdentifierIota(Registry.STATUS_EFFECT.getId(effect.effectType)!!))
 				effects
 			}
-			is ShulkerBulletEntity -> listOf(IdentifierIota(Registry.STATUS_EFFECT.getId(StatusEffects.LEVITATION)!!))
-			is WitherSkullEntity -> listOf(IdentifierIota(Registry.STATUS_EFFECT.getId(StatusEffects.WITHER)!!))
+			is ShulkerBulletEntity -> Registry.STATUS_EFFECT.getId(StatusEffects.LEVITATION)!!.asActionResult()
+			is WitherSkullEntity -> Registry.STATUS_EFFECT.getId(StatusEffects.WITHER)!!.asActionResult()
 			else -> listOf()
-		}))
+		}.asActionResult
 	}
 }

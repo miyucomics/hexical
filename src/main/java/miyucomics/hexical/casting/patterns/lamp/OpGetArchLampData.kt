@@ -1,10 +1,9 @@
 package miyucomics.hexical.casting.patterns.lamp
 
 import at.petrak.hexcasting.api.spell.ConstMediaAction
+import at.petrak.hexcasting.api.spell.asActionResult
 import at.petrak.hexcasting.api.spell.casting.CastingContext
-import at.petrak.hexcasting.api.spell.iota.DoubleIota
 import at.petrak.hexcasting.api.spell.iota.Iota
-import at.petrak.hexcasting.api.spell.iota.Vec3Iota
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import miyucomics.hexical.casting.mishaps.NeedsActiveArchLampMishap
 import miyucomics.hexical.items.hasActiveArchLamp
@@ -16,15 +15,13 @@ class OpGetArchLampData(private val mode: Int) : ConstMediaAction {
 		if (!hasActiveArchLamp(ctx.caster))
 			throw NeedsActiveArchLampMishap()
 		val state = PersistentStateHandler.getPlayerArchLampData(ctx.caster)
-		return listOf(
-			when (mode) {
-				0 -> Vec3Iota(state.position)
-				1 -> Vec3Iota(state.rotation)
-				2 -> Vec3Iota(state.velocity)
-				3 -> DoubleIota((ctx.world.time - (state.time + 1)).toDouble())
-				4 -> HexIotaTypes.deserialize(state.storage, ctx.world)
-				else -> throw IllegalStateException()
-			}
-		)
+		return when (mode) {
+			0 -> state.position.asActionResult
+			1 -> state.rotation.asActionResult
+			2 -> state.velocity.asActionResult
+			3 -> (ctx.world.time - (state.time + 1)).asActionResult
+			4 -> listOf(HexIotaTypes.deserialize(state.storage, ctx.world))
+			else -> throw IllegalStateException()
+		}
 	}
 }

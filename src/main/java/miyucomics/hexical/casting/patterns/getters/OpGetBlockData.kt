@@ -1,9 +1,9 @@
 package miyucomics.hexical.casting.patterns.getters
 
 import at.petrak.hexcasting.api.spell.ConstMediaAction
+import at.petrak.hexcasting.api.spell.asActionResult
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.getBlockPos
-import at.petrak.hexcasting.api.spell.iota.DoubleIota
 import at.petrak.hexcasting.api.spell.iota.Iota
 
 class OpGetBlockData(private val mode: Int) : ConstMediaAction {
@@ -12,12 +12,10 @@ class OpGetBlockData(private val mode: Int) : ConstMediaAction {
 		val position = args.getBlockPos(0, argc)
 		ctx.assertVecInRange(position)
 		val block = ctx.world.getBlockState(position).block
-		return listOf(
-			when (mode) {
-				0 -> DoubleIota(block.hardness.toDouble())
-				1 -> DoubleIota(block.blastResistance.toDouble())
-				else -> throw IllegalStateException()
-			}
-		)
+		return when (mode) {
+			0 -> block.hardness.asActionResult
+			1 -> block.blastResistance.asActionResult
+			else -> throw IllegalStateException()
+		}
 	}
 }
