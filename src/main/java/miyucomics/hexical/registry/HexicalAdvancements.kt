@@ -4,13 +4,20 @@ import miyucomics.hexical.advancements.*
 import net.minecraft.advancement.criterion.Criteria
 
 object HexicalAdvancements {
-	val AR: ARCriterion = Criteria.register(ARCriterion())
-	val DIY: DIYCriterion = Criteria.register(DIYCriterion())
-	val HALLUCINATE: HallucinateCriterion = Criteria.register(HallucinateCriterion())
-	val EDUCATE_GENIE: EducateGenieCriterion = Criteria.register(EducateGenieCriterion())
-	val RELOAD_LAMP: ReloadLampCriterion = Criteria.register(ReloadLampCriterion())
-	val USE_UP_LAMP: UseUpLampCriterion = Criteria.register(UseUpLampCriterion())
+	lateinit var AR: ARCriterion
+	lateinit var DIY: DIYCriterion
+	lateinit var HALLUCINATE: HallucinateCriterion
+	lateinit var EDUCATE_GENIE: EducateGenieCriterion
+	lateinit var RELOAD_LAMP: ReloadLampCriterion
+	lateinit var USE_UP_LAMP: UseUpLampCriterion
 
 	@JvmStatic
-	fun init() {}
+	fun init() {
+		AR = Criteria.register(ARCriterion())
+		DIY = Criteria.register(DIYCriterion())
+		HALLUCINATE = Criteria.register(HallucinateCriterion())
+		EDUCATE_GENIE = Criteria.register(EducateGenieCriterion())
+		RELOAD_LAMP = Criteria.register(ReloadLampCriterion())
+		USE_UP_LAMP = Criteria.register(UseUpLampCriterion())
+	}
 }

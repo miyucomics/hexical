@@ -2,11 +2,10 @@ package miyucomics.hexical.casting.patterns.lamp
 
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.ConstMediaAction
+import at.petrak.hexcasting.api.spell.asActionResult
 import at.petrak.hexcasting.api.spell.casting.CastingContext
-import at.petrak.hexcasting.api.spell.iota.DoubleIota
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.NullIota
-import at.petrak.hexcasting.api.spell.iota.Vec3Iota
 import at.petrak.hexcasting.api.utils.vecFromNBT
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import miyucomics.hexical.casting.mishaps.NeedsSourceMishap
@@ -20,16 +19,14 @@ class OpGetHandLampData(private val mode: Int) : ConstMediaAction {
 		if ((ctx as CastingContextMinterface).getSpecializedSource() != SpecializedSource.HAND_LAMP)
 			throw NeedsSourceMishap("hand_lamp")
 		val nbt = ctx.caster.activeItem.nbt ?: return listOf(NullIota())
-		return listOf(
-			when (mode) {
-				0 -> Vec3Iota(vecFromNBT(nbt.getLongArray("position")))
-				1 -> Vec3Iota(vecFromNBT(nbt.getLongArray("rotation")))
-				2 -> Vec3Iota(vecFromNBT(nbt.getLongArray("velocity")))
-				3 -> DoubleIota(ctx.world.time - (nbt.getDouble("start_time") + 1.0))
-				4 -> DoubleIota((ctx.caster.activeItem.item as LampItem).getMedia(ctx.caster.activeItem).toDouble() / MediaConstants.DUST_UNIT)
-				5 -> HexIotaTypes.deserialize(ctx.caster.activeItem.nbt!!.getCompound("storage"), ctx.world)
-				else -> throw IllegalStateException()
-			}
-		)
+		return when (mode) {
+			0 -> vecFromNBT(nbt.getLongArray("position")).asActionResult
+			1 -> vecFromNBT(nbt.getLongArray("rotation")).asActionResult
+			2 -> vecFromNBT(nbt.getLongArray("velocity")).asActionResult
+			3 -> (ctx.world.time - (nbt.getDouble("start_time") + 1.0)).asActionResult
+			4 -> ((ctx.caster.activeItem.item as LampItem).getMedia(ctx.caster.activeItem).toDouble() / MediaConstants.DUST_UNIT).asActionResult
+			5 -> listOf(HexIotaTypes.deserialize(ctx.caster.activeItem.nbt!!.getCompound("storage"), ctx.world))
+			else -> throw IllegalStateException()
+		}
 	}
 }

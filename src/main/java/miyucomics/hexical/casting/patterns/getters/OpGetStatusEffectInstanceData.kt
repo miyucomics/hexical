@@ -1,9 +1,9 @@
 package miyucomics.hexical.casting.patterns.getters
 
 import at.petrak.hexcasting.api.spell.ConstMediaAction
+import at.petrak.hexcasting.api.spell.asActionResult
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.getLivingEntityButNotArmorStand
-import at.petrak.hexcasting.api.spell.iota.DoubleIota
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.NullIota
 import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
@@ -19,12 +19,10 @@ class OpGetStatusEffectInstanceData(private val mode: Int) : ConstMediaAction {
 		if (!Registry.STATUS_EFFECT.containsId(effect))
 			throw MishapInvalidIota.of(args[1], 1, "status_effect")
 		val instance = entity.getStatusEffect(Registry.STATUS_EFFECT.get(effect)) ?: return listOf(NullIota())
-		return listOf(
-			when (mode) {
-				0 -> DoubleIota(instance.amplifier.toDouble())
-				1 -> DoubleIota(instance.duration.toDouble())
-				else -> throw IllegalStateException()
-			}
-		)
+		return when (mode) {
+			0 -> instance.amplifier.asActionResult
+			1 -> instance.duration.asActionResult
+			else -> throw IllegalStateException()
+		}
 	}
 }
