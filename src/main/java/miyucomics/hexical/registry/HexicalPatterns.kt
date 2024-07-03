@@ -42,6 +42,7 @@ import miyucomics.hexical.casting.patterns.specks.OpSpecklikeProperty
 import miyucomics.hexical.casting.patterns.telepathy.OpHallucinateSound
 import miyucomics.hexical.casting.patterns.telepathy.OpSendTelepathy
 import miyucomics.hexical.casting.patterns.telepathy.OpShoutTelepathy
+import miyucomics.hexical.casting.patterns.wristpocket.OpGetWristpocket
 import miyucomics.hexical.casting.patterns.wristpocket.OpIngest
 import miyucomics.hexical.casting.patterns.wristpocket.OpMageHand
 import miyucomics.hexical.casting.patterns.wristpocket.OpWristpocket
@@ -56,6 +57,8 @@ object HexicalPatterns {
 	@JvmStatic
 	fun init() {
 		registerPerWorld("greater_blink", "wqawawaqwqwqawawaqw", HexDir.SOUTH_WEST, OpGreaterBlink())
+
+		register("age_scroll", "wewaawewaddwwewwdwwew", HexDir.SOUTH_EAST, OpAgeScroll())
 
 		register("conjure_firework", "dedwaqwwawwqa", HexDir.SOUTH_WEST, OpConjureFirework())
 		register("simulate_firework", "dedwaqwqqwqa", HexDir.SOUTH_WEST, OpSimulateFirework())

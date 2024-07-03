@@ -2,8 +2,8 @@ package miyucomics.hexical.casting.patterns.lamp
 
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.ConstMediaAction
+import at.petrak.hexcasting.api.spell.asActionResult
 import at.petrak.hexcasting.api.spell.casting.CastingContext
-import at.petrak.hexcasting.api.spell.iota.DoubleIota
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.NullIota
 import miyucomics.hexical.casting.mishaps.NeedsActiveArchLampMishap
@@ -18,9 +18,9 @@ class OpGetArchLampMedia : ConstMediaAction {
 			throw NeedsActiveArchLampMishap()
 		for (stack in ctx.caster.inventory.main)
 			if (stack.item == HexicalItems.ARCH_LAMP_ITEM && stack.orCreateNbt.getBoolean("active"))
-				return listOf(DoubleIota((stack.item as ArchLampItem).getMedia(stack).toDouble() / MediaConstants.DUST_UNIT))
+				return ((stack.item as ArchLampItem).getMedia(stack).toDouble() / MediaConstants.DUST_UNIT).asActionResult
 		if (ctx.caster.offHandStack.item == HexicalItems.ARCH_LAMP_ITEM && ctx.caster.offHandStack.orCreateNbt.getBoolean("active"))
-			return listOf(DoubleIota((ctx.caster.offHandStack.item as ArchLampItem).getMedia(ctx.caster.offHandStack).toDouble() / MediaConstants.DUST_UNIT))
+			return ((ctx.caster.offHandStack.item as ArchLampItem).getMedia(ctx.caster.offHandStack).toDouble() / MediaConstants.DUST_UNIT).asActionResult
 		return listOf(NullIota())
 	}
 }

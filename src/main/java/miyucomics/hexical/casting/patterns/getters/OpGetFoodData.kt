@@ -1,9 +1,8 @@
 package miyucomics.hexical.casting.patterns.getters
 
 import at.petrak.hexcasting.api.spell.ConstMediaAction
+import at.petrak.hexcasting.api.spell.asActionResult
 import at.petrak.hexcasting.api.spell.casting.CastingContext
-import at.petrak.hexcasting.api.spell.iota.BooleanIota
-import at.petrak.hexcasting.api.spell.iota.DoubleIota
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
 
@@ -13,14 +12,13 @@ class OpGetFoodData(private val mode: Int) : ConstMediaAction {
 		val stack = args.getItemStack(0, argc)
 		if (!stack.isFood)
 			throw MishapInvalidIota.of(args[0], 0, "food")
-		return listOf(
-			when (mode) {
-				0 -> DoubleIota(stack.item.foodComponent!!.hunger.toDouble())
-				1 -> DoubleIota(stack.item.foodComponent!!.saturationModifier.toDouble())
-				2 -> BooleanIota(stack.item.foodComponent!!.isMeat)
-				3 -> BooleanIota(stack.item.foodComponent!!.isSnack)
-				else -> throw IllegalStateException()
-			}
-		)
+		val foodComponent = stack.item.foodComponent!!
+		return when (mode) {
+			0 -> foodComponent.hunger.asActionResult
+			1 -> foodComponent.saturationModifier.asActionResult
+			2 -> foodComponent.isMeat.asActionResult
+			3 -> foodComponent.isSnack.asActionResult
+			else -> throw IllegalStateException()
+		}
 	}
 }
