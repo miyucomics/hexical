@@ -1,8 +1,8 @@
 package miyucomics.hexical.casting.patterns.getters
 
 import at.petrak.hexcasting.api.spell.ConstMediaAction
+import at.petrak.hexcasting.api.spell.asActionResult
 import at.petrak.hexcasting.api.spell.casting.CastingContext
-import at.petrak.hexcasting.api.spell.iota.DoubleIota
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
 import miyucomics.hexical.casting.iota.getIdentifier
@@ -19,7 +19,7 @@ class OpGetEnchantmentStrength : ConstMediaAction {
 		val data = EnchantmentHelper.get(stack)
 		val enchantment = Registry.ENCHANTMENT.get(id)
 		if (!data.containsKey(enchantment))
-			return listOf(DoubleIota(0.0))
-		return listOf(DoubleIota(data.getValue(enchantment).toDouble()))
+			return (0).asActionResult
+		return data.getValue(enchantment).asActionResult
 	}
 }

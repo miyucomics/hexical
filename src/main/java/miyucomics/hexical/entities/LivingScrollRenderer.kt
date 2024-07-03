@@ -31,17 +31,31 @@ class LivingScrollRenderer(ctx: EntityRendererFactory.Context?) : EntityRenderer
 		matrices.pop()
 	}
 
-	override fun getTexture(scroll: LivingScrollEntity?) = when (scroll!!.getSize()) {
-		1 -> PRISTINE_SMALL
-		2 -> PRISTINE_MEDIUM
-		3 -> PRISTINE_LARGE
-		else -> PRISTINE_SMALL
+	override fun getTexture(scroll: LivingScrollEntity?): Identifier {
+		return if (scroll!!.getAged()) {
+			when (scroll.getSize()) {
+				1 -> ANCIENT_SMALL
+				2 -> ANCIENT_MEDIUM
+				3 -> ANCIENT_LARGE
+				else -> ANCIENT_SMALL
+			}
+		} else {
+			when (scroll.getSize()) {
+				1 -> PRISTINE_SMALL
+				2 -> PRISTINE_MEDIUM
+				3 -> PRISTINE_LARGE
+				else -> PRISTINE_SMALL
+			}
+		}
 	}
 
 	companion object {
 		private val PRISTINE_SMALL: Identifier = modLoc("textures/block/scroll_paper.png")
 		private val PRISTINE_MEDIUM: Identifier = modLoc("textures/entity/scroll_medium.png")
 		private val PRISTINE_LARGE: Identifier = modLoc("textures/entity/scroll_large.png")
+		private val ANCIENT_SMALL: Identifier = modLoc("textures/block/ancient_scroll_paper.png")
+		private val ANCIENT_MEDIUM: Identifier = modLoc("textures/entity/scroll_ancient_medium.png")
+		private val ANCIENT_LARGE: Identifier = modLoc("textures/entity/scroll_ancient_large.png")
 		private val WHITE: Identifier = modLoc("textures/entity/white.png")
 
 		private fun vertex(mat: Matrix4f, normal: Matrix3f, light: Int, verts: VertexConsumer, x: Float, y: Float, z: Float, u: Float, v: Float, nx: Float, ny: Float, nz: Float) = verts.vertex(mat, x, y, z).color(-0x1).texture(u, v).overlay(OverlayTexture.DEFAULT_UV).light(light).normal(normal, nx, ny, nz).next()
@@ -106,7 +120,7 @@ class LivingScrollRenderer(ctx: EntityRendererFactory.Context?) : EntityRenderer
 			val mat = peek.positionMatrix
 			val norm = peek.normalMatrix
 			val verts = vertexConsumers.getBuffer(RenderLayer.getEntityCutout(WHITE))
-			val zappy = makeZappy(lines, null, 10, 1f, 0.1f, 0.2f, 0.1f, 0.9f, hashCode().toDouble())
+			val zappy = makeZappy(lines, null, 10, 1f, 0.1f, 0f, 0.1f, 0.9f, hashCode().toDouble())
 			drawLineSequence(mat, norm, light, size, verts, zappy.toMutableList())
 			matrices.pop()
 		}
@@ -152,8 +166,8 @@ class LivingScrollRenderer(ctx: EntityRendererFactory.Context?) : EntityRenderer
 					if (angle < 0) {
 						var previous = currentPoint.add(normal)
 						for (j in 1..joinSteps) {
-							val fan = rotate(normal.negate(), -angle * (j.toFloat() / joinSteps))
-							val fanShift = currentPoint.add(fan.negate())
+							val fan = rotate(normal, -angle * (j.toFloat() / joinSteps))
+							val fanShift = currentPoint.add(fan)
 
 							vertexColored(mat, normalMat, light, verts, currentPoint)
 							vertexColored(mat, normalMat, light, verts, currentPoint)
@@ -161,16 +175,17 @@ class LivingScrollRenderer(ctx: EntityRendererFactory.Context?) : EntityRenderer
 							vertexColored(mat, normalMat, light, verts, previous)
 							previous = fanShift
 						}
-					} else {
-						var previous = currentPoint.add(rotate(normal, -angle).negate())
-						for (j in joinSteps - 1 downTo 0) {
-							val fan = rotate(normal, -angle * (j.toFloat() / joinSteps))
-							val fanShift = currentPoint.add(fan.negate())
+					} else if (angle > 0) {
+						val reversedNormal = normal.negate()
+						var previous = currentPoint.add(reversedNormal)
+						for (j in 1..joinSteps) {
+							val fan = rotate(reversedNormal, -angle * (j.toFloat() / joinSteps))
+							val fanShift = currentPoint.add(fan)
 
 							vertexColored(mat, normalMat, light, verts, currentPoint)
 							vertexColored(mat, normalMat, light, verts, currentPoint)
-							vertexColored(mat, normalMat, light, verts, fanShift)
 							vertexColored(mat, normalMat, light, verts, previous)
+							vertexColored(mat, normalMat, light, verts, fanShift)
 							previous = fanShift
 						}
 					}

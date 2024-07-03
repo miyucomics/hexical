@@ -34,11 +34,13 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: Wo
 	var patterns: MutableList<NbtCompound> = mutableListOf()
 	var cachedPattern = HexPattern.fromAngles("", HexDir.EAST) // client-only
 	companion object {
+		private val agedDataTracker: TrackedData<Boolean> = DataTracker.registerData(LivingScrollEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
 		private val sizeDataTracker: TrackedData<Int> = DataTracker.registerData(LivingScrollEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
 		private val renderDataTracker: TrackedData<NbtCompound> = DataTracker.registerData(LivingScrollEntity::class.java, TrackedDataHandlerRegistry.NBT_COMPOUND)
 	}
 
 	override fun initDataTracker() {
+		this.dataTracker.startTracking(agedDataTracker, false)
 		this.dataTracker.startTracking(sizeDataTracker, 1)
 		this.dataTracker.startTracking(renderDataTracker, NbtCompound())
 	}
@@ -68,7 +70,7 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: Wo
 				return false
 			}
 		}
-		return world.getOtherEntities(this, this.boundingBox, PREDICATE).isEmpty()
+		return world.getOtherEntities(this, this.boundingBox.shrink(0.95, 0.95, 0.95), PREDICATE).isEmpty()
 	}
 
 	public override fun setFacing(facing: Direction) {
@@ -105,6 +107,7 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: Wo
 
 	override fun writeCustomDataToNbt(nbt: NbtCompound?) {
 		nbt!!.putByte("direction", facing.id.toByte())
+		nbt.putBoolean("aged", this.dataTracker.get(agedDataTracker))
 		nbt.putInt("size", this.dataTracker.get(sizeDataTracker))
 
 		val data = NbtList()
@@ -117,6 +120,7 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: Wo
 
 	override fun readCustomDataFromNbt(nbt: NbtCompound?) {
 		this.facing = Direction.byId(nbt!!.getByte("direction").toInt())
+		this.dataTracker.set(agedDataTracker, nbt.getBoolean("aged"))
 		this.dataTracker.set(sizeDataTracker, nbt.getInt("size"))
 		setFacing(this.facing)
 		updateAttachmentPosition()
@@ -151,13 +155,16 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: Wo
 	}
 
 	override fun getPickBlockStack() = ItemStack(when (this.dataTracker.get(sizeDataTracker)) {
-			1 -> HexicalItems.SMALL_LIVING_SCROLL_ITEM
-			2 -> HexicalItems.MEDIUM_LIVING_SCROLL_ITEM
-			3 -> HexicalItems.LARGE_LIVING_SCROLL_ITEM
-			else -> throw IllegalStateException("Invalid size")
-		})
+		1 -> HexicalItems.SMALL_LIVING_SCROLL_ITEM
+		2 -> HexicalItems.MEDIUM_LIVING_SCROLL_ITEM
+		3 -> HexicalItems.LARGE_LIVING_SCROLL_ITEM
+		else -> throw IllegalStateException("Invalid size")
+	})
 
+	fun toggleAged() = this.dataTracker.set(agedDataTracker, !this.dataTracker.get(agedDataTracker))
+	fun getAged(): Boolean = this.dataTracker.get(agedDataTracker)
 	fun getSize(): Int = this.dataTracker.get(sizeDataTracker)
+
 	override fun getSyncedPos(): Vec3d = Vec3d.of(this.attachmentPos)
 	override fun getWidthPixels() = 16 * this.dataTracker.get(sizeDataTracker)
 	override fun getHeightPixels() = 16 * this.dataTracker.get(sizeDataTracker)

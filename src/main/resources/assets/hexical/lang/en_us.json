@@ -17,6 +17,7 @@
 	"advancements.hexical.reload_lamp.description": "Reload the lamp.",
 
 	"block.hexical.mage_block": "Mage Block",
+	"entity.hexical.living_scroll": "Living Scroll",
 	"entity.hexical.magic_missile": "Magic Missile",
 	"entity.hexical.speck": "Speck",
 	"key.categories.hexical": "Hexical",
@@ -135,6 +136,9 @@
 	"hexical.page.living_scroll.title": "Living Scrolls",
 	"hexical.page.living_scroll.0": "Living scrolls are mixed with a pinch of amethyst, enchanting the ink to move and wiggle like the patterns I draw with my $(l:items/staff)staff$(). Not only that, living scrolls can display lists of patterns.$(br2)$(o)You can't be a proper writer without a touch of madness, can you?$()",
 	"hexical.page.living_scroll.1": "I can freely write and rewrite the scroll's patterns at any time, along with reading it back out. The scroll accepts only a list of pattern iotas, or a pattern iota which is automatically wrapped in a list. When displaying a list of patterns, a living scroll shows one pattern at a time. It changes once per second. Even when I write the same pattern list to two of them at two different moments of their cycle, they end up in sync.",
+	"hexical.page.living_scroll.2": "What follows are some spells I've found for manipulation of living scrolls. The changes caused by these enchantments are temporary and can be reverted by casting the spell again. If I break the scroll and replace it, the changes are reset.",
+	"hexcasting.spell.hexical:age_scroll": "Age Scroll",
+	"hexical.page.age_scroll.summary": "Yellows the parchment of the scroll, making it bear striking semblance to some ancient scrolls I've been finding.",
 
 	"hexical.page.grimoire.title": "Grimoires",
 	"hexical.page.grimoire.0": "By encrusting an $(item)enchanted book$() with charged amethyst and $(l:items/edified)$(item)edified wood$()$(), it traps _media within the pages like an echo chamber. I can then introduce a pattern-to-pattern-list binding for the $(item)grimoire$() to keep bouncing endlessly inside.",

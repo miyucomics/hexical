@@ -41,6 +41,8 @@ class IdentifierIota(identifier: Identifier) : Iota(HexicalIota.IDENTIFIER_IOTA,
 	}
 }
 
+fun Identifier.asActionResult(): List<Iota> = listOf(IdentifierIota(this))
+
 fun List<Iota>.getIdentifier(idx: Int, argc: Int = 0): Identifier {
 	val x = this.getOrElse(idx) { throw MishapNotEnoughArgs(idx + 1, this.size) }
 	if (x is IdentifierIota)
