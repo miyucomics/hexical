@@ -8,7 +8,7 @@
 			"predicate": {
 				"angle": 0
 			},
-			"model": "hexical:item/conjured_compass"
+			"model": "hexical:item/conjured_compass_16"
 		},
 		{
 			"predicate": {
@@ -200,7 +200,7 @@
 			"predicate": {
 				"angle": 0.984375
 			},
-			"model": "hexical:item/conjured_compass"
+			"model": "hexical:item/conjured_compass_16"
 		}
 	]
 }
