@@ -6,8 +6,10 @@ import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder
 import net.minecraft.client.item.CompassAnglePredicateProvider
 import net.minecraft.client.item.CompassAnglePredicateProvider.CompassTarget
 import net.minecraft.client.item.ModelPredicateProviderRegistry
+import net.minecraft.client.item.UnclampedModelPredicateProvider
 import net.minecraft.client.world.ClientWorld
 import net.minecraft.entity.Entity
+import net.minecraft.entity.LivingEntity
 import net.minecraft.item.BlockItem
 import net.minecraft.item.Item.Settings
 import net.minecraft.item.ItemGroup
@@ -52,6 +54,7 @@ object HexicalItems {
 
 	@JvmStatic
 	fun clientInit() {
+		ModelPredicateProviderRegistry.register(CONJURED_STAFF_ITEM, Identifier("sprite")) { stack: ItemStack, _: ClientWorld?, _: LivingEntity?, _: Int -> stack.orCreateNbt.getFloat("sprite") }
 		ModelPredicateProviderRegistry.register(CONJURED_COMPASS_ITEM, Identifier("angle"), CompassAnglePredicateProvider(CompassTarget { _: ClientWorld?, stack: ItemStack?, player: Entity? ->
 			if (player != null && stack != null && stack.hasNbt()) {
 				val nbt = stack.nbt!!
