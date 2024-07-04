@@ -125,10 +125,10 @@ class MageBlock : BlockConjured(
 
 	override fun spawnBreakParticles(pLevel: World?, pPlayer: PlayerEntity?, pPos: BlockPos?, pState: BlockState?) {}
 	override fun createBlockEntity(pos: BlockPos, state: BlockState) = MageBlockEntity(pos, state)
-	override fun <T : BlockEntity?> getTicker(pworld: World, pstate: BlockState, type: BlockEntityType<T>) = BlockEntityTicker { world, position, state, blockEntity: T -> tick(world, position, state, blockEntity) }
+	override fun <T : BlockEntity> getTicker(pworld: World, pstate: BlockState, type: BlockEntityType<T>): BlockEntityTicker<T> = BlockEntityTicker { world, position, state, blockEntity -> tick(world, position, state, blockEntity) }
 
 	companion object {
-		fun <T> tick(world: World, position: BlockPos, state: BlockState, blockEntity: T) {
+		fun tick(world: World, position: BlockPos, state: BlockState, blockEntity: BlockEntity) {
 			if (blockEntity !is MageBlockEntity)
 				return
 			if (!blockEntity.properties["invisible"]!!)

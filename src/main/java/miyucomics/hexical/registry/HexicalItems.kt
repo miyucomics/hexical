@@ -47,6 +47,7 @@ object HexicalItems {
 		Registry.register(Registry.ITEM, HexicalMain.id("hextito"), HEXTITO_ITEM)
 		Registry.register(Registry.ITEM, HexicalMain.id("null_media"), NULL_MEDIA_ITEM)
 		Registry.register(Registry.ITEM, HexicalMain.id("mage_block"), BlockItem(HexicalBlocks.MAGE_BLOCK, Settings()))
+		Registry.register(Registry.ITEM, HexicalMain.id("hex_candle"), BlockItem(HexicalBlocks.HEX_CANDLE_BLOCK, Settings().group(HEXICAL_GROUP)))
 	}
 
 	@JvmStatic

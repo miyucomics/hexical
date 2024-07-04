@@ -16,6 +16,7 @@
 	"advancements.hexical.reload_lamp.title": "In with the New!",
 	"advancements.hexical.reload_lamp.description": "Reload the lamp.",
 
+	"block.hexical.hex_candle": "Hex Candle",
 	"block.hexical.mage_block": "Mage Block",
 	"entity.hexical.living_scroll": "Living Scroll",
 	"entity.hexical.magic_missile": "Magic Missile",
