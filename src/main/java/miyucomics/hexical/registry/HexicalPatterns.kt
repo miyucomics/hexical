@@ -67,8 +67,8 @@ object HexicalPatterns {
 		register("soroban_increment", "wdeaqq", HexDir.NORTH_EAST, OpSorobanIncrement())
 		register("soroban_reset", "qdeeaae", HexDir.NORTH_EAST, OpSorobanReset())
 
-		register("prestidigitation", "wedewedew", HexDir.NORTH_EAST, OpPrestidigitation())
-		register("can_prestidigitate", "wqaqwqaqw", HexDir.NORTH_WEST, OpCanPrestidigitation())
+		register("prestidigitation", "wqaqwqaqw", HexDir.NORTH_WEST, OpPrestidigitation())
+		register("can_prestidigitate", "wedewedew", HexDir.NORTH_EAST, OpCanPrestidigitation())
 
 		register("magic_missile", "qaqww", HexDir.WEST, OpMagicMissile())
 
