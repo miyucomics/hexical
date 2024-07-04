@@ -93,6 +93,7 @@
 		"minecraft:redstone_lamp": "hexical:light",
 
 		"minecraft:candle": "hexical:light",
+		"hexical:hex_candle": "hexical:light",
 		"minecraft:white_candle": "hexical:light",
 		"minecraft:orange_candle": "hexical:light",
 		"minecraft:magenta_candle": "hexical:light",
