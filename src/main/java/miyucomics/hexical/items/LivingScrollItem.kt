@@ -49,6 +49,8 @@ class LivingScrollItem(private val size: Int) : Item(Settings().group(HexicalIte
 		}
 
 		val scroll = LivingScrollEntity(world, position, direction, size, patternList)
+		if (stack.orCreateNbt.getBoolean("aged"))
+			scroll.toggleAged()
 
 		if (scroll.canStayAttached()) {
 			scroll.onPlace()

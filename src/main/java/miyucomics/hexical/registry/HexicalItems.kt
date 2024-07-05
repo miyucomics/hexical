@@ -49,11 +49,15 @@ object HexicalItems {
 		Registry.register(Registry.ITEM, HexicalMain.id("hextito"), HEXTITO_ITEM)
 		Registry.register(Registry.ITEM, HexicalMain.id("null_media"), NULL_MEDIA_ITEM)
 		Registry.register(Registry.ITEM, HexicalMain.id("mage_block"), BlockItem(HexicalBlocks.MAGE_BLOCK, Settings()))
+		Registry.register(Registry.ITEM, HexicalMain.id("media_jar"), BlockItem(HexicalBlocks.MEDIA_JAR_BLOCK, Settings().group(HEXICAL_GROUP)))
 		Registry.register(Registry.ITEM, HexicalMain.id("hex_candle"), BlockItem(HexicalBlocks.HEX_CANDLE_BLOCK, Settings().group(HEXICAL_GROUP)))
 	}
 
 	@JvmStatic
 	fun clientInit() {
+		ModelPredicateProviderRegistry.register(SMALL_LIVING_SCROLL_ITEM, Identifier("aged")) { stack: ItemStack, _: ClientWorld?, _: LivingEntity?, _: Int -> if (stack.orCreateNbt.getBoolean("aged")) 1f else 0f }
+		ModelPredicateProviderRegistry.register(MEDIUM_LIVING_SCROLL_ITEM, Identifier("aged")) { stack: ItemStack, _: ClientWorld?, _: LivingEntity?, _: Int -> if (stack.orCreateNbt.getBoolean("aged")) 1f else 0f }
+		ModelPredicateProviderRegistry.register(LARGE_LIVING_SCROLL_ITEM, Identifier("aged")) { stack: ItemStack, _: ClientWorld?, _: LivingEntity?, _: Int -> if (stack.orCreateNbt.getBoolean("aged")) 1f else 0f }
 		ModelPredicateProviderRegistry.register(CONJURED_STAFF_ITEM, Identifier("sprite")) { stack: ItemStack, _: ClientWorld?, _: LivingEntity?, _: Int -> stack.orCreateNbt.getFloat("sprite") }
 		ModelPredicateProviderRegistry.register(CONJURED_COMPASS_ITEM, Identifier("angle"), CompassAnglePredicateProvider(CompassTarget { _: ClientWorld?, stack: ItemStack?, player: Entity? ->
 			if (player != null && stack != null && stack.hasNbt()) {

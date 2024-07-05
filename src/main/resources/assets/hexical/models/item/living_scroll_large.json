@@ -2,5 +2,13 @@
 	"parent": "minecraft:item/generated",
 	"textures": {
 		"layer0": "hexical:item/living_scroll_large"
-	}
+	},
+	"overrides": [
+		{
+			"predicate": {
+				"aged": 1
+			},
+			"model": "hexical:item/living_scroll_large_aged"
+		}
+	]
 }

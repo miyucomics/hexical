@@ -21,6 +21,7 @@ import net.minecraft.world.World
 import net.minecraft.world.event.GameEvent
 
 class HexCandleBlock : CandleBlock(Settings.of(Material.DECORATION).nonOpaque().strength(0.1f).sounds(BlockSoundGroup.CANDLE).luminance(STATE_TO_LUMINANCE)), BlockEntityProvider {
+	@Deprecated("Deprecated in Java")
 	override fun onUse(state: BlockState, world: World, pos: BlockPos, player: PlayerEntity, hand: Hand, hit: BlockHitResult?): ActionResult {
 		if (player.isSneaking)
 			return super.onUse(state, world, pos, player, hand, hit)

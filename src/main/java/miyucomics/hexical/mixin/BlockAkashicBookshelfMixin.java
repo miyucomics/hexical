@@ -33,6 +33,8 @@ public class BlockAkashicBookshelfMixin {
 			return;
 		if (player.isSneaking() || hand == Hand.OFF_HAND)
 			return;
+		if (!player.getMainHandStack().isEmpty())
+			return;
 		BlockEntity shelf = world.getBlockEntity(pos);
 		if (shelf instanceof BlockEntityAkashicBookshelf) {
 			NbtCompound nbt = ((BlockEntityAkashicBookshelf) shelf).getIotaTag();
