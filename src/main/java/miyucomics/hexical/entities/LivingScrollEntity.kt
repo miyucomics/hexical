@@ -149,6 +149,7 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: Wo
 			val constructed = mutableListOf<PatternIota>()
 			for (pattern in this.patterns)
 				constructed.add(PatternIota(HexPattern.fromNBT(pattern)))
+			stack.orCreateNbt.putBoolean("aged", this.dataTracker.get(agedDataTracker))
 			stack.orCreateNbt.putCompound("patterns", HexIotaTypes.serialize(ListIota(constructed.toList())))
 			this.dropStack(stack)
 		}
