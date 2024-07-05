@@ -1,10 +1,8 @@
 package miyucomics.hexical.mixin;
 
 import at.petrak.hexcasting.api.spell.casting.CastingHarness;
-import at.petrak.hexcasting.api.spell.iota.Iota;
 import at.petrak.hexcasting.common.blocks.akashic.BlockAkashicBookshelf;
 import at.petrak.hexcasting.common.blocks.akashic.BlockEntityAkashicBookshelf;
-import at.petrak.hexcasting.common.lib.HexSounds;
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes;
 import at.petrak.hexcasting.xplat.IXplatAbstractions;
 import net.minecraft.block.BlockState;
@@ -13,7 +11,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -24,6 +21,8 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+import static net.minecraft.sound.SoundCategory.BLOCKS;
 
 @Mixin(BlockAkashicBookshelf.class)
 public class BlockAkashicBookshelfMixin {
@@ -43,7 +42,7 @@ public class BlockAkashicBookshelfMixin {
 			CastingHarness harness = IXplatAbstractions.INSTANCE.getHarness((ServerPlayerEntity) player, hand);
 			harness.getStack().add(HexIotaTypes.deserialize(nbt, (ServerWorld) world));
 			IXplatAbstractions.INSTANCE.setHarness((ServerPlayerEntity) player, harness);
-			world.playSound(null, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 1f, 1f);
+			world.playSound(null, pos, SoundEvents.ENTITY_ITEM_PICKUP, BLOCKS, 1f, 1f);
 			player.swingHand(hand, true);
 		}
 	}

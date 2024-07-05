@@ -25,6 +25,6 @@ object HexicalBlocks {
 
 	@JvmStatic
 	fun clientInit() {
-		BlockRenderLayerMap.INSTANCE.putBlock(MEDIA_JAR_BLOCK, RenderLayer.getTranslucent())
+		BlockRenderLayerMap.INSTANCE.putBlock(MEDIA_JAR_BLOCK, RenderLayer.getCutout())
 	}
 }

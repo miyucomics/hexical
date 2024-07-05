@@ -7,10 +7,7 @@ import at.petrak.hexcasting.api.spell.math.HexPattern
 import at.petrak.hexcasting.common.casting.operators.selectors.OpGetEntitiesBy
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.casting.patterns.*
-import miyucomics.hexical.casting.patterns.basic.OpCongruentPattern
-import miyucomics.hexical.casting.patterns.basic.OpDupMany
-import miyucomics.hexical.casting.patterns.basic.OpShufflePattern
-import miyucomics.hexical.casting.patterns.basic.OpSimilar
+import miyucomics.hexical.casting.patterns.basic.*
 import miyucomics.hexical.casting.patterns.circle.OpDisplace
 import miyucomics.hexical.casting.patterns.conjured_staff.OpConjureStaff
 import miyucomics.hexical.casting.patterns.conjured_staff.OpReadStaff
@@ -58,6 +55,8 @@ object HexicalPatterns {
 	fun init() {
 		registerPerWorld("greater_blink", "wqawawaqwqwqawawaqw", HexDir.SOUTH_WEST, OpGreaterBlink())
 
+		register("perlin", "qawedqdq", HexDir.WEST, OpPerlin())
+
 		register("age_scroll", "wewaawewaddwwewwdwwew", HexDir.SOUTH_EAST, OpAgeScroll())
 
 		register("conjure_firework", "dedwaqwwawwqa", HexDir.SOUTH_WEST, OpConjureFirework())
@@ -67,8 +66,8 @@ object HexicalPatterns {
 		register("soroban_increment", "wdeaqq", HexDir.NORTH_EAST, OpSorobanIncrement())
 		register("soroban_reset", "qdeeaae", HexDir.NORTH_EAST, OpSorobanReset())
 
-		register("prestidigitation", "wqaqwqaqw", HexDir.NORTH_WEST, OpPrestidigitation())
-		register("can_prestidigitate", "wedewedew", HexDir.NORTH_EAST, OpCanPrestidigitation())
+		register("prestidigitation", "wedewedew", HexDir.NORTH_EAST, OpPrestidigitation())
+		register("can_prestidigitate", "wqaqwqaqw", HexDir.NORTH_WEST, OpCanPrestidigitation())
 
 		register("magic_missile", "qaqww", HexDir.WEST, OpMagicMissile())
 

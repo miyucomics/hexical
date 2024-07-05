@@ -18,6 +18,7 @@
 
 	"block.hexical.hex_candle": "Hex Candle",
 	"block.hexical.mage_block": "Mage Block",
+	"block.hexical.media_jar": "Media Jar",
 	"entity.hexical.living_scroll": "Living Scroll",
 	"entity.hexical.magic_missile": "Magic Missile",
 	"entity.hexical.speck": "Speck",
@@ -353,6 +354,11 @@
     "hexical.page.dyes.1": "The following pages will be a somewhat complete list of its targets, although I have heard rumors that certain forces can add more functionality than is shown here.",
     "hexical.page.dyes.2": "The valid block targets for this spell include beds, candles, cakes with candles, carpets, concrete, concrete powder, glazed terracotta, sand into red sand and vice versa, sandstone and all blocks derived from it into its red variant and vice versa, shulker boxes, stained glass, stained glass panes, terracotta, tulips into their multiple colors, and wool blocks. As for entities, cat collars, dog collars, shulkers, and item entities of all of the above blocks are valid.",
 
+    "hexical.page.perlin.title": "Quasirandomness",
+    "hexical.page.perlin.0": "In certain regions of the world, ambient media is more concentrated. I can measure that concentration and even extrapolate backwards and forwards in time to get a quasi-random number between 0 and 1, corresponding to that location at that time. Points in time and space that are close to each other often have similar values.",
+	"hexcasting.spell.hexical:perlin": "Perlin Distillation",
+    "hexical.page.perlin.summary": "Measures the concentration of ambient at that point in space and time, normalized between 0 and 1.",
+
 	"hexcasting.spell.hexical:prestidigitation": "Prestidigitation",
 	"hexical.page.prestidigitation.summary": "Causes a small magical effect on the block or entity, usually not too distinct from the original nature or function of the block or entity.",
     "hexical.page.prestidigitation.0": "This spell differs from all others I've seen. Rather than a single specific effect, this spell seems to combine dozens of small effects into a single spell. It targets a vast array of blocks and entities, and I am constantly finding uses for it. I have documented them on the following pages.",
@@ -376,7 +382,7 @@
     "hexical.page.conjure_firework.3": "$(o)Special Effects$()$(br2)The seventh parameter controls whether the particles of the firework flicker, as if adding glowstone to the virtual firework star.$(br2)The eighth parameter controls whether the particles of the firework leave trails, as if adding a diamond to the virtual firework star.",
 
 	"hexical.category.scrying": "Scrying",
-	"hexical.category.scrying.desc": "I have stumbled upon a branch of manipulating _media entirely focused around information. These patterns can divine a surprising amount of information like types of blocks, status effects, the weather, the nutritional value of food, whether I am sprinting, $(o)block explosion resistance$(), and more. While likely not too useful for the majority of _Hexes, these will be convenient to have, should I ever need them.",
+	"hexical.category.scrying.desc": "I have stumbled upon a branch of manipulating _media entirely focused around information about the world. These patterns can divine a surprising amount of information like types of blocks, status effects, the weather, the nutritional value of food, whether I am sprinting, $(o)block explosion resistance$(), and more. While likely not too useful for the majority of _Hexes, these will be convenient to have, should I ever need them.",
 
 	"hexical.page.enchantments.title": "Enchantments",
 	"hexcasting.spell.hexical:get_enchantments": "Thaumaturgist's Purification",
