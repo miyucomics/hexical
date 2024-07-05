@@ -7,7 +7,7 @@ import at.petrak.hexcasting.api.spell.iota.Iota
 import miyucomics.hexical.casting.iota.IdentifierIota
 
 class OpGetWorldData(private val mode: Int) : ConstMediaAction {
-	override val argc = 1
+	override val argc = 0
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
 		return listOf(
 			when (mode) {
