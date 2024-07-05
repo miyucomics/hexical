@@ -62,6 +62,7 @@
 	"hexcasting.mishap.invalid_value.food": "a food item entity",
 	"hexcasting.mishap.invalid_value.potion_holding": "a food, potion, or tipped arrow item entity",
 	"hexcasting.mishap.invalid_value.identifiable": "an identifiable target",
+	"hexcasting.mishap.invalid_value.integer_natural": "an integer greater than 0",
 	"hexcasting.mishap.invalid_value.nonempty_list": "a non-empty list",
 	"hexcasting.mishap.invalid_value.true_dye_list": "a list of colored dyes",
 	"hexcasting.mishap.invalid_value.recognizable": "a target with extra information",
