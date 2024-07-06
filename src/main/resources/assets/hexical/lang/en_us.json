@@ -138,7 +138,7 @@
 	"hexical.page.themis.1": "After each iteration, it demands a number at the top of the stack which will correspond to that iota. At the end of the gambit, a list is pushed with the iota sorted by that number in increasing order. The order of identically numbered iota are kept. If it encounters $(l:patterns/meta#hexcasting:halt)Charon's Gambit$(), it will create a sorted list with only the iota it has come across.$(br2)$(o)Shuffling is the only thing which Nature cannot undo.$()",
 
 	"hexical.page.media_jar.title": "Media Jar",
-	"hexical.page.media_jar.0": "",:
+	"hexical.page.media_jar.0": "I can craft this little decorative jar of liquid media. Unfortunately, it seems the glass is too thick for me to draw media through it, although I have read rumors of ancient hexcasters solving this issue to make bottles of media. I wonder what I would see if I took a sip.",
 
 	"hexical.page.living_scroll.title": "Living Scrolls",
 	"hexical.page.living_scroll.0": "Living scrolls are mixed with a pinch of amethyst, enchanting the ink to move and wiggle like the patterns I draw with my $(l:items/staff)staff$(). Not only that, living scrolls can display lists of patterns.$(br2)$(o)You can't be a proper writer without a touch of madness, can you?$()",
