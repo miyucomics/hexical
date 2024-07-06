@@ -1,4 +1,6 @@
 {
+	"parent": "block/block",
+	"ambientocclusion": false,
 	"textures": {
 		"0": "hexical:block/media_jar",
 		"particle": "hexical:block/media_jar"
