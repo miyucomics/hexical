@@ -26,8 +26,8 @@ class MediaJarBlock : TransparentBlock(Settings.of(Material.GLASS).emissiveLight
 		if (world.isClient)
 			return ActionResult.SUCCESS
 		player.swingHand(hand)
-		world.playSoundFromEntity(null, player, SoundEvents.ENTITY_GENERIC_DRINK, SoundCategory.PLAYERS, 1f, 1f)
-		player.addStatusEffect(StatusEffectInstance(HexicalStatusEffects.MEDIA_SICKNESS_STATUS_EFFECT, 10, 0, false, false, true))
+		world.playSoundFromEntity(null, player, SoundEvents.ITEM_HONEY_BOTTLE_DRINK, SoundCategory.PLAYERS, 1f, 1f)
+		player.addStatusEffect(StatusEffectInstance(HexicalStatusEffects.MEDIA_VISION_STATUS_EFFECT, 2000, 0, false, false, true))
 		return ActionResult.SUCCESS
 	}
 }

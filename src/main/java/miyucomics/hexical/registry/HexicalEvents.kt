@@ -1,13 +1,19 @@
 package miyucomics.hexical.registry
 
+import ladysnake.satin.api.event.ShaderEffectRenderCallback
+import ladysnake.satin.api.managed.ShaderEffectManager
+import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.state.EvokeState
 import miyucomics.hexical.state.KeybindData
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
+import net.minecraft.client.MinecraftClient
 
 object HexicalEvents {
+	private val MEDIA_SICKNESS_SHADER = ShaderEffectManager.getInstance().manage(HexicalMain.id("shaders/post/media_vision.json"))
+
 	@JvmStatic
 	fun init() {
 		ServerPlayConnectionEvents.JOIN.register { handler, _, server ->
@@ -42,5 +48,14 @@ object HexicalEvents {
 						KeybindData.duration[player]!![key] = KeybindData.duration[player]!![key]!! + 1
 			}
 		}
+	}
+
+	@JvmStatic
+	fun clientInit() {
+		ShaderEffectRenderCallback.EVENT.register(ShaderEffectRenderCallback { tickDelta: Float ->
+			val player = MinecraftClient.getInstance().player?: return@ShaderEffectRenderCallback
+			if (player.hasStatusEffect(HexicalStatusEffects.MEDIA_VISION_STATUS_EFFECT))
+				MEDIA_SICKNESS_SHADER.render(tickDelta)
+		})
 	}
 }
