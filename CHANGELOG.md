@@ -4,16 +4,19 @@
 - added hexbursts - adds an iota to your stack when eaten
 - added hextitos - casts a hex using the player stack when eaten
 - added dye iota
-    - added Chromatic Purification and Dye spell to get and set dyes of blocks and entities
-    - added data-driven process to add color associations to blocks so you can add support for mods with simple datapacks
+  - added Chromatic Purification and Dye spell to get and set dyes of blocks and entities
+  - added data-driven process to add color associations to blocks so you can add support for mods with simple datapacks
 - added evocation - enlightened players can cast spells by holding a keybind for some time
 - added internal iota storage to handheld lamp and patterns to interact with it
+- added Perlin Distillation - get quasi-random number corresponding to a location and time
 - added Similarity Distillation - get if two iota are of the same type
 - added Congruence Distillation - get if two patterns are the same, regardless of orientation
 - added Charge, Dodge, Retreat, and Evade Reflection patterns - pushes how long you've pressed the wasd keys
+- added Glyphmaker's Distillation - scrambles a pattern with a number as a seed
 - added Conjure Compass spell - conjure a compass that always points towards a location
-- added Conjure Firework spell - conjures a firework with a vast number of options and possibilities
-- added Simulate Firework spell - conjures a firework based off the firework star in your offhand
+- added firework spells
+  - added Conjure Firework spell - conjures a firework with a vast number of options and possibilities
+  - added Simulate Firework spell - conjures a firework based off the firework star in your offhand
 - added Magic Missile spell - fire silver of amethyst that deals knockback and weak damage
 - added Greater Blink spell - blink with a relative positional and rotational offset for much cheaper than GTP
 - added Prestidigitation spell - dozens of small magical effect on blocks and entities
@@ -25,6 +28,9 @@
 - added mishap to Chorus Blink if you don't have chorus fruit in your inventory
 - added semi-permeable modifier for : only sprinting creatures have collision
 - added semi-permeable mage block modifier: only sprinting creatures have collision
+- added more conjured staff sprites
+- added more scrying patterns
+- changed conjured staff sprite to be less messy
 - changed Identify pattern to have ambit limitation
 - changed speed and variance of living scroll patterns
 - changed specks to be one block big by default, can be scaled
@@ -39,6 +45,7 @@
 - optimize speck and living scroll rendering massively
 - overhauled project structure completely
 - overhauled genie lamps completely and entirely
+- overhauled world scrying patterns
 - removed casting sounds from conjured staves and replaced it with staff drawing sounds
 - updated documentation
 - updated telepathy code to share code with movement reflections
@@ -51,7 +58,6 @@
 - added living scrolls
 - added proper speck text rendering
 - added more meta-evals
-    - added Dioscuri's Gambit
     - added Janus' Gambit
     - added Sisyphus' Gambit
 - added z-axis rotation for specks
@@ -86,4 +92,4 @@
 - fixed telepathy crashing on servers
 
 ## 1.0.0
-- Initial release, let's go!
+- Initial release, wooo!
