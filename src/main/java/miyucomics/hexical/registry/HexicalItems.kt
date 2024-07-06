@@ -58,7 +58,7 @@ object HexicalItems {
 		ModelPredicateProviderRegistry.register(SMALL_LIVING_SCROLL_ITEM, Identifier("aged")) { stack: ItemStack, _: ClientWorld?, _: LivingEntity?, _: Int -> if (stack.orCreateNbt.getBoolean("aged")) 1f else 0f }
 		ModelPredicateProviderRegistry.register(MEDIUM_LIVING_SCROLL_ITEM, Identifier("aged")) { stack: ItemStack, _: ClientWorld?, _: LivingEntity?, _: Int -> if (stack.orCreateNbt.getBoolean("aged")) 1f else 0f }
 		ModelPredicateProviderRegistry.register(LARGE_LIVING_SCROLL_ITEM, Identifier("aged")) { stack: ItemStack, _: ClientWorld?, _: LivingEntity?, _: Int -> if (stack.orCreateNbt.getBoolean("aged")) 1f else 0f }
-		ModelPredicateProviderRegistry.register(CONJURED_STAFF_ITEM, Identifier("sprite")) { stack: ItemStack, _: ClientWorld?, _: LivingEntity?, _: Int -> stack.orCreateNbt.getFloat("sprite") }
+		ModelPredicateProviderRegistry.register(CONJURED_STAFF_ITEM, Identifier("sprite")) { stack: ItemStack, _: ClientWorld?, _: LivingEntity?, _: Int -> stack.orCreateNbt.getFloat("sprite") / 10 }
 		ModelPredicateProviderRegistry.register(CONJURED_COMPASS_ITEM, Identifier("angle"), CompassAnglePredicateProvider(CompassTarget { _: ClientWorld?, stack: ItemStack?, player: Entity? ->
 			if (player != null && stack != null && stack.hasNbt()) {
 				val nbt = stack.nbt!!
