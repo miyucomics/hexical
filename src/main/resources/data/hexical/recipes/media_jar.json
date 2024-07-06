@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"key": {
+		"P": {
+			"item": "hexcasting:edified_pressure_plate"
+		},
+		"A": {
+			"item": "hexcasting:charged_amethyst"
+		},
+		"G": {
+			"item": "minecraft:glass_pane"
+		}
+	},
+	"pattern": [" P ", "GAG", " G "],
+	"result": {
+		"item": "hexical:media_jar"
+	}
+}
