@@ -1,7 +1,7 @@
 {
 	"parent": "minecraft:item/handheld_rod",
 	"textures": {
-		"layer0": "hexical:item/conjured_staff"
+		"layer0": "hexical:item/conjured_staff_staff"
 	},
 	"overrides": [
 		{
@@ -21,6 +21,12 @@
 				"sprite": 0.3
 			},
 			"model": "hexical:item/conjured_staff_key"
+		},
+		{
+			"predicate": {
+				"sprite": 0.4
+			},
+			"model": "hexical:item/conjured_staff_mirror"
 		}
 	]
 }
