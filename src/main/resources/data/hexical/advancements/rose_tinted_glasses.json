@@ -1,0 +1,33 @@
+{
+	"parent": "hexcasting:root",
+	"criteria": {
+		"sip": {
+			"trigger": "minecraft:item_used_on_block",
+			"conditions": {
+				"location": {
+					"block": {
+						"blocks": [
+							"hexical:media_jar"
+						]
+					}
+				}
+			}
+		}
+	},
+	"display": {
+		"announce_to_chat": true,
+		"title": {
+			"translate": "advancements.hexical.media_slurp.title"
+		},
+		"description": {
+			"translate": "advancements.hexical.media_slurp.description"
+		},
+		"frame": "task",
+		"hidden": true,
+		"icon": {
+			"item": "hexical:media_jar"
+		},
+		"show_toast": true
+	},
+	"requirements": [["sip"]]
+}

@@ -14,6 +14,14 @@
 		},
 		{
 			"type": "hexcasting:pattern",
+			"op_id": "hexical:get_biome",
+			"anchor": "hexical:get_biome",
+			"input": "",
+			"output": "identifier",
+			"text": "hexical.page.get_biome.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
 			"op_id": "hexical:get_weather",
 			"anchor": "hexical:get_weather",
 			"input": "",
@@ -27,22 +35,6 @@
 			"input": "",
 			"output": "number",
 			"text": "hexical.page.get_time.summary"
-		},
-		{
-			"type": "hexcasting:pattern",
-			"op_id": "hexical:get_biome",
-			"anchor": "hexical:get_biome",
-			"input": "",
-			"output": "identifier",
-			"text": "hexical.page.get_biome.summary"
-		},
-		{
-			"type": "hexcasting:pattern",
-			"op_id": "hexical:get_light",
-			"anchor": "hexical:get_light",
-			"input": "",
-			"output": "number",
-			"text": "hexical.page.get_light.summary"
 		},
 		{
 			"type": "hexcasting:pattern",

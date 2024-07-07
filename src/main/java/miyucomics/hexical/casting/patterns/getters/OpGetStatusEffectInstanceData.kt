@@ -21,7 +21,7 @@ class OpGetStatusEffectInstanceData(private val mode: Int) : ConstMediaAction {
 		val instance = entity.getStatusEffect(Registry.STATUS_EFFECT.get(effect)) ?: return listOf(NullIota())
 		return when (mode) {
 			0 -> instance.amplifier.asActionResult
-			1 -> instance.duration.asActionResult
+			1 -> (instance.duration / 20).asActionResult
 			else -> throw IllegalStateException()
 		}
 	}

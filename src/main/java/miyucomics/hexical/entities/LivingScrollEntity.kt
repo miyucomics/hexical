@@ -105,8 +105,8 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: Wo
 		this.dataTracker.set(renderDataTracker, patterns[((world.time / 20).toInt() % patterns.size)])
 	}
 
-	override fun writeCustomDataToNbt(nbt: NbtCompound?) {
-		nbt!!.putByte("direction", facing.id.toByte())
+	override fun writeCustomDataToNbt(nbt: NbtCompound) {
+		nbt.putInt("direction", facing.id)
 		nbt.putBoolean("aged", this.dataTracker.get(agedDataTracker))
 		nbt.putInt("size", this.dataTracker.get(sizeDataTracker))
 
@@ -118,8 +118,8 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: Wo
 		super.writeCustomDataToNbt(nbt)
 	}
 
-	override fun readCustomDataFromNbt(nbt: NbtCompound?) {
-		this.facing = Direction.byId(nbt!!.getByte("direction").toInt())
+	override fun readCustomDataFromNbt(nbt: NbtCompound) {
+		this.facing = Direction.byId(nbt.getInt("direction"))
 		this.dataTracker.set(agedDataTracker, nbt.getBoolean("aged"))
 		this.dataTracker.set(sizeDataTracker, nbt.getInt("size"))
 		setFacing(this.facing)
