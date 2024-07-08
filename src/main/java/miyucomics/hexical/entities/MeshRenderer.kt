@@ -11,18 +11,16 @@ import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.util.Identifier
 import net.minecraft.util.math.Vec3f
 
-class SpeckRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<SpeckEntity>(ctx) {
-	override fun getTexture(entity: SpeckEntity?): Identifier? = null
-	override fun shouldRender(entity: SpeckEntity?, frustum: Frustum?, x: Double, y: Double, z: Double) = true
-	override fun render(entity: SpeckEntity?, yaw: Float, tickDelta: Float, matrices: MatrixStack, vertexConsumers: VertexConsumerProvider, light: Int) {
+class MeshRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<MeshEntity>(ctx) {
+	override fun getTexture(entity: MeshEntity?): Identifier? = null
+	override fun shouldRender(entity: MeshEntity?, frustum: Frustum?, x: Double, y: Double, z: Double) = true
+	override fun render(entity: MeshEntity?, yaw: Float, tickDelta: Float, matrices: MatrixStack, vertexConsumers: VertexConsumerProvider, light: Int) {
 		val oldShader = RenderSystem.getShader()
 		RenderSystem.setShader(GameRenderer::getPositionColorShader)
 		RenderSystem.enableDepthTest()
 		matrices.push()
 
-		if (!entity!!.clientIsText)
-			matrices.translate(0.0, 0.25, 0.0)
-		if (entity.yaw != 0.0f)
+		if (entity!!.yaw != 0.0f)
 			matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(-entity.yaw))
 		if (entity.pitch != 0.0f)
 			matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(entity.pitch))
@@ -31,13 +29,7 @@ class SpeckRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<SpeckEn
 		matrices.scale(entity.clientSize, entity.clientSize, entity.clientSize)
 
 		RenderSystem.disableCull()
-		if (entity.clientIsText) {
-			val height = (-textRenderer.getWidth(entity.clientText) / 2).toFloat()
-			matrices.scale(0.025f, -0.025f, 0.025f)
-			textRenderer.draw(matrices, entity.clientText, height, -textRenderer.fontHeight.toFloat() / 2f, entity.clientPigment.getColor(0f, entity.pos))
-		} else {
-			RenderUtils.drawFigure(matrices.peek().positionMatrix, RenderUtils.getNormalizedStrokes(entity.clientPattern), entity.clientThickness * 0.05f, entity.clientPigment, entity.pos)
-		}
+		RenderUtils.sentinelLike(matrices, entity.clientVertices, entity.clientThickness * 0.05f, entity.clientPigment)
 		RenderSystem.enableCull()
 
 		matrices.pop()
