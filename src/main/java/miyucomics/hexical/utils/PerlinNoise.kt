@@ -27,16 +27,16 @@ class PerlinNoise(seed: Int) {
 		return a + b + c + d
 	}
 
-	fun noise(x: Double, y: Double, z: Double, w: Double): Double {
-		val X = floor(x).toInt() and 255
-		val Y = floor(y).toInt() and 255
-		val Z = floor(z).toInt() and 255
-		val W = floor(w).toInt() and 255
+	fun noise(sampleX: Double, sampleY: Double, sampleZ: Double, time: Double): Double {
+		val X = floor(sampleX).toInt() and 255
+		val Y = floor(sampleY).toInt() and 255
+		val Z = floor(sampleZ).toInt() and 255
+		val W = floor(time).toInt() and 255
 
-		val x = x - floor(x)
-		val y = y - floor(y)
-		val z = z - floor(z)
-		val w = w - floor(w)
+		val x = sampleX - floor(sampleX)
+		val y = sampleY - floor(sampleY)
+		val z = sampleZ - floor(sampleZ)
+		val w = time - floor(time)
 
 		val u = fade(x)
 		val v = fade(y)
