@@ -18,11 +18,8 @@ class OpGetItemStackData(private val mode: Int) : ConstMediaAction {
 		val stack = args.getItemStack(0, argc)
 		return when (mode) {
 			0 -> stack.count.asActionResult
-			1 -> stack.maxCount.asActionResult
-			2 -> stack.damage.asActionResult
-			3 -> stack.maxDamage.asActionResult
-			4 -> stack.isFood.asActionResult
-			5 -> {
+			1 -> stack.damage.asActionResult
+			2 -> {
 				var data = stack.enchantments
 				if (stack.isOf(Items.ENCHANTED_BOOK))
 					data = EnchantedBookItem.getEnchantmentNbt(stack)
