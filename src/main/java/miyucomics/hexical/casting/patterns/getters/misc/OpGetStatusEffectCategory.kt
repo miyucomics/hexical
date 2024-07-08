@@ -1,4 +1,4 @@
-package miyucomics.hexical.casting.patterns.getters
+package miyucomics.hexical.casting.patterns.getters.misc
 
 import at.petrak.hexcasting.api.spell.ConstMediaAction
 import at.petrak.hexcasting.api.spell.asActionResult
@@ -14,7 +14,7 @@ class OpGetStatusEffectCategory : ConstMediaAction {
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
 		val effect = args.getIdentifier(0, argc)
 		if (!Registry.STATUS_EFFECT.containsId(effect))
-			throw MishapInvalidIota.of(args[0], 0, "status_effect")
+			throw MishapInvalidIota.of(args[0], 0, "status_effect_id")
 		return when (Registry.STATUS_EFFECT.get(effect)!!.category) {
 			StatusEffectCategory.BENEFICIAL -> (1).asActionResult
 			StatusEffectCategory.NEUTRAL -> (0).asActionResult

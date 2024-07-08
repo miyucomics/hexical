@@ -6,11 +6,11 @@
 	"pages": [
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:similar",
-			"anchor": "hexical:similar",
-			"input": "any, any",
-			"output": "boolean",
-			"text": "hexical.page.similar.summary"
+			"op_id": "hexical:theodolite",
+			"anchor": "hexical:theodolite",
+			"input": "entity",
+			"output": "vector",
+			"text": "hexical.page.theodolite.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -20,6 +20,14 @@
 			"output": "many",
 			"text": "hexical.page.dup_many.summary"
 	    },
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:similar",
+			"anchor": "hexical:similar",
+			"input": "any, any",
+			"output": "boolean",
+			"text": "hexical.page.similar.summary"
+		},
 		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:congruent",

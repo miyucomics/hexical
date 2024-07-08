@@ -21,6 +21,11 @@ import miyucomics.hexical.casting.patterns.eval.OpThemis
 import miyucomics.hexical.casting.patterns.fireworks.OpConjureFirework
 import miyucomics.hexical.casting.patterns.fireworks.OpSimulateFirework
 import miyucomics.hexical.casting.patterns.getters.*
+import miyucomics.hexical.casting.patterns.getters.misc.OpGetEnchantmentStrength
+import miyucomics.hexical.casting.patterns.getters.types.OpGetBlockTypeData
+import miyucomics.hexical.casting.patterns.getters.types.OpGetFoodTypeData
+import miyucomics.hexical.casting.patterns.getters.types.OpGetItemTypeData
+import miyucomics.hexical.casting.patterns.getters.misc.OpGetStatusEffectCategory
 import miyucomics.hexical.casting.patterns.grimoire.*
 import miyucomics.hexical.casting.patterns.identifier.OpIdentify
 import miyucomics.hexical.casting.patterns.identifier.OpRecognize
@@ -56,11 +61,15 @@ object HexicalPatterns {
 		registerPerWorld("greater_blink", "wqawawaqwqwqawawaqw", HexDir.SOUTH_WEST, OpGreaterBlink())
 
 		register("perlin", "qawedqdq", HexDir.WEST, OpPerlin())
+		register("theodolite", "wqaa", HexDir.EAST, OpGetEntityData(3))
 
 		register("age_scroll", "wewaawewaddwwewwdwwew", HexDir.SOUTH_EAST, OpAgeScroll())
 
 		register("conjure_firework", "dedwaqwwawwqa", HexDir.SOUTH_WEST, OpConjureFirework())
 		register("simulate_firework", "dedwaqwqqwqa", HexDir.SOUTH_WEST, OpSimulateFirework())
+
+		register("get_dye", "weedwa", HexDir.NORTH_EAST, OpGetDye())
+		register("dye", "dwaqqw", HexDir.NORTH_WEST, OpDye())
 
 		register("soroban_decrement", "waqdee", HexDir.SOUTH_EAST, OpSorobanDecrement())
 		register("soroban_increment", "wdeaqq", HexDir.NORTH_EAST, OpSorobanIncrement())
@@ -78,9 +87,6 @@ object HexicalPatterns {
 		register("wristpocket_count", "aaqqaaw", HexDir.WEST, OpGetWristpocket(1))
 		register("mage_hand", "aaqqaeea", HexDir.WEST, OpMageHand())
 		register("ingest", "aaqqadaa", HexDir.WEST, OpIngest())
-
-		register("get_dye", "weedwa", HexDir.NORTH_EAST, OpGetDye())
-		register("dye", "dwaqqw", HexDir.NORTH_WEST, OpDye())
 
 		register("similar", "dew", HexDir.NORTH_WEST, OpSimilar())
 		register("congruent", "aaqd", HexDir.EAST, OpCongruentPattern())
@@ -165,14 +171,16 @@ object HexicalPatterns {
 		register("get_light", "wqwqwqwqwqwaeqqqqaeqaeaeaeaw", HexDir.SOUTH_WEST, OpGetPositionData(0))
 		register("get_biome", "qwqwqawdqqaqqdwaqwqwq", HexDir.WEST, OpGetPositionData(1))
 		register("count_stack", "qaqqwqqqw", HexDir.EAST, OpGetItemStackData(0))
-		register("count_max_stack", "edeeweeew", HexDir.WEST, OpGetItemStackData(1))
-		register("damage_stack", "eeweeewdeq", HexDir.NORTH_EAST, OpGetItemStackData(2))
-		register("damage_max_stack", "qqwqqqwaqe", HexDir.NORTH_WEST, OpGetItemStackData(3))
-		register("edible", "adaqqqdd", HexDir.WEST, OpGetItemStackData(4))
-		register("get_hunger", "adaqqqddqe", HexDir.WEST, OpGetFoodData(0))
-		register("get_saturation", "adaqqqddqw", HexDir.WEST, OpGetFoodData(1))
-		register("is_meat", "adaqqqddaed", HexDir.WEST, OpGetFoodData(2))
-		register("is_snack", "adaqqqddaq", HexDir.WEST, OpGetFoodData(3))
+		register("damage_stack", "eeweeewdeq", HexDir.NORTH_EAST, OpGetItemStackData(1))
+
+		register("count_max_stack", "edeeweeew", HexDir.WEST, OpGetItemTypeData(0))
+		register("damage_max_stack", "qqwqqqwaqe", HexDir.NORTH_WEST, OpGetItemTypeData(1))
+		register("edible", "adaqqqdd", HexDir.WEST, OpGetItemTypeData(2))
+
+		register("get_hunger", "adaqqqddqe", HexDir.WEST, OpGetFoodTypeData(0))
+		register("get_saturation", "adaqqqddqw", HexDir.WEST, OpGetFoodTypeData(1))
+		register("is_meat", "adaqqqddaed", HexDir.WEST, OpGetFoodTypeData(2))
+		register("is_snack", "adaqqqddaq", HexDir.WEST, OpGetFoodTypeData(3))
 		register("is_burning", "qqwaqda", HexDir.EAST, OpGetEntityData(0))
 		register("burning_time", "eewdead", HexDir.WEST, OpGetEntityData(1))
 		register("is_wet", "qqqqwaadq", HexDir.SOUTH_WEST, OpGetEntityData(2))
@@ -182,12 +190,14 @@ object HexicalPatterns {
 		register("get_max_air", "wwaadee", HexDir.EAST, OpGetLivingEntityData(3))
 		register("is_sleeping", "aqaew", HexDir.NORTH_WEST, OpGetLivingEntityData(4))
 		register("is_sprinting", "eaq", HexDir.WEST, OpGetLivingEntityData(5))
-		register("get_enchantments", "waqeaeqawqwawaw", HexDir.WEST, OpGetItemStackData(5))
+
+		register("get_enchantments", "waqeaeqawqwawaw", HexDir.WEST, OpGetItemStackData(2))
 		register("get_enchantment_strength", "waqwwqaweede", HexDir.WEST, OpGetEnchantmentStrength())
+
 		register("get_player_hunger", "qqqadaddw", HexDir.WEST, OpGetPlayerData(2))
 		register("get_player_saturation", "qqqadaddq", HexDir.WEST, OpGetPlayerData(3))
-		register("block_hardness", "qaqqqqqeeeeedq", HexDir.EAST, OpGetBlockData(0))
-		register("block_blast_resistance", "qaqqqqqewaaqddqa", HexDir.EAST, OpGetBlockData(1))
+		register("block_hardness", "qaqqqqqeeeeedq", HexDir.EAST, OpGetBlockTypeData(0))
+		register("block_blast_resistance", "qaqqqqqewaaqddqa", HexDir.EAST, OpGetBlockTypeData(1))
 		register("get_effects_entity", "wqqq", HexDir.SOUTH_WEST, OpGetLivingEntityData(6))
 		register("get_effects_item", "wqqqadee", HexDir.SOUTH_WEST, OpGetPrescription())
 		register("get_effect_category", "wqqqaawd", HexDir.SOUTH_WEST, OpGetStatusEffectCategory())

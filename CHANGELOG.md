@@ -34,6 +34,10 @@
 - changed Identify pattern to have ambit limitation
 - changed speed and variance of living scroll patterns
 - changed specks to be one block big by default, can be scaled
+- changed some item scrying patterns to take item type identifiers instead
+- changed all the food scrying patterns to take item type identifiers instead
+- changed Miner's and Demoman's Purification to take block type identifiers instead
+  - moved them into separate blocks category
 - dropped support for Forge in order to prioritize development speed and features
 - fixed specks being slightly off-center
 - fixed advancements occasionally breaking
