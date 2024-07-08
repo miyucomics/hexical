@@ -8,7 +8,7 @@ import net.minecraft.client.render.entity.ProjectileEntityRenderer
 import net.minecraft.util.Identifier
 
 @Environment(value = EnvType.CLIENT)
-class MagicMissileRenderer(context: EntityRendererFactory.Context?) : ProjectileEntityRenderer<MagicMissileEntity?>(context) {
+class MagicMissileRenderer(context: EntityRendererFactory.Context) : ProjectileEntityRenderer<MagicMissileEntity>(context) {
 	override fun getTexture(entity: MagicMissileEntity?): Identifier {
 		return TEXTURE
 	}
