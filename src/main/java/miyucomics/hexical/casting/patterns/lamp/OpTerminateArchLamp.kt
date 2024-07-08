@@ -8,7 +8,6 @@ import at.petrak.hexcasting.api.spell.iota.Iota
 import miyucomics.hexical.casting.mishaps.NeedsActiveArchLampMishap
 import miyucomics.hexical.items.hasActiveArchLamp
 import miyucomics.hexical.registry.HexicalItems
-import miyucomics.hexical.registry.HexicalSounds
 
 class OpTerminateArchLamp : SpellAction {
 	override val argc = 0

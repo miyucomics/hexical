@@ -44,6 +44,7 @@
 	"subtitles.hexical.lamp_deactivate": "Lamp deactivates",
 	"particle.minecraft.soul_7": "",
 
+	"hexcasting.mishap.bad_block.akashic_bookshelf": "an akashic bookshelf",
 	"hexcasting.mishap.bad_block.mage_block": "a mage block",
 	"hexcasting.mishap.bad_block.prestidigitation": "a prestidigitation-sensitive block",
 	"hexcasting.mishap.bad_item.grimoire": "a grimoire",
@@ -331,6 +332,13 @@
 	"hexical.page.read_staff.summary": "Reads the iota from the conjured staff's inner storage.",
 	"hexcasting.spell.hexical:write_staff": "Staff Gambit",
 	"hexical.page.write_staff.summary": "Writes an iota to the conjured staff's inner storage. Does not allow player references.",
+
+	"hexical.page.akashic_utils.title": "Akashic Utilities",
+	"hexical.page.akashic_utils.0": "I have discovered some conveniences with akashic libraries! I can right-click a filled akashic bookshelf to copy the iota from it into my player stack. I can also right-click with a scroll to copy the pattern of the bookshelf onto the scroll. Finally, I have discovered two patterns that can read and write directly to a bookshelf without need of a record. While I sacrifice being able to access them universally, I can perform these actions for free.",
+	"hexcasting.spell.hexical:read_shelf": "Librarian's Purification",
+	"hexical.page.read_shelf.summary": "Reads the iota from an akashic bookshelf within ambit. Free.",
+	"hexcasting.spell.hexical:write_shelf": "Librarian's Gambit",
+	"hexical.page.write_shelf.summary": "Writes an iota under a pattern to an akashic bookshelf within ambit. Free.",
 
 	"hexical.page.circle_spells.title": "Circle Spells",
 	"hexical.page.circle_spells.0": "When the media courses through the boundaries of a circle, it saturates the domain inside the circle with _media, allowing me to manipulate the environment inside far more flexibly than I am used to. The following are some spells I've come across or developed, which are to only be cast by a $(l:greatwork/spellcircles)spell circle$().",

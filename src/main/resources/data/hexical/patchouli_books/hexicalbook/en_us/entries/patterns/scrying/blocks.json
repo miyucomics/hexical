@@ -8,7 +8,7 @@
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:block_hardness",
 			"anchor": "hexical:block_hardness",
-			"input": "vector",
+			"input": "identifier",
 			"output": "number",
 			"text": "hexical.page.block_hardness.summary"
 		},
@@ -16,7 +16,7 @@
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:block_blast_resistance",
 			"anchor": "hexical:block_blast_resistance",
-			"input": "vector",
+			"input": "identifier",
 			"output": "number",
 			"text": "hexical.page.block_blast_resistance.summary"
 		}

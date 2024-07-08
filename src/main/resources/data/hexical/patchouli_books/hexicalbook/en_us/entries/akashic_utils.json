@@ -1,0 +1,29 @@
+{
+	"name": "hexical.page.akashic_utils.title",
+	"icon": "hexcasting:akashic_bookshelf",
+	"category": "hexcasting:greatwork",
+	"advancement": "hexcasting:enlightenment",
+	"sortnum": 5,
+	"pages": [
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.akashic_utils.0"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:read_shelf",
+			"anchor": "hexical:read_shelf",
+			"input": "vector",
+			"output": "any",
+			"text": "hexical.page.read_shelf.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:write_shelf",
+			"anchor": "hexical:write_shelf",
+			"input": "vector, pattern, any",
+			"output": "",
+			"text": "hexical.page.write_shelf.summary"
+		}
+	]
+}
