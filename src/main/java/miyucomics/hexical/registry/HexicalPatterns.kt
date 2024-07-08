@@ -7,6 +7,8 @@ import at.petrak.hexcasting.api.spell.math.HexPattern
 import at.petrak.hexcasting.common.casting.operators.selectors.OpGetEntitiesBy
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.casting.patterns.*
+import miyucomics.hexical.casting.patterns.akashic.OpReadAkashicShelf
+import miyucomics.hexical.casting.patterns.akashic.OpWriteAkashicShelf
 import miyucomics.hexical.casting.patterns.basic.*
 import miyucomics.hexical.casting.patterns.circle.OpDisplace
 import miyucomics.hexical.casting.patterns.conjured_staff.OpConjureStaff
@@ -62,6 +64,9 @@ object HexicalPatterns {
 
 		register("perlin", "qawedqdq", HexDir.WEST, OpPerlin())
 		register("theodolite", "wqaa", HexDir.EAST, OpGetEntityData(3))
+
+		register("read_shelf", "qaqqqada", HexDir.EAST, OpReadAkashicShelf())
+		register("write_shelf", "edeeedad", HexDir.SOUTH_WEST, OpWriteAkashicShelf())
 
 		register("age_scroll", "wewaawewaddwwewwdwwew", HexDir.SOUTH_EAST, OpAgeScroll())
 

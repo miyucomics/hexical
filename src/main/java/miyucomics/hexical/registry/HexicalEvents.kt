@@ -22,7 +22,7 @@ object HexicalEvents {
 				for (otherPlayer in server.playerManager.playerList) {
 					val packet = PacketByteBufs.create()
 					packet.writeUuid(player)
-					ServerPlayNetworking.send(otherPlayer, HexicalNetworking.CONFIRM_START_EVOKING_PACKET, packet)
+					ServerPlayNetworking.send(otherPlayer, HexicalNetworking.START_EVOKE_CHANNEL, packet)
 				}
 			}
 		}
