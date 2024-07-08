@@ -24,9 +24,9 @@ object HexicalKeybinds {
 
 			if (states.keys.contains(EVOKE_KEYBIND.translationKey)) {
 				if (states[EVOKE_KEYBIND.translationKey] == true && !EVOKE_KEYBIND.isPressed) {
-					ClientPlayNetworking.send(HexicalNetworking.REQUEST_END_EVOKING_PACKET, PacketByteBufs.empty())
+					ClientPlayNetworking.send(HexicalNetworking.END_EVOKING_CHANNEL, PacketByteBufs.empty())
 				} else if (states[EVOKE_KEYBIND.translationKey] == false && EVOKE_KEYBIND.isPressed) {
-					ClientPlayNetworking.send(HexicalNetworking.REQUEST_START_EVOKING_PACKET, PacketByteBufs.empty())
+					ClientPlayNetworking.send(HexicalNetworking.START_EVOKE_CHANNEL, PacketByteBufs.empty())
 				}
 			}
 			states[EVOKE_KEYBIND.translationKey] = EVOKE_KEYBIND.isPressed
@@ -36,11 +36,11 @@ object HexicalKeybinds {
 					if (states[key.translationKey] == true && !key.isPressed) {
 						val buf = PacketByteBufs.create()
 						buf.writeString(key.translationKey)
-						ClientPlayNetworking.send(HexicalNetworking.RELEASED_KEY_PACKET, buf)
+						ClientPlayNetworking.send(HexicalNetworking.RELEASED_KEY_CHANNEL, buf)
 					} else if (states[key.translationKey] == false && key.isPressed) {
 						val buf = PacketByteBufs.create()
 						buf.writeString(key.translationKey)
-						ClientPlayNetworking.send(HexicalNetworking.PRESSED_KEY_PACKET, buf)
+						ClientPlayNetworking.send(HexicalNetworking.PRESSED_KEY_CHANNEL, buf)
 					}
 				}
 				states[key.translationKey] = key.isPressed
