@@ -118,6 +118,8 @@ object HexicalPatterns {
 		register("conjure_hexburst", "edeqaawaa", HexDir.SOUTH_WEST, OpConjureHexburst())
 		register("conjure_hextito", "edeaddadd", HexDir.SOUTH_WEST, OpConjureHextito())
 
+		register("shape_mesh", "dwaqawd", HexDir.SOUTH_EAST, OpReweave())
+
 		register("conjure_speck", "ade", HexDir.SOUTH_WEST, OpConjureSpeck())
 		register("iota_speck", "adeeaqa", HexDir.SOUTH_WEST, OpIotaSpeck())
 		register("kill_specklike", "adeaqde", HexDir.SOUTH_WEST, OpKillSpecklike())
