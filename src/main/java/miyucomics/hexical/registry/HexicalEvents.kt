@@ -12,7 +12,7 @@ import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
 import net.minecraft.client.MinecraftClient
 
 object HexicalEvents {
-	private val MEDIA_SICKNESS_SHADER = ShaderEffectManager.getInstance().manage(HexicalMain.id("shaders/post/media_vision.json"))
+	private val NIGHT_VISION_SHADER = ShaderEffectManager.getInstance().manage(HexicalMain.id("shaders/post/night_vision.json"))
 
 	@JvmStatic
 	fun init() {
@@ -55,7 +55,7 @@ object HexicalEvents {
 		ShaderEffectRenderCallback.EVENT.register(ShaderEffectRenderCallback { tickDelta: Float ->
 			val player = MinecraftClient.getInstance().player ?: return@ShaderEffectRenderCallback
 			if (player.hasStatusEffect(HexicalStatusEffects.MEDIA_VISION_STATUS_EFFECT))
-				MEDIA_SICKNESS_SHADER.render(tickDelta)
+				NIGHT_VISION_SHADER.render(tickDelta)
 		})
 	}
 }

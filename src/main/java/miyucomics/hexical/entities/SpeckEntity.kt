@@ -47,7 +47,7 @@ class SpeckEntity(entityType: EntityType<SpeckEntity?>?, world: World?) : Entity
 		super.tick()
 	}
 
-	override fun getEyeHeight(pose: EntityPose, dimensions: EntityDimensions) = 0f
+	override fun getEyeHeight(pose: EntityPose, dimensions: EntityDimensions) = 0.5f
 
 	override fun initDataTracker() {
 		dataTracker.startTracking(displayDataTracker, NbtCompound())
