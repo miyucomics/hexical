@@ -9,20 +9,17 @@
 				"sprite": 0.1
 			},
 			"model": "hexical:item/conjured_staff_clover"
-		},
-		{
+		}, {
 			"predicate": {
 				"sprite": 0.2
 			},
 			"model": "hexical:item/conjured_staff_handbell"
-		},
-		{
+		}, {
 			"predicate": {
 				"sprite": 0.3
 			},
 			"model": "hexical:item/conjured_staff_key"
-		},
-		{
+		}, {
 			"predicate": {
 				"sprite": 0.4
 			},

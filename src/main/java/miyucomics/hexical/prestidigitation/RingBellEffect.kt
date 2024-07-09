@@ -17,7 +17,7 @@ class RingBellEffect : PrestidigitationEffect {
 	override fun effectBlock(caster: ServerPlayerEntity, position: BlockPos) {
 		val state = caster.world.getBlockState(position)
 		if (state.block is BellBlock) {
-			val bell = (caster.world.getBlockEntity(position)?: return) as BellBlockEntity
+			val bell = (caster.world.getBlockEntity(position) ?: return) as BellBlockEntity
 			val facing = state.get(BellBlock.FACING)
 			val ringDirection = when (state.get(BellBlock.ATTACHMENT)) {
 				Attachment.SINGLE_WALL -> facing.rotateYClockwise()
@@ -29,5 +29,6 @@ class RingBellEffect : PrestidigitationEffect {
 			caster.world.emitGameEvent(caster, GameEvent.BLOCK_CHANGE, position)
 		}
 	}
+
 	override fun effectEntity(caster: ServerPlayerEntity, entity: Entity) {}
 }

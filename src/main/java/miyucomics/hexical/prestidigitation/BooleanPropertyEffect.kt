@@ -14,5 +14,6 @@ class BooleanPropertyEffect(private val property: BooleanProperty) : Prestidigit
 		val state = caster.world.getBlockState(position)
 		caster.world.setBlockState(position, state.with(property, !state.get(property)), Block.NOTIFY_ALL or Block.REDRAW_ON_MAIN_THREAD)
 	}
+
 	override fun effectEntity(caster: ServerPlayerEntity, entity: Entity) {}
 }

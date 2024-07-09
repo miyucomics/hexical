@@ -28,6 +28,7 @@ object DyeData {
 		}
 		return block.defaultState
 	}
+
 	fun getNewItem(item: Item, dye: String): Item {
 		itemFamilies.forEach { (_, family) ->
 			if (family.containsValue(Registry.ITEM.getId(item).toString()) && family.containsKey(dye))

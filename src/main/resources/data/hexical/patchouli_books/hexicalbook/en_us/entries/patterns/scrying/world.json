@@ -11,32 +11,28 @@
 			"input": "vector",
 			"output": "number",
 			"text": "hexical.page.get_light.summary"
-		},
-		{
+		}, {
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:get_biome",
 			"anchor": "hexical:get_biome",
 			"input": "",
 			"output": "identifier",
 			"text": "hexical.page.get_biome.summary"
-		},
-		{
+		}, {
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:get_weather",
 			"anchor": "hexical:get_weather",
 			"input": "",
 			"output": "number",
 			"text": "hexical.page.get_weather.summary"
-		},
-		{
+		}, {
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:get_time",
 			"anchor": "hexical:get_time",
 			"input": "",
 			"output": "number",
 			"text": "hexical.page.get_time.summary"
-		},
-		{
+		}, {
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:get_dimension",
 			"anchor": "hexical:get_dimension",

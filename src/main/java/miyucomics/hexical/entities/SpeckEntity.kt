@@ -27,6 +27,7 @@ class SpeckEntity(entityType: EntityType<SpeckEntity?>?, world: World?) : Entity
 		private val thicknessDataTracker: TrackedData<Float> = DataTracker.registerData(SpeckEntity::class.java, TrackedDataHandlerRegistry.FLOAT)
 		private val rollDataTracker: TrackedData<Float> = DataTracker.registerData(SpeckEntity::class.java, TrackedDataHandlerRegistry.FLOAT)
 	}
+
 	private var lifespan = -1
 
 	// client-only

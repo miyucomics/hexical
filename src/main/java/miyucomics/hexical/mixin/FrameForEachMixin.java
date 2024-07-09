@@ -25,12 +25,16 @@ import java.util.List;
 public abstract class FrameForEachMixin implements FrameForEachMinterface {
 	@Unique
 	private InjectedGambit hexical$injectedGambit = InjectedGambit.NONE;
+
 	@Shadow
 	public abstract SpellList getData();
+
 	@Shadow
 	public abstract SpellList getCode();
+
 	@Shadow
 	public abstract List<Iota> getBaseStack();
+
 	@Shadow
 	public abstract List<Iota> getAcc();
 
@@ -54,7 +58,8 @@ public abstract class FrameForEachMixin implements FrameForEachMinterface {
 			cir.setReturnValue(OpThemis.INSTANCE.evaluate(continuation, harness, getData(), getCode(), getBaseStack(), getAcc()));
 	}
 
-	@Override public void overwrite(@NotNull InjectedGambit gambit) {
+	@Override
+	public void overwrite(@NotNull InjectedGambit gambit) {
 		hexical$injectedGambit = gambit;
 	}
 }

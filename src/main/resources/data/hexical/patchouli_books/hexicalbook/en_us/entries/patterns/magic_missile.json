@@ -11,12 +11,10 @@
 			"input": "vector, vector",
 			"output": "",
 			"text": "hexical.page.magic_missile.summary"
-		},
-		{
+		}, {
 			"type": "patchouli:text",
 			"text": "hexical.page.magic_missile.0"
-		},
-		{
+		}, {
 			"type": "patchouli:text",
 			"text": "hexical.page.magic_missile.1"
 		}

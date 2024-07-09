@@ -7,8 +7,7 @@
 			"name": "sobel",
 			"intarget": "minecraft:main",
 			"outtarget": "swap"
-		},
-		{
+		}, {
 			"name": "hexical:media_vision",
 			"intarget": "swap",
 			"outtarget": "minecraft:main"

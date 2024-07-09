@@ -18,7 +18,7 @@ class OpReadAkashicShelf : ConstMediaAction {
 		val block = ctx.world.getBlockState(position)
 		if (!block.isOf(HexBlocks.AKASHIC_BOOKSHELF))
 			throw MishapBadBlock.of(position, "akashic_bookshelf")
-		val nbt = (ctx.world.getBlockEntity(position) as BlockEntityAkashicBookshelf).iotaTag?: return listOf(NullIota())
+		val nbt = (ctx.world.getBlockEntity(position) as BlockEntityAkashicBookshelf).iotaTag ?: return listOf(NullIota())
 		return listOf(HexIotaTypes.deserialize(nbt, ctx.world))
 	}
 }

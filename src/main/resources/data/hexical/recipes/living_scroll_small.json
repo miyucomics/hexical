@@ -3,8 +3,7 @@
 	"ingredients": [
 		{
 			"item": "hexcasting:scroll_small"
-		},
-		{
+		}, {
 			"item": "hexcasting:amethyst_dust"
 		}
 	],

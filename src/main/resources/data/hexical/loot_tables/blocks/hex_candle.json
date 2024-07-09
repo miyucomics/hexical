@@ -20,8 +20,7 @@
 							],
 							"count": 2.0,
 							"function": "minecraft:set_count"
-						},
-						{
+						}, {
 							"add": false,
 							"conditions": [
 								{
@@ -34,8 +33,7 @@
 							],
 							"count": 3.0,
 							"function": "minecraft:set_count"
-						},
-						{
+						}, {
 							"add": false,
 							"conditions": [
 								{
@@ -48,8 +46,7 @@
 							],
 							"count": 4.0,
 							"function": "minecraft:set_count"
-						},
-						{
+						}, {
 							"function": "minecraft:explosion_decay"
 						}
 					],

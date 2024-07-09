@@ -110,7 +110,7 @@ class MageBlock : BlockConjured(
 	}
 
 	override fun getCollisionShape(state: BlockState?, world: BlockView?, pos: BlockPos?, context: ShapeContext): VoxelShape {
-		if (((world!!.getBlockEntity(pos)?: return super.getCollisionShape(state, world, pos, context)) as MageBlockEntity).properties["semipermeable"] == true) {
+		if (((world!!.getBlockEntity(pos) ?: return super.getCollisionShape(state, world, pos, context)) as MageBlockEntity).properties["semipermeable"] == true) {
 			if (context is EntityShapeContext && context.entity != null) {
 				val entity = context.entity!!
 				if (entity is FallingBlockEntity || entity.isSprinting && context.isAbove(VoxelShapes.fullCube(), pos, false) && !context.isDescending()) {

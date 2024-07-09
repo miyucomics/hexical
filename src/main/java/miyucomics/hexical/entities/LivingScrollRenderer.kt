@@ -104,6 +104,7 @@ class LivingScrollRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<
 
 			matrices.pop()
 		}
+
 		private fun drawPattern(matrices: MatrixStack, vertexConsumers: VertexConsumerProvider, pattern: HexPattern, size: Int, light: Int) {
 			matrices.push()
 			matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180f))

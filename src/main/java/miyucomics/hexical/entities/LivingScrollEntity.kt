@@ -28,11 +28,11 @@ import net.minecraft.util.math.Direction
 import net.minecraft.util.math.Vec3d
 import net.minecraft.world.GameRules
 import net.minecraft.world.World
-import java.lang.IllegalStateException
 
 class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: World?) : AbstractDecorationEntity(entityType, world) {
 	var patterns: MutableList<NbtCompound> = mutableListOf()
 	var cachedPattern = HexPattern.fromAngles("", HexDir.EAST) // client-only
+
 	companion object {
 		private val agedDataTracker: TrackedData<Boolean> = DataTracker.registerData(LivingScrollEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
 		private val sizeDataTracker: TrackedData<Int> = DataTracker.registerData(LivingScrollEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
@@ -140,12 +140,14 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: Wo
 		if (this.world.gameRules.getBoolean(GameRules.DO_ENTITY_DROPS)) {
 			if (entity is PlayerEntity && entity.abilities.creativeMode)
 				return
-			val stack = ItemStack(when (this.dataTracker.get(sizeDataTracker)) {
-				1 -> HexicalItems.SMALL_LIVING_SCROLL_ITEM
-				2 -> HexicalItems.MEDIUM_LIVING_SCROLL_ITEM
-				3 -> HexicalItems.LARGE_LIVING_SCROLL_ITEM
-				else -> throw IllegalStateException()
-			})
+			val stack = ItemStack(
+				when (this.dataTracker.get(sizeDataTracker)) {
+					1 -> HexicalItems.SMALL_LIVING_SCROLL_ITEM
+					2 -> HexicalItems.MEDIUM_LIVING_SCROLL_ITEM
+					3 -> HexicalItems.LARGE_LIVING_SCROLL_ITEM
+					else -> throw IllegalStateException()
+				}
+			)
 			val constructed = mutableListOf<PatternIota>()
 			for (pattern in this.patterns)
 				constructed.add(PatternIota(HexPattern.fromNBT(pattern)))
@@ -155,12 +157,14 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: Wo
 		}
 	}
 
-	override fun getPickBlockStack() = ItemStack(when (this.dataTracker.get(sizeDataTracker)) {
-		1 -> HexicalItems.SMALL_LIVING_SCROLL_ITEM
-		2 -> HexicalItems.MEDIUM_LIVING_SCROLL_ITEM
-		3 -> HexicalItems.LARGE_LIVING_SCROLL_ITEM
-		else -> throw IllegalStateException("Invalid size")
-	})
+	override fun getPickBlockStack() = ItemStack(
+		when (this.dataTracker.get(sizeDataTracker)) {
+			1 -> HexicalItems.SMALL_LIVING_SCROLL_ITEM
+			2 -> HexicalItems.MEDIUM_LIVING_SCROLL_ITEM
+			3 -> HexicalItems.LARGE_LIVING_SCROLL_ITEM
+			else -> throw IllegalStateException("Invalid size")
+		}
+	)
 
 	fun toggleAged() = this.dataTracker.set(agedDataTracker, !this.dataTracker.get(agedDataTracker))
 	fun getAged(): Boolean = this.dataTracker.get(agedDataTracker)
@@ -173,7 +177,7 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: Wo
 	override fun refreshPositionAndAngles(x: Double, y: Double, z: Double, yaw: Float, pitch: Float) = this.setPosition(x, y, z)
 	override fun updateTrackedPositionAndAngles(x: Double, y: Double, z: Double, yaw: Float, pitch: Float, interpolationSteps: Int, interpolate: Boolean) = this.setPosition(x, y, z)
 
-	override fun createSpawnPacket() =  EntitySpawnS2CPacket(this, facing.id, this.decorationBlockPos)
+	override fun createSpawnPacket() = EntitySpawnS2CPacket(this, facing.id, this.decorationBlockPos)
 	override fun onSpawnPacket(packet: EntitySpawnS2CPacket) {
 		super.onSpawnPacket(packet)
 		this.setFacing(Direction.byId(packet.entityData))

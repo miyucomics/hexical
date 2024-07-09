@@ -12,5 +12,6 @@ class TransformBlockEffect(val state: BlockState) : PrestidigitationEffect {
 	override fun effectBlock(caster: ServerPlayerEntity, position: BlockPos) {
 		caster.world.setBlockState(position, state)
 	}
+
 	override fun effectEntity(caster: ServerPlayerEntity, entity: Entity) {}
 }
