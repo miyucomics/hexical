@@ -53,7 +53,7 @@ object HexicalEvents {
 	@JvmStatic
 	fun clientInit() {
 		ShaderEffectRenderCallback.EVENT.register(ShaderEffectRenderCallback { tickDelta: Float ->
-			val player = MinecraftClient.getInstance().player?: return@ShaderEffectRenderCallback
+			val player = MinecraftClient.getInstance().player ?: return@ShaderEffectRenderCallback
 			if (player.hasStatusEffect(HexicalStatusEffects.MEDIA_VISION_STATUS_EFFECT))
 				MEDIA_SICKNESS_SHADER.render(tickDelta)
 		})

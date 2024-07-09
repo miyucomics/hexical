@@ -11,7 +11,10 @@ import net.minecraft.entity.EntityType
 import net.minecraft.entity.data.DataTracker
 import net.minecraft.entity.data.TrackedData
 import net.minecraft.entity.data.TrackedDataHandlerRegistry
-import net.minecraft.nbt.*
+import net.minecraft.nbt.NbtCompound
+import net.minecraft.nbt.NbtElement
+import net.minecraft.nbt.NbtFloat
+import net.minecraft.nbt.NbtList
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket
 import net.minecraft.util.math.Vec3d
 import net.minecraft.world.World
@@ -24,6 +27,7 @@ class MeshEntity(entityType: EntityType<MeshEntity?>?, world: World?) : Entity(e
 		private val thicknessDataTracker: TrackedData<Float> = DataTracker.registerData(MeshEntity::class.java, TrackedDataHandlerRegistry.FLOAT)
 		private val rollDataTracker: TrackedData<Float> = DataTracker.registerData(MeshEntity::class.java, TrackedDataHandlerRegistry.FLOAT)
 	}
+
 	private var lifespan = -1
 
 	// client-only

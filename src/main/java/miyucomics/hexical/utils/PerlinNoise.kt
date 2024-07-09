@@ -58,23 +58,30 @@ class PerlinNoise(seed: Int) {
 		val BBA = permutations[BB] + W
 		val BBB = permutations[BB + 1] + W
 
-		return lerp(s,
-			lerp(t,
-				lerp(v,
+		return lerp(
+			s,
+			lerp(
+				t,
+				lerp(
+					v,
 					lerp(u, grad(permutations[AAA], x, y, z, w), grad(permutations[BAA], x - 1, y, z, w)),
 					lerp(u, grad(permutations[ABA], x, y - 1, z, w), grad(permutations[BBA], x - 1, y - 1, z, w))
 				),
-				lerp(v,
+				lerp(
+					v,
 					lerp(u, grad(permutations[AAB], x, y, z - 1, w), grad(permutations[BAB], x - 1, y, z - 1, w)),
 					lerp(u, grad(permutations[ABB], x, y - 1, z - 1, w), grad(permutations[BBB], x - 1, y - 1, z - 1, w))
 				)
 			),
-			lerp(t,
-				lerp(v,
+			lerp(
+				t,
+				lerp(
+					v,
 					lerp(u, grad(permutations[AAA + 1], x, y, z, w - 1), grad(permutations[BAA + 1], x - 1, y, z, w - 1)),
 					lerp(u, grad(permutations[ABA + 1], x, y - 1, z, w - 1), grad(permutations[BBA + 1], x - 1, y - 1, z, w - 1))
 				),
-				lerp(v,
+				lerp(
+					v,
 					lerp(u, grad(permutations[AAB + 1], x, y, z - 1, w - 1), grad(permutations[BAB + 1], x - 1, y, z - 1, w - 1)),
 					lerp(u, grad(permutations[ABB + 1], x, y - 1, z - 1, w - 1), grad(permutations[BBB + 1], x - 1, y - 1, z - 1, w - 1))
 				)

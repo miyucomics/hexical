@@ -11,102 +11,88 @@
 			"input": "entity",
 			"output": "vector",
 			"text": "hexical.page.theodolite.summary"
-		},
-		{
+		}, {
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:dup_many",
 			"anchor": "hexical:dup_many",
 			"input": "many, number",
 			"output": "many",
 			"text": "hexical.page.dup_many.summary"
-	    },
-		{
+		}, {
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:similar",
 			"anchor": "hexical:similar",
 			"input": "any, any",
 			"output": "boolean",
 			"text": "hexical.page.similar.summary"
-		},
-		{
+		}, {
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:congruent",
 			"anchor": "hexical:congruent",
 			"input": "pattern, pattern",
 			"output": "boolean",
 			"text": "hexical.page.congruent.summary"
-		},
-		{
+		}, {
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:shuffle_pattern",
 			"anchor": "hexical:shuffle_pattern",
 			"input": "pattern, number",
 			"output": "pattern",
 			"text": "hexical.page.shuffle_pattern.summary"
-		},
-		{
+		}, {
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:janus",
 			"anchor": "hexical:janus",
 			"input": "",
 			"output": "",
 			"text": "hexical.page.janus.0"
-		},
-		{
+		}, {
 			"type": "patchouli:text",
 			"text": "hexical.page.janus.1"
-		},
-        {
-            "type": "hexcasting:manual_pattern",
-            "op_id": "hexical:nephthys",
-            "anchor": "hexical:nephthys",
-            "input": "pattern/[pattern]",
-            "output": "varies",
-            "text": "hexical.page.nephthys.0",
-            "patterns": [
-                {
-                    "startdir": "SOUTH_EAST",
-                    "signature": "deaqqd"
-                },
-                {
-                    "startdir": "SOUTH_EAST",
-                    "signature": "deaqqdq",
-                    "q": 1,
-                    "r": 2
-                },
-                {
-                    "startdir": "SOUTH_EAST",
-                    "signature": "deaqqdqe",
-                    "q": 2,
-                    "r": 4
-                }
-            ]
-        },
-		{
+		}, {
+			"type": "hexcasting:manual_pattern",
+			"op_id": "hexical:nephthys",
+			"anchor": "hexical:nephthys",
+			"input": "pattern/[pattern]",
+			"output": "varies",
+			"text": "hexical.page.nephthys.0",
+			"patterns": [
+				{
+					"startdir": "SOUTH_EAST",
+					"signature": "deaqqd"
+				}, {
+					"startdir": "SOUTH_EAST",
+					"signature": "deaqqdq",
+					"q": 1,
+					"r": 2
+				}, {
+					"startdir": "SOUTH_EAST",
+					"signature": "deaqqdqe",
+					"q": 2,
+					"r": 4
+				}
+			]
+		}, {
 			"type": "patchouli:text",
 			"text": "hexical.page.nephthys.1"
-		},
-		{
+		}, {
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:sisyphus",
 			"anchor": "hexical:sisyphus",
 			"input": "list",
 			"output": "",
 			"text": "hexical.page.sisyphus.0"
-		},
-		{
+		}, {
 			"type": "patchouli:text",
 			"text": "hexical.page.sisyphus.1"
-		},
-		{
+		}, {
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:themis",
 			"anchor": "hexical:themis",
 			"input": "list, pattern/[pattern]",
 			"output": "list",
 			"text": "hexical.page.themis.0"
-		},
-		{
+		}, {
 			"type": "patchouli:text",
 			"text": "hexical.page.themis.1"
 		}

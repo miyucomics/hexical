@@ -11,8 +11,7 @@
 			"input": "item entity",
 			"output": "",
 			"text": "hexical.page.get_enchantments.summary"
-		},
-		{
+		}, {
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:get_enchantment_strength",
 			"anchor": "hexical:get_enchantment_strength",

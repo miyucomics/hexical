@@ -39,6 +39,7 @@ class SpikeRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<SpikeEn
 
 		matrices.pop()
 	}
+
 	private fun vertex(mat: Matrix4f, light: Int, verts: VertexConsumer, normalMatrix: Matrix3f, x: Float, y: Float, z: Float, u: Float, v: Float) = verts.vertex(mat, x, y, z)
 		.color(255, 255, 255, 255)
 		.texture(u, v)
