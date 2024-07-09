@@ -24,10 +24,10 @@ import miyucomics.hexical.casting.patterns.fireworks.OpConjureFirework
 import miyucomics.hexical.casting.patterns.fireworks.OpSimulateFirework
 import miyucomics.hexical.casting.patterns.getters.*
 import miyucomics.hexical.casting.patterns.getters.misc.OpGetEnchantmentStrength
+import miyucomics.hexical.casting.patterns.getters.misc.OpGetStatusEffectCategory
 import miyucomics.hexical.casting.patterns.getters.types.OpGetBlockTypeData
 import miyucomics.hexical.casting.patterns.getters.types.OpGetFoodTypeData
 import miyucomics.hexical.casting.patterns.getters.types.OpGetItemTypeData
-import miyucomics.hexical.casting.patterns.getters.misc.OpGetStatusEffectCategory
 import miyucomics.hexical.casting.patterns.grimoire.*
 import miyucomics.hexical.casting.patterns.identifier.OpIdentify
 import miyucomics.hexical.casting.patterns.identifier.OpRecognize

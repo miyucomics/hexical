@@ -83,7 +83,7 @@ object HexicalNetworking {
 	fun clientInit() {
 		ClientPlayNetworking.registerGlobalReceiver(START_EVOKE_CHANNEL) { client, _, packet, _ ->
 			val uuid = packet.readUuid()
-			val player = client.world!!.getPlayerByUuid(uuid)?: return@registerGlobalReceiver
+			val player = client.world!!.getPlayerByUuid(uuid) ?: return@registerGlobalReceiver
 			val container = (player as PlayerAnimations).hexicalModAnimations()
 			val frame = PlayerAnimationRegistry.getAnimation(HexicalMain.id("cast_loop"))!!
 			container.setAnimation(KeyframeAnimationPlayer(frame))

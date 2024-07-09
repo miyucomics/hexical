@@ -1,6 +1,6 @@
 {
-    "parent": "minecraft:item/generated",
-    "textures": {
-        "layer0": "hexical:item/conjured_compass_27"
-    }
+	"parent": "minecraft:item/generated",
+	"textures": {
+		"layer0": "hexical:item/conjured_compass_27"
+	}
 }

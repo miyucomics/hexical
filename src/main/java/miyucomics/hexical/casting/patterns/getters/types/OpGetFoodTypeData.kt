@@ -14,7 +14,7 @@ class OpGetFoodTypeData(private val mode: Int) : ConstMediaAction {
 		val id = args.getIdentifier(0, argc)
 		if (!Registry.ITEM.containsId(id))
 			throw MishapInvalidIota.of(args[0], 0, "food_id")
-		val food = Registry.ITEM.get(id).foodComponent?: throw MishapInvalidIota.of(args[0], 0, "food_id")
+		val food = Registry.ITEM.get(id).foodComponent ?: throw MishapInvalidIota.of(args[0], 0, "food_id")
 		return when (mode) {
 			0 -> food.hunger.asActionResult
 			1 -> food.saturationModifier.asActionResult

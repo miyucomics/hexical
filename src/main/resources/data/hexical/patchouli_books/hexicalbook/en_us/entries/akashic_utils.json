@@ -8,16 +8,14 @@
 		{
 			"type": "patchouli:text",
 			"text": "hexical.page.akashic_utils.0"
-		},
-		{
+		}, {
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:read_shelf",
 			"anchor": "hexical:read_shelf",
 			"input": "vector",
 			"output": "any",
 			"text": "hexical.page.read_shelf.summary"
-		},
-		{
+		}, {
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:write_shelf",
 			"anchor": "hexical:write_shelf",

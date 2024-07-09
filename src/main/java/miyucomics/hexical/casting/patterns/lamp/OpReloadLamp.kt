@@ -53,7 +53,7 @@ class OpReloadLamp : SpellAction {
 			val newLamp = ctx.caster.getStackInHand(ctx.otherHand)
 			val hexHolder = IXplatAbstractions.INSTANCE.findHexHolder(newLamp)!!
 			val mediaHolder = IXplatAbstractions.INSTANCE.findMediaHolder(lamp)!!
-			hexHolder.writeHex(hexHolder.getHex(ctx.world)?: listOf(), mediaHolder.media + battery)
+			hexHolder.writeHex(hexHolder.getHex(ctx.world) ?: listOf(), mediaHolder.media + battery)
 			HexicalAdvancements.RELOAD_LAMP.trigger(ctx.caster)
 		}
 	}

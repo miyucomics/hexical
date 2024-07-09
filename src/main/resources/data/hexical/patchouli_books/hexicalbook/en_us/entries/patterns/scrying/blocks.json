@@ -11,8 +11,7 @@
 			"input": "identifier",
 			"output": "number",
 			"text": "hexical.page.block_hardness.summary"
-		},
-		{
+		}, {
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:block_blast_resistance",
 			"anchor": "hexical:block_blast_resistance",
