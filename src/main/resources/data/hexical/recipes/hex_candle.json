@@ -4,8 +4,7 @@
 	"ingredients": [
 		{
 			"item": "minecraft:candle"
-		},
-		{
+		}, {
 			"item": "hexcasting:amethyst_dust"
 		}
 	],

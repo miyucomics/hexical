@@ -8,80 +8,69 @@
 		{
 			"type": "patchouli:text",
 			"text": "hexical.page.arch_lamps.0"
-		},
-		{
+		}, {
 			"type": "patchouli:text",
 			"text": "hexical.page.arch_lamps.1"
-		},
-		{
+		}, {
 			"type": "patchouli:text",
 			"text": "hexical.page.arch_lamps.2"
-		},
-		{
+		}, {
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:activate_arch_lamp",
 			"anchor": "hexical:activate_arch_lamp",
 			"input": "",
 			"output": "",
 			"text": "hexical.page.activate_arch_lamp.summary"
-		},
-		{
+		}, {
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:terminate_arch_lamp",
 			"anchor": "hexical:terminate_arch_lamp",
 			"input": "",
 			"output": "",
 			"text": "hexical.page.terminate_arch_lamp.summary"
-		},
-		{
+		}, {
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:has_arch_lamp",
 			"anchor": "hexical:has_arch_lamp",
 			"input": "entity",
 			"output": "boolean",
 			"text": "hexical.page.has_arch_lamp.summary"
-		},
-		{
+		}, {
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:get_arch_lamp_position",
 			"anchor": "hexical:get_arch_lamp_position",
 			"input": "",
 			"output": "vector",
 			"text": "hexical.page.get_arch_lamp_position.summary"
-		},
-		{
+		}, {
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:get_arch_lamp_rotation",
 			"anchor": "hexical:get_arch_lamp_rotation",
 			"input": "",
 			"output": "vector",
 			"text": "hexical.page.get_arch_lamp_rotation.summary"
-		},
-		{
+		}, {
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:get_arch_lamp_velocity",
 			"anchor": "hexical:get_arch_lamp_velocity",
 			"input": "",
 			"output": "vector",
 			"text": "hexical.page.get_arch_lamp_velocity.summary"
-		},
-		{
+		}, {
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:get_arch_lamp_use_time",
 			"anchor": "hexical:get_arch_lamp_use_time",
 			"input": "",
 			"output": "number",
 			"text": "hexical.page.get_arch_lamp_use_time.summary"
-		},
-		{
+		}, {
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:get_arch_lamp_media",
 			"anchor": "hexical:get_arch_lamp_media",
 			"input": "",
 			"output": "number",
 			"text": "hexical.page.get_arch_lamp_media.summary"
-		},
-		{
+		}, {
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:lamp_finale",
 			"anchor": "hexical:lamp_finale",

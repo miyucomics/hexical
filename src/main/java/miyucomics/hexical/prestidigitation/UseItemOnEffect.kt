@@ -22,6 +22,7 @@ class UseItemOnEffect(val stack: ItemStack) : PrestidigitationEffect {
 		caster.mainHandStack.useOnBlock(ItemUsageContext(caster, Hand.MAIN_HAND, BlockHitResult(Vec3d.ofCenter(position), Direction.UP, position, true)))
 		caster.setStackInHand(Hand.MAIN_HAND, oldStack)
 	}
+
 	override fun effectEntity(caster: ServerPlayerEntity, entity: Entity) {
 		val oldStack = caster.mainHandStack
 		caster.setStackInHand(Hand.MAIN_HAND, stack)
