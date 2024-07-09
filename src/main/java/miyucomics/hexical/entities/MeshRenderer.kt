@@ -2,6 +2,7 @@ package miyucomics.hexical.entities
 
 import com.mojang.blaze3d.systems.RenderSystem
 import miyucomics.hexical.utils.RenderUtils
+import net.minecraft.client.MinecraftClient
 import net.minecraft.client.render.Frustum
 import net.minecraft.client.render.GameRenderer
 import net.minecraft.client.render.VertexConsumerProvider
@@ -20,16 +21,18 @@ class MeshRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<MeshEnti
 		RenderSystem.enableDepthTest()
 		matrices.push()
 
+		val pos = MinecraftClient.getInstance().player!!.pos
 		if (entity!!.yaw != 0.0f)
 			matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(-entity.yaw))
 		if (entity.pitch != 0.0f)
 			matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(entity.pitch))
 		if (entity.clientRoll != 0.0f)
 			matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(entity.clientRoll))
-		matrices.scale(entity.clientSize, entity.clientSize, entity.clientSize)
+		matrices.scale(entity!!.clientSize, entity.clientSize, entity.clientSize)
+		matrices.translate(entity.x - pos.x, entity.y - pos.y, entity.z - pos.z)
 
 		RenderSystem.disableCull()
-		RenderUtils.sentinelLike(matrices, entity.clientVertices, entity.clientThickness * 0.05f, entity.clientPigment)
+		RenderUtils.sentinelLike(matrices, entity.clientVertices, 5f, entity.clientPigment)
 		RenderSystem.enableCull()
 
 		matrices.pop()

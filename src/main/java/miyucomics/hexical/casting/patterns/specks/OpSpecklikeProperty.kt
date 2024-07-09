@@ -17,7 +17,7 @@ class OpSpecklikeProperty(val mode: Int) : ConstMediaAction {
 			0 -> {
 				val position = args.getVec3(1, argc)
 				ctx.assertVecInRange(position)
-				specklike.setPosition(position)
+				specklike.setPosition(position.subtract(0.0, specklike.standingEyeHeight.toDouble(), 0.0))
 			}
 			1 -> specklike.lookAt(EntityAnchorArgumentType.EntityAnchor.FEET, specklike.pos.add(args.getVec3(1, argc)))
 			2 -> (specklike as Specklike).setRoll(args.getDoubleBetween(1, 0.0, 1.0, argc).toFloat() * 360)
