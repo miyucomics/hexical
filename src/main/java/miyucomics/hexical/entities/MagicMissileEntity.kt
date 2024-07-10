@@ -14,12 +14,10 @@ import net.minecraft.server.world.ServerWorld
 import net.minecraft.sound.SoundCategory
 import net.minecraft.sound.SoundEvent
 import net.minecraft.sound.SoundEvents
-import net.minecraft.util.hit.EntityHitResult
 import net.minecraft.util.hit.HitResult
 import net.minecraft.world.World
 
 class MagicMissileEntity(entityType: EntityType<out MagicMissileEntity?>?, world: World?) : PersistentProjectileEntity(entityType, world) {
-	override fun getDamage() = 2.0
 	override fun asItemStack() = null
 	override fun hasNoGravity() = true
 	override fun getDragInWater() = 1f
@@ -44,32 +42,11 @@ class MagicMissileEntity(entityType: EntityType<out MagicMissileEntity?>?, world
 			shatter()
 	}
 
-	override fun onEntityHit(entityHitResult: EntityHitResult) {
-		val target = entityHitResult.entity
-		if (target.isInvulnerable)
-			return
-		if (target.type === EntityType.ENDERMAN)
-			return
-
-		val damageSource = if (owner == null) {
-			DamageSource.arrow(this, this)
-		} else {
-			if (owner is LivingEntity)
-				(owner as LivingEntity).onAttacking(target)
-			DamageSource.arrow(this, owner)
-		}
-
-		if (target.damage(damageSource, damage.toFloat())) {
-			if (target is LivingEntity) {
-				val vector = velocity.multiply(1.0, 0.0, 1.0).normalize().multiply(0.6)
-				if (vector.lengthSquared() > 0.0)
-					target.addVelocity(vector.x, 0.1, vector.z)
-				this.onHit(target)
-			}
-		} else {
-			this.velocity = velocity.multiply(-1.0)
-			this.yaw += 180.0f
-			this.prevYaw += 180.0f
-		}
+	override fun onHit(target: LivingEntity) {
+		super.onHit(target)
+		target.damage(DamageSource.thrownProjectile(this, this.owner), 2f)
+		val vector = velocity.multiply(1.0, 0.0, 1.0).normalize().multiply(0.6)
+		if (vector.lengthSquared() > 0.0)
+			target.addVelocity(vector.x, 0.1, vector.z)
 	}
 }
