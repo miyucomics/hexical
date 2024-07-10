@@ -15,7 +15,7 @@ public abstract class ItemEntityMixin {
 	public abstract ItemStack getStack();
 
 	@Inject(method = "tick", at = @At("HEAD"))
-	void deactivateLamp(CallbackInfo ci) {
+	void deactivateDroppedLamp(CallbackInfo ci) {
 		if (this.getStack().getItem() == HexicalItems.INSTANCE.getARCH_LAMP_ITEM() && this.getStack().getNbt() != null)
 			this.getStack().getNbt().putBoolean("active", false);
 	}

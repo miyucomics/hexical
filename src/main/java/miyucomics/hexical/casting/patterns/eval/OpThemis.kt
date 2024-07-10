@@ -23,8 +23,7 @@ object OpThemis : Action {
 		if (stack.size < 2)
 			throw MishapNotEnoughArgs(1, 0)
 		val data = stack.getList(stack.lastIndex - 1)
-		val rawCode = stack[stack.lastIndex]
-		evaluatable(rawCode, 0)
+		val code = evaluatable(stack[stack.lastIndex], 0).map({ SpellList.LList(0, listOf(PatternIota(it))) }, { it })
 		stack.removeLastOrNull()
 		stack.removeLastOrNull()
 
@@ -33,7 +32,6 @@ object OpThemis : Action {
 			return OperationResult(continuation, stack, ravenmind, listOf())
 		}
 
-		val code = if (rawCode is ListIota) rawCode.list else SpellList.LList(listOf(rawCode as PatternIota))
 		val frame = FrameForEach(data, code, null, mutableListOf())
 		(frame as FrameForEachMinterface).overwrite(InjectedGambit.THEMIS)
 		return OperationResult(continuation.pushFrame(frame), stack, ravenmind, listOf())

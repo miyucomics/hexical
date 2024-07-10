@@ -1,4 +1,4 @@
-package miyucomics.hexical.casting.patterns
+package miyucomics.hexical.casting.patterns.conjure
 
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.ParticleSpray
@@ -11,6 +11,7 @@ import at.petrak.hexcasting.api.spell.mishaps.MishapOthersName
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import miyucomics.hexical.registry.HexicalItems
+import miyucomics.hexical.utils.CastingUtils
 import net.minecraft.entity.ItemEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.Vec3d
@@ -21,9 +22,7 @@ class OpConjureHexburst : SpellAction {
 		val position = args.getVec3(0, argc)
 		ctx.assertVecInRange(position)
 		val iota = args[1]
-		val trueName = MishapOthersName.getTrueNameFromDatum(args[1], ctx.caster)
-		if (trueName != null)
-			throw MishapOthersName(trueName)
+		CastingUtils.assertNoTruename(iota, ctx.caster)
 		return Triple(Spell(position, iota), MediaConstants.DUST_UNIT, listOf(ParticleSpray.burst(position, 1.0)))
 	}
 

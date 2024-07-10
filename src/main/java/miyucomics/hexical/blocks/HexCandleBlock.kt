@@ -21,18 +21,16 @@ import net.minecraft.world.World
 import net.minecraft.world.event.GameEvent
 
 class HexCandleBlock : CandleBlock(Settings.of(Material.DECORATION).nonOpaque().strength(0.1f).sounds(BlockSoundGroup.CANDLE).luminance(STATE_TO_LUMINANCE)), BlockEntityProvider {
-	@Deprecated("Deprecated in Java")
-	override fun onUse(state: BlockState, world: World, pos: BlockPos, player: PlayerEntity, hand: Hand, hit: BlockHitResult?): ActionResult {
+	override fun onUse(state: BlockState, world: World, pos: BlockPos, player: PlayerEntity, hand: Hand, hit: BlockHitResult): ActionResult {
 		if (player.isSneaking)
 			return super.onUse(state, world, pos, player, hand, hit)
 		if (!state.get(AbstractCandleBlock.LIT))
 			return super.onUse(state, world, pos, player, hand, hit)
 		val stack = player.getStackInHand(hand)
-		val be = world.getBlockEntity(pos)!! as HexCandleBlockEntity
 		var givenColor = IXplatAbstractions.INSTANCE.getColorizer(player)
 		if (IXplatAbstractions.INSTANCE.isColorizer(stack))
 			givenColor = FrozenColorizer(stack.copy(), player.uuid)
-		be.setPigment(givenColor)
+		(world.getBlockEntity(pos)!! as HexCandleBlockEntity).setPigment(givenColor)
 		world.emitGameEvent(player, GameEvent.BLOCK_CHANGE, pos)
 		return ActionResult.SUCCESS
 	}
@@ -47,11 +45,7 @@ class HexCandleBlock : CandleBlock(Settings.of(Material.DECORATION).nonOpaque().
 		}
 	}
 
-	fun getPositions(state: BlockState): Iterable<Vec3d> {
-		return getParticleOffsets(state)
-	}
-
-	override fun createBlockEntity(pos: BlockPos?, state: BlockState?): BlockEntity = HexCandleBlockEntity(pos, state)
+	override fun createBlockEntity(pos: BlockPos, state: BlockState): BlockEntity = HexCandleBlockEntity(pos, state)
 	override fun <T : BlockEntity> getTicker(world: World, state: BlockState, type: BlockEntityType<T>): BlockEntityTicker<T> = BlockEntityTicker { world1, pos, state1, blockEntity -> tick(world1, pos, state1, blockEntity as HexCandleBlockEntity) }
 
 	companion object {
@@ -61,7 +55,7 @@ class HexCandleBlock : CandleBlock(Settings.of(Material.DECORATION).nonOpaque().
 			if (!state.get(AbstractCandleBlock.LIT))
 				return
 			val pigment = blockEntity.getPigment()
-			(state.block as HexCandleBlock).getPositions(state).forEach { offset: Vec3d ->
+			(state.block as HexCandleBlock).getParticleOffsets(state).forEach { offset: Vec3d ->
 				if (world.random.nextFloat() > 0.5)
 					return@forEach
 				val position = offset.add(pos.x.toDouble(), pos.y.toDouble(), pos.z.toDouble())

@@ -18,7 +18,7 @@ class OpChorusBlink : SpellAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		val pos = args.getVec3(0, argc)
-		if (pos.lengthSquared() > 256)
+		if (pos.length() > 16)
 			throw MishapLocationTooFarAway(pos)
 		for (stack in DiscoveryHandlers.collectItemSlots(ctx)) {
 			if (stack.isEmpty)
@@ -32,8 +32,8 @@ class OpChorusBlink : SpellAction {
 
 	private data class Spell(val position: Vec3d, val stack: ItemStack) : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
-			stack.decrement(1)
 			ctx.caster.teleport(ctx.caster.pos.x + position.x, ctx.caster.pos.y + position.y, ctx.caster.pos.z + position.z)
+			stack.decrement(1)
 		}
 	}
 }

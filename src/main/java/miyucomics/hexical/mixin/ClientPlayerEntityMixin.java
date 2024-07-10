@@ -24,7 +24,6 @@ public class ClientPlayerEntityMixin {
 			KeyBinding.updatePressedStates();
 			GameOptions keys = client.options;
 			assert client.player != null;
-			client.player.setSprinting(keys.sprintKey.isPressed());
 			input.pressingForward = keys.forwardKey.isPressed();
 			input.pressingBack = keys.backKey.isPressed();
 			input.pressingLeft = keys.leftKey.isPressed();

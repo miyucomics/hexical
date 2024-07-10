@@ -21,7 +21,7 @@ import net.minecraft.util.registry.Registry
 object HexicalItems {
 	val HEXICAL_GROUP: ItemGroup = FabricItemGroupBuilder.create(HexicalMain.id("general")).icon { ItemStack(CONJURED_STAFF_ITEM) }.build()
 
-	val LAMP_ITEM = LampItem()
+	val LAMP_ITEM = HandLampItem()
 	val ARCH_LAMP_ITEM = ArchLampItem()
 	val CONJURED_COMPASS_ITEM = ConjuredCompassItem()
 	val GRIMOIRE_ITEM = GrimoireItem()
@@ -58,12 +58,9 @@ object HexicalItems {
 		ModelPredicateProviderRegistry.register(MEDIUM_LIVING_SCROLL_ITEM, Identifier("aged")) { stack: ItemStack, _: ClientWorld?, _: LivingEntity?, _: Int -> if (stack.orCreateNbt.getBoolean("aged")) 1f else 0f }
 		ModelPredicateProviderRegistry.register(LARGE_LIVING_SCROLL_ITEM, Identifier("aged")) { stack: ItemStack, _: ClientWorld?, _: LivingEntity?, _: Int -> if (stack.orCreateNbt.getBoolean("aged")) 1f else 0f }
 		ModelPredicateProviderRegistry.register(CONJURED_STAFF_ITEM, Identifier("sprite")) { stack: ItemStack, _: ClientWorld?, _: LivingEntity?, _: Int -> stack.orCreateNbt.getFloat("sprite") / 10 }
-		ModelPredicateProviderRegistry.register(CONJURED_COMPASS_ITEM, Identifier("angle"), CompassAnglePredicateProvider(CompassTarget { _: ClientWorld?, stack: ItemStack?, player: Entity? ->
-			if (player != null && stack != null && stack.hasNbt()) {
-				val nbt = stack.nbt!!
-				return@CompassTarget GlobalPos.create(player.world.registryKey, BlockPos(nbt.getInt("x"), nbt.getInt("y"), nbt.getInt("z")))
-			}
-			null
+		ModelPredicateProviderRegistry.register(CONJURED_COMPASS_ITEM, Identifier("angle"), CompassAnglePredicateProvider(CompassTarget { _: ClientWorld, stack: ItemStack, player: Entity ->
+			val nbt = stack.nbt ?: return@CompassTarget null
+			return@CompassTarget GlobalPos.create(player.world.registryKey, BlockPos(nbt.getInt("x"), nbt.getInt("y"), nbt.getInt("z")))
 		}))
 	}
 }
