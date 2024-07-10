@@ -5,6 +5,7 @@ import at.petrak.hexcasting.common.blocks.akashic.BlockAkashicBookshelf;
 import at.petrak.hexcasting.common.blocks.akashic.BlockEntityAkashicBookshelf;
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes;
 import at.petrak.hexcasting.xplat.IXplatAbstractions;
+import miyucomics.hexical.registry.HexicalSounds;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -42,7 +43,7 @@ public class BlockAkashicBookshelfMixin {
 			CastingHarness harness = IXplatAbstractions.INSTANCE.getHarness((ServerPlayerEntity) player, hand);
 			harness.getStack().add(HexIotaTypes.deserialize(nbt, (ServerWorld) world));
 			IXplatAbstractions.INSTANCE.setHarness((ServerPlayerEntity) player, harness);
-			world.playSound(null, pos, SoundEvents.ENTITY_ITEM_PICKUP, BLOCKS, 1f, 1f);
+			world.playSound(null, pos, HexicalSounds.INSTANCE.getSUDDEN_REALIZATION_EVENT(), BLOCKS, 1f, 1f);
 			player.swingHand(hand, true);
 		}
 	}

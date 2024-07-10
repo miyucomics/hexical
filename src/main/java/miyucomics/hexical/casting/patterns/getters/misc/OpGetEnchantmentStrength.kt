@@ -14,11 +14,8 @@ class OpGetEnchantmentStrength : ConstMediaAction {
 	override val argc = 2
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
 		val stack = args.getItemStack(0, argc)
-		val id = args.getIdentifier(1, argc)
-		if (!Registry.ENCHANTMENT.containsId(id))
-			throw MishapInvalidIota.of(args[1], 1, "enchantment_id")
+		val enchantment = Registry.ENCHANTMENT.get(args.getIdentifier(1, argc))?: throw MishapInvalidIota.of(args[1], 1, "enchantment_id")
 		val data = EnchantmentHelper.get(stack)
-		val enchantment = Registry.ENCHANTMENT.get(id)
 		if (!data.containsKey(enchantment))
 			return (0).asActionResult
 		return data.getValue(enchantment).asActionResult

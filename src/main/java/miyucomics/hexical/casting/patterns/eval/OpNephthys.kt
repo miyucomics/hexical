@@ -19,8 +19,7 @@ class OpNephthys(private val depth: Int) : Action {
 		if (stack.size < depth + 1)
 			throw MishapNotEnoughArgs(depth + 1, stack.size)
 
-		val rawInstructions = stack[stack.lastIndex]
-		val instructions = evaluatable(rawInstructions, 0).map({ SpellList.LList(0, listOf(PatternIota(it))) }, { it })
+		val instructions = evaluatable(stack[stack.lastIndex], 0).map({ SpellList.LList(0, listOf(PatternIota(it))) }, { it })
 		stack.removeLast()
 
 		val restoreIota = SpellList.LList(

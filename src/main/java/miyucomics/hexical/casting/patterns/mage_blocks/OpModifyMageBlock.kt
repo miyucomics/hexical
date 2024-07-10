@@ -5,6 +5,7 @@ import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapBadBlock
 import miyucomics.hexical.blocks.MageBlock
+import miyucomics.hexical.blocks.MageBlockEntity
 import miyucomics.hexical.registry.HexicalAdvancements
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d
@@ -25,7 +26,7 @@ class OpModifyMageBlock(private val property: String, arguments: Int = 0) : Spel
 
 	private data class Spell(val pos: BlockPos, val property: String, val args: List<Iota>) : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
-			MageBlock.setProperty(ctx.world, pos, property, args)
+			(ctx.world.getBlockEntity(pos) as MageBlockEntity).setProperty(property, args)
 			HexicalAdvancements.DIY.trigger(ctx.caster)
 		}
 	}

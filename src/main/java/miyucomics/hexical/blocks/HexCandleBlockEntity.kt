@@ -8,10 +8,11 @@ import net.minecraft.nbt.NbtCompound
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket
 import net.minecraft.util.math.BlockPos
 
-class HexCandleBlockEntity(pos: BlockPos?, state: BlockState?) : BlockEntity(HexicalBlocks.HEX_CANDLE_BLOCK_ENTITY, pos, state) {
+class HexCandleBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(HexicalBlocks.HEX_CANDLE_BLOCK_ENTITY, pos, state) {
 	private var pigment: FrozenColorizer = FrozenColorizer.DEFAULT.get()
 
 	fun getPigment() = this.pigment
+
 	fun setPigment(pigment: FrozenColorizer) {
 		this.pigment = pigment
 		markDirty()

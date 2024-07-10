@@ -11,6 +11,9 @@ import miyucomics.hexical.casting.patterns.akashic.OpReadAkashicShelf
 import miyucomics.hexical.casting.patterns.akashic.OpWriteAkashicShelf
 import miyucomics.hexical.casting.patterns.basic.*
 import miyucomics.hexical.casting.patterns.circle.OpDisplace
+import miyucomics.hexical.casting.patterns.conjure.OpConjureCompass
+import miyucomics.hexical.casting.patterns.conjure.OpConjureHexburst
+import miyucomics.hexical.casting.patterns.conjure.OpConjureHextito
 import miyucomics.hexical.casting.patterns.conjured_staff.OpConjureStaff
 import miyucomics.hexical.casting.patterns.conjured_staff.OpReadStaff
 import miyucomics.hexical.casting.patterns.conjured_staff.OpWriteStaff
@@ -117,8 +120,6 @@ object HexicalPatterns {
 		register("conjure_compass", "aqwawqwqqwqwqeawwa", HexDir.SOUTH_WEST, OpConjureCompass())
 		register("conjure_hexburst", "edeqaawaa", HexDir.SOUTH_WEST, OpConjureHexburst())
 		register("conjure_hextito", "edeaddadd", HexDir.SOUTH_WEST, OpConjureHextito())
-
-		register("shape_mesh", "dwaqawd", HexDir.SOUTH_EAST, OpReweave())
 
 		register("conjure_speck", "ade", HexDir.SOUTH_WEST, OpConjureSpeck())
 		register("iota_speck", "adeeaqa", HexDir.SOUTH_WEST, OpIotaSpeck())

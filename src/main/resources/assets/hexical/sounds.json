@@ -6,5 +6,17 @@
 	"lamp_deactivate": {
 		"subtitle": "subtitles.hexical.lamp_deactivate",
 		"sounds": ["hexical:lamp_deactivate"]
+	},
+	"evoking_murmur": {
+		"subtitle": "subtitles.hexical.evoking_murmur",
+		"sounds": ["mob/evocation_illager/prepare_wololo"]
+	},
+	"evoking_casts": {
+		"subtitle": "subtitles.hexical.evoking_casts",
+		"sounds": ["mob/evocation_illager/cast1", "mob/evocation_illager/cast2"]
+	},
+	"sudden_realization": {
+		"subtitle": "subtitles.hexical.sudden_realization",
+		"sounds": ["random/pop"]
 	}
 }

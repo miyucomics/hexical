@@ -19,15 +19,7 @@ import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket
 import net.minecraft.util.math.Vec3d
 import net.minecraft.world.World
 
-class MeshEntity(entityType: EntityType<MeshEntity?>?, world: World?) : Entity(entityType, world), Specklike {
-	companion object {
-		private val shapeDataTracker: TrackedData<NbtCompound> = DataTracker.registerData(MeshEntity::class.java, TrackedDataHandlerRegistry.NBT_COMPOUND)
-		private val pigmentDataTracker: TrackedData<NbtCompound> = DataTracker.registerData(MeshEntity::class.java, TrackedDataHandlerRegistry.NBT_COMPOUND)
-		private val sizeDataTracker: TrackedData<Float> = DataTracker.registerData(MeshEntity::class.java, TrackedDataHandlerRegistry.FLOAT)
-		private val thicknessDataTracker: TrackedData<Float> = DataTracker.registerData(MeshEntity::class.java, TrackedDataHandlerRegistry.FLOAT)
-		private val rollDataTracker: TrackedData<Float> = DataTracker.registerData(MeshEntity::class.java, TrackedDataHandlerRegistry.FLOAT)
-	}
-
+class MeshEntity(entityType: EntityType<MeshEntity>, world: World) : Entity(entityType, world), Specklike {
 	private var lifespan = -1
 
 	// client-only
@@ -43,32 +35,6 @@ class MeshEntity(entityType: EntityType<MeshEntity?>?, world: World?) : Entity(e
 		if (lifespan == 0)
 			discard()
 		super.tick()
-	}
-
-	override fun getEyeHeight(pose: EntityPose?, dimensions: EntityDimensions?) = 0f
-
-	override fun initDataTracker() {
-		dataTracker.startTracking(shapeDataTracker, NbtCompound())
-		dataTracker.startTracking(pigmentDataTracker, NbtCompound())
-		dataTracker.startTracking(rollDataTracker, 0f)
-		dataTracker.startTracking(sizeDataTracker, 1f)
-		dataTracker.startTracking(thicknessDataTracker, 1f)
-	}
-
-	override fun onTrackedDataSet(data: TrackedData<*>) {
-		when (data) {
-			shapeDataTracker -> {
-				val list = this.dataTracker.get(shapeDataTracker).getList("shape", NbtElement.FLOAT_TYPE.toInt())
-				this.clientVertices = mutableListOf()
-				for (i in 0..(list.size / 3))
-					clientVertices.add(Vec3d(list.getFloat(i).toDouble(), list.getFloat(i + 1).toDouble(), list.getFloat(i + 2).toDouble()))
-			}
-			pigmentDataTracker -> this.clientPigment = FrozenColorizer.fromNBT(dataTracker.get(pigmentDataTracker))
-			sizeDataTracker -> this.clientSize = dataTracker.get(sizeDataTracker)
-			rollDataTracker -> this.clientRoll = dataTracker.get(rollDataTracker)
-			thicknessDataTracker -> this.clientThickness = dataTracker.get(thicknessDataTracker)
-			else -> {}
-		}
 	}
 
 	fun setShape(shape: List<Vec3d>) {
@@ -109,5 +75,38 @@ class MeshEntity(entityType: EntityType<MeshEntity?>?, world: World?) : Entity(e
 	override fun setRoll(rotation: Float) = dataTracker.set(rollDataTracker, rotation)
 	override fun setThickness(thickness: Float) = dataTracker.set(thicknessDataTracker, thickness)
 	override fun setPigment(pigment: FrozenColorizer) = dataTracker.set(pigmentDataTracker, pigment.serializeToNBT())
+	override fun getEyeHeight(pose: EntityPose, dimensions: EntityDimensions) = 0f
 	override fun createSpawnPacket() = EntitySpawnS2CPacket(this)
+
+	override fun initDataTracker() {
+		dataTracker.startTracking(shapeDataTracker, NbtCompound())
+		dataTracker.startTracking(pigmentDataTracker, NbtCompound())
+		dataTracker.startTracking(rollDataTracker, 0f)
+		dataTracker.startTracking(sizeDataTracker, 1f)
+		dataTracker.startTracking(thicknessDataTracker, 1f)
+	}
+
+	override fun onTrackedDataSet(data: TrackedData<*>) {
+		when (data) {
+			shapeDataTracker -> {
+				val list = this.dataTracker.get(shapeDataTracker).getList("shape", NbtElement.FLOAT_TYPE.toInt())
+				this.clientVertices = mutableListOf()
+				for (i in 0..(list.size / 3))
+					clientVertices.add(Vec3d(list.getFloat(i).toDouble(), list.getFloat(i + 1).toDouble(), list.getFloat(i + 2).toDouble()))
+			}
+			pigmentDataTracker -> this.clientPigment = FrozenColorizer.fromNBT(dataTracker.get(pigmentDataTracker))
+			sizeDataTracker -> this.clientSize = dataTracker.get(sizeDataTracker)
+			rollDataTracker -> this.clientRoll = dataTracker.get(rollDataTracker)
+			thicknessDataTracker -> this.clientThickness = dataTracker.get(thicknessDataTracker)
+			else -> {}
+		}
+	}
+
+	companion object {
+		private val shapeDataTracker: TrackedData<NbtCompound> = DataTracker.registerData(MeshEntity::class.java, TrackedDataHandlerRegistry.NBT_COMPOUND)
+		private val pigmentDataTracker: TrackedData<NbtCompound> = DataTracker.registerData(MeshEntity::class.java, TrackedDataHandlerRegistry.NBT_COMPOUND)
+		private val sizeDataTracker: TrackedData<Float> = DataTracker.registerData(MeshEntity::class.java, TrackedDataHandlerRegistry.FLOAT)
+		private val thicknessDataTracker: TrackedData<Float> = DataTracker.registerData(MeshEntity::class.java, TrackedDataHandlerRegistry.FLOAT)
+		private val rollDataTracker: TrackedData<Float> = DataTracker.registerData(MeshEntity::class.java, TrackedDataHandlerRegistry.FLOAT)
+	}
 }

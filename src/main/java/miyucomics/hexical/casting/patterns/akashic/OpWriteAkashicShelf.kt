@@ -8,6 +8,7 @@ import at.petrak.hexcasting.api.spell.mishaps.MishapBadBlock
 import at.petrak.hexcasting.api.spell.mishaps.MishapOthersName
 import at.petrak.hexcasting.common.blocks.akashic.BlockEntityAkashicBookshelf
 import at.petrak.hexcasting.common.lib.HexBlocks
+import miyucomics.hexical.utils.CastingUtils
 import net.minecraft.util.math.BlockPos
 
 class OpWriteAkashicShelf : SpellAction {
@@ -15,22 +16,20 @@ class OpWriteAkashicShelf : SpellAction {
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		val position = args.getBlockPos(0, argc)
 		ctx.assertVecInRange(position)
+		val key = args.getPattern(1, argc)
 		val block = ctx.world.getBlockState(position)
 		if (!block.isOf(HexBlocks.AKASHIC_BOOKSHELF))
 			throw MishapBadBlock.of(position, "akashic_bookshelf")
-		val pattern = args.getPattern(1, argc)
 		val iota = args[2]
-		val trueName = MishapOthersName.getTrueNameFromDatum(iota, ctx.caster)
-		if (trueName != null)
-			throw MishapOthersName(trueName)
-		return Triple(Spell(position, pattern, iota), 0, listOf())
+		CastingUtils.assertNoTruename(iota, ctx.caster)
+		return Triple(Spell(position, key, iota), 0, listOf())
 	}
 
-	private data class Spell(val position: BlockPos, val pattern: HexPattern, val iota: Iota) : RenderedSpell {
+	private data class Spell(val position: BlockPos, val key: HexPattern, val iota: Iota) : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
 			val shelf = ctx.world.getBlockEntity(position)!! as BlockEntityAkashicBookshelf
 			shelf.clearIota()
-			shelf.setNewMapping(pattern, iota)
+			shelf.setNewMapping(key, iota)
 			shelf.markDirty()
 		}
 	}

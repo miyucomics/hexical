@@ -10,9 +10,5 @@ import at.petrak.hexcasting.api.spell.math.EulerPathFinder
 
 class OpShufflePattern : ConstMediaAction {
 	override val argc = 2
-	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
-		val pattern = args.getPattern(0, argc)
-		val seed = args.getInt(1, argc)
-		return EulerPathFinder.findAltDrawing(pattern, seed.toLong()).asActionResult
-	}
+	override fun execute(args: List<Iota>, ctx: CastingContext) = EulerPathFinder.findAltDrawing(args.getPattern(0, argc), args.getInt(1, argc).toLong()).asActionResult
 }

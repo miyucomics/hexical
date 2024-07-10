@@ -11,7 +11,7 @@ import net.minecraft.util.Identifier
 
 class ARCriterion : AbstractCriterion<ARCriterion.Condition>() {
 	override fun conditionsFromJson(obj: JsonObject, playerPredicate: EntityPredicate.Extended, predicateDeserializer: AdvancementEntityPredicateDeserializer) = Condition()
-	fun trigger(player: ServerPlayerEntity?) = trigger(player) { true }
+	fun trigger(player: ServerPlayerEntity) = trigger(player) { true }
 	override fun getId() = ID
 
 	class Condition : AbstractCriterionConditions(ID, EntityPredicate.Extended.EMPTY)

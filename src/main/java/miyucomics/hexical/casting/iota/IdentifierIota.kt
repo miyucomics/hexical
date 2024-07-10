@@ -33,8 +33,8 @@ class IdentifierIota(identifier: Identifier) : Iota(HexicalIota.IDENTIFIER_IOTA,
 				return Text.literal(compound.getString("namespace") + ":" + compound.getString("path")).styledWith(Formatting.GOLD)
 			}
 
-			override fun deserialize(tag: NbtElement?, world: ServerWorld?): IdentifierIota {
-				val compound = (tag!! as NbtCompound)
+			override fun deserialize(tag: NbtElement, world: ServerWorld): IdentifierIota {
+				val compound = (tag as NbtCompound)
 				return IdentifierIota(Identifier(compound.getString("namespace"), compound.getString("path")))
 			}
 		}
