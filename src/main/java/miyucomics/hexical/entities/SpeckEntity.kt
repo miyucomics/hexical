@@ -7,6 +7,7 @@ import at.petrak.hexcasting.api.spell.math.HexDir
 import at.petrak.hexcasting.api.spell.math.HexPattern
 import at.petrak.hexcasting.api.utils.putCompound
 import miyucomics.hexical.interfaces.Specklike
+import miyucomics.hexical.utils.RenderUtils
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityDimensions
 import net.minecraft.entity.EntityPose
@@ -17,6 +18,7 @@ import net.minecraft.entity.data.TrackedDataHandlerRegistry
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket
 import net.minecraft.text.Text
+import net.minecraft.util.math.Vec2f
 import net.minecraft.world.World
 
 class SpeckEntity(entityType: EntityType<SpeckEntity?>?, world: World?) : Entity(entityType, world), Specklike {
@@ -33,7 +35,7 @@ class SpeckEntity(entityType: EntityType<SpeckEntity?>?, world: World?) : Entity
 	// client-only
 	var clientIsText = false
 	var clientText: Text = Text.empty()
-	var clientPattern: HexPattern = HexPattern.fromAngles("", HexDir.EAST)
+	var clientVerts: List<Vec2f> = listOf()
 	var clientPigment: FrozenColorizer = FrozenColorizer.DEFAULT.get()
 	var clientSize = 1f
 	var clientThickness = 1f
@@ -66,7 +68,7 @@ class SpeckEntity(entityType: EntityType<SpeckEntity?>?, world: World?) : Entity
 					this.clientText = Text.Serializer.fromJson(raw.getString("text"))!!
 				} else {
 					this.clientIsText = false
-					this.clientPattern = HexPattern.fromNBT(raw)
+					this.clientVerts = RenderUtils.getNormalizedStrokes(HexPattern.fromNBT(raw))
 				}
 			}
 			pigmentDataTracker -> this.clientPigment = FrozenColorizer.fromNBT(dataTracker.get(pigmentDataTracker))
