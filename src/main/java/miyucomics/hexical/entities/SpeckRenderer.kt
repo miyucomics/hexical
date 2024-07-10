@@ -36,7 +36,7 @@ class SpeckRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<SpeckEn
 			matrices.scale(0.025f, -0.025f, 0.025f)
 			textRenderer.draw(matrices, entity.clientText, height, -textRenderer.fontHeight.toFloat() / 2f, entity.clientPigment.getColor(0f, entity.pos))
 		} else {
-			RenderUtils.drawFigure(matrices.peek().positionMatrix, RenderUtils.getNormalizedStrokes(entity.clientPattern), entity.clientThickness * 0.05f, entity.clientPigment, entity.pos)
+			RenderUtils.drawFigure(matrices.peek().positionMatrix, entity.clientVerts, entity.clientThickness * 0.05f / entity.clientSize, entity.clientPigment, entity.pos)
 		}
 		RenderSystem.enableCull()
 
