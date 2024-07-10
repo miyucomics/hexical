@@ -15,16 +15,16 @@ import net.minecraft.item.ItemStack
 class OpGrimoireErase : SpellAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
+		val stack = ctx.caster.getStackInHand(ctx.otherHand)
+		if (!stack.isOf(HexicalItems.GRIMOIRE_ITEM))
+			throw MishapBadOffhandItem.of(stack, ctx.otherHand, "grimoire")
 		val pattern = args.getPattern(0, argc)
-		val (stack, hand) = ctx.getHeldItemToOperateOn { it.isOf(HexicalItems.GRIMOIRE_ITEM) }
-		if (stack.item !is GrimoireItem)
-			throw MishapBadOffhandItem.of(stack, hand, "grimoire")
-		return Triple(Spell(pattern, stack), 0, listOf())
+		return Triple(Spell(stack, pattern), 0, listOf())
 	}
 
-	private data class Spell(val pattern: HexPattern, val stack: ItemStack) : RenderedSpell {
+	private data class Spell(val stack: ItemStack, val key: HexPattern) : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
-			GrimoireItem.erase(stack, pattern)
+			GrimoireItem.erase(stack, key)
 		}
 	}
 }

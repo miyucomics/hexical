@@ -12,7 +12,7 @@ import net.minecraft.server.world.ServerWorld
 import net.minecraft.world.World
 
 class HexburstItem : Item(Settings().maxCount(16).food(FoodComponent.Builder().alwaysEdible().snack().build())) {
-	override fun getMaxUseTime(stack: ItemStack?) = 10
+	override fun getMaxUseTime(stack: ItemStack) = 10
 	override fun finishUsing(stack: ItemStack, world: World, user: LivingEntity): ItemStack {
 		if (world.isClient)
 			return super.finishUsing(stack, world, user)

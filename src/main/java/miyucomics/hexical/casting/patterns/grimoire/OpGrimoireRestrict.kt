@@ -13,20 +13,19 @@ import net.minecraft.item.ItemStack
 class OpGrimoireRestrict : SpellAction {
 	override val argc = 2
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
-		val pattern = args.getPattern(0, argc)
+		val stack = ctx.caster.getStackInHand(ctx.otherHand)
+		if (!stack.isOf(HexicalItems.GRIMOIRE_ITEM))
+			throw MishapBadOffhandItem.of(stack, ctx.otherHand, "grimoire")
+		val key = args.getPattern(0, argc)
 		val uses = args.getPositiveInt(1, argc)
-		val (stack, hand) = ctx.getHeldItemToOperateOn { it.isOf(HexicalItems.GRIMOIRE_ITEM) }
-		if (stack.item !is GrimoireItem)
-			throw MishapBadOffhandItem.of(stack, hand, "grimoire")
-		val currentUses = GrimoireItem.getUses(stack, pattern) ?: return Triple(Spell(pattern, stack, uses), 0, listOf())
-		if (uses > currentUses)
+		if (uses > (GrimoireItem.getUses(stack, key) ?: return Triple(Spell(stack, key, uses), 0, listOf())))
 			throw GrimoireAccessDeniedMishap()
-		return Triple(Spell(pattern, stack, uses), 0, listOf())
+		return Triple(Spell(stack, key, uses), 0, listOf())
 	}
 
-	private data class Spell(val pattern: HexPattern, val stack: ItemStack, val uses: Int) : RenderedSpell {
+	private data class Spell(val stack: ItemStack, val key: HexPattern, val uses: Int) : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
-			GrimoireItem.restrict(stack, pattern, uses)
+			GrimoireItem.restrict(stack, key, uses)
 		}
 	}
 }

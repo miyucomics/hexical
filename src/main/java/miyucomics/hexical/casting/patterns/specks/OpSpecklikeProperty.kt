@@ -21,8 +21,8 @@ class OpSpecklikeProperty(val mode: Int) : ConstMediaAction {
 			}
 			1 -> specklike.lookAt(EntityAnchorArgumentType.EntityAnchor.FEET, specklike.pos.add(args.getVec3(1, argc)))
 			2 -> (specklike as Specklike).setRoll(args.getDoubleBetween(1, 0.0, 1.0, argc).toFloat() * 360)
-			3 -> (specklike as Specklike).setSize(args.getPositiveDoubleUnder(1, 10.0, argc).toFloat())
-			4 -> (specklike as Specklike).setThickness(args.getPositiveDoubleUnder(1, 5.0, argc).toFloat())
+			3 -> (specklike as Specklike).setSize(args.getPositiveDoubleUnderInclusive(1, 10.0, argc).toFloat())
+			4 -> (specklike as Specklike).setThickness(args.getPositiveDoubleUnderInclusive(1, 10.0, argc).toFloat())
 			5 -> (specklike as Specklike).setLifespan(args.getInt(1, argc))
 			else -> throw IllegalStateException()
 		}

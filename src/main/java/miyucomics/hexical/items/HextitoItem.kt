@@ -14,7 +14,7 @@ import net.minecraft.server.world.ServerWorld
 import net.minecraft.world.World
 
 class HextitoItem : Item(Settings().maxCount(16).food(FoodComponent.Builder().alwaysEdible().snack().build())), HexHolderItem {
-	override fun getMaxUseTime(stack: ItemStack?) = 10
+	override fun getMaxUseTime(stack: ItemStack) = 10
 	override fun finishUsing(stack: ItemStack, world: World, user: LivingEntity): ItemStack {
 		if (world.isClient)
 			return super.finishUsing(stack, world, user)
@@ -31,14 +31,14 @@ class HextitoItem : Item(Settings().maxCount(16).food(FoodComponent.Builder().al
 		return super.finishUsing(stack, world, user)
 	}
 
-	override fun getMedia(stack: ItemStack?) = 0
-	override fun getMaxMedia(stack: ItemStack?) = 0
-	override fun setMedia(stack: ItemStack?, media: Int) {}
-	override fun canRecharge(stack: ItemStack?) = false
-	override fun canProvideMedia(stack: ItemStack?) = false
-	override fun canDrawMediaFromInventory(stack: ItemStack?) = true
-	override fun hasHex(stack: ItemStack?) = false
-	override fun getHex(stack: ItemStack?, level: ServerWorld?) = listOf<Iota>()
-	override fun writeHex(stack: ItemStack?, program: MutableList<Iota>?, media: Int) {}
-	override fun clearHex(stack: ItemStack?) {}
+	override fun getMedia(stack: ItemStack) = 0
+	override fun getMaxMedia(stack: ItemStack) = 0
+	override fun setMedia(stack: ItemStack, media: Int) {}
+	override fun canRecharge(stack: ItemStack) = false
+	override fun canProvideMedia(stack: ItemStack) = false
+	override fun canDrawMediaFromInventory(stack: ItemStack) = true
+	override fun hasHex(stack: ItemStack) = false
+	override fun getHex(stack: ItemStack, level: ServerWorld) = listOf<Iota>()
+	override fun writeHex(stack: ItemStack, program: MutableList<Iota>, media: Int) {}
+	override fun clearHex(stack: ItemStack) {}
 }

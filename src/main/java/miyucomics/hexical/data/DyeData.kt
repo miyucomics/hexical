@@ -18,8 +18,8 @@ object DyeData {
 
 	fun isDyeable(block: Block): Boolean = flatBlockLookup.containsKey(Registry.BLOCK.getId(block).toString())
 	fun isDyeable(item: Item): Boolean = flatItemLookup.containsKey(Registry.ITEM.getId(item).toString())
-	fun getDye(block: Block): String? = flatBlockLookup.getOrDefault(Registry.BLOCK.getId(block).toString(), null)
-	fun getDye(item: Item): String? = flatItemLookup.getOrDefault(Registry.ITEM.getId(item).toString(), null)
+	fun getDye(block: Block): String? = flatBlockLookup[Registry.BLOCK.getId(block).toString()]
+	fun getDye(item: Item): String? = flatItemLookup[Registry.ITEM.getId(item).toString()]
 
 	fun getNewBlock(block: Block, dye: String): BlockState {
 		blockFamilies.forEach { (_, family) ->

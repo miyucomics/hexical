@@ -25,7 +25,7 @@ import net.minecraft.util.collection.DefaultedList
 import net.minecraft.world.World
 
 class ArchLampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.HEXICAL_GROUP)) {
-	override fun appendStacks(group: ItemGroup?, stacks: DefaultedList<ItemStack>?) {
+	override fun appendStacks(group: ItemGroup, stacks: DefaultedList<ItemStack>) {
 		if (this.isIn(group)) {
 			val stack = ItemStack(HexicalItems.ARCH_LAMP_ITEM)
 			val holder = IXplatAbstractions.INSTANCE.findHexHolder(stack)
@@ -86,7 +86,7 @@ class ArchLampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.H
 	}
 
 	override fun canDrawMediaFromInventory(stack: ItemStack) = false
-	override fun canRecharge(stack: ItemStack?) = false
+	override fun canRecharge(stack: ItemStack) = false
 	override fun breakAfterDepletion() = false
 }
 

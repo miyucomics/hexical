@@ -7,9 +7,5 @@ import at.petrak.hexcasting.api.spell.iota.Iota
 
 class OpSimilar : ConstMediaAction {
 	override val argc = 2
-	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
-		val a = args[0]
-		val b = args[1]
-		return (a.type == b.type).asActionResult
-	}
+	override fun execute(args: List<Iota>, ctx: CastingContext) = (args[0].type == args[1].type).asActionResult
 }
