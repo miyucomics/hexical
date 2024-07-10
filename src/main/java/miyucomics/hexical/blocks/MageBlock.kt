@@ -3,6 +3,7 @@ package miyucomics.hexical.blocks
 import at.petrak.hexcasting.api.misc.FrozenColorizer
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.common.blocks.BlockConjured
+import miyucomics.hexical.blocks.MageBlock.Companion.tick
 import miyucomics.hexical.registry.HexicalBlocks
 import net.minecraft.block.*
 import net.minecraft.block.entity.BlockEntity
@@ -34,8 +35,8 @@ class MageBlock : BlockConjured(
 		.mapColor(MapColor.CLEAR).suffocates { _, _, _ -> false }.blockVision { _, _, _ -> false }
 		.allowsSpawning { _, _, _, _ -> false }.sounds(BlockSoundGroup.AMETHYST_CLUSTER)
 ) {
-	override fun emitsRedstonePower(state: BlockState?) = true
-	override fun getWeakRedstonePower(state: BlockState?, world: BlockView?, pos: BlockPos?, direction: Direction?): Int {
+	override fun emitsRedstonePower(state: BlockState) = true
+	override fun getWeakRedstonePower(state: BlockState, world: BlockView, pos: BlockPos, direction: Direction): Int {
 		val tile = world!!.getBlockEntity(pos)
 		if (tile !is MageBlockEntity)
 			return 0
@@ -44,31 +45,28 @@ class MageBlock : BlockConjured(
 		return 0
 	}
 
-	override fun onLandedUpon(world: World?, state: BlockState?, pos: BlockPos?, entity: Entity?, fallDistance: Float) {
-		entity!!.handleFallDamage(fallDistance, 0.0f, DamageSource.FALL)
+	override fun onLandedUpon(world: World, state: BlockState, pos: BlockPos, entity: Entity, fallDistance: Float) {
+		val tile = world.getBlockEntity(pos) as MageBlockEntity
+		if (tile.properties["bouncy"]!!)
+			entity.handleFallDamage(fallDistance, 0.0f, DamageSource.FALL)
+		else
+			super.onLandedUpon(world, state, pos, entity, fallDistance)
 	}
 
 	override fun onEntityLand(world: BlockView, entity: Entity) {
-		val pos = entity.blockPos.add(0, -1, 0)
-		val tile = world.getBlockEntity(pos)
-		if (tile !is MageBlockEntity)
-			return
+		val tile = world.getBlockEntity(entity.blockPos.add(0, -1, 0)) as MageBlockEntity
 		if (tile.properties["bouncy"]!!) {
 			val velocity = entity.velocity
 			if (velocity.y < 0) {
 				entity.setVelocity(velocity.x, -velocity.y, velocity.z)
 				entity.fallDistance = 0f
 			}
-		} else {
-			val velocity = entity.velocity
-			entity.setVelocity(velocity.x, 0.0, velocity.z)
-		}
+		} else
+			super.onEntityLand(world, entity)
 	}
 
 	override fun onUse(state: BlockState, world: World, pos: BlockPos, player: PlayerEntity, hand: Hand, hit: BlockHitResult): ActionResult {
-		val tile = world.getBlockEntity(pos)
-		if (tile !is MageBlockEntity)
-			return ActionResult.PASS
+		val tile = world.getBlockEntity(pos) as MageBlockEntity
 		if (!tile.properties["replaceable"]!!)
 			return ActionResult.PASS
 		val stack = player.getStackInHand(hand)
@@ -83,9 +81,7 @@ class MageBlock : BlockConjured(
 	}
 
 	override fun onBreak(world: World, position: BlockPos, state: BlockState, player: PlayerEntity?) {
-		val tile = world.getBlockEntity(position)
-		if (tile !is MageBlockEntity)
-			return
+		val tile = world.getBlockEntity(position) as MageBlockEntity
 		world.playSound(position.x.toDouble(), position.y.toDouble(), position.z.toDouble(), SoundEvents.BLOCK_AMETHYST_BLOCK_BREAK, SoundCategory.BLOCKS, 1f, 1f, true)
 		world.emitGameEvent(GameEvent.BLOCK_DESTROY, position, GameEvent.Emitter.of(player, state))
 		world.setBlockState(position, Blocks.AIR.defaultState)
@@ -102,35 +98,30 @@ class MageBlock : BlockConjured(
 	}
 
 	override fun onSteppedOn(world: World, pos: BlockPos, state: BlockState, entity: Entity) {
-		val tile = world.getBlockEntity(pos)
-		if (tile !is MageBlockEntity)
-			return
+		val tile = world.getBlockEntity(pos) as MageBlockEntity
 		if (!tile.properties["invisible"]!!)
 			tile.walkParticle(entity)
 	}
 
-	override fun getCollisionShape(state: BlockState?, world: BlockView?, pos: BlockPos?, context: ShapeContext): VoxelShape {
-		if (((world!!.getBlockEntity(pos) ?: return super.getCollisionShape(state, world, pos, context)) as MageBlockEntity).properties["semipermeable"] == true) {
-			if (context is EntityShapeContext && context.entity != null) {
-				val entity = context.entity!!
-				if (entity is FallingBlockEntity || entity.isSprinting && context.isAbove(VoxelShapes.fullCube(), pos, false) && !context.isDescending()) {
-					return super.getCollisionShape(state, world, pos, context)
-				}
-			}
-			return VoxelShapes.empty()
-		} else {
+	override fun getCollisionShape(state: BlockState, world: BlockView, pos: BlockPos, context: ShapeContext): VoxelShape {
+		val tile = world.getBlockEntity(pos)
+		if (tile !is MageBlockEntity)
 			return super.getCollisionShape(state, world, pos, context)
+		if ((world.getBlockEntity(pos) as MageBlockEntity).properties["semipermeable"] != true)
+			return super.getCollisionShape(state, world, pos, context)
+		if (context is EntityShapeContext && context.entity != null) {
+			val entity = context.entity!!
+			if (entity is FallingBlockEntity || entity.isSprinting && context.isAbove(VoxelShapes.fullCube(), pos, false) && !context.isDescending())
+				return super.getCollisionShape(state, world, pos, context)
 		}
+		return VoxelShapes.empty()
 	}
 
-	override fun spawnBreakParticles(pLevel: World?, pPlayer: PlayerEntity?, pPos: BlockPos?, pState: BlockState?) {}
 	override fun createBlockEntity(pos: BlockPos, state: BlockState) = MageBlockEntity(pos, state)
-	override fun <T : BlockEntity> getTicker(pworld: World, pstate: BlockState, type: BlockEntityType<T>): BlockEntityTicker<T> = BlockEntityTicker { world, position, state, blockEntity -> tick(world, position, state, blockEntity) }
+	override fun <T : BlockEntity> getTicker(pworld: World, pstate: BlockState, type: BlockEntityType<T>): BlockEntityTicker<T> = BlockEntityTicker { world, position, state, blockEntity -> tick(world, position, state, blockEntity as MageBlockEntity) }
 
 	companion object {
-		fun tick(world: World, position: BlockPos, state: BlockState, blockEntity: BlockEntity) {
-			if (blockEntity !is MageBlockEntity)
-				return
+		fun tick(world: World, position: BlockPos, state: BlockState, blockEntity: MageBlockEntity) {
 			if (!blockEntity.properties["invisible"]!!)
 				blockEntity.particleEffect()
 			if (blockEntity.properties["ephemeral"]!!) {
@@ -138,18 +129,6 @@ class MageBlock : BlockConjured(
 				if (blockEntity.lifespan <= 0)
 					HexicalBlocks.MAGE_BLOCK.onBreak(world, position, state, null)
 			}
-		}
-
-		fun setProperty(world: ServerWorld, pos: BlockPos, property: String, args: List<Iota>) {
-			val blockEntity = world.getBlockEntity(pos)
-			if (blockEntity is MageBlockEntity)
-				blockEntity.setProperty(property, args)
-		}
-
-		fun setColor(world: ServerWorld, pos: BlockPos, colorizer: FrozenColorizer) {
-			val blockEntity = world.getBlockEntity(pos)
-			if (blockEntity is MageBlockEntity)
-				blockEntity.setColorizer(colorizer)
 		}
 	}
 }

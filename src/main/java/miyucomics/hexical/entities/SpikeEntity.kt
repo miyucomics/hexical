@@ -9,9 +9,7 @@ import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket
 import net.minecraft.util.math.Direction
 import net.minecraft.world.World
 
-class SpikeEntity(entityType: EntityType<SpikeEntity?>?, world: World?) : Entity(entityType, world) {
-	override fun getEyeHeight(pose: EntityPose, dimensions: EntityDimensions) = 0.5f
-
+class SpikeEntity(entityType: EntityType<SpikeEntity>, world: World) : Entity(entityType, world) {
 	fun setDirection(direction: Direction) {
 		if (direction.axis.isHorizontal) {
 			this.pitch = 0.0f
@@ -22,8 +20,11 @@ class SpikeEntity(entityType: EntityType<SpikeEntity?>?, world: World?) : Entity
 		}
 	}
 
-	override fun initDataTracker() {}
 	override fun readCustomDataFromNbt(nbt: NbtCompound) {}
 	override fun writeCustomDataToNbt(nbt: NbtCompound) {}
+
+	override fun getEyeHeight(pose: EntityPose, dimensions: EntityDimensions) = 0.5f
 	override fun createSpawnPacket() = EntitySpawnS2CPacket(this)
+
+	override fun initDataTracker() {}
 }

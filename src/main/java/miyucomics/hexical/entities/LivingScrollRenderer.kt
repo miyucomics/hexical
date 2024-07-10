@@ -26,27 +26,16 @@ class LivingScrollRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<
 		matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion((scroll as Entity).pitch))
 		matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180.0f - (scroll as Entity).yaw))
 		val worldLight = WorldRenderer.getLightmapCoordinates(scroll.world, scroll.blockPos)
-		drawFrame(matrices, vertexConsumers, getTexture(scroll), scroll.getSize().toFloat(), worldLight)
-		drawPattern(matrices, vertexConsumers, scroll.cachedPattern, scroll.getSize(), worldLight)
+		drawFrame(matrices, vertexConsumers, getTexture(scroll), scroll.clientSize.toFloat(), worldLight)
+		drawPattern(matrices, vertexConsumers, scroll.cachedPattern, scroll.clientSize, worldLight)
 		matrices.pop()
 	}
 
-	override fun getTexture(scroll: LivingScrollEntity?): Identifier {
-		return if (scroll!!.getAged()) {
-			when (scroll.getSize()) {
-				1 -> ANCIENT_SMALL
-				2 -> ANCIENT_MEDIUM
-				3 -> ANCIENT_LARGE
-				else -> ANCIENT_SMALL
-			}
-		} else {
-			when (scroll.getSize()) {
-				1 -> PRISTINE_SMALL
-				2 -> PRISTINE_MEDIUM
-				3 -> PRISTINE_LARGE
-				else -> PRISTINE_SMALL
-			}
-		}
+	override fun getTexture(scroll: LivingScrollEntity?) = when (scroll!!.clientSize) {
+		1 -> if (scroll.clientAged) ANCIENT_SMALL else PRISTINE_SMALL
+		2 -> if (scroll.clientAged) ANCIENT_MEDIUM else PRISTINE_MEDIUM
+		3 -> if (scroll.clientAged) ANCIENT_LARGE else PRISTINE_LARGE
+		else -> ANCIENT_SMALL
 	}
 
 	companion object {

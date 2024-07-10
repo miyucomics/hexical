@@ -19,16 +19,13 @@ class OpConjureFirework : SpellAction {
 	override val argc = 8
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		val position = args.getVec3(0, argc)
+		ctx.assertVecInRange(position)
+
 		val velocity = args.getVec3(1, argc)
 		val duration = args.getIntBetween(2, 1, 3, argc)
 		val type = args.getIntBetween(3, 0, 4, argc)
+
 		val colors = args.getList(4, argc)
-		val fades = args.getList(5, argc)
-		val flicker = args.getBool(6, argc)
-		val trail = args.getBool(7, argc)
-
-		ctx.assertVecInRange(position)
-
 		if (!colors.nonEmpty)
 			throw MishapInvalidIota.of(args[3], 3, "nonempty_list")
 		val trueColors = mutableListOf<Int>()
@@ -38,6 +35,7 @@ class OpConjureFirework : SpellAction {
 			trueColors.add(DyeColor.byName((color as DyeIota).dye, DyeColor.WHITE)!!.fireworkColor)
 		}
 
+		val fades = args.getList(5, argc)
 		val trueFades = mutableListOf<Int>()
 		for (fade in fades) {
 			if (fade.type != DyeIota.TYPE)
@@ -45,10 +43,13 @@ class OpConjureFirework : SpellAction {
 			trueFades.add(DyeColor.byName((fade as DyeIota).dye, DyeColor.WHITE)!!.fireworkColor)
 		}
 
-		return Triple(Spell(position, velocity, duration, trueColors, trueFades, type, flicker, trail), MediaConstants.SHARD_UNIT + MediaConstants.DUST_UNIT * (duration - 1), listOf(ParticleSpray.burst(position, 1.0)))
+		val flicker = args.getBool(6, argc)
+		val trail = args.getBool(7, argc)
+
+		return Triple(Spell(position, velocity, duration, type, trueColors, trueFades, flicker, trail), MediaConstants.SHARD_UNIT + MediaConstants.DUST_UNIT * (duration - 1), listOf(ParticleSpray.burst(position, 1.0)))
 	}
 
-	private data class Spell(val position: Vec3d, val velocity: Vec3d, val duration: Int, val colors: List<Int>, val fades: List<Int>, val type: Int, val flicker: Boolean, val trail: Boolean) : RenderedSpell {
+	private data class Spell(val position: Vec3d, val velocity: Vec3d, val duration: Int, val type: Int, val colors: List<Int>, val fades: List<Int>, val flicker: Boolean, val trail: Boolean) : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
 			val star = NbtCompound()
 			star.putInt(FireworkRocketItem.TYPE_KEY, type)

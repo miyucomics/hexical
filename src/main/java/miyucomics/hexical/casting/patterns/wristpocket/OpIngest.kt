@@ -6,7 +6,7 @@ import at.petrak.hexcasting.api.spell.RenderedSpell
 import at.petrak.hexcasting.api.spell.SpellAction
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.Iota
-import miyucomics.hexical.casting.mishaps.InedibleMishap
+import miyucomics.hexical.casting.mishaps.InedibleWristpocketMishap
 import miyucomics.hexical.state.PersistentStateHandler
 import net.minecraft.item.ItemStack
 import net.minecraft.item.Items
@@ -17,7 +17,7 @@ class OpIngest : SpellAction {
 		val stack = PersistentStateHandler.wristpocketItem(ctx.caster)
 		if (stack.isOf(Items.POTION) || stack.isOf(Items.HONEY_BOTTLE) || stack.isOf(Items.MILK_BUCKET) || stack.item.isFood)
 			return Triple(Spell(stack), MediaConstants.DUST_UNIT, listOf())
-		throw InedibleMishap()
+		throw InedibleWristpocketMishap()
 	}
 
 	private data class Spell(val stack: ItemStack) : RenderedSpell {

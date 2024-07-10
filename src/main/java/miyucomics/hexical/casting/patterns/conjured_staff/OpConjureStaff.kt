@@ -8,6 +8,7 @@ import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.spell.mishaps.MishapOthersName
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.registry.HexicalItems
+import miyucomics.hexical.utils.CastingUtils
 import net.minecraft.entity.ItemEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.Vec3d
@@ -19,12 +20,10 @@ class OpConjureStaff : SpellAction {
 		ctx.assertVecInRange(position)
 		val battery = args.getInt(1, argc)
 		val rank = args.getInt(2, argc)
-		val instructions = args.getList(3, argc).toList()
 		if (rank <= 0)
 			throw MishapInvalidIota.of(args[2], 2, "integer_natural")
-		val trueName = MishapOthersName.getTrueNameFromDatum(args[3], ctx.caster)
-		if (trueName != null)
-			throw MishapOthersName(trueName)
+		val instructions = args.getList(3, argc).toList()
+		CastingUtils.assertNoTruename(args[3], ctx.caster)
 		return Triple(Spell(position, battery * MediaConstants.DUST_UNIT, rank, instructions), MediaConstants.SHARD_UNIT + MediaConstants.DUST_UNIT * (rank + battery), listOf(ParticleSpray.burst(position, 1.0)))
 	}
 

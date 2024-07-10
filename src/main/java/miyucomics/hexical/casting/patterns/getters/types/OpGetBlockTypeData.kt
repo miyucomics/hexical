@@ -14,7 +14,7 @@ class OpGetBlockTypeData(private val mode: Int) : ConstMediaAction {
 		val id = args.getIdentifier(0, argc)
 		if (!Registry.BLOCK.containsId(id))
 			throw MishapInvalidIota.of(args[0], 0, "block_id")
-		val block = Registry.BLOCK.get(id)
+		val block = Registry.BLOCK.get(args.getIdentifier(0, argc))
 		return when (mode) {
 			0 -> block.hardness.asActionResult
 			1 -> block.blastResistance.asActionResult

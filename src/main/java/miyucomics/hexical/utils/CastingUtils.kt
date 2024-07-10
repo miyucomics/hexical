@@ -4,6 +4,7 @@ import at.petrak.hexcasting.api.HexAPI
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.casting.CastingHarness
 import at.petrak.hexcasting.api.spell.iota.Iota
+import at.petrak.hexcasting.api.spell.mishaps.MishapOthersName
 import miyucomics.hexical.enums.SpecializedSource
 import miyucomics.hexical.interfaces.CastingContextMinterface
 import net.minecraft.server.network.ServerPlayerEntity
@@ -11,6 +12,13 @@ import net.minecraft.server.world.ServerWorld
 
 @Suppress("CAST_NEVER_SUCCEEDS")
 object CastingUtils {
+	@JvmStatic
+	fun assertNoTruename(iota: Iota, caster: ServerPlayerEntity) {
+		val trueName = MishapOthersName.getTrueNameFromDatum(iota, caster)
+		if (trueName != null)
+			throw MishapOthersName(trueName)
+	}
+
 	@JvmStatic
 	fun isEnlightened(player: ServerPlayerEntity): Boolean {
 		val advancement = player.getServer()!!.advancementLoader[HexAPI.modLoc("enlightenment")]

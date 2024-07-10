@@ -9,7 +9,7 @@ import miyucomics.hexical.HexicalMain
 import net.minecraft.text.Text
 import net.minecraft.util.DyeColor
 
-class InedibleMishap : Mishap() {
+class InedibleWristpocketMishap : Mishap() {
 	override fun accentColor(ctx: CastingContext, errorCtx: Context): FrozenColorizer = dyeColor(DyeColor.YELLOW)
 	override fun particleSpray(ctx: CastingContext) = ParticleSpray.burst(ctx.caster.pos, 1.0)
 	override fun errorMessage(ctx: CastingContext, errorCtx: Context): Text = error(HexicalMain.MOD_ID + ":inedible")

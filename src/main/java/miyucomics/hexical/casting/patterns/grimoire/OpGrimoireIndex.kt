@@ -11,9 +11,9 @@ import miyucomics.hexical.registry.HexicalItems
 class OpGrimoireIndex : ConstMediaAction {
 	override val argc = 0
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
-		val (stack, hand) = ctx.getHeldItemToOperateOn { it.isOf(HexicalItems.GRIMOIRE_ITEM) }
-		if (stack.item !is GrimoireItem)
-			throw MishapBadOffhandItem.of(stack, hand, "grimoire")
+		val stack = ctx.caster.getStackInHand(ctx.otherHand)
+		if (!stack.isOf(HexicalItems.GRIMOIRE_ITEM))
+			throw MishapBadOffhandItem.of(stack, ctx.otherHand, "grimoire")
 		return GrimoireItem.getPatternsInGrimoire(stack).asActionResult
 	}
 }

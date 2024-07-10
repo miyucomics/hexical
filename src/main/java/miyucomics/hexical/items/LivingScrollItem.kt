@@ -23,23 +23,17 @@ import net.minecraft.util.math.Direction
 import net.minecraft.world.event.GameEvent
 
 class LivingScrollItem(private val size: Int) : Item(Settings().group(HexicalItems.HEXICAL_GROUP)), IotaHolderItem {
-	private fun canPlaceOn(player: PlayerEntity, side: Direction?, stack: ItemStack?, pos: BlockPos?): Boolean {
-		return !player.world.isOutOfHeightLimit(pos) && player.canPlaceOn(pos, side, stack)
-	}
+	private fun canPlaceOn(player: PlayerEntity, side: Direction, stack: ItemStack, pos: BlockPos) = !side.axis.isVertical && player.canPlaceOn(pos, side, stack)
 
 	override fun useOnBlock(context: ItemUsageContext): ActionResult {
 		val direction = context.side
 		val position = context.blockPos.offset(direction)
 		val player = context.player
 		val stack = context.stack
-
-		val world = context.world
-		if (world.isClient)
-			return ActionResult.SUCCESS
-
 		if (player != null && !canPlaceOn(player, direction, stack, position))
 			return ActionResult.FAIL
 
+		val world = context.world
 		val patternList = mutableListOf(HexPattern.fromAngles("eeeee", HexDir.EAST).serializeToNBT())
 		if (stack.hasCompound("patterns") && !world.isClient) {
 			patternList.clear()
@@ -53,9 +47,11 @@ class LivingScrollItem(private val size: Int) : Item(Settings().group(HexicalIte
 			scroll.toggleAged()
 
 		if (scroll.canStayAttached()) {
-			scroll.onPlace()
-			world.emitGameEvent(player, GameEvent.ENTITY_PLACE, scroll.pos)
-			world.spawnEntity(scroll)
+			if (!world.isClient) {
+				scroll.onPlace()
+				world.emitGameEvent(player, GameEvent.ENTITY_PLACE, scroll.pos)
+				world.spawnEntity(scroll)
+			}
 			stack.decrement(1)
 			return ActionResult.success(world.isClient)
 		}

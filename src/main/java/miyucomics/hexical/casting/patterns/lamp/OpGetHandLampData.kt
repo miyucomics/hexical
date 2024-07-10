@@ -11,7 +11,7 @@ import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import miyucomics.hexical.casting.mishaps.NeedsSourceMishap
 import miyucomics.hexical.enums.SpecializedSource
 import miyucomics.hexical.interfaces.CastingContextMinterface
-import miyucomics.hexical.items.LampItem
+import miyucomics.hexical.items.HandLampItem
 
 class OpGetHandLampData(private val mode: Int) : ConstMediaAction {
 	override val argc = 0
@@ -24,7 +24,7 @@ class OpGetHandLampData(private val mode: Int) : ConstMediaAction {
 			1 -> vecFromNBT(nbt.getLongArray("rotation")).asActionResult
 			2 -> vecFromNBT(nbt.getLongArray("velocity")).asActionResult
 			3 -> (ctx.world.time - (nbt.getDouble("start_time") + 1.0)).asActionResult
-			4 -> ((ctx.caster.activeItem.item as LampItem).getMedia(ctx.caster.activeItem).toDouble() / MediaConstants.DUST_UNIT).asActionResult
+			4 -> ((ctx.caster.activeItem.item as HandLampItem).getMedia(ctx.caster.activeItem).toDouble() / MediaConstants.DUST_UNIT).asActionResult
 			5 -> listOf(HexIotaTypes.deserialize(ctx.caster.activeItem.nbt!!.getCompound("storage"), ctx.world))
 			else -> throw IllegalStateException()
 		}

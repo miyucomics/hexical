@@ -16,11 +16,11 @@ class OpEducateGenie : SpellAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		val patterns = args.getList(0, argc).toList()
-		val (stack, hand) = ctx.getHeldItemToOperateOn { IXplatAbstractions.INSTANCE.findHexHolder(it) != null }
+		val stack = ctx.caster.getStackInHand(ctx.otherHand)
 		if (stack.isEmpty)
-			throw MishapBadOffhandItem.of(stack, hand, "lamp_full")
+			throw MishapBadOffhandItem.of(stack, ctx.otherHand, "lamp_full")
 		if (!(stack.isOf(HexicalItems.LAMP_ITEM) || stack.isOf(HexicalItems.ARCH_LAMP_ITEM)))
-			throw MishapBadOffhandItem.of(stack, hand, "lamp_full")
+			throw MishapBadOffhandItem.of(stack, ctx.otherHand, "lamp_full")
 		return Triple(Spell(patterns, stack), 0, listOf())
 	}
 

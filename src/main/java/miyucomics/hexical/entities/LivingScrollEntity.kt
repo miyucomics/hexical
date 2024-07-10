@@ -29,28 +29,28 @@ import net.minecraft.util.math.Vec3d
 import net.minecraft.world.GameRules
 import net.minecraft.world.World
 
-class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: World?) : AbstractDecorationEntity(entityType, world) {
+class LivingScrollEntity(entityType: EntityType<LivingScrollEntity>, world: World) : AbstractDecorationEntity(entityType, world) {
 	var patterns: MutableList<NbtCompound> = mutableListOf()
-	var cachedPattern = HexPattern.fromAngles("", HexDir.EAST) // client-only
 
-	companion object {
-		private val agedDataTracker: TrackedData<Boolean> = DataTracker.registerData(LivingScrollEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
-		private val sizeDataTracker: TrackedData<Int> = DataTracker.registerData(LivingScrollEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
-		private val renderDataTracker: TrackedData<NbtCompound> = DataTracker.registerData(LivingScrollEntity::class.java, TrackedDataHandlerRegistry.NBT_COMPOUND)
+	// client-only
+	var clientAged = false
+	var clientSize = 0
+	var cachedPattern = HexPattern.fromAngles("", HexDir.EAST)
+
+	constructor(world: World) : this(HexicalEntities.LIVING_SCROLL_ENTITY, world)
+
+	constructor(world: World, position: BlockPos, dir: Direction, size: Int, patterns: MutableList<NbtCompound>) : this(world) {
+		this.attachmentPos = position
+		this.patterns = patterns
+		this.dataTracker.set(sizeDataTracker, size)
+		setFacing(dir)
+		updateRender()
 	}
 
-	override fun initDataTracker() {
-		this.dataTracker.startTracking(agedDataTracker, false)
-		this.dataTracker.startTracking(sizeDataTracker, 1)
-		this.dataTracker.startTracking(renderDataTracker, NbtCompound())
-	}
-
-	override fun onTrackedDataSet(data: TrackedData<*>) {
-		when (data) {
-			sizeDataTracker -> this.updateAttachmentPosition()
-			renderDataTracker -> this.cachedPattern = HexPattern.fromNBT(dataTracker.get(renderDataTracker))
-			else -> {}
-		}
+	override fun tick() {
+		if ((world.time % 20).toInt() == 0 && patterns.isNotEmpty())
+			updateRender()
+		super.tick()
 	}
 
 	override fun canStayAttached(): Boolean {
@@ -85,20 +85,6 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: Wo
 		this.prevPitch = this.pitch
 		this.prevYaw = this.yaw
 		updateAttachmentPosition()
-	}
-
-	constructor(world: World, position: BlockPos, dir: Direction, size: Int, patterns: MutableList<NbtCompound>) : this(HexicalEntities.LIVING_SCROLL_ENTITY, world) {
-		this.attachmentPos = position
-		this.patterns = patterns
-		this.dataTracker.set(sizeDataTracker, size)
-		setFacing(dir)
-		updateRender()
-	}
-
-	override fun tick() {
-		if ((world.time % 20).toInt() == 0 && patterns.isNotEmpty())
-			updateRender()
-		super.tick()
 	}
 
 	private fun updateRender() {
@@ -166,14 +152,10 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: Wo
 		}
 	)
 
-	fun toggleAged() = this.dataTracker.set(agedDataTracker, !this.dataTracker.get(agedDataTracker))
-	fun getAged(): Boolean = this.dataTracker.get(agedDataTracker)
-	fun getSize(): Int = this.dataTracker.get(sizeDataTracker)
-
 	override fun getSyncedPos(): Vec3d = Vec3d.of(this.attachmentPos)
 	override fun getWidthPixels() = 16 * this.dataTracker.get(sizeDataTracker)
 	override fun getHeightPixels() = 16 * this.dataTracker.get(sizeDataTracker)
-	override fun getEyeHeight(pose: EntityPose?, dimensions: EntityDimensions?) = 0f
+	override fun getEyeHeight(pose: EntityPose, dimensions: EntityDimensions) = 0f
 	override fun refreshPositionAndAngles(x: Double, y: Double, z: Double, yaw: Float, pitch: Float) = this.setPosition(x, y, z)
 	override fun updateTrackedPositionAndAngles(x: Double, y: Double, z: Double, yaw: Float, pitch: Float, interpolationSteps: Int, interpolate: Boolean) = this.setPosition(x, y, z)
 
@@ -181,5 +163,31 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity?>?, world: Wo
 	override fun onSpawnPacket(packet: EntitySpawnS2CPacket) {
 		super.onSpawnPacket(packet)
 		this.setFacing(Direction.byId(packet.entityData))
+	}
+
+	fun toggleAged() = this.dataTracker.set(agedDataTracker, !this.dataTracker.get(agedDataTracker))
+
+	override fun initDataTracker() {
+		this.dataTracker.startTracking(agedDataTracker, false)
+		this.dataTracker.startTracking(sizeDataTracker, 1)
+		this.dataTracker.startTracking(renderDataTracker, NbtCompound())
+	}
+
+	override fun onTrackedDataSet(data: TrackedData<*>) {
+		when (data) {
+			agedDataTracker -> this.clientAged = this.dataTracker.get(agedDataTracker)
+			sizeDataTracker -> {
+				this.updateAttachmentPosition()
+				this.clientSize = this.dataTracker.get(sizeDataTracker)
+			}
+			renderDataTracker -> this.cachedPattern = HexPattern.fromNBT(dataTracker.get(renderDataTracker))
+			else -> {}
+		}
+	}
+
+	companion object {
+		private val agedDataTracker: TrackedData<Boolean> = DataTracker.registerData(LivingScrollEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
+		private val sizeDataTracker: TrackedData<Int> = DataTracker.registerData(LivingScrollEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
+		private val renderDataTracker: TrackedData<NbtCompound> = DataTracker.registerData(LivingScrollEntity::class.java, TrackedDataHandlerRegistry.NBT_COMPOUND)
 	}
 }

@@ -47,7 +47,7 @@ class DyeIota(color: String) : Iota(HexicalIota.DYE_IOTA, color) {
 
 		var TYPE: IotaType<DyeIota> = object : IotaType<DyeIota>() {
 			override fun color() = 0xff_ffffff.toInt()
-			override fun deserialize(tag: NbtElement?, world: ServerWorld?) = DyeIota((tag!! as NbtCompound).getString("color"))
+			override fun deserialize(tag: NbtElement, world: ServerWorld) = DyeIota((tag as NbtCompound).getString("color"))
 			override fun display(tag: NbtElement): Text {
 				val color = (tag as NbtCompound).getString("color")
 				return Text.literal(color.replace("_", " ")).styledWith(Style.EMPTY.withColor(MAP[color]!!))

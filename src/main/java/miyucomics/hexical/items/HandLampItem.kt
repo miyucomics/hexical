@@ -25,8 +25,8 @@ import net.minecraft.util.UseAction
 import net.minecraft.util.collection.DefaultedList
 import net.minecraft.world.World
 
-class LampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.HEXICAL_GROUP)) {
-	override fun appendStacks(group: ItemGroup?, stacks: DefaultedList<ItemStack>?) {
+class HandLampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.HEXICAL_GROUP)) {
+	override fun appendStacks(group: ItemGroup, stacks: DefaultedList<ItemStack>) {
 		if (this.isIn(group)) {
 			val stack = ItemStack(HexicalItems.LAMP_ITEM)
 			val holder = IXplatAbstractions.INSTANCE.findHexHolder(stack)
