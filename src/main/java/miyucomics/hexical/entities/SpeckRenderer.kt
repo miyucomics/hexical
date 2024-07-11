@@ -8,6 +8,7 @@ import net.minecraft.client.render.VertexConsumerProvider
 import net.minecraft.client.render.entity.EntityRenderer
 import net.minecraft.client.render.entity.EntityRendererFactory
 import net.minecraft.client.util.math.MatrixStack
+import net.minecraft.entity.Entity
 import net.minecraft.util.Identifier
 import net.minecraft.util.math.Vec3f
 
@@ -22,12 +23,9 @@ class SpeckRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<SpeckEn
 
 		if (!entity!!.clientIsText)
 			matrices.translate(0.0, 0.25, 0.0)
-		if (entity.yaw != 0.0f)
-			matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(-entity.yaw))
-		if (entity.pitch != 0.0f)
-			matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(entity.pitch))
-		if (entity.clientRoll != 0.0f)
-			matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(entity.clientRoll))
+		matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(entity.pitch))
+		matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180.0f - entity.yaw))
+		matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(entity.clientRoll))
 		matrices.scale(entity.clientSize, entity.clientSize, entity.clientSize)
 
 		RenderSystem.disableCull()

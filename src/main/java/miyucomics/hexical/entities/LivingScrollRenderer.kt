@@ -23,8 +23,8 @@ class LivingScrollRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<
 	override fun render(scroll: LivingScrollEntity?, yaw: Float, deltaTick: Float, matrices: MatrixStack, vertexConsumers: VertexConsumerProvider, light: Int) {
 		RenderSystem.setShader { GameRenderer.getPositionTexShader() }
 		matrices.push()
-		matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion((scroll as Entity).pitch))
-		matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180.0f - (scroll as Entity).yaw))
+		matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(scroll!!.pitch))
+		matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180.0f - scroll.yaw))
 		val worldLight = WorldRenderer.getLightmapCoordinates(scroll.world, scroll.blockPos)
 		drawFrame(matrices, vertexConsumers, getTexture(scroll), scroll.clientSize.toFloat(), worldLight)
 		drawPattern(matrices, vertexConsumers, scroll.cachedPattern, scroll.clientSize, worldLight)
