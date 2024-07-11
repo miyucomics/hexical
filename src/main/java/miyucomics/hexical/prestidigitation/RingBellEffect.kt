@@ -14,6 +14,7 @@ import net.minecraft.world.event.GameEvent
 
 class RingBellEffect : PrestidigitationEffect {
 	override fun getCost() = MediaConstants.DUST_UNIT
+
 	override fun effectBlock(caster: ServerPlayerEntity, position: BlockPos) {
 		val state = caster.world.getBlockState(position)
 		if (state.block is BellBlock) {

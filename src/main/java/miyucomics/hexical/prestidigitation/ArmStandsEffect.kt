@@ -10,7 +10,9 @@ import net.minecraft.util.math.BlockPos
 
 class ArmStandsEffect : PrestidigitationEffect {
 	override fun getCost() = MediaConstants.DUST_UNIT / 10
+
 	override fun effectBlock(caster: ServerPlayerEntity, position: BlockPos) {}
+
 	override fun effectEntity(caster: ServerPlayerEntity, entity: Entity) {
 		if (entity is ArmorStandEntity) {
 			entity.setShowArms(!entity.shouldShowArms())
