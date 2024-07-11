@@ -11,6 +11,8 @@
 
 		"minecraft:mud": "hexical:dry_mud",
 
+		"hexcasting:akashic_bookshelf": "hexical:right_click",
+
 		"minecraft:grass_block": "hexical:use_shovel",
 		"minecraft:coarse_dirt": "hexical:use_shovel",
 		"minecraft:podzol": "hexical:use_shovel",
@@ -27,6 +29,20 @@
 		"hexcasting:impetus_rightclick": "hexical:trigger_impetus",
 		"hexcasting:impetus_look": "hexical:trigger_impetus",
 		"hexcasting:impetus_storedplayer": "hexical:trigger_impetus",
+
+		"minecraft:dropper": "hexical:dispense",
+		"minecraft:dispenser": "hexical:dispense",
+
+		"minecraft:tripwire": "hexical:collide",
+		"minecraft:stone_pressure_plate":  "hexical:collide",
+		"minecraft:oak_pressure_plate": "hexical:collide",
+		"minecraft:spruce_pressure_plate":  "hexical:collide",
+		"minecraft:birch_pressure_plate": "hexical:collide",
+		"minecraft:jungle_pressure_plate":  "hexical:collide",
+		"minecraft:acacia_pressure_plate": "hexical:collide",
+		"minecraft:dark_oak_pressure_plate":  "hexical:collide",
+		"minecraft:mangrove_pressure_plate": "hexical:collide",
+		"hexcasting:edified_pressure_plate": "hexical:collide",
 
 		"minecraft:daylight_detector": "hexical:right_click",
 		"minecraft:comparator": "hexical:right_click",
