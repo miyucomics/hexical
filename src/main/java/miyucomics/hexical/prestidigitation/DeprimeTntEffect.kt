@@ -10,7 +10,9 @@ import net.minecraft.util.math.BlockPos
 
 class DeprimeTntEffect : PrestidigitationEffect {
 	override fun getCost() = MediaConstants.DUST_UNIT
+
 	override fun effectBlock(caster: ServerPlayerEntity, position: BlockPos) {}
+
 	override fun effectEntity(caster: ServerPlayerEntity, entity: Entity) {
 		if (entity is TntEntity) {
 			if (entity.world.getBlockState(entity.blockPos).isOf(Blocks.WATER) || entity.world.getBlockState(entity.blockPos).isOf(Blocks.LAVA) || entity.world.getBlockState(entity.blockPos).isOf(Blocks.AIR) || entity.world.getBlockState(entity.blockPos).isOf(Blocks.CAVE_AIR) || entity.world.getBlockState(entity.blockPos).isOf(Blocks.VOID_AIR))

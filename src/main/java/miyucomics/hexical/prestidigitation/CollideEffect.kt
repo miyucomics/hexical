@@ -3,17 +3,16 @@ package miyucomics.hexical.prestidigitation
 import at.petrak.hexcasting.api.misc.MediaConstants
 import miyucomics.hexical.interfaces.PrestidigitationEffect
 import net.minecraft.entity.Entity
-import net.minecraft.entity.passive.PandaEntity
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.math.BlockPos
 
-class PandaSneezeEffect : PrestidigitationEffect {
+class CollideEffect : PrestidigitationEffect {
 	override fun getCost() = MediaConstants.DUST_UNIT
 
-	override fun effectBlock(caster: ServerPlayerEntity, position: BlockPos) {}
-
-	override fun effectEntity(caster: ServerPlayerEntity, entity: Entity) {
-		if (entity is PandaEntity)
-			entity.isSneezing = true
+	override fun effectBlock(caster: ServerPlayerEntity, position: BlockPos) {
+		val state = caster.world.getBlockState(position)
+		state.block.onEntityCollision(state, caster.world, position, caster)
 	}
+
+	override fun effectEntity(caster: ServerPlayerEntity, entity: Entity) {}
 }

@@ -10,7 +10,9 @@ import net.minecraft.util.math.BlockPos
 
 class InflatePufferfishEffect : PrestidigitationEffect {
 	override fun getCost() = MediaConstants.DUST_UNIT
+
 	override fun effectBlock(caster: ServerPlayerEntity, position: BlockPos) {}
+
 	override fun effectEntity(caster: ServerPlayerEntity, entity: Entity) {
 		if (entity is PufferfishEntity && entity.puffState != 2) {
 			entity.playSound(SoundEvents.ENTITY_PUFFER_FISH_BLOW_UP, 1f, 1f)

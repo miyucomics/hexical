@@ -1,6 +1,7 @@
 # Changelog
 
 ## 1.3.0
+- added more advancements
 - added hexbursts - adds an iota to your stack when eaten
 - added hextitos - casts a hex using the player stack when eaten
 - added dye iota
@@ -26,10 +27,10 @@
   - added Ingest spell - eat wristpocketed item
   - added Mage Hand spell - use your wristpocketed item to interact with blocks and entities
 - added mishap to Chorus Blink if you don't have chorus fruit in your inventory
-- added semi-permeable modifier for : only sprinting creatures have collision
 - added semi-permeable mage block modifier: only sprinting creatures have collision
 - added more conjured staff sprites
 - added more scrying patterns
+- added hex candles - purple amethyst candles whose flames take on pigment colors
 - changed conjured staff sprite to be less messy
 - changed Identify pattern to have ambit limitation
 - changed speed and variance of living scroll patterns

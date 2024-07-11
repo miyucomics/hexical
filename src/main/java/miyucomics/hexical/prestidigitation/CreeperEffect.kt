@@ -9,7 +9,9 @@ import net.minecraft.util.math.BlockPos
 
 class CreeperEffect : PrestidigitationEffect {
 	override fun getCost() = MediaConstants.DUST_UNIT
+
 	override fun effectBlock(caster: ServerPlayerEntity, position: BlockPos) {}
+
 	override fun effectEntity(caster: ServerPlayerEntity, entity: Entity) {
 		if (entity is CreeperEntity) {
 			if (entity.isIgnited)

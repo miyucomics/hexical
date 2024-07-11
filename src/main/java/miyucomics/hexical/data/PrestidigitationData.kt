@@ -30,6 +30,8 @@ object PrestidigitationData {
 		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("deprime_tnt"), DeprimeTntEffect())
 		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("trigger_impetus"), TriggerImpetusEffect())
 		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("ring_bell"), RingBellEffect())
+		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("collide"), CollideEffect())
+		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("dispense"), DispenseEffect())
 
 		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("right_click"), UseItemOnEffect(ItemStack.EMPTY))
 		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("use_axe"), UseItemOnEffect(ItemStack(Items.DIAMOND_AXE)))
