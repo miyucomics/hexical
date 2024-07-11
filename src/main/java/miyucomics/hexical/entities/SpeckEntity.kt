@@ -79,7 +79,7 @@ class SpeckEntity(entityType: EntityType<SpeckEntity>, world: World) : Entity(en
 	override fun setRoll(rotation: Float) = dataTracker.set(rollDataTracker, rotation)
 	override fun setThickness(thickness: Float) = dataTracker.set(thicknessDataTracker, thickness)
 	override fun setPigment(pigment: FrozenColorizer) = dataTracker.set(pigmentDataTracker, pigment.serializeToNBT())
-	override fun getEyeHeight(pose: EntityPose, dimensions: EntityDimensions) = 0.5f
+	override fun getEyeHeight(pose: EntityPose, dimensions: EntityDimensions) = 0.25f
 	override fun createSpawnPacket() = EntitySpawnS2CPacket(this)
 
 	override fun initDataTracker() {
