@@ -175,7 +175,7 @@ object HexicalPatterns {
 		register("get_offhand_stack", "edeeee", HexDir.NORTH_WEST, OpGetPlayerData(1))
 		register("get_weather", "eweweweweweeeaedqdqde", HexDir.WEST, OpGetWorldData(0))
 		register("get_dimension", "qwqwqwqwqwqqaedwaqd", HexDir.WEST, OpGetWorldData(1))
-		register("get_time", "wddwaqqwqqqaqqqqwddwaqqwqqqaqqq", HexDir.SOUTH_EAST, OpGetWorldData(2))
+		register("get_time", "wddwaqqwqaddaqqwddwaqqwqaddaq", HexDir.SOUTH_EAST, OpGetWorldData(2))
 		register("get_light", "wqwqwqwqwqwaeqqqqaeqaeaeaeaw", HexDir.SOUTH_WEST, OpGetPositionData(0))
 		register("get_biome", "qwqwqawdqqaqqdwaqwqwq", HexDir.WEST, OpGetPositionData(1))
 		register("count_stack", "qaqqwqqqw", HexDir.EAST, OpGetItemStackData(0))

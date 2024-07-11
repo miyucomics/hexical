@@ -37,25 +37,19 @@ import static net.minecraft.sound.SoundCategory.BLOCKS;
 
 @Mixin(BlockAkashicBookshelf.class)
 public class BlockAkashicBookshelfMixin {
-	@Inject(method = "onUse", at = @At(value = "TAIL"), cancellable = true)
+	@Inject(method = "onUse", at = @At(value = "TAIL"))
 	private void copyIota(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit, CallbackInfoReturnable<ActionResult> cir) {
 		if (world.isClient)
 			return;
 		if (player.isSneaking() || hand == Hand.OFF_HAND)
 			return;
-		ItemStack stack = player.getMainHandStack();
-		if (stack.getItem() instanceof ItemScroll)
+		if (!player.getMainHandStack().isEmpty())
 			return;
 		BlockEntity shelf = world.getBlockEntity(pos);
 		if (shelf instanceof BlockEntityAkashicBookshelf) {
 			NbtCompound nbt = ((BlockEntityAkashicBookshelf) shelf).getIotaTag();
 			if (nbt == null)
 				return;
-			if (stack.getItem() instanceof LivingScrollItem scroll) {
-				scroll.writeDatum(stack, new PatternIota(Objects.requireNonNull(((BlockEntityAkashicBookshelf) shelf).getPattern())));
-				world.playSound(player, pos, HexSounds.SCROLL_SCRIBBLE, SoundCategory.BLOCKS, 1f, 1f);
-				cir.setReturnValue(ActionResult.success(true));
-			}
 			CastingHarness harness = IXplatAbstractions.INSTANCE.getHarness((ServerPlayerEntity) player, hand);
 			harness.getStack().add(HexIotaTypes.deserialize(nbt, (ServerWorld) world));
 			IXplatAbstractions.INSTANCE.setHarness((ServerPlayerEntity) player, harness);
