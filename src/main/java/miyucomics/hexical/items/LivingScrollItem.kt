@@ -39,10 +39,11 @@ class LivingScrollItem(private val size: Int) : Item(Settings().group(HexicalIte
 		val stack = context.stack
 		val world = context.world
 
-		if (world.getBlockState(context.blockPos).isOf(HexBlocks.AKASHIC_BOOKSHELF)) {
-			val key = (world.getBlockEntity(position) as BlockEntityAkashicBookshelf).pattern
-			if (key != null && !world.isClient) {
-				world.playSound(null, position, HexSounds.SCROLL_SCRIBBLE, SoundCategory.BLOCKS, 1f, 1f)
+		if (!world.isClient && world.getBlockState(context.blockPos).isOf(HexBlocks.AKASHIC_BOOKSHELF)) {
+			val key = (world.getBlockEntity(context.blockPos) as BlockEntityAkashicBookshelf).pattern
+			if (key != null) {
+				player!!.swingHand(context.hand)
+				world.playSound(null, context.blockPos, HexSounds.SCROLL_SCRIBBLE, SoundCategory.BLOCKS, 1f, 1f)
 				writeDatum(stack, PatternIota(key))
 				return ActionResult.SUCCESS
 			}

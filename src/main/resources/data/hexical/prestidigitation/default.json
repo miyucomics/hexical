@@ -11,7 +11,7 @@
 
 		"minecraft:mud": "hexical:dry_mud",
 
-		"hexcasting:akashic_bookshelf": "hexical:right_click",
+		"hexcasting:akashic_bookshelf": "hexical:learn",
 
 		"minecraft:grass_block": "hexical:use_shovel",
 		"minecraft:coarse_dirt": "hexical:use_shovel",
@@ -33,20 +33,24 @@
 		"minecraft:dropper": "hexical:dispense",
 		"minecraft:dispenser": "hexical:dispense",
 
-		"minecraft:tripwire": "hexical:collide",
-		"minecraft:stone_pressure_plate":  "hexical:collide",
-		"minecraft:oak_pressure_plate": "hexical:collide",
-		"minecraft:spruce_pressure_plate":  "hexical:collide",
-		"minecraft:birch_pressure_plate": "hexical:collide",
-		"minecraft:jungle_pressure_plate":  "hexical:collide",
-		"minecraft:acacia_pressure_plate": "hexical:collide",
-		"minecraft:dark_oak_pressure_plate":  "hexical:collide",
-		"minecraft:mangrove_pressure_plate": "hexical:collide",
-		"hexcasting:edified_pressure_plate": "hexical:collide",
+		"minecraft:stone_pressure_plate":  "hexical:power",
+		"minecraft:oak_pressure_plate": "hexical:power",
+		"minecraft:spruce_pressure_plate":  "hexical:power",
+		"minecraft:birch_pressure_plate": "hexical:power",
+		"minecraft:jungle_pressure_plate":  "hexical:power",
+		"minecraft:acacia_pressure_plate": "hexical:power",
+		"minecraft:dark_oak_pressure_plate":  "hexical:power",
+		"minecraft:mangrove_pressure_plate": "hexical:power",
+		"hexcasting:edified_pressure_plate": "hexical:power",
+
+		"minecraft:note_block": "hexical:note",
 
 		"minecraft:daylight_detector": "hexical:right_click",
 		"minecraft:comparator": "hexical:right_click",
 		"minecraft:repeater": "hexical:right_click",
+
+		"minecraft:piston": "hexical:piston",
+		"minecraft:sticky_piston": "hexical:piston",
 
 		"minecraft:oak_log": "hexical:use_axe",
 		"minecraft:spruce_log": "hexical:use_axe",

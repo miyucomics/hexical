@@ -1,18 +1,20 @@
 package miyucomics.hexical.prestidigitation
 
-import at.petrak.hexcasting.api.misc.MediaConstants
 import miyucomics.hexical.interfaces.PrestidigitationEffect
-import net.minecraft.block.DispenserBlock
+import net.minecraft.block.*
+import net.minecraft.block.entity.BlockEntity
+import net.minecraft.block.entity.PistonBlockEntity
+import net.minecraft.block.piston.PistonHandler
 import net.minecraft.entity.Entity
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld
+import net.minecraft.state.property.Property
 import net.minecraft.util.math.BlockPos
+import net.minecraft.util.math.Direction
 
-class DispenseEffect : PrestidigitationEffect {
+class PistonEffect : PrestidigitationEffect {
 	override fun effectBlock(caster: ServerPlayerEntity, position: BlockPos) {
 		val state = caster.world.getBlockState(position)
-		if (state.block is DispenserBlock)
-			(state.block as DispenserBlock).scheduledTick(state, caster.world as ServerWorld, position, null)
 	}
 
 	override fun effectEntity(caster: ServerPlayerEntity, entity: Entity) {}

@@ -9,8 +9,6 @@ import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.math.BlockPos
 
 class TriggerImpetusEffect : PrestidigitationEffect {
-	override fun getCost() = MediaConstants.DUST_UNIT
-
 	override fun effectBlock(caster: ServerPlayerEntity, position: BlockPos) {
 		val state = caster.world.getBlockState(position)
 		if (state.block is BlockAbstractImpetus) {

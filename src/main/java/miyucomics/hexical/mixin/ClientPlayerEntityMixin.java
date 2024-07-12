@@ -23,7 +23,6 @@ public class ClientPlayerEntityMixin {
 		if (client.currentScreen instanceof GuiSpellcasting) {
 			KeyBinding.updatePressedStates();
 			GameOptions keys = client.options;
-			assert client.player != null;
 			input.pressingForward = keys.forwardKey.isPressed();
 			input.pressingBack = keys.backKey.isPressed();
 			input.pressingLeft = keys.leftKey.isPressed();

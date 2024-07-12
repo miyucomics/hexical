@@ -9,8 +9,6 @@ import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.math.BlockPos
 
 class DeprimeTntEffect : PrestidigitationEffect {
-	override fun getCost() = MediaConstants.DUST_UNIT
-
 	override fun effectBlock(caster: ServerPlayerEntity, position: BlockPos) {}
 
 	override fun effectEntity(caster: ServerPlayerEntity, entity: Entity) {
