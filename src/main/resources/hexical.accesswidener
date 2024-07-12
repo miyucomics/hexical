@@ -7,3 +7,4 @@ accessible field net/minecraft/entity/mob/CreeperEntity IGNITED Lnet/minecraft/e
 accessible method net/minecraft/entity/mob/ShulkerEntity setColor (Lnet/minecraft/util/DyeColor;)V
 accessible method net/minecraft/entity/decoration/ArmorStandEntity setShowArms (Z)V
 accessible method net/minecraft/entity/passive/SquidEntity squirt ()V
+accessible method net/minecraft/block/PistonBlock tryMove (Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;)V

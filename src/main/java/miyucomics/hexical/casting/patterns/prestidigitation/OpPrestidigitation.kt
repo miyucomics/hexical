@@ -1,5 +1,6 @@
 package miyucomics.hexical.casting.patterns.prestidigitation
 
+import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.*
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.EntityIota
@@ -21,13 +22,13 @@ class OpPrestidigitation : SpellAction {
 				val entity = args.getEntity(0, argc)
 				ctx.assertEntityInRange(entity)
 				val effect = PrestidigitationData.entityEffect(entity) ?: throw MishapBadEntity.of(entity, "prestidigitation")
-				Triple(EntitySpell(entity, effect), effect.getCost(), listOf())
+				Triple(EntitySpell(entity, effect), MediaConstants.DUST_UNIT / 10, listOf())
 			}
 			is Vec3Iota -> {
 				val position = args.getBlockPos(0, argc)
 				ctx.assertVecInRange(position)
 				val effect = PrestidigitationData.blockEffect(ctx.world.getBlockState(position).block) ?: throw MishapBadBlock.of(position, "prestidigitation")
-				Triple(BlockSpell(position, effect), effect.getCost(), listOf())
+				Triple(BlockSpell(position, effect), MediaConstants.DUST_UNIT / 10, listOf())
 			}
 			else -> throw MishapInvalidIota.of(args[0], 0, "entity_or_vector")
 		}

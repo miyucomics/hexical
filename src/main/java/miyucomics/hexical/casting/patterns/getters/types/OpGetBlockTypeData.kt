@@ -4,8 +4,10 @@ import at.petrak.hexcasting.api.spell.ConstMediaAction
 import at.petrak.hexcasting.api.spell.asActionResult
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.Iota
+import at.petrak.hexcasting.api.spell.iota.NullIota
 import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
 import miyucomics.hexical.casting.iota.getIdentifier
+import net.minecraft.block.CropBlock
 import net.minecraft.util.registry.Registry
 
 class OpGetBlockTypeData(private val mode: Int) : ConstMediaAction {
@@ -18,6 +20,7 @@ class OpGetBlockTypeData(private val mode: Int) : ConstMediaAction {
 		return when (mode) {
 			0 -> block.hardness.asActionResult
 			1 -> block.blastResistance.asActionResult
+			2 -> if (block is CropBlock) block.maxAge.asActionResult else listOf(NullIota())
 			else -> throw IllegalStateException()
 		}
 	}
