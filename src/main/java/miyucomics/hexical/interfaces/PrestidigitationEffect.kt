@@ -5,7 +5,6 @@ import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.math.BlockPos
 
 interface PrestidigitationEffect {
-	fun getCost(): Int
 	fun effectBlock(caster: ServerPlayerEntity, position: BlockPos)
 	fun effectEntity(caster: ServerPlayerEntity, entity: Entity)
 }

@@ -14,8 +14,6 @@ import net.minecraft.util.math.Direction
 import net.minecraft.util.math.Vec3d
 
 class UseItemOnEffect(val stack: ItemStack) : PrestidigitationEffect {
-	override fun getCost() = MediaConstants.DUST_UNIT
-
 	override fun effectBlock(caster: ServerPlayerEntity, position: BlockPos) {
 		caster.world.getBlockState(position).onUse(caster.world, caster, Hand.MAIN_HAND, BlockHitResult(Vec3d.of(position), Direction.DOWN, position, false))
 		stack.item.useOnBlock(ItemUsageContext(caster, Hand.MAIN_HAND, BlockHitResult(Vec3d.ofCenter(position), Direction.UP, position, true)))
