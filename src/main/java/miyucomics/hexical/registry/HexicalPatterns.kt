@@ -204,8 +204,18 @@ object HexicalPatterns {
 
 		register("get_player_hunger", "qqqadaddw", HexDir.WEST, OpGetPlayerData(2))
 		register("get_player_saturation", "qqqadaddq", HexDir.WEST, OpGetPlayerData(3))
+
 		register("block_hardness", "qaqqqqqeeeeedq", HexDir.EAST, OpGetBlockTypeData(0))
 		register("block_blast_resistance", "qaqqqqqewaaqddqa", HexDir.EAST, OpGetBlockTypeData(1))
+		register("blockstate_waterlogged", "edeeeeeqwqqqqw", HexDir.SOUTH_EAST, OpGetBlockStateData(0))
+		register("blockstate_rotation", "qaqqqqqwadeeed", HexDir.EAST, OpGetBlockStateData(1))
+		register("blockstate_crop", "qaqqqqqwaea", HexDir.EAST, OpGetBlockStateData(2))
+		register("blockstate_glow", "qaqqqqqwaeaeaeaeaea", HexDir.EAST, OpGetBlockStateData(3))
+		register("blockstate_lock", "qaqqqeaqwdewd", HexDir.EAST, OpGetBlockStateData(4))
+		register("blockstate_turn", "qaqqqqqwqqwqd", HexDir.EAST, OpGetBlockStateData(5))
+		register("blockstate_bunch", "qaqqqqqweeeeedeeqaqdeee", HexDir.EAST, OpGetBlockStateData(6))
+		register("blockstate_book", "qaqqqqqeawa", HexDir.EAST, OpGetBlockStateData(7))
+
 		register("get_effects_entity", "wqqq", HexDir.SOUTH_WEST, OpGetLivingEntityData(6))
 		register("get_effects_item", "wqqqadee", HexDir.SOUTH_WEST, OpGetPrescription())
 		register("get_effect_category", "wqqqaawd", HexDir.SOUTH_WEST, OpGetStatusEffectCategory())

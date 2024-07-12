@@ -1,0 +1,16 @@
+{
+	"targets": [
+		"swap"
+	],
+	"passes": [
+		{
+			"name": "hexical:television",
+			"intarget": "minecraft:main",
+			"outtarget": "swap"
+		}, {
+			"name": "blit",
+			"intarget": "swap",
+			"outtarget": "minecraft:main"
+		}
+	]
+}

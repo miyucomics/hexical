@@ -20,7 +20,6 @@ class OpGetBlockTypeData(private val mode: Int) : ConstMediaAction {
 		return when (mode) {
 			0 -> block.hardness.asActionResult
 			1 -> block.blastResistance.asActionResult
-			2 -> if (block is CropBlock) block.maxAge.asActionResult else listOf(NullIota())
 			else -> throw IllegalStateException()
 		}
 	}
