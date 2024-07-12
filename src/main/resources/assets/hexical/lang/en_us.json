@@ -391,7 +391,7 @@
 	"hexical.page.perlin.summary": "Measures the concentration of ambient at that point in space and time, normalized between 0 and 1.",
 
 	"hexcasting.spell.hexical:prestidigitation": "Prestidigitation",
-	"hexical.page.prestidigitation.summary": "Causes a small magical effect on the block or entity, usually not too distinct from the original nature or function of the block or entity.",
+	"hexical.page.prestidigitation.summary": "Causes a small magical effect on the block or entity, usually not too distinct from the original nature or function of the block or entity. Costs 1/10th dust.",
 	"hexical.page.prestidigitation.0": "This spell differs from all others I've seen. Rather than a single specific effect, this spell seems to combine dozens of small effects into a single spell. It targets a vast array of blocks and entities, and I am constantly finding uses for it. I have documented them on the following pages.",
 	"hexcasting.spell.hexical:can_prestidigitate": "Alteration Purification",
 	"hexical.page.can_prestidigitate.summary": "Pushes whether an entity or location is able to be manipulated with Prestidigitation.",

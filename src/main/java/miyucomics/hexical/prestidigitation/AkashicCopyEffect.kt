@@ -1,19 +1,25 @@
 package miyucomics.hexical.prestidigitation
 
 import at.petrak.hexcasting.api.misc.MediaConstants
+import at.petrak.hexcasting.common.blocks.akashic.BlockEntityAkashicBookshelf
+import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
+import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.interfaces.PrestidigitationEffect
-import net.minecraft.block.Block
 import net.minecraft.entity.Entity
 import net.minecraft.server.network.ServerPlayerEntity
-import net.minecraft.state.property.BooleanProperty
+import net.minecraft.server.world.ServerWorld
+import net.minecraft.util.Hand
 import net.minecraft.util.math.BlockPos
 
-class AkashicCopyEffect(private val property: BooleanProperty) : PrestidigitationEffect {
-	override fun getCost() = MediaConstants.DUST_UNIT / 100
-
+class AkashicCopyEffect : PrestidigitationEffect {
 	override fun effectBlock(caster: ServerPlayerEntity, position: BlockPos) {
-		val state = caster.world.getBlockState(position)
-		caster.world.setBlockState(position, state.with(property, !state.get(property)), Block.NOTIFY_ALL or Block.REDRAW_ON_MAIN_THREAD)
+		val shelf = caster.world.getBlockEntity(position)
+		if (shelf is BlockEntityAkashicBookshelf) {
+			val nbt = shelf.iotaTag ?: return
+			val harness = IXplatAbstractions.INSTANCE.getHarness(caster, Hand.MAIN_HAND)
+			harness.stack.add(HexIotaTypes.deserialize(nbt, caster.world as ServerWorld))
+			IXplatAbstractions.INSTANCE.setHarness(caster, harness)
+		}
 	}
 
 	override fun effectEntity(caster: ServerPlayerEntity, entity: Entity) {}

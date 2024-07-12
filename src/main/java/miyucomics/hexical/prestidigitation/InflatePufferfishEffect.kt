@@ -9,8 +9,6 @@ import net.minecraft.sound.SoundEvents
 import net.minecraft.util.math.BlockPos
 
 class InflatePufferfishEffect : PrestidigitationEffect {
-	override fun getCost() = MediaConstants.DUST_UNIT
-
 	override fun effectBlock(caster: ServerPlayerEntity, position: BlockPos) {}
 
 	override fun effectEntity(caster: ServerPlayerEntity, entity: Entity) {
