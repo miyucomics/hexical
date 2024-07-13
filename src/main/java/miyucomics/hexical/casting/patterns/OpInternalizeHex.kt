@@ -8,7 +8,6 @@ import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.getList
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.ListIota
-import at.petrak.hexcasting.api.spell.mishaps.MishapOthersName
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import miyucomics.hexical.enums.SpecializedSource
 import miyucomics.hexical.registry.HexicalItems.NULL_MEDIA_ITEM
@@ -21,7 +20,6 @@ import net.minecraft.item.ItemStack
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.sound.SoundCategory
-import net.minecraft.sound.SoundEvents
 import net.minecraft.util.Hand
 
 class OpInternalizeHex : SpellAction {

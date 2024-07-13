@@ -9,7 +9,6 @@ import at.petrak.hexcasting.api.spell.getBlockPos
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapBadBlock
 import at.petrak.hexcasting.xplat.IXplatAbstractions
-import miyucomics.hexical.blocks.MageBlock
 import miyucomics.hexical.blocks.MageBlockEntity
 import miyucomics.hexical.registry.HexicalBlocks
 import net.minecraft.util.math.BlockPos
