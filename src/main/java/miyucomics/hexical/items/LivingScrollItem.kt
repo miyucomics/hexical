@@ -12,16 +12,13 @@ import at.petrak.hexcasting.common.blocks.akashic.BlockEntityAkashicBookshelf
 import at.petrak.hexcasting.common.lib.HexBlocks
 import at.petrak.hexcasting.common.lib.HexSounds
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
-import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.entities.LivingScrollEntity
 import miyucomics.hexical.registry.HexicalItems
-import miyucomics.hexical.registry.HexicalSounds.SUDDEN_REALIZATION_EVENT
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.item.ItemUsageContext
 import net.minecraft.nbt.NbtCompound
-import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.sound.SoundCategory
 import net.minecraft.util.ActionResult

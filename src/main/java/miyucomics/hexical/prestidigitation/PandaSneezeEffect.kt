@@ -1,6 +1,5 @@
 package miyucomics.hexical.prestidigitation
 
-import at.petrak.hexcasting.api.misc.MediaConstants
 import miyucomics.hexical.interfaces.PrestidigitationEffect
 import net.minecraft.entity.Entity
 import net.minecraft.entity.passive.PandaEntity

@@ -5,7 +5,6 @@ import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.math.HexPattern
 import at.petrak.hexcasting.api.spell.mishaps.MishapBadOffhandItem
-import at.petrak.hexcasting.api.spell.mishaps.MishapOthersName
 import miyucomics.hexical.casting.mishaps.GrimoireTooFullMishap
 import miyucomics.hexical.items.GrimoireItem
 import miyucomics.hexical.registry.HexicalItems

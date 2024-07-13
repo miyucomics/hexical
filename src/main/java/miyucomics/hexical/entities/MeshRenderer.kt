@@ -11,6 +11,8 @@ class MeshRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<MeshEnti
 	override fun getTexture(entity: MeshEntity?): Identifier? = null
 	override fun shouldRender(entity: MeshEntity?, frustum: Frustum?, x: Double, y: Double, z: Double) = true
 	override fun render(entity: MeshEntity?, yaw: Float, tickDelta: Float, matrices: MatrixStack, vertexConsumers: VertexConsumerProvider, light: Int) {
-
+//		val tessellator = Tessellator.getInstance()
+//		val buf = tessellator.buffer
+//		val stack = MatrixStack()
 	}
 }

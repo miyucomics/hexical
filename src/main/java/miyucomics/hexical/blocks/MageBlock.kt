@@ -1,9 +1,6 @@
 package miyucomics.hexical.blocks
 
-import at.petrak.hexcasting.api.misc.FrozenColorizer
-import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.common.blocks.BlockConjured
-import miyucomics.hexical.blocks.MageBlock.Companion.tick
 import miyucomics.hexical.registry.HexicalBlocks
 import net.minecraft.block.*
 import net.minecraft.block.entity.BlockEntity
@@ -15,7 +12,6 @@ import net.minecraft.entity.damage.DamageSource
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.BlockItem
 import net.minecraft.item.ItemPlacementContext
-import net.minecraft.server.world.ServerWorld
 import net.minecraft.sound.BlockSoundGroup
 import net.minecraft.sound.SoundCategory
 import net.minecraft.sound.SoundEvents
@@ -37,7 +33,7 @@ class MageBlock : BlockConjured(
 ) {
 	override fun emitsRedstonePower(state: BlockState) = true
 	override fun getWeakRedstonePower(state: BlockState, world: BlockView, pos: BlockPos, direction: Direction): Int {
-		val tile = world!!.getBlockEntity(pos)
+		val tile = world.getBlockEntity(pos)
 		if (tile !is MageBlockEntity)
 			return 0
 		if (tile.properties["energized"]!!)
