@@ -1,6 +1,5 @@
 package miyucomics.hexical.prestidigitation
 
-import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.common.blocks.akashic.BlockEntityAkashicBookshelf
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import at.petrak.hexcasting.xplat.IXplatAbstractions

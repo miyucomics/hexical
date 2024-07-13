@@ -53,6 +53,7 @@ import miyucomics.hexical.casting.patterns.wristpocket.OpGetWristpocket
 import miyucomics.hexical.casting.patterns.wristpocket.OpIngest
 import miyucomics.hexical.casting.patterns.wristpocket.OpMageHand
 import miyucomics.hexical.casting.patterns.wristpocket.OpWristpocket
+import miyucomics.hexical.enums.SpecializedSource
 import miyucomics.hexical.interfaces.Specklike
 import net.minecraft.sound.SoundEvents
 import net.minecraft.util.Identifier
@@ -67,6 +68,10 @@ object HexicalPatterns {
 
 		register("perlin", "qawedqdq", HexDir.WEST, OpPerlin())
 		register("theodolite", "wqaa", HexDir.EAST, OpGetEntityData(3))
+
+		register("check_hand_lamp", "qwddedqqaqqqqq", HexDir.SOUTH_WEST, OpCheckSource(SpecializedSource.HAND_LAMP))
+		register("check_arch_lamp", "qaqwddedqqaqqqqq", HexDir.NORTH_EAST, OpCheckSource(SpecializedSource.ARCH_LAMP))
+		register("check_conjured_staff", "waqaeaqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpCheckSource(SpecializedSource.CONJURED_STAFF))
 
 		register("read_shelf", "qaqqqada", HexDir.EAST, OpReadAkashicShelf())
 		register("write_shelf", "edeeedad", HexDir.SOUTH_WEST, OpWriteAkashicShelf())
