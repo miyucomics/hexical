@@ -30,7 +30,7 @@ class ArchLampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.H
 			val stack = ItemStack(HexicalItems.ARCH_LAMP_ITEM)
 			val holder = IXplatAbstractions.INSTANCE.findHexHolder(stack)
 			holder!!.writeHex(listOf(), MediaConstants.DUST_UNIT * 64000)
-			stacks!!.add(stack)
+			stacks.add(stack)
 		}
 	}
 

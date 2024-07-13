@@ -1,6 +1,5 @@
 package miyucomics.hexical.prestidigitation
 
-import at.petrak.hexcasting.api.misc.MediaConstants
 import miyucomics.hexical.interfaces.PrestidigitationEffect
 import net.minecraft.block.DispenserBlock
 import net.minecraft.entity.Entity

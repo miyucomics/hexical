@@ -29,7 +29,7 @@
 - added mishap to Chorus Blink if you don't have chorus fruit in your inventory
 - added semi-permeable mage block modifier: only sprinting creatures have collision
 - added more conjured staff sprites
-- added more scrying patterns
+- added an ungodly amount of world scrying patterns
 - added hex candles - purple amethyst candles whose flames take on pigment colors
 - changed conjured staff sprite to be less messy
 - changed Identify pattern to have ambit limitation
@@ -47,7 +47,8 @@
 - fixed bug with archgenie lamps where it can cast for free if it wasn't in your main inventory
 - fixed bug with conjured staff where inputs aren't always neatly intercepted and you can accidentally break blocks
 - fixed Finale Reflection that always returned null
-- optimize speck and living scroll rendering massively
+- fixed specks crashing the client
+- optimize speck and living scroll rendering massively by caching patterns and verts
 - overhauled project structure completely
 - overhauled genie lamps completely and entirely
 - overhauled world scrying patterns
