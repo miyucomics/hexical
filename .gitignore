@@ -3,6 +3,7 @@ _site/
 _checkout/
 __gradle_version__.py
 .hexdoc*/
+.kotlin/
 
 # eclipse
 bin
