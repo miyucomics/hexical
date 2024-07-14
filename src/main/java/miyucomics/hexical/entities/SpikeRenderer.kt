@@ -7,6 +7,8 @@ import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.util.Identifier
 import net.minecraft.util.math.Matrix3f
 import net.minecraft.util.math.Matrix4f
+import java.lang.Math.pow
+import kotlin.math.pow
 
 class SpikeRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<SpikeEntity>(ctx) {
 	override fun getTexture(spike: SpikeEntity?) = Identifier("textures/block/amethyst_cluster.png")
@@ -16,7 +18,6 @@ class SpikeRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<SpikeEn
 
 		val direction = spike!!.getDirection()
 		matrices.multiply(direction.rotationQuaternion)
-
 		// I don't know why this works, but it works and I am never touching it again.
 		val y = direction.offsetY.toDouble()
 		matrices.translate(-0.5, -0.5 + y / 2, -1.0 + y * y / 2)
@@ -24,15 +25,15 @@ class SpikeRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<SpikeEn
 		val mat = matrices.peek().positionMatrix
 		val norm = matrices.peek().normalMatrix
 
-		vertex(mat, buffer, norm, 1f, 1f, 0f, 0f, 0f)
-		vertex(mat, buffer, norm, 1f, 0f, 0f, 0f, 1f)
-		vertex(mat, buffer, norm, 0f, 0f, 1f, 1f, 1f)
-		vertex(mat, buffer, norm, 0f, 1f, 1f, 1f, 0f)
-
-		vertex(mat, buffer, norm, 0f, 1f, 0f, 0f, 0f)
-		vertex(mat, buffer, norm, 0f, 0f, 0f, 0f, 1f)
-		vertex(mat, buffer, norm, 1f, 0f, 1f, 1f, 1f)
-		vertex(mat, buffer, norm, 1f, 1f, 1f, 1f, 0f)
+		val progress = spike.getAnimationProgress(deltaTick)
+		vertex(mat, buffer, norm, 1f, progress, 0f, 0f, 0f)
+		vertex(mat, buffer, norm, 1f, 0f, 0f, 0f, progress)
+		vertex(mat, buffer, norm, 0f, 0f, 1f, 1f, progress)
+		vertex(mat, buffer, norm, 0f, progress, 1f, 1f, 0f)
+		vertex(mat, buffer, norm, 0f, progress, 0f, 0f, 0f)
+		vertex(mat, buffer, norm, 0f, 0f, 0f, 0f, progress)
+		vertex(mat, buffer, norm, 1f, 0f, 1f, 1f, progress)
+		vertex(mat, buffer, norm, 1f, progress, 1f, 1f, 0f)
 
 		matrices.pop()
 	}

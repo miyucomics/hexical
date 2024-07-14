@@ -19,12 +19,12 @@ public class ItemAbacusMixin {
 	@Final
 	public static String TAG_VALUE;
 
-	@Inject(method = "canWrite", at = @At(value = "HEAD"), cancellable = true)
+	@Inject(method = "canWrite", at = @At("HEAD"), cancellable = true)
 	public void makeWriteable(ItemStack stack, Iota datum, CallbackInfoReturnable<Boolean> cir) {
 		cir.setReturnValue(datum instanceof DoubleIota);
 	}
 
-	@Inject(method = "writeDatum", at = @At(value = "HEAD"))
+	@Inject(method = "writeDatum", at = @At("HEAD"))
 	public void makeWriteable(ItemStack stack, Iota datum, CallbackInfo ci) {
 		if (datum instanceof DoubleIota doub)
 			NBTHelper.putDouble(stack, TAG_VALUE, doub.getDouble());

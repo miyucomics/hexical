@@ -50,8 +50,6 @@ object HexicalItems {
 		Registry.register(Registry.ITEM, HexicalMain.id("mage_block"), BlockItem(HexicalBlocks.MAGE_BLOCK, Settings()))
 		Registry.register(Registry.ITEM, HexicalMain.id("media_jar"), BlockItem(HexicalBlocks.MEDIA_JAR_BLOCK, Settings().group(HEXICAL_GROUP)))
 		Registry.register(Registry.ITEM, HexicalMain.id("hex_candle"), BlockItem(HexicalBlocks.HEX_CANDLE_BLOCK, Settings().group(HEXICAL_GROUP)))
-
-		Registry.register(Registry.ITEM, HexicalMain.id("spiky"), SpikeItem())
 	}
 
 	@JvmStatic

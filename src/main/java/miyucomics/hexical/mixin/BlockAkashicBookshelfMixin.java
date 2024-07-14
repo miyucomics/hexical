@@ -37,7 +37,7 @@ import static net.minecraft.sound.SoundCategory.BLOCKS;
 
 @Mixin(BlockAkashicBookshelf.class)
 public class BlockAkashicBookshelfMixin {
-	@Inject(method = "onUse", at = @At(value = "TAIL"))
+	@Inject(method = "onUse", at = @At("TAIL"))
 	private void copyIota(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit, CallbackInfoReturnable<ActionResult> cir) {
 		if (world.isClient)
 			return;

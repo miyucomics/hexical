@@ -69,6 +69,8 @@ object HexicalPatterns {
 		register("perlin", "qawedqdq", HexDir.WEST, OpPerlin())
 		register("theodolite", "wqaa", HexDir.EAST, OpGetEntityData(3))
 
+		register("spike", "qdqdqdqdww", HexDir.NORTH_EAST, OpSpike())
+
 		register("check_hand_lamp", "qwddedqqaqqqqq", HexDir.SOUTH_WEST, OpCheckSource(SpecializedSource.HAND_LAMP))
 		register("check_arch_lamp", "qaqwddedqqaqqqqq", HexDir.NORTH_EAST, OpCheckSource(SpecializedSource.ARCH_LAMP))
 		register("check_conjured_staff", "waqaeaqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpCheckSource(SpecializedSource.CONJURED_STAFF))

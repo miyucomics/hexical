@@ -1,8 +1,8 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	id 'fabric-loom' version '1.6-SNAPSHOT'
-	id 'maven-publish'
+	id "fabric-loom" version "1.6-SNAPSHOT"
+	id "maven-publish"
 	id "org.jetbrains.kotlin.jvm" version "2.0.0"
 }
 
@@ -18,14 +18,14 @@ loom {
 }
 
 repositories {
-    maven { url "https://maven.terraformersmc.com/releases" }
-    maven { url "https://maven.shedaniel.me/" }
-    maven { url "https://maven.blamejared.com/" }
-    maven { url "https://maven.jamieswhiteshirt.com/libs-release/" }
-    maven { url "https://mvn.devos.one/snapshots/" }
+    maven { url = "https://maven.terraformersmc.com/releases" }
+    maven { url = "https://maven.shedaniel.me/" }
+    maven { url = "https://maven.blamejared.com/" }
+    maven { url = "https://maven.jamieswhiteshirt.com/libs-release/" }
+    maven { url = "https://mvn.devos.one/snapshots/" }
     maven { url = "https://maven.ladysnake.org/releases" }
 	maven { url = "https://api.modrinth.com/maven" }
-	maven { url "https://maven.kosmx.dev/" }
+	maven { url = "https://maven.kosmx.dev/" }
 	maven {
 		url = "https://ladysnake.jfrog.io/artifactory/mods"
 		content {
@@ -49,6 +49,7 @@ dependencies {
         exclude module: "lithium"
 		exclude module: "emi"
 	}
+
 	include implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:${mixin_extras_version}"))
 	include modImplementation("dev.kosmx.player-anim:player-animation-lib-fabric:${player_animator_version}")
 	include modImplementation("io.github.ladysnake:satin:${satin_version}")

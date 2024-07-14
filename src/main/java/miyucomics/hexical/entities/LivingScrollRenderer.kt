@@ -109,7 +109,7 @@ class LivingScrollRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<
 			val mat = peek.positionMatrix
 			val norm = peek.normalMatrix
 			val verts = vertexConsumers.getBuffer(RenderLayer.getEntityCutout(WHITE))
-			val zappy = makeZappy(lines, null, 10, 1f, 0.1f, 0f, 0.1f, 0.9f, hashCode().toDouble())
+			val zappy = makeZappy(lines, null, 10, 1f, 0.1f, 0f, 0.1f, 0.9f, 0.0)
 			drawLineSequence(mat, norm, light, size, verts, zappy.toMutableList())
 			matrices.pop()
 		}
