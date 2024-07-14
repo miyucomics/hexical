@@ -1,5 +1,7 @@
 package miyucomics.hexical.entities
 
+import at.petrak.hexcasting.api.addldata.ADIotaHolder
+import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.ListIota
 import at.petrak.hexcasting.api.spell.iota.PatternIota
 import at.petrak.hexcasting.api.spell.math.HexDir
@@ -29,7 +31,7 @@ import net.minecraft.util.math.Vec3d
 import net.minecraft.world.GameRules
 import net.minecraft.world.World
 
-class LivingScrollEntity(entityType: EntityType<LivingScrollEntity>, world: World) : AbstractDecorationEntity(entityType, world) {
+class LivingScrollEntity(entityType: EntityType<LivingScrollEntity>, world: World) : AbstractDecorationEntity(entityType, world), ADIotaHolder {
 	var patterns: MutableList<NbtCompound> = mutableListOf()
 
 	// client-only
@@ -190,4 +192,12 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity>, world: Worl
 		private val sizeDataTracker: TrackedData<Int> = DataTracker.registerData(LivingScrollEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
 		private val renderDataTracker: TrackedData<NbtCompound> = DataTracker.registerData(LivingScrollEntity::class.java, TrackedDataHandlerRegistry.NBT_COMPOUND)
 	}
+
+	override fun readIotaTag(): NbtCompound? {
+		val constructed = mutableListOf<PatternIota>()
+		for (pattern in this.patterns)
+			constructed.add(PatternIota(HexPattern.fromNBT(pattern)))
+		return HexIotaTypes.serialize(ListIota(constructed.toList()))
+	}
+	override fun writeIota(iota: Iota?, simulate: Boolean) = false
 }
