@@ -22,12 +22,16 @@ class LightningRodStaff : ItemStaff(Settings().maxCount(1).group(HexicalItems.HE
 		this.attributeModifiers = builder.build()
 	}
 
+	override fun getAttributeModifiers(slot: EquipmentSlot): Multimap<EntityAttribute, EntityAttributeModifier> {
+		if (slot == EquipmentSlot.MAINHAND || slot == EquipmentSlot.OFFHAND)
+			return this.attributeModifiers
+		return super.getAttributeModifiers(slot)
+	}
+
 	override fun postHit(stack: ItemStack, target: LivingEntity, attacker: LivingEntity): Boolean {
 		target.world.playSound(target.x, target.y, target.z, SoundEvents.BLOCK_AMETHYST_BLOCK_BREAK, SoundCategory.MASTER, 3f, 1f, true)
 		val velocity = target.pos.subtract(attacker.pos).normalize().multiply(1.5)
 		target.addVelocity(velocity.x, velocity.y + 1, velocity.z)
 		return super.postHit(stack, target, attacker)
 	}
-
-	override fun getAttributeModifiers(slot: EquipmentSlot) = this.attributeModifiers
 }
