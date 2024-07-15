@@ -7,11 +7,21 @@ import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.util.Identifier
 import net.minecraft.util.math.Matrix3f
 import net.minecraft.util.math.Matrix4f
-import java.lang.Math.pow
-import kotlin.math.pow
+import kotlin.math.floor
+import kotlin.math.max
 
 class SpikeRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<SpikeEntity>(ctx) {
-	override fun getTexture(spike: SpikeEntity?) = Identifier("textures/block/amethyst_cluster.png")
+	private val textures = listOf(
+		Identifier("textures/block/small_amethyst_bud.png"),
+		Identifier("textures/block/medium_amethyst_bud.png"),
+		Identifier("textures/block/large_amethyst_bud.png"),
+		Identifier("textures/block/amethyst_cluster.png")
+	)
+
+	override fun getTexture(spike: SpikeEntity?): Identifier {
+		return textures[max(floor(spike!!.getAnimationProgress() * (textures.size - 1)).toInt(), 0)]
+	}
+
 	override fun render(spike: SpikeEntity?, yaw: Float, deltaTick: Float, matrices: MatrixStack, vertexConsumers: VertexConsumerProvider, light: Int) {
 		matrices.push()
 		val buffer = vertexConsumers.getBuffer(RenderLayer.getEntityCutoutNoCull(getTexture(spike)))
@@ -25,15 +35,14 @@ class SpikeRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<SpikeEn
 		val mat = matrices.peek().positionMatrix
 		val norm = matrices.peek().normalMatrix
 
-		val progress = spike.getAnimationProgress(deltaTick)
-		vertex(mat, buffer, norm, 1f, progress, 0f, 0f, 0f)
-		vertex(mat, buffer, norm, 1f, 0f, 0f, 0f, progress)
-		vertex(mat, buffer, norm, 0f, 0f, 1f, 1f, progress)
-		vertex(mat, buffer, norm, 0f, progress, 1f, 1f, 0f)
-		vertex(mat, buffer, norm, 0f, progress, 0f, 0f, 0f)
-		vertex(mat, buffer, norm, 0f, 0f, 0f, 0f, progress)
-		vertex(mat, buffer, norm, 1f, 0f, 1f, 1f, progress)
-		vertex(mat, buffer, norm, 1f, progress, 1f, 1f, 0f)
+		vertex(mat, buffer, norm, 1f, 1f, 0f, 0f, 0f)
+		vertex(mat, buffer, norm, 1f, 0f, 0f, 0f, 1f)
+		vertex(mat, buffer, norm, 0f, 0f, 1f, 1f, 1f)
+		vertex(mat, buffer, norm, 0f, 1f, 1f, 1f, 0f)
+		vertex(mat, buffer, norm, 0f, 1f, 0f, 0f, 0f)
+		vertex(mat, buffer, norm, 0f, 0f, 0f, 0f, 1f)
+		vertex(mat, buffer, norm, 1f, 0f, 1f, 1f, 1f)
+		vertex(mat, buffer, norm, 1f, 1f, 1f, 1f, 0f)
 
 		matrices.pop()
 	}
