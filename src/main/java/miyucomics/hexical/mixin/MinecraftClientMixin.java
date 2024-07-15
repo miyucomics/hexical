@@ -54,7 +54,7 @@ public class MinecraftClientMixin implements MinecraftClientMinterface {
 		if (rank == 0)
 			return;
 
-		if (hexical$clicks.size() == rank) {
+		if (hexical$clicks.size() >= rank) {
 			hexical$timer = 0;
 			PacketByteBuf buf = PacketByteBufs.create();
 			player.world.playSound(player, player.getX(), player.getY(), player.getZ(), HexSounds.CAST_HERMES, SoundCategory.PLAYERS, 0.25f, 1f);

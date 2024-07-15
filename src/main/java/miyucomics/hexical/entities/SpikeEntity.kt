@@ -1,27 +1,34 @@
 package miyucomics.hexical.entities
 
+import miyucomics.hexical.registry.HexicalDamageTypes
 import miyucomics.hexical.registry.HexicalEntities
 import net.minecraft.entity.*
 import net.minecraft.entity.damage.DamageSource
 import net.minecraft.entity.data.DataTracker
 import net.minecraft.entity.data.TrackedData
 import net.minecraft.entity.data.TrackedDataHandlerRegistry
+import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket
+import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.sound.SoundEvents
 import net.minecraft.util.math.Direction
+import net.minecraft.util.math.Vec3d
 import net.minecraft.world.World
 import java.lang.Math.pow
+import java.util.UUID
 import kotlin.math.min
 import kotlin.math.pow
 
 class SpikeEntity(entityType: EntityType<SpikeEntity>, world: World) : Entity(entityType, world) {
 	private var timer = 0
+	private var conjurerUUID: UUID? = null
+	private var conjurer: PlayerEntity? = null
 
-	constructor(world: World, x: Double, y: Double, z: Double, direction: Direction): this(HexicalEntities.SPIKE_ENTITY, world) {
+	constructor(world: World, x: Double, y: Double, z: Double, direction: Direction, delay: Int): this(HexicalEntities.SPIKE_ENTITY, world) {
 		this.setDirection(direction)
 		this.setPosition(x, y, z)
-		this.timer = -10
+		this.timer = -delay
 		this.dataTracker.set(timerDataTracker, this.timer)
 	}
 
@@ -37,9 +44,12 @@ class SpikeEntity(entityType: EntityType<SpikeEntity>, world: World) : Entity(en
 	}
 
 	private fun damage(target: LivingEntity) {
+		val direction = Direction.byId(this.dataTracker.get(directionDataTracker)).unitVector
+		direction.scale(0.5f)
+		target.addVelocity(direction.x.toDouble(), direction.y.toDouble() + 0.5f, direction.z.toDouble())
 		if (!target.isAlive || target.isInvulnerable)
 			return
-		target.damage(DamageSource.MAGIC, 6.0f)
+		target.damage(HexicalDamageTypes.spike(this, getConjurer()), 6f)
 	}
 
 	private fun setDirection(direction: Direction) {
@@ -68,13 +78,38 @@ class SpikeEntity(entityType: EntityType<SpikeEntity>, world: World) : Entity(en
 
 	override fun readCustomDataFromNbt(nbt: NbtCompound) {
 		this.timer = nbt.getInt("timer")
+		if (nbt.containsUuid("conjurer"))
+			this.conjurerUUID = nbt.getUuid("conjurer")
+		else {
+			this.conjurer = null
+			this.conjurerUUID = null
+		}
 		this.dataTracker.set(timerDataTracker, this.timer)
 		this.setDirection(Direction.byId(nbt.getInt("direction")))
 	}
 
 	override fun writeCustomDataToNbt(nbt: NbtCompound) {
 		nbt.putInt("timer", this.timer)
+		nbt.putUuid("conjurer", this.conjurerUUID)
 		nbt.putInt("direction", this.dataTracker.get(directionDataTracker))
+	}
+
+	fun setConjurer(player: PlayerEntity) {
+		this.conjurer = player
+		this.conjurerUUID = player.uuid
+	}
+
+	private fun getConjurer(): PlayerEntity? {
+		if (this.conjurer != null)
+			return this.conjurer
+		if (this.conjurerUUID == null)
+			return null
+		val possible = this.world.getPlayerByUuid(conjurerUUID)
+		if (possible != null) {
+			this.conjurer = possible
+			return possible
+		}
+		return null
 	}
 
 	fun getDirection(): Direction = Direction.byId(this.dataTracker.get(directionDataTracker))
