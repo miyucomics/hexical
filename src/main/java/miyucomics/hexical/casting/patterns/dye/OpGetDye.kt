@@ -25,23 +25,21 @@ import net.minecraft.util.math.BlockPos
 
 class OpGetDye : ConstMediaAction {
 	override val argc = 1
-	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
-		return listOf(
-			when (args[0]) {
-				is EntityIota -> {
-					val entity = args.getEntity(0, argc)
-					ctx.assertEntityInRange(entity)
-					processEntity(entity)
-				}
-				is Vec3Iota -> {
-					val position = args.getBlockPos(0, argc)
-					ctx.assertVecInRange(position)
-					processVec3d(position, ctx.world)
-				}
-				else -> NullIota()
+	override fun execute(args: List<Iota>, ctx: CastingContext) = listOf(
+		when (args[0]) {
+			is EntityIota -> {
+				val entity = args.getEntity(0, argc)
+				ctx.assertEntityInRange(entity)
+				processEntity(entity)
 			}
-		)
-	}
+			is Vec3Iota -> {
+				val position = args.getBlockPos(0, argc)
+				ctx.assertVecInRange(position)
+				processVec3d(position, ctx.world)
+			}
+			else -> NullIota()
+		}
+	)
 
 	private fun processEntity(entity: Entity): Iota {
 		return when (entity) {

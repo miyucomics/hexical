@@ -160,7 +160,7 @@
 	"hexical.page.media_jar.0": "I can craft this little decorative jar of liquid media. Unfortunately, it seems the glass is too thick for me to draw media through it, although I have read rumors of ancient hexcasters solving this issue to make bottles of media. I wonder what I would see if I took a sip.",
 
 	"hexical.page.hex_candle.title": "Hex Candles",
-	"hexical.page.hex_candle.0": "When ignited for the first time, $(l:hexical:patterns/prestidigitation)magically$() or with a flint and steel, these delightful little candles have pale white flames. It then copies the pigment colors of anyone who interacts with it. I can also right-click it with a pigment item to change its color directly. To extinguish, I must sneak right-click.",
+	"hexical.page.hex_candle.0": "When ignited for the first time, either $(l:hexical:patterns/prestidigitation)magically$() or with a flint and steel, these delightful little candles have pale white flames. When someone interacts with it though, it happily copies their pigment. I can also right-click it with a pigment item to change its color directly. To extinguish, I must sneak right-click.",
 
 	"hexical.page.living_scroll.title": "Living Scrolls",
 	"hexical.page.living_scroll.0": "Living scrolls are mixed with a pinch of amethyst, enchanting the ink to move and wiggle like the patterns I draw with my $(l:items/staff)staff$(). Not only that, living scrolls can display lists of patterns.$(br2)$(o)You can't be a proper writer without a touch of madness, can you?$()",
