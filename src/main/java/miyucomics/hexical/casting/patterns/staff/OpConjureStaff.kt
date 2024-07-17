@@ -1,4 +1,4 @@
-package miyucomics.hexical.casting.patterns.conjured_staff
+package miyucomics.hexical.casting.patterns.staff
 
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.*

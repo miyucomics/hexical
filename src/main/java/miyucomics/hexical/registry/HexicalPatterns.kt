@@ -9,16 +9,16 @@ import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.casting.patterns.*
 import miyucomics.hexical.casting.patterns.akashic.OpReadAkashicShelf
 import miyucomics.hexical.casting.patterns.akashic.OpWriteAkashicShelf
-import miyucomics.hexical.casting.patterns.basic.*
 import miyucomics.hexical.casting.patterns.circle.OpDisplace
 import miyucomics.hexical.casting.patterns.conjure.OpConjureCompass
 import miyucomics.hexical.casting.patterns.conjure.OpConjureHexburst
 import miyucomics.hexical.casting.patterns.conjure.OpConjureHextito
-import miyucomics.hexical.casting.patterns.conjured_staff.OpConjureStaff
-import miyucomics.hexical.casting.patterns.conjured_staff.OpReadStaff
-import miyucomics.hexical.casting.patterns.conjured_staff.OpWriteStaff
+import miyucomics.hexical.casting.patterns.staff.OpConjureStaff
+import miyucomics.hexical.casting.patterns.staff.OpReadStaff
+import miyucomics.hexical.casting.patterns.staff.OpWriteStaff
 import miyucomics.hexical.casting.patterns.dye.OpDye
 import miyucomics.hexical.casting.patterns.dye.OpGetDye
+import miyucomics.hexical.casting.patterns.dye.OpMimicDye
 import miyucomics.hexical.casting.patterns.eval.OpJanus
 import miyucomics.hexical.casting.patterns.eval.OpNephthys
 import miyucomics.hexical.casting.patterns.eval.OpSisyphus
@@ -65,6 +65,8 @@ object HexicalPatterns {
 	@JvmStatic
 	fun init() {
 		registerPerWorld("greater_blink", "wqawawaqwqwqawawaqw", HexDir.SOUTH_WEST, OpGreaterBlink())
+
+		register("mimic_dye", "awddwqaeqqqeaeqqq", HexDir.EAST, OpMimicDye())
 
 		register("perlin", "qawedqdq", HexDir.WEST, OpPerlin())
 		register("theodolite", "wqaa", HexDir.EAST, OpGetEntityData(3))
