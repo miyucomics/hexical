@@ -9,6 +9,7 @@ object HexicalAdvancements {
 	lateinit var HALLUCINATE: HallucinateCriterion
 	lateinit var EDUCATE_GENIE: EducateGenieCriterion
 	lateinit var RELOAD_LAMP: ReloadLampCriterion
+	lateinit var SHADER: ShaderCriterion
 	lateinit var USE_UP_LAMP: UseUpLampCriterion
 
 	@JvmStatic
@@ -18,6 +19,7 @@ object HexicalAdvancements {
 		HALLUCINATE = Criteria.register(HallucinateCriterion())
 		EDUCATE_GENIE = Criteria.register(EducateGenieCriterion())
 		RELOAD_LAMP = Criteria.register(ReloadLampCriterion())
+		SHADER = Criteria.register(ShaderCriterion())
 		USE_UP_LAMP = Criteria.register(UseUpLampCriterion())
 	}
 }
