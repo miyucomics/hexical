@@ -6,6 +6,8 @@ import at.petrak.hexcasting.api.spell.RenderedSpell
 import at.petrak.hexcasting.api.spell.SpellAction
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.Iota
+import miyucomics.hexical.registry.HexicalAdvancements
+import miyucomics.hexical.state.PersistentStateHandler
 import net.minecraft.util.Identifier
 
 class OpShader(private val shader: Identifier?) : SpellAction {
@@ -14,7 +16,8 @@ class OpShader(private val shader: Identifier?) : SpellAction {
 
 	private data class Spell(val shader: Identifier?) : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
-
+			PersistentStateHandler.setShader(ctx.caster, shader)
+			HexicalAdvancements.SHADER.trigger(ctx.caster)
 		}
 	}
 }

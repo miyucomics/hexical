@@ -15,8 +15,8 @@
 	"advancements.hexical.diy_conjuring.description": "Add a custom modifier to a mage block.",
 	"advancements.hexical.hallucinate.title": "Only in my Head",
 	"advancements.hexical.hallucinate.description": "Play a sound only you can hear!",
-	"advancements.hexical.media_slurp.title": "Rose-Tinted Glasses",
-	"advancements.hexical.media_slurp.description": "Augment your vision after drinking pure media.",
+	"advancements.hexical.shader.title": "Rose-Tinted Glasses",
+	"advancements.hexical.shader.description": "Alter your vision magically with shader spells.",
 
 	"block.hexical.hex_candle": "Hex Candle",
 	"block.hexical.mage_block": "Mage Block",
@@ -367,6 +367,15 @@
 	"hexcasting.spell.hexical:chorus_blink": "Chorus Blink",
 	"hexical.page.chorus_blink.summary": "Between $(l:patterns/spells/basic#hexcasting:blink)Blink$(), $(l:patterns/great_spells/teleport)Greater Teleport$(), $(item)ender pearls$(), and $(item)chorus fruit$(), this spell serves a harmonious midpoint for safe, precise, and cheap teleportation.",
 	"hexical.page.chorus_blink.0": "It consumes a $(item)chorus fruit$() from my inventory and teleports me up to 16 blocks using an offset vector. The cost is a single dust whether I teleport the full 16 blocks or less, and has no penalty for multiple casts in one hex. Ambit works strangely with repeated casts of this spell because each $(o)blink$() shifts my ambit to my new position.$(br2)$(o)I could be there in a heartbeat.$()",
+
+	"hexical.page.shaders.title": "Shaders",
+	"hexical.page.shaders.0": "My... experience with the media jar has given me inspiration for various visual effects I can bestow upon myself by forming the media into a lense-like shape and placing it over my eyes. I shall call this category of spells \"shader\" spells. They all cost one tenth of a dust.",
+	"hexcasting.spell.hexical:clear_vision": "Cleanse Vision",
+	"hexical.page.clear_vision.summary": "Clears any active shader spell on me at the moment, restoring me to regular vision.",
+	"hexcasting.spell.hexical:owl_vision": "Owl Vision",
+	"hexical.page.owl_vision.summary": "Alters my vision to be suited for mining and diving, allowing me to see near perfectly in the dark and underwater but the light becomes painfully blinding to look at.",
+	"hexcasting.spell.hexical:tele_vision": "Tele-Vision",
+	"hexical.page.tele_vision.summary": "Alters my vision to take one a strange curvature, as well as producing little lines across my screen and desaturating my vision. I have no clue what this is referencing.",
 
 	"hexical.page.mage_block.title": "Mage Blocks",
 	"hexical.page.mage_block": "The blocks from $(l:patterns/spells/blockworks#hexcasting:conjure_block)Conjure Block$() last forever, are consequently a pain to clean up, and are not too versatile. Luckily, Nature offers an elegant and flexible alternative. These mage blocks come with a suite of $(o)modifiers$(). I could even stack multiple modifiers on one block or reapply a modifier to toggle it off.",

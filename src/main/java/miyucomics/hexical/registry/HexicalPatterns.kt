@@ -71,6 +71,10 @@ object HexicalPatterns {
 		register("perlin", "qawedqdq", HexDir.WEST, OpPerlin())
 		register("theodolite", "wqaa", HexDir.EAST, OpGetEntityData(3))
 
+		register("clear_vision", "qaqwdwqaq", HexDir.EAST, OpShader(null))
+		register("owl_vision", "qqqqqedeqqqqq", HexDir.EAST, OpShader(HexicalMain.id("shaders/post/night_vision.json")))
+		register("tele_vision", "qaqwdeqwawqwa", HexDir.EAST, OpShader(HexicalMain.id("shaders/post/television.json")))
+
 		register("spike", "qdqdqdqdww", HexDir.NORTH_EAST, OpSpike())
 
 		register("check_hand_lamp", "qwddedqqaqqqqq", HexDir.SOUTH_WEST, OpCheckSource(SpecializedSource.HAND_LAMP))
