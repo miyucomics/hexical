@@ -1,29 +1,29 @@
 package miyucomics.hexical.registry
 
 import ladysnake.satin.api.event.ShaderEffectRenderCallback
+import ladysnake.satin.api.managed.ManagedShaderEffect
 import ladysnake.satin.api.managed.ShaderEffectManager
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.state.EvokeState
 import miyucomics.hexical.state.KeybindData
+import miyucomics.hexical.state.PersistentStateHandler
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
-import net.minecraft.client.MinecraftClient
 
 object HexicalEvents {
-	private val SHADER = ShaderEffectManager.getInstance().manage(HexicalMain.id("shaders/post/television.json"))
+	var SHADER: ManagedShaderEffect? = null
 
 	@JvmStatic
 	fun init() {
-		ServerPlayConnectionEvents.JOIN.register { handler, _, server ->
-			val player = handler.player.uuid
-			if (EvokeState.active[player] == true) {
-				for (otherPlayer in server.playerManager.playerList) {
-					val packet = PacketByteBufs.create()
-					packet.writeUuid(player)
-					ServerPlayNetworking.send(otherPlayer, HexicalNetworking.START_EVOKE_CHANNEL, packet)
-				}
+		ServerPlayConnectionEvents.JOIN.register { handler, _, _ ->
+			val player = handler.player
+			if (PersistentStateHandler.getShader(player) != null) {
+				val packet = PacketByteBufs.create()
+				packet.writeString(PersistentStateHandler.getShader(player)!!.toString())
+				ServerPlayNetworking.send(player, HexicalNetworking.SYNC_SHADER_CHANNEL, packet)
 			}
 		}
 		ServerPlayConnectionEvents.DISCONNECT.register { handler, _ ->
@@ -52,10 +52,7 @@ object HexicalEvents {
 
 	@JvmStatic
 	fun clientInit() {
-		ShaderEffectRenderCallback.EVENT.register(ShaderEffectRenderCallback { tickDelta: Float ->
-			val player = MinecraftClient.getInstance().player ?: return@ShaderEffectRenderCallback
-			if (player.hasStatusEffect(HexicalStatusEffects.MEDIA_VISION_STATUS_EFFECT))
-				SHADER.render(tickDelta)
-		})
+		ClientPlayConnectionEvents.DISCONNECT.register { _, _ -> SHADER = null }
+		ShaderEffectRenderCallback.EVENT.register(ShaderEffectRenderCallback { tickDelta: Float -> SHADER?.render(tickDelta) })
 	}
 }
