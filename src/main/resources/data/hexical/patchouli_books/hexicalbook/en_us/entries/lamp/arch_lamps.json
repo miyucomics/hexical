@@ -72,6 +72,13 @@
 			"text": "hexical.page.get_arch_lamp_media.summary"
 		}, {
 			"type": "hexcasting:pattern",
+			"op_id": "hexical:with_arch_lamp",
+			"anchor": "hexical:with_arch_lamp",
+			"input": "",
+			"output": "boolean",
+			"text": "hexical.page.with_arch_lamp.summary"
+		}, {
+			"type": "hexcasting:pattern",
 			"op_id": "hexical:lamp_finale",
 			"anchor": "hexical:lamp_finale",
 			"input": "",

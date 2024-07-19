@@ -29,6 +29,13 @@
 			"input": "",
 			"output": "",
 			"text": "hexical.page.tele_vision.summary"
+		}, {
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:spider_vision",
+			"anchor": "hexical:spider_vision",
+			"input": "",
+			"output": "",
+			"text": "hexical.page.spider_vision.summary"
 		}
     ]
 }
