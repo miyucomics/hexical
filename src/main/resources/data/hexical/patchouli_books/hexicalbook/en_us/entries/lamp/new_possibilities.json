@@ -48,6 +48,13 @@
 			"text": "hexical.page.get_hand_lamp_media.summary"
 		}, {
 			"type": "hexcasting:pattern",
+			"op_id": "hexical:with_hand_lamp",
+			"anchor": "hexical:with_hand_lamp",
+			"input": "",
+			"output": "boolean",
+			"text": "hexical.page.with_hand_lamp.summary"
+		}, {
+			"type": "hexcasting:pattern",
 			"op_id": "hexical:set_hand_lamp_storage",
 			"anchor": "hexical:set_hand_lamp_storage",
 			"input": "any",

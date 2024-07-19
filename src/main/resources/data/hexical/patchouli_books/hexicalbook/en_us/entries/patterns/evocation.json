@@ -15,6 +15,13 @@
 			"input": "list of patterns",
 			"output": "",
 			"text": "hexical.page.internalize_hex.summary"
+		}, {
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:with_evocation",
+			"anchor": "hexical:with_evocation",
+			"input": "",
+			"output": "boolean",
+			"text": "hexical.page.with_evocation.summary"
 		}
 	]
 }
