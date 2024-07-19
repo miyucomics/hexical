@@ -35,6 +35,13 @@
 			"input": "any",
 			"output": "",
 			"text": "hexical.page.write_staff.summary"
+		}, {
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:with_conjured_staff",
+			"anchor": "hexical:with_conjured_staff",
+			"input": "",
+			"output": "boolean",
+			"text": "hexical.page.with_conjured_staff.summary"
 		}
 	]
 }
