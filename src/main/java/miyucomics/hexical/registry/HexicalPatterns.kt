@@ -74,12 +74,15 @@ object HexicalPatterns {
 		register("clear_vision", "qaqwdwqaq", HexDir.EAST, OpShader(null))
 		register("owl_vision", "qqqqqedeqqqqq", HexDir.EAST, OpShader(HexicalMain.id("shaders/post/night_vision.json")))
 		register("tele_vision", "qaqwdeqwawqwa", HexDir.EAST, OpShader(HexicalMain.id("shaders/post/television.json")))
+		register("spider_vision", "aqqqaqwdeqaqded", HexDir.NORTH_WEST, OpShader(Identifier("shaders/post/spider.json")))
+		register("phosphor", "qaqwdwdaqqqa", HexDir.EAST, OpShader(Identifier("shaders/post/phosphor.json")))
 
 		register("spike", "qdqdqdqdww", HexDir.NORTH_EAST, OpSpike())
 
-		register("check_hand_lamp", "qwddedqqaqqqqq", HexDir.SOUTH_WEST, OpCheckSource(SpecializedSource.HAND_LAMP))
-		register("check_arch_lamp", "qaqwddedqqaqqqqq", HexDir.NORTH_EAST, OpCheckSource(SpecializedSource.ARCH_LAMP))
-		register("check_conjured_staff", "waqaeaqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpCheckSource(SpecializedSource.CONJURED_STAFF))
+		register("with_hand_lamp", "qwddedqqaqqqqq", HexDir.SOUTH_WEST, OpCheckSource(SpecializedSource.HAND_LAMP))
+		register("with_arch_lamp", "qaqwddedqqaqqqqq", HexDir.NORTH_EAST, OpCheckSource(SpecializedSource.ARCH_LAMP))
+		register("with_conjured_staff", "waqaeaqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpCheckSource(SpecializedSource.CONJURED_STAFF))
+		register("with_evocation", "waeqqqqedeqdqdqdqewee", HexDir.EAST, OpCheckSource(SpecializedSource.EVOCATION))
 
 		register("read_shelf", "qaqqqada", HexDir.EAST, OpReadAkashicShelf())
 		register("write_shelf", "edeeedad", HexDir.SOUTH_WEST, OpWriteAkashicShelf())
