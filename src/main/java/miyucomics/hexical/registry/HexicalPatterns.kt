@@ -42,10 +42,7 @@ import miyucomics.hexical.casting.patterns.prestidigitation.OpPrestidigitation
 import miyucomics.hexical.casting.patterns.soroban.OpSorobanDecrement
 import miyucomics.hexical.casting.patterns.soroban.OpSorobanIncrement
 import miyucomics.hexical.casting.patterns.soroban.OpSorobanReset
-import miyucomics.hexical.casting.patterns.specks.OpConjureSpeck
-import miyucomics.hexical.casting.patterns.specks.OpIotaSpeck
-import miyucomics.hexical.casting.patterns.specks.OpKillSpecklike
-import miyucomics.hexical.casting.patterns.specks.OpSpecklikeProperty
+import miyucomics.hexical.casting.patterns.specks.*
 import miyucomics.hexical.casting.patterns.telepathy.OpHallucinateSound
 import miyucomics.hexical.casting.patterns.telepathy.OpSendTelepathy
 import miyucomics.hexical.casting.patterns.telepathy.OpShoutTelepathy
@@ -65,6 +62,9 @@ object HexicalPatterns {
 	@JvmStatic
 	fun init() {
 		registerPerWorld("greater_blink", "wqawawaqwqwqawawaqw", HexDir.SOUTH_WEST, OpGreaterBlink())
+
+		register("conjure_mesh", "wwaqaa", HexDir.EAST, OpConjureMesh())
+		register("weave_mesh", "wwaqaaw", HexDir.EAST, OpWeaveMesh())
 
 		register("mimic_dye", "awddwqaeqqqeaeqqq", HexDir.EAST, OpMimicDye())
 

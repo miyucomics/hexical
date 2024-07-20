@@ -63,6 +63,7 @@
 	"hexcasting.mishap.bad_item.lamp": "a lamp",
 	"hexcasting.mishap.bad_item.living_scroll": "a living scroll",
 	"hexcasting.mishap.bad_item.prestidigitation": "a prestidigitation-sensitive entity",
+	"hexcasting.mishap.bad_item.mesh": "a mesh",
 	"hexcasting.mishap.bad_item.speck": "a speck",
 	"hexcasting.mishap.bad_item.specklike": "a specklike entity",
 	"hexcasting.mishap.invalid_value.axis_vector": "an axis vector",

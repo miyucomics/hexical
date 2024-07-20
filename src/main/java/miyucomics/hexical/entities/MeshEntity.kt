@@ -4,6 +4,7 @@ import at.petrak.hexcasting.api.misc.FrozenColorizer
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.api.utils.putList
 import miyucomics.hexical.interfaces.Specklike
+import miyucomics.hexical.registry.HexicalEntities
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityDimensions
 import net.minecraft.entity.EntityPose
@@ -17,13 +18,16 @@ import net.minecraft.nbt.NbtFloat
 import net.minecraft.nbt.NbtList
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket
 import net.minecraft.util.math.Vec3d
+import net.minecraft.util.math.Vec3f
 import net.minecraft.world.World
 
 class MeshEntity(entityType: EntityType<MeshEntity>, world: World) : Entity(entityType, world), Specklike {
+	constructor(world: World) : this(HexicalEntities.MESH_ENTITY, world)
+
 	private var lifespan = -1
 
 	// client-only
-	var clientVertices: MutableList<Vec3d> = mutableListOf()
+	var clientVertices: MutableList<Vec3f> = mutableListOf()
 	var clientPigment: FrozenColorizer = FrozenColorizer.DEFAULT.get()
 	var clientSize = 1f
 	var clientThickness = 1f
@@ -37,13 +41,13 @@ class MeshEntity(entityType: EntityType<MeshEntity>, world: World) : Entity(enti
 		super.tick()
 	}
 
-	fun setShape(shape: List<Vec3d>) {
+	fun setShape(shape: List<Vec3f>) {
 		val compound = NbtCompound()
 		val list = NbtList()
 		for (vertex in shape) {
-			list.add(NbtFloat.of(vertex.x.toFloat()))
-			list.add(NbtFloat.of(vertex.y.toFloat()))
-			list.add(NbtFloat.of(vertex.z.toFloat()))
+			list.add(NbtFloat.of(vertex.x))
+			list.add(NbtFloat.of(vertex.y))
+			list.add(NbtFloat.of(vertex.z))
 		}
 		compound.putList("shape", list)
 		this.dataTracker.set(shapeDataTracker, compound)
@@ -92,7 +96,7 @@ class MeshEntity(entityType: EntityType<MeshEntity>, world: World) : Entity(enti
 				val list = this.dataTracker.get(shapeDataTracker).getList("shape", NbtElement.FLOAT_TYPE.toInt())
 				this.clientVertices = mutableListOf()
 				for (i in 0..(list.size / 3))
-					clientVertices.add(Vec3d(list.getFloat(i).toDouble(), list.getFloat(i + 1).toDouble(), list.getFloat(i + 2).toDouble()))
+					clientVertices.add(Vec3f(list.getFloat(i), list.getFloat(i + 1), list.getFloat(i + 2)))
 			}
 			pigmentDataTracker -> this.clientPigment = FrozenColorizer.fromNBT(dataTracker.get(pigmentDataTracker))
 			sizeDataTracker -> this.clientSize = dataTracker.get(sizeDataTracker)
