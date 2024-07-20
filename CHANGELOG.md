@@ -15,7 +15,7 @@
 - added Charge, Dodge, Retreat, and Evade Reflection patterns - pushes how long you've pressed the wasd keys
 - added Glyphmaker's Distillation - scrambles a pattern with a number as a seed
 - added Conjure Compass spell - conjure a compass that always points towards a location
-- added Spike spell - conjure an amethyst spike that will strike through a location after a short delay
+- added Spike spell - conjure an amethyst spike that will strike through a location after a customizable delay
 - added firework spells
   - added Conjure Firework spell - conjures a firework with a vast number of options and possibilities
   - added Simulate Firework spell - conjures a firework based off the firework star in your offhand
@@ -27,6 +27,9 @@
 - added Wristpocket spell - hide items magically
   - added Ingest spell - eat wristpocketed item
   - added Mage Hand spell - use your wristpocketed item to interact with blocks and entities
+- added context checking patterns to get the current context of a hex is being cast in
+- added shader spells - alter your vision with magic!
+- added spell to age living scrolls
 - added mishap to Chorus Blink if you don't have chorus fruit in your inventory
 - added semi-permeable mage block modifier: only sprinting creatures have collision
 - added sprites for conjured staff
