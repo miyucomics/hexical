@@ -22,8 +22,8 @@ class SpeckRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<SpeckEn
 
 		if (!entity!!.clientIsText)
 			matrices.translate(0.0, 0.25, 0.0)
+		matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(-entity.yaw))
 		matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(entity.pitch))
-		matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180.0f - entity.yaw))
 		matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(entity.clientRoll))
 		matrices.scale(entity.clientSize, entity.clientSize, entity.clientSize)
 
