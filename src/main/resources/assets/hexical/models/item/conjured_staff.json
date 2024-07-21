@@ -13,15 +13,20 @@
 			"predicate": {
 				"sprite": 0.2
 			},
-			"model": "hexical:item/conjured_staff_handbell"
+			"model": "hexical:item/conjured_staff_conch"
 		}, {
 			"predicate": {
 				"sprite": 0.3
 			},
-			"model": "hexical:item/conjured_staff_key"
+			"model": "hexical:item/conjured_staff_handbell"
 		}, {
 			"predicate": {
 				"sprite": 0.4
+			},
+			"model": "hexical:item/conjured_staff_key"
+		}, {
+			"predicate": {
+				"sprite": 0.5
 			},
 			"model": "hexical:item/conjured_staff_mirror"
 		}
