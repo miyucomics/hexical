@@ -79,7 +79,7 @@ class MeshEntity(entityType: EntityType<MeshEntity>, world: World) : Entity(enti
 	override fun setRoll(rotation: Float) = dataTracker.set(rollDataTracker, rotation)
 	override fun setThickness(thickness: Float) = dataTracker.set(thicknessDataTracker, thickness)
 	override fun setPigment(pigment: FrozenColorizer) = dataTracker.set(pigmentDataTracker, pigment.serializeToNBT())
-	override fun getEyeHeight(pose: EntityPose, dimensions: EntityDimensions) = 0f
+	override fun getEyeHeight(pose: EntityPose, dimensions: EntityDimensions) = 0.25f
 	override fun createSpawnPacket() = EntitySpawnS2CPacket(this)
 
 	override fun initDataTracker() {
@@ -95,8 +95,8 @@ class MeshEntity(entityType: EntityType<MeshEntity>, world: World) : Entity(enti
 			shapeDataTracker -> {
 				val list = this.dataTracker.get(shapeDataTracker).getList("shape", NbtElement.FLOAT_TYPE.toInt())
 				this.clientVertices = mutableListOf()
-				for (i in 0..(list.size / 3))
-					clientVertices.add(Vec3f(list.getFloat(i), list.getFloat(i + 1), list.getFloat(i + 2)))
+				for (i in 0..<(list.size / 3))
+					clientVertices.add(Vec3f(list.getFloat(3 * i), list.getFloat(3 * i + 1), list.getFloat(3 * i + 2)))
 			}
 			pigmentDataTracker -> this.clientPigment = FrozenColorizer.fromNBT(dataTracker.get(pigmentDataTracker))
 			sizeDataTracker -> this.clientSize = dataTracker.get(sizeDataTracker)

@@ -15,23 +15,23 @@ class OpMagicMissile : SpellAction {
 	override val argc = 2
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		val headOffset = args.getVec3(0, argc)
-		val xAxis = ctx.caster.rotationVector
+		val straightAxis = ctx.caster.rotationVector
 
 		val upPitch = (-ctx.caster.pitch + 90) * (Math.PI.toFloat() / 180)
 		val yaw = -ctx.caster.headYaw * (Math.PI.toFloat() / 180)
 		val h = MathHelper.cos(yaw).toDouble()
 		val j = MathHelper.cos(upPitch).toDouble()
-		val yAxis = Vec3d(
+		val upAxis = Vec3d(
 			MathHelper.sin(yaw).toDouble() * j,
 			MathHelper.sin(upPitch).toDouble(),
 			h * j
 		)
 
-		val zAxis = xAxis.crossProduct(yAxis).normalize()
+		val sideAxis = straightAxis.crossProduct(upAxis).normalize()
 		val worldCoords = ctx.caster.eyePos
-			.add(xAxis.multiply(headOffset.x))
-			.add(yAxis.multiply(headOffset.y))
-			.add(zAxis.multiply(headOffset.z))
+			.add(sideAxis.multiply(headOffset.x))
+			.add(upAxis.multiply(headOffset.y))
+			.add(straightAxis.multiply(headOffset.z))
 		ctx.assertVecInRange(worldCoords)
 
 		val velocity = args.getVec3(1, argc)
