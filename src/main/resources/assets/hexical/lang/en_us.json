@@ -563,7 +563,7 @@
 	"hexical.page.greater_blink.1": "A vector of (1, 0, 0) would teleport me one block in the position I'm facing. A vector of (0, 1, 0) would teleport me one block forwards in the perpendicular of the top of my head. A vector of (10, 1, 0) would teleport me ten blocks forward in the direction I'm facing, and one block upwards from the top of my head, at that point.",
 
 	"hexical.page.meshes.title": "Meshes",
-	"hexical.page.meshes.0": "Meshes are the natural evolution of $(l:patterns/specks)specks$(). Rather than being restricted to the figure of iotas and patterns, stuck in a two-dimensional plane, meshes accept a list of vectors in 3D space and connect them with lines, allowing for infinite creative constructions. It's also responsive to most patterns used for manipulation of specks.",
+	"hexical.page.meshes.0": "Meshes are the natural evolution of $(l:hexical:patterns/specks)specks$(). Rather than being restricted to the figure of iotas and patterns, stuck in a two-dimensional plane, meshes accept a list of vectors in 3D space and connect them with lines, allowing for infinite creative constructions. It's also responsive to most patterns used for manipulation of specks.",
 	"hexcasting.spell.hexical:conjure_mesh": "Conjure Mesh",
 	"hexical.page.conjure_mesh.summary": "Conjures a mesh with the location and rotation and leaves a mesh entity on the stack. Cost one dust.",
 	"hexical.page.meshes.1": "The mesh must be woven to have any appearance. The constraints for the list of vectors provided to a mesh are quite minimal. The list must be no more than 32 vectors long, and those vectors must have magnitudes less than 10. The mesh will then connect each of those points, defined by the relative offset, to each other.",
