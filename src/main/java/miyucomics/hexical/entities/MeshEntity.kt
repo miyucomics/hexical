@@ -30,7 +30,7 @@ class MeshEntity(entityType: EntityType<MeshEntity>, world: World) : Entity(enti
 	var clientVertices: MutableList<Vec3f> = mutableListOf()
 	var clientPigment: FrozenColorizer = FrozenColorizer.DEFAULT.get()
 	var clientSize = 1f
-	var clientThickness = 1f
+	var clientThickness = 1.0
 	var clientRoll = 0f
 
 	override fun tick() {
@@ -101,7 +101,7 @@ class MeshEntity(entityType: EntityType<MeshEntity>, world: World) : Entity(enti
 			pigmentDataTracker -> this.clientPigment = FrozenColorizer.fromNBT(dataTracker.get(pigmentDataTracker))
 			sizeDataTracker -> this.clientSize = dataTracker.get(sizeDataTracker)
 			rollDataTracker -> this.clientRoll = dataTracker.get(rollDataTracker)
-			thicknessDataTracker -> this.clientThickness = dataTracker.get(thicknessDataTracker)
+			thicknessDataTracker -> this.clientThickness = dataTracker.get(thicknessDataTracker).toDouble()
 			else -> {}
 		}
 	}
