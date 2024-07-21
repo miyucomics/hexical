@@ -20,7 +20,7 @@ class OpConjureSpeck : ConstMediaAction {
 		val rotation = args.getVec3(2, argc)
 		ctx.assertVecInRange(position)
 		val speck = SpeckEntity(ctx.world)
-		speck.setPosition(position)
+		speck.setPosition(position.subtract(0.0, speck.standingEyeHeight.toDouble(), 0.0))
 		speck.lookAt(EntityAnchorArgumentType.EntityAnchor.FEET, speck.pos.add(rotation))
 		speck.setIota(iota)
 		speck.setPigment(IXplatAbstractions.INSTANCE.getColorizer(ctx.caster))

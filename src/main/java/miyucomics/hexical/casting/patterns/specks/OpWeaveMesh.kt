@@ -22,15 +22,15 @@ class OpWeaveMesh : ConstMediaAction {
 
 		val design = args.getList(1, argc)
 		if (design.size() > 32)
-			throw MishapInvalidIota.of(args[0], 0, "mesh_design")
+			throw MishapInvalidIota.of(args[1], 1, "mesh_design")
 		val points = mutableListOf<Vec3f>()
 		for (point in design) {
 			if (point.type != Vec3Iota.TYPE)
-				throw MishapInvalidIota.of(args[0], 0, "mesh_design")
+				throw MishapInvalidIota.of(args[1], 1, "mesh_design")
 			else {
 				val vector = (point as Vec3Iota).vec3
-				if (vector.lengthSquared() > 10 * 10)
-					throw MishapInvalidIota.of(args[0], 0, "mesh_design")
+				if (vector.length() > 10)
+					throw MishapInvalidIota.of(args[1], 1, "mesh_design")
 				points.add(Vec3f(vector.x.toFloat(), vector.y.toFloat(), vector.z.toFloat()))
 			}
 		}

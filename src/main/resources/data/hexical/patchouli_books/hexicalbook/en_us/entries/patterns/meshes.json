@@ -11,7 +11,7 @@
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:conjure_mesh",
 			"anchor": "hexical:conjure_mesh",
-			"input": "vector, vector",
+			"input": "vector",
 			"output": "entity",
 			"text": "hexical.page.conjure_mesh.summary"
 		}, {
