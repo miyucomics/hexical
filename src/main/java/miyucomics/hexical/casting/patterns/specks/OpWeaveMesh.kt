@@ -21,8 +21,8 @@ class OpWeaveMesh : ConstMediaAction {
 			throw MishapBadEntity.of(mesh, "mesh")
 
 		val design = args.getList(1, argc)
-//		if (design.size() > 32)
-//			throw MishapInvalidIota.of(args[0], 0, "mesh_design")
+		if (design.size() > 32)
+			throw MishapInvalidIota.of(args[0], 0, "mesh_design")
 		val points = mutableListOf<Vec3f>()
 		for (point in design) {
 			if (point.type != Vec3Iota.TYPE)
