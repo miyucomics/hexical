@@ -63,8 +63,8 @@ object HexicalPatterns {
 	fun init() {
 		registerPerWorld("greater_blink", "wqawawaqwqwqawawaqw", HexDir.SOUTH_WEST, OpGreaterBlink())
 
-		register("conjure_mesh", "wwaqaa", HexDir.EAST, OpConjureMesh())
-		register("weave_mesh", "wwaqaaw", HexDir.EAST, OpWeaveMesh())
+		registerPerWorld("conjure_mesh", "qaqqqqqwqqqdeeweweeaeewewee", HexDir.EAST, OpConjureMesh())
+		register("weave_mesh", "qaqqqqqwqqqdeewewee", HexDir.EAST, OpWeaveMesh())
 
 		register("mimic_dye", "awddwqaeqqqeaeqqq", HexDir.EAST, OpMimicDye())
 
@@ -241,6 +241,7 @@ object HexicalPatterns {
 		register("janus", "aadee", HexDir.SOUTH_WEST, OpJanus)
 		register("sisyphus", "qaqwede", HexDir.NORTH_EAST, OpSisyphus)
 		register("themis", "dwaad", HexDir.WEST, OpThemis)
+
 		PatternRegistry.addSpecialHandler(HexicalMain.id("nephthys")) { pat ->
 			val sig = pat.anglesSignature()
 			if (sig.startsWith("deaqqd")) {
