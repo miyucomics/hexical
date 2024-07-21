@@ -13,6 +13,8 @@ import kotlin.math.cos
 import kotlin.math.sin
 
 class MeshRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<MeshEntity>(ctx) {
+	private val sides = 6
+	private val angleIncrement = 2 * Math.PI / sides
 	private val layer = RenderLayer.getEntityCutoutNoCull(modLoc("textures/entity/white.png"))
 
 	override fun getTexture(entity: MeshEntity?): Identifier? = null
@@ -26,20 +28,18 @@ class MeshRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<MeshEnti
 		matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(-entity.pitch))
 		matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180.0f - entity.yaw))
 		matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(entity.clientRoll))
+		matrices.scale(entity.clientSize, entity.clientSize, entity.clientSize)
+
 		val buf = vertexConsumers.getBuffer(layer)
 		for (i in 1..<vertices.size) {
 			val a = vertices[i - 1]
 			val b = vertices[i]
-			drawConnection(matrices, buf, Vec3d(a.x.toDouble(), a.y.toDouble(), a.z.toDouble()), Vec3d(b.x.toDouble(), b.y.toDouble(), b.z.toDouble()), entity.clientPigment)
+			drawConnection(matrices, buf, Vec3d(a.x.toDouble(), a.y.toDouble(), a.z.toDouble()), Vec3d(b.x.toDouble(), b.y.toDouble(), b.z.toDouble()), entity.clientPigment, entity.clientThickness * 0.025)
 		}
 		matrices.pop()
 	}
 
-	private fun drawConnection(matrices: MatrixStack, vertices: VertexConsumer, start: Vec3d, end: Vec3d, pigment: FrozenColorizer) {
-		val sides = 6
-		val radius = 0.025
-		val angleIncrement = 2 * Math.PI / sides
-
+	private fun drawConnection(matrices: MatrixStack, vertices: VertexConsumer, start: Vec3d, end: Vec3d, pigment: FrozenColorizer, thickness: Double) {
 		val direction = end.subtract(start).normalize()
 		var perpendicular = direction.crossProduct(Vec3d(1.0, 0.0, 0.0))
 		if (direction.dotProduct(Vec3d(1.0, 0.0, 0.0)) > 0.99)
@@ -52,8 +52,8 @@ class MeshRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<MeshEnti
 			val angle1 = i * angleIncrement
 			val angle2 = (i + 1) % sides * angleIncrement
 
-			val a = perpendicular.multiply(cos(angle1)).add(perpendicular.crossProduct(direction).multiply(sin(angle1))).add(direction.multiply(direction.dotProduct(perpendicular)).multiply(1 - cos(angle1))).normalize().multiply(radius)
-			val b = perpendicular.multiply(cos(angle2)).add(perpendicular.crossProduct(direction).multiply(sin(angle2))).add(direction.multiply(direction.dotProduct(perpendicular)).multiply(1 - cos(angle2))).normalize().multiply(radius)
+			val a = perpendicular.multiply(cos(angle1)).add(perpendicular.crossProduct(direction).multiply(sin(angle1))).add(direction.multiply(direction.dotProduct(perpendicular)).multiply(1 - cos(angle1))).normalize().multiply(thickness)
+			val b = perpendicular.multiply(cos(angle2)).add(perpendicular.crossProduct(direction).multiply(sin(angle2))).add(direction.multiply(direction.dotProduct(perpendicular)).multiply(1 - cos(angle2))).normalize().multiply(thickness)
 
 			val point1 = start.add(a)
 			val point2 = start.add(b)
