@@ -28,10 +28,10 @@ class PerlinNoise(seed: Int) {
 	}
 
 	fun noise(sampleX: Double, sampleY: Double, sampleZ: Double, time: Double): Double {
-		val X = floor(sampleX).toInt() and 255
-		val Y = floor(sampleY).toInt() and 255
-		val Z = floor(sampleZ).toInt() and 255
-		val W = floor(time).toInt() and 255
+		val sx = floor(sampleX).toInt() and 255
+		val sy = floor(sampleY).toInt() and 255
+		val sz = floor(sampleZ).toInt() and 255
+		val sw = floor(time).toInt() and 255
 
 		val x = sampleX - floor(sampleX)
 		val y = sampleY - floor(sampleY)
@@ -43,20 +43,20 @@ class PerlinNoise(seed: Int) {
 		val t = fade(z)
 		val s = fade(w)
 
-		val A = permutations[X] + Y
-		val AA = permutations[A] + Z
-		val AAA = permutations[AA] + W
-		val AAB = permutations[AA + 1] + W
-		val AB = permutations[A + 1] + Z
-		val ABA = permutations[AB] + W
-		val ABB = permutations[AB + 1] + W
-		val B = permutations[X + 1] + Y
-		val BA = permutations[B] + Z
-		val BAA = permutations[BA] + W
-		val BAB = permutations[BA + 1] + W
-		val BB = permutations[B + 1] + Z
-		val BBA = permutations[BB] + W
-		val BBB = permutations[BB + 1] + W
+		val a = permutations[sx] + sy
+		val aa = permutations[a] + sz
+		val aaa = permutations[aa] + sw
+		val aab = permutations[aa + 1] + sw
+		val ab = permutations[a + 1] + sz
+		val aba = permutations[ab] + sw
+		val abb = permutations[ab + 1] + sw
+		val b = permutations[sx + 1] + sy
+		val ba = permutations[b] + sz
+		val baa = permutations[ba] + sw
+		val bab = permutations[ba + 1] + sw
+		val bb = permutations[b + 1] + sz
+		val bba = permutations[bb] + sw
+		val bbb = permutations[bb + 1] + sw
 
 		return lerp(
 			s,
@@ -64,26 +64,26 @@ class PerlinNoise(seed: Int) {
 				t,
 				lerp(
 					v,
-					lerp(u, grad(permutations[AAA], x, y, z, w), grad(permutations[BAA], x - 1, y, z, w)),
-					lerp(u, grad(permutations[ABA], x, y - 1, z, w), grad(permutations[BBA], x - 1, y - 1, z, w))
+					lerp(u, grad(permutations[aaa], x, y, z, w), grad(permutations[baa], x - 1, y, z, w)),
+					lerp(u, grad(permutations[aba], x, y - 1, z, w), grad(permutations[bba], x - 1, y - 1, z, w))
 				),
 				lerp(
 					v,
-					lerp(u, grad(permutations[AAB], x, y, z - 1, w), grad(permutations[BAB], x - 1, y, z - 1, w)),
-					lerp(u, grad(permutations[ABB], x, y - 1, z - 1, w), grad(permutations[BBB], x - 1, y - 1, z - 1, w))
+					lerp(u, grad(permutations[aab], x, y, z - 1, w), grad(permutations[bab], x - 1, y, z - 1, w)),
+					lerp(u, grad(permutations[abb], x, y - 1, z - 1, w), grad(permutations[bbb], x - 1, y - 1, z - 1, w))
 				)
 			),
 			lerp(
 				t,
 				lerp(
 					v,
-					lerp(u, grad(permutations[AAA + 1], x, y, z, w - 1), grad(permutations[BAA + 1], x - 1, y, z, w - 1)),
-					lerp(u, grad(permutations[ABA + 1], x, y - 1, z, w - 1), grad(permutations[BBA + 1], x - 1, y - 1, z, w - 1))
+					lerp(u, grad(permutations[aaa + 1], x, y, z, w - 1), grad(permutations[baa + 1], x - 1, y, z, w - 1)),
+					lerp(u, grad(permutations[aba + 1], x, y - 1, z, w - 1), grad(permutations[bba + 1], x - 1, y - 1, z, w - 1))
 				),
 				lerp(
 					v,
-					lerp(u, grad(permutations[AAB + 1], x, y, z - 1, w - 1), grad(permutations[BAB + 1], x - 1, y, z - 1, w - 1)),
-					lerp(u, grad(permutations[ABB + 1], x, y - 1, z - 1, w - 1), grad(permutations[BBB + 1], x - 1, y - 1, z - 1, w - 1))
+					lerp(u, grad(permutations[aab + 1], x, y, z - 1, w - 1), grad(permutations[bab + 1], x - 1, y, z - 1, w - 1)),
+					lerp(u, grad(permutations[abb + 1], x, y - 1, z - 1, w - 1), grad(permutations[bbb + 1], x - 1, y - 1, z - 1, w - 1))
 				)
 			)
 		)

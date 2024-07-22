@@ -323,7 +323,7 @@
 	"hexical.page.spike.0": "I hear rumors of a sorcerer illager that can summon fangs from the ground. While I find it hard to believe that villagers can shift media, I have taken inspiration from those myths and created this spell that brings forth spikes from the ground to skewer targets.",
 	"hexcasting.spell.hexical:spike": "Conjure Spike",
 	"hexical.page.spike.summary": "Takes a non-air position, an axis vector, and a delay in seconds up to ten seconds long and conjures a spike at that location. Costs one shard.",
-    "hexical.page.spike.1": "Each spike takes about a half second to strike and deal a hefty three full hearts of damage. If I attempt to cast this spell where a spike has already been primed, it will do nothing. Spikes will also throw back targets in the direction they were conjured.",
+	"hexical.page.spike.1": "Each spike takes about a half second to strike and deal a hefty three full hearts of damage. If I attempt to cast this spell where a spike has already been primed, it will do nothing. Spikes will also throw back targets in the direction they were conjured.",
 
 	"hexical.page.specks.title": "Specks",
 	"hexical.page.specks.0": "I can conjure an image of an iota into the world, called a $(thing)speck$(). Nature allows me to customize them quite extensively, altering their size, thickness of stroke, and more. They also take on my pigment color. Once they are in the world, I can move, rotate, and otherwise alter them for free, regardless of range.",
