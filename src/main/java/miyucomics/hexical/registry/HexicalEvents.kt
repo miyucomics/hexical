@@ -2,8 +2,6 @@ package miyucomics.hexical.registry
 
 import ladysnake.satin.api.event.ShaderEffectRenderCallback
 import ladysnake.satin.api.managed.ManagedShaderEffect
-import ladysnake.satin.api.managed.ShaderEffectManager
-import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.state.EvokeState
 import miyucomics.hexical.state.KeybindData
 import miyucomics.hexical.state.PersistentStateHandler

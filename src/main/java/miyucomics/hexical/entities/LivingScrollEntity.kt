@@ -199,5 +199,6 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity>, world: Worl
 			constructed.add(PatternIota(HexPattern.fromNBT(pattern)))
 		return HexIotaTypes.serialize(ListIota(constructed.toList()))
 	}
+
 	override fun writeIota(iota: Iota?, simulate: Boolean) = false
 }
