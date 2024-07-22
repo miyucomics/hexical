@@ -14,6 +14,7 @@ import at.petrak.hexcasting.common.lib.HexSounds
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import miyucomics.hexical.entities.LivingScrollEntity
 import miyucomics.hexical.registry.HexicalItems
+import net.minecraft.client.item.TooltipContext
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
@@ -21,9 +22,12 @@ import net.minecraft.item.ItemUsageContext
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.sound.SoundCategory
+import net.minecraft.text.Text
 import net.minecraft.util.ActionResult
+import net.minecraft.util.Formatting
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
+import net.minecraft.world.World
 import net.minecraft.world.event.GameEvent
 
 class LivingScrollItem(private val size: Int) : Item(Settings().group(HexicalItems.HEXICAL_GROUP)), IotaHolderItem {
@@ -72,6 +76,11 @@ class LivingScrollItem(private val size: Int) : Item(Settings().group(HexicalIte
 		}
 
 		return ActionResult.CONSUME
+	}
+
+	override fun appendTooltip(stack: ItemStack, world: World?, tooltip: MutableList<Text>, context: TooltipContext) {
+		if (stack.orCreateNbt.getBoolean("aged"))
+			tooltip.add(Text.translatable("tooltip.hexical.scroll_aged").formatted(Formatting.GOLD))
 	}
 
 	override fun readIotaTag(stack: ItemStack): NbtCompound {
