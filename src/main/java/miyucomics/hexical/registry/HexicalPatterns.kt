@@ -13,9 +13,6 @@ import miyucomics.hexical.casting.patterns.circle.OpDisplace
 import miyucomics.hexical.casting.patterns.conjure.OpConjureCompass
 import miyucomics.hexical.casting.patterns.conjure.OpConjureHexburst
 import miyucomics.hexical.casting.patterns.conjure.OpConjureHextito
-import miyucomics.hexical.casting.patterns.staff.OpConjureStaff
-import miyucomics.hexical.casting.patterns.staff.OpReadStaff
-import miyucomics.hexical.casting.patterns.staff.OpWriteStaff
 import miyucomics.hexical.casting.patterns.dye.OpDye
 import miyucomics.hexical.casting.patterns.dye.OpGetDye
 import miyucomics.hexical.casting.patterns.dye.OpMimicDye
@@ -43,6 +40,9 @@ import miyucomics.hexical.casting.patterns.soroban.OpSorobanDecrement
 import miyucomics.hexical.casting.patterns.soroban.OpSorobanIncrement
 import miyucomics.hexical.casting.patterns.soroban.OpSorobanReset
 import miyucomics.hexical.casting.patterns.specks.*
+import miyucomics.hexical.casting.patterns.staff.OpConjureStaff
+import miyucomics.hexical.casting.patterns.staff.OpReadStaff
+import miyucomics.hexical.casting.patterns.staff.OpWriteStaff
 import miyucomics.hexical.casting.patterns.telepathy.OpHallucinateSound
 import miyucomics.hexical.casting.patterns.telepathy.OpSendTelepathy
 import miyucomics.hexical.casting.patterns.telepathy.OpShoutTelepathy

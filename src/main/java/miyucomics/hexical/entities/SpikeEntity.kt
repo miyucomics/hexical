@@ -19,9 +19,7 @@ import net.minecraft.sound.SoundCategory
 import net.minecraft.sound.SoundEvents
 import net.minecraft.util.math.Direction
 import net.minecraft.world.World
-import java.util.UUID
-import kotlin.math.max
-import kotlin.math.min
+import java.util.*
 import kotlin.math.pow
 
 class SpikeEntity(entityType: EntityType<SpikeEntity>, world: World) : Entity(entityType, world) {
@@ -29,7 +27,7 @@ class SpikeEntity(entityType: EntityType<SpikeEntity>, world: World) : Entity(en
 	private var conjurerUUID: UUID? = null
 	private var conjurer: PlayerEntity? = null
 
-	constructor(world: World, x: Double, y: Double, z: Double, direction: Direction, delay: Int): this(HexicalEntities.SPIKE_ENTITY, world) {
+	constructor(world: World, x: Double, y: Double, z: Double, direction: Direction, delay: Int) : this(HexicalEntities.SPIKE_ENTITY, world) {
 		this.setDirection(direction)
 		this.setPosition(x, y, z)
 		this.timer = -delay

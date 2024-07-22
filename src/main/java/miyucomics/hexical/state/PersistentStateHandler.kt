@@ -6,7 +6,6 @@ import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.registry.HexicalNetworking
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
-import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.server.MinecraftServer
