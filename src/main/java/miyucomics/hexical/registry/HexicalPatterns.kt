@@ -36,6 +36,8 @@ import miyucomics.hexical.casting.patterns.mage_blocks.OpConjureMageBlock
 import miyucomics.hexical.casting.patterns.mage_blocks.OpModifyMageBlock
 import miyucomics.hexical.casting.patterns.prestidigitation.OpCanPrestidigitation
 import miyucomics.hexical.casting.patterns.prestidigitation.OpPrestidigitation
+import miyucomics.hexical.casting.patterns.raycast.OpFluidRaycast
+import miyucomics.hexical.casting.patterns.raycast.OpSurfaceRaycast
 import miyucomics.hexical.casting.patterns.soroban.OpSorobanDecrement
 import miyucomics.hexical.casting.patterns.soroban.OpSorobanIncrement
 import miyucomics.hexical.casting.patterns.soroban.OpSorobanReset
@@ -216,6 +218,9 @@ object HexicalPatterns {
 		register("is_sprinting", "eaq", HexDir.WEST, OpGetLivingEntityData(5))
 		register("is_baby", "awaqdwaaw", HexDir.SOUTH_WEST, OpGetLivingEntityData(6))
 		register("breedable", "awaaqdqaawa", HexDir.EAST, OpGetBreed())
+
+		register("fluid_raycast", "wqqaqwede", HexDir.EAST, OpFluidRaycast())
+		register("surface_raycast", "weedewqaq", HexDir.EAST, OpSurfaceRaycast())
 
 		register("get_enchantments", "waqeaeqawqwawaw", HexDir.WEST, OpGetItemStackData(2))
 		register("get_enchantment_strength", "waqwwqaweede", HexDir.WEST, OpGetEnchantmentStrength())
