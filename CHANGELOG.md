@@ -27,14 +27,15 @@
 - added Wristpocket spell - hide items magically
   - added Ingest spell - eat wristpocketed item
   - added Mage Hand spell - use your wristpocketed item to interact with blocks and entities
-- added context checking patterns to get the current context of a hex is being cast in
-- added shader spells - alter your vision with magic!
 - added spell to age living scrolls
+- added context checking patterns to get the current context of a hex is being cast in
+- added shader spells - alter your vision with an array of shaders for fun and for utility
 - added mishap to Chorus Blink if you don't have chorus fruit in your inventory
 - added semi-permeable mage block modifier: only sprinting creatures have collision
 - added sprites for conjured staff
-- added an ungodly amount of world scrying patterns
-- added hex candles - purple amethyst candles whose flames take on the colors of pigments
+- added a ton of world scrying patterns
+- added hex candles - amethyst candles whose flames take on the pigments of whomever last interacted with them
+- added meshes - similar to specks but they take in a list of vectors and connect them with pigmented lines
 - changed conjured staff sprite to be less messy
 - changed Identify pattern to have ambit limitation
 - changed speed and variance of living scroll patterns
@@ -57,7 +58,7 @@
 - overhauled project structure completely
 - overhauled genie lamps completely and entirely
 - overhauled world scrying patterns
-- removed casting sounds from conjured staves and replaced it with staff drawing sounds
+- removed casting sounds from conjured staves
 - updated documentation
 - updated telepathy code to share code with movement reflections
 

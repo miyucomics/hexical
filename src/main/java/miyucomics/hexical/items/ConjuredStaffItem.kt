@@ -18,6 +18,7 @@ import net.minecraft.world.World
 class ConjuredStaffItem : ItemPackagedHex(Settings().maxCount(1)) {
 	override fun use(world: World, player: PlayerEntity, usedHand: Hand): TypedActionResult<ItemStack> = TypedActionResult.success(player.getStackInHand(usedHand))
 	override fun canDrawMediaFromInventory(stack: ItemStack) = false
+	override fun isItemBarVisible(stack: ItemStack) = false
 	override fun canRecharge(stack: ItemStack) = false
 	override fun breakAfterDepletion() = true
 

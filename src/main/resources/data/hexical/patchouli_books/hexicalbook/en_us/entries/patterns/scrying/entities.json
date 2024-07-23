@@ -69,6 +69,20 @@
 			"text": "hexical.page.is_wet.summary"
 		}, {
 			"type": "hexcasting:pattern",
+			"op_id": "hexical:is_baby",
+			"anchor": "hexical:is_baby",
+			"input": "entity",
+			"output": "boolean",
+			"text": "hexical.page.is_baby.summary"
+		}, {
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:breedable",
+			"anchor": "hexical:breedable",
+			"input": "entity",
+			"output": "boolean/null",
+			"text": "hexical.page.breedable.summary"
+		}, {
+			"type": "hexcasting:pattern",
 			"op_id": "hexical:is_sleeping",
 			"anchor": "hexical:is_sleeping",
 			"input": "entity",
