@@ -6,6 +6,20 @@
 	"pages": [
 		{
 			"type": "hexcasting:pattern",
+			"op_id": "hexical:fluid_raycast",
+			"anchor": "hexical:fluid_raycast",
+			"input": "vector, vector",
+			"output": "vector",
+			"text": "hexical.page.fluid_raycast.summary"
+		}, {
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:surface_raycast",
+			"anchor": "hexical:surface_raycast",
+			"input": "vector, vector",
+			"output": "vector",
+			"text": "hexical.page.surface_raycast.summary"
+		}, {
+			"type": "hexcasting:pattern",
 			"op_id": "hexical:theodolite",
 			"anchor": "hexical:theodolite",
 			"input": "entity",
