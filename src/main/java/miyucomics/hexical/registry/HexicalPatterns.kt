@@ -129,13 +129,13 @@ object HexicalPatterns {
 		register("modify_block_semipermeable", "deeeqawde", HexDir.NORTH_WEST, OpModifyMageBlock("semipermeable"))
 		register("modify_block_volatile", "deewedeeeee", HexDir.NORTH_WEST, OpModifyMageBlock("volatile"))
 
-		register("conjure_staff", "wwwwwaqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpConjureStaff())
-		register("write_staff", "waqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpWriteStaff())
-		register("read_staff", "waqqqqqedeqdqdqdqdqe", HexDir.NORTH_EAST, OpReadStaff())
+		register("conjure_staff", "wwwwwwaqqqqqedeqdqdqdqdqe", HexDir.NORTH_EAST, OpConjureStaff())
+		register("write_staff", "waqqqqqedeqdqdqdqdqe", HexDir.NORTH_EAST, OpWriteStaff())
+		register("read_staff", "waqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpReadStaff())
 
-		register("conjure_compass", "aqwawqwqqwqwqeawwa", HexDir.SOUTH_WEST, OpConjureCompass())
-		register("conjure_hexburst", "edeqaawaa", HexDir.SOUTH_WEST, OpConjureHexburst())
-		register("conjure_hextito", "edeaddadd", HexDir.SOUTH_WEST, OpConjureHextito())
+		register("conjure_compass", "aqwawqwqqwqwq", HexDir.SOUTH_WEST, OpConjureCompass())
+		register("conjure_hexburst", "aadaadqaq", HexDir.EAST, OpConjureHexburst())
+		register("conjure_hextito", "qaqdqaqdwawaw", HexDir.EAST, OpConjureHextito())
 
 		register("conjure_speck", "ade", HexDir.SOUTH_WEST, OpConjureSpeck())
 		register("iota_speck", "adeeaqa", HexDir.SOUTH_WEST, OpIotaSpeck())
@@ -214,6 +214,8 @@ object HexicalPatterns {
 		register("get_max_air", "wwaadee", HexDir.EAST, OpGetLivingEntityData(3))
 		register("is_sleeping", "aqaew", HexDir.NORTH_WEST, OpGetLivingEntityData(4))
 		register("is_sprinting", "eaq", HexDir.WEST, OpGetLivingEntityData(5))
+		register("is_baby", "awaqdwaaw", HexDir.SOUTH_WEST, OpGetLivingEntityData(6))
+		register("breedable", "awaaqdqaawa", HexDir.EAST, OpGetBreed())
 
 		register("get_enchantments", "waqeaeqawqwawaw", HexDir.WEST, OpGetItemStackData(2))
 		register("get_enchantment_strength", "waqwwqaweede", HexDir.WEST, OpGetEnchantmentStrength())
@@ -232,7 +234,7 @@ object HexicalPatterns {
 		register("blockstate_bunch", "qaqqqqqweeeeedeeqaqdeee", HexDir.EAST, OpGetBlockStateData(6))
 		register("blockstate_book", "qaqqqqqeawa", HexDir.EAST, OpGetBlockStateData(7))
 
-		register("get_effects_entity", "wqqq", HexDir.SOUTH_WEST, OpGetLivingEntityData(6))
+		register("get_effects_entity", "wqqq", HexDir.SOUTH_WEST, OpGetLivingEntityData(7))
 		register("get_effects_item", "wqqqadee", HexDir.SOUTH_WEST, OpGetPrescription())
 		register("get_effect_category", "wqqqaawd", HexDir.SOUTH_WEST, OpGetStatusEffectCategory())
 		register("get_effect_amplifier", "wqqqaqwa", HexDir.SOUTH_WEST, OpGetStatusEffectInstanceData(0))
