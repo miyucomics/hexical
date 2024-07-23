@@ -138,10 +138,6 @@
 	"hexical.page.lightning_rod_staff.1": "$(o)I learned there are troubles$(br2)Of more than one kind.$(br2)Some come from ahead$(br2)And some come from behind.$(br2)But I've bought a big bat.$(br)I'm all ready, you see.$(br)Now my troubles are going$(br)To have troubles with $(l)me!$()",
 
 	"hexical.page.simple.title": "Hexical Patterns",
-	"hexcasting.spell.hexical:fluid_raycast": "Naval Distillation",
-	"hexical.page.fluid_raycast.summary": "Works similar to $(l:patterns/basics#hexcasting:raycast)Archer's Distillation$() but targets liquids, piercing through all other blocks.",
-	"hexcasting.spell.hexical:surface_raycast": "Lilypad Distillation",
-	"hexical.page.surface_raycast.summary": "Works similar to $(l:patterns/basics#hexcasting:raycast/axis)Architect's Distillation$() but targets liquids, piercing through all other blocks.",
 	"hexcasting.spell.hexical:theodolite": "Theodolite's Purification",
 	"hexical.page.theodolite.summary": "Like Alidade's Purification but rather than the entity's facing vector, it pushes the vector that points upwards from their head.",
 	"hexcasting.spell.hexical:dup_many": "Dioscuri Gambit II",
@@ -262,6 +258,16 @@
 	"hexical.page.set_arch_lamp_storage.summary": "Sets the lamp's iota storage. Subject to Transgress Others mishap.",
 	"hexcasting.spell.hexical:set_arch_lamp_storage": "Archgenie Gambit",
 	"hexical.page.get_arch_lamp_storage.summary": "Gets the lamp's iota storage.",
+
+	"hexical.page.special_raycasts.title": "Special Raycasts",
+	"hexcasting.spell.hexical:fluid_raycast": "Naval Distillation",
+	"hexical.page.fluid_raycast.summary": "Works similar to $(l:patterns/basics#hexcasting:raycast)Archer's Distillation$() but targets only liquids, piercing through all other blocks.",
+	"hexcasting.spell.hexical:fluid_surface_raycast": "Lilypad Distillation",
+	"hexical.page.fluid_surface_raycast.summary": "Works similar to $(l:patterns/basics#hexcasting:raycast/axis)Architect's Distillation$() but targets only liquids, piercing through all other blocks.",
+	"hexcasting.spell.hexical:piercing_raycast": "Railgun Exaltation",
+	"hexical.page.piercing_raycast.summary": "Works similar to $(l:patterns/basics#hexcasting:raycast)Archer's Distillation$() but accepts an additional identifier. It will pierce all blocks until it hits the block specified by the identifier.",
+	"hexcasting.spell.hexical:piercing_surface_raycast": "Laser Exaltation",
+	"hexical.page.piercing_surface_raycast.summary": "Works similar to $(l:patterns/basics#hexcasting:raycast/axis)Architect's Distillation$() but accepts an additional identifier. It will pierce all blocks until it hits the block specified by the identifier.",
 
 	"hexical.page.conjure_compass.title": "Conjured Compasses",
 	"hexcasting.spell.hexical:conjure_compass": "Conjure Compass",
