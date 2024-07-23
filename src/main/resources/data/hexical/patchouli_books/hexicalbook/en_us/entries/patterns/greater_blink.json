@@ -13,7 +13,7 @@
 			"anchor": "hexical:greater_blink",
 			"input": "vector",
 			"output": "",
-			"text": "hexical.page.greater_blink.desc"
+			"text": "hexical.page.greater_blink.summary"
 		}, {
 			"type": "patchouli:text",
 			"text": "hexical.page.greater_blink.1"
