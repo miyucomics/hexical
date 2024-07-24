@@ -36,6 +36,11 @@
 - added a ton of world scrying patterns
 - added hex candles - amethyst candles whose flames take on the pigments of whomever last interacted with them
 - added meshes - similar to specks but they take in a list of vectors and connect them with pigmented lines
+- added decorative glowing media jar - don't drink it!
+- added Naval and Lilypad Distillation - raycast for fluids
+- added Railgun and Laser Exaltation - pierce regular blocks until hitting identifier block type
+- added Librarian's Purification and Gambit - write directly to akashic bookshelves without need for a record
+- added soroban patterns - keep and manipulate a constantly incrementing number, useful for recursion and Thoth's
 - changed conjured staff sprite to be less messy
 - changed Identify pattern to have ambit limitation
 - changed speed and variance of living scroll patterns

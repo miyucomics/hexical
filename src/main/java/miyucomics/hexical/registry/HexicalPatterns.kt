@@ -20,8 +20,8 @@ import miyucomics.hexical.casting.patterns.eval.OpJanus
 import miyucomics.hexical.casting.patterns.eval.OpNephthys
 import miyucomics.hexical.casting.patterns.eval.OpSisyphus
 import miyucomics.hexical.casting.patterns.eval.OpThemis
-import miyucomics.hexical.casting.patterns.fireworks.OpConjureFirework
-import miyucomics.hexical.casting.patterns.fireworks.OpSimulateFirework
+import miyucomics.hexical.casting.patterns.firework.OpConjureFirework
+import miyucomics.hexical.casting.patterns.firework.OpSimulateFirework
 import miyucomics.hexical.casting.patterns.getters.*
 import miyucomics.hexical.casting.patterns.getters.misc.OpGetEnchantmentStrength
 import miyucomics.hexical.casting.patterns.getters.misc.OpGetStatusEffectCategory

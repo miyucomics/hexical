@@ -1,4 +1,4 @@
-package miyucomics.hexical.casting.patterns.fireworks
+package miyucomics.hexical.casting.patterns.firework
 
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.*
