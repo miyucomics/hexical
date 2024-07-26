@@ -13,10 +13,12 @@
 	"advancements.hexical.augmented_reality.description": "Conjure a speck.",
 	"advancements.hexical.diy_conjuring.title": "DIY Conjuring!",
 	"advancements.hexical.diy_conjuring.description": "Add a custom modifier to a mage block.",
-	"advancements.hexical.hallucinate.title": "Only in my Head",
+	"advancements.hexical.hallucinate.title": "Only In My Head",
 	"advancements.hexical.hallucinate.description": "Play a sound only you can hear!",
 	"advancements.hexical.shader.title": "Rose-Tinted Glasses",
 	"advancements.hexical.shader.description": "Alter your vision magically with shader spells.",
+	"advancements.hexical.media_slurp.title": "Tripping",
+	"advancements.hexical.media_slurp.description": "\"You sense that something is off.\"",
 
 	"block.hexical.hex_candle": "Hex Candle",
 	"block.hexical.mage_block": "Mage Block",
