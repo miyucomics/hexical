@@ -150,12 +150,17 @@
 	"hexical.page.congruent.summary": "Pushes whether two patterns have the same shape, even if they have different orientations.",
 	"hexcasting.spell.hexical:shuffle_pattern": "Glyphmaker's Distillation",
 	"hexical.page.shuffle_pattern.summary": "Takes in a pattern and a number and produces a pattern of the same shape, but different stroke order. My notes reveal that ancient hexcasters used this for some $(o)grand library$().",
+
+	"hexical.page.metas.title": "Hexical Metaevals",
 	"hexcasting.spell.hexical:janus": "Janus' Gambit",
 	"hexical.page.janus.0": "Instantly terminates the _Hex regardless of the current circumstances, breaking even through $(l:patterns/meta#hexcasting:for_each)Thoth's$(), Themis', and $(l:patterns/meta#hexcasting:eval)Hermes' Gambit$() unlike $(l:patterns/meta#hexcasting:halt)Charon's Gambit$().",
 	"hexical.page.janus.1": "It's useful to end a _Hex early once it has reached some desired state, without the difficulty of using $(l:patterns/meta#hexcasting:halt)Charon's Gambit$() because Janus' can bypass the \"containment\" of $(l:patterns/meta#hexcasting:eval)Hermes'$() and $(l:patterns/meta#hexcasting:for_each)Thoth's$().$(br2)$(o)It is always important to know when something has reached its end.$()",
 	"hexcasting.spell.hexical:nephthys": "Nephthys' Gambit",
 	"hexical.page.nephthys.0": "Pops a pattern or pattern list and dives down an amount corresponding to the tail length to cast the pattern list. Useful for surgery-like operations.",
 	"hexical.page.nephthys.1": "It's extremely versatile and I can mend almost any error in my stack using Bookkeeper's Gambit, pushing iota after a dive, and transforming surfaced iota. It was named after a goddess of mourning and rivers, lending to how it buries/dives down into the stack.$(br2)$(o)... the unknowns of time travel... is akin to descending blindly into the depths of the freezing water and reappearing as an acorn.$()",
+	"hexcasting.spell.hexical:sekhmet": "Sekhmet's Gambit",
+	"hexical.page.sekhmet.0": "Voids the entire stack except for the top n iota, determined by tail length. In the examples above, zero, one, and two iota are left untouched respectively.",
+	"hexical.page.sekhmet.1": "This simple gambit can be accomplished via Flock's Reflection, Flock's Gambit, Selection Exaltation, and Flock's Disintegration but this serves as a handy short pattern for clearing up my stack. It also pairs extremely well with Thoth's Gambit, letting me clean up the pseudo-stack should I want to only operate on and return first few iota.$(br2)$(o)Everything is possible, but not everything is necessary.$()",
 	"hexcasting.spell.hexical:sisyphus": "Sisyphus' Gambit",
 	"hexical.page.sisyphus.0": "Takes a pattern list and casts it over and over forever until it encounters either a $(l:patterns/meta#hexcasting:halt)Charon's Gambit$() or a Janus' Gambit.",
 	"hexical.page.sisyphus.1": "While I have heard of self-producing _Hexes called $(o)quines$() used to make infinite loops, they can be slightly unwieldy to work with. This gambit simplifies that process by just repeatedly casting a list until it runs out of evaluations or encounters a $(l:patterns/meta#hexcasting:halt)Charon's Gambit$(). The ravenmind is persisted between iterations and it always casts with the base stack.$(br2)$(o)One always finds one's burden again... One must imagine Sisyphus happy.$()",
@@ -193,7 +198,7 @@
 	"hexical.page.query_grimoire.summary": "Gets how many times you can use that grimoire binding before it erases itself.",
 
 	"hexical.category.lamp": "Genie Lamp",
-	"hexical.category.lamp.desc": "I have heard tales from the villagers about a magical artifact. Legends say it contains a spirit that grants wishes, but I suspect that is just embellishment evolved over centuries of storytelling. Regardless, I dedicate this chapter to my pursuit and research of it.",
+	"hexical.category.lamp.desc": "I have heard tales from the villagers about a magical artifact. Legends say it contains a spirit that grants wishes, but I suspect that is just embellishment evolved over centuries of storytelling. However, legends must arise from something and I dedicate this section to my pursuit and research of it.",
 
 	"hexcasting.spell.hexical:lamp_finale": "Finale Reflection",
 	"hexical.page.lamp_finale.hand": "The instant I let go of my lamp, it casts twice: once for the usual cast and a second time as a final burst of media. I can use this pattern to recognize whether a cast is that finale, and react accordingly.",

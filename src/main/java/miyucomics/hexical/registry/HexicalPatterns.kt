@@ -16,10 +16,7 @@ import miyucomics.hexical.casting.patterns.conjure.OpConjureHextito
 import miyucomics.hexical.casting.patterns.dye.OpDye
 import miyucomics.hexical.casting.patterns.dye.OpGetDye
 import miyucomics.hexical.casting.patterns.dye.OpMimicDye
-import miyucomics.hexical.casting.patterns.eval.OpJanus
-import miyucomics.hexical.casting.patterns.eval.OpNephthys
-import miyucomics.hexical.casting.patterns.eval.OpSisyphus
-import miyucomics.hexical.casting.patterns.eval.OpThemis
+import miyucomics.hexical.casting.patterns.eval.*
 import miyucomics.hexical.casting.patterns.firework.OpConjureFirework
 import miyucomics.hexical.casting.patterns.firework.OpSimulateFirework
 import miyucomics.hexical.casting.patterns.getters.*
@@ -255,14 +252,26 @@ object HexicalPatterns {
 		PatternRegistry.addSpecialHandler(HexicalMain.id("nephthys")) { pat ->
 			val sig = pat.anglesSignature()
 			if (sig.startsWith("deaqqd")) {
-				val chars = sig.substring(6)
 				var depth = 1
-				chars.forEachIndexed { index, char ->
+				sig.substring(6).forEachIndexed { index, char ->
 					if (char != "qe"[index % 2])
 						return@addSpecialHandler null
 					depth += 1
 				}
 				return@addSpecialHandler OpNephthys(depth)
+			}
+			return@addSpecialHandler null
+		}
+		PatternRegistry.addSpecialHandler(HexicalMain.id("sekhmet")) { pat ->
+			val sig = pat.anglesSignature()
+			if (sig.startsWith("qaqdd")) {
+				var depth = 0
+				sig.substring(5).forEachIndexed { index, char ->
+					if (char != "qe"[index % 2])
+						return@addSpecialHandler null
+					depth += 1
+				}
+				return@addSpecialHandler OpSekhmet(depth)
 			}
 			return@addSpecialHandler null
 		}
