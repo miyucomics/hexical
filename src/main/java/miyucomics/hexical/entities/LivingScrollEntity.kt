@@ -6,10 +6,12 @@ import at.petrak.hexcasting.api.spell.iota.ListIota
 import at.petrak.hexcasting.api.spell.iota.PatternIota
 import at.petrak.hexcasting.api.spell.math.HexDir
 import at.petrak.hexcasting.api.spell.math.HexPattern
+import at.petrak.hexcasting.api.utils.hasCompound
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import miyucomics.hexical.registry.HexicalEntities
 import miyucomics.hexical.registry.HexicalItems
+import miyucomics.hexical.utils.RenderUtils
 import net.minecraft.block.AbstractRedstoneGateBlock
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityDimensions
@@ -24,9 +26,11 @@ import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.nbt.NbtList
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket
+import net.minecraft.server.world.ServerWorld
 import net.minecraft.sound.SoundEvents
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
+import net.minecraft.util.math.Vec2f
 import net.minecraft.util.math.Vec3d
 import net.minecraft.world.GameRules
 import net.minecraft.world.World
@@ -37,7 +41,7 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity>, world: Worl
 	// client-only
 	var clientAged = false
 	var clientSize = 0
-	var cachedPattern = HexPattern.fromAngles("", HexDir.EAST)
+	var cachedVerts: List<Vec2f> = listOf()
 
 	constructor(world: World) : this(HexicalEntities.LIVING_SCROLL_ENTITY, world)
 
@@ -46,13 +50,14 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity>, world: Worl
 		this.patterns = patterns
 		this.dataTracker.set(sizeDataTracker, size)
 		setFacing(dir)
-		updateRender()
+		if (!world.isClient)
+			updateRender()
 	}
 
 	override fun tick() {
-		if ((world.time % 20).toInt() == 0 && patterns.isNotEmpty())
-			updateRender()
 		super.tick()
+		if (!world.isClient && (world.time % 20).toInt() == 0)
+			updateRender()
 	}
 
 	override fun canStayAttached(): Boolean {
@@ -90,7 +95,13 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity>, world: Worl
 	}
 
 	private fun updateRender() {
-		this.dataTracker.set(renderDataTracker, patterns[((world.time / 20).toInt() % patterns.size)])
+		if (this.patterns.isNotEmpty())
+			this.dataTracker.set(renderDataTracker, patterns[((world.time / 20).toInt() % patterns.size)])
+		else {
+			val compound = NbtCompound()
+			compound.putBoolean("empty", true)
+			this.dataTracker.set(renderDataTracker, compound)
+		}
 	}
 
 	override fun writeCustomDataToNbt(nbt: NbtCompound) {
@@ -182,7 +193,10 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity>, world: Worl
 				this.updateAttachmentPosition()
 				this.clientSize = this.dataTracker.get(sizeDataTracker)
 			}
-			renderDataTracker -> this.cachedPattern = HexPattern.fromNBT(dataTracker.get(renderDataTracker))
+			renderDataTracker -> {
+				val nbt = dataTracker.get(renderDataTracker)
+				this.cachedVerts = if (nbt.contains("empty")) listOf() else RenderUtils.getNormalizedStrokes(HexPattern.fromNBT(nbt), true)
+			}
 			else -> {}
 		}
 	}
@@ -200,5 +214,20 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity>, world: Worl
 		return HexIotaTypes.serialize(ListIota(constructed.toList()))
 	}
 
-	override fun writeIota(iota: Iota?, simulate: Boolean) = false
+	override fun writeIota(iota: Iota?, simulate: Boolean): Boolean {
+		if (iota == null)
+			return true
+		if (iota.type == HexIotaTypes.PATTERN)
+			return true
+		if (iota.type != HexIotaTypes.LIST)
+			return false
+		val new = mutableListOf<NbtCompound>()
+		(iota as ListIota).list.forEach {
+			if (it.type != HexIotaTypes.PATTERN)
+				return false
+			new.add((it as PatternIota).pattern.serializeToNBT())
+		}
+		this.patterns = new
+		return true
+	}
 }
