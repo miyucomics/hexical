@@ -4,7 +4,6 @@ import at.petrak.hexcasting.api.HexAPI.modLoc
 import com.mojang.blaze3d.systems.RenderSystem
 import miyucomics.hexical.utils.RenderUtils
 import net.minecraft.client.render.Frustum
-import net.minecraft.client.render.GameRenderer
 import net.minecraft.client.render.LightmapTextureManager
 import net.minecraft.client.render.RenderLayer
 import net.minecraft.client.render.VertexConsumerProvider

@@ -24,6 +24,13 @@
 			"input": "entity, list of vectors",
 			"output": "",
 			"text": "hexical.page.weave_mesh.summary"
+		}, {
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:read_mesh",
+			"anchor": "hexical:read_mesh",
+			"input": "entity",
+			"output": "list of vectors",
+			"text": "hexical.page.read_mesh.summary"
 		}
 	]
 }

@@ -1,21 +1,17 @@
 package miyucomics.hexical.entities
 
 import at.petrak.hexcasting.api.HexAPI.modLoc
-import at.petrak.hexcasting.api.spell.math.HexPattern
 import at.petrak.hexcasting.client.makeZappy
-import at.petrak.hexcasting.client.rotate
 import miyucomics.hexical.utils.RenderUtils
-import miyucomics.hexical.utils.RenderUtils.CIRCLE_RESOLUTION
 import net.minecraft.client.render.*
 import net.minecraft.client.render.entity.EntityRenderer
 import net.minecraft.client.render.entity.EntityRendererFactory
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.util.Identifier
-import net.minecraft.util.math.*
-import kotlin.math.PI
-import kotlin.math.abs
-import kotlin.math.atan2
-import kotlin.math.ceil
+import net.minecraft.util.math.Matrix3f
+import net.minecraft.util.math.Matrix4f
+import net.minecraft.util.math.Vec2f
+import net.minecraft.util.math.Vec3f
 
 class LivingScrollRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<LivingScrollEntity>(ctx) {
 	override fun render(scroll: LivingScrollEntity?, yaw: Float, deltaTick: Float, matrices: MatrixStack, vertexConsumers: VertexConsumerProvider, light: Int) {

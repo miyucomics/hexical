@@ -5,8 +5,6 @@ import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.ListIota
 import at.petrak.hexcasting.api.spell.iota.NullIota
 import at.petrak.hexcasting.api.spell.iota.PatternIota
-import at.petrak.hexcasting.api.spell.math.HexDir
-import at.petrak.hexcasting.api.spell.math.HexPattern
 import at.petrak.hexcasting.api.utils.hasCompound
 import at.petrak.hexcasting.common.blocks.akashic.BlockEntityAkashicBookshelf
 import at.petrak.hexcasting.common.lib.HexBlocks
@@ -53,9 +51,8 @@ class LivingScrollItem(private val size: Int) : Item(Settings().group(HexicalIte
 		if (player != null && !canPlaceOn(player, direction, stack, position))
 			return ActionResult.FAIL
 
-		val patternList = mutableListOf(HexPattern.fromAngles("eeeee", HexDir.EAST).serializeToNBT())
+		val patternList = mutableListOf<NbtCompound>()
 		if (stack.hasCompound("patterns") && !world.isClient) {
-			patternList.clear()
 			val list = (HexIotaTypes.deserialize(stack.orCreateNbt.getCompound("patterns")!!, world as ServerWorld) as ListIota).list
 			for (iota in list)
 				patternList.add((iota as PatternIota).pattern.serializeToNBT())
