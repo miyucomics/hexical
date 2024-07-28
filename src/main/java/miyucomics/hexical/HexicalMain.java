@@ -21,6 +21,7 @@ public class HexicalMain implements ModInitializer {
 		HexicalEvents.init();
 		HexicalIota.init();
 		HexicalItems.init();
+		HexicalSounds.init();
 		HexicalStatusEffects.init();
 		HexicalPatterns.init();
 		HexicalNetworking.serverInit();
