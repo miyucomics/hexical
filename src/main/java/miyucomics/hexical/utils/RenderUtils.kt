@@ -2,8 +2,12 @@ package miyucomics.hexical.utils
 
 import at.petrak.hexcasting.api.spell.math.HexPattern
 import at.petrak.hexcasting.client.rotate
-import net.minecraft.client.render.*
-import net.minecraft.util.math.*
+import net.minecraft.client.render.OverlayTexture
+import net.minecraft.client.render.VertexConsumer
+import net.minecraft.util.math.MathHelper
+import net.minecraft.util.math.Matrix3f
+import net.minecraft.util.math.Matrix4f
+import net.minecraft.util.math.Vec2f
 import kotlin.math.*
 
 object RenderUtils {
