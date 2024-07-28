@@ -1,19 +1,10 @@
 package miyucomics.hexical.utils
 
-import at.petrak.hexcasting.api.misc.FrozenColorizer
 import at.petrak.hexcasting.api.spell.math.HexPattern
 import at.petrak.hexcasting.client.rotate
-import net.minecraft.client.render.Tessellator
-import net.minecraft.client.render.VertexFormat
-import net.minecraft.client.render.VertexFormats
-import net.minecraft.util.math.MathHelper
-import net.minecraft.util.math.Matrix4f
-import net.minecraft.util.math.Vec2f
-import net.minecraft.util.math.Vec3d
-import kotlin.math.abs
-import kotlin.math.atan2
-import kotlin.math.ceil
-import kotlin.math.max
+import net.minecraft.client.render.*
+import net.minecraft.util.math.*
+import kotlin.math.*
 
 object RenderUtils {
 	const val CIRCLE_RESOLUTION: Int = 20
@@ -29,13 +20,11 @@ object RenderUtils {
 		return lines.toList()
 	}
 
-	fun drawFigure(mat: Matrix4f, points: List<Vec2f>, width: Float, colorizer: FrozenColorizer, colorizerOffset: Vec3d) {
+	fun drawLines(pose: Matrix4f, norm: Matrix3f, light: Int, thickness: Float, buffer: VertexConsumer, points: List<Vec2f>, color: (pos: Vec2f) -> Int) {
 		val pointCount = points.size
-		if (pointCount <= 1)
+		if (pointCount < 2)
 			return
 
-		val tessellator = Tessellator.getInstance()
-		val buf = tessellator.buffer
 		val joinAngles = FloatArray(pointCount)
 		for (i in 2 until pointCount) {
 			val currentPoint = points[i - 1]
@@ -44,16 +33,19 @@ object RenderUtils {
 			joinAngles[i - 1] = atan2(offsetFromLast.x * offsetToNext.y - offsetFromLast.y * offsetToNext.x, offsetFromLast.x * offsetToNext.x + offsetFromLast.y * offsetToNext.y)
 		}
 
-		fun vertex(pos: Vec2f) = buf.vertex(mat, pos.x, pos.y, 0f)
-			.color(colorizer.getColor(0f, Vec3d(pos.x.toDouble(), pos.y.toDouble(), 0.0).multiply(2.0).add(colorizerOffset)))
+		fun vertex(pos: Vec2f) = buffer.vertex(pose, pos.x, pos.y, 0f)
+			.color(color(pos))
+			.texture(0f, 0f)
+			.overlay(OverlayTexture.DEFAULT_UV)
+			.light(light)
+			.normal(norm, 0f, 0f, 1f)
 			.next()
 
-		buf.begin(VertexFormat.DrawMode.TRIANGLES, VertexFormats.POSITION_COLOR)
 		for (i in 0 until pointCount - 1) {
 			val currentPoint = points[i]
 			val nextPoint = points[i + 1]
 
-			val sideLength = nextPoint.add(currentPoint.negate()).normalize().multiply(width * 0.5f)
+			val sideLength = nextPoint.add(currentPoint.negate()).normalize().multiply(thickness)
 			val normal = Vec2f(-sideLength.y, sideLength.x)
 
 			val currentDown = currentPoint.add(normal)
@@ -61,13 +53,10 @@ object RenderUtils {
 			val nextDown = nextPoint.add(normal)
 			val nextUp = nextPoint.add(normal.negate())
 
-			vertex(currentDown)
 			vertex(currentUp)
-			vertex(nextUp)
-
 			vertex(currentDown)
-			vertex(nextUp)
 			vertex(nextDown)
+			vertex(nextUp)
 
 			if (i > 0) {
 				val angle = joinAngles[i]
@@ -82,6 +71,7 @@ object RenderUtils {
 						val fanShift = currentPoint.add(fan)
 
 						vertex(currentPoint)
+						vertex(currentPoint)
 						vertex(fanShift)
 						vertex(previous)
 						previous = fanShift
@@ -94,6 +84,7 @@ object RenderUtils {
 						val fanShift = currentPoint.add(fan)
 
 						vertex(currentPoint)
+						vertex(currentPoint)
 						vertex(previous)
 						vertex(fanShift)
 						previous = fanShift
@@ -101,19 +92,23 @@ object RenderUtils {
 				}
 			}
 		}
-		tessellator.draw()
 
-		fun drawCaps(currentPoint: Vec2f, previousPoint: Vec2f) {
-			val sideLength = currentPoint.add(previousPoint.negate()).normalize().multiply(0.5f * width)
+		for (pair in arrayOf(arrayOf(points[0], points[1]), arrayOf(points[pointCount - 1], points[pointCount - 2]))) {
+			val point = pair[0]
+			val prev = pair[1]
+
+			val sideLength = point.add(prev.negate()).normalize().multiply(thickness)
 			val normal = Vec2f(-sideLength.y, sideLength.x)
 			val joinSteps = CIRCLE_RESOLUTION / 2
-			buf.begin(VertexFormat.DrawMode.TRIANGLE_FAN, VertexFormats.POSITION_COLOR)
-			vertex(currentPoint)
-			for (j in joinSteps downTo 0)
-				vertex(currentPoint.add(rotate(normal, -MathHelper.PI * (j.toFloat() / joinSteps))))
-			tessellator.draw()
+			for (j in joinSteps downTo 1) {
+				val fan0 = rotate(normal, -PI.toFloat() * (j.toFloat() / joinSteps))
+				val fan1 = rotate(normal, -PI.toFloat() * ((j - 1).toFloat() / joinSteps))
+
+				vertex(point)
+				vertex(point)
+				vertex(point.add(fan1))
+				vertex(point.add(fan0))
+			}
 		}
-		drawCaps(points[0], points[1])
-		drawCaps(points[pointCount - 1], points[pointCount - 2])
 	}
 }
