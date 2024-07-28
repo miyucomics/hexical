@@ -19,7 +19,6 @@
 	"advancements.hexical.shader.description": "Alter your vision magically with shader spells.",
 	"advancements.hexical.media_slurp.title": "Tripping",
 	"advancements.hexical.media_slurp.description": "\"You sense that something is off.\"",
-
 	"block.hexical.hex_candle": "Hex Candle",
 	"block.hexical.mage_block": "Mage Block",
 	"block.hexical.media_jar": "Media Jar",
@@ -53,6 +52,7 @@
 	"subtitles.hexical.lamp_activate": "Lamp activates",
 	"subtitles.hexical.lamp_deactivate": "Lamp deactivates",
 	"subtitles.hexical.sudden_realization": "Idea pops",
+	"subtitles.hexical.player_slurp": "Player slurps",
 	"tooltip.hexical.scroll_aged": "Aged",
 	"particle.minecraft.soul_7": "",
 
