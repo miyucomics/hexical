@@ -1,7 +1,9 @@
 package miyucomics.hexical.casting.patterns.raycast
 
-import at.petrak.hexcasting.api.spell.*
+import at.petrak.hexcasting.api.spell.ConstMediaAction
+import at.petrak.hexcasting.api.spell.asActionResult
 import at.petrak.hexcasting.api.spell.casting.CastingContext
+import at.petrak.hexcasting.api.spell.getVec3
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.NullIota
 import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
@@ -9,7 +11,6 @@ import miyucomics.hexical.casting.iota.getIdentifier
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d
 import net.minecraft.util.registry.Registry
-import java.lang.IllegalStateException
 import kotlin.math.abs
 import kotlin.math.floor
 
