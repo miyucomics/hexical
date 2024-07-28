@@ -1,6 +1,7 @@
 package miyucomics.hexical.entities
 
 import at.petrak.hexcasting.api.misc.FrozenColorizer
+import at.petrak.hexcasting.api.spell.iota.Vec3Iota
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.api.utils.putList
 import miyucomics.hexical.interfaces.Specklike
@@ -17,6 +18,7 @@ import net.minecraft.nbt.NbtElement
 import net.minecraft.nbt.NbtFloat
 import net.minecraft.nbt.NbtList
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket
+import net.minecraft.util.math.Vec3d
 import net.minecraft.util.math.Vec3f
 import net.minecraft.world.World
 
@@ -80,6 +82,14 @@ class MeshEntity(entityType: EntityType<MeshEntity>, world: World) : Entity(enti
 	override fun setPigment(pigment: FrozenColorizer) = dataTracker.set(pigmentDataTracker, pigment.serializeToNBT())
 	override fun getEyeHeight(pose: EntityPose, dimensions: EntityDimensions) = 0.25f
 	override fun createSpawnPacket() = EntitySpawnS2CPacket(this)
+
+	fun getShape(): List<Vec3Iota> {
+		val list = dataTracker.get(shapeDataTracker).getList("shape", NbtElement.FLOAT_TYPE.toInt())
+		val deserializedVertices = mutableListOf<Vec3Iota>()
+		for (i in 0..<(list.size / 3))
+			deserializedVertices.add(Vec3Iota(Vec3d(list.getFloat(3 * i).toDouble(), list.getFloat(3 * i + 1).toDouble(), list.getFloat(3 * i + 2).toDouble())))
+		return deserializedVertices
+	}
 
 	override fun initDataTracker() {
 		dataTracker.startTracking(shapeDataTracker, NbtCompound())

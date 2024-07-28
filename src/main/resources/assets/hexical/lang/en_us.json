@@ -593,5 +593,7 @@
 	"hexical.page.conjure_mesh.summary": "Conjures a mesh with the location and leaves a mesh entity on the stack. Cost one dust.",
 	"hexical.page.meshes.1": "The mesh must be woven to have any appearance. The constraints for the list of vectors provided to a mesh are quite minimal. The list must be no more than 32 vectors long, and those vectors must have magnitudes less than 10. The mesh will then connect each of those points, defined by the relative offset, to each other.",
 	"hexcasting.spell.hexical:weave_mesh": "Weave Mesh",
-	"hexical.page.weave_mesh.summary": "Takes a list of vectors, with constraints defined on the prior page, and weaves the mesh into that shape for free."
+	"hexical.page.weave_mesh.summary": "Takes a list of vectors, with constraints defined on the prior page, and weaves the mesh into that shape for free.",
+	"hexcasting.spell.hexical:read_mesh": "Tangle Purification",
+	"hexical.page.read_mesh.summary": "Reads the shape of a mesh as a list of relative vectors. Can be used to copy meshes."
 }
