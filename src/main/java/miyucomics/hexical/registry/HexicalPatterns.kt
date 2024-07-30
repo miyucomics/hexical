@@ -68,6 +68,8 @@ object HexicalPatterns {
 		register("weave_mesh", "qaqqqqqwqqqdeewewee", HexDir.EAST, OpWeaveMesh())
 		register("read_mesh", "edeeeeeweeeaqqwqwqq", HexDir.SOUTH_WEST, OpReadMesh())
 
+		register("gasp", "wqqqwqwwqwqqqewaqwqaq", HexDir.NORTH_WEST, OpGasp())
+
 		register("fluid_raycast", "wqqaqwede", HexDir.EAST, OpFluidRaycast())
 		register("fluid_surface_raycast", "weedewqaq", HexDir.EAST, OpFluidSurfaceRaycast())
 		register("piercing_raycast", "wqqddqeqddq", HexDir.EAST, OpPiercingRaycast())
