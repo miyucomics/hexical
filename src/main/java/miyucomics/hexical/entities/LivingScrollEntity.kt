@@ -37,6 +37,7 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity>, world: Worl
 
 	// client-only
 	var clientAged = false
+	var clientVanished = false
 	var clientSize = 0
 	var cachedVerts: List<Vec2f> = listOf()
 
@@ -104,6 +105,7 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity>, world: Worl
 	override fun writeCustomDataToNbt(nbt: NbtCompound) {
 		nbt.putInt("direction", facing.id)
 		nbt.putBoolean("aged", this.dataTracker.get(agedDataTracker))
+		nbt.putBoolean("vanished", this.dataTracker.get(vanishedDataTracker))
 		nbt.putInt("size", this.dataTracker.get(sizeDataTracker))
 
 		val data = NbtList()
@@ -117,6 +119,7 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity>, world: Worl
 	override fun readCustomDataFromNbt(nbt: NbtCompound) {
 		this.facing = Direction.byId(nbt.getInt("direction"))
 		this.dataTracker.set(agedDataTracker, nbt.getBoolean("aged"))
+		this.dataTracker.set(vanishedDataTracker, nbt.getBoolean("vanished"))
 		this.dataTracker.set(sizeDataTracker, nbt.getInt("size"))
 		setFacing(this.facing)
 		updateAttachmentPosition()
@@ -176,9 +179,11 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity>, world: Worl
 	}
 
 	fun toggleAged() = this.dataTracker.set(agedDataTracker, !this.dataTracker.get(agedDataTracker))
+	fun toggleVanished() = this.dataTracker.set(vanishedDataTracker, !this.dataTracker.get(vanishedDataTracker))
 
 	override fun initDataTracker() {
 		this.dataTracker.startTracking(agedDataTracker, false)
+		this.dataTracker.startTracking(vanishedDataTracker, false)
 		this.dataTracker.startTracking(sizeDataTracker, 1)
 		this.dataTracker.startTracking(renderDataTracker, NbtCompound())
 	}
@@ -186,6 +191,7 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity>, world: Worl
 	override fun onTrackedDataSet(data: TrackedData<*>) {
 		when (data) {
 			agedDataTracker -> this.clientAged = this.dataTracker.get(agedDataTracker)
+			vanishedDataTracker -> this.clientVanished = this.dataTracker.get(vanishedDataTracker)
 			sizeDataTracker -> {
 				this.updateAttachmentPosition()
 				this.clientSize = this.dataTracker.get(sizeDataTracker)
@@ -200,6 +206,7 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity>, world: Worl
 
 	companion object {
 		private val agedDataTracker: TrackedData<Boolean> = DataTracker.registerData(LivingScrollEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
+		private val vanishedDataTracker: TrackedData<Boolean> = DataTracker.registerData(LivingScrollEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
 		private val sizeDataTracker: TrackedData<Int> = DataTracker.registerData(LivingScrollEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
 		private val renderDataTracker: TrackedData<NbtCompound> = DataTracker.registerData(LivingScrollEntity::class.java, TrackedDataHandlerRegistry.NBT_COMPOUND)
 	}
