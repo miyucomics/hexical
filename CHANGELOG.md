@@ -27,7 +27,9 @@
 - added Wristpocket spell - hide items magically
   - added Ingest spell - eat wristpocketed item
   - added Mage Hand spell - use your wristpocketed item to interact with blocks and entities
-- added spell to age living scrolls
+- added living scroll spells
+  - added spell to age living scrolls
+  - added spell to make scroll parchment vanish
 - added context checking patterns to get the current context of a hex is being cast in
 - added shader spells - alter your vision with an array of shaders for fun and for utility
 - added mishap to Chorus Blink if you don't have chorus fruit in your inventory
