@@ -40,11 +40,10 @@ class OpReloadLamp : SpellAction {
 	private data class Spell(val sacrifice: VillagerEntity, val battery: Int) : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
 			val lamp = ctx.caster.getStackInHand(ctx.otherHand)
-			if (sacrifice.villagerData.level >= 5 && lamp.item !is ArchLampItem) {
+			if (sacrifice.villagerData.level >= 5 && !lamp.isOf(HexicalItems.ARCH_LAMP_ITEM)) {
 				ctx.caster.setStackInHand(ctx.otherHand, ItemStack(HexicalItems.ARCH_LAMP_ITEM))
-				Brainsweeping.brainsweep(sacrifice)
-				if (HexConfig.server().doVillagersTakeOffenseAtMindMurder())
-					sacrifice.tellWitnessesThatIWasMurdered(ctx.caster)
+				sacrifice.tellWitnessesThatIWasMurdered(ctx.caster)
+				sacrifice.discard()
 			} else {
 				sacrifice.villagerData = sacrifice.villagerData.withLevel(sacrifice.villagerData.level - 1)
 				sacrifice.experience = VillagerData.getLowerLevelExperience(sacrifice.villagerData.level)
