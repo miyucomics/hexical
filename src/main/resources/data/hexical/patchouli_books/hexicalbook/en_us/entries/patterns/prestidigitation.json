@@ -21,6 +21,12 @@
 			"input": "entity/vector",
 			"output": "boolean",
 			"text": "hexical.page.can_prestidigitate.summary"
+		}, {
+			"type": "patchouli:text",
+			"text": "hexical.page.prestidigitation.1"
+		}, {
+			"type": "patchouli:text",
+			"text": "hexical.page.prestidigitation.2"
 		}
 	]
 }
