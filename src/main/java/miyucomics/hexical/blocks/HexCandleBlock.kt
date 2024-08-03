@@ -3,6 +3,7 @@ package miyucomics.hexical.blocks
 import at.petrak.hexcasting.api.misc.FrozenColorizer
 import at.petrak.hexcasting.common.particles.ConjureParticleOptions
 import at.petrak.hexcasting.xplat.IXplatAbstractions
+import miyucomics.hexical.registry.HexicalSounds
 import net.minecraft.block.*
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.block.entity.BlockEntityTicker
@@ -32,6 +33,7 @@ class HexCandleBlock : CandleBlock(Settings.of(Material.DECORATION).nonOpaque().
 			givenColor = FrozenColorizer(stack.copy(), player.uuid)
 		(world.getBlockEntity(pos)!! as HexCandleBlockEntity).setPigment(givenColor)
 		world.emitGameEvent(player, GameEvent.BLOCK_CHANGE, pos)
+		world.playSound(pos.x.toDouble(), pos.y.toDouble(), pos.z.toDouble(), HexicalSounds.CANDLE_FLARES, SoundCategory.BLOCKS, 1.0f, 1f, true)
 		return ActionResult.SUCCESS
 	}
 
@@ -41,7 +43,7 @@ class HexCandleBlock : CandleBlock(Settings.of(Material.DECORATION).nonOpaque().
 		getParticleOffsets(state).forEach { offset: Vec3d ->
 			val position = offset.add(pos.x.toDouble(), pos.y.toDouble(), pos.z.toDouble())
 			if (random.nextFloat() < 0.25f)
-				world.playSound(position.x + 0.5, position.y + 0.5, position.z + 0.5, SoundEvents.BLOCK_CANDLE_AMBIENT, SoundCategory.BLOCKS, 1.0f + random.nextFloat(), random.nextFloat() * 0.7f + 0.3f, false)
+				world.playSound(position.x + 0.5, position.y + 0.5, position.z + 0.5, SoundEvents.BLOCK_CANDLE_AMBIENT, SoundCategory.BLOCKS, 1.0f + random.nextFloat(), random.nextFloat() * 0.7f + 0.3f, true)
 		}
 	}
 

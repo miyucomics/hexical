@@ -68,6 +68,7 @@ object HexicalPatterns {
 		register("weave_mesh", "qaqqqqqwqqqdeewewee", HexDir.EAST, OpWeaveMesh())
 		register("read_mesh", "edeeeeeweeeaqqwqwqq", HexDir.SOUTH_WEST, OpReadMesh())
 
+		register("chorus_blink", "aawqqqq", HexDir.SOUTH_EAST, OpChorusBlink())
 		register("gasp", "wqqqwqwwqwqqqewaqwqaq", HexDir.NORTH_WEST, OpGasp())
 
 		register("fluid_raycast", "wqqaqwede", HexDir.EAST, OpFluidRaycast())
@@ -126,7 +127,6 @@ object HexicalPatterns {
 		register("dup_many", "waadadaa", HexDir.EAST, OpDupMany())
 		register("shuffle_pattern", "aqqqdae", HexDir.NORTH_EAST, OpShufflePattern())
 
-		register("chorus_blink", "aawqqqq", HexDir.SOUTH_EAST, OpChorusBlink())
 		register("displace", "qaqqqqeedaqqqa", HexDir.NORTH_EAST, OpDisplace())
 
 		register("conjure_mage_block", "dee", HexDir.NORTH_WEST, OpConjureMageBlock())
@@ -138,7 +138,7 @@ object HexicalPatterns {
 		register("modify_block_semipermeable", "deeeqawde", HexDir.NORTH_WEST, OpModifyMageBlock("semipermeable"))
 		register("modify_block_volatile", "deewedeeeee", HexDir.NORTH_WEST, OpModifyMageBlock("volatile"))
 
-		register("conjure_staff", "wwwwwwaqqqqqedeqdqdqdqdqe", HexDir.NORTH_EAST, OpConjureStaff())
+		register("conjure_staff", "wwwwwaqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpConjureStaff())
 		register("write_staff", "waqqqqqedeqdqdqdqdqe", HexDir.NORTH_EAST, OpWriteStaff())
 		register("read_staff", "waqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpReadStaff())
 

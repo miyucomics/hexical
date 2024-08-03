@@ -10,6 +10,7 @@ import miyucomics.hexical.registry.HexicalBlocks
 import net.minecraft.block.BlockState
 import net.minecraft.entity.Entity
 import net.minecraft.nbt.NbtCompound
+import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d
 import java.util.*
@@ -28,6 +29,7 @@ class MageBlockEntity(pos: BlockPos, state: BlockState) : HexBlockEntity(Hexical
 	)
 	var redstone: Int = 0
 	var lifespan: Int = 0
+	var canPass: UUID = UUID.randomUUID()
 
 	fun walkParticle(entity: Entity) {
 		val color = colorizer.getColor(entity.age.toFloat(), entity.pos.add(Vec3d(random.nextDouble(), random.nextDouble(), random.nextDouble()).multiply(random.nextDouble() * 3)))
@@ -49,6 +51,7 @@ class MageBlockEntity(pos: BlockPos, state: BlockState) : HexBlockEntity(Hexical
 		properties.forEach { (key, value) -> tag.putBoolean(key, value) }
 		tag.putInt("lifespan", this.lifespan)
 		tag.putInt("redstone", this.redstone)
+		tag.putUuid("canPass", this.canPass)
 	}
 
 	override fun loadModData(tag: NbtCompound) {
@@ -56,13 +59,16 @@ class MageBlockEntity(pos: BlockPos, state: BlockState) : HexBlockEntity(Hexical
 		properties.keys.forEach { key -> properties[key] = tag.getBoolean(key) }
 		this.lifespan = tag.getInt("lifespan")
 		this.redstone = tag.getInt("redstone")
+		this.canPass = tag.getUuid("canPass")
 	}
 
-	fun setProperty(property: String, args: List<Iota>) {
+	fun setProperty(property: String, args: List<Iota>, caster: ServerPlayerEntity) {
 		if (property == "energized")
 			this.redstone = args.getPositiveIntUnder(0, 16, args.size)
 		if (property == "ephemeral")
 			this.lifespan = args.getPositiveInt(0, args.size)
+		if (property == "semipermeable")
+			this.canPass = caster.uuid
 		properties[property] = !properties[property]!!
 		sync()
 	}

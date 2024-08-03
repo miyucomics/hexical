@@ -53,6 +53,7 @@
 	"subtitles.hexical.lamp_deactivate": "Lamp deactivates",
 	"subtitles.hexical.sudden_realization": "Idea pops",
 	"subtitles.hexical.player_slurp": "Player slurps",
+	"subtitles.hexical.candle_flares": "Candle crackles",
 	"tooltip.hexical.scroll_aged": "Aged",
 	"particle.minecraft.soul_7": "",
 
@@ -373,7 +374,6 @@
 	"hexical.page.conjure_staff.summary": "Conjures a staff at the location with the amount of media, rank, and hex respectively.$(br2)$(o)This is my $(l)staff$()$(o). There are many like it, but this one is mine.$()",
 	"hexical.page.conjure_staff.1": "When I use my primary or secondary use keys while holding a $(item)conjured staff$(), it intercepts my click, preventing me from interacting with the world while holding it. After a number of clicks corresponding to the rank I assigned at conjuration, it casts the _Hex I gave it, starting the stack with false and true, corresponding to the left and right clicks respectively. If I pause for too long between clicks, it simply cancels the current \"cast\".",
 	"hexical.page.conjure_staff.2": "The spell is not too expensive, requiring only an amethyst shard, an amethyst dust for every rank, and the media for the battery. The result is a speedy and versatile casting device, with infinitely more possibilities and no cooldown compared to other casting devices.$(br2)Not only that, conjured staves feature an iota storage that can only be edited from the staff itself.",
-	"hexical.page.conjure_staff.3": "The third number given to the spell determines the appearance of the staff. Starting from zero, the current possibilities are a staff, a clover flower, a conch, a handbell, a key, and a magic mirror. I sense that this aspect of the staff is constantly changing so new appearances may emerge in the future.",
 	"hexcasting.spell.hexical:read_staff": "Staff Reflection",
 	"hexical.page.read_staff.summary": "Reads the iota from the conjured staff's inner storage.",
 	"hexcasting.spell.hexical:write_staff": "Staff Gambit",
@@ -423,7 +423,7 @@
 	"hexcasting.spell.hexical:modify_block_replaceable": "Modify Block: Replaceable",
 	"hexical.page.modify_block_replaceable.summary": "This modifier is useful for construction! With this modifier applied, I find I can easily place another block in the place of the mage block.",
 	"hexcasting.spell.hexical:modify_block_semipermeable": "Modify Block: Semi-Permeable",
-	"hexical.page.modify_block_semipermeable.summary": "This modifier makes the block semi-permeable, only having collision with things that are sprinting. All other entities fall through.",
+	"hexical.page.modify_block_semipermeable.summary": "This modifier makes the block semi-permeable, only allowing the last caster of it to pass through while all other entities can not.",
 	"hexcasting.spell.hexical:modify_block_volatile": "Modify Block: Volatile",
 	"hexical.page.modify_block_volatile.summary": "This modifier makes the block break other mage blocks it's touching. Notably, if it breaks another volatile block, that block breaks and so on until every volatile block shatters.",
 
