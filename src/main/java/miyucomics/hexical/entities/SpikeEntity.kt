@@ -22,6 +22,7 @@ import net.minecraft.world.World
 import java.util.*
 import kotlin.math.pow
 
+@OptIn(ExperimentalStdlibApi::class)
 class SpikeEntity(entityType: EntityType<SpikeEntity>, world: World) : Entity(entityType, world) {
 	private var timer = 0
 	private var conjurerUUID: UUID? = null
