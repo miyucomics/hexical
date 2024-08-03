@@ -22,6 +22,7 @@ import net.minecraft.util.math.Vec3d
 import net.minecraft.util.math.Vec3f
 import net.minecraft.world.World
 
+@OptIn(ExperimentalStdlibApi::class)
 class MeshEntity(entityType: EntityType<MeshEntity>, world: World) : Entity(entityType, world), Specklike {
 	constructor(world: World) : this(HexicalEntities.MESH_ENTITY, world)
 
