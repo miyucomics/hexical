@@ -7,7 +7,6 @@ import net.minecraft.block.entity.BlockEntity
 import net.minecraft.block.entity.BlockEntityTicker
 import net.minecraft.block.entity.BlockEntityType
 import net.minecraft.entity.Entity
-import net.minecraft.entity.FallingBlockEntity
 import net.minecraft.entity.damage.DamageSource
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.BlockItem
@@ -103,11 +102,12 @@ class MageBlock : BlockConjured(
 		val tile = world.getBlockEntity(pos)
 		if (tile !is MageBlockEntity)
 			return super.getCollisionShape(state, world, pos, context)
-		if ((world.getBlockEntity(pos) as MageBlockEntity).properties["semipermeable"] != true)
+		val blockEntity = world.getBlockEntity(pos) as MageBlockEntity
+		if (blockEntity.properties["semipermeable"] != true)
 			return super.getCollisionShape(state, world, pos, context)
 		if (context is EntityShapeContext && context.entity != null) {
 			val entity = context.entity!!
-			if (entity is FallingBlockEntity || entity.isSprinting && context.isAbove(VoxelShapes.fullCube(), pos, false) && !context.isDescending())
+			if (entity.uuid != blockEntity.canPass)
 				return super.getCollisionShape(state, world, pos, context)
 		}
 		return VoxelShapes.empty()

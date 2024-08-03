@@ -11,6 +11,7 @@ object HexicalSounds {
 	lateinit var LAMP_DEACTIVATE_SOUND_EVENT: SoundEvent
 	lateinit var SUDDEN_REALIZATION_EVENT: SoundEvent
 	lateinit var PLAYER_SLURP: SoundEvent
+	lateinit var CANDLE_FLARES: SoundEvent
 
 	@JvmStatic
 	fun init() {
@@ -20,6 +21,7 @@ object HexicalSounds {
 		LAMP_DEACTIVATE_SOUND_EVENT = register("lamp_deactivate")
 		SUDDEN_REALIZATION_EVENT = register("sudden_realization")
 		PLAYER_SLURP = register("player_slurp")
+		CANDLE_FLARES = register("candle_flares")
 	}
 
 	private fun register(name: String): SoundEvent {

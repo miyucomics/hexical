@@ -30,5 +30,11 @@
 				"volume": 0.75
 			}
 		]
+	},
+	"candle_flares": {
+		"subtitle": "subtitles.hexical.candle_flares",
+		"sounds": [
+			"block.fire.ambient"
+		]
 	}
 }

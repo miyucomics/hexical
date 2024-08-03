@@ -27,13 +27,15 @@
 - added Wristpocket spell - hide items magically
   - added Ingest spell - eat wristpocketed item
   - added Mage Hand spell - use your wristpocketed item to interact with blocks and entities
-- added living scroll spells
+- added more living scroll features
   - added spell to age living scrolls
   - added spell to make scroll parchment vanish
-- added context checking patterns to get the current context of a hex is being cast in
+  - added medium living scrolls
+  - added ability to read from and write to living scrolls with Chronicler's
+- added a bunch of context checking patterns to get the current context of a hex is being cast in
 - added shader spells - alter your vision with an array of shaders for fun and for utility
 - added mishap to Chorus Blink if you don't have chorus fruit in your inventory
-- added semi-permeable mage block modifier: only sprinting creatures have collision
+- added semi-permeable mage block modifier: only the person who casted it can walk through them
 - added sprites for conjured staff
 - added a ton of world scrying patterns
 - added hex candles - amethyst candles whose flames take on the pigments of whomever last interacted with them
@@ -43,6 +45,7 @@
 - added Railgun and Laser Exaltation - pierce regular blocks until hitting identifier block type
 - added Librarian's Purification and Gambit - write directly to akashic bookshelves without need for a record
 - added soroban patterns - keep and manipulate a constantly incrementing number, useful for recursion and Thoth's
+- added ability to right-click akashic bookshelves to download their iota onto your stack
 - changed conjured staff sprite to be less messy
 - changed Identify pattern to have ambit limitation
 - changed speed and variance of living scroll patterns
@@ -53,6 +56,7 @@
   - moved them into separate blocks category
 - dropped support for Forge in order to prioritize development speed and features
 - fixed specks being slightly off-center
+- fixed living scrolls always having a pattern by default
 - fixed advancements occasionally breaking
 - fixed Conjure Speck spell costing too little
 - fixed Janus' Gambit to actually terminate the hex now
