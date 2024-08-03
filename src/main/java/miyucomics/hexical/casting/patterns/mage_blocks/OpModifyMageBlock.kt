@@ -26,7 +26,7 @@ class OpModifyMageBlock(private val property: String, arguments: Int = 0) : Spel
 
 	private data class Spell(val pos: BlockPos, val property: String, val args: List<Iota>) : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
-			(ctx.world.getBlockEntity(pos) as MageBlockEntity).setProperty(property, args)
+			(ctx.world.getBlockEntity(pos) as MageBlockEntity).setProperty(property, args, ctx.caster)
 			HexicalAdvancements.DIY.trigger(ctx.caster)
 		}
 	}

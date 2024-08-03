@@ -13,7 +13,7 @@ import net.minecraft.item.ItemStack
 import net.minecraft.util.math.Vec3d
 
 class OpConjureStaff : SpellAction {
-	override val argc = 5
+	override val argc = 4
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		val position = args.getVec3(0, argc)
 		ctx.assertVecInRange(position)
@@ -21,17 +21,15 @@ class OpConjureStaff : SpellAction {
 		val rank = args.getInt(2, argc)
 		if (rank <= 0)
 			throw MishapInvalidIota.of(args[2], 2, "integer_natural")
-		val sprite = args.getIntBetween(3, 0, 10, argc)
-		val instructions = args.getList(4, argc).toList()
-		CastingUtils.assertNoTruename(args[4], ctx.caster)
-		return Triple(Spell(position, battery * MediaConstants.DUST_UNIT, rank, sprite, instructions), MediaConstants.SHARD_UNIT + MediaConstants.DUST_UNIT * (rank + battery), listOf(ParticleSpray.burst(position, 1.0)))
+		val instructions = args.getList(3, argc).toList()
+		CastingUtils.assertNoTruename(args[3], ctx.caster)
+		return Triple(Spell(position, battery * MediaConstants.DUST_UNIT, rank, instructions), MediaConstants.SHARD_UNIT + MediaConstants.DUST_UNIT * (rank + battery), listOf(ParticleSpray.burst(position, 1.0)))
 	}
 
-	private data class Spell(val position: Vec3d, val battery: Int, val rank: Int, val sprite: Int, val instructions: List<Iota>) : RenderedSpell {
+	private data class Spell(val position: Vec3d, val battery: Int, val rank: Int, val instructions: List<Iota>) : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
 			val stack = ItemStack(HexicalItems.CONJURED_STAFF_ITEM, 1)
 			stack.orCreateNbt.putInt("rank", rank)
-			stack.orCreateNbt.putInt("sprite", sprite)
 			val hexHolder = IXplatAbstractions.INSTANCE.findHexHolder(stack)
 			hexHolder?.writeHex(instructions, battery)
 			ctx.world.spawnEntity(ItemEntity(ctx.world, position.x, position.y, position.z, stack))

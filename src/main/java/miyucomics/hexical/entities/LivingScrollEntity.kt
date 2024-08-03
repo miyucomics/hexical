@@ -232,6 +232,7 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity>, world: Worl
 			new.add((it as PatternIota).pattern.serializeToNBT())
 		}
 		this.patterns = new
+		this.updateRender()
 		return true
 	}
 }
