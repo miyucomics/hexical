@@ -82,7 +82,7 @@ class MageBlock : BlockConjured(
 		world.setBlockState(position, Blocks.AIR.defaultState)
 		world.removeBlockEntity(position)
 		if (tile.properties["volatile"]!!) {
-			for (offset in Direction.entries) {
+			for (offset in Direction.stream()) {
 				val positionToTest = position.add(offset.vector)
 				val otherState = world.getBlockState(positionToTest)
 				val block = otherState.block

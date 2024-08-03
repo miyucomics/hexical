@@ -14,6 +14,7 @@ import net.minecraft.util.math.Vec3f
 import kotlin.math.cos
 import kotlin.math.sin
 
+@OptIn(ExperimentalStdlibApi::class)
 class MeshRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<MeshEntity>(ctx) {
 	private val sides = 6
 	private val angleIncrement = 2 * Math.PI / 6
