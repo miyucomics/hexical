@@ -70,6 +70,7 @@
 - overhauled genie lamps completely and entirely
 - overhauled world scrying patterns
 - removed casting sounds from conjured staves
+- removed grimoire locking patterns since no one really used them, they were janky and risked leaking truenames, and there are hexbursts now
 - updated documentation
 - updated telepathy code to share code with movement reflections
 

@@ -36,23 +36,6 @@
 			"input": "",
 			"output": "[pattern]",
 			"text": "hexical.page.index_grimoire.summary"
-		}, {
-			"type": "patchouli:text",
-			"text": "hexical.page.grimoire.3"
-		}, {
-			"type": "hexcasting:pattern",
-			"op_id": "hexical:restrict_grimoire",
-			"anchor": "hexical:restrict_grimoire",
-			"input": "pattern, number",
-			"output": "",
-			"text": "hexical.page.restrict_grimoire.summary"
-		}, {
-			"type": "hexcasting:pattern",
-			"op_id": "hexical:query_grimoire",
-			"anchor": "hexical:query_grimoire",
-			"input": "pattern",
-			"output": "number",
-			"text": "hexical.page.query_grimoire.summary"
 		}
 	]
 }

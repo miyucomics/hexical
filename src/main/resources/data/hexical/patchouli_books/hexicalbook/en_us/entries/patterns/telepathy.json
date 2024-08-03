@@ -71,6 +71,13 @@
 			"input": "",
 			"output": "number",
 			"text": "hexical.page.moving_right.summary"
+		}, {
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:jumping",
+			"anchor": "hexical:jumping",
+			"input": "",
+			"output": "number",
+			"text": "hexical.page.jumping.summary"
 		}
 	]
 }
