@@ -36,20 +36,6 @@ class GrimoireItem : Item(Settings().maxCount(1).group(HexicalItems.HEXICAL_GROU
 			return result
 		}
 
-		fun getUses(stack: ItemStack, key: HexPattern): Int? {
-			if (!stack.orCreateNbt.getCompound("patterns").getCompound(key.anglesSignature()).contains("uses"))
-				return null
-			return stack.orCreateNbt.getCompound("patterns").getCompound(key.anglesSignature()).getInt("uses")
-		}
-
-		fun restrict(stack: ItemStack, key: HexPattern, uses: Int) {
-			if (!stack.orCreateNbt.contains("patterns"))
-				return
-			if (!stack.orCreateNbt.getCompound("patterns").contains(key.anglesSignature()))
-				return
-			stack.orCreateNbt.getCompound("patterns").getCompound(key.anglesSignature()).putInt("uses", uses)
-		}
-
 		fun erase(stack: ItemStack, key: HexPattern) {
 			if (!stack.orCreateNbt.contains("patterns"))
 				return
