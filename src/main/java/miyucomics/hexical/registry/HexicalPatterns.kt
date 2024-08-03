@@ -57,9 +57,6 @@ import net.minecraft.sound.SoundEvents
 import net.minecraft.util.Identifier
 
 object HexicalPatterns {
-	private val PATTERNS: MutableList<Triple<HexPattern, Identifier, Action>> = ArrayList()
-	private val PER_WORLD_PATTERNS: MutableList<Triple<HexPattern, Identifier, Action>> = ArrayList()
-
 	@JvmStatic
 	fun init() {
 		registerPerWorld("greater_blink", "wqawawaqwqwqawawaqw", HexDir.SOUTH_WEST, OpGreaterBlink())
@@ -166,12 +163,11 @@ object HexicalPatterns {
 		register("moving_right", "qaqda", HexDir.SOUTH_WEST, OpGetKeybind("key.right"))
 		register("moving_up", "aqaddq", HexDir.SOUTH_EAST, OpGetKeybind("key.forward"))
 		register("moving_down", "dedwdq", HexDir.SOUTH_WEST, OpGetKeybind("key.back"))
+		register("jumping", "qaqdaqqa", HexDir.SOUTH_WEST, OpGetKeybind("key.jump"))
 
 		register("write_grimoire", "aqwqaeaqa", HexDir.WEST, OpGrimoireWrite())
 		register("erase_grimoire", "aqwqaqded", HexDir.WEST, OpGrimoireErase())
 		register("index_grimoire", "aqaeaqwqa", HexDir.SOUTH_EAST, OpGrimoireIndex())
-		register("restrict_grimoire", "dedqdewed", HexDir.SOUTH_WEST, OpGrimoireRestrict())
-		register("query_grimoire", "aqaedewed", HexDir.NORTH_WEST, OpGrimoireQuery())
 
 		register("offer_mind", "qaqwawqwqqwqwqwqwqwqq", HexDir.EAST, OpReloadLamp())
 		register("educate_genie", "eweweweweweewedeaqqqd", HexDir.NORTH_WEST, OpEducateGenie())
@@ -279,13 +275,8 @@ object HexicalPatterns {
 			}
 			return@addSpecialHandler null
 		}
-
-		for ((first, second, third) in PATTERNS)
-			PatternRegistry.mapPattern(first, second, third)
-		for ((first, second, third) in PER_WORLD_PATTERNS)
-			PatternRegistry.mapPattern(first, second, third, true)
 	}
 
-	private fun register(name: String, signature: String, startDir: HexDir, action: Action) = PATTERNS.add(Triple(HexPattern.fromAngles(signature, startDir), HexicalMain.id(name), action))
-	private fun registerPerWorld(name: String, signature: String, startDir: HexDir, action: Action) = PER_WORLD_PATTERNS.add(Triple(HexPattern.fromAngles(signature, startDir), HexicalMain.id(name), action))
+	private fun register(name: String, signature: String, startDir: HexDir, action: Action) = PatternRegistry.mapPattern(HexPattern.fromAngles(signature, startDir), HexicalMain.id(name), action)
+	private fun registerPerWorld(name: String, signature: String, startDir: HexDir, action: Action) = PatternRegistry.mapPattern(HexPattern.fromAngles(signature, startDir), HexicalMain.id(name), action, true)
 }
