@@ -172,7 +172,7 @@
 	"hexical.page.media_jar.0": "I can craft this little decorative jar of liquid media. Unfortunately, it seems the glass is too thick for me to draw media through it, although I have read rumors of ancient hexcasters solving this issue to make bottles of media. I wonder what I would see if I took a sip.",
 
 	"hexical.page.hex_candle.title": "Hex Candles",
-	"hexical.page.hex_candle.0": "When ignited for the first time, either $(l:hexical:patterns/prestidigitation)magically$() or with a flint and steel, these delightful little candles have pale white flames. When someone interacts with it though, it happily copies their pigment. I can also right-click it with a pigment item to change its color directly. To extinguish, I must sneak right-click.",
+	"hexical.page.hex_candle.0": "When ignited for the first time, either $(l:hexical:patterns/spells/prestidigitation)magically$() or with a flint and steel, these delightful little candles have pale white flames. When someone interacts with it though, it happily copies their pigment. I can also right-click it with a pigment item to change its color directly. To extinguish, I must sneak right-click.",
 
 	"hexical.page.living_scroll.title": "Living Scrolls",
 	"hexical.page.living_scroll.0": "Living scrolls are mixed with a pinch of amethyst, enchanting the ink to move and wiggle like the patterns I draw with my $(l:items/staff)staff$(). Not only that, living scrolls can display lists of patterns.$(br2)$(o)You can't be a proper writer without a touch of madness, can you?$()",
@@ -378,7 +378,7 @@
 	"hexical.page.with_conjured_staff.summary": "Pushes whether this hex is currently being cast by a conjured staff.",
 
 	"hexical.page.akashic_utils.title": "Akashic Utilities",
-	"hexical.page.akashic_utils.0": "I have discovered some conveniences with akashic libraries! I can right-click or $(l:hexical:patterns/prestidigitation)magically interact$() with a filled akashic bookshelf to copy the iota from it into my player stack. I can also right-click with a scroll to copy the pattern of the bookshelf onto the scroll. Finally, I have discovered two patterns that can read and write directly to a bookshelf without need of a record. While I sacrifice being able to access them universally, I can perform these actions for free.",
+	"hexical.page.akashic_utils.0": "I have discovered some conveniences with akashic libraries! I can right-click or $(l:hexical:patterns/spells/prestidigitation)magically interact$() with a filled akashic bookshelf to copy the iota from it into my player stack. I can also right-click with a scroll to copy the pattern of the bookshelf onto the scroll. Finally, I have discovered two patterns that can read and write directly to a bookshelf without need of a record. While I sacrifice being able to access them universally, I can perform these actions for free.",
 	"hexcasting.spell.hexical:read_shelf": "Librarian's Purification",
 	"hexical.page.read_shelf.summary": "Reads the iota from an akashic bookshelf within ambit. Free.",
 	"hexcasting.spell.hexical:write_shelf": "Librarian's Gambit",
@@ -586,7 +586,7 @@
 	"hexical.page.greater_blink.1": "A vector of (0, 0, 1) would teleport me one block in the direction I'm facing. A vector of (0, 1, 0) would teleport me one block \"up\" in the direction of the top of my head. A vector of (0, 1, 10) would teleport me ten blocks forward in the direction I'm facing and one block upwards from the top of my head.",
 
 	"hexical.page.meshes.title": "Meshes",
-	"hexical.page.meshes.0": "Meshes are the natural evolution of $(l:hexical:patterns/specks)specks$(). Rather than being restricted to the figure of iotas and patterns, stuck in a two-dimensional plane, meshes accept a list of vectors in 3D space and connect them with lines, allowing for infinite creative constructions. It's also responsive to most patterns used for manipulation of specks.",
+	"hexical.page.meshes.0": "Meshes are the natural evolution of $(l:hexical:patterns/spells/specks)specks$(). Rather than being restricted to the figure of iotas and patterns, stuck in a two-dimensional plane, meshes accept a list of vectors in 3D space and connect them with lines, allowing for infinite creative constructions. It's also responsive to most patterns used for manipulation of specks.",
 	"hexcasting.spell.hexical:conjure_mesh": "Conjure Mesh",
 	"hexical.page.conjure_mesh.summary": "Conjures a mesh with the location and leaves a mesh entity on the stack. Cost one dust.",
 	"hexical.page.meshes.1": "The mesh must be woven to have any appearance. The constraints for the list of vectors provided to a mesh are quite minimal. The list must be no more than 32 vectors long, and those vectors must have magnitudes less than 10. The mesh will then connect each of those points, defined by the relative offset, to each other.",
