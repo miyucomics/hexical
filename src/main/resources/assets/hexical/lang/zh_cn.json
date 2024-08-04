@@ -160,7 +160,7 @@
 	"hexical.page.media_jar.0": "我制作了这个能盛液体媒质的小装饰件。但对于从中汲取媒质这件事来说，它的玻璃外壁还是太厚了。我也曾听过传言称古代咒术师解决了这个难题，从而造出了瓶装的媒质。喝一小口会怎样呢……",
 
 	"hexical.page.hex_candle.title": "咒术蜡烛",
-	"hexical.page.hex_candle.0": "首次以$(l:hexical:patterns/prestidigitation)魔法$()或打火石点燃后，这些漂亮的小蜡烛上会燃起苍白色的火焰。此后，它会复制与其交互的人的染色剂。也可以手持染色剂物品右击直接改变它的颜色。熄灭则需潜行右击。",
+	"hexical.page.hex_candle.0": "首次以$(l:hexical:patterns/spells/prestidigitation)魔法$()或打火石点燃后，这些漂亮的小蜡烛上会燃起苍白色的火焰。此后，它会复制与其交互的人的染色剂。也可以手持染色剂物品右击直接改变它的颜色。熄灭则需潜行右击。",
 
 	"hexical.page.living_scroll.title": "活线卷轴",
 	"hexical.page.living_scroll.0": "活线卷轴中混有一小份紫水晶，其上墨迹会像法杖绘制出的图案那样颤动。活线卷轴的神奇之处还不止于此，它还能展示图案列表。$(br2)$(o)不带点疯劲，怎么能叫作家呢？$()",
@@ -353,7 +353,7 @@
 	"hexical.page.write_staff.summary": "向构筑的法杖的内部存储写入 iota，不接受代表玩家的 iota。",
 
 	"hexical.page.akashic_utils.title": "阿卡夏实用法术",
-	"hexical.page.akashic_utils.0": "我发现了阿卡夏图书馆的便捷操作！右击或是$(l:hexical:patterns/prestidigitation)以魔法方式$()与阿卡夏书架交互，即可将其 iota 压入我的玩家栈。以卷轴右击可以把对应的图案复制到卷轴上。最后，我还发现了两个图案，可以直接向书架读写，无需阿卡夏记录存在。虽然这么得来的书架无法通过通用方式访问，但好在新图案无需消耗媒质。",
+	"hexical.page.akashic_utils.0": "我发现了阿卡夏图书馆的便捷操作！右击或是$(l:hexical:patterns/spells/prestidigitation)以魔法方式$()与阿卡夏书架交互，即可将其 iota 压入我的玩家栈。以卷轴右击可以把对应的图案复制到卷轴上。最后，我还发现了两个图案，可以直接向书架读写，无需阿卡夏记录存在。虽然这么得来的书架无法通过通用方式访问，但好在新图案无需消耗媒质。",
 	"hexcasting.spell.hexical:read_shelf": "图书管理员之纯化",
 	"hexical.page.read_shelf.summary": "读取施法范围内阿卡夏书架的 iota。无需消耗媒质。",
 	"hexcasting.spell.hexical:write_shelf": "图书管理员之策略",
