@@ -276,6 +276,13 @@
 	"hexical.page.conjure_compass.summary": "Conjures a compass at the location pointing towards the second vector. Costs one shard.",
 	"hexical.page.conjure_compass.description": "The compass does not remember the dimension it was formed in, so regardless of dimension, it points towards the same location. If read with Scribe's Reflection, it returns a unit vector pointing towards the location inside it.$(br2)$(o)Aye, the compass doesn't point North. But we're not trying to find North, are we?$()",
 
+	"hexical.page.enlightened_patterns.title": "Enlightened Patterns",
+	"hexical.page.enlightened_patterns.0": "After my enlightenment, I find myself acutely aware of certain patterns that seem to aid with my newfound abilities to perceive and manipulate media. These patterns don't seem to require anything new from me, perhaps I've always been able to cast them but was unaware of their existence.",
+	"hexcasting.spell.hexical:am_enlightened": "Epiphany Reflection",
+	"hexical.page.am_enlightened.summary": "Pushes whether the caster is enlightened. By the time I read this, I would have already become enlightened however, I can use this pattern within a casting device so that only torns minds can access its proper function.",
+	"hexcasting.spell.hexical:is_brainswept": "Sentience Purification",
+	"hexical.page.is_brainswept.summary": "Pushes whether an entity \"has been magically relieved of its mind\". I feel this is strongly related to the $(l:patterns/great_spells/brainsweep)Flay Mind spell$() somehow...",
+
 	"hexical.page.edible_conveniences.title": "Edible Conveniences",
 	"hexcasting.spell.hexical:conjure_hexburst": "Conjure Hexburst",
 	"hexical.page.conjure_hexburst.description": "Hexbursts are edible items created by taking an iota and wrapping _media around it, over and over until it gains size. When eaten, a hexburst instantly adds the iota it was made from to the consumer's stack. I shall find this property considerably useful if I ever want to trade my entity reference.",
@@ -449,8 +456,10 @@
 	"hexical.page.evocation.0": "Media is the energy of thought, so it stands to reason that I should be able to simply $(o)think$() magic into existence rather than waving around a staff. Unfortunately, my mind is not yet great enough shift arbitrary effects into reality. However, by etching a prepared hex into my torn mind, I can bring it forth into existence by waving my arms similarly to an evoker, taking media from my inventory.",
 	"hexcasting.spell.hexical:internalize_hex": "Internalize Hex",
 	"hexical.page.internalize_hex.summary": "Internalizes a hex, allowing me to use evocation to use it even without a staff.",
+	"hexcasting.spell.hexical:is_evoking": "Evoker Purification",
+	"hexical.page.is_evoking.summary": "Pushes how long since a player has been trying to evoke. Resets to 0 with every successful evocation and is -1 if they are not actively doing it.",
 	"hexcasting.spell.hexical:with_evocation": "Evoker Reflection",
-	"hexical.page.with_evocation.summary": "Pushes whether evocation is being used to cast this spell.",
+	"hexical.page.with_evocation.summary": "Pushes whether evocation is being used to cast this pattern.",
 
 	"hexical.page.pyrotechnics.title": "Pyrotechnics",
 	"hexical.page.pyrotechnics.0": "I have stumbled across some spells all about conjuring fireworks. The media hums quite festively around the patterns, as if they were once used for grand celebrations, although I shudder to imagine how effective they'd be as a weaponized projectile.$(br2)$(o)You don’t need to say anything. Just watch the fireworks.$()",

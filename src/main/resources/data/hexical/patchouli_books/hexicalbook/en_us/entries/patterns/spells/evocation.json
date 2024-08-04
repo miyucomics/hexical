@@ -17,6 +17,13 @@
 			"text": "hexical.page.internalize_hex.summary"
 		}, {
 			"type": "hexcasting:pattern",
+			"op_id": "hexical:is_evoking",
+			"anchor": "hexical:is_evoking",
+			"input": "player entity",
+			"output": "number",
+			"text": "hexical.page.is_evoking.summary"
+		}, {
+			"type": "hexcasting:pattern",
 			"op_id": "hexical:with_evocation",
 			"anchor": "hexical:with_evocation",
 			"input": "",
