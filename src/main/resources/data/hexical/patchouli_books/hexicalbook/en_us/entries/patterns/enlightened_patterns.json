@@ -1,0 +1,26 @@
+{
+	"name": "hexical.page.enlightened_patterns.title",
+	"icon": "minecraft:golden_sword",
+	"category": "hexcasting:patterns",
+	"advancement": "hexcasting:enlightenment",
+	"pages": [
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.enlightened_patterns.0"
+		}, {
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:am_enlightened",
+			"anchor": "hexical:am_enlightened",
+			"input": "",
+			"output": "boolean",
+			"text": "hexical.page.am_enlightened.summary"
+		}, {
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:is_brainswept",
+			"anchor": "hexical:is_brainswept",
+			"input": "entity",
+			"output": "boolean",
+			"text": "hexical.page.is_brainswept.summary"
+		}
+	]
+}

@@ -17,6 +17,8 @@ import miyucomics.hexical.casting.patterns.dye.OpDye
 import miyucomics.hexical.casting.patterns.dye.OpGetDye
 import miyucomics.hexical.casting.patterns.dye.OpMimicDye
 import miyucomics.hexical.casting.patterns.eval.*
+import miyucomics.hexical.casting.patterns.evocation.OpInternalizeHex
+import miyucomics.hexical.casting.patterns.evocation.OpIsEvoking
 import miyucomics.hexical.casting.patterns.firework.OpConjureFirework
 import miyucomics.hexical.casting.patterns.firework.OpSimulateFirework
 import miyucomics.hexical.casting.patterns.getters.*
@@ -65,6 +67,9 @@ object HexicalPatterns {
 		register("weave_mesh", "qaqqqqqwqqqdeewewee", HexDir.EAST, OpWeaveMesh())
 		register("read_mesh", "edeeeeeweeeaqqwqwqq", HexDir.SOUTH_WEST, OpReadMesh())
 
+		register("am_enlightened", "awqaqqq", HexDir.SOUTH_EAST, OpEnlightened())
+		register("is_brainswept", "qqqaqqq", HexDir.SOUTH_EAST, OpBrainswept())
+
 		register("chorus_blink", "aawqqqq", HexDir.SOUTH_EAST, OpChorusBlink())
 		register("gasp", "wqqqwqwwqwqqqewaqwqaq", HexDir.NORTH_WEST, OpGasp())
 
@@ -112,6 +117,7 @@ object HexicalPatterns {
 		register("magic_missile", "qaqww", HexDir.WEST, OpMagicMissile())
 
 		register("internalize_hex", "waeqqqqedeqdqdqdqeqdwwd", HexDir.EAST, OpInternalizeHex())
+		register("is_evoking", "waeqqqqedeqeeweeqewee", HexDir.EAST, OpIsEvoking())
 
 		register("wristpocket", "aaqqa", HexDir.WEST, OpWristpocket())
 		register("wristpocket_item", "aaqqada", HexDir.WEST, OpGetWristpocket(0))
