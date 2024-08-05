@@ -12,6 +12,7 @@ class OpBrainswept : ConstMediaAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
 		val entity = args.getEntity(0, argc)
+		ctx.assertEntityInRange(entity)
 		if (entity is MobEntity)
 			return IXplatAbstractions.INSTANCE.isBrainswept(entity).asActionResult
 		return (false).asActionResult
