@@ -30,6 +30,20 @@
 			"text": "hexical.page.age_scroll.summary"
 		}, {
 			"type": "hexcasting:pattern",
+			"op_id": "hexical:glow_scroll",
+			"anchor": "hexical:glow_scroll",
+			"input": "living scroll entity",
+			"output": "",
+			"text": "hexical.page.glow_scroll.summary"
+		}, {
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:color_scroll",
+			"anchor": "hexical:color_scroll",
+			"input": "living scroll entity, vector",
+			"output": "",
+			"text": "hexical.page.color_scroll.summary"
+		}, {
+			"type": "hexcasting:pattern",
 			"op_id": "hexical:vanish_scroll",
 			"anchor": "hexical:vanish_scroll",
 			"input": "living scroll entity",

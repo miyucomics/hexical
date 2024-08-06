@@ -10,7 +10,7 @@ import at.petrak.hexcasting.xplat.IXplatAbstractions
 import net.minecraft.util.math.ColorHelper
 import net.minecraft.util.math.Vec3d
 
-class OpQueryPigment : ConstMediaAction {
+class OpSamplePigment : ConstMediaAction {
 	override val argc = 2
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
 		val location = args.getVec3(0, argc)
