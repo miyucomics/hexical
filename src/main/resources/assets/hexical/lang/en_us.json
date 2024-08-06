@@ -181,6 +181,10 @@
 	"hexical.page.living_scroll.2": "What follows are some spells I've found for manipulation of living scrolls. The changes caused by these enchantments are temporary and can be reverted by casting the spell again. If I break the scroll and replace it, the changes are reset.",
 	"hexcasting.spell.hexical:age_scroll": "Age Scroll",
 	"hexical.page.age_scroll.summary": "Yellows the parchment of the scroll, making it bear striking semblance to some ancient scrolls I've been finding. Costs half a dust.",
+	"hexcasting.spell.hexical:glow_scroll": "Illuminate Ink",
+	"hexical.page.glow_scroll.summary": "Causes the ink of a living scroll to brightly glow in the dark. Costs half a dust.",
+	"hexcasting.spell.hexical:color_scroll": "Dye Ink",
+	"hexical.page.color_scroll.summary": "Changes the color of a living scroll's ink to the color specified by the vector, with the components being 0 to 1 values of red, green, and blue respectively. Costs half a dust.",
 	"hexcasting.spell.hexical:vanish_scroll": "Vanish Scroll",
 	"hexical.page.vanish_scroll.summary": "Causes the scroll paper to become invisble, leaving only the pattern, making it appear as though the pattern were magically etched into the surface. Costs half a dust.",
 

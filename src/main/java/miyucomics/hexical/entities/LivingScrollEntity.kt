@@ -37,8 +37,10 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity>, world: Worl
 
 	// client-only
 	var clientAged = false
+	var clientGlow = false
 	var clientVanished = false
 	var clientSize = 0
+	var clientColor: Int = (0xff_000000).toInt()
 	var cachedVerts: List<Vec2f> = listOf()
 
 	constructor(world: World) : this(HexicalEntities.LIVING_SCROLL_ENTITY, world)
@@ -105,6 +107,8 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity>, world: Worl
 	override fun writeCustomDataToNbt(nbt: NbtCompound) {
 		nbt.putInt("direction", facing.id)
 		nbt.putBoolean("aged", this.dataTracker.get(agedDataTracker))
+		nbt.putInt("color", this.dataTracker.get(colorDataTracker))
+		nbt.putBoolean("glow", this.dataTracker.get(glowDataTracker))
 		nbt.putBoolean("vanished", this.dataTracker.get(vanishedDataTracker))
 		nbt.putInt("size", this.dataTracker.get(sizeDataTracker))
 
@@ -119,6 +123,8 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity>, world: Worl
 	override fun readCustomDataFromNbt(nbt: NbtCompound) {
 		this.facing = Direction.byId(nbt.getInt("direction"))
 		this.dataTracker.set(agedDataTracker, nbt.getBoolean("aged"))
+		this.dataTracker.set(glowDataTracker, nbt.getBoolean("glow"))
+		this.dataTracker.set(colorDataTracker, nbt.getInt("color"))
 		this.dataTracker.set(vanishedDataTracker, nbt.getBoolean("vanished"))
 		this.dataTracker.set(sizeDataTracker, nbt.getInt("size"))
 		setFacing(this.facing)
@@ -179,10 +185,14 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity>, world: Worl
 	}
 
 	fun toggleAged() = this.dataTracker.set(agedDataTracker, !this.dataTracker.get(agedDataTracker))
+	fun toggleGlow() = this.dataTracker.set(glowDataTracker, !this.dataTracker.get(glowDataTracker))
 	fun toggleVanished() = this.dataTracker.set(vanishedDataTracker, !this.dataTracker.get(vanishedDataTracker))
+	fun setColor(color: Int) = this.dataTracker.set(colorDataTracker, color)
 
 	override fun initDataTracker() {
 		this.dataTracker.startTracking(agedDataTracker, false)
+		this.dataTracker.startTracking(colorDataTracker, (0xff_000000).toInt())
+		this.dataTracker.startTracking(glowDataTracker, false)
 		this.dataTracker.startTracking(vanishedDataTracker, false)
 		this.dataTracker.startTracking(sizeDataTracker, 1)
 		this.dataTracker.startTracking(renderDataTracker, NbtCompound())
@@ -191,6 +201,8 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity>, world: Worl
 	override fun onTrackedDataSet(data: TrackedData<*>) {
 		when (data) {
 			agedDataTracker -> this.clientAged = this.dataTracker.get(agedDataTracker)
+			colorDataTracker -> this.clientColor = this.dataTracker.get(colorDataTracker)
+			glowDataTracker -> this.clientGlow = this.dataTracker.get(glowDataTracker)
 			vanishedDataTracker -> this.clientVanished = this.dataTracker.get(vanishedDataTracker)
 			sizeDataTracker -> {
 				this.updateAttachmentPosition()
@@ -206,7 +218,9 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity>, world: Worl
 
 	companion object {
 		private val agedDataTracker: TrackedData<Boolean> = DataTracker.registerData(LivingScrollEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
+		private val glowDataTracker: TrackedData<Boolean> = DataTracker.registerData(LivingScrollEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
 		private val vanishedDataTracker: TrackedData<Boolean> = DataTracker.registerData(LivingScrollEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
+		private val colorDataTracker: TrackedData<Int> = DataTracker.registerData(LivingScrollEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
 		private val sizeDataTracker: TrackedData<Int> = DataTracker.registerData(LivingScrollEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
 		private val renderDataTracker: TrackedData<NbtCompound> = DataTracker.registerData(LivingScrollEntity::class.java, TrackedDataHandlerRegistry.NBT_COMPOUND)
 	}

@@ -100,7 +100,7 @@ class LivingScrollRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<
 			val peek = matrices.peek()
 			val buffer = vertexConsumers.getBuffer(RenderLayer.getEntityCutout(WHITE))
 			val zappy = makeZappy(scroll.cachedVerts, null, 10, 1f, 0.1f, 0f, 0.1f, 0.9f, 0.0)
-			RenderUtils.drawLines(peek.positionMatrix, peek.normalMatrix, light, 0.025f / scroll.clientSize, buffer, zappy) { _ -> (0xff_000000).toInt() }
+			RenderUtils.drawLines(peek.positionMatrix, peek.normalMatrix, if (scroll.clientGlow) LightmapTextureManager.MAX_LIGHT_COORDINATE else light, 0.025f / scroll.clientSize, buffer, zappy) { _ -> scroll.clientColor }
 		}
 	}
 }

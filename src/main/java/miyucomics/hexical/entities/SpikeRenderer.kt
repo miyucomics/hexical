@@ -52,6 +52,6 @@ class SpikeRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<SpikeEn
 		.texture(u, v)
 		.overlay(OverlayTexture.DEFAULT_UV)
 		.light(LightmapTextureManager.MAX_LIGHT_COORDINATE)
-		.normal(normalMatrix, 0.0f, 1.0f, 0.0f)
+		.normal(normalMatrix, 0f, 1f, 0f)
 		.next()
 }
