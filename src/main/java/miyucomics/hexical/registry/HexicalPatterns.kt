@@ -39,6 +39,7 @@ import miyucomics.hexical.casting.patterns.raycast.OpFluidRaycast
 import miyucomics.hexical.casting.patterns.raycast.OpFluidSurfaceRaycast
 import miyucomics.hexical.casting.patterns.raycast.OpPiercingRaycast
 import miyucomics.hexical.casting.patterns.scroll.OpAgeScroll
+import miyucomics.hexical.casting.patterns.scroll.OpVanishScroll
 import miyucomics.hexical.casting.patterns.soroban.OpSorobanDecrement
 import miyucomics.hexical.casting.patterns.soroban.OpSorobanIncrement
 import miyucomics.hexical.casting.patterns.soroban.OpSorobanReset
@@ -71,7 +72,7 @@ object HexicalPatterns {
 		register("is_brainswept", "qqqaqqq", HexDir.SOUTH_EAST, OpBrainswept())
 
 		register("chorus_blink", "aawqqqq", HexDir.SOUTH_EAST, OpChorusBlink())
-		register("gasp", "wqqqwqwwqwqqqewaqwqaq", HexDir.NORTH_WEST, OpGasp())
+		register("gasp", "aweeeeewaweeeee", HexDir.NORTH_WEST, OpGasp())
 
 		register("fluid_raycast", "wqqaqwede", HexDir.EAST, OpFluidRaycast())
 		register("fluid_surface_raycast", "weedewqaq", HexDir.EAST, OpFluidSurfaceRaycast())
@@ -99,7 +100,8 @@ object HexicalPatterns {
 		register("read_shelf", "qaqqqada", HexDir.EAST, OpReadAkashicShelf())
 		register("write_shelf", "edeeedad", HexDir.SOUTH_WEST, OpWriteAkashicShelf())
 
-		register("age_scroll", "wewaawewaddwwewwdwwew", HexDir.SOUTH_EAST, OpAgeScroll())
+		register("age_scroll", "waeqqqqeqqqwqeaeaeaeq", HexDir.EAST, OpAgeScroll())
+		register("vanish_scroll", "waeqqqqedeqeeweeqewee", HexDir.EAST, OpVanishScroll())
 
 		register("conjure_firework", "dedwaqwwawwqa", HexDir.SOUTH_WEST, OpConjureFirework())
 		register("simulate_firework", "dedwaqwqqwqa", HexDir.SOUTH_WEST, OpSimulateFirework())
@@ -116,8 +118,8 @@ object HexicalPatterns {
 
 		register("magic_missile", "qaqww", HexDir.WEST, OpMagicMissile())
 
-		register("internalize_hex", "waeqqqqedeqdqdqdqeqdwwd", HexDir.EAST, OpInternalizeHex())
-		register("is_evoking", "waeqqqqedeqeeweeqewee", HexDir.EAST, OpIsEvoking())
+		register("internalize_hex", "wwaqqqqqeqdedwwqwqwwdedwwqwqw", HexDir.EAST, OpInternalizeHex())
+		register("is_evoking", "wwaqqqqqeeaqawwewewwaqawwewew", HexDir.EAST, OpIsEvoking())
 
 		register("wristpocket", "aaqqa", HexDir.WEST, OpWristpocket())
 		register("wristpocket_item", "aaqqada", HexDir.WEST, OpGetWristpocket(0))

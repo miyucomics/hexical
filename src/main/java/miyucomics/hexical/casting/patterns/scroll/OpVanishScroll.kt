@@ -1,5 +1,6 @@
 package miyucomics.hexical.casting.patterns.scroll
 
+import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.ParticleSpray
 import at.petrak.hexcasting.api.spell.RenderedSpell
 import at.petrak.hexcasting.api.spell.SpellAction
@@ -16,7 +17,7 @@ class OpVanishScroll : SpellAction {
 		ctx.assertEntityInRange(scroll)
 		if (scroll !is LivingScrollEntity)
 			throw MishapBadEntity.of(scroll, "living_scroll")
-		return Triple(Spell(scroll), 0, listOf())
+		return Triple(Spell(scroll), MediaConstants.DUST_UNIT / 2, listOf())
 	}
 
 	private data class Spell(val scroll: LivingScrollEntity) : RenderedSpell {
