@@ -21,7 +21,7 @@ class LivingScrollRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<
 		val worldLight = WorldRenderer.getLightmapCoordinates(scroll.world, scroll.blockPos)
 		if (!scroll.clientVanished)
 			drawFrame(matrices, vertexConsumers, getTexture(scroll), scroll.clientSize.toFloat(), worldLight)
-		drawPattern(matrices, vertexConsumers, scroll.cachedVerts, scroll.clientSize, worldLight)
+		drawPattern(matrices, vertexConsumers, scroll, worldLight)
 		matrices.pop()
 	}
 
@@ -87,9 +87,10 @@ class LivingScrollRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<
 			matrices.pop()
 		}
 
-		private fun drawPattern(matrices: MatrixStack, vertexConsumers: VertexConsumerProvider, points: List<Vec2f>, size: Int, light: Int) {
-			matrices.translate(0.0, 0.0, -0.75 / 16.0)
-			val scale = when (size) {
+		private fun drawPattern(matrices: MatrixStack, vertexConsumers: VertexConsumerProvider, scroll: LivingScrollEntity, light: Int) {
+			if (!scroll.clientVanished)
+				matrices.translate(0.0, 0.0, -0.75 / 16.0)
+			val scale = when (scroll.clientSize) {
 				1 -> 0.5f
 				2 -> 1.25f
 				3 -> 2f
@@ -98,8 +99,8 @@ class LivingScrollRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<
 			matrices.scale(scale, scale, 1f)
 			val peek = matrices.peek()
 			val buffer = vertexConsumers.getBuffer(RenderLayer.getEntityCutout(WHITE))
-			val zappy = makeZappy(points, null, 10, 1f, 0.1f, 0f, 0.1f, 0.9f, 0.0)
-			RenderUtils.drawLines(peek.positionMatrix, peek.normalMatrix, light, 0.025f / size, buffer, zappy) { _ -> (0xc8_322b33).toInt() }
+			val zappy = makeZappy(scroll.cachedVerts, null, 10, 1f, 0.1f, 0f, 0.1f, 0.9f, 0.0)
+			RenderUtils.drawLines(peek.positionMatrix, peek.normalMatrix, light, 0.025f / scroll.clientSize, buffer, zappy) { _ -> (0xff_000000).toInt() }
 		}
 	}
 }
