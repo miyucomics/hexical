@@ -137,7 +137,7 @@
 	"hexical.page.hexical_changes.0": "I feel strangely more in tune with the ambient _media around me. It feels $(o)friendlier$() somehow... I can even feel it rippling around me, responding to my actions, as if suggesting new spells to me. The _media itself also feels more malleable, more $(o)workable$(), allowing me to manipulate it into precise specialized effects.",
 	"hexical.page.hexical_changes.1": "I also find my tools more familar. I notice I require less concentration with my $(l:items/staff)$(item)staff$() and can move around while using it, handy for chasing down targets that get out of my line of sight before I can finish my raycast. I shouldn't become too relaxed though, Nature has not become more forgiving of my mistakes. I can also write directly into my $(l:items/abacus)$(item)abacus$() with $(l:patterns/readwrite#hexcasting:write)Scribe's Gambit$().",
 	"hexical.page.lightning_rod_staff.0": "By fixing a block of amethyst to some lightning rods, I can make quite the impressive staff. It is quite weighty to wield, but has an great amount of knockback when striking a target, as well as feeling absolutely electrifying to use.",
-	"hexical.page.lightning_rod_staff.1": "$(o)I learned there are troubles$(br2)Of more than one kind.$(br2)Some come from ahead$(br2)And some come from behind.$(br2)But I've bought a big bat.$(br)I'm all ready, you see.$(br)Now my troubles are going$(br)To have troubles with $(l)me!$()",
+	"hexical.page.lightning_rod_staff.1": "$(o)I learned there are troubles$(br)Of more than one kind.$(br)Some come from ahead$(br)And some come from behind.$(br2)But I've bought a big bat.$(br)I'm all ready, you see.$(br)Now my troubles are going$(br)To have troubles with $(l)me!$()",
 
 	"hexical.page.simple.title": "Hexical Patterns",
 	"hexcasting.spell.hexical:theodolite": "Theodolite's Purification",
@@ -179,7 +179,9 @@
 	"hexical.page.living_scroll.1": "I can freely write and rewrite the scroll's patterns at any time, along with reading it back out. The scroll accepts only a list of pattern iotas, or a pattern iota which is automatically wrapped in a list. When displaying a list of patterns, a living scroll shows one pattern at a time. It changes once per second. Even when I write the same pattern list to two of them at two different moments of their cycle, they end up in sync.",
 	"hexical.page.living_scroll.2": "What follows are some spells I've found for manipulation of living scrolls. The changes caused by these enchantments are temporary and can be reverted by casting the spell again. If I break the scroll and replace it, the changes are reset.",
 	"hexcasting.spell.hexical:age_scroll": "Age Scroll",
-	"hexical.page.age_scroll.summary": "Yellows the parchment of the scroll, making it bear striking semblance to some ancient scrolls I've been finding.",
+	"hexical.page.age_scroll.summary": "Yellows the parchment of the scroll, making it bear striking semblance to some ancient scrolls I've been finding. Costs half a dust.",
+	"hexcasting.spell.hexical:vanish_scroll": "Vanish Scroll",
+	"hexical.page.vanish_scroll.summary": "Causes the scroll paper to become invisble, leaving only the pattern, making it appear as though the pattern were magically etched into the surface. Costs half a dust.",
 
 	"hexical.page.grimoire.title": "Grimoires",
 	"hexical.page.grimoire.0": "By encrusting an $(item)enchanted book$() with charged amethyst and $(l:items/edified)$(item)edified wood$()$(), it traps _media within the pages like an echo chamber. I can then introduce a pattern-to-pattern-list binding for the $(item)grimoire$() to keep bouncing endlessly inside.",
@@ -283,14 +285,6 @@
 	"hexcasting.spell.hexical:is_brainswept": "Sentience Purification",
 	"hexical.page.is_brainswept.summary": "Pushes whether an entity \"has been magically relieved of its mind\". I feel this is strongly related to the $(l:patterns/great_spells/brainsweep)Flay Mind spell$() somehow...",
 
-	"hexical.page.edible_conveniences.title": "Edible Conveniences",
-	"hexcasting.spell.hexical:conjure_hexburst": "Conjure Hexburst",
-	"hexical.page.conjure_hexburst.description": "Hexbursts are edible items created by taking an iota and wrapping _media around it, over and over until it gains size. When eaten, a hexburst instantly adds the iota it was made from to the consumer's stack. I shall find this property considerably useful if I ever want to trade my entity reference.",
-	"hexical.page.conjure_hexburst.summary": "Conjures a hexburst at the location with the given iota. Costs one dust. Is subject to the Transgress Others mishap.",
-	"hexcasting.spell.hexical:conjure_hextito": "Conjure Hextito",
-	"hexical.page.conjure_hextito.description": "Hextitos are triangular crunchy snacks I can conjure. When consumed, I feel the sudden desire to cast the hex used in its creation, using my caster's stack rather than an isolated stack like a regular casting device. I shall find it useful to make simple actions like raycasts, especially in conjunction with hexbursts. If a consumer's stack has an unclosed Introspection, it will not cast, making it quite safe to hand out to other people.",
-	"hexical.page.conjure_hextito.summary": "Conjures a hextito at the location. Costs two dust. Is subject to the Transgress Others mishap.",
-
 	"hexical.page.soroban.title": "Soroban Patterns",
 	"hexical.page.soroban.0": "These patterns manipulate an imaginary counter. I shall find them useful when my Ravenmind is occupied or overkill, for example to count iterations in a Thoth's loop. Some ancient scraps recommend its use for some sort of $(o)recursive depth$().$(br2)I shall also note that they don't work properly when drawn by themselves with my staff. It seems memory is maintained only for an instant.",
 	"hexcasting.spell.hexical:soroban_increment": "Soroban Reflection",
@@ -302,7 +296,7 @@
 
 	"hexcasting.spell.hexical:magic_missile": "Magic Missile",
 	"hexical.page.magic_missile.summary": "Conjures a small silver of amethyst that always deals a full heart of damage and decent knockback. Costs one amethyst dust.",
-	"hexical.page.magic_missile.0": "The projectile has a few interesting properties. It automatically disappears after roughly ten seconds or shatters upon hitting an entity or block. It pierces all forms of armor and protection. It is also unaffected by gravity and water drag.$(br2)A weak but enchanting sparkling projectile.",
+	"hexical.page.magic_missile.0": "The projectile has a few interesting properties. It automatically disappears after roughly ten seconds or shatters upon hitting an entity or block. It pierces all forms of armor and protection. It is also unaffected by gravity and water drag.$(br2)$(o)A weak but enchanting sparkling projectile.$()",
 	"hexical.page.magic_missile.1": "The conjuration location is quite esoteric: no wonder most users stick to conjuring it in front of them. The basic gist is a vector, where my head's position is the origin, my facing is the Z+ axis, the vector pointing up from my head is the Y+ axis, and the vector from my head pointing rightwards is the X+ axis. For basic purposes, the zero vector conjures it inside my head and a vector resembling (0, 0, n) conjures it n blocks in front of me.",
 
 	"hexical.page.telepathy.title": "Telepathy",
@@ -385,20 +379,30 @@
 	"hexical.page.with_conjured_staff.summary": "Pushes whether this hex is currently being cast by a conjured staff.",
 
 	"hexical.page.akashic_utils.title": "Akashic Utilities",
-	"hexical.page.akashic_utils.0": "I have discovered some conveniences with akashic libraries! I can right-click or $(l:hexical:patterns/spells/prestidigitation)magically interact$() with a filled akashic bookshelf to copy the iota from it into my player stack. I can also right-click with a scroll to copy the pattern of the bookshelf onto the scroll. Finally, I have discovered two patterns that can read and write directly to a bookshelf without need of a record. While I sacrifice being able to access them universally, I can perform these actions for free.",
+	"hexical.page.akashic_utils.0": "I have discovered some conveniences with akashic libraries! I can right-click or $(l:hexical:patterns/spells/prestidigitation)magically interact$() with a filled akashic bookshelf to copy its iota into my staff's stack. I can also right-click with a scroll to copy the pattern of the bookshelf onto the scroll. Finally, I have discovered two patterns that can read and write directly to a bookshelf without need of a record. While I must be in ambit, I can perform these actions for free.",
 	"hexcasting.spell.hexical:read_shelf": "Librarian's Purification",
-	"hexical.page.read_shelf.summary": "Reads the iota from an akashic bookshelf within ambit. Free.",
+	"hexical.page.read_shelf.summary": "Reads the iota from an akashic bookshelf within ambit. Free to cast.",
 	"hexcasting.spell.hexical:write_shelf": "Librarian's Gambit",
-	"hexical.page.write_shelf.summary": "Writes an iota under a pattern to an akashic bookshelf within ambit. Free.",
+	"hexical.page.write_shelf.summary": "Writes an iota under a pattern to an akashic bookshelf within ambit. Free to cast.",
 
 	"hexical.page.circle_spells.title": "Circle Spells",
 	"hexical.page.circle_spells.0": "When the media courses through the boundaries of a circle, it saturates the domain inside the circle with _media, allowing me to manipulate the environment inside far more flexibly than I am used to. The following are some spells I've come across or developed, which are to only be cast by a $(l:greatwork/spellcircles)spell circle$().",
 	"hexcasting.spell.hexical:displace": "Displace",
 	"hexical.page.displace.summary": "For just three amethyst shards, I can teleport an entity from anywhere in my circle to anywhere else inside within the same circle. Unlike $(l:patterns/great_spells/teleport)Greater Teleport$(), this spell takes in world coordinates rather than an offset.",
 
+	"hexical.page.simple_spells.title": "Hexical Spells",
+	"hexcasting.spell.hexical:gasp": "Gasp",
+	"hexical.page.gasp.summary": "Instantly replenishes a creature's air bubbles, always costs one dust.",
+	"hexical.page.gasp.0": "Regardless of amount of breath restored, this spell costs exactly one dust so I should ideally wait as long as I safely can before casting this spell. I will find it useful while diving, being teleported into a block, or even keeping sea creatures alive on land.$(br2)$(o)The best way to observe a fish is to become a fish.$()",
 	"hexcasting.spell.hexical:chorus_blink": "Chorus Blink",
 	"hexical.page.chorus_blink.summary": "Between $(l:patterns/spells/basic#hexcasting:blink)Blink$(), $(l:patterns/great_spells/teleport)Greater Teleport$(), $(item)ender pearls$(), and $(item)chorus fruit$(), this spell serves a harmonious midpoint for safe, precise, and cheap teleportation.",
 	"hexical.page.chorus_blink.0": "It consumes a $(item)chorus fruit$() from my inventory and teleports me up to 16 blocks using an offset vector. The cost is a single dust whether I teleport the full 16 blocks or less, and has no penalty for multiple casts in one hex. Ambit works strangely with repeated casts of this spell because each $(o)blink$() shifts my ambit to my new position.$(br2)$(o)I could be there in a heartbeat.$()",
+	"hexcasting.spell.hexical:conjure_hexburst": "Conjure Hexburst",
+	"hexical.page.conjure_hexburst.summary": "Conjures a hexburst at the location with the given iota. Costs one dust. Is subject to the Transgress Others mishap.",
+	"hexical.page.conjure_hexburst.description": "Hexbursts are edible items created by taking an iota and wrapping _media around it, over and over until it gains size. When eaten, a hexburst instantly adds the iota it was made from to the consumer's stack. I shall find this property considerably useful if I ever want to trade my entity reference.",
+	"hexcasting.spell.hexical:conjure_hextito": "Conjure Hextito",
+	"hexical.page.conjure_hextito.summary": "Conjures a hextito at the location. Costs two dust. Is subject to the Transgress Others mishap.",
+	"hexical.page.conjure_hextito.description": "Hextitos are triangular crunchy snacks I can conjure. When consumed, I feel the sudden desire to cast the hex used in its creation, using my caster's stack rather than an isolated stack like a regular casting device. I shall find it useful to make simple actions like raycasts, especially in conjunction with hexbursts. If a consumer's stack has an unclosed Introspection, it will not cast, making it quite safe to hand out to other people.",
 
 	"hexical.page.shaders.title": "Shaders",
 	"hexical.page.shaders.0": "My... experience with the media jar has given me inspiration for various visual effects I can bestow upon myself by forming the media into a lens-like shape and placing it over my eyes. I shall call this category of spells \"shader\" spells. They all cost one tenth of a dust.",
@@ -453,11 +457,11 @@
     "hexical.page.prestidigitation.2": "toggles Redstone lamps; drain cauldrons; modifies the state of Redstone repeaters, comparators, and daylight sensors, ignites and deprimes TNT and creepers; shear sheep; give and take arms from armor stands; makes squid squirt ink; makes pandas sneeze; removes the helmet of a snow golem; make pufferfish instantly swell up; and activates some kind of \"great work\" whatever that is.",
 
 	"hexical.page.evocation.title": "Evocation",
-	"hexical.page.evocation.0": "Media is the energy of thought, so it stands to reason that I should be able to simply $(o)think$() magic into existence rather than waving around a staff. Unfortunately, my mind is not yet great enough shift arbitrary effects into reality. However, by etching a prepared hex into my torn mind, I can bring it forth into existence by waving my arms similarly to an evoker, taking media from my inventory.",
+	"hexical.page.evocation.0": "Media is the energy of thought, so it stands to reason that I should be able to simply $(o)think$() magic into existence rather than waving around a staff. After all, I have two chunks' worth of charged amethyst in me at my prime, double that of a staff's. Unfortunately, I am not yet great enough to shift arbitrary effects into reality. However, by etching a prepared hex into my mind, I can bring it forth into existence by waving my arms similarly to an evoker, taking media from my inventory.",
 	"hexcasting.spell.hexical:internalize_hex": "Internalize Hex",
-	"hexical.page.internalize_hex.summary": "Internalizes a hex, allowing me to use evocation to use it even without a staff.",
+	"hexical.page.internalize_hex.summary": "Internalizes a hex, allowing me to evoke that spell by pressing the R key to use it even without a staff. Costs one charged amethyst for etching process.",
 	"hexcasting.spell.hexical:is_evoking": "Evoker Purification",
-	"hexical.page.is_evoking.summary": "Pushes how long since a player has been trying to evoke. Resets to 0 with every successful evocation and is -1 if they are not actively doing it.",
+	"hexical.page.is_evoking.summary": "Pushes how long since a player has been trying to evoke. Resets to 0 with every successful evocation and is -1 if they are not currently evoking.",
 	"hexcasting.spell.hexical:with_evocation": "Evoker Reflection",
 	"hexical.page.with_evocation.summary": "Pushes whether evocation is being used to cast this pattern.",
 

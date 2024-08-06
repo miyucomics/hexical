@@ -28,6 +28,13 @@
 			"input": "living scroll entity",
 			"output": "",
 			"text": "hexical.page.age_scroll.summary"
+		}, {
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:vanish_scroll",
+			"anchor": "hexical:vanish_scroll",
+			"input": "living scroll entity",
+			"output": "",
+			"text": "hexical.page.vanish_scroll.summary"
 		}
 	]
 }

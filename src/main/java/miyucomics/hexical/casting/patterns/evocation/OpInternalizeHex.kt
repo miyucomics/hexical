@@ -28,7 +28,7 @@ class OpInternalizeHex : SpellAction {
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		args.getList(0, argc)
 		CastingUtils.assertNoTruename(args[0], ctx.caster)
-		return Triple(Spell(args[0]), MediaConstants.DUST_UNIT, listOf())
+		return Triple(Spell(args[0]), MediaConstants.CRYSTAL_UNIT, listOf())
 	}
 
 	private data class Spell(val hex: Iota) : RenderedSpell {
