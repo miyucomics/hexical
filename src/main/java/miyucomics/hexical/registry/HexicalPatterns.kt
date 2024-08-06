@@ -39,6 +39,8 @@ import miyucomics.hexical.casting.patterns.raycast.OpFluidRaycast
 import miyucomics.hexical.casting.patterns.raycast.OpFluidSurfaceRaycast
 import miyucomics.hexical.casting.patterns.raycast.OpPiercingRaycast
 import miyucomics.hexical.casting.patterns.scroll.OpAgeScroll
+import miyucomics.hexical.casting.patterns.scroll.OpColorScroll
+import miyucomics.hexical.casting.patterns.scroll.OpGlowScroll
 import miyucomics.hexical.casting.patterns.scroll.OpVanishScroll
 import miyucomics.hexical.casting.patterns.soroban.OpSorobanDecrement
 import miyucomics.hexical.casting.patterns.soroban.OpSorobanIncrement
@@ -101,6 +103,8 @@ object HexicalPatterns {
 		register("write_shelf", "edeeedad", HexDir.SOUTH_WEST, OpWriteAkashicShelf())
 
 		register("age_scroll", "waeqqqqeqqqwqeaeaeaeq", HexDir.EAST, OpAgeScroll())
+		register("color_scroll", "waeqqqqewqqwqqeqeqqwqqeq", HexDir.EAST, OpColorScroll())
+		register("glow_scroll", "waeqqqqedeqdqdqdqeqdwwd", HexDir.EAST, OpGlowScroll())
 		register("vanish_scroll", "waeqqqqedeqeeweeqewee", HexDir.EAST, OpVanishScroll())
 
 		register("conjure_firework", "dedwaqwwawwqa", HexDir.SOUTH_WEST, OpConjureFirework())
