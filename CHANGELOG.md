@@ -63,6 +63,7 @@
 - fixed archgenie lamps where it can cast for free if it wasn't in your main inventory
 - fixed conjured staff where inputs aren't always neatly intercepted and you can accidentally break blocks
 - fixed conjured staff bug where multiple clicks can make a lower rank staff do nothing
+- fixed bug that allowed conjured staffs to have infinite media
 - fixed Finale Reflection that always returned null
 - fixed specks crashing the client
 - optimize speck and living scroll rendering massively by caching patterns and verts
