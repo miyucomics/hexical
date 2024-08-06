@@ -1,0 +1,49 @@
+{
+	"name": "hexical.page.simple_spells.title",
+	"icon": "hexical:hexburst",
+	"category": "hexcasting:patterns/spells",
+	"advancement": "hexcasting:root",
+	"pages": [
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:gasp",
+			"anchor": "hexical:gasp",
+			"input": "entity",
+			"output": "",
+			"text": "hexical.page.gasp.summary"
+		}, {
+			"type": "patchouli:text",
+			"text": "hexical.page.gasp.0"
+		}, {
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:conjure_hexburst",
+			"anchor": "hexical:conjure_hexburst",
+			"input": "vector, any",
+			"output": "",
+			"text": "hexical.page.conjure_hexburst.summary"
+		}, {
+			"type": "patchouli:text",
+			"text": "hexical.page.conjure_hexburst.description"
+		}, {
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:conjure_hextito",
+			"anchor": "hexical:conjure_hextito",
+			"input": "vector, list of patterns",
+			"output": "",
+			"text": "hexical.page.conjure_hextito.summary"
+		}, {
+			"type": "patchouli:text",
+			"text": "hexical.page.conjure_hextito.description"
+		}, {
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:chorus_blink",
+			"anchor": "hexical:chorus_blink",
+			"input": "vector",
+			"output": "",
+			"text": "hexical.page.chorus_blink.summary"
+		}, {
+			"type": "patchouli:text",
+			"text": "hexical.page.chorus_blink.0"
+		}
+	]
+}
