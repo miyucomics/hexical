@@ -42,7 +42,7 @@ public class BlockAkashicBookshelfMixin {
 			CastingHarness harness = IXplatAbstractions.INSTANCE.getHarness((ServerPlayerEntity) player, hand);
 			harness.getStack().add(HexIotaTypes.deserialize(nbt, (ServerWorld) world));
 			IXplatAbstractions.INSTANCE.setHarness((ServerPlayerEntity) player, harness);
-			world.playSound(null, pos, HexicalSounds.INSTANCE.getSUDDEN_REALIZATION_EVENT(), BLOCKS, 1f, 1f);
+			world.playSound(null, pos, HexicalSounds.INSTANCE.getSUDDEN_REALIZATION(), BLOCKS, 1f, 1f);
 			player.swingHand(hand, true);
 		}
 	}

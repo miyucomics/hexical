@@ -17,7 +17,7 @@ class OpConjureStaff : SpellAction {
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		val position = args.getVec3(0, argc)
 		ctx.assertVecInRange(position)
-		val battery = args.getInt(1, argc)
+		val battery = args.getPositiveIntUnderInclusive(1, 200_000, argc)
 		val rank = args.getInt(2, argc)
 		if (rank <= 0)
 			throw MishapInvalidIota.of(args[2], 2, "integer_natural")

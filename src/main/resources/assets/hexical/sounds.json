@@ -33,8 +33,19 @@
 	},
 	"candle_flares": {
 		"subtitle": "subtitles.hexical.candle_flares",
+		"sounds": ["fire/fire"]
+	},
+	"replenish_air": {
+		"subtitle": "subtitles.hexical.replenish_air",
 		"sounds": [
-			"block.fire.ambient"
+			{
+				"name": "entity/pufferfish/blow_up1",
+				"volume": 0.45
+			},
+			{
+				"name": "entity/pufferfish/blow_up2",
+				"volume": 0.45
+			}
 		]
 	}
 }
