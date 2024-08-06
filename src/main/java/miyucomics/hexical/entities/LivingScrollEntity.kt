@@ -219,20 +219,25 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity>, world: Worl
 	}
 
 	override fun writeIota(iota: Iota?, simulate: Boolean): Boolean {
-		if (iota == null)
+		if (iota == null) {
+			this.patterns = mutableListOf()
+			this.updateRender()
 			return true
-		if (iota.type == HexIotaTypes.PATTERN)
+		} else if (iota.type == HexIotaTypes.PATTERN) {
+			this.patterns = mutableListOf((iota as PatternIota).pattern.serializeToNBT())
+			this.updateRender()
 			return true
-		if (iota.type != HexIotaTypes.LIST)
-			return false
-		val new = mutableListOf<NbtCompound>()
-		(iota as ListIota).list.forEach {
-			if (it.type != HexIotaTypes.PATTERN)
-				return false
-			new.add((it as PatternIota).pattern.serializeToNBT())
+		} else if (iota.type == HexIotaTypes.LIST) {
+			val new = mutableListOf<NbtCompound>()
+			(iota as ListIota).list.forEach {
+				if (it.type != HexIotaTypes.PATTERN)
+					return false
+				new.add((it as PatternIota).pattern.serializeToNBT())
+			}
+			this.patterns = new
+			this.updateRender()
+			return true
 		}
-		this.patterns = new
-		this.updateRender()
-		return true
+		return false
 	}
 }

@@ -43,7 +43,7 @@ object RenderUtils {
 			.texture(0f, 0f)
 			.overlay(OverlayTexture.DEFAULT_UV)
 			.light(light)
-			.normal(norm, 0f, 0f, 1f)
+			.normal(norm, 0f, 1f, 0f)
 			.next()
 
 		for (i in 0 until pointCount - 1) {
