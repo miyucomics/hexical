@@ -39,7 +39,7 @@ class HandLampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.H
 		val stack = user.getStackInHand(hand)
 		if (!hasHex(stack)) return TypedActionResult.fail(stack)
 		val stackNbt = stack.orCreateNbt
-		world.playSound(user.x, user.y, user.z, HexicalSounds.LAMP_ACTIVATE_SOUND_EVENT, SoundCategory.MASTER, 1f, 1f, true)
+		world.playSound(user.x, user.y, user.z, HexicalSounds.LAMP_ACTIVATE, SoundCategory.MASTER, 1f, 1f, true)
 		if (!world.isClient) {
 			stackNbt.putLongArray("position", user.eyePos.serializeToNBT().longArray)
 			stackNbt.putLongArray("rotation", user.rotationVector.serializeToNBT().longArray)
@@ -62,7 +62,7 @@ class HandLampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.H
 	override fun onStoppedUsing(stack: ItemStack, world: World, user: LivingEntity, remainingUseTicks: Int) {
 		if (!world.isClient)
 			CastingUtils.castSpecial(world as ServerWorld, user as ServerPlayerEntity, getHex(stack, world) ?: return, SpecializedSource.HAND_LAMP, finale = true)
-		world.playSound(user.x, user.y, user.z, HexicalSounds.LAMP_DEACTIVATE_SOUND_EVENT, SoundCategory.MASTER, 1f, 1f, true)
+		world.playSound(user.x, user.y, user.z, HexicalSounds.LAMP_DEACTIVATE, SoundCategory.MASTER, 1f, 1f, true)
 	}
 
 	override fun getMaxUseTime(stack: ItemStack) = Int.MAX_VALUE

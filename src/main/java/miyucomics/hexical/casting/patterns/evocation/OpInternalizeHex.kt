@@ -44,7 +44,7 @@ class OpInternalizeHex : SpellAction {
 			val stack = player.mainHandStack
 			player.setStackInHand(Hand.MAIN_HAND, ItemStack(NULL_MEDIA_ITEM))
 			CastingUtils.castSpecial(player.world as ServerWorld, player, (HexIotaTypes.deserialize(hex, player.world as ServerWorld) as ListIota).list.toList(), SpecializedSource.EVOCATION, false)
-			player.world.playSound(null, player.x, player.y, player.z, HexicalSounds.EVOKING_CAST_EVENT, SoundCategory.PLAYERS, 1f, 1f)
+			player.world.playSound(null, player.x, player.y, player.z, HexicalSounds.EVOKING_CAST, SoundCategory.PLAYERS, 1f, 1f)
 			player.setStackInHand(Hand.MAIN_HAND, stack)
 		}
 	}
