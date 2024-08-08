@@ -10,9 +10,11 @@ import miyucomics.hexical.registry.HexicalItems
 import miyucomics.hexical.utils.CastingUtils
 import net.minecraft.entity.ItemEntity
 import net.minecraft.item.ItemStack
+import net.minecraft.item.Items
 import net.minecraft.util.math.Vec3d
 
 class OpConjureStaff : SpellAction {
+
 	override val argc = 4
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		val position = args.getVec3(0, argc)
@@ -32,7 +34,14 @@ class OpConjureStaff : SpellAction {
 			stack.orCreateNbt.putInt("rank", rank)
 			val hexHolder = IXplatAbstractions.INSTANCE.findHexHolder(stack)
 			hexHolder?.writeHex(instructions, battery)
+			val offhand = ctx.caster.getStackInHand(ctx.otherHand).item
+			if (itemMap.containsKey(offhand))
+				stack.orCreateNbt.putInt("sprite", itemMap[offhand]!!)
 			ctx.world.spawnEntity(ItemEntity(ctx.world, position.x, position.y, position.z, stack))
 		}
+	}
+
+	companion object {
+		private val itemMap = mapOf(Pair(Items.WHEAT, 1), Pair(Items.NAUTILUS_SHELL, 2), Pair(Items.BELL, 3), Pair(Items.TRIPWIRE_HOOK, 4), Pair(Items.GLASS, 5))
 	}
 }
