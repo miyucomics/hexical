@@ -6,6 +6,7 @@ import at.petrak.hexcasting.api.spell.iota.ListIota
 import at.petrak.hexcasting.api.spell.iota.NullIota
 import at.petrak.hexcasting.api.spell.iota.PatternIota
 import at.petrak.hexcasting.api.utils.hasCompound
+import at.petrak.hexcasting.api.utils.hasInt
 import at.petrak.hexcasting.common.blocks.akashic.BlockEntityAkashicBookshelf
 import at.petrak.hexcasting.common.lib.HexBlocks
 import at.petrak.hexcasting.common.lib.HexSounds
@@ -61,6 +62,12 @@ class LivingScrollItem(private val size: Int) : Item(Settings().group(HexicalIte
 		val scroll = LivingScrollEntity(world, position, direction, size, patternList)
 		if (stack.orCreateNbt.getBoolean("aged"))
 			scroll.toggleAged()
+		if (stack.orCreateNbt.getBoolean("glow"))
+			scroll.toggleGlow()
+		if (stack.orCreateNbt.getBoolean("vanished"))
+			scroll.toggleVanished()
+		if (stack.orCreateNbt.hasInt("color"))
+			scroll.setColor(stack.orCreateNbt.getInt("color"))
 
 		if (scroll.canStayAttached()) {
 			if (!world.isClient) {
@@ -78,6 +85,10 @@ class LivingScrollItem(private val size: Int) : Item(Settings().group(HexicalIte
 	override fun appendTooltip(stack: ItemStack, world: World?, tooltip: MutableList<Text>, context: TooltipContext) {
 		if (stack.orCreateNbt.getBoolean("aged"))
 			tooltip.add(Text.translatable("tooltip.hexical.scroll_aged").formatted(Formatting.GOLD))
+		if (stack.orCreateNbt.getBoolean("glow"))
+			tooltip.add(Text.translatable("tooltip.hexical.scroll_glow").formatted(Formatting.GOLD))
+		if (stack.orCreateNbt.getBoolean("vanished"))
+			tooltip.add(Text.translatable("tooltip.hexical.scroll_vanished").formatted(Formatting.GOLD))
 	}
 
 	override fun readIotaTag(stack: ItemStack): NbtCompound {

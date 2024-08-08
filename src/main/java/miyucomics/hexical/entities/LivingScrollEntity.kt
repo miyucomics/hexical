@@ -157,6 +157,9 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity>, world: Worl
 			for (pattern in this.patterns)
 				constructed.add(PatternIota(HexPattern.fromNBT(pattern)))
 			stack.orCreateNbt.putBoolean("aged", this.dataTracker.get(agedDataTracker))
+			stack.orCreateNbt.putBoolean("glow", this.dataTracker.get(glowDataTracker))
+			stack.orCreateNbt.putBoolean("vanished", this.dataTracker.get(vanishedDataTracker))
+			stack.orCreateNbt.putInt("color", this.dataTracker.get(colorDataTracker))
 			stack.orCreateNbt.putCompound("patterns", HexIotaTypes.serialize(ListIota(constructed.toList())))
 			this.dropStack(stack)
 		}

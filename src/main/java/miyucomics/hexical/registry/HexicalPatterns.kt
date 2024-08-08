@@ -27,7 +27,9 @@ import miyucomics.hexical.casting.patterns.getters.misc.OpGetStatusEffectCategor
 import miyucomics.hexical.casting.patterns.getters.types.OpGetBlockTypeData
 import miyucomics.hexical.casting.patterns.getters.types.OpGetFoodTypeData
 import miyucomics.hexical.casting.patterns.getters.types.OpGetItemTypeData
-import miyucomics.hexical.casting.patterns.grimoire.*
+import miyucomics.hexical.casting.patterns.grimoire.OpGrimoireErase
+import miyucomics.hexical.casting.patterns.grimoire.OpGrimoireIndex
+import miyucomics.hexical.casting.patterns.grimoire.OpGrimoireWrite
 import miyucomics.hexical.casting.patterns.identifier.OpIdentify
 import miyucomics.hexical.casting.patterns.identifier.OpRecognize
 import miyucomics.hexical.casting.patterns.lamp.*
