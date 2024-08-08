@@ -8,7 +8,6 @@ import at.petrak.hexcasting.api.spell.mishaps.MishapBadEntity
 import miyucomics.hexical.entities.LivingScrollEntity
 import net.minecraft.util.math.ColorHelper
 import net.minecraft.util.math.Vec3d
-import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
 
