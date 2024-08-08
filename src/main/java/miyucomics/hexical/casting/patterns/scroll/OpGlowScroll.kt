@@ -1,13 +1,14 @@
 package miyucomics.hexical.casting.patterns.scroll
 
 import at.petrak.hexcasting.api.misc.MediaConstants
-import at.petrak.hexcasting.api.spell.*
+import at.petrak.hexcasting.api.spell.ParticleSpray
+import at.petrak.hexcasting.api.spell.RenderedSpell
+import at.petrak.hexcasting.api.spell.SpellAction
 import at.petrak.hexcasting.api.spell.casting.CastingContext
+import at.petrak.hexcasting.api.spell.getEntity
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapBadEntity
 import miyucomics.hexical.entities.LivingScrollEntity
-import net.minecraft.util.math.ColorHelper
-import net.minecraft.util.math.Vec3d
 
 class OpGlowScroll : SpellAction {
 	override val argc = 1
