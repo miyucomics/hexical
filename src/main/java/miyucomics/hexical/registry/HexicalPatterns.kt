@@ -40,6 +40,7 @@ import miyucomics.hexical.casting.patterns.prestidigitation.OpPrestidigitation
 import miyucomics.hexical.casting.patterns.raycast.OpFluidRaycast
 import miyucomics.hexical.casting.patterns.raycast.OpFluidSurfaceRaycast
 import miyucomics.hexical.casting.patterns.raycast.OpPiercingRaycast
+import miyucomics.hexical.casting.patterns.raycast.OpPiercingSurfaceRaycast
 import miyucomics.hexical.casting.patterns.scroll.OpAgeScroll
 import miyucomics.hexical.casting.patterns.scroll.OpColorScroll
 import miyucomics.hexical.casting.patterns.scroll.OpGlowScroll
@@ -81,7 +82,7 @@ object HexicalPatterns {
 		register("fluid_raycast", "wqqaqwede", HexDir.EAST, OpFluidRaycast())
 		register("fluid_surface_raycast", "weedewqaq", HexDir.EAST, OpFluidSurfaceRaycast())
 		register("piercing_raycast", "wqqddqeqddq", HexDir.EAST, OpPiercingRaycast())
-		register("piercing_surface_raycast", "weeaaeqeaae", HexDir.EAST, OpPiercingRaycast())
+		register("piercing_surface_raycast", "weeaaeqeaae", HexDir.EAST, OpPiercingSurfaceRaycast())
 
 		register("mimic_dye", "awddwqaeqqqeaeqqq", HexDir.EAST, OpMimicDye())
 
