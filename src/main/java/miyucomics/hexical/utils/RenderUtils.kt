@@ -11,7 +11,7 @@ import net.minecraft.util.math.Vec2f
 import kotlin.math.*
 
 object RenderUtils {
-	const val CIRCLE_RESOLUTION: Int = 20
+	private const val CIRCLE_RESOLUTION: Int = 20
 
 	fun getNormalizedStrokes(pattern: HexPattern, flipHor: Boolean = false): List<Vec2f> {
 		val lines = pattern.toLines(1f, pattern.getCenter(1f).negate()).toMutableList()
