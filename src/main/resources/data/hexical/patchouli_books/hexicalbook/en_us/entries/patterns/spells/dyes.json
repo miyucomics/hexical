@@ -27,6 +27,13 @@
 		}, {
 			"type": "patchouli:text",
 			"text": "hexical.page.dyes.2"
+		}, {
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:translate_dye",
+			"anchor": "hexical:translate_dye",
+			"input": "dye",
+			"output": "vector",
+			"text": "hexical.page.translate_dye.summary"
 		}
 	]
 }
