@@ -10,6 +10,8 @@ import miyucomics.hexical.casting.patterns.*
 import miyucomics.hexical.casting.patterns.akashic.OpReadAkashicShelf
 import miyucomics.hexical.casting.patterns.akashic.OpWriteAkashicShelf
 import miyucomics.hexical.casting.patterns.circle.OpDisplace
+import miyucomics.hexical.casting.patterns.colors.OpSamplePigment
+import miyucomics.hexical.casting.patterns.colors.OpTranslateDye
 import miyucomics.hexical.casting.patterns.conjure.OpConjureCompass
 import miyucomics.hexical.casting.patterns.conjure.OpConjureHexburst
 import miyucomics.hexical.casting.patterns.conjure.OpConjureHextito
@@ -72,6 +74,9 @@ object HexicalPatterns {
 		registerPerWorld("conjure_mesh", "qaqqqqqwqqqdeeweweeaeewewee", HexDir.EAST, OpConjureMesh())
 		register("weave_mesh", "qaqqqqqwqqqdeewewee", HexDir.EAST, OpWeaveMesh())
 		register("read_mesh", "edeeeeeweeeaqqwqwqq", HexDir.SOUTH_WEST, OpReadMesh())
+
+		register("sample_pigment", "wawwddwwqwawwqwwawwq", HexDir.EAST, OpSamplePigment())
+		register("translate_dye", "wdwwaawwewdwwewwdwwe", HexDir.EAST, OpTranslateDye())
 
 		register("am_enlightened", "awqaqqq", HexDir.SOUTH_EAST, OpEnlightened())
 		register("is_brainswept", "qqqaqqq", HexDir.SOUTH_EAST, OpBrainswept())
@@ -235,7 +240,7 @@ object HexicalPatterns {
 		register("is_sleeping", "aqaew", HexDir.NORTH_WEST, OpGetLivingEntityData(4))
 		register("is_sprinting", "eaq", HexDir.WEST, OpGetLivingEntityData(5))
 		register("is_baby", "awaqdwaaw", HexDir.SOUTH_WEST, OpGetLivingEntityData(6))
-		register("breedable", "awaaqdqaawa", HexDir.EAST, OpGetBreed())
+		register("breedable", "awaaqdqaawa", HexDir.EAST, OpGetWillingness())
 
 		register("get_enchantments", "waqeaeqawqwawaw", HexDir.WEST, OpGetItemStackData(2))
 		register("get_enchantment_strength", "waqwwqaweede", HexDir.WEST, OpGetEnchantmentStrength())
