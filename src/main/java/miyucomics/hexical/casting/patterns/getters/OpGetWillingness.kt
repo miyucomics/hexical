@@ -8,7 +8,7 @@ import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.NullIota
 import net.minecraft.entity.passive.AnimalEntity
 
-class OpGetBreed : ConstMediaAction {
+class OpGetWillingness : ConstMediaAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
 		val entity = args.getEntity(0, argc)
