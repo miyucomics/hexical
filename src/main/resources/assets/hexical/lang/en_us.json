@@ -449,6 +449,10 @@
 	"hexical.page.dye.summary": "Dyes a dyeable block or entity. Costs an eighth of a dust.",
 	"hexical.page.dyes.1": "The following pages will be a somewhat complete list of its targets, although I have heard rumors that certain forces can add more functionality than is shown here.",
 	"hexical.page.dyes.2": "The valid block targets for this spell include beds, candles, cakes with candles, carpets, concrete, concrete powder, glazed terracotta, sand into red sand and vice versa, sandstone and all blocks derived from it into its red variant and vice versa, shulker boxes, stained glass, stained glass panes, terracotta, tulips into their multiple colors, and wool blocks. As for entities, cat collars, dog collars, shulkers, and item entities of all of the above blocks are valid.",
+	"hexcasting.spell.hexical:translate_dye": "Vision Purification",
+	"hexical.page.translate_dye.summary": "Translates a dye color into a vector, where each component is from 0 to 1 and represents the red, green, and blueness of the dye respectively.",
+	"hexcasting.spell.hexical:sample_pigment": "Pigment Distillation",
+	"hexical.page.sample_pigment.summary": "Samples my pigment color at a certain place and time as a vector, where each component is from 0 to 1 and represents the red, green, and blueness of the dye respectively.",
 
 	"hexical.page.perlin.title": "Quasirandomness",
 	"hexical.page.perlin.0": "In certain regions of the world, ambient media is more concentrated. I can measure that concentration and even extrapolate backwards and forwards in time to get a quasi-random number between 0 and 1, corresponding to that location at that time. Points in time and space that are close to each other often have similar values.",
