@@ -469,7 +469,7 @@
 	"hexcasting.spell.hexical:sample_pigment": "Pigment Distillation",
 	"hexical.page.sample_pigment.summary": "Samples my pigment color at a certain place and time as a vector, where each component is from 0 to 1 and represents the red, green, and blueness of the dye respectively.",
 	"hexcasting.spell.hexical:conjure_particle": "Spot",
-	"hexical.page.conjure_particle.summary": "Takes a position, velocity, and color vector (can be provided by the previously shown patterns) and summons a little short lived particle with those aspects.",
+	"hexical.page.conjure_particle.summary": "Takes a position, velocity, and color vector (can be provided by the previously shown patterns) and summons a little short lived particle with those aspects. Costs a negligible amount of media.",
 
 	"hexcasting.spell.hexical:prestidigitation": "Prestidigitation",
 	"hexical.page.prestidigitation.summary": "Causes a small magical effect on the block or entity, usually not too distinct from the original nature or function of the block or entity. Costs 1/10th dust.",
