@@ -1,12 +1,12 @@
 {
-	"name": "hexical.page.dyes.title",
+	"name": "hexical.page.colors.title",
 	"icon": "minecraft:red_dye",
 	"category": "hexcasting:patterns/spells",
 	"advancement": "hexcasting:root",
 	"pages": [
 		{
 			"type": "patchouli:text",
-			"text": "hexical.page.dyes.0"
+			"text": "hexical.page.colors.0"
 		}, {
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:get_dye",
@@ -23,10 +23,7 @@
 			"text": "hexical.page.dye.summary"
 		}, {
 			"type": "patchouli:text",
-			"text": "hexical.page.dyes.1"
-		}, {
-			"type": "patchouli:text",
-			"text": "hexical.page.dyes.2"
+			"text": "hexical.page.colors.1"
 		}, {
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:translate_dye",
@@ -34,6 +31,20 @@
 			"input": "dye",
 			"output": "vector",
 			"text": "hexical.page.translate_dye.summary"
+		}, {
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:sample_pigment",
+			"anchor": "hexical:sample_pigment",
+			"input": "vector, number",
+			"output": "vector",
+			"text": "hexical.page.sample_pigment.summary"
+		}, {
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:conjure_particle",
+			"anchor": "hexical:conjure_particle",
+			"input": "vector, vector, vector",
+			"output": "",
+			"text": "hexical.page.conjure_particle.summary"
 		}
 	]
 }

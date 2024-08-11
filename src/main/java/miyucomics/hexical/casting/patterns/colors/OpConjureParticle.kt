@@ -15,15 +15,15 @@ class OpConjureParticle : SpellAction {
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		val pos = args.getVec3(0, argc)
 		ctx.assertVecInRange(pos)
-		val color = args.getVec3(1, argc)
-		val velocity = args.getVec3(2, argc)
-		return Triple(Spell(pos, color.multiply(255.0), velocity), MediaConstants.DUST_UNIT, listOf())
+		val velocity = args.getVec3(1, argc)
+		val color = args.getVec3(2, argc)
+		return Triple(Spell(pos, velocity, color.multiply(255.0)), MediaConstants.DUST_UNIT / 100, listOf())
 	}
 
-	private data class Spell(val position: Vec3d, val color: Vec3d, val velocity: Vec3d) : RenderedSpell {
+	private data class Spell(val position: Vec3d, val velocity: Vec3d, val color: Vec3d) : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
 			ctx.world.addParticle(
-				ConjureParticleOptions(color.x.toInt() shl 16 or color.y.toInt() shl 8 or color.z.toInt(), false),
+				ConjureParticleOptions(color.x.toInt() shl 16 or color.y.toInt() shl 8 or color.z.toInt(), true),
 				position.x, position.y, position.z,
 				velocity.x, velocity.y, velocity.z
 			)
