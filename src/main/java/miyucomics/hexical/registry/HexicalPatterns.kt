@@ -10,6 +10,7 @@ import miyucomics.hexical.casting.patterns.*
 import miyucomics.hexical.casting.patterns.akashic.OpReadAkashicShelf
 import miyucomics.hexical.casting.patterns.akashic.OpWriteAkashicShelf
 import miyucomics.hexical.casting.patterns.circle.OpDisplace
+import miyucomics.hexical.casting.patterns.colors.OpConjureParticle
 import miyucomics.hexical.casting.patterns.colors.OpSamplePigment
 import miyucomics.hexical.casting.patterns.colors.OpTranslateDye
 import miyucomics.hexical.casting.patterns.conjure.OpConjureCompass
@@ -75,6 +76,9 @@ object HexicalPatterns {
 		register("weave_mesh", "qaqqqqqwqqqdeewewee", HexDir.EAST, OpWeaveMesh())
 		register("read_mesh", "edeeeeeweeeaqqwqwqq", HexDir.SOUTH_WEST, OpReadMesh())
 
+		register("entity_width", "ewd", HexDir.NORTH_EAST, OpGetEntityData(3))
+		register("conjure_particle", "waqawde", HexDir.SOUTH_EAST, OpConjureParticle())
+
 		register("sample_pigment", "wawwddwwqwawwqwwawwq", HexDir.EAST, OpSamplePigment())
 		register("translate_dye", "wdwwaawwewdwwewwdwwe", HexDir.EAST, OpTranslateDye())
 
@@ -92,7 +96,7 @@ object HexicalPatterns {
 		register("mimic_dye", "awddwqaeqqqeaeqqq", HexDir.EAST, OpMimicDye())
 
 		register("perlin", "qawedqdq", HexDir.WEST, OpPerlin())
-		register("theodolite", "wqaa", HexDir.EAST, OpGetEntityData(3))
+		register("theodolite", "wqaa", HexDir.EAST, OpGetEntityData(4))
 
 		register("clear_vision", "qaqwdwqaq", HexDir.EAST, OpShader(null))
 		register("owl_vision", "qqqqqedeqqqqq", HexDir.EAST, OpShader(HexicalMain.id("shaders/post/night_vision.json")))
