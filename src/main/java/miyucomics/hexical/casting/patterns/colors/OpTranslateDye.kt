@@ -11,6 +11,6 @@ class OpTranslateDye : ConstMediaAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
 		val dye = args.getTrueDye(0, argc).colorComponents
-		return Vec3d(dye[0].toDouble() / 255.0, dye[1].toDouble() / 255.0, dye[2].toDouble() / 255.0).asActionResult
+		return Vec3d(dye[0].toDouble(), dye[1].toDouble(), dye[2].toDouble()).asActionResult
 	}
 }
