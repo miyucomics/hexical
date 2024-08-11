@@ -1,6 +1,6 @@
 {
 	"name": "hexical.page.shaders.title",
-	"icon": "hexcasting:lens",
+	"icon": "hexical:textures/misc/media_vision.png",
 	"category": "hexcasting:patterns/spells",
 	"advancement": "hexical:media_slurp",
 	"sortnum": 5,
