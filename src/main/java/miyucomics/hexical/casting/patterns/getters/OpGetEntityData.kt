@@ -16,7 +16,8 @@ class OpGetEntityData(private val mode: Int) : ConstMediaAction {
 			0 -> entity.isOnFire.asActionResult
 			1 -> (entity.fireTicks.toDouble() / 20).asActionResult
 			2 -> entity.isWet.asActionResult
-			3 -> {
+			3 -> entity.width.asActionResult
+			4 -> {
 				val upPitch = (-entity.pitch + 90) * (Math.PI.toFloat() / 180)
 				val yaw = -entity.headYaw * (Math.PI.toFloat() / 180)
 				val h = MathHelper.cos(yaw).toDouble()
