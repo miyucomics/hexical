@@ -1,9 +1,10 @@
 {
 	"name": "hexical.page.akashic_utils.title",
 	"icon": "hexcasting:akashic_bookshelf",
-	"category": "hexcasting:greatwork",
+	"category": "hexcasting:patterns",
 	"advancement": "hexcasting:enlightenment",
-	"sortnum": 5,
+    "entry_color": "54398a",
+	"sortnum": 13,
 	"pages": [
 		{
 			"type": "patchouli:text",

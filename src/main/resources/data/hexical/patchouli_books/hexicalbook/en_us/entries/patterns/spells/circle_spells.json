@@ -1,8 +1,10 @@
 {
 	"name": "hexical.page.circle_spells.title",
 	"icon": "hexcasting:empty_impetus",
-	"category": "hexcasting:greatwork",
+	"category": "hexcasting:patterns/spells",
 	"advancement": "hexcasting:enlightenment",
+    "entry_color": "54398a",
+    "sortnum": 30,
 	"pages": [
 		{
 			"type": "patchouli:text",

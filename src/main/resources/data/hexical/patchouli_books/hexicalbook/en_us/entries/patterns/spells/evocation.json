@@ -1,9 +1,10 @@
 {
 	"name": "hexical.page.evocation.title",
 	"icon": "minecraft:totem_of_undying",
-	"category": "hexcasting:greatwork",
+	"category": "hexcasting:patterns/spells",
 	"advancement": "hexcasting:enlightenment",
-	"sortnum": 5,
+    "entry_color": "54398a",
+	"sortnum": 30,
 	"pages": [
 		{
 			"type": "patchouli:text",

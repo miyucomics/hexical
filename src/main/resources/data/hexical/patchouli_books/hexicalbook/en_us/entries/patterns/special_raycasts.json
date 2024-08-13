@@ -3,6 +3,7 @@
 	"icon": "minecraft:spectral_arrow",
 	"category": "hexcasting:patterns",
 	"advancement": "hexcasting:root",
+	"sortnum": 6,
 	"pages": [
 		{
 			"type": "hexcasting:pattern",
@@ -22,15 +23,15 @@
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:piercing_raycast",
 			"anchor": "hexical:piercing_raycast",
-			"input": "vector, vector, identifier",
-			"output": "vector/null",
+			"input": "vec, vec, id",
+			"output": "vec/null",
 			"text": "hexical.page.piercing_raycast.summary"
 		}, {
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:piercing_surface_raycast",
 			"anchor": "hexical:piercing_surface_raycast",
-			"input": "vector, vector, identifier",
-			"output": "vector/null",
+			"input": "vec, vec, id",
+			"output": "vec/null",
 			"text": "hexical.page.piercing_surface_raycast.summary"
 		}
 	]
