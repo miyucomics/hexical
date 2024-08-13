@@ -3,7 +3,7 @@
 	"icon": "hexical:textures/misc/media_vision.png",
 	"category": "hexcasting:patterns/spells",
 	"advancement": "hexical:media_slurp",
-	"sortnum": 5,
+	"sortnum": 4,
 	"pages": [
 		{
 			"type": "patchouli:text",
