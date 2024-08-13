@@ -6,16 +6,6 @@
 	"pages": [
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:gasp",
-			"anchor": "hexical:gasp",
-			"input": "entity",
-			"output": "",
-			"text": "hexical.page.gasp.summary"
-		}, {
-			"type": "patchouli:text",
-			"text": "hexical.page.gasp.0"
-		}, {
-			"type": "hexcasting:pattern",
 			"op_id": "hexical:conjure_hexburst",
 			"anchor": "hexical:conjure_hexburst",
 			"input": "vector, any",
@@ -41,6 +31,16 @@
 			"input": "vector",
 			"output": "",
 			"text": "hexical.page.chorus_blink.summary"
+		}, {
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:gasp",
+			"anchor": "hexical:gasp",
+			"input": "entity",
+			"output": "",
+			"text": "hexical.page.gasp.summary"
+		}, {
+			"type": "patchouli:text",
+			"text": "hexical.page.gasp.0"
 		}, {
 			"type": "patchouli:text",
 			"text": "hexical.page.chorus_blink.0"
