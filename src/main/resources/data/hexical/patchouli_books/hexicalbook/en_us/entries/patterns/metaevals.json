@@ -3,6 +3,7 @@
 	"icon": "minecraft:writable_book",
 	"category": "hexcasting:patterns",
 	"advancement": "hexcasting:root",
+	"sortnum": 12,
 	"pages": [
 		{
 			"type": "hexcasting:pattern",

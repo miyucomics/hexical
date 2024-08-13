@@ -3,7 +3,7 @@
 	"icon": "hexical:conjured_compass",
 	"category": "hexcasting:patterns/spells",
 	"advancement": "hexcasting:root",
-	"sortnum": 5,
+	"sortnum": 21,
 	"pages": [
 		{
 			"type": "hexcasting:pattern",

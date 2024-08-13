@@ -3,6 +3,7 @@
 	"icon": "minecraft:cobweb",
 	"category": "hexcasting:patterns/great_spells",
 	"advancement": "hexcasting:root",
+    "sortnum": 17,
 	"pages": [
 		{
 			"type": "patchouli:text",
