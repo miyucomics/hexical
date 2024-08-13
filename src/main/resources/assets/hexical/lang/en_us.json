@@ -457,7 +457,7 @@
 	"hexical.page.write_staff.summary": "Writes an iota to the conjured staff's inner storage. Does not allow player references.",
 	"hexcasting.spell.hexical:with_conjured_staff": "Wand Reflection",
 	"hexical.page.with_conjured_staff.summary": "Pushes whether this hex is currently being cast by a conjured staff.",
-	"hexical.page.conjure_staff.3": "By holding certain items in my offhand while conjuring a conjured staff, the staff will take on a similar appearance to that item. These items are wheat, nautilus shells, bells, tripwire hooks, and glass blocks.",
+	"hexical.page.conjure_staff.3": "By holding certain items in my offhand while conjuring a conjured staff, the staff will take on a similar appearance to that item. The items and their corresponding transformations that I have discovered so far are wheat (a four-leafed clover), nautilus shells (a conch), bells (a handbell), tripwire hooks (a key), and glass blocks (a mirror).",
 
 	"hexical.page.mage_block.title": "Mage Blocks",
 	"hexical.page.mage_block": "The blocks from $(l:patterns/spells/blockworks#hexcasting:conjure_block)Conjure Block$() last forever, are consequently a pain to clean up, and are not too versatile. Luckily, Nature offers an elegant and flexible alternative. These mage blocks come with a suite of $(o)modifiers$(). I could even stack multiple modifiers on one block or reapply a modifier to toggle it off.",
