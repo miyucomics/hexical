@@ -3,6 +3,7 @@
 	"icon": "hexical:hexburst",
 	"category": "hexcasting:patterns/spells",
 	"advancement": "hexcasting:root",
+    "sortnum": 10,
 	"pages": [
 		{
 			"type": "hexcasting:pattern",

@@ -3,6 +3,7 @@
 	"icon": "minecraft:lapis_lazuli",
 	"category": "hexcasting:patterns/spells",
 	"advancement": "hexcasting:root",
+    "sortnum": 2,
 	"pages": [
 		{
 			"type": "hexcasting:pattern",
