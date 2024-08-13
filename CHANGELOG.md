@@ -4,9 +4,16 @@
 - added more advancements
 - added hexbursts - adds an iota to your stack when eaten
 - added hextitos - casts a hex using the player stack when eaten
-- added dye iota
+- added Theodolites' Purification - returns vector pointing up from a creeper's head
+- added Caliper's Purification - returns an entity's width
+- added Sekhmet's Gambit - clears the stack except the top n iota
+- colors
+  - added dye iota
   - added Chromatic Purification and Dye spell to get and set dyes of blocks and entities
+  - added pattern to translate dyes into RGB vector
+  - added pattern to sample RGB vector at position
   - added data-driven process to add color associations to blocks so you can add support for mods with simple datapacks
+- added Gasp spell - instantly refills your air bubbles for a dust
 - added evocation - enlightened players can cast spells by holding a keybind for some time
 - added internal iota storage to handheld lamp and patterns to interact with it
 - added Perlin Distillation - get quasi-random number corresponding to a location and time
@@ -15,8 +22,8 @@
 - added Charge, Dodge, Retreat, and Evade Reflection patterns - pushes how long you've pressed the wasd keys
 - added Glyphmaker's Distillation - scrambles a pattern with a number as a seed
 - added Conjure Compass spell - conjure a compass that always points towards a location
-- added Spike spell - conjure an amethyst spike that will strike through a location after a customizable delay
-- added firework spells
+- added Conjure Spike spell - conjure an amethyst spike that will strike through a location after a customizable delay
+- added pyrotechnic spells
   - added Conjure Firework spell - conjures a firework with a vast number of options and possibilities
   - added Simulate Firework spell - conjures a firework based off the firework star in your offhand
 - added Magic Missile spell - fire silver of amethyst that deals knockback and weak damage
@@ -27,9 +34,11 @@
 - added Wristpocket spell - hide items magically
   - added Ingest spell - eat wristpocketed item
   - added Mage Hand spell - use your wristpocketed item to interact with blocks and entities
-- added more living scroll features
+- living scroll
   - added spell to age living scrolls
-  - added spell to make scroll parchment vanish
+  - added spell to color a living scroll
+  - added spell to make living scroll parchment vanish
+  - added spell to make living scroll ink glow in the dark
   - added medium living scrolls
   - added ability to read from and write to living scrolls with Chronicler's
 - added a bunch of context checking patterns to get the current context of a hex is being cast in
@@ -46,6 +55,8 @@
 - added Librarian's Purification and Gambit - write directly to akashic bookshelves without need for a record
 - added soroban patterns - keep and manipulate a constantly incrementing number, useful for recursion and Thoth's
 - added ability to right-click akashic bookshelves to download their iota onto your stack
+- added Epiphany Reflection - pushes whether the caster is enlightened
+- added Sentience Purification - pushes whether an entity has been flayed or null if not possible to flay
 - changed conjured staff sprite to be less messy
 - changed Identify pattern to have ambit limitation
 - changed speed and variance of living scroll patterns

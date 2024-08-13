@@ -38,13 +38,6 @@
 			"input": "vector, number",
 			"output": "vector",
 			"text": "hexical.page.sample_pigment.summary"
-		}, {
-			"type": "hexcasting:pattern",
-			"op_id": "hexical:conjure_particle",
-			"anchor": "hexical:conjure_particle",
-			"input": "vector, vector, vector",
-			"output": "",
-			"text": "hexical.page.conjure_particle.summary"
 		}
 	]
 }
