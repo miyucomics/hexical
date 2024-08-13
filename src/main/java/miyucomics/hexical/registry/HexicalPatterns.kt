@@ -101,7 +101,6 @@ object HexicalPatterns {
 
 		register("displace", "qaqqqqeedaqqqa", HexDir.NORTH_EAST, OpDisplace())
 
-		register("perlin", "qawedqdq", HexDir.WEST, OpPerlin())
 		register("theodolite", "wqaa", HexDir.EAST, OpGetEntityData(4))
 		register("entity_width", "ewd", HexDir.NORTH_EAST, OpGetEntityData(3))
 		register("similar", "dew", HexDir.NORTH_WEST, OpSimilar())
@@ -128,6 +127,8 @@ object HexicalPatterns {
 		register("moving_up", "aqaddq", HexDir.SOUTH_EAST, OpGetKeybind("key.forward"))
 		register("moving_down", "dedwdq", HexDir.SOUTH_WEST, OpGetKeybind("key.back"))
 		register("jumping", "qaqdaqqa", HexDir.SOUTH_WEST, OpGetKeybind("key.jump"))
+
+		register("perlin", "qawedqdq", HexDir.WEST, OpPerlin())
 
 		register("am_enlightened", "awqaqqq", HexDir.SOUTH_EAST, OpEnlightened())
 		register("is_brainswept", "qqqaqqq", HexDir.SOUTH_EAST, OpBrainswept())
@@ -184,18 +185,18 @@ object HexicalPatterns {
 		register("modify_block_semipermeable", "deeeqawde", HexDir.NORTH_WEST, OpModifyMageBlock("semipermeable"))
 		register("modify_block_volatile", "deewedeeeee", HexDir.NORTH_WEST, OpModifyMageBlock("volatile"))
 
-		register("conjure_firework", "dedwaqwwawwqa", HexDir.SOUTH_WEST, OpConjureFirework())
-		register("simulate_firework", "dedwaqwqqwqa", HexDir.SOUTH_WEST, OpSimulateFirework())
-
 		register("conjure_staff", "wwwwwaqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpConjureStaff())
 		register("write_staff", "waqqqqqedeqdqdqdqdqe", HexDir.NORTH_EAST, OpWriteStaff())
 		register("read_staff", "waqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpReadStaff())
 
+		register("conjure_firework", "dedwaqwwawwqa", HexDir.SOUTH_WEST, OpConjureFirework())
+		register("simulate_firework", "dedwaqwqqwqa", HexDir.SOUTH_WEST, OpSimulateFirework())
+
+		registerPerWorld("greater_blink", "wqawawaqwqwqawawaqw", HexDir.SOUTH_WEST, OpGreaterBlink())
+
 		registerPerWorld("conjure_mesh", "qaqqqqqwqqqdeeweweeaeewewee", HexDir.EAST, OpConjureMesh())
 		register("weave_mesh", "qaqqqqqwqqqdeewewee", HexDir.EAST, OpWeaveMesh())
 		register("read_mesh", "edeeeeeweeeaqqwqwqq", HexDir.SOUTH_WEST, OpReadMesh())
-
-		registerPerWorld("greater_blink", "wqawawaqwqwqawawaqw", HexDir.SOUTH_WEST, OpGreaterBlink())
 
 		register("internalize_hex", "wwaqqqqqeqdedwwqwqwwdedwwqwqw", HexDir.EAST, OpInternalizeHex())
 		register("is_evoking", "wwaqqqqqeeaqawwewewwaqawwewew", HexDir.EAST, OpIsEvoking())
