@@ -1,4 +1,4 @@
-package miyucomics.hexical.casting.patterns.dye
+package miyucomics.hexical.casting.patterns.colors
 
 import at.petrak.hexcasting.api.misc.FrozenColorizer
 import at.petrak.hexcasting.api.misc.MediaConstants
