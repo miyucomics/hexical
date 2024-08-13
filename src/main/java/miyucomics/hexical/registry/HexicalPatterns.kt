@@ -10,15 +10,15 @@ import miyucomics.hexical.casting.patterns.*
 import miyucomics.hexical.casting.patterns.akashic.OpReadAkashicShelf
 import miyucomics.hexical.casting.patterns.akashic.OpWriteAkashicShelf
 import miyucomics.hexical.casting.patterns.circle.OpDisplace
-import miyucomics.hexical.casting.patterns.colors.OpConjureParticle
 import miyucomics.hexical.casting.patterns.colors.OpSamplePigment
 import miyucomics.hexical.casting.patterns.colors.OpTranslateDye
 import miyucomics.hexical.casting.patterns.conjure.OpConjureCompass
 import miyucomics.hexical.casting.patterns.conjure.OpConjureHexburst
 import miyucomics.hexical.casting.patterns.conjure.OpConjureHextito
-import miyucomics.hexical.casting.patterns.dye.OpDye
-import miyucomics.hexical.casting.patterns.dye.OpGetDye
-import miyucomics.hexical.casting.patterns.dye.OpMimicDye
+import miyucomics.hexical.casting.patterns.colors.OpDye
+import miyucomics.hexical.casting.patterns.colors.OpGetDye
+import miyucomics.hexical.casting.patterns.colors.OpMimicDye
+import miyucomics.hexical.casting.patterns.conjure.OpConjureSpike
 import miyucomics.hexical.casting.patterns.eval.*
 import miyucomics.hexical.casting.patterns.evocation.OpInternalizeHex
 import miyucomics.hexical.casting.patterns.evocation.OpIsEvoking
@@ -70,129 +70,6 @@ import net.minecraft.util.Identifier
 object HexicalPatterns {
 	@JvmStatic
 	fun init() {
-		registerPerWorld("greater_blink", "wqawawaqwqwqawawaqw", HexDir.SOUTH_WEST, OpGreaterBlink())
-
-		registerPerWorld("conjure_mesh", "qaqqqqqwqqqdeeweweeaeewewee", HexDir.EAST, OpConjureMesh())
-		register("weave_mesh", "qaqqqqqwqqqdeewewee", HexDir.EAST, OpWeaveMesh())
-		register("read_mesh", "edeeeeeweeeaqqwqwqq", HexDir.SOUTH_WEST, OpReadMesh())
-
-		register("entity_width", "ewd", HexDir.NORTH_EAST, OpGetEntityData(3))
-		register("conjure_particle", "waqawde", HexDir.SOUTH_EAST, OpConjureParticle())
-
-		register("sample_pigment", "wawwddwwqwawwqwwawwq", HexDir.EAST, OpSamplePigment())
-		register("translate_dye", "wdwwaawwewdwwewwdwwe", HexDir.EAST, OpTranslateDye())
-
-		register("am_enlightened", "awqaqqq", HexDir.SOUTH_EAST, OpEnlightened())
-		register("is_brainswept", "qqqaqqq", HexDir.SOUTH_EAST, OpBrainswept())
-
-		register("chorus_blink", "aawqqqq", HexDir.SOUTH_EAST, OpChorusBlink())
-		register("gasp", "aweeeeewaweeeee", HexDir.NORTH_WEST, OpGasp())
-
-		register("fluid_raycast", "wqqaqwede", HexDir.EAST, OpFluidRaycast())
-		register("fluid_surface_raycast", "weedewqaq", HexDir.EAST, OpFluidSurfaceRaycast())
-		register("piercing_raycast", "wqqddqeqddq", HexDir.EAST, OpPiercingRaycast())
-		register("piercing_surface_raycast", "weeaaeqeaae", HexDir.EAST, OpPiercingSurfaceRaycast())
-
-		register("mimic_dye", "awddwqaeqqqeaeqqq", HexDir.EAST, OpMimicDye())
-
-		register("perlin", "qawedqdq", HexDir.WEST, OpPerlin())
-		register("theodolite", "wqaa", HexDir.EAST, OpGetEntityData(4))
-
-		register("clear_vision", "qaqwdwqaq", HexDir.EAST, OpShader(null))
-		register("owl_vision", "qqqqqedeqqqqq", HexDir.EAST, OpShader(HexicalMain.id("shaders/post/night_vision.json")))
-		register("tele_vision", "qaqwdeqwawqwa", HexDir.EAST, OpShader(HexicalMain.id("shaders/post/television.json")))
-		register("spider_vision", "aqqqaqwdeqaqded", HexDir.NORTH_WEST, OpShader(Identifier("shaders/post/spider.json")))
-		register("phosphor", "qaqwdwdaqqqa", HexDir.EAST, OpShader(Identifier("shaders/post/phosphor.json")))
-
-		register("spike", "qdqdqdqdww", HexDir.NORTH_EAST, OpSpike())
-
-		register("with_hand_lamp", "qwddedqqaqqqqq", HexDir.SOUTH_WEST, OpCheckSource(SpecializedSource.HAND_LAMP))
-		register("with_arch_lamp", "qaqwddedqqaqqqqq", HexDir.NORTH_EAST, OpCheckSource(SpecializedSource.ARCH_LAMP))
-		register("with_conjured_staff", "waqaeaqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpCheckSource(SpecializedSource.CONJURED_STAFF))
-		register("with_evocation", "waeqqqqedeqdqdqdqewee", HexDir.EAST, OpCheckSource(SpecializedSource.EVOCATION))
-
-		register("read_shelf", "qaqqqada", HexDir.EAST, OpReadAkashicShelf())
-		register("write_shelf", "edeeedad", HexDir.SOUTH_WEST, OpWriteAkashicShelf())
-
-		register("age_scroll", "waeqqqqeqqqwqeaeaeaeq", HexDir.EAST, OpAgeScroll())
-		register("color_scroll", "waeqqqqewqqwqqeqeqqwqqeq", HexDir.EAST, OpColorScroll())
-		register("glow_scroll", "waeqqqqedeqdqdqdqeqdwwd", HexDir.EAST, OpGlowScroll())
-		register("vanish_scroll", "waeqqqqedeqeeweeqewee", HexDir.EAST, OpVanishScroll())
-
-		register("conjure_firework", "dedwaqwwawwqa", HexDir.SOUTH_WEST, OpConjureFirework())
-		register("simulate_firework", "dedwaqwqqwqa", HexDir.SOUTH_WEST, OpSimulateFirework())
-
-		register("get_dye", "weedwa", HexDir.NORTH_EAST, OpGetDye())
-		register("dye", "dwaqqw", HexDir.NORTH_WEST, OpDye())
-
-		register("soroban_decrement", "waqdee", HexDir.SOUTH_EAST, OpSorobanDecrement())
-		register("soroban_increment", "wdeaqq", HexDir.NORTH_EAST, OpSorobanIncrement())
-		register("soroban_reset", "qdeeaae", HexDir.NORTH_EAST, OpSorobanReset())
-
-		register("prestidigitation", "wedewedew", HexDir.NORTH_EAST, OpPrestidigitation())
-		register("can_prestidigitate", "wqaqwqaqw", HexDir.NORTH_WEST, OpCanPrestidigitation())
-
-		register("magic_missile", "qaqww", HexDir.WEST, OpMagicMissile())
-
-		register("internalize_hex", "wwaqqqqqeqdedwwqwqwwdedwwqwqw", HexDir.EAST, OpInternalizeHex())
-		register("is_evoking", "wwaqqqqqeeaqawwewewwaqawwewew", HexDir.EAST, OpIsEvoking())
-
-		register("wristpocket", "aaqqa", HexDir.WEST, OpWristpocket())
-		register("wristpocket_item", "aaqqada", HexDir.WEST, OpGetWristpocket(0))
-		register("wristpocket_count", "aaqqaaw", HexDir.WEST, OpGetWristpocket(1))
-		register("mage_hand", "aaqqaeea", HexDir.WEST, OpMageHand())
-		register("ingest", "aaqqadaa", HexDir.WEST, OpIngest())
-
-		register("similar", "dew", HexDir.NORTH_WEST, OpSimilar())
-		register("congruent", "aaqd", HexDir.EAST, OpCongruentPattern())
-		register("dup_many", "waadadaa", HexDir.EAST, OpDupMany())
-		register("shuffle_pattern", "aqqqdae", HexDir.NORTH_EAST, OpShufflePattern())
-
-		register("displace", "qaqqqqeedaqqqa", HexDir.NORTH_EAST, OpDisplace())
-
-		register("conjure_mage_block", "dee", HexDir.NORTH_WEST, OpConjureMageBlock())
-		register("modify_block_bouncy", "deeqa", HexDir.NORTH_WEST, OpModifyMageBlock("bouncy"))
-		register("modify_block_energized", "deewad", HexDir.NORTH_WEST, OpModifyMageBlock("energized", 1))
-		register("modify_block_ephemeral", "deewwaawd", HexDir.NORTH_WEST, OpModifyMageBlock("ephemeral", 1))
-		register("modify_block_invisible", "deeqedeaqqqwqqq", HexDir.NORTH_WEST, OpModifyMageBlock("invisible"))
-		register("modify_block_replaceable", "deewqaqqqqq", HexDir.NORTH_WEST, OpModifyMageBlock("replaceable"))
-		register("modify_block_semipermeable", "deeeqawde", HexDir.NORTH_WEST, OpModifyMageBlock("semipermeable"))
-		register("modify_block_volatile", "deewedeeeee", HexDir.NORTH_WEST, OpModifyMageBlock("volatile"))
-
-		register("conjure_staff", "wwwwwaqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpConjureStaff())
-		register("write_staff", "waqqqqqedeqdqdqdqdqe", HexDir.NORTH_EAST, OpWriteStaff())
-		register("read_staff", "waqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpReadStaff())
-
-		register("conjure_compass", "aqwawqwqqwqwq", HexDir.SOUTH_WEST, OpConjureCompass())
-		register("conjure_hexburst", "aadaadqaq", HexDir.EAST, OpConjureHexburst())
-		register("conjure_hextito", "qaqdqaqdwawaw", HexDir.EAST, OpConjureHextito())
-
-		register("conjure_speck", "ade", HexDir.SOUTH_WEST, OpConjureSpeck())
-		register("iota_speck", "adeeaqa", HexDir.SOUTH_WEST, OpIotaSpeck())
-		register("kill_specklike", "adeaqde", HexDir.SOUTH_WEST, OpKillSpecklike())
-		register("move_specklike", "adeqaa", HexDir.SOUTH_WEST, OpSpecklikeProperty(0))
-		register("rotate_specklike", "adeaw", HexDir.SOUTH_WEST, OpSpecklikeProperty(1))
-		register("roll_specklike", "adeqqqqq", HexDir.SOUTH_WEST, OpSpecklikeProperty(2))
-		register("size_specklike", "adeeqed", HexDir.SOUTH_WEST, OpSpecklikeProperty(3))
-		register("thickness_specklike", "adeeqw", HexDir.SOUTH_WEST, OpSpecklikeProperty(4))
-		register("lifetime_specklike", "adeqqaawdd", HexDir.SOUTH_WEST, OpSpecklikeProperty(5))
-		register("zone_specklike", "qqqqqwdeddwqde", HexDir.SOUTH_EAST, OpGetEntitiesBy({ entity -> entity is Specklike }, false))
-
-		register("get_telepathy", "wqqadaw", HexDir.EAST, OpGetKeybind("key.hexical.telepathy"))
-		register("send_telepathy", "qqqqwaqa", HexDir.EAST, OpSendTelepathy())
-		register("shout_telepathy", "daqqqqwa", HexDir.EAST, OpShoutTelepathy())
-		register("pling", "eqqqada", HexDir.NORTH_EAST, OpHallucinateSound(SoundEvents.ENTITY_PLAYER_LEVELUP))
-		register("click", "eqqadaq", HexDir.NORTH_EAST, OpHallucinateSound(SoundEvents.UI_BUTTON_CLICK))
-		register("moving_left", "edead", HexDir.SOUTH_EAST, OpGetKeybind("key.left"))
-		register("moving_right", "qaqda", HexDir.SOUTH_WEST, OpGetKeybind("key.right"))
-		register("moving_up", "aqaddq", HexDir.SOUTH_EAST, OpGetKeybind("key.forward"))
-		register("moving_down", "dedwdq", HexDir.SOUTH_WEST, OpGetKeybind("key.back"))
-		register("jumping", "qaqdaqqa", HexDir.SOUTH_WEST, OpGetKeybind("key.jump"))
-
-		register("write_grimoire", "aqwqaeaqa", HexDir.WEST, OpGrimoireWrite())
-		register("erase_grimoire", "aqwqaqded", HexDir.WEST, OpGrimoireErase())
-		register("index_grimoire", "aqaeaqwqa", HexDir.SOUTH_EAST, OpGrimoireIndex())
-
 		register("offer_mind", "qaqwawqwqqwqwqwqwqwqq", HexDir.EAST, OpReloadLamp())
 		register("educate_genie", "eweweweweweewedeaqqqd", HexDir.NORTH_WEST, OpEducateGenie())
 		register("get_hand_lamp_position", "qwddedqdd", HexDir.SOUTH_WEST, OpGetHandLampData(0))
@@ -214,6 +91,124 @@ object HexicalPatterns {
 		register("has_arch_lamp", "qaqwddedqeed", HexDir.NORTH_EAST, OpIsUsingArchLamp())
 		register("lamp_finale", "aaddaddad", HexDir.EAST, OpGetFinale())
 
+		register("age_scroll", "waeqqqqeqqqwqeaeaeaeq", HexDir.EAST, OpAgeScroll())
+		register("color_scroll", "waeqqqqewqqwqqeqeqqwqqeq", HexDir.EAST, OpColorScroll())
+		register("glow_scroll", "waeqqqqedeqdqdqdqeqdwwd", HexDir.EAST, OpGlowScroll())
+		register("vanish_scroll", "waeqqqqedeqeeweeqewee", HexDir.EAST, OpVanishScroll())
+
+		register("read_shelf", "qaqqqada", HexDir.EAST, OpReadAkashicShelf())
+		register("write_shelf", "edeeedad", HexDir.SOUTH_WEST, OpWriteAkashicShelf())
+
+		register("displace", "qaqqqqeedaqqqa", HexDir.NORTH_EAST, OpDisplace())
+
+		register("perlin", "qawedqdq", HexDir.WEST, OpPerlin())
+		register("theodolite", "wqaa", HexDir.EAST, OpGetEntityData(4))
+		register("entity_width", "ewd", HexDir.NORTH_EAST, OpGetEntityData(3))
+		register("similar", "dew", HexDir.NORTH_WEST, OpSimilar())
+		register("congruent", "aaqd", HexDir.EAST, OpCongruentPattern())
+		register("dup_many", "waadadaa", HexDir.EAST, OpDupMany())
+		register("shuffle_pattern", "aqqqdae", HexDir.NORTH_EAST, OpShufflePattern())
+
+		register("soroban_decrement", "waqdee", HexDir.SOUTH_EAST, OpSorobanDecrement())
+		register("soroban_increment", "wdeaqq", HexDir.NORTH_EAST, OpSorobanIncrement())
+		register("soroban_reset", "qdeeaae", HexDir.NORTH_EAST, OpSorobanReset())
+
+		register("fluid_raycast", "wqqaqwede", HexDir.EAST, OpFluidRaycast())
+		register("fluid_surface_raycast", "weedewqaq", HexDir.EAST, OpFluidSurfaceRaycast())
+		register("piercing_raycast", "wqqddqeqddq", HexDir.EAST, OpPiercingRaycast())
+		register("piercing_surface_raycast", "weeaaeqeaae", HexDir.EAST, OpPiercingSurfaceRaycast())
+
+		register("get_telepathy", "wqqadaw", HexDir.EAST, OpGetKeybind("key.hexical.telepathy"))
+		register("send_telepathy", "qqqqwaqa", HexDir.EAST, OpSendTelepathy())
+		register("shout_telepathy", "daqqqqwa", HexDir.EAST, OpShoutTelepathy())
+		register("pling", "eqqqada", HexDir.NORTH_EAST, OpHallucinateSound(SoundEvents.ENTITY_PLAYER_LEVELUP))
+		register("click", "eqqadaq", HexDir.NORTH_EAST, OpHallucinateSound(SoundEvents.UI_BUTTON_CLICK))
+		register("moving_left", "edead", HexDir.SOUTH_EAST, OpGetKeybind("key.left"))
+		register("moving_right", "qaqda", HexDir.SOUTH_WEST, OpGetKeybind("key.right"))
+		register("moving_up", "aqaddq", HexDir.SOUTH_EAST, OpGetKeybind("key.forward"))
+		register("moving_down", "dedwdq", HexDir.SOUTH_WEST, OpGetKeybind("key.back"))
+		register("jumping", "qaqdaqqa", HexDir.SOUTH_WEST, OpGetKeybind("key.jump"))
+
+		register("am_enlightened", "awqaqqq", HexDir.SOUTH_EAST, OpEnlightened())
+		register("is_brainswept", "qqqaqqq", HexDir.SOUTH_EAST, OpBrainswept())
+
+		register("conjure_hexburst", "aadaadqaq", HexDir.EAST, OpConjureHexburst())
+		register("conjure_hextito", "qaqdqaqdwawaw", HexDir.EAST, OpConjureHextito())
+		register("chorus_blink", "aawqqqq", HexDir.SOUTH_EAST, OpChorusBlink())
+		register("gasp", "aweeeeewaweeeee", HexDir.NORTH_WEST, OpGasp())
+
+		register("get_dye", "weedwa", HexDir.NORTH_EAST, OpGetDye())
+		register("dye", "dwaqqw", HexDir.NORTH_WEST, OpDye())
+		register("translate_dye", "wdwwaawwewdwwewwdwwe", HexDir.EAST, OpTranslateDye())
+		register("sample_pigment", "wawwddwwqwawwqwwawwq", HexDir.EAST, OpSamplePigment())
+		register("mimic_dye", "awddwqaeqqqeaeqqq", HexDir.EAST, OpMimicDye())
+
+		register("clear_vision", "qaqwdwqaq", HexDir.EAST, OpShader(null))
+		register("owl_vision", "qqqqqedeqqqqq", HexDir.EAST, OpShader(HexicalMain.id("shaders/post/night_vision.json")))
+		register("tele_vision", "qaqwdeqwawqwa", HexDir.EAST, OpShader(HexicalMain.id("shaders/post/television.json")))
+		register("spider_vision", "aqqqaqwdeqaqded", HexDir.NORTH_WEST, OpShader(Identifier("shaders/post/spider.json")))
+		register("phosphor_vision", "qaqwdwdaqqqa", HexDir.EAST, OpShader(Identifier("shaders/post/phosphor.json")))
+
+		register("wristpocket", "aaqqa", HexDir.WEST, OpWristpocket())
+		register("wristpocket_item", "aaqqada", HexDir.WEST, OpGetWristpocket(0))
+		register("wristpocket_count", "aaqqaaw", HexDir.WEST, OpGetWristpocket(1))
+		register("mage_hand", "aaqqaeea", HexDir.WEST, OpMageHand())
+		register("ingest", "aaqqadaa", HexDir.WEST, OpIngest())
+
+		register("prestidigitation", "wedewedew", HexDir.NORTH_EAST, OpPrestidigitation())
+		register("can_prestidigitate", "wqaqwqaqw", HexDir.NORTH_WEST, OpCanPrestidigitation())
+
+		register("magic_missile", "qaqww", HexDir.WEST, OpMagicMissile())
+
+		register("conjure_compass", "aqwawqwqqwqwq", HexDir.SOUTH_WEST, OpConjureCompass())
+
+		register("spike", "qdqdqdqdww", HexDir.NORTH_EAST, OpConjureSpike())
+
+		register("conjure_speck", "ade", HexDir.SOUTH_WEST, OpConjureSpeck())
+		register("iota_speck", "adeeaqa", HexDir.SOUTH_WEST, OpIotaSpeck())
+		register("kill_specklike", "adeaqde", HexDir.SOUTH_WEST, OpKillSpecklike())
+		register("move_specklike", "adeqaa", HexDir.SOUTH_WEST, OpSpecklikeProperty(0))
+		register("rotate_specklike", "adeaw", HexDir.SOUTH_WEST, OpSpecklikeProperty(1))
+		register("roll_specklike", "adeqqqqq", HexDir.SOUTH_WEST, OpSpecklikeProperty(2))
+		register("size_specklike", "adeeqed", HexDir.SOUTH_WEST, OpSpecklikeProperty(3))
+		register("thickness_specklike", "adeeqw", HexDir.SOUTH_WEST, OpSpecklikeProperty(4))
+		register("lifetime_specklike", "adeqqaawdd", HexDir.SOUTH_WEST, OpSpecklikeProperty(5))
+		register("zone_specklike", "qqqqqwdeddwqde", HexDir.SOUTH_EAST, OpGetEntitiesBy({ entity -> entity is Specklike }, false))
+
+		register("conjure_mage_block", "dee", HexDir.NORTH_WEST, OpConjureMageBlock())
+		register("modify_block_bouncy", "deeqa", HexDir.NORTH_WEST, OpModifyMageBlock("bouncy"))
+		register("modify_block_energized", "deewad", HexDir.NORTH_WEST, OpModifyMageBlock("energized", 1))
+		register("modify_block_ephemeral", "deewwaawd", HexDir.NORTH_WEST, OpModifyMageBlock("ephemeral", 1))
+		register("modify_block_invisible", "deeqedeaqqqwqqq", HexDir.NORTH_WEST, OpModifyMageBlock("invisible"))
+		register("modify_block_replaceable", "deewqaqqqqq", HexDir.NORTH_WEST, OpModifyMageBlock("replaceable"))
+		register("modify_block_semipermeable", "deeeqawde", HexDir.NORTH_WEST, OpModifyMageBlock("semipermeable"))
+		register("modify_block_volatile", "deewedeeeee", HexDir.NORTH_WEST, OpModifyMageBlock("volatile"))
+
+		register("conjure_firework", "dedwaqwwawwqa", HexDir.SOUTH_WEST, OpConjureFirework())
+		register("simulate_firework", "dedwaqwqqwqa", HexDir.SOUTH_WEST, OpSimulateFirework())
+
+		register("conjure_staff", "wwwwwaqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpConjureStaff())
+		register("write_staff", "waqqqqqedeqdqdqdqdqe", HexDir.NORTH_EAST, OpWriteStaff())
+		register("read_staff", "waqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpReadStaff())
+
+		registerPerWorld("conjure_mesh", "qaqqqqqwqqqdeeweweeaeewewee", HexDir.EAST, OpConjureMesh())
+		register("weave_mesh", "qaqqqqqwqqqdeewewee", HexDir.EAST, OpWeaveMesh())
+		register("read_mesh", "edeeeeeweeeaqqwqwqq", HexDir.SOUTH_WEST, OpReadMesh())
+
+		registerPerWorld("greater_blink", "wqawawaqwqwqawawaqw", HexDir.SOUTH_WEST, OpGreaterBlink())
+
+		register("internalize_hex", "wwaqqqqqeqdedwwqwqwwdedwwqwqw", HexDir.EAST, OpInternalizeHex())
+		register("is_evoking", "wwaqqqqqeeaqawwewewwaqawwewew", HexDir.EAST, OpIsEvoking())
+
+		register("with_hand_lamp", "qwddedqqaqqqqq", HexDir.SOUTH_WEST, OpCheckSource(SpecializedSource.HAND_LAMP))
+		register("with_arch_lamp", "qaqwddedqqaqqqqq", HexDir.NORTH_EAST, OpCheckSource(SpecializedSource.ARCH_LAMP))
+		register("with_conjured_staff", "waqaeaqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpCheckSource(SpecializedSource.CONJURED_STAFF))
+		register("with_evocation", "waeqqqqedeqdqdqdqewee", HexDir.EAST, OpCheckSource(SpecializedSource.EVOCATION))
+
+		register("write_grimoire", "aqwqaeaqa", HexDir.WEST, OpGrimoireWrite())
+		register("erase_grimoire", "aqwqaqded", HexDir.WEST, OpGrimoireErase())
+		register("index_grimoire", "aqaeaqwqa", HexDir.SOUTH_EAST, OpGrimoireIndex())
+
 		register("identify", "qqqqqe", HexDir.NORTH_EAST, OpIdentify())
 		register("recognize", "eeeeeq", HexDir.WEST, OpRecognize())
 		register("get_mainhand_stack", "qaqqqq", HexDir.NORTH_EAST, OpGetPlayerData(0))
@@ -226,9 +221,19 @@ object HexicalPatterns {
 		register("count_stack", "qaqqwqqqw", HexDir.EAST, OpGetItemStackData(0))
 		register("damage_stack", "eeweeewdeq", HexDir.NORTH_EAST, OpGetItemStackData(1))
 
-		register("count_max_stack", "edeeweeew", HexDir.WEST, OpGetItemTypeData(0))
-		register("damage_max_stack", "qqwqqqwaqe", HexDir.NORTH_WEST, OpGetItemTypeData(1))
-		register("edible", "adaqqqdd", HexDir.WEST, OpGetItemTypeData(2))
+		register("block_hardness", "qaqqqqqeeeeedq", HexDir.EAST, OpGetBlockTypeData(0))
+		register("block_blast_resistance", "qaqqqqqewaaqddqa", HexDir.EAST, OpGetBlockTypeData(1))
+		register("blockstate_waterlogged", "edeeeeeqwqqqqw", HexDir.SOUTH_EAST, OpGetBlockStateData(0))
+		register("blockstate_rotation", "qaqqqqqwadeeed", HexDir.EAST, OpGetBlockStateData(1))
+		register("blockstate_crop", "qaqqqqqwaea", HexDir.EAST, OpGetBlockStateData(2))
+		register("blockstate_glow", "qaqqqqqwaeaeaeaeaea", HexDir.EAST, OpGetBlockStateData(3))
+		register("blockstate_lock", "qaqqqeaqwdewd", HexDir.EAST, OpGetBlockStateData(4))
+		register("blockstate_turn", "qaqqqqqwqqwqd", HexDir.EAST, OpGetBlockStateData(5))
+		register("blockstate_bunch", "qaqqqqqweeeeedeeqaqdeee", HexDir.EAST, OpGetBlockStateData(6))
+		register("blockstate_book", "qaqqqqqeawa", HexDir.EAST, OpGetBlockStateData(7))
+
+		register("get_enchantments", "waqeaeqawqwawaw", HexDir.WEST, OpGetItemStackData(2))
+		register("get_enchantment_strength", "waqwwqaweede", HexDir.WEST, OpGetEnchantmentStrength())
 
 		register("get_hunger", "adaqqqddqe", HexDir.WEST, OpGetFoodTypeData(0))
 		register("get_saturation", "adaqqqddqw", HexDir.WEST, OpGetFoodTypeData(1))
@@ -245,23 +250,12 @@ object HexicalPatterns {
 		register("is_sprinting", "eaq", HexDir.WEST, OpGetLivingEntityData(5))
 		register("is_baby", "awaqdwaaw", HexDir.SOUTH_WEST, OpGetLivingEntityData(6))
 		register("breedable", "awaaqdqaawa", HexDir.EAST, OpGetWillingness())
-
-		register("get_enchantments", "waqeaeqawqwawaw", HexDir.WEST, OpGetItemStackData(2))
-		register("get_enchantment_strength", "waqwwqaweede", HexDir.WEST, OpGetEnchantmentStrength())
-
 		register("get_player_hunger", "qqqadaddw", HexDir.WEST, OpGetPlayerData(2))
 		register("get_player_saturation", "qqqadaddq", HexDir.WEST, OpGetPlayerData(3))
 
-		register("block_hardness", "qaqqqqqeeeeedq", HexDir.EAST, OpGetBlockTypeData(0))
-		register("block_blast_resistance", "qaqqqqqewaaqddqa", HexDir.EAST, OpGetBlockTypeData(1))
-		register("blockstate_waterlogged", "edeeeeeqwqqqqw", HexDir.SOUTH_EAST, OpGetBlockStateData(0))
-		register("blockstate_rotation", "qaqqqqqwadeeed", HexDir.EAST, OpGetBlockStateData(1))
-		register("blockstate_crop", "qaqqqqqwaea", HexDir.EAST, OpGetBlockStateData(2))
-		register("blockstate_glow", "qaqqqqqwaeaeaeaeaea", HexDir.EAST, OpGetBlockStateData(3))
-		register("blockstate_lock", "qaqqqeaqwdewd", HexDir.EAST, OpGetBlockStateData(4))
-		register("blockstate_turn", "qaqqqqqwqqwqd", HexDir.EAST, OpGetBlockStateData(5))
-		register("blockstate_bunch", "qaqqqqqweeeeedeeqaqdeee", HexDir.EAST, OpGetBlockStateData(6))
-		register("blockstate_book", "qaqqqqqeawa", HexDir.EAST, OpGetBlockStateData(7))
+		register("count_max_stack", "edeeweeew", HexDir.WEST, OpGetItemTypeData(0))
+		register("damage_max_stack", "qqwqqqwaqe", HexDir.NORTH_WEST, OpGetItemTypeData(1))
+		register("edible", "adaqqqdd", HexDir.WEST, OpGetItemTypeData(2))
 
 		register("get_effects_entity", "wqqq", HexDir.SOUTH_WEST, OpGetLivingEntityData(7))
 		register("get_effects_item", "wqqqadee", HexDir.SOUTH_WEST, OpGetPrescription())
@@ -272,7 +266,6 @@ object HexicalPatterns {
 		register("janus", "aadee", HexDir.SOUTH_WEST, OpJanus)
 		register("sisyphus", "qaqwede", HexDir.NORTH_EAST, OpSisyphus)
 		register("themis", "dwaad", HexDir.WEST, OpThemis)
-
 		PatternRegistry.addSpecialHandler(HexicalMain.id("nephthys")) { pat ->
 			val sig = pat.anglesSignature()
 			if (sig.startsWith("deaqqd")) {
