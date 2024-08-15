@@ -31,10 +31,6 @@
 			}
 		]
 	},
-	"candle_flares": {
-		"subtitle": "subtitles.hexical.candle_flares",
-		"sounds": ["fire/fire"]
-	},
 	"replenish_air": {
 		"subtitle": "subtitles.hexical.replenish_air",
 		"sounds": [

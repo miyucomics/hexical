@@ -19,7 +19,7 @@ class OpColorScroll : SpellAction {
 		if (scroll !is LivingScrollEntity)
 			throw MishapBadEntity.of(scroll, "living_scroll")
 		val color = args.getVec3(1, argc)
-		return Triple(Spell(scroll, color), MediaConstants.DUST_UNIT / 2, listOf())
+		return Triple(Spell(scroll, color), 0, listOf())
 	}
 
 	private data class Spell(val scroll: LivingScrollEntity, val color: Vec3d) : RenderedSpell {

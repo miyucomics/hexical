@@ -11,7 +11,6 @@ object HexicalSounds {
 	lateinit var LAMP_DEACTIVATE: SoundEvent
 	lateinit var SUDDEN_REALIZATION: SoundEvent
 	lateinit var PLAYER_SLURP: SoundEvent
-	lateinit var CANDLE_FLARES: SoundEvent
 	lateinit var REPLENISH_AIR: SoundEvent
 
 	@JvmStatic
@@ -22,7 +21,6 @@ object HexicalSounds {
 		LAMP_DEACTIVATE = register("lamp_deactivate")
 		SUDDEN_REALIZATION = register("sudden_realization")
 		PLAYER_SLURP = register("player_slurp")
-		CANDLE_FLARES = register("candle_flares")
 		REPLENISH_AIR = register("replenish_air")
 	}
 
