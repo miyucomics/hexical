@@ -176,7 +176,7 @@
 	"hexical.category.lamp.desc": "I have heard tales from the villagers about a magical artifact. Legends say it contains a spirit that grants wishes, but I suspect that is just embellishment evolved over centuries of storytelling. However, legends must arise from something and I dedicate this section to my pursuit and research of it.",
 
 	"hexcasting.spell.hexical:lamp_finale": "Finale Reflection",
-	"hexical.page.lamp_finale.hand": "The instant I let go of my lamp, it casts twice: once for the usual cast and a second time as a final burst of media. I can use this pattern to recognize whether a cast is that finale, and react accordingly.",
+	"hexical.page.lamp_finale.hand": "The instant I let go of my lamp, it casts an additional time. I can use this pattern to recognize whether a cast is that finale, and react accordingly.",
 	"hexical.page.lamp_finale.arch": "When an archgenie lamp is turned off, it casts an additional time. I can use this pattern to recognize when whether a cast is that last burst of energy.",
 
 	"hexical.page.mysterious_lamp.title": "Mysterious Lamp",
@@ -378,7 +378,7 @@
 	"hexical.page.prestidigitation.2": "toggles Redstone lamps; drain cauldrons; modifies the state of Redstone repeaters, comparators, and daylight sensors, ignites and deprimes TNT and creepers; shear sheep; give and take arms from armor stands; makes squid squirt ink; makes pandas sneeze; removes the helmet of a snow golem; make pufferfish instantly swell up; and activates some kind of \"great work\" whatever that is.",
 
 	"hexical.page.wristpocket.title": "Wristpocket",
-	"hexical.page.wristpocket.0": "I can perform the standard magic trick of vanishing an item and bringing it back. The item hides in an extradimensional space called the wristpocket, where I can use _media to manipulate it. Wristpocketed items stay with me even after death and I can recall them once I have a staff again.$(br2)$(o)Because making something disappear isn't enough; you have to bring it back.$()",
+	"hexical.page.wristpocket.0": "I can perform the standard magic trick of vanishing an item and bringing it back. The item hides in the $(o)wristpocket$(), where I can use _media to manipulate it. Wristpocketed items stay with me even after death and I can recall them once I have a $(l:items/staff)staff$() again.$(br2)$(o)Because making something disappear isn't enough; you have to bring it back.$()",
 	"hexcasting.spell.hexical:wristpocket": "Wristpocket",
 	"hexical.page.wristpocket.summary": "This spell vanishes the stack of items in my other hand, or conjures it back, swapping if my other hand is holding something. Costs three dust if an item is inserted or swapped in.",
 	"hexcasting.spell.hexical:ingest": "Assimilate Food",
@@ -478,10 +478,10 @@
 	"hexical.page.circle_spells.title": "Circle Spells",
 	"hexical.page.circle_spells.0": "When the _media courses through the boundaries of a circle, it saturates the domain inside the circle with _media, allowing me to manipulate the environment inside far more flexibly than I am used to. The following are some spells I've come across or developed, which are to only be cast by a $(l:greatwork/spellcircles)spell circle$().",
 	"hexcasting.spell.hexical:displace": "Displace",
-	"hexical.page.displace.summary": "For just three amethyst shards, I can teleport an entity from anywhere in my circle to anywhere else inside within the same circle. Unlike $(l:patterns/great_spells/teleport)Greater Teleport$(), this spell takes in world coordinates rather than an offset.",
+	"hexical.page.displace.summary": "For three amethyst shards, I can teleport an entity in my circle to anywhere else inside within the same circle. Unlike $(l:patterns/great_spells/teleport)Greater Teleport$(), takes in world coordinates rather than an offset.",
 
 	"hexical.page.evocation.title": "Evocation",
-	"hexical.page.evocation.0": "Media is the energy of thought, so it stands to reason that I should be able to simply $(o)think$() magic into existence rather than waving around a staff. After all, I have two chunks' worth of charged amethyst in me at my prime, double that of a staff's. Unfortunately, I am not yet great enough to shift arbitrary effects into reality. However, by etching a prepared _Hex into my mind, I can bring it forth into existence by waving my arms similarly to an evoker, taking _media from my inventory.",
+	"hexical.page.evocation.0": "Media is the energy of thought, so it stands to reason that I should be able to simply $(o)think$() magic into existence rather than waving around a staff. After all, I have two chunks' worth of charged amethyst in me at my prime, double that of a staff's. I am not yet great enough to shift arbitrary effects into reality but I can bring it forth a prepared _Hex into existence, taking _media from my inventory.",
 	"hexcasting.spell.hexical:internalize_hex": "Internalize Hex",
 	"hexical.page.internalize_hex.summary": "Internalizes a hex, allowing me to evoke that spell by pressing the R key to use it even without a staff. Costs one charged amethyst for etching process.",
 	"hexcasting.spell.hexical:is_evoking": "Evoker Purification",
