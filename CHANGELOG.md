@@ -20,7 +20,6 @@
 - added Similarity Distillation - get if two iota are of the same type
 - added Congruence Distillation - get if two patterns are the same, regardless of orientation
 - added Charge, Dodge, Retreat, and Evade Reflection patterns - pushes how long you've pressed the wasd keys
-- added Glyphmaker's Distillation - scrambles a pattern with a number as a seed
 - added Conjure Compass spell - conjure a compass that always points towards a location
 - added Conjure Spike spell - conjure an amethyst spike that will strike through a location after a customizable delay
 - added pyrotechnic spells
@@ -88,6 +87,7 @@
 
 ## 1.2.0
 - added more achievements
+- added Glyphmaker's Distillation - scrambles a pattern with a number as a seed
 - added lightning rod staff, with strong knockback and slow swing speed
 - added Displace spell for circles to teleport entities for cheap
 - added energized mage blocks modifier to emit Redstone power
