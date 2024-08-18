@@ -524,8 +524,8 @@
 	"hexical.page.blockstate_lock.summary": "检验方块是否处于“打开”状态，有效方块有门、活板门、栅栏门、木桶等。",
 	"hexcasting.spell.hexical:blockstate_turn": "角度之纯化",
 	"hexical.page.blockstate_turn.summary": "压入一个数，对应告示牌、头颅、旗帜的旋转方向。",
-	"hexcasting.spell.hexical:blockstate_bunch": "集簇之纯化",
-	"hexical.page.blockstate_bunch.summary": "返回方块的集簇数，无法叠放则返回 Null。仅对蜡烛、海泡菜、海龟蛋有效。",
+	"hexcasting.spell.hexical:blockstate_bunch": "叠放之纯化",
+	"hexical.page.blockstate_bunch.summary": "返回方块的叠放数，无法叠放则返回 Null。仅对蜡烛、海泡菜、海龟蛋有效。",
 	"hexcasting.spell.hexical:blockstate_book": "书之纯化",
 	"hexical.page.blockstate_book.summary": "检验讲台中是否有书，唱片机中是否有唱片。有传言称对某种奇妙的书架也有效。",
 
