@@ -20,7 +20,7 @@ class OpReloadLamp : SpellAction {
 	override val argc = 2
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		val sacrifice = args.getVillager(0, argc)
-		val battery = args.getDouble(1, argc)
+		val battery = args.getPositiveDoubleUnderInclusive(1, 200_000.0, argc)
 
 		ctx.assertEntityInRange(sacrifice)
 		if (Brainsweeping.isBrainswept(sacrifice))

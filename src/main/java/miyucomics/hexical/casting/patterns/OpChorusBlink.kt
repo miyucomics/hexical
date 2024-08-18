@@ -34,6 +34,7 @@ class OpChorusBlink : SpellAction {
 		override fun cast(ctx: CastingContext) {
 			ctx.caster.teleport(ctx.caster.pos.x + position.x, ctx.caster.pos.y + position.y, ctx.caster.pos.z + position.z)
 			stack.decrement(1)
+			ctx.world.
 		}
 	}
 }
