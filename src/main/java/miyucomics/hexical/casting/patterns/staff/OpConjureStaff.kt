@@ -19,13 +19,13 @@ class OpConjureStaff : SpellAction {
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		val position = args.getVec3(0, argc)
 		ctx.assertVecInRange(position)
-		val battery = args.getPositiveIntUnderInclusive(1, 200_000, argc)
+		val battery = args.getPositiveDoubleUnderInclusive(1, 200_000.0, argc)
 		val rank = args.getInt(2, argc)
 		if (rank <= 0)
 			throw MishapInvalidIota.of(args[2], 2, "integer_natural")
 		val instructions = args.getList(3, argc).toList()
 		CastingUtils.assertNoTruename(args[3], ctx.caster)
-		return Triple(Spell(position, battery * MediaConstants.DUST_UNIT, rank, instructions), MediaConstants.SHARD_UNIT + MediaConstants.DUST_UNIT * (rank + battery), listOf(ParticleSpray.burst(position, 1.0)))
+		return Triple(Spell(position, (battery * MediaConstants.DUST_UNIT).toInt(), rank, instructions), MediaConstants.SHARD_UNIT + MediaConstants.DUST_UNIT * (rank + battery.toInt()), listOf(ParticleSpray.burst(position, 1.0)))
 	}
 
 	private data class Spell(val position: Vec3d, val battery: Int, val rank: Int, val instructions: List<Iota>) : RenderedSpell {
