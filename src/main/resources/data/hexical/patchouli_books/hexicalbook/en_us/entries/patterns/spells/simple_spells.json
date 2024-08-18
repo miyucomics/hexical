@@ -27,13 +27,6 @@
 			"text": "hexical.page.conjure_hextito.description"
 		}, {
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:chorus_blink",
-			"anchor": "hexical:chorus_blink",
-			"input": "vector",
-			"output": "",
-			"text": "hexical.page.chorus_blink.summary"
-		}, {
-			"type": "hexcasting:pattern",
 			"op_id": "hexical:gasp",
 			"anchor": "hexical:gasp",
 			"input": "entity",
@@ -42,6 +35,13 @@
 		}, {
 			"type": "patchouli:text",
 			"text": "hexical.page.gasp.0"
+		}, {
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:chorus_blink",
+			"anchor": "hexical:chorus_blink",
+			"input": "vector",
+			"output": "",
+			"text": "hexical.page.chorus_blink.summary"
 		}, {
 			"type": "patchouli:text",
 			"text": "hexical.page.chorus_blink.0"
