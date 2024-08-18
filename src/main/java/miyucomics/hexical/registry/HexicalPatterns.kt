@@ -10,14 +10,10 @@ import miyucomics.hexical.casting.patterns.*
 import miyucomics.hexical.casting.patterns.akashic.OpReadAkashicShelf
 import miyucomics.hexical.casting.patterns.akashic.OpWriteAkashicShelf
 import miyucomics.hexical.casting.patterns.circle.OpDisplace
-import miyucomics.hexical.casting.patterns.colors.OpSamplePigment
-import miyucomics.hexical.casting.patterns.colors.OpTranslateDye
+import miyucomics.hexical.casting.patterns.colors.*
 import miyucomics.hexical.casting.patterns.conjure.OpConjureCompass
 import miyucomics.hexical.casting.patterns.conjure.OpConjureHexburst
 import miyucomics.hexical.casting.patterns.conjure.OpConjureHextito
-import miyucomics.hexical.casting.patterns.colors.OpDye
-import miyucomics.hexical.casting.patterns.colors.OpGetDye
-import miyucomics.hexical.casting.patterns.colors.OpMimicDye
 import miyucomics.hexical.casting.patterns.conjure.OpConjureSpike
 import miyucomics.hexical.casting.patterns.eval.*
 import miyucomics.hexical.casting.patterns.evocation.OpInternalizeHex
