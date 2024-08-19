@@ -3,6 +3,7 @@
 ## 1.3.1
 - fixed bug where magic missile would crash on servers
 - fixed documentation error where the description for Chorus Blink was separated from its pattern page
+- removed all shader spells because they didn't work with Create ( although it's totally Create's fault )
 
 ## 1.3.0
 - added more advancements
