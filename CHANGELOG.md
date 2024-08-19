@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.1
+- fixed bug where magic missile would crash on servers
+- fixed documentation error where the description for Chorus Blink was separated from its pattern page
+
 ## 1.3.0
 - added more advancements
 - added hexbursts - adds an iota to your stack when eaten
