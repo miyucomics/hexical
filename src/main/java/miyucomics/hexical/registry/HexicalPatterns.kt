@@ -61,7 +61,6 @@ import miyucomics.hexical.casting.patterns.wristpocket.OpWristpocket
 import miyucomics.hexical.enums.SpecializedSource
 import miyucomics.hexical.interfaces.Specklike
 import net.minecraft.sound.SoundEvents
-import net.minecraft.util.Identifier
 
 object HexicalPatterns {
 	@JvmStatic
@@ -139,12 +138,6 @@ object HexicalPatterns {
 		register("translate_dye", "wdwwaawwewdwwewwdwwe", HexDir.EAST, OpTranslateDye())
 		register("sample_pigment", "wawwddwwqwawwqwwawwq", HexDir.EAST, OpSamplePigment())
 		register("mimic_dye", "awddwqaeqqqeaeqqq", HexDir.EAST, OpMimicDye())
-
-		register("clear_vision", "qaqwdwqaq", HexDir.EAST, OpShader(null))
-		register("owl_vision", "qqqqqedeqqqqq", HexDir.EAST, OpShader(HexicalMain.id("shaders/post/night_vision.json")))
-		register("tele_vision", "qaqwdeqwawqwa", HexDir.EAST, OpShader(HexicalMain.id("shaders/post/television.json")))
-		register("spider_vision", "aqqqaqwdeqaqded", HexDir.NORTH_WEST, OpShader(Identifier("shaders/post/spider.json")))
-		register("phosphor_vision", "qaqwdwdaqqqa", HexDir.EAST, OpShader(Identifier("shaders/post/phosphor.json")))
 
 		register("wristpocket", "aaqqa", HexDir.WEST, OpWristpocket())
 		register("wristpocket_item", "aaqqada", HexDir.WEST, OpGetWristpocket(0))
