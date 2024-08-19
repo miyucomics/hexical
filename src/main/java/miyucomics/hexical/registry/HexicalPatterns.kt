@@ -97,7 +97,7 @@ object HexicalPatterns {
 		register("displace", "qaqqqqeedaqqqa", HexDir.NORTH_EAST, OpDisplace())
 
 		register("theodolite", "wqaa", HexDir.EAST, OpGetEntityData(4))
-		register("entity_width", "ewd", HexDir.NORTH_EAST, OpGetEntityData(3))
+		register("entity_width", "dwe", HexDir.NORTH_WEST, OpGetEntityData(3))
 		register("similar", "dew", HexDir.NORTH_WEST, OpSimilar())
 		register("congruent", "aaqd", HexDir.EAST, OpCongruentPattern())
 		register("dup_many", "waadadaa", HexDir.EAST, OpDupMany())

@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.4.0
+- changed keybind reflections to return -1 when not active
+- changed pattern for Caliper's Purification to not conflict with HexVR
+- changed some translations to fit on the page
+- fixed conjured staff's mirror disguise not being held properly
+
 ## 1.3.1
 - fixed bug where magic missile would crash on servers
 - fixed documentation error where the description for Chorus Blink was separated from its pattern page
