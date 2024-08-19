@@ -8,7 +8,6 @@ public class HexicalClient implements ClientModInitializer {
 	public void onInitializeClient() {
 		HexicalBlocks.clientInit();
 		HexicalEntities.clientInit();
-		HexicalEvents.clientInit();
 		HexicalItems.clientInit();
 		HexicalKeybinds.init();
 		HexicalNetworking.clientInit();

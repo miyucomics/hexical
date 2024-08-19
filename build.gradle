@@ -26,13 +26,6 @@ repositories {
     maven { url = "https://maven.ladysnake.org/releases" }
 	maven { url = "https://api.modrinth.com/maven" }
 	maven { url = "https://maven.kosmx.dev/" }
-	maven {
-		url = "https://ladysnake.jfrog.io/artifactory/mods"
-		content {
-			includeGroup "io.github.ladysnake"
-			includeGroupByRegex "io\\.github\\.onyxstudios.*"
-		}
-	}
 }
 
 dependencies {
@@ -52,7 +45,6 @@ dependencies {
 
 	include implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:${mixin_extras_version}"))
 	include modImplementation("dev.kosmx.player-anim:player-animation-lib-fabric:${player_animator_version}")
-	include modImplementation("io.github.ladysnake:satin:${satin_version}")
 }
 
 processResources {

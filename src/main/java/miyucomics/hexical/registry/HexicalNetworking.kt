@@ -4,7 +4,6 @@ import at.petrak.hexcasting.api.spell.iota.BooleanIota
 import at.petrak.hexcasting.api.spell.iota.Iota
 import dev.kosmx.playerAnim.api.layered.KeyframeAnimationPlayer
 import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationRegistry
-import ladysnake.satin.api.managed.ShaderEffectManager
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.client.PlayerAnimations
 import miyucomics.hexical.items.ConjuredStaffItem
@@ -25,8 +24,6 @@ object HexicalNetworking {
 
 	val START_EVOKE_CHANNEL: Identifier = HexicalMain.id("start_evoking")
 	val END_EVOKING_CHANNEL: Identifier = HexicalMain.id("end_evoking")
-
-	val SYNC_SHADER_CHANNEL: Identifier = HexicalMain.id("sync_shader")
 
 	@JvmStatic
 	fun serverInit() {
@@ -83,13 +80,6 @@ object HexicalNetworking {
 
 	@JvmStatic
 	fun clientInit() {
-		ClientPlayNetworking.registerGlobalReceiver(SYNC_SHADER_CHANNEL) { _, _, packet, _ ->
-			val shaderName = packet.readString()
-			if (shaderName == "clear")
-				HexicalEvents.SHADER = null
-			else
-				HexicalEvents.SHADER = ShaderEffectManager.getInstance().manage(Identifier(shaderName))
-		}
 		ClientPlayNetworking.registerGlobalReceiver(START_EVOKE_CHANNEL) { client, _, packet, _ ->
 			val uuid = packet.readUuid()
 			val player = client.world!!.getPlayerByUuid(uuid) ?: return@registerGlobalReceiver
