@@ -90,7 +90,8 @@ object HexicalNetworking {
 		}
 		ClientPlayNetworking.registerGlobalReceiver(END_EVOKING_CHANNEL) { client, _, packet, _ ->
 			val uuid = packet.readUuid()
-			val container = (client.world!!.getPlayerByUuid(uuid) as PlayerAnimations).hexicalModAnimations()
+			val player = client.world!!.getPlayerByUuid(uuid) ?: return@registerGlobalReceiver
+			val container = (player as PlayerAnimations).hexicalModAnimations()
 			val frame = PlayerAnimationRegistry.getAnimation(HexicalMain.id("cast_end"))!!
 			container.setAnimation(KeyframeAnimationPlayer(frame))
 			EvokeState.active[uuid] = false
