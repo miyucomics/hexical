@@ -241,8 +241,8 @@
 
 	"hexical.page.enlightened_patterns.title": "Enlightened Patterns",
 	"hexical.page.enlightened_patterns.0": "After my enlightenment, I find myself acutely aware of certain patterns that seem to aid with my newfound abilities to perceive and manipulate _media. These patterns don't seem to require anything new from me, perhaps I've always been able to cast them but was unaware of their existence.",
-	"hexcasting.spell.hexical:am_enlightened": "Epiphany Reflection",
-	"hexical.page.am_enlightened.summary": "Pushes whether the caster is enlightened. By the time I read this, I would have already become enlightened however, it can be used in a $(l:items/hexcasting)$(item)casting item$() so only torn minds may access its proper function.",
+	"hexcasting.spell.hexical:am_enlightened": "Epiphany Purification",
+	"hexical.page.am_enlightened.summary": "Pushes whether the given player has achieved enlightenment like I have.",
 	"hexcasting.spell.hexical:is_brainswept": "Sentience Purification",
 	"hexical.page.is_brainswept.summary": "Pushes whether an entity \"has been magically relieved of its mind\". I feel this is strongly related to $(l:patterns/great_spells/brainsweep)$(action)Flay Mind$() somehow...",
 
@@ -465,7 +465,7 @@
 	"hexical.page.circle_spells.title": "Circle Spells",
 	"hexical.page.circle_spells.0": "When the _media courses through the boundaries of a circle, it saturates the domain inside the circle with _media, allowing me to manipulate the environment inside far more flexibly than I am used to. The following are some spells I've come across or developed, which are to only be cast by a $(l:greatwork/spellcircles)spell circle$().",
 	"hexcasting.spell.hexical:displace": "Displace",
-	"hexical.page.displace.summary": "For three amethyst shards, I can teleport an entity in my circle to anywhere else inside within the same circle. Unlike $(l:patterns/great_spells/teleport)$(action)Greater Teleport$(), takes in world coordinates rather than an offset.",
+	"hexical.page.displace.summary": "For absolutely free, I can teleport an entity in my circle to anywhere else inside within the same circle. Unlike $(l:patterns/great_spells/teleport)$(action)Greater Teleport$(), takes in world coordinates rather than an offset.",
 
 	"hexical.page.evocation.title": "Evocation",
 	"hexical.page.evocation.0": "Media is the energy of thought, so it stands to reason that I should be able to simply $(o)think$() magic into existence rather than waving around a staff. After all, I have two chunks' worth of charged amethyst in me at my prime, double that of a $(l:items/staff)$(item)staff$(). I am not yet great enough to shift arbitrary effects into reality but I can bring it forth a prepared _Hex into existence, taking _media from my inventory.",
@@ -478,7 +478,7 @@
 
 	"hexcasting.spell.hexical:greater_blink": "Greater Blink",
 	"hexical.page.greater_blink.0": "Greater Blink is a significantly cheaper alternative to Greater Teleport. It also does not carry the risk of splattering your items upon arrival. However, it only has pitiful range compared to Greater Teleport and its destination calculations are... esoteric. I also can not specify a target other than myself.",
-	"hexical.page.greater_blink.summary": "Teleports me up to 128 blocks away, relative to my position and rotation. Costs two shards.",
+	"hexical.page.greater_blink.summary": "Teleports me up to 128 blocks away, relative to my position and rotation. Costs two dust.",
 	"hexical.page.greater_blink.1": "A vector of (0, 0, 1) would teleport me one block in the direction I'm facing. A vector of (0, 1, 0) would teleport me one block \"up\" in the direction of the top of my head. A vector of (0, 1, 10) would teleport me ten blocks forward in the direction I'm facing and one block upwards from the top of my head.",
 
 	"hexical.page.meshes.title": "Meshes",
@@ -512,7 +512,7 @@
 	"hexcasting.spell.hexical:blockstate_turn": "Angle Purification",
 	"hexical.page.blockstate_turn.summary": "Pushes a number corresponding to the rotation of signs, skulls, and banners.",
 	"hexcasting.spell.hexical:blockstate_bunch": "Bunching Purification",
-	"hexical.page.blockstate_bunch.summary": "Pushes how are in a bunch block, or null otherwise. Useful only for candles, sea pickles, and turtle eggs.",
+	"hexical.page.blockstate_bunch.summary": "Pushes how many are in a bunch block, or null otherwise. Useful only for candles, sea pickles, and turtle eggs.",
 	"hexcasting.spell.hexical:blockstate_book": "Book Purification",
 	"hexical.page.blockstate_book.summary": "Pushes a boolean for whether lecterns or jukeboxes have a book/music disc in them respectively. Rumors say it works for some kind of magic bookshelf too.",
 
