@@ -16,7 +16,7 @@ class OpConjureCompass : SpellAction {
 		val position = args.getVec3(0, argc)
 		ctx.assertVecInRange(position)
 		val target = args.getBlockPos(1, argc)
-		return Triple(Spell(position, target), MediaConstants.SHARD_UNIT, listOf(ParticleSpray.burst(position, 1.0)))
+		return Triple(Spell(position, target), MediaConstants.DUST_UNIT * 3, listOf(ParticleSpray.burst(position, 1.0)))
 	}
 
 	private data class Spell(val position: Vec3d, val target: BlockPos) : RenderedSpell {
