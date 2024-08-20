@@ -25,7 +25,7 @@ class OpPiercingSurfaceRaycast : ConstMediaAction {
 		val id = args.getIdentifier(2, argc)
 		if (!Registry.BLOCK.containsId(id))
 			throw MishapInvalidIota.of(args[2], 2, "block_id")
-		val targetBlockType = Registry.BLOCK.get(args.getIdentifier(0, argc))
+		val targetBlockType = Registry.BLOCK.get(id)
 		val delta = Vec3d(abs(1 / direction.x), abs(1 / direction.y), abs(1 / direction.z))
 
 		var voxelX = floor(start.x)

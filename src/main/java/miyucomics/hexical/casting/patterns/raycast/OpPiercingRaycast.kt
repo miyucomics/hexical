@@ -25,7 +25,7 @@ class OpPiercingRaycast : ConstMediaAction {
 		val id = args.getIdentifier(2, argc)
 		if (!Registry.BLOCK.containsId(id))
 			throw MishapInvalidIota.of(args[2], 2, "block_id")
-		val targetBlockType = Registry.BLOCK.get(args.getIdentifier(0, argc))
+		val targetBlockType = Registry.BLOCK.get(id)
 		val delta = Vec3d(abs(1 / direction.x), abs(1 / direction.y), abs(1 / direction.z))
 
 		var voxelX = floor(start.x)
@@ -86,7 +86,7 @@ class OpPiercingRaycast : ConstMediaAction {
 			}
 
 			if (ctx.world.getBlockState(BlockPos(voxelX, voxelY, voxelZ)).block == targetBlockType)
-				return Vec3d(voxelX, voxelY, voxelZ).asActionResult
+				return Vec3d(voxelX + 0.5, voxelY + 0.5, voxelZ + 0.5).asActionResult
 			if (!ctx.isVecInRange(Vec3d(voxelX, voxelY, voxelZ)))
 				return listOf(NullIota())
 		}
