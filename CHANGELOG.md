@@ -4,12 +4,17 @@
 - changed keybind reflections to return -1 when not active
 - changed pattern for Caliper's Purification to not conflict with HexVR
 - changed some translations to fit on the page
+- changed Epiphany Reflection to Epiphany Purification, now takes in a player
+- changed Greater Blink to be significantly cheaper to reward math
+- changed Displace to be *free*
 - fixed conjured staff's mirror disguise not being held properly
 - fixed evocation kicking every player outside of render distance
 - fixed media jar not dropping
 - fixed piercing raycasts not working because the identifier is in the wrong place
-- fixed special raycasts not returning the center of blocks but their corner insteadd
+- fixed special raycasts not returning the center of blocks but their corner instead
 - fixed translation error for identifier iota
+- fixed minor typos in documentation
+- fixed incorrect typing in documentation
 
 ## 1.3.1
 - fixed bug where magic missile would crash on servers
