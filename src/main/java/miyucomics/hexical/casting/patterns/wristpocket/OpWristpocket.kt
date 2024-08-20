@@ -15,8 +15,8 @@ class OpWristpocket : SpellAction {
 	override val argc = 0
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		if (ctx.caster.getStackInHand(ctx.otherHand) != ItemStack.EMPTY && ctx.caster.getStackInHand(ctx.otherHand).item != Items.AIR)
-			return Triple(Spell(ctx.otherHand), MediaConstants.DUST_UNIT * 3, listOf())
-		return Triple(Spell(ctx.otherHand), 0, listOf())
+			return Triple(Spell(ctx.otherHand), MediaConstants.DUST_UNIT / 2, listOf())
+		return Triple(Spell(ctx.otherHand), MediaConstants.DUST_UNIT / 8, listOf())
 	}
 
 	private data class Spell(val hand: Hand) : RenderedSpell {
