@@ -4,7 +4,11 @@
 - changed keybind reflections to return -1 when not active
 - changed pattern for Caliper's Purification to not conflict with HexVR
 - changed some translations to fit on the page
+- fixed bug where evocation caused kick
 - fixed conjured staff's mirror disguise not being held properly
+- fixed translation error for identifier iota
+- fixed piercing raycasts not working because the identifier is in the wrong place
+- fixed special raycasts not returning the center of blocks but their corner insteadd
 
 ## 1.3.1
 - fixed bug where magic missile would crash on servers

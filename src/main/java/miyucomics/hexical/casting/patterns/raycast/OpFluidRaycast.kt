@@ -80,7 +80,7 @@ class OpFluidRaycast : ConstMediaAction {
 			}
 
 			if (ctx.world.getBlockState(BlockPos(voxelX, voxelY, voxelZ)).block is FluidBlock)
-				return Vec3d(voxelX, voxelY, voxelZ).asActionResult
+				return Vec3d(voxelX + 0.5, voxelY + 0.5, voxelZ + 0.5).asActionResult
 			if (!ctx.isVecInRange(Vec3d(voxelX, voxelY, voxelZ)))
 				return listOf(NullIota())
 		}
