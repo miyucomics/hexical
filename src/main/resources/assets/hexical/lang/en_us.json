@@ -378,7 +378,7 @@
 	"hexical.page.wristpocket.title": "Wristpocket",
 	"hexical.page.wristpocket.0": "I can perform the standard magic trick of vanishing an item and bringing it back. The item hides in the $(o)wristpocket$(), where I can use _media to manipulate it. Wristpocketed items stay with me even after death and I can recall them once I have a $(l:items/staff)staff$() again.$(br2)$(o)Because making something disappear isn't enough; you have to bring it back.$()",
 	"hexcasting.spell.hexical:wristpocket": "Wristpocket",
-	"hexical.page.wristpocket.summary": "This spell vanishes the stack of items in my other hand, or conjures it back, swapping if my other hand is holding something. Costs three dust if an item is inserted or swapped in.",
+	"hexical.page.wristpocket.summary": "This spell vanishes the stack of items in my other hand, or conjures it back, swapping if my other hand is holding something. Costs 1/8th of a dust if an item is inserted or swapped in.",
 	"hexcasting.spell.hexical:ingest": "Assimilate Food",
 	"hexical.page.ingest.summary": "This spell makes me eat my wristpocketed item, nourishing or applying potions to me. Regardless of the item's time to eat or if I'm full, this spell makes me consume it instantly.",
 	"hexcasting.spell.hexical:wristpocket_item": "Pocket Reflection",
@@ -428,7 +428,7 @@
 
 	"hexical.page.conjure_compass.title": "Conjure Compasses",
 	"hexcasting.spell.hexical:conjure_compass": "Conjure Compass",
-	"hexical.page.conjure_compass.summary": "Conjures a compass at the location pointing towards the second vector. Costs one shard.",
+	"hexical.page.conjure_compass.summary": "Conjures a compass at the location pointing towards the second vector. Costs three dust.",
 	"hexical.page.conjure_compass.description": "The compass does not remember the dimension it was formed in, so regardless of dimension, it points towards the same location. If read with Scribe's Reflection, it returns a unit vector pointing towards the location inside it.$(br2)$(o)Aye, the compass doesn't point North. But we're not trying to find North, are we?$()",
 
 	"hexical.page.spike.title": "Conjure Spike",
