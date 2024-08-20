@@ -5,8 +5,10 @@
 - changed pattern for Caliper's Purification to not conflict with HexVR
 - changed some translations to fit on the page
 - changed Epiphany Reflection to Epiphany Purification, now takes in a player
-- changed Greater Blink to be significantly cheaper to reward math
+- changed Greater Blink to two dust to reward math
 - changed Displace to be *free*
+- changed Wristpocket to be an eighth of a dust rather than three dust
+- changed Conjure Compass to be three dust rather than a shard
 - fixed conjured staff's mirror disguise not being held properly
 - fixed evocation kicking every player outside of render distance
 - fixed media jar not dropping

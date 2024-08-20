@@ -20,7 +20,7 @@ class OpDisplace : SpellAction {
 		val destination = args.getVec3(1, argc)
 		if (!ctx.spellCircle!!.aabb.contains(destination))
 			throw OutsideCircleMishap()
-		return Triple(Spell(entity, destination), MediaConstants.SHARD_UNIT * 3, listOf())
+		return Triple(Spell(entity, destination), 0, listOf())
 	}
 
 	private data class Spell(val entity: Entity, val destination: Vec3d) : RenderedSpell {
