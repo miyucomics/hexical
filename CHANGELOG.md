@@ -17,6 +17,7 @@
 - fixed translation error for identifier iota
 - fixed minor typos in documentation
 - fixed incorrect typing in documentation
+- fixed prestidigitation not working on sheeps and pumpkins
 
 ## 1.3.1
 - fixed bug where magic missile would crash on servers
