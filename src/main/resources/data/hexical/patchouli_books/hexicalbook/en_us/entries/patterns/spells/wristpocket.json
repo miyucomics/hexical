@@ -20,14 +20,14 @@
 			"op_id": "hexical:wristpocket_item",
 			"anchor": "hexical:wristpocket_item",
 			"input": "",
-			"output": "",
+			"output": "identifier/null",
 			"text": "hexical.page.wristpocket_item.summary"
 		}, {
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:wristpocket_count",
 			"anchor": "hexical:wristpocket_count",
 			"input": "",
-			"output": "",
+			"output": "number",
 			"text": "hexical.page.wristpocket_count.summary"
 		}, {
 			"type": "hexcasting:pattern",
