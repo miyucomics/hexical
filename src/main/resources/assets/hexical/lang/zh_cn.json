@@ -78,7 +78,7 @@
 	"hexcasting.mishap.invalid_value.pattern_list": "一个仅由图案组成的列表",
 	"hexcasting.mishap.invalid_value.mesh_design": "一个由最多32个模长小于10的向量组成的列表",
 	"hexcasting.mishap.invalid_value.class.dye": "一个染料",
-	"hexcasting.mishap.invalid_value.identifier": "一个标识",
+	"hexcasting.mishap.invalid_value.class.identifier": "一个标识",
 	"hexcasting.mishap.invalid_value.true_dye": "一个有色染料",
 	"hexcasting.mishap.invalid_value.enchantment_id": "一个代表魔咒的标识",
 	"hexcasting.mishap.invalid_value.block_id": "一个代表方块的标识",
