@@ -379,8 +379,6 @@
 	"hexical.page.wristpocket.0": "I can perform the standard magic trick of vanishing an item and bringing it back. The item hides in the $(o)wristpocket$(), where I can use _media to manipulate it. Wristpocketed items stay with me even after death and I can recall them once I have a $(l:items/staff)staff$() again.$(br2)$(o)Because making something disappear isn't enough; you have to bring it back.$()",
 	"hexcasting.spell.hexical:wristpocket": "Wristpocket",
 	"hexical.page.wristpocket.summary": "This spell vanishes the stack of items in my other hand, or conjures it back, swapping if my other hand is holding something. Costs 1/8th of a dust if an item is inserted or swapped in.",
-	"hexcasting.spell.hexical:ingest": "Assimilate Food",
-	"hexical.page.ingest.summary": "This spell makes me eat my wristpocketed item, nourishing or applying potions to me. Regardless of the item's time to eat or if I'm full, this spell makes me consume it instantly.",
 	"hexcasting.spell.hexical:wristpocket_item": "Pocket Reflection",
 	"hexical.page.wristpocket_item.summary": "Returns the identifier of the item in my wristpocket, or null if it is empty.",
 	"hexcasting.spell.hexical:wristpocket_count": "Pocket Reflection II",
@@ -388,6 +386,8 @@
 	"hexcasting.spell.hexical:mage_hand": "Mage Hand",
 	"hexical.page.mage_hand.summary": "Conjures a magical hand that uses my wristpocketed item to interact with the world. If my wristpocket is empty, acts as though I had interacted with the world.",
 	"hexical.page.mage_hand.0": "- if taking an entity, interacts with the entity with the item.$(br)- if taking a vector, interacts with the block with the item.$(br2)$(o)A spectral, floating hand appears at a point you choose within range.$()",
+	"hexcasting.spell.hexical:ingest": "Assimilate Food",
+	"hexical.page.ingest.summary": "This spell makes me eat my wristpocketed item, nourishing or applying potions to me. Regardless of the item's time to eat or if I'm full, this spell makes me consume it instantly.",
 
 	"hexical.page.specks.title": "Specks",
 	"hexical.page.specks.0": "I can conjure an image of an iota into the world, called a $(thing)speck$(). Nature allows me to customize them quite extensively, altering their size, thickness of stroke, and more. They also take on my pigment color. Once they are in the world, I can move, rotate, and otherwise alter them for free, regardless of range.",
