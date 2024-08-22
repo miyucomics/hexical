@@ -14,7 +14,6 @@ import net.minecraft.util.math.Vec3f
 
 class OpWeaveMesh : ConstMediaAction {
 	override val argc = 2
-	override val mediaCost: Int = MediaConstants.DUST_UNIT / 100
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
 		val mesh = args.getEntity(0, argc)
 		if (mesh !is MeshEntity)
