@@ -40,9 +40,7 @@ class MagicMissileEntity(entityType: EntityType<out MagicMissileEntity?>, world:
 
 	override fun onHit(target: LivingEntity) {
 		target.damage(HexicalDamageTypes.magicMissile(this, this.owner), 2f)
-		val vector = velocity.multiply(1.0, 0.0, 1.0).normalize().multiply(0.6)
-		if (vector.lengthSquared() > 0.0)
-			target.addVelocity(vector.x, 0.1, vector.z)
+		target.velocity = this.velocity.multiply(1.0, 0.0, 1.0).normalize().multiply(0.6).add(0.0, 0.1, 0.0)
 		super.onHit(target)
 	}
 
