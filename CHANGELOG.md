@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.4.0
+- added effect to magic missiles to set the velocity of a target hit to 0.6th of their own normalized velocity + a bit of upwards push
+
 ## 1.3.2
 - changed keybind reflections to return -1 when not active
 - changed pattern for Caliper's Purification to not conflict with HexVR
@@ -16,8 +19,8 @@
 - fixed special raycasts not returning the center of blocks but their corner instead
 - fixed translation error for identifier iota
 - fixed minor typos in documentation
-- fixed incorrect typing in documentation
-- fixed prestidigitation not working on sheeps and pumpkins
+- fixed prestidigitation not working on sheep and pumpkins
+- fixed incorrect typing of wristpocket reflections in documentation
 
 ## 1.3.1
 - fixed bug where magic missile would crash on servers
