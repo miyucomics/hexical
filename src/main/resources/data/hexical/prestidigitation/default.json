@@ -5,6 +5,8 @@
 		"minecraft:tnt": "hexical:ignite",
 
 		"minecraft:pumpkin": "hexical:use_shears",
+		"minecraft:beehive": "hexical:use_shears",
+		"minecraft:bee_nest": "hexical:use_shears",
 
 		"minecraft:fire": "hexical:delete",
 		"minecraft:soul_fire": "hexical:delete",
