@@ -2,6 +2,8 @@
 
 ## 1.4.0
 - added effect to magic missiles to set the velocity of a target hit to 0.6th of their own normalized velocity + a bit of upwards push
+- added prestidigitation support for shearing beehives and bee nests for honeycomb
+- removed cost from Reweave Mesh
 
 ## 1.3.2
 - changed keybind reflections to return -1 when not active
