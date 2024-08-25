@@ -28,20 +28,12 @@ class MagicMissileEntity(entityType: EntityType<out MagicMissileEntity?>, world:
 			shatter()
 	}
 
-	override fun onBlockHit(blockHitResult: BlockHitResult) {
-		shatter()
-		super.onBlockHit(blockHitResult)
-	}
-
+	override fun onBlockHit(blockHitResult: BlockHitResult) { shatter() }
 	override fun onEntityHit(entityHitResult: EntityHitResult) {
-		shatter()
-		super.onEntityHit(entityHitResult)
-	}
-
-	override fun onHit(target: LivingEntity) {
+		val target = entityHitResult.entity
 		target.damage(HexicalDamageTypes.magicMissile(this, this.owner), 2f)
 		target.velocity = this.velocity.multiply(1.0, 0.0, 1.0).normalize().multiply(0.6).add(0.0, 0.1, 0.0)
-		super.onHit(target)
+		shatter()
 	}
 
 	private fun shatter() {
