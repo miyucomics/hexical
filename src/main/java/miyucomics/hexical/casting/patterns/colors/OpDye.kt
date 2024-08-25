@@ -1,5 +1,6 @@
 package miyucomics.hexical.casting.patterns.colors
 
+import at.petrak.hexcasting.api.misc.FrozenColorizer
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.*
 import at.petrak.hexcasting.api.spell.casting.CastingContext
@@ -7,10 +8,12 @@ import at.petrak.hexcasting.api.spell.iota.EntityIota
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.Vec3Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
+import at.petrak.hexcasting.common.lib.HexItems
 import miyucomics.hexical.casting.iota.getDye
 import miyucomics.hexical.casting.iota.getTrueDye
 import miyucomics.hexical.casting.mishaps.DyeableMishap
 import miyucomics.hexical.data.DyeData
+import miyucomics.hexical.interfaces.Specklike
 import net.minecraft.block.*
 import net.minecraft.block.entity.ShulkerBoxBlockEntity
 import net.minecraft.entity.ItemEntity
@@ -45,6 +48,10 @@ class OpDye : SpellAction {
 					is ShulkerEntity -> {
 						val trueDye = args.getTrueDye(1, argc)
 						Triple(ShulkerSpell(entity, trueDye), cost, listOf())
+					}
+					is Specklike -> {
+						val trueDye = args.getTrueDye(1, argc)
+						Triple(SpecklikeSpell(entity, trueDye), cost, listOf())
 					}
 					is WolfEntity -> {
 						val trueDye = args.getTrueDye(1, argc)
@@ -156,6 +163,12 @@ class OpDye : SpellAction {
 		}
 	}
 
+	private data class CatSpell(val cat: CatEntity, val dye: DyeColor) : RenderedSpell {
+		override fun cast(ctx: CastingContext) {
+			cat.collarColor = dye
+		}
+	}
+
 	private data class ItemSpell(val entity: ItemEntity, val item: Item, val dye: String) : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
 			val newStack = ItemStack(DyeData.getNewItem(item, dye), entity.stack.count)
@@ -176,9 +189,9 @@ class OpDye : SpellAction {
 		}
 	}
 
-	private data class CatSpell(val cat: CatEntity, val dye: DyeColor) : RenderedSpell {
+	private data class SpecklikeSpell(val speck: Specklike, val dye: DyeColor) : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
-			cat.collarColor = dye
+			speck.setPigment(FrozenColorizer(ItemStack(HexItems.DYE_COLORIZERS[dye]!!), ctx.caster.uuid))
 		}
 	}
 
