@@ -358,7 +358,7 @@
 	"hexical.page.get_dye.summary": "Gets the dye of a block or entity.",
 	"hexcasting.spell.hexical:dye": "Dye",
 	"hexical.page.dye.summary": "Dyes a dyeable block or entity. Costs an eighth of a dust.",
-	"hexical.page.colors.1": "The valid block targets for this spell include beds, candles, cakes with candles, carpets, concrete, concrete powder, glazed terracotta, sand into red sand and vice versa, sandstone and all blocks derived from it into its red variant and vice versa, shulker boxes, stained glass, stained glass panes, terracotta, tulips into their multiple colors, and wool blocks. As for entities, cat collars, dog collars, shulkers, and item entities of all of the above blocks are valid.",
+	"hexical.page.colors.1": "The valid block targets for this spell include beds, candles, cakes with candles, carpets, concrete, concrete powder, glazed terracotta, sand into red sand and vice versa, sandstone and all blocks derived from it into its red variant and vice versa, shulker boxes, stained glass, stained glass panes, terracotta, tulips into their multiple colors, and wool blocks. As for entities, cat collars, dog collars, specklikes, shulkers, and item entities of all of the above blocks are valid.",
 	"hexcasting.spell.hexical:translate_dye": "Vision Purification",
 	"hexical.page.translate_dye.summary": "Translates a dye color into a vector, where each component is from 0 to 1 and represents the red, green, and blueness of the dye respectively.",
 	"hexcasting.spell.hexical:sample_pigment": "Pigment Distillation",
