@@ -1,0 +1,24 @@
+{
+	"parent": "hexcasting:root",
+	"criteria": {
+		"hexxy": {
+			"trigger": "hexical:summon_hexxy"
+		}
+	},
+	"display": {
+		"announce_to_chat": true,
+		"title": {
+			"translate": "advancements.hexical.conjure_hexxy.title"
+		},
+		"description": {
+			"translate": "advancements.hexical.conjure_hexxy.description"
+		},
+		"frame": "challenge",
+		"hidden": true,
+		"icon": {
+			"item": "hexcasting:lens"
+		},
+		"show_toast": true
+	},
+	"requirements": [["hexxy"]]
+}
