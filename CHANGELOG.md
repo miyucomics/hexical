@@ -3,6 +3,7 @@
 ## 1.4.0
 - added effect to magic missiles to set the velocity of a target hit to 0.6th of their own normalized velocity + a bit of upwards push
 - added prestidigitation support for shearing beehives and bee nests for honeycomb
+- fixed bug that made magic missile deal velocity damage, making it the cheapest railgun in existence
 - removed cost from Reweave Mesh
 
 ## 1.3.2
