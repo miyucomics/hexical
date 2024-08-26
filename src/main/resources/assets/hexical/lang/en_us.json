@@ -136,6 +136,7 @@
 	"hexcasting.spell.book.hexical:modify_block_replaceable": "Replaceable",
 	"hexcasting.spell.book.hexical:modify_block_semipermeable": "Semi-Permeable",
 	"hexcasting.spell.book.hexical:modify_block_volatile": "Volatile",
+	"hexcasting.spell.book.hexical:read_shelf": "Librarian's Purif. II",
 
 	"hexical.page.hexical_changes.title": "Hexical Changes",
 	"hexical.page.hexical_changes.0": "I feel strangely more in tune with the ambient _media around me. It feels $(o)friendlier$() somehow... I can even feel it rippling around me, responding to my actions, as if suggesting new spells to me. The _media itself also feels more malleable, more $(o)workable$(), allowing me to manipulate it into precise specialized effects.",
@@ -328,11 +329,15 @@
 	"hexical.page.themis.1": "After each iteration, it demands a number at the top of the stack which will correspond to that iota. At the end of the gambit, a list is pushed with the iota sorted by that number in increasing order. The order of identically numbered iota are kept. If it encounters $(l:patterns/meta#hexcasting:halt)$(action)Charon's Gambit$(), it will create a sorted list with only the iota it has come across.$(br2)$(o)Shuffling is the only thing which Nature cannot undo.$()",
 
 	"hexical.page.akashic_utils.title": "Akashic Utilities",
-	"hexical.page.akashic_utils.0": "I have discovered some conveniences for akashic libraries! I can right-click or $(l:hexical:patterns/spells/prestidigitation)magically interact$() with a filled akashic bookshelf to copy its iota into my stack. I can also right-click with a scroll to copy the pattern of the bookshelf onto the scroll. Finally, I have discovered two patterns that can read and write directly to a bookshelf within ambit for free.",
-	"hexcasting.spell.hexical:read_shelf": "Librarian's Purification",
+	"hexical.page.akashic_utils.0": "I have discovered some conveniences for akashic libraries! I can right-click or $(l:hexical:patterns/spells/prestidigitation)magically interact$() with a filled akashic bookshelf to copy its iota into my stack. I can also right-click with a scroll to copy the pattern of the bookshelf onto the scroll. Finally, I have discovered patterns that can read and write directly to a bookshelf within ambit for free.",
+	"hexcasting.spell.hexical:key_shelf": "Librarian's Purification",
+	"hexical.page.key_shelf.summary": "Reads the pattern key of an akashic bookshelf within ambit. Free to cast.",
+	"hexcasting.spell.hexical:read_shelf": "Librarian's Purification II",
 	"hexical.page.read_shelf.summary": "Reads the iota from an akashic bookshelf within ambit. Free to cast.",
 	"hexcasting.spell.hexical:write_shelf": "Librarian's Gambit",
 	"hexical.page.write_shelf.summary": "Writes an iota under a pattern to an akashic bookshelf within ambit. Free to cast.",
+	"hexcasting.spell.hexical:clear_shelf": "Librarian's Gambit II",
+	"hexical.page.clear_shelf.summary": "Clears an akashic bookshelf within ambit. Free to cast.",
 
 	"hexical.page.mage_block.title": "Mage Blocks",
 	"hexical.page.mage_block": "The blocks from $(l:patterns/spells/blockworks#hexcasting:conjure_block)$(action)Conjure Block$() last forever, are consequently a pain to clean up, and are not too versatile. Luckily, Nature offers an elegant and flexible alternative. These mage blocks come with a suite of $(o)modifiers$(). I could even stack multiple modifiers on one block or reapply a modifier to toggle it off.",

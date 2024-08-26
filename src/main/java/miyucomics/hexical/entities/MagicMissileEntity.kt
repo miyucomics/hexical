@@ -16,6 +16,8 @@ import net.minecraft.sound.SoundEvent
 import net.minecraft.sound.SoundEvents
 import net.minecraft.util.hit.BlockHitResult
 import net.minecraft.util.hit.EntityHitResult
+import net.minecraft.util.hit.HitResult
+import net.minecraft.world.RaycastContext
 import net.minecraft.world.World
 
 class MagicMissileEntity(entityType: EntityType<out MagicMissileEntity?>, world: World) : PersistentProjectileEntity(entityType, world) {
