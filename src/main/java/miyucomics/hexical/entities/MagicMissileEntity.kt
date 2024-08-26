@@ -4,7 +4,6 @@ import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.registry.HexicalDamageTypes
 import miyucomics.hexical.registry.HexicalEntities
 import net.minecraft.entity.EntityType
-import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.entity.projectile.PersistentProjectileEntity
 import net.minecraft.item.ItemStack

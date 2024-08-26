@@ -5,6 +5,8 @@
 - added effect to magic missiles to set the velocity of a target hit to 0.6th of their own normalized velocity + a bit of upwards push
 - added prestidigitation support for shearing beehives and bee nests for honeycomb
 - added ability to dye specklikes with the Dye spell
+- added wandering lamps: resembles a compass and points you towards the vector left at the top of the stack
+- changed Offerings page to no longer require using up a lamp
 - fixed bug that made magic missile deal velocity damage, making it the cheapest railgun in existence
 - removed cost from Reweave Mesh
 
