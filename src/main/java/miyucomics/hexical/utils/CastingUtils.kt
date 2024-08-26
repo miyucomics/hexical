@@ -29,10 +29,12 @@ object CastingUtils {
 	}
 
 	@JvmStatic
-	fun castSpecial(world: ServerWorld, user: ServerPlayerEntity, hex: List<Iota>, source: SpecializedSource, finale: Boolean) {
+	fun castSpecial(world: ServerWorld, user: ServerPlayerEntity, hex: List<Iota>, source: SpecializedSource, finale: Boolean): CastingHarness {
 		val ctx = CastingContext(user, user.activeHand, CastingContext.CastSource.PACKAGED_HEX)
 		(ctx as CastingContextMinterface).setSpecializedSource(source)
 		(ctx as CastingContextMinterface).setFinale(finale)
-		CastingHarness(ctx).executeIotas(hex, world)
+		val harness = CastingHarness(ctx)
+		harness.executeIotas(hex, world)
+		return harness
 	}
 }

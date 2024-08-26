@@ -8,6 +8,7 @@ import at.petrak.hexcasting.api.spell.getList
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapBadOffhandItem
 import at.petrak.hexcasting.xplat.IXplatAbstractions
+import miyucomics.hexical.interfaces.GenieLamp
 import miyucomics.hexical.registry.HexicalAdvancements
 import miyucomics.hexical.registry.HexicalItems
 import net.minecraft.item.ItemStack
@@ -17,9 +18,7 @@ class OpEducateGenie : SpellAction {
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		val patterns = args.getList(0, argc).toList()
 		val stack = ctx.caster.getStackInHand(ctx.otherHand)
-		if (stack.isEmpty)
-			throw MishapBadOffhandItem.of(stack, ctx.otherHand, "lamp_full")
-		if (!(stack.isOf(HexicalItems.LAMP_ITEM) || stack.isOf(HexicalItems.ARCH_LAMP_ITEM)))
+		if (stack.item !is GenieLamp)
 			throw MishapBadOffhandItem.of(stack, ctx.otherHand, "lamp_full")
 		return Triple(Spell(patterns, stack), 0, listOf())
 	}

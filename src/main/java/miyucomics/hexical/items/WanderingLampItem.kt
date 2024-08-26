@@ -2,6 +2,7 @@ package miyucomics.hexical.items
 
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.iota.NullIota
+import at.petrak.hexcasting.api.spell.iota.Vec3Iota
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.api.utils.serializeToNBT
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
@@ -13,6 +14,7 @@ import miyucomics.hexical.registry.HexicalAdvancements
 import miyucomics.hexical.registry.HexicalItems
 import miyucomics.hexical.registry.HexicalSounds
 import miyucomics.hexical.utils.CastingUtils
+import net.fabricmc.loader.impl.lib.sat4j.core.Vec
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemGroup
@@ -26,10 +28,10 @@ import net.minecraft.util.UseAction
 import net.minecraft.util.collection.DefaultedList
 import net.minecraft.world.World
 
-class HandLampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.HEXICAL_GROUP)), GenieLamp {
+class WanderingLampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.HEXICAL_GROUP)), GenieLamp {
 	override fun appendStacks(group: ItemGroup, stacks: DefaultedList<ItemStack>) {
 		if (this.isIn(group)) {
-			val stack = ItemStack(HexicalItems.HAND_LAMP_ITEM)
+			val stack = ItemStack(HexicalItems.WANDERING_LAMP_ITEM)
 			val holder = IXplatAbstractions.INSTANCE.findHexHolder(stack)
 			holder!!.writeHex(listOf(), MediaConstants.DUST_UNIT * 200000)
 			stacks.add(stack)
@@ -55,14 +57,27 @@ class HandLampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.H
 	override fun usageTick(world: World, user: LivingEntity, stack: ItemStack, remainingUseTicks: Int) {
 		if (world.isClient) return
 		if (getMedia(stack) == 0) return
-		CastingUtils.castSpecial(world as ServerWorld, user as ServerPlayerEntity, getHex(stack, world) ?: return, SpecializedSource.HAND_LAMP, finale = false)
+		val castStack = CastingUtils.castSpecial(world as ServerWorld, user as ServerPlayerEntity, getHex(stack, world) ?: return, SpecializedSource.HAND_LAMP, finale = false).stack
+		if (castStack.size > 0 && castStack.last() is Vec3Iota) {
+			val target = (castStack.last() as Vec3Iota).vec3
+			stack.nbt!!.putInt("x", target.x.toInt())
+			stack.nbt!!.putInt("y", target.y.toInt())
+			stack.nbt!!.putInt("z", target.z.toInt())
+		}
 		if (getMedia(stack) == 0)
 			HexicalAdvancements.USE_UP_LAMP.trigger(user)
 	}
 
 	override fun onStoppedUsing(stack: ItemStack, world: World, user: LivingEntity, remainingUseTicks: Int) {
-		if (!world.isClient)
-			CastingUtils.castSpecial(world as ServerWorld, user as ServerPlayerEntity, getHex(stack, world) ?: return, SpecializedSource.HAND_LAMP, finale = true)
+		if (!world.isClient) {
+			val castStack = CastingUtils.castSpecial(world as ServerWorld, user as ServerPlayerEntity, getHex(stack, world) ?: return, SpecializedSource.HAND_LAMP, finale = false).stack
+			if (castStack.size > 0 && castStack.last() is Vec3Iota) {
+				val target = (castStack.last() as Vec3Iota).vec3
+				stack.nbt!!.putInt("x", target.x.toInt())
+				stack.nbt!!.putInt("y", target.y.toInt())
+				stack.nbt!!.putInt("z", target.z.toInt())
+			}
+		}
 		world.playSound(user.x, user.y, user.z, HexicalSounds.LAMP_DEACTIVATE, SoundCategory.MASTER, 1f, 1f, true)
 	}
 
