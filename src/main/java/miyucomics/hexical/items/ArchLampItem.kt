@@ -6,6 +6,7 @@ import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.enums.SpecializedSource
+import miyucomics.hexical.interfaces.GenieLamp
 import miyucomics.hexical.interfaces.PlayerEntityMinterface
 import miyucomics.hexical.registry.HexicalAdvancements
 import miyucomics.hexical.registry.HexicalItems
@@ -24,12 +25,12 @@ import net.minecraft.util.TypedActionResult
 import net.minecraft.util.collection.DefaultedList
 import net.minecraft.world.World
 
-class ArchLampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.HEXICAL_GROUP)) {
+class ArchLampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.HEXICAL_GROUP)), GenieLamp {
 	override fun appendStacks(group: ItemGroup, stacks: DefaultedList<ItemStack>) {
 		if (this.isIn(group)) {
 			val stack = ItemStack(HexicalItems.ARCH_LAMP_ITEM)
 			val holder = IXplatAbstractions.INSTANCE.findHexHolder(stack)
-			holder!!.writeHex(listOf(), MediaConstants.DUST_UNIT * 64000)
+			holder!!.writeHex(listOf(), MediaConstants.DUST_UNIT * 200000)
 			stacks.add(stack)
 		}
 	}

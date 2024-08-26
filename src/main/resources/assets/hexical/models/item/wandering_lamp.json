@@ -1,0 +1,174 @@
+{
+	"parent": "item/generated",
+	"textures": {
+		"layer0": "hexical:item/wandering_lamp_16"
+	},
+	"overrides": [
+		{
+			"predicate": {
+				"angle": 0
+			},
+			"model": "hexical:item/wandering_lamp_16"
+		}, {
+			"predicate": {
+				"angle": 0.015625
+			},
+			"model": "hexical:item/wandering_lamp_17"
+		}, {
+			"predicate": {
+				"angle": 0.046875
+			},
+			"model": "hexical:item/wandering_lamp_18"
+		}, {
+			"predicate": {
+				"angle": 0.078125
+			},
+			"model": "hexical:item/wandering_lamp_19"
+		}, {
+			"predicate": {
+				"angle": 0.109375
+			},
+			"model": "hexical:item/wandering_lamp_20"
+		}, {
+			"predicate": {
+				"angle": 0.140625
+			},
+			"model": "hexical:item/wandering_lamp_21"
+		}, {
+			"predicate": {
+				"angle": 0.171875
+			},
+			"model": "hexical:item/wandering_lamp_22"
+		}, {
+			"predicate": {
+				"angle": 0.203125
+			},
+			"model": "hexical:item/wandering_lamp_23"
+		}, {
+			"predicate": {
+				"angle": 0.234375
+			},
+			"model": "hexical:item/wandering_lamp_24"
+		}, {
+			"predicate": {
+				"angle": 0.265625
+			},
+			"model": "hexical:item/wandering_lamp_25"
+		}, {
+			"predicate": {
+				"angle": 0.296875
+			},
+			"model": "hexical:item/wandering_lamp_26"
+		}, {
+			"predicate": {
+				"angle": 0.328125
+			},
+			"model": "hexical:item/wandering_lamp_27"
+		}, {
+			"predicate": {
+				"angle": 0.359375
+			},
+			"model": "hexical:item/wandering_lamp_28"
+		}, {
+			"predicate": {
+				"angle": 0.390625
+			},
+			"model": "hexical:item/wandering_lamp_29"
+		}, {
+			"predicate": {
+				"angle": 0.421875
+			},
+			"model": "hexical:item/wandering_lamp_30"
+		}, {
+			"predicate": {
+				"angle": 0.453125
+			},
+			"model": "hexical:item/wandering_lamp_31"
+		}, {
+			"predicate": {
+				"angle": 0.484375
+			},
+			"model": "hexical:item/wandering_lamp_00"
+		}, {
+			"predicate": {
+				"angle": 0.515625
+			},
+			"model": "hexical:item/wandering_lamp_01"
+		}, {
+			"predicate": {
+				"angle": 0.546875
+			},
+			"model": "hexical:item/wandering_lamp_02"
+		}, {
+			"predicate": {
+				"angle": 0.578125
+			},
+			"model": "hexical:item/wandering_lamp_03"
+		}, {
+			"predicate": {
+				"angle": 0.609375
+			},
+			"model": "hexical:item/wandering_lamp_04"
+		}, {
+			"predicate": {
+				"angle": 0.640625
+			},
+			"model": "hexical:item/wandering_lamp_05"
+		}, {
+			"predicate": {
+				"angle": 0.671875
+			},
+			"model": "hexical:item/wandering_lamp_06"
+		}, {
+			"predicate": {
+				"angle": 0.703125
+			},
+			"model": "hexical:item/wandering_lamp_07"
+		}, {
+			"predicate": {
+				"angle": 0.734375
+			},
+			"model": "hexical:item/wandering_lamp_08"
+		}, {
+			"predicate": {
+				"angle": 0.765625
+			},
+			"model": "hexical:item/wandering_lamp_09"
+		}, {
+			"predicate": {
+				"angle": 0.796875
+			},
+			"model": "hexical:item/wandering_lamp_10"
+		}, {
+			"predicate": {
+				"angle": 0.828125
+			},
+			"model": "hexical:item/wandering_lamp_11"
+		}, {
+			"predicate": {
+				"angle": 0.859375
+			},
+			"model": "hexical:item/wandering_lamp_12"
+		}, {
+			"predicate": {
+				"angle": 0.890625
+			},
+			"model": "hexical:item/wandering_lamp_13"
+		}, {
+			"predicate": {
+				"angle": 0.921875
+			},
+			"model": "hexical:item/wandering_lamp_14"
+		}, {
+			"predicate": {
+				"angle": 0.953125
+			},
+			"model": "hexical:item/wandering_lamp_15"
+		}, {
+			"predicate": {
+				"angle": 0.984375
+			},
+			"model": "hexical:item/wandering_lamp_16"
+		}
+	]
+}
