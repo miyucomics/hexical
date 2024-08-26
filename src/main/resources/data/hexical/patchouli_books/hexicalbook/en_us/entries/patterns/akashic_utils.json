@@ -11,6 +11,13 @@
 			"text": "hexical.page.akashic_utils.0"
 		}, {
 			"type": "hexcasting:pattern",
+			"op_id": "hexical:key_shelf",
+			"anchor": "hexical:key_shelf",
+			"input": "vector",
+			"output": "pattern/null",
+			"text": "hexical.page.key_shelf.summary"
+		}, {
+			"type": "hexcasting:pattern",
 			"op_id": "hexical:read_shelf",
 			"anchor": "hexical:read_shelf",
 			"input": "vector",
@@ -23,6 +30,13 @@
 			"input": "vector, pattern, any",
 			"output": "",
 			"text": "hexical.page.write_shelf.summary"
+		}, {
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:clear_shelf",
+			"anchor": "hexical:clear_shelf",
+			"input": "vector",
+			"output": "",
+			"text": "hexical.page.clear_shelf.summary"
 		}
 	]
 }

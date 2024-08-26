@@ -6,6 +6,7 @@
 - added prestidigitation support for shearing beehives and bee nests for honeycomb
 - added ability to dye specklikes with the Dye spell
 - added wandering lamps: resembles a compass and points you towards the vector left at the top of the stack
+- added two more akashic utility patterns for clearing and getting the pattern of an akashic bookshelf
 - changed Offerings page to no longer require using up a lamp
 - fixed bug that made magic missile deal velocity damage, making it the cheapest railgun in existence
 - removed cost from Reweave Mesh

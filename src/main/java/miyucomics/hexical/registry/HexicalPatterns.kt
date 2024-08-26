@@ -7,6 +7,8 @@ import at.petrak.hexcasting.api.spell.math.HexPattern
 import at.petrak.hexcasting.common.casting.operators.selectors.OpGetEntitiesBy
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.casting.patterns.*
+import miyucomics.hexical.casting.patterns.akashic.OpClearAkashicShelf
+import miyucomics.hexical.casting.patterns.akashic.OpKeyAkashicShelf
 import miyucomics.hexical.casting.patterns.akashic.OpReadAkashicShelf
 import miyucomics.hexical.casting.patterns.akashic.OpWriteAkashicShelf
 import miyucomics.hexical.casting.patterns.circle.OpDisplace
@@ -91,8 +93,10 @@ object HexicalPatterns {
 		register("glow_scroll", "waeqqqqedeqdqdqdqeqdwwd", HexDir.EAST, OpGlowScroll())
 		register("vanish_scroll", "waeqqqqedeqeeweeqewee", HexDir.EAST, OpVanishScroll())
 
+		register("key_shelf", "qaqqadaq", HexDir.EAST, OpKeyAkashicShelf())
 		register("read_shelf", "qaqqqada", HexDir.EAST, OpReadAkashicShelf())
 		register("write_shelf", "edeeedad", HexDir.SOUTH_WEST, OpWriteAkashicShelf())
+		register("clear_shelf", "edeedade", HexDir.SOUTH_WEST, OpClearAkashicShelf())
 
 		register("displace", "qaqqqqeedaqqqa", HexDir.NORTH_EAST, OpDisplace())
 
