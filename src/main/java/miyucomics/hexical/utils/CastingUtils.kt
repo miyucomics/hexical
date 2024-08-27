@@ -1,22 +1,68 @@
 package miyucomics.hexical.utils
 
 import at.petrak.hexcasting.api.HexAPI
-import at.petrak.hexcasting.api.spell.casting.CastingContext
+import at.petrak.hexcasting.api.misc.DiscoveryHandlers
+import at.petrak.hexcasting.api.misc.HexDamageSources
+import at.petrak.hexcasting.api.mod.HexConfig
 import at.petrak.hexcasting.api.spell.casting.CastingHarness
 import at.petrak.hexcasting.api.spell.iota.Iota
+import at.petrak.hexcasting.api.spell.mishaps.Mishap
 import at.petrak.hexcasting.api.spell.mishaps.MishapOthersName
+import at.petrak.hexcasting.api.utils.compareMediaItem
+import at.petrak.hexcasting.api.utils.extractMedia
+import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.enums.SpecializedSource
 import miyucomics.hexical.interfaces.CastingContextMinterface
+import miyucomics.hexical.registry.HexicalItems
+import net.minecraft.item.ItemStack
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld
+import net.minecraft.util.Hand
+import kotlin.math.ceil
+import kotlin.math.max
 
 @Suppress("CAST_NEVER_SUCCEEDS")
 object CastingUtils {
+	@JvmStatic
+	fun castFromInventory(harness: CastingHarness, cost: Int): Int {
+		var costLeft = cost
+		val mediaSources = DiscoveryHandlers.collectMediaHolders(harness)
+			.sortedWith(Comparator(::compareMediaItem).reversed())
+		for (source in mediaSources) {
+			costLeft -= extractMedia(source, costLeft, false)
+			if (costLeft <= 0)
+				break
+		}
+
+		if (costLeft > 0) {
+			val mediaToHealth = HexConfig.common().mediaToHealthRate()
+			val healthToRemove = max(costLeft.toDouble() / mediaToHealth, 0.5)
+			val mediaAbleToCastFromHP = harness.ctx.caster.health * mediaToHealth
+			Mishap.trulyHurt(harness.ctx.caster, HexDamageSources.OVERCAST, healthToRemove.toFloat())
+			costLeft -= ceil(mediaAbleToCastFromHP - (harness.ctx.caster.health * mediaToHealth)).toInt()
+		}
+
+		return costLeft
+	}
+
 	@JvmStatic
 	fun assertNoTruename(iota: Iota, caster: ServerPlayerEntity) {
 		val trueName = MishapOthersName.getTrueNameFromDatum(iota, caster)
 		if (trueName != null)
 			throw MishapOthersName(trueName)
+	}
+
+	@JvmStatic
+	fun getActiveArchLamp(player: ServerPlayerEntity): ItemStack? {
+		val combinedInventory = listOf(player.inventory.main, player.inventory.armor, player.inventory.offHand)
+		for (inventory in combinedInventory) {
+			for (stack in inventory) {
+				if (stack.isOf(HexicalItems.ARCH_LAMP_ITEM) && stack.getOrCreateNbt().getBoolean("active")) {
+					return stack
+				}
+			}
+		}
+		return null
 	}
 
 	@JvmStatic
@@ -30,10 +76,10 @@ object CastingUtils {
 
 	@JvmStatic
 	fun castSpecial(world: ServerWorld, user: ServerPlayerEntity, hex: List<Iota>, source: SpecializedSource, finale: Boolean): CastingHarness {
-		val ctx = CastingContext(user, user.activeHand, CastingContext.CastSource.PACKAGED_HEX)
-		(ctx as CastingContextMinterface).setSpecializedSource(source)
-		(ctx as CastingContextMinterface).setFinale(finale)
-		val harness = CastingHarness(ctx)
+		val harness = IXplatAbstractions.INSTANCE.getHarness(user, Hand.MAIN_HAND)
+		(harness.ctx as CastingContextMinterface).setSpecializedSource(source)
+		(harness.ctx as CastingContextMinterface).setFinale(finale)
+		harness.stack = mutableListOf()
 		harness.executeIotas(hex, world)
 		return harness
 	}

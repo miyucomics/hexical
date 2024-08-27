@@ -29,9 +29,8 @@ object HexicalKeybinds {
 					ClientPlayNetworking.send(HexicalNetworking.START_EVOKE_CHANNEL, PacketByteBufs.empty())
 				}
 			}
-			states[EVOKE_KEYBIND.translationKey] = EVOKE_KEYBIND.isPressed
 
-			for (key in listOf(client.options.forwardKey, client.options.leftKey, client.options.rightKey, client.options.backKey, client.options.jumpKey, TELEPATHY_KEYBIND)) {
+			for (key in listOf(client.options.forwardKey, client.options.leftKey, client.options.rightKey, client.options.backKey, client.options.jumpKey, TELEPATHY_KEYBIND, EVOKE_KEYBIND)) {
 				if (states.keys.contains(key.translationKey)) {
 					if (states[key.translationKey] == true && !key.isPressed) {
 						val buf = PacketByteBufs.create()

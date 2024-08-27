@@ -19,6 +19,7 @@ import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import miyucomics.hexical.enums.SpecializedSource;
 import miyucomics.hexical.interfaces.CastingContextMinterface;
 import miyucomics.hexical.items.ArchLampItem;
+import miyucomics.hexical.utils.CastingUtils;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
@@ -28,6 +29,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.List;
@@ -56,44 +58,23 @@ public class CastingHarnessMixin {
 	@Inject(method = "withdrawMedia", at = @At("HEAD"), cancellable = true, remap = false)
 	private void takeMediaFromArchLamp(int mediaCost, boolean allowOvercast, CallbackInfoReturnable<Integer> cir) {
 		CastingContext ctx = hexical$harness.getCtx();
-		if (((CastingContextMinterface) (Object) hexical$harness.getCtx()).getSpecializedSource() == SpecializedSource.ARCH_LAMP) {
-			if (ctx.getCaster().isCreative()) {
-				cir.setReturnValue(0);
-				return;
-			}
-			for (ItemStack stack : ctx.getCaster().getInventory().main) {
-				if (stack.getItem() instanceof ArchLampItem && stack.getOrCreateNbt().getBoolean("active")) {
-					ADMediaHolder mediaHolder = IXplatAbstractions.INSTANCE.findMediaHolder(stack);
-					assert mediaHolder != null;
-					int mediaToTake = Math.min(mediaCost, mediaHolder.withdrawMedia(-1, true));
-					mediaCost -= mediaToTake;
-					mediaHolder.withdrawMedia(mediaToTake, false);
-					cir.setReturnValue(mediaCost);
-					return;
-				}
-			}
-			for (ItemStack stack : ctx.getCaster().getInventory().offHand) {
-				if (stack.getItem() instanceof ArchLampItem && stack.getOrCreateNbt().getBoolean("active")) {
-					ADMediaHolder mediaHolder = IXplatAbstractions.INSTANCE.findMediaHolder(stack);
-					assert mediaHolder != null;
-					int mediaToTake = Math.min(mediaCost, mediaHolder.withdrawMedia(-1, true));
-					mediaCost -= mediaToTake;
-					mediaHolder.withdrawMedia(mediaToTake, false);
-					cir.setReturnValue(mediaCost);
-					return;
-				}
-			}
-			for (ItemStack stack : ctx.getCaster().getInventory().armor) {
-				if (stack.getItem() instanceof ArchLampItem && stack.getOrCreateNbt().getBoolean("active")) {
-					ADMediaHolder mediaHolder = IXplatAbstractions.INSTANCE.findMediaHolder(stack);
-					assert mediaHolder != null;
-					int mediaToTake = Math.min(mediaCost, mediaHolder.withdrawMedia(-1, true));
-					mediaCost -= mediaToTake;
-					mediaHolder.withdrawMedia(mediaToTake, false);
-					cir.setReturnValue(mediaCost);
-					return;
-				}
-			}
+		if (ctx.getCaster().isCreative()) {
+			cir.setReturnValue(0);
+			return;
+		}
+
+		SpecializedSource specializedSource = ((CastingContextMinterface) (Object) hexical$harness.getCtx()).getSpecializedSource();
+		switch (specializedSource) {
+			case ARCH_LAMP:
+				ItemStack lamp = CastingUtils.getActiveArchLamp(ctx.getCaster());
+				ADMediaHolder mediaHolder = IXplatAbstractions.INSTANCE.findMediaHolder(lamp);
+				assert mediaHolder != null;
+				int mediaToTake = Math.min(mediaCost, mediaHolder.withdrawMedia(-1, true));
+				mediaCost -= mediaToTake;
+				mediaHolder.withdrawMedia(mediaToTake, false);
+				cir.setReturnValue(mediaCost);
+			case EVOCATION:
+				cir.setReturnValue(CastingUtils.castFromInventory((CastingHarness) (Object) this, mediaCost));
 		}
 	}
 
