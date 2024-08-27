@@ -14,7 +14,6 @@ import miyucomics.hexical.registry.HexicalAdvancements
 import miyucomics.hexical.registry.HexicalItems
 import miyucomics.hexical.registry.HexicalSounds
 import miyucomics.hexical.utils.CastingUtils
-import net.fabricmc.loader.impl.lib.sat4j.core.Vec
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemGroup

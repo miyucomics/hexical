@@ -24,25 +24,24 @@ import kotlin.math.max
 @Suppress("CAST_NEVER_SUCCEEDS")
 object CastingUtils {
 	@JvmStatic
-	fun castFromInventory(harness: CastingHarness, cost: Int): Int {
-		var costLeft = cost
-		val mediaSources = DiscoveryHandlers.collectMediaHolders(harness)
-			.sortedWith(Comparator(::compareMediaItem).reversed())
-		for (source in mediaSources) {
-			costLeft -= extractMedia(source, costLeft, false)
-			if (costLeft <= 0)
+	fun takeMediaFromInventory(harness: CastingHarness, cost: Int): Int {
+		var remainingCost = cost
+
+		for (source in DiscoveryHandlers.collectMediaHolders(harness).sortedWith(Comparator(::compareMediaItem).reversed())) {
+			remainingCost -= extractMedia(source, remainingCost, simulate = false)
+			if (remainingCost <= 0)
 				break
 		}
 
-		if (costLeft > 0) {
+		if (remainingCost > 0) {
 			val mediaToHealth = HexConfig.common().mediaToHealthRate()
-			val healthToRemove = max(costLeft.toDouble() / mediaToHealth, 0.5)
-			val mediaAbleToCastFromHP = harness.ctx.caster.health * mediaToHealth
-			Mishap.trulyHurt(harness.ctx.caster, HexDamageSources.OVERCAST, healthToRemove.toFloat())
-			costLeft -= ceil(mediaAbleToCastFromHP - (harness.ctx.caster.health * mediaToHealth)).toInt()
+			val requiredBloodMedia = max(remainingCost.toDouble() / mediaToHealth, 0.5)
+			val availableBloodMedia = harness.ctx.caster.health * mediaToHealth
+			Mishap.trulyHurt(harness.ctx.caster, HexDamageSources.OVERCAST, requiredBloodMedia.toFloat())
+			remainingCost -= ceil(availableBloodMedia - (harness.ctx.caster.health * mediaToHealth)).toInt()
 		}
 
-		return costLeft
+		return remainingCost
 	}
 
 	@JvmStatic
@@ -55,13 +54,10 @@ object CastingUtils {
 	@JvmStatic
 	fun getActiveArchLamp(player: ServerPlayerEntity): ItemStack? {
 		val combinedInventory = listOf(player.inventory.main, player.inventory.armor, player.inventory.offHand)
-		for (inventory in combinedInventory) {
-			for (stack in inventory) {
-				if (stack.isOf(HexicalItems.ARCH_LAMP_ITEM) && stack.getOrCreateNbt().getBoolean("active")) {
+		for (inventory in combinedInventory)
+			for (stack in inventory)
+				if (stack.isOf(HexicalItems.ARCH_LAMP_ITEM) && stack.getOrCreateNbt().getBoolean("active"))
 					return stack
-				}
-			}
-		}
 		return null
 	}
 

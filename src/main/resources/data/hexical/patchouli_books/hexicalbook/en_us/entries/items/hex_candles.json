@@ -3,7 +3,7 @@
 	"icon": "hexical:hex_candle",
 	"advancement": "hexcasting:root",
 	"category": "hexcasting:items",
-    "sortnum": 4,
+	"sortnum": 4,
 	"pages": [
 		{
 			"type": "patchouli:text",
