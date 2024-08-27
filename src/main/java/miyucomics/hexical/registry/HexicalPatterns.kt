@@ -18,8 +18,7 @@ import miyucomics.hexical.casting.patterns.conjure.OpConjureHexburst
 import miyucomics.hexical.casting.patterns.conjure.OpConjureHextito
 import miyucomics.hexical.casting.patterns.conjure.OpConjureSpike
 import miyucomics.hexical.casting.patterns.eval.*
-import miyucomics.hexical.casting.patterns.evocation.OpInternalizeHex
-import miyucomics.hexical.casting.patterns.evocation.OpIsEvoking
+import miyucomics.hexical.casting.patterns.OpInternalizeHex
 import miyucomics.hexical.casting.patterns.firework.OpConjureFirework
 import miyucomics.hexical.casting.patterns.firework.OpSimulateFirework
 import miyucomics.hexical.casting.patterns.getters.*
@@ -192,7 +191,7 @@ object HexicalPatterns {
 		register("read_mesh", "edeeeeeweeeaqqwqwqq", HexDir.SOUTH_WEST, OpReadMesh())
 
 		register("internalize_hex", "wwaqqqqqeqdedwwqwqwwdedwwqwqw", HexDir.EAST, OpInternalizeHex())
-		register("is_evoking", "wwaqqqqqeeaqawwewewwaqawwewew", HexDir.EAST, OpIsEvoking())
+		register("is_evoking", "wwaqqqqqeeaqawwewewwaqawwewew", HexDir.EAST, OpGetKeybind("key.hexical.evoke"))
 
 		register("with_hand_lamp", "qwddedqqaqqqqq", HexDir.SOUTH_WEST, OpCheckSource(SpecializedSource.HAND_LAMP))
 		register("with_arch_lamp", "qaqwddedqqaqqqqq", HexDir.NORTH_EAST, OpCheckSource(SpecializedSource.ARCH_LAMP))
