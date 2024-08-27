@@ -1,7 +1,6 @@
 package miyucomics.hexical.mixin;
 
 import at.petrak.hexcasting.xplat.IXplatAbstractions;
-import miyucomics.hexical.HexicalMain;
 import miyucomics.hexical.casting.patterns.OpInternalizeHex;
 import miyucomics.hexical.interfaces.PlayerEntityMinterface;
 import miyucomics.hexical.state.EvokeState;
@@ -17,6 +16,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+@SuppressWarnings("UnreachableCode")
 @Mixin(PlayerEntity.class)
 public class PlayerEntityMixin implements PlayerEntityMinterface {
 	@Unique

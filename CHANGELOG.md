@@ -8,7 +8,10 @@
 - added wandering lamps: resembles a compass and points you towards the vector left at the top of the stack
 - added two more akashic utility patterns for clearing and getting the pattern of an akashic bookshelf
 - changed Offerings page to no longer require using up a lamp
+- changed evocation warmup period to 1 seconds
+- changed how Evoker's Purification works to be like all the other keybind patterns
 - fixed bug that made magic missile deal velocity damage, making it the cheapest railgun in existence
+- fixed a hacky workaround used by evocation where it replaces the player's hand. Now it directly takes from the inventory
 - removed cost from Reweave Mesh
 
 ## 1.3.2

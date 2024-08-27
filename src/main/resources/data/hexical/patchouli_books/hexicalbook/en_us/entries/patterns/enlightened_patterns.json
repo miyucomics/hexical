@@ -3,7 +3,7 @@
 	"icon": "minecraft:golden_sword",
 	"category": "hexcasting:patterns",
 	"advancement": "hexcasting:enlightenment",
-    "entry_color": "54398a",
+	"entry_color": "54398a",
 	"sortnum": 0,
 	"pages": [
 		{
