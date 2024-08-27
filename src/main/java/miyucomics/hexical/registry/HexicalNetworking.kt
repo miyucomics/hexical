@@ -57,8 +57,8 @@ object HexicalNetworking {
 			if (!CastingUtils.isEnlightened(player))
 				return@registerGlobalReceiver
 			EvokeState.active[player.uuid] = true
-			EvokeState.duration[player.uuid] = 0
-			player.world.playSound(null, player.x, player.y, player.z, HexicalSounds.EVOKING_MURMUR, SoundCategory.PLAYERS, 1f, 1f)
+			EvokeState.duration[player.uuid] = HexicalMain.EVOKE_DURATION
+			player.world.playSound(null, player.x, player.y, player.z, HexicalSounds.EVOKING_MURMUR, SoundCategory.PLAYERS, 1f, 3f)
 			for (otherPlayer in server.playerManager.playerList) {
 				val packet = PacketByteBufs.create()
 				packet.writeUuid(player.uuid)
@@ -69,7 +69,6 @@ object HexicalNetworking {
 			if (!CastingUtils.isEnlightened(player))
 				return@registerGlobalReceiver
 			EvokeState.active[player.uuid] = false
-			EvokeState.duration[player.uuid] = -1
 			for (otherPlayer in server.playerManager.playerList) {
 				val packet = PacketByteBufs.create()
 				packet.writeUuid(player.uuid)
@@ -84,16 +83,14 @@ object HexicalNetworking {
 			val uuid = packet.readUuid()
 			val player = client.world!!.getPlayerByUuid(uuid) ?: return@registerGlobalReceiver
 			val container = (player as PlayerAnimations).hexicalModAnimations()
-			val frame = PlayerAnimationRegistry.getAnimation(HexicalMain.id("cast_loop"))!!
-			container.setAnimation(KeyframeAnimationPlayer(frame))
+			container.setAnimation(KeyframeAnimationPlayer(PlayerAnimationRegistry.getAnimation(HexicalMain.id("cast_loop"))!!))
 			EvokeState.active[uuid] = true
 		}
 		ClientPlayNetworking.registerGlobalReceiver(END_EVOKING_CHANNEL) { client, _, packet, _ ->
 			val uuid = packet.readUuid()
 			val player = client.world!!.getPlayerByUuid(uuid) ?: return@registerGlobalReceiver
 			val container = (player as PlayerAnimations).hexicalModAnimations()
-			val frame = PlayerAnimationRegistry.getAnimation(HexicalMain.id("cast_end"))!!
-			container.setAnimation(KeyframeAnimationPlayer(frame))
+			container.setAnimation(KeyframeAnimationPlayer(PlayerAnimationRegistry.getAnimation(HexicalMain.id("cast_end"))!!))
 			EvokeState.active[uuid] = false
 		}
 	}

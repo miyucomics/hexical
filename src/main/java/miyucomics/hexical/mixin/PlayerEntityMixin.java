@@ -2,7 +2,7 @@ package miyucomics.hexical.mixin;
 
 import at.petrak.hexcasting.xplat.IXplatAbstractions;
 import miyucomics.hexical.HexicalMain;
-import miyucomics.hexical.casting.patterns.evocation.OpInternalizeHex;
+import miyucomics.hexical.casting.patterns.OpInternalizeHex;
 import miyucomics.hexical.interfaces.PlayerEntityMinterface;
 import miyucomics.hexical.state.EvokeState;
 import miyucomics.hexical.utils.CastingUtils;
@@ -43,7 +43,7 @@ public class PlayerEntityMixin implements PlayerEntityMinterface {
 		hexical$archLampCastedThisTick = false;
 
 		if (EvokeState.INSTANCE.getActive().getOrDefault(player.getUuid(), false) && CastingUtils.isEnlightened((ServerPlayerEntity) player)) {
-			if (EvokeState.INSTANCE.getDuration().getOrDefault(player.getUuid(), 0).equals(HexicalMain.EVOKE_DURATION))
+			if (EvokeState.INSTANCE.getDuration().getOrDefault(player.getUuid(), 0) == 0)
 				OpInternalizeHex.Companion.evoke((ServerPlayerEntity) player);
 		}
 	}

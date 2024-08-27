@@ -480,7 +480,7 @@
 	"hexcasting.spell.hexical:internalize_hex": "Internalize Hex",
 	"hexical.page.internalize_hex.summary": "Internalizes a hex, allowing me to evoke that spell by pressing the R key to use it even without a staff. Costs one charged amethyst for the etching process.",
 	"hexcasting.spell.hexical:is_evoking": "Evoker Purification",
-	"hexical.page.is_evoking.summary": "Pushes how long since a player has been trying to evoke. Resets to 0 with every successful evocation and is -1 if they are not currently evoking.",
+	"hexical.page.is_evoking.summary": "Pushes how long since a player has been trying to evoke. Is -1 if they are not currently evoking.",
 	"hexcasting.spell.hexical:with_evocation": "Evoker Reflection",
 	"hexical.page.with_evocation.summary": "Pushes whether evocation is being used to cast this pattern.",
 
