@@ -1,6 +1,5 @@
 package miyucomics.hexical.casting.patterns.lamp
 
-import at.petrak.hexcasting.api.misc.DiscoveryHandlers
 import at.petrak.hexcasting.api.spell.ParticleSpray
 import at.petrak.hexcasting.api.spell.RenderedSpell
 import at.petrak.hexcasting.api.spell.SpellAction
@@ -10,7 +9,6 @@ import miyucomics.hexical.casting.mishaps.NeedsActiveArchLampMishap
 import miyucomics.hexical.enums.SpecializedSource
 import miyucomics.hexical.items.ArchLampItem
 import miyucomics.hexical.items.hasActiveArchLamp
-import miyucomics.hexical.registry.HexicalItems
 import miyucomics.hexical.utils.CastingUtils
 
 class OpTerminateArchLamp : SpellAction {
@@ -23,13 +21,9 @@ class OpTerminateArchLamp : SpellAction {
 
 	private class Spell : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
-			for (stack in DiscoveryHandlers.collectItemSlots(ctx)) {
-				if (stack.isOf(HexicalItems.ARCH_LAMP_ITEM)) {
-					stack.orCreateNbt.putBoolean("active", false)
-					CastingUtils.castSpecial(ctx.world, ctx.caster, (stack.item as ArchLampItem).getHex(stack, ctx.world)!!, SpecializedSource.ARCH_LAMP, finale = true)
-					return
-				}
-			}
+			val lamp = CastingUtils.getActiveArchLamp(ctx.caster)!!
+			lamp.orCreateNbt.putBoolean("active", false)
+			CastingUtils.castSpecial(ctx.world, ctx.caster, (lamp.item as ArchLampItem).getHex(lamp, ctx.world)!!, SpecializedSource.ARCH_LAMP, finale = true)
 		}
 	}
 }

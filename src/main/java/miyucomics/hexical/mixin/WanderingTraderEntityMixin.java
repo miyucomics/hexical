@@ -29,6 +29,7 @@ public abstract class WanderingTraderEntityMixin extends MerchantEntity {
 	@Shadow
 	protected native void afterUsing(TradeOffer offer);
 
+	@SuppressWarnings("unused")
 	public WanderingTraderEntityMixin(EntityType<? extends MerchantEntity> entityType, World world) {
 		super(entityType, world);
 	}

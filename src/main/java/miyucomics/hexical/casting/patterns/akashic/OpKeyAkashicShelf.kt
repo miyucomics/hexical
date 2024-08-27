@@ -9,7 +9,6 @@ import at.petrak.hexcasting.api.spell.iota.NullIota
 import at.petrak.hexcasting.api.spell.mishaps.MishapBadBlock
 import at.petrak.hexcasting.common.blocks.akashic.BlockEntityAkashicBookshelf
 import at.petrak.hexcasting.common.lib.HexBlocks
-import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 
 class OpKeyAkashicShelf : ConstMediaAction {
 	override val argc = 1

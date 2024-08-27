@@ -3,7 +3,7 @@
 	"icon": "minecraft:ender_eye",
 	"category": "hexcasting:patterns/great_spells",
 	"advancement": "hexcasting:root",
-    "sortnum": 3,
+	"sortnum": 3,
 	"pages": [
 		{
 			"type": "patchouli:text",

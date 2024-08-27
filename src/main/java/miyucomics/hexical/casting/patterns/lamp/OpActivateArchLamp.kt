@@ -8,6 +8,7 @@ import at.petrak.hexcasting.api.spell.SpellAction
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.Iota
 import miyucomics.hexical.registry.HexicalItems
+import miyucomics.hexical.utils.CastingUtils
 import net.minecraft.item.ItemStack
 
 class OpActivateArchLamp : SpellAction {
@@ -24,14 +25,12 @@ class OpActivateArchLamp : SpellAction {
 		return Triple(Spell(null), 0, listOf())
 	}
 
-	private class Spell(val stack: ItemStack?) : RenderedSpell {
+	private class Spell(val lampToActivate: ItemStack?) : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
-			for (slot in ctx.caster.inventory.main)
-				if (slot.item == HexicalItems.ARCH_LAMP_ITEM)
-					slot.orCreateNbt.putBoolean("active", false)
-			if (stack == null)
+			CastingUtils.getActiveArchLamp(ctx.caster)?.orCreateNbt?.putBoolean("active", false)
+			if (lampToActivate == null)
 				return
-			stack.orCreateNbt.putBoolean("active", true)
+			lampToActivate.orCreateNbt.putBoolean("active", true)
 		}
 	}
 }
