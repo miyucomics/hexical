@@ -18,7 +18,6 @@ import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import miyucomics.hexical.enums.SpecializedSource;
 import miyucomics.hexical.interfaces.CastingContextMinterface;
-import miyucomics.hexical.items.ArchLampItem;
 import miyucomics.hexical.utils.CastingUtils;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -29,13 +28,14 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.List;
+import java.util.Objects;
 
 import static miyucomics.hexical.items.GrimoireItemKt.grimoireLookup;
 
+@SuppressWarnings("UnreachableCode")
 @Mixin(value = CastingHarness.class, priority = 900)
 public class CastingHarnessMixin {
 	@Unique
@@ -55,6 +55,7 @@ public class CastingHarnessMixin {
 		return !(source == SpecializedSource.HAND_LAMP || source == SpecializedSource.ARCH_LAMP || source == SpecializedSource.CONJURED_STAFF || source == SpecializedSource.EVOCATION);
 	}
 
+	@SuppressWarnings("DataFlowIssue")
 	@Inject(method = "withdrawMedia", at = @At("HEAD"), cancellable = true, remap = false)
 	private void takeMediaFromArchLamp(int mediaCost, boolean allowOvercast, CallbackInfoReturnable<Integer> cir) {
 		CastingContext ctx = hexical$harness.getCtx();
@@ -63,8 +64,7 @@ public class CastingHarnessMixin {
 			return;
 		}
 
-		SpecializedSource specializedSource = ((CastingContextMinterface) (Object) hexical$harness.getCtx()).getSpecializedSource();
-		switch (specializedSource) {
+		switch (Objects.requireNonNull(((CastingContextMinterface) (Object) hexical$harness.getCtx()).getSpecializedSource())) {
 			case ARCH_LAMP:
 				ItemStack lamp = CastingUtils.getActiveArchLamp(ctx.getCaster());
 				ADMediaHolder mediaHolder = IXplatAbstractions.INSTANCE.findMediaHolder(lamp);
@@ -74,7 +74,7 @@ public class CastingHarnessMixin {
 				mediaHolder.withdrawMedia(mediaToTake, false);
 				cir.setReturnValue(mediaCost);
 			case EVOCATION:
-				cir.setReturnValue(CastingUtils.castFromInventory((CastingHarness) (Object) this, mediaCost));
+				cir.setReturnValue(CastingUtils.takeMediaFromInventory((CastingHarness) (Object) this, mediaCost));
 		}
 	}
 

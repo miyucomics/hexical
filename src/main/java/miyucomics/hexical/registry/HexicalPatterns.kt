@@ -18,7 +18,6 @@ import miyucomics.hexical.casting.patterns.conjure.OpConjureHexburst
 import miyucomics.hexical.casting.patterns.conjure.OpConjureHextito
 import miyucomics.hexical.casting.patterns.conjure.OpConjureSpike
 import miyucomics.hexical.casting.patterns.eval.*
-import miyucomics.hexical.casting.patterns.OpInternalizeHex
 import miyucomics.hexical.casting.patterns.firework.OpConjureFirework
 import miyucomics.hexical.casting.patterns.firework.OpSimulateFirework
 import miyucomics.hexical.casting.patterns.getters.*
