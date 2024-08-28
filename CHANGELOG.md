@@ -12,6 +12,7 @@
 - changed how Evoker's Purification works to be like all the other keybind patterns
 - fixed bug that made magic missile deal velocity damage, making it the cheapest railgun in existence
 - fixed a hacky workaround used by evocation where it replaces the player's hand. Now it directly takes from the inventory
+- merged Arch Lamp Storage spells into the Arch Lamps page
 - removed cost from Reweave Mesh
 
 ## 1.3.2

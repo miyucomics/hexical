@@ -81,7 +81,7 @@ class ArchLampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.H
 		}
 
 		CastingUtils.castSpecial(world as ServerWorld, user, getHex(stack, world) ?: return, SpecializedSource.ARCH_LAMP, finale = false)
-		(user as PlayerEntityMinterface).lampCastedThisTick()
+		(user as PlayerEntityMinterface).archLampCasted()
 		if (getMedia(stack) == 0)
 			HexicalAdvancements.USE_UP_LAMP.trigger(user)
 	}

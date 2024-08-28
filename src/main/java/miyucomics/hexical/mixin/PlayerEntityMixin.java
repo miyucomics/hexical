@@ -25,7 +25,8 @@ public class PlayerEntityMixin implements PlayerEntityMinterface {
 	@Inject(method = "tick", at = @At("TAIL"))
 	void tick(CallbackInfo ci) {
 		PlayerEntity player = ((PlayerEntity) (Object) this);
-		if (player.world.isClient && EvokeState.INSTANCE.getActive().getOrDefault(player.getUuid(), false)) {
+
+		if (player.world.isClient && EvokeState.isEvoking(player.getUuid())) {
 			float rot = player.bodyYaw * ((float) Math.PI / 180) + MathHelper.cos((float) player.age * 0.6662f) * 0.25f;
 			float cos = MathHelper.cos(rot);
 			float sin = MathHelper.sin(rot);
@@ -40,12 +41,12 @@ public class PlayerEntityMixin implements PlayerEntityMinterface {
 		if (player.world.isClient)
 			return;
 
-		hexical$archLampCastedThisTick = false;
-
-		if (EvokeState.INSTANCE.getActive().getOrDefault(player.getUuid(), false) && CastingUtils.isEnlightened((ServerPlayerEntity) player)) {
+		if (EvokeState.isEvoking(player.getUuid()) && CastingUtils.isEnlightened((ServerPlayerEntity) player)) {
 			if (EvokeState.INSTANCE.getDuration().getOrDefault(player.getUuid(), 0) == 0)
 				OpInternalizeHex.Companion.evoke((ServerPlayerEntity) player);
 		}
+
+		hexical$archLampCastedThisTick = false;
 	}
 
 	public boolean getArchLampCastedThisTick() {
@@ -53,7 +54,7 @@ public class PlayerEntityMixin implements PlayerEntityMinterface {
 	}
 
 	@Override
-	public void lampCastedThisTick() {
+	public void archLampCasted() {
 		hexical$archLampCastedThisTick = true;
 	}
 }
