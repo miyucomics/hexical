@@ -40,7 +40,7 @@ public abstract class WanderingTraderEntityMixin extends MerchantEntity {
 		if (tradeOfferList == null)
 			return;
 		if (random.nextFloat() < 0.1f) {
-			ItemStack trade = new ItemStack(HexicalItems.INSTANCE.getHAND_LAMP_ITEM());
+			ItemStack trade = new ItemStack(HexicalItems.HAND_LAMP_ITEM);
 			Objects.requireNonNull(IXplatAbstractions.INSTANCE.findHexHolder(trade)).writeHex(new ArrayList<>(), MediaConstants.DUST_UNIT * 320);
 			Objects.requireNonNull(IXplatAbstractions.INSTANCE.findMediaHolder(trade)).withdrawMedia((int) (HexicalMain.RANDOM.nextFloat() * 160f) * MediaConstants.DUST_UNIT, false);
 			tradeOfferList.add(new TradeOffer(new ItemStack(Items.EMERALD, 32), trade, 1, 1, 1));
