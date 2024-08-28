@@ -21,17 +21,28 @@ import net.minecraft.util.registry.Registry
 object HexicalItems {
 	val HEXICAL_GROUP: ItemGroup = FabricItemGroupBuilder.create(HexicalMain.id("general")).icon { ItemStack(CONJURED_STAFF_ITEM) }.build()
 
+	@JvmField
 	val HAND_LAMP_ITEM = HandLampItem()
+	@JvmField
 	val ARCH_LAMP_ITEM = ArchLampItem()
+	@JvmField
 	val WANDERING_LAMP_ITEM = WanderingLampItem()
 
+	@JvmField
 	val CONJURED_COMPASS_ITEM = ConjuredCompassItem()
+	@JvmField
 	val GRIMOIRE_ITEM = GrimoireItem()
+	@JvmField
 	val CONJURED_STAFF_ITEM = ConjuredStaffItem()
+	@JvmField
 	val HEXBURST_ITEM = HexburstItem()
+	@JvmField
 	val HEXTITO_ITEM = HextitoItem()
+	@JvmField
 	val SMALL_LIVING_SCROLL_ITEM = LivingScrollItem(1)
+	@JvmField
 	val MEDIUM_LIVING_SCROLL_ITEM = LivingScrollItem(2)
+	@JvmField
 	val LARGE_LIVING_SCROLL_ITEM = LivingScrollItem(3)
 
 	@JvmStatic

@@ -41,10 +41,9 @@ public class PlayerEntityMixin implements PlayerEntityMinterface {
 		if (player.world.isClient)
 			return;
 
-		if (EvokeState.isEvoking(player.getUuid()) && CastingUtils.isEnlightened((ServerPlayerEntity) player)) {
-			if (EvokeState.INSTANCE.getDuration().getOrDefault(player.getUuid(), 0) == 0)
+		if (EvokeState.isEvoking(player.getUuid()) && CastingUtils.isEnlightened((ServerPlayerEntity) player))
+			if (EvokeState.getDuration(player.getUuid()) == 0)
 				OpInternalizeHex.Companion.evoke((ServerPlayerEntity) player);
-		}
 
 		hexical$archLampCastedThisTick = false;
 	}

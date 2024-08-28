@@ -30,8 +30,10 @@ object OpSisyphus : Action {
 		return OperationResult(continuation.pushFrame(frame), stack, ravenmind, listOf())
 	}
 
+	@JvmStatic
 	fun breakDownwards(baseStack: List<Iota>): Pair<Boolean, List<Iota>> = true to baseStack
 
+	@JvmStatic
 	fun evaluate(continuation: SpellContinuation, harness: CastingHarness, code: SpellList, baseStack: List<Iota>): CastingHarness.CastResult {
 		harness.ctx.incDepth()
 		val frame = FrameForEach(SpellList.LList(0, listOf()), code, baseStack, mutableListOf())

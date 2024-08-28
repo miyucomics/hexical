@@ -20,8 +20,8 @@ import java.util.List;
 public class OpReadMixin {
 	@Inject(method = "execute(Ljava/util/List;Lat/petrak/hexcasting/api/spell/casting/CastingContext;)Ljava/util/List;", at = @At("HEAD"), cancellable = true)
 	private void readCompass(List<? extends Iota> args, CastingContext ctx, CallbackInfoReturnable<List<Iota>> cir) {
-		ItemStack stack = ctx.getHeldItemToOperateOn(item -> item.isOf(HexicalItems.INSTANCE.getCONJURED_COMPASS_ITEM())).getFirst();
-		if (stack.isOf(HexicalItems.INSTANCE.getCONJURED_COMPASS_ITEM())) {
+		ItemStack stack = ctx.getHeldItemToOperateOn(item -> item.isOf(HexicalItems.CONJURED_COMPASS_ITEM)).getFirst();
+		if (stack.isOf(HexicalItems.CONJURED_COMPASS_ITEM)) {
 			if (!stack.getOrCreateNbt().contains("location")) {
 				cir.setReturnValue(List.of(new NullIota()));
 			} else {

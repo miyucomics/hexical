@@ -8,4 +8,7 @@ object EvokeState {
 
 	@JvmStatic
 	fun isEvoking(uuid: UUID): Boolean = active.getOrDefault(uuid, false)
+
+	@JvmStatic
+	fun getDuration(uuid: UUID): Int = duration.getOrDefault(uuid, -1)
 }

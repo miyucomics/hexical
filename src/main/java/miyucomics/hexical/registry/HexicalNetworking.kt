@@ -18,6 +18,7 @@ import net.minecraft.sound.SoundCategory
 import net.minecraft.util.Identifier
 
 object HexicalNetworking {
+	@JvmField
 	val CONJURED_STAFF_CHANNEL: Identifier = HexicalMain.id("conjured_staff")
 	val PRESSED_KEY_CHANNEL: Identifier = HexicalMain.id("press_key")
 	val RELEASED_KEY_CHANNEL: Identifier = HexicalMain.id("release_key")
