@@ -37,6 +37,7 @@ object OpThemis : Action {
 		return OperationResult(continuation.pushFrame(frame), stack, ravenmind, listOf())
 	}
 
+	@JvmStatic
 	fun breakDownwards(baseStack: List<Iota>, accumulator: MutableList<Iota>): Pair<Boolean, List<Iota>> {
 		val final = mutableListOf<Iota>()
 		val itemPriorityPairs = accumulator.chunked(2)
@@ -48,6 +49,7 @@ object OpThemis : Action {
 		return true to newStack
 	}
 
+	@JvmStatic
 	fun evaluate(continuation: SpellContinuation, harness: CastingHarness, data: SpellList, code: SpellList, baseStack: List<Iota>?, accumulator: MutableList<Iota>): CastingHarness.CastResult {
 		val stack: List<Iota> = if (baseStack == null) {
 			harness.stack.toList()

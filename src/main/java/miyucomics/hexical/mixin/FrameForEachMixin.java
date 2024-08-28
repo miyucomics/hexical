@@ -43,9 +43,9 @@ public abstract class FrameForEachMixin implements FrameForEachMinterface {
 		if (hexical$injectedGambit == InjectedGambit.NONE)
 			return;
 		if (hexical$injectedGambit == InjectedGambit.SISYPHUS)
-			cir.setReturnValue(OpSisyphus.INSTANCE.breakDownwards(getBaseStack()));
+			cir.setReturnValue(OpSisyphus.breakDownwards(getBaseStack()));
 		if (hexical$injectedGambit == InjectedGambit.THEMIS)
-			cir.setReturnValue(OpThemis.INSTANCE.breakDownwards(getBaseStack(), getAcc()));
+			cir.setReturnValue(OpThemis.breakDownwards(getBaseStack(), getAcc()));
 	}
 
 	@Inject(method = "evaluate", at = @At("HEAD"), cancellable = true)
@@ -53,9 +53,9 @@ public abstract class FrameForEachMixin implements FrameForEachMinterface {
 		if (hexical$injectedGambit == InjectedGambit.NONE)
 			return;
 		if (hexical$injectedGambit == InjectedGambit.SISYPHUS)
-			cir.setReturnValue(OpSisyphus.INSTANCE.evaluate(continuation, harness, getCode(), getBaseStack()));
+			cir.setReturnValue(OpSisyphus.evaluate(continuation, harness, getCode(), getBaseStack()));
 		if (hexical$injectedGambit == InjectedGambit.THEMIS)
-			cir.setReturnValue(OpThemis.INSTANCE.evaluate(continuation, harness, getData(), getCode(), getBaseStack(), getAcc()));
+			cir.setReturnValue(OpThemis.evaluate(continuation, harness, getData(), getCode(), getBaseStack(), getAcc()));
 	}
 
 	@Override
