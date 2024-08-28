@@ -1,0 +1,13 @@
+{
+	"name": "hexical.page.wandering_lamps.title",
+	"icon": "hexical:wandering_lamp",
+	"category": "hexical:lamp",
+	"advancement": "hexical:arch_lamp",
+	"sortnum": 3,
+	"pages": [
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.wandering_lamps.0"
+		}
+	]
+}

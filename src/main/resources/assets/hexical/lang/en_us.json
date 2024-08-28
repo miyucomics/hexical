@@ -47,7 +47,7 @@
 	"item.hexical.living_scroll_medium": "Medium Living Scroll",
 	"item.hexical.living_scroll_large": "Large Living Scroll",
 	"itemGroup.hexical.general": "Hexical",
-	"subtitles.hexical.evoking_murmur": "Player murmurs",
+	"subtitles.hexical.evoking_murmur": "Player chants",
 	"subtitles.hexical.evoking_casts": "Player casts",
 	"subtitles.hexical.lamp_activate": "Lamp activates",
 	"subtitles.hexical.lamp_deactivate": "Lamp deactivates",
@@ -213,7 +213,11 @@
 	"hexical.page.offer_mind.summary": "Can be cast by both me and the genie to $(o)borrow$() the experiences and memory of a villager. The spell itself costs one charged amethyst, plus the _media I'm giving.",
 	"hexical.page.offerings.2": "The stress of nonstop casting makes the genie quite greedy: it demands highly trained minds, I estimate of Journeyman-grade or greater. Higher tier villagers should appease it more, although I doubt the difference between a Journeyman and an Expert is that great. However, the difference between an expert and a complete master of one's craft is magnitudes greater. Perhaps great enough to make a meaningful difference in the quality of casting.",
 
-	"hexical.page.arch_lamps.title": "Arch Lamps",
+	"hexical.page.wandering_lamps.title": "Wandering Lamps",
+	"hexical.page.wandering_lamps.0": "By some remarkable process, the lamp transformed into a compass! It still retains its original casting abilities when I hold down on it, but if there is a vector left at the top of the stack once its stored hex completes, the compass's needle swings to point towards that location. I find this purpose rather niche although it may be useful.",
+	"hexical.page.wandering_lamps.1": "All the patterns available to a regular lamp is still available to the wandering genie lamp. In addition to that, the wandering genie lamp has some new patterns exclusive to it.",
+
+	"hexical.page.arch_lamps.title": "Archgenie Lamps",
 	"hexical.page.arch_lamps.0": "Rather just losing memories, the master villager's mind exited its body and completely supplanted the original genie. Because a separate entity casts my spells, a lamp should be able to cast even without me holding it. These archgenie lamps are activated and deactivated rather than used and while active in my inventory, they cast every moment even without my input.",
 	"hexical.page.arch_lamps.1": "The output of an archgenie lamp is so grand that it saturates the air around me with _media... it's incredible. Unfortunately, if two lamps are active at once within my inventory, the resonances clash and deactivate both lamps, as well as rendering every archgenie lamp in my inventory useless for a few seconds. I should only have one archgenie lamp active at once, although I can still simultaneously use a regular lamp.",
 	"hexical.page.arch_lamps.2": "$(o)I am a great soft jelly thing. Smoothly rounded, with no mouth, with pulsing white holes filled by fog where my eyes used to be. Rubbery appendages that were once my arms; bulks rounding down into legless humps of soft slippery matter.$(br2)I have no mouth. And I must scream.$()",
@@ -235,13 +239,10 @@
 	"hexical.page.get_arch_lamp_media.summary": "Pushes the remaining amount of _media left in the lamp, in units of dust.",
 	"hexcasting.spell.hexical:with_arch_lamp": "Archgenie Reflection",
 	"hexical.page.with_arch_lamp.summary": "Pushes whether this _Hex is currently being cast by an arch lamp.",
-
-	"hexical.page.arch_lamp_storage.title": "Arch Lamp Memory",
-	"hexical.page.arch_lamp_storage": "An archgenie can remember an iota, persisting between casts. If I need to save an iota between casts of the lamp, I can stash it in its memory. The two patterns responsible for interacting with the memory can also be cast by a $(l:items/staff)$(item)staff$() or $(l:items/hexcasting)$(item)casting device$() if an arch lamp is active.",
 	"hexcasting.spell.hexical:get_arch_lamp_storage": "Archgenie Reflection: Memory",
-	"hexical.page.set_arch_lamp_storage.summary": "Sets the lamp's iota storage. Subject to Transgress Others mishap.",
+	"hexical.page.get_arch_lamp_storage.summary": "Can be cast by a $(l:items/hexcasting)$(item)casting device$(), $(l:items/staff)$(item)staff$(), or within an arch lamp. Gets the lamp's iota storage.",
 	"hexcasting.spell.hexical:set_arch_lamp_storage": "Archgenie Gambit",
-	"hexical.page.get_arch_lamp_storage.summary": "Gets the lamp's iota storage.",
+	"hexical.page.set_arch_lamp_storage.summary": "Can be cast by a $(l:items/hexcasting)$(item)casting device$(), $(l:items/staff)$(item)staff$(), or within an arch lamp. Sets the lamp's iota storage. Subject to Transgress Others mishap.",
 
 	"hexical.page.enlightened_patterns.title": "Enlightened Patterns",
 	"hexical.page.enlightened_patterns.0": "After my enlightenment, I find myself acutely aware of certain patterns that seem to aid with my newfound abilities to perceive and manipulate _media. These patterns don't seem to require anything new from me, perhaps I've always been able to cast them but was unaware of their existence.",

@@ -3,7 +3,7 @@
 	"icon": "hexical:arch_lamp",
 	"category": "hexical:lamp",
 	"advancement": "hexical:arch_lamp",
-	"sortnum": 3,
+	"sortnum": 4,
 	"pages": [
 		{
 			"type": "patchouli:text",
@@ -77,6 +77,20 @@
 			"input": "",
 			"output": "boolean",
 			"text": "hexical.page.with_arch_lamp.summary"
+		},  {
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:set_arch_lamp_storage",
+			"anchor": "hexical:set_arch_lamp_storage",
+			"input": "any",
+			"output": "",
+			"text": "hexical.page.set_arch_lamp_storage.summary"
+		}, {
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:get_arch_lamp_storage",
+			"anchor": "hexical:get_arch_lamp_storage",
+			"input": "",
+			"output": "any",
+			"text": "hexical.page.get_arch_lamp_storage.summary"
 		}, {
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:lamp_finale",
