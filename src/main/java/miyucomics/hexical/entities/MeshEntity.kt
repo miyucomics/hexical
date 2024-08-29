@@ -28,7 +28,6 @@ class MeshEntity(entityType: EntityType<MeshEntity>, world: World) : Entity(enti
 
 	private var lifespan = -1
 
-	// client-only
 	var clientVertices: MutableList<Vec3f> = mutableListOf()
 	var clientPigment: FrozenColorizer = FrozenColorizer.DEFAULT.get()
 	var clientSize = 1f
