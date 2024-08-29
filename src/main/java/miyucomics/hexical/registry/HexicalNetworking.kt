@@ -59,7 +59,7 @@ object HexicalNetworking {
 				return@registerGlobalReceiver
 			EvokeState.active[player.uuid] = true
 			EvokeState.duration[player.uuid] = HexicalMain.EVOKE_DURATION
-			player.world.playSound(null, player.x, player.y, player.z, HexicalSounds.EVOKING_MURMUR, SoundCategory.PLAYERS, 1f, 3f)
+			player.world.playSound(null, player.x, player.y, player.z, HexicalSounds.EVOKING_MURMUR, SoundCategory.PLAYERS, 1f, 1f)
 			for (otherPlayer in server.playerManager.playerList) {
 				val packet = PacketByteBufs.create()
 				packet.writeUuid(player.uuid)
