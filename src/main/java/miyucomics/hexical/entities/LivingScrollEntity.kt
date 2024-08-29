@@ -35,7 +35,6 @@ import net.minecraft.world.World
 class LivingScrollEntity(entityType: EntityType<LivingScrollEntity>, world: World) : AbstractDecorationEntity(entityType, world), ADIotaHolder {
 	var patterns: MutableList<NbtCompound> = mutableListOf()
 
-	// client-only
 	var clientAged = false
 	var clientGlow = false
 	var clientVanished = false

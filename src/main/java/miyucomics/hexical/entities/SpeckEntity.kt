@@ -26,7 +26,6 @@ class SpeckEntity(entityType: EntityType<SpeckEntity>, world: World) : Entity(en
 
 	private var lifespan = -1
 
-	// client-only
 	var clientIsText = false
 	var clientText: Text = Text.empty()
 	var clientVerts: List<Vec2f> = listOf()
