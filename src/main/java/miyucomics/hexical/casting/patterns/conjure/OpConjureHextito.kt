@@ -26,7 +26,9 @@ class OpConjureHextito : SpellAction {
 		override fun cast(ctx: CastingContext) {
 			val stack = ItemStack(HexicalItems.HEXTITO_ITEM, 1)
 			stack.orCreateNbt.putCompound("hex", HexIotaTypes.serialize(hex))
-			ctx.world.spawnEntity(ItemEntity(ctx.world, position.x, position.y, position.z, stack))
+			val entity = ItemEntity(ctx.world, position.x, position.y, position.z, stack)
+			entity.setPickupDelay(1) // should be nearly imperceptible but allow for hextito quines to work properly
+			ctx.world.spawnEntity(entity)
 		}
 	}
 }
