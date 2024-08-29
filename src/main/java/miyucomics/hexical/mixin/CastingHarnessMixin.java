@@ -64,7 +64,11 @@ public class CastingHarnessMixin {
 			return;
 		}
 
-		switch (Objects.requireNonNull(((CastingContextMinterface) (Object) hexical$harness.getCtx()).getSpecializedSource())) {
+		SpecializedSource specializedSource = ((CastingContextMinterface) (Object) hexical$harness.getCtx()).getSpecializedSource();
+		if (specializedSource == null)
+			return;
+
+		switch (specializedSource) {
 			case ARCH_LAMP:
 				ItemStack lamp = CastingUtils.getActiveArchLamp(ctx.getCaster());
 				ADMediaHolder mediaHolder = IXplatAbstractions.INSTANCE.findMediaHolder(lamp);
