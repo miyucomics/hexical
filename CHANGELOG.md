@@ -9,7 +9,7 @@
 - added two more akashic utility patterns for clearing and getting the pattern of an akashic bookshelf
 - added one tick item pickup delay to conjured hextitos so hextito quines can properly function
 - changed Offerings page to no longer require using up a lamp
-- changed evocation warmup period to 1 seconds
+- changed evocation warmup period to one second
 - changed how Evoker's Purification works to be like all the other keybind patterns
 - fixed bug that made magic missile deal velocity damage, making it the cheapest railgun in existence
 - fixed a hacky workaround used by evocation where it replaces the player's hand. Now it directly takes from the inventory
