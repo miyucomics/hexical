@@ -21,7 +21,7 @@ import net.minecraft.item.ItemStack
 import net.minecraft.village.VillageGossipType
 import net.minecraft.village.VillagerData
 
-class OpReloadLamp : SpellAction {
+class OpOfferMind : SpellAction {
 	override val argc = 2
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		val sacrifice = args.getEntity(0, argc)
