@@ -14,7 +14,7 @@ import net.minecraft.util.math.Vec3d
 class OpGreaterBlink : SpellAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
-		val headOffset = args.getVec3(0, argc)
+		val providedOffset = args.getVec3(0, argc)
 		val straightAxis = ctx.caster.rotationVector
 
 		val upPitch = (-ctx.caster.pitch + 90) * (Math.PI.toFloat() / 180)
@@ -24,14 +24,14 @@ class OpGreaterBlink : SpellAction {
 		val upAxis = Vec3d(MathHelper.sin(yaw).toDouble() * j, MathHelper.sin(upPitch).toDouble(), h * j)
 
 		val sideAxis = straightAxis.crossProduct(upAxis).normalize()
-		val offset = Vec3d.ZERO
-			.add(sideAxis.multiply(headOffset.x))
-			.add(upAxis.multiply(headOffset.y))
-			.add(straightAxis.multiply(headOffset.z))
+		val worldOffset = Vec3d.ZERO
+			.add(sideAxis.multiply(providedOffset.x))
+			.add(upAxis.multiply(providedOffset.y))
+			.add(straightAxis.multiply(providedOffset.z))
 
-		if (offset.length() > 128)
-			throw MishapLocationTooFarAway(ctx.caster.eyePos.add(offset))
-		return Triple(Spell(ctx.caster.eyePos.add(offset)), MediaConstants.DUST_UNIT * 2, listOf())
+		if (worldOffset.length() > 128)
+			throw MishapLocationTooFarAway(ctx.caster.eyePos.add(worldOffset))
+		return Triple(Spell(ctx.caster.eyePos.add(worldOffset)), MediaConstants.DUST_UNIT * 2, listOf())
 	}
 
 	private data class Spell(val position: Vec3d) : RenderedSpell {

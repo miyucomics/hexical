@@ -65,7 +65,7 @@ import net.minecraft.sound.SoundEvents
 object HexicalPatterns {
 	@JvmStatic
 	fun init() {
-		register("offer_mind", "qaqwawqwqqwqwqwqwqwqq", HexDir.EAST, OpReloadLamp())
+		register("offer_mind", "qaqwawqwqqwqwqwqwqwqq", HexDir.EAST, OpOfferMind())
 		register("educate_genie", "eweweweweweewedeaqqqd", HexDir.NORTH_WEST, OpEducateGenie())
 		register("get_hand_lamp_position", "qwddedqdd", HexDir.SOUTH_WEST, OpGetHandLampData(0))
 		register("get_hand_lamp_rotation", "qwddedadw", HexDir.SOUTH_WEST, OpGetHandLampData(1))

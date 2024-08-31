@@ -214,7 +214,7 @@
 	"hexical.page.offerings.2": "The stress of nonstop casting makes the genie quite greedy: it demands highly trained minds, I estimate of Journeyman-grade or greater. Higher tier villagers should appease it more, although I doubt the difference between a Journeyman and an Expert is that great. However, the difference between an expert and a complete master of one's craft is magnitudes greater. Perhaps great enough to make a meaningful difference in the quality of casting.",
 
 	"hexical.page.wandering_lamps.title": "Wandering Lamps",
-	"hexical.page.wandering_lamps.0": "By some remarkable process, the lamp transformed into a compass! It still retains its original casting abilities when I hold down on it, but if there is a vector left at the top of the stack once its stored hex completes, the compass's needle swings to point towards that location. I find this purpose rather niche although it may be useful.",
+	"hexical.page.wandering_lamps.0": "By some remarkable process, the lamp transformed into a compass! It still retains its original casting abilities when I hold down on it, but if there is a vector left at the top of the stack once its stored _Hex completes, the compass's needle swings to point towards that location. I find this purpose rather niche although it may be useful.",
 	"hexical.page.wandering_lamps.1": "All the patterns available to a regular lamp is still available to the wandering genie lamp. In addition to that, the wandering genie lamp has some new patterns exclusive to it.",
 
 	"hexical.page.arch_lamps.title": "Archgenie Lamps",
