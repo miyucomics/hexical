@@ -66,6 +66,8 @@ object HexicalItems {
 		}))
 		ModelPredicateProviderRegistry.register(WANDERING_LAMP_ITEM, Identifier("angle"), CompassAnglePredicateProvider(CompassTarget { _: ClientWorld, stack: ItemStack, player: Entity ->
 			val nbt = stack.nbt ?: return@CompassTarget null
+			if (!nbt.contains("x"))
+				return@CompassTarget null
 			return@CompassTarget GlobalPos.create(player.world.registryKey, BlockPos(nbt.getInt("x"), nbt.getInt("y"), nbt.getInt("z")))
 		}))
 	}
