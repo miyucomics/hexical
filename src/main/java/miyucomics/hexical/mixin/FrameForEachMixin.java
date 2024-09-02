@@ -62,4 +62,9 @@ public abstract class FrameForEachMixin implements FrameForEachMinterface {
 	public void overwrite(@NotNull InjectedGambit gambit) {
 		hexical$injectedGambit = gambit;
 	}
+
+	@Override
+	public InjectedGambit getInjectedGambit() {
+		return hexical$injectedGambit;
+	}
 }
