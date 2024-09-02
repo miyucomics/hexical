@@ -11,7 +11,6 @@ class OpSekhmet(private val perserve: Int) : Action {
 	override fun operate(continuation: SpellContinuation, stack: MutableList<Iota>, ravenmind: Iota?, ctx: CastingContext): OperationResult {
 		if (stack.size < perserve)
 			throw MishapNotEnoughArgs(perserve, stack.size)
-		println(perserve)
 		return OperationResult(continuation, stack.takeLast(perserve), ravenmind, listOf())
 	}
 }
