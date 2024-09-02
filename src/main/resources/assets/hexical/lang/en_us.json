@@ -104,6 +104,7 @@
 	"hexcasting.mishap.hexical:needs_lamp": "Expected to be cast by a Genie Lamp.",
 	"hexcasting.mishap.hexical:needs_hand_lamp": "Expected to be cast by a Hand Genie Lamp.",
 	"hexcasting.mishap.hexical:needs_arch_lamp": "Expected to be cast by a Archgenie Lamp.",
+	"hexcasting.mishap.hexical:needs_thoth": "Expected to be run inside of Thoth's Gambit.",
 	"hexcasting.mishap.hexical:outside_circle": "Spell exceeds the domain of the spell circle.",
 	"hexcasting.mishap.hexical:themis": "Expected a number at the top of the pseudo-stack.",
 
