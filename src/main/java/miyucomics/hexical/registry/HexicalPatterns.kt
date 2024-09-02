@@ -361,6 +361,8 @@ object HexicalPatterns {
 		register("get_effect_amplifier", "wqqqaqwa", HexDir.SOUTH_WEST, OpGetStatusEffectInstanceData { instance -> instance.amplifier.asActionResult })
 		register("get_effect_duration", "wqqqaqwdd", HexDir.SOUTH_WEST, OpGetStatusEffectInstanceData { instance -> (instance.duration.toDouble() / 20.0).asActionResult })
 
+		register("castor", "dadaqq", HexDir.NORTH_EAST, OpCastor)
+		register("pollux", "adadee", HexDir.NORTH_WEST, OpPollux)
 		register("janus", "aadee", HexDir.SOUTH_WEST, OpJanus)
 		register("sisyphus", "qaqwede", HexDir.NORTH_EAST, OpSisyphus)
 		register("themis", "dwaad", HexDir.WEST, OpThemis)
