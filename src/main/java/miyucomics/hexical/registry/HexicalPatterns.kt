@@ -1,11 +1,20 @@
 package miyucomics.hexical.registry
 
 import at.petrak.hexcasting.api.PatternRegistry
+import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.Action
+import at.petrak.hexcasting.api.spell.asActionResult
+import at.petrak.hexcasting.api.spell.iota.Iota
+import at.petrak.hexcasting.api.spell.iota.NullIota
 import at.petrak.hexcasting.api.spell.math.HexDir
 import at.petrak.hexcasting.api.spell.math.HexPattern
+import at.petrak.hexcasting.api.utils.vecFromNBT
+import at.petrak.hexcasting.common.blocks.akashic.BlockAkashicBookshelf
 import at.petrak.hexcasting.common.casting.operators.selectors.OpGetEntitiesBy
+import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import miyucomics.hexical.HexicalMain
+import miyucomics.hexical.casting.iota.IdentifierIota
+import miyucomics.hexical.casting.iota.asActionResult
 import miyucomics.hexical.casting.patterns.*
 import miyucomics.hexical.casting.patterns.akashic.OpClearAkashicShelf
 import miyucomics.hexical.casting.patterns.akashic.OpKeyAkashicShelf
@@ -60,25 +69,38 @@ import miyucomics.hexical.casting.patterns.wristpocket.OpMageHand
 import miyucomics.hexical.casting.patterns.wristpocket.OpWristpocket
 import miyucomics.hexical.enums.SpecializedSource
 import miyucomics.hexical.interfaces.Specklike
+import miyucomics.hexical.items.HandLampItem
+import net.minecraft.block.CandleBlock
+import net.minecraft.block.SeaPickleBlock
+import net.minecraft.block.TurtleEggBlock
+import net.minecraft.enchantment.EnchantmentHelper
+import net.minecraft.item.EnchantedBookItem
+import net.minecraft.item.ItemStack
+import net.minecraft.item.Items
 import net.minecraft.sound.SoundEvents
+import net.minecraft.state.property.Properties
+import net.minecraft.util.math.Direction
+import net.minecraft.util.math.MathHelper
+import net.minecraft.util.math.Vec3d
+import net.minecraft.util.registry.Registry
 
 object HexicalPatterns {
 	@JvmStatic
 	fun init() {
 		register("offer_mind", "qaqwawqwqqwqwqwqwqwqq", HexDir.EAST, OpOfferMind())
 		register("educate_genie", "eweweweweweewedeaqqqd", HexDir.NORTH_WEST, OpEducateGenie())
-		register("get_hand_lamp_position", "qwddedqdd", HexDir.SOUTH_WEST, OpGetHandLampData(0))
-		register("get_hand_lamp_rotation", "qwddedadw", HexDir.SOUTH_WEST, OpGetHandLampData(1))
-		register("get_hand_lamp_velocity", "qwddedqew", HexDir.SOUTH_WEST, OpGetHandLampData(2))
-		register("get_hand_lamp_use_time", "qwddedqwddwa", HexDir.SOUTH_WEST, OpGetHandLampData(3))
-		register("get_hand_lamp_media", "qwddedaeeeee", HexDir.SOUTH_WEST, OpGetHandLampData(4))
-		register("get_hand_lamp_storage", "qwddedqwaqqqqq", HexDir.SOUTH_WEST, OpGetHandLampData(5))
+		register("get_hand_lamp_position", "qwddedqdd", HexDir.SOUTH_WEST, OpGetHandLampData { _, nbt -> vecFromNBT(nbt.getLongArray("position")).asActionResult })
+		register("get_hand_lamp_rotation", "qwddedadw", HexDir.SOUTH_WEST, OpGetHandLampData { _, nbt -> vecFromNBT(nbt.getLongArray("rotation")).asActionResult })
+		register("get_hand_lamp_velocity", "qwddedqew", HexDir.SOUTH_WEST, OpGetHandLampData { _, nbt -> vecFromNBT(nbt.getLongArray("velocity")).asActionResult })
+		register("get_hand_lamp_use_time", "qwddedqwddwa", HexDir.SOUTH_WEST, OpGetHandLampData { ctx, nbt -> (ctx.world.time - (nbt.getDouble("start_time") + 1.0)).asActionResult })
+		register("get_hand_lamp_media", "qwddedaeeeee", HexDir.SOUTH_WEST, OpGetHandLampData { ctx, _ -> ((ctx.caster.activeItem.item as HandLampItem).getMedia(ctx.caster.activeItem).toDouble() / MediaConstants.DUST_UNIT).asActionResult })
+		register("get_hand_lamp_storage", "qwddedqwaqqqqq", HexDir.SOUTH_WEST, OpGetHandLampData { ctx, nbt -> listOf(HexIotaTypes.deserialize(nbt.getCompound("storage"), ctx.world)) })
 		register("set_hand_lamp_storage", "qwddedqedeeeee", HexDir.SOUTH_WEST, OpSetHandLampStorage())
-		register("get_arch_lamp_position", "qaqwddedqdd", HexDir.NORTH_EAST, OpGetArchLampData(0))
-		register("get_arch_lamp_rotation", "qaqwddedadw", HexDir.NORTH_EAST, OpGetArchLampData(1))
-		register("get_arch_lamp_velocity", "qaqwddedqew", HexDir.NORTH_EAST, OpGetArchLampData(2))
-		register("get_arch_lamp_use_time", "qaqwddedqwddwa", HexDir.NORTH_EAST, OpGetArchLampData(3))
-		register("get_arch_lamp_storage", "qaqwddedqwaqqqqq", HexDir.NORTH_EAST, OpGetArchLampData(4))
+		register("get_arch_lamp_position", "qaqwddedqdd", HexDir.NORTH_EAST, OpGetArchLampData { _, data -> data.position.asActionResult } )
+		register("get_arch_lamp_rotation", "qaqwddedadw", HexDir.NORTH_EAST, OpGetArchLampData { _, data -> data.rotation.asActionResult } )
+		register("get_arch_lamp_velocity", "qaqwddedqew", HexDir.NORTH_EAST, OpGetArchLampData { _, data -> data.velocity.asActionResult } )
+		register("get_arch_lamp_use_time", "qaqwddedqwddwa", HexDir.NORTH_EAST, OpGetArchLampData { ctx, data -> (ctx.world.time - (data.time + 1)).asActionResult } )
+		register("get_arch_lamp_storage", "qaqwddedqwaqqqqq", HexDir.NORTH_EAST, OpGetArchLampData { ctx, data -> listOf(HexIotaTypes.deserialize(data.storage, ctx.world)) } )
 		register("set_arch_lamp_storage", "qaqwddedqedeeeee", HexDir.NORTH_EAST, OpSetArchLampStorage())
 		register("get_arch_lamp_media", "qaqwddedaeeeee", HexDir.NORTH_EAST, OpGetArchLampMedia())
 		register("activate_arch_lamp", "qaqwddedadeaqq", HexDir.NORTH_EAST, OpActivateArchLamp())
@@ -98,8 +120,18 @@ object HexicalPatterns {
 
 		register("displace", "qaqqqqeedaqqqa", HexDir.NORTH_EAST, OpDisplace())
 
-		register("theodolite", "wqaa", HexDir.EAST, OpGetEntityData(4))
-		register("entity_width", "dwe", HexDir.NORTH_WEST, OpGetEntityData(3))
+		register("theodolite", "wqaa", HexDir.EAST, OpGetEntityData { entity ->
+			val upPitch = (-entity.pitch + 90) * (Math.PI.toFloat() / 180)
+			val yaw = -entity.headYaw * (Math.PI.toFloat() / 180)
+			val h = MathHelper.cos(yaw).toDouble()
+			val j = MathHelper.cos(upPitch).toDouble()
+			Vec3d(
+				MathHelper.sin(yaw).toDouble() * j,
+				MathHelper.sin(upPitch).toDouble(),
+				h * j
+			).asActionResult
+		})
+		register("entity_width", "dwe", HexDir.NORTH_WEST, OpGetEntityData { entity -> entity.width.asActionResult })
 		register("similar", "dew", HexDir.NORTH_WEST, OpSimilar())
 		register("congruent", "aaqd", HexDir.EAST, OpCongruentPattern())
 		register("dup_many", "waadadaa", HexDir.EAST, OpDupMany())
@@ -143,8 +175,8 @@ object HexicalPatterns {
 		register("mimic_dye", "awddwqaeqqqeaeqqq", HexDir.EAST, OpMimicDye())
 
 		register("wristpocket", "aaqqa", HexDir.WEST, OpWristpocket())
-		register("wristpocket_item", "aaqqada", HexDir.WEST, OpGetWristpocket(0))
-		register("wristpocket_count", "aaqqaaw", HexDir.WEST, OpGetWristpocket(1))
+		register("wristpocket_item", "aaqqada", HexDir.WEST, OpGetWristpocket { stack -> if (stack.isOf(Items.AIR) || stack == ItemStack.EMPTY) listOf(NullIota()) else Registry.ITEM.getId(stack.item).asActionResult() })
+		register("wristpocket_count", "aaqqaaw", HexDir.WEST, OpGetWristpocket { stack -> if (stack.isOf(Items.AIR) || stack == ItemStack.EMPTY) (0).asActionResult else stack.count.asActionResult })
 		register("mage_hand", "aaqqaeea", HexDir.WEST, OpMageHand())
 		register("ingest", "aaqqadaa", HexDir.WEST, OpIngest())
 
@@ -204,57 +236,130 @@ object HexicalPatterns {
 
 		register("identify", "qqqqqe", HexDir.NORTH_EAST, OpIdentify())
 		register("recognize", "eeeeeq", HexDir.WEST, OpRecognize())
-		register("get_mainhand_stack", "qaqqqq", HexDir.NORTH_EAST, OpGetPlayerData(0))
-		register("get_offhand_stack", "edeeee", HexDir.NORTH_WEST, OpGetPlayerData(1))
-		register("get_weather", "eweweweweweeeaedqdqde", HexDir.WEST, OpGetWorldData(0))
-		register("get_dimension", "qwqwqwqwqwqqaedwaqd", HexDir.WEST, OpGetWorldData(1))
-		register("get_time", "wddwaqqwqaddaqqwddwaqqwqaddaq", HexDir.SOUTH_EAST, OpGetWorldData(2))
-		register("get_light", "wqwqwqwqwqwaeqqqqaeqaeaeaeaw", HexDir.SOUTH_WEST, OpGetPositionData(0))
-		register("get_biome", "qwqwqawdqqaqqdwaqwqwq", HexDir.WEST, OpGetPositionData(1))
-		register("count_stack", "qaqqwqqqw", HexDir.EAST, OpGetItemStackData(0))
-		register("damage_stack", "eeweeewdeq", HexDir.NORTH_EAST, OpGetItemStackData(1))
+		register("get_mainhand_stack", "qaqqqq", HexDir.NORTH_EAST, OpGetPlayerData { player -> listOf(if (player.mainHandStack.isEmpty) NullIota() else IdentifierIota(Registry.ITEM.getId(player.mainHandStack.item))) })
+		register("get_offhand_stack", "edeeee", HexDir.NORTH_WEST, OpGetPlayerData { player -> listOf(if (player.offHandStack.isEmpty) NullIota() else IdentifierIota(Registry.ITEM.getId(player.offHandStack.item))) })
+		register("get_weather", "eweweweweweeeaedqdqde", HexDir.WEST, OpGetWorldData { world -> (
+				if (world.isThundering) 2.0
+				else if (world.isRaining) 1.0
+				else 0.0
+			).asActionResult
+		})
+		register("get_dimension", "qwqwqwqwqwqqaedwaqd", HexDir.WEST, OpGetWorldData { world -> world.registryKey.value.asActionResult() })
+		register("get_time", "wddwaqqwqaddaqqwddwaqqwqaddaq", HexDir.SOUTH_EAST, OpGetWorldData { world -> (world.time.toDouble() / 20).asActionResult })
+		register("get_light", "wqwqwqwqwqwaeqqqqaeqaeaeaeaw", HexDir.SOUTH_WEST, OpGetPositionData { world, position -> world.getLightLevel(position).asActionResult })
+		register("get_biome", "qwqwqawdqqaqqdwaqwqwq", HexDir.WEST, OpGetPositionData { world, position -> world.getBiome(position).key.get().value.asActionResult() })
+		register("count_stack", "qaqqwqqqw", HexDir.EAST, OpGetItemStackData { stack -> stack.count.asActionResult })
+		register("damage_stack", "eeweeewdeq", HexDir.NORTH_EAST, OpGetItemStackData { stack -> stack.damage.asActionResult })
 
-		register("block_hardness", "qaqqqqqeeeeedq", HexDir.EAST, OpGetBlockTypeData(0))
-		register("block_blast_resistance", "qaqqqqqewaaqddqa", HexDir.EAST, OpGetBlockTypeData(1))
-		register("blockstate_waterlogged", "edeeeeeqwqqqqw", HexDir.SOUTH_EAST, OpGetBlockStateData(0))
-		register("blockstate_rotation", "qaqqqqqwadeeed", HexDir.EAST, OpGetBlockStateData(1))
-		register("blockstate_crop", "qaqqqqqwaea", HexDir.EAST, OpGetBlockStateData(2))
-		register("blockstate_glow", "qaqqqqqwaeaeaeaeaea", HexDir.EAST, OpGetBlockStateData(3))
-		register("blockstate_lock", "qaqqqeaqwdewd", HexDir.EAST, OpGetBlockStateData(4))
-		register("blockstate_turn", "qaqqqqqwqqwqd", HexDir.EAST, OpGetBlockStateData(5))
-		register("blockstate_bunch", "qaqqqqqweeeeedeeqaqdeee", HexDir.EAST, OpGetBlockStateData(6))
-		register("blockstate_book", "qaqqqqqeawa", HexDir.EAST, OpGetBlockStateData(7))
+		register("block_hardness", "qaqqqqqeeeeedq", HexDir.EAST, OpGetBlockTypeData { block -> block.hardness.asActionResult })
+		register("block_blast_resistance", "qaqqqqqewaaqddqa", HexDir.EAST, OpGetBlockTypeData { block -> block.blastResistance.asActionResult })
+		register("blockstate_waterlogged", "edeeeeeqwqqqqw", HexDir.SOUTH_EAST, OpGetBlockStateData { state ->
+			state.entries[Properties.WATERLOGGED] ?: return@OpGetBlockStateData listOf(NullIota())
+            return@OpGetBlockStateData state.get(Properties.WATERLOGGED).asActionResult
+		})
+		register("blockstate_rotation", "qaqqqqqwadeeed", HexDir.EAST, OpGetBlockStateData { state ->
+            return@OpGetBlockStateData if (state.entries[Properties.FACING] != null) state.get(Properties.FACING).unitVector.asActionResult
+            else if (state.entries[Properties.HORIZONTAL_FACING] != null) state.get(Properties.HORIZONTAL_FACING).unitVector.asActionResult
+            else if (state.entries[Properties.VERTICAL_DIRECTION] != null) state.get(Properties.VERTICAL_DIRECTION).unitVector.asActionResult
+            else if (state.entries[Properties.AXIS] != null) Direction.from(state.get(Properties.AXIS), Direction.AxisDirection.POSITIVE).unitVector.asActionResult
+            else if (state.entries[Properties.HORIZONTAL_AXIS] != null) Direction.from(state.get(Properties.HORIZONTAL_AXIS), Direction.AxisDirection.POSITIVE).unitVector.asActionResult
+            else if (state.entries[Properties.HOPPER_FACING] != null) state.get(Properties.HOPPER_FACING).unitVector.asActionResult
+            else listOf(NullIota())
+		})
+		register("blockstate_crop", "qaqqqqqwaea", HexDir.EAST, OpGetBlockStateData { state ->
+            return@OpGetBlockStateData if (state.entries[Properties.AGE_1] != null) (state.get(Properties.AGE_1)).asActionResult
+            else if (state.entries[Properties.AGE_2] != null) (state.get(Properties.AGE_2).toDouble() / 2.0).asActionResult
+            else if (state.entries[Properties.AGE_3] != null) (state.get(Properties.AGE_3).toDouble() / 3.0).asActionResult
+            else if (state.entries[Properties.AGE_4] != null) (state.get(Properties.AGE_4).toDouble() / 4.0).asActionResult
+            else if (state.entries[Properties.AGE_5] != null) (state.get(Properties.AGE_5).toDouble() / 5.0).asActionResult
+            else if (state.entries[Properties.AGE_7] != null) (state.get(Properties.AGE_7).toDouble() / 7.0).asActionResult
+            else if (state.entries[Properties.AGE_15] != null) (state.get(Properties.AGE_15).toDouble() / 15.0).asActionResult
+            else if (state.entries[Properties.AGE_25] != null) (state.get(Properties.AGE_25).toDouble() / 25.0).asActionResult
+            else if (state.entries[Properties.LEVEL_3] != null) (state.get(Properties.LEVEL_3).toDouble() / 3).asActionResult
+            else if (state.entries[Properties.LEVEL_8] != null) (state.get(Properties.LEVEL_8).toDouble() / 8).asActionResult
+            else if (state.entries[Properties.HONEY_LEVEL] != null) (state.get(Properties.HONEY_LEVEL).toDouble() / 15.0).asActionResult
+            else if (state.entries[Properties.BITES] != null) (state.get(Properties.BITES).toDouble() / 6.0).asActionResult
+            else listOf(NullIota())
+		})
+		register("blockstate_glow", "qaqqqqqwaeaeaeaeaea", HexDir.EAST, OpGetBlockStateData { state ->
+			state.entries[Properties.LIT] ?: return@OpGetBlockStateData listOf(NullIota())
+			return@OpGetBlockStateData state.get(Properties.LIT).asActionResult
+		})
+		register("blockstate_lock", "qaqqqeaqwdewd", HexDir.EAST, OpGetBlockStateData { state ->
+			state.entries[Properties.OPEN] ?: return@OpGetBlockStateData listOf(NullIota())
+			return@OpGetBlockStateData state.get(Properties.OPEN).asActionResult
+		})
+		register("blockstate_turn", "qaqqqqqwqqwqd", HexDir.EAST, OpGetBlockStateData{ state ->
+			state.entries[Properties.ROTATION] ?: return@OpGetBlockStateData listOf(NullIota())
+			return@OpGetBlockStateData state.get(Properties.ROTATION).asActionResult
+		})
+		register("blockstate_bunch", "qaqqqqqweeeeedeeqaqdeee", HexDir.EAST, OpGetBlockStateData { state ->
+			when (state.block) {
+				is CandleBlock -> {
+					state.entries[Properties.CANDLES] ?: return@OpGetBlockStateData listOf(NullIota())
+					return@OpGetBlockStateData state.get(Properties.CANDLES).asActionResult
+				}
+				is SeaPickleBlock -> {
+					state.entries[Properties.PICKLES] ?: return@OpGetBlockStateData listOf(NullIota())
+                    return@OpGetBlockStateData state.get(Properties.PICKLES).asActionResult
+				}
+				is TurtleEggBlock -> {
+					state.entries[Properties.EGGS] ?: return@OpGetBlockStateData listOf(NullIota())
+					return@OpGetBlockStateData state.get(Properties.EGGS).asActionResult
+				}
+				else -> return@OpGetBlockStateData listOf(NullIota())
+			}
+		})
+		register("blockstate_book", "qaqqqqqeawa", HexDir.EAST, OpGetBlockStateData { state ->
+            return@OpGetBlockStateData if (state.entries[Properties.HAS_BOOK] != null) state.get(Properties.HAS_BOOK).asActionResult
+            else if (state.entries[Properties.HAS_RECORD] != null) state.get(Properties.HAS_RECORD).asActionResult
+            else if (state.entries[BlockAkashicBookshelf.HAS_BOOKS] != null) state.get(BlockAkashicBookshelf.HAS_BOOKS).asActionResult
+            else listOf(NullIota())
+		})
 
-		register("get_enchantments", "waqeaeqawqwawaw", HexDir.WEST, OpGetItemStackData(2))
+		register("get_enchantments", "waqeaeqawqwawaw", HexDir.WEST, OpGetItemStackData { stack ->
+			var data = stack.enchantments
+			if (stack.isOf(Items.ENCHANTED_BOOK))
+				data = EnchantedBookItem.getEnchantmentNbt(stack)
+			val enchantments = mutableListOf<IdentifierIota>()
+			for ((enchantment, _) in EnchantmentHelper.fromNbt(data))
+				enchantments.add(IdentifierIota(Registry.ENCHANTMENT.getId(enchantment)!!))
+			enchantments.asActionResult
+		})
 		register("get_enchantment_strength", "waqwwqaweede", HexDir.WEST, OpGetEnchantmentStrength())
 
-		register("get_hunger", "adaqqqddqe", HexDir.WEST, OpGetFoodTypeData(0))
-		register("get_saturation", "adaqqqddqw", HexDir.WEST, OpGetFoodTypeData(1))
-		register("is_meat", "adaqqqddaed", HexDir.WEST, OpGetFoodTypeData(2))
-		register("is_snack", "adaqqqddaq", HexDir.WEST, OpGetFoodTypeData(3))
-		register("is_burning", "qqwaqda", HexDir.EAST, OpGetEntityData(0))
-		register("burning_time", "eewdead", HexDir.WEST, OpGetEntityData(1))
-		register("is_wet", "qqqqwaadq", HexDir.SOUTH_WEST, OpGetEntityData(2))
-		register("get_health", "wddwaqqwawq", HexDir.SOUTH_EAST, OpGetLivingEntityData(0))
-		register("get_max_health", "wddwwawaeqwawq", HexDir.SOUTH_EAST, OpGetLivingEntityData(1))
-		register("get_air", "wwaade", HexDir.EAST, OpGetLivingEntityData(2))
-		register("get_max_air", "wwaadee", HexDir.EAST, OpGetLivingEntityData(3))
-		register("is_sleeping", "aqaew", HexDir.NORTH_WEST, OpGetLivingEntityData(4))
-		register("is_sprinting", "eaq", HexDir.WEST, OpGetLivingEntityData(5))
-		register("is_baby", "awaqdwaaw", HexDir.SOUTH_WEST, OpGetLivingEntityData(6))
+		register("get_hunger", "adaqqqddqe", HexDir.WEST, OpGetFoodTypeData { food -> food.hunger.asActionResult })
+		register("get_saturation", "adaqqqddqw", HexDir.WEST, OpGetFoodTypeData { food -> food.saturationModifier.asActionResult })
+		register("is_meat", "adaqqqddaed", HexDir.WEST, OpGetFoodTypeData { food -> food.isMeat.asActionResult })
+		register("is_snack", "adaqqqddaq", HexDir.WEST, OpGetFoodTypeData { food -> food.isSnack.asActionResult })
+		register("is_burning", "qqwaqda", HexDir.EAST, OpGetEntityData { entity -> entity.isOnFire.asActionResult })
+		register("burning_time", "eewdead", HexDir.WEST, OpGetEntityData { entity -> (entity.fireTicks.toDouble() / 20).asActionResult })
+		register("is_wet", "qqqqwaadq", HexDir.SOUTH_WEST, OpGetEntityData { entity -> entity.isWet.asActionResult })
+		register("get_health", "wddwaqqwawq", HexDir.SOUTH_EAST, OpGetLivingEntityData { entity -> entity.health.asActionResult })
+		register("get_max_health", "wddwwawaeqwawq", HexDir.SOUTH_EAST, OpGetLivingEntityData { entity -> entity.maxHealth.asActionResult })
+		register("get_air", "wwaade", HexDir.EAST, OpGetLivingEntityData { entity -> entity.air.asActionResult })
+		register("get_max_air", "wwaadee", HexDir.EAST, OpGetLivingEntityData { entity -> entity.maxAir.asActionResult })
+		register("is_sleeping", "aqaew", HexDir.NORTH_WEST, OpGetLivingEntityData { entity -> entity.isSleeping.asActionResult })
+		register("is_sprinting", "eaq", HexDir.WEST, OpGetLivingEntityData { entity -> entity.isSprinting.asActionResult })
+		register("is_baby", "awaqdwaaw", HexDir.SOUTH_WEST, OpGetLivingEntityData { entity -> entity.isBaby.asActionResult })
 		register("breedable", "awaaqdqaawa", HexDir.EAST, OpGetWillingness())
-		register("get_player_hunger", "qqqadaddw", HexDir.WEST, OpGetPlayerData(2))
-		register("get_player_saturation", "qqqadaddq", HexDir.WEST, OpGetPlayerData(3))
+		register("get_player_hunger", "qqqadaddw", HexDir.WEST, OpGetPlayerData { player -> player.hungerManager.foodLevel.asActionResult })
+		register("get_player_saturation", "qqqadaddq", HexDir.WEST, OpGetPlayerData { player -> player.hungerManager.saturationLevel.asActionResult })
 
-		register("count_max_stack", "edeeweeew", HexDir.WEST, OpGetItemTypeData(0))
-		register("damage_max_stack", "qqwqqqwaqe", HexDir.NORTH_WEST, OpGetItemTypeData(1))
-		register("edible", "adaqqqdd", HexDir.WEST, OpGetItemTypeData(2))
+		register("count_max_stack", "edeeweeew", HexDir.WEST, OpGetItemTypeData { item -> item.maxCount.asActionResult })
+		register("damage_max_stack", "qqwqqqwaqe", HexDir.NORTH_WEST, OpGetItemTypeData { item -> item.maxDamage.asActionResult })
+		register("edible", "adaqqqdd", HexDir.WEST, OpGetItemTypeData { item -> item.isFood.asActionResult })
 
-		register("get_effects_entity", "wqqq", HexDir.SOUTH_WEST, OpGetLivingEntityData(7))
+		register("get_effects_entity", "wqqq", HexDir.SOUTH_WEST, OpGetLivingEntityData { entity ->
+			val list = mutableListOf<Iota>()
+			for (effect in entity.statusEffects)
+				list.add(IdentifierIota(Registry.STATUS_EFFECT.getId(effect.effectType)!!))
+			list.asActionResult
+		})
 		register("get_effects_item", "wqqqadee", HexDir.SOUTH_WEST, OpGetPrescription())
 		register("get_effect_category", "wqqqaawd", HexDir.SOUTH_WEST, OpGetStatusEffectCategory())
-		register("get_effect_amplifier", "wqqqaqwa", HexDir.SOUTH_WEST, OpGetStatusEffectInstanceData(0))
-		register("get_effect_duration", "wqqqaqwdd", HexDir.SOUTH_WEST, OpGetStatusEffectInstanceData(1))
+		register("get_effect_amplifier", "wqqqaqwa", HexDir.SOUTH_WEST, OpGetStatusEffectInstanceData { instance -> instance.amplifier.asActionResult })
+		register("get_effect_duration", "wqqqaqwdd", HexDir.SOUTH_WEST, OpGetStatusEffectInstanceData { instance -> (instance.duration.toDouble() / 20.0).asActionResult })
 
 		register("janus", "aadee", HexDir.SOUTH_WEST, OpJanus)
 		register("sisyphus", "qaqwede", HexDir.NORTH_EAST, OpSisyphus)
