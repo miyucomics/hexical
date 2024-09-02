@@ -8,10 +8,12 @@
 - added wandering lamps: resembles a compass and points you towards the vector left at the top of the stack
 - added two more akashic utility patterns for clearing and getting the pattern of an akashic bookshelf
 - added one tick item pickup delay to conjured hextitos so hextito quines can properly function
+- added Castor's and Pollux's Gambits: should only be cast within a Thoth list, prepends or appends the top iota to Thoth's data list
 - added Conjure Fireball: conjures a ghast fireball with no velocity at a position within ambit for three dust
 - changed Offerings page to no longer require using up a lamp
 - changed evocation warmup period to one second
 - changed how Evoker's Purification works to be like all the other keybind patterns
+- changed Janus' Gambit to persist the Ravenmind, used in wisps
 - fixed bug that made magic missile deal velocity damage, making it the cheapest railgun in existence
 - fixed a hacky workaround used by evocation where it replaces the player's hand. Now it directly takes from the inventory
 - fixed funky behavior with evocation and reading items, now it tries to read from the offhand then the mainhand

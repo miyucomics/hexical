@@ -5,7 +5,6 @@ import at.petrak.hexcasting.api.spell.casting.eval.FrameForEach
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapNotEnoughArgs
 
-// append
 object OpPollux : OpModifyThoth() {
 	override fun updateFrame(frame: FrameForEach, stack: MutableList<Iota>): FrameForEach {
 		val iota = stack.removeLastOrNull() ?: throw MishapNotEnoughArgs(1, 0)
