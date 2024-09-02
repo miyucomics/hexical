@@ -42,6 +42,26 @@
 			"type": "patchouli:text",
 			"text": "hexical.page.nephthys.1"
 		}, {
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:castor",
+			"anchor": "hexical:castor",
+			"input": "any",
+			"output": "",
+			"text": "hexical.page.castor.0"
+		}, {
+			"type": "patchouli:text",
+			"text": "hexical.page.castor.1"
+		}, {
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:pollux",
+			"anchor": "hexical:pollux",
+			"input": "any",
+			"output": "",
+			"text": "hexical.page.pollux.0"
+		}, {
+			"type": "patchouli:text",
+			"text": "hexical.page.pollux.1"
+		}, {
 			"type": "hexcasting:manual_pattern",
 			"op_id": "hexical:sekhmet",
 			"anchor": "hexical:sekhmet",
