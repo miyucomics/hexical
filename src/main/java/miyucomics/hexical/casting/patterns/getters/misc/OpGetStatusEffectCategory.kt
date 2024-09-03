@@ -11,12 +11,10 @@ import net.minecraft.util.registry.Registry
 
 class OpGetStatusEffectCategory : ConstMediaAction {
 	override val argc = 1
-	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
-		return when ((Registry.STATUS_EFFECT.get(args.getIdentifier(0, argc)) ?: throw MishapInvalidIota.of(args[0], 0, "status_effect_id")).category) {
-			StatusEffectCategory.BENEFICIAL -> (1).asActionResult
-			StatusEffectCategory.NEUTRAL -> (0).asActionResult
-			StatusEffectCategory.HARMFUL -> (-1).asActionResult
-			else -> throw IllegalStateException()
-		}
+	override fun execute(args: List<Iota>, ctx: CastingContext) = when ((Registry.STATUS_EFFECT.get(args.getIdentifier(0, argc)) ?: throw MishapInvalidIota.of(args[0], 0, "status_effect_id")).category) {
+		StatusEffectCategory.BENEFICIAL -> (1).asActionResult
+		StatusEffectCategory.NEUTRAL -> (0).asActionResult
+		StatusEffectCategory.HARMFUL -> (-1).asActionResult
+		else -> throw IllegalStateException()
 	}
 }
