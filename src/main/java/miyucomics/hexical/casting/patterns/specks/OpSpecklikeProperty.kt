@@ -7,7 +7,7 @@ import at.petrak.hexcasting.api.spell.mishaps.MishapBadEntity
 import miyucomics.hexical.interfaces.Specklike
 import net.minecraft.command.argument.EntityAnchorArgumentType
 
-class OpSpecklikeProperty(val mode: Int) : ConstMediaAction {
+class OpSpecklikeProperty(private val mode: Int) : ConstMediaAction {
 	override val argc = 2
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
 		val specklike = args.getEntity(0, argc)
