@@ -7,7 +7,7 @@ import at.petrak.hexcasting.api.spell.casting.eval.FrameForEach
 import at.petrak.hexcasting.api.spell.casting.eval.SpellContinuation
 import at.petrak.hexcasting.api.spell.casting.eval.SpellContinuation.NotDone
 import at.petrak.hexcasting.api.spell.iota.Iota
-import miyucomics.hexical.casting.mishaps.NeedsThothMishap
+import miyucomics.hexical.casting.mishaps.NeedsSkippableMishap
 import miyucomics.hexical.enums.InjectedGambit
 import miyucomics.hexical.interfaces.FrameForEachMinterface
 
@@ -21,7 +21,7 @@ object OpAtalanta : Action {
 
 		while (true) {
 			if (newCont !is NotDone)
-				throw NeedsThothMishap()
+				throw NeedsSkippableMishap()
 			val frame = newCont.frame
 			if (frame is FrameForEach) {
 				val injectedGambit = (frame as FrameForEachMinterface).getInjectedGambit()
