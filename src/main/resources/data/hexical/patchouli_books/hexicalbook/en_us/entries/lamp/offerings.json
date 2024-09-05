@@ -21,6 +21,12 @@
 		}, {
 			"type": "patchouli:text",
 			"text": "hexical.page.offerings.2"
+		}, {
+			"type": "patchouli:text",
+			"text": "hexical.page.offerings.3"
+		}, {
+			"type": "patchouli:text",
+			"text": "hexical.page.offerings.4"
 		}
 	]
 }
