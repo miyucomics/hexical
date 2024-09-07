@@ -1,0 +1,7 @@
+Removing src/hexdoc_hexical/_export/generated/assets/
+Removing src/hexdoc_hexical/_export/generated/data/
+Removing src/hexdoc_hexical/_export/generated/hexical.hexdoc.json
+Removing src/hexdoc_hexical/_export/generated/hexical.patterns.hexdoc.json
+
+
+
