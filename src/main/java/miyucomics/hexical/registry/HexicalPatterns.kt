@@ -11,6 +11,7 @@ import at.petrak.hexcasting.api.spell.math.HexPattern
 import at.petrak.hexcasting.api.utils.vecFromNBT
 import at.petrak.hexcasting.common.blocks.akashic.BlockAkashicBookshelf
 import at.petrak.hexcasting.common.casting.operators.selectors.OpGetEntitiesBy
+import at.petrak.hexcasting.common.casting.operators.stack.OpTwiddling
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.casting.iota.IdentifierIota
@@ -120,6 +121,8 @@ object HexicalPatterns {
 
 		register("displace", "qaqqqqeedaqqqa", HexDir.NORTH_EAST, OpDisplace())
 
+		register("swap_one_three", "ddwqaq", HexDir.NORTH_EAST, OpTwiddling(3, intArrayOf(2, 1, 0)))
+		register("swap_two_three", "aawede", HexDir.EAST, OpTwiddling(3, intArrayOf(1, 0, 2)))
 		register("theodolite", "wqaa", HexDir.EAST, OpGetEntityData { entity ->
 			val upPitch = (-entity.pitch + 90) * (Math.PI.toFloat() / 180)
 			val yaw = -entity.headYaw * (Math.PI.toFloat() / 180)

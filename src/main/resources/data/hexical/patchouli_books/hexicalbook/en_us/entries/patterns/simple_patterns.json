@@ -21,6 +21,20 @@
 			"text": "hexical.page.theodolite.summary"
 		}, {
 			"type": "hexcasting:pattern",
+			"op_id": "hexical:swap_one_three",
+			"anchor": "hexical:swap_one_three",
+			"input": "any, any, any",
+			"output": "any, any, any",
+			"text": "hexical.page.swap_one_three.summary"
+		}, {
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:swap_two_three",
+			"anchor": "hexical:swap_two_three",
+			"input": "any, any, any",
+			"output": "any, any, any",
+			"text": "hexical.page.swap_two_three.summary"
+		}, {
+			"type": "hexcasting:pattern",
 			"op_id": "hexical:dup_many",
 			"anchor": "hexical:dup_many",
 			"input": "many, number",
