@@ -18,6 +18,9 @@
 		}, {
 			"type": "patchouli:text",
 			"text": "hexical.page.greater_blink.1"
+		}, {
+			"type": "patchouli:text",
+			"text": "hexical.page.greater_blink.2"
 		}
 	]
 }
