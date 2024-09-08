@@ -14,7 +14,6 @@ import net.minecraft.text.Style
 import net.minecraft.text.Text
 import net.minecraft.util.math.Vec3d
 
-
 class PigmentIota(pigment: FrozenColorizer) : Iota(HexicalIota.PIGMENT_IOTA, pigment) {
 	override fun isTruthy() = true
 	val pigment: FrozenColorizer = this.payload as FrozenColorizer
