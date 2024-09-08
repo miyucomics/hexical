@@ -1,19 +1,24 @@
 # Changelog
 
 ## 1.4.0
+- added a section of pigment patterns
 - added advancement for conjuring Hexxy
+- added two more patterns for affecting the top three iota of the stack, now you can arrange three iota in any way with a single pattern
 - added effect to magic missiles to set the velocity of a target hit to 0.6th of their own normalized velocity + a bit of upwards push
 - added prestidigitation support for shearing beehives and bee nests for honeycomb
 - added ability to dye specklikes with the Dye spell
 - added wandering lamps: resembles a compass and points you towards the vector left at the top of the stack
 - added two more akashic utility patterns for clearing and getting the pattern of an akashic bookshelf
 - added one tick item pickup delay to conjured hextitos so hextito quines can properly function
+- added Atalanta Gambit: skip to the next Thoth iteration; "continue"
 - added Castor's and Pollux's Gambits: should only be cast within a Thoth list, prepends or appends the top iota to Thoth's data list
 - added Conjure Fireball: conjures a ghast fireball with no velocity at a position within ambit for three dust
+- added more quotes to documentation
 - changed Offerings page to no longer require using up a lamp
 - changed evocation warmup period to one second
 - changed how Evoker's Purification works to be like all the other keybind patterns
 - changed Janus' Gambit to persist the Ravenmind, used in wisps
+- changed some documentation quotes to fit better
 - fixed bug that made magic missile deal velocity damage, making it the cheapest railgun in existence
 - fixed a hacky workaround used by evocation where it replaces the player's hand. Now it directly takes from the inventory
 - fixed funky behavior with evocation and reading items, now it tries to read from the offhand then the mainhand
