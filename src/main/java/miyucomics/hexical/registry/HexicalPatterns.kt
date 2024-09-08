@@ -46,10 +46,9 @@ import miyucomics.hexical.casting.patterns.identifier.OpRecognize
 import miyucomics.hexical.casting.patterns.lamp.*
 import miyucomics.hexical.casting.patterns.mage_blocks.OpConjureMageBlock
 import miyucomics.hexical.casting.patterns.mage_blocks.OpModifyMageBlock
-import miyucomics.hexical.casting.patterns.pigments.OpDyeToPigment
 import miyucomics.hexical.casting.patterns.pigments.OpSamplePigment
-import miyucomics.hexical.casting.patterns.pigments.OpSelfPigment
 import miyucomics.hexical.casting.patterns.pigments.OpTakeOnPigment
+import miyucomics.hexical.casting.patterns.pigments.OpToPigment
 import miyucomics.hexical.casting.patterns.prestidigitation.OpCanPrestidigitation
 import miyucomics.hexical.casting.patterns.prestidigitation.OpPrestidigitation
 import miyucomics.hexical.casting.patterns.raycast.OpFluidRaycast
@@ -181,8 +180,7 @@ object HexicalPatterns {
 		register("dye", "dwaqqw", HexDir.NORTH_WEST, OpDye())
 		register("translate_dye", "wdwwaawwewdwwewwdwwe", HexDir.EAST, OpTranslateDye())
 
-		register("my_pigment", "qaqwedeeeeeweee", HexDir.NORTH_EAST, OpSelfPigment())
-		register("dye_to_pigment", "aqwedeweeeewweeew", HexDir.NORTH_WEST, OpDyeToPigment())
+		register("to_pigment", "aqwedeweeeewweeew", HexDir.NORTH_WEST, OpToPigment())
 		register("sample_pigment", "edewqaqqqqqwqqq", HexDir.SOUTH_EAST, OpSamplePigment())
 		register("take_on_pigment", "weeeweeqeeeewqaqweeee", HexDir.EAST, OpTakeOnPigment())
 
