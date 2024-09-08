@@ -32,13 +32,6 @@
 			"input": "dye",
 			"output": "vector",
 			"text": "hexical.page.translate_dye.summary"
-		}, {
-			"type": "hexcasting:pattern",
-			"op_id": "hexical:sample_pigment",
-			"anchor": "hexical:sample_pigment",
-			"input": "vector, number",
-			"output": "vector",
-			"text": "hexical.page.sample_pigment.summary"
 		}
 	]
 }
