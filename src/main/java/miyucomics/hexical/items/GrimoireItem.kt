@@ -50,11 +50,6 @@ class GrimoireItem : Item(Settings().maxCount(1).group(HexicalItems.HEXICAL_GROU
 			val out = ArrayList<Iota>()
 			for (patTag in patsTag)
 				out.add(HexIotaTypes.deserialize(patTag as NbtCompound, world))
-			if (data.contains("uses")) {
-				data.putInt("uses", data.getInt("uses") - 1)
-				if (data.getInt("uses") <= 0)
-					erase(stack, key)
-			}
 			return out
 		}
 	}

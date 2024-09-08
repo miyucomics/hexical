@@ -22,7 +22,9 @@ import miyucomics.hexical.casting.patterns.akashic.OpKeyAkashicShelf
 import miyucomics.hexical.casting.patterns.akashic.OpReadAkashicShelf
 import miyucomics.hexical.casting.patterns.akashic.OpWriteAkashicShelf
 import miyucomics.hexical.casting.patterns.circle.OpDisplace
-import miyucomics.hexical.casting.patterns.colors.*
+import miyucomics.hexical.casting.patterns.colors.OpDye
+import miyucomics.hexical.casting.patterns.colors.OpGetDye
+import miyucomics.hexical.casting.patterns.colors.OpTranslateDye
 import miyucomics.hexical.casting.patterns.conjure.OpConjureCompass
 import miyucomics.hexical.casting.patterns.conjure.OpConjureHexburst
 import miyucomics.hexical.casting.patterns.conjure.OpConjureHextito
@@ -44,6 +46,10 @@ import miyucomics.hexical.casting.patterns.identifier.OpRecognize
 import miyucomics.hexical.casting.patterns.lamp.*
 import miyucomics.hexical.casting.patterns.mage_blocks.OpConjureMageBlock
 import miyucomics.hexical.casting.patterns.mage_blocks.OpModifyMageBlock
+import miyucomics.hexical.casting.patterns.pigments.OpDyeToPigment
+import miyucomics.hexical.casting.patterns.pigments.OpSamplePigment
+import miyucomics.hexical.casting.patterns.pigments.OpSelfPigment
+import miyucomics.hexical.casting.patterns.pigments.OpTakeOnPigment
 import miyucomics.hexical.casting.patterns.prestidigitation.OpCanPrestidigitation
 import miyucomics.hexical.casting.patterns.prestidigitation.OpPrestidigitation
 import miyucomics.hexical.casting.patterns.raycast.OpFluidRaycast
@@ -174,8 +180,11 @@ object HexicalPatterns {
 		register("get_dye", "weedwa", HexDir.NORTH_EAST, OpGetDye())
 		register("dye", "dwaqqw", HexDir.NORTH_WEST, OpDye())
 		register("translate_dye", "wdwwaawwewdwwewwdwwe", HexDir.EAST, OpTranslateDye())
-		register("sample_pigment", "wawwddwwqwawwqwwawwq", HexDir.EAST, OpSamplePigment())
-		register("mimic_dye", "awddwqaeqqqeaeqqq", HexDir.EAST, OpMimicDye())
+
+		register("my_pigment", "qaqwedeaqqqwqqq", HexDir.EAST, OpSelfPigment())
+		register("dye_to_pigment", "aqwedeweeeewweeew", HexDir.EAST, OpDyeToPigment())
+		register("sample_pigment", "edewqaqqqqqwqqq", HexDir.EAST, OpSamplePigment())
+		register("take_on_pigment", "weeeweeqeedqwedewqdee", HexDir.EAST, OpTakeOnPigment())
 
 		register("wristpocket", "aaqqa", HexDir.WEST, OpWristpocket())
 		register("wristpocket_item", "aaqqada", HexDir.WEST, OpGetWristpocket { stack -> if (stack.isOf(Items.AIR) || stack == ItemStack.EMPTY) listOf(NullIota()) else Registry.ITEM.getId(stack.item).asActionResult() })
