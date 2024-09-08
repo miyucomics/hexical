@@ -10,7 +10,10 @@ import miyucomics.hexical.registry.HexicalIota
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.nbt.NbtElement
 import net.minecraft.server.world.ServerWorld
+import net.minecraft.text.Style
 import net.minecraft.text.Text
+import net.minecraft.util.math.Vec3d
+
 
 class PigmentIota(pigment: FrozenColorizer) : Iota(HexicalIota.PIGMENT_IOTA, pigment) {
 	override fun isTruthy() = true
@@ -20,7 +23,7 @@ class PigmentIota(pigment: FrozenColorizer) : Iota(HexicalIota.PIGMENT_IOTA, pig
 	override fun serialize(): NbtElement {
 		val compound = NbtCompound()
 		compound.putCompound("pigment", pigment.serializeToNBT())
-		compound.putString("name", pigment.item.name.toString())
+		compound.putString("name", pigment.item.translationKey)
 		return compound
 	}
 
@@ -28,7 +31,21 @@ class PigmentIota(pigment: FrozenColorizer) : Iota(HexicalIota.PIGMENT_IOTA, pig
 		var TYPE: IotaType<PigmentIota> = object : IotaType<PigmentIota>() {
 			override fun color() = 0xff_c466e3.toInt()
 			override fun deserialize(tag: NbtElement, world: ServerWorld) = PigmentIota(FrozenColorizer.fromNBT((tag as NbtCompound).getCompound("pigment")))
-			override fun display(tag: NbtElement) = Text.literal((tag as NbtCompound).getString("name"))
+			override fun display(tag: NbtElement): Text {
+				val compound = tag as NbtCompound
+				val colorizer = FrozenColorizer.fromNBT(compound.getCompound("pigment"))
+				val name = Text.translatable(compound.getString("name")).string
+
+				val display = Text.literal("")
+				val steps = name.length
+				for (i in 0 until steps) {
+					val progress = i.toFloat() / steps.toFloat()
+					val color = colorizer.getColor(0f, Vec3d(0.0, (-4 + progress * 8).toDouble(), 0.0))
+					display.append(Text.literal(name[i].toString()).styled { style: Style -> style.withColor(color) })
+				}
+
+				return display
+			}
 		}
 	}
 }

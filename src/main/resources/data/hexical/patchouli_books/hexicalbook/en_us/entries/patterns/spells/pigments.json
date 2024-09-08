@@ -26,8 +26,8 @@
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:sample_pigment",
 			"anchor": "hexical:sample_pigment",
-			"input": "pigment, vector, number",
-			"output": "vector",
+			"input": "pigment, vec, num",
+			"output": "vec",
 			"text": "hexical.page.sample_pigment.summary"
 		}, {
 			"type": "hexcasting:pattern",

@@ -181,10 +181,10 @@ object HexicalPatterns {
 		register("dye", "dwaqqw", HexDir.NORTH_WEST, OpDye())
 		register("translate_dye", "wdwwaawwewdwwewwdwwe", HexDir.EAST, OpTranslateDye())
 
-		register("my_pigment", "qaqwedeaqqqwqqq", HexDir.EAST, OpSelfPigment())
-		register("dye_to_pigment", "aqwedeweeeewweeew", HexDir.EAST, OpDyeToPigment())
-		register("sample_pigment", "edewqaqqqqqwqqq", HexDir.EAST, OpSamplePigment())
-		register("take_on_pigment", "weeeweeqeedqwedewqdee", HexDir.EAST, OpTakeOnPigment())
+		register("my_pigment", "qaqwedeeeeeweee", HexDir.NORTH_EAST, OpSelfPigment())
+		register("dye_to_pigment", "aqwedeweeeewweeew", HexDir.NORTH_WEST, OpDyeToPigment())
+		register("sample_pigment", "edewqaqqqqqwqqq", HexDir.SOUTH_EAST, OpSamplePigment())
+		register("take_on_pigment", "weeeweeqeeeewqaqweeee", HexDir.EAST, OpTakeOnPigment())
 
 		register("wristpocket", "aaqqa", HexDir.WEST, OpWristpocket())
 		register("wristpocket_item", "aaqqada", HexDir.WEST, OpGetWristpocket { stack -> if (stack.isOf(Items.AIR) || stack == ItemStack.EMPTY) listOf(NullIota()) else Registry.ITEM.getId(stack.item).asActionResult() })
