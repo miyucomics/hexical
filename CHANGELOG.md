@@ -1,8 +1,8 @@
 # Changelog
 
 ## 1.4.0
-- added a section of pigment patterns
 - added advancement for conjuring Hexxy
+- added a section of pigment patterns and a pigment iota
 - added two more patterns for affecting the top three iota of the stack, now you can arrange three iota in any way with a single pattern
 - added effect to magic missiles to set the velocity of a target hit to 0.6th of their own normalized velocity + a bit of upwards push
 - added prestidigitation support for shearing beehives and bee nests for honeycomb
