@@ -9,7 +9,6 @@ import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.enums.SpecializedSource
 import miyucomics.hexical.interfaces.GenieLamp
-import miyucomics.hexical.registry.HexicalAdvancements
 import miyucomics.hexical.registry.HexicalItems
 import miyucomics.hexical.registry.HexicalSounds
 import miyucomics.hexical.utils.CastingUtils
@@ -56,8 +55,6 @@ class HandLampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.H
 		if (world.isClient) return
 		if (getMedia(stack) == 0) return
 		CastingUtils.castSpecial(world as ServerWorld, user as ServerPlayerEntity, getHex(stack, world) ?: return, SpecializedSource.HAND_LAMP, finale = false)
-		if (getMedia(stack) == 0)
-			HexicalAdvancements.USE_UP_LAMP.trigger(user)
 	}
 
 	override fun onStoppedUsing(stack: ItemStack, world: World, user: LivingEntity, remainingUseTicks: Int) {

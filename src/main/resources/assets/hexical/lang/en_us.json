@@ -1,8 +1,6 @@
 {
 	"advancements.hexical.arch_lamp.title": "Itty Bitty Living Space",
 	"advancements.hexical.arch_lamp.description": "Acquire an archgenie lamp.",
-	"advancements.hexical.broken_mind.title": "Out with the Old...",
-	"advancements.hexical.broken_mind.description": "Use up a lamp's media.",
 	"advancements.hexical.reload_lamp.title": "Phenomenal Cosmic Powers!",
 	"advancements.hexical.reload_lamp.description": "Reload the lamp.",
 	"advancements.hexical.educate_genie.title": "New Order",
@@ -19,6 +17,7 @@
 	"advancements.hexical.hallucinate.description": "Play a sound only you can hear!",
 	"advancements.hexical.media_slurp.title": "Tripping",
 	"advancements.hexical.media_slurp.description": "\"You sense that something is off.\"",
+
 	"block.hexical.hex_candle": "Hex Candle",
 	"block.hexical.mage_block": "Mage Block",
 	"block.hexical.media_jar": "Media Jar",
