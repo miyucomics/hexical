@@ -8,7 +8,6 @@ import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.enums.SpecializedSource
 import miyucomics.hexical.interfaces.GenieLamp
 import miyucomics.hexical.interfaces.PlayerEntityMinterface
-import miyucomics.hexical.registry.HexicalAdvancements
 import miyucomics.hexical.registry.HexicalItems
 import miyucomics.hexical.registry.HexicalSounds
 import miyucomics.hexical.state.PersistentStateHandler
@@ -82,8 +81,6 @@ class ArchLampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.H
 
 		CastingUtils.castSpecial(world as ServerWorld, user, getHex(stack, world) ?: return, SpecializedSource.ARCH_LAMP, finale = false)
 		(user as PlayerEntityMinterface).archLampCasted()
-		if (getMedia(stack) == 0)
-			HexicalAdvancements.USE_UP_LAMP.trigger(user)
 	}
 
 	override fun canDrawMediaFromInventory(stack: ItemStack) = false
