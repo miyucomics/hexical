@@ -10,7 +10,6 @@ import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.enums.SpecializedSource
 import miyucomics.hexical.interfaces.GenieLamp
-import miyucomics.hexical.registry.HexicalAdvancements
 import miyucomics.hexical.registry.HexicalItems
 import miyucomics.hexical.registry.HexicalSounds
 import miyucomics.hexical.utils.CastingUtils
@@ -63,8 +62,6 @@ class WanderingLampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalIt
 			stack.nbt!!.putInt("y", target.y.toInt())
 			stack.nbt!!.putInt("z", target.z.toInt())
 		}
-		if (getMedia(stack) == 0)
-			HexicalAdvancements.USE_UP_LAMP.trigger(user)
 	}
 
 	override fun onStoppedUsing(stack: ItemStack, world: World, user: LivingEntity, remainingUseTicks: Int) {
