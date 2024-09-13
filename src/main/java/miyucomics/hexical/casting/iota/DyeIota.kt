@@ -5,7 +5,7 @@ import at.petrak.hexcasting.api.spell.iota.IotaType
 import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.spell.mishaps.MishapNotEnoughArgs
 import at.petrak.hexcasting.api.utils.styledWith
-import miyucomics.hexical.registry.HexicalIota
+import miyucomics.hexical.inits.HexicalIota
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.nbt.NbtElement
 import net.minecraft.server.world.ServerWorld

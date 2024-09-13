@@ -1,4 +1,4 @@
-package miyucomics.hexical.registry
+package miyucomics.hexical.inits
 
 import miyucomics.hexical.state.EvokeState
 import miyucomics.hexical.state.KeybindData

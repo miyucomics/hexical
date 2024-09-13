@@ -1,6 +1,6 @@
 package miyucomics.hexical;
 
-import miyucomics.hexical.registry.*;
+import miyucomics.hexical.inits.*;
 import net.fabricmc.api.ClientModInitializer;
 
 public class HexicalClient implements ClientModInitializer {

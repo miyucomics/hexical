@@ -9,7 +9,7 @@ import at.petrak.hexcasting.api.spell.getVec3
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
-import miyucomics.hexical.registry.HexicalItems
+import miyucomics.hexical.inits.HexicalItems
 import miyucomics.hexical.utils.CastingUtils
 import net.minecraft.entity.ItemEntity
 import net.minecraft.item.ItemStack

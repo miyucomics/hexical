@@ -13,7 +13,7 @@ import at.petrak.hexcasting.api.utils.extractMedia
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.enums.SpecializedSource
 import miyucomics.hexical.interfaces.CastingContextMinterface
-import miyucomics.hexical.registry.HexicalItems
+import miyucomics.hexical.inits.HexicalItems
 import net.minecraft.item.ItemStack
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld

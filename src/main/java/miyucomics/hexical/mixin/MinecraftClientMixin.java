@@ -2,7 +2,7 @@ package miyucomics.hexical.mixin;
 
 import at.petrak.hexcasting.common.lib.HexSounds;
 import miyucomics.hexical.interfaces.MinecraftClientMinterface;
-import miyucomics.hexical.registry.HexicalNetworking;
+import miyucomics.hexical.inits.HexicalNetworking;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.client.MinecraftClient;

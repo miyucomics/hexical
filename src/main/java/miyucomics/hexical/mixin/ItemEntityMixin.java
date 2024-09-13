@@ -1,6 +1,6 @@
 package miyucomics.hexical.mixin;
 
-import miyucomics.hexical.registry.HexicalItems;
+import miyucomics.hexical.inits.HexicalItems;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;

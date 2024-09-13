@@ -8,7 +8,7 @@ import at.petrak.hexcasting.api.utils.getOrCreateCompound
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.api.utils.putList
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
-import miyucomics.hexical.registry.HexicalItems
+import miyucomics.hexical.inits.HexicalItems
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound

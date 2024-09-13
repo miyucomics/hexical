@@ -3,7 +3,7 @@ package miyucomics.hexical.items
 import at.petrak.hexcasting.common.items.ItemStaff
 import com.google.common.collect.ImmutableMultimap
 import com.google.common.collect.Multimap
-import miyucomics.hexical.registry.HexicalItems
+import miyucomics.hexical.inits.HexicalItems
 import net.minecraft.entity.EquipmentSlot
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.attribute.EntityAttribute

@@ -4,7 +4,7 @@ import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.*
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.Iota
-import miyucomics.hexical.registry.HexicalItems
+import miyucomics.hexical.inits.HexicalItems
 import net.minecraft.entity.ItemEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.BlockPos
