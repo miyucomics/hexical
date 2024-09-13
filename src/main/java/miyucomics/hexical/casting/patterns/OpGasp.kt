@@ -7,7 +7,7 @@ import at.petrak.hexcasting.api.spell.SpellAction
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.getEntity
 import at.petrak.hexcasting.api.spell.iota.Iota
-import miyucomics.hexical.registry.HexicalSounds
+import miyucomics.hexical.inits.HexicalSounds
 import net.minecraft.entity.Entity
 import net.minecraft.network.packet.s2c.play.PlaySoundS2CPacket
 import net.minecraft.server.network.ServerPlayerEntity

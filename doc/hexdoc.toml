@@ -34,7 +34,7 @@ _per_world_value = "registerPerWorld"
 "hexical:lightning_rod_staff" = { texture="hexical:textures/item/lightning_rod_staff.png" }
 
 [[extra.hexcasting.pattern_stubs]]
-path = "{^^^_common.package}/registry/HexicalPatterns.kt"
+path = "{^^^_common.package}/inits/HexicalPatterns.kt"
 regex = "{^_pattern_regex}"
 per_world_value = "{^_per_world_value}"
 
