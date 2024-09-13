@@ -11,7 +11,7 @@ import at.petrak.hexcasting.api.spell.math.HexDir
 import at.petrak.hexcasting.api.spell.math.HexPattern
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.entities.SpeckEntity
-import miyucomics.hexical.registry.HexicalAdvancements
+import miyucomics.hexical.inits.HexicalAdvancements
 import net.minecraft.command.argument.EntityAnchorArgumentType
 
 class OpConjureSpeck : ConstMediaAction {
