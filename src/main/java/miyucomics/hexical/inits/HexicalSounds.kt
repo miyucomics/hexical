@@ -1,4 +1,4 @@
-package miyucomics.hexical.registry
+package miyucomics.hexical.inits
 
 import miyucomics.hexical.HexicalMain
 import net.minecraft.sound.SoundEvent

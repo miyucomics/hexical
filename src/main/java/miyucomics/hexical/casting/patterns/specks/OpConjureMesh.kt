@@ -8,7 +8,7 @@ import at.petrak.hexcasting.api.spell.iota.EntityIota
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.entities.MeshEntity
-import miyucomics.hexical.registry.HexicalAdvancements
+import miyucomics.hexical.inits.HexicalAdvancements
 
 class OpConjureMesh : ConstMediaAction {
 	override val argc = 1

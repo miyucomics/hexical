@@ -1,4 +1,4 @@
-package miyucomics.hexical.registry
+package miyucomics.hexical.inits
 
 import miyucomics.hexical.advancements.*
 import net.minecraft.advancement.criterion.Criteria

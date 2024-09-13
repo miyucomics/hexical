@@ -1,4 +1,4 @@
-package miyucomics.hexical.registry
+package miyucomics.hexical.inits
 
 import at.petrak.hexcasting.api.PatternRegistry
 import at.petrak.hexcasting.api.misc.MediaConstants

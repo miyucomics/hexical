@@ -7,7 +7,7 @@ import at.petrak.hexcasting.api.spell.math.HexPattern
 import at.petrak.hexcasting.api.spell.mishaps.MishapBadOffhandItem
 import miyucomics.hexical.casting.mishaps.GrimoireTooFullMishap
 import miyucomics.hexical.items.GrimoireItem
-import miyucomics.hexical.registry.HexicalItems
+import miyucomics.hexical.inits.HexicalItems
 import miyucomics.hexical.utils.CastingUtils
 import net.minecraft.item.ItemStack
 

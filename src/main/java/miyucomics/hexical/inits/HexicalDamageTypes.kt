@@ -1,4 +1,4 @@
-package miyucomics.hexical.registry
+package miyucomics.hexical.inits
 
 import miyucomics.hexical.entities.SpikeEntity
 import net.minecraft.entity.Entity
