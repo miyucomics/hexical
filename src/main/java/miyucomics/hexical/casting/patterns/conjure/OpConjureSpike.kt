@@ -6,7 +6,7 @@ import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
 import miyucomics.hexical.entities.SpikeEntity
-import miyucomics.hexical.registry.HexicalEntities
+import miyucomics.hexical.inits.HexicalEntities
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Box
 import net.minecraft.util.math.Direction

@@ -1,7 +1,7 @@
 package miyucomics.hexical.blocks
 
 import at.petrak.hexcasting.common.blocks.BlockConjured
-import miyucomics.hexical.registry.HexicalBlocks
+import miyucomics.hexical.inits.HexicalBlocks
 import net.minecraft.block.*
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.block.entity.BlockEntityTicker

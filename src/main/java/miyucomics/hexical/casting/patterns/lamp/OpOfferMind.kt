@@ -10,8 +10,8 @@ import at.petrak.hexcasting.common.misc.Brainsweeping
 import at.petrak.hexcasting.ktxt.tellWitnessesThatIWasMurdered
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.interfaces.GenieLamp
-import miyucomics.hexical.registry.HexicalAdvancements
-import miyucomics.hexical.registry.HexicalItems
+import miyucomics.hexical.inits.HexicalAdvancements
+import miyucomics.hexical.inits.HexicalItems
 import net.minecraft.entity.Entity
 import net.minecraft.entity.mob.MobEntity
 import net.minecraft.entity.passive.VillagerEntity

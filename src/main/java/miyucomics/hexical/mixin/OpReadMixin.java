@@ -5,7 +5,7 @@ import at.petrak.hexcasting.api.spell.iota.Iota;
 import at.petrak.hexcasting.api.spell.iota.NullIota;
 import at.petrak.hexcasting.api.spell.iota.Vec3Iota;
 import at.petrak.hexcasting.common.casting.operators.rw.OpRead;
-import miyucomics.hexical.registry.HexicalItems;
+import miyucomics.hexical.inits.HexicalItems;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.Vec3d;

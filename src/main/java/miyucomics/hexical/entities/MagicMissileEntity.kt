@@ -1,8 +1,8 @@
 package miyucomics.hexical.entities
 
 import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.registry.HexicalDamageTypes
-import miyucomics.hexical.registry.HexicalEntities
+import miyucomics.hexical.inits.HexicalDamageTypes
+import miyucomics.hexical.inits.HexicalEntities
 import net.minecraft.entity.EntityStatuses
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.player.PlayerEntity
