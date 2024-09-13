@@ -6,7 +6,7 @@ import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.xplat.IXplatAbstractions
-import miyucomics.hexical.registry.HexicalItems
+import miyucomics.hexical.inits.HexicalItems
 import miyucomics.hexical.utils.CastingUtils
 import net.minecraft.entity.ItemEntity
 import net.minecraft.item.ItemStack

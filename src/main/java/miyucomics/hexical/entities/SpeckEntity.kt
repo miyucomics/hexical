@@ -6,7 +6,7 @@ import at.petrak.hexcasting.api.spell.iota.PatternIota
 import at.petrak.hexcasting.api.spell.math.HexPattern
 import at.petrak.hexcasting.api.utils.putCompound
 import miyucomics.hexical.interfaces.Specklike
-import miyucomics.hexical.registry.HexicalEntities
+import miyucomics.hexical.inits.HexicalEntities
 import miyucomics.hexical.utils.RenderUtils
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityDimensions
