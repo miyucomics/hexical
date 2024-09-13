@@ -3,7 +3,7 @@ package miyucomics.hexical.casting.patterns.telepathy
 import at.petrak.hexcasting.api.spell.ConstMediaAction
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.Iota
-import miyucomics.hexical.registry.HexicalAdvancements
+import miyucomics.hexical.inits.HexicalAdvancements
 import net.minecraft.network.packet.s2c.play.PlaySoundS2CPacket
 import net.minecraft.sound.SoundCategory
 import net.minecraft.sound.SoundEvent

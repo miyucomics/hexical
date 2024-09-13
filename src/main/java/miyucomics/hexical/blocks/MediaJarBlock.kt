@@ -1,6 +1,6 @@
 package miyucomics.hexical.blocks
 
-import miyucomics.hexical.registry.HexicalSounds
+import miyucomics.hexical.inits.HexicalSounds
 import net.minecraft.block.*
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.sound.BlockSoundGroup
