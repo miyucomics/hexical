@@ -1,6 +1,9 @@
 {
-	"advancements.hexical.arch_lamp.title": "Itty Bitty Living Space",
+	"advancements.hexical.arch_lamp.title": "Daemon",
 	"advancements.hexical.arch_lamp.description": "Acquire an archgenie lamp.",
+	"advancements.hexical.wandering_lamp.title": "Itty Bitty Living Space",
+	"advancements.hexical.wandering_lamp.description": "Acquire a wandering lamp.",
+
 	"advancements.hexical.reload_lamp.title": "Phenomenal Cosmic Powers!",
 	"advancements.hexical.reload_lamp.description": "Reload the lamp.",
 	"advancements.hexical.educate_genie.title": "New Order",
