@@ -9,9 +9,9 @@ import at.petrak.hexcasting.api.spell.mishaps.MishapBadOffhandItem
 import at.petrak.hexcasting.common.misc.Brainsweeping
 import at.petrak.hexcasting.ktxt.tellWitnessesThatIWasMurdered
 import at.petrak.hexcasting.xplat.IXplatAbstractions
-import miyucomics.hexical.interfaces.GenieLamp
 import miyucomics.hexical.inits.HexicalAdvancements
 import miyucomics.hexical.inits.HexicalItems
+import miyucomics.hexical.interfaces.GenieLamp
 import net.minecraft.entity.Entity
 import net.minecraft.entity.mob.MobEntity
 import net.minecraft.entity.passive.VillagerEntity
@@ -20,12 +20,12 @@ import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.village.VillageGossipType
 import net.minecraft.village.VillagerData
+import kotlin.math.min
 
 class OpOfferMind : SpellAction {
 	override val argc = 2
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		val sacrifice = args.getEntity(0, argc)
-		val battery = args.getPositiveDoubleUnderInclusive(1, 200000.0, argc)
 		ctx.assertEntityInRange(sacrifice)
 
 		if (sacrifice is MobEntity && Brainsweeping.isBrainswept(sacrifice))
@@ -34,6 +34,10 @@ class OpOfferMind : SpellAction {
 			throw MishapBadEntity.of(sacrifice, "smart_villager")
 
 		val stack = ctx.caster.getStackInHand(ctx.otherHand)
+		val mediaHolder = IXplatAbstractions.INSTANCE.findMediaHolder(stack)!!
+		val leftToFull = 200000 * MediaConstants.DUST_UNIT - mediaHolder.media
+		val battery = min(leftToFull.toDouble(), args.getPositiveDoubleUnderInclusive(1, 200000.0, argc))
+
 		if (stack.item is GenieLamp)
 			return Triple(Spell(sacrifice, (battery * MediaConstants.DUST_UNIT).toInt()), MediaConstants.CRYSTAL_UNIT + (battery * MediaConstants.DUST_UNIT).toInt(), listOf(ParticleSpray.cloud(sacrifice.eyePos, 1.0)))
 

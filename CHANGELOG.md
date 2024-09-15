@@ -22,6 +22,7 @@
 - fixed bug that made magic missile deal velocity damage, making it the cheapest railgun in existence
 - fixed a hacky workaround used by evocation where it replaces the player's hand. Now it directly takes from the inventory
 - fixed funky behavior with evocation and reading items, now it tries to read from the offhand then the mainhand
+- fixed Offer Mind spell allowing for overflow
 - made code much better
 - merged Arch Lamp Storage spells into the Arch Lamps page
 - removed cost from Reweave Mesh
