@@ -13,6 +13,7 @@
 - added Atalanta Gambit: skip to the next Thoth iteration; "continue"
 - added Castor's and Pollux's Gambits: should only be cast within a Thoth list, prepends or appends the top iota to Thoth's data list
 - added Conjure Fireball: conjures a ghast fireball with no velocity at a position within ambit for three dust
+- added pattern for changing the pigment of specks
 - added more quotes to documentation
 - changed Offerings page to no longer require using up a lamp
 - changed evocation warmup period to one second
