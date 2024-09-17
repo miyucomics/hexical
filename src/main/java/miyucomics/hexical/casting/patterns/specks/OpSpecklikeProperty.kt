@@ -4,6 +4,7 @@ import at.petrak.hexcasting.api.spell.*
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapBadEntity
+import miyucomics.hexical.casting.iota.getPigment
 import miyucomics.hexical.interfaces.Specklike
 import net.minecraft.command.argument.EntityAnchorArgumentType
 
@@ -24,6 +25,7 @@ class OpSpecklikeProperty(private val mode: Int) : ConstMediaAction {
 			3 -> (specklike as Specklike).setSize(args.getPositiveDoubleUnderInclusive(1, 10.0, argc).toFloat())
 			4 -> (specklike as Specklike).setThickness(args.getPositiveDoubleUnderInclusive(1, 10.0, argc).toFloat())
 			5 -> (specklike as Specklike).setLifespan(args.getInt(1, argc))
+			5 -> (specklike as Specklike).setPigment(args.getPigment(1, argc))
 			else -> throw IllegalStateException()
 		}
 		return listOf()
