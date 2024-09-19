@@ -19,6 +19,7 @@
 - changed evocation warmup period to one second
 - changed how Evoker's Purification works to be like all the other keybind patterns
 - changed Janus' Gambit to persist the Ravenmind, used in wisps
+- changed specks to remove opening and closing quotes if there are any, for string iota
 - changed some documentation quotes to fit better
 - fixed bug that made magic missile deal velocity damage, making it the cheapest railgun in existence
 - fixed a hacky workaround used by evocation where it replaces the player's hand. Now it directly takes from the inventory
