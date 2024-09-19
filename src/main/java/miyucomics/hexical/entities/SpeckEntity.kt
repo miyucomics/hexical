@@ -65,7 +65,8 @@ class SpeckEntity(entityType: EntityType<SpeckEntity>, world: World) : Entity(en
 			dataTracker.set(displayDataTracker, iota.pattern.serializeToNBT())
 		} else {
 			val compound = NbtCompound()
-			compound.putString("text", Text.Serializer.toJson(iota.display()))
+			val text = iota.display()
+			compound.putString("text", Text.Serializer.toJson(Text.of(text.string.removePrefix("\"").removeSuffix("\"")).getWithStyle(text.style)[0]))
 			dataTracker.set(displayDataTracker, compound)
 		}
 	}
