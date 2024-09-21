@@ -28,6 +28,7 @@
 - made code much better
 - merged Arch Lamp Storage spells into the Arch Lamps page
 - removed cost from Reweave Mesh
+- removed limit on grimoires
 
 ## 1.3.2
 - changed keybind reflections to return -1 when not active
