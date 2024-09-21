@@ -5,7 +5,6 @@ import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.math.HexPattern
 import at.petrak.hexcasting.api.spell.mishaps.MishapBadOffhandItem
-import miyucomics.hexical.casting.mishaps.GrimoireTooFullMishap
 import miyucomics.hexical.items.GrimoireItem
 import miyucomics.hexical.inits.HexicalItems
 import miyucomics.hexical.utils.CastingUtils
@@ -20,8 +19,6 @@ class OpGrimoireWrite : SpellAction {
 		val key = args.getPattern(0, argc)
 		val expansion = args.getList(1, argc).toList()
 		CastingUtils.assertNoTruename(args[1], ctx.caster)
-		if (GrimoireItem.getPatternsInGrimoire(stack).size >= 16)
-			throw GrimoireTooFullMishap()
 		return Triple(Spell(stack, key, expansion), 0, listOf())
 	}
 

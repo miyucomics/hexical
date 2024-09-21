@@ -101,7 +101,6 @@
 	"hexcasting.mishap.invalid_value.true_dye_list": "a list of colored dyes",
 	"hexcasting.mishap.hexical:active_arch_lamp": "Expected an active Arch Lamp in the inventory.",
 	"hexcasting.mishap.hexical:can_not_dye": "Expected a dyeable target",
-	"hexcasting.mishap.hexical:grimoire_too_full": "Tried to fit too many bindings in a grimoire.",
 	"hexcasting.mishap.hexical:inedible": "Wristpocketed item is not edible.",
 	"hexcasting.mishap.hexical:needs_chorus_fruit": "Needs chorus fruit within inventory.",
 	"hexcasting.mishap.hexical:needs_conjured_staff": "Expected to be cast by a Conjured Staff.",
@@ -157,7 +156,6 @@
 	"hexical.page.write_grimoire.summary": "Writes a pattern-to-pattern-list binding into the $(item)grimoire$() in my offhand.",
 	"hexcasting.spell.hexical:erase_grimoire": "Erase Grimoire",
 	"hexical.page.erase_grimoire.summary": "Erases the pattern-list binding to the pattern in the $(item)grimoire$() in my offhand if it exists.",
-	"hexical.page.grimoire.2": "While stable with only a few strands of _media whizzing around inside, a single $(item)grimoire$() can not hold more than sixteen pattern bindings. When attempting to introduce more, the $(item)grimoire$() simply rejects it and throws itself onto the ground with a shower of blue sparks.",
 	"hexcasting.spell.hexical:index_grimoire": "Archivist Reflection",
 	"hexical.page.index_grimoire.summary": "Gets a list of all patterns stored in the $(item)grimoire$().",
 
