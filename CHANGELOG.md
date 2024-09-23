@@ -1,6 +1,7 @@
 # Changelog
 
 ## 1.4.0
+- added gauntlet staff
 - added advancement for conjuring Hexxy
 - added a section of pigment patterns and a pigment iota
 - added two more patterns for affecting the top three iota of the stack, now you can arrange three iota in any way with a single pattern
@@ -29,6 +30,7 @@
 - merged Arch Lamp Storage spells into the Arch Lamps page
 - removed cost from Reweave Mesh
 - removed limit on grimoires
+- removed ridiculous knockback from lightning rod staff
 
 ## 1.3.2
 - changed keybind reflections to return -1 when not active
