@@ -1,5 +1,6 @@
 package miyucomics.hexical.inits
 
+import at.petrak.hexcasting.common.items.ItemStaff
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.items.*
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder
@@ -43,8 +44,10 @@ object HexicalItems {
 		Registry.register(Registry.ITEM, HexicalMain.id("arch_lamp"), ARCH_LAMP_ITEM)
 		Registry.register(Registry.ITEM, HexicalMain.id("wandering_lamp"), WANDERING_LAMP_ITEM)
 
+		Registry.register(Registry.ITEM, HexicalMain.id("gauntlet_staff"), ItemStaff(Settings().maxCount(1).group(HEXICAL_GROUP)))
+		Registry.register(Registry.ITEM, HexicalMain.id("lightning_rod_staff"), ItemStaff(Settings().maxCount(1).group(HEXICAL_GROUP)))
+
 		Registry.register(Registry.ITEM, HexicalMain.id("grimoire"), GRIMOIRE_ITEM)
-		Registry.register(Registry.ITEM, HexicalMain.id("lightning_rod_staff"), LightningRodStaff())
 		Registry.register(Registry.ITEM, HexicalMain.id("living_scroll_small"), SMALL_LIVING_SCROLL_ITEM)
 		Registry.register(Registry.ITEM, HexicalMain.id("living_scroll_medium"), MEDIUM_LIVING_SCROLL_ITEM)
 		Registry.register(Registry.ITEM, HexicalMain.id("living_scroll_large"), LARGE_LIVING_SCROLL_ITEM)
