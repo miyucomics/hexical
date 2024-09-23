@@ -1,6 +1,7 @@
 {
 	"replace": false,
 	"values": [
+		"hexical:gauntlet_staff",
 		"hexical:lightning_rod_staff"
 	]
 }
