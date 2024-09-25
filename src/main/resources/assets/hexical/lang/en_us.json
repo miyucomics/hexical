@@ -149,6 +149,8 @@
 	"hexical.page.hexical_changes.1": "I also find my tools more familiar. I notice I require less concentration with my $(l:items/staff)$(item)staff$() and can move around while using it, handy for chasing down targets that get out of my line of sight before I can finish my raycast. I shouldn't become too relaxed though, Nature has not become more forgiving of my mistakes. I can also write directly into my $(l:items/abacus)$(item)abacus$() with $(l:patterns/readwrite#hexcasting:write)Scribe's Gambit$().",
 	"hexical.page.lightning_rod_staff.0": "By fixing a block of amethyst to some lightning rods, I can make quite the impressive $(l:items/staff)$(item)staff$(). It is quite weighty to wield but feels absolutely $(o)electrifying$() to use.",
 	"hexical.page.lightning_rod_staff.1": "$(o)I learned there are troubles$(br)Of more than one kind.$(br)Some come from ahead$(br)And some come from behind.$(br2)But I've bought a big bat.$(br)I'm all ready, you see.$(br)Now my troubles are going$(br)To have troubles with $(l)me!$()",
+	"hexical.page.gauntlet_staff.0": "Staffs are quite heavy to wield and finnicky to hold. In case I tire of them, I can construct a gauntlet-like \"$(l:items/staff)$(item)staff$()\" to grasp and warp the media to my will with my own fingers.",
+	"hexical.page.gauntlet_staff.1": "$(o)Wait, what are fingers??$()",
 
 	"hexical.page.grimoire.title": "Grimoires",
 	"hexical.page.grimoire.0": "By encrusting an $(item)enchanted book$() with charged amethyst and $(l:items/edified)$(item)edified wood$()$(), it traps _media within the pages like an echo chamber. I can then introduce a pattern-to-pattern-list binding for the $(item)grimoire$() to keep bouncing endlessly inside.",
