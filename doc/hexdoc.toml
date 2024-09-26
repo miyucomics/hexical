@@ -31,6 +31,7 @@ _pattern_regex = { "!Raw" = '(?P<is_per_world>register|registerPerWorld)\("(?P<n
 _per_world_value = "registerPerWorld"
 
 [textures.override]
+"hexical:gauntlet_staff" = { texture="hexical:textures/item/gauntlet_staff.png" }
 "hexical:lightning_rod_staff" = { texture="hexical:textures/item/lightning_rod_staff.png" }
 
 [[extra.hexcasting.pattern_stubs]]
