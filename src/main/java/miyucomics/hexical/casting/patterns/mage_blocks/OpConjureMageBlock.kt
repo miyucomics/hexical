@@ -8,8 +8,6 @@ import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.getBlockPos
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapBadBlock
-import at.petrak.hexcasting.xplat.IXplatAbstractions
-import miyucomics.hexical.blocks.MageBlockEntity
 import miyucomics.hexical.inits.HexicalBlocks
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d
@@ -29,7 +27,6 @@ class OpConjureMageBlock : SpellAction {
 			if (!ctx.canEditBlockAt(pos))
 				return
 			ctx.world.setBlockState(pos, HexicalBlocks.MAGE_BLOCK.defaultState)
-			(ctx.world.getBlockEntity(pos) as MageBlockEntity).setColorizer(IXplatAbstractions.INSTANCE.getColorizer(ctx.caster))
 		}
 	}
 }
