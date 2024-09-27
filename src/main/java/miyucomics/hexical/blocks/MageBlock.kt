@@ -92,12 +92,6 @@ class MageBlock : BlockConjured(
 		}
 	}
 
-	override fun onSteppedOn(world: World, pos: BlockPos, state: BlockState, entity: Entity) {
-		val tile = world.getBlockEntity(pos) as MageBlockEntity
-		if (!tile.properties["invisible"]!!)
-			tile.walkParticle(entity)
-	}
-
 	override fun getCollisionShape(state: BlockState, world: BlockView, pos: BlockPos, context: ShapeContext): VoxelShape {
 		val tile = world.getBlockEntity(pos)
 		if (tile !is MageBlockEntity)
@@ -118,8 +112,6 @@ class MageBlock : BlockConjured(
 
 	companion object {
 		fun tick(world: World, position: BlockPos, state: BlockState, blockEntity: MageBlockEntity) {
-			if (!blockEntity.properties["invisible"]!!)
-				blockEntity.particleEffect()
 			if (blockEntity.properties["ephemeral"]!!) {
 				blockEntity.lifespan--
 				if (blockEntity.lifespan <= 0)
