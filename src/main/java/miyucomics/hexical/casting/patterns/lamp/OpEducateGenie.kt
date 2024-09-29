@@ -8,8 +8,8 @@ import at.petrak.hexcasting.api.spell.getList
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapBadOffhandItem
 import at.petrak.hexcasting.xplat.IXplatAbstractions
-import miyucomics.hexical.interfaces.GenieLamp
 import miyucomics.hexical.inits.HexicalAdvancements
+import miyucomics.hexical.interfaces.GenieLamp
 import net.minecraft.item.ItemStack
 
 class OpEducateGenie : SpellAction {

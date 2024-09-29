@@ -4,8 +4,8 @@ import at.petrak.hexcasting.api.misc.FrozenColorizer
 import at.petrak.hexcasting.api.spell.iota.Vec3Iota
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.api.utils.putList
-import miyucomics.hexical.interfaces.Specklike
 import miyucomics.hexical.inits.HexicalEntities
+import miyucomics.hexical.interfaces.Specklike
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityDimensions
 import net.minecraft.entity.EntityPose
