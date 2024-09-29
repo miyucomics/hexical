@@ -7,9 +7,9 @@ import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.NullIota
 import miyucomics.hexical.casting.mishaps.NeedsActiveArchLampMishap
+import miyucomics.hexical.inits.HexicalItems
 import miyucomics.hexical.items.ArchLampItem
 import miyucomics.hexical.items.hasActiveArchLamp
-import miyucomics.hexical.inits.HexicalItems
 
 class OpGetArchLampMedia : ConstMediaAction {
 	override val argc = 0

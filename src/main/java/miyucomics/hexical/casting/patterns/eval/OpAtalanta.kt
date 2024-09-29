@@ -1,3 +1,5 @@
+@file:Suppress("KotlinRedundantDiagnosticSuppress")
+
 package miyucomics.hexical.casting.patterns.eval
 
 import at.petrak.hexcasting.api.spell.Action
@@ -11,9 +13,7 @@ import miyucomics.hexical.casting.mishaps.NeedsSkippableMishap
 import miyucomics.hexical.enums.InjectedGambit
 import miyucomics.hexical.interfaces.FrameForEachMinterface
 
-// prevents IDE from yelling at us for casting FrameForEach since we have a minterface
 @Suppress("CAST_NEVER_SUCCEEDS")
-
 object OpAtalanta : Action {
 	override fun operate(continuation: SpellContinuation, stack: MutableList<Iota>, ravenmind: Iota?, ctx: CastingContext): OperationResult {
 		val newStack = stack.toList()
