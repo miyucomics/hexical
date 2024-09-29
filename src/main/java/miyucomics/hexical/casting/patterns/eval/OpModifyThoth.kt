@@ -12,9 +12,7 @@ import miyucomics.hexical.casting.mishaps.NeedsThothMishap
 import miyucomics.hexical.enums.InjectedGambit
 import miyucomics.hexical.interfaces.FrameForEachMinterface
 
-// prevents IDE from yelling at us for casting FrameForEach since we have a minterface
-@Suppress("CAST_NEVER_SUCCEEDS")
-
+@Suppress("CAST_NEVER_SUCCEEDS", "KotlinRedundantDiagnosticSuppress")
 abstract class OpModifyThoth : Action {
 	abstract fun updateFrame(frame: FrameForEach, stack: MutableList<Iota>): FrameForEach
 

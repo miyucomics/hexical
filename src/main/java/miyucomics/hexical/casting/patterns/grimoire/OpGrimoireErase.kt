@@ -8,8 +8,8 @@ import at.petrak.hexcasting.api.spell.getPattern
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.math.HexPattern
 import at.petrak.hexcasting.api.spell.mishaps.MishapBadOffhandItem
-import miyucomics.hexical.items.GrimoireItem
 import miyucomics.hexical.inits.HexicalItems
+import miyucomics.hexical.items.GrimoireItem
 import net.minecraft.item.ItemStack
 
 class OpGrimoireErase : SpellAction {

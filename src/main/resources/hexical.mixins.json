@@ -3,8 +3,24 @@
 	"package": "miyucomics.hexical.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"minVersion": "0.8",
-	"client": ["AbstractClientPlayerEntityMixin", "ClientPlayerEntityMixin", "MinecraftClientMixin", "MouseMixin"],
-	"mixins": ["BlockAkashicBookshelfMixin", "CastingContextMixin", "CastingHarnessMixin", "FabricIXplatImplMixin", "FrameForEachMixin", "ItemAbacusMixin", "ItemEntityMixin", "OpReadMixin", "PlayerEntityMixin", "WanderingTraderEntityMixin"],
+	"client": [
+		"AbstractClientPlayerEntityMixin",
+		"ClientPlayerEntityMixin",
+		"MinecraftClientMixin",
+		"MouseMixin"
+	],
+	"mixins": [
+		"BlockAkashicBookshelfMixin",
+		"CastingContextMixin",
+		"CastingHarnessMixin",
+		"FabricIXplatImplMixin",
+		"FrameForEachMixin",
+		"ItemAbacusMixin",
+		"ItemEntityMixin",
+		"OpReadMixin",
+		"PlayerEntityMixin",
+		"WanderingTraderEntityMixin"
+	],
 	"injectors": {
 		"defaultRequire": 1
 	}

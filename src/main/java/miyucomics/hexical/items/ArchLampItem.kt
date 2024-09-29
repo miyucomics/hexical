@@ -6,10 +6,10 @@ import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.enums.SpecializedSource
-import miyucomics.hexical.interfaces.GenieLamp
-import miyucomics.hexical.interfaces.PlayerEntityMinterface
 import miyucomics.hexical.inits.HexicalItems
 import miyucomics.hexical.inits.HexicalSounds
+import miyucomics.hexical.interfaces.GenieLamp
+import miyucomics.hexical.interfaces.PlayerEntityMinterface
 import miyucomics.hexical.state.PersistentStateHandler
 import miyucomics.hexical.utils.CastingUtils
 import net.minecraft.entity.Entity
