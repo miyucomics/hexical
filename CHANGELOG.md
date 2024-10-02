@@ -26,11 +26,13 @@
 - fixed a hacky workaround used by evocation where it replaces the player's hand. Now it directly takes from the inventory
 - fixed funky behavior with evocation and reading items, now it tries to read from the offhand then the mainhand
 - fixed Offer Mind spell allowing for overflow
+- fixed error in documentation: Racer's Purification can work on nonplayers
 - made code much better
 - merged Arch Lamp Storage spells into the Arch Lamps page
 - removed cost from Reweave Mesh
 - removed limit on grimoires
 - removed ridiculous knockback from lightning rod staff
+- renamed one of the luminance purifications to Glow Purification
 
 ## 1.3.2
 - changed keybind reflections to return -1 when not active
