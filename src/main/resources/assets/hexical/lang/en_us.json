@@ -550,7 +550,7 @@
 	"hexical.page.blockstate_rotation.summary": "Pushes the vector of the block's facing direction, or null if the block does not have a facing direction.",
 	"hexcasting.spell.hexical:blockstate_crop": "Farmer's Purification",
 	"hexical.page.blockstate_crop.summary": "Pushes a number 0 to 1, corresponding to how grown that crop is, as well as beehives, composters, and cauldrons. Strangely works on cakes too.",
-	"hexcasting.spell.hexical:blockstate_glow": "Luminance Purification",
+	"hexcasting.spell.hexical:blockstate_glow": "Glowing Purification",
 	"hexical.page.blockstate_glow.summary": "Pushes a boolean for whether the block is in a \"lit\" state, for example furnaces, Redstone torches, lamps, and campfires.",
 	"hexcasting.spell.hexical:blockstate_lock": "Lock Purification",
 	"hexical.page.blockstate_lock.summary": "Pushes a boolean for whether the block is currently in a \"open\" state, for example doors, trapdoors, fence gates, and open barrels.",

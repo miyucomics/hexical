@@ -16,7 +16,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@SuppressWarnings("UnreachableCode")
 @Mixin(PlayerEntity.class)
 public class PlayerEntityMixin implements PlayerEntityMinterface {
 	@Unique
