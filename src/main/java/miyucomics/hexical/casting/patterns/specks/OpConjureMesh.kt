@@ -7,7 +7,7 @@ import at.petrak.hexcasting.api.spell.getVec3
 import at.petrak.hexcasting.api.spell.iota.EntityIota
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.xplat.IXplatAbstractions
-import miyucomics.hexical.entities.MeshEntity
+import miyucomics.hexical.entities.specklikes.MeshEntity
 import miyucomics.hexical.inits.HexicalAdvancements
 
 class OpConjureMesh : ConstMediaAction {

@@ -124,6 +124,7 @@
 	"hexcasting.spell.book.hexical:get_effect_amplifier": "Concentration Dstl.",
 	"hexcasting.spell.book.hexical:get_effects_item": "Prescription Purif.",
 	"hexcasting.spell.book.hexical:get_enchantments": "Thaumaturgist's Purif.",
+	"hexcasting.spell.book.hexical:breedable": "Reproduction Purif.",
 	"hexcasting.spell.book.hexical:get_hand_lamp_position": "Genie Refl.: Spatial",
 	"hexcasting.spell.book.hexical:get_hand_lamp_rotation": "Genie Refl.: Rotational",
 	"hexcasting.spell.book.hexical:get_hand_lamp_velocity": "Genie Refl.: Kinetic",

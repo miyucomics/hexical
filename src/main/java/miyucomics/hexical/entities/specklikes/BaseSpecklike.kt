@@ -1,13 +1,8 @@
-package miyucomics.hexical.entities
+package miyucomics.hexical.entities.specklikes
 
 import at.petrak.hexcasting.api.misc.FrozenColorizer
-import at.petrak.hexcasting.api.spell.iota.Iota
-import at.petrak.hexcasting.api.spell.iota.PatternIota
-import at.petrak.hexcasting.api.spell.math.HexPattern
 import at.petrak.hexcasting.api.utils.putCompound
-import miyucomics.hexical.inits.HexicalEntities
 import miyucomics.hexical.interfaces.Specklike
-import miyucomics.hexical.utils.RenderUtils
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityDimensions
 import net.minecraft.entity.EntityPose
@@ -17,18 +12,11 @@ import net.minecraft.entity.data.TrackedData
 import net.minecraft.entity.data.TrackedDataHandlerRegistry
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket
-import net.minecraft.text.Text
-import net.minecraft.util.math.Vec2f
 import net.minecraft.world.World
 
-class SpeckEntity(entityType: EntityType<SpeckEntity>, world: World) : Entity(entityType, world), Specklike {
-	constructor(world: World) : this(HexicalEntities.SPECK_ENTITY, world)
-
+abstract class BaseSpecklike(entityType: EntityType<out BaseSpecklike>, world: World) : Entity(entityType, world), Specklike {
 	private var lifespan = -1
 
-	var clientIsText = false
-	var clientText: Text = Text.empty()
-	var clientVerts: List<Vec2f> = listOf()
 	var clientPigment: FrozenColorizer = FrozenColorizer.DEFAULT.get()
 	var clientSize = 1f
 	var clientThickness = 1f
@@ -43,7 +31,6 @@ class SpeckEntity(entityType: EntityType<SpeckEntity>, world: World) : Entity(en
 	}
 
 	override fun readCustomDataFromNbt(nbt: NbtCompound) {
-		dataTracker.set(displayDataTracker, nbt.getCompound("display"))
 		dataTracker.set(pigmentDataTracker, nbt.getCompound("pigment"))
 		dataTracker.set(rollDataTracker, nbt.getFloat("roll"))
 		dataTracker.set(sizeDataTracker, nbt.getFloat("size"))
@@ -52,23 +39,11 @@ class SpeckEntity(entityType: EntityType<SpeckEntity>, world: World) : Entity(en
 	}
 
 	override fun writeCustomDataToNbt(nbt: NbtCompound) {
-		nbt.putCompound("display", dataTracker.get(displayDataTracker))
 		nbt.putCompound("pigment", dataTracker.get(pigmentDataTracker))
 		nbt.putFloat("roll", dataTracker.get(rollDataTracker))
 		nbt.putFloat("size", dataTracker.get(sizeDataTracker))
 		nbt.putFloat("thickness", dataTracker.get(thicknessDataTracker))
 		nbt.putInt("lifespan", lifespan)
-	}
-
-	fun setIota(iota: Iota) {
-		if (iota is PatternIota) {
-			dataTracker.set(displayDataTracker, iota.pattern.serializeToNBT())
-		} else {
-			val compound = NbtCompound()
-			val text = iota.display()
-			compound.putString("text", Text.Serializer.toJson(Text.of(text.string.removePrefix("\"").removeSuffix("\"")).getWithStyle(text.style)[0]))
-			dataTracker.set(displayDataTracker, compound)
-		}
 	}
 
 	override fun setLifespan(lifespan: Int) {
@@ -83,7 +58,6 @@ class SpeckEntity(entityType: EntityType<SpeckEntity>, world: World) : Entity(en
 	override fun createSpawnPacket() = EntitySpawnS2CPacket(this)
 
 	override fun initDataTracker() {
-		dataTracker.startTracking(displayDataTracker, NbtCompound())
 		dataTracker.startTracking(pigmentDataTracker, NbtCompound())
 		dataTracker.startTracking(rollDataTracker, 0f)
 		dataTracker.startTracking(sizeDataTracker, 1f)
@@ -92,16 +66,6 @@ class SpeckEntity(entityType: EntityType<SpeckEntity>, world: World) : Entity(en
 
 	override fun onTrackedDataSet(data: TrackedData<*>) {
 		when (data) {
-			displayDataTracker -> {
-				val raw = dataTracker.get(displayDataTracker)
-				if (raw.contains("text")) {
-					this.clientIsText = true
-					this.clientText = Text.Serializer.fromJson(raw.getString("text"))!!
-				} else {
-					this.clientIsText = false
-					this.clientVerts = RenderUtils.getNormalizedStrokes(HexPattern.fromNBT(raw))
-				}
-			}
 			pigmentDataTracker -> this.clientPigment = FrozenColorizer.fromNBT(dataTracker.get(pigmentDataTracker))
 			sizeDataTracker -> this.clientSize = dataTracker.get(sizeDataTracker)
 			rollDataTracker -> this.clientRoll = dataTracker.get(rollDataTracker)
@@ -111,7 +75,6 @@ class SpeckEntity(entityType: EntityType<SpeckEntity>, world: World) : Entity(en
 	}
 
 	companion object {
-		private val displayDataTracker: TrackedData<NbtCompound> = DataTracker.registerData(SpeckEntity::class.java, TrackedDataHandlerRegistry.NBT_COMPOUND)
 		private val pigmentDataTracker: TrackedData<NbtCompound> = DataTracker.registerData(SpeckEntity::class.java, TrackedDataHandlerRegistry.NBT_COMPOUND)
 		private val sizeDataTracker: TrackedData<Float> = DataTracker.registerData(SpeckEntity::class.java, TrackedDataHandlerRegistry.FLOAT)
 		private val thicknessDataTracker: TrackedData<Float> = DataTracker.registerData(SpeckEntity::class.java, TrackedDataHandlerRegistry.FLOAT)

@@ -8,7 +8,7 @@ import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.Vec3Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapBadEntity
 import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
-import miyucomics.hexical.entities.MeshEntity
+import miyucomics.hexical.entities.specklikes.MeshEntity
 import net.minecraft.util.math.Vec3f
 
 class OpWeaveMesh : ConstMediaAction {
