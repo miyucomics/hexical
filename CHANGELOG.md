@@ -30,6 +30,8 @@
 - fixed error in documentation: Racer's Purification can work on nonplayers
 - fixed error in documentation: Telepathy Reflection does not return null ever
 - made code much better
+  - used lambdas rather than larger switch statements
+  - specklikes are now modularized
 - merged Arch Lamp Storage spells into the Arch Lamps page
 - removed cost from Reweave Mesh
 - removed limit on grimoires

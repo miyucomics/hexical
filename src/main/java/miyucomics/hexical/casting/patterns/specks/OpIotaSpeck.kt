@@ -5,7 +5,7 @@ import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.getEntity
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapBadEntity
-import miyucomics.hexical.entities.SpeckEntity
+import miyucomics.hexical.entities.specklikes.SpeckEntity
 
 class OpIotaSpeck : ConstMediaAction {
 	override val argc = 2

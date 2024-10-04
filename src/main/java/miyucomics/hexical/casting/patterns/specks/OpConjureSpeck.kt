@@ -10,7 +10,7 @@ import at.petrak.hexcasting.api.spell.iota.PatternIota
 import at.petrak.hexcasting.api.spell.math.HexDir
 import at.petrak.hexcasting.api.spell.math.HexPattern
 import at.petrak.hexcasting.xplat.IXplatAbstractions
-import miyucomics.hexical.entities.SpeckEntity
+import miyucomics.hexical.entities.specklikes.SpeckEntity
 import miyucomics.hexical.inits.HexicalAdvancements
 import net.minecraft.command.argument.EntityAnchorArgumentType
 
