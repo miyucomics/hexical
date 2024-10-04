@@ -16,6 +16,7 @@
 - added Conjure Fireball: conjures a ghast fireball with no velocity at a position within ambit for three dust
 - added pattern for changing the pigment of specks
 - added more quotes to documentation
+- changed mage block modifiers to update neighboring blocks
 - changed Offerings page to no longer require using up a lamp
 - changed evocation warmup period to one second
 - changed how Evoker's Purification works to be like all the other keybind patterns
@@ -27,6 +28,7 @@
 - fixed funky behavior with evocation and reading items, now it tries to read from the offhand then the mainhand
 - fixed Offer Mind spell allowing for overflow
 - fixed error in documentation: Racer's Purification can work on nonplayers
+- fixed error in documentation: Telepathy Reflection does not return null ever
 - made code much better
 - merged Arch Lamp Storage spells into the Arch Lamps page
 - removed cost from Reweave Mesh
