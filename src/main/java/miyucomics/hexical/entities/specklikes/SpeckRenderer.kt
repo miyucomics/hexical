@@ -1,4 +1,4 @@
-package miyucomics.hexical.entities
+package miyucomics.hexical.entities.specklikes
 
 import at.petrak.hexcasting.api.HexAPI.modLoc
 import com.mojang.blaze3d.systems.RenderSystem
