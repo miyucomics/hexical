@@ -13,7 +13,7 @@
 			"op_id": "hexical:get_telepathy",
 			"anchor": "hexical:get_telepathy",
 			"input": "",
-			"output": "null/number",
+			"output": "number",
 			"text": "hexical.page.get_telepathy.summary"
 		}, {
 			"type": "hexcasting:pattern",
