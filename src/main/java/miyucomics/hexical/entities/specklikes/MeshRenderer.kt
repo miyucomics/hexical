@@ -16,10 +16,6 @@ import kotlin.math.sin
 
 @OptIn(ExperimentalStdlibApi::class)
 class MeshRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<MeshEntity>(ctx) {
-	private val sides = 6
-	private val angleIncrement = 2 * Math.PI / 6
-	private val renderLayer = RenderLayer.getEntityCutoutNoCull(modLoc("textures/entity/white.png"))
-
 	override fun getTexture(entity: MeshEntity?): Identifier? = null
 	override fun shouldRender(entity: MeshEntity?, frustum: Frustum?, x: Double, y: Double, z: Double) = true
 	override fun render(entity: MeshEntity?, yaw: Float, tickDelta: Float, matrices: MatrixStack, vertexConsumers: VertexConsumerProvider, light: Int) {
@@ -56,9 +52,9 @@ class MeshRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<MeshEnti
 		val perpendicularCrossProduct = perpendicular.crossProduct(direction)
 		val directionDotProduct = direction.multiply(direction.dotProduct(perpendicular))
 
-		for (i in 0 until sides) {
-			val startAngle = i * angleIncrement
-			val endAngle = (i + 1) % sides * angleIncrement
+		for (i in 0 until SIDES) {
+			val startAngle = i * ANGLE_INCREMENT
+			val endAngle = (i + 1) % SIDES * ANGLE_INCREMENT
 			val a = perpendicular.multiply(cos(startAngle)).add(perpendicularCrossProduct.multiply(sin(startAngle))).add(directionDotProduct.multiply(1 - cos(startAngle))).normalize().multiply(thickness)
 			val b = perpendicular.multiply(cos(endAngle)).add(perpendicularCrossProduct.multiply(sin(endAngle))).add(directionDotProduct.multiply(1 - cos(endAngle))).normalize().multiply(thickness)
 
@@ -71,5 +67,11 @@ class MeshRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<MeshEnti
 
 	private fun vertex(pose: Matrix4f, norm: Matrix3f, vertices: VertexConsumer, position: Vec3d, pigment: FrozenColorizer) {
 		vertices.vertex(pose, position.x.toFloat(), position.y.toFloat(), position.z.toFloat()).color(pigment.getColor(0f, position)).texture(0f, 0f).overlay(OverlayTexture.DEFAULT_UV).light(LightmapTextureManager.MAX_LIGHT_COORDINATE).normal(norm, 0f, 1f, 0f).next()
+	}
+
+	companion object {
+		private const val SIDES = 6
+		private const val ANGLE_INCREMENT = 2 * Math.PI / SIDES
+		private val renderLayer = RenderLayer.getEntityCutoutNoCull(modLoc("textures/entity/white.png"))
 	}
 }

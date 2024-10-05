@@ -1,10 +1,12 @@
 package miyucomics.hexical.blocks
 
+import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.inits.HexicalSounds
 import net.minecraft.block.*
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.sound.BlockSoundGroup
 import net.minecraft.sound.SoundCategory
+import net.minecraft.text.Text
 import net.minecraft.util.ActionResult
 import net.minecraft.util.Hand
 import net.minecraft.util.hit.BlockHitResult
@@ -25,6 +27,7 @@ class MediaJarBlock : TransparentBlock(Settings.of(Material.GLASS).emissiveLight
 			return ActionResult.SUCCESS
 		player.swingHand(hand)
 		world.playSoundFromEntity(null, player, HexicalSounds.PLAYER_SLURP, SoundCategory.PLAYERS, 1f, 1f)
+		player.sendMessage(Text.translatable("hexical.fortune." + HexicalMain.RANDOM.nextInt(20)), true)
 		return ActionResult.SUCCESS
 	}
 }
