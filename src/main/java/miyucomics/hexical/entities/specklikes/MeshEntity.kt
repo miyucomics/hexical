@@ -17,7 +17,7 @@ import net.minecraft.util.math.Vec3f
 import net.minecraft.world.World
 
 @OptIn(ExperimentalStdlibApi::class)
-open class MeshEntity(entityType: EntityType<MeshEntity>, world: World) : BaseSpecklike(entityType, world) {
+open class MeshEntity(entityType: EntityType<out MeshEntity>, world: World) : BaseSpecklike(entityType, world) {
 	constructor(world: World) : this(HexicalEntities.MESH_ENTITY, world)
 
 	var clientVertices: MutableList<Vec3f> = mutableListOf()

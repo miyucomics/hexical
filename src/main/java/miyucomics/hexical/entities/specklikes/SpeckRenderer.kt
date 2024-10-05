@@ -34,7 +34,7 @@ class SpeckRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<SpeckEn
 			RenderSystem.enableCull()
 		} else {
 			val top = matrices.peek()
-			val buffer = vertexConsumers.getBuffer(RenderLayer.getEntityCutoutNoCull(WHITE))
+			val buffer = vertexConsumers.getBuffer(renderLayer)
 			RenderUtils.drawLines(top.positionMatrix, top.normalMatrix, LightmapTextureManager.MAX_LIGHT_COORDINATE, entity.clientThickness * 0.05f / entity.clientSize, buffer, entity.clientVerts) { pos -> entity.clientPigment.getColor(0f, Vec3d(pos.x.toDouble(), pos.y.toDouble(), 0.0).multiply(2.0).add(entity.pos)) }
 		}
 
@@ -42,6 +42,6 @@ class SpeckRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<SpeckEn
 	}
 
 	companion object {
-		private val WHITE: Identifier = modLoc("textures/entity/white.png")
+		private val renderLayer = RenderLayer.getEntityCutoutNoCull(modLoc("textures/entity/white.png"))
 	}
 }
