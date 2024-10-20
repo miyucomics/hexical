@@ -7,7 +7,6 @@ import miyucomics.hexical.entities.specklikes.MeshRenderer
 import miyucomics.hexical.entities.specklikes.SpeckEntity
 import miyucomics.hexical.entities.specklikes.SpeckRenderer
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry
-import net.minecraft.client.render.entity.EntityRendererFactory
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.SpawnGroup
 import net.minecraft.util.registry.Registry
