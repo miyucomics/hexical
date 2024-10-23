@@ -23,12 +23,11 @@ class HexicalMain : ModInitializer {
 
 	companion object {
 		const val MOD_ID: String = "hexical"
+
 		@JvmField
 		val RANDOM: Random = Random()
 		const val EVOKE_DURATION: Int = 20
 
-		fun id(string: String?): Identifier {
-			return Identifier(MOD_ID, string)
-		}
+		fun id(string: String) = Identifier(MOD_ID, string)
 	}
 }
