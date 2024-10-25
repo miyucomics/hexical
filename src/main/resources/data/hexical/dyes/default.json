@@ -192,6 +192,7 @@
 			"minecraft:black_shulker_box": "black"
 		},
 		"stained_glass": {
+			"minecraft:glass": "uncolored",
 			"minecraft:white_stained_glass": "white",
 			"minecraft:orange_stained_glass": "orange",
 			"minecraft:magenta_stained_glass": "magenta",
@@ -210,6 +211,7 @@
 			"minecraft:black_stained_glass": "black"
 		},
 		"stained_glass_pane": {
+			"minecraft:glass_pane": "uncolored",
 			"minecraft:white_stained_glass_pane": "white",
 			"minecraft:orange_stained_glass_pane": "orange",
 			"minecraft:magenta_stained_glass_pane": "magenta",
