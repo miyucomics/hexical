@@ -14,10 +14,11 @@ import at.petrak.hexcasting.api.spell.getList
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapNotEnoughArgs
 import at.petrak.hexcasting.common.lib.hex.HexEvalSounds
+import miyucomics.hexical.enums.FakeGambit
 import miyucomics.hexical.enums.InjectedGambit
 import miyucomics.hexical.interfaces.FrameForEachMinterface
 
-object OpSisyphus : Action {
+object OpSisyphus : Action, FakeGambit {
 	override fun operate(continuation: SpellContinuation, stack: MutableList<Iota>, ravenmind: Iota?, ctx: CastingContext): OperationResult {
 		if (stack.size == 0)
 			throw MishapNotEnoughArgs(1, 0)
@@ -30,17 +31,15 @@ object OpSisyphus : Action {
 		return OperationResult(continuation.pushFrame(frame), stack, ravenmind, listOf())
 	}
 
-	@JvmStatic
-	fun breakDownwards(baseStack: List<Iota>): Pair<Boolean, List<Iota>> = true to baseStack
+	override fun breakDownwards(baseStack: List<Iota>, accumulator: MutableList<Iota>): Pair<Boolean, List<Iota>> = true to baseStack
 
-	@JvmStatic
-	fun evaluate(continuation: SpellContinuation, harness: CastingHarness, code: SpellList, baseStack: List<Iota>): CastingHarness.CastResult {
+	override fun evaluate(continuation: SpellContinuation, harness: CastingHarness, data: SpellList, code: SpellList, baseStack: List<Iota>?, accumulator: MutableList<Iota>): CastingHarness.CastResult {
 		harness.ctx.incDepth()
 		val frame = FrameForEach(SpellList.LList(0, listOf()), code, baseStack, mutableListOf())
 		(frame as FrameForEachMinterface).overwrite(InjectedGambit.SISYPHUS)
 		return CastingHarness.CastResult(
 			continuation.pushFrame(frame).pushFrame(FrameEvaluate(code, true)),
-			FunctionalData(baseStack, 0, listOf(), false, harness.ravenmind),
+			FunctionalData(baseStack!!, 0, listOf(), false, harness.ravenmind),
 			ResolvedPatternType.EVALUATED,
 			listOf(),
 			HexEvalSounds.THOTH,
