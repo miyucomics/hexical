@@ -15,10 +15,11 @@ import at.petrak.hexcasting.api.spell.iota.PatternIota
 import at.petrak.hexcasting.api.spell.mishaps.MishapNotEnoughArgs
 import at.petrak.hexcasting.common.lib.hex.HexEvalSounds
 import miyucomics.hexical.casting.mishaps.ThemisMishap
+import miyucomics.hexical.enums.FakeGambit
 import miyucomics.hexical.enums.InjectedGambit
 import miyucomics.hexical.interfaces.FrameForEachMinterface
 
-object OpThemis : Action {
+object OpThemis : Action, FakeGambit {
 	override fun operate(continuation: SpellContinuation, stack: MutableList<Iota>, ravenmind: Iota?, ctx: CastingContext): OperationResult {
 		if (stack.size < 2)
 			throw MishapNotEnoughArgs(1, 0)
@@ -37,8 +38,7 @@ object OpThemis : Action {
 		return OperationResult(continuation.pushFrame(frame), stack, ravenmind, listOf())
 	}
 
-	@JvmStatic
-	fun breakDownwards(baseStack: List<Iota>, accumulator: MutableList<Iota>): Pair<Boolean, List<Iota>> {
+	override fun breakDownwards(baseStack: List<Iota>, accumulator: MutableList<Iota>): Pair<Boolean, List<Iota>> {
 		val final = mutableListOf<Iota>()
 		val itemPriorityPairs = accumulator.chunked(2)
 		val sortedPairs = itemPriorityPairs.sortedBy { (it[1] as DoubleIota).double }
@@ -49,8 +49,7 @@ object OpThemis : Action {
 		return true to newStack
 	}
 
-	@JvmStatic
-	fun evaluate(continuation: SpellContinuation, harness: CastingHarness, data: SpellList, code: SpellList, baseStack: List<Iota>?, accumulator: MutableList<Iota>): CastingHarness.CastResult {
+	override fun evaluate(continuation: SpellContinuation, harness: CastingHarness, data: SpellList, code: SpellList, baseStack: List<Iota>?, accumulator: MutableList<Iota>): CastingHarness.CastResult {
 		val stack: List<Iota> = if (baseStack == null) {
 			harness.stack.toList()
 		} else {
