@@ -30,7 +30,10 @@
 - fixed Offer Mind spell allowing for overflow
 - fixed error in documentation: Racer's Purification can work on nonplayers
 - fixed error in documentation: Telepathy Reflection does not return null ever
+- fixed error in documentation: genie lamps can not cast Offer Mind
+- fixed oversight: plain glass and plain glass panes can now be dyed
 - made code much better
+  - gambits now have an interface so they are easy to add
   - used lambdas rather than larger switch statements
   - specklikes are now modularized
 - merged Arch Lamp Storage spells into the Arch Lamps page
