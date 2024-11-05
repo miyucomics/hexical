@@ -72,7 +72,12 @@ object CastingUtils {
 
 	@JvmStatic
 	fun castSpecial(world: ServerWorld, user: ServerPlayerEntity, hex: List<Iota>, source: SpecializedSource, finale: Boolean): CastingHarness {
-		val harness = IXplatAbstractions.INSTANCE.getHarness(user, Hand.MAIN_HAND)
+		val hand = if(!user.getStackInHand(Hand.MAIN_HAND).isEmpty && user.getStackInHand(Hand.OFF_HAND).isEmpty){
+			Hand.OFF_HAND
+		} else {
+			Hand.MAIN_HAND
+		}
+		val harness = IXplatAbstractions.INSTANCE.getHarness(user, hand)
 		(harness.ctx as CastingContextMinterface).setSpecializedSource(source)
 		(harness.ctx as CastingContextMinterface).setFinale(finale)
 		harness.stack = mutableListOf()
