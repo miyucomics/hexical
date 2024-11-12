@@ -19,7 +19,6 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 @Mixin(WanderingTraderEntity.class)
 public abstract class WanderingTraderEntityMixin extends MerchantEntity {
@@ -34,6 +33,7 @@ public abstract class WanderingTraderEntityMixin extends MerchantEntity {
 		super(entityType, world);
 	}
 
+	@SuppressWarnings("ConstantConditions")
 	@Inject(method = "fillRecipes", at = @At("RETURN"))
 	public void addNewTrades(CallbackInfo info) {
 		TradeOfferList tradeOfferList = getOffers();
@@ -41,8 +41,8 @@ public abstract class WanderingTraderEntityMixin extends MerchantEntity {
 			return;
 		if (random.nextFloat() < 0.1f) {
 			ItemStack trade = new ItemStack(HexicalItems.HAND_LAMP_ITEM);
-			Objects.requireNonNull(IXplatAbstractions.INSTANCE.findHexHolder(trade)).writeHex(new ArrayList<>(), MediaConstants.DUST_UNIT * 320);
-			Objects.requireNonNull(IXplatAbstractions.INSTANCE.findMediaHolder(trade)).withdrawMedia((int) (HexicalMain.RANDOM.nextFloat() * 160f) * MediaConstants.DUST_UNIT, false);
+			IXplatAbstractions.INSTANCE.findHexHolder(trade).writeHex(new ArrayList<>(), MediaConstants.DUST_UNIT * 320);
+			IXplatAbstractions.INSTANCE.findMediaHolder(trade).withdrawMedia((int) (HexicalMain.RANDOM.nextFloat() * 160f) * MediaConstants.DUST_UNIT, false);
 			tradeOfferList.add(new TradeOffer(new ItemStack(Items.EMERALD, 32), trade, 1, 1, 1));
 		}
 	}
