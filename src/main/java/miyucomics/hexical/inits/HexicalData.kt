@@ -19,5 +19,7 @@ object HexicalData {
 			override fun getFabricId() = HexicalMain.id("prestidigitation")
 			override fun reload(manager: ResourceManager) = manager.findResources("prestidigitation") { path -> path.path.endsWith(".json") }.keys.forEach { id -> PrestidigitationData.loadData(manager.getResource(id).get().inputStream) }
 		})
+
+		PrestidigitationData.init()
 	}
 }
