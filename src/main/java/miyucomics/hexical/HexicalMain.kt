@@ -1,6 +1,5 @@
 package miyucomics.hexical
 
-import miyucomics.hexical.data.PrestidigitationData
 import miyucomics.hexical.inits.*
 import net.fabricmc.api.ModInitializer
 import net.minecraft.util.Identifier
@@ -18,7 +17,6 @@ class HexicalMain : ModInitializer {
 		HexicalSounds.init()
 		HexicalPatterns.init()
 		HexicalNetworking.serverInit()
-		PrestidigitationData.init()
 	}
 
 	companion object {
