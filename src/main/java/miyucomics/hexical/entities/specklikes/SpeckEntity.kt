@@ -63,6 +63,6 @@ open class SpeckEntity(entityType: EntityType<out SpeckEntity>, world: World) : 
 	}
 
 	companion object {
-		private val displayDataTracker: TrackedData<NbtCompound> = DataTracker.registerData(SpeckEntity::class.java, TrackedDataHandlerRegistry.NBT_COMPOUND)
+		private val displayDataTracker: TrackedData<NbtCompound> = DataTracker.registerData(BaseSpecklike::class.java, TrackedDataHandlerRegistry.NBT_COMPOUND)
 	}
 }
