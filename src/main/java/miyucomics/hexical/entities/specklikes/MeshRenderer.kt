@@ -42,7 +42,7 @@ class MeshRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<MeshEnti
 	private fun drawConnection(matrices: MatrixStack, vertices: VertexConsumer, start: Vec3d, end: Vec3d, pigment: FrozenColorizer, thickness: Double) {
 		val direction = end.subtract(start).normalize()
 		var perpendicular = direction.crossProduct(Vec3d(1.0, 0.0, 0.0))
-		if (direction.dotProduct(Vec3d(1.0, 0.0, 0.0)) > 0.99)
+		if (direction.dotProduct(Vec3d(1.0, 0.0, 0.0)) > 0.99 || direction.dotProduct(Vec3d(1.0, 0.0, 0.0)) < -0.99)
 			perpendicular = direction.crossProduct(Vec3d(0.0, 1.0, 0.0))
 
 		val pose = matrices.peek().positionMatrix
