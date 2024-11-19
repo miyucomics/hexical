@@ -22,6 +22,8 @@ abstract class BaseSpecklike(entityType: EntityType<out BaseSpecklike>, world: W
 	var clientThickness = 1f
 	var clientRoll = 0f
 
+	open fun processState() {}
+
 	override fun tick() {
 		if (lifespan != -1)
 			lifespan--
@@ -58,6 +60,7 @@ abstract class BaseSpecklike(entityType: EntityType<out BaseSpecklike>, world: W
 	override fun createSpawnPacket() = EntitySpawnS2CPacket(this)
 
 	override fun initDataTracker() {
+		dataTracker.startTracking(stateDataTracker, NbtCompound())
 		dataTracker.startTracking(pigmentDataTracker, NbtCompound())
 		dataTracker.startTracking(rollDataTracker, 0f)
 		dataTracker.startTracking(sizeDataTracker, 1f)
@@ -66,6 +69,7 @@ abstract class BaseSpecklike(entityType: EntityType<out BaseSpecklike>, world: W
 
 	override fun onTrackedDataSet(data: TrackedData<*>) {
 		when (data) {
+			stateDataTracker -> processState()
 			pigmentDataTracker -> this.clientPigment = FrozenColorizer.fromNBT(dataTracker.get(pigmentDataTracker))
 			sizeDataTracker -> this.clientSize = dataTracker.get(sizeDataTracker)
 			rollDataTracker -> this.clientRoll = dataTracker.get(rollDataTracker)
@@ -75,6 +79,7 @@ abstract class BaseSpecklike(entityType: EntityType<out BaseSpecklike>, world: W
 	}
 
 	companion object {
+		val stateDataTracker: TrackedData<NbtCompound> = DataTracker.registerData(BaseSpecklike::class.java, TrackedDataHandlerRegistry.NBT_COMPOUND)
 		private val pigmentDataTracker: TrackedData<NbtCompound> = DataTracker.registerData(BaseSpecklike::class.java, TrackedDataHandlerRegistry.NBT_COMPOUND)
 		private val sizeDataTracker: TrackedData<Float> = DataTracker.registerData(BaseSpecklike::class.java, TrackedDataHandlerRegistry.FLOAT)
 		private val thicknessDataTracker: TrackedData<Float> = DataTracker.registerData(BaseSpecklike::class.java, TrackedDataHandlerRegistry.FLOAT)
