@@ -4,6 +4,7 @@ import at.petrak.hexcasting.api.HexAPI
 import at.petrak.hexcasting.api.misc.DiscoveryHandlers
 import at.petrak.hexcasting.api.misc.HexDamageSources
 import at.petrak.hexcasting.api.mod.HexConfig
+import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.casting.CastingHarness
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.mishaps.Mishap
@@ -72,15 +73,10 @@ object CastingUtils {
 
 	@JvmStatic
 	fun castSpecial(world: ServerWorld, user: ServerPlayerEntity, hex: List<Iota>, source: SpecializedSource, finale: Boolean): CastingHarness {
-		val hand = if(!user.getStackInHand(Hand.MAIN_HAND).isEmpty && user.getStackInHand(Hand.OFF_HAND).isEmpty){
-			Hand.OFF_HAND
-		} else {
-			Hand.MAIN_HAND
-		}
-		val harness = IXplatAbstractions.INSTANCE.getHarness(user, hand)
+		val hand = if (!user.getStackInHand(Hand.MAIN_HAND).isEmpty && user.getStackInHand(Hand.OFF_HAND).isEmpty) Hand.OFF_HAND else Hand.MAIN_HAND
+		val harness = CastingHarness(CastingContext(user, hand, CastingContext.CastSource.PACKAGED_HEX))
 		(harness.ctx as CastingContextMinterface).setSpecializedSource(source)
 		(harness.ctx as CastingContextMinterface).setFinale(finale)
-		harness.stack = mutableListOf()
 		harness.executeIotas(hex, world)
 		return harness
 	}
