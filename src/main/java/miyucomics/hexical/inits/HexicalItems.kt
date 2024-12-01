@@ -26,7 +26,6 @@ object HexicalItems {
 	val HAND_LAMP_ITEM = HandLampItem()
 	@JvmField
 	val ARCH_LAMP_ITEM = ArchLampItem()
-	val WANDERING_LAMP_ITEM = WanderingLampItem()
 
 	@JvmField
 	val CONJURED_COMPASS_ITEM = ConjuredCompassItem()
@@ -42,7 +41,6 @@ object HexicalItems {
 	fun init() {
 		Registry.register(Registry.ITEM, HexicalMain.id("lamp"), HAND_LAMP_ITEM)
 		Registry.register(Registry.ITEM, HexicalMain.id("arch_lamp"), ARCH_LAMP_ITEM)
-		Registry.register(Registry.ITEM, HexicalMain.id("wandering_lamp"), WANDERING_LAMP_ITEM)
 
 		Registry.register(Registry.ITEM, HexicalMain.id("gauntlet_staff"), ItemStaff(Settings().maxCount(1).group(HEXICAL_GROUP)))
 		Registry.register(Registry.ITEM, HexicalMain.id("lightning_rod_staff"), ItemStaff(Settings().maxCount(1).group(HEXICAL_GROUP)))
@@ -65,12 +63,6 @@ object HexicalItems {
 		ModelPredicateProviderRegistry.register(CONJURED_STAFF_ITEM, Identifier("sprite")) { stack: ItemStack, _: ClientWorld?, _: LivingEntity?, _: Int -> stack.orCreateNbt.getFloat("sprite") / 10 }
 		ModelPredicateProviderRegistry.register(CONJURED_COMPASS_ITEM, Identifier("angle"), CompassAnglePredicateProvider(CompassTarget { _: ClientWorld, stack: ItemStack, player: Entity ->
 			val nbt = stack.nbt ?: return@CompassTarget null
-			return@CompassTarget GlobalPos.create(player.world.registryKey, BlockPos(nbt.getInt("x"), nbt.getInt("y"), nbt.getInt("z")))
-		}))
-		ModelPredicateProviderRegistry.register(WANDERING_LAMP_ITEM, Identifier("angle"), CompassAnglePredicateProvider(CompassTarget { _: ClientWorld, stack: ItemStack, player: Entity ->
-			val nbt = stack.nbt ?: return@CompassTarget null
-			if (!nbt.contains("x"))
-				return@CompassTarget null
 			return@CompassTarget GlobalPos.create(player.world.registryKey, BlockPos(nbt.getInt("x"), nbt.getInt("y"), nbt.getInt("z")))
 		}))
 	}
