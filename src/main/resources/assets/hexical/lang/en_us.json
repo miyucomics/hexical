@@ -1,8 +1,6 @@
 {
 	"advancements.hexical.arch_lamp.title": "Daemon",
 	"advancements.hexical.arch_lamp.description": "Acquire an archgenie lamp.",
-	"advancements.hexical.wandering_lamp.title": "Itty Bitty Living Space",
-	"advancements.hexical.wandering_lamp.description": "Acquire a wandering lamp.",
 
 	"advancements.hexical.reload_lamp.title": "Phenomenal Cosmic Powers!",
 	"advancements.hexical.reload_lamp.description": "Reload the lamp.",
@@ -43,7 +41,6 @@
 	"item.hexical.hexburst": "Hexburst",
 	"item.hexical.hextito": "Hextito",
 	"item.hexical.lamp": "Hand Genie Lamp",
-	"item.hexical.wandering_lamp": "Wandering Lamp",
 	"item.hexical.gauntlet_staff": "Gauntlet Staff",
 	"item.hexical.lightning_rod_staff": "Lightning Rod Staff",
 	"item.hexical.living_scroll_small": "Small Living Scroll",
@@ -244,10 +241,6 @@
 	"hexical.page.offerings.2": "Notably, this spell will $(o)not$() kill the villager. It splinters off a section of their mind to serve as the genie and for the villager's main consciousness only results in amnesia. I have heard rumors of ancient Hexcasters $(o)growing$() villager minds like crops using this property, consuming them to recharge their lamps, and allowing them to regenerate their lost knowledge in between.",
 	"hexical.page.offerings.3": "Not all villagers can be a genie. I estimate there is so little media potential in any villager lesser than Journeyman-grade that the spell would simply fail. Having most of its workings $(o)optimized$() purely for casting, I doubt an Expert villager will perform any better than a Journeyman. However, certain skills may still affect the quality of casting. My notes on that on the next page.",
 	"hexical.page.offerings.4": "Ingrained memories and inherent abilities seem to be able to survive the optimization process. A master villager who has honed its craft to perfection has internalized its knowledge so deeply, that it casts differently. A wandering villager who has spent its life travelling the world may be so attuned to exploration that the way it casts reflects its experience.",
-
-	"hexical.page.wandering_lamps.title": "Wandering Lamps",
-	"hexical.page.wandering_lamps.0": "By some remarkable process, the lamp transformed into a compass! It still retains its original casting abilities when I hold down on it, but if there is a vector left at the top of the stack once its stored _Hex completes, the compass's needle swings to point towards that location. I find this purpose rather niche although it may be useful.",
-	"hexical.page.wandering_lamps.1": "All the patterns available to a regular lamp is still available to the wandering genie lamp. In addition to that, the wandering genie lamp has some new patterns exclusive to it.",
 
 	"hexical.page.arch_lamps.title": "Archgenie Lamps",
 	"hexical.page.arch_lamps.0": "Rather just losing memories, the master villager's mind exited its body and completely supplanted the original genie. Because a separate entity casts my spells, a lamp should be able to cast even without me holding it. These archgenie lamps are activated and deactivated rather than used and while active in my inventory, they cast every moment even without my input.",
