@@ -9,6 +9,8 @@ import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.NullIota
 import at.petrak.hexcasting.api.spell.iota.Vec3Iota
 import miyucomics.hexical.casting.iota.DyeIota
+import miyucomics.hexical.casting.iota.IdentifierIota
+import miyucomics.hexical.casting.iota.getIdentifier
 import miyucomics.hexical.data.DyeData
 import net.minecraft.block.Block
 import net.minecraft.block.SignBlock
@@ -22,6 +24,7 @@ import net.minecraft.entity.passive.WolfEntity
 import net.minecraft.item.BlockItem
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.util.math.BlockPos
+import net.minecraft.util.registry.Registry
 
 class OpGetDye : ConstMediaAction {
 	override val argc = 1
@@ -31,6 +34,17 @@ class OpGetDye : ConstMediaAction {
 				val entity = args.getEntity(0, argc)
 				ctx.assertEntityInRange(entity)
 				processEntity(entity)
+			}
+			is IdentifierIota -> {
+				when (val item = Registry.ITEM.get(args.getIdentifier(0, argc))) {
+					is BlockItem -> getDyeFromBlock(item.block)
+					else -> {
+						if (DyeData.getDye(item) != null)
+							DyeIota(DyeData.getDye(item)!!)
+						else
+							NullIota()
+					}
+				}
 			}
 			is Vec3Iota -> {
 				val position = args.getBlockPos(0, argc)
