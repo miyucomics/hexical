@@ -46,7 +46,6 @@ class OpOfferMind : SpellAction {
 
 	companion object {
 		private val TRANSFORMATIONS: Map<(Entity) -> Boolean, Item> = mapOf(
-			{ sacrifice: Entity -> sacrifice is WanderingTraderEntity } to HexicalItems.WANDERING_LAMP_ITEM,
 			{ sacrifice: Entity -> sacrifice is VillagerEntity && sacrifice.villagerData.level > 10 } to HexicalItems.ARCH_LAMP_ITEM
 		)
 	}

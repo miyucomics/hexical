@@ -170,6 +170,7 @@ object HexicalPatterns {
 		register("am_enlightened", "awqaqqq", HexDir.SOUTH_EAST, OpEnlightened())
 		register("is_brainswept", "qqqaqqq", HexDir.SOUTH_EAST, OpBrainswept())
 
+		register("autograph", "wwqqqqq", HexDir.NORTH_EAST, OpAutograph())
 		register("conjure_hexburst", "aadaadqaq", HexDir.EAST, OpConjureHexburst())
 		register("conjure_hextito", "qaqdqaqdwawaw", HexDir.EAST, OpConjureHextito())
 		register("ghast_fireball", "wqqqqqwaeaeaeaeae", HexDir.SOUTH_EAST, OpGhastFireball())
