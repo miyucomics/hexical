@@ -17,6 +17,7 @@
 		"FrameForEachMixin",
 		"ItemAbacusMixin",
 		"ItemEntityMixin",
+		"ItemStackMixin",
 		"OpReadMixin",
 		"PlayerEntityMixin",
 		"WanderingTraderEntityMixin"
