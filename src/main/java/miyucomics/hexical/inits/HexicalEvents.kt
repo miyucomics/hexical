@@ -1,7 +1,9 @@
 package miyucomics.hexical.inits
 
+import miyucomics.hexical.client.ClientStorage
 import miyucomics.hexical.state.EvokeState
 import miyucomics.hexical.state.KeybindData
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents
 
@@ -29,5 +31,10 @@ object HexicalEvents {
 						KeybindData.duration[player]!![key] = KeybindData.duration[player]!![key]!! + 1
 			}
 		}
+	}
+
+	@JvmStatic
+	fun clientInit() {
+		ClientTickEvents.END_CLIENT_TICK.register { ClientStorage.time += 1 }
 	}
 }
