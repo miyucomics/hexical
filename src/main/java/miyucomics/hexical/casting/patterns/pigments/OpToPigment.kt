@@ -10,13 +10,12 @@ import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.common.lib.HexItems
 import at.petrak.hexcasting.xplat.IXplatAbstractions
-import miyucomics.hexical.casting.iota.DyeIota
-import miyucomics.hexical.casting.iota.PigmentIota
-import miyucomics.hexical.casting.iota.getTrueDye
+import miyucomics.hexical.casting.iota.*
 import miyucomics.hexical.casting.patterns.getters.getItemStack
 import net.minecraft.entity.ItemEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
+import net.minecraft.util.registry.Registry
 
 class OpToPigment : ConstMediaAction {
 	override val argc = 1
@@ -35,6 +34,13 @@ class OpToPigment : ConstMediaAction {
 					}
 					else -> null
 				}
+			}
+			is IdentifierIota -> {
+				val item = Registry.ITEM.get(args.getIdentifier(0, argc))
+				if (item is ColorizerItem)
+					FrozenColorizer(ItemStack(item), ctx.caster.uuid)
+				else
+					null
 			}
 			else -> null
 		}

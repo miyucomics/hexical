@@ -107,7 +107,7 @@
 	"hexcasting.mishap.invalid_value.class.identifier": "an identifier",
 	"hexcasting.mishap.invalid_value.class.pigment": "a pigment",
 	"hexcasting.mishap.invalid_value.true_dye": "a colored dye",
-	"hexcasting.mishap.invalid_value.to_pigment": "a colored dye, an item entity containing a pigment, or a player",
+	"hexcasting.mishap.invalid_value.to_pigment": "a colored dye, identifier of a pigment item, an item entity containing a pigment, or a player",
 	"hexcasting.mishap.invalid_value.enchantment_id": "an identifier of an enchantment type",
 	"hexcasting.mishap.invalid_value.block_id": "an identifier of a block type",
 	"hexcasting.mishap.invalid_value.item_id": "an identifier of an item type",
