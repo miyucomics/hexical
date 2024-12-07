@@ -7,8 +7,9 @@ class HexicalClient : ClientModInitializer {
 	override fun onInitializeClient() {
 		HexicalBlocks.clientInit()
 		HexicalEntities.clientInit()
+		HexicalEvents.clientInit()
 		HexicalItems.clientInit()
-		HexicalKeybinds.init()
 		HexicalNetworking.clientInit()
+		HexicalKeybinds.init()
 	}
 }
