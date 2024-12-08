@@ -11,6 +11,7 @@
 - added ability to dye specklikes with the Dye spell
 - added two more akashic utility patterns for clearing and getting the pattern of an akashic bookshelf
 - added one tick item pickup delay to conjured hextitos so hextito quines can properly function
+- added Autograph: signs the item in your offhand with your name and pigment, permanently
 - added Atalanta Gambit: skip to the next Thoth iteration; "continue"
 - added Castor's and Pollux's Gambits: should only be cast within a Thoth list, prepends or appends the top iota to Thoth's data list
 - added Conjure Fireball: conjures a ghast fireball with no velocity at a position within ambit for three dust
@@ -25,6 +26,7 @@
 - changed specks to remove opening and closing quotes if there are any, for string iota
 - changed hand used for evocation to offhand if mainhand contains item
 - changed some documentation quotes to fit better
+- changed wristpocket to allow for Totem of Undying to function
 - fixed bug that made magic missile deal velocity damage, making it the cheapest railgun in existence
 - fixed a hacky workaround used by evocation where it replaces the player's hand. Now it directly takes from the inventory
 - fixed funky behavior with evocation and reading items, now it tries to read from the offhand then the mainhand

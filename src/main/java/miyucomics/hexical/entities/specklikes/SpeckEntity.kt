@@ -11,6 +11,7 @@ import net.minecraft.nbt.NbtCompound
 import net.minecraft.text.Text
 import net.minecraft.util.math.Vec2f
 import net.minecraft.world.World
+import java.util.*
 
 class SpeckEntity(entityType: EntityType<out SpeckEntity>, world: World) : BaseSpecklike(entityType, world) {
 	constructor(world: World) : this(HexicalEntities.SPECK_ENTITY, world)
@@ -34,8 +35,9 @@ class SpeckEntity(entityType: EntityType<out SpeckEntity>, world: World) : BaseS
 			dataTracker.set(stateDataTracker, iota.pattern.serializeToNBT())
 		} else {
 			val compound = NbtCompound()
-			val text = iota.display()
-			compound.putString("text", Text.Serializer.toJson(Text.of(text.string.removePrefix("\"").removeSuffix("\"")).getWithStyle(text.style)[0]))
+			val text = iota.display().copy()
+			text.visit { string -> Optional.of(string.removePrefix("\"").removeSuffix("\"")) }
+			compound.putString("text", Text.Serializer.toJson(text))
 			dataTracker.set(stateDataTracker, compound)
 		}
 	}

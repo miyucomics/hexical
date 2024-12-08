@@ -18,6 +18,7 @@
 		"ItemAbacusMixin",
 		"ItemEntityMixin",
 		"ItemStackMixin",
+		"LivingEntityMixin",
 		"OpReadMixin",
 		"PlayerEntityMixin",
 		"WanderingTraderEntityMixin"
