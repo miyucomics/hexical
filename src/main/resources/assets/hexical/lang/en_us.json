@@ -402,7 +402,7 @@
 	"hexical.page.dyes.title": "Dyes",
 	"hexical.page.dyes.0": "The dye spell and its specialized iota allows me to alter the color of blocks and entities. The dye iota represents a color, but also seems to represent the $(o)potential$() to be colored. For example, attempting to get the dye of grass returns null but getting the dye of undyed terracotta returns $(thing)uncolored$(), which I can use to \"bleach\" dyeable blocks.",
 	"hexcasting.spell.hexical:get_dye": "Chromatic Purification",
-	"hexical.page.get_dye.summary": "Gets the dye of a block or entity.",
+	"hexical.page.get_dye.summary": "Gets the dye of a block, entity, or item identifier.",
 	"hexcasting.spell.hexical:dye": "Dye",
 	"hexical.page.dye.summary": "Dyes a dyeable block or entity. Costs an eighth of a dust.",
 	"hexical.page.dyes.1": "The valid block targets for this spell include beds, candles, cakes with candles, carpets, concrete, concrete powder, glazed terracotta, sand into red sand and vice versa, sandstone and all blocks derived from it into its red variant and vice versa, shulker boxes, stained glass, stained glass panes, terracotta, tulips into their multiple colors, and wool blocks. As for entities, cat collars, dog collars, specklikes, shulkers, and item entities of all of the above blocks are valid.",
