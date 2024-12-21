@@ -17,6 +17,7 @@
 - added Conjure Fireball: conjures a ghast fireball with no velocity at a position within ambit for three dust
 - added pattern for changing the pigment of specks
 - added more quotes to documentation
+- changed Congruence Purification to consider orientation since Equality already considers the other case
 - changed akashic bookshelves to push to parenthesized list if there are unclosed Introspections
 - changed Chromatic Purification to allow item identifiers
 - changed mage block modifiers to update neighboring blocks
@@ -27,6 +28,7 @@
 - changed hand used for evocation to offhand if mainhand contains item
 - changed some documentation quotes to fit better
 - changed wristpocket to allow for Totem of Undying to function
+- fixed Congruence Purification always returning true
 - fixed bug with mage blocks crashing with landing on them
 - fixed bug that made magic missile deal velocity damage, making it the cheapest railgun in existence
 - fixed a hacky workaround used by evocation where it replaces the player's hand. Now it directly takes from the inventory

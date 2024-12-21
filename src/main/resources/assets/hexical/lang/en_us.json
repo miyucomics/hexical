@@ -290,7 +290,7 @@
 	"hexcasting.spell.hexical:similar": "Similarity Distillation",
 	"hexical.page.similar.summary": "Pushes whether two iota are of the same type.",
 	"hexcasting.spell.hexical:congruent": "Congruence Distillation",
-	"hexical.page.congruent.summary": "Pushes whether two patterns have the same shape, even if they have different orientations.",
+	"hexical.page.congruent.summary": "Pushes whether two patterns have the same shape and orientation.",
 	"hexcasting.spell.hexical:dup_many": "Dioscuri Gambit II",
 	"hexical.page.dup_many.summary": "Takes a number and duplicates that many elements of the stack while preserving order.",
 	"hexcasting.spell.hexical:shuffle_pattern": "Glyphmaker's Distillation",
