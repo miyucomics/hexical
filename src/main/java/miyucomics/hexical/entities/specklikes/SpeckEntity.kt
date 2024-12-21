@@ -35,9 +35,7 @@ class SpeckEntity(entityType: EntityType<out SpeckEntity>, world: World) : BaseS
 			dataTracker.set(stateDataTracker, iota.pattern.serializeToNBT())
 		} else {
 			val compound = NbtCompound()
-			val text = iota.display().copy()
-			text.visit { string -> Optional.of(string.removePrefix("\"").removeSuffix("\"")) }
-			compound.putString("text", Text.Serializer.toJson(text))
+			compound.putString("text", Text.Serializer.toJson(iota.display()))
 			dataTracker.set(stateDataTracker, compound)
 		}
 	}
