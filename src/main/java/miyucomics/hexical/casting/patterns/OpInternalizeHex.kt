@@ -38,9 +38,12 @@ class OpInternalizeHex : SpellAction {
 	companion object {
 		fun evoke(player: ServerPlayerEntity) {
 			EvokeState.duration[player.uuid] = HexicalMain.EVOKE_DURATION
-			val hex = getEvocation(player) ?: return
-			CastingUtils.castSpecial(player.world as ServerWorld, player, (HexIotaTypes.deserialize(hex, player.world as ServerWorld) as ListIota).list.toList(), SpecializedSource.EVOCATION, false)
-			player.world.playSound(null, player.x, player.y, player.z, HexicalSounds.EVOKING_CAST, SoundCategory.PLAYERS, 1f, 1f)
+			val nbt = getEvocation(player) ?: return
+			val hex = HexIotaTypes.deserialize(nbt, player.world as ServerWorld)
+			if (hex is ListIota) {
+				CastingUtils.castSpecial(player.world as ServerWorld, player, hex.list.toList(), SpecializedSource.EVOCATION, false)
+				player.world.playSound(null, player.x, player.y, player.z, HexicalSounds.EVOKING_CAST, SoundCategory.PLAYERS, 1f, 1f)
+			}
 		}
 	}
 }
