@@ -24,10 +24,10 @@
 - changed evocation warmup period to one second
 - changed how Evoker's Purification works to be like all the other keybind patterns
 - changed Janus' Gambit to persist the Ravenmind, used in wisps
-- changed specks to remove opening and closing quotes if there are any, for string iota
 - changed hand used for evocation to offhand if mainhand contains item
 - changed some documentation quotes to fit better
 - changed wristpocket to allow for Totem of Undying to function
+- fixed bug with mage blocks crashing with landing on them
 - fixed bug that made magic missile deal velocity damage, making it the cheapest railgun in existence
 - fixed a hacky workaround used by evocation where it replaces the player's hand. Now it directly takes from the inventory
 - fixed funky behavior with evocation and reading items, now it tries to read from the offhand then the mainhand
