@@ -17,6 +17,7 @@
 - added Conjure Fireball: conjures a ghast fireball with no velocity at a position within ambit for three dust
 - added pattern for changing the pigment of specks
 - added more quotes to documentation
+- changed akashic bookshelves to push to parenthesized list if there are unclosed Introspections
 - changed Chromatic Purification to allow item identifiers
 - changed mage block modifiers to update neighboring blocks
 - changed Offerings page to no longer require using up a lamp
