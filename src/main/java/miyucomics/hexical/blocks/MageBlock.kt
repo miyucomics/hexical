@@ -49,7 +49,9 @@ class MageBlock : BlockConjured(
 	}
 
 	override fun onEntityLand(world: BlockView, entity: Entity) {
-		val tile = world.getBlockEntity(entity.blockPos.add(0, -1, 0)) as MageBlockEntity
+		val tile = world.getBlockEntity(entity.blockPos.add(0, -1, 0))
+		if (tile !is MageBlockEntity)
+			return
 		if (tile.properties["bouncy"]!!) {
 			val velocity = entity.velocity
 			if (velocity.y < 0) {
