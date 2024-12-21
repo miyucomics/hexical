@@ -1,6 +1,7 @@
 package miyucomics.hexical.mixin;
 
 import at.petrak.hexcasting.api.spell.casting.CastingHarness;
+import at.petrak.hexcasting.api.spell.iota.Iota;
 import at.petrak.hexcasting.common.blocks.akashic.BlockAkashicBookshelf;
 import at.petrak.hexcasting.common.blocks.akashic.BlockEntityAkashicBookshelf;
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes;
@@ -22,28 +23,34 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import java.util.List;
+
 import static net.minecraft.sound.SoundCategory.BLOCKS;
 
 @Mixin(BlockAkashicBookshelf.class)
 public class BlockAkashicBookshelfMixin {
 	@Inject(method = "onUse", at = @At("TAIL"))
 	private void copyIota(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit, CallbackInfoReturnable<ActionResult> cir) {
-		if (world.isClient)
+		if (world.isClient || player.isSneaking() || hand == Hand.OFF_HAND || !player.getMainHandStack().isEmpty())
 			return;
-		if (player.isSneaking() || hand == Hand.OFF_HAND)
-			return;
-		if (!player.getMainHandStack().isEmpty())
-			return;
+
 		BlockEntity shelf = world.getBlockEntity(pos);
-		if (shelf instanceof BlockEntityAkashicBookshelf) {
-			NbtCompound nbt = ((BlockEntityAkashicBookshelf) shelf).getIotaTag();
-			if (nbt == null)
-				return;
-			CastingHarness harness = IXplatAbstractions.INSTANCE.getHarness((ServerPlayerEntity) player, hand);
-			harness.getStack().add(HexIotaTypes.deserialize(nbt, (ServerWorld) world));
-			IXplatAbstractions.INSTANCE.setHarness((ServerPlayerEntity) player, harness);
-			world.playSound(null, pos, HexicalSounds.INSTANCE.getSUDDEN_REALIZATION(), BLOCKS, 1f, 1f);
-			player.swingHand(hand, true);
-		}
+		if (!(shelf instanceof BlockEntityAkashicBookshelf))
+			return;
+
+		NbtCompound nbt = ((BlockEntityAkashicBookshelf) shelf).getIotaTag();
+		if (nbt == null)
+			return;
+
+		CastingHarness harness = IXplatAbstractions.INSTANCE.getHarness((ServerPlayerEntity) player, hand);
+		Iota iota = HexIotaTypes.deserialize(nbt, (ServerWorld) world);
+		if (harness.getParenCount() == 0)
+			harness.getStack().add(iota);
+		else
+			harness.getParenthesized().add(iota);
+
+		IXplatAbstractions.INSTANCE.setHarness((ServerPlayerEntity) player, harness);
+		world.playSound(null, pos, HexicalSounds.INSTANCE.getSUDDEN_REALIZATION(), BLOCKS, 1f, 1f);
+		player.swingHand(hand, true);
 	}
 }
