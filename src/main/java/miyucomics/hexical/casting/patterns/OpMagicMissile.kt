@@ -42,9 +42,10 @@ class OpMagicMissile : SpellAction {
 		override fun cast(ctx: CastingContext) {
 			val missile = MagicMissileEntity(ctx.world)
 			missile.setPos(position.x, position.y, position.z)
-			missile.setVelocity(velocity.x, velocity.y, velocity.z)
 			missile.owner = ctx.caster
 			ctx.world.spawnEntity(missile)
+			missile.tick()
+			missile.setVelocity(velocity.x, velocity.y, velocity.z)
 		}
 	}
 }

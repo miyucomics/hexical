@@ -36,7 +36,7 @@ class OpMageHand : SpellAction {
 
 	private data class BlockSpell(val position: BlockPos) : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
-			val stack = PersistentStateHandler.wristpocketItem(ctx.caster)
+			val stack = PersistentStateHandler.getWristpocketItem(ctx.caster)
 			val originalItem = ctx.caster.getStackInHand(ctx.castingHand)
 			ctx.caster.setStackInHand(ctx.castingHand, stack)
 			val block = ctx.world.getBlockState(position)
@@ -49,7 +49,7 @@ class OpMageHand : SpellAction {
 
 	private data class EntitySpell(val entity: Entity) : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
-			val stack = PersistentStateHandler.wristpocketItem(ctx.caster)
+			val stack = PersistentStateHandler.getWristpocketItem(ctx.caster)
 			val originalItem = ctx.caster.getStackInHand(ctx.castingHand)
 			ctx.caster.setStackInHand(ctx.castingHand, stack)
 			entity.interact(ctx.caster, Hand.MAIN_HAND)

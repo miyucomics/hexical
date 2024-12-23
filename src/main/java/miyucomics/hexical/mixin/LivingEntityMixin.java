@@ -29,7 +29,7 @@ public abstract class LivingEntityMixin {
 		if (!(instance instanceof ServerPlayerEntity player))
 			return original.call(instance, source);
 
-		ItemStack wristpocket = PersistentStateHandler.Companion.wristpocketItem(player);
+		ItemStack wristpocket = PersistentStateHandler.Companion.getWristpocketItem(player);
 		if (wristpocket.isOf(Items.TOTEM_OF_UNDYING)) {
 			PersistentStateHandler.Companion.stashWristpocket(player, ItemStack.EMPTY);
 			player.incrementStat(Stats.USED.getOrCreateStat(Items.TOTEM_OF_UNDYING));
