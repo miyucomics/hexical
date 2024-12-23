@@ -31,6 +31,16 @@
 			"text": "hexical.page.wristpocket_count.summary"
 		}, {
 			"type": "hexcasting:pattern",
+			"op_id": "hexical:sleight",
+			"anchor": "hexical:sleight",
+			"input": "item entity/vector",
+			"output": "",
+			"text": "hexical.page.sleight.summary"
+		}, {
+			"type": "patchouli:text",
+			"text": "hexical.page.sleight.0"
+		}, {
+			"type": "hexcasting:pattern",
 			"op_id": "hexical:mage_hand",
 			"anchor": "hexical:mage_hand",
 			"input": "entity/vector",
