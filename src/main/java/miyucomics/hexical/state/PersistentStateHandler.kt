@@ -75,7 +75,7 @@ class PersistentStateHandler : PersistentState() {
 			serverState.wristpockets[player.uuid] = stack
 		}
 
-		fun wristpocketItem(player: ServerPlayerEntity): ItemStack {
+		fun getWristpocketItem(player: ServerPlayerEntity): ItemStack {
 			val serverState = getServerState(player.getWorld().server)
 			return serverState.wristpockets.computeIfAbsent(player.uuid) { ItemStack.EMPTY }
 		}

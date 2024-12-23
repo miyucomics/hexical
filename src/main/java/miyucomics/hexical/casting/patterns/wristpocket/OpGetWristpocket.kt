@@ -8,5 +8,5 @@ import net.minecraft.item.ItemStack
 
 class OpGetWristpocket(private val process: (ItemStack) -> List<Iota>) : ConstMediaAction {
 	override val argc = 0
-	override fun execute(args: List<Iota>, ctx: CastingContext) = process(PersistentStateHandler.wristpocketItem(ctx.caster))
+	override fun execute(args: List<Iota>, ctx: CastingContext) = process(PersistentStateHandler.getWristpocketItem(ctx.caster))
 }

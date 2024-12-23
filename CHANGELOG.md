@@ -5,6 +5,7 @@
 - added advancement for conjuring Hexxy
 - added fun fortune telling feature to media jar
 - added a section of pigment patterns and a pigment iota
+- added Sleight: a wristpocket spell to either exchange an item entity with another, or conjure an item from your wristpocket
 - added two more patterns for affecting the top three iota of the stack, now you can arrange three iota in any way with a single pattern
 - added effect to magic missiles to set the velocity of a target hit to 0.6th of their own normalized velocity + a bit of upwards push
 - added prestidigitation support for shearing beehives and bee nests for honeycomb
@@ -17,7 +18,7 @@
 - added Conjure Fireball: conjures a ghast fireball with no velocity at a position within ambit for three dust
 - added pattern for changing the pigment of specks
 - added more quotes to documentation
-- changed Congruence Purification to consider orientation since Equality already considers the other case
+- changed Congruence Purification to consider orientation since Equality Distillation already considers the other case
 - changed akashic bookshelves to push to parenthesized list if there are unclosed Introspections
 - changed Chromatic Purification to allow item identifiers
 - changed mage block modifiers to update neighboring blocks
@@ -28,6 +29,8 @@
 - changed hand used for evocation to offhand if mainhand contains item
 - changed some documentation quotes to fit better
 - changed wristpocket to allow for Totem of Undying to function
+- fixed overpriced wristpocket
+- fixed magic missile phasing with things on its first tick
 - fixed Congruence Purification always returning true
 - fixed bug with mage blocks crashing with landing on them
 - fixed bug that made magic missile deal velocity damage, making it the cheapest railgun in existence
