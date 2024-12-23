@@ -69,10 +69,7 @@ import miyucomics.hexical.casting.patterns.staff.OpWriteStaff
 import miyucomics.hexical.casting.patterns.telepathy.OpHallucinateSound
 import miyucomics.hexical.casting.patterns.telepathy.OpSendTelepathy
 import miyucomics.hexical.casting.patterns.telepathy.OpShoutTelepathy
-import miyucomics.hexical.casting.patterns.wristpocket.OpGetWristpocket
-import miyucomics.hexical.casting.patterns.wristpocket.OpIngest
-import miyucomics.hexical.casting.patterns.wristpocket.OpMageHand
-import miyucomics.hexical.casting.patterns.wristpocket.OpWristpocket
+import miyucomics.hexical.casting.patterns.wristpocket.*
 import miyucomics.hexical.enums.SpecializedSource
 import miyucomics.hexical.interfaces.Specklike
 import miyucomics.hexical.items.HandLampItem
@@ -188,6 +185,7 @@ object HexicalPatterns {
 		register("wristpocket", "aaqqa", HexDir.WEST, OpWristpocket())
 		register("wristpocket_item", "aaqqada", HexDir.WEST, OpGetWristpocket { stack -> if (stack.isOf(Items.AIR) || stack == ItemStack.EMPTY) listOf(NullIota()) else Registry.ITEM.getId(stack.item).asActionResult() })
 		register("wristpocket_count", "aaqqaaw", HexDir.WEST, OpGetWristpocket { stack -> if (stack.isOf(Items.AIR) || stack == ItemStack.EMPTY) (0).asActionResult else stack.count.asActionResult })
+		register("sleight", "aaqqadeeeq", HexDir.WEST, OpSleight())
 		register("mage_hand", "aaqqaeea", HexDir.WEST, OpMageHand())
 		register("ingest", "aaqqadaa", HexDir.WEST, OpIngest())
 
