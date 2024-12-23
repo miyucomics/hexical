@@ -15,7 +15,6 @@ import miyucomics.hexical.interfaces.GenieLamp
 import net.minecraft.entity.Entity
 import net.minecraft.entity.mob.MobEntity
 import net.minecraft.entity.passive.VillagerEntity
-import net.minecraft.entity.passive.WanderingTraderEntity
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.village.VillageGossipType
