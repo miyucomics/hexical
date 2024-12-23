@@ -11,7 +11,6 @@ import net.minecraft.nbt.NbtCompound
 import net.minecraft.text.Text
 import net.minecraft.util.math.Vec2f
 import net.minecraft.world.World
-import java.util.*
 
 class SpeckEntity(entityType: EntityType<out SpeckEntity>, world: World) : BaseSpecklike(entityType, world) {
 	constructor(world: World) : this(HexicalEntities.SPECK_ENTITY, world)
