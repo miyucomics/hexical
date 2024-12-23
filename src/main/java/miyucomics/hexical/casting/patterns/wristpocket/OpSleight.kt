@@ -33,17 +33,17 @@ class OpSleight : SpellAction {
 
 	private data class ConjureSpell(val position: Vec3d) : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
-			val wristpocketed = PersistentStateHandler.getWristpocketItem(ctx.caster)
+			val wristpocketed = PersistentStateHandler.getWristpocketStack(ctx.caster)
 			if (wristpocketed != ItemStack.EMPTY && wristpocketed.item != Items.AIR)
-				ctx.world.spawnEntity(ItemEntity(ctx.world, position.x, position.y, position.z, PersistentStateHandler.getWristpocketItem(ctx.caster)))
-			PersistentStateHandler.stashWristpocket(ctx.caster, ItemStack.EMPTY)
+				ctx.world.spawnEntity(ItemEntity(ctx.world, position.x, position.y, position.z, PersistentStateHandler.getWristpocketStack(ctx.caster)))
+			PersistentStateHandler.setWristpocketStack(ctx.caster, ItemStack.EMPTY)
 		}
 	}
 
 	private data class SwapSpell(val item: ItemEntity) : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
-			val wristpocketed = PersistentStateHandler.getWristpocketItem(ctx.caster)
-			PersistentStateHandler.stashWristpocket(ctx.caster, item.stack)
+			val wristpocketed = PersistentStateHandler.getWristpocketStack(ctx.caster)
+			PersistentStateHandler.setWristpocketStack(ctx.caster, item.stack)
 			if (wristpocketed != ItemStack.EMPTY && wristpocketed.item != Items.AIR)
 				item.stack = wristpocketed
 			else

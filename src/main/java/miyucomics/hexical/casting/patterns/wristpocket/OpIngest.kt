@@ -14,7 +14,7 @@ import net.minecraft.item.Items
 class OpIngest : SpellAction {
 	override val argc = 0
 	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
-		val stack = PersistentStateHandler.getWristpocketItem(ctx.caster)
+		val stack = PersistentStateHandler.getWristpocketStack(ctx.caster)
 		if (stack.isOf(Items.POTION) || stack.isOf(Items.HONEY_BOTTLE) || stack.isOf(Items.MILK_BUCKET) || stack.item.isFood)
 			return Triple(Spell(stack), MediaConstants.DUST_UNIT, listOf())
 		throw InedibleWristpocketMishap()
@@ -25,7 +25,7 @@ class OpIngest : SpellAction {
 			val originalItem = ctx.caster.getStackInHand(ctx.castingHand)
 			ctx.caster.setStackInHand(ctx.castingHand, stack)
 			val newStack = stack.finishUsing(ctx.world, ctx.caster)
-			PersistentStateHandler.stashWristpocket(ctx.caster, newStack)
+			PersistentStateHandler.setWristpocketStack(ctx.caster, newStack)
 			ctx.caster.setStackInHand(ctx.castingHand, originalItem)
 		}
 	}

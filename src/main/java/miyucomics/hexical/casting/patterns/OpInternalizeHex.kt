@@ -36,6 +36,7 @@ class OpInternalizeHex : SpellAction {
 	}
 
 	companion object {
+		@JvmStatic
 		fun evoke(player: ServerPlayerEntity) {
 			EvokeState.duration[player.uuid] = HexicalMain.EVOKE_DURATION
 			val nbt = getEvocation(player) ?: return

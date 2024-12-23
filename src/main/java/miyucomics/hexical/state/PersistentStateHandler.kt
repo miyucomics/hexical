@@ -70,14 +70,16 @@ class PersistentStateHandler : PersistentState() {
 			return serverState.archLamps.computeIfAbsent(player.uuid) { ArchLampData() }
 		}
 
-		fun stashWristpocket(player: ServerPlayerEntity, stack: ItemStack) {
-			val serverState = getServerState(player.getWorld().server)
-			serverState.wristpockets[player.uuid] = stack
-		}
-
-		fun getWristpocketItem(player: ServerPlayerEntity): ItemStack {
+		@JvmStatic
+		fun getWristpocketStack(player: ServerPlayerEntity): ItemStack {
 			val serverState = getServerState(player.getWorld().server)
 			return serverState.wristpockets.computeIfAbsent(player.uuid) { ItemStack.EMPTY }
+		}
+
+		@JvmStatic
+		fun setWristpocketStack(player: ServerPlayerEntity, stack: ItemStack) {
+			val serverState = getServerState(player.getWorld().server)
+			serverState.wristpockets[player.uuid] = stack
 		}
 	}
 }

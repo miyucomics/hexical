@@ -36,24 +36,24 @@ class OpMageHand : SpellAction {
 
 	private data class BlockSpell(val position: BlockPos) : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
-			val stack = PersistentStateHandler.getWristpocketItem(ctx.caster)
+			val stack = PersistentStateHandler.getWristpocketStack(ctx.caster)
 			val originalItem = ctx.caster.getStackInHand(ctx.castingHand)
 			ctx.caster.setStackInHand(ctx.castingHand, stack)
 			val block = ctx.world.getBlockState(position)
 			block.onUse(ctx.world, ctx.caster, ctx.castingHand, BlockHitResult(Vec3d.ofCenter(position), Direction.UP, position, false))
 			stack.useOnBlock(ItemUsageContext(ctx.caster, ctx.castingHand, BlockHitResult(Vec3d.ofCenter(position), Direction.UP, position, false)))
-			PersistentStateHandler.stashWristpocket(ctx.caster, ctx.caster.getStackInHand(ctx.castingHand))
+			PersistentStateHandler.setWristpocketStack(ctx.caster, ctx.caster.getStackInHand(ctx.castingHand))
 			ctx.caster.setStackInHand(ctx.castingHand, originalItem)
 		}
 	}
 
 	private data class EntitySpell(val entity: Entity) : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
-			val stack = PersistentStateHandler.getWristpocketItem(ctx.caster)
+			val stack = PersistentStateHandler.getWristpocketStack(ctx.caster)
 			val originalItem = ctx.caster.getStackInHand(ctx.castingHand)
 			ctx.caster.setStackInHand(ctx.castingHand, stack)
 			entity.interact(ctx.caster, Hand.MAIN_HAND)
-			PersistentStateHandler.stashWristpocket(ctx.caster, ctx.caster.getStackInHand(ctx.castingHand))
+			PersistentStateHandler.setWristpocketStack(ctx.caster, ctx.caster.getStackInHand(ctx.castingHand))
 			ctx.caster.setStackInHand(ctx.castingHand, originalItem)
 		}
 	}

@@ -17,8 +17,8 @@ class OpWristpocket : SpellAction {
 
 	private data class Spell(val hand: Hand) : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
-			val item = PersistentStateHandler.getWristpocketItem(ctx.caster)
-			PersistentStateHandler.stashWristpocket(ctx.caster, ctx.caster.getStackInHand(hand))
+			val item = PersistentStateHandler.getWristpocketStack(ctx.caster)
+			PersistentStateHandler.setWristpocketStack(ctx.caster, ctx.caster.getStackInHand(hand))
 			ctx.caster.setStackInHand(hand, item)
 		}
 	}
