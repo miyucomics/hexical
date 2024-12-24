@@ -1,12 +1,13 @@
 package miyucomics.hexical.blocks
 
-import at.petrak.hexcasting.api.misc.FrozenColorizer
+import at.petrak.hexcasting.api.pigment.FrozenPigment
 import at.petrak.hexcasting.common.particles.ConjureParticleOptions
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import net.minecraft.block.*
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.block.entity.BlockEntityTicker
 import net.minecraft.block.entity.BlockEntityType
+import net.minecraft.block.piston.PistonBehavior
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.sound.BlockSoundGroup
 import net.minecraft.sound.SoundCategory
@@ -20,17 +21,18 @@ import net.minecraft.util.math.random.Random
 import net.minecraft.world.World
 import net.minecraft.world.event.GameEvent
 
-class HexCandleBlock : CandleBlock(Settings.of(Material.DECORATION).nonOpaque().strength(0.1f).sounds(BlockSoundGroup.CANDLE).luminance(STATE_TO_LUMINANCE)), BlockEntityProvider {
+class HexCandleBlock : CandleBlock(Settings.create().mapColor(MapColor.PURPLE).nonOpaque().strength(0.1f).sounds(BlockSoundGroup.CANDLE).luminance(CandleBlock.STATE_TO_LUMINANCE).pistonBehavior(PistonBehavior.DESTROY)), BlockEntityProvider {
 	override fun onUse(state: BlockState, world: World, pos: BlockPos, player: PlayerEntity, hand: Hand, hit: BlockHitResult): ActionResult {
 		if (player.isSneaking)
 			return super.onUse(state, world, pos, player, hand, hit)
 		if (!state.get(AbstractCandleBlock.LIT))
 			return super.onUse(state, world, pos, player, hand, hit)
+
 		val stack = player.getStackInHand(hand)
-		var givenColor = IXplatAbstractions.INSTANCE.getColorizer(player)
-		if (IXplatAbstractions.INSTANCE.isColorizer(stack))
-			givenColor = FrozenColorizer(stack.copy(), player.uuid)
-		(world.getBlockEntity(pos)!! as HexCandleBlockEntity).setPigment(givenColor)
+		var newPigment = IXplatAbstractions.INSTANCE.getPigment(player)
+		if (IXplatAbstractions.INSTANCE.isPigment(stack))
+			newPigment = FrozenPigment(stack.copy(), player.uuid)
+		(world.getBlockEntity(pos)!! as HexCandleBlockEntity).setPigment(newPigment)
 		world.emitGameEvent(player, GameEvent.BLOCK_CHANGE, pos)
 		return ActionResult.SUCCESS
 	}
@@ -60,7 +62,7 @@ class HexCandleBlock : CandleBlock(Settings.of(Material.DECORATION).nonOpaque().
 					return@forEach
 				val position = offset.add(pos.x.toDouble(), pos.y.toDouble(), pos.z.toDouble())
 				world.addParticle(
-					ConjureParticleOptions(pigment.getColor(world.time.toFloat(), position), true),
+					ConjureParticleOptions(pigment.colorProvider.getColor(world.time.toFloat(), position)),
 					position.x, position.y, position.z,
 					0.0, world.random.nextFloat() * 0.02, 0.0
 				)

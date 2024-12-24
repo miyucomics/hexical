@@ -41,7 +41,7 @@ public class MinecraftClientMixin implements MinecraftClientMinterface {
 			return;
 
 		if (hexical$timer < 0 && !hexical$clicks.isEmpty()) {
-			player.world.playSound(player, player.getX(), player.getY(), player.getZ(), HexSounds.FAIL_PATTERN, SoundCategory.PLAYERS, 1f, 1f);
+			player.getWorld().playSound(player, player.getX(), player.getY(), player.getZ(), HexSounds.CAST_FAILURE, SoundCategory.PLAYERS, 1f, 1f);
 			hexical$clicks.clear();
 			return;
 		}
@@ -57,7 +57,7 @@ public class MinecraftClientMixin implements MinecraftClientMinterface {
 		if (hexical$clicks.size() >= rank) {
 			hexical$timer = 0;
 			PacketByteBuf buf = PacketByteBufs.create();
-			player.world.playSound(player, player.getX(), player.getY(), player.getZ(), HexSounds.CAST_HERMES, SoundCategory.PLAYERS, 0.25f, 1f);
+			player.getWorld().playSound(player, player.getX(), player.getY(), player.getZ(), HexSounds.CAST_HERMES, SoundCategory.PLAYERS, 0.25f, 1f);
 			buf.writeInt(rank);
 			for (int i = 0; i < rank; i++)
 				buf.writeBoolean(hexical$clicks.get(i));
@@ -76,7 +76,7 @@ public class MinecraftClientMixin implements MinecraftClientMinterface {
 		player.swingHand(hand);
 		hexical$clicks.add(false);
 		hexical$timer = hexical$COOLDOWN;
-		player.world.playSound(player, player.getX(), player.getY(), player.getZ(), HexSounds.ADD_LINE, SoundCategory.PLAYERS, 1f, 1f);
+		player.getWorld().playSound(player, player.getX(), player.getY(), player.getZ(), HexSounds.ADD_TO_PATTERN, SoundCategory.PLAYERS, 1f, 1f);
 	}
 
 	@Override
@@ -89,6 +89,6 @@ public class MinecraftClientMixin implements MinecraftClientMinterface {
 		player.swingHand(hand);
 		hexical$clicks.add(true);
 		hexical$timer = hexical$COOLDOWN;
-		player.world.playSound(player, player.getX(), player.getY(), player.getZ(), HexSounds.ADD_LINE, SoundCategory.PLAYERS, 1f, 1f);
+		player.getWorld().playSound(player, player.getX(), player.getY(), player.getZ(), HexSounds.ADD_TO_PATTERN, SoundCategory.PLAYERS, 1f, 1f);
 	}
 }

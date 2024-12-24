@@ -1,13 +1,16 @@
 package miyucomics.hexical.casting.patterns.colors
 
-import at.petrak.hexcasting.api.misc.FrozenColorizer
+import at.petrak.hexcasting.api.casting.RenderedSpell
+import at.petrak.hexcasting.api.casting.castables.SpellAction
+import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
+import at.petrak.hexcasting.api.casting.getBlockPos
+import at.petrak.hexcasting.api.casting.getEntity
+import at.petrak.hexcasting.api.casting.iota.EntityIota
+import at.petrak.hexcasting.api.casting.iota.Iota
+import at.petrak.hexcasting.api.casting.iota.Vec3Iota
+import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.misc.MediaConstants
-import at.petrak.hexcasting.api.spell.*
-import at.petrak.hexcasting.api.spell.casting.CastingContext
-import at.petrak.hexcasting.api.spell.iota.EntityIota
-import at.petrak.hexcasting.api.spell.iota.Iota
-import at.petrak.hexcasting.api.spell.iota.Vec3Iota
-import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
+import at.petrak.hexcasting.api.pigment.FrozenPigment
 import at.petrak.hexcasting.common.lib.HexItems
 import miyucomics.hexical.casting.iota.getDye
 import miyucomics.hexical.casting.iota.getTrueDye
@@ -30,44 +33,44 @@ import net.minecraft.util.math.BlockPos
 class OpDye : SpellAction {
 	override val argc = 2
 	private val cost = MediaConstants.DUST_UNIT / 8
-	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
+	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val dye = args.getDye(1, argc)
 		when (args[0]) {
 			is EntityIota -> {
 				val entity = args.getEntity(0, argc)
-				ctx.assertEntityInRange(entity)
+				env.assertEntityInRange(entity)
 				return when (entity) {
 					is CatEntity -> {
 						val trueDye = args.getTrueDye(1, argc)
-						Triple(CatSpell(entity, trueDye), cost, listOf())
+						SpellAction.Result(CatSpell(entity, trueDye), cost, listOf())
 					}
 					is SheepEntity -> {
 						val trueDye = args.getTrueDye(1, argc)
-						Triple(SheepSpell(entity, trueDye), cost, listOf())
+						SpellAction.Result(SheepSpell(entity, trueDye), cost, listOf())
 					}
 					is ShulkerEntity -> {
 						val trueDye = args.getTrueDye(1, argc)
-						Triple(ShulkerSpell(entity, trueDye), cost, listOf())
+						SpellAction.Result(ShulkerSpell(entity, trueDye), cost, listOf())
 					}
 					is Specklike -> {
 						val trueDye = args.getTrueDye(1, argc)
-						Triple(SpecklikeSpell(entity, trueDye), cost, listOf())
+						SpellAction.Result(SpecklikeSpell(entity, trueDye), cost, listOf())
 					}
 					is WolfEntity -> {
 						val trueDye = args.getTrueDye(1, argc)
-						Triple(WolfSpell(entity, trueDye), cost, listOf())
+						SpellAction.Result(WolfSpell(entity, trueDye), cost, listOf())
 					}
 					is ItemEntity -> {
 						when (val item = entity.stack.item) {
 							is BlockItem -> {
 								if (DyeData.isDyeable(item.block))
-									Triple(BlockItemSpell(entity, item.block, dye), cost, listOf())
+									SpellAction.Result(BlockItemSpell(entity, item.block, dye), cost, listOf())
 								else
 									throw DyeableMishap()
 							}
 							else -> {
 								if (DyeData.isDyeable(item))
-									Triple(ItemSpell(entity, item, dye), cost, listOf())
+									SpellAction.Result(ItemSpell(entity, item, dye), cost, listOf())
 								else
 									throw DyeableMishap()
 							}
@@ -78,42 +81,42 @@ class OpDye : SpellAction {
 			}
 			is Vec3Iota -> {
 				val position = args.getBlockPos(0, argc)
-				ctx.assertVecInRange(position)
-				val state = ctx.world.getBlockState(position)
+				env.assertPosInRange(position)
+				val state = env.world.getBlockState(position)
 				if (!DyeData.isDyeable(state.block))
 					throw DyeableMishap()
-				return Triple(BlockSpell(position, state, dye), cost, listOf())
+				return SpellAction.Result(BlockSpell(position, state, dye), cost, listOf())
 			}
 			else -> throw MishapInvalidIota.of(args[0], 0, "entity_or_vector")
 		}
 	}
 
 	private data class BlockSpell(val position: BlockPos, val state: BlockState, val dye: String) : RenderedSpell {
-		override fun cast(ctx: CastingContext) {
+		override fun cast(env: CastingEnvironment) {
 			when (state.block) {
-				is CandleBlock -> ctx.world.setBlockState(
+				is CandleBlock -> env.world.setBlockState(
 					position,
 					DyeData.getNewBlock(state.block, dye)
 						.with(CandleBlock.LIT, state.get(CandleBlock.LIT))
 						.with(CandleBlock.CANDLES, state.get(CandleBlock.CANDLES))
 				)
-				is CandleCakeBlock -> ctx.world.setBlockState(
+				is CandleCakeBlock -> env.world.setBlockState(
 					position,
 					DyeData.getNewBlock(state.block, dye)
 						.with(CandleCakeBlock.LIT, state.get(CandleCakeBlock.LIT))
 				)
-				is GlazedTerracottaBlock -> ctx.world.setBlockState(
+				is GlazedTerracottaBlock -> env.world.setBlockState(
 					position,
 					DyeData.getNewBlock(state.block, dye)
 						.with(GlazedTerracottaBlock.FACING, state.get(GlazedTerracottaBlock.FACING))
 				)
-				is SlabBlock -> ctx.world.setBlockState(
+				is SlabBlock -> env.world.setBlockState(
 					position,
 					DyeData.getNewBlock(state.block, dye)
 						.with(SlabBlock.TYPE, state.get(SlabBlock.TYPE))
 						.with(SlabBlock.WATERLOGGED, state.get(SlabBlock.WATERLOGGED))
 				)
-				is StairsBlock -> ctx.world.setBlockState(
+				is StairsBlock -> env.world.setBlockState(
 					position,
 					DyeData.getNewBlock(state.block, dye)
 						.with(StairsBlock.FACING, state.get(StairsBlock.FACING))
@@ -121,7 +124,7 @@ class OpDye : SpellAction {
 						.with(StairsBlock.SHAPE, state.get(StairsBlock.SHAPE))
 						.with(StairsBlock.WATERLOGGED, state.get(StairsBlock.WATERLOGGED))
 				)
-				is WallBlock -> ctx.world.setBlockState(
+				is WallBlock -> env.world.setBlockState(
 					position,
 					DyeData.getNewBlock(state.block, dye)
 						.with(WallBlock.NORTH_SHAPE, state.get(WallBlock.NORTH_SHAPE))
@@ -132,16 +135,16 @@ class OpDye : SpellAction {
 						.with(WallBlock.UP, state.get(WallBlock.UP))
 				)
 				is ShulkerBoxBlock -> {
-					val blockEntity = ctx.world.getBlockEntity(position)!! as ShulkerBoxBlockEntity
+					val blockEntity = env.world.getBlockEntity(position)!! as ShulkerBoxBlockEntity
 					val nbt = blockEntity.createNbt()
-					ctx.world.setBlockState(
+					env.world.setBlockState(
 						position,
 						DyeData.getNewBlock(state.block, dye)
 							.with(ShulkerBoxBlock.FACING, state.get(ShulkerBoxBlock.FACING))
 					)
-					(ctx.world.getBlockEntity(position)!! as ShulkerBoxBlockEntity).readNbt(nbt)
+					(env.world.getBlockEntity(position)!! as ShulkerBoxBlockEntity).readNbt(nbt)
 				}
-				is StainedGlassPaneBlock -> ctx.world.setBlockState(
+				is StainedGlassPaneBlock -> env.world.setBlockState(
 					position,
 					DyeData.getNewBlock(state.block, dye)
 						.with(StainedGlassPaneBlock.NORTH, state.get(StainedGlassPaneBlock.NORTH))
@@ -150,13 +153,13 @@ class OpDye : SpellAction {
 						.with(StainedGlassPaneBlock.WEST, state.get(StainedGlassPaneBlock.WEST))
 						.with(StainedGlassPaneBlock.WATERLOGGED, state.get(StainedGlassPaneBlock.WATERLOGGED))
 				)
-				else -> ctx.world.setBlockState(position, DyeData.getNewBlock(state.block, dye))
+				else -> env.world.setBlockState(position, DyeData.getNewBlock(state.block, dye))
 			}
 		}
 	}
 
 	private data class BlockItemSpell(val item: ItemEntity, val block: Block, val dye: String) : RenderedSpell {
-		override fun cast(ctx: CastingContext) {
+		override fun cast(env: CastingEnvironment) {
 			val newStack = ItemStack(DyeData.getNewBlock(block, dye).block.asItem(), item.stack.count)
 			newStack.nbt = item.stack.nbt
 			item.stack = newStack
@@ -164,13 +167,13 @@ class OpDye : SpellAction {
 	}
 
 	private data class CatSpell(val cat: CatEntity, val dye: DyeColor) : RenderedSpell {
-		override fun cast(ctx: CastingContext) {
+		override fun cast(env: CastingEnvironment) {
 			cat.collarColor = dye
 		}
 	}
 
 	private data class ItemSpell(val entity: ItemEntity, val item: Item, val dye: String) : RenderedSpell {
-		override fun cast(ctx: CastingContext) {
+		override fun cast(env: CastingEnvironment) {
 			val newStack = ItemStack(DyeData.getNewItem(item, dye), entity.stack.count)
 			newStack.nbt = entity.stack.nbt
 			entity.stack = newStack
@@ -178,25 +181,25 @@ class OpDye : SpellAction {
 	}
 
 	private data class SheepSpell(val sheep: SheepEntity, val dye: DyeColor) : RenderedSpell {
-		override fun cast(ctx: CastingContext) {
+		override fun cast(env: CastingEnvironment) {
 			sheep.color = dye
 		}
 	}
 
 	private data class ShulkerSpell(val shulker: ShulkerEntity, val dye: DyeColor) : RenderedSpell {
-		override fun cast(ctx: CastingContext) {
+		override fun cast(env: CastingEnvironment) {
 			shulker.color = dye
 		}
 	}
 
 	private data class SpecklikeSpell(val speck: Specklike, val dye: DyeColor) : RenderedSpell {
-		override fun cast(ctx: CastingContext) {
-			speck.setPigment(FrozenColorizer(ItemStack(HexItems.DYE_COLORIZERS[dye]!!), ctx.caster.uuid))
+		override fun cast(env: CastingEnvironment) {
+			speck.setPigment(FrozenPigment(ItemStack(HexItems.DYE_PIGMENTS[dye]!!), env.castingEntity!!.uuid))
 		}
 	}
 
 	private data class WolfSpell(val wolf: WolfEntity, val dye: DyeColor) : RenderedSpell {
-		override fun cast(ctx: CastingContext) {
+		override fun cast(env: CastingEnvironment) {
 			wolf.collarColor = dye
 		}
 	}
