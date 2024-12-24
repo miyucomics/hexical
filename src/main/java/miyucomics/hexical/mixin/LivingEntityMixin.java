@@ -40,7 +40,7 @@ public abstract class LivingEntityMixin {
 			addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 900, 1));
 			addStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 100, 1));
 			addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 800, 0));
-			player.world.sendEntityStatus((Entity) (Object) this, EntityStatuses.USE_TOTEM_OF_UNDYING);
+			player.getWorld().sendEntityStatus((Entity) (Object) this, EntityStatuses.USE_TOTEM_OF_UNDYING);
 
 			return true;
 		}

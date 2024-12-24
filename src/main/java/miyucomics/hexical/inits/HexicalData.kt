@@ -15,6 +15,7 @@ object HexicalData {
 			override fun getFabricId() = HexicalMain.id("dyes")
 			override fun reload(manager: ResourceManager) = manager.findResources("dyes") { path -> path.path.endsWith(".json") }.keys.forEach { id -> DyeData.loadData(manager.getResource(id).get().inputStream) }
 		})
+
 		ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(object : SimpleSynchronousResourceReloadListener {
 			override fun getFabricId() = HexicalMain.id("prestidigitation")
 			override fun reload(manager: ResourceManager) = manager.findResources("prestidigitation") { path -> path.path.endsWith(".json") }.keys.forEach { id -> PrestidigitationData.loadData(manager.getResource(id).get().inputStream) }

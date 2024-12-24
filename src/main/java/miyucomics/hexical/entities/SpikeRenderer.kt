@@ -5,8 +5,8 @@ import net.minecraft.client.render.entity.EntityRenderer
 import net.minecraft.client.render.entity.EntityRendererFactory
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.util.Identifier
-import net.minecraft.util.math.Matrix3f
-import net.minecraft.util.math.Matrix4f
+import org.joml.Matrix3f
+import org.joml.Matrix4f
 import kotlin.math.floor
 import kotlin.math.max
 
@@ -47,11 +47,11 @@ class SpikeRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<SpikeEn
 		matrices.pop()
 	}
 
-	private fun vertex(mat: Matrix4f, verts: VertexConsumer, normalMatrix: Matrix3f, x: Float, y: Float, z: Float, u: Float, v: Float) = verts.vertex(mat, x, y, z)
+	private fun vertex(mat: Matrix4f, verts: VertexConsumer, normal: Matrix3f, x: Float, y: Float, z: Float, u: Float, v: Float) = verts.vertex(mat, x, y, z)
 		.color(255, 255, 255, 255)
 		.texture(u, v)
 		.overlay(OverlayTexture.DEFAULT_UV)
 		.light(LightmapTextureManager.MAX_LIGHT_COORDINATE)
-		.normal(normalMatrix, 0f, 1f, 0f)
+		.normal(normal, 0f, 1f, 0f)
 		.next()
 }

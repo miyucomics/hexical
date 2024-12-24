@@ -1,8 +1,9 @@
 package miyucomics.hexical.inits
 
 import miyucomics.hexical.HexicalMain
+import net.minecraft.registry.Registries
+import net.minecraft.registry.Registry
 import net.minecraft.sound.SoundEvent
-import net.minecraft.util.registry.Registry
 
 object HexicalSounds {
 	lateinit var EVOKING_MURMUR: SoundEvent
@@ -26,8 +27,8 @@ object HexicalSounds {
 
 	private fun register(name: String): SoundEvent {
 		val id = HexicalMain.id(name)
-		val event = SoundEvent(id)
-		Registry.register(Registry.SOUND_EVENT, id, event)
+		val event = SoundEvent.of(id)
+		Registry.register(Registries.SOUND_EVENT, id, event)
 		return event
 	}
 }

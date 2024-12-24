@@ -1,10 +1,1 @@
 accessWidener   v2  named
-accessible field net/minecraft/entity/projectile/ArrowEntity effects Ljava/util/Set;
-accessible field net/minecraft/entity/projectile/ArrowEntity potion Lnet/minecraft/potion/Potion;
-accessible field net/minecraft/entity/passive/PufferfishEntity inflateTicks I
-accessible field net/minecraft/entity/passive/PufferfishEntity deflateTicks I
-accessible field net/minecraft/entity/mob/CreeperEntity IGNITED Lnet/minecraft/entity/data/TrackedData;
-accessible method net/minecraft/entity/mob/ShulkerEntity setColor (Lnet/minecraft/util/DyeColor;)V
-accessible method net/minecraft/entity/decoration/ArmorStandEntity setShowArms (Z)V
-accessible method net/minecraft/entity/passive/SquidEntity squirt ()V
-accessible class net/minecraft/client/render/chunk/RenderedChunk

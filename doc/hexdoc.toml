@@ -1,5 +1,5 @@
 modid = "hexical"
-book = "hexical:hexicalbook"
+book = "hexcasting:thehexbook"
 default_lang = "en_us"
 default_branch = "main"
 

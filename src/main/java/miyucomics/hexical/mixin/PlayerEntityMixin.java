@@ -25,19 +25,19 @@ public class PlayerEntityMixin implements PlayerEntityMinterface {
 	void tick(CallbackInfo ci) {
 		PlayerEntity player = ((PlayerEntity) (Object) this);
 
-		if (player.world.isClient && EvokeState.isEvoking(player.getUuid())) {
+		if (player.getWorld().isClient && EvokeState.isEvoking(player.getUuid())) {
 			float rot = player.bodyYaw * ((float) Math.PI / 180) + MathHelper.cos((float) player.age * 0.6662f) * 0.25f;
 			float cos = MathHelper.cos(rot);
 			float sin = MathHelper.sin(rot);
-			int color = IXplatAbstractions.INSTANCE.getColorizer(player).getColor(player.world.getTime() * 10, player.getPos());
+			int color = IXplatAbstractions.INSTANCE.getPigment(player).getColorProvider().getColor(player.getWorld().getTime() * 10, player.getPos());
 			float r = ColorHelper.Argb.getRed(color) / 255f;
 			float g = ColorHelper.Argb.getGreen(color) / 255f;
 			float b = ColorHelper.Argb.getBlue(color) / 255f;
-			player.world.addParticle(ParticleTypes.ENTITY_EFFECT, player.getX() + (double) cos * 0.6, player.getY() + 1.8, player.getZ() + (double) sin * 0.6, r, g, b);
-			player.world.addParticle(ParticleTypes.ENTITY_EFFECT, player.getX() - (double) cos * 0.6, player.getY() + 1.8, player.getZ() - (double) sin * 0.6, r, g, b);
+			player.getWorld().addParticle(ParticleTypes.ENTITY_EFFECT, player.getX() + (double) cos * 0.6, player.getY() + 1.8, player.getZ() + (double) sin * 0.6, r, g, b);
+			player.getWorld().addParticle(ParticleTypes.ENTITY_EFFECT, player.getX() - (double) cos * 0.6, player.getY() + 1.8, player.getZ() - (double) sin * 0.6, r, g, b);
 		}
 
-		if (player.world.isClient)
+		if (player.getWorld().isClient)
 			return;
 
 		if (EvokeState.isEvoking(player.getUuid()) && CastingUtils.isEnlightened((ServerPlayerEntity) player))

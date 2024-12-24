@@ -1,10 +1,9 @@
 package miyucomics.hexical.mixin;
 
-import at.petrak.hexcasting.api.spell.casting.CastingContext;
-import at.petrak.hexcasting.api.spell.iota.Iota;
-import at.petrak.hexcasting.api.spell.iota.NullIota;
-import at.petrak.hexcasting.api.spell.iota.Vec3Iota;
-import at.petrak.hexcasting.common.casting.operators.rw.OpRead;
+import at.petrak.hexcasting.api.casting.iota.Iota;
+import at.petrak.hexcasting.api.casting.iota.NullIota;
+import at.petrak.hexcasting.api.casting.iota.Vec3Iota;
+import at.petrak.hexcasting.common.casting.actions.rw.OpRead;
 import miyucomics.hexical.inits.HexicalItems;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;

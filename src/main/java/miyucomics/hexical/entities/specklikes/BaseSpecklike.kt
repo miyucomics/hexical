@@ -1,6 +1,6 @@
 package miyucomics.hexical.entities.specklikes
 
-import at.petrak.hexcasting.api.misc.FrozenColorizer
+import at.petrak.hexcasting.api.pigment.FrozenPigment
 import at.petrak.hexcasting.api.utils.putCompound
 import miyucomics.hexical.interfaces.Specklike
 import net.minecraft.entity.Entity
@@ -17,7 +17,7 @@ import net.minecraft.world.World
 abstract class BaseSpecklike(entityType: EntityType<out BaseSpecklike>, world: World) : Entity(entityType, world), Specklike {
 	private var lifespan = -1
 
-	var clientPigment: FrozenColorizer = FrozenColorizer.DEFAULT.get()
+	var clientPigment: FrozenPigment = FrozenPigment.DEFAULT.get()
 	var clientSize = 1f
 	var clientThickness = 1f
 	var clientRoll = 0f
@@ -55,7 +55,7 @@ abstract class BaseSpecklike(entityType: EntityType<out BaseSpecklike>, world: W
 	override fun setSize(size: Float) = dataTracker.set(sizeDataTracker, size)
 	override fun setRoll(rotation: Float) = dataTracker.set(rollDataTracker, rotation)
 	override fun setThickness(thickness: Float) = dataTracker.set(thicknessDataTracker, thickness)
-	override fun setPigment(pigment: FrozenColorizer) = dataTracker.set(pigmentDataTracker, pigment.serializeToNBT())
+	override fun setPigment(pigment: FrozenPigment) = dataTracker.set(pigmentDataTracker, pigment.serializeToNBT())
 	override fun getEyeHeight(pose: EntityPose, dimensions: EntityDimensions) = 0.25f
 	override fun createSpawnPacket() = EntitySpawnS2CPacket(this)
 
@@ -70,7 +70,7 @@ abstract class BaseSpecklike(entityType: EntityType<out BaseSpecklike>, world: W
 	override fun onTrackedDataSet(data: TrackedData<*>) {
 		when (data) {
 			stateDataTracker -> processState()
-			pigmentDataTracker -> this.clientPigment = FrozenColorizer.fromNBT(dataTracker.get(pigmentDataTracker))
+			pigmentDataTracker -> this.clientPigment = FrozenPigment.fromNBT(dataTracker.get(pigmentDataTracker))
 			sizeDataTracker -> this.clientSize = dataTracker.get(sizeDataTracker)
 			rollDataTracker -> this.clientRoll = dataTracker.get(rollDataTracker)
 			thicknessDataTracker -> this.clientThickness = dataTracker.get(thicknessDataTracker)

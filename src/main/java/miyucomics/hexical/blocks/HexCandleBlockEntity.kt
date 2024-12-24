@@ -1,6 +1,6 @@
 package miyucomics.hexical.blocks
 
-import at.petrak.hexcasting.api.misc.FrozenColorizer
+import at.petrak.hexcasting.api.pigment.FrozenPigment
 import miyucomics.hexical.inits.HexicalBlocks
 import net.minecraft.block.BlockState
 import net.minecraft.block.entity.BlockEntity
@@ -9,11 +9,10 @@ import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket
 import net.minecraft.util.math.BlockPos
 
 class HexCandleBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(HexicalBlocks.HEX_CANDLE_BLOCK_ENTITY, pos, state) {
-	private var pigment: FrozenColorizer = FrozenColorizer.DEFAULT.get()
+	private var pigment: FrozenPigment = FrozenPigment.DEFAULT.get()
 
 	fun getPigment() = this.pigment
-
-	fun setPigment(pigment: FrozenColorizer) {
+	fun setPigment(pigment: FrozenPigment) {
 		this.pigment = pigment
 		markDirty()
 	}
@@ -23,7 +22,7 @@ class HexCandleBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexic
 	}
 
 	override fun readNbt(nbt: NbtCompound) {
-		pigment = FrozenColorizer.fromNBT(nbt.getCompound("pigment"))
+		pigment = FrozenPigment.fromNBT(nbt.getCompound("pigment"))
 	}
 
 	override fun toUpdatePacket(): BlockEntityUpdateS2CPacket = BlockEntityUpdateS2CPacket.create(this)

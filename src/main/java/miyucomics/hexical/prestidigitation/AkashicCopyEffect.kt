@@ -1,7 +1,7 @@
 package miyucomics.hexical.prestidigitation
 
+import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.common.blocks.akashic.BlockEntityAkashicBookshelf
-import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.interfaces.PrestidigitationEffect
 import net.minecraft.entity.Entity
@@ -15,9 +15,9 @@ class AkashicCopyEffect : PrestidigitationEffect {
 		val shelf = caster.world.getBlockEntity(position)
 		if (shelf is BlockEntityAkashicBookshelf) {
 			val nbt = shelf.iotaTag ?: return
-			val harness = IXplatAbstractions.INSTANCE.getHarness(caster, Hand.MAIN_HAND)
-			harness.stack.add(HexIotaTypes.deserialize(nbt, caster.world as ServerWorld))
-			IXplatAbstractions.INSTANCE.setHarness(caster, harness)
+			val vm = IXplatAbstractions.INSTANCE.getStaffcastVM(caster, Hand.MAIN_HAND)
+			vm.image.stack.toMutableList().add(IotaType.deserialize(nbt, caster.world as ServerWorld))
+			IXplatAbstractions.INSTANCE.setStaffcastImage(caster, vm.image)
 		}
 	}
 

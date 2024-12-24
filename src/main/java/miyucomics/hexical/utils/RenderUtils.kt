@@ -1,13 +1,13 @@
 package miyucomics.hexical.utils
 
-import at.petrak.hexcasting.api.spell.math.HexPattern
-import at.petrak.hexcasting.client.rotate
+import at.petrak.hexcasting.api.casting.math.HexPattern
+import at.petrak.hexcasting.client.render.rotate
 import net.minecraft.client.render.OverlayTexture
 import net.minecraft.client.render.VertexConsumer
 import net.minecraft.util.math.MathHelper
-import net.minecraft.util.math.Matrix3f
-import net.minecraft.util.math.Matrix4f
 import net.minecraft.util.math.Vec2f
+import org.joml.Matrix3f
+import org.joml.Matrix4f
 import kotlin.math.*
 
 object RenderUtils {

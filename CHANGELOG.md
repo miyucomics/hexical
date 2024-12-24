@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.4.1
+- update to 1.20.1
+- massive code sweep: almost everything is rewritten to be more sane
+- increased wandering trader lamp trade chance to 50%
+
 ## 1.4.0
 - added gauntlet staff
 - added advancement for conjuring Hexxy

@@ -10,13 +10,8 @@ class PerlinNoise(seed: Int) {
 		permutations = IntArray(512) { random.nextInt(256) }
 	}
 
-	private fun fade(t: Double): Double {
-		return t * t * t * (t * (t * 6 - 15) + 10)
-	}
-
-	private fun lerp(t: Double, a: Double, b: Double): Double {
-		return a + t * (b - a)
-	}
+	private fun fade(t: Double) = t * t * t * (t * (t * 6 - 15) + 10)
+	private fun lerp(t: Double, a: Double, b: Double) = a + t * (b - a)
 
 	private fun grad(hash: Int, x: Double, y: Double, z: Double, w: Double): Double {
 		val h = hash and 31
@@ -58,30 +53,23 @@ class PerlinNoise(seed: Int) {
 		val bba = permutations[bb] + sw
 		val bbb = permutations[bb + 1] + sw
 
-		return lerp(
-			s,
-			lerp(
-				t,
-				lerp(
-					v,
+		return lerp(s,
+			lerp(t,
+				lerp(v,
 					lerp(u, grad(permutations[aaa], x, y, z, w), grad(permutations[baa], x - 1, y, z, w)),
 					lerp(u, grad(permutations[aba], x, y - 1, z, w), grad(permutations[bba], x - 1, y - 1, z, w))
 				),
-				lerp(
-					v,
+				lerp(v,
 					lerp(u, grad(permutations[aab], x, y, z - 1, w), grad(permutations[bab], x - 1, y, z - 1, w)),
 					lerp(u, grad(permutations[abb], x, y - 1, z - 1, w), grad(permutations[bbb], x - 1, y - 1, z - 1, w))
 				)
 			),
-			lerp(
-				t,
-				lerp(
-					v,
+			lerp(t,
+				lerp(v,
 					lerp(u, grad(permutations[aaa + 1], x, y, z, w - 1), grad(permutations[baa + 1], x - 1, y, z, w - 1)),
 					lerp(u, grad(permutations[aba + 1], x, y - 1, z, w - 1), grad(permutations[bba + 1], x - 1, y - 1, z, w - 1))
 				),
-				lerp(
-					v,
+				lerp(v,
 					lerp(u, grad(permutations[aab + 1], x, y, z - 1, w - 1), grad(permutations[bab + 1], x - 1, y, z - 1, w - 1)),
 					lerp(u, grad(permutations[abb + 1], x, y - 1, z - 1, w - 1), grad(permutations[bbb + 1], x - 1, y - 1, z - 1, w - 1))
 				)

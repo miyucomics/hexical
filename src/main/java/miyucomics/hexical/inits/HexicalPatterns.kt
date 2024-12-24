@@ -1,17 +1,16 @@
 package miyucomics.hexical.inits
 
-import at.petrak.hexcasting.api.PatternRegistry
+import at.petrak.hexcasting.api.casting.asActionResult
+import at.petrak.hexcasting.api.casting.iota.Iota
+import at.petrak.hexcasting.api.casting.iota.IotaType
+import at.petrak.hexcasting.api.casting.iota.NullIota
+import at.petrak.hexcasting.api.casting.math.HexDir
+import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.misc.MediaConstants
-import at.petrak.hexcasting.api.spell.Action
-import at.petrak.hexcasting.api.spell.asActionResult
-import at.petrak.hexcasting.api.spell.iota.Iota
-import at.petrak.hexcasting.api.spell.iota.NullIota
-import at.petrak.hexcasting.api.spell.math.HexDir
-import at.petrak.hexcasting.api.spell.math.HexPattern
 import at.petrak.hexcasting.api.utils.vecFromNBT
 import at.petrak.hexcasting.common.blocks.akashic.BlockAkashicBookshelf
-import at.petrak.hexcasting.common.casting.operators.selectors.OpGetEntitiesBy
-import at.petrak.hexcasting.common.casting.operators.stack.OpTwiddling
+import at.petrak.hexcasting.common.casting.actions.selectors.OpGetEntitiesBy
+import at.petrak.hexcasting.common.casting.actions.stack.OpTwiddling
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.casting.iota.IdentifierIota
@@ -70,7 +69,6 @@ import miyucomics.hexical.casting.patterns.telepathy.OpHallucinateSound
 import miyucomics.hexical.casting.patterns.telepathy.OpSendTelepathy
 import miyucomics.hexical.casting.patterns.telepathy.OpShoutTelepathy
 import miyucomics.hexical.casting.patterns.wristpocket.*
-import miyucomics.hexical.enums.SpecializedSource
 import miyucomics.hexical.interfaces.Specklike
 import miyucomics.hexical.items.HandLampItem
 import net.minecraft.block.CandleBlock
@@ -80,12 +78,12 @@ import net.minecraft.enchantment.EnchantmentHelper
 import net.minecraft.item.EnchantedBookItem
 import net.minecraft.item.ItemStack
 import net.minecraft.item.Items
+import net.minecraft.registry.Registries
 import net.minecraft.sound.SoundEvents
 import net.minecraft.state.property.Properties
 import net.minecraft.util.math.Direction
 import net.minecraft.util.math.MathHelper
 import net.minecraft.util.math.Vec3d
-import net.minecraft.util.registry.Registry
 
 object HexicalPatterns {
 	@JvmStatic
@@ -97,13 +95,13 @@ object HexicalPatterns {
 		register("get_hand_lamp_velocity", "qwddedqew", HexDir.SOUTH_WEST, OpGetHandLampData { _, nbt -> vecFromNBT(nbt.getLongArray("velocity")).asActionResult })
 		register("get_hand_lamp_use_time", "qwddedqwddwa", HexDir.SOUTH_WEST, OpGetHandLampData { ctx, nbt -> (ctx.world.time - (nbt.getDouble("start_time") + 1.0)).asActionResult })
 		register("get_hand_lamp_media", "qwddedaeeeee", HexDir.SOUTH_WEST, OpGetHandLampData { ctx, _ -> ((ctx.caster.activeItem.item as HandLampItem).getMedia(ctx.caster.activeItem).toDouble() / MediaConstants.DUST_UNIT).asActionResult })
-		register("get_hand_lamp_storage", "qwddedqwaqqqqq", HexDir.SOUTH_WEST, OpGetHandLampData { ctx, nbt -> listOf(HexIotaTypes.deserialize(nbt.getCompound("storage"), ctx.world)) })
+		register("get_hand_lamp_storage", "qwddedqwaqqqqq", HexDir.SOUTH_WEST, OpGetHandLampData { ctx, nbt -> listOf(IotaType.deserialize(nbt.getCompound("storage"), ctx.world)) })
 		register("set_hand_lamp_storage", "qwddedqedeeeee", HexDir.SOUTH_WEST, OpSetHandLampStorage())
 		register("get_arch_lamp_position", "qaqwddedqdd", HexDir.NORTH_EAST, OpGetArchLampData { _, data -> data.position.asActionResult } )
 		register("get_arch_lamp_rotation", "qaqwddedadw", HexDir.NORTH_EAST, OpGetArchLampData { _, data -> data.rotation.asActionResult } )
 		register("get_arch_lamp_velocity", "qaqwddedqew", HexDir.NORTH_EAST, OpGetArchLampData { _, data -> data.velocity.asActionResult } )
 		register("get_arch_lamp_use_time", "qaqwddedqwddwa", HexDir.NORTH_EAST, OpGetArchLampData { ctx, data -> (ctx.world.time - (data.time + 1)).asActionResult } )
-		register("get_arch_lamp_storage", "qaqwddedqwaqqqqq", HexDir.NORTH_EAST, OpGetArchLampData { ctx, data -> listOf(HexIotaTypes.deserialize(data.storage, ctx.world)) } )
+		register("get_arch_lamp_storage", "qaqwddedqwaqqqqq", HexDir.NORTH_EAST, OpGetArchLampData { ctx, data -> listOf(IotaType.deserialize(data.storage, ctx.world)) } )
 		register("set_arch_lamp_storage", "qaqwddedqedeeeee", HexDir.NORTH_EAST, OpSetArchLampStorage())
 		register("get_arch_lamp_media", "qaqwddedaeeeee", HexDir.NORTH_EAST, OpGetArchLampMedia())
 		register("activate_arch_lamp", "qaqwddedadeaqq", HexDir.NORTH_EAST, OpActivateArchLamp())
@@ -155,7 +153,7 @@ object HexicalPatterns {
 		register("send_telepathy", "qqqqwaqa", HexDir.EAST, OpSendTelepathy())
 		register("shout_telepathy", "daqqqqwa", HexDir.EAST, OpShoutTelepathy())
 		register("pling", "eqqqada", HexDir.NORTH_EAST, OpHallucinateSound(SoundEvents.ENTITY_PLAYER_LEVELUP))
-		register("click", "eqqadaq", HexDir.NORTH_EAST, OpHallucinateSound(SoundEvents.UI_BUTTON_CLICK))
+		register("click", "eqqadaq", HexDir.NORTH_EAST, OpHallucinateSound(SoundEvents.UI_BUTTON_CLICK.comp_349()))
 		register("moving_left", "edead", HexDir.SOUTH_EAST, OpGetKeybind("key.left"))
 		register("moving_right", "qaqda", HexDir.SOUTH_WEST, OpGetKeybind("key.right"))
 		register("moving_up", "aqaddq", HexDir.SOUTH_EAST, OpGetKeybind("key.forward"))
@@ -183,7 +181,12 @@ object HexicalPatterns {
 		register("take_on_pigment", "weeeweeqeeeewqaqweeee", HexDir.EAST, OpTakeOnPigment())
 
 		register("wristpocket", "aaqqa", HexDir.WEST, OpWristpocket())
-		register("wristpocket_item", "aaqqada", HexDir.WEST, OpGetWristpocket { stack -> if (stack.isOf(Items.AIR) || stack == ItemStack.EMPTY) listOf(NullIota()) else Registry.ITEM.getId(stack.item).asActionResult() })
+		register("wristpocket_item", "aaqqada", HexDir.WEST, OpGetWristpocket { stack ->
+			if (stack.isOf(Items.AIR) || stack == ItemStack.EMPTY)
+				listOf(NullIota())
+			else
+				Registries.ITEM.getId(stack.item).asActionResult()
+		})
 		register("wristpocket_count", "aaqqaaw", HexDir.WEST, OpGetWristpocket { stack -> if (stack.isOf(Items.AIR) || stack == ItemStack.EMPTY) (0).asActionResult else stack.count.asActionResult })
 		register("sleight", "aaqqadeeeq", HexDir.WEST, OpSleight())
 		register("mage_hand", "aaqqaeea", HexDir.WEST, OpMageHand())
@@ -405,6 +408,8 @@ object HexicalPatterns {
 		}
 	}
 
-	private fun register(name: String, signature: String, startDir: HexDir, action: Action) = PatternRegistry.mapPattern(HexPattern.fromAngles(signature, startDir), HexicalMain.id(name), action)
-	private fun registerPerWorld(name: String, signature: String, startDir: HexDir, action: Action) = PatternRegistry.mapPattern(HexPattern.fromAngles(signature, startDir), HexicalMain.id(name), action, true)
+	private fun register(name: String, signature: String, startDir: HexDir, action: Action) = PatternRegistry.mapPattern(
+		HexPattern.fromAngles(signature, startDir), HexicalMain.id(name), action)
+	private fun registerPerWorld(name: String, signature: String, startDir: HexDir, action: Action) = PatternRegistry.mapPattern(
+		HexPattern.fromAngles(signature, startDir), HexicalMain.id(name), action, true)
 }
