@@ -20,6 +20,7 @@ object HexicalEvents {
 				}
 			}
 		}
+
 		ServerTickEvents.END_SERVER_TICK.register {
 			for (player in EvokeState.active.keys)
 				if (EvokeState.active[player]!!)

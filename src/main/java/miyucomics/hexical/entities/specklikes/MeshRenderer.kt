@@ -1,16 +1,16 @@
 package miyucomics.hexical.entities.specklikes
 
 import at.petrak.hexcasting.api.HexAPI.modLoc
-import at.petrak.hexcasting.api.misc.FrozenColorizer
+import at.petrak.hexcasting.api.pigment.FrozenPigment
+import dev.kosmx.playerAnim.core.util.Vec3f
 import net.minecraft.client.render.*
 import net.minecraft.client.render.entity.EntityRenderer
 import net.minecraft.client.render.entity.EntityRendererFactory
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.util.Identifier
-import net.minecraft.util.math.Matrix3f
-import net.minecraft.util.math.Matrix4f
 import net.minecraft.util.math.Vec3d
-import net.minecraft.util.math.Vec3f
+import org.joml.Matrix3f
+import org.joml.Matrix4f
 import kotlin.math.cos
 import kotlin.math.sin
 
@@ -39,7 +39,7 @@ class MeshRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<MeshEnti
 		matrices.pop()
 	}
 
-	private fun drawConnection(matrices: MatrixStack, vertices: VertexConsumer, start: Vec3d, end: Vec3d, pigment: FrozenColorizer, thickness: Double) {
+	private fun drawConnection(matrices: MatrixStack, vertices: VertexConsumer, start: Vec3d, end: Vec3d, pigment: FrozenPigment, thickness: Double) {
 		val direction = end.subtract(start).normalize()
 		var perpendicular = direction.crossProduct(Vec3d(1.0, 0.0, 0.0))
 		if (direction.dotProduct(Vec3d(1.0, 0.0, 0.0)) > 0.99 || direction.dotProduct(Vec3d(1.0, 0.0, 0.0)) < -0.99)
@@ -65,8 +65,14 @@ class MeshRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<MeshEnti
 		}
 	}
 
-	private fun vertex(pose: Matrix4f, norm: Matrix3f, vertices: VertexConsumer, position: Vec3d, pigment: FrozenColorizer) {
-		vertices.vertex(pose, position.x.toFloat(), position.y.toFloat(), position.z.toFloat()).color(pigment.getColor(0f, position)).texture(0f, 0f).overlay(OverlayTexture.DEFAULT_UV).light(LightmapTextureManager.MAX_LIGHT_COORDINATE).normal(norm, 0f, 1f, 0f).next()
+	private fun vertex(pose: Matrix4f, norm: Matrix3f, vertices: VertexConsumer, position: Vec3d, pigment: FrozenPigment) {
+		vertices.vertex(pose, position.x.toFloat(), position.y.toFloat(), position.z.toFloat())
+			.color(pigment.colorProvider.getColor(0f, position))
+			.texture(0f, 0f)
+			.overlay(OverlayTexture.DEFAULT_UV)
+			.light(LightmapTextureManager.MAX_LIGHT_COORDINATE)
+			.normal(norm, 0f, 1f, 0f)
+			.next()
 	}
 
 	companion object {

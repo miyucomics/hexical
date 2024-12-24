@@ -21,7 +21,7 @@ public class AbstractClientPlayerEntityMixin implements PlayerAnimations {
 	private final ModifierLayer<IAnimation> modAnimationContainer = new ModifierLayer<>();
 
 	@Inject(method = "<init>", at = @At("RETURN"))
-	private void init(ClientWorld world, GameProfile profile, PlayerPublicKey publicKey, CallbackInfo ci) {
+	private void init(ClientWorld clientWorld, GameProfile gameProfile, CallbackInfo ci) {
 		PlayerAnimationAccess.getPlayerAnimLayer((AbstractClientPlayerEntity) (Object) this).addAnimLayer(50, modAnimationContainer);
 	}
 

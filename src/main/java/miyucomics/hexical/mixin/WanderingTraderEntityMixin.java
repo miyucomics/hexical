@@ -22,13 +22,6 @@ import java.util.ArrayList;
 
 @Mixin(WanderingTraderEntity.class)
 public abstract class WanderingTraderEntityMixin extends MerchantEntity {
-	@Shadow
-	protected native void fillRecipes();
-
-	@Shadow
-	protected native void afterUsing(TradeOffer offer);
-
-	@SuppressWarnings("unused")
 	public WanderingTraderEntityMixin(EntityType<? extends MerchantEntity> entityType, World world) {
 		super(entityType, world);
 	}
@@ -39,9 +32,9 @@ public abstract class WanderingTraderEntityMixin extends MerchantEntity {
 		TradeOfferList tradeOfferList = getOffers();
 		if (tradeOfferList == null)
 			return;
-		if (random.nextFloat() < 0.1f) {
+		if (random.nextFloat() < 0.5) {
 			ItemStack trade = new ItemStack(HexicalItems.HAND_LAMP_ITEM);
-			IXplatAbstractions.INSTANCE.findHexHolder(trade).writeHex(new ArrayList<>(), MediaConstants.DUST_UNIT * 320);
+			IXplatAbstractions.INSTANCE.findHexHolder(trade).writeHex(new ArrayList<>(), null, MediaConstants.DUST_UNIT * 320);
 			IXplatAbstractions.INSTANCE.findMediaHolder(trade).withdrawMedia((int) (HexicalMain.RANDOM.nextFloat() * 160f) * MediaConstants.DUST_UNIT, false);
 			tradeOfferList.add(new TradeOffer(new ItemStack(Items.EMERALD, 32), trade, 1, 1, 1));
 		}
