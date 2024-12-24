@@ -56,29 +56,29 @@ class PersistentStateHandler : PersistentState() {
 		}
 
 		fun setEvocation(player: ServerPlayerEntity, hex: NbtCompound) {
-			val serverState = getServerState(player.getWorld().server)
+			val serverState = getServerState(player.getServer()!!)
 			serverState.evocation[player.uuid] = hex
 		}
 
 		fun getEvocation(player: ServerPlayerEntity): NbtCompound? {
-			val serverState = getServerState(player.getWorld().server)
+			val serverState = getServerState(player.getServer()!!)
 			return serverState.evocation[player.uuid]
 		}
 
 		fun getPlayerArchLampData(player: ServerPlayerEntity): ArchLampData {
-			val serverState = getServerState(player.getWorld().server)
+			val serverState = getServerState(player.getServer()!!)
 			return serverState.archLamps.computeIfAbsent(player.uuid) { ArchLampData() }
 		}
 
 		@JvmStatic
 		fun getWristpocketStack(player: ServerPlayerEntity): ItemStack {
-			val serverState = getServerState(player.getWorld().server)
+			val serverState = getServerState(player.getServer()!!)
 			return serverState.wristpockets.computeIfAbsent(player.uuid) { ItemStack.EMPTY }
 		}
 
 		@JvmStatic
 		fun setWristpocketStack(player: ServerPlayerEntity, stack: ItemStack) {
-			val serverState = getServerState(player.getWorld().server)
+			val serverState = getServerState(player.getServer()!!)
 			serverState.wristpockets[player.uuid] = stack
 		}
 	}

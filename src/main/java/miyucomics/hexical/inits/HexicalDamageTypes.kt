@@ -3,7 +3,6 @@ package miyucomics.hexical.inits
 import miyucomics.hexical.entities.SpikeEntity
 import net.minecraft.entity.Entity
 import net.minecraft.entity.damage.DamageSource
-import net.minecraft.entity.damage.ProjectileDamageSource
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.entity.projectile.PersistentProjectileEntity
 

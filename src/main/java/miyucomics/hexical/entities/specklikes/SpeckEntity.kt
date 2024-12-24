@@ -1,8 +1,8 @@
 package miyucomics.hexical.entities.specklikes
 
-import at.petrak.hexcasting.api.spell.iota.Iota
-import at.petrak.hexcasting.api.spell.iota.PatternIota
-import at.petrak.hexcasting.api.spell.math.HexPattern
+import at.petrak.hexcasting.api.casting.iota.Iota
+import at.petrak.hexcasting.api.casting.iota.PatternIota
+import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.utils.putCompound
 import miyucomics.hexical.inits.HexicalEntities
 import miyucomics.hexical.utils.RenderUtils

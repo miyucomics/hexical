@@ -1,8 +1,9 @@
 package miyucomics.hexical.entities.specklikes
 
-import at.petrak.hexcasting.api.spell.iota.Vec3Iota
+import at.petrak.hexcasting.api.casting.iota.Vec3Iota
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.api.utils.putList
+import dev.kosmx.playerAnim.core.util.Vec3f
 import miyucomics.hexical.inits.HexicalEntities
 import net.minecraft.entity.EntityType
 import net.minecraft.nbt.NbtCompound
