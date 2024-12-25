@@ -2,7 +2,7 @@ package miyucomics.hexical.casting.patterns.lamp
 
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.*
-import at.petrak.hexcasting.api.spell.casting.CastingContext
+import at.petrak.hexcasting.api.spell.casting.CastingEnvironment
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapBadEntity
 import at.petrak.hexcasting.api.spell.mishaps.MishapBadOffhandItem
@@ -23,7 +23,7 @@ import kotlin.math.min
 
 class OpOfferMind : SpellAction {
 	override val argc = 2
-	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
+	override fun execute(args: List<Iota>, ctx: CastingEnvironment): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		val sacrifice = args.getEntity(0, argc)
 		ctx.assertEntityInRange(sacrifice)
 
@@ -50,7 +50,7 @@ class OpOfferMind : SpellAction {
 	}
 
 	private data class Spell(val sacrifice: Entity, val battery: Int) : RenderedSpell {
-		override fun cast(ctx: CastingContext) {
+		override fun cast(ctx: CastingEnvironment) {
 			val lamp = ctx.caster.getStackInHand(ctx.otherHand)
 			var sacrificedDestroyed = false
 

@@ -2,7 +2,7 @@ package miyucomics.hexical.casting.patterns.firework
 
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.*
-import at.petrak.hexcasting.api.spell.casting.CastingContext
+import at.petrak.hexcasting.api.spell.casting.CastingEnvironment
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapBadOffhandItem
 import net.minecraft.entity.projectile.FireworkRocketEntity
@@ -16,7 +16,7 @@ import net.minecraft.util.math.Vec3d
 
 class OpSimulateFirework : SpellAction {
 	override val argc = 3
-	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
+	override fun execute(args: List<Iota>, ctx: CastingEnvironment): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		val position = args.getVec3(0, argc)
 		val duration = args.getIntBetween(2, 1, 3, argc)
 		ctx.assertVecInRange(position)
@@ -27,7 +27,7 @@ class OpSimulateFirework : SpellAction {
 	}
 
 	private data class Spell(val position: Vec3d, val velocity: Vec3d, val duration: Int, val template: NbtCompound) : RenderedSpell {
-		override fun cast(ctx: CastingContext) {
+		override fun cast(ctx: CastingEnvironment) {
 			val star = NbtCompound()
 			star.putInt(FireworkRocketItem.TYPE_KEY, template.getInt(FireworkRocketItem.TYPE_KEY))
 			star.putByte(FireworkRocketItem.FLICKER_KEY, template.getByte(FireworkRocketItem.FLICKER_KEY))

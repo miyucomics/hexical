@@ -3,7 +3,7 @@ package miyucomics.hexical.casting.patterns.lamp
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.ConstMediaAction
 import at.petrak.hexcasting.api.spell.asActionResult
-import at.petrak.hexcasting.api.spell.casting.CastingContext
+import at.petrak.hexcasting.api.spell.casting.CastingEnvironment
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.NullIota
 import miyucomics.hexical.casting.mishaps.NeedsActiveArchLampMishap
@@ -13,7 +13,7 @@ import miyucomics.hexical.items.hasActiveArchLamp
 
 class OpGetArchLampMedia : ConstMediaAction {
 	override val argc = 0
-	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
+	override fun execute(args: List<Iota>, ctx: CastingEnvironment): List<Iota> {
 		if (!hasActiveArchLamp(ctx.caster))
 			throw NeedsActiveArchLampMishap()
 		for (stack in ctx.caster.inventory.main)

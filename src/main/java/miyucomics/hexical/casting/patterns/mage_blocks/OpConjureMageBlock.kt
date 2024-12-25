@@ -4,7 +4,7 @@ import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.ParticleSpray
 import at.petrak.hexcasting.api.spell.RenderedSpell
 import at.petrak.hexcasting.api.spell.SpellAction
-import at.petrak.hexcasting.api.spell.casting.CastingContext
+import at.petrak.hexcasting.api.spell.casting.CastingEnvironment
 import at.petrak.hexcasting.api.spell.getBlockPos
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapBadBlock
@@ -14,7 +14,7 @@ import net.minecraft.util.math.Vec3d
 
 class OpConjureMageBlock : SpellAction {
 	override val argc = 1
-	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
+	override fun execute(args: List<Iota>, ctx: CastingEnvironment): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		val pos = args.getBlockPos(0, argc)
 		ctx.assertVecInRange(pos)
 		if (!ctx.world.getBlockState(pos).material.isReplaceable)
@@ -23,7 +23,7 @@ class OpConjureMageBlock : SpellAction {
 	}
 
 	private data class Spell(val pos: BlockPos) : RenderedSpell {
-		override fun cast(ctx: CastingContext) {
+		override fun cast(ctx: CastingEnvironment) {
 			if (!ctx.canEditBlockAt(pos))
 				return
 			ctx.world.setBlockState(pos, HexicalBlocks.MAGE_BLOCK.defaultState)

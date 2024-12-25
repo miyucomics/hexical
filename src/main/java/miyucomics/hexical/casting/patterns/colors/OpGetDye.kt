@@ -1,13 +1,14 @@
 package miyucomics.hexical.casting.patterns.colors
 
-import at.petrak.hexcasting.api.spell.ConstMediaAction
-import at.petrak.hexcasting.api.spell.casting.CastingContext
-import at.petrak.hexcasting.api.spell.getBlockPos
-import at.petrak.hexcasting.api.spell.getEntity
-import at.petrak.hexcasting.api.spell.iota.EntityIota
-import at.petrak.hexcasting.api.spell.iota.Iota
-import at.petrak.hexcasting.api.spell.iota.NullIota
-import at.petrak.hexcasting.api.spell.iota.Vec3Iota
+import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
+import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
+import at.petrak.hexcasting.api.casting.getBlockPos
+import at.petrak.hexcasting.api.casting.getEntity
+import at.petrak.hexcasting.api.casting.iota.EntityIota
+import at.petrak.hexcasting.api.casting.iota.Iota
+import at.petrak.hexcasting.api.casting.iota.ListIota
+import at.petrak.hexcasting.api.casting.iota.NullIota
+import at.petrak.hexcasting.api.casting.iota.Vec3Iota
 import miyucomics.hexical.casting.iota.DyeIota
 import miyucomics.hexical.casting.iota.IdentifierIota
 import miyucomics.hexical.casting.iota.getIdentifier
@@ -22,21 +23,21 @@ import net.minecraft.entity.passive.CatEntity
 import net.minecraft.entity.passive.SheepEntity
 import net.minecraft.entity.passive.WolfEntity
 import net.minecraft.item.BlockItem
+import net.minecraft.registry.Registries
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.util.math.BlockPos
-import net.minecraft.util.registry.Registry
 
 class OpGetDye : ConstMediaAction {
 	override val argc = 1
-	override fun execute(args: List<Iota>, ctx: CastingContext) = listOf(
+	override fun execute(args: List<Iota>, env: CastingEnvironment) = listOf(
 		when (args[0]) {
 			is EntityIota -> {
 				val entity = args.getEntity(0, argc)
-				ctx.assertEntityInRange(entity)
+				env.assertEntityInRange(entity)
 				processEntity(entity)
 			}
 			is IdentifierIota -> {
-				when (val item = Registry.ITEM.get(args.getIdentifier(0, argc))) {
+				when (val item = Registries.ITEM.get(args.getIdentifier(0, argc))) {
 					is BlockItem -> getDyeFromBlock(item.block)
 					else -> {
 						if (DyeData.getDye(item) != null)
@@ -48,8 +49,8 @@ class OpGetDye : ConstMediaAction {
 			}
 			is Vec3Iota -> {
 				val position = args.getBlockPos(0, argc)
-				ctx.assertVecInRange(position)
-				processVec3d(position, ctx.world)
+				env.assertPosInRange(position)
+				processVec3d(position, env.world)
 			}
 			else -> NullIota()
 		}
@@ -83,8 +84,9 @@ class OpGetDye : ConstMediaAction {
 
 	private fun processVec3d(position: BlockPos, world: ServerWorld): Iota {
 		val state = world.getBlockState(position)
+		val sign = world.getBlockEntity(position) as SignBlockEntity
 		if (state.block is SignBlock)
-			return DyeIota((world.getBlockEntity(position) as SignBlockEntity).textColor.getName())
+			return ListIota(listOf(DyeIota(sign.frontText.color.getName()), DyeIota(sign.backText.color.getName())))
 		return getDyeFromBlock(world.getBlockState(position).block)
 	}
 

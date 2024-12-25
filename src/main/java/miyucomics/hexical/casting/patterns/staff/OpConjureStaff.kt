@@ -2,7 +2,7 @@ package miyucomics.hexical.casting.patterns.staff
 
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.*
-import at.petrak.hexcasting.api.spell.casting.CastingContext
+import at.petrak.hexcasting.api.spell.casting.CastingEnvironment
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.xplat.IXplatAbstractions
@@ -16,7 +16,7 @@ import net.minecraft.util.math.Vec3d
 class OpConjureStaff : SpellAction {
 
 	override val argc = 4
-	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
+	override fun execute(args: List<Iota>, ctx: CastingEnvironment): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		val position = args.getVec3(0, argc)
 		ctx.assertVecInRange(position)
 		val battery = args.getPositiveDoubleUnderInclusive(1, 200_000.0, argc)
@@ -29,7 +29,7 @@ class OpConjureStaff : SpellAction {
 	}
 
 	private data class Spell(val position: Vec3d, val battery: Int, val rank: Int, val instructions: List<Iota>) : RenderedSpell {
-		override fun cast(ctx: CastingContext) {
+		override fun cast(ctx: CastingEnvironment) {
 			val stack = ItemStack(HexicalItems.CONJURED_STAFF_ITEM, 1)
 			stack.orCreateNbt.putInt("rank", rank)
 			val hexHolder = IXplatAbstractions.INSTANCE.findHexHolder(stack)

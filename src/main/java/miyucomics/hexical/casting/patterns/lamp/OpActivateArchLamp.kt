@@ -5,7 +5,7 @@ import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.ParticleSpray
 import at.petrak.hexcasting.api.spell.RenderedSpell
 import at.petrak.hexcasting.api.spell.SpellAction
-import at.petrak.hexcasting.api.spell.casting.CastingContext
+import at.petrak.hexcasting.api.spell.casting.CastingEnvironment
 import at.petrak.hexcasting.api.spell.iota.Iota
 import miyucomics.hexical.inits.HexicalItems
 import miyucomics.hexical.utils.CastingUtils
@@ -13,7 +13,7 @@ import net.minecraft.item.ItemStack
 
 class OpActivateArchLamp : SpellAction {
 	override val argc = 0
-	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
+	override fun execute(args: List<Iota>, ctx: CastingEnvironment): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		for (stack in DiscoveryHandlers.collectItemSlots(ctx)) {
 			if (stack.isEmpty)
 				continue
@@ -26,7 +26,7 @@ class OpActivateArchLamp : SpellAction {
 	}
 
 	private class Spell(val lampToActivate: ItemStack?) : RenderedSpell {
-		override fun cast(ctx: CastingContext) {
+		override fun cast(ctx: CastingEnvironment) {
 			CastingUtils.getActiveArchLamp(ctx.caster)?.orCreateNbt?.putBoolean("active", false)
 			if (lampToActivate == null)
 				return

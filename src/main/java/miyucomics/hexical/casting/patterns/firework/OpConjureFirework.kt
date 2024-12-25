@@ -2,7 +2,7 @@ package miyucomics.hexical.casting.patterns.firework
 
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.*
-import at.petrak.hexcasting.api.spell.casting.CastingContext
+import at.petrak.hexcasting.api.spell.casting.CastingEnvironment
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
 import miyucomics.hexical.casting.iota.DyeIota
@@ -17,7 +17,7 @@ import net.minecraft.util.math.Vec3d
 
 class OpConjureFirework : SpellAction {
 	override val argc = 8
-	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
+	override fun execute(args: List<Iota>, ctx: CastingEnvironment): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		val position = args.getVec3(0, argc)
 		ctx.assertVecInRange(position)
 
@@ -50,7 +50,7 @@ class OpConjureFirework : SpellAction {
 	}
 
 	private data class Spell(val position: Vec3d, val velocity: Vec3d, val duration: Int, val type: Int, val colors: List<Int>, val fades: List<Int>, val flicker: Boolean, val trail: Boolean) : RenderedSpell {
-		override fun cast(ctx: CastingContext) {
+		override fun cast(ctx: CastingEnvironment) {
 			val star = NbtCompound()
 			star.putInt(FireworkRocketItem.TYPE_KEY, type)
 			if (flicker)
