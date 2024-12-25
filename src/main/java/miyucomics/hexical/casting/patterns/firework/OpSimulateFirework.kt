@@ -1,10 +1,14 @@
 package miyucomics.hexical.casting.patterns.firework
 
+import at.petrak.hexcasting.api.casting.ParticleSpray
+import at.petrak.hexcasting.api.casting.RenderedSpell
+import at.petrak.hexcasting.api.casting.castables.SpellAction
+import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
+import at.petrak.hexcasting.api.casting.getIntBetween
+import at.petrak.hexcasting.api.casting.getVec3
+import at.petrak.hexcasting.api.casting.iota.Iota
+import at.petrak.hexcasting.api.casting.mishaps.MishapBadOffhandItem
 import at.petrak.hexcasting.api.misc.MediaConstants
-import at.petrak.hexcasting.api.spell.*
-import at.petrak.hexcasting.api.spell.casting.CastingEnvironment
-import at.petrak.hexcasting.api.spell.iota.Iota
-import at.petrak.hexcasting.api.spell.mishaps.MishapBadOffhandItem
 import net.minecraft.entity.projectile.FireworkRocketEntity
 import net.minecraft.item.FireworkRocketItem
 import net.minecraft.item.FireworkStarItem
@@ -16,17 +20,18 @@ import net.minecraft.util.math.Vec3d
 
 class OpSimulateFirework : SpellAction {
 	override val argc = 3
-	override fun execute(args: List<Iota>, ctx: CastingEnvironment): Triple<RenderedSpell, Int, List<ParticleSpray>> {
+	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val position = args.getVec3(0, argc)
 		val duration = args.getIntBetween(2, 1, 3, argc)
-		ctx.assertVecInRange(position)
-		val star = ctx.caster.getStackInHand(ctx.otherHand)
+		env.assertVecInRange(position)
+		val star = env.caster.getStackInHand(env.otherHand)
 		if (star.item !is FireworkStarItem)
-			throw MishapBadOffhandItem.of(star, ctx.otherHand, "firework_star")
-		return Triple(Spell(position, args.getVec3(1, argc), duration, star.orCreateNbt.getCompound(FireworkRocketItem.EXPLOSION_KEY)), MediaConstants.SHARD_UNIT + MediaConstants.DUST_UNIT * (duration - 1), listOf(ParticleSpray.burst(position, 1.0)))
+			throw MishapBadOffhandItem.of(star, env.otherHand, "firework_star")
+		return SpellAction.Result(Spell(position, args.getVec3(1, argc), duration, star.orCreateNbt.getCompound(FireworkRocketItem.EXPLOSION_KEY)), MediaConstants.SHARD_UNIT, listOf(ParticleSpray.burst(position, 1.0)))
 	}
 
-	private data class Spell(val position: Vec3d, val velocity: Vec3d, val duration: Int, val template: NbtCompound) : RenderedSpell {
+	private data class Spell(val position: Vec3d, val velocity: Vec3d, val duration: Int, val template: NbtCompound) :
+		RenderedSpell {
 		override fun cast(ctx: CastingEnvironment) {
 			val star = NbtCompound()
 			star.putInt(FireworkRocketItem.TYPE_KEY, template.getInt(FireworkRocketItem.TYPE_KEY))

@@ -1,9 +1,13 @@
 # Changelog
 
 ## 1.4.1
+- changed wandering trader lamp trade chance to 50%
+- changed a lot of scrying to require ambit
+- changed Conjure Firework price to always be one shard
+- refactored almost everything is rewritten to be more sane
+- removed Chorus Blink due to not fitting in with classic spells
+- removed Similarity Purification in favor of iota type identifier
 - update to 1.20.1
-- massive code sweep: almost everything is rewritten to be more sane
-- increased wandering trader lamp trade chance to 50%
 
 ## 1.4.0
 - added gauntlet staff

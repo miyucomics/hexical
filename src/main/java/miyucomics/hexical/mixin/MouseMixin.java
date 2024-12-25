@@ -15,9 +15,7 @@ import static miyucomics.hexical.items.ConjuredStaffItemKt.getConjuredStaff;
 
 @Mixin(Mouse.class)
 public class MouseMixin {
-	@Shadow
-	@Final
-	private MinecraftClient client;
+	@Shadow @Final private MinecraftClient client;
 
 	@Inject(method = "onMouseButton", at = @At("HEAD"), cancellable = true)
 	private void onMouseButton(long window, int button, int action, int mods, CallbackInfo ci) {

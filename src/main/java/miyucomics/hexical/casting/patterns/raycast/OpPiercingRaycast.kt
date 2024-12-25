@@ -1,36 +1,36 @@
 package miyucomics.hexical.casting.patterns.raycast
 
-import at.petrak.hexcasting.api.spell.ConstMediaAction
-import at.petrak.hexcasting.api.spell.asActionResult
-import at.petrak.hexcasting.api.spell.casting.CastingEnvironment
-import at.petrak.hexcasting.api.spell.getVec3
-import at.petrak.hexcasting.api.spell.iota.Iota
-import at.petrak.hexcasting.api.spell.iota.NullIota
-import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
+import at.petrak.hexcasting.api.casting.asActionResult
+import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
+import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
+import at.petrak.hexcasting.api.casting.getVec3
+import at.petrak.hexcasting.api.casting.iota.Iota
+import at.petrak.hexcasting.api.casting.iota.NullIota
+import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import miyucomics.hexical.casting.iota.getIdentifier
+import net.minecraft.registry.Registries
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d
-import net.minecraft.util.registry.Registry
 import kotlin.math.abs
 import kotlin.math.floor
 
 class OpPiercingRaycast : ConstMediaAction {
 	override val argc = 3
-	override fun execute(args: List<Iota>, ctx: CastingEnvironment): List<Iota> {
+	override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
 		val start = args.getVec3(0, argc)
-		ctx.assertVecInRange(start)
+		env.assertVecInRange(start)
 		val direction = args.getVec3(1, argc).normalize()
 		if (direction == Vec3d.ZERO)
 			return listOf(NullIota())
 		val id = args.getIdentifier(2, argc)
-		if (!Registry.BLOCK.containsId(id))
+		if (!Registries.BLOCK.containsId(id))
 			throw MishapInvalidIota.of(args[2], 2, "block_id")
-		val targetBlockType = Registry.BLOCK.get(id)
+		val targetBlockType = Registries.BLOCK.get(id)
 		val delta = Vec3d(abs(1 / direction.x), abs(1 / direction.y), abs(1 / direction.z))
 
-		var voxelX = floor(start.x)
-		var voxelY = floor(start.y)
-		var voxelZ = floor(start.z)
+		var voxelX = floor(start.x).toInt()
+		var voxelY = floor(start.y).toInt()
+		var voxelZ = floor(start.z).toInt()
 		val stepX: Int
 		val stepY: Int
 		val stepZ: Int
@@ -85,9 +85,9 @@ class OpPiercingRaycast : ConstMediaAction {
 				else -> throw IllegalStateException()
 			}
 
-			if (ctx.world.getBlockState(BlockPos(voxelX, voxelY, voxelZ)).block == targetBlockType)
+			if (env.world.getBlockState(BlockPos(voxelX, voxelY, voxelZ)).block == targetBlockType)
 				return Vec3d(voxelX + 0.5, voxelY + 0.5, voxelZ + 0.5).asActionResult
-			if (!ctx.isVecInRange(Vec3d(voxelX, voxelY, voxelZ)))
+			if (!env.isVecInRange(Vec3d(voxelX, voxelY, voxelZ)))
 				return listOf(NullIota())
 		}
 	}

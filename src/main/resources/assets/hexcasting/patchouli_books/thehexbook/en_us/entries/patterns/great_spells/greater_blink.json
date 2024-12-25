@@ -1,5 +1,5 @@
 {
-	"name": "hexcasting.spell.hexical:greater_blink",
+	"name": "hexcasting.action.hexical:greater_blink",
 	"icon": "minecraft:ender_eye",
 	"category": "hexcasting:patterns/great_spells",
 	"advancement": "hexcasting:root",

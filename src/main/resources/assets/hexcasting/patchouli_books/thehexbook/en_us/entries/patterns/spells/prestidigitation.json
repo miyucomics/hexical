@@ -1,5 +1,5 @@
 {
-	"name": "hexcasting.spell.hexical:prestidigitation",
+	"name": "hexcasting.action.hexical:prestidigitation",
 	"icon": "minecraft:lapis_lazuli",
 	"category": "hexcasting:patterns/spells",
 	"advancement": "hexcasting:root",

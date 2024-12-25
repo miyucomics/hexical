@@ -1,10 +1,11 @@
 package miyucomics.hexical.casting.patterns.firework
 
+import at.petrak.hexcasting.api.casting.*
+import at.petrak.hexcasting.api.casting.castables.SpellAction
+import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
+import at.petrak.hexcasting.api.casting.iota.Iota
+import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.misc.MediaConstants
-import at.petrak.hexcasting.api.spell.*
-import at.petrak.hexcasting.api.spell.casting.CastingEnvironment
-import at.petrak.hexcasting.api.spell.iota.Iota
-import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
 import miyucomics.hexical.casting.iota.DyeIota
 import net.minecraft.entity.projectile.FireworkRocketEntity
 import net.minecraft.item.FireworkRocketItem
@@ -17,9 +18,9 @@ import net.minecraft.util.math.Vec3d
 
 class OpConjureFirework : SpellAction {
 	override val argc = 8
-	override fun execute(args: List<Iota>, ctx: CastingEnvironment): Triple<RenderedSpell, Int, List<ParticleSpray>> {
+	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val position = args.getVec3(0, argc)
-		ctx.assertVecInRange(position)
+		env.assertVecInRange(position)
 
 		val velocity = args.getVec3(1, argc)
 		val duration = args.getIntBetween(2, 1, 3, argc)
@@ -46,11 +47,12 @@ class OpConjureFirework : SpellAction {
 		val flicker = args.getBool(6, argc)
 		val trail = args.getBool(7, argc)
 
-		return Triple(Spell(position, velocity, duration, type, trueColors, trueFades, flicker, trail), MediaConstants.SHARD_UNIT + MediaConstants.DUST_UNIT * (duration - 1), listOf(ParticleSpray.burst(position, 1.0)))
+		return SpellAction.Result(Spell(position, velocity, duration, type, trueColors, trueFades, flicker, trail), MediaConstants.SHARD_UNIT, listOf(ParticleSpray.burst(position, 1.0)))
 	}
 
-	private data class Spell(val position: Vec3d, val velocity: Vec3d, val duration: Int, val type: Int, val colors: List<Int>, val fades: List<Int>, val flicker: Boolean, val trail: Boolean) : RenderedSpell {
-		override fun cast(ctx: CastingEnvironment) {
+	private data class Spell(val position: Vec3d, val velocity: Vec3d, val duration: Int, val type: Int, val colors: List<Int>, val fades: List<Int>, val flicker: Boolean, val trail: Boolean) :
+		RenderedSpell {
+		override fun cast(env: CastingEnvironment) {
 			val star = NbtCompound()
 			star.putInt(FireworkRocketItem.TYPE_KEY, type)
 			if (flicker)
@@ -71,9 +73,9 @@ class OpConjureFirework : SpellAction {
 			val stack = ItemStack(Items.FIREWORK_ROCKET)
 			stack.orCreateNbt.put(FireworkRocketItem.FIREWORKS_KEY, main)
 
-			val firework = FireworkRocketEntity(ctx.world, stack, position.x, position.y, position.z, true)
+			val firework = FireworkRocketEntity(env.world, stack, position.x, position.y, position.z, true)
 			firework.setVelocity(velocity.x, velocity.y, velocity.z)
-			ctx.world.spawnEntity(firework)
+			env.world.spawnEntity(firework)
 		}
 	}
 }

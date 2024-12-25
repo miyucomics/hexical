@@ -1,14 +1,14 @@
 package miyucomics.hexical.casting.patterns
 
-import at.petrak.hexcasting.api.spell.ConstMediaAction
-import at.petrak.hexcasting.api.spell.asActionResult
-import at.petrak.hexcasting.api.spell.casting.CastingEnvironment
-import at.petrak.hexcasting.api.spell.getPattern
-import at.petrak.hexcasting.api.spell.iota.Iota
+import at.petrak.hexcasting.api.casting.asActionResult
+import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
+import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
+import at.petrak.hexcasting.api.casting.getPattern
+import at.petrak.hexcasting.api.casting.iota.Iota
 
 class OpCongruentPattern : ConstMediaAction {
 	override val argc = 2
-	override fun execute(args: List<Iota>, ctx: CastingEnvironment): List<Iota> {
+	override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
 		val a = args.getPattern(0, argc)
 		val b = args.getPattern(1, argc)
 		return (a.anglesSignature() == b.anglesSignature() && a.startDir == b.startDir).asActionResult

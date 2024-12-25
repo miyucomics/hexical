@@ -1,12 +1,11 @@
 package miyucomics.hexical.casting.patterns.lamp
 
-import at.petrak.hexcasting.api.spell.ParticleSpray
-import at.petrak.hexcasting.api.spell.RenderedSpell
-import at.petrak.hexcasting.api.spell.SpellAction
-import at.petrak.hexcasting.api.spell.casting.CastingEnvironment
-import at.petrak.hexcasting.api.spell.getList
-import at.petrak.hexcasting.api.spell.iota.Iota
-import at.petrak.hexcasting.api.spell.mishaps.MishapBadOffhandItem
+import at.petrak.hexcasting.api.casting.RenderedSpell
+import at.petrak.hexcasting.api.casting.castables.SpellAction
+import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
+import at.petrak.hexcasting.api.casting.getList
+import at.petrak.hexcasting.api.casting.iota.Iota
+import at.petrak.hexcasting.api.casting.mishaps.MishapBadOffhandItem
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.inits.HexicalAdvancements
 import miyucomics.hexical.interfaces.GenieLamp
@@ -14,18 +13,18 @@ import net.minecraft.item.ItemStack
 
 class OpEducateGenie : SpellAction {
 	override val argc = 1
-	override fun execute(args: List<Iota>, ctx: CastingEnvironment): Triple<RenderedSpell, Int, List<ParticleSpray>> {
+	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val patterns = args.getList(0, argc).toList()
-		val stack = ctx.caster.getStackInHand(ctx.otherHand)
+		val stack = env.caster.getStackInHand(env.otherHand)
 		if (stack.item !is GenieLamp)
-			throw MishapBadOffhandItem.of(stack, ctx.otherHand, "lamp_full")
-		return Triple(Spell(patterns, stack), 0, listOf())
+			throw MishapBadOffhandItem.of(stack, "lamp_full")
+		return SpellAction.Result(Spell(patterns, stack), 0, listOf())
 	}
 
 	private data class Spell(val patterns: List<Iota>, val stack: ItemStack) : RenderedSpell {
-		override fun cast(ctx: CastingEnvironment) {
-			IXplatAbstractions.INSTANCE.findHexHolder(stack)?.writeHex(patterns, IXplatAbstractions.INSTANCE.findMediaHolder(stack)?.media!!)
-			HexicalAdvancements.EDUCATE_GENIE.trigger(ctx.caster)
+		override fun cast(env: CastingEnvironment) {
+			IXplatAbstractions.INSTANCE.findHexHolder(stack)?.writeHex(patterns, null, IXplatAbstractions.INSTANCE.findMediaHolder(stack)?.media!!)
+			HexicalAdvancements.EDUCATE_GENIE.trigger(env.caster)
 		}
 	}
 }
