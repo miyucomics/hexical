@@ -1,28 +1,28 @@
 package miyucomics.hexical.casting.patterns
 
+import at.petrak.hexcasting.api.casting.ParticleSpray
+import at.petrak.hexcasting.api.casting.RenderedSpell
+import at.petrak.hexcasting.api.casting.castables.SpellAction
+import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
+import at.petrak.hexcasting.api.casting.getVec3
+import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.misc.MediaConstants
-import at.petrak.hexcasting.api.spell.ParticleSpray
-import at.petrak.hexcasting.api.spell.RenderedSpell
-import at.petrak.hexcasting.api.spell.SpellAction
-import at.petrak.hexcasting.api.spell.casting.CastingEnvironment
-import at.petrak.hexcasting.api.spell.getVec3
-import at.petrak.hexcasting.api.spell.iota.Iota
 import net.minecraft.entity.projectile.FireballEntity
 import net.minecraft.util.math.Vec3d
 
 class OpGhastFireball : SpellAction {
 	override val argc = 1
-	override fun execute(args: List<Iota>, ctx: CastingEnvironment): Triple<RenderedSpell, Int, List<ParticleSpray>> {
+	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val pos = args.getVec3(0, argc)
-		ctx.assertVecInRange(pos)
-		return Triple(Spell(pos), MediaConstants.DUST_UNIT * 3, listOf())
+		env.assertVecInRange(pos)
+		return SpellAction.Result(Spell(pos), MediaConstants.DUST_UNIT * 3, listOf())
 	}
 
 	private data class Spell(val position: Vec3d) : RenderedSpell {
-		override fun cast(ctx: CastingEnvironment) {
-			val fireball = FireballEntity(ctx.world, ctx.caster, 0.0, 0.0, 0.0, 1)
+		override fun cast(env: CastingEnvironment) {
+			val fireball = FireballEntity(env.world, env.castingEntity, 0.0, 0.0, 0.0, 1)
 			fireball.setPosition(position)
-			ctx.world.spawnEntity(fireball)
+			env.world.spawnEntity(fireball)
 		}
 	}
 }

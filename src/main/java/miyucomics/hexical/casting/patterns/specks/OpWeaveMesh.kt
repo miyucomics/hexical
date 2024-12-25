@@ -1,19 +1,19 @@
 package miyucomics.hexical.casting.patterns.specks
 
-import at.petrak.hexcasting.api.spell.ConstMediaAction
-import at.petrak.hexcasting.api.spell.casting.CastingEnvironment
-import at.petrak.hexcasting.api.spell.getEntity
-import at.petrak.hexcasting.api.spell.getList
-import at.petrak.hexcasting.api.spell.iota.Iota
-import at.petrak.hexcasting.api.spell.iota.Vec3Iota
-import at.petrak.hexcasting.api.spell.mishaps.MishapBadEntity
-import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
+import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
+import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
+import at.petrak.hexcasting.api.casting.getEntity
+import at.petrak.hexcasting.api.casting.getList
+import at.petrak.hexcasting.api.casting.iota.Iota
+import at.petrak.hexcasting.api.casting.iota.Vec3Iota
+import at.petrak.hexcasting.api.casting.mishaps.MishapBadEntity
+import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
+import dev.kosmx.playerAnim.core.util.Vec3f
 import miyucomics.hexical.entities.specklikes.MeshEntity
-import net.minecraft.util.math.Vec3f
 
 class OpWeaveMesh : ConstMediaAction {
 	override val argc = 2
-	override fun execute(args: List<Iota>, ctx: CastingEnvironment): List<Iota> {
+	override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
 		val mesh = args.getEntity(0, argc)
 		if (mesh !is MeshEntity)
 			throw MishapBadEntity.of(mesh, "mesh")

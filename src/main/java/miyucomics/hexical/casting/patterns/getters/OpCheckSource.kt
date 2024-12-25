@@ -9,5 +9,5 @@ import miyucomics.hexical.interfaces.CastingEnvironmentMinterface
 
 class OpCheckSource(private val source: SpecializedSource) : ConstMediaAction {
 	override val argc = 0
-	override fun execute(args: List<Iota>, ctx: CastingEnvironment) = ((ctx as CastingEnvironmentMinterface).getSpecializedSource() == source).asActionResult
+	override fun execute(args: List<Iota>, env: CastingEnvironment) = ((env as CastingEnvironmentMinterface).getSpecializedSource() == source).asActionResult
 }
