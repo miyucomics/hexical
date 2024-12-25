@@ -1,15 +1,12 @@
 package miyucomics.hexical.casting.patterns.soroban
 
-import at.petrak.hexcasting.api.spell.ConstMediaAction
-import at.petrak.hexcasting.api.spell.asActionResult
-import at.petrak.hexcasting.api.spell.casting.CastingEnvironment
-import at.petrak.hexcasting.api.spell.iota.Iota
-import miyucomics.hexical.interfaces.CastingEnvironmentMinterface
+import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
+import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
+import at.petrak.hexcasting.api.casting.iota.Iota
 
 class OpSorobanIncrement : ConstMediaAction {
 	override val argc = 0
-	override fun execute(args: List<Iota>, ctx: CastingEnvironment): List<Iota> {
-		(ctx as CastingEnvironmentMinterface).incrementSoroban()
-		return (ctx.getSoroban().toDouble() - 1).asActionResult
+	override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
+		return (env.getSoroban().toDouble() - 1).asActionResult
 	}
 }

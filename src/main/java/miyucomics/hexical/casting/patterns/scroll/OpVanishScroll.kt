@@ -1,26 +1,25 @@
 package miyucomics.hexical.casting.patterns.scroll
 
-import at.petrak.hexcasting.api.spell.ParticleSpray
-import at.petrak.hexcasting.api.spell.RenderedSpell
-import at.petrak.hexcasting.api.spell.SpellAction
-import at.petrak.hexcasting.api.spell.casting.CastingEnvironment
-import at.petrak.hexcasting.api.spell.getEntity
-import at.petrak.hexcasting.api.spell.iota.Iota
-import at.petrak.hexcasting.api.spell.mishaps.MishapBadEntity
+import at.petrak.hexcasting.api.casting.RenderedSpell
+import at.petrak.hexcasting.api.casting.castables.SpellAction
+import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
+import at.petrak.hexcasting.api.casting.getEntity
+import at.petrak.hexcasting.api.casting.iota.Iota
+import at.petrak.hexcasting.api.casting.mishaps.MishapBadEntity
 import miyucomics.hexical.entities.LivingScrollEntity
 
 class OpVanishScroll : SpellAction {
 	override val argc = 1
-	override fun execute(args: List<Iota>, ctx: CastingEnvironment): Triple<RenderedSpell, Int, List<ParticleSpray>> {
+	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val scroll = args.getEntity(0, argc)
-		ctx.assertEntityInRange(scroll)
+		env.assertEntityInRange(scroll)
 		if (scroll !is LivingScrollEntity)
 			throw MishapBadEntity.of(scroll, "living_scroll")
-		return Triple(Spell(scroll), 0, listOf())
+		return SpellAction.Result(Spell(scroll), 0, listOf())
 	}
 
 	private data class Spell(val scroll: LivingScrollEntity) : RenderedSpell {
-		override fun cast(ctx: CastingEnvironment) {
+		override fun cast(env: CastingEnvironment) {
 			scroll.toggleVanished()
 		}
 	}

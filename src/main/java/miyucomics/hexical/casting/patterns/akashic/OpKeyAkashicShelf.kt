@@ -12,13 +12,13 @@ import at.petrak.hexcasting.common.lib.HexBlocks
 
 class OpKeyAkashicShelf : ConstMediaAction {
 	override val argc = 1
-	override fun execute(args: List<Iota>, ctx: CastingEnvironment): List<Iota> {
+	override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
 		val position = args.getBlockPos(0, argc)
-		ctx.assertPosInRange(position)
-		val block = ctx.world.getBlockState(position)
+		env.assertPosInRange(position)
+		val block = env.world.getBlockState(position)
 		if (!block.isOf(HexBlocks.AKASHIC_BOOKSHELF))
 			throw MishapBadBlock.of(position, "akashic_bookshelf")
-		val pattern = (ctx.world.getBlockEntity(position) as BlockEntityAkashicBookshelf).pattern ?: return listOf(NullIota())
+		val pattern = (env.world.getBlockEntity(position) as BlockEntityAkashicBookshelf).pattern ?: return listOf(NullIota())
 		return pattern.asActionResult
 	}
 }

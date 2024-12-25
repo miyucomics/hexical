@@ -1,20 +1,19 @@
 package miyucomics.hexical.casting.patterns.getters.types
 
-import at.petrak.hexcasting.api.spell.ConstMediaAction
-import at.petrak.hexcasting.api.spell.casting.CastingEnvironment
-import at.petrak.hexcasting.api.spell.iota.Iota
-import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
+import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
+import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
+import at.petrak.hexcasting.api.casting.iota.Iota
+import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import miyucomics.hexical.casting.iota.getIdentifier
 import net.minecraft.item.FoodComponent
-import net.minecraft.util.registry.Registry
+import net.minecraft.registry.Registries
 
 class OpGetFoodTypeData(private val process: (FoodComponent) -> List<Iota>) : ConstMediaAction {
 	override val argc = 1
-	override fun execute(args: List<Iota>, ctx: CastingEnvironment): List<Iota> {
+	override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
 		val id = args.getIdentifier(0, argc)
-		if (!Registry.ITEM.containsId(id))
+		if (!Registries.ITEM.containsId(id))
 			throw MishapInvalidIota.of(args[0], 0, "food_id")
-		val food = Registry.ITEM.get(id).foodComponent ?: throw MishapInvalidIota.of(args[0], 0, "food_id")
-		return process(food)
+		return process(Registries.ITEM.get(id).foodComponent ?: throw MishapInvalidIota.of(args[0], 0, "food_id"))
 	}
 }
