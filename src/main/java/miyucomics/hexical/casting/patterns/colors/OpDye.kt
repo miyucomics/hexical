@@ -29,6 +29,7 @@ import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.util.DyeColor
 import net.minecraft.util.math.BlockPos
+import java.util.*
 
 class OpDye : SpellAction {
 	override val argc = 2
@@ -66,17 +67,17 @@ class OpDye : SpellAction {
 								if (DyeData.isDyeable(item.block))
 									SpellAction.Result(BlockItemSpell(entity, item.block, dye), cost, listOf())
 								else
-									throw DyeableMishap()
+									throw DyeableMishap(entity.pos)
 							}
 							else -> {
 								if (DyeData.isDyeable(item))
 									SpellAction.Result(ItemSpell(entity, item, dye), cost, listOf())
 								else
-									throw DyeableMishap()
+									throw DyeableMishap(entity.pos)
 							}
 						}
 					}
-					else -> throw DyeableMishap()
+					else -> throw DyeableMishap(entity.pos)
 				}
 			}
 			is Vec3Iota -> {
@@ -84,7 +85,7 @@ class OpDye : SpellAction {
 				env.assertPosInRange(position)
 				val state = env.world.getBlockState(position)
 				if (!DyeData.isDyeable(state.block))
-					throw DyeableMishap()
+					throw DyeableMishap(position.toCenterPos())
 				return SpellAction.Result(BlockSpell(position, state, dye), cost, listOf())
 			}
 			else -> throw MishapInvalidIota.of(args[0], 0, "entity_or_vector")
@@ -188,7 +189,7 @@ class OpDye : SpellAction {
 
 	private data class ShulkerSpell(val shulker: ShulkerEntity, val dye: DyeColor) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			shulker.color = dye
+			shulker.variant = Optional.of(dye)
 		}
 	}
 

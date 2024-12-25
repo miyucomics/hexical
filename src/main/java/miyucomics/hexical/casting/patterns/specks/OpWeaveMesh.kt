@@ -1,7 +1,7 @@
 package miyucomics.hexical.casting.patterns.specks
 
 import at.petrak.hexcasting.api.spell.ConstMediaAction
-import at.petrak.hexcasting.api.spell.casting.CastingContext
+import at.petrak.hexcasting.api.spell.casting.CastingEnvironment
 import at.petrak.hexcasting.api.spell.getEntity
 import at.petrak.hexcasting.api.spell.getList
 import at.petrak.hexcasting.api.spell.iota.Iota
@@ -13,7 +13,7 @@ import net.minecraft.util.math.Vec3f
 
 class OpWeaveMesh : ConstMediaAction {
 	override val argc = 2
-	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
+	override fun execute(args: List<Iota>, ctx: CastingEnvironment): List<Iota> {
 		val mesh = args.getEntity(0, argc)
 		if (mesh !is MeshEntity)
 			throw MishapBadEntity.of(mesh, "mesh")

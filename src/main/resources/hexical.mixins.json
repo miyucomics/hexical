@@ -11,7 +11,7 @@
 	],
 	"mixins": [
 		"BlockAkashicBookshelfMixin",
-		"CastingContextMixin",
+		"CastingEnvironmentMixin",
 		"CastingHarnessMixin",
 		"FabricIXplatImplMixin",
 		"FrameForEachMixin",

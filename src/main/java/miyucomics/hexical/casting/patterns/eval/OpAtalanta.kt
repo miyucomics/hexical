@@ -2,35 +2,33 @@
 
 package miyucomics.hexical.casting.patterns.eval
 
-import at.petrak.hexcasting.api.spell.Action
-import at.petrak.hexcasting.api.spell.OperationResult
-import at.petrak.hexcasting.api.spell.casting.CastingContext
-import at.petrak.hexcasting.api.spell.casting.eval.FrameForEach
-import at.petrak.hexcasting.api.spell.casting.eval.SpellContinuation
-import at.petrak.hexcasting.api.spell.casting.eval.SpellContinuation.NotDone
-import at.petrak.hexcasting.api.spell.iota.Iota
+import at.petrak.hexcasting.api.casting.castables.Action
+import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
+import at.petrak.hexcasting.api.casting.eval.OperationResult
+import at.petrak.hexcasting.api.casting.eval.vm.CastingImage
+import at.petrak.hexcasting.api.casting.eval.vm.FrameForEach
+import at.petrak.hexcasting.api.casting.eval.vm.SpellContinuation
+import at.petrak.hexcasting.common.lib.hex.HexEvalSounds
+import miyucomics.hexical.casting.frames.SisyphusFrame
+import miyucomics.hexical.casting.frames.ThemisFrame
 import miyucomics.hexical.casting.mishaps.NeedsSkippableMishap
-import miyucomics.hexical.enums.InjectedGambit
-import miyucomics.hexical.interfaces.FrameForEachMinterface
 
-@Suppress("CAST_NEVER_SUCCEEDS")
 object OpAtalanta : Action {
-	override fun operate(continuation: SpellContinuation, stack: MutableList<Iota>, ravenmind: Iota?, ctx: CastingContext): OperationResult {
-		val newStack = stack.toList()
-		var newCont = continuation
+	override fun operate(env: CastingEnvironment, image: CastingImage, continuation: SpellContinuation): OperationResult {
+		var newContinuation = continuation
 
 		while (true) {
-			if (newCont !is NotDone)
+			if (newContinuation !is SpellContinuation.NotDone)
 				throw NeedsSkippableMishap()
-			val frame = newCont.frame
-			if (frame is FrameForEach) {
-				val injectedGambit = (frame as FrameForEachMinterface).getInjectedGambit()
-				if (injectedGambit == InjectedGambit.NONE || injectedGambit == InjectedGambit.SISYPHUS)
-					break
+			val frame = newContinuation.frame
+			when (frame) {
+				is FrameForEach -> break
+				is SisyphusFrame -> break
+				is ThemisFrame -> break
+				else -> newContinuation = newContinuation.next
 			}
-			newCont = newCont.next
 		}
 
-		return OperationResult(newCont, newStack, ravenmind, listOf())
+		return OperationResult(image.withUsedOp(), listOf(), newContinuation, HexEvalSounds.NOTHING)
 	}
 }

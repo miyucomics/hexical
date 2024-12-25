@@ -2,7 +2,7 @@ package miyucomics.hexical.casting.patterns.specks
 
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.ConstMediaAction
-import at.petrak.hexcasting.api.spell.casting.CastingContext
+import at.petrak.hexcasting.api.spell.casting.CastingEnvironment
 import at.petrak.hexcasting.api.spell.getVec3
 import at.petrak.hexcasting.api.spell.iota.EntityIota
 import at.petrak.hexcasting.api.spell.iota.Iota
@@ -13,7 +13,7 @@ import miyucomics.hexical.inits.HexicalAdvancements
 class OpConjureMesh : ConstMediaAction {
 	override val argc = 1
 	override val mediaCost: Int = MediaConstants.DUST_UNIT
-	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
+	override fun execute(args: List<Iota>, ctx: CastingEnvironment): List<Iota> {
 		val position = args.getVec3(0, argc)
 		ctx.assertVecInRange(position)
 		val mesh = MeshEntity(ctx.world)

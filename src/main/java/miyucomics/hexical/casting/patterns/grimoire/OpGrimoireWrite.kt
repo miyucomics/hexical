@@ -1,7 +1,7 @@
 package miyucomics.hexical.casting.patterns.grimoire
 
 import at.petrak.hexcasting.api.spell.*
-import at.petrak.hexcasting.api.spell.casting.CastingContext
+import at.petrak.hexcasting.api.spell.casting.CastingEnvironment
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.math.HexPattern
 import at.petrak.hexcasting.api.spell.mishaps.MishapBadOffhandItem
@@ -12,7 +12,7 @@ import net.minecraft.item.ItemStack
 
 class OpGrimoireWrite : SpellAction {
 	override val argc = 2
-	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
+	override fun execute(args: List<Iota>, ctx: CastingEnvironment): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		val stack = ctx.caster.getStackInHand(ctx.otherHand)
 		if (!stack.isOf(HexicalItems.GRIMOIRE_ITEM))
 			throw MishapBadOffhandItem.of(stack, ctx.otherHand, "grimoire")
@@ -23,7 +23,7 @@ class OpGrimoireWrite : SpellAction {
 	}
 
 	private data class Spell(val stack: ItemStack, val key: HexPattern, val expansion: List<Iota>) : RenderedSpell {
-		override fun cast(ctx: CastingContext) {
+		override fun cast(ctx: CastingEnvironment) {
 			GrimoireItem.write(stack, key, expansion)
 		}
 	}

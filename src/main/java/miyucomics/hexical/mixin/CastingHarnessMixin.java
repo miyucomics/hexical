@@ -2,7 +2,7 @@ package miyucomics.hexical.mixin;
 
 import at.petrak.hexcasting.api.addldata.ADMediaHolder;
 import at.petrak.hexcasting.api.misc.DiscoveryHandlers;
-import at.petrak.hexcasting.api.spell.casting.CastingContext;
+import at.petrak.hexcasting.api.spell.casting.CastingEnvironment;
 import at.petrak.hexcasting.api.spell.casting.CastingHarness;
 import at.petrak.hexcasting.api.spell.casting.ControllerInfo;
 import at.petrak.hexcasting.api.spell.casting.sideeffects.OperatorSideEffect;
@@ -17,7 +17,7 @@ import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import miyucomics.hexical.enums.SpecializedSource;
-import miyucomics.hexical.interfaces.CastingContextMinterface;
+import miyucomics.hexical.interfaces.CastingEnvironmentMinterface;
 import miyucomics.hexical.utils.CastingUtils;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -42,7 +42,7 @@ public class CastingHarnessMixin {
 
 	@WrapOperation(method = "updateWithPattern", at = @At(value = "INVOKE", target = "Ljava/util/List;add(Ljava/lang/Object;)Z"))
 	private boolean stopLampParticles(List<OperatorSideEffect> instance, Object effect, Operation<Boolean> original) {
-		SpecializedSource source = ((CastingContextMinterface) (Object) hexical$harness.getCtx()).getSpecializedSource();
+		SpecializedSource source = ((CastingEnvironmentMinterface) (Object) hexical$harness.getCtx()).getSpecializedSource();
 		if (source == SpecializedSource.HAND_LAMP || source == SpecializedSource.ARCH_LAMP || source == SpecializedSource.CONJURED_STAFF || source == SpecializedSource.EVOCATION)
 			return true;
 		return original.call(instance, effect);
@@ -50,20 +50,20 @@ public class CastingHarnessMixin {
 
 	@WrapWithCondition(method = "executeIotas", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/world/ServerWorld;playSound(Lnet/minecraft/entity/player/PlayerEntity;DDDLnet/minecraft/sound/SoundEvent;Lnet/minecraft/sound/SoundCategory;FF)V"))
 	private boolean silenceLamp(ServerWorld world, PlayerEntity player, double x, double y, double z, SoundEvent event, SoundCategory type, float volume, float pitch) {
-		SpecializedSource source = ((CastingContextMinterface) (Object) hexical$harness.getCtx()).getSpecializedSource();
+		SpecializedSource source = ((CastingEnvironmentMinterface) (Object) hexical$harness.getCtx()).getSpecializedSource();
 		return !(source == SpecializedSource.HAND_LAMP || source == SpecializedSource.ARCH_LAMP || source == SpecializedSource.CONJURED_STAFF || source == SpecializedSource.EVOCATION);
 	}
 
 	@SuppressWarnings("DataFlowIssue")
 	@Inject(method = "withdrawMedia", at = @At("HEAD"), cancellable = true, remap = false)
 	private void takeMediaFromArchLamp(int mediaCost, boolean allowOvercast, CallbackInfoReturnable<Integer> cir) {
-		CastingContext ctx = hexical$harness.getCtx();
+		CastingEnvironment ctx = hexical$harness.getCtx();
 		if (ctx.getCaster().isCreative()) {
 			cir.setReturnValue(0);
 			return;
 		}
 
-		SpecializedSource specializedSource = ((CastingContextMinterface) (Object) hexical$harness.getCtx()).getSpecializedSource();
+		SpecializedSource specializedSource = ((CastingEnvironmentMinterface) (Object) hexical$harness.getCtx()).getSpecializedSource();
 		if (specializedSource == null)
 			return;
 
@@ -83,7 +83,7 @@ public class CastingHarnessMixin {
 
 	@Inject(method = "executeIota", at = @At("HEAD"), cancellable = true, remap = false)
 	private void expandGrimoire(Iota iota, ServerWorld world, CallbackInfoReturnable<ControllerInfo> cir) {
-		CastingContext ctx = hexical$harness.getCtx();
+		CastingEnvironment ctx = hexical$harness.getCtx();
 		if (ctx.getSpellCircle() != null)
 			return;
 		if (!hexical$harness.getEscapeNext() && iota.getType() == HexIotaTypes.PATTERN && !((PatternIota) iota).getPattern().sigsEqual(HexPattern.fromAngles("qqqaw", HexDir.EAST))) {

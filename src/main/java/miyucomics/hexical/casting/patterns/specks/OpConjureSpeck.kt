@@ -2,7 +2,7 @@ package miyucomics.hexical.casting.patterns.specks
 
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.ConstMediaAction
-import at.petrak.hexcasting.api.spell.casting.CastingContext
+import at.petrak.hexcasting.api.spell.casting.CastingEnvironment
 import at.petrak.hexcasting.api.spell.getVec3
 import at.petrak.hexcasting.api.spell.iota.EntityIota
 import at.petrak.hexcasting.api.spell.iota.Iota
@@ -17,7 +17,7 @@ import net.minecraft.command.argument.EntityAnchorArgumentType
 class OpConjureSpeck : ConstMediaAction {
 	override val argc = 3
 	override val mediaCost: Int = MediaConstants.DUST_UNIT / 100
-	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
+	override fun execute(args: List<Iota>, ctx: CastingEnvironment): List<Iota> {
 		val iota = args[0]
 		if (iota is PatternIota && iota.pattern == HexPattern.fromAngles("deaqq", HexDir.SOUTH_EAST))
 			HexicalAdvancements.HEXXY.trigger(ctx.caster)

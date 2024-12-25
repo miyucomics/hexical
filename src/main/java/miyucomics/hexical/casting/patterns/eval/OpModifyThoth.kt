@@ -1,33 +1,32 @@
 package miyucomics.hexical.casting.patterns.eval
 
-import at.petrak.hexcasting.api.spell.Action
-import at.petrak.hexcasting.api.spell.OperationResult
-import at.petrak.hexcasting.api.spell.casting.CastingContext
-import at.petrak.hexcasting.api.spell.casting.eval.ContinuationFrame
-import at.petrak.hexcasting.api.spell.casting.eval.FrameForEach
-import at.petrak.hexcasting.api.spell.casting.eval.SpellContinuation
-import at.petrak.hexcasting.api.spell.casting.eval.SpellContinuation.NotDone
-import at.petrak.hexcasting.api.spell.iota.Iota
+import at.petrak.hexcasting.api.casting.castables.Action
+import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
+import at.petrak.hexcasting.api.casting.eval.OperationResult
+import at.petrak.hexcasting.api.casting.eval.vm.CastingImage
+import at.petrak.hexcasting.api.casting.eval.vm.ContinuationFrame
+import at.petrak.hexcasting.api.casting.eval.vm.FrameForEach
+import at.petrak.hexcasting.api.casting.eval.vm.SpellContinuation
+import at.petrak.hexcasting.api.casting.iota.Iota
+import at.petrak.hexcasting.common.lib.hex.HexEvalSounds
 import miyucomics.hexical.casting.mishaps.NeedsThothMishap
-import miyucomics.hexical.enums.InjectedGambit
-import miyucomics.hexical.interfaces.FrameForEachMinterface
 
-@Suppress("CAST_NEVER_SUCCEEDS", "KotlinRedundantDiagnosticSuppress")
 abstract class OpModifyThoth : Action {
 	abstract fun updateFrame(frame: FrameForEach, stack: MutableList<Iota>): FrameForEach
 
-	override fun operate(continuation: SpellContinuation, stack: MutableList<Iota>, ravenmind: Iota?, ctx: CastingContext): OperationResult {
+	override fun operate(env: CastingEnvironment, image: CastingImage, continuation: SpellContinuation): OperationResult {
 		val callStack = mutableListOf<ContinuationFrame>()
+		var newContinuation = continuation
 		val forEach: FrameForEach
-		var newCont = continuation
 
 		while (true) {
-			if (newCont !is NotDone)
+			if (newContinuation !is SpellContinuation.NotDone)
 				throw NeedsThothMishap()
-			val frame = newCont.frame
-			newCont = newCont.next
 
-			if (frame is FrameForEach && (frame as FrameForEachMinterface).getInjectedGambit() == InjectedGambit.NONE) {
+			val frame = newContinuation.frame
+			newContinuation = newContinuation.next
+
+			if (frame is FrameForEach) {
 				forEach = frame
 				break
 			} else {
@@ -35,10 +34,10 @@ abstract class OpModifyThoth : Action {
 			}
 		}
 
-		newCont = newCont.pushFrame(updateFrame(forEach, stack))
+		newContinuation = newContinuation.pushFrame(updateFrame(forEach, image.stack.toMutableList()))
 		while (callStack.isNotEmpty())
-			newCont = newCont.pushFrame(callStack.removeLast())
+			newContinuation = newContinuation.pushFrame(callStack.removeLast())
 
-		return OperationResult(newCont, stack, ravenmind, listOf())
+		return OperationResult(image.withUsedOp(), listOf(), newContinuation, HexEvalSounds.SPELL)
 	}
 }

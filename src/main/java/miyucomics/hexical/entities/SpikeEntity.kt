@@ -51,7 +51,7 @@ class SpikeEntity(entityType: EntityType<SpikeEntity>, world: World) : Entity(en
 
 	private fun damage(target: LivingEntity) {
 		val direction = Direction.byId(this.dataTracker.get(directionDataTracker)).unitVector
-		direction.scale(0.5f)
+		direction.mul(0.5f)
 		target.addVelocity(direction.x.toDouble(), direction.y.toDouble() + 0.5f, direction.z.toDouble())
 		if (!target.isAlive || target.isInvulnerable)
 			return

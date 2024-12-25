@@ -12,10 +12,11 @@ import net.minecraft.block.Blocks
 import net.minecraft.entity.Entity
 import net.minecraft.item.ItemStack
 import net.minecraft.item.Items
+import net.minecraft.registry.Registries
+import net.minecraft.registry.Registry
+import net.minecraft.registry.SimpleRegistry
 import net.minecraft.state.property.Properties
 import net.minecraft.util.Identifier
-import net.minecraft.util.registry.Registry
-import net.minecraft.util.registry.SimpleRegistry
 import java.io.InputStream
 import java.io.InputStreamReader
 
@@ -54,13 +55,11 @@ object PrestidigitationData {
 		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("creeper"), CreeperEffect())
 	}
 
-	fun blockEffect(block: Block): PrestidigitationEffect? {
-		return PRESTIDIGITATION_EFFECTS.get(BLOCK_LOOKUP[Registry.BLOCK.getId(block)])
-	}
+	fun blockEffect(block: Block): PrestidigitationEffect? =
+		PRESTIDIGITATION_EFFECTS.get(BLOCK_LOOKUP[Registries.BLOCK.getId(block)])
 
-	fun entityEffect(entity: Entity): PrestidigitationEffect? {
-		return PRESTIDIGITATION_EFFECTS.get(ENTITY_LOOKUP[Registry.ENTITY_TYPE.getId(entity.type)])
-	}
+	fun entityEffect(entity: Entity): PrestidigitationEffect? =
+		PRESTIDIGITATION_EFFECTS.get(ENTITY_LOOKUP[Registries.ENTITY_TYPE.getId(entity.type)])
 
 	fun loadData(stream: InputStream) {
 		val json = JsonParser.parseReader(InputStreamReader(stream, "UTF-8")) as JsonObject

@@ -2,7 +2,7 @@ package miyucomics.hexical.casting.patterns.raycast
 
 import at.petrak.hexcasting.api.spell.ConstMediaAction
 import at.petrak.hexcasting.api.spell.asActionResult
-import at.petrak.hexcasting.api.spell.casting.CastingContext
+import at.petrak.hexcasting.api.spell.casting.CastingEnvironment
 import at.petrak.hexcasting.api.spell.getVec3
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.NullIota
@@ -16,7 +16,7 @@ import kotlin.math.floor
 
 class OpPiercingRaycast : ConstMediaAction {
 	override val argc = 3
-	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
+	override fun execute(args: List<Iota>, ctx: CastingEnvironment): List<Iota> {
 		val start = args.getVec3(0, argc)
 		ctx.assertVecInRange(start)
 		val direction = args.getVec3(1, argc).normalize()

@@ -1,40 +1,38 @@
 package miyucomics.hexical.casting.patterns.eval
 
-import at.petrak.hexcasting.api.spell.Action
-import at.petrak.hexcasting.api.spell.OperationResult
-import at.petrak.hexcasting.api.spell.SpellList
-import at.petrak.hexcasting.api.spell.casting.CastingContext
-import at.petrak.hexcasting.api.spell.casting.eval.FrameEvaluate
-import at.petrak.hexcasting.api.spell.casting.eval.SpellContinuation
-import at.petrak.hexcasting.api.spell.evaluatable
-import at.petrak.hexcasting.api.spell.iota.Iota
-import at.petrak.hexcasting.api.spell.iota.ListIota
-import at.petrak.hexcasting.api.spell.iota.PatternIota
-import at.petrak.hexcasting.api.spell.math.HexDir
-import at.petrak.hexcasting.api.spell.math.HexPattern
-import at.petrak.hexcasting.api.spell.mishaps.MishapNotEnoughArgs
+import at.petrak.hexcasting.api.casting.SpellList
+import at.petrak.hexcasting.api.casting.castables.Action
+import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
+import at.petrak.hexcasting.api.casting.eval.OperationResult
+import at.petrak.hexcasting.api.casting.eval.vm.CastingImage
+import at.petrak.hexcasting.api.casting.eval.vm.FrameEvaluate
+import at.petrak.hexcasting.api.casting.eval.vm.FrameFinishEval
+import at.petrak.hexcasting.api.casting.eval.vm.SpellContinuation
+import at.petrak.hexcasting.api.casting.evaluatable
+import at.petrak.hexcasting.api.casting.iota.Iota
+import at.petrak.hexcasting.api.casting.iota.ListIota
+import at.petrak.hexcasting.api.casting.iota.PatternIota
+import at.petrak.hexcasting.api.casting.math.HexDir
+import at.petrak.hexcasting.api.casting.math.HexPattern
+import at.petrak.hexcasting.api.casting.mishaps.MishapNotEnoughArgs
+import at.petrak.hexcasting.common.lib.hex.HexEvalSounds
+import miyucomics.hexical.casting.frames.NephthysFrame
 
 class OpNephthys(private val depth: Int) : Action {
-	override fun operate(continuation: SpellContinuation, stack: MutableList<Iota>, ravenmind: Iota?, ctx: CastingContext): OperationResult {
+	override fun operate(env: CastingEnvironment, image: CastingImage, continuation: SpellContinuation): OperationResult {
+		val stack = image.stack.toMutableList()
 		if (stack.size < depth + 1)
 			throw MishapNotEnoughArgs(depth + 1, stack.size)
 
-		val instructions = evaluatable(stack[stack.lastIndex], 0).map({ SpellList.LList(0, listOf(PatternIota(it))) }, { it })
+		val instructions = evaluatable(stack[stack.lastIndex], 0).map({ SpellList.LList(0, listOf(it)) }, { it })
 		stack.removeLast()
 
-		val restoreIota = SpellList.LList(
-			0, listOf(
-				PatternIota(HexPattern.fromAngles("qqqaw", HexDir.WEST)),
-				ListIota(stack.popStack(depth)),
-				PatternIota(HexPattern.fromAngles("qwaeawq", HexDir.WEST))
-			)
-		)
-
-		return OperationResult(
+		return OperationResult(image, listOf(),
 			continuation
-				.pushFrame(FrameEvaluate(restoreIota, true))
+				.pushFrame(FrameFinishEval)
+				.pushFrame(NephthysFrame(stack.popStack(depth)))
 				.pushFrame(FrameEvaluate(instructions, true)),
-			stack, ravenmind, listOf()
+			HexEvalSounds.HERMES
 		)
 	}
 

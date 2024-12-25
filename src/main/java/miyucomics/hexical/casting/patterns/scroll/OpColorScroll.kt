@@ -1,7 +1,7 @@
 package miyucomics.hexical.casting.patterns.scroll
 
 import at.petrak.hexcasting.api.spell.*
-import at.petrak.hexcasting.api.spell.casting.CastingContext
+import at.petrak.hexcasting.api.spell.casting.CastingEnvironment
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapBadEntity
 import miyucomics.hexical.entities.LivingScrollEntity
@@ -12,7 +12,7 @@ import kotlin.math.min
 
 class OpColorScroll : SpellAction {
 	override val argc = 2
-	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
+	override fun execute(args: List<Iota>, ctx: CastingEnvironment): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		val scroll = args.getEntity(0, argc)
 		ctx.assertEntityInRange(scroll)
 		if (scroll !is LivingScrollEntity)
@@ -22,7 +22,7 @@ class OpColorScroll : SpellAction {
 	}
 
 	private data class Spell(val scroll: LivingScrollEntity, val color: Vec3d) : RenderedSpell {
-		override fun cast(ctx: CastingContext) {
+		override fun cast(ctx: CastingEnvironment) {
 			scroll.setColor(
 				ColorHelper.Argb.getArgb(
 					1,

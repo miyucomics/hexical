@@ -4,7 +4,7 @@ import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.ParticleSpray
 import at.petrak.hexcasting.api.spell.RenderedSpell
 import at.petrak.hexcasting.api.spell.SpellAction
-import at.petrak.hexcasting.api.spell.casting.CastingContext
+import at.petrak.hexcasting.api.spell.casting.CastingEnvironment
 import at.petrak.hexcasting.api.spell.getVec3
 import at.petrak.hexcasting.api.spell.iota.Iota
 import miyucomics.hexical.entities.MagicMissileEntity
@@ -13,7 +13,7 @@ import net.minecraft.util.math.Vec3d
 
 class OpMagicMissile : SpellAction {
 	override val argc = 2
-	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
+	override fun execute(args: List<Iota>, ctx: CastingEnvironment): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		val headOffset = args.getVec3(0, argc)
 		val straightAxis = ctx.caster.rotationVector
 
@@ -39,7 +39,7 @@ class OpMagicMissile : SpellAction {
 	}
 
 	private data class Spell(val position: Vec3d, val velocity: Vec3d) : RenderedSpell {
-		override fun cast(ctx: CastingContext) {
+		override fun cast(ctx: CastingEnvironment) {
 			val missile = MagicMissileEntity(ctx.world)
 			missile.setPos(position.x, position.y, position.z)
 			missile.owner = ctx.caster

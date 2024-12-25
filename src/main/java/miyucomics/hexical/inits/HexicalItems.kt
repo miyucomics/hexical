@@ -3,6 +3,7 @@ package miyucomics.hexical.inits
 import at.petrak.hexcasting.common.items.ItemStaff
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.items.*
+import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup
 import net.minecraft.client.item.CompassAnglePredicateProvider
 import net.minecraft.client.item.CompassAnglePredicateProvider.CompassTarget
 import net.minecraft.client.item.ModelPredicateProviderRegistry
@@ -15,12 +16,16 @@ import net.minecraft.item.ItemGroup
 import net.minecraft.item.ItemStack
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
+import net.minecraft.registry.RegistryKey
+import net.minecraft.text.Text
 import net.minecraft.util.Identifier
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.GlobalPos
 
+
 object HexicalItems {
-	val HEXICAL_GROUP: ItemGroup = FabricItemGroupBuilder.create(HexicalMain.id("general")).icon { ItemStack(CONJURED_STAFF_ITEM) }.build()
+	val HEXICAL_GROUP_KEY: RegistryKey<ItemGroup> = RegistryKey.of(Registries.ITEM_GROUP.key, HexicalMain.id("general"))
+	val HEXICAL_GROUP: ItemGroup = FabricItemGroup.builder().icon { -> ItemStack(CONJURED_STAFF_ITEM) }.displayName(Text.translatable("itemGroup.hexical.general")).build()
 
 	@JvmField
 	val HAND_LAMP_ITEM = HandLampItem()
@@ -42,8 +47,8 @@ object HexicalItems {
 		Registry.register(Registries.ITEM, HexicalMain.id("lamp"), HAND_LAMP_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("arch_lamp"), ARCH_LAMP_ITEM)
 
-		Registry.register(Registries.ITEM, HexicalMain.id("gauntlet_staff"), ItemStaff(Settings().maxCount(1).group(HEXICAL_GROUP)))
-		Registry.register(Registries.ITEM, HexicalMain.id("lightning_rod_staff"), ItemStaff(Settings().maxCount(1).group(HEXICAL_GROUP)))
+		Registry.register(Registries.ITEM, HexicalMain.id("gauntlet_staff"), ItemStaff(Settings().maxCount(1)))
+		Registry.register(Registries.ITEM, HexicalMain.id("lightning_rod_staff"), ItemStaff(Settings().maxCount(1)))
 
 		Registry.register(Registries.ITEM, HexicalMain.id("grimoire"), GRIMOIRE_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("living_scroll_small"), SMALL_LIVING_SCROLL_ITEM)
@@ -54,8 +59,8 @@ object HexicalItems {
 		Registry.register(Registries.ITEM, HexicalMain.id("hexburst"), HEXBURST_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("hextito"), HEXTITO_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("mage_block"), BlockItem(HexicalBlocks.MAGE_BLOCK, Settings()))
-		Registry.register(Registries.ITEM, HexicalMain.id("media_jar"), BlockItem(HexicalBlocks.MEDIA_JAR_BLOCK, Settings().group(HEXICAL_GROUP)))
-		Registry.register(Registries.ITEM, HexicalMain.id("hex_candle"), BlockItem(HexicalBlocks.HEX_CANDLE_BLOCK, Settings().group(HEXICAL_GROUP)))
+		Registry.register(Registries.ITEM, HexicalMain.id("media_jar"), BlockItem(HexicalBlocks.MEDIA_JAR_BLOCK, Settings()))
+		Registry.register(Registries.ITEM, HexicalMain.id("hex_candle"), BlockItem(HexicalBlocks.HEX_CANDLE_BLOCK, Settings()))
 	}
 
 	@JvmStatic

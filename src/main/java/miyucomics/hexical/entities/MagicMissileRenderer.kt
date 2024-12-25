@@ -9,10 +9,7 @@ import net.minecraft.util.Identifier
 
 @Environment(value = EnvType.CLIENT)
 class MagicMissileRenderer(context: EntityRendererFactory.Context) : ProjectileEntityRenderer<MagicMissileEntity>(context) {
-	override fun getTexture(entity: MagicMissileEntity?): Identifier {
-		return TEXTURE
-	}
-
+	override fun getTexture(entity: MagicMissileEntity?) = TEXTURE
 	companion object {
 		val TEXTURE: Identifier = Identifier(HexicalMain.MOD_ID, "textures/entity/magic_missile.png")
 	}

@@ -1,10 +1,11 @@
 package miyucomics.hexical.entities
 
 import at.petrak.hexcasting.api.addldata.ADIotaHolder
-import at.petrak.hexcasting.api.spell.iota.Iota
-import at.petrak.hexcasting.api.spell.iota.ListIota
-import at.petrak.hexcasting.api.spell.iota.PatternIota
-import at.petrak.hexcasting.api.spell.math.HexPattern
+import at.petrak.hexcasting.api.casting.iota.Iota
+import at.petrak.hexcasting.api.casting.iota.IotaType
+import at.petrak.hexcasting.api.casting.iota.ListIota
+import at.petrak.hexcasting.api.casting.iota.PatternIota
+import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import miyucomics.hexical.inits.HexicalEntities
@@ -72,7 +73,7 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity>, world: Worl
 				val n = (size - 1) / -2
 				mutable.set(blockPos).move(direction, i + m).move(Direction.UP, j + n)
 				val blockState = world.getBlockState(mutable)
-				if (blockState.material.isSolid || AbstractRedstoneGateBlock.isRedstoneGate(blockState)) continue
+				if (blockState.isSolid || AbstractRedstoneGateBlock.isRedstoneGate(blockState)) continue
 				return false
 			}
 		}
@@ -159,7 +160,7 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity>, world: Worl
 			stack.orCreateNbt.putBoolean("glow", this.dataTracker.get(glowDataTracker))
 			stack.orCreateNbt.putBoolean("vanished", this.dataTracker.get(vanishedDataTracker))
 			stack.orCreateNbt.putInt("color", this.dataTracker.get(colorDataTracker))
-			stack.orCreateNbt.putCompound("patterns", HexIotaTypes.serialize(ListIota(constructed.toList())))
+			stack.orCreateNbt.putCompound("patterns", IotaType.serialize(ListIota(constructed.toList())))
 			this.dropStack(stack)
 		}
 	}
@@ -231,7 +232,7 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity>, world: Worl
 		val constructed = mutableListOf<PatternIota>()
 		for (pattern in this.patterns)
 			constructed.add(PatternIota(HexPattern.fromNBT(pattern)))
-		return HexIotaTypes.serialize(ListIota(constructed.toList()))
+		return IotaType.serialize(ListIota(constructed.toList()))
 	}
 
 	override fun writeIota(iota: Iota?, simulate: Boolean): Boolean {
@@ -256,4 +257,6 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity>, world: Worl
 		}
 		return false
 	}
+
+	override fun writeable() = true
 }
