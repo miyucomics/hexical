@@ -3,7 +3,7 @@ package miyucomics.hexical.casting.patterns.lamp
 import at.petrak.hexcasting.api.spell.ParticleSpray
 import at.petrak.hexcasting.api.spell.RenderedSpell
 import at.petrak.hexcasting.api.spell.SpellAction
-import at.petrak.hexcasting.api.spell.casting.CastingContext
+import at.petrak.hexcasting.api.spell.casting.CastingEnvironment
 import at.petrak.hexcasting.api.spell.getList
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapBadOffhandItem
@@ -14,7 +14,7 @@ import net.minecraft.item.ItemStack
 
 class OpEducateGenie : SpellAction {
 	override val argc = 1
-	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
+	override fun execute(args: List<Iota>, ctx: CastingEnvironment): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		val patterns = args.getList(0, argc).toList()
 		val stack = ctx.caster.getStackInHand(ctx.otherHand)
 		if (stack.item !is GenieLamp)
@@ -23,7 +23,7 @@ class OpEducateGenie : SpellAction {
 	}
 
 	private data class Spell(val patterns: List<Iota>, val stack: ItemStack) : RenderedSpell {
-		override fun cast(ctx: CastingContext) {
+		override fun cast(ctx: CastingEnvironment) {
 			IXplatAbstractions.INSTANCE.findHexHolder(stack)?.writeHex(patterns, IXplatAbstractions.INSTANCE.findMediaHolder(stack)?.media!!)
 			HexicalAdvancements.EDUCATE_GENIE.trigger(ctx.caster)
 		}

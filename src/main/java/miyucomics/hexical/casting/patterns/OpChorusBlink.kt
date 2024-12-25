@@ -5,7 +5,7 @@ import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.ParticleSpray
 import at.petrak.hexcasting.api.spell.RenderedSpell
 import at.petrak.hexcasting.api.spell.SpellAction
-import at.petrak.hexcasting.api.spell.casting.CastingContext
+import at.petrak.hexcasting.api.spell.casting.CastingEnvironment
 import at.petrak.hexcasting.api.spell.getVec3
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapLocationTooFarAway
@@ -16,7 +16,7 @@ import net.minecraft.util.math.Vec3d
 
 class OpChorusBlink : SpellAction {
 	override val argc = 1
-	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
+	override fun execute(args: List<Iota>, ctx: CastingEnvironment): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		val pos = args.getVec3(0, argc)
 		if (pos.length() > 16)
 			throw MishapLocationTooFarAway(pos)
@@ -31,7 +31,7 @@ class OpChorusBlink : SpellAction {
 	}
 
 	private data class Spell(val position: Vec3d, val stack: ItemStack) : RenderedSpell {
-		override fun cast(ctx: CastingContext) {
+		override fun cast(ctx: CastingEnvironment) {
 			ctx.caster.teleport(ctx.caster.pos.x + position.x, ctx.caster.pos.y + position.y, ctx.caster.pos.z + position.z)
 			stack.decrement(1)
 		}

@@ -1,7 +1,7 @@
 package miyucomics.hexical.casting.patterns.specks
 
 import at.petrak.hexcasting.api.spell.*
-import at.petrak.hexcasting.api.spell.casting.CastingContext
+import at.petrak.hexcasting.api.spell.casting.CastingEnvironment
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.mishaps.MishapBadEntity
 import miyucomics.hexical.casting.iota.getPigment
@@ -10,7 +10,7 @@ import net.minecraft.command.argument.EntityAnchorArgumentType
 
 class OpSpecklikeProperty(private val mode: Int) : ConstMediaAction {
 	override val argc = 2
-	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
+	override fun execute(args: List<Iota>, ctx: CastingEnvironment): List<Iota> {
 		val specklike = args.getEntity(0, argc)
 		if (specklike !is Specklike)
 			throw MishapBadEntity.of(specklike, "speck_like")

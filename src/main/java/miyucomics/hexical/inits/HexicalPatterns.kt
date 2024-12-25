@@ -366,7 +366,7 @@ object HexicalPatterns {
 		register("get_effects_entity", "wqqq", HexDir.SOUTH_WEST, OpGetLivingEntityData { entity ->
 			val list = mutableListOf<Iota>()
 			for (effect in entity.statusEffects)
-				list.add(IdentifierIota(Registry.STATUS_EFFECT.getId(effect.effectType)!!))
+				list.add(IdentifierIota(Registries.STATUS_EFFECT.getId(effect.effectType)!!))
 			list.asActionResult
 		})
 		register("get_effects_item", "wqqqadee", HexDir.SOUTH_WEST, OpGetPrescription())

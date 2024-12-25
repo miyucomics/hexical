@@ -2,7 +2,7 @@ package miyucomics.hexical.interfaces
 
 import miyucomics.hexical.enums.SpecializedSource
 
-interface CastingContextMinterface {
+interface CastingEnvironmentMinterface {
 	fun setSpecializedSource(source: SpecializedSource)
 	fun getSpecializedSource(): SpecializedSource?
 	fun setFinale(finale: Boolean)

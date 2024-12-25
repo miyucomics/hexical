@@ -2,7 +2,7 @@ package miyucomics.hexical.casting.patterns.wristpocket
 
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.*
-import at.petrak.hexcasting.api.spell.casting.CastingContext
+import at.petrak.hexcasting.api.spell.casting.CastingEnvironment
 import at.petrak.hexcasting.api.spell.iota.EntityIota
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.Vec3Iota
@@ -15,7 +15,7 @@ import net.minecraft.util.math.Vec3d
 
 class OpSleight : SpellAction {
 	override val argc = 1
-	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
+	override fun execute(args: List<Iota>, ctx: CastingEnvironment): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		when (args[0]) {
 			is EntityIota -> {
 				val item = args.getItemEntity(0, argc)
@@ -32,7 +32,7 @@ class OpSleight : SpellAction {
 	}
 
 	private data class ConjureSpell(val position: Vec3d) : RenderedSpell {
-		override fun cast(ctx: CastingContext) {
+		override fun cast(ctx: CastingEnvironment) {
 			val wristpocketed = PersistentStateHandler.getWristpocketStack(ctx.caster)
 			if (wristpocketed != ItemStack.EMPTY && wristpocketed.item != Items.AIR)
 				ctx.world.spawnEntity(ItemEntity(ctx.world, position.x, position.y, position.z, PersistentStateHandler.getWristpocketStack(ctx.caster)))
@@ -41,7 +41,7 @@ class OpSleight : SpellAction {
 	}
 
 	private data class SwapSpell(val item: ItemEntity) : RenderedSpell {
-		override fun cast(ctx: CastingContext) {
+		override fun cast(ctx: CastingEnvironment) {
 			val wristpocketed = PersistentStateHandler.getWristpocketStack(ctx.caster)
 			PersistentStateHandler.setWristpocketStack(ctx.caster, item.stack)
 			if (wristpocketed != ItemStack.EMPTY && wristpocketed.item != Items.AIR)
