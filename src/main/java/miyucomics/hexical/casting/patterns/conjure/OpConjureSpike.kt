@@ -1,12 +1,16 @@
 package miyucomics.hexical.casting.patterns.conjure
 
+import at.petrak.hexcasting.api.casting.RenderedSpell
+import at.petrak.hexcasting.api.casting.castables.SpellAction
+import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
+import at.petrak.hexcasting.api.casting.getBlockPos
+import at.petrak.hexcasting.api.casting.getPositiveDoubleUnderInclusive
+import at.petrak.hexcasting.api.casting.iota.Iota
+import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.misc.MediaConstants
-import at.petrak.hexcasting.api.spell.*
-import at.petrak.hexcasting.api.spell.casting.CastingContext
-import at.petrak.hexcasting.api.spell.iota.Iota
-import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
 import miyucomics.hexical.entities.SpikeEntity
 import miyucomics.hexical.inits.HexicalEntities
+import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Box
 import net.minecraft.util.math.Direction
@@ -15,29 +19,31 @@ import kotlin.math.floor
 
 class OpConjureSpike : SpellAction {
 	override val argc = 3
-	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
+	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val position = args.getBlockPos(0, argc)
-		ctx.assertVecInRange(position)
-		if (ctx.world.getBlockState(position).isAir)
+		env.assertPosInRange(position)
+		if (env.world.getBlockState(position).isAir)
 			throw MishapInvalidIota.of(args[0], 0, "solid_block")
 		val offset = args.getBlockPos(1, argc)
-		val direction = Direction.fromVector(offset) ?: throw MishapInvalidIota.of(args[1], 1, "axis_vector")
-		if (ctx.world.getEntitiesByType(HexicalEntities.SPIKE_ENTITY, Box.of(Vec3d.ofCenter(position.add(offset)), 0.9, 0.9, 0.9)) { true }.size > 0)
-			return Triple(Noop(position), 0, listOf())
+		val direction = Direction.fromVector(offset.x, offset.y, offset.z) ?: throw MishapInvalidIota.of(args[1], 1, "axis_vector")
+		if (env.world.getEntitiesByType(HexicalEntities.SPIKE_ENTITY, Box.of(Vec3d.ofCenter(position.add(offset)), 0.9, 0.9, 0.9)) { true }.size > 0)
+			return SpellAction.Result(Noop(position), 0, listOf())
 		val delay = floor(args.getPositiveDoubleUnderInclusive(2, 10.0, argc) * 20.0).toInt()
-		return Triple(Spell(position, direction, delay), MediaConstants.SHARD_UNIT, listOf())
+		return SpellAction.Result(Spell(position, direction, delay), MediaConstants.SHARD_UNIT, listOf())
 	}
 
 	private data class Noop(val position: BlockPos) : RenderedSpell {
-		override fun cast(ctx: CastingContext) {}
+		override fun cast(env: CastingEnvironment) {}
 	}
 
 	private data class Spell(val position: BlockPos, val direction: Direction, val delay: Int) : RenderedSpell {
-		override fun cast(ctx: CastingContext) {
+		override fun cast(env: CastingEnvironment) {
 			val position = Vec3d.ofBottomCenter(position).add(Vec3d.of(direction.vector))
-			val spike = SpikeEntity(ctx.world, position.x, position.y, position.z, direction, delay)
-			spike.setConjurer(ctx.caster)
-			ctx.world.spawnEntity(spike)
+			val spike = SpikeEntity(env.world, position.x, position.y, position.z, direction, delay)
+			val caster = env.castingEntity
+			if (caster is PlayerEntity)
+				spike.setConjurer(caster)
+			env.world.spawnEntity(spike)
 		}
 	}
 }

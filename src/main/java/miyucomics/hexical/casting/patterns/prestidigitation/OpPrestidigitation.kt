@@ -2,7 +2,7 @@ package miyucomics.hexical.casting.patterns.prestidigitation
 
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.*
-import at.petrak.hexcasting.api.spell.casting.CastingContext
+import at.petrak.hexcasting.api.spell.casting.CastingEnvironment
 import at.petrak.hexcasting.api.spell.iota.EntityIota
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.Vec3Iota
@@ -16,7 +16,7 @@ import net.minecraft.util.math.BlockPos
 
 class OpPrestidigitation : SpellAction {
 	override val argc = 1
-	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
+	override fun execute(args: List<Iota>, ctx: CastingEnvironment): Triple<RenderedSpell, Int, List<ParticleSpray>> {
 		return when (args[0]) {
 			is EntityIota -> {
 				val entity = args.getEntity(0, argc)
@@ -35,13 +35,13 @@ class OpPrestidigitation : SpellAction {
 	}
 
 	private data class BlockSpell(val position: BlockPos, val effect: PrestidigitationEffect) : RenderedSpell {
-		override fun cast(ctx: CastingContext) {
+		override fun cast(ctx: CastingEnvironment) {
 			effect.effectBlock(ctx.caster, position)
 		}
 	}
 
 	private data class EntitySpell(val entity: Entity, val effect: PrestidigitationEffect) : RenderedSpell {
-		override fun cast(ctx: CastingContext) {
+		override fun cast(ctx: CastingEnvironment) {
 			effect.effectEntity(ctx.caster, entity)
 		}
 	}

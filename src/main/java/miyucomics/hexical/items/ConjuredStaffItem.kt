@@ -1,12 +1,12 @@
 package miyucomics.hexical.items
 
-import at.petrak.hexcasting.api.spell.casting.CastingContext
+import at.petrak.hexcasting.api.spell.casting.CastingEnvironment
 import at.petrak.hexcasting.api.spell.casting.CastingHarness
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
 import miyucomics.hexical.enums.SpecializedSource
 import miyucomics.hexical.inits.HexicalItems
-import miyucomics.hexical.interfaces.CastingContextMinterface
+import miyucomics.hexical.interfaces.CastingEnvironmentMinterface
 import net.minecraft.entity.Entity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
@@ -29,8 +29,8 @@ class ConjuredStaffItem : ItemPackagedHex(Settings().maxCount(1)) {
 
 	companion object {
 		fun cast(user: ServerPlayerEntity, hand: Hand, stack: ItemStack, castStack: MutableList<Iota>) {
-			val context = CastingContext(user, hand, CastingContext.CastSource.PACKAGED_HEX)
-			(context as CastingContextMinterface).setSpecializedSource(SpecializedSource.CONJURED_STAFF)
+			val context = CastingEnvironment(user, hand, CastingEnvironment.CastSource.PACKAGED_HEX)
+			(context as CastingEnvironmentMinterface).setSpecializedSource(SpecializedSource.CONJURED_STAFF)
 			val harness = CastingHarness(context)
 			harness.stack = castStack
 			harness.executeIotas((stack.item as ConjuredStaffItem).getHex(stack, user.getWorld())!!, user.getWorld())
