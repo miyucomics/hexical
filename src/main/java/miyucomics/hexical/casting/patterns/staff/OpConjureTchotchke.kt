@@ -1,10 +1,11 @@
 package miyucomics.hexical.casting.patterns.staff
 
+import at.petrak.hexcasting.api.casting.*
+import at.petrak.hexcasting.api.casting.castables.SpellAction
+import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
+import at.petrak.hexcasting.api.casting.iota.Iota
+import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.misc.MediaConstants
-import at.petrak.hexcasting.api.spell.*
-import at.petrak.hexcasting.api.spell.casting.CastingEnvironment
-import at.petrak.hexcasting.api.spell.iota.Iota
-import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.inits.HexicalItems
 import miyucomics.hexical.utils.CastingUtils
@@ -13,31 +14,30 @@ import net.minecraft.item.ItemStack
 import net.minecraft.item.Items
 import net.minecraft.util.math.Vec3d
 
-class OpConjureStaff : SpellAction {
-
+class OpConjureTchotchke : SpellAction {
 	override val argc = 4
-	override fun execute(args: List<Iota>, ctx: CastingEnvironment): Triple<RenderedSpell, Int, List<ParticleSpray>> {
+	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val position = args.getVec3(0, argc)
-		ctx.assertVecInRange(position)
+		env.assertVecInRange(position)
 		val battery = args.getPositiveDoubleUnderInclusive(1, 200_000.0, argc)
 		val rank = args.getInt(2, argc)
 		if (rank <= 0)
 			throw MishapInvalidIota.of(args[2], 2, "integer_natural")
 		val instructions = args.getList(3, argc).toList()
-		CastingUtils.assertNoTruename(args[3], ctx.caster)
-		return Triple(Spell(position, (battery * MediaConstants.DUST_UNIT).toInt(), rank, instructions), MediaConstants.SHARD_UNIT + MediaConstants.DUST_UNIT * battery.toInt(), listOf(ParticleSpray.burst(position, 1.0)))
+		CastingUtils.assertNoTruename(args[3], env.caster)
+		return SpellAction.Result(Spell(position, (battery * MediaConstants.DUST_UNIT).toInt(), rank, instructions), MediaConstants.SHARD_UNIT + MediaConstants.DUST_UNIT * battery.toInt(), listOf(ParticleSpray.burst(position, 1.0)))
 	}
 
 	private data class Spell(val position: Vec3d, val battery: Int, val rank: Int, val instructions: List<Iota>) : RenderedSpell {
-		override fun cast(ctx: CastingEnvironment) {
+		override fun cast(env: CastingEnvironment) {
 			val stack = ItemStack(HexicalItems.CONJURED_STAFF_ITEM, 1)
 			stack.orCreateNbt.putInt("rank", rank)
 			val hexHolder = IXplatAbstractions.INSTANCE.findHexHolder(stack)
 			hexHolder?.writeHex(instructions, battery)
-			val offhand = ctx.caster.getStackInHand(ctx.otherHand).item
+			val offhand = env.caster.getStackInHand(env.otherHand).item
 			if (itemMap.containsKey(offhand))
 				stack.orCreateNbt.putInt("sprite", itemMap[offhand]!!)
-			ctx.world.spawnEntity(ItemEntity(ctx.world, position.x, position.y, position.z, stack))
+			env.world.spawnEntity(ItemEntity(env.world, position.x, position.y, position.z, stack))
 		}
 	}
 

@@ -1,5 +1,5 @@
 {
-	"name": "hexcasting.spell.hexical:magic_missile",
+	"name": "hexcasting.action.hexical:magic_missile",
 	"icon": "minecraft:spectral_arrow",
 	"category": "hexcasting:patterns/spells",
 	"advancement": "hexcasting:root",

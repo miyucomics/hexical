@@ -1,19 +1,19 @@
 package miyucomics.hexical.casting.patterns.grimoire
 
-import at.petrak.hexcasting.api.spell.ConstMediaAction
-import at.petrak.hexcasting.api.spell.asActionResult
-import at.petrak.hexcasting.api.spell.casting.CastingEnvironment
-import at.petrak.hexcasting.api.spell.iota.Iota
-import at.petrak.hexcasting.api.spell.mishaps.MishapBadOffhandItem
+import at.petrak.hexcasting.api.casting.asActionResult
+import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
+import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
+import at.petrak.hexcasting.api.casting.iota.Iota
+import at.petrak.hexcasting.api.casting.mishaps.MishapBadOffhandItem
 import miyucomics.hexical.inits.HexicalItems
 import miyucomics.hexical.items.GrimoireItem
 
 class OpGrimoireIndex : ConstMediaAction {
 	override val argc = 0
-	override fun execute(args: List<Iota>, ctx: CastingEnvironment): List<Iota> {
-		val stack = ctx.caster.getStackInHand(ctx.otherHand)
+	override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
+		val stack = env.caster.getStackInHand(env.otherHand)
 		if (!stack.isOf(HexicalItems.GRIMOIRE_ITEM))
-			throw MishapBadOffhandItem.of(stack, ctx.otherHand, "grimoire")
+			throw MishapBadOffhandItem.of(stack, env.otherHand, "grimoire")
 		return GrimoireItem.getPatternsInGrimoire(stack).asActionResult
 	}
 }

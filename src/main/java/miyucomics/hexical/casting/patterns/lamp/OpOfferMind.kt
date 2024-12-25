@@ -1,12 +1,15 @@
 package miyucomics.hexical.casting.patterns.lamp
 
+import at.petrak.hexcasting.api.casting.ParticleSpray
+import at.petrak.hexcasting.api.casting.RenderedSpell
+import at.petrak.hexcasting.api.casting.castables.SpellAction
+import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
+import at.petrak.hexcasting.api.casting.getEntity
+import at.petrak.hexcasting.api.casting.getPositiveDoubleUnderInclusive
+import at.petrak.hexcasting.api.casting.iota.Iota
+import at.petrak.hexcasting.api.casting.mishaps.MishapBadEntity
+import at.petrak.hexcasting.api.casting.mishaps.MishapBadOffhandItem
 import at.petrak.hexcasting.api.misc.MediaConstants
-import at.petrak.hexcasting.api.spell.*
-import at.petrak.hexcasting.api.spell.casting.CastingEnvironment
-import at.petrak.hexcasting.api.spell.iota.Iota
-import at.petrak.hexcasting.api.spell.mishaps.MishapBadEntity
-import at.petrak.hexcasting.api.spell.mishaps.MishapBadOffhandItem
-import at.petrak.hexcasting.common.misc.Brainsweeping
 import at.petrak.hexcasting.ktxt.tellWitnessesThatIWasMurdered
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.inits.HexicalAdvancements
@@ -23,24 +26,24 @@ import kotlin.math.min
 
 class OpOfferMind : SpellAction {
 	override val argc = 2
-	override fun execute(args: List<Iota>, ctx: CastingEnvironment): Triple<RenderedSpell, Int, List<ParticleSpray>> {
+	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val sacrifice = args.getEntity(0, argc)
-		ctx.assertEntityInRange(sacrifice)
+		env.assertEntityInRange(sacrifice)
 
 		if (sacrifice is MobEntity && Brainsweeping.isBrainswept(sacrifice))
 			throw MishapBadEntity.of(sacrifice, "has_brain")
 		if (sacrifice is VillagerEntity && sacrifice.villagerData.level < 3)
 			throw MishapBadEntity.of(sacrifice, "smart_villager")
 
-		val stack = ctx.caster.getStackInHand(ctx.otherHand)
+		val stack = env.caster.getStackInHand(env.otherHand)
 		val mediaHolder = IXplatAbstractions.INSTANCE.findMediaHolder(stack)!!
 		val leftToFull = 200000 * MediaConstants.DUST_UNIT - mediaHolder.media
 		val battery = min(leftToFull.toDouble(), args.getPositiveDoubleUnderInclusive(1, 200000.0, argc))
 
 		if (stack.item is GenieLamp)
-			return Triple(Spell(sacrifice, (battery * MediaConstants.DUST_UNIT).toInt()), MediaConstants.CRYSTAL_UNIT + (battery * MediaConstants.DUST_UNIT).toInt(), listOf(ParticleSpray.cloud(sacrifice.eyePos, 1.0)))
+			return SpellAction.Result(Spell(sacrifice, (battery * MediaConstants.DUST_UNIT).toInt()), MediaConstants.CRYSTAL_UNIT + (battery * MediaConstants.DUST_UNIT).toInt(), listOf(ParticleSpray.cloud(sacrifice.eyePos, 1.0)))
 
-		throw MishapBadOffhandItem.of(stack, ctx.otherHand, "lamp")
+		throw MishapBadOffhandItem.of(stack, "lamp")
 	}
 
 	companion object {
@@ -50,17 +53,17 @@ class OpOfferMind : SpellAction {
 	}
 
 	private data class Spell(val sacrifice: Entity, val battery: Int) : RenderedSpell {
-		override fun cast(ctx: CastingEnvironment) {
-			val lamp = ctx.caster.getStackInHand(ctx.otherHand)
+		override fun cast(env: CastingEnvironment) {
+			val lamp = env.caster.getStackInHand(env.otherHand)
 			var sacrificedDestroyed = false
 
 			if (lamp.isOf(HexicalItems.HAND_LAMP_ITEM)) {
 				for ((predicate, replacement) in TRANSFORMATIONS) {
 					if (!predicate(sacrifice))
 						continue
-					ctx.caster.setStackInHand(ctx.otherHand, ItemStack(replacement))
+					env.caster.setStackInHand(env.otherHand, ItemStack(replacement))
 					if (sacrifice is VillagerEntity)
-						sacrifice.tellWitnessesThatIWasMurdered(ctx.caster)
+						sacrifice.tellWitnessesThatIWasMurdered(env.caster)
 					sacrifice.discard()
 					sacrificedDestroyed = true
 					break
@@ -71,15 +74,15 @@ class OpOfferMind : SpellAction {
 				if (!sacrificedDestroyed) {
 					sacrifice.villagerData = sacrifice.villagerData.withLevel(sacrifice.villagerData.level - 1)
 					sacrifice.experience = VillagerData.getLowerLevelExperience(sacrifice.villagerData.level)
-					sacrifice.gossip.startGossip(ctx.caster.uuid, VillageGossipType.MAJOR_NEGATIVE, 20)
+					sacrifice.gossip.startGossip(env.caster.uuid, VillageGossipType.MAJOR_NEGATIVE, 20)
 				}
 			}
 
-			val newLamp = ctx.caster.getStackInHand(ctx.otherHand)
+			val newLamp = env.caster.getStackInHand(env.otherHand)
 			val hexHolder = IXplatAbstractions.INSTANCE.findHexHolder(newLamp)!!
 			val mediaHolder = IXplatAbstractions.INSTANCE.findMediaHolder(lamp)!!
-			hexHolder.writeHex(hexHolder.getHex(ctx.world) ?: listOf(), mediaHolder.media + battery)
-			HexicalAdvancements.RELOAD_LAMP.trigger(ctx.caster)
+			hexHolder.writeHex(hexHolder.getHex(env.world) ?: listOf(), mediaHolder.media + battery)
+			HexicalAdvancements.RELOAD_LAMP.trigger(env.caster)
 		}
 	}
 }

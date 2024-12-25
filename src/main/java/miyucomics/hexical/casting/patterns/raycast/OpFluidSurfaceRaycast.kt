@@ -1,11 +1,11 @@
 package miyucomics.hexical.casting.patterns.raycast
 
-import at.petrak.hexcasting.api.spell.ConstMediaAction
-import at.petrak.hexcasting.api.spell.asActionResult
-import at.petrak.hexcasting.api.spell.casting.CastingEnvironment
-import at.petrak.hexcasting.api.spell.getVec3
-import at.petrak.hexcasting.api.spell.iota.Iota
-import at.petrak.hexcasting.api.spell.iota.NullIota
+import at.petrak.hexcasting.api.casting.asActionResult
+import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
+import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
+import at.petrak.hexcasting.api.casting.getVec3
+import at.petrak.hexcasting.api.casting.iota.Iota
+import at.petrak.hexcasting.api.casting.iota.NullIota
 import net.minecraft.block.FluidBlock
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d
@@ -14,17 +14,17 @@ import kotlin.math.floor
 
 class OpFluidSurfaceRaycast : ConstMediaAction {
 	override val argc = 2
-	override fun execute(args: List<Iota>, ctx: CastingEnvironment): List<Iota> {
+	override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
 		val start = args.getVec3(0, argc)
-		ctx.assertVecInRange(start)
+		env.assertVecInRange(start)
 		val direction = args.getVec3(1, argc).normalize()
 		if (direction == Vec3d.ZERO)
 			return listOf(NullIota())
 		val delta = Vec3d(abs(1 / direction.x), abs(1 / direction.y), abs(1 / direction.z))
 
-		var voxelX = floor(start.x)
-		var voxelY = floor(start.y)
-		var voxelZ = floor(start.z)
+		var voxelX = floor(start.x).toInt()
+		var voxelY = floor(start.y).toInt()
+		var voxelZ = floor(start.z).toInt()
 		val stepX: Int
 		val stepY: Int
 		val stepZ: Int
@@ -84,9 +84,9 @@ class OpFluidSurfaceRaycast : ConstMediaAction {
 				else -> throw IllegalStateException()
 			}
 
-			if (ctx.world.getBlockState(BlockPos(voxelX, voxelY, voxelZ)).block is FluidBlock)
+			if (env.world.getBlockState(BlockPos(voxelX, voxelY, voxelZ)).block is FluidBlock)
 				return normal.asActionResult
-			if (!ctx.isVecInRange(Vec3d(voxelX, voxelY, voxelZ)))
+			if (!env.isVecInRange(BlockPos(voxelX, voxelY, voxelZ).toCenterPos()))
 				return listOf(NullIota())
 		}
 	}

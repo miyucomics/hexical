@@ -1,9 +1,9 @@
 package miyucomics.hexical.blocks
 
 import at.petrak.hexcasting.api.block.HexBlockEntity
-import at.petrak.hexcasting.api.spell.getPositiveInt
-import at.petrak.hexcasting.api.spell.getPositiveIntUnder
-import at.petrak.hexcasting.api.spell.iota.Iota
+import at.petrak.hexcasting.api.casting.getPositiveInt
+import at.petrak.hexcasting.api.casting.getPositiveIntUnder
+import at.petrak.hexcasting.api.casting.iota.Iota
 import miyucomics.hexical.inits.HexicalBlocks
 import net.minecraft.block.BlockState
 import net.minecraft.nbt.NbtCompound

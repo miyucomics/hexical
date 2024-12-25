@@ -1,18 +1,24 @@
 package miyucomics.hexical.casting.patterns.telepathy
 
-import at.petrak.hexcasting.api.spell.ConstMediaAction
-import at.petrak.hexcasting.api.spell.casting.CastingEnvironment
-import at.petrak.hexcasting.api.spell.iota.Iota
+import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
+import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
+import at.petrak.hexcasting.api.casting.iota.Iota
+import at.petrak.hexcasting.api.casting.iota.NullIota
 import miyucomics.hexical.inits.HexicalAdvancements
 import net.minecraft.network.packet.s2c.play.PlaySoundS2CPacket
+import net.minecraft.registry.entry.RegistryEntry
+import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.sound.SoundCategory
 import net.minecraft.sound.SoundEvent
 
-class OpHallucinateSound(private val sound: SoundEvent) : ConstMediaAction {
+class OpHallucinateSound(private val sound: RegistryEntry<SoundEvent>) : ConstMediaAction {
 	override val argc = 0
-	override fun execute(args: List<Iota>, ctx: CastingEnvironment): List<Iota> {
-		ctx.caster.networkHandler.sendPacket(PlaySoundS2CPacket(sound, SoundCategory.MASTER, ctx.caster.x, ctx.caster.y, ctx.caster.z, 1f, 1f, 0))
-		HexicalAdvancements.HALLUCINATE.trigger(ctx.caster)
+	override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
+		val caster = env.castingEntity
+		if (caster !is ServerPlayerEntity)
+			return listOf()
+		caster.networkHandler.sendPacket(PlaySoundS2CPacket(sound, SoundCategory.MASTER, caster.x, caster.y, caster.z, 1f, 1f, 0))
+		HexicalAdvancements.HALLUCINATE.trigger(caster)
 		return listOf()
 	}
 }
