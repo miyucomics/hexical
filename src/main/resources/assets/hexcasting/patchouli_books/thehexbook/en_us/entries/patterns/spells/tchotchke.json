@@ -1,0 +1,40 @@
+{
+	"name": "hexical.page.tchotchke.title",
+	"icon": "hexical:tchotchke",
+	"category": "hexcasting:patterns/spells",
+	"advancement": "hexcasting:root",
+	"sortnum": 21,
+	"pages": [
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.tchotchke.0"
+		}, {
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:conjure_tchotchke",
+			"anchor": "hexical:conjure_tchotchke",
+			"input": "vec, num, num, [pattern]",
+			"output": "",
+			"text": "hexical.page.conjure_tchotchke.summary"
+		}, {
+			"type": "patchouli:text",
+			"text": "hexical.page.tchotchke.1"
+		}, {
+			"type": "patchouli:text",
+			"text": "hexical.page.tchotchke.2"
+		}, {
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:read_tchotchke",
+			"anchor": "hexical:read_tchotchke",
+			"input": "",
+			"output": "any",
+			"text": "hexical.page.read_tchotchke.summary"
+		}, {
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:write_tchotchke",
+			"anchor": "hexical:write_tchotchke",
+			"input": "any",
+			"output": "",
+			"text": "hexical.page.write_tchotchke.summary"
+		}
+	]
+}

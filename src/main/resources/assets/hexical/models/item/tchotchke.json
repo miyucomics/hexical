@@ -1,34 +1,34 @@
 {
 	"parent": "minecraft:item/handheld_rod",
 	"textures": {
-		"layer0": "hexical:item/conjured_staff_staff"
+		"layer0": "hexical:item/tchotchke_staff"
 	},
 	"overrides": [
 		{
 			"predicate": {
 				"sprite": 0.1
 			},
-			"model": "hexical:item/conjured_staff_clover"
+			"model": "hexical:item/tchotchke_clover"
 		}, {
 			"predicate": {
 				"sprite": 0.2
 			},
-			"model": "hexical:item/conjured_staff_conch"
+			"model": "hexical:item/tchotchke_conch"
 		}, {
 			"predicate": {
 				"sprite": 0.3
 			},
-			"model": "hexical:item/conjured_staff_handbell"
+			"model": "hexical:item/tchotchke_handbell"
 		}, {
 			"predicate": {
 				"sprite": 0.4
 			},
-			"model": "hexical:item/conjured_staff_key"
+			"model": "hexical:item/tchotchke_key"
 		}, {
 			"predicate": {
 				"sprite": 0.5
 			},
-			"model": "hexical:item/conjured_staff_mirror"
+			"model": "hexical:item/tchotchke_mirror"
 		}
 	]
 }
