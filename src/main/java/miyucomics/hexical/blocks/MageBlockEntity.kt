@@ -18,34 +18,28 @@ class MageBlockEntity(pos: BlockPos, state: BlockState) : HexBlockEntity(Hexical
 		"ephemeral" to false,
 		"invisible" to false,
 		"replaceable" to false,
-		"semipermeable" to false,
 		"volatile" to false
 	)
 	var redstone: Int = 0
 	var lifespan: Int = 0
-	var canPass: UUID = UUID.randomUUID()
 
 	override fun saveModData(tag: NbtCompound) {
 		properties.forEach { (key, value) -> tag.putBoolean(key, value) }
 		tag.putInt("lifespan", this.lifespan)
 		tag.putInt("redstone", this.redstone)
-		tag.putUuid("canPass", this.canPass)
 	}
 
 	override fun loadModData(tag: NbtCompound) {
 		properties.keys.forEach { key -> properties[key] = tag.getBoolean(key) }
 		this.lifespan = tag.getInt("lifespan")
 		this.redstone = tag.getInt("redstone")
-		this.canPass = tag.getUuid("canPass")
 	}
 
-	fun setProperty(property: String, args: List<Iota>, caster: ServerPlayerEntity) {
+	fun setProperty(property: String, args: List<Iota>) {
 		if (property == "energized")
 			this.redstone = args.getPositiveIntUnder(0, 16, args.size)
 		if (property == "ephemeral")
 			this.lifespan = args.getPositiveInt(0, args.size)
-		if (property == "semipermeable")
-			this.canPass = caster.uuid
 		properties[property] = !properties[property]!!
 		sync()
 	}

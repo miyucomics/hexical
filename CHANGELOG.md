@@ -4,6 +4,9 @@
 - changed wandering trader lamp trade chance to 50%
 - changed a lot of scrying to require ambit
 - changed Conjure Firework price to always be one shard
+- changed having multiple grimoires to not be useful anymore
+- changed lamp chapter to be open by default
+- changed Autograph to be a staff-only spell
 - refactored almost everything is rewritten to be more sane
 - removed Chorus Blink due to not fitting in with classic spells
 - removed Similarity Purification in favor of iota type identifier

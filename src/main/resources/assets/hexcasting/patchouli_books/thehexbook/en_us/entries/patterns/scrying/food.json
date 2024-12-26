@@ -1,7 +1,7 @@
 {
 	"name": "hexical.page.food.title",
 	"icon": "minecraft:apple",
-	"category": "hexical:scrying",
+	"category": "hexcasting:scrying",
 	"advancement": "hexcasting:root",
 	"pages": [
 		{

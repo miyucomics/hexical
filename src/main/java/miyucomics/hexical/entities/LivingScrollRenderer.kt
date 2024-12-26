@@ -1,7 +1,6 @@
 package miyucomics.hexical.entities
 
 import at.petrak.hexcasting.api.HexAPI.modLoc
-import at.petrak.hexcasting.client.makeZappy
 import at.petrak.hexcasting.client.render.makeZappy
 import miyucomics.hexical.utils.RenderUtils
 import net.minecraft.client.render.*
@@ -9,15 +8,15 @@ import net.minecraft.client.render.entity.EntityRenderer
 import net.minecraft.client.render.entity.EntityRendererFactory
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.util.Identifier
-import net.minecraft.util.math.Matrix3f
-import net.minecraft.util.math.Matrix4f
-import net.minecraft.util.math.Vec3f
+import net.minecraft.util.math.RotationAxis
+import org.joml.Matrix3f
+import org.joml.Matrix4f
 
 class LivingScrollRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<LivingScrollEntity>(ctx) {
 	override fun render(scroll: LivingScrollEntity?, yaw: Float, deltaTick: Float, matrices: MatrixStack, vertexConsumers: VertexConsumerProvider, light: Int) {
 		matrices.push()
-		matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(scroll!!.pitch))
-		matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180.0f - scroll.yaw))
+		matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(scroll!!.pitch))
+		matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180.0f - scroll.yaw))
 		val worldLight = WorldRenderer.getLightmapCoordinates(scroll.world, scroll.blockPos)
 		if (!scroll.clientVanished)
 			drawFrame(matrices, vertexConsumers, getTexture(scroll), scroll.clientSize.toFloat(), worldLight)

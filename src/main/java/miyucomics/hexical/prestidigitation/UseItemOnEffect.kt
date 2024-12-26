@@ -1,5 +1,6 @@
 package miyucomics.hexical.prestidigitation
 
+import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import miyucomics.hexical.interfaces.PrestidigitationEffect
 import net.minecraft.entity.Entity
 import net.minecraft.entity.LivingEntity
@@ -14,15 +15,19 @@ import net.minecraft.util.math.Direction
 import net.minecraft.util.math.Vec3d
 
 class UseItemOnEffect(val stack: ItemStack) : PrestidigitationEffect {
-	override fun effectBlock(caster: ServerPlayerEntity, position: BlockPos) {
+	override fun effectBlock(env: CastingEnvironment, position: BlockPos) {
+		if (env.castingEntity !is ServerPlayerEntity)
+			return
+		val caster = env.castingEntity as ServerPlayerEntity
 		val originalStack = caster.getStackInHand(Hand.OFF_HAND)
 		caster.setStackInHand(Hand.OFF_HAND, stack)
-		caster.world.getBlockState(position).onUse(caster.world, caster, Hand.OFF_HAND, BlockHitResult(Vec3d.of(position), Direction.DOWN, position, false))
+		env.world.getBlockState(position).onUse(env.world, caster, Hand.OFF_HAND, BlockHitResult(Vec3d.of(position), Direction.DOWN, position, false))
 		stack.item.useOnBlock(ItemUsageContext(caster, Hand.OFF_HAND, BlockHitResult(Vec3d.ofCenter(position), Direction.UP, position, true)))
 		caster.setStackInHand(Hand.OFF_HAND, originalStack)
 	}
 
-	override fun effectEntity(caster: ServerPlayerEntity, entity: Entity) {
+	override fun effectEntity(env: CastingEnvironment, entity: Entity) {
+		val caster = env.castingEntity as ServerPlayerEntity
 		val originalStack = caster.getStackInHand(Hand.OFF_HAND)
 		caster.setStackInHand(Hand.OFF_HAND, stack)
 		entity.interact(caster, Hand.OFF_HAND)

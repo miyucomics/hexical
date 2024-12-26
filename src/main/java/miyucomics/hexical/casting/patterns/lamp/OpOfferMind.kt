@@ -7,6 +7,7 @@ import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.getEntity
 import at.petrak.hexcasting.api.casting.getPositiveDoubleUnderInclusive
 import at.petrak.hexcasting.api.casting.iota.Iota
+import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadEntity
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadOffhandItem
 import at.petrak.hexcasting.api.misc.MediaConstants
@@ -20,6 +21,7 @@ import net.minecraft.entity.mob.MobEntity
 import net.minecraft.entity.passive.VillagerEntity
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
+import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.village.VillageGossipType
 import net.minecraft.village.VillagerData
 import kotlin.math.min
@@ -27,15 +29,19 @@ import kotlin.math.min
 class OpOfferMind : SpellAction {
 	override val argc = 2
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
+		val caster = env.castingEntity
+		if (caster !is ServerPlayerEntity)
+			throw MishapBadCaster()
+
 		val sacrifice = args.getEntity(0, argc)
 		env.assertEntityInRange(sacrifice)
 
-		if (sacrifice is MobEntity && Brainsweeping.isBrainswept(sacrifice))
+		if (sacrifice is MobEntity && IXplatAbstractions.INSTANCE.isBrainswept(sacrifice))
 			throw MishapBadEntity.of(sacrifice, "has_brain")
 		if (sacrifice is VillagerEntity && sacrifice.villagerData.level < 3)
 			throw MishapBadEntity.of(sacrifice, "smart_villager")
 
-		val stack = env.caster.getStackInHand(env.otherHand)
+		val stack = caster.getStackInHand(env.otherHand)
 		val mediaHolder = IXplatAbstractions.INSTANCE.findMediaHolder(stack)!!
 		val leftToFull = 200000 * MediaConstants.DUST_UNIT - mediaHolder.media
 		val battery = min(leftToFull.toDouble(), args.getPositiveDoubleUnderInclusive(1, 200000.0, argc))
@@ -54,16 +60,18 @@ class OpOfferMind : SpellAction {
 
 	private data class Spell(val sacrifice: Entity, val battery: Int) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			val lamp = env.caster.getStackInHand(env.otherHand)
+			val caster = env.castingEntity as ServerPlayerEntity
+
+			val lamp = caster.getStackInHand(env.otherHand)
 			var sacrificedDestroyed = false
 
 			if (lamp.isOf(HexicalItems.HAND_LAMP_ITEM)) {
 				for ((predicate, replacement) in TRANSFORMATIONS) {
 					if (!predicate(sacrifice))
 						continue
-					env.caster.setStackInHand(env.otherHand, ItemStack(replacement))
+					caster.setStackInHand(env.otherHand, ItemStack(replacement))
 					if (sacrifice is VillagerEntity)
-						sacrifice.tellWitnessesThatIWasMurdered(env.caster)
+						sacrifice.tellWitnessesThatIWasMurdered(caster)
 					sacrifice.discard()
 					sacrificedDestroyed = true
 					break
@@ -74,15 +82,15 @@ class OpOfferMind : SpellAction {
 				if (!sacrificedDestroyed) {
 					sacrifice.villagerData = sacrifice.villagerData.withLevel(sacrifice.villagerData.level - 1)
 					sacrifice.experience = VillagerData.getLowerLevelExperience(sacrifice.villagerData.level)
-					sacrifice.gossip.startGossip(env.caster.uuid, VillageGossipType.MAJOR_NEGATIVE, 20)
+					sacrifice.gossip.startGossip(caster.uuid, VillageGossipType.MAJOR_NEGATIVE, 20)
 				}
 			}
 
-			val newLamp = env.caster.getStackInHand(env.otherHand)
+			val newLamp = caster.getStackInHand(env.otherHand)
 			val hexHolder = IXplatAbstractions.INSTANCE.findHexHolder(newLamp)!!
 			val mediaHolder = IXplatAbstractions.INSTANCE.findMediaHolder(lamp)!!
-			hexHolder.writeHex(hexHolder.getHex(env.world) ?: listOf(), mediaHolder.media + battery)
-			HexicalAdvancements.RELOAD_LAMP.trigger(env.caster)
+			hexHolder.writeHex(hexHolder.getHex(env.world) ?: listOf(), null, mediaHolder.media + battery)
+			HexicalAdvancements.RELOAD_LAMP.trigger(caster)
 		}
 	}
 }

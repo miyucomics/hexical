@@ -11,7 +11,6 @@ import at.petrak.hexcasting.api.casting.mishaps.MishapBadOffhandItem
 import at.petrak.hexcasting.api.misc.MediaConstants
 import net.minecraft.entity.projectile.FireworkRocketEntity
 import net.minecraft.item.FireworkRocketItem
-import net.minecraft.item.FireworkStarItem
 import net.minecraft.item.ItemStack
 import net.minecraft.item.Items
 import net.minecraft.nbt.NbtCompound
@@ -24,15 +23,17 @@ class OpSimulateFirework : SpellAction {
 		val position = args.getVec3(0, argc)
 		val duration = args.getIntBetween(2, 1, 3, argc)
 		env.assertVecInRange(position)
-		val star = env.caster.getStackInHand(env.otherHand)
-		if (star.item !is FireworkStarItem)
-			throw MishapBadOffhandItem.of(star, env.otherHand, "firework_star")
-		return SpellAction.Result(Spell(position, args.getVec3(1, argc), duration, star.orCreateNbt.getCompound(FireworkRocketItem.EXPLOSION_KEY)), MediaConstants.SHARD_UNIT, listOf(ParticleSpray.burst(position, 1.0)))
+
+		val fireworkStar = env.getHeldItemToOperateOn { it.isOf(Items.FIREWORK_STAR) }
+		if (fireworkStar == null)
+			throw MishapBadOffhandItem.of(null, "firework_star")
+
+		return SpellAction.Result(Spell(position, args.getVec3(1, argc), duration, fireworkStar.stack.orCreateNbt.getCompound(FireworkRocketItem.EXPLOSION_KEY)), MediaConstants.SHARD_UNIT, listOf(ParticleSpray.burst(position, 1.0)))
 	}
 
 	private data class Spell(val position: Vec3d, val velocity: Vec3d, val duration: Int, val template: NbtCompound) :
 		RenderedSpell {
-		override fun cast(ctx: CastingEnvironment) {
+		override fun cast(env: CastingEnvironment) {
 			val star = NbtCompound()
 			star.putInt(FireworkRocketItem.TYPE_KEY, template.getInt(FireworkRocketItem.TYPE_KEY))
 			star.putByte(FireworkRocketItem.FLICKER_KEY, template.getByte(FireworkRocketItem.FLICKER_KEY))
@@ -50,9 +51,9 @@ class OpSimulateFirework : SpellAction {
 			val stack = ItemStack(Items.FIREWORK_ROCKET)
 			stack.orCreateNbt.put(FireworkRocketItem.FIREWORKS_KEY, main)
 
-			val firework = FireworkRocketEntity(ctx.world, stack, position.x, position.y, position.z, true)
+			val firework = FireworkRocketEntity(env.world, stack, position.x, position.y, position.z, true)
 			firework.setVelocity(velocity.x, velocity.y, velocity.z)
-			ctx.world.spawnEntity(firework)
+			env.world.spawnEntity(firework)
 		}
 	}
 }

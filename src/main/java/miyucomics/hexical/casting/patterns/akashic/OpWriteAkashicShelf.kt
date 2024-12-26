@@ -23,7 +23,7 @@ class OpWriteAkashicShelf : SpellAction {
 
 		val key = args.getPattern(1, argc)
 		val iota = args[2]
-		CastingUtils.assertNoTruename(iota, env.castingEntity)
+		CastingUtils.assertNoTruename(iota, env)
 		return SpellAction.Result(Spell(env.world.getBlockEntity(position)!! as BlockEntityAkashicBookshelf, key, iota), 0, listOf())
 	}
 

@@ -24,6 +24,6 @@ object OpSisyphus : Action {
 			return OperationResult(newImage, listOf(), continuation.pushFrame(frame), HexEvalSounds.THOTH)
 		}
 
-		return OperationResult(image, listOf(), continuation, HexEvalSounds.NOTHING)
+		return OperationResult(image, listOf(), continuation, HexEvalSounds.NORMAL_EXECUTE)
 	}
 }

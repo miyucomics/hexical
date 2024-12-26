@@ -1,10 +1,11 @@
 package miyucomics.hexical.items
 
+import at.petrak.hexcasting.api.casting.iota.Iota
+import at.petrak.hexcasting.api.casting.iota.IotaType
+import at.petrak.hexcasting.api.casting.iota.ListIota
+import at.petrak.hexcasting.api.casting.iota.NullIota
+import at.petrak.hexcasting.api.casting.iota.PatternIota
 import at.petrak.hexcasting.api.item.IotaHolderItem
-import at.petrak.hexcasting.api.spell.iota.Iota
-import at.petrak.hexcasting.api.spell.iota.ListIota
-import at.petrak.hexcasting.api.spell.iota.NullIota
-import at.petrak.hexcasting.api.spell.iota.PatternIota
 import at.petrak.hexcasting.api.utils.hasCompound
 import at.petrak.hexcasting.api.utils.hasInt
 import at.petrak.hexcasting.common.blocks.akashic.BlockEntityAkashicBookshelf
@@ -29,7 +30,7 @@ import net.minecraft.util.math.Direction
 import net.minecraft.world.World
 import net.minecraft.world.event.GameEvent
 
-class LivingScrollItem(private val size: Int) : Item(Settings().group(HexicalItems.HEXICAL_GROUP)), IotaHolderItem {
+class LivingScrollItem(private val size: Int) : Item(Settings()), IotaHolderItem {
 	private fun canPlaceOn(player: PlayerEntity, side: Direction, stack: ItemStack, pos: BlockPos) = !side.axis.isVertical && player.canPlaceOn(pos, side, stack)
 
 	override fun useOnBlock(context: ItemUsageContext): ActionResult {
@@ -54,7 +55,7 @@ class LivingScrollItem(private val size: Int) : Item(Settings().group(HexicalIte
 
 		val patternList = mutableListOf<NbtCompound>()
 		if (stack.hasCompound("patterns") && !world.isClient) {
-			val list = (HexIotaTypes.deserialize(stack.orCreateNbt.getCompound("patterns")!!, world as ServerWorld) as ListIota).list
+			val list = (IotaType.deserialize(stack.orCreateNbt.getCompound("patterns")!!, world as ServerWorld) as ListIota).list
 			for (iota in list)
 				patternList.add((iota as PatternIota).pattern.serializeToNBT())
 		}
@@ -94,8 +95,10 @@ class LivingScrollItem(private val size: Int) : Item(Settings().group(HexicalIte
 	override fun readIotaTag(stack: ItemStack): NbtCompound {
 		if (stack.orCreateNbt.hasCompound("patterns"))
 			return stack.orCreateNbt.getCompound("patterns")
-		return HexIotaTypes.serialize(NullIota())
+		return IotaType.serialize(NullIota())
 	}
+
+	override fun writeable(stack: ItemStack) = true
 
 	override fun canWrite(stack: ItemStack, iota: Iota?): Boolean {
 		if (iota == null)
@@ -118,7 +121,7 @@ class LivingScrollItem(private val size: Int) : Item(Settings().group(HexicalIte
 			var toSerialize = iota
 			if (iota.type == HexIotaTypes.PATTERN)
 				toSerialize = ListIota(listOf(iota))
-			stack.orCreateNbt.put("patterns", HexIotaTypes.serialize(toSerialize))
+			stack.orCreateNbt.put("patterns", IotaType.serialize(toSerialize))
 		}
 	}
 }

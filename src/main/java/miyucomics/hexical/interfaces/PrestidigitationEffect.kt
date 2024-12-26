@@ -1,10 +1,10 @@
 package miyucomics.hexical.interfaces
 
+import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import net.minecraft.entity.Entity
-import net.minecraft.entity.LivingEntity
 import net.minecraft.util.math.BlockPos
 
 interface PrestidigitationEffect {
-	fun effectBlock(caster: LivingEntity?, position: BlockPos)
-	fun effectEntity(caster: LivingEntity?, entity: Entity)
+	fun effectBlock(env: CastingEnvironment, position: BlockPos)
+	fun effectEntity(env: CastingEnvironment, entity: Entity)
 }

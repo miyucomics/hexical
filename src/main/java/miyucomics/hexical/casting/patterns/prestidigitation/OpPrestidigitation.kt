@@ -1,6 +1,5 @@
 package miyucomics.hexical.casting.patterns.prestidigitation
 
-import at.petrak.hexcasting.api.casting.ParticleSpray
 import at.petrak.hexcasting.api.casting.RenderedSpell
 import at.petrak.hexcasting.api.casting.castables.SpellAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
@@ -40,13 +39,13 @@ class OpPrestidigitation : SpellAction {
 
 	private data class BlockSpell(val position: BlockPos, val effect: PrestidigitationEffect) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			effect.effectBlock(env.castingEntity, position)
+			effect.effectBlock(env, position)
 		}
 	}
 
 	private data class EntitySpell(val entity: Entity, val effect: PrestidigitationEffect) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			effect.effectEntity(env.castingEntity, entity)
+			effect.effectEntity(env, entity)
 		}
 	}
 }

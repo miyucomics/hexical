@@ -24,13 +24,6 @@
 			"output": "number",
 			"text": "hexical.page.is_evoking.summary"
 		}, {
-			"type": "hexcasting:pattern",
-			"op_id": "hexical:with_evocation",
-			"anchor": "hexical:with_evocation",
-			"input": "",
-			"output": "boolean",
-			"text": "hexical.page.with_evocation.summary"
-		}, {
 			"type": "patchouli:text",
 			"text": "hexical.page.evocation.1"
 		}

@@ -1,8 +1,7 @@
 {
 	"name": "hexical.page.offerings.title",
 	"icon": "minecraft:textures/particle/soul_7.png",
-	"category": "hexical:lamp",
-	"advancement": "hexical:acquired_lamp",
+	"category": "hexcasting:lamp",
 	"sortnum": 2,
 	"pages": [
 		{

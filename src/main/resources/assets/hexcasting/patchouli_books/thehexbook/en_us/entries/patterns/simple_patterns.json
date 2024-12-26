@@ -35,13 +35,6 @@
 			"text": "hexical.page.swap_two_three.summary"
 		}, {
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:similar",
-			"anchor": "hexical:similar",
-			"input": "any, any",
-			"output": "boolean",
-			"text": "hexical.page.similar.summary"
-		}, {
-			"type": "hexcasting:pattern",
 			"op_id": "hexical:congruent",
 			"anchor": "hexical:congruent",
 			"input": "pattern, pattern",

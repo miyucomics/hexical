@@ -1,7 +1,7 @@
 {
 	"name": "hexical.page.item.title",
 	"icon": "minecraft:glow_berries",
-	"category": "hexical:scrying",
+	"category": "hexcasting:scrying",
 	"advancement": "hexcasting:root",
 	"pages": [
 		{

@@ -9,6 +9,7 @@ import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.casting.iota.NullIota
 import at.petrak.hexcasting.api.casting.math.HexDir
 import at.petrak.hexcasting.api.casting.math.HexPattern
+import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.utils.vecFromNBT
 import at.petrak.hexcasting.common.blocks.akashic.BlockAkashicBookshelf
 import at.petrak.hexcasting.common.casting.actions.selectors.OpGetEntitiesBy
@@ -27,27 +28,26 @@ import miyucomics.hexical.casting.patterns.circle.OpDisplace
 import miyucomics.hexical.casting.patterns.colors.OpDye
 import miyucomics.hexical.casting.patterns.colors.OpGetDye
 import miyucomics.hexical.casting.patterns.colors.OpTranslateDye
-import miyucomics.hexical.casting.patterns.conjure.OpConjureCompass
-import miyucomics.hexical.casting.patterns.conjure.OpConjureHexburst
-import miyucomics.hexical.casting.patterns.conjure.OpConjureHextito
-import miyucomics.hexical.casting.patterns.conjure.OpConjureSpike
+import miyucomics.hexical.casting.patterns.conjure.*
 import miyucomics.hexical.casting.patterns.eval.*
 import miyucomics.hexical.casting.patterns.firework.OpConjureFirework
 import miyucomics.hexical.casting.patterns.firework.OpSimulateFirework
-import miyucomics.hexical.casting.patterns.getters.*
-import miyucomics.hexical.casting.patterns.getters.misc.OpGetEnchantmentStrength
-import miyucomics.hexical.casting.patterns.getters.misc.OpGetStatusEffectCategory
-import miyucomics.hexical.casting.patterns.getters.types.OpGetBlockTypeData
-import miyucomics.hexical.casting.patterns.getters.types.OpGetFoodTypeData
-import miyucomics.hexical.casting.patterns.getters.types.OpGetItemTypeData
+import miyucomics.hexical.casting.patterns.scrying.*
+import miyucomics.hexical.casting.patterns.scrying.OpGetEnchantmentStrength
+import miyucomics.hexical.casting.patterns.scrying.OpGetStatusEffectCategory
+import miyucomics.hexical.casting.patterns.scrying.types.OpGetBlockTypeData
+import miyucomics.hexical.casting.patterns.scrying.types.OpGetFoodTypeData
+import miyucomics.hexical.casting.patterns.scrying.types.OpGetItemTypeData
 import miyucomics.hexical.casting.patterns.grimoire.OpGrimoireErase
 import miyucomics.hexical.casting.patterns.grimoire.OpGrimoireIndex
 import miyucomics.hexical.casting.patterns.grimoire.OpGrimoireWrite
-import miyucomics.hexical.casting.patterns.identifier.OpIdentify
-import miyucomics.hexical.casting.patterns.identifier.OpRecognize
+import miyucomics.hexical.casting.patterns.scrying.identifier.OpIdentify
+import miyucomics.hexical.casting.patterns.scrying.identifier.OpRecognize
 import miyucomics.hexical.casting.patterns.lamp.*
 import miyucomics.hexical.casting.patterns.mage_blocks.OpConjureMageBlock
 import miyucomics.hexical.casting.patterns.mage_blocks.OpModifyMageBlock
+import miyucomics.hexical.casting.patterns.pattern_manipulation.OpCongruentPattern
+import miyucomics.hexical.casting.patterns.pattern_manipulation.OpShufflePattern
 import miyucomics.hexical.casting.patterns.pigments.OpSamplePigment
 import miyucomics.hexical.casting.patterns.pigments.OpTakeOnPigment
 import miyucomics.hexical.casting.patterns.pigments.OpToPigment
@@ -65,9 +65,9 @@ import miyucomics.hexical.casting.patterns.soroban.OpSorobanDecrement
 import miyucomics.hexical.casting.patterns.soroban.OpSorobanIncrement
 import miyucomics.hexical.casting.patterns.soroban.OpSorobanReset
 import miyucomics.hexical.casting.patterns.specks.*
-import miyucomics.hexical.casting.patterns.staff.OpConjureTchotchke
-import miyucomics.hexical.casting.patterns.staff.OpReadStaff
-import miyucomics.hexical.casting.patterns.staff.OpWriteStaff
+import miyucomics.hexical.casting.patterns.tchotchke.OpConjureTchotchke
+import miyucomics.hexical.casting.patterns.tchotchke.OpReadTchotchke
+import miyucomics.hexical.casting.patterns.tchotchke.OpWriteTchotchke
 import miyucomics.hexical.casting.patterns.telepathy.OpHallucinateSound
 import miyucomics.hexical.casting.patterns.telepathy.OpSendTelepathy
 import miyucomics.hexical.casting.patterns.telepathy.OpShoutTelepathy
@@ -75,6 +75,7 @@ import miyucomics.hexical.casting.patterns.wristpocket.*
 import miyucomics.hexical.casting.special_handlers.NephthysSpecialHandler
 import miyucomics.hexical.casting.special_handlers.SekhmetSpecialHandler
 import miyucomics.hexical.interfaces.Specklike
+import miyucomics.hexical.items.HandLampItem
 import net.minecraft.block.CandleBlock
 import net.minecraft.block.SeaPickleBlock
 import net.minecraft.block.TurtleEggBlock
@@ -98,9 +99,9 @@ object HexicalPatterns {
 		register("get_hand_lamp_position", "qwddedqdd", HexDir.SOUTH_WEST, OpGetHandLampData { _, nbt -> vecFromNBT(nbt.getLongArray("position")).asActionResult })
 		register("get_hand_lamp_rotation", "qwddedadw", HexDir.SOUTH_WEST, OpGetHandLampData { _, nbt -> vecFromNBT(nbt.getLongArray("rotation")).asActionResult })
 		register("get_hand_lamp_velocity", "qwddedqew", HexDir.SOUTH_WEST, OpGetHandLampData { _, nbt -> vecFromNBT(nbt.getLongArray("velocity")).asActionResult })
-		register("get_hand_lamp_use_time", "qwddedqwddwa", HexDir.SOUTH_WEST, OpGetHandLampData { ctx, nbt -> (ctx.world.time - (nbt.getDouble("start_time") + 1.0)).asActionResult })
-//		register("get_hand_lamp_media", "qwddedaeeeee", HexDir.SOUTH_WEST, OpGetHandLampData { ctx, _ -> ((ctx.caster.activeItem.item as HandLampItem).getMedia(ctx.caster!!.activeItem).toDouble() / MediaConstants.DUST_UNIT).asActionResult })
-		register("get_hand_lamp_storage", "qwddedqwaqqqqq", HexDir.SOUTH_WEST, OpGetHandLampData { ctx, nbt -> listOf(IotaType.deserialize(nbt.getCompound("storage"), ctx.world)) })
+		register("get_hand_lamp_use_time", "qwddedqwddwa", HexDir.SOUTH_WEST, OpGetHandLampData { env, nbt -> (env.world.time - (nbt.getDouble("start_time") + 1.0)).asActionResult })
+		register("get_hand_lamp_media", "qwddedaeeeee", HexDir.SOUTH_WEST, OpGetHandLampData { env, _ -> ((env.castingEntity!!.activeItem.item as HandLampItem).getMedia(env.castingEntity!!.activeItem).toDouble() / MediaConstants.DUST_UNIT).asActionResult })
+		register("get_hand_lamp_storage", "qwddedqwaqqqqq", HexDir.SOUTH_WEST, OpGetHandLampData { env, nbt -> listOf(IotaType.deserialize(nbt.getCompound("storage"), env.world)) })
 		register("set_hand_lamp_storage", "qwddedqedeeeee", HexDir.SOUTH_WEST, OpSetHandLampStorage())
 		register("get_arch_lamp_position", "qaqwddedqdd", HexDir.NORTH_EAST, OpGetArchLampData { _, data -> data.position.asActionResult } )
 		register("get_arch_lamp_rotation", "qaqwddedadw", HexDir.NORTH_EAST, OpGetArchLampData { _, data -> data.rotation.asActionResult } )
@@ -109,8 +110,6 @@ object HexicalPatterns {
 		register("get_arch_lamp_storage", "qaqwddedqwaqqqqq", HexDir.NORTH_EAST, OpGetArchLampData { ctx, data -> listOf(IotaType.deserialize(data.storage, ctx.world)) } )
 		register("set_arch_lamp_storage", "qaqwddedqedeeeee", HexDir.NORTH_EAST, OpSetArchLampStorage())
 		register("get_arch_lamp_media", "qaqwddedaeeeee", HexDir.NORTH_EAST, OpGetArchLampMedia())
-		register("activate_arch_lamp", "qaqwddedadeaqq", HexDir.NORTH_EAST, OpActivateArchLamp())
-		register("terminate_arch_lamp", "qaqwddedwaqdee", HexDir.NORTH_EAST, OpTerminateArchLamp())
 		register("has_arch_lamp", "qaqwddedqeed", HexDir.NORTH_EAST, OpIsUsingArchLamp())
 		register("lamp_finale", "aaddaddad", HexDir.EAST, OpGetFinale())
 
@@ -222,12 +221,11 @@ object HexicalPatterns {
 		register("modify_block_ephemeral", "deewwaawd", HexDir.NORTH_WEST, OpModifyMageBlock("ephemeral", 1))
 		register("modify_block_invisible", "deeqedeaqqqwqqq", HexDir.NORTH_WEST, OpModifyMageBlock("invisible"))
 		register("modify_block_replaceable", "deewqaqqqqq", HexDir.NORTH_WEST, OpModifyMageBlock("replaceable"))
-		register("modify_block_semipermeable", "deeeqawde", HexDir.NORTH_WEST, OpModifyMageBlock("semipermeable"))
 		register("modify_block_volatile", "deewedeeeee", HexDir.NORTH_WEST, OpModifyMageBlock("volatile"))
 
 		register("conjure_staff", "wwwwwaqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpConjureTchotchke())
-		register("write_staff", "waqqqqqedeqdqdqdqdqe", HexDir.NORTH_EAST, OpWriteStaff())
-		register("read_staff", "waqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpReadStaff())
+		register("write_staff", "waqqqqqedeqdqdqdqdqe", HexDir.NORTH_EAST, OpWriteTchotchke())
+		register("read_staff", "waqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpReadTchotchke())
 
 		register("conjure_firework", "dedwaqwwawwqa", HexDir.SOUTH_WEST, OpConjureFirework())
 		register("simulate_firework", "dedwaqwqqwqa", HexDir.SOUTH_WEST, OpSimulateFirework())

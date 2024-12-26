@@ -21,7 +21,7 @@ class OpConjureHexburst : SpellAction {
 		val position = args.getVec3(0, argc)
 		env.assertVecInRange(position)
 		val iota = args[1]
-		CastingUtils.assertNoTruename(iota, env.castingEntity)
+		CastingUtils.assertNoTruename(iota, env)
 		return SpellAction.Result(Spell(position, iota), MediaConstants.DUST_UNIT, listOf(ParticleSpray.burst(position, 1.0)))
 	}
 

@@ -52,13 +52,6 @@
 			"text": "hexical.page.modify_block_replaceable.summary"
 		}, {
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:modify_block_semipermeable",
-			"anchor": "hexical:modify_block_semipermeable",
-			"input": "vector",
-			"output": "",
-			"text": "hexical.page.modify_block_semipermeable.summary"
-		}, {
-			"type": "hexcasting:pattern",
 			"op_id": "hexical:modify_block_volatile",
 			"anchor": "hexical:modify_block_volatile",
 			"input": "vector",

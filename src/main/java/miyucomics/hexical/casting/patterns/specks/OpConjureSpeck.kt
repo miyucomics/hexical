@@ -9,18 +9,16 @@ import at.petrak.hexcasting.api.casting.iota.PatternIota
 import at.petrak.hexcasting.api.casting.math.HexDir
 import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.misc.MediaConstants
-import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.entities.specklikes.SpeckEntity
 import miyucomics.hexical.inits.HexicalAdvancements
 import net.minecraft.command.argument.EntityAnchorArgumentType
+import net.minecraft.server.network.ServerPlayerEntity
 
 class OpConjureSpeck : ConstMediaAction {
 	override val argc = 3
 	override val mediaCost = MediaConstants.DUST_UNIT / 100
 	override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
 		val iota = args[0]
-		if (iota is PatternIota && iota.pattern == HexPattern.fromAngles("deaqq", HexDir.SOUTH_EAST))
-			HexicalAdvancements.HEXXY.trigger(env.caster)
 
 		val position = args.getVec3(1, argc)
 		val rotation = args.getVec3(2, argc)
@@ -33,7 +31,12 @@ class OpConjureSpeck : ConstMediaAction {
 		speck.setIota(iota)
 		env.world.spawnEntity(speck)
 
-		HexicalAdvancements.AR.trigger(env.caster)
+		if (env.castingEntity is ServerPlayerEntity) {
+			HexicalAdvancements.AR.trigger(env.castingEntity as ServerPlayerEntity)
+			if (iota is PatternIota && iota.pattern == HexPattern.fromAngles("deaqq", HexDir.SOUTH_EAST))
+				HexicalAdvancements.HEXXY.trigger(env.castingEntity as ServerPlayerEntity)
+		}
+
 		return listOf(EntityIota(speck))
 	}
 }

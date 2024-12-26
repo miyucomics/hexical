@@ -29,6 +29,6 @@ object OpAtalanta : Action {
 			}
 		}
 
-		return OperationResult(image.withUsedOp(), listOf(), newContinuation, HexEvalSounds.NOTHING)
+		return OperationResult(image.withUsedOp(), listOf(), newContinuation, HexEvalSounds.NORMAL_EXECUTE)
 	}
 }

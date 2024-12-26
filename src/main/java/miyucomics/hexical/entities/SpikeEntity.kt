@@ -4,6 +4,7 @@ import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.inits.HexicalDamageTypes
 import miyucomics.hexical.inits.HexicalEntities
 import net.minecraft.entity.*
+import net.minecraft.entity.damage.DamageSource
 import net.minecraft.entity.data.DataTracker
 import net.minecraft.entity.data.TrackedData
 import net.minecraft.entity.data.TrackedDataHandlerRegistry
@@ -14,6 +15,7 @@ import net.minecraft.nbt.NbtCompound
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket
 import net.minecraft.particle.ItemStackParticleEffect
 import net.minecraft.particle.ParticleTypes
+import net.minecraft.registry.RegistryKeys
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.sound.SoundCategory
 import net.minecraft.sound.SoundEvents
@@ -55,7 +57,7 @@ class SpikeEntity(entityType: EntityType<SpikeEntity>, world: World) : Entity(en
 		target.addVelocity(direction.x.toDouble(), direction.y.toDouble() + 0.5f, direction.z.toDouble())
 		if (!target.isAlive || target.isInvulnerable)
 			return
-		target.damage(HexicalDamageTypes.spike(this, getConjurer()), 6f)
+		target.damage(DamageSource(world.registryManager.get(RegistryKeys.DAMAGE_TYPE).entryOf(HexicalDamageTypes.SPIKE)), 6f)
 	}
 
 	private fun setDirection(direction: Direction) {

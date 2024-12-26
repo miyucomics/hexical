@@ -10,21 +10,23 @@ import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.inits.HexicalAdvancements
 import miyucomics.hexical.interfaces.GenieLamp
 import net.minecraft.item.ItemStack
+import net.minecraft.server.network.ServerPlayerEntity
 
 class OpEducateGenie : SpellAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val patterns = args.getList(0, argc).toList()
-		val stack = env.caster.getStackInHand(env.otherHand)
-		if (stack.item !is GenieLamp)
-			throw MishapBadOffhandItem.of(stack, "lamp_full")
+		val stack = env.queryForMatchingStack { stack -> stack.item is GenieLamp }
+		if (stack == null)
+			throw MishapBadOffhandItem.of(null, "lamp_full")
 		return SpellAction.Result(Spell(patterns, stack), 0, listOf())
 	}
 
 	private data class Spell(val patterns: List<Iota>, val stack: ItemStack) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
 			IXplatAbstractions.INSTANCE.findHexHolder(stack)?.writeHex(patterns, null, IXplatAbstractions.INSTANCE.findMediaHolder(stack)?.media!!)
-			HexicalAdvancements.EDUCATE_GENIE.trigger(env.caster)
+			if (env.castingEntity is ServerPlayerEntity)
+				HexicalAdvancements.EDUCATE_GENIE.trigger(env.castingEntity as ServerPlayerEntity)
 		}
 	}
 }

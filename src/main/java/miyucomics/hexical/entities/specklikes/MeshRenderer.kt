@@ -8,6 +8,7 @@ import net.minecraft.client.render.entity.EntityRenderer
 import net.minecraft.client.render.entity.EntityRendererFactory
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.util.Identifier
+import net.minecraft.util.math.RotationAxis
 import net.minecraft.util.math.Vec3d
 import org.joml.Matrix3f
 import org.joml.Matrix4f
@@ -25,9 +26,9 @@ class MeshRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<MeshEnti
 
 		matrices.push()
 		matrices.translate(0.0, 0.25, 0.0)
-		matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(-entity.yaw))
-		matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(entity.pitch))
-		matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(entity.clientRoll))
+		matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-entity.yaw))
+		matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(entity.pitch))
+		matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(entity.clientRoll))
 		matrices.scale(entity.clientSize, entity.clientSize, entity.clientSize)
 
 		val buf = vertexConsumers.getBuffer(renderLayer)
