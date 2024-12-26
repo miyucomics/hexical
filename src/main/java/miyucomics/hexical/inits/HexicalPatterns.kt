@@ -223,9 +223,9 @@ object HexicalPatterns {
 		register("modify_block_replaceable", "deewqaqqqqq", HexDir.NORTH_WEST, OpModifyMageBlock("replaceable"))
 		register("modify_block_volatile", "deewedeeeee", HexDir.NORTH_WEST, OpModifyMageBlock("volatile"))
 
-		register("conjure_staff", "wwwwwaqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpConjureTchotchke())
-		register("write_staff", "waqqqqqedeqdqdqdqdqe", HexDir.NORTH_EAST, OpWriteTchotchke())
-		register("read_staff", "waqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpReadTchotchke())
+		register("conjure_tchotchke", "wwwwwaqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpConjureTchotchke())
+		register("write_tchotchke", "waqqqqqedeqdqdqdqdqe", HexDir.NORTH_EAST, OpWriteTchotchke())
+		register("read_tchotchke", "waqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpReadTchotchke())
 
 		register("conjure_firework", "dedwaqwwawwqa", HexDir.SOUTH_WEST, OpConjureFirework())
 		register("simulate_firework", "dedwaqwqqwqa", HexDir.SOUTH_WEST, OpSimulateFirework())

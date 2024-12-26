@@ -61,7 +61,7 @@ public class MinecraftClientMixin implements MinecraftClientMinterface {
 			buf.writeInt(rank);
 			for (int i = 0; i < rank; i++)
 				buf.writeBoolean(hexical$clicks.get(i));
-			ClientPlayNetworking.send(HexicalNetworking.CONJURED_STAFF_CHANNEL, buf);
+			ClientPlayNetworking.send(HexicalNetworking.tchotchke_CHANNEL, buf);
 			hexical$clicks.clear();
 		}
 	}
