@@ -1,9 +1,15 @@
 package miyucomics.hexical.inits
 
+import at.petrak.hexcasting.api.item.HexHolderItem
+import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.common.items.ItemStaff
+import at.petrak.hexcasting.common.lib.HexBlocks
+import at.petrak.hexcasting.common.lib.HexItems
+import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.items.*
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents
 import net.minecraft.client.item.CompassAnglePredicateProvider
 import net.minecraft.client.item.CompassAnglePredicateProvider.CompassTarget
 import net.minecraft.client.item.ModelPredicateProviderRegistry
@@ -23,8 +29,8 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.GlobalPos
 
 object HexicalItems {
-	val HEXICAL_GROUP_KEY: RegistryKey<ItemGroup> = RegistryKey.of(Registries.ITEM_GROUP.key, HexicalMain.id("general"))
-	val HEXICAL_GROUP: ItemGroup = FabricItemGroup.builder().icon { -> ItemStack(TCHOTCHKE_ITEM) }.displayName(Text.translatable("itemGroup.hexical.general")).build()
+	private val HEXICAL_GROUP_KEY: RegistryKey<ItemGroup> = RegistryKey.of(Registries.ITEM_GROUP.key, HexicalMain.id("general"))
+	private val HEXICAL_GROUP: ItemGroup = FabricItemGroup.builder().icon { -> ItemStack(TCHOTCHKE_ITEM) }.displayName(Text.translatable("itemGroup.hexical.general")).build()
 
 	@JvmField
 	val HAND_LAMP_ITEM = HandLampItem()
@@ -44,6 +50,26 @@ object HexicalItems {
 
 	@JvmStatic
 	fun init() {
+		Registry.register(Registries.ITEM_GROUP, HEXICAL_GROUP_KEY, HEXICAL_GROUP);
+
+		ItemGroupEvents.MODIFY_ENTRIES_ALL.register { tab, entries ->
+			if (tab != HEXICAL_GROUP)
+				return@register
+
+			val handLamp = ItemStack(HAND_LAMP_ITEM)
+			IXplatAbstractions.INSTANCE.findHexHolder(handLamp)!!.writeHex(listOf(), null, 32000 * MediaConstants.DUST_UNIT)
+			entries.add(handLamp)
+
+			val archLamp = ItemStack(ARCH_LAMP_ITEM)
+			IXplatAbstractions.INSTANCE.findHexHolder(archLamp)!!.writeHex(listOf(), null, 32000 * MediaConstants.DUST_UNIT)
+			entries.add(archLamp)
+
+			entries.add(ItemStack(GRIMOIRE_ITEM))
+			entries.add(ItemStack(SMALL_LIVING_SCROLL_ITEM))
+			entries.add(ItemStack(MEDIUM_LIVING_SCROLL_ITEM))
+			entries.add(ItemStack(LARGE_LIVING_SCROLL_ITEM))
+		}
+
 		Registry.register(Registries.ITEM, HexicalMain.id("lamp"), HAND_LAMP_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("arch_lamp"), ARCH_LAMP_ITEM)
 
