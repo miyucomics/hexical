@@ -19,7 +19,7 @@ import net.minecraft.util.Identifier
 
 object HexicalNetworking {
 	@JvmField
-	val CONJURED_STAFF_CHANNEL: Identifier = HexicalMain.id("conjured_staff")
+	val tchotchke_CHANNEL: Identifier = HexicalMain.id("tchotchke")
 	val PRESSED_KEY_CHANNEL: Identifier = HexicalMain.id("press_key")
 	val RELEASED_KEY_CHANNEL: Identifier = HexicalMain.id("release_key")
 
@@ -28,7 +28,7 @@ object HexicalNetworking {
 
 	@JvmStatic
 	fun serverInit() {
-		ServerPlayNetworking.registerGlobalReceiver(CONJURED_STAFF_CHANNEL) { server, player, _, buf, _ ->
+		ServerPlayNetworking.registerGlobalReceiver(tchotchke_CHANNEL) { server, player, _, buf, _ ->
 			val hand = getConjuredStaff(player) ?: return@registerGlobalReceiver
 			val constructedStack: MutableList<Iota> = ArrayList()
 			val staffRank = buf.readInt()
