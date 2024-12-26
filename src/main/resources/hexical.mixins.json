@@ -6,12 +6,12 @@
 	"client": [
 		"AbstractClientPlayerEntityMixin",
 		"ClientPlayerEntityMixin",
+		"GameRendererMixin",
 		"MinecraftClientMixin",
 		"MouseMixin"
 	],
 	"mixins": [
 		"BlockAkashicBookshelfMixin",
-		"CastingHarnessMixin",
 		"FabricIXplatImplMixin",
 		"ItemAbacusMixin",
 		"ItemEntityMixin",

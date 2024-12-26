@@ -3,6 +3,7 @@ package miyucomics.hexical.casting.patterns.grimoire
 import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.iota.Iota
+import at.petrak.hexcasting.api.casting.iota.ListIota
 import at.petrak.hexcasting.api.casting.iota.PatternIota
 import at.petrak.hexcasting.api.casting.math.HexDir
 import at.petrak.hexcasting.api.casting.math.HexPattern
@@ -16,9 +17,9 @@ class OpGrimoireIndex : ConstMediaAction {
 		val stack = env.getHeldItemToOperateOn { stack -> stack.isOf(HexicalItems.GRIMOIRE_ITEM) }
 		if (stack == null)
 			throw MishapBadOffhandItem.of(null, "grimoire")
-		val result = ArrayList<PatternIota>()
+		val result = mutableListOf<PatternIota>()
 		for (pattern in stack.stack.orCreateNbt.getOrCreateCompound("patterns").keys)
 			result.add(PatternIota(HexPattern.fromAngles(pattern, HexDir.WEST)))
-		return result
+		return listOf(ListIota(result.toList()))
 	}
 }

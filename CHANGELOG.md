@@ -1,6 +1,7 @@
 # Changelog
 
 ## 1.4.1
+- changed hexbursts and akashic bookshelf prestidigitation effect to be able to push into Introspection stack
 - changed wandering trader lamp trade chance to 50%
 - changed a lot of scrying to require ambit
 - changed Conjure Firework price to always be one shard

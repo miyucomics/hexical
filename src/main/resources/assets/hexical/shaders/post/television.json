@@ -4,10 +4,11 @@
 	],
 	"passes": [
 		{
-			"name": "hexical:television",
+			"name": "television",
 			"intarget": "minecraft:main",
 			"outtarget": "swap"
-		}, {
+		},
+		{
 			"name": "blit",
 			"intarget": "swap",
 			"outtarget": "minecraft:main"
