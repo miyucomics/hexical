@@ -9,7 +9,6 @@ import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.misc.MediaConstants
 import miyucomics.hexical.inits.HexicalSounds
 import net.minecraft.entity.Entity
-import net.minecraft.network.packet.s2c.play.PlaySoundS2CPacket
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.sound.SoundCategory
 
@@ -25,7 +24,7 @@ class OpGasp : SpellAction {
 		override fun cast(env: CastingEnvironment) {
 			target.air = target.maxAir
 			if (target is ServerPlayerEntity)
-				target.networkHandler.sendPacket(PlaySoundS2CPacket(HexicalSounds.REPLENISH_AIR, SoundCategory.MASTER, target.x, target.y, target.z, 1f, 1f, 0))
+				env.world.playSound(target.x, target.y, target.z, HexicalSounds.REPLENISH_AIR, SoundCategory.MASTER, 1f, 1f, true)
 		}
 	}
 }

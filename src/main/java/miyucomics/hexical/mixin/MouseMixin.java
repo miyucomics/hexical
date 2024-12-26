@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import static miyucomics.hexical.items.ConjuredStaffItemKt.getConjuredStaff;
+import static miyucomics.hexical.items.TchotchkeItemKt.getConjuredStaff;
 
 @Mixin(Mouse.class)
 public class MouseMixin {

@@ -11,10 +11,9 @@ class OpIotaSpeck : ConstMediaAction {
 	override val argc = 2
 	override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
 		val speck = args.getEntity(0, argc)
-		val iota = args[1]
 		if (speck !is SpeckEntity)
 			throw MishapBadEntity.of(speck, "speck")
-		speck.setIota(iota)
+		speck.setIota(args[1])
 		return listOf()
 	}
 }

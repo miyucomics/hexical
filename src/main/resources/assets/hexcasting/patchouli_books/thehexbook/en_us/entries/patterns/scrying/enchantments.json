@@ -1,7 +1,7 @@
 {
 	"name": "hexical.page.enchantments.title",
 	"icon": "minecraft:enchanted_book",
-	"category": "hexical:scrying",
+	"category": "hexcasting:scrying",
 	"advancement": "hexcasting:root",
 	"pages": [
 		{

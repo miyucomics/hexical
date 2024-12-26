@@ -1,6 +1,7 @@
 package miyucomics.hexical.utils
 
 import at.petrak.hexcasting.api.HexAPI
+import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapOthersName
 import miyucomics.hexical.inits.HexicalItems
@@ -10,22 +11,11 @@ import net.minecraft.item.ItemStack
 import net.minecraft.server.network.ServerPlayerEntity
 
 object CastingUtils {
-	fun assertNoTruename(iota: Iota, caster: LivingEntity?) {
-		if (caster !is PlayerEntity)
-			return
-		val trueName = MishapOthersName.getTrueNameFromDatum(iota, caster)
-		if (trueName != null)
-			throw MishapOthersName(trueName)
-	}
-
-	@JvmStatic
-	fun getActiveArchLamp(player: ServerPlayerEntity): ItemStack? {
-		val combinedInventory = listOf(player.inventory.main, player.inventory.armor, player.inventory.offHand)
-		for (inventory in combinedInventory)
-			for (stack in inventory)
-				if (stack.isOf(HexicalItems.ARCH_LAMP_ITEM) && stack.getOrCreateNbt().getBoolean("active"))
-					return stack
-		return null
+	fun assertNoTruename(iota: Iota, env: CastingEnvironment) {
+		val original = if (env.castingEntity is ServerPlayerEntity) env.castingEntity as ServerPlayerEntity else null
+		val truename = MishapOthersName.getTrueNameFromDatum(iota, original)
+		if (truename != null)
+			throw MishapOthersName(truename)
 	}
 
 	@JvmStatic

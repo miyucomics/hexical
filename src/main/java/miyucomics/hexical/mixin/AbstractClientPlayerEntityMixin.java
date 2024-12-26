@@ -7,7 +7,6 @@ import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationAccess;
 import miyucomics.hexical.client.PlayerAnimations;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.world.ClientWorld;
-import net.minecraft.network.encryption.PlayerPublicKey;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;

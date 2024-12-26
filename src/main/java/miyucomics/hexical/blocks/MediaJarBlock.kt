@@ -2,7 +2,10 @@ package miyucomics.hexical.blocks
 
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.inits.HexicalSounds
-import net.minecraft.block.*
+import net.minecraft.block.BlockRenderType
+import net.minecraft.block.BlockState
+import net.minecraft.block.ShapeContext
+import net.minecraft.block.TransparentBlock
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.sound.BlockSoundGroup
 import net.minecraft.sound.SoundCategory

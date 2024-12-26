@@ -21,7 +21,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.ArrayList;
 import java.util.List;
 
-import static miyucomics.hexical.items.ConjuredStaffItemKt.getConjuredStaff;
+import static miyucomics.hexical.items.TchotchkeItemKt.getConjuredStaff;
 
 @Mixin(MinecraftClient.class)
 public class MinecraftClientMixin implements MinecraftClientMinterface {

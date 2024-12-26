@@ -1,7 +1,7 @@
 {
 	"name": "hexical.page.status_effects.title",
 	"icon": "minecraft:glass_bottle",
-	"category": "hexical:scrying",
+	"category": "hexcasting:scrying",
 	"advancement": "hexcasting:root",
 	"pages": [
 		{

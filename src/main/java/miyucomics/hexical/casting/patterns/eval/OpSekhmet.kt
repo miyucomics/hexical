@@ -13,6 +13,6 @@ class OpSekhmet(private val perserve: Int) : Action {
 		val stack = image.stack.toMutableList()
 		if (stack.size < perserve)
 			throw MishapNotEnoughArgs(perserve, stack.size)
-		return OperationResult(image.withUsedOp().copy(stack = stack.takeLast(perserve)), listOf(), continuation, HexEvalSounds.NOTHING)
+		return OperationResult(image.withUsedOp().copy(stack = stack.takeLast(perserve)), listOf(), continuation, HexEvalSounds.NORMAL_EXECUTE)
 	}
 }

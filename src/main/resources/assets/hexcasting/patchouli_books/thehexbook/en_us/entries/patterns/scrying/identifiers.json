@@ -1,7 +1,7 @@
 {
 	"name": "hexical.page.identifiers.title",
 	"icon": "hexcasting:lens",
-	"category": "hexical:scrying",
+	"category": "hexcasting:scrying",
 	"advancement": "hexcasting:root",
 	"pages": [
 		{

@@ -1,6 +1,5 @@
 package miyucomics.hexical.casting.patterns.wristpocket
 
-import at.petrak.hexcasting.api.casting.ParticleSpray
 import at.petrak.hexcasting.api.casting.RenderedSpell
 import at.petrak.hexcasting.api.casting.castables.SpellAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
@@ -19,7 +18,7 @@ class OpIngest : SpellAction {
 		if (env.castingEntity !is ServerPlayerEntity)
 			throw MishapBadCaster()
 
-		val stack = PersistentStateHandler.getWristpocketStack(env.caster)
+		val stack = PersistentStateHandler.getWristpocketStack(env.castingEntity as ServerPlayerEntity)
 		if (stack.isOf(Items.POTION) || stack.isOf(Items.HONEY_BOTTLE) || stack.isOf(Items.MILK_BUCKET) || stack.item.isFood)
 			return SpellAction.Result(Spell(stack), MediaConstants.DUST_UNIT, listOf())
 		throw InedibleWristpocketMishap()
@@ -27,11 +26,12 @@ class OpIngest : SpellAction {
 
 	private data class Spell(val stack: ItemStack) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			val originalItem = env.caster.getStackInHand(env.castingHand)
-			env.caster.setStackInHand(env.castingHand, stack)
-			val newStack = stack.finishUsing(env.world, env.caster)
-			PersistentStateHandler.setWristpocketStack(env.caster, newStack)
-			env.caster.setStackInHand(env.castingHand, originalItem)
+			val caster = env.castingEntity as ServerPlayerEntity
+			val originalItem = caster.getStackInHand(env.castingHand)
+			caster.setStackInHand(env.castingHand, stack)
+			val newStack = stack.finishUsing(env.world, caster)
+			PersistentStateHandler.setWristpocketStack(caster, newStack)
+			caster.setStackInHand(env.castingHand, originalItem)
 		}
 	}
 }
