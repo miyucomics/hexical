@@ -21,9 +21,7 @@ class OpWristpocket : SpellAction {
 
 	private data class Spell(val hand: Hand) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			val caster = env.castingEntity
-			if (caster !is ServerPlayerEntity)
-				throw MishapBadCaster()
+			val caster = env.castingEntity as ServerPlayerEntity
 			val item = PersistentStateHandler.getWristpocketStack(caster)
 			PersistentStateHandler.setWristpocketStack(caster, caster.getStackInHand(hand))
 			caster.setStackInHand(hand, item)

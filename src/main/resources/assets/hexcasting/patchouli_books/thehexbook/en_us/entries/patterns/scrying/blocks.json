@@ -1,7 +1,7 @@
 {
 	"name": "hexical.page.blocks.title",
 	"icon": "minecraft:cobblestone",
-	"category": "hexical:scrying",
+	"category": "hexcasting:scrying",
 	"advancement": "hexcasting:root",
 	"pages": [
 		{

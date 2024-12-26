@@ -1,7 +1,7 @@
 package miyucomics.hexical.items
 
-import at.petrak.hexcasting.api.spell.iota.GarbageIota
-import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
+import at.petrak.hexcasting.api.casting.iota.GarbageIota
+import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import net.minecraft.entity.LivingEntity
 import net.minecraft.item.FoodComponent
@@ -18,9 +18,10 @@ class HexburstItem : Item(Settings().maxCount(16).food(FoodComponent.Builder().a
 			return super.finishUsing(stack, world, user)
 		if (user !is ServerPlayerEntity)
 			return super.finishUsing(stack, world, user)
-		val harness = IXplatAbstractions.INSTANCE.getHarness(user, user.activeHand)
-		harness.stack.add(if (stack.orCreateNbt.contains("iota")) HexIotaTypes.deserialize(stack.orCreateNbt.getCompound("iota")!!, world as ServerWorld) else GarbageIota())
-		IXplatAbstractions.INSTANCE.setHarness(user, harness)
+		val image = IXplatAbstractions.INSTANCE.getStaffcastVM(user, user.activeHand).image
+		val newStack = image.stack.toMutableList()
+		newStack.add(if (stack.orCreateNbt.contains("iota")) IotaType.deserialize(stack.orCreateNbt.getCompound("iota")!!, world as ServerWorld) else GarbageIota())
+		IXplatAbstractions.INSTANCE.setStaffcastImage(user, image.copy(stack = newStack))
 		return super.finishUsing(stack, world, user)
 	}
 }

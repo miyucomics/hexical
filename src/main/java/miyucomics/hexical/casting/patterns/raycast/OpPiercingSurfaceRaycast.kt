@@ -92,7 +92,7 @@ class OpPiercingSurfaceRaycast : ConstMediaAction {
 
 			if (env.world.getBlockState(BlockPos(voxelX, voxelY, voxelZ)).block == targetBlockType)
 				return normal.asActionResult
-			if (!env.isVecInRange(Vec3d(voxelX, voxelY, voxelZ)))
+			if (!env.isVecInRange(Vec3d(voxelX.toDouble(), voxelY.toDouble(), voxelZ.toDouble())))
 				return listOf(NullIota())
 		}
 	}

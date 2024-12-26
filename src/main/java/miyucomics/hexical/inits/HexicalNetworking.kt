@@ -6,7 +6,7 @@ import dev.kosmx.playerAnim.api.layered.KeyframeAnimationPlayer
 import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationRegistry
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.client.PlayerAnimations
-import miyucomics.hexical.items.ConjuredStaffItem
+import miyucomics.hexical.items.TchotchkeItem
 import miyucomics.hexical.items.getConjuredStaff
 import miyucomics.hexical.state.EvokeState
 import miyucomics.hexical.state.KeybindData
@@ -35,7 +35,7 @@ object HexicalNetworking {
 			for (i in 0 until staffRank)
 				constructedStack.add(BooleanIota(buf.readBoolean()))
 			server.execute {
-				ConjuredStaffItem.cast(player, hand, player.getStackInHand(hand), constructedStack)
+				TchotchkeItem.cast(player, hand, player.getStackInHand(hand), constructedStack)
 			}
 		}
 

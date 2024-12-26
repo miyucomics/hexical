@@ -1,7 +1,7 @@
 {
 	"name": "hexical.page.entities.title",
 	"icon": "minecraft:egg",
-	"category": "hexical:scrying",
+	"category": "hexcasting:scrying",
 	"advancement": "hexcasting:root",
 	"pages": [
 		{

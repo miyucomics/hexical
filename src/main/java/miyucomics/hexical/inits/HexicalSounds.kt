@@ -10,6 +10,7 @@ object HexicalSounds {
 	lateinit var EVOKING_CAST: SoundEvent
 	lateinit var LAMP_ACTIVATE: SoundEvent
 	lateinit var LAMP_DEACTIVATE: SoundEvent
+	@JvmStatic
 	lateinit var SUDDEN_REALIZATION: SoundEvent
 	lateinit var PLAYER_SLURP: SoundEvent
 	lateinit var REPLENISH_AIR: SoundEvent

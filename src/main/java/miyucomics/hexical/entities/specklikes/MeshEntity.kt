@@ -11,7 +11,6 @@ import net.minecraft.nbt.NbtElement
 import net.minecraft.nbt.NbtFloat
 import net.minecraft.nbt.NbtList
 import net.minecraft.util.math.Vec3d
-import net.minecraft.util.math.Vec3f
 import net.minecraft.world.World
 
 class MeshEntity(entityType: EntityType<out MeshEntity>, world: World) : BaseSpecklike(entityType, world) {
