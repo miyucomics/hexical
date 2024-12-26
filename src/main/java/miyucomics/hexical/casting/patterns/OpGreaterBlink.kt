@@ -1,11 +1,11 @@
 package miyucomics.hexical.casting.patterns
 
-import at.petrak.hexcasting.api.casting.ParticleSpray
 import at.petrak.hexcasting.api.casting.RenderedSpell
 import at.petrak.hexcasting.api.casting.castables.SpellAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.getVec3
 import at.petrak.hexcasting.api.casting.iota.Iota
+import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadLocation
 import at.petrak.hexcasting.api.misc.MediaConstants
 import net.minecraft.util.math.MathHelper
@@ -14,11 +14,13 @@ import net.minecraft.util.math.Vec3d
 class OpGreaterBlink : SpellAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
-		val providedOffset = args.getVec3(0, argc)
-		val straightAxis = env.caster.rotationVector
+		val caster = env.castingEntity ?: throw MishapBadCaster()
 
-		val upPitch = (-env.caster.pitch + 90) * (Math.PI.toFloat() / 180)
-		val yaw = -env.caster.headYaw * (Math.PI.toFloat() / 180)
+		val providedOffset = args.getVec3(0, argc)
+		val straightAxis = caster.rotationVector
+
+		val upPitch = (-caster.pitch + 90) * (Math.PI.toFloat() / 180)
+		val yaw = -caster.headYaw * (Math.PI.toFloat() / 180)
 		val h = MathHelper.cos(yaw).toDouble()
 		val j = MathHelper.cos(upPitch).toDouble()
 		val upAxis = Vec3d(MathHelper.sin(yaw).toDouble() * j, MathHelper.sin(upPitch).toDouble(), h * j)
@@ -30,13 +32,13 @@ class OpGreaterBlink : SpellAction {
 			.add(straightAxis.multiply(providedOffset.z))
 
 		if (worldOffset.length() > 128)
-			throw MishapBadLocation(env.caster.eyePos.add(worldOffset))
-		return SpellAction.Result(Spell(env.caster.eyePos.add(worldOffset)), MediaConstants.DUST_UNIT * 2, listOf())
+			throw MishapBadLocation(caster.eyePos.add(worldOffset))
+		return SpellAction.Result(Spell(caster.eyePos.add(worldOffset)), MediaConstants.DUST_UNIT * 2, listOf())
 	}
 
 	private data class Spell(val position: Vec3d) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			env.caster.teleport(position.x, position.y, position.z)
+			env.castingEntity!!.teleport(position.x, position.y, position.z)
 		}
 	}
 }

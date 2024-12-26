@@ -22,10 +22,9 @@ import net.minecraft.util.Identifier
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.GlobalPos
 
-
 object HexicalItems {
 	val HEXICAL_GROUP_KEY: RegistryKey<ItemGroup> = RegistryKey.of(Registries.ITEM_GROUP.key, HexicalMain.id("general"))
-	val HEXICAL_GROUP: ItemGroup = FabricItemGroup.builder().icon { -> ItemStack(CONJURED_STAFF_ITEM) }.displayName(Text.translatable("itemGroup.hexical.general")).build()
+	val HEXICAL_GROUP: ItemGroup = FabricItemGroup.builder().icon { -> ItemStack(TCHOTCHKE_ITEM) }.displayName(Text.translatable("itemGroup.hexical.general")).build()
 
 	@JvmField
 	val HAND_LAMP_ITEM = HandLampItem()
@@ -34,8 +33,9 @@ object HexicalItems {
 
 	@JvmField
 	val CONJURED_COMPASS_ITEM = ConjuredCompassItem()
+	@JvmField
 	val GRIMOIRE_ITEM = GrimoireItem()
-	val CONJURED_STAFF_ITEM = ConjuredStaffItem()
+	val TCHOTCHKE_ITEM = TchotchkeItem()
 	val HEXBURST_ITEM = HexburstItem()
 	val HEXTITO_ITEM = HextitoItem()
 	val SMALL_LIVING_SCROLL_ITEM = LivingScrollItem(1)
@@ -55,7 +55,7 @@ object HexicalItems {
 		Registry.register(Registries.ITEM, HexicalMain.id("living_scroll_medium"), MEDIUM_LIVING_SCROLL_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("living_scroll_large"), LARGE_LIVING_SCROLL_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("conjured_compass"), CONJURED_COMPASS_ITEM)
-		Registry.register(Registries.ITEM, HexicalMain.id("conjured_staff"), CONJURED_STAFF_ITEM)
+		Registry.register(Registries.ITEM, HexicalMain.id("tchotchke"), TCHOTCHKE_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("hexburst"), HEXBURST_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("hextito"), HEXTITO_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("mage_block"), BlockItem(HexicalBlocks.MAGE_BLOCK, Settings()))
@@ -65,7 +65,7 @@ object HexicalItems {
 
 	@JvmStatic
 	fun clientInit() {
-		ModelPredicateProviderRegistry.register(CONJURED_STAFF_ITEM, Identifier("sprite")) { stack: ItemStack, _: ClientWorld?, _: LivingEntity?, _: Int -> stack.orCreateNbt.getFloat("sprite") / 10 }
+		ModelPredicateProviderRegistry.register(TCHOTCHKE_ITEM, Identifier("sprite")) { stack: ItemStack, _: ClientWorld?, _: LivingEntity?, _: Int -> stack.orCreateNbt.getFloat("sprite") / 10 }
 		ModelPredicateProviderRegistry.register(CONJURED_COMPASS_ITEM, Identifier("angle"), CompassAnglePredicateProvider(CompassTarget { _: ClientWorld, stack: ItemStack, player: Entity ->
 			val nbt = stack.nbt ?: return@CompassTarget null
 			return@CompassTarget GlobalPos.create(player.world.registryKey, BlockPos(nbt.getInt("x"), nbt.getInt("y"), nbt.getInt("z")))

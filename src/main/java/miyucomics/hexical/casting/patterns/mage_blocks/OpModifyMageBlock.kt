@@ -9,6 +9,7 @@ import miyucomics.hexical.blocks.MageBlock
 import miyucomics.hexical.blocks.MageBlockEntity
 import miyucomics.hexical.inits.HexicalAdvancements
 import miyucomics.hexical.inits.HexicalBlocks
+import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d
 
@@ -23,14 +24,15 @@ class OpModifyMageBlock(private val property: String, arguments: Int = 0) : Spel
 			args.getPositiveIntUnder(1, 16, argc)
 		if (property == "ephemeral")
 			args.getPositiveInt(1, argc)
-		return SpellAction.Result(Spell(position, property, args.subList(1, args.size).toList()), 0, listOf(ParticleSpray.cloud(Vec3d.ofCenter(pos), 1.0)))
+		return SpellAction.Result(Spell(position, property, args.subList(1, args.size).toList()), 0, listOf(ParticleSpray.cloud(Vec3d.ofCenter(position), 1.0)))
 	}
 
 	private data class Spell(val pos: BlockPos, val property: String, val args: List<Iota>) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			(env.world.getBlockEntity(pos) as MageBlockEntity).setProperty(property, args, env.caster)
+			if (env.castingEntity is ServerPlayerEntity)
+				HexicalAdvancements.DIY.trigger(env.castingEntity as ServerPlayerEntity)
+			(env.world.getBlockEntity(pos) as MageBlockEntity).setProperty(property, args)
 			env.world.updateNeighborsAlways(pos, HexicalBlocks.MAGE_BLOCK)
-			HexicalAdvancements.DIY.trigger(env.caster)
 		}
 	}
 }

@@ -18,6 +18,6 @@ class OpDupMany : Action {
 		stack.removeLast()
 		for (iota in stack.takeLast(count))
 			stack.add(iota)
-		return OperationResult(image.withUsedOp().copy(stack = stack), listOf(), continuation, HexEvalSounds.NOTHING)
+		return OperationResult(image.withUsedOp().copy(stack = stack), listOf(), continuation, HexEvalSounds.NORMAL_EXECUTE)
 	}
 }

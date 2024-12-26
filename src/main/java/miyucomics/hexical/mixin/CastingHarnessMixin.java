@@ -1,29 +1,18 @@
 package miyucomics.hexical.mixin;
 
-import at.petrak.hexcasting.api.addldata.ADMediaHolder;
-import at.petrak.hexcasting.api.misc.DiscoveryHandlers;
-import at.petrak.hexcasting.api.spell.casting.CastingEnvironment;
-import at.petrak.hexcasting.api.spell.casting.CastingHarness;
-import at.petrak.hexcasting.api.spell.casting.ControllerInfo;
-import at.petrak.hexcasting.api.spell.casting.sideeffects.OperatorSideEffect;
-import at.petrak.hexcasting.api.spell.iota.Iota;
-import at.petrak.hexcasting.api.spell.iota.PatternIota;
-import at.petrak.hexcasting.api.spell.math.HexDir;
-import at.petrak.hexcasting.api.spell.math.HexPattern;
+import at.petrak.hexcasting.api.casting.eval.CastingEnvironment;
+import at.petrak.hexcasting.api.casting.eval.ExecutionClientView;
+import at.petrak.hexcasting.api.casting.eval.env.StaffCastEnv;
+import at.petrak.hexcasting.api.casting.eval.vm.CastingVM;
+import at.petrak.hexcasting.api.casting.iota.Iota;
+import at.petrak.hexcasting.api.casting.iota.PatternIota;
+import at.petrak.hexcasting.api.casting.math.HexPattern;
 import at.petrak.hexcasting.common.lib.HexSounds;
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes;
-import at.petrak.hexcasting.xplat.IXplatAbstractions;
-import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
-import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
-import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import miyucomics.hexical.enums.SpecializedSource;
-import miyucomics.hexical.interfaces.CastingEnvironmentMinterface;
-import miyucomics.hexical.utils.CastingUtils;
-import net.minecraft.entity.player.PlayerEntity;
+import miyucomics.hexical.inits.HexicalItems;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvent;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -34,64 +23,26 @@ import java.util.List;
 
 import static miyucomics.hexical.items.GrimoireItemKt.grimoireLookup;
 
-@SuppressWarnings("UnreachableCode")
-@Mixin(value = CastingHarness.class, priority = 900)
+@Mixin(value = CastingVM.class, priority = 900)
 public class CastingHarnessMixin {
 	@Unique
-	private final CastingHarness hexical$harness = (CastingHarness) (Object) this;
+	private final CastingVM vm = (CastingVM) (Object) this;
 
-	@WrapOperation(method = "updateWithPattern", at = @At(value = "INVOKE", target = "Ljava/util/List;add(Ljava/lang/Object;)Z"))
-	private boolean stopLampParticles(List<OperatorSideEffect> instance, Object effect, Operation<Boolean> original) {
-		SpecializedSource source = ((CastingEnvironmentMinterface) (Object) hexical$harness.getCtx()).getSpecializedSource();
-		if (source == SpecializedSource.HAND_LAMP || source == SpecializedSource.ARCH_LAMP || source == SpecializedSource.CONJURED_STAFF || source == SpecializedSource.EVOCATION)
-			return true;
-		return original.call(instance, effect);
-	}
-
-	@WrapWithCondition(method = "executeIotas", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/world/ServerWorld;playSound(Lnet/minecraft/entity/player/PlayerEntity;DDDLnet/minecraft/sound/SoundEvent;Lnet/minecraft/sound/SoundCategory;FF)V"))
-	private boolean silenceLamp(ServerWorld world, PlayerEntity player, double x, double y, double z, SoundEvent event, SoundCategory type, float volume, float pitch) {
-		SpecializedSource source = ((CastingEnvironmentMinterface) (Object) hexical$harness.getCtx()).getSpecializedSource();
-		return !(source == SpecializedSource.HAND_LAMP || source == SpecializedSource.ARCH_LAMP || source == SpecializedSource.CONJURED_STAFF || source == SpecializedSource.EVOCATION);
-	}
-
-	@SuppressWarnings("DataFlowIssue")
-	@Inject(method = "withdrawMedia", at = @At("HEAD"), cancellable = true, remap = false)
-	private void takeMediaFromArchLamp(int mediaCost, boolean allowOvercast, CallbackInfoReturnable<Integer> cir) {
-		CastingEnvironment ctx = hexical$harness.getCtx();
-		if (ctx.getCaster().isCreative()) {
-			cir.setReturnValue(0);
-			return;
-		}
-
-		SpecializedSource specializedSource = ((CastingEnvironmentMinterface) (Object) hexical$harness.getCtx()).getSpecializedSource();
-		if (specializedSource == null)
+	@Inject(method = "queueExecuteAndWrapIota", at = @At("HEAD"), cancellable = true, remap = false)
+	private void expandGrimoire(Iota iota, ServerWorld world, CallbackInfoReturnable<ExecutionClientView> cir) {
+		CastingEnvironment env = vm.getEnv();
+		if (!(env instanceof StaffCastEnv))
 			return;
 
-		switch (specializedSource) {
-			case ARCH_LAMP:
-				ItemStack lamp = CastingUtils.getActiveArchLamp(ctx.getCaster());
-				ADMediaHolder mediaHolder = IXplatAbstractions.INSTANCE.findMediaHolder(lamp);
-				assert mediaHolder != null;
-				int mediaToTake = Math.min(mediaCost, mediaHolder.withdrawMedia(-1, true));
-				mediaCost -= mediaToTake;
-				mediaHolder.withdrawMedia(mediaToTake, false);
-				cir.setReturnValue(mediaCost);
-			case EVOCATION:
-				cir.setReturnValue(CastingUtils.takeMediaFromInventory((CastingHarness) (Object) this, mediaCost));
-		}
-	}
-
-	@Inject(method = "executeIota", at = @At("HEAD"), cancellable = true, remap = false)
-	private void expandGrimoire(Iota iota, ServerWorld world, CallbackInfoReturnable<ControllerInfo> cir) {
-		CastingEnvironment ctx = hexical$harness.getCtx();
-		if (ctx.getSpellCircle() != null)
-			return;
-		if (!hexical$harness.getEscapeNext() && iota.getType() == HexIotaTypes.PATTERN && !((PatternIota) iota).getPattern().sigsEqual(HexPattern.fromAngles("qqqaw", HexDir.EAST))) {
+		if (!vm.getImage().getEscapeNext() && iota.getType() == HexIotaTypes.PATTERN) {
 			HexPattern pattern = ((PatternIota) iota).getPattern();
-			List<Iota> lookupResult = grimoireLookup(ctx.getCaster(), pattern, DiscoveryHandlers.collectItemSlots(ctx));
-			if (lookupResult != null) {
-				ctx.getCaster().playSound(HexSounds.CAST_HERMES, SoundCategory.MASTER, 0.25f, 1.25f);
-				cir.setReturnValue(hexical$harness.executeIotas(lookupResult, world));
+			ItemStack grimoire = env.queryForMatchingStack(item -> item.isOf(HexicalItems.GRIMOIRE_ITEM));
+			if (grimoire == null)
+				return;
+			List<Iota> expansion = grimoireLookup((ServerPlayerEntity) env.getCastingEntity(), pattern, grimoire);
+			if (expansion != null) {
+				env.getCastingEntity().playSound(HexSounds.CAST_HERMES, 0.25f, 1.25f);
+				cir.setReturnValue(vm.queueExecuteAndWrapIotas(expansion, world));
 			}
 		}
 	}

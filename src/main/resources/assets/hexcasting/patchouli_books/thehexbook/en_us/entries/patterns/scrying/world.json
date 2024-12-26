@@ -1,7 +1,7 @@
 {
 	"name": "hexical.page.world.title",
 	"icon": "minecraft:compass",
-	"category": "hexical:scrying",
+	"category": "hexcasting:scrying",
 	"advancement": "hexcasting:root",
 	"pages": [
 		{

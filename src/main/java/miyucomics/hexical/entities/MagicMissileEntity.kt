@@ -5,18 +5,22 @@ import miyucomics.hexical.inits.HexicalDamageTypes
 import miyucomics.hexical.inits.HexicalEntities
 import net.minecraft.entity.EntityStatuses
 import net.minecraft.entity.EntityType
+import net.minecraft.entity.damage.DamageSource
+import net.minecraft.entity.damage.DamageType
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.entity.projectile.PersistentProjectileEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.item.Items
 import net.minecraft.particle.ItemStackParticleEffect
 import net.minecraft.particle.ParticleTypes
+import net.minecraft.registry.RegistryKeys
 import net.minecraft.sound.SoundCategory
 import net.minecraft.sound.SoundEvent
 import net.minecraft.sound.SoundEvents
 import net.minecraft.util.hit.BlockHitResult
 import net.minecraft.util.hit.EntityHitResult
 import net.minecraft.world.World
+
 
 class MagicMissileEntity(entityType: EntityType<out MagicMissileEntity?>, world: World) : PersistentProjectileEntity(entityType, world) {
 	constructor(world: World) : this(HexicalEntities.MAGIC_MISSILE_ENTITY, world)
@@ -41,7 +45,7 @@ class MagicMissileEntity(entityType: EntityType<out MagicMissileEntity?>, world:
 
 	override fun onEntityHit(entityHitResult: EntityHitResult) {
 		val target = entityHitResult.entity
-		target.damage(HexicalDamageTypes.magicMissile(this, this.owner), 2f)
+		target.damage(DamageSource(world.registryManager.get(RegistryKeys.DAMAGE_TYPE).entryOf(HexicalDamageTypes.MAGIC_MISSILE)), 2f)
 		target.velocity = this.velocity.multiply(1.0, 0.0, 1.0).normalize().multiply(0.6).add(0.0, 0.1, 0.0)
 		shatter()
 	}

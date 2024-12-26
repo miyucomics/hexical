@@ -10,10 +10,6 @@ import at.petrak.hexcasting.api.casting.eval.vm.FrameFinishEval
 import at.petrak.hexcasting.api.casting.eval.vm.SpellContinuation
 import at.petrak.hexcasting.api.casting.evaluatable
 import at.petrak.hexcasting.api.casting.iota.Iota
-import at.petrak.hexcasting.api.casting.iota.ListIota
-import at.petrak.hexcasting.api.casting.iota.PatternIota
-import at.petrak.hexcasting.api.casting.math.HexDir
-import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.casting.mishaps.MishapNotEnoughArgs
 import at.petrak.hexcasting.common.lib.hex.HexEvalSounds
 import miyucomics.hexical.casting.frames.NephthysFrame

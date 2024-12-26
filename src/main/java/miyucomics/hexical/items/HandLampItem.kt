@@ -1,13 +1,16 @@
 package miyucomics.hexical.items
 
+import at.petrak.hexcasting.api.casting.eval.vm.CastingImage
+import at.petrak.hexcasting.api.casting.eval.vm.CastingVM
+import at.petrak.hexcasting.api.casting.iota.IotaType
+import at.petrak.hexcasting.api.casting.iota.NullIota
 import at.petrak.hexcasting.api.misc.MediaConstants
-import at.petrak.hexcasting.api.spell.iota.NullIota
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.api.utils.serializeToNBT
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
-import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import at.petrak.hexcasting.xplat.IXplatAbstractions
-import miyucomics.hexical.enums.SpecializedSource
+import miyucomics.hexical.casting.environments.ArchLampCastEnv
+import miyucomics.hexical.casting.environments.HandLampCastEnv
 import miyucomics.hexical.inits.HexicalItems
 import miyucomics.hexical.inits.HexicalSounds
 import miyucomics.hexical.interfaces.GenieLamp
@@ -25,26 +28,17 @@ import net.minecraft.util.UseAction
 import net.minecraft.util.collection.DefaultedList
 import net.minecraft.world.World
 
-class HandLampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.HEXICAL_GROUP)), GenieLamp {
-	override fun appendStacks(group: ItemGroup, stacks: DefaultedList<ItemStack>) {
-		if (this.isIn(group)) {
-			val stack = ItemStack(HexicalItems.HAND_LAMP_ITEM)
-			val holder = IXplatAbstractions.INSTANCE.findHexHolder(stack)
-			holder!!.writeHex(listOf(), MediaConstants.DUST_UNIT * 200000)
-			stacks.add(stack)
-		}
-	}
-
+class HandLampItem : ItemPackagedHex(Settings().maxCount(1)), GenieLamp {
 	override fun use(world: World, user: PlayerEntity, hand: Hand): TypedActionResult<ItemStack> {
 		val stack = user.getStackInHand(hand)
 		if (!hasHex(stack)) return TypedActionResult.fail(stack)
 		val stackNbt = stack.orCreateNbt
 		world.playSound(user.x, user.y, user.z, HexicalSounds.LAMP_ACTIVATE, SoundCategory.MASTER, 1f, 1f, true)
 		if (!world.isClient) {
-			stackNbt.putLongArray("position", user.eyePos.serializeToNBT().longArray)
-			stackNbt.putLongArray("rotation", user.rotationVector.serializeToNBT().longArray)
-			stackNbt.putLongArray("velocity", user.velocity.serializeToNBT().longArray)
-			stackNbt.putCompound("storage", HexIotaTypes.serialize(NullIota()))
+			stackNbt.putCompound("position", user.eyePos.serializeToNBT())
+			stackNbt.putCompound("rotation", user.rotationVector.serializeToNBT())
+			stackNbt.putCompound("velocity", user.velocity.serializeToNBT())
+			stackNbt.putCompound("storage", IotaType.serialize(NullIota()))
 			stackNbt.putLong("start_time", world.time)
 		}
 		user.setCurrentHand(hand)
@@ -53,13 +47,16 @@ class HandLampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.H
 
 	override fun usageTick(world: World, user: LivingEntity, stack: ItemStack, remainingUseTicks: Int) {
 		if (world.isClient) return
-		if (getMedia(stack) == 0) return
-		CastingUtils.castSpecial(world as ServerWorld, user as ServerPlayerEntity, getHex(stack, world) ?: return, SpecializedSource.HAND_LAMP, finale = false)
+		if (getMedia(stack) == 0L) return
+		val vm = CastingVM(CastingImage(), HandLampCastEnv(user as ServerPlayerEntity, Hand.MAIN_HAND, stack, false))
+		vm.queueExecuteAndWrapIotas((stack.item as HandLampItem).getHex(stack, world as ServerWorld)!!, world)
 	}
 
 	override fun onStoppedUsing(stack: ItemStack, world: World, user: LivingEntity, remainingUseTicks: Int) {
-		if (!world.isClient)
-			CastingUtils.castSpecial(world as ServerWorld, user as ServerPlayerEntity, getHex(stack, world) ?: return, SpecializedSource.HAND_LAMP, finale = true)
+		if (!world.isClient) {
+			val vm = CastingVM(CastingImage(), HandLampCastEnv(user as ServerPlayerEntity, Hand.MAIN_HAND, stack, true))
+			vm.queueExecuteAndWrapIotas((stack.item as HandLampItem).getHex(stack, world as ServerWorld)!!, world)
+		}
 		world.playSound(user.x, user.y, user.z, HexicalSounds.LAMP_DEACTIVATE, SoundCategory.MASTER, 1f, 1f, true)
 	}
 
@@ -68,4 +65,5 @@ class HandLampItem : ItemPackagedHex(Settings().maxCount(1).group(HexicalItems.H
 	override fun getUseAction(stack: ItemStack) = UseAction.BOW
 	override fun canRecharge(stack: ItemStack?) = false
 	override fun breakAfterDepletion() = false
+	override fun cooldown() = 0
 }

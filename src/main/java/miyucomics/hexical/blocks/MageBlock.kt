@@ -7,8 +7,6 @@ import net.minecraft.block.entity.BlockEntity
 import net.minecraft.block.entity.BlockEntityTicker
 import net.minecraft.block.entity.BlockEntityType
 import net.minecraft.entity.Entity
-import net.minecraft.entity.damage.DamageSource
-import net.minecraft.entity.damage.DamageSources
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.BlockItem
 import net.minecraft.item.ItemPlacementContext
@@ -89,21 +87,6 @@ class MageBlock : BlockConjured(Settings.create().nonOpaque().dropsNothing().bre
 					block.onBreak(world, positionToTest, otherState, player)
 			}
 		}
-	}
-
-	override fun getCollisionShape(state: BlockState, world: BlockView, pos: BlockPos, context: ShapeContext): VoxelShape {
-		val tile = world.getBlockEntity(pos)
-		if (tile !is MageBlockEntity)
-			return super.getCollisionShape(state, world, pos, context)
-		val blockEntity = world.getBlockEntity(pos) as MageBlockEntity
-		if (blockEntity.properties["semipermeable"] != true)
-			return super.getCollisionShape(state, world, pos, context)
-		if (context is EntityShapeContext && context.entity != null) {
-			val entity = context.entity!!
-			if (entity.uuid != blockEntity.canPass)
-				return super.getCollisionShape(state, world, pos, context)
-		}
-		return VoxelShapes.empty()
 	}
 
 	override fun createBlockEntity(pos: BlockPos, state: BlockState) = MageBlockEntity(pos, state)
