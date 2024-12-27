@@ -6,27 +6,27 @@
 	"overrides": [
 		{
 			"predicate": {
-				"sprite": 0.1
+				"variant": 1
 			},
 			"model": "hexical:item/tchotchke_clover"
 		}, {
 			"predicate": {
-				"sprite": 0.2
+				"variant": 2
 			},
 			"model": "hexical:item/tchotchke_conch"
 		}, {
 			"predicate": {
-				"sprite": 0.3
+				"variant": 3
 			},
 			"model": "hexical:item/tchotchke_handbell"
 		}, {
 			"predicate": {
-				"sprite": 0.4
+				"variant": 4
 			},
 			"model": "hexical:item/tchotchke_key"
 		}, {
 			"predicate": {
-				"sprite": 0.5
+				"variant": 5
 			},
 			"model": "hexical:item/tchotchke_mirror"
 		}
