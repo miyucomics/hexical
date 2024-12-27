@@ -1,6 +1,7 @@
 # Changelog
 
 ## 1.4.1
+- added ability to open hex notebook with N, taken from HexGloop
 - changed hexbursts and akashic bookshelf prestidigitation effect to be able to push into Introspection stack
 - changed wandering trader lamp trade chance to 50%
 - changed a lot of scrying to require ambit

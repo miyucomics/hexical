@@ -9,6 +9,8 @@ import net.minecraft.client.option.KeyBinding
 import org.lwjgl.glfw.GLFW
 
 object HexicalKeybinds {
+	@JvmStatic
+	val OPEN_HEXBOOK = KeyBinding("key.hexical.open_hexbook", GLFW.GLFW_KEY_N, "key.categories.hexical")
 	private val EVOKE_KEYBIND = KeyBinding("key.hexical.evoke", GLFW.GLFW_KEY_R, "key.categories.hexical")
 	private val TELEPATHY_KEYBIND = KeyBinding("key.hexical.telepathy", GLFW.GLFW_KEY_G, "key.categories.hexical")
 	private var states = mutableMapOf<String, Boolean>()
