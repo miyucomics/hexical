@@ -1,6 +1,10 @@
 # Changelog
 
 ## 1.4.1
+- added spell to conjure llama spit
+- added new telepathy pattern for sneaking
+  - done because the height method isn't always consistent such as swimming, flying with elyta, or standing under a slab
+  - also it's neat to get the first moment you sneaked or how long you've been sneaking for
 - added ability to open hex notebook with N, taken from HexGloop
 - changed hexbursts and akashic bookshelf prestidigitation effect to be able to push into Introspection stack
 - changed wandering trader lamp trade chance to 50%
@@ -9,6 +13,7 @@
 - changed having multiple grimoires to not be useful anymore
 - changed lamp chapter to be open by default
 - changed Autograph to be a staff-only spell
+- changed conjured staffs to tchotchke
 - refactored almost everything is rewritten to be more sane
 - removed Chorus Blink due to not fitting in with classic spells
 - removed Similarity Purification in favor of iota type identifier

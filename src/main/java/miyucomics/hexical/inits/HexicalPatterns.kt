@@ -162,6 +162,7 @@ object HexicalPatterns {
 		register("moving_up", "aqaddq", HexDir.SOUTH_EAST, OpGetKeybind("key.forward"))
 		register("moving_down", "dedwdq", HexDir.SOUTH_WEST, OpGetKeybind("key.back"))
 		register("jumping", "qaqdaqqa", HexDir.SOUTH_WEST, OpGetKeybind("key.jump"))
+		register("sneaking", "wede", HexDir.NORTH_WEST, OpGetKeybind("key.sneak"))
 
 		register("perlin", "qawedqdq", HexDir.WEST, OpPerlin())
 
@@ -172,6 +173,7 @@ object HexicalPatterns {
 		register("conjure_hexburst", "aadaadqaq", HexDir.EAST, OpConjureHexburst())
 		register("conjure_hextito", "qaqdqaqdwawaw", HexDir.EAST, OpConjureHextito())
 		register("ghast_fireball", "wqqqqqwaeaeaeaeae", HexDir.SOUTH_EAST, OpGhastFireball())
+		register("llama_spit", "dwqaqw", HexDir.EAST, OpLlamaSpit())
 		register("gasp", "aweeeeewaweeeee", HexDir.NORTH_WEST, OpGasp())
 
 		register("get_dye", "weedwa", HexDir.NORTH_EAST, OpGetDye())

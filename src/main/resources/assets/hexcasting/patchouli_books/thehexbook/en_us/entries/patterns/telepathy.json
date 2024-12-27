@@ -78,6 +78,13 @@
 			"input": "",
 			"output": "number",
 			"text": "hexical.page.jumping.summary"
+		}, {
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:sneaking",
+			"anchor": "hexical:sneaking",
+			"input": "",
+			"output": "number",
+			"text": "hexical.page.sneaking.summary"
 		}
 	]
 }
