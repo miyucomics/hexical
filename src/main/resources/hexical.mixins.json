@@ -7,12 +7,13 @@
 		"AbstractClientPlayerEntityMixin",
 		"ClientPlayerEntityMixin",
 		"GameRendererMixin",
-		"ScreenMixin",
 		"MinecraftClientMixin",
-		"MouseMixin"
+		"MouseMixin",
+		"ScreenMixin"
 	],
 	"mixins": [
 		"BlockAkashicBookshelfMixin",
+		"CastingVMMixin",
 		"FabricIXplatImplMixin",
 		"ItemAbacusMixin",
 		"ItemEntityMixin",

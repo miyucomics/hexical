@@ -23,9 +23,9 @@ class OpGrimoireErase : SpellAction {
 
 	private data class Spell(val stack: ItemStack, val key: HexPattern) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			if (!stack.orCreateNbt.contains("patterns"))
+			if (!stack.orCreateNbt.contains("expansions"))
 				return
-			stack.orCreateNbt.getCompound("patterns").remove(key.anglesSignature())
+			stack.orCreateNbt.getCompound("expansions").remove(key.anglesSignature())
 		}
 	}
 }

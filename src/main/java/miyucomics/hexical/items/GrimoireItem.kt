@@ -2,6 +2,7 @@ package miyucomics.hexical.items
 
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.IotaType
+import at.petrak.hexcasting.api.casting.iota.ListIota
 import at.petrak.hexcasting.api.casting.iota.PatternIota
 import at.petrak.hexcasting.api.casting.math.HexDir
 import at.petrak.hexcasting.api.casting.math.HexPattern
@@ -18,22 +19,15 @@ import net.minecraft.server.world.ServerWorld
 
 class GrimoireItem : Item(Settings().maxCount(1)) {
 	companion object {
+		@JvmStatic
 		fun getPatternInGrimoire(stack: ItemStack, key: HexPattern, world: ServerWorld): List<Iota>? {
-			val data = stack.orCreateNbt.getOrCreateCompound("patterns").getCompound(key.anglesSignature())
-			val patsTag = data.getList("expansion", NbtElement.COMPOUND_TYPE.toInt())
-			if (patsTag.isEmpty())
+			val data = stack.orCreateNbt.getOrCreateCompound("expansions")
+			if (!data.contains(key.anglesSignature()))
 				return null
-			val out = ArrayList<Iota>()
-			for (patTag in patsTag)
-				out.add(IotaType.deserialize(patTag as NbtCompound, world))
-			return out
+			val deserialized = IotaType.deserialize(data.getCompound(key.anglesSignature()), world)
+			if (deserialized is ListIota)
+				return deserialized.list.toList()
+			return null
 		}
 	}
-}
-
-fun grimoireLookup(player: ServerPlayerEntity, pattern: HexPattern, stack: ItemStack): List<Iota>? {
-	val value = GrimoireItem.getPatternInGrimoire(stack, pattern, player.serverWorld)
-	if (value != null)
-		return value
-	return null
 }
