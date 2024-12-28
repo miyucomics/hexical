@@ -18,7 +18,7 @@ class OpGrimoireIndex : ConstMediaAction {
 		if (stack == null)
 			throw MishapBadOffhandItem.of(null, "grimoire")
 		val result = mutableListOf<PatternIota>()
-		for (pattern in stack.stack.orCreateNbt.getOrCreateCompound("patterns").keys)
+		for (pattern in stack.stack.orCreateNbt.getOrCreateCompound("expansions").keys)
 			result.add(PatternIota(HexPattern.fromAngles(pattern, HexDir.WEST)))
 		return listOf(ListIota(result.toList()))
 	}
