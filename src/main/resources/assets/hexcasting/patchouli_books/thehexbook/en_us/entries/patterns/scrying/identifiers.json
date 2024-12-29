@@ -26,6 +26,13 @@
 			"text": "hexical.page.recognize.summary"
 		}, {
 			"type": "hexcasting:pattern",
+			"op_id": "hexical:classify",
+			"anchor": "hexical:classify",
+			"input": "any",
+			"output": "identifier",
+			"text": "hexical.page.classify.summary"
+		}, {
+			"type": "hexcasting:pattern",
 			"op_id": "hexical:get_mainhand_stack",
 			"anchor": "hexical:get_mainhand_stack",
 			"input": "player entity",
