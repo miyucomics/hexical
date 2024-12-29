@@ -8,7 +8,7 @@ import net.minecraft.util.Identifier
 import java.io.IOException
 
 object ShaderRenderer {
-    private val NIGHT_VISION: Identifier = HexicalMain.id("shaders/post/media_vision.json");
+    private val COLOR_VISION: Identifier = HexicalMain.id("shaders/post/color_vision.json");
     private var nightVisionShader: PostEffectProcessor? = null
 
     private var lastWidth = 0
@@ -18,25 +18,22 @@ object ShaderRenderer {
     @JvmStatic
     fun render(deltaTick: Float) {
         MinecraftClient.getInstance().player ?: return
-
-        makeColorShaders()
+        makeShaders()
 
         var activeShader: PostEffectProcessor? = null
-        if (true) {
-            activeShader = nightVisionShader
+        activeShader = nightVisionShader
+        if (activeShader == null)
+            return
+
+        if (lastShader != activeShader) {
+            lastShader = activeShader
+            lastWidth = 0
+            lastHeight = 0
         }
 
-        if (activeShader != null) {
-            if (lastShader !== activeShader) {
-                lastShader = activeShader
-                lastWidth = 0
-                lastHeight = 0
-            }
-            updateShaderGroupSize(activeShader)
-            activeShader.passes.forEach { pass -> pass.program.getUniformByNameOrDummy("ClientTime").set(ClientStorage.time + MinecraftClient.getInstance().tickDelta) }
-            activeShader.render(deltaTick)
-            MinecraftClient.getInstance().framebuffer.beginWrite(false)
-        }
+        updateShaderGroupSize(activeShader)
+        activeShader.render(deltaTick)
+        MinecraftClient.getInstance().framebuffer.beginWrite(false)
     }
 
     private fun createShaderGroup(location: Identifier): PostEffectProcessor? {
@@ -51,22 +48,22 @@ object ShaderRenderer {
         return null
     }
 
-    private fun makeColorShaders() {
+    private fun makeShaders() {
         if (nightVisionShader == null) {
-            nightVisionShader = createShaderGroup(NIGHT_VISION)
+            nightVisionShader = createShaderGroup(COLOR_VISION)
         }
     }
 
     private fun updateShaderGroupSize(shaderGroup: PostEffectProcessor?) {
-        if (shaderGroup != null) {
-            val client = MinecraftClient.getInstance()
-            val width = client.window.width
-            val height = client.window.height
-            if (width != lastWidth || height != lastHeight) {
-                lastWidth = width
-                lastHeight = height
-                shaderGroup.setupDimensions(width, height)
-            }
+        if (shaderGroup == null)
+            return
+        val client = MinecraftClient.getInstance()
+        val width = client.window.width
+        val height = client.window.height
+        if (width != lastWidth || height != lastHeight) {
+            lastWidth = width
+            lastHeight = height
+            shaderGroup.setupDimensions(width, height)
         }
     }
 }

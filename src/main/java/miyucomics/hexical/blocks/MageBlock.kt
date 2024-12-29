@@ -2,7 +2,9 @@ package miyucomics.hexical.blocks
 
 import at.petrak.hexcasting.common.blocks.BlockConjured
 import miyucomics.hexical.inits.HexicalBlocks
-import net.minecraft.block.*
+import net.minecraft.block.BlockState
+import net.minecraft.block.Blocks
+import net.minecraft.block.MapColor
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.block.entity.BlockEntityTicker
 import net.minecraft.block.entity.BlockEntityType
@@ -18,8 +20,6 @@ import net.minecraft.util.Hand
 import net.minecraft.util.hit.BlockHitResult
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
-import net.minecraft.util.shape.VoxelShape
-import net.minecraft.util.shape.VoxelShapes
 import net.minecraft.world.BlockView
 import net.minecraft.world.World
 import net.minecraft.world.event.GameEvent

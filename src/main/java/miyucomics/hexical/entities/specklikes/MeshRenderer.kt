@@ -2,7 +2,6 @@ package miyucomics.hexical.entities.specklikes
 
 import at.petrak.hexcasting.api.HexAPI.modLoc
 import at.petrak.hexcasting.api.pigment.FrozenPigment
-import dev.kosmx.playerAnim.core.util.Vec3f
 import net.minecraft.client.render.*
 import net.minecraft.client.render.entity.EntityRenderer
 import net.minecraft.client.render.entity.EntityRendererFactory

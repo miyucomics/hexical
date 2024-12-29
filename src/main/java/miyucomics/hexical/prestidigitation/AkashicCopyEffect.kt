@@ -3,12 +3,10 @@ package miyucomics.hexical.prestidigitation
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.common.blocks.akashic.BlockEntityAkashicBookshelf
-import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.interfaces.PrestidigitationEffect
 import miyucomics.hexical.utils.CastingUtils
 import net.minecraft.entity.Entity
 import net.minecraft.server.network.ServerPlayerEntity
-import net.minecraft.util.Hand
 import net.minecraft.util.math.BlockPos
 
 class AkashicCopyEffect : PrestidigitationEffect {
