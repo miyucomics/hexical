@@ -5,10 +5,8 @@ import at.petrak.hexcasting.api.casting.circles.BlockEntityAbstractImpetus
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import miyucomics.hexical.interfaces.PrestidigitationEffect
 import net.minecraft.entity.Entity
-import net.minecraft.entity.LivingEntity
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.math.BlockPos
-import org.apache.logging.log4j.core.jmx.Server
 
 class TriggerImpetusEffect : PrestidigitationEffect {
 	override fun effectBlock(env: CastingEnvironment, position: BlockPos) {

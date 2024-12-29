@@ -6,7 +6,6 @@ import miyucomics.hexical.inits.HexicalEntities
 import net.minecraft.entity.EntityStatuses
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.damage.DamageSource
-import net.minecraft.entity.damage.DamageType
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.entity.projectile.PersistentProjectileEntity
 import net.minecraft.item.ItemStack

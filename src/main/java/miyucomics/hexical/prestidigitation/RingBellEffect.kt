@@ -6,8 +6,6 @@ import net.minecraft.block.BellBlock
 import net.minecraft.block.entity.BellBlockEntity
 import net.minecraft.block.enums.Attachment
 import net.minecraft.entity.Entity
-import net.minecraft.entity.LivingEntity
-import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.sound.SoundCategory
 import net.minecraft.sound.SoundEvents
 import net.minecraft.util.math.BlockPos

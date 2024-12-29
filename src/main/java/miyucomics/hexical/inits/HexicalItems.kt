@@ -1,10 +1,7 @@
 package miyucomics.hexical.inits
 
-import at.petrak.hexcasting.api.item.HexHolderItem
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.common.items.ItemStaff
-import at.petrak.hexcasting.common.lib.HexBlocks
-import at.petrak.hexcasting.common.lib.HexItems
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.items.*
@@ -15,7 +12,6 @@ import net.minecraft.client.item.CompassAnglePredicateProvider.CompassTarget
 import net.minecraft.client.item.ModelPredicateProviderRegistry
 import net.minecraft.client.world.ClientWorld
 import net.minecraft.entity.Entity
-import net.minecraft.entity.LivingEntity
 import net.minecraft.item.BlockItem
 import net.minecraft.item.Item.Settings
 import net.minecraft.item.ItemGroup

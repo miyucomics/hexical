@@ -32,17 +32,9 @@ import miyucomics.hexical.casting.patterns.conjure.*
 import miyucomics.hexical.casting.patterns.eval.*
 import miyucomics.hexical.casting.patterns.firework.OpConjureFirework
 import miyucomics.hexical.casting.patterns.firework.OpSimulateFirework
-import miyucomics.hexical.casting.patterns.scrying.*
-import miyucomics.hexical.casting.patterns.scrying.OpGetEnchantmentStrength
-import miyucomics.hexical.casting.patterns.scrying.OpGetStatusEffectCategory
-import miyucomics.hexical.casting.patterns.scrying.types.OpGetBlockTypeData
-import miyucomics.hexical.casting.patterns.scrying.types.OpGetFoodTypeData
-import miyucomics.hexical.casting.patterns.scrying.types.OpGetItemTypeData
 import miyucomics.hexical.casting.patterns.grimoire.OpGrimoireErase
 import miyucomics.hexical.casting.patterns.grimoire.OpGrimoireIndex
 import miyucomics.hexical.casting.patterns.grimoire.OpGrimoireWrite
-import miyucomics.hexical.casting.patterns.scrying.identifier.OpIdentify
-import miyucomics.hexical.casting.patterns.scrying.identifier.OpRecognize
 import miyucomics.hexical.casting.patterns.lamp.*
 import miyucomics.hexical.casting.patterns.mage_blocks.OpConjureMageBlock
 import miyucomics.hexical.casting.patterns.mage_blocks.OpModifyMageBlock
@@ -61,6 +53,13 @@ import miyucomics.hexical.casting.patterns.scroll.OpAgeScroll
 import miyucomics.hexical.casting.patterns.scroll.OpColorScroll
 import miyucomics.hexical.casting.patterns.scroll.OpGlowScroll
 import miyucomics.hexical.casting.patterns.scroll.OpVanishScroll
+import miyucomics.hexical.casting.patterns.scrying.*
+import miyucomics.hexical.casting.patterns.scrying.identifier.OpClassify
+import miyucomics.hexical.casting.patterns.scrying.identifier.OpIdentify
+import miyucomics.hexical.casting.patterns.scrying.identifier.OpRecognize
+import miyucomics.hexical.casting.patterns.scrying.types.OpGetBlockTypeData
+import miyucomics.hexical.casting.patterns.scrying.types.OpGetFoodTypeData
+import miyucomics.hexical.casting.patterns.scrying.types.OpGetItemTypeData
 import miyucomics.hexical.casting.patterns.soroban.OpSorobanDecrement
 import miyucomics.hexical.casting.patterns.soroban.OpSorobanIncrement
 import miyucomics.hexical.casting.patterns.soroban.OpSorobanReset
@@ -248,8 +247,10 @@ object HexicalPatterns {
 
 		register("identify", "qqqqqe", HexDir.NORTH_EAST, OpIdentify())
 		register("recognize", "eeeeeq", HexDir.WEST, OpRecognize())
+		register("classify", "edqdeq", HexDir.WEST, OpClassify())
 		register("get_mainhand_stack", "qaqqqq", HexDir.NORTH_EAST, OpGetPlayerData { player -> listOf(if (player.mainHandStack.isEmpty) NullIota() else IdentifierIota(Registries.ITEM.getId(player.mainHandStack.item))) })
 		register("get_offhand_stack", "edeeee", HexDir.NORTH_WEST, OpGetPlayerData { player -> listOf(if (player.offHandStack.isEmpty) NullIota() else IdentifierIota(Registries.ITEM.getId(player.offHandStack.item))) })
+
 		register("get_weather", "eweweweweweeeaedqdqde", HexDir.WEST, OpGetWorldData { world -> (
 				if (world.isThundering) 2.0
 				else if (world.isRaining) 1.0
