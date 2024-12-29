@@ -5,7 +5,7 @@
 		"dstrgb": "1-srcalpha"
 	},
 	"vertex": "sobel",
-	"fragment": "night_vision",
+	"fragment": "media_vision",
 	"attributes": ["Position"],
 	"samplers": [
 		{"name": "DiffuseSampler"}
@@ -22,6 +22,12 @@
 			"type": "float",
 			"count": 2,
 			"values": [1.0, 1.0]
+		},
+		{
+			"name": "ClientTime",
+			"type": "float",
+			"count": 1,
+			"values": [1.0]
 		}
 	]
 }

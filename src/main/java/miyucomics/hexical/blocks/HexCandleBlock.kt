@@ -21,7 +21,9 @@ import net.minecraft.util.math.random.Random
 import net.minecraft.world.World
 import net.minecraft.world.event.GameEvent
 
-class HexCandleBlock : CandleBlock(Settings.create().mapColor(MapColor.PURPLE).nonOpaque().strength(0.1f).sounds(BlockSoundGroup.CANDLE).luminance(CandleBlock.STATE_TO_LUMINANCE).pistonBehavior(PistonBehavior.DESTROY)), BlockEntityProvider {
+class HexCandleBlock : CandleBlock(Settings.create().mapColor(MapColor.PURPLE).nonOpaque().strength(0.1f).sounds(BlockSoundGroup.CANDLE).luminance(
+	STATE_TO_LUMINANCE
+).pistonBehavior(PistonBehavior.DESTROY)), BlockEntityProvider {
 	override fun onUse(state: BlockState, world: World, pos: BlockPos, player: PlayerEntity, hand: Hand, hit: BlockHitResult): ActionResult {
 		if (player.isSneaking)
 			return super.onUse(state, world, pos, player, hand, hit)
@@ -29,10 +31,11 @@ class HexCandleBlock : CandleBlock(Settings.create().mapColor(MapColor.PURPLE).n
 			return super.onUse(state, world, pos, player, hand, hit)
 
 		val stack = player.getStackInHand(hand)
-		var newPigment = IXplatAbstractions.INSTANCE.getPigment(player)
+		val candle = (world.getBlockEntity(pos)!! as HexCandleBlockEntity)
 		if (IXplatAbstractions.INSTANCE.isPigment(stack))
-			newPigment = FrozenPigment(stack.copy(), player.uuid)
-		(world.getBlockEntity(pos)!! as HexCandleBlockEntity).setPigment(newPigment)
+			candle.setPigment(FrozenPigment(stack.copy(), player.uuid))
+		else
+			candle.setPigment(IXplatAbstractions.INSTANCE.getPigment(player))
 		world.emitGameEvent(player, GameEvent.BLOCK_CHANGE, pos)
 		return ActionResult.SUCCESS
 	}
@@ -56,13 +59,13 @@ class HexCandleBlock : CandleBlock(Settings.create().mapColor(MapColor.PURPLE).n
 				return
 			if (!state.get(AbstractCandleBlock.LIT))
 				return
-			val pigment = blockEntity.getPigment()
+			val colorProvider = blockEntity.getPigment().colorProvider
 			(state.block as HexCandleBlock).getParticleOffsets(state).forEach { offset: Vec3d ->
 				if (world.random.nextFloat() > 0.5)
 					return@forEach
 				val position = offset.add(pos.x.toDouble(), pos.y.toDouble(), pos.z.toDouble())
 				world.addParticle(
-					ConjureParticleOptions(pigment.colorProvider.getColor(world.time.toFloat(), position)),
+					ConjureParticleOptions(colorProvider.getColor(world.time.toFloat(), position)),
 					position.x, position.y, position.z,
 					0.0, world.random.nextFloat() * 0.02, 0.0
 				)
