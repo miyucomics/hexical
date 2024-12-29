@@ -4,6 +4,9 @@ import at.petrak.hexcasting.api.casting.ActionRegistryEntry
 import at.petrak.hexcasting.api.casting.asActionResult
 import at.petrak.hexcasting.api.casting.castables.Action
 import at.petrak.hexcasting.api.casting.castables.SpecialHandler
+import at.petrak.hexcasting.api.casting.eval.env.CircleCastEnv
+import at.petrak.hexcasting.api.casting.eval.env.PackagedItemCastEnv
+import at.petrak.hexcasting.api.casting.eval.env.StaffCastEnv
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.casting.iota.NullIota
@@ -17,6 +20,10 @@ import at.petrak.hexcasting.common.casting.actions.stack.OpTwiddling
 import at.petrak.hexcasting.common.lib.hex.HexActions
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.HexicalMain
+import miyucomics.hexical.casting.environments.ArchLampCastEnv
+import miyucomics.hexical.casting.environments.EvocationCastEnv
+import miyucomics.hexical.casting.environments.HandLampCastEnv
+import miyucomics.hexical.casting.environments.TchotchkeCastEnv
 import miyucomics.hexical.casting.iota.IdentifierIota
 import miyucomics.hexical.casting.iota.asActionResult
 import miyucomics.hexical.casting.patterns.*
@@ -86,6 +93,7 @@ import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.sound.SoundEvents
 import net.minecraft.state.property.Properties
+import net.minecraft.util.Hand
 import net.minecraft.util.math.Direction
 import net.minecraft.util.math.MathHelper
 import net.minecraft.util.math.Vec3d
@@ -150,6 +158,15 @@ object HexicalPatterns {
 		register("fluid_surface_raycast", "weedewqaq", HexDir.EAST, OpFluidSurfaceRaycast())
 		register("piercing_raycast", "wqqddqeqddq", HexDir.EAST, OpPiercingRaycast())
 		register("piercing_surface_raycast", "weeaaeqeaae", HexDir.EAST, OpPiercingSurfaceRaycast())
+
+		register("env_staff", "waaq", HexDir.NORTH_EAST, OpGetEnvData { env -> (env is StaffCastEnv).asActionResult })
+		register("env_packaged_hex", "waaqwwaqqqqq", HexDir.NORTH_EAST, OpGetEnvData { env -> (env is PackagedItemCastEnv).asActionResult })
+		register("env_tchotchke", "waaqwwaqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpGetEnvData { env -> (env is TchotchkeCastEnv).asActionResult })
+		register("env_evocation", "waaqeaqa", HexDir.NORTH_EAST, OpGetEnvData { env -> (env is EvocationCastEnv).asActionResult })
+		register("env_hand_lamp", "waaqdqdded", HexDir.NORTH_EAST, OpGetEnvData { env -> (env is HandLampCastEnv).asActionResult })
+		register("env_arch_lamp", "waaqqqaqwdd", HexDir.NORTH_EAST, OpGetEnvData { env -> (env is ArchLampCastEnv).asActionResult })
+		register("env_circle", "waaqdeaqwqae", HexDir.NORTH_EAST, OpGetEnvData { env -> (env is CircleCastEnv).asActionResult })
+		register("env_offhand", "qaqqqwaaq", HexDir.NORTH_EAST, OpGetEnvData { env -> (env.castingHand == Hand.MAIN_HAND).asActionResult })
 
 		register("get_telepathy", "wqqadaw", HexDir.EAST, OpGetKeybind("key.hexical.telepathy"))
 		register("send_telepathy", "qqqqwaqa", HexDir.EAST, OpSendTelepathy())
