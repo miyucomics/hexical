@@ -175,6 +175,7 @@ object HexicalPatterns {
 		register("ghast_fireball", "wqqqqqwaeaeaeaeae", HexDir.SOUTH_EAST, OpGhastFireball())
 		register("llama_spit", "dwqaqw", HexDir.EAST, OpLlamaSpit())
 		register("gasp", "aweeeeewaweeeee", HexDir.NORTH_WEST, OpGasp())
+		register("myodesopsia", "wadawadawawaaw", HexDir.SOUTH_EAST, OpMyodesopsia())
 
 		register("get_dye", "weedwa", HexDir.NORTH_EAST, OpGetDye())
 		register("dye", "dwaqqw", HexDir.NORTH_WEST, OpDye())

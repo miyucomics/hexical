@@ -7,9 +7,7 @@ import at.petrak.hexcasting.api.casting.iota.Iota
 import miyucomics.hexical.inits.HexicalBlocks
 import net.minecraft.block.BlockState
 import net.minecraft.nbt.NbtCompound
-import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.math.BlockPos
-import java.util.*
 
 class MageBlockEntity(pos: BlockPos, state: BlockState) : HexBlockEntity(HexicalBlocks.MAGE_BLOCK_ENTITY, pos, state) {
 	var properties: MutableMap<String, Boolean> = mutableMapOf(

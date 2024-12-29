@@ -8,7 +8,7 @@ import net.minecraft.util.Identifier
 import java.io.IOException
 
 object ShaderRenderer {
-    private val NIGHT_VISION: Identifier = HexicalMain.id("shaders/post/night_vision.json");
+    private val NIGHT_VISION: Identifier = HexicalMain.id("shaders/post/media_vision.json");
     private var nightVisionShader: PostEffectProcessor? = null
 
     private var lastWidth = 0
@@ -33,6 +33,7 @@ object ShaderRenderer {
                 lastHeight = 0
             }
             updateShaderGroupSize(activeShader)
+            activeShader.passes.forEach { pass -> pass.program.getUniformByNameOrDummy("ClientTime").set(ClientStorage.time + MinecraftClient.getInstance().tickDelta) }
             activeShader.render(deltaTick)
             MinecraftClient.getInstance().framebuffer.beginWrite(false)
         }

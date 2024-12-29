@@ -25,6 +25,6 @@ class HexCandleBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexic
 		pigment = FrozenPigment.fromNBT(nbt.getCompound("pigment"))
 	}
 
-	override fun toUpdatePacket(): BlockEntityUpdateS2CPacket = BlockEntityUpdateS2CPacket.create(this)
 	override fun toInitialChunkDataNbt(): NbtCompound = createNbt()
+	override fun toUpdatePacket(): BlockEntityUpdateS2CPacket = BlockEntityUpdateS2CPacket.create(this)
 }

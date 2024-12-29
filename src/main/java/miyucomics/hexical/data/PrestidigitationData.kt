@@ -14,6 +14,7 @@ import net.minecraft.item.ItemStack
 import net.minecraft.item.Items
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
+import net.minecraft.registry.RegistryKey
 import net.minecraft.registry.SimpleRegistry
 import net.minecraft.state.property.Properties
 import net.minecraft.util.Identifier
@@ -21,7 +22,8 @@ import java.io.InputStream
 import java.io.InputStreamReader
 
 object PrestidigitationData {
-	private val PRESTIDIGITATION_EFFECTS: SimpleRegistry<PrestidigitationEffect> = FabricRegistryBuilder.createSimple(PrestidigitationEffect::class.java, HexicalMain.id("prestidigitation")).attribute(RegistryAttribute.MODDED).buildAndRegister()
+	private val PRESTIDIGTAION_EFFECTS_REGISTRY_KEY: RegistryKey<Registry<PrestidigitationEffect>> = RegistryKey.ofRegistry(HexicalMain.id("prestidigitation"))
+	private val PRESTIDIGITATION_EFFECTS: SimpleRegistry<PrestidigitationEffect> = FabricRegistryBuilder.createSimple(PRESTIDIGTAION_EFFECTS_REGISTRY_KEY).attribute(RegistryAttribute.MODDED).buildAndRegister()
 	private val BLOCK_LOOKUP: HashMap<Identifier, Identifier> = HashMap()
 	private val ENTITY_LOOKUP: HashMap<Identifier, Identifier> = HashMap()
 

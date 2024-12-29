@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(GameRenderer.class)
 public class GameRendererMixin {
-	@Inject(method = "render", at = @At("HEAD"))
+	@Inject(method = "render", at = @At("RETURN"))
 	public void renderShader(float deltaTick, long l, boolean bl, CallbackInfo ci) {
 		ShaderRenderer.render(deltaTick);
 	}
