@@ -2,7 +2,6 @@ accessWidener   v2  named
 accessible field net/minecraft/entity/mob/CreeperEntity IGNITED Lnet/minecraft/entity/data/TrackedData;
 accessible field net/minecraft/entity/projectile/ArrowEntity potion Lnet/minecraft/potion/Potion;
 accessible field net/minecraft/entity/projectile/ArrowEntity effects Ljava/util/Set;
-accessible field net/minecraft/client/gl/PostEffectProcessor passes Ljava/util/List;
 accessible field net/minecraft/entity/passive/PufferfishEntity deflateTicks I
 accessible field net/minecraft/entity/passive/PufferfishEntity inflateTicks I
 accessible method net/minecraft/entity/passive/SquidEntity squirt ()V
