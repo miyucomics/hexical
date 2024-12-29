@@ -1,6 +1,6 @@
 {
 	"name": "hexical.page.blocks.title",
-	"icon": "minecraft:cobblestone",
+	"icon": "minecraft:grass_block",
 	"category": "hexcasting:scrying",
 	"advancement": "hexcasting:root",
 	"pages": [

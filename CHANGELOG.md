@@ -7,6 +7,7 @@
   - also it's neat to get the first moment you sneaked or how long you've been sneaking for
 - added ability to open hex notebook with N, taken from HexGloop
 - added Classifier's Purification to get an iota type identifier
+- added environment scrying patterns to get details about your casting environment
 - changed hexbursts and akashic bookshelf prestidigitation effect to be able to push into Introspection stack
 - changed wandering trader lamp trade chance to 50%
 - changed a lot of scrying to require ambit
