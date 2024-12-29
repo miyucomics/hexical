@@ -14,6 +14,7 @@
 - changed lamp chapter to be open by default
 - changed Autograph to be a staff-only spell
 - changed conjured staffs to tchotchke
+- changed grimoire storage format
 - refactored almost everything is rewritten to be more sane
 - removed Chorus Blink due to not fitting in with classic spells
 - removed Similarity Purification in favor of iota type identifier
