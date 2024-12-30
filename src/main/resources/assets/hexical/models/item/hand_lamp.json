@@ -1,7 +1,7 @@
 {
 	"parent": "minecraft:item/generated",
 	"textures": {
-		"layer0": "hexical:item/lamp"
+		"layer0": "hexical:item/hand_lamp"
 	},
 	"display": {
 		"thirdperson_righthand": {
