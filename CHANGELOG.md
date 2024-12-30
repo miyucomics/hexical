@@ -8,6 +8,8 @@
 - added ability to open hex notebook with N, taken from HexGloop
 - added Classifier's Purification to get an iota type identifier
 - added environment scrying patterns to get details about your casting environment
+- added my own take on pattern manipulation: turn a pattern into a list of numbers and back
+- added Tutu's Gambit - noop
 - changed hexbursts and akashic bookshelf prestidigitation effect to be able to push into Introspection stack
 - changed wandering trader lamp trade chance to 50%
 - changed a lot of scrying to require ambit
@@ -16,7 +18,10 @@
 - changed lamp chapter to be open by default
 - changed Autograph to be a staff-only spell
 - changed conjured staffs to tchotchke
+- changed genie lamp namespace to hand lamp
 - changed grimoire storage format
+- changed locations of some patterns in the hexbook
+- fixed arch genie lamps running in spectator
 - refactored almost everything is rewritten to be more sane
 - removed Chorus Blink due to not fitting in with classic spells
 - removed Similarity Purification in favor of iota type identifier
