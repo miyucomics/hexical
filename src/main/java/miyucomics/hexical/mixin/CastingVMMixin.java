@@ -33,13 +33,12 @@ public abstract class CastingVMMixin {
 		if (image.getEscapeNext() || iota.getType() != HexIotaTypes.PATTERN)
 			return;
 
-		ItemStack grimoire = env.queryForMatchingStack(stack -> stack.isOf(HexicalItems.GRIMOIRE_ITEM));
+		HexPattern pattern = ((PatternIota) iota).getPattern();
+		ItemStack grimoire = env.queryForMatchingStack(stack -> stack.isOf(HexicalItems.GRIMOIRE_ITEM) && stack.getOrCreateNbt().getCompound("expansions").contains(pattern.anglesSignature()));
 		if (grimoire == null)
 			return;
 
-		HexPattern pattern = ((PatternIota) iota).getPattern();
 		List<Iota> expansion = GrimoireItem.getPatternInGrimoire(grimoire, pattern, env.getWorld());
-		System.out.println(expansion);
 		if (expansion == null)
 			return;
 

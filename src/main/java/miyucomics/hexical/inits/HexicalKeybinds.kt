@@ -17,6 +17,7 @@ object HexicalKeybinds {
 
 	@JvmStatic
 	fun init() {
+		KeyBindingHelper.registerKeyBinding(OPEN_HEXBOOK)
 		KeyBindingHelper.registerKeyBinding(EVOKE_KEYBIND)
 		KeyBindingHelper.registerKeyBinding(TELEPATHY_KEYBIND)
 

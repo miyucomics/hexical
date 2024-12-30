@@ -45,8 +45,7 @@ import miyucomics.hexical.casting.patterns.grimoire.OpGrimoireWrite
 import miyucomics.hexical.casting.patterns.lamp.*
 import miyucomics.hexical.casting.patterns.mage_blocks.OpConjureMageBlock
 import miyucomics.hexical.casting.patterns.mage_blocks.OpModifyMageBlock
-import miyucomics.hexical.casting.patterns.pattern_manipulation.OpCongruentPattern
-import miyucomics.hexical.casting.patterns.pattern_manipulation.OpShufflePattern
+import miyucomics.hexical.casting.patterns.pattern_manipulation.*
 import miyucomics.hexical.casting.patterns.pigments.OpSamplePigment
 import miyucomics.hexical.casting.patterns.pigments.OpTakeOnPigment
 import miyucomics.hexical.casting.patterns.pigments.OpToPigment
@@ -103,9 +102,9 @@ object HexicalPatterns {
 	fun init() {
 		register("offer_mind", "qaqwawqwqqwqwqwqwqwqq", HexDir.EAST, OpOfferMind())
 		register("educate_genie", "eweweweweweewedeaqqqd", HexDir.NORTH_WEST, OpEducateGenie())
-		register("get_hand_lamp_position", "qwddedqdd", HexDir.SOUTH_WEST, OpGetHandLampData { _, nbt -> vecFromNBT(nbt.getLongArray("position")).asActionResult })
-		register("get_hand_lamp_rotation", "qwddedadw", HexDir.SOUTH_WEST, OpGetHandLampData { _, nbt -> vecFromNBT(nbt.getLongArray("rotation")).asActionResult })
-		register("get_hand_lamp_velocity", "qwddedqew", HexDir.SOUTH_WEST, OpGetHandLampData { _, nbt -> vecFromNBT(nbt.getLongArray("velocity")).asActionResult })
+		register("get_hand_lamp_position", "qwddedqdd", HexDir.SOUTH_WEST, OpGetHandLampData { _, nbt -> vecFromNBT(nbt.getCompound("position")).asActionResult })
+		register("get_hand_lamp_rotation", "qwddedadw", HexDir.SOUTH_WEST, OpGetHandLampData { _, nbt -> vecFromNBT(nbt.getCompound("rotation")).asActionResult })
+		register("get_hand_lamp_velocity", "qwddedqew", HexDir.SOUTH_WEST, OpGetHandLampData { _, nbt -> vecFromNBT(nbt.getCompound("velocity")).asActionResult })
 		register("get_hand_lamp_use_time", "qwddedqwddwa", HexDir.SOUTH_WEST, OpGetHandLampData { env, nbt -> (env.world.time - (nbt.getDouble("start_time") + 1.0)).asActionResult })
 		register("get_hand_lamp_media", "qwddedaeeeee", HexDir.SOUTH_WEST, OpGetHandLampData { env, _ -> ((env.castingEntity!!.activeItem.item as HandLampItem).getMedia(env.castingEntity!!.activeItem).toDouble() / MediaConstants.DUST_UNIT).asActionResult })
 		register("get_hand_lamp_storage", "qwddedqwaqqqqq", HexDir.SOUTH_WEST, OpGetHandLampData { env, nbt -> listOf(IotaType.deserialize(nbt.getCompound("storage"), env.world)) })
@@ -146,8 +145,12 @@ object HexicalPatterns {
 			).asActionResult
 		})
 		register("entity_width", "dwe", HexDir.NORTH_WEST, OpGetEntityData { entity -> entity.width.asActionResult })
-		register("congruent", "aaqd", HexDir.EAST, OpCongruentPattern())
 		register("dup_many", "waadadaa", HexDir.EAST, OpDupMany())
+
+		register("deserialize_pattern", "wqqqaqwd", HexDir.EAST, OpDeserializePattern())
+		register("serialize_pattern", "wqaedeqd", HexDir.EAST, OpSerializePattern())
+		register("congruent", "aaqd", HexDir.EAST, OpCongruentPattern())
+		register("draw_pattern", "eadqqqa", HexDir.NORTH_EAST, OpDrawPattern())
 		register("shuffle_pattern", "aqqqdae", HexDir.NORTH_EAST, OpShufflePattern())
 
 		register("soroban_decrement", "waqdee", HexDir.SOUTH_EAST, OpSorobanDecrement())
@@ -397,6 +400,7 @@ object HexicalPatterns {
 		register("janus", "aadee", HexDir.SOUTH_WEST, OpJanus)
 		register("sisyphus", "qaqwede", HexDir.NORTH_EAST, OpSisyphus)
 		register("themis", "dwaad", HexDir.WEST, OpThemis)
+		register("tutu", "eedqa", HexDir.WEST, OpTutu)
 		registerSpecialHandler("nephthys", NephthysSpecialHandler.Factory())
 		registerSpecialHandler("sekhmet", SekhmetSpecialHandler.Factory())
 	}

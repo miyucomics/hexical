@@ -20,8 +20,9 @@ class SpeckRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<SpeckEn
 	override fun shouldRender(entity: SpeckEntity?, frustum: Frustum?, x: Double, y: Double, z: Double) = true
 	override fun render(entity: SpeckEntity?, yaw: Float, tickDelta: Float, matrices: MatrixStack, vertexConsumers: VertexConsumerProvider, light: Int) {
 		matrices.push()
-		if (!entity!!.clientIsText)
-			matrices.translate(0.0, 0.25, 0.0)
+		matrices.translate(0.0, 0.25, 0.0)
+		if (entity!!.clientIsText)
+			matrices.translate(0.0, 0.125, 0.0)
 		matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-entity.yaw))
 		matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(entity.pitch))
 		matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(entity.clientRoll))

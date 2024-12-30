@@ -19,6 +19,7 @@ import net.minecraft.server.world.ServerWorld
 import net.minecraft.sound.SoundCategory
 import net.minecraft.util.Hand
 import net.minecraft.util.TypedActionResult
+import net.minecraft.world.GameMode
 import net.minecraft.world.World
 
 class ArchLampItem : ItemPackagedHex(Settings().maxCount(1)), GenieLamp {
@@ -58,6 +59,7 @@ class ArchLampItem : ItemPackagedHex(Settings().maxCount(1)), GenieLamp {
 		if (world.isClient) return
 		if (getMedia(stack) == 0L) return
 		if (user !is ServerPlayerEntity) return
+		if (user.interactionManager.gameMode == GameMode.SPECTATOR) return
 		if (!stack.orCreateNbt.getBoolean("active")) return
 
 		if ((user as PlayerEntityMinterface).getArchLampCastedThisTick()) {

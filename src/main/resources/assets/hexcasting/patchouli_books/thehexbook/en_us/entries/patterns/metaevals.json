@@ -7,6 +7,14 @@
 	"pages": [
 		{
 			"type": "hexcasting:pattern",
+			"op_id": "hexical:tutu",
+			"anchor": "hexical:tutu",
+			"input": "",
+			"output": "",
+			"text": "hexical.page.tutu.0"
+		},
+		{
+			"type": "hexcasting:pattern",
 			"op_id": "hexical:janus",
 			"anchor": "hexical:janus",
 			"input": "",
