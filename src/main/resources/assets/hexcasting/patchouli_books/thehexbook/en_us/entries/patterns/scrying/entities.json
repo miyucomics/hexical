@@ -6,6 +6,13 @@
 	"pages": [
 		{
 			"type": "hexcasting:pattern",
+			"op_id": "hexical:entity_width",
+			"anchor": "hexical:entity_width",
+			"input": "entity",
+			"output": "number",
+			"text": "hexical.page.entity_width.summary"
+		}, {
+			"type": "hexcasting:pattern",
 			"op_id": "hexical:get_health",
 			"anchor": "hexical:get_health",
 			"input": "entity",

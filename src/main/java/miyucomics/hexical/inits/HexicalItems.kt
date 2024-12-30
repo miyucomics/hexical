@@ -66,7 +66,7 @@ object HexicalItems {
 			entries.add(ItemStack(LARGE_LIVING_SCROLL_ITEM))
 		}
 
-		Registry.register(Registries.ITEM, HexicalMain.id("lamp"), HAND_LAMP_ITEM)
+		Registry.register(Registries.ITEM, HexicalMain.id("hand_lamp"), HAND_LAMP_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("arch_lamp"), ARCH_LAMP_ITEM)
 
 		Registry.register(Registries.ITEM, HexicalMain.id("gauntlet_staff"), ItemStaff(Settings().maxCount(1)))
