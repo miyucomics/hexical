@@ -5,7 +5,7 @@
 			"conditions": {
 				"items": [
 					{
-						"items": ["hexical:lamp"]
+						"items": ["hexical:hand_lamp"]
 					}
 				]
 			},
@@ -23,7 +23,7 @@
 		"frame": "task",
 		"hidden": true,
 		"icon": {
-			"item": "hexical:lamp"
+			"item": "hexical:hand_lamp"
 		},
 		"show_toast": true
 	},

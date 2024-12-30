@@ -1,6 +1,6 @@
 {
 	"name": "hexical.category.lamp",
-	"icon": "hexical:lamp",
+	"icon": "hexical:hand_lamp",
 	"sortnum": 2,
 	"description": "hexical.category.lamp.desc"
 }
