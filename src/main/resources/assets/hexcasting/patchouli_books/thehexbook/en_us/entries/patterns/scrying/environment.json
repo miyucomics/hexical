@@ -10,6 +10,14 @@
 		},
 		{
 			"type": "hexcasting:pattern",
+			"op_id": "hexical:env_ambit",
+			"anchor": "hexical:env_ambit",
+			"input": "entity/vector",
+			"output": "boolean",
+			"text": "hexical.page.env_ambit.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
 			"op_id": "hexical:env_staff",
 			"anchor": "hexical:env_staff",
 			"input": "",
