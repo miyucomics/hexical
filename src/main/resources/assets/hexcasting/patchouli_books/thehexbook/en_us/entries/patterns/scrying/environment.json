@@ -13,7 +13,7 @@
 			"op_id": "hexical:env_staff",
 			"anchor": "hexical:env_staff",
 			"input": "",
-			"output": "",
+			"output": "boolean",
 			"text": "hexical.page.env_staff.summary"
 		},
 		{
@@ -21,7 +21,7 @@
 			"op_id": "hexical:env_packaged_hex",
 			"anchor": "hexical:env_packaged_hex",
 			"input": "",
-			"output": "",
+			"output": "boolean",
 			"text": "hexical.page.env_packaged_hex.summary"
 		},
 		{
@@ -29,7 +29,7 @@
 			"op_id": "hexical:env_tchotchke",
 			"anchor": "hexical:env_tchotchke",
 			"input": "",
-			"output": "",
+			"output": "boolean",
 			"text": "hexical.page.env_tchotchke.summary"
 		},
 		{
@@ -37,7 +37,7 @@
 			"op_id": "hexical:env_evocation",
 			"anchor": "hexical:env_evocation",
 			"input": "",
-			"output": "",
+			"output": "boolean",
 			"text": "hexical.page.env_evocation.summary"
 		},
 		{
@@ -45,7 +45,7 @@
 			"op_id": "hexical:env_hand_lamp",
 			"anchor": "hexical:env_hand_lamp",
 			"input": "",
-			"output": "",
+			"output": "boolean",
 			"text": "hexical.page.env_hand_lamp.summary"
 		},
 		{
@@ -53,7 +53,7 @@
 			"op_id": "hexical:env_arch_lamp",
 			"anchor": "hexical:env_arch_lamp",
 			"input": "",
-			"output": "",
+			"output": "boolean",
 			"text": "hexical.page.env_arch_lamp.summary"
 		},
 		{
@@ -61,7 +61,7 @@
 			"op_id": "hexical:env_circle",
 			"anchor": "hexical:env_circle",
 			"input": "",
-			"output": "",
+			"output": "boolean",
 			"text": "hexical.page.env_circle.summary"
 		},
 		{
@@ -69,7 +69,7 @@
 			"op_id": "hexical:env_offhand",
 			"anchor": "hexical:env_offhand",
 			"input": "",
-			"output": "",
+			"output": "boolean",
 			"text": "hexical.page.env_offhand.summary"
 		}
 	]

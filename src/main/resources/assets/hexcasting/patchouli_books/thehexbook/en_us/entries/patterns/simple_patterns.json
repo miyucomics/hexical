@@ -7,53 +7,35 @@
 	"pages": [
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:entity_width",
-			"anchor": "hexical:entity_width",
-			"input": "entity",
-			"output": "number",
-			"text": "hexical.page.entity_width.summary"
-		}, {
-			"type": "hexcasting:pattern",
 			"op_id": "hexical:theodolite",
 			"anchor": "hexical:theodolite",
 			"input": "entity",
 			"output": "vector",
 			"text": "hexical.page.theodolite.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:swap_one_three",
 			"anchor": "hexical:swap_one_three",
 			"input": "any, any, any",
 			"output": "any, any, any",
 			"text": "hexical.page.swap_one_three.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:swap_two_three",
 			"anchor": "hexical:swap_two_three",
 			"input": "any, any, any",
 			"output": "any, any, any",
 			"text": "hexical.page.swap_two_three.summary"
-		}, {
-			"type": "hexcasting:pattern",
-			"op_id": "hexical:congruent",
-			"anchor": "hexical:congruent",
-			"input": "pattern, pattern",
-			"output": "boolean",
-			"text": "hexical.page.congruent.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:dup_many",
 			"anchor": "hexical:dup_many",
 			"input": "many, number",
 			"output": "many",
 			"text": "hexical.page.dup_many.summary"
-		}, {
-			"type": "hexcasting:pattern",
-			"op_id": "hexical:shuffle_pattern",
-			"anchor": "hexical:shuffle_pattern",
-			"input": "pattern, number",
-			"output": "pattern",
-			"text": "hexical.page.shuffle_pattern.summary"
 		}
 	]
 }
