@@ -19,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.List;
 
-@Mixin(CastingVM.class)
+@Mixin(value = CastingVM.class, priority = 100)
 public abstract class CastingVMMixin {
 	@Inject(method = "queueExecuteAndWrapIota", at = @At("HEAD"), cancellable = true)
 	void expandMacros(Iota iota, ServerWorld world, CallbackInfoReturnable<ExecutionClientView> cir) {
