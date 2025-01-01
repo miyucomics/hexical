@@ -13,13 +13,6 @@
 			"text": "hexical.page.get_light.summary"
 		}, {
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:get_biome",
-			"anchor": "hexical:get_biome",
-			"input": "",
-			"output": "identifier",
-			"text": "hexical.page.get_biome.summary"
-		}, {
-			"type": "hexcasting:pattern",
 			"op_id": "hexical:get_weather",
 			"anchor": "hexical:get_weather",
 			"input": "",
@@ -27,11 +20,39 @@
 			"text": "hexical.page.get_weather.summary"
 		}, {
 			"type": "hexcasting:pattern",
+			"op_id": "hexical:get_power",
+			"anchor": "hexical:get_power",
+			"input": "vector",
+			"output": "number",
+			"text": "hexical.page.get_power.summary"
+		}, {
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:get_comparator",
+			"anchor": "hexical:get_comparator",
+			"input": "vector",
+			"output": "number/null",
+			"text": "hexical.page.get_comparator.summary"
+		}, {
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:get_day",
+			"anchor": "hexical:get_day",
+			"input": "",
+			"output": "number",
+			"text": "hexical.page.get_day.summary"
+		}, {
+			"type": "hexcasting:pattern",
 			"op_id": "hexical:get_time",
 			"anchor": "hexical:get_time",
 			"input": "",
 			"output": "number",
 			"text": "hexical.page.get_time.summary"
+		}, {
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:get_biome",
+			"anchor": "hexical:get_biome",
+			"input": "",
+			"output": "identifier",
+			"text": "hexical.page.get_biome.summary"
 		}, {
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:get_dimension",
