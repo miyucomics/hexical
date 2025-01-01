@@ -1,0 +1,17 @@
+{
+	"targets": [
+		"swap"
+	],
+	"passes": [
+		{
+			"name": "sobel",
+			"intarget": "minecraft:main",
+			"outtarget": "swap"
+		},
+		{
+			"name": "outlines_only",
+			"intarget": "swap",
+			"outtarget": "minecraft:main"
+		}
+	]
+}
