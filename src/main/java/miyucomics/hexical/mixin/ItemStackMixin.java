@@ -21,24 +21,27 @@ import java.util.List;
 public class ItemStackMixin {
 	@Inject(method = "getTooltip(Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/client/item/TooltipContext;)Ljava/util/List;", at = @At("RETURN"))
 	public void addAutograph(PlayerEntity player, TooltipContext context, CallbackInfoReturnable<List<Text>> cir) {
-		ItemStack stack = (ItemStack)(Object) this;
-		if (stack.getOrCreateNbt().contains("autographs")) {
-			MutableText header = Text.translatable("hexical.autograph.header");
-			header.styled(style -> style.withColor(Formatting.GRAY));
-			cir.getReturnValue().add(header);
+		NbtCompound nbt = ((ItemStack) (Object) this).getNbt();
+		if (nbt == null)
+			return;
+		if (!nbt.contains("autographs"))
+			return;
+		
+		MutableText header = Text.translatable("hexical.autograph.header");
+		header.styled(style -> style.withColor(Formatting.GRAY));
+		cir.getReturnValue().add(header);
 
-			stack.getOrCreateNbt().getList("autographs", NbtCompound.COMPOUND_TYPE).forEach(element -> {
-				NbtCompound compound = (NbtCompound) element;
-				String name = compound.getString("name");
-				FrozenPigment pigment = FrozenPigment.fromNBT(compound.getCompound("pigment"));
-				MutableText output = Text.literal("");
-				int steps = name.length();
-				for (int i = 0; i < steps; i++) {
-					int color = pigment.getColorProvider().getColor(ClientStorage.time * 3, new Vec3d(0, i, 0));
-					output.append(Text.literal(String.valueOf(name.charAt(i))).styled(style -> style.withColor(color)));
-				}
-				cir.getReturnValue().add(output);
-			});
-		}
+		nbt.getList("autographs", NbtCompound.COMPOUND_TYPE).forEach(element -> {
+			NbtCompound compound = (NbtCompound) element;
+			String name = compound.getString("name");
+			FrozenPigment pigment = FrozenPigment.fromNBT(compound.getCompound("pigment"));
+			MutableText output = Text.literal("");
+			int steps = name.length();
+			for (int i = 0; i < steps; i++) {
+				int color = pigment.getColorProvider().getColor(ClientStorage.time * 3, new Vec3d(0, i, 0));
+				output.append(Text.literal(String.valueOf(name.charAt(i))).styled(style -> style.withColor(color)));
+			}
+			cir.getReturnValue().add(output);
+		});
 	}
 }
