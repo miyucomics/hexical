@@ -14,7 +14,7 @@ class OpSorobanIncrement : Action {
 		val sorobanValue = image.userData.getInt("soroban").toDouble()
 		val newImage = image.withUsedOp().copy(stack = stack)
 		stack.add(DoubleIota(sorobanValue))
-		newImage.userData.putDouble("soroban", sorobanValue - 1)
+		newImage.userData.putDouble("soroban", sorobanValue + 1)
 		return OperationResult(newImage, listOf(), continuation, HexEvalSounds.NORMAL_EXECUTE)
 	}
 }

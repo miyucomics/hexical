@@ -44,7 +44,7 @@ class MagicMissileEntity(entityType: EntityType<out MagicMissileEntity?>, world:
 
 	override fun onEntityHit(entityHitResult: EntityHitResult) {
 		val target = entityHitResult.entity
-		target.damage(DamageSource(world.registryManager.get(RegistryKeys.DAMAGE_TYPE).entryOf(HexicalDamageTypes.MAGIC_MISSILE)), 2f)
+		target.damage(world.damageSources.create(HexicalDamageTypes.MAGIC_MISSILE, this, this.owner), 2f)
 		target.velocity = this.velocity.multiply(1.0, 0.0, 1.0).normalize().multiply(0.6).add(0.0, 0.1, 0.0)
 		shatter()
 	}
