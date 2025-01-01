@@ -11,6 +11,8 @@
   - added pattern for getting whether something is in ambit
   - added patterns for testing for the method it is being cast
   - added pattern for off/mainhand use
+- added Redstone scrying patterns from Gloop
+- added Circadian Reflection for fraction of day gone by
 - added my own take on pattern manipulation: turn a pattern into a list of numbers and back
 - added Tutu's Gambit - noop
 - changed hexbursts and akashic bookshelf prestidigitation effect to be able to push into Introspection stack
