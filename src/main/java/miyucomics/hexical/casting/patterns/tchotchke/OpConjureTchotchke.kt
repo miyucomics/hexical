@@ -18,7 +18,7 @@ class OpConjureTchotchke : SpellAction {
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val position = args.getVec3(0, argc)
 		env.assertVecInRange(position)
-		val battery = args.getPositiveDoubleUnderInclusive(1, 200_000.0, argc)
+		val battery = args.getPositiveDouble(1, argc)
 		val rank = args.getInt(2, argc)
 		if (rank <= 0)
 			throw MishapInvalidIota.of(args[2], 2, "integer_natural")

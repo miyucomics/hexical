@@ -6,8 +6,11 @@
   - done because the height method isn't always consistent such as swimming, flying with elyta, or standing under a slab
   - also it's neat to get the first moment you sneaked or how long you've been sneaking for
 - added ability to open hex notebook with N, taken from HexGloop
-- added Classifier's Purification to get an iota type identifier
+- added Classifier's Purification - get an iota type identifier to compare iota types
 - added environment scrying patterns to get details about your casting environment
+  - added pattern for getting whether something is in ambit
+  - added patterns for testing for the method it is being cast
+  - added pattern for off/mainhand use
 - added my own take on pattern manipulation: turn a pattern into a list of numbers and back
 - added Tutu's Gambit - noop
 - changed hexbursts and akashic bookshelf prestidigitation effect to be able to push into Introspection stack
@@ -23,6 +26,7 @@
 - changed locations of some patterns in the hexbook
 - fixed arch genie lamps running in spectator
 - refactored almost everything is rewritten to be more sane
+- removed limit from tchotchke media
 - removed Chorus Blink due to not fitting in with classic spells
 - removed Similarity Purification in favor of iota type identifier
 - update to 1.20.1
