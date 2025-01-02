@@ -36,9 +36,9 @@ object ShaderRenderer {
             activeShader = PostEffectProcessor(client.textureManager, client.resourceManager, client.framebuffer, location)
             return
         }  catch (ioexception: IOException) {
-            println("Failed to load shader: $location");
+            println("Failed to load shader: $location")
         } catch (jsonsyntaxexception: JsonSyntaxException) {
-            println("Failed to parse shader: $location");
+            println("Failed to parse shader: $location")
         }
         activeShader = null
     }

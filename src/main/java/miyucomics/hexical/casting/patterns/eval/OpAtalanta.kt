@@ -1,5 +1,3 @@
-@file:Suppress("KotlinRedundantDiagnosticSuppress")
-
 package miyucomics.hexical.casting.patterns.eval
 
 import at.petrak.hexcasting.api.casting.castables.Action
