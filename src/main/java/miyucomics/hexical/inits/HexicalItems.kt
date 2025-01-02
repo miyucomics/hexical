@@ -13,6 +13,7 @@ import net.minecraft.client.item.ModelPredicateProviderRegistry
 import net.minecraft.client.world.ClientWorld
 import net.minecraft.entity.Entity
 import net.minecraft.item.BlockItem
+import net.minecraft.item.Item
 import net.minecraft.item.Item.Settings
 import net.minecraft.item.ItemGroup
 import net.minecraft.item.ItemStack
@@ -26,7 +27,7 @@ import net.minecraft.util.math.GlobalPos
 
 object HexicalItems {
 	private val HEXICAL_GROUP_KEY: RegistryKey<ItemGroup> = RegistryKey.of(Registries.ITEM_GROUP.key, HexicalMain.id("general"))
-	private val HEXICAL_GROUP: ItemGroup = FabricItemGroup.builder().icon { -> ItemStack(TCHOTCHKE_ITEM) }.displayName(Text.translatable("itemGroup.hexical.general")).build()
+	private val HEXICAL_GROUP: ItemGroup = FabricItemGroup.builder().icon { ItemStack(TCHOTCHKE_ITEM) }.displayName(Text.translatable("itemGroup.hexical.general")).build()
 
 	@JvmField
 	val HAND_LAMP_ITEM = HandLampItem()
@@ -36,7 +37,7 @@ object HexicalItems {
 	@JvmField
 	val CONJURED_COMPASS_ITEM = ConjuredCompassItem()
 	@JvmField
-	val GRIMOIRE_ITEM = GrimoireItem()
+	val GRIMOIRE_ITEM = Item(Settings().maxCount(1))
 	val TCHOTCHKE_ITEM = TchotchkeItem()
 	val HEXBURST_ITEM = HexburstItem()
 	val HEXTITO_ITEM = HextitoItem()
@@ -44,9 +45,15 @@ object HexicalItems {
 	val MEDIUM_LIVING_SCROLL_ITEM = LivingScrollItem(2)
 	val LARGE_LIVING_SCROLL_ITEM = LivingScrollItem(3)
 
+	private val GAUNTLET_STAFF = ItemStaff(Settings().maxCount(1))
+	private val LIGHTNING_ROD_STAFF = ItemStaff(Settings().maxCount(1))
+
+	private val MEDIA_JAR_ITEM = BlockItem(HexicalBlocks.MEDIA_JAR_BLOCK, Settings())
+	private val HEX_CANDLE_ITEM = BlockItem(HexicalBlocks.HEX_CANDLE_BLOCK, Settings())
+
 	@JvmStatic
 	fun init() {
-		Registry.register(Registries.ITEM_GROUP, HEXICAL_GROUP_KEY, HEXICAL_GROUP);
+		Registry.register(Registries.ITEM_GROUP, HEXICAL_GROUP_KEY, HEXICAL_GROUP)
 
 		ItemGroupEvents.MODIFY_ENTRIES_ALL.register { tab, entries ->
 			if (tab != HEXICAL_GROUP)
@@ -60,17 +67,23 @@ object HexicalItems {
 			IXplatAbstractions.INSTANCE.findHexHolder(archLamp)!!.writeHex(listOf(), null, 32000 * MediaConstants.DUST_UNIT)
 			entries.add(archLamp)
 
+			entries.add(ItemStack(GAUNTLET_STAFF))
+			entries.add(ItemStack(LIGHTNING_ROD_STAFF))
+
 			entries.add(ItemStack(GRIMOIRE_ITEM))
 			entries.add(ItemStack(SMALL_LIVING_SCROLL_ITEM))
 			entries.add(ItemStack(MEDIUM_LIVING_SCROLL_ITEM))
 			entries.add(ItemStack(LARGE_LIVING_SCROLL_ITEM))
+
+			entries.add(ItemStack(MEDIA_JAR_ITEM))
+			entries.add(ItemStack(HEX_CANDLE_ITEM))
 		}
 
 		Registry.register(Registries.ITEM, HexicalMain.id("hand_lamp"), HAND_LAMP_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("arch_lamp"), ARCH_LAMP_ITEM)
 
-		Registry.register(Registries.ITEM, HexicalMain.id("gauntlet_staff"), ItemStaff(Settings().maxCount(1)))
-		Registry.register(Registries.ITEM, HexicalMain.id("lightning_rod_staff"), ItemStaff(Settings().maxCount(1)))
+		Registry.register(Registries.ITEM, HexicalMain.id("gauntlet_staff"), GAUNTLET_STAFF)
+		Registry.register(Registries.ITEM, HexicalMain.id("lightning_rod_staff"), LIGHTNING_ROD_STAFF)
 
 		Registry.register(Registries.ITEM, HexicalMain.id("grimoire"), GRIMOIRE_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("living_scroll_small"), SMALL_LIVING_SCROLL_ITEM)
@@ -81,8 +94,8 @@ object HexicalItems {
 		Registry.register(Registries.ITEM, HexicalMain.id("hexburst"), HEXBURST_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("hextito"), HEXTITO_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("mage_block"), BlockItem(HexicalBlocks.MAGE_BLOCK, Settings()))
-		Registry.register(Registries.ITEM, HexicalMain.id("media_jar"), BlockItem(HexicalBlocks.MEDIA_JAR_BLOCK, Settings()))
-		Registry.register(Registries.ITEM, HexicalMain.id("hex_candle"), BlockItem(HexicalBlocks.HEX_CANDLE_BLOCK, Settings()))
+		Registry.register(Registries.ITEM, HexicalMain.id("media_jar"), MEDIA_JAR_ITEM)
+		Registry.register(Registries.ITEM, HexicalMain.id("hex_candle"), HEX_CANDLE_ITEM)
 	}
 
 	@JvmStatic

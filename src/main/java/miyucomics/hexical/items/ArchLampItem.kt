@@ -25,7 +25,8 @@ import net.minecraft.world.World
 class ArchLampItem : ItemPackagedHex(Settings().maxCount(1)), GenieLamp {
 	override fun use(world: World, user: PlayerEntity, hand: Hand): TypedActionResult<ItemStack> {
 		val stack = user.getStackInHand(hand)
-		if (!hasHex(stack)) return TypedActionResult.fail(stack)
+		if (!hasHex(stack))
+			return TypedActionResult.fail(stack)
 
 		val stackNbt = stack.orCreateNbt
 		if (!stackNbt.contains("active"))
@@ -59,8 +60,8 @@ class ArchLampItem : ItemPackagedHex(Settings().maxCount(1)), GenieLamp {
 		if (world.isClient) return
 		if (getMedia(stack) == 0L) return
 		if (user !is ServerPlayerEntity) return
-		if (user.interactionManager.gameMode == GameMode.SPECTATOR) return
 		if (!stack.orCreateNbt.getBoolean("active")) return
+		if (user.interactionManager.gameMode == GameMode.SPECTATOR) return
 
 		if ((user as PlayerEntityMinterface).getArchLampCastedThisTick()) {
 			for (itemSlot in user.inventory.main)
