@@ -5,19 +5,20 @@ import at.petrak.hexcasting.api.casting.eval.ExecutionClientView;
 import at.petrak.hexcasting.api.casting.eval.env.StaffCastEnv;
 import at.petrak.hexcasting.api.casting.eval.vm.CastingVM;
 import at.petrak.hexcasting.api.casting.iota.Iota;
+import at.petrak.hexcasting.api.casting.iota.IotaType;
+import at.petrak.hexcasting.api.casting.iota.ListIota;
 import at.petrak.hexcasting.api.casting.iota.PatternIota;
 import at.petrak.hexcasting.api.casting.math.HexPattern;
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes;
+import kotlin.collections.CollectionsKt;
 import miyucomics.hexical.inits.HexicalItems;
-import miyucomics.hexical.items.GrimoireItem;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.world.ServerWorld;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-
-import java.util.List;
 
 @Mixin(value = CastingVM.class, priority = 100)
 public abstract class CastingVMMixin {
@@ -38,12 +39,13 @@ public abstract class CastingVMMixin {
 		if (grimoire == null)
 			return;
 
-		List<Iota> expansion = GrimoireItem.getPatternInGrimoire(grimoire, pattern, env.getWorld());
-		if (expansion == null)
+		NbtCompound data = grimoire.getOrCreateNbt().getCompound("expansions");
+		if (!data.contains(pattern.anglesSignature()))
+			return;
+		Iota deserialized = IotaType.deserialize(data.getCompound(pattern.anglesSignature()), env.getWorld());
+		if (!(deserialized instanceof ListIota))
 			return;
 
-		var state = vm.queueExecuteAndWrapIotas(expansion, world);
-		state = state.copy(state.isStackClear(), state.getResolutionType(), state.getStackDescs(), state.getRavenmind());
-		cir.setReturnValue(state);
+		cir.setReturnValue(vm.queueExecuteAndWrapIotas(CollectionsKt.toList(((ListIota) deserialized).getList()), world));
 	}
 }

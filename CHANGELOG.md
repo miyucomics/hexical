@@ -31,6 +31,7 @@
 - removed limit from tchotchke media
 - removed Chorus Blink due to not fitting in with classic spells
 - removed Similarity Purification in favor of iota type identifier
+- removed semi-permeable modifier from mage blocks because it doesn't quite fit in
 - update to 1.20.1
 
 ## 1.4.0

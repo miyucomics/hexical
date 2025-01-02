@@ -5,14 +5,12 @@ import miyucomics.hexical.inits.HexicalDamageTypes
 import miyucomics.hexical.inits.HexicalEntities
 import net.minecraft.entity.EntityStatuses
 import net.minecraft.entity.EntityType
-import net.minecraft.entity.damage.DamageSource
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.entity.projectile.PersistentProjectileEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.item.Items
 import net.minecraft.particle.ItemStackParticleEffect
 import net.minecraft.particle.ParticleTypes
-import net.minecraft.registry.RegistryKeys
 import net.minecraft.sound.SoundCategory
 import net.minecraft.sound.SoundEvent
 import net.minecraft.sound.SoundEvents
