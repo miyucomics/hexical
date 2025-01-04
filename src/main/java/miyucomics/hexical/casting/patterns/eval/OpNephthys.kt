@@ -22,11 +22,13 @@ class OpNephthys(private val depth: Int) : Action {
 
 		val instructions = evaluatable(stack[stack.lastIndex], 0).map({ SpellList.LList(0, listOf(it)) }, { it })
 		stack.removeLast()
+		val toRestore = stack.popStack(depth)
+		print(toRestore)
 
-		return OperationResult(image, listOf(),
+		return OperationResult(image.copy(stack = stack), listOf(),
 			continuation
+				.pushFrame(NephthysFrame(toRestore))
 				.pushFrame(FrameFinishEval)
-				.pushFrame(NephthysFrame(stack.popStack(depth)))
 				.pushFrame(FrameEvaluate(instructions, true)),
 			HexEvalSounds.HERMES
 		)
@@ -34,8 +36,6 @@ class OpNephthys(private val depth: Int) : Action {
 
 	private fun MutableList<Iota>.popStack(argc: Int): List<Iota> {
 		val stackSize = this.size
-		if (stackSize < argc)
-			throw MishapNotEnoughArgs(argc, stackSize)
 		val args = this.subList(stackSize - argc, stackSize).toList()
 		repeat(argc) { this.removeLast() }
 		return args

@@ -3,6 +3,7 @@ package miyucomics.hexical.casting.frames
 import at.petrak.hexcasting.api.casting.SpellList
 import at.petrak.hexcasting.api.casting.eval.CastResult
 import at.petrak.hexcasting.api.casting.eval.ResolvedPatternType
+import at.petrak.hexcasting.api.casting.eval.sideeffects.OperatorSideEffect
 import at.petrak.hexcasting.api.casting.eval.vm.CastingVM
 import at.petrak.hexcasting.api.casting.eval.vm.ContinuationFrame
 import at.petrak.hexcasting.api.casting.eval.vm.FrameEvaluate
@@ -10,6 +11,7 @@ import at.petrak.hexcasting.api.casting.eval.vm.SpellContinuation
 import at.petrak.hexcasting.api.casting.iota.DoubleIota
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.ListIota
+import at.petrak.hexcasting.api.casting.mishaps.Mishap
 import at.petrak.hexcasting.api.utils.getList
 import at.petrak.hexcasting.api.utils.hasList
 import at.petrak.hexcasting.api.utils.putList
@@ -37,9 +39,16 @@ data class ThemisFrame(val data: SpellList, val code: SpellList, val baseStack: 
 		val stack = if (baseStack == null) {
 			vm.image.stack.toList()
 		} else {
-			val top = vm.image.stack.lastOrNull() ?: throw ThemisMishap()
-			if (top !is DoubleIota)
-				throw ThemisMishap()
+			val top = vm.image.stack.lastOrNull()
+			if (top == null || top !is DoubleIota)
+				return CastResult(
+					ListIota(code),
+					continuation,
+					null,
+					listOf(OperatorSideEffect.DoMishap(ThemisMishap(), Mishap.Context(null, null))),
+					ResolvedPatternType.ERRORED,
+					HexEvalSounds.MISHAP,
+				)
 			priorities.add(top.double)
 			baseStack
 		}

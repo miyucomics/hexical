@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.4.1
+## 1.5.0
 - added spell to conjure llama spit
 - added new telepathy pattern for sneaking
   - done because the height method isn't always consistent such as swimming, flying with elyta, or standing under a slab
@@ -15,6 +15,7 @@
 - added Circadian Reflection for fraction of day gone by
 - added my own take on pattern manipulation: turn a pattern into a list of numbers and back
 - added Tutu's Gambit - noop
+- changed Sisyphus' Gambit to not restore the stack after each iteration
 - changed hexbursts and akashic bookshelf prestidigitation effect to be able to push into Introspection stack
 - changed wandering trader lamp trade chance to 50%
 - changed a lot of scrying to require ambit

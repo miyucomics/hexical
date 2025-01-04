@@ -31,7 +31,7 @@ object OpThemis : Action {
 		return OperationResult(
 			image.withResetEscape().copy(stack = stack),
 			listOf(),
-			continuation.pushFrame(ThemisFrame(data, code, image.stack, mutableListOf(), mutableListOf())),
+			continuation.pushFrame(ThemisFrame(data, code, null, mutableListOf(), mutableListOf())),
 			HexEvalSounds.THOTH
 		)
 	}
