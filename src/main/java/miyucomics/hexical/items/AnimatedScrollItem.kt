@@ -8,7 +8,7 @@ import at.petrak.hexcasting.common.blocks.akashic.BlockEntityAkashicBookshelf
 import at.petrak.hexcasting.common.lib.HexBlocks
 import at.petrak.hexcasting.common.lib.HexSounds
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
-import miyucomics.hexical.entities.LivingScrollEntity
+import miyucomics.hexical.entities.AnimatedScrollEntity
 import net.minecraft.client.item.TooltipContext
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.Item
@@ -25,7 +25,7 @@ import net.minecraft.util.math.Direction
 import net.minecraft.world.World
 import net.minecraft.world.event.GameEvent
 
-class LivingScrollItem(private val size: Int) : Item(Settings()), IotaHolderItem {
+class AnimatedScrollItem(private val size: Int) : Item(Settings()), IotaHolderItem {
 	private fun canPlaceOn(player: PlayerEntity, side: Direction, stack: ItemStack, pos: BlockPos) = !side.axis.isVertical && player.canPlaceOn(pos, side, stack)
 
 	override fun useOnBlock(context: ItemUsageContext): ActionResult {
@@ -55,7 +55,7 @@ class LivingScrollItem(private val size: Int) : Item(Settings()), IotaHolderItem
 				patternList.add((iota as PatternIota).pattern.serializeToNBT())
 		}
 
-		val scroll = LivingScrollEntity(world, position, direction, size, patternList)
+		val scroll = AnimatedScrollEntity(world, position, direction, size, patternList)
 		if (stack.orCreateNbt.getBoolean("aged"))
 			scroll.toggleAged()
 		if (stack.orCreateNbt.getBoolean("glow"))

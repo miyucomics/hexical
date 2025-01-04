@@ -33,7 +33,7 @@ import net.minecraft.util.math.Vec3d
 import net.minecraft.world.GameRules
 import net.minecraft.world.World
 
-class LivingScrollEntity(entityType: EntityType<LivingScrollEntity>, world: World) : AbstractDecorationEntity(entityType, world), ADIotaHolder {
+class AnimatedScrollEntity(entityType: EntityType<AnimatedScrollEntity>, world: World) : AbstractDecorationEntity(entityType, world), ADIotaHolder {
 	var patterns: MutableList<NbtCompound> = mutableListOf()
 
 	var clientAged = false
@@ -43,7 +43,7 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity>, world: Worl
 	var clientColor: Int = (0xff_000000).toInt()
 	var cachedVerts: List<Vec2f> = listOf()
 
-	constructor(world: World) : this(HexicalEntities.LIVING_SCROLL_ENTITY, world)
+	constructor(world: World) : this(HexicalEntities.ANIMATED_SCROLL_ENTITY, world)
 
 	constructor(world: World, position: BlockPos, dir: Direction, size: Int, patterns: MutableList<NbtCompound>) : this(world) {
 		this.attachmentPos = position
@@ -147,9 +147,9 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity>, world: Worl
 				return
 			val stack = ItemStack(
 				when (this.dataTracker.get(sizeDataTracker)) {
-					1 -> HexicalItems.SMALL_LIVING_SCROLL_ITEM
-					2 -> HexicalItems.MEDIUM_LIVING_SCROLL_ITEM
-					3 -> HexicalItems.LARGE_LIVING_SCROLL_ITEM
+					1 -> HexicalItems.SMALL_ANIMATED_SCROLL_ITEM
+					2 -> HexicalItems.MEDIUM_ANIMATED_SCROLL_ITEM
+					3 -> HexicalItems.LARGE_ANIMATED_SCROLL_ITEM
 					else -> throw IllegalStateException()
 				}
 			)
@@ -167,9 +167,9 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity>, world: Worl
 
 	override fun getPickBlockStack() = ItemStack(
 		when (this.dataTracker.get(sizeDataTracker)) {
-			1 -> HexicalItems.SMALL_LIVING_SCROLL_ITEM
-			2 -> HexicalItems.MEDIUM_LIVING_SCROLL_ITEM
-			3 -> HexicalItems.LARGE_LIVING_SCROLL_ITEM
+			1 -> HexicalItems.SMALL_ANIMATED_SCROLL_ITEM
+			2 -> HexicalItems.MEDIUM_ANIMATED_SCROLL_ITEM
+			3 -> HexicalItems.LARGE_ANIMATED_SCROLL_ITEM
 			else -> throw IllegalStateException("Invalid size")
 		}
 	)
@@ -220,12 +220,12 @@ class LivingScrollEntity(entityType: EntityType<LivingScrollEntity>, world: Worl
 	}
 
 	companion object {
-		private val agedDataTracker: TrackedData<Boolean> = DataTracker.registerData(LivingScrollEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
-		private val glowDataTracker: TrackedData<Boolean> = DataTracker.registerData(LivingScrollEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
-		private val vanishedDataTracker: TrackedData<Boolean> = DataTracker.registerData(LivingScrollEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
-		private val colorDataTracker: TrackedData<Int> = DataTracker.registerData(LivingScrollEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
-		private val sizeDataTracker: TrackedData<Int> = DataTracker.registerData(LivingScrollEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
-		private val renderDataTracker: TrackedData<NbtCompound> = DataTracker.registerData(LivingScrollEntity::class.java, TrackedDataHandlerRegistry.NBT_COMPOUND)
+		private val agedDataTracker: TrackedData<Boolean> = DataTracker.registerData(AnimatedScrollEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
+		private val glowDataTracker: TrackedData<Boolean> = DataTracker.registerData(AnimatedScrollEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
+		private val vanishedDataTracker: TrackedData<Boolean> = DataTracker.registerData(AnimatedScrollEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
+		private val colorDataTracker: TrackedData<Int> = DataTracker.registerData(AnimatedScrollEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
+		private val sizeDataTracker: TrackedData<Int> = DataTracker.registerData(AnimatedScrollEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
+		private val renderDataTracker: TrackedData<NbtCompound> = DataTracker.registerData(AnimatedScrollEntity::class.java, TrackedDataHandlerRegistry.NBT_COMPOUND)
 	}
 
 	override fun readIotaTag(): NbtCompound? {

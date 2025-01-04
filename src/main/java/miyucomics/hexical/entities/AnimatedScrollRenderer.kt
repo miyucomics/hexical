@@ -12,8 +12,8 @@ import net.minecraft.util.math.RotationAxis
 import org.joml.Matrix3f
 import org.joml.Matrix4f
 
-class LivingScrollRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<LivingScrollEntity>(ctx) {
-	override fun render(scroll: LivingScrollEntity?, yaw: Float, deltaTick: Float, matrices: MatrixStack, vertexConsumers: VertexConsumerProvider, light: Int) {
+class AnimatedScrollRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<AnimatedScrollEntity>(ctx) {
+	override fun render(scroll: AnimatedScrollEntity?, yaw: Float, deltaTick: Float, matrices: MatrixStack, vertexConsumers: VertexConsumerProvider, light: Int) {
 		matrices.push()
 		matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(scroll!!.pitch))
 		matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180.0f - scroll.yaw))
@@ -24,7 +24,7 @@ class LivingScrollRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<
 		matrices.pop()
 	}
 
-	override fun getTexture(scroll: LivingScrollEntity?) = when (scroll!!.clientSize) {
+	override fun getTexture(scroll: AnimatedScrollEntity?) = when (scroll!!.clientSize) {
 		1 -> if (scroll.clientAged) ANCIENT_SMALL else PRISTINE_SMALL
 		2 -> if (scroll.clientAged) ANCIENT_MEDIUM else PRISTINE_MEDIUM
 		3 -> if (scroll.clientAged) ANCIENT_LARGE else PRISTINE_LARGE
@@ -86,7 +86,7 @@ class LivingScrollRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<
 			matrices.pop()
 		}
 
-		private fun drawPattern(matrices: MatrixStack, vertexConsumers: VertexConsumerProvider, scroll: LivingScrollEntity, light: Int) {
+		private fun drawPattern(matrices: MatrixStack, vertexConsumers: VertexConsumerProvider, scroll: AnimatedScrollEntity, light: Int) {
 			if (!scroll.clientVanished)
 				matrices.translate(0.0, 0.0, -0.75 / 16.0)
 			val scale = when (scroll.clientSize) {

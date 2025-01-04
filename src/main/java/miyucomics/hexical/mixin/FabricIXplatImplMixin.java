@@ -2,7 +2,7 @@ package miyucomics.hexical.mixin;
 
 import at.petrak.hexcasting.api.addldata.ADIotaHolder;
 import at.petrak.hexcasting.fabric.xplat.FabricXplatImpl;
-import miyucomics.hexical.entities.LivingScrollEntity;
+import miyucomics.hexical.entities.AnimatedScrollEntity;
 import net.minecraft.entity.Entity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class FabricIXplatImplMixin {
 	@Inject(method = "findDataHolder(Lnet/minecraft/entity/Entity;)Lat/petrak/hexcasting/api/addldata/ADIotaHolder;", at = @At("HEAD"), cancellable = true)
 	private void readFromLivingScrolls(Entity entity, CallbackInfoReturnable<ADIotaHolder> cir) {
-		if (entity instanceof LivingScrollEntity)
-			cir.setReturnValue((LivingScrollEntity) entity);
+		if (entity instanceof AnimatedScrollEntity)
+			cir.setReturnValue((AnimatedScrollEntity) entity);
 	}
 }

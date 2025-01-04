@@ -41,9 +41,9 @@ object HexicalItems {
 	val TCHOTCHKE_ITEM = TchotchkeItem()
 	val HEXBURST_ITEM = HexburstItem()
 	val HEXTITO_ITEM = HextitoItem()
-	val SMALL_LIVING_SCROLL_ITEM = LivingScrollItem(1)
-	val MEDIUM_LIVING_SCROLL_ITEM = LivingScrollItem(2)
-	val LARGE_LIVING_SCROLL_ITEM = LivingScrollItem(3)
+	val SMALL_ANIMATED_SCROLL_ITEM = AnimatedScrollItem(1)
+	val MEDIUM_ANIMATED_SCROLL_ITEM = AnimatedScrollItem(2)
+	val LARGE_ANIMATED_SCROLL_ITEM = AnimatedScrollItem(3)
 
 	private val GAUNTLET_STAFF = ItemStaff(Settings().maxCount(1))
 	private val LIGHTNING_ROD_STAFF = ItemStaff(Settings().maxCount(1))
@@ -71,9 +71,9 @@ object HexicalItems {
 			entries.add(ItemStack(LIGHTNING_ROD_STAFF))
 
 			entries.add(ItemStack(GRIMOIRE_ITEM))
-			entries.add(ItemStack(SMALL_LIVING_SCROLL_ITEM))
-			entries.add(ItemStack(MEDIUM_LIVING_SCROLL_ITEM))
-			entries.add(ItemStack(LARGE_LIVING_SCROLL_ITEM))
+			entries.add(ItemStack(SMALL_ANIMATED_SCROLL_ITEM))
+			entries.add(ItemStack(MEDIUM_ANIMATED_SCROLL_ITEM))
+			entries.add(ItemStack(LARGE_ANIMATED_SCROLL_ITEM))
 
 			entries.add(ItemStack(MEDIA_JAR_ITEM))
 			entries.add(ItemStack(HEX_CANDLE_ITEM))
@@ -85,17 +85,17 @@ object HexicalItems {
 		Registry.register(Registries.ITEM, HexicalMain.id("gauntlet_staff"), GAUNTLET_STAFF)
 		Registry.register(Registries.ITEM, HexicalMain.id("lightning_rod_staff"), LIGHTNING_ROD_STAFF)
 
-		Registry.register(Registries.ITEM, HexicalMain.id("grimoire"), GRIMOIRE_ITEM)
-		Registry.register(Registries.ITEM, HexicalMain.id("living_scroll_small"), SMALL_LIVING_SCROLL_ITEM)
-		Registry.register(Registries.ITEM, HexicalMain.id("living_scroll_medium"), MEDIUM_LIVING_SCROLL_ITEM)
-		Registry.register(Registries.ITEM, HexicalMain.id("living_scroll_large"), LARGE_LIVING_SCROLL_ITEM)
+		Registry.register(Registries.ITEM, HexicalMain.id("animated_scroll_small"), SMALL_ANIMATED_SCROLL_ITEM)
+		Registry.register(Registries.ITEM, HexicalMain.id("animated_scroll_medium"), MEDIUM_ANIMATED_SCROLL_ITEM)
+		Registry.register(Registries.ITEM, HexicalMain.id("animated_scroll_large"), LARGE_ANIMATED_SCROLL_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("conjured_compass"), CONJURED_COMPASS_ITEM)
-		Registry.register(Registries.ITEM, HexicalMain.id("tchotchke"), TCHOTCHKE_ITEM)
+		Registry.register(Registries.ITEM, HexicalMain.id("grimoire"), GRIMOIRE_ITEM)
+		Registry.register(Registries.ITEM, HexicalMain.id("hex_candle"), HEX_CANDLE_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("hexburst"), HEXBURST_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("hextito"), HEXTITO_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("mage_block"), BlockItem(HexicalBlocks.MAGE_BLOCK, Settings()))
 		Registry.register(Registries.ITEM, HexicalMain.id("media_jar"), MEDIA_JAR_ITEM)
-		Registry.register(Registries.ITEM, HexicalMain.id("hex_candle"), HEX_CANDLE_ITEM)
+		Registry.register(Registries.ITEM, HexicalMain.id("tchotchke"), TCHOTCHKE_ITEM)
 	}
 
 	@JvmStatic
