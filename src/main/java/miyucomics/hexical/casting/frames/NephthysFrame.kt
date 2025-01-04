@@ -22,12 +22,10 @@ data class NephthysFrame(val original: List<Iota>) : ContinuationFrame {
 	}
 
 	override fun evaluate(continuation: SpellContinuation, world: ServerWorld, vm: CastingVM): CastResult {
-		val stack = vm.image.stack.toMutableList()
-		stack.plus(continuation)
 		return CastResult(
 			ListIota(original),
 			continuation,
-			vm.image.withResetEscape().copy(stack = stack),
+			vm.image.withResetEscape().copy(stack = vm.image.stack.toMutableList().plus(original)),
 			listOf(),
 			ResolvedPatternType.EVALUATED,
 			HexEvalSounds.HERMES

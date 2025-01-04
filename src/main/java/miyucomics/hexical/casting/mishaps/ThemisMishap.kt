@@ -12,8 +12,5 @@ import net.minecraft.util.DyeColor
 class ThemisMishap : Mishap() {
 	override fun accentColor(env: CastingEnvironment, errorCtx: Context): FrozenPigment = dyeColor(DyeColor.GREEN)
 	override fun errorMessage(env: CastingEnvironment, errorCtx: Context): Text = error(HexicalMain.MOD_ID + ":themis")
-	override fun execute(env: CastingEnvironment, errorCtx: Context, stack: MutableList<Iota>) {
-		stack.removeLast()
-		stack.add(GarbageIota())
-	}
+	override fun execute(env: CastingEnvironment, errorCtx: Context, stack: MutableList<Iota>) {}
 }

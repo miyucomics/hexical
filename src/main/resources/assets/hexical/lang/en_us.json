@@ -106,7 +106,7 @@
 	"hexcasting.mishap.hexical:needs_skippable": "Expected to be run inside of Sisyphus' Gambit or Thoth's Gambit.",
 	"hexcasting.mishap.hexical:needs_thoth": "Expected to be run inside of Thoth's Gambit.",
 	"hexcasting.mishap.hexical:outside_circle": "Spell exceeds the domain of the spell circle.",
-	"hexcasting.mishap.hexical:themis": "Expected a number at the top of the pseudo-stack.",
+	"hexcasting.mishap.hexical:themis": "Expected a number at the top of the Themis pseudo-stack.",
 
 	"hexcasting.action.book.hexical:theodolite": "Theodolite Purif.",
 	"hexcasting.action.book.hexical:damage_stack": "Deterioration Purif.",
