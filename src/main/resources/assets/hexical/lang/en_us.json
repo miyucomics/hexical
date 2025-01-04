@@ -456,7 +456,7 @@
 	"hexical.page.simple_spells.title": "Hexical Spells",
 	"hexcasting.action.hexical:autograph": "Autograph",
 	"hexical.page.autograph.summary": "Permanently autographs the item in my offhand with my name and pigment. Costs nothing and can only be done with my staff, as a proof of care.",
-	"hexical.page.autograph.description": "An autographed item holds a list of the names people who have casted this spell on it, in order and in shimmering pigmented text. It becomes unstackable with unautographed items, even of the same type, and the same person can sign it multiple times. It may be used as a secure method of ensuring an item was approved of by a person.$(br2)$(o)Success is when your signature becomes an autograph.$()",
+	"hexical.page.autograph.description": "An autographed item holds a list of the names people who have casted this spell on it, in order and in shimmering pigmented text. It becomes unstackable with unautographed items, even of the same type, and the same person can sign it multiple times. It may be used as a secure method of ensuring an item was approved of by a person.$(br2)$(o)I disagree strongly with whatever work this quote is attached to.$()",
 	"hexcasting.action.hexical:conjure_hexburst": "Conjure Hexburst",
 	"hexical.page.conjure_hexburst.summary": "Conjures a hexburst at the location with the given iota. Costs one dust. Is subject to the Transgress Others mishap.",
 	"hexical.page.conjure_hexburst.description": "Hexbursts are edible items created by taking an iota and wrapping _media around it, over and over until it gains size. When eaten, a hexburst instantly adds the iota it was made from to the consumer's stack. I shall find this property considerably useful if I ever want to trade my entity reference.",
