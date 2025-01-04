@@ -27,7 +27,9 @@
 - changed genie lamp namespace to hand lamp
 - changed grimoire storage format
 - changed locations of some patterns in the hexbook
+- changed Ghast Fireball to push the fireball entity
 - fixed arch genie lamps running in spectator
+- fixed bug that let you conjure meshes and specks even if you die for the cost
 - refactored almost everything is rewritten to be more sane
 - removed limit from tchotchke media
 - removed Chorus Blink due to not fitting in with classic spells
