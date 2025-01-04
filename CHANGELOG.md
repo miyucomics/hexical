@@ -28,6 +28,7 @@
 - changed grimoire storage format
 - changed locations of some patterns in the hexbook
 - changed Ghast Fireball to push the fireball entity
+- changed living scrolls to animated scrolls
 - fixed arch genie lamps running in spectator
 - fixed bug that let you conjure meshes and specks even if you die for the cost
 - refactored almost everything is rewritten to be more sane
