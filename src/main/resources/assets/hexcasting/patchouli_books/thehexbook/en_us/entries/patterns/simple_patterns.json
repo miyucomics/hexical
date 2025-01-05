@@ -7,14 +7,6 @@
 	"pages": [
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:theodolite",
-			"anchor": "hexical:theodolite",
-			"input": "entity",
-			"output": "vector",
-			"text": "hexical.page.theodolite.summary"
-		},
-		{
-			"type": "hexcasting:pattern",
 			"op_id": "hexical:swap_one_three",
 			"anchor": "hexical:swap_one_three",
 			"input": "any, any, any",
