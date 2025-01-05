@@ -9,30 +9,34 @@
 			"op_id": "hexical:get_effects_entity",
 			"anchor": "hexical:get_effects_entity",
 			"input": "entity",
-			"output": "[identifier]",
+			"output": "list of identifiers",
 			"text": "hexical.page.get_effects_entity.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:get_effects_item",
 			"anchor": "hexical:get_effects_item",
 			"input": "item entity",
-			"output": "[identifier]",
+			"output": "list of identifiers",
 			"text": "hexical.page.get_effects_item.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:get_effect_category",
 			"anchor": "hexical:get_effect_category",
 			"input": "identifier",
 			"output": "number",
 			"text": "hexical.page.get_effect_category.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:get_effect_amplifier",
 			"anchor": "hexical:get_effect_amplifier",
 			"input": "entity, identifier",
 			"output": "number",
 			"text": "hexical.page.get_effect_amplifier.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:get_effect_duration",
 			"anchor": "hexical:get_effect_duration",

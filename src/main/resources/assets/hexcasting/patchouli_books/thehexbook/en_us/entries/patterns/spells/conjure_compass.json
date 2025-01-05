@@ -12,7 +12,8 @@
 			"input": "vector, vector",
 			"output": "",
 			"text": "hexical.page.conjure_compass.summary"
-		}, {
+		},
+		{
 			"type": "patchouli:text",
 			"text": "hexical.page.conjure_compass.description"
 		}

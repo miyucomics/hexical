@@ -8,77 +8,88 @@
 		{
 			"type": "patchouli:text",
 			"text": "hexical.page.telepathy"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:get_telepathy",
 			"anchor": "hexical:get_telepathy",
 			"input": "",
 			"output": "number",
 			"text": "hexical.page.get_telepathy.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:send_telepathy",
 			"anchor": "hexical:send_telepathy",
 			"input": "any",
 			"output": "",
 			"text": "hexical.page.send_telepathy.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:shout_telepathy",
 			"anchor": "hexical:shout_telepathy",
 			"input": "any",
 			"output": "",
 			"text": "hexical.page.shout_telepathy.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:pling",
 			"anchor": "hexical:pling",
 			"input": "",
 			"output": "",
 			"text": "hexical.page.pling.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:click",
 			"anchor": "hexical:click",
 			"input": "",
 			"output": "",
 			"text": "hexical.page.click.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:moving_up",
 			"anchor": "hexical:moving_up",
 			"input": "",
 			"output": "number",
 			"text": "hexical.page.moving_up.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:moving_down",
 			"anchor": "hexical:moving_down",
 			"input": "",
 			"output": "number",
 			"text": "hexical.page.moving_down.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:moving_left",
 			"anchor": "hexical:moving_left",
 			"input": "",
 			"output": "number",
 			"text": "hexical.page.moving_left.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:moving_right",
 			"anchor": "hexical:moving_right",
 			"input": "",
 			"output": "number",
 			"text": "hexical.page.moving_right.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:jumping",
 			"anchor": "hexical:jumping",
 			"input": "",
 			"output": "number",
 			"text": "hexical.page.jumping.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:sneaking",
 			"anchor": "hexical:sneaking",
