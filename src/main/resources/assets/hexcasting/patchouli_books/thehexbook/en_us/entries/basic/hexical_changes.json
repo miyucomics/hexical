@@ -8,21 +8,26 @@
 		{
 			"type": "patchouli:text",
 			"text": "hexical.page.hexical_changes.0"
-		}, {
+		},
+		{
 			"type": "patchouli:text",
 			"text": "hexical.page.hexical_changes.1"
-		}, {
+		},
+		{
 			"type": "patchouli:crafting",
 			"recipe": "hexical:lightning_rod_staff",
 			"text": "hexical.page.lightning_rod_staff.0"
-		}, {
+		},
+		{
 			"type": "patchouli:text",
 			"text": "hexical.page.lightning_rod_staff.1"
-		}, {
+		},
+		{
 			"type": "patchouli:crafting",
 			"recipe": "hexical:gauntlet_staff",
 			"text": "hexical.page.gauntlet_staff.0"
-		}, {
+		},
+		{
 			"type": "patchouli:text",
 			"text": "hexical.page.gauntlet_staff.1"
 		}

@@ -8,21 +8,24 @@
 		{
 			"type": "patchouli:text",
 			"text": "hexical.page.pigments.0"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:to_pigment",
 			"anchor": "hexical:to_pigment",
 			"input": "dye/entity",
 			"output": "pigment",
 			"text": "hexical.page.to_pigment.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:sample_pigment",
 			"anchor": "hexical:sample_pigment",
 			"input": "pigment, vec, num",
 			"output": "vec",
 			"text": "hexical.page.sample_pigment.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:take_on_pigment",
 			"anchor": "hexical:take_on_pigment",

@@ -8,10 +8,12 @@
 		{
 			"type": "patchouli:text",
 			"text": "hexical.page.media_jar.0"
-		}, {
+		},
+		{
 			"type": "patchouli:crafting",
 			"recipe": "hexical:media_jar"
-		}, {
+		},
+		{
 			"type": "patchouli:text",
 			"text": "hexical.page.media_jar.1"
 		}

@@ -1,19 +1,96 @@
 {
 	"name": "hexical.page.mysterious_lamp.title",
-	"icon": "minecraft:torch",
+	"icon": "hexical:hand_lamp",
 	"category": "hexcasting:lamp",
 	"sortnum": 0,
 	"pages": [
 		{
 			"type": "patchouli:text",
 			"text": "hexical.page.mysterious_lamp.0"
-		}, {
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.mysterious_lamp.1"
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:educate_genie",
 			"anchor": "hexical:educate_genie",
-			"input": "[pattern]",
+			"input": "list of patterns",
 			"output": "",
 			"text": "hexical.page.educate_genie.summary"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.mysterious_lamp.2"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.mysterious_lamp.3"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:get_hand_lamp_position",
+			"anchor": "hexical:get_hand_lamp_position",
+			"input": "",
+			"output": "vector",
+			"text": "hexical.page.get_hand_lamp_position.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:get_hand_lamp_rotation",
+			"anchor": "hexical:get_hand_lamp_rotation",
+			"input": "",
+			"output": "vector",
+			"text": "hexical.page.get_hand_lamp_rotation.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:get_hand_lamp_velocity",
+			"anchor": "hexical:get_hand_lamp_velocity",
+			"input": "",
+			"output": "vector",
+			"text": "hexical.page.get_hand_lamp_velocity.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:get_hand_lamp_use_time",
+			"anchor": "hexical:get_hand_lamp_use_time",
+			"input": "",
+			"output": "number",
+			"text": "hexical.page.get_hand_lamp_use_time.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:get_hand_lamp_media",
+			"anchor": "hexical:get_hand_lamp_media",
+			"input": "",
+			"output": "number",
+			"text": "hexical.page.get_hand_lamp_media.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:set_hand_lamp_storage",
+			"anchor": "hexical:set_hand_lamp_storage",
+			"input": "any",
+			"output": "",
+			"text": "hexical.page.set_hand_lamp_storage.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:get_hand_lamp_storage",
+			"anchor": "hexical:get_hand_lamp_storage",
+			"input": "",
+			"output": "any",
+			"text": "hexical.page.get_hand_lamp_storage.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:lamp_finale",
+			"anchor": "hexical:lamp_finale",
+			"input": "",
+			"output": "boolean",
+			"text": "hexical.page.lamp_finale.hand"
 		}
 	]
 }

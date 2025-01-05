@@ -8,82 +8,93 @@
 		{
 			"type": "patchouli:text",
 			"text": "hexical.page.specks.0"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:conjure_speck",
 			"anchor": "hexical:conjure_speck",
 			"input": "any, vector, vector",
 			"output": "entity",
 			"text": "hexical.page.conjure_speck.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:move_specklike",
 			"anchor": "hexical:move_specklike",
 			"input": "speck entity, vector",
 			"output": "",
 			"text": "hexical.page.move_specklike.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:rotate_specklike",
 			"anchor": "hexical:rotate_specklike",
 			"input": "speck entity, vector",
 			"output": "",
 			"text": "hexical.page.rotate_specklike.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:roll_specklike",
 			"anchor": "hexical:roll_specklike",
 			"input": "speck entity, number",
 			"output": "",
 			"text": "hexical.page.roll_specklike.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:iota_speck",
 			"anchor": "hexical:iota_speck",
 			"input": "speck entity, any",
 			"output": "",
 			"text": "hexical.page.iota_speck.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:lifetime_specklike",
 			"anchor": "hexical:lifetime_specklike",
 			"input": "speck entity, number",
 			"output": "",
 			"text": "hexical.page.lifetime_specklike.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:size_specklike",
 			"anchor": "hexical:size_specklike",
 			"input": "speck entity, number",
 			"output": "",
 			"text": "hexical.page.size_specklike.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:thickness_specklike",
 			"anchor": "hexical:thickness_specklike",
 			"input": "speck entity, number",
 			"output": "",
 			"text": "hexical.page.thickness_specklike.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:pigment_specklike",
 			"anchor": "hexical:pigment_specklike",
 			"input": "speck entity, pigment",
 			"output": "",
 			"text": "hexical.page.pigment_specklike.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:kill_specklike",
 			"anchor": "hexical:kill_specklike",
 			"input": "speck entity",
 			"output": "",
 			"text": "hexical.page.kill_specklike.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:zone_specklike",
 			"anchor": "hexical:zone_specklike",
 			"input": "vector, number",
-			"output": "[entity]",
+			"output": "list of entities",
 			"text": "hexical.page.zone_specklike.summary"
 		}
 	]

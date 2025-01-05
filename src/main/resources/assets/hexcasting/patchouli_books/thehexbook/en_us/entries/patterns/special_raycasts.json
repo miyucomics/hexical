@@ -12,21 +12,24 @@
 			"input": "vector, vector",
 			"output": "vector/null",
 			"text": "hexical.page.fluid_raycast.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:fluid_surface_raycast",
 			"anchor": "hexical:fluid_surface_raycast",
 			"input": "vector, vector",
 			"output": "vector/null",
 			"text": "hexical.page.fluid_surface_raycast.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:piercing_raycast",
 			"anchor": "hexical:piercing_raycast",
 			"input": "vec, vec, id",
 			"output": "vec/null",
 			"text": "hexical.page.piercing_raycast.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:piercing_surface_raycast",
 			"anchor": "hexical:piercing_surface_raycast",
