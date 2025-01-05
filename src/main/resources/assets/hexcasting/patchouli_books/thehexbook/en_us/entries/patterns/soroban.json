@@ -8,21 +8,24 @@
 		{
 			"type": "patchouli:text",
 			"text": "hexical.page.soroban.0"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:soroban_increment",
 			"anchor": "hexical:soroban_increment",
 			"input": "",
 			"output": "number",
 			"text": "hexical.page.soroban_increment.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:soroban_decrement",
 			"anchor": "hexical:soroban_decrement",
 			"input": "",
 			"output": "number",
 			"text": "hexical.page.soroban_decrement.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:soroban_reset",
 			"anchor": "hexical:soroban_reset",
