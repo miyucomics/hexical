@@ -15,6 +15,7 @@
 - added Circadian Reflection for fraction of day gone by
 - added my own take on pattern manipulation: turn a pattern into a list of numbers and back
 - added Tutu's Gambit - noop
+- changed Internalize Pigment II to be free
 - changed Sisyphus' Gambit to not restore the stack after each iteration
 - changed hexbursts and akashic bookshelf prestidigitation effect to be able to push into Introspection stack
 - changed wandering trader lamp trade chance to 50%
