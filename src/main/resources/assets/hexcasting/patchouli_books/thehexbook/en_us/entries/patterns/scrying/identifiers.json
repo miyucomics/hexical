@@ -7,38 +7,44 @@
 		{
 			"type": "patchouli:text",
 			"text": "hexical.page.identifiers.0"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:identify",
 			"anchor": "hexical:identify",
 			"input": "identifiable",
 			"output": "identifier",
 			"text": "hexical.page.identify.summary"
-		}, {
+		},
+		{
 			"type": "patchouli:text",
 			"text": "hexical.page.identifiers.1"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:recognize",
 			"anchor": "hexical:recognize",
 			"input": "entity",
 			"output": "identifier",
 			"text": "hexical.page.recognize.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:classify",
 			"anchor": "hexical:classify",
 			"input": "any",
 			"output": "identifier",
 			"text": "hexical.page.classify.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:get_mainhand_stack",
 			"anchor": "hexical:get_mainhand_stack",
 			"input": "player entity",
 			"output": "identifier",
 			"text": "hexical.page.get_mainhand_stack.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:get_offhand_stack",
 			"anchor": "hexical:get_offhand_stack",

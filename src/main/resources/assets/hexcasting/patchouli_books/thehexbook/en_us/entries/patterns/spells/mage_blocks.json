@@ -8,49 +8,56 @@
 		{
 			"type": "patchouli:text",
 			"text": "hexical.page.mage_block"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:conjure_mage_block",
 			"anchor": "hexical:conjure_mage_block",
 			"input": "vector",
 			"output": "",
 			"text": "hexical.page.conjure_mage_block.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:modify_block_bouncy",
 			"anchor": "hexical:modify_block_bouncy",
 			"input": "vector",
 			"output": "",
 			"text": "hexical.page.modify_block_bouncy.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:modify_block_energized",
 			"anchor": "hexical:modify_block_energized",
 			"input": "vector, number",
 			"output": "",
 			"text": "hexical.page.modify_block_energized.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:modify_block_ephemeral",
 			"anchor": "hexical:modify_block_ephemeral",
 			"input": "vector, number",
 			"output": "",
 			"text": "hexical.page.modify_block_ephemeral.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:modify_block_invisible",
 			"anchor": "hexical:modify_block_invisible",
 			"input": "vector",
 			"output": "",
 			"text": "hexical.page.modify_block_invisible.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:modify_block_replaceable",
 			"anchor": "hexical:modify_block_replaceable",
 			"input": "vector",
 			"output": "",
 			"text": "hexical.page.modify_block_replaceable.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:modify_block_volatile",
 			"anchor": "hexical:modify_block_volatile",

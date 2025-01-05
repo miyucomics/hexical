@@ -67,29 +67,27 @@ object HexicalItems {
 			IXplatAbstractions.INSTANCE.findHexHolder(archLamp)!!.writeHex(listOf(), null, 32000 * MediaConstants.DUST_UNIT)
 			entries.add(archLamp)
 
-			entries.add(ItemStack(GAUNTLET_STAFF))
-			entries.add(ItemStack(LIGHTNING_ROD_STAFF))
-
-			entries.add(ItemStack(GRIMOIRE_ITEM))
 			entries.add(ItemStack(SMALL_ANIMATED_SCROLL_ITEM))
 			entries.add(ItemStack(MEDIUM_ANIMATED_SCROLL_ITEM))
 			entries.add(ItemStack(LARGE_ANIMATED_SCROLL_ITEM))
 
+			entries.add(ItemStack(GAUNTLET_STAFF))
+			entries.add(ItemStack(LIGHTNING_ROD_STAFF))
+
+			entries.add(ItemStack(GRIMOIRE_ITEM))
 			entries.add(ItemStack(MEDIA_JAR_ITEM))
 			entries.add(ItemStack(HEX_CANDLE_ITEM))
 		}
 
-		Registry.register(Registries.ITEM, HexicalMain.id("hand_lamp"), HAND_LAMP_ITEM)
-		Registry.register(Registries.ITEM, HexicalMain.id("arch_lamp"), ARCH_LAMP_ITEM)
-
-		Registry.register(Registries.ITEM, HexicalMain.id("gauntlet_staff"), GAUNTLET_STAFF)
-		Registry.register(Registries.ITEM, HexicalMain.id("lightning_rod_staff"), LIGHTNING_ROD_STAFF)
-
 		Registry.register(Registries.ITEM, HexicalMain.id("animated_scroll_small"), SMALL_ANIMATED_SCROLL_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("animated_scroll_medium"), MEDIUM_ANIMATED_SCROLL_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("animated_scroll_large"), LARGE_ANIMATED_SCROLL_ITEM)
+		Registry.register(Registries.ITEM, HexicalMain.id("hand_lamp"), HAND_LAMP_ITEM)
+		Registry.register(Registries.ITEM, HexicalMain.id("arch_lamp"), ARCH_LAMP_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("conjured_compass"), CONJURED_COMPASS_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("grimoire"), GRIMOIRE_ITEM)
+		Registry.register(Registries.ITEM, HexicalMain.id("gauntlet_staff"), GAUNTLET_STAFF)
+		Registry.register(Registries.ITEM, HexicalMain.id("lightning_rod_staff"), LIGHTNING_ROD_STAFF)
 		Registry.register(Registries.ITEM, HexicalMain.id("hex_candle"), HEX_CANDLE_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("hexburst"), HEXBURST_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("hextito"), HEXTITO_ITEM)

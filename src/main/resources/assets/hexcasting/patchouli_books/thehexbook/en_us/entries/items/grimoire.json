@@ -9,29 +9,33 @@
 			"type": "patchouli:crafting",
 			"recipe": "hexical:grimoire",
 			"text": "hexical.page.grimoire.0"
-		}, {
+		},
+		{
 			"type": "patchouli:text",
 			"text": "hexical.page.grimoire.1"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:write_grimoire",
 			"anchor": "hexical:write_grimoire",
-			"input": "pattern, [pattern]",
+			"input": "pattern, list",
 			"output": "",
 			"text": "hexical.page.write_grimoire.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:erase_grimoire",
 			"anchor": "hexical:erase_grimoire",
 			"input": "pattern",
 			"output": "",
 			"text": "hexical.page.erase_grimoire.summary"
-		}, {
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:index_grimoire",
 			"anchor": "hexical:index_grimoire",
 			"input": "",
-			"output": "[pattern]",
+			"output": "list of patterns",
 			"text": "hexical.page.index_grimoire.summary"
 		}
 	]

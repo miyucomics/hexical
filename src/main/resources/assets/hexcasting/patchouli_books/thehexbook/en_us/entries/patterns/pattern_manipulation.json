@@ -19,11 +19,11 @@
 		},
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:deserialize_pattern",
-			"anchor": "hexical:deserialize_pattern",
-			"input": "pattern",
-			"output": "list of numbers",
-			"text": "hexical.page.deserialize_pattern.summary"
+			"op_id": "hexical:serialize_pattern",
+			"anchor": "hexical:serialize_pattern",
+			"input": "list of numbers",
+			"output": "pattern",
+			"text": "hexical.page.serialize_pattern.summary"
 		},
 		{
 			"type": "patchouli:text",
@@ -35,11 +35,11 @@
 		},
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:serialize_pattern",
-			"anchor": "hexical:serialize_pattern",
-			"input": "list of numbers",
-			"output": "pattern",
-			"text": "hexical.page.serialize_pattern.summary"
+			"op_id": "hexical:deserialize_pattern",
+			"anchor": "hexical:deserialize_pattern",
+			"input": "pattern",
+			"output": "list of numbers",
+			"text": "hexical.page.deserialize_pattern.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
