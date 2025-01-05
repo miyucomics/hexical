@@ -64,6 +64,10 @@
 			"input": "",
 			"output": "",
 			"text": "hexical.page.ingest.summary"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.ingest.0"
 		}
 	]
 }
