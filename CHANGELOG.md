@@ -30,6 +30,8 @@
 - changed locations of some patterns in the hexbook
 - changed Ghast Fireball to push the fireball entity
 - changed living scrolls to animated scrolls
+- changed Conjure Tchotchke to cost one charged amethyst now
+- changed tchotcke to push a list of booleans rather than just booleans straight onto the stack
 - fixed arch genie lamps running in spectator
 - fixed bug that let you conjure meshes and specks even if you die for the cost
 - overhauled documentation

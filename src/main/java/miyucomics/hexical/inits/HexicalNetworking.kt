@@ -2,6 +2,7 @@ package miyucomics.hexical.inits
 
 import at.petrak.hexcasting.api.casting.iota.BooleanIota
 import at.petrak.hexcasting.api.casting.iota.Iota
+import at.petrak.hexcasting.api.casting.iota.ListIota
 import dev.kosmx.playerAnim.api.layered.KeyframeAnimationPlayer
 import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationRegistry
 import miyucomics.hexical.HexicalMain
@@ -19,7 +20,7 @@ import net.minecraft.util.Identifier
 
 object HexicalNetworking {
 	@JvmField
-	val tchotchke_CHANNEL: Identifier = HexicalMain.id("tchotchke")
+	val TCHOTCHKE_CHANNEL: Identifier = HexicalMain.id("tchotchke")
 	val PRESSED_KEY_CHANNEL: Identifier = HexicalMain.id("press_key")
 	val RELEASED_KEY_CHANNEL: Identifier = HexicalMain.id("release_key")
 
@@ -28,14 +29,14 @@ object HexicalNetworking {
 
 	@JvmStatic
 	fun serverInit() {
-		ServerPlayNetworking.registerGlobalReceiver(tchotchke_CHANNEL) { server, player, _, buf, _ ->
+		ServerPlayNetworking.registerGlobalReceiver(TCHOTCHKE_CHANNEL) { server, player, _, buf, _ ->
 			val hand = getConjuredStaff(player) ?: return@registerGlobalReceiver
-			val constructedStack: MutableList<Iota> = ArrayList()
+			val inputs = mutableListOf<Iota>()
 			val staffRank = buf.readInt()
 			for (i in 0 until staffRank)
-				constructedStack.add(BooleanIota(buf.readBoolean()))
+				inputs.add(BooleanIota(buf.readBoolean()))
 			server.execute {
-				TchotchkeItem.cast(player, hand, player.getStackInHand(hand), constructedStack)
+				TchotchkeItem.cast(player, hand, player.getStackInHand(hand), ListIota(inputs))
 			}
 		}
 
