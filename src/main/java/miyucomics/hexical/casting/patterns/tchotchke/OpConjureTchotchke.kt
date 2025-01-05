@@ -24,7 +24,7 @@ class OpConjureTchotchke : SpellAction {
 			throw MishapInvalidIota.of(args[2], 2, "integer_natural")
 		val instructions = args.getList(3, argc).toList()
 		CastingUtils.assertNoTruename(args[3], env)
-		return SpellAction.Result(Spell(position, (battery * MediaConstants.DUST_UNIT).toLong(), rank, instructions), MediaConstants.SHARD_UNIT + MediaConstants.DUST_UNIT * battery.toInt(), listOf(ParticleSpray.burst(position, 1.0)))
+		return SpellAction.Result(Spell(position, (battery * MediaConstants.DUST_UNIT).toLong(), rank, instructions), MediaConstants.CRYSTAL_UNIT + MediaConstants.DUST_UNIT * battery.toInt(), listOf(ParticleSpray.burst(position, 1.0)))
 	}
 
 	private data class Spell(val position: Vec3d, val battery: Long, val rank: Int, val instructions: List<Iota>) : RenderedSpell {
