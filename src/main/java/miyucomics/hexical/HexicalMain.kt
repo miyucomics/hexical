@@ -7,6 +7,7 @@ import java.util.*
 
 class HexicalMain : ModInitializer {
 	override fun onInitialize() {
+		HexicalActions.init()
 		HexicalAdvancements.init()
 		HexicalBlocks.init()
 		HexicalData.init()
@@ -15,7 +16,6 @@ class HexicalMain : ModInitializer {
 		HexicalIota.init()
 		HexicalItems.init()
 		HexicalSounds.init()
-		HexicalPatterns.init()
 		HexicalNetworking.serverInit()
 	}
 

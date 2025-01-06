@@ -25,17 +25,16 @@ public class OpReadMixin {
 		if (data == null)
 			return;
 		ItemStack stack = data.stack();
-		if (stack.isOf(HexicalItems.CONJURED_COMPASS_ITEM)) {
-			if (!stack.getOrCreateNbt().contains("location")) {
+		NbtCompound nbt = stack.getOrCreateNbt();
+		if (nbt.getString("dimension").equals(env.getWorld().getDimensionKey().getValue().toString())) {
+			System.out.println("TREST");
+
+			LivingEntity caster = env.getCastingEntity();
+			if (caster != null)
+				cir.setReturnValue(List.of(new Vec3Iota(new Vec3d(nbt.getInt("x"), nbt.getInt("y"), nbt.getInt("z")).subtract(caster.getEyePos()).normalize())));
+			else
 				cir.setReturnValue(List.of(new NullIota()));
-			} else {
-				NbtCompound nbt = stack.getOrCreateNbt();
-				LivingEntity caster = env.getCastingEntity();
-				if (caster == null)
-					cir.setReturnValue(List.of(new NullIota()));
-				else
-					cir.setReturnValue(List.of(new Vec3Iota(new Vec3d(nbt.getInt("x"), nbt.getInt("y"), nbt.getInt("z")).subtract(caster.getEyePos()).normalize())));
-			}
-		}
+		} else
+			cir.setReturnValue(List.of(new NullIota()));
 	}
 }
