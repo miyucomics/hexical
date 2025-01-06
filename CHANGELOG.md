@@ -13,8 +13,11 @@
   - added pattern for off/mainhand use
 - added Redstone scrying patterns from Gloop
 - added Circadian Reflection for fraction of day gone by
+- added alternate texture for arch lamp when inactive
 - added my own take on pattern manipulation: turn a pattern into a list of numbers and back
 - added Tutu's Gambit - noop
+- added Garbage Reflection - pushes garbage
+- changed Offer Mind to be just for recharging
 - changed Internalize Pigment II to be free
 - changed Sisyphus' Gambit to not restore the stack after each iteration
 - changed hexbursts and akashic bookshelf prestidigitation effect to be able to push into Introspection stack
@@ -32,10 +35,16 @@
 - changed living scrolls to animated scrolls
 - changed Conjure Tchotchke to cost one charged amethyst now
 - changed tchotcke to push a list of booleans rather than just booleans straight onto the stack
+- changed soroban to work with the staff now
+- changed conjured compass to keep track of dimension
 - fixed arch genie lamps running in spectator
 - fixed bug that let you conjure meshes and specks even if you die for the cost
+- fixed bug that let you write truenames to lamps
 - overhauled documentation
 - refactored almost everything is rewritten to be more sane
+- removed Activate Archgenie and Deactivate Archgenie
+  - the reasoning for this is because they were coded horribly and removing them spared so much jank
+  - also you can modify their storage from outside so it'd just take a little more work to do the same thing
 - removed limit from tchotchke media
 - removed Chorus Blink due to not fitting in with classic spells
 - removed Similarity Purification in favor of iota type identifier

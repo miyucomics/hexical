@@ -7,6 +7,14 @@
 	"pages": [
 		{
 			"type": "hexcasting:pattern",
+			"op_id": "hexical:garbage",
+			"anchor": "hexical:garbage",
+			"input": "",
+			"output": "garbage",
+			"text": "hexical.page.garbage.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
 			"op_id": "hexical:swap_one_three",
 			"anchor": "hexical:swap_one_three",
 			"input": "any, any, any",
