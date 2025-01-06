@@ -19,6 +19,7 @@ import miyucomics.hexical.interfaces.GenieLamp
 import net.minecraft.entity.Entity
 import net.minecraft.entity.mob.MobEntity
 import net.minecraft.entity.passive.VillagerEntity
+import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.server.network.ServerPlayerEntity
@@ -29,10 +30,6 @@ import kotlin.math.min
 class OpOfferMind : SpellAction {
 	override val argc = 2
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
-		val caster = env.castingEntity
-		if (caster !is ServerPlayerEntity)
-			throw MishapBadCaster()
-
 		val sacrifice = args.getEntity(0, argc)
 		env.assertEntityInRange(sacrifice)
 
@@ -41,56 +38,29 @@ class OpOfferMind : SpellAction {
 		if (sacrifice is VillagerEntity && sacrifice.villagerData.level < 3)
 			throw MishapBadEntity.of(sacrifice, "smart_villager")
 
-		val stack = caster.getStackInHand(env.otherHand)
-		val mediaHolder = IXplatAbstractions.INSTANCE.findMediaHolder(stack)!!
+		val stack = env.getHeldItemToOperateOn { stack -> stack.item is GenieLamp }
+		if (stack == null)
+			throw MishapBadOffhandItem.of(null, "lamp")
+
+		val mediaHolder = IXplatAbstractions.INSTANCE.findMediaHolder(stack.stack)!!
 		val leftToFull = 200000 * MediaConstants.DUST_UNIT - mediaHolder.media
 		val battery = min(leftToFull.toDouble(), args.getPositiveDoubleUnderInclusive(1, 200000.0, argc))
 
-		if (stack.item is GenieLamp)
-			return SpellAction.Result(Spell(sacrifice, (battery * MediaConstants.DUST_UNIT).toInt()), MediaConstants.CRYSTAL_UNIT + (battery * MediaConstants.DUST_UNIT).toInt(), listOf(ParticleSpray.cloud(sacrifice.eyePos, 1.0)))
-
-		throw MishapBadOffhandItem.of(stack, "lamp")
+		return SpellAction.Result(Spell(sacrifice, (battery * MediaConstants.DUST_UNIT).toInt(), stack.stack), MediaConstants.CRYSTAL_UNIT + (battery * MediaConstants.DUST_UNIT).toInt(), listOf(ParticleSpray.cloud(sacrifice.eyePos, 1.0)))
 	}
 
-	companion object {
-		private val TRANSFORMATIONS: Map<(Entity) -> Boolean, Item> = mapOf(
-			{ sacrifice: Entity -> sacrifice is VillagerEntity && sacrifice.villagerData.level > 10 } to HexicalItems.ARCH_LAMP_ITEM
-		)
-	}
-
-	private data class Spell(val sacrifice: Entity, val battery: Int) : RenderedSpell {
+	private data class Spell(val sacrifice: Entity, val battery: Int, val stack: ItemStack) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			val caster = env.castingEntity as ServerPlayerEntity
-
-			val lamp = caster.getStackInHand(env.otherHand)
-			var sacrificedDestroyed = false
-
-			if (lamp.isOf(HexicalItems.HAND_LAMP_ITEM)) {
-				for ((predicate, replacement) in TRANSFORMATIONS) {
-					if (!predicate(sacrifice))
-						continue
-					caster.setStackInHand(env.otherHand, ItemStack(replacement))
-					if (sacrifice is VillagerEntity)
-						sacrifice.tellWitnessesThatIWasMurdered(caster)
-					sacrifice.discard()
-					sacrificedDestroyed = true
-					break
-				}
-			}
-
 			if (sacrifice is VillagerEntity) {
-				if (!sacrificedDestroyed) {
-					sacrifice.villagerData = sacrifice.villagerData.withLevel(sacrifice.villagerData.level - 1)
-					sacrifice.experience = VillagerData.getLowerLevelExperience(sacrifice.villagerData.level)
-					sacrifice.gossip.startGossip(caster.uuid, VillageGossipType.MAJOR_NEGATIVE, 20)
-				}
+				sacrifice.villagerData = sacrifice.villagerData.withLevel(sacrifice.villagerData.level - 1)
+				sacrifice.experience = VillagerData.getLowerLevelExperience(sacrifice.villagerData.level)
 			}
 
-			val newLamp = caster.getStackInHand(env.otherHand)
-			val hexHolder = IXplatAbstractions.INSTANCE.findHexHolder(newLamp)!!
-			val mediaHolder = IXplatAbstractions.INSTANCE.findMediaHolder(lamp)!!
-			hexHolder.writeHex(hexHolder.getHex(env.world) ?: listOf(), null, mediaHolder.media + battery)
-			HexicalAdvancements.RELOAD_LAMP.trigger(caster)
+			val hexHolder = IXplatAbstractions.INSTANCE.findHexHolder(stack)!!
+			hexHolder.writeHex(hexHolder.getHex(env.world) ?: listOf(), null, IXplatAbstractions.INSTANCE.findMediaHolder(stack)!!.media + battery)
+
+			if (env.castingEntity is ServerPlayerEntity)
+				HexicalAdvancements.RELOAD_LAMP.trigger(env.castingEntity as ServerPlayerEntity)
 		}
 	}
 }

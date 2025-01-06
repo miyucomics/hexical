@@ -7,6 +7,7 @@ import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.items.*
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents
+import net.minecraft.client.item.ClampedModelPredicateProvider
 import net.minecraft.client.item.CompassAnglePredicateProvider
 import net.minecraft.client.item.CompassAnglePredicateProvider.CompassTarget
 import net.minecraft.client.item.ModelPredicateProviderRegistry
@@ -98,8 +99,14 @@ object HexicalItems {
 
 	@JvmStatic
 	fun clientInit() {
-		ModelPredicateProviderRegistry.register(CONJURED_COMPASS_ITEM, Identifier("angle"), CompassAnglePredicateProvider(CompassTarget { _: ClientWorld, stack: ItemStack, player: Entity ->
+		ModelPredicateProviderRegistry.register(ARCH_LAMP_ITEM, Identifier("active")) { stack, _, _, _ ->
+			if (stack.nbt?.getBoolean("active") == true) 1.0f else 0.0f
+		}
+
+		ModelPredicateProviderRegistry.register(CONJURED_COMPASS_ITEM, Identifier("angle"), CompassAnglePredicateProvider(CompassTarget { world: ClientWorld, stack: ItemStack, player: Entity ->
 			val nbt = stack.nbt ?: return@CompassTarget null
+			if (nbt.getString("dimension") != world.dimensionKey.value.toString())
+				return@CompassTarget null
 			return@CompassTarget GlobalPos.create(player.world.registryKey, BlockPos(nbt.getInt("x"), nbt.getInt("y"), nbt.getInt("z")))
 		}))
 	}

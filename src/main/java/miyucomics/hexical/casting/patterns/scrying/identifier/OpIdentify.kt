@@ -20,7 +20,7 @@ class OpIdentify : ConstMediaAction {
 				env.assertPosInRange(pos)
 				Registries.BLOCK.getId(env.world.getBlockState(pos).block).asActionResult()
 			}
-			else -> throw MishapInvalidIota.of(arg, 0, "identifiable")
+			else -> throw MishapInvalidIota.of(arg, 0, "entity_or_vector")
 		}
 	}
 }

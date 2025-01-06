@@ -1,7 +1,7 @@
 {
 	"parent": "minecraft:item/generated",
 	"textures": {
-		"layer0": "hexical:item/arch_lamp"
+		"layer0": "hexical:item/arch_lamp_inactive"
 	},
 	"display": {
 		"thirdperson_righthand": {
@@ -30,5 +30,11 @@
 		"fixed": {
 			"rotation": [0, 180, 0]
 		}
-	}
+	},
+	"overrides": [
+		{
+			"predicate": {"active": 1},
+			"model": "hexical:item/arch_lamp_active"
+		}
+	]
 }

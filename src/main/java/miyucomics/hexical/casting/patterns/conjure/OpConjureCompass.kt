@@ -30,6 +30,7 @@ class OpConjureCompass : SpellAction {
 			nbt.putInt("x", target.x)
 			nbt.putInt("y", target.y)
 			nbt.putInt("z", target.z)
+			nbt.putString("dimension", env.world.dimensionKey.value.toString())
 			env.world.spawnEntity(ItemEntity(env.world, position.x, position.y, position.z, stack))
 		}
 	}
