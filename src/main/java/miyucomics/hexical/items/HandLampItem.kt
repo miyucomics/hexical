@@ -41,13 +41,13 @@ class HandLampItem : ItemPackagedHex(Settings().maxCount(1)), GenieLamp {
 	override fun usageTick(world: World, user: LivingEntity, stack: ItemStack, remainingUseTicks: Int) {
 		if (world.isClient) return
 		if (getMedia(stack) == 0L) return
-		val vm = CastingVM(CastingImage(), HandLampCastEnv(user as ServerPlayerEntity, Hand.MAIN_HAND, stack, false))
+		val vm = CastingVM(CastingImage(), HandLampCastEnv(user as ServerPlayerEntity, Hand.MAIN_HAND, false, stack))
 		vm.queueExecuteAndWrapIotas((stack.item as HandLampItem).getHex(stack, world as ServerWorld)!!, world)
 	}
 
 	override fun onStoppedUsing(stack: ItemStack, world: World, user: LivingEntity, remainingUseTicks: Int) {
 		if (!world.isClient) {
-			val vm = CastingVM(CastingImage(), HandLampCastEnv(user as ServerPlayerEntity, Hand.MAIN_HAND, stack, true))
+			val vm = CastingVM(CastingImage(), HandLampCastEnv(user as ServerPlayerEntity, Hand.MAIN_HAND, true, stack))
 			vm.queueExecuteAndWrapIotas((stack.item as HandLampItem).getHex(stack, world as ServerWorld)!!, world)
 		}
 		world.playSound(user.x, user.y, user.z, HexicalSounds.LAMP_DEACTIVATE, SoundCategory.MASTER, 1f, 1f, true)

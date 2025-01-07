@@ -14,11 +14,9 @@ import miyucomics.hexical.state.PersistentStateHandler
 import net.minecraft.entity.Entity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
-import net.minecraft.screen.slot.Slot
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.sound.SoundCategory
-import net.minecraft.util.ClickType
 import net.minecraft.util.Hand
 import net.minecraft.util.TypedActionResult
 import net.minecraft.world.GameMode
@@ -40,7 +38,7 @@ class ArchLampItem : ItemPackagedHex(Settings().maxCount(1)), GenieLamp {
 		}
 
 		if (stackNbt.getBoolean("active")) {
-			val vm = CastingVM(CastingImage(), ArchLampCastEnv(user as ServerPlayerEntity, hand, stack, true))
+			val vm = CastingVM(CastingImage(), ArchLampCastEnv(user as ServerPlayerEntity, hand, true, stack))
 			vm.queueExecuteAndWrapIotas((stack.item as ArchLampItem).getHex(stack, world as ServerWorld)!!, world)
 			stackNbt.putBoolean("active", false)
 			return TypedActionResult.success(stack)
@@ -73,7 +71,7 @@ class ArchLampItem : ItemPackagedHex(Settings().maxCount(1)), GenieLamp {
 			return
 		}
 
-		val vm = CastingVM(CastingImage(), ArchLampCastEnv(user as ServerPlayerEntity, Hand.MAIN_HAND, stack, false))
+		val vm = CastingVM(CastingImage(), ArchLampCastEnv(user as ServerPlayerEntity, Hand.MAIN_HAND, false, stack))
 		vm.queueExecuteAndWrapIotas((stack.item as ArchLampItem).getHex(stack, world as ServerWorld)!!, world)
 		(user as PlayerEntityMinterface).archLampCasted()
 	}

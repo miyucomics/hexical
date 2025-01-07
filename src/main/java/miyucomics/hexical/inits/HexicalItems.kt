@@ -7,7 +7,6 @@ import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.items.*
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents
-import net.minecraft.client.item.ClampedModelPredicateProvider
 import net.minecraft.client.item.CompassAnglePredicateProvider
 import net.minecraft.client.item.CompassAnglePredicateProvider.CompassTarget
 import net.minecraft.client.item.ModelPredicateProviderRegistry
