@@ -67,6 +67,14 @@
 			"input": "",
 			"output": "identifier",
 			"text": "hexical.page.get_dimension.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:get_einstein",
+			"anchor": "hexical:get_einstein",
+			"input": "",
+			"output": "boolean",
+			"text": "hexical.page.get_einstein.summary"
 		}
 	]
 }

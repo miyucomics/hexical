@@ -672,6 +672,8 @@
 	"hexical.page.get_biome.summary": "Pushes the identifier of the biome type that the vector is within.",
 	"hexcasting.action.hexical:get_dimension": "Plane Reflection",
 	"hexical.page.get_dimension.summary": "Pushes the identifier of the dimension the _Hex is being cast in.",
+	"hexcasting.action.hexical:get_einstein": "Distortion Reflection",
+	"hexical.page.get_einstein.summary": "Pushes whether this dimension is bounded by standard rules of space and time: compasses and clocks will work here.",
 
 	"hexcasting.action.hexical:greater_blink": "Greater Blink",
 	"hexical.page.greater_blink.0": "Greater Blink is a significantly cheaper alternative to $(l:patterns/great_spells/teleport)$(action)Greater Teleport$(). It also does not carry the risk of splattering my items upon arrival. However, it only has pitiful range compared to $(l:patterns/great_spells/teleport)$(action)Greater Teleport$() and its destination calculations are... esoteric. Its target is also exclusively myself.",
