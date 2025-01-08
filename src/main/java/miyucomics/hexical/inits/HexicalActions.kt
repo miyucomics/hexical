@@ -250,41 +250,11 @@ object HexicalActions {
 		register("internalize_hex", "wwaqqqqqeqdedwwqwqwwdedwwqwqw", HexDir.EAST, OpInternalizeHex())
 		register("is_evoking", "wwaqqqqqeeaqawwewewwaqawwewew", HexDir.EAST, OpGetKeybind("key.hexical.evoke"))
 
-
 		register("greater_blink", "wqawawaqwqwqawawaqw", HexDir.SOUTH_WEST, OpGreaterBlink())
 
 		register("conjure_mesh", "qaqqqqqwqqqdeeweweeaeewewee", HexDir.EAST, OpConjureMesh())
 		register("weave_mesh", "qaqqqqqwqqqdeewewee", HexDir.EAST, OpWeaveMesh())
 		register("read_mesh", "edeeeeeweeeaqqwqwqq", HexDir.SOUTH_WEST, OpReadMesh())
-
-		register("identify", "qqqqqe", HexDir.NORTH_EAST, OpIdentify())
-		register("recognize", "eeeeeq", HexDir.WEST, OpRecognize())
-		register("classify", "edqdeq", HexDir.WEST, OpClassify())
-		register("get_mainhand_stack", "qaqqqq", HexDir.NORTH_EAST, OpGetPlayerData { player -> listOf(if (player.mainHandStack.isEmpty) NullIota() else IdentifierIota(Registries.ITEM.getId(player.mainHandStack.item))) })
-		register("get_offhand_stack", "edeeee", HexDir.NORTH_WEST, OpGetPlayerData { player -> listOf(if (player.offHandStack.isEmpty) NullIota() else IdentifierIota(Registries.ITEM.getId(player.offHandStack.item))) })
-
-		register("get_weather", "eweweweweweeeaedqdqde", HexDir.WEST, OpGetWorldData { world -> (
-				if (world.isThundering) 2.0
-				else if (world.isRaining) 1.0
-				else 0.0
-			).asActionResult
-		})
-		register("get_light", "wqwqwqwqwqwaeqqqqaeqaeaeaeaw", HexDir.SOUTH_WEST, OpGetPositionData { world, position -> world.getLightLevel(position).asActionResult })
-		register("get_power", "qwqwqwqwqwqqwwaadwdaaww", HexDir.EAST, OpGetPositionData { world, position -> world.getReceivedRedstonePower(position).asActionResult })
-		register("get_comparator", "eweweweweweewwddawaddww", HexDir.WEST, OpGetPositionData { world, position ->
-			val state = world.getBlockState(position)
-			if (state.hasComparatorOutput())
-				return@OpGetPositionData state.getComparatorOutput(world, position).asActionResult
-			return@OpGetPositionData listOf(NullIota())
-		})
-		register("get_day", "wwawwawwqqawwdwwdwwaqwqwqwqwq", HexDir.SOUTH_EAST, OpGetWorldData { world -> (world.timeOfDay.toDouble() / 24000.0).asActionResult })
-		register("get_time", "wddwaqqwqaddaqqwddwaqqwqaddaq", HexDir.SOUTH_EAST, OpGetWorldData { world -> world.time.asActionResult })
-		register("get_biome", "qwqwqawdqqaqqdwaqwqwq", HexDir.WEST, OpGetPositionData { world, position -> world.getBiome(position).key.get().value.asActionResult() })
-		register("get_dimension", "qwqwqwqwqwqqaedwaqd", HexDir.WEST, OpGetWorldData { world -> world.registryKey.value.asActionResult() })
-		register("get_einstein", "aqwawqwqqwqwqwqwqwq", HexDir.SOUTH_WEST, OpGetWorldData { world -> world.dimension.comp_645().asActionResult })
-
-		register("count_stack", "qaqqwqqqw", HexDir.EAST, OpGetItemStackData { stack -> stack.count.asActionResult })
-		register("damage_stack", "eeweeewdeq", HexDir.NORTH_EAST, OpGetItemStackData { stack -> stack.damage.asActionResult })
 
 		register("block_hardness", "qaqqqqqeeeeedq", HexDir.EAST, OpGetBlockTypeData { block -> block.hardness.asActionResult })
 		register("block_blast_resistance", "qaqqqqqewaaqddqa", HexDir.EAST, OpGetBlockTypeData { block -> block.blastResistance.asActionResult })
@@ -363,21 +333,6 @@ object HexicalActions {
 		})
 		register("get_enchantment_strength", "waqwwqaweede", HexDir.WEST, OpGetEnchantmentStrength())
 
-		register("env_ambit", "wawaw", HexDir.EAST, OpGetAmbit())
-		register("env_staff", "waaq", HexDir.NORTH_EAST, OpGetEnvData { env -> (env is StaffCastEnv).asActionResult })
-		register("env_packaged_hex", "waaqwwaqqqqq", HexDir.NORTH_EAST, OpGetEnvData { env -> (env is PackagedItemCastEnv).asActionResult })
-		register("env_tchotchke", "waaqwwaqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpGetEnvData { env -> (env is TchotchkeCastEnv).asActionResult })
-		register("env_evocation", "waaqeaqa", HexDir.NORTH_EAST, OpGetEnvData { env -> (env is EvocationCastEnv).asActionResult })
-		register("env_hand_lamp", "waaqdqdded", HexDir.NORTH_EAST, OpGetEnvData { env -> (env is HandLampCastEnv).asActionResult })
-		register("env_arch_lamp", "waaqqqaqwdd", HexDir.NORTH_EAST, OpGetEnvData { env -> (env is ArchLampCastEnv).asActionResult })
-		register("env_circle", "waaqdeaqwqae", HexDir.NORTH_EAST, OpGetEnvData { env -> (env is CircleCastEnv).asActionResult })
-		register("env_offhand", "qaqqqwaaq", HexDir.NORTH_EAST, OpGetEnvData { env -> (env.castingHand == Hand.MAIN_HAND).asActionResult })
-
-		register("get_hunger", "adaqqqddqe", HexDir.WEST, OpGetFoodTypeData { food -> food.hunger.asActionResult })
-		register("get_saturation", "adaqqqddqw", HexDir.WEST, OpGetFoodTypeData { food -> food.saturationModifier.asActionResult })
-		register("is_meat", "adaqqqddaed", HexDir.WEST, OpGetFoodTypeData { food -> food.isMeat.asActionResult })
-		register("is_snack", "adaqqqddaq", HexDir.WEST, OpGetFoodTypeData { food -> food.isSnack.asActionResult })
-
 		register("entity_width", "dwe", HexDir.NORTH_WEST, OpGetEntityData { entity -> entity.width.asActionResult })
 		register("theodolite", "wqaa", HexDir.EAST, OpGetEntityData { entity ->
 			val upPitch = (-entity.pitch + 90) * (Math.PI.toFloat() / 180)
@@ -404,7 +359,30 @@ object HexicalActions {
 		register("get_player_hunger", "qqqadaddw", HexDir.WEST, OpGetPlayerData { player -> player.hungerManager.foodLevel.asActionResult })
 		register("get_player_saturation", "qqqadaddq", HexDir.WEST, OpGetPlayerData { player -> player.hungerManager.saturationLevel.asActionResult })
 
+		register("env_ambit", "wawaw", HexDir.EAST, OpGetAmbit())
+		register("env_staff", "waaq", HexDir.NORTH_EAST, OpGetEnvData { env -> (env is StaffCastEnv).asActionResult })
+		register("env_packaged_hex", "waaqwwaqqqqq", HexDir.NORTH_EAST, OpGetEnvData { env -> (env is PackagedItemCastEnv).asActionResult })
+		register("env_tchotchke", "waaqwwaqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpGetEnvData { env -> (env is TchotchkeCastEnv).asActionResult })
+		register("env_evocation", "waaqeaqa", HexDir.NORTH_EAST, OpGetEnvData { env -> (env is EvocationCastEnv).asActionResult })
+		register("env_hand_lamp", "waaqdqdded", HexDir.NORTH_EAST, OpGetEnvData { env -> (env is HandLampCastEnv).asActionResult })
+		register("env_arch_lamp", "waaqqqaqwdd", HexDir.NORTH_EAST, OpGetEnvData { env -> (env is ArchLampCastEnv).asActionResult })
+		register("env_circle", "waaqdeaqwqae", HexDir.NORTH_EAST, OpGetEnvData { env -> (env is CircleCastEnv).asActionResult })
+		register("env_offhand", "qaqqqwaaq", HexDir.NORTH_EAST, OpGetEnvData { env -> (env.castingHand == Hand.MAIN_HAND).asActionResult })
+
+		register("get_hunger", "adaqqqddqe", HexDir.WEST, OpGetFoodTypeData { food -> food.hunger.asActionResult })
+		register("get_saturation", "adaqqqddqw", HexDir.WEST, OpGetFoodTypeData { food -> food.saturationModifier.asActionResult })
+		register("is_meat", "adaqqqddaed", HexDir.WEST, OpGetFoodTypeData { food -> food.isMeat.asActionResult })
+		register("is_snack", "adaqqqddaq", HexDir.WEST, OpGetFoodTypeData { food -> food.isSnack.asActionResult })
+
+		register("identify", "qqqqqe", HexDir.NORTH_EAST, OpIdentify())
+		register("recognize", "eeeeeq", HexDir.WEST, OpRecognize())
+		register("classify", "edqdeq", HexDir.WEST, OpClassify())
+		register("get_mainhand_stack", "qaqqqq", HexDir.NORTH_EAST, OpGetPlayerData { player -> listOf(if (player.mainHandStack.isEmpty) NullIota() else IdentifierIota(Registries.ITEM.getId(player.mainHandStack.item))) })
+		register("get_offhand_stack", "edeeee", HexDir.NORTH_WEST, OpGetPlayerData { player -> listOf(if (player.offHandStack.isEmpty) NullIota() else IdentifierIota(Registries.ITEM.getId(player.offHandStack.item))) })
+
+		register("count_stack", "qaqqwqqqw", HexDir.EAST, OpGetItemStackData { stack -> stack.count.asActionResult })
 		register("count_max_stack", "edeeweeew", HexDir.WEST, OpGetItemTypeData { item -> item.maxCount.asActionResult })
+		register("damage_stack", "eeweeewdeq", HexDir.NORTH_EAST, OpGetItemStackData { stack -> stack.damage.asActionResult })
 		register("damage_max_stack", "qqwqqqwaqe", HexDir.NORTH_WEST, OpGetItemTypeData { item -> item.maxDamage.asActionResult })
 		register("edible", "adaqqqdd", HexDir.WEST, OpGetItemTypeData { item -> item.isFood.asActionResult })
 
@@ -418,6 +396,26 @@ object HexicalActions {
 		register("get_effect_category", "wqqqaawd", HexDir.SOUTH_WEST, OpGetStatusEffectCategory())
 		register("get_effect_amplifier", "wqqqaqwa", HexDir.SOUTH_WEST, OpGetStatusEffectInstanceData { instance -> instance.amplifier.asActionResult })
 		register("get_effect_duration", "wqqqaqwdd", HexDir.SOUTH_WEST, OpGetStatusEffectInstanceData { instance -> (instance.duration.toDouble() / 20.0).asActionResult })
+
+		register("get_weather", "eweweweweweeeaedqdqde", HexDir.WEST, OpGetWorldData { world -> (
+				if (world.isThundering) 2.0
+				else if (world.isRaining) 1.0
+				else 0.0
+				).asActionResult
+		})
+		register("get_light", "wqwqwqwqwqwaeqqqqaeqaeaeaeaw", HexDir.SOUTH_WEST, OpGetPositionData { world, position -> world.getLightLevel(position).asActionResult })
+		register("get_power", "qwqwqwqwqwqqwwaadwdaaww", HexDir.EAST, OpGetPositionData { world, position -> world.getReceivedRedstonePower(position).asActionResult })
+		register("get_comparator", "eweweweweweewwddawaddww", HexDir.WEST, OpGetPositionData { world, position ->
+			val state = world.getBlockState(position)
+			if (state.hasComparatorOutput())
+				return@OpGetPositionData state.getComparatorOutput(world, position).asActionResult
+			return@OpGetPositionData listOf(NullIota())
+		})
+		register("get_day", "wwawwawwqqawwdwwdwwaqwqwqwqwq", HexDir.SOUTH_EAST, OpGetWorldData { world -> (world.timeOfDay.toDouble() / 24000.0).asActionResult })
+		register("get_time", "wddwaqqwqaddaqqwddwaqqwqaddaq", HexDir.SOUTH_EAST, OpGetWorldData { world -> world.time.asActionResult })
+		register("get_biome", "qwqwqawdqqaqqdwaqwqwq", HexDir.WEST, OpGetPositionData { world, position -> world.getBiome(position).key.get().value.asActionResult() })
+		register("get_dimension", "qwqwqwqwqwqqaedwaqd", HexDir.WEST, OpGetWorldData { world -> world.registryKey.value.asActionResult() })
+		register("get_einstein", "aqwawqwqqwqwqwqwqwq", HexDir.SOUTH_WEST, OpGetWorldData { world -> world.dimension.comp_645().asActionResult })
 	}
 
 	private fun register(name: String, signature: String, startDir: HexDir, action: Action) =
