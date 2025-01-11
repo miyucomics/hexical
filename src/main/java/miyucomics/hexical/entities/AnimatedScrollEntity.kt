@@ -39,7 +39,7 @@ class AnimatedScrollEntity(entityType: EntityType<AnimatedScrollEntity>, world: 
 	var clientAged = false
 	var clientGlow = false
 	var clientVanished = false
-	var clientSize = 0
+	var clientSize = 1
 	var clientColor: Int = (0xff_000000).toInt()
 	var cachedVerts: List<Vec2f> = listOf()
 
