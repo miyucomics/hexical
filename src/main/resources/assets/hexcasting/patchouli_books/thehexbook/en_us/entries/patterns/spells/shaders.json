@@ -2,7 +2,7 @@
 	"name": "hexical.page.shaders.title",
 	"icon": "minecraft:firework_rocket",
 	"category": "hexcasting:patterns/spells",
-	"advancement": "hexcasting:root",
+	"advancement": "hexical:media_slurp",
 	"sortnum": 30,
 	"pages": [
 		{
@@ -32,6 +32,14 @@
 			"input": "",
 			"output": "",
 			"text": "hexical.page.shader_lines.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:shader_tv",
+			"anchor": "hexical:shader_tv",
+			"input": "",
+			"output": "",
+			"text": "hexical.page.shader_tv.summary"
 		}
 	]
 }
