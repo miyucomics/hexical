@@ -14,11 +14,11 @@
 		},
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:offer_mind",
-			"anchor": "hexical:offer_mind",
+			"op_id": "hexical:recharge_lamp",
+			"anchor": "hexical:recharge_lamp",
 			"input": "entity, number",
 			"output": "",
-			"text": "hexical.page.offer_mind.summary"
+			"text": "hexical.page.recharge_lamp.summary"
 		},
 		{
 			"type": "patchouli:text",
@@ -27,6 +27,14 @@
 		{
 			"type": "patchouli:text",
 			"text": "hexical.page.replacement.3"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:promote_lamp",
+			"anchor": "hexical:promote_lamp",
+			"input": "entity",
+			"output": "",
+			"text": "hexical.page.promote_lamp.summary"
 		}
 	]
 }

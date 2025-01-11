@@ -13,7 +13,7 @@ import miyucomics.hexical.utils.CastingUtils
 import net.minecraft.item.ItemStack
 import net.minecraft.server.network.ServerPlayerEntity
 
-class OpEducateGenie : SpellAction {
+class OpWish : SpellAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val patterns = args.getList(0, argc).toList()
