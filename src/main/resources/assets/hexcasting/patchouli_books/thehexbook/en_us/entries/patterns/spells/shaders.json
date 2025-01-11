@@ -1,6 +1,6 @@
 {
 	"name": "hexical.page.shaders.title",
-	"icon": "minecraft:firework_rocket",
+	"icon": "minecraft:textures/mob_effect/invisibility.png",
 	"category": "hexcasting:patterns/spells",
 	"advancement": "hexical:media_slurp",
 	"sortnum": 30,
@@ -40,6 +40,22 @@
 			"input": "",
 			"output": "",
 			"text": "hexical.page.shader_tv.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:shader_media",
+			"anchor": "hexical:shader_media",
+			"input": "",
+			"output": "",
+			"text": "hexical.page.shader_media.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:shader_spider",
+			"anchor": "hexical:shader_spider",
+			"input": "",
+			"output": "",
+			"text": "hexical.page.shader_spider.summary"
 		}
 	]
 }

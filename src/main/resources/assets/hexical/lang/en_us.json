@@ -57,8 +57,6 @@
 	"tooltip.hexical.scroll_aged": "Aged",
 	"tooltip.hexical.scroll_glow": "Glowing",
 	"tooltip.hexical.scroll_vanished": "Vanished",
-	"particle.minecraft.soul_7": "",
-	"misc.hexical.media_vision": "",
 
 	"hexical.autograph.header": "Autographed by:",
 
@@ -524,15 +522,19 @@
 	"hexical.page.conjure_firework.3": "$(o)Special Effects$()$(br2)The seventh parameter controls whether the particles of the firework flicker, as if adding glowstone to the $(thing)virtual firework star$().$(br2)The eighth parameter controls whether the particles of the firework leave trails, as if adding a diamond to the $(thing)virtual firework star$().",
 
 	"hexical.page.shaders.title": "Shaders",
-	"hexical.page.shaders.0": "This chapter seems to revolve around manipulating my eyes and light receptors, allowing me to alter my vision for utility and fun. These spells are free and seem to break upon death or me leaving this world and returning at a later date.$(br2)$(o)You sense that something is off. You feel in harmony with the magic. Maan, that color smells interesting. Usual concepts don't apply.$()",
+	"hexical.page.shaders.0": "These spells revolve around manipulating my light receptors, allowing me to alter my vision for utility and fun. These spells break upon death or me leaving this world and returning at a later date.$(br2)$(o)You sense that something is off. You feel in harmony with the magic. Maan, that color smells interesting. Usual concepts don't apply.$()",
 	"hexcasting.action.hexical:shader_clear": "Clear Vision",
-	"hexical.page.shader_clear.summary": "Breaks any shader spell currently applied to me.",
+	"hexical.page.shader_clear.summary": "Breaks any shader spell currently applied to me. Useful for \"bleaching\" my eyes after too much experimentation.",
 	"hexcasting.action.hexical:shader_owl": "Pierce Darkness",
 	"hexical.page.shader_owl.summary": "Greatly augments my ability to see in the dark, although the light resultingly becomes extremely blinding.",
 	"hexcasting.action.hexical:shader_lines": "Visualize Forms",
 	"hexical.page.shader_lines.summary": "Transforms the world into a thin outline of black and white. Possibly useful for identifying subtle contrasts.",
 	"hexcasting.action.hexical:shader_tv": "Broadcast Vision",
 	"hexical.page.shader_tv.summary": "Alters my vision to contain strange lines and make objects towards the center of my vision bulge \"towards\" me. Seems to be in reference to something...",
+	"hexcasting.action.hexical:shader_media": "Identify Importance",
+	"hexical.page.shader_media.summary": "Transforms my vision to perceive only the most important things...",
+	"hexcasting.action.hexical:shader_spider": "Split Vision",
+	"hexical.page.shader_spider.summary": "Splits my vision into multiple sections, similar to what a spider might see. I am unsure whether it actually grants me more vision...",
 
 	"hexical.category.scrying": "Scrying",
 	"hexical.category.scrying.desc": "I have stumbled upon a branch of manipulating _media entirely focused around information about the world. These patterns can divine a surprising amount of information like types of blocks, status effects, the weather, the nutritional value of food, whether I am sprinting, $(o)block explosion resistance$(), and more. While likely not useful for the majority of _Hexes, these will be convenient to have, should I ever need them.",

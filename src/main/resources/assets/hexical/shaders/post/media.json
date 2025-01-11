@@ -4,12 +4,12 @@
 	],
 	"passes": [
 		{
-			"name": "deconverge",
+			"name": "media",
 			"intarget": "minecraft:main",
 			"outtarget": "swap"
 		},
 		{
-			"name": "television",
+			"name": "blit",
 			"intarget": "swap",
 			"outtarget": "minecraft:main"
 		}
