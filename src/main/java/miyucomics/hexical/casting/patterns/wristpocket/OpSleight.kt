@@ -1,5 +1,6 @@
 package miyucomics.hexical.casting.patterns.wristpocket
 
+import at.petrak.hexcasting.api.casting.ParticleSpray
 import at.petrak.hexcasting.api.casting.RenderedSpell
 import at.petrak.hexcasting.api.casting.castables.SpellAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
@@ -28,12 +29,12 @@ class OpSleight : SpellAction {
 			is EntityIota -> {
 				val item = args.getItemEntity(0, argc)
 				env.assertEntityInRange(item)
-				return SpellAction.Result(SwapSpell(item), MediaConstants.DUST_UNIT / 4, listOf())
+				return SpellAction.Result(SwapSpell(item), MediaConstants.DUST_UNIT / 4, listOf(ParticleSpray.burst(item.pos, 1.0)))
 			}
 			is Vec3Iota -> {
 				val position = args.getVec3(0, argc)
 				env.assertVecInRange(position)
-				return SpellAction.Result(ConjureSpell(position), MediaConstants.DUST_UNIT / 4, listOf())
+				return SpellAction.Result(ConjureSpell(position), MediaConstants.DUST_UNIT / 4, listOf(ParticleSpray.burst(position, 1.0)))
 			}
 			else -> throw MishapInvalidIota.of(args[0], 0, "entity_or_vector")
 		}

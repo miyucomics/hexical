@@ -1,5 +1,6 @@
 package miyucomics.hexical.casting.patterns.colors
 
+import at.petrak.hexcasting.api.casting.ParticleSpray
 import at.petrak.hexcasting.api.casting.RenderedSpell
 import at.petrak.hexcasting.api.casting.castables.SpellAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
@@ -29,6 +30,7 @@ import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.util.DyeColor
 import net.minecraft.util.math.BlockPos
+import net.minecraft.util.math.Vec3d
 import java.util.*
 
 class OpDye : SpellAction {
@@ -43,35 +45,35 @@ class OpDye : SpellAction {
 				return when (entity) {
 					is CatEntity -> {
 						val trueDye = args.getTrueDye(1, argc)
-						SpellAction.Result(CatSpell(entity, trueDye), cost, listOf())
+						SpellAction.Result(CatSpell(entity, trueDye), cost, listOf(ParticleSpray.cloud(entity.pos, 1.0)))
 					}
 					is SheepEntity -> {
 						val trueDye = args.getTrueDye(1, argc)
-						SpellAction.Result(SheepSpell(entity, trueDye), cost, listOf())
+						SpellAction.Result(SheepSpell(entity, trueDye), cost, listOf(ParticleSpray.cloud(entity.pos, 1.0)))
 					}
 					is ShulkerEntity -> {
 						val trueDye = args.getTrueDye(1, argc)
-						SpellAction.Result(ShulkerSpell(entity, trueDye), cost, listOf())
+						SpellAction.Result(ShulkerSpell(entity, trueDye), cost, listOf(ParticleSpray.cloud(entity.pos, 1.0)))
 					}
 					is Specklike -> {
 						val trueDye = args.getTrueDye(1, argc)
-						SpellAction.Result(SpecklikeSpell(entity, trueDye), cost, listOf())
+						SpellAction.Result(SpecklikeSpell(entity, trueDye), cost, listOf(ParticleSpray.cloud(entity.pos, 1.0)))
 					}
 					is WolfEntity -> {
 						val trueDye = args.getTrueDye(1, argc)
-						SpellAction.Result(WolfSpell(entity, trueDye), cost, listOf())
+						SpellAction.Result(WolfSpell(entity, trueDye), cost, listOf(ParticleSpray.cloud(entity.pos, 1.0)))
 					}
 					is ItemEntity -> {
 						when (val item = entity.stack.item) {
 							is BlockItem -> {
 								if (DyeData.isDyeable(item.block))
-									SpellAction.Result(BlockItemSpell(entity, item.block, dye), cost, listOf())
+									SpellAction.Result(BlockItemSpell(entity, item.block, dye), cost, listOf(ParticleSpray.cloud(entity.pos, 1.0)))
 								else
 									throw DyeableMishap(entity.pos)
 							}
 							else -> {
 								if (DyeData.isDyeable(item))
-									SpellAction.Result(ItemSpell(entity, item, dye), cost, listOf())
+									SpellAction.Result(ItemSpell(entity, item, dye), cost, listOf(ParticleSpray.cloud(entity.pos, 1.0)))
 								else
 									throw DyeableMishap(entity.pos)
 							}
@@ -86,7 +88,7 @@ class OpDye : SpellAction {
 				val state = env.world.getBlockState(position)
 				if (!DyeData.isDyeable(state.block))
 					throw DyeableMishap(position.toCenterPos())
-				return SpellAction.Result(BlockSpell(position, state, dye), cost, listOf())
+				return SpellAction.Result(BlockSpell(position, state, dye), cost, listOf(ParticleSpray.cloud(Vec3d.ofCenter(position), 1.0)))
 			}
 			else -> throw MishapInvalidIota.of(args[0], 0, "entity_or_vector")
 		}

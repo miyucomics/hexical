@@ -1,5 +1,6 @@
 package miyucomics.hexical.casting.patterns
 
+import at.petrak.hexcasting.api.casting.ParticleSpray
 import at.petrak.hexcasting.api.casting.RenderedSpell
 import at.petrak.hexcasting.api.casting.castables.SpellAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
@@ -41,7 +42,7 @@ class OpMagicMissile : SpellAction {
 		env.assertVecInRange(worldCoords)
 
 		val velocity = args.getVec3(1, argc)
-		return SpellAction.Result(Spell(worldCoords, velocity), MediaConstants.DUST_UNIT, listOf())
+		return SpellAction.Result(Spell(worldCoords, velocity), MediaConstants.DUST_UNIT, listOf(ParticleSpray.cloud(worldCoords, 1.0)))
 	}
 
 	private data class Spell(val position: Vec3d, val velocity: Vec3d) : RenderedSpell {
