@@ -12,9 +12,9 @@ import net.minecraft.world.World
 import java.util.*
 
 class PersistentStateHandler : PersistentState() {
-	private var archLamps: HashMap<UUID, ArchLampData> = HashMap<UUID, ArchLampData>()
-	private var evocation: HashMap<UUID, NbtCompound> = HashMap<UUID, NbtCompound>()
-	private var wristpockets: HashMap<UUID, ItemStack> = HashMap<UUID, ItemStack>()
+	private var archLamps = HashMap<UUID, ArchLampData>()
+	private var evocation = HashMap<UUID, NbtCompound>()
+	private var wristpockets = HashMap<UUID, ItemStack>()
 
 	override fun writeNbt(nbt: NbtCompound): NbtCompound {
 		val nbtArchLamps = NbtCompound()
@@ -55,31 +55,18 @@ class PersistentStateHandler : PersistentState() {
 			return state
 		}
 
+		fun getArchLampData(player: ServerPlayerEntity) = getServerState(player.getServer()!!).archLamps.computeIfAbsent(player.uuid) { ArchLampData() }
+
+		fun getEvocation(player: ServerPlayerEntity) = getServerState(player.getServer()!!).evocation[player.uuid]
 		fun setEvocation(player: ServerPlayerEntity, hex: NbtCompound) {
-			val serverState = getServerState(player.getServer()!!)
-			serverState.evocation[player.uuid] = hex
-		}
-
-		fun getEvocation(player: ServerPlayerEntity): NbtCompound? {
-			val serverState = getServerState(player.getServer()!!)
-			return serverState.evocation[player.uuid]
-		}
-
-		fun getPlayerArchLampData(player: ServerPlayerEntity): ArchLampData {
-			val serverState = getServerState(player.getServer()!!)
-			return serverState.archLamps.computeIfAbsent(player.uuid) { ArchLampData() }
+			getServerState(player.getServer()!!).evocation[player.uuid] = hex
 		}
 
 		@JvmStatic
-		fun getWristpocketStack(player: ServerPlayerEntity): ItemStack {
-			val serverState = getServerState(player.getServer()!!)
-			return serverState.wristpockets.computeIfAbsent(player.uuid) { ItemStack.EMPTY }
-		}
-
+		fun getWristpocketStack(player: ServerPlayerEntity) = getServerState(player.getServer()!!).wristpockets.computeIfAbsent(player.uuid) { ItemStack.EMPTY }
 		@JvmStatic
 		fun setWristpocketStack(player: ServerPlayerEntity, stack: ItemStack) {
-			val serverState = getServerState(player.getServer()!!)
-			serverState.wristpockets[player.uuid] = stack
+			getServerState(player.getServer()!!).wristpockets[player.uuid] = stack
 		}
 	}
 }
