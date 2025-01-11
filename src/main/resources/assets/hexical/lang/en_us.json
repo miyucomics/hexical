@@ -425,9 +425,9 @@
 	"hexcasting.action.hexical:mage_hand": "Mage Hand",
 	"hexical.page.mage_hand.summary": "Conjures a magical hand that uses my wristpocketed item to interact with the world. If my wristpocket is empty, acts as though I had interacted with the world.",
 	"hexical.page.mage_hand.0": "If taking an entity, interacts with the entity with the item.$(br)If taking a vector, interacts with the block with the item.$(br2)$(o)A spectral, floating hand appears at a point you choose within range.$()",
-	"hexcasting.action.hexical:ingest": "Assimilate Food",
-	"hexical.page.ingest.summary": "Makes me eat my wristpocketed item, nourishing me or applying potions to me. Costs about one $(l:items/amethyst)$(item)Amethyst Dust$() and mishaps if the item is not edible.",
-	"hexical.page.ingest.0": "Regardless of the time required to usually eat the item, its special effects, my own dietary restrictions, cooldowns on eating the item, or if I'm full, this spell makes me consume it instantly.$(br2)$(o)Let food be thy medicine and medicine be thy food.$()",
+	"hexcasting.action.hexical:mage_mouth": "Mage Mouth",
+	"hexical.page.mage_mouth.summary": "Makes me eat my wristpocketed item, nourishing me or applying potions to me. Costs about one $(l:items/amethyst)$(item)Amethyst Dust$() and mishaps if the item is not edible.",
+	"hexical.page.mage_mouth.0": "Regardless of the time required to usually eat the item, its special effects, my own dietary restrictions, cooldowns on eating the item, or if I'm full, this spell makes me consume it instantly.$(br2)$(o)Let food be thy medicine and medicine be thy food.$()",
 
 	"hexical.page.specks.title": "Specks",
 	"hexical.page.specks.0": "I can conjure an image of an iota into the world, called a $(thing)speck$(). Nature allows me to customize them quite extensively, altering their size, thickness of stroke, and more. They also take on my pigment color. Once they are in the world, I can move, rotate, and otherwise alter them for free, regardless of range.",
@@ -531,6 +531,8 @@
 	"hexical.page.shader_owl.summary": "Greatly augments my ability to see in the dark, although the light resultingly becomes extremely blinding.",
 	"hexcasting.action.hexical:shader_lines": "Visualize Forms",
 	"hexical.page.shader_lines.summary": "Transforms the world into a thin outline of black and white. Possibly useful for identifying subtle contrasts.",
+	"hexcasting.action.hexical:shader_tv": "Broadcast Vision",
+	"hexical.page.shader_tv.summary": "Alters my vision to contain strange lines and make objects towards the center of my vision bulge \"towards\" me. Seems to be in reference to something...",
 
 	"hexical.category.scrying": "Scrying",
 	"hexical.category.scrying.desc": "I have stumbled upon a branch of manipulating _media entirely focused around information about the world. These patterns can divine a surprising amount of information like types of blocks, status effects, the weather, the nutritional value of food, whether I am sprinting, $(o)block explosion resistance$(), and more. While likely not useful for the majority of _Hexes, these will be convenient to have, should I ever need them.",
