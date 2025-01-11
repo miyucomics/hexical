@@ -14,8 +14,6 @@ object ShaderRenderer {
 
     @JvmStatic
     fun render(deltaTick: Float) {
-        MinecraftClient.getInstance().player ?: return
-
         if (activeShader == null)
             return
 
@@ -25,27 +23,25 @@ object ShaderRenderer {
             lastHeight = 0
         }
 
-        updateEffectSize(activeShader)
+        updateEffectSize(activeShader!!)
         activeShader!!.render(deltaTick)
         MinecraftClient.getInstance().framebuffer.beginWrite(false)
     }
 
-    fun setEffect(location: Identifier) {
+    fun setEffect(location: Identifier?) {
+        if (location == null) {
+            activeShader = null
+            return
+        }
         try {
             val client = MinecraftClient.getInstance()
             activeShader = PostEffectProcessor(client.textureManager, client.resourceManager, client.framebuffer, location)
-            return
         }  catch (ioexception: IOException) {
-            println("Failed to load shader: $location")
-        } catch (jsonsyntaxexception: JsonSyntaxException) {
-            println("Failed to parse shader: $location")
+            println(ioexception)
         }
-        activeShader = null
     }
 
-    private fun updateEffectSize(effect: PostEffectProcessor?) {
-        if (effect == null)
-            return
+    private fun updateEffectSize(effect: PostEffectProcessor) {
         val client = MinecraftClient.getInstance()
         val width = client.window.width
         val height = client.window.height

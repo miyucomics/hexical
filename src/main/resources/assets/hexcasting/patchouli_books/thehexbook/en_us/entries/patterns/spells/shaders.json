@@ -1,0 +1,37 @@
+{
+	"name": "hexical.page.shaders.title",
+	"icon": "minecraft:firework_rocket",
+	"category": "hexcasting:patterns/spells",
+	"advancement": "hexcasting:root",
+	"sortnum": 30,
+	"pages": [
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.shaders.0"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:shader_clear",
+			"anchor": "hexical:shader_clear",
+			"input": "",
+			"output": "",
+			"text": "hexical.page.shader_clear.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:shader_owl",
+			"anchor": "hexical:shader_owl",
+			"input": "",
+			"output": "",
+			"text": "hexical.page.shader_owl.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:shader_lines",
+			"anchor": "hexical:shader_lines",
+			"input": "",
+			"output": "",
+			"text": "hexical.page.shader_lines.summary"
+		}
+	]
+}

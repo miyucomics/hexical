@@ -18,6 +18,6 @@ class OpGetArchLampData(private val process: (CastingEnvironment, ArchLampData) 
 			return listOf(NullIota())
 		if (!hasActiveArchLamp(caster))
 			throw NeedsActiveArchLampMishap()
-		return process(env, PersistentStateHandler.getPlayerArchLampData(caster))
+		return process(env, PersistentStateHandler.getArchLampData(caster))
 	}
 }
