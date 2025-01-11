@@ -24,7 +24,19 @@ import net.minecraft.world.BlockView
 import net.minecraft.world.World
 import net.minecraft.world.event.GameEvent
 
-class MageBlock : BlockConjured(Settings.create().nonOpaque().dropsNothing().breakInstantly().luminance { _ -> 2 }.mapColor(MapColor.CLEAR).suffocates { _, _, _ -> false }.blockVision { _, _, _ -> false }.allowsSpawning { _, _, _, _ -> false }.sounds(BlockSoundGroup.AMETHYST_CLUSTER)) {
+class MageBlock : BlockConjured(
+	Settings
+		.create()
+		.nonOpaque()
+		.dropsNothing()
+		.breakInstantly()
+		.luminance { _ -> 2 }
+		.mapColor(MapColor.CLEAR)
+		.suffocates { _, _, _ -> false }
+		.blockVision { _, _, _ -> false }
+		.allowsSpawning { _, _, _, _ -> false }
+		.sounds(BlockSoundGroup.AMETHYST_CLUSTER)
+) {
 	override fun emitsRedstonePower(state: BlockState) = true
 	override fun getWeakRedstonePower(state: BlockState, world: BlockView, pos: BlockPos, direction: Direction): Int {
 		val tile = world.getBlockEntity(pos)

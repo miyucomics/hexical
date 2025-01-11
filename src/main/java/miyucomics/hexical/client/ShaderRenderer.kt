@@ -1,6 +1,5 @@
 package miyucomics.hexical.client
 
-import com.google.gson.JsonSyntaxException
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.gl.PostEffectProcessor
 import net.minecraft.util.Identifier

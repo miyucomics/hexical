@@ -21,10 +21,10 @@ import at.petrak.hexcasting.common.casting.actions.stack.OpTwiddling
 import at.petrak.hexcasting.common.lib.hex.HexActions
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.casting.environments.ArchLampCastEnv
-import miyucomics.hexical.casting.environments.EvocationCastEnv
-import miyucomics.hexical.casting.environments.HandLampCastEnv
-import miyucomics.hexical.casting.environments.TchotchkeCastEnv
+import miyucomics.hexical.casting.env.ArchLampCastEnv
+import miyucomics.hexical.casting.env.EvocationCastEnv
+import miyucomics.hexical.casting.env.HandLampCastEnv
+import miyucomics.hexical.casting.env.TchotchkeCastEnv
 import miyucomics.hexical.casting.iota.IdentifierIota
 import miyucomics.hexical.casting.iota.asActionResult
 import miyucomics.hexical.casting.patterns.*
