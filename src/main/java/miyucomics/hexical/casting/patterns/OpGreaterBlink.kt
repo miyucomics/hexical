@@ -1,5 +1,6 @@
 package miyucomics.hexical.casting.patterns
 
+import at.petrak.hexcasting.api.casting.ParticleSpray
 import at.petrak.hexcasting.api.casting.RenderedSpell
 import at.petrak.hexcasting.api.casting.castables.SpellAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
@@ -31,9 +32,10 @@ class OpGreaterBlink : SpellAction {
 			.add(upAxis.multiply(providedOffset.y))
 			.add(straightAxis.multiply(providedOffset.z))
 
+		val destination = caster.eyePos.add(worldOffset)
 		if (worldOffset.length() > 128)
-			throw MishapBadLocation(caster.eyePos.add(worldOffset))
-		return SpellAction.Result(Spell(caster.eyePos.add(worldOffset)), MediaConstants.DUST_UNIT * 2, listOf())
+			throw MishapBadLocation(destination)
+		return SpellAction.Result(Spell(destination), MediaConstants.DUST_UNIT * 2, listOf(ParticleSpray.cloud(destination, 1.0)))
 	}
 
 	private data class Spell(val position: Vec3d) : RenderedSpell {

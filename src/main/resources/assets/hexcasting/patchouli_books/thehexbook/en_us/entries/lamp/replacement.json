@@ -27,10 +27,6 @@
 		{
 			"type": "patchouli:text",
 			"text": "hexical.page.replacement.3"
-		},
-		{
-			"type": "patchouli:text",
-			"text": "hexical.page.replacement.4"
 		}
 	]
 }

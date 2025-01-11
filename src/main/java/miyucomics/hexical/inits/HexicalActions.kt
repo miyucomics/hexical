@@ -266,7 +266,7 @@ object HexicalActions {
 		register("read_mesh", "edeeeeeweeeaqqwqwqq", HexDir.SOUTH_WEST, OpReadMesh())
 
 		register("block_hardness", "qaqqqqqeeeeedq", HexDir.EAST, OpGetBlockTypeData { block -> block.hardness.asActionResult })
-		register("block_blast_resistance", "qaqqqqqewaaqddqa", HexDir.EAST, OpGetBlockTypeData { block -> block.blastResistance.asActionResult })
+		register("block_blast_resistance", "qaqqqqqewaawaawa", HexDir.EAST, OpGetBlockTypeData { block -> block.blastResistance.asActionResult })
 		register("blockstate_waterlogged", "edeeeeeqwqqqqw", HexDir.SOUTH_EAST, OpGetBlockStateData { state ->
 			state.entries[Properties.WATERLOGGED] ?: return@OpGetBlockStateData listOf(NullIota())
             return@OpGetBlockStateData state.get(Properties.WATERLOGGED).asActionResult

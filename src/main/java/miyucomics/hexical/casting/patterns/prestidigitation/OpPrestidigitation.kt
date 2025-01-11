@@ -1,5 +1,6 @@
 package miyucomics.hexical.casting.patterns.prestidigitation
 
+import at.petrak.hexcasting.api.casting.ParticleSpray
 import at.petrak.hexcasting.api.casting.RenderedSpell
 import at.petrak.hexcasting.api.casting.castables.SpellAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
@@ -16,6 +17,7 @@ import miyucomics.hexical.data.PrestidigitationData
 import miyucomics.hexical.interfaces.PrestidigitationEffect
 import net.minecraft.entity.Entity
 import net.minecraft.util.math.BlockPos
+import net.minecraft.util.math.Vec3d
 
 class OpPrestidigitation : SpellAction {
 	override val argc = 1
@@ -25,13 +27,13 @@ class OpPrestidigitation : SpellAction {
 				val entity = args.getEntity(0, argc)
 				env.assertEntityInRange(entity)
 				val effect = PrestidigitationData.entityEffect(entity) ?: throw MishapBadEntity.of(entity, "prestidigitation")
-				SpellAction.Result(EntitySpell(entity, effect), MediaConstants.DUST_UNIT / 10, listOf())
+				SpellAction.Result(EntitySpell(entity, effect), MediaConstants.DUST_UNIT / 10, listOf(ParticleSpray.cloud(entity.pos, 1.0)))
 			}
 			is Vec3Iota -> {
 				val position = args.getBlockPos(0, argc)
 				env.assertPosInRange(position)
 				val effect = PrestidigitationData.blockEffect(env.world.getBlockState(position).block) ?: throw MishapBadBlock.of(position, "prestidigitation")
-				SpellAction.Result(BlockSpell(position, effect), MediaConstants.DUST_UNIT / 10, listOf())
+				SpellAction.Result(BlockSpell(position, effect), MediaConstants.DUST_UNIT / 10, listOf(ParticleSpray.cloud(Vec3d.ofCenter(position), 1.0)))
 			}
 			else -> throw MishapInvalidIota.of(args[0], 0, "entity_or_vector")
 		}

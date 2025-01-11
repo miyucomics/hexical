@@ -1,5 +1,6 @@
 package miyucomics.hexical.casting.patterns.circle
 
+import at.petrak.hexcasting.api.casting.ParticleSpray
 import at.petrak.hexcasting.api.casting.RenderedSpell
 import at.petrak.hexcasting.api.casting.castables.SpellAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
@@ -22,14 +23,14 @@ class OpDisplace : SpellAction {
 		val bounds = circle.executionState!!.bounds
 
 		val entity = args.getEntity(0, argc)
-		if (bounds.contains(entity.pos))
+		if (!bounds.contains(entity.pos))
 			throw OutsideCircleMishap()
 
 		val destination = args.getVec3(1, argc)
-		if (bounds.contains(destination))
+		if (!bounds.contains(destination))
 			throw OutsideCircleMishap()
 
-		return SpellAction.Result(Spell(entity, destination), 0, listOf())
+		return SpellAction.Result(Spell(entity, destination), 0, listOf(ParticleSpray.burst(destination, 1.0)))
 	}
 
 	private data class Spell(val entity: Entity, val destination: Vec3d) : RenderedSpell {

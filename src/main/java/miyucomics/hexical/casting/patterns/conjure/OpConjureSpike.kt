@@ -1,5 +1,6 @@
 package miyucomics.hexical.casting.patterns.conjure
 
+import at.petrak.hexcasting.api.casting.ParticleSpray
 import at.petrak.hexcasting.api.casting.RenderedSpell
 import at.petrak.hexcasting.api.casting.castables.SpellAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
@@ -29,16 +30,16 @@ class OpConjureSpike : SpellAction {
 		if (env.world.getEntitiesByType(HexicalEntities.SPIKE_ENTITY, Box.of(Vec3d.ofCenter(position.add(offset)), 0.9, 0.9, 0.9)) { true }.size > 0)
 			return SpellAction.Result(Noop(position), 0, listOf())
 		val delay = floor(args.getPositiveDoubleUnderInclusive(2, 10.0, argc) * 20.0).toInt()
-		return SpellAction.Result(Spell(position, direction, delay), MediaConstants.SHARD_UNIT, listOf())
+		val spawn = Vec3d.ofBottomCenter(position).add(Vec3d.of(direction.vector))
+		return SpellAction.Result(Spell(spawn, direction, delay), MediaConstants.SHARD_UNIT, listOf(ParticleSpray.cloud(spawn, 1.0)))
 	}
 
 	private data class Noop(val position: BlockPos) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {}
 	}
 
-	private data class Spell(val position: BlockPos, val direction: Direction, val delay: Int) : RenderedSpell {
+	private data class Spell(val position: Vec3d, val direction: Direction, val delay: Int) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			val position = Vec3d.ofBottomCenter(position).add(Vec3d.of(direction.vector))
 			val spike = SpikeEntity(env.world, position.x, position.y, position.z, direction, delay)
 			val caster = env.castingEntity
 			if (caster is PlayerEntity)
