@@ -17,6 +17,7 @@
 - added my own take on pattern manipulation: turn a pattern into a list of numbers and back
 - added Tutu's Gambit - noop
 - added Garbage Reflection - pushes garbage
+- added Promote Lamp to upgrade hand lamp
 - changed Offer Mind to be just for recharging
 - changed Internalize Pigment II to be free
 - changed Sisyphus' Gambit to not restore the stack after each iteration
