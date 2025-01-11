@@ -41,6 +41,8 @@
 - fixed bug that let you conjure meshes and specks even if you die for the cost
 - fixed bug that let you write truenames to lamps
 - overhauled documentation
+- readded shader spells
+- reverted purpose of media jar
 - refactored almost everything is rewritten to be more sane
 - removed Activate Archgenie and Deactivate Archgenie
   - the reasoning for this is because they were coded horribly and removing them spared so much jank
