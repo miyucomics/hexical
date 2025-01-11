@@ -21,9 +21,15 @@ import net.minecraft.util.math.random.Random
 import net.minecraft.world.World
 import net.minecraft.world.event.GameEvent
 
-class HexCandleBlock : CandleBlock(Settings.create().mapColor(MapColor.PURPLE).nonOpaque().strength(0.1f).sounds(BlockSoundGroup.CANDLE).luminance(
-	STATE_TO_LUMINANCE
-).pistonBehavior(PistonBehavior.DESTROY)), BlockEntityProvider {
+class HexCandleBlock : CandleBlock(
+	Settings.create()
+		.mapColor(MapColor.PURPLE)
+		.nonOpaque()
+		.strength(0.1f)
+		.sounds(BlockSoundGroup.CANDLE)
+		.luminance(STATE_TO_LUMINANCE)
+		.pistonBehavior(PistonBehavior.DESTROY)
+), BlockEntityProvider {
 	override fun onUse(state: BlockState, world: World, pos: BlockPos, player: PlayerEntity, hand: Hand, hit: BlockHitResult): ActionResult {
 		if (player.isSneaking)
 			return super.onUse(state, world, pos, player, hand, hit)
@@ -59,6 +65,7 @@ class HexCandleBlock : CandleBlock(Settings.create().mapColor(MapColor.PURPLE).n
 				return
 			if (!state.get(AbstractCandleBlock.LIT))
 				return
+
 			val colorProvider = blockEntity.getPigment().colorProvider
 			(state.block as HexCandleBlock).getParticleOffsets(state).forEach { offset: Vec3d ->
 				if (world.random.nextFloat() > 0.5)

@@ -1,4 +1,4 @@
-package miyucomics.hexical.casting.environments
+package miyucomics.hexical.casting.env
 
 import at.petrak.hexcasting.api.casting.ParticleSpray
 import at.petrak.hexcasting.api.casting.eval.env.PlayerBasedCastEnv
