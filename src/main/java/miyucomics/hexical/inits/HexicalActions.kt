@@ -94,7 +94,6 @@ import net.minecraft.registry.Registry
 import net.minecraft.sound.SoundEvents
 import net.minecraft.state.property.Properties
 import net.minecraft.util.Hand
-import net.minecraft.util.Identifier
 import net.minecraft.util.math.Direction
 import net.minecraft.util.math.MathHelper
 import net.minecraft.util.math.Vec3d
@@ -213,7 +212,7 @@ object HexicalActions {
 		register("wristpocket_count", "aaqqaaw", HexDir.WEST, OpGetWristpocket { stack -> if (stack.isOf(Items.AIR) || stack == ItemStack.EMPTY) (0).asActionResult else stack.count.asActionResult })
 		register("sleight", "aaqqadeeeq", HexDir.WEST, OpSleight())
 		register("mage_hand", "aaqqaeea", HexDir.WEST, OpMageHand())
-		register("ingest", "aaqqadaa", HexDir.WEST, OpIngest())
+		register("mage_mouth", "aaqqadaa", HexDir.WEST, OpMageMouth())
 
 		register("conjure_speck", "ade", HexDir.SOUTH_WEST, OpConjureSpeck())
 		register("iota_speck", "adeeaqa", HexDir.SOUTH_WEST, OpIotaSpeck())
@@ -230,6 +229,7 @@ object HexicalActions {
 		register("shader_clear", "eeeeeqaqeeeee", HexDir.WEST, OpShader(null))
 		register("shader_owl", "edewawede", HexDir.WEST, OpShader(HexicalMain.id("shaders/post/night_vision.json")))
 		register("shader_lines", "eedwwawwdee", HexDir.WEST, OpShader(HexicalMain.id("shaders/post/outlines_only.json")))
+		register("shader_tv", "wewdwewwawwewdwew", HexDir.WEST, OpShader(HexicalMain.id("shaders/post/television.json")))
 		// color shift - edqdeqaqedqde
 
 		register("autograph", "wwqqqqq", HexDir.NORTH_EAST, OpAutograph())

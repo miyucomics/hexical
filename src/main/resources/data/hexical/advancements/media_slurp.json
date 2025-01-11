@@ -4,13 +4,18 @@
 		"sip": {
 			"trigger": "minecraft:item_used_on_block",
 			"conditions": {
-				"location": {
-					"block": {
-						"blocks": [
-							"hexical:media_jar"
-						]
+				"location": [
+					{
+						"condition": "minecraft:location_check",
+						"predicate": {
+							"block": {
+								"blocks": [
+									"hexical:media_jar"
+								]
+							}
+						}
 					}
-				}
+				]
 			}
 		}
 	},

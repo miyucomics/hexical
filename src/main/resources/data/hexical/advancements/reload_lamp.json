@@ -1,5 +1,5 @@
 {
-	"parent": "hexical:broken_mind",
+	"parent": "hexical:acquired_lamp",
 	"criteria": {
 		"reload": {
 			"trigger": "hexical:reload_lamp"
