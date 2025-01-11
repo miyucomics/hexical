@@ -7,6 +7,7 @@ import dev.kosmx.playerAnim.api.layered.KeyframeAnimationPlayer
 import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationRegistry
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.client.PlayerAnimations
+import miyucomics.hexical.client.ShaderRenderer
 import miyucomics.hexical.items.TchotchkeItem
 import miyucomics.hexical.items.getConjuredStaff
 import miyucomics.hexical.state.EvokeState
@@ -26,6 +27,8 @@ object HexicalNetworking {
 
 	val START_EVOKE_CHANNEL: Identifier = HexicalMain.id("start_evoking")
 	val END_EVOKING_CHANNEL: Identifier = HexicalMain.id("end_evoking")
+
+	val SHADER_CHANNEL: Identifier = HexicalMain.id("shader")
 
 	@JvmStatic
 	fun serverInit() {
@@ -81,6 +84,13 @@ object HexicalNetworking {
 
 	@JvmStatic
 	fun clientInit() {
+		ClientPlayNetworking.registerGlobalReceiver(SHADER_CHANNEL) { client, _, packet, _ ->
+			val shader = packet.readString()
+			if (shader == "null")
+				client.execute { ShaderRenderer.setEffect(null) }
+			else
+				client.execute {  ShaderRenderer.setEffect(Identifier(shader)) }
+		}
 		ClientPlayNetworking.registerGlobalReceiver(START_EVOKE_CHANNEL) { client, _, packet, _ ->
 			val uuid = packet.readUuid()
 			val player = client.world!!.getPlayerByUuid(uuid) ?: return@registerGlobalReceiver

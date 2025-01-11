@@ -94,6 +94,7 @@ import net.minecraft.registry.Registry
 import net.minecraft.sound.SoundEvents
 import net.minecraft.state.property.Properties
 import net.minecraft.util.Hand
+import net.minecraft.util.Identifier
 import net.minecraft.util.math.Direction
 import net.minecraft.util.math.MathHelper
 import net.minecraft.util.math.Vec3d
@@ -225,6 +226,11 @@ object HexicalActions {
 		register("lifetime_specklike", "adeqqaawdd", HexDir.SOUTH_WEST, OpSpecklikeProperty(5))
 		register("pigment_specklike", "adeqqaq", HexDir.SOUTH_WEST, OpSpecklikeProperty(6))
 		register("zone_specklike", "qqqqqwdeddwqde", HexDir.SOUTH_EAST, OpGetEntitiesBy({ entity -> entity is Specklike }, false))
+
+		register("shader_clear", "eeeeeqaqeeeee", HexDir.WEST, OpShader(null))
+		register("shader_owl", "edewawede", HexDir.WEST, OpShader(HexicalMain.id("shaders/post/night_vision.json")))
+		register("shader_lines", "eedwwawwdee", HexDir.WEST, OpShader(HexicalMain.id("shaders/post/outlines_only.json")))
+		// color shift - edqdeqaqedqde
 
 		register("autograph", "wwqqqqq", HexDir.NORTH_EAST, OpAutograph())
 		register("conjure_hexburst", "aadaadqaq", HexDir.EAST, OpConjureHexburst())

@@ -5,8 +5,8 @@ out vec4 fragColor;
 
 uniform sampler2D DiffuseSampler;
 
-const vec3 DARK = vec3(18, 18, 22) / 255.0;
-const vec3 LIGHT = vec3(232, 230, 225) / 255.0;
+const vec3 DARK = vec3(30, 30, 46) / 255.0;
+const vec3 LIGHT = vec3(205, 214, 244) / 255.0;
 
 void main() {
     fragColor = vec4(DARK, 1.0);

@@ -1,15 +1,20 @@
 package miyucomics.hexical.inits
 
 import miyucomics.hexical.client.ClientStorage
+import miyucomics.hexical.client.ShaderRenderer
 import miyucomics.hexical.state.EvokeState
 import miyucomics.hexical.state.KeybindData
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents
+import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents
 
 object HexicalEvents {
 	@JvmStatic
 	fun init() {
+		ServerPlayerEvents.AFTER_RESPAWN.register { _, _, _ -> ShaderRenderer.setEffect(null) }
+
 		ServerPlayConnectionEvents.DISCONNECT.register { handler, _ ->
 			val player = handler.player.uuid
 			EvokeState.active[player] = false
@@ -36,6 +41,7 @@ object HexicalEvents {
 
 	@JvmStatic
 	fun clientInit() {
+		ClientPlayConnectionEvents.DISCONNECT.register { _, _ -> ShaderRenderer.setEffect(null) }
 		ClientTickEvents.END_CLIENT_TICK.register { ClientStorage.time += 1 }
 	}
 }

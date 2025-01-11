@@ -27,7 +27,7 @@ class OpSetArchLampStorage : SpellAction {
 
 	private data class Spell(val iota: Iota) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			PersistentStateHandler.getPlayerArchLampData(env.castingEntity as ServerPlayerEntity).storage = IotaType.serialize(iota)
+			PersistentStateHandler.getArchLampData(env.castingEntity as ServerPlayerEntity).storage = IotaType.serialize(iota)
 		}
 	}
 }
