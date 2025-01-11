@@ -5,7 +5,7 @@ import at.petrak.hexcasting.api.casting.eval.vm.CastingVM
 import at.petrak.hexcasting.api.casting.iota.ListIota
 import at.petrak.hexcasting.api.item.VariantItem
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
-import miyucomics.hexical.casting.environments.TchotchkeCastEnv
+import miyucomics.hexical.casting.env.TchotchkeCastEnv
 import miyucomics.hexical.inits.HexicalItems
 import net.minecraft.entity.Entity
 import net.minecraft.entity.player.PlayerEntity

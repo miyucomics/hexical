@@ -17,7 +17,15 @@ import net.minecraft.util.shape.VoxelShapes
 import net.minecraft.world.BlockView
 import net.minecraft.world.World
 
-class MediaJarBlock : TransparentBlock(Settings.create().emissiveLighting { _, _, _ -> true }.luminance { _ -> 15 }.sounds(BlockSoundGroup.GLASS).nonOpaque().solidBlock { _, _, _ -> false }) {
+class MediaJarBlock : TransparentBlock(
+	Settings
+		.create()
+		.emissiveLighting { _, _, _ -> true }
+		.luminance { _ -> 15 }
+		.sounds(BlockSoundGroup.GLASS)
+		.nonOpaque()
+		.solidBlock { _, _, _ -> false }
+) {
 	override fun getRenderType(state: BlockState) = BlockRenderType.MODEL
 	override fun getAmbientOcclusionLightLevel(state: BlockState, world: BlockView, pos: BlockPos) = 1f
 	override fun getCameraCollisionShape(state: BlockState, world: BlockView, pos: BlockPos, context: ShapeContext): VoxelShape = VoxelShapes.empty()
@@ -26,6 +34,7 @@ class MediaJarBlock : TransparentBlock(Settings.create().emissiveLighting { _, _
 	override fun onUse(state: BlockState, world: World, pos: BlockPos, player: PlayerEntity, hand: Hand, hit: BlockHitResult): ActionResult {
 		if (world.isClient)
 			return ActionResult.SUCCESS
+
 		player.swingHand(hand)
 		world.playSoundFromEntity(null, player, HexicalSounds.PLAYER_SLURP, SoundCategory.PLAYERS, 1f, 1f)
 		return ActionResult.SUCCESS
