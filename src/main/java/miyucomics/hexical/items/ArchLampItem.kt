@@ -46,7 +46,7 @@ class ArchLampItem : ItemPackagedHex(Settings().maxCount(1)), GenieLamp {
 
 		stackNbt.putBoolean("active", true)
 
-		val state = PersistentStateHandler.getArchLampData(user as ServerPlayerEntity)
+		val state = PersistentStateHandler.getArchLampData(user)
 		state.position = user.eyePos
 		state.rotation = user.rotationVector
 		state.velocity = user.velocity
