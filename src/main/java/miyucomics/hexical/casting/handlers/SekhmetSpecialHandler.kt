@@ -1,4 +1,4 @@
-package miyucomics.hexical.casting.special_handlers
+package miyucomics.hexical.casting.handlers
 
 import at.petrak.hexcasting.api.casting.castables.SpecialHandler
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
