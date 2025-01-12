@@ -171,6 +171,7 @@ object HexicalActions {
 		register("castor", "adadee", HexDir.NORTH_WEST, OpCastor)
 		register("pollux", "dadaqq", HexDir.NORTH_EAST, OpPollux)
 		register("janus", "aadee", HexDir.SOUTH_WEST, OpJanus)
+		register("maat", "qed", HexDir.NORTH_EAST, OpMaat())
 		register("sisyphus", "qaqwede", HexDir.NORTH_EAST, OpSisyphus)
 		register("themis", "dwaad", HexDir.WEST, OpThemis)
 		register("tutu", "eedqa", HexDir.WEST, OpTutu)
