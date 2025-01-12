@@ -26,6 +26,22 @@
 		},
 		{
 			"type": "hexcasting:pattern",
+			"op_id": "hexical:env_offhand",
+			"anchor": "hexical:env_offhand",
+			"input": "",
+			"output": "boolean",
+			"text": "hexical.page.env_offhand.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:env_media",
+			"anchor": "hexical:env_media",
+			"input": "",
+			"output": "number",
+			"text": "hexical.page.env_media.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
 			"op_id": "hexical:env_packaged_hex",
 			"anchor": "hexical:env_packaged_hex",
 			"input": "",
@@ -34,19 +50,19 @@
 		},
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:env_tchotchke",
-			"anchor": "hexical:env_tchotchke",
-			"input": "",
-			"output": "boolean",
-			"text": "hexical.page.env_tchotchke.summary"
-		},
-		{
-			"type": "hexcasting:pattern",
 			"op_id": "hexical:env_evocation",
 			"anchor": "hexical:env_evocation",
 			"input": "",
 			"output": "boolean",
 			"text": "hexical.page.env_evocation.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:env_circle",
+			"anchor": "hexical:env_circle",
+			"input": "",
+			"output": "boolean",
+			"text": "hexical.page.env_circle.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -66,19 +82,11 @@
 		},
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:env_circle",
-			"anchor": "hexical:env_circle",
+			"op_id": "hexical:env_tchotchke",
+			"anchor": "hexical:env_tchotchke",
 			"input": "",
 			"output": "boolean",
-			"text": "hexical.page.env_circle.summary"
-		},
-		{
-			"type": "hexcasting:pattern",
-			"op_id": "hexical:env_offhand",
-			"anchor": "hexical:env_offhand",
-			"input": "",
-			"output": "boolean",
-			"text": "hexical.page.env_offhand.summary"
+			"text": "hexical.page.env_tchotchke.summary"
 		}
 	]
 }
