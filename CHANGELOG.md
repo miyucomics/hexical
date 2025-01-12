@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.6.0
+- added ability to use phials in wristpocket
+
 ## 1.5.0
 - added spell to conjure llama spit
 - added new telepathy pattern for sneaking
