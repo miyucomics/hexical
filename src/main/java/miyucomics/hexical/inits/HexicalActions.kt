@@ -78,8 +78,8 @@ import miyucomics.hexical.casting.patterns.telepathy.OpHallucinateSound
 import miyucomics.hexical.casting.patterns.telepathy.OpSendTelepathy
 import miyucomics.hexical.casting.patterns.telepathy.OpShoutTelepathy
 import miyucomics.hexical.casting.patterns.wristpocket.*
-import miyucomics.hexical.casting.special_handlers.NephthysSpecialHandler
-import miyucomics.hexical.casting.special_handlers.SekhmetSpecialHandler
+import miyucomics.hexical.casting.handlers.NephthysSpecialHandler
+import miyucomics.hexical.casting.handlers.SekhmetSpecialHandler
 import miyucomics.hexical.interfaces.Specklike
 import miyucomics.hexical.items.HandLampItem
 import net.minecraft.block.CandleBlock
