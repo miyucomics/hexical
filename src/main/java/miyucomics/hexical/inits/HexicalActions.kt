@@ -129,6 +129,7 @@ object HexicalActions {
 		register("get_arch_lamp_media", "qaqwddedaeeeee", HexDir.NORTH_EAST, OpGetArchLampMedia())
 		register("has_arch_lamp", "qaqwddedqeed", HexDir.NORTH_EAST, OpIsUsingArchLamp())
 		register("lamp_finale", "aaddaddad", HexDir.EAST, OpGetFinale())
+		register("turret_position", "qaqwddedweaqwqae", HexDir.NORTH_EAST, OpGetTurretPosition())
 
 		register("am_enlightened", "awqaqqq", HexDir.SOUTH_EAST, OpEnlightened())
 		register("is_brainswept", "qqqaqqq", HexDir.SOUTH_EAST, OpBrainswept())
@@ -371,13 +372,14 @@ object HexicalActions {
 
 		register("env_ambit", "wawaw", HexDir.EAST, OpGetAmbit())
 		register("env_staff", "waaq", HexDir.NORTH_EAST, OpGetEnvData { env -> (env is StaffCastEnv).asActionResult })
+		register("env_offhand", "qaqqqwaaq", HexDir.NORTH_EAST, OpGetEnvData { env -> (env.castingHand == Hand.MAIN_HAND).asActionResult })
+		register("env_media", "dde", HexDir.WEST, OpGetEnvData { env -> ((Long.MAX_VALUE - env.extractMedia(Long.MAX_VALUE, true)).toDouble() / MediaConstants.DUST_UNIT.toDouble()).asActionResult })
 		register("env_packaged_hex", "waaqwwaqqqqq", HexDir.NORTH_EAST, OpGetEnvData { env -> (env is PackagedItemCastEnv).asActionResult })
-		register("env_tchotchke", "waaqwwaqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpGetEnvData { env -> (env is TchotchkeCastEnv).asActionResult })
 		register("env_evocation", "waaqeaqa", HexDir.NORTH_EAST, OpGetEnvData { env -> (env is EvocationCastEnv).asActionResult })
+		register("env_circle", "waaqdeaqwqae", HexDir.NORTH_EAST, OpGetEnvData { env -> (env is CircleCastEnv).asActionResult })
 		register("env_hand_lamp", "waaqdqdded", HexDir.NORTH_EAST, OpGetEnvData { env -> (env is HandLampCastEnv).asActionResult })
 		register("env_arch_lamp", "waaqqqaqwdd", HexDir.NORTH_EAST, OpGetEnvData { env -> (env is ArchLampCastEnv).asActionResult })
-		register("env_circle", "waaqdeaqwqae", HexDir.NORTH_EAST, OpGetEnvData { env -> (env is CircleCastEnv).asActionResult })
-		register("env_offhand", "qaqqqwaaq", HexDir.NORTH_EAST, OpGetEnvData { env -> (env.castingHand == Hand.MAIN_HAND).asActionResult })
+		register("env_tchotchke", "waaqwwaqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpGetEnvData { env -> (env is TchotchkeCastEnv).asActionResult })
 
 		register("get_hunger", "adaqqqddqe", HexDir.WEST, OpGetFoodTypeData { food -> food.hunger.asActionResult })
 		register("get_saturation", "adaqqqddqw", HexDir.WEST, OpGetFoodTypeData { food -> food.saturationModifier.asActionResult })
@@ -425,6 +427,7 @@ object HexicalActions {
 		register("get_time", "wddwaqqwqaddaqqwddwaqqwqaddaq", HexDir.SOUTH_EAST, OpGetWorldData { world -> world.time.asActionResult })
 		register("get_biome", "qwqwqawdqqaqqdwaqwqwq", HexDir.WEST, OpGetPositionData { world, position -> world.getBiome(position).key.get().value.asActionResult() })
 		register("get_dimension", "qwqwqwqwqwqqaedwaqd", HexDir.WEST, OpGetWorldData { world -> world.registryKey.value.asActionResult() })
+		register("get_media", "ddew", HexDir.WEST, OpGetMedia())
 		register("get_einstein", "aqwawqwqqwqwqwqwqwq", HexDir.SOUTH_WEST, OpGetWorldData { world -> world.dimension.comp_645().asActionResult })
 	}
 

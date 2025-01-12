@@ -4,6 +4,10 @@
 - added ability to use phials in wristpocket
 - added pedestals to hold items
 - added Ma'at's Gambit - takes a boolean and an iota and if the boolean is false, mishaps and prints the iota
+- added ability to place arch lamps on pedestals to make turret lamps
+  - turrent lamps cast with the media of the item
+- added Media Reflection - gets media of casting environment
+- added Media Purification - gets media of player, allay, impetus, or item on floor
 
 ## 1.5.0
 - added spell to conjure llama spit

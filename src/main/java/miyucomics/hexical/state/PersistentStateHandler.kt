@@ -3,6 +3,7 @@ package miyucomics.hexical.state
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.api.utils.serializeToNBT
 import miyucomics.hexical.HexicalMain
+import net.minecraft.entity.LivingEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.server.MinecraftServer
@@ -55,7 +56,7 @@ class PersistentStateHandler : PersistentState() {
 			return state
 		}
 
-		fun getArchLampData(player: ServerPlayerEntity) = getServerState(player.getServer()!!).archLamps.computeIfAbsent(player.uuid) { ArchLampData() }
+		fun getArchLampData(entity: LivingEntity) = getServerState(entity.server!!).archLamps.computeIfAbsent(entity.uuid) { ArchLampData() }
 
 		fun getEvocation(player: ServerPlayerEntity) = getServerState(player.getServer()!!).evocation[player.uuid]
 		fun setEvocation(player: ServerPlayerEntity, hex: NbtCompound) {
