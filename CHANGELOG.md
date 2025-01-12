@@ -2,6 +2,8 @@
 
 ## 1.6.0
 - added ability to use phials in wristpocket
+- added pedestals to hold items
+- added Ma'at's Gambit - takes a boolean and an iota and if the boolean is false, mishaps and prints the iota
 
 ## 1.5.0
 - added spell to conjure llama spit
