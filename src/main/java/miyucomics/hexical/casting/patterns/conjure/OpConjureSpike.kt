@@ -24,7 +24,7 @@ class OpConjureSpike : SpellAction {
 		val position = args.getBlockPos(0, argc)
 		env.assertPosInRange(position)
 		if (env.world.getBlockState(position).isAir)
-			throw MishapInvalidIota.of(args[0], 0, "solid_block")
+			throw MishapInvalidIota.of(args[0], 2, "solid_block")
 		val offset = args.getBlockPos(1, argc)
 		val direction = Direction.fromVector(offset.x, offset.y, offset.z) ?: throw MishapInvalidIota.of(args[1], 1, "axis_vector")
 		if (env.world.getEntitiesByType(HexicalEntities.SPIKE_ENTITY, Box.of(Vec3d.ofCenter(position.add(offset)), 0.9, 0.9, 0.9)) { true }.size > 0)
