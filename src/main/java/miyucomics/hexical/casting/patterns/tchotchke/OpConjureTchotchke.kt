@@ -21,7 +21,7 @@ class OpConjureTchotchke : SpellAction {
 		val battery = args.getPositiveDouble(1, argc)
 		val rank = args.getInt(2, argc)
 		if (rank <= 0)
-			throw MishapInvalidIota.of(args[2], 2, "integer_natural")
+			throw MishapInvalidIota.of(args[2], 1, "integer_natural")
 		val instructions = args.getList(3, argc).toList()
 		CastingUtils.assertNoTruename(args[3], env)
 		return SpellAction.Result(Spell(position, (battery * MediaConstants.DUST_UNIT).toLong(), rank, instructions), MediaConstants.CRYSTAL_UNIT + MediaConstants.DUST_UNIT * battery.toInt(), listOf(ParticleSpray.burst(position, 1.0)))

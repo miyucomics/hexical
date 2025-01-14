@@ -90,7 +90,7 @@ class OpDye : SpellAction {
 					throw DyeableMishap(position.toCenterPos())
 				return SpellAction.Result(BlockSpell(position, state, dye), cost, listOf(ParticleSpray.cloud(Vec3d.ofCenter(position), 1.0)))
 			}
-			else -> throw MishapInvalidIota.of(args[0], 0, "entity_or_vector")
+			else -> throw MishapInvalidIota.of(args[0], 1, "entity_or_vector")
 		}
 	}
 
