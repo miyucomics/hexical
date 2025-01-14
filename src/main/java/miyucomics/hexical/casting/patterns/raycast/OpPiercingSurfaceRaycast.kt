@@ -21,7 +21,7 @@ class OpPiercingSurfaceRaycast : ConstMediaAction {
 			return listOf(NullIota())
 		val id = args.getIdentifier(2, argc)
 		if (!Registries.BLOCK.containsId(id))
-			throw MishapInvalidIota.of(args[2], 2, "block_id")
+			throw MishapInvalidIota.of(args[2], 0, "block_id")
 		val desired = Registries.BLOCK.get(id)
 		return DDAUtils.raycastNormal(start, direction, { pos -> env.world.getBlockState(pos).isOf(desired) }, { pos -> !env.isVecInRange(pos.toCenterPos()) })
 	}

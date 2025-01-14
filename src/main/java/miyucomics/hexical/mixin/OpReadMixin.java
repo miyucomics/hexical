@@ -24,10 +24,11 @@ public class OpReadMixin {
 		CastingEnvironment.HeldItemInfo data = env.getHeldItemToOperateOn(item -> item.isOf(HexicalItems.CONJURED_COMPASS_ITEM));
 		if (data == null)
 			return;
-
 		ItemStack stack = data.stack();
 		NbtCompound nbt = stack.getOrCreateNbt();
 		if (nbt.getString("dimension").equals(env.getWorld().getDimensionKey().getValue().toString())) {
+			System.out.println("TREST");
+
 			LivingEntity caster = env.getCastingEntity();
 			if (caster != null)
 				cir.setReturnValue(List.of(new Vec3Iota(new Vec3d(nbt.getInt("x"), nbt.getInt("y"), nbt.getInt("z")).subtract(caster.getEyePos()).normalize())));
