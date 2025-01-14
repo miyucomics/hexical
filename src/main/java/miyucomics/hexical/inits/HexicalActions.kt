@@ -237,6 +237,7 @@ object HexicalActions {
 		register("shader_spider", "qaqdedaedqqdedaqaedeqd", HexDir.NORTH_EAST, OpShader(HexicalMain.id("shaders/post/spider.json")))
 		// color shift - edqdeqaqedqde
 
+		register("place_block_type", "wewewewewewdwew", HexDir.NORTH_WEST, OpPlaceBlockType())
 		register("autograph", "wwqqqqq", HexDir.NORTH_EAST, OpAutograph())
 		register("conjure_hexburst", "aadaadqaq", HexDir.EAST, OpConjureHexburst())
 		register("conjure_hextito", "qaqdqaqdwawaw", HexDir.EAST, OpConjureHextito())

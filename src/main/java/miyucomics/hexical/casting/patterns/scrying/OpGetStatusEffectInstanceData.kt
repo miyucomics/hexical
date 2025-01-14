@@ -17,7 +17,7 @@ class OpGetStatusEffectInstanceData(private val process: (StatusEffectInstance) 
 		env.assertEntityInRange(entity)
 		val effect = args.getIdentifier(1, argc)
 		if (!Registries.STATUS_EFFECT.containsId(effect))
-			throw MishapInvalidIota.of(args[1], 1, "status_effect")
+			throw MishapInvalidIota.of(args[1], 0, "status_effect")
 		return process(entity.getStatusEffect(Registries.STATUS_EFFECT.get(effect)) ?: return listOf(NullIota()))
 	}
 }
