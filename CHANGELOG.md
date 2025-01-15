@@ -9,6 +9,7 @@
 - added Media Reflection - gets media of casting environment
 - added Media Purification - gets media of player, allay, impetus, or item on floor
 - added Construct spell - places a specific block type from your inventory with parameters for orientation and horizontal vector
+- fixed bug where small animated scrolls do not render
 
 ## 1.5.0
 - added spell to conjure llama spit
