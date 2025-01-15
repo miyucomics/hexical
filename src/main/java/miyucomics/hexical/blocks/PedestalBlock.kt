@@ -55,28 +55,28 @@ class PedestalBlock : BlockCircleComponent(Settings.copy(Blocks.DEEPSLATE_TILES)
 		builder.add(FACING)
 	}
 
-	override fun acceptControlFlow(imageIn: CastingImage, env: CircleCastEnv, enterDir: Direction, pos: BlockPos, bs: BlockState, world: ServerWorld): ControlFlow {
-		val exitDirsSet = this.possibleExitDirections(pos, bs, world)
+	override fun acceptControlFlow(imageIn: CastingImage, env: CircleCastEnv, enterDir: Direction, pos: BlockPos, state: BlockState, world: ServerWorld): ControlFlow {
+		val exitDirsSet = this.possibleExitDirections(pos, state, world)
 		exitDirsSet.remove(enterDir.opposite)
-		val exitDirs = exitDirsSet.map { dir: Direction -> exitPositionFromDirection(pos, dir) }
+		val exitDirs = exitDirsSet.map { dir -> exitPositionFromDirection(pos, dir) }
 		return ControlFlow.Continue(imageIn, exitDirs)
 	}
 
-	override fun canEnterFromDirection(enterDir: Direction?, pos: BlockPos?, bs: BlockState?, world: ServerWorld?): Boolean {
-		val thisNormal = this.normalDir(pos, bs, world)
+	override fun canEnterFromDirection(enterDir: Direction?, pos: BlockPos?, state: BlockState?, world: ServerWorld?): Boolean {
+		val thisNormal = this.normalDir(pos, state, world)
 		return enterDir != thisNormal
 	}
 
-	override fun possibleExitDirections(pos: BlockPos?, bs: BlockState?, world: World?): EnumSet<Direction> {
+	override fun possibleExitDirections(pos: BlockPos?, state: BlockState?, world: World?): EnumSet<Direction> {
 		val allDirs = EnumSet.allOf(Direction::class.java)
-		val normal = this.normalDir(pos, bs, world)
+		val normal = this.normalDir(pos, state, world)
 		allDirs.remove(normal)
 		allDirs.remove(normal.opposite)
 		return allDirs
 	}
 
-	override fun particleHeight(pos: BlockPos, bs: BlockState, world: World) = PedestalBlockEntity.HEIGHT
-	override fun normalDir(pos: BlockPos, bs: BlockState, world: World, recursionLeft: Int): Direction = bs.get(FACING)
+	override fun particleHeight(pos: BlockPos, state: BlockState, world: World) = PedestalBlockEntity.HEIGHT
+	override fun normalDir(pos: BlockPos, state: BlockState, world: World, recursionLeft: Int): Direction = state.get(FACING)
 
 	override fun getPlacementState(ctx: ItemPlacementContext): BlockState = super.getPlacementState(ctx)!!.with(FACING, ctx.side)
 	override fun getOutlineShape(state: BlockState, world: BlockView, pos: BlockPos, context: ShapeContext) = SHAPES[state.get(FACING)]
