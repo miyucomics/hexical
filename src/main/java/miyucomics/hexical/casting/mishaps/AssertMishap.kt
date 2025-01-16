@@ -7,7 +7,6 @@ import at.petrak.hexcasting.api.pigment.FrozenPigment
 import miyucomics.hexical.HexicalMain
 import net.minecraft.text.Text
 import net.minecraft.util.DyeColor
-import net.minecraft.util.math.Vec3d
 
 class AssertMishap(val iota: Iota) : Mishap() {
 	override fun accentColor(env: CastingEnvironment, errorCtx: Context): FrozenPigment = dyeColor(DyeColor.PURPLE)

@@ -4,8 +4,6 @@ import at.petrak.hexcasting.api.block.circle.BlockCircleComponent
 import at.petrak.hexcasting.api.casting.circles.ICircleComponent.ControlFlow
 import at.petrak.hexcasting.api.casting.eval.env.CircleCastEnv
 import at.petrak.hexcasting.api.casting.eval.vm.CastingImage
-import miyucomics.hexical.blocks.HexCandleBlock.Companion.tick
-import miyucomics.hexical.inits.HexicalBlocks
 import net.minecraft.block.*
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.block.entity.BlockEntityTicker
@@ -13,7 +11,6 @@ import net.minecraft.block.entity.BlockEntityType
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.inventory.Inventory
 import net.minecraft.item.ItemPlacementContext
-import net.minecraft.screen.NamedScreenHandlerFactory
 import net.minecraft.screen.ScreenHandler
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.state.StateManager
@@ -39,7 +36,7 @@ class PedestalBlock : BlockCircleComponent(Settings.copy(Blocks.DEEPSLATE_TILES)
 	override fun onStateReplaced(state: BlockState, world: World, pos: BlockPos, newState: BlockState, moved: Boolean) {
 		val blockEntity = world.getBlockEntity(pos)
 		if (blockEntity is PedestalBlockEntity && newState.block != this)
-			blockEntity.onRemoved()
+			blockEntity.onBlockBreak()
 		super.onStateReplaced(state, world, pos, newState, moved)
 	}
 

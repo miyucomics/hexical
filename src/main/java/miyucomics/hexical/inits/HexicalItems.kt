@@ -101,10 +101,7 @@ object HexicalItems {
 
 	@JvmStatic
 	fun clientInit() {
-		ModelPredicateProviderRegistry.register(ARCH_LAMP_ITEM, Identifier("active")) { stack, _, _, _ ->
-			if (stack.nbt?.getBoolean("active") == true) 1.0f else 0.0f
-		}
-
+		ModelPredicateProviderRegistry.register(ARCH_LAMP_ITEM, Identifier("active")) { stack, _, _, _ -> if (stack.nbt?.getBoolean("active") == true) 1.0f else 0.0f }
 		ModelPredicateProviderRegistry.register(CONJURED_COMPASS_ITEM, Identifier("angle"), CompassAnglePredicateProvider(CompassTarget { world: ClientWorld, stack: ItemStack, player: Entity ->
 			val nbt = stack.nbt ?: return@CompassTarget null
 			if (nbt.getString("dimension") != world.dimensionKey.value.toString())

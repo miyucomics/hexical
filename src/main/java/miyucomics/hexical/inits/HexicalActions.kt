@@ -25,6 +25,8 @@ import miyucomics.hexical.casting.env.ArchLampCastEnv
 import miyucomics.hexical.casting.env.EvocationCastEnv
 import miyucomics.hexical.casting.env.HandLampCastEnv
 import miyucomics.hexical.casting.env.TchotchkeCastEnv
+import miyucomics.hexical.casting.handlers.NephthysSpecialHandler
+import miyucomics.hexical.casting.handlers.SekhmetSpecialHandler
 import miyucomics.hexical.casting.iota.IdentifierIota
 import miyucomics.hexical.casting.iota.asActionResult
 import miyucomics.hexical.casting.patterns.*
@@ -78,8 +80,6 @@ import miyucomics.hexical.casting.patterns.telepathy.OpHallucinateSound
 import miyucomics.hexical.casting.patterns.telepathy.OpSendTelepathy
 import miyucomics.hexical.casting.patterns.telepathy.OpShoutTelepathy
 import miyucomics.hexical.casting.patterns.wristpocket.*
-import miyucomics.hexical.casting.handlers.NephthysSpecialHandler
-import miyucomics.hexical.casting.handlers.SekhmetSpecialHandler
 import miyucomics.hexical.interfaces.Specklike
 import miyucomics.hexical.items.HandLampItem
 import net.minecraft.block.CandleBlock
