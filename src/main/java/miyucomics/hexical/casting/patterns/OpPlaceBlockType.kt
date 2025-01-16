@@ -8,7 +8,6 @@ import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadBlock
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.misc.MediaConstants
-import at.petrak.hexcasting.common.lib.HexRegistries
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.casting.iota.getIdentifier
 import miyucomics.hexical.utils.ConstructedItemUsageContext
@@ -16,10 +15,6 @@ import net.minecraft.item.BlockItem
 import net.minecraft.item.ItemPlacementContext
 import net.minecraft.item.ItemStack
 import net.minecraft.registry.Registries
-import net.minecraft.server.network.ServerPlayerEntity
-import net.minecraft.util.ActionResult
-import net.minecraft.util.Identifier
-import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
 
 class OpPlaceBlockType : SpellAction {
