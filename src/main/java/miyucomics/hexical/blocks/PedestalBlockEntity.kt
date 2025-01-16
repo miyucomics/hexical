@@ -2,9 +2,7 @@ package miyucomics.hexical.blocks
 
 import at.petrak.hexcasting.api.casting.eval.vm.CastingImage
 import at.petrak.hexcasting.api.casting.eval.vm.CastingVM
-import miyucomics.hexical.casting.env.ArchLampCastEnv
 import miyucomics.hexical.casting.env.TurretLampCastEnv
-import miyucomics.hexical.casting.env.TurretLampMishapEnv
 import miyucomics.hexical.inits.HexicalBlocks
 import miyucomics.hexical.inits.HexicalItems
 import miyucomics.hexical.items.ArchLampItem
@@ -18,7 +16,6 @@ import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket
 import net.minecraft.predicate.entity.EntityPredicates
-import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.util.ActionResult
 import net.minecraft.util.Hand
@@ -45,12 +42,12 @@ class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 		}
 	}
 
-	fun onRemoved() {
+	fun onBlockBreak() {
 		if (heldItemEntity != null)
 			heldItemEntity!!.discard()
 		if (world !is ServerWorld)
 			return
-		val heightOffset = HEIGHT - 0.5 + 0.01
+		val heightOffset = HEIGHT - 0.5
 		(world as ServerWorld).spawnEntity(ItemEntity(world, pos.x + 0.5 + heightOffset * normalVector.x, pos.y + 0.5 + heightOffset * normalVector.y, pos.z + 0.5 + heightOffset * normalVector.z, heldItemStack, 0.0, 0.0, 0.0))
 		markDirty()
 	}
@@ -71,7 +68,7 @@ class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 				val amount = min((heldItemStack.maxCount - heldItemStack.count), heldStack.count)
 				heldItemStack.increment(amount)
 				heldStack.decrement(amount)
-				syncItemAndEntity(true)
+				syncItemEntityToStack()
 			}
 			return ActionResult.SUCCESS
 		}
@@ -101,8 +98,6 @@ class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 		if (world.isClient())
 			return
 
-		syncItemAndEntity(false)
-
 		val inputtedItems = getInputItemEntities()
 			.sortedWith { a: ItemEntity, b: ItemEntity -> (pos.getSquaredDistance(a.pos) - pos.getSquaredDistance(b.pos)).toInt() }
 
@@ -128,10 +123,10 @@ class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 		}
 
 		if (wasItemUpdated)
-			syncItemAndEntity(true)
+			syncItemEntityToStack()
 
 		if (heldItemStack.isOf(HexicalItems.ARCH_LAMP_ITEM) && heldItemStack.orCreateNbt.getBoolean("active")) {
-			syncItemAndEntity(true)
+			syncItemEntityToStack()
 			val vm = CastingVM(CastingImage(), TurretLampCastEnv(heldItemEntity!!, world as ServerWorld))
 			vm.queueExecuteAndWrapIotas((heldItemStack.item as ArchLampItem).getHex(heldItemStack, world)!!, world)
 		}
@@ -152,7 +147,7 @@ class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 	override fun setStack(slot: Int, stack: ItemStack) {
 		if (slot == 0) {
 			heldItemStack = stack
-			syncItemAndEntity(true)
+			syncItemEntityToStack()
 			markDirty()
 		}
 	}
@@ -161,7 +156,7 @@ class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 		if (slot == 0) {
 			val temp = heldItemStack
 			heldItemStack = ItemStack.EMPTY
-			syncItemAndEntity(true)
+			syncItemEntityToStack()
 			markDirty()
 			return temp
 		}
@@ -171,7 +166,7 @@ class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 	override fun removeStack(slot: Int, amount: Int): ItemStack {
 		if (slot == 0) {
 			val newSplit = heldItemStack.split(amount)
-			syncItemAndEntity(true)
+			syncItemEntityToStack()
 			markDirty()
 			return newSplit
 		}
@@ -182,7 +177,7 @@ class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 
 	override fun clear() {
 		heldItemStack = ItemStack.EMPTY
-		syncItemAndEntity(true)
+		syncItemEntityToStack()
 		markDirty()
 	}
 
@@ -205,11 +200,6 @@ class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 	}
 
 	private fun makeNewItemEntity() {
-		var world = getWorld()!!
-		if (world.isClient)
-			return
-		world = world as ServerWorld
-
 		if (heldItemStack.isEmpty)
 			return
 
@@ -221,6 +211,7 @@ class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 			heldItemEntity = null
 		}
 
+		val world = getWorld()!! as ServerWorld
 		val heightOffset = HEIGHT - 0.5 + 0.01
 		val xPos = pos.x + 0.5 + (heightOffset + 0.2f) * normalVector.x
 		val yPos = pos.y + 0.2 + (heightOffset * normalVector.y) + abs(0.3 * normalVector.y) + (if (normalVector.y < 0) -0.7 else 0.0)
@@ -244,7 +235,7 @@ class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 		markDirty()
 	}
 
-	private fun syncItemAndEntity(changeItemEntity: Boolean) {
+	private fun syncItemEntityToStack() {
 		if (world!!.isClient())
 			return
 
@@ -258,7 +249,7 @@ class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 		}
 
 		if (heldItemEntity == null || heldItemEntity!!.isRemoved) {
-			if (heldItemEntity != null && (heldItemEntity!!.removalReason == RemovalReason.DISCARDED || heldItemEntity!!.removalReason == RemovalReason.KILLED) && !changeItemEntity) {
+			if (heldItemEntity != null && (heldItemEntity!!.removalReason == RemovalReason.DISCARDED || heldItemEntity!!.removalReason == RemovalReason.KILLED)) {
 				heldItemStack = ItemStack.EMPTY
 				markDirty()
 				return
@@ -268,14 +259,8 @@ class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 			return
 		}
 
-		if (heldItemStack != heldItemEntity!!.stack) {
-			if (changeItemEntity)
-				heldItemEntity!!.stack = heldItemStack
-			else {
-				heldItemStack = heldItemEntity!!.stack
-				markDirty()
-			}
-		}
+		if (heldItemStack != heldItemEntity!!.stack)
+			heldItemEntity!!.stack = heldItemStack
 	}
 
 	override fun readNbt(nbt: NbtCompound) {
