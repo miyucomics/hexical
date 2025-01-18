@@ -1,7 +1,9 @@
 package miyucomics.hexical.blocks
 
 import at.petrak.hexcasting.api.casting.eval.vm.CastingImage
+import at.petrak.hexcasting.api.casting.eval.vm.CastingImage.ParenthesizedIota
 import at.petrak.hexcasting.api.casting.eval.vm.CastingVM
+import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.casting.env.TurretLampCastEnv
 import miyucomics.hexical.inits.HexicalBlocks
 import miyucomics.hexical.inits.HexicalItems
@@ -47,8 +49,8 @@ class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 			heldItemEntity!!.discard()
 		if (world !is ServerWorld)
 			return
-		val heightOffset = HEIGHT - 0.5 + 0.01
-		(world as ServerWorld).spawnEntity(ItemEntity(world, pos.x + 0.5 + heightOffset * normalVector.x, pos.y + 0.5 + heightOffset * normalVector.y, pos.z + 0.5 + heightOffset * normalVector.z, heldItemStack, 0.0, 0.0, 0.0))
+		val heightOffset = HEIGHT - 0.5
+		(world as ServerWorld).spawnEntity(ItemEntity(world, pos.x + 0.5 + heightOffset * normalVector.x, pos.y + 0.5 + heightOffset * normalVector.y, pos.z + 0.5 + heightOffset * normalVector.z, heldItemStack))
 		markDirty()
 	}
 
@@ -137,6 +139,20 @@ class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 	private fun getInputItemEntities() =
 		world!!.getEntitiesByClass(ItemEntity::class.java, Box.from(BlockBox(pos))) { item -> item.uuid != permanentUUID && EntityPredicates.VALID_ENTITY.test(item) }
 
+	fun modifyImage(image: CastingImage): CastingImage {
+		val data = IXplatAbstractions.INSTANCE.findDataHolder(heldItemStack) ?: return image
+		val iota = data.readIota(world as ServerWorld) ?: return image
+		return if (image.parenCount == 0) {
+			val stack = image.stack.toMutableList()
+			stack.add(iota)
+			image.copy(stack = stack)
+		} else {
+			val parenthesized = image.parenthesized.toMutableList()
+			parenthesized.add(ParenthesizedIota(iota, false))
+			image.copy(parenthesized = parenthesized)
+		}
+	}
+
 	override fun size() = 1
 	override fun isEmpty() = heldItemStack.isEmpty
 
@@ -218,7 +234,7 @@ class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 			heldItemEntity = null
 		}
 
-		val heightOffset = HEIGHT - 0.5 + 0.01
+		val heightOffset = HEIGHT - 0.5
 		val xPos = pos.x + 0.5 + (heightOffset + 0.2f) * normalVector.x
 		val yPos = pos.y + 0.2 + (heightOffset * normalVector.y) + abs(0.3 * normalVector.y) + (if (normalVector.y < 0) -0.7 else 0.0)
 		val zPos = pos.z + 0.5 + (heightOffset + 0.2f) * normalVector.z
