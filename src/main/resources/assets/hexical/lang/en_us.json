@@ -188,6 +188,10 @@
 	"hexical.page.media_jar.0": "I can craft this little decorative jar of liquid _media that glows quite brightly. Unfortunately, it seems the glass is too thick for me to draw _media through it, although I have read tales that ancient _Hexcasters were able to solve this issue and being able to bottle up liquid _media and use it for their _Hexes.",
 	"hexical.page.media_jar.1": "A similar item was built by prior _Hexcasters and they seemed to use it as crystal ball by sipping the fluid. Holding the energy of thought that permeates existence, perhaps its answers hold some merit.$(br2)$(o)Signs point to yes.$()",
 
+	"hexical.page.pedestal.title": "Pedestals",
+	"hexical.page.pedestal.0": "A pedestal can keep an item suspended safely for me. Unlike an item frame or a chest though, my _Hexes can still interact with the item as though it were just dropped on the floor. An empty pedestal can pull items near it and it interacts with hoppers about how I would expect. It works even if the item is swapped out.",
+	"hexical.page.pedestal.1": "$(o)A pedestal is as much a prison as any small, confined space.$()",
+
 	"hexical.category.lamp": "Genie Lamp",
 	"hexical.category.lamp.desc": "I have heard some tales from the villagers about a magical artifact. The villagers say it contains a spirit that grants wishes, but I suspect that is just grand embellishment evolved over centuries of storytelling. However, legends must arise from something and this item must be exceptionally powerful, and so I dedicate this section to my pursuit and research of it.",
 
@@ -704,6 +708,8 @@
 	"hexical.page.get_biome.summary": "Pushes the identifier of the biome type that the vector is within.",
 	"hexcasting.action.hexical:get_dimension": "Plane Reflection",
 	"hexical.page.get_dimension.summary": "Pushes the identifier of the dimension the _Hex is being cast in.",
+	"hexcasting.action.hexical:get_moon": "Lunar Reflection",
+	"hexical.page.get_moon.summary": "Pushes the current phase of the moon as a fraction of its size.",
 	"hexcasting.action.hexical:get_einstein": "Distortion Reflection",
 	"hexical.page.get_einstein.summary": "Pushes whether this dimension is bounded by standard rules of space and time: compasses and clocks will work here.",
 

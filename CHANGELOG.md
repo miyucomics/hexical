@@ -3,6 +3,7 @@
 ## 1.6.0
 - added ability to use phials in wristpocket
 - added pedestals to hold items
+  - also pushes iota to spell circle stacks
 - added Ma'at's Gambit - takes a boolean and an iota and if the boolean is false, mishaps and prints the iota
 - added ability to place arch lamps on pedestals to make turret lamps
   - turrent lamps cast with the media of the item
