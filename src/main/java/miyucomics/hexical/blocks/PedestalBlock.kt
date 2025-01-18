@@ -52,11 +52,12 @@ class PedestalBlock : BlockCircleComponent(Settings.copy(Blocks.DEEPSLATE_TILES)
 		builder.add(FACING)
 	}
 
-	override fun acceptControlFlow(imageIn: CastingImage, env: CircleCastEnv, enterDir: Direction, pos: BlockPos, state: BlockState, world: ServerWorld): ControlFlow {
+	override fun acceptControlFlow(image: CastingImage, env: CircleCastEnv, enterDir: Direction, pos: BlockPos, state: BlockState, world: ServerWorld): ControlFlow {
 		val exitDirsSet = this.possibleExitDirections(pos, state, world)
 		exitDirsSet.remove(enterDir.opposite)
 		val exitDirs = exitDirsSet.map { dir -> exitPositionFromDirection(pos, dir) }
-		return ControlFlow.Continue(imageIn, exitDirs)
+		val blockEntity = world.getBlockEntity(pos) as PedestalBlockEntity
+		return ControlFlow.Continue(blockEntity.modifyImage(image), exitDirs)
 	}
 
 	override fun canEnterFromDirection(enterDir: Direction?, pos: BlockPos?, state: BlockState?, world: ServerWorld?): Boolean {
