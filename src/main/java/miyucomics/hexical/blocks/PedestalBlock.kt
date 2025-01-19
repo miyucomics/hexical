@@ -21,6 +21,7 @@ import net.minecraft.util.Hand
 import net.minecraft.util.hit.BlockHitResult
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
+import net.minecraft.util.shape.VoxelShape
 import net.minecraft.util.shape.VoxelShapes
 import net.minecraft.world.BlockView
 import net.minecraft.world.World
@@ -52,17 +53,12 @@ class PedestalBlock : BlockCircleComponent(Settings.copy(Blocks.DEEPSLATE_TILES)
 		builder.add(FACING)
 	}
 
+	override fun canEnterFromDirection(enterDir: Direction?, pos: BlockPos?, state: BlockState?, world: ServerWorld?) = enterDir != this.normalDir(pos, state, world)
+
 	override fun acceptControlFlow(image: CastingImage, env: CircleCastEnv, enterDir: Direction, pos: BlockPos, state: BlockState, world: ServerWorld): ControlFlow {
 		val exitDirsSet = this.possibleExitDirections(pos, state, world)
 		exitDirsSet.remove(enterDir.opposite)
-		val exitDirs = exitDirsSet.map { dir -> exitPositionFromDirection(pos, dir) }
-		val blockEntity = world.getBlockEntity(pos) as PedestalBlockEntity
-		return ControlFlow.Continue(blockEntity.modifyImage(image), exitDirs)
-	}
-
-	override fun canEnterFromDirection(enterDir: Direction?, pos: BlockPos?, state: BlockState?, world: ServerWorld?): Boolean {
-		val thisNormal = this.normalDir(pos, state, world)
-		return enterDir != thisNormal
+		return ControlFlow.Continue((world.getBlockEntity(pos) as PedestalBlockEntity).modifyImage(image), exitDirsSet.map { dir -> exitPositionFromDirection(pos, dir) })
 	}
 
 	override fun possibleExitDirections(pos: BlockPos?, state: BlockState?, world: World?): EnumSet<Direction> {
@@ -91,13 +87,13 @@ class PedestalBlock : BlockCircleComponent(Settings.copy(Blocks.DEEPSLATE_TILES)
 
 	companion object {
 		val FACING: DirectionProperty = Properties.FACING
-		val SHAPES = EnumMap(mapOf(
-			Direction.NORTH to VoxelShapes.cuboid(0.0, 0.0, 0.25, 1.0, 1.0, 1.0),
-			Direction.SOUTH to VoxelShapes.cuboid(0.0, 0.0, 0.0, 1.0, 1.0, 0.75),
-			Direction.EAST to VoxelShapes.cuboid(0.0, 0.0, 0.0, 0.75, 1.0, 1.0),
-			Direction.WEST to VoxelShapes.cuboid(0.25, 0.0, 0.0, 1.0, 1.0, 1.0),
-			Direction.UP to VoxelShapes.cuboid(0.0, 0.0, 0.0, 1.0, 0.75, 1.0),
-			Direction.DOWN to VoxelShapes.cuboid(0.0, 0.25, 0.0, 1.0, 1.0, 1.0)
-		))
+		val SHAPES = EnumMap<Direction, VoxelShape>(Direction::class.java).apply {
+			put(Direction.NORTH, VoxelShapes.cuboid(0.0, 0.0, 0.25, 1.0, 1.0, 1.0))
+			put(Direction.SOUTH, VoxelShapes.cuboid(0.0, 0.0, 0.0, 1.0, 1.0, 0.75))
+			put(Direction.EAST, VoxelShapes.cuboid(0.0, 0.0, 0.0, 0.75, 1.0, 1.0))
+			put(Direction.WEST, VoxelShapes.cuboid(0.25, 0.0, 0.0, 1.0, 1.0, 1.0))
+			put(Direction.UP, VoxelShapes.cuboid(0.0, 0.0, 0.0, 1.0, 0.75, 1.0))
+			put(Direction.DOWN, VoxelShapes.cuboid(0.0, 0.25, 0.0, 1.0, 1.0, 1.0))
+		}
 	}
 }

@@ -17,7 +17,7 @@ import net.minecraft.item.ItemStack
 import net.minecraft.registry.Registries
 import net.minecraft.util.math.Direction
 
-class OpPlaceBlockType : SpellAction {
+class OpConstruct : SpellAction {
 	override val argc = 4
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val id = args.getIdentifier(0, argc)
