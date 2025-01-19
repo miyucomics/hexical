@@ -3,6 +3,7 @@ package miyucomics.hexical.blocks
 import at.petrak.hexcasting.api.casting.eval.vm.CastingImage
 import at.petrak.hexcasting.api.casting.eval.vm.CastingImage.ParenthesizedIota
 import at.petrak.hexcasting.api.casting.eval.vm.CastingVM
+import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.casting.env.TurretLampCastEnv
 import miyucomics.hexical.inits.HexicalBlocks
@@ -10,7 +11,7 @@ import miyucomics.hexical.inits.HexicalItems
 import miyucomics.hexical.items.ArchLampItem
 import net.minecraft.block.BlockState
 import net.minecraft.block.entity.BlockEntity
-import net.minecraft.entity.Entity.RemovalReason
+import net.minecraft.entity.Entity
 import net.minecraft.entity.ItemEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.inventory.Inventory
@@ -33,14 +34,14 @@ import kotlin.math.min
 class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(HexicalBlocks.PEDESTAL_BLOCK_ENTITY, pos, state), Inventory {
 	private var heldItemStack: ItemStack = ItemStack.EMPTY
 	private var heldItemEntity: ItemEntity? = null
-	private var permanentUUID: UUID? = null
+	private var persistentUUID: UUID? = null
 	private val normalVector: Vec3i = cachedState.get(PedestalBlock.FACING).vector
 
 	init {
 		if (getWorld() != null && !getWorld()!!.isClient) {
-			permanentUUID = generateUniqueUUID()
-			makeNewItemEntity()
+			persistentUUID = generateUniqueUUID()
 			markDirty()
+			populateHeldItemEntity()
 		}
 	}
 
@@ -137,7 +138,7 @@ class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 	}
 
 	private fun getInputItemEntities() =
-		world!!.getEntitiesByClass(ItemEntity::class.java, Box.from(BlockBox(pos))) { item -> item.uuid != permanentUUID && EntityPredicates.VALID_ENTITY.test(item) }
+		world!!.getEntitiesByClass(ItemEntity::class.java, Box.from(BlockBox(pos))) { item -> item.uuid != persistentUUID && EntityPredicates.VALID_ENTITY.test(item) }
 
 	fun modifyImage(image: CastingImage): CastingImage {
 		val data = IXplatAbstractions.INSTANCE.findDataHolder(heldItemStack) ?: return image
@@ -208,83 +209,74 @@ class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 
 	private fun generateUniqueUUID(): UUID {
 		val world = getWorld()
-		if (world !is ServerWorld)
-			return UUID.randomUUID()
-
 		var newUUID = UUID.randomUUID()
+		if (world !is ServerWorld)
+			return newUUID
 		while (world.getEntity(newUUID) != null)
 			newUUID = UUID.randomUUID()
 		return newUUID
 	}
 
-	private fun makeNewItemEntity() {
-		var world = getWorld()!!
-		if (world.isClient)
-			return
-		world = world as ServerWorld
+	private fun populateHeldItemEntity() {
+		val serverWorld = world as? ServerWorld ?: return
 
 		if (heldItemStack.isEmpty)
 			return
 
-		if (permanentUUID == null)
-			permanentUUID = generateUniqueUUID()
-
-		if (heldItemEntity != null) {
-			heldItemEntity!!.discard()
-			heldItemEntity = null
-		}
+		heldItemEntity?.discard()
+		heldItemEntity = null
 
 		val heightOffset = HEIGHT - 0.5
 		val xPos = pos.x + 0.5 + (heightOffset + 0.2f) * normalVector.x
 		val yPos = pos.y + 0.2 + (heightOffset * normalVector.y) + abs(0.3 * normalVector.y) + (if (normalVector.y < 0) -0.7 else 0.0)
 		val zPos = pos.z + 0.5 + (heightOffset + 0.2f) * normalVector.z
-		val possibleOverItem = world.getEntity(permanentUUID)
+
+		val possibleOverItem = serverWorld.getEntity(persistentUUID)
 		if (possibleOverItem is ItemEntity) {
 			heldItemEntity = possibleOverItem
 			heldItemEntity!!.stack = heldItemStack
 		} else {
-			heldItemEntity = ItemEntity(world, xPos, yPos, zPos, heldItemStack, 0.0, 0.0, 0.0)
-			world.spawnEntity(heldItemEntity)
+			heldItemEntity = ItemEntity(serverWorld, xPos, yPos, zPos, heldItemStack, 0.0, 0.0, 0.0)
+			heldItemEntity!!.setPos(xPos, yPos, zPos)
+			heldItemEntity!!.uuid = persistentUUID
+			heldItemEntity!!.setNoGravity(true)
+			heldItemEntity!!.noClip = true
+			heldItemEntity!!.setPickupDelayInfinite()
+			heldItemEntity!!.setNeverDespawn()
+			heldItemEntity!!.isInvulnerable = true
+			serverWorld.spawnEntity(heldItemEntity)
 		}
-
-		heldItemEntity!!.setPos(xPos, yPos, zPos)
-		heldItemEntity!!.uuid = permanentUUID
-		heldItemEntity!!.setNoGravity(true)
-		heldItemEntity!!.noClip = true
-		heldItemEntity!!.setPickupDelayInfinite()
-		heldItemEntity!!.setNeverDespawn()
-		heldItemEntity!!.isInvulnerable = true
-		markDirty()
 	}
 
 	private fun syncItemAndEntity(changeItemEntity: Boolean) {
-		if (world!!.isClient())
-			return
+		if (world!!.isClient) return
 
+		// item stack is gone
 		if (heldItemStack.isEmpty) {
-			if (heldItemEntity != null) {
-				heldItemEntity!!.stack = heldItemStack
+			heldItemEntity?.let {
+				it.stack = heldItemStack
 				heldItemEntity = null
 				markDirty()
 			}
 			return
 		}
 
+		// item entity is gone for whatever reason
 		if (heldItemEntity == null || heldItemEntity!!.isRemoved) {
-			if (heldItemEntity != null && (heldItemEntity!!.removalReason == RemovalReason.DISCARDED || heldItemEntity!!.removalReason == RemovalReason.KILLED) && !changeItemEntity) {
+			if (heldItemEntity != null && (heldItemEntity!!.removalReason == Entity.RemovalReason.DISCARDED || (heldItemEntity!!.removalReason == Entity.RemovalReason.KILLED && (heldItemEntity!!.stack == null || heldItemEntity!!.stack.isEmpty))) && !changeItemEntity) {
 				heldItemStack = ItemStack.EMPTY
 				markDirty()
 				return
 			}
-
-			makeNewItemEntity()
+			populateHeldItemEntity()
 			return
 		}
 
+		// item entity or item stack are out of sync
 		if (heldItemStack != heldItemEntity!!.stack) {
-			if (changeItemEntity)
+			if (changeItemEntity) {
 				heldItemEntity!!.stack = heldItemStack
-			else {
+			} else {
 				heldItemStack = heldItemEntity!!.stack
 				markDirty()
 			}
@@ -294,14 +286,15 @@ class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 	override fun readNbt(nbt: NbtCompound) {
 		super.readNbt(nbt)
 		this.heldItemStack = ItemStack.fromNbt(nbt.getCompound("item"))
-		if (nbt.containsUuid("persistent_uuid")) this.permanentUUID = nbt.getUuid("persistent_uuid")
+		if (nbt.containsUuid("persistent_uuid"))
+			this.persistentUUID = nbt.getUuid("persistent_uuid")
 	}
 
 	override fun writeNbt(nbt: NbtCompound) {
 		super.writeNbt(nbt)
-		nbt.put("item", heldItemStack.writeNbt(NbtCompound()))
-		if (permanentUUID != null)
-			nbt.putUuid("persistent_uuid", permanentUUID)
+		nbt.putCompound("item", heldItemStack.writeNbt(NbtCompound()))
+		if (persistentUUID != null)
+			nbt.putUuid("persistent_uuid", persistentUUID)
 	}
 
 	override fun toUpdatePacket(): BlockEntityUpdateS2CPacket = BlockEntityUpdateS2CPacket.create(this)
