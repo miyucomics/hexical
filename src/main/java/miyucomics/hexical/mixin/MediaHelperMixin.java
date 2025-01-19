@@ -19,8 +19,7 @@ public class MediaHelperMixin {
 	@Inject(method = "scanPlayerForMediaStuff", at = @At("RETURN"))
 	private static void useWristpocketPhial(ServerPlayerEntity player, CallbackInfoReturnable<List<ADMediaHolder>> cir) {
 		ItemStack wristpocket = PersistentStateHandler.getWristpocketStack(player);
-		if (wristpocket.isOf(HexItems.BATTERY)) {
+		if (wristpocket.isOf(HexItems.BATTERY))
 			cir.getReturnValue().add(0, IXplatAbstractions.INSTANCE.findMediaHolder(wristpocket));
-		}
 	}
 }

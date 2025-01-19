@@ -252,6 +252,9 @@
 	"hexcasting.action.hexical:get_arch_lamp_storage": "Archgenie Reflection: Memory",
 	"hexical.page.get_arch_lamp_storage.summary": "Can be cast by a $(l:items/hexcasting)$(item)casting device$(), $(l:items/staff)$(item)Staff$(), or within the arch lamp to push the stored iota.",
 
+	"hexical.page.pedestal_circles.title": "Pedestals in Circles",
+	"hexical.page.pedestal_circles.0": "$(l:items/pedestals)$(thing)Pedestals$() have magical abilities! If they are holding $(l:patterns/readwrite#hexcasting:write)$(item)an item that contains information$() and the $(l:greatwork/spellcircles)$(thing)spell circle$()'s wave passes over them, they push the iota onto the stack. If it happens to be within an unclosed $(l:patterns/patterns_as_iotas#hexcasting:open_paren)Introspection$(), the iota appears inside the constructed list.",
+
 	"hexical.page.enlightened_patterns.title": "Enlightened Patterns",
 	"hexical.page.enlightened_patterns.0": "After my enlightenment, I find myself acutely aware of certain patterns that seem to aid with my newfound abilities to perceive and manipulate _media. These patterns don't seem to require anything new from me, perhaps I've always been able to cast them but was unaware of their existence. That property means I can give an unenlightened player $(l:items/hexcasting)$(item)casting devices$() with these patterns and they will be able to cast it.",
 	"hexcasting.action.hexical:am_enlightened": "Epiphany Purification",

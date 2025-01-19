@@ -10,7 +10,8 @@
 - added Media Reflection - gets media of casting environment
 - added Media Purification - gets media of player, allay, impetus, or item on floor
 - added Construct spell - places a specific block type from your inventory with parameters for orientation and horizontal vector
-- changed lamps deactivating as soon as they are dropped: they now wait five seconds before deactivating
+- added scrying pattern for moon phase
+- changed lamps deactivating to only be when they are picked up
 - fixed bug where small animated scrolls do not render
 
 ## 1.5.0
