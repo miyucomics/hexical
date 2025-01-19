@@ -13,7 +13,10 @@ import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents
 object HexicalEvents {
 	@JvmStatic
 	fun init() {
-		ServerPlayerEvents.AFTER_RESPAWN.register { _, _, _ -> ShaderRenderer.setEffect(null) }
+		ServerPlayerEvents.AFTER_RESPAWN.register { _, _, alive ->
+			if (!alive)
+				ShaderRenderer.setEffect(null)
+		}
 
 		ServerPlayConnectionEvents.DISCONNECT.register { handler, _ ->
 			val player = handler.player.uuid
