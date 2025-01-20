@@ -1,16 +1,16 @@
 {
-	"name": "hexical.page.mysterious_lamp.title",
+	"name": "hexical.page.hand_lamps.title",
 	"icon": "hexical:hand_lamp",
 	"category": "hexcasting:lamp",
 	"sortnum": 0,
 	"pages": [
 		{
 			"type": "patchouli:text",
-			"text": "hexical.page.mysterious_lamp.0"
+			"text": "hexical.page.hand_lamps.0"
 		},
 		{
 			"type": "patchouli:text",
-			"text": "hexical.page.mysterious_lamp.1"
+			"text": "hexical.page.hand_lamps.1"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -22,11 +22,11 @@
 		},
 		{
 			"type": "patchouli:text",
-			"text": "hexical.page.mysterious_lamp.2"
+			"text": "hexical.page.hand_lamps.2"
 		},
 		{
 			"type": "patchouli:text",
-			"text": "hexical.page.mysterious_lamp.3"
+			"text": "hexical.page.hand_lamps.3"
 		},
 		{
 			"type": "hexcasting:pattern",
