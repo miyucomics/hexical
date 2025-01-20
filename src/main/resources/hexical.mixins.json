@@ -13,7 +13,9 @@
 	],
 	"mixins": [
 		"BlockAkashicBookshelfMixin",
+		"CastingEnvironmentMixin",
 		"CastingVMMixin",
+		"CatSitOnBlockGoalMixin",
 		"FabricIXplatImplMixin",
 		"ItemAbacusMixin",
 		"ItemEntityMixin",

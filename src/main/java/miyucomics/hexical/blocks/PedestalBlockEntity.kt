@@ -37,21 +37,15 @@ class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 	private var persistentUUID: UUID? = null
 	private val normalVector: Vec3i = cachedState.get(PedestalBlock.FACING).vector
 
-	init {
-		if (getWorld() != null && !getWorld()!!.isClient) {
-			persistentUUID = generateUniqueUUID()
-			markDirty()
-			populateHeldItemEntity()
-		}
-	}
-
 	fun onBlockBreak() {
 		if (heldItemEntity != null)
 			heldItemEntity!!.discard()
 		if (world !is ServerWorld)
 			return
-		val heightOffset = HEIGHT - 0.5
-		(world as ServerWorld).spawnEntity(ItemEntity(world, pos.x + 0.5 + heightOffset * normalVector.x, pos.y + 0.5 + heightOffset * normalVector.y, pos.z + 0.5 + heightOffset * normalVector.z, heldItemStack))
+		if (!heldItemStack.isEmpty) {
+			val heightOffset = HEIGHT - 0.5
+			(world as ServerWorld).spawnEntity(ItemEntity(world, pos.x + 0.5 + heightOffset * normalVector.x, pos.y + 0.5 + heightOffset * normalVector.y, pos.z + 0.5 + heightOffset * normalVector.z, heldItemStack))
+		}
 		markDirty()
 	}
 
@@ -100,6 +94,15 @@ class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 	fun tick(world: World, pos: BlockPos) {
 		if (world.isClient())
 			return
+
+		if (heldItemEntity != null) {
+			val heightOffset = HEIGHT - 0.5
+			val xPos = pos.x + 0.5 + (heightOffset + 0.2f) * normalVector.x
+			val yPos = pos.y + 0.5 + (heightOffset * normalVector.y) + abs(0.3 * normalVector.y) + (if (normalVector.y < 0) -0.7 else 0.0);
+			val zPos = pos.z + 0.5 + (heightOffset + 0.2f) * normalVector.z
+			heldItemEntity!!.setPos(xPos, yPos, zPos)
+			heldItemEntity!!.setVelocity(0.0, 0.0, 0.0)
+		}
 
 		syncItemAndEntity(false)
 
@@ -220,24 +223,28 @@ class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 	private fun populateHeldItemEntity() {
 		val serverWorld = world as? ServerWorld ?: return
 
+		if (persistentUUID == null)
+			persistentUUID = generateUniqueUUID()
+
 		if (heldItemStack.isEmpty)
 			return
 
 		heldItemEntity?.discard()
 		heldItemEntity = null
 
-		val heightOffset = HEIGHT - 0.5
-		val xPos = pos.x + 0.5 + (heightOffset + 0.2f) * normalVector.x
-		val yPos = pos.y + 0.2 + (heightOffset * normalVector.y) + abs(0.3 * normalVector.y) + (if (normalVector.y < 0) -0.7 else 0.0)
-		val zPos = pos.z + 0.5 + (heightOffset + 0.2f) * normalVector.z
-
 		val possibleOverItem = serverWorld.getEntity(persistentUUID)
 		if (possibleOverItem is ItemEntity) {
 			heldItemEntity = possibleOverItem
 			heldItemEntity!!.stack = heldItemStack
 		} else {
+			val heightOffset = HEIGHT - 0.5
+			val xPos = pos.x + 0.5 + (heightOffset + 0.2f) * normalVector.x
+			val yPos = pos.y + 0.5 + (heightOffset * normalVector.y) + abs(0.3 * normalVector.y) + (if (normalVector.y < 0) -0.7 else 0.0);
+			val zPos = pos.z + 0.5 + (heightOffset + 0.2f) * normalVector.z
+
 			heldItemEntity = ItemEntity(serverWorld, xPos, yPos, zPos, heldItemStack, 0.0, 0.0, 0.0)
 			heldItemEntity!!.setPos(xPos, yPos, zPos)
+			println(heldItemEntity!!.pos)
 			heldItemEntity!!.uuid = persistentUUID
 			heldItemEntity!!.setNoGravity(true)
 			heldItemEntity!!.noClip = true
