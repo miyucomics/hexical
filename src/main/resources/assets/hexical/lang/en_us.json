@@ -257,6 +257,13 @@
 	"hexcasting.action.hexical:get_arch_lamp_storage": "Archgenie Reflection: Memory",
 	"hexical.page.get_arch_lamp_storage.summary": "Can be cast by a $(l:items/hexcasting)$(item)casting device$(), $(l:items/staff)$(item)Staff$(), or within the arch lamp to push the stored iota.",
 
+	"hexical.page.turret_lamps.title": "Lamps on Pedestals",
+	"hexical.page.turret_lamps.0": "It seems that $(l:lamp/arch_lamps)$(item)Archgenie Lamps$() inhibit the genie's ability to cast unless someone is actively grasping it, possibly to prevent the genie from applying _media as a form of attrition to wear down destroy its prison. However I have never noted any behavior of the sort; perhaps it is just the paranoia that comes with the brillance it takes to design such a marvellous deviec.",
+	"hexical.page.turret_lamps.1": "It turns out, a $(l:items/pedestals)$(thing)Pedestals$() can quite nicely replicate the \"grasping\" required. After I activate an $(l:lamp/arch_lamps)$(item)Archgenie Lamp$(), I can simply leave it on the $(l:items/pedestals)$(thing)Pedestals$() and it will continue to operate off the media in the item.$(br2)$(o)The Machine Is Still On, Moira!$()",
+	"hexical.page.turret_lamps.2": "A lot of my _Hexes should be able to just function all the same, but there are some quirks worth noting. Because the genie has no one to credit for the _Hex, $(l:patterns/basics#hexcasting:get_caster)$(action)Mind's Reflection$() attributes the _Hex to the inanimate $(l:lamp/arch_lamps)$(item)Lamp$(). Not having a full sentience which naturally provides ambit, the tiny $(l:lamp/arch_lamps)$(item)Lamp$() is forced to maintain own ambit via pure _media manipulation and is such only a pitiful sixteen blocks. Without a caster, it can not use usual ambit extending tricks either.",
+	"hexcasting.action.hexical:turret_lamp_normal": "Trajectory Reflection",
+	"hexical.page.turret_lamp_normal.summary": "Pushes what direction the $(l:items/pedestals)$(thing)Pedestals$() this lamp resides on is facing.",
+
 	"hexical.page.pedestal_circles.title": "Pedestals in Circles",
 	"hexical.page.pedestal_circles.0": "$(l:items/pedestals)$(thing)Pedestals$() have magical abilities! If they are holding $(l:patterns/readwrite#hexcasting:write)$(item)an item that contains information$() and the $(l:greatwork/spellcircles)$(thing)spell circle$()'s wave passes over them, they push the iota onto the stack. If it happens to be within an unclosed $(l:patterns/patterns_as_iotas#hexcasting:open_paren)Introspection$(), the iota appears inside the constructed list.",
 
