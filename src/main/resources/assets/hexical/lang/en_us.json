@@ -658,7 +658,7 @@
 	"hexcasting.action.hexical:env_evocation": "Evocation Reflection",
 	"hexical.page.env_evocation.summary": "Pushes whether $(l:patterns/spells/evocation)$(item)pure mental effort$() is being used to cast this pattern.",
 	"hexcasting.action.hexical:env_tchotchke": "Tchotchke Reflection",
-	"hexical.page.env_tchotchke.summary": "Pushes whether a $(l:pattern/spells/tchotchke)$(item)Tchotchke$() is being used to cast this pattern.",
+	"hexical.page.env_tchotchke.summary": "Pushes whether a $(l:patterns/spells/tchotchke)$(item)Tchotchke$() is being used to cast this pattern.",
 
 	"hexical.page.food.title": "Food",
 	"hexcasting.action.hexical:edible": "Edibility Purification",
