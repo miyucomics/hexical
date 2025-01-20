@@ -3,12 +3,15 @@ package miyucomics.hexical.blocks
 import at.petrak.hexcasting.api.casting.eval.vm.CastingImage
 import at.petrak.hexcasting.api.casting.eval.vm.CastingImage.ParenthesizedIota
 import at.petrak.hexcasting.api.casting.eval.vm.CastingVM
+import at.petrak.hexcasting.api.casting.iota.IotaType
+import at.petrak.hexcasting.api.casting.iota.NullIota
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.casting.env.TurretLampCastEnv
 import miyucomics.hexical.inits.HexicalBlocks
 import miyucomics.hexical.inits.HexicalItems
 import miyucomics.hexical.items.ArchLampItem
+import miyucomics.hexical.state.PersistentStateHandler
 import net.minecraft.block.BlockState
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.entity.Entity
@@ -22,10 +25,7 @@ import net.minecraft.predicate.entity.EntityPredicates
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.util.ActionResult
 import net.minecraft.util.Hand
-import net.minecraft.util.math.BlockBox
-import net.minecraft.util.math.BlockPos
-import net.minecraft.util.math.Box
-import net.minecraft.util.math.Vec3i
+import net.minecraft.util.math.*
 import net.minecraft.world.World
 import java.util.*
 import kotlin.math.min
@@ -168,6 +168,16 @@ class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 		if (slot == 0) {
 			heldItemStack = stack
 			syncItemAndEntity(true)
+
+			if (heldItemEntity != null) {
+				val state = PersistentStateHandler.getArchLampData(heldItemEntity!!)
+				state.position = heldItemEntity!!.pos
+				state.rotation = Vec3d.of(normalVector)
+				state.velocity = Vec3d.ZERO
+				state.storage = IotaType.serialize(NullIota())
+				state.time = world!!.time
+			}
+
 			markDirty()
 		}
 	}
