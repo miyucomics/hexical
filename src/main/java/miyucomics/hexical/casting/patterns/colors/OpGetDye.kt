@@ -80,9 +80,10 @@ class OpGetDye : ConstMediaAction {
 
 	private fun processVec3d(position: BlockPos, world: ServerWorld): Iota {
 		val state = world.getBlockState(position)
-		val sign = world.getBlockEntity(position) as SignBlockEntity
-		if (state.block is SignBlock)
+		if (state.block is SignBlock) {
+			val sign = world.getBlockEntity(position) as SignBlockEntity
 			return ListIota(listOf(DyeIota(sign.frontText.color.getName()), DyeIota(sign.backText.color.getName())))
+		}
 		return getDyeFromBlock(world.getBlockState(position).block)
 	}
 
