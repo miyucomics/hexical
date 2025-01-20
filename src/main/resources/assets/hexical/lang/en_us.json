@@ -104,6 +104,7 @@
 	"hexcasting.mishap.hexical:assert": "Assertion failed: %s.",
 	"hexcasting.mishap.hexical:can_not_dye": "Expected a dyeable target",
 	"hexcasting.mishap.hexical:inedible": "Wristpocketed item is not edible.",
+	"hexcasting.mishap.hexical:magic_missile_coordinates": "Magic Missile could not identify any form of spatial axis.",
 	"hexcasting.mishap.hexical:needs_staff": "Expected to be cast by a staff.",
 	"hexcasting.mishap.hexical:needs_lamp": "Expected to be cast by a genie.",
 	"hexcasting.mishap.hexical:needs_hand_lamp": "Expected to be cast by a hand genie.",
