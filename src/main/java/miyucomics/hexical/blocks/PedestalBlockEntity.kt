@@ -28,7 +28,6 @@ import net.minecraft.util.math.Box
 import net.minecraft.util.math.Vec3i
 import net.minecraft.world.World
 import java.util.*
-import kotlin.math.abs
 import kotlin.math.min
 
 class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(HexicalBlocks.PEDESTAL_BLOCK_ENTITY, pos, state), Inventory {
@@ -96,10 +95,9 @@ class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 			return
 
 		if (heldItemEntity != null) {
-			val heightOffset = HEIGHT - 0.5
-			val xPos = pos.x + 0.5 + (heightOffset + 0.2f) * normalVector.x
-			val yPos = pos.y + 0.5 + (heightOffset * normalVector.y) + abs(0.3 * normalVector.y) + (if (normalVector.y < 0) -0.7 else 0.0);
-			val zPos = pos.z + 0.5 + (heightOffset + 0.2f) * normalVector.z
+			val xPos = pos.x + 0.5 + (HEIGHT - 0.2) * normalVector.x
+			val yPos = pos.y + 0.5 + (HEIGHT - 0.2) * normalVector.y
+			val zPos = pos.z + 0.5 + (HEIGHT - 0.2) * normalVector.z
 			heldItemEntity!!.setPos(xPos, yPos, zPos)
 			heldItemEntity!!.setVelocity(0.0, 0.0, 0.0)
 		}
@@ -237,14 +235,10 @@ class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 			heldItemEntity = possibleOverItem
 			heldItemEntity!!.stack = heldItemStack
 		} else {
-			val heightOffset = HEIGHT - 0.5
-			val xPos = pos.x + 0.5 + (heightOffset + 0.2f) * normalVector.x
-			val yPos = pos.y + 0.5 + (heightOffset * normalVector.y) + abs(0.3 * normalVector.y) + (if (normalVector.y < 0) -0.7 else 0.0);
-			val zPos = pos.z + 0.5 + (heightOffset + 0.2f) * normalVector.z
-
+			val xPos = pos.x + 0.5 + (HEIGHT - 0.2) * normalVector.x
+			val yPos = pos.y + 0.5 + (HEIGHT - 0.2) * normalVector.y
+			val zPos = pos.z + 0.5 + (HEIGHT - 0.2) * normalVector.z
 			heldItemEntity = ItemEntity(serverWorld, xPos, yPos, zPos, heldItemStack, 0.0, 0.0, 0.0)
-			heldItemEntity!!.setPos(xPos, yPos, zPos)
-			println(heldItemEntity!!.pos)
 			heldItemEntity!!.uuid = persistentUUID
 			heldItemEntity!!.setNoGravity(true)
 			heldItemEntity!!.noClip = true
