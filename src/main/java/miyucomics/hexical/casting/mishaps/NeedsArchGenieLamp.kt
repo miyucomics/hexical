@@ -8,7 +8,7 @@ import miyucomics.hexical.HexicalMain
 import net.minecraft.text.Text
 import net.minecraft.util.DyeColor
 
-class NeedsActiveArchLampMishap : Mishap() {
+class NeedsArchGenieLamp : Mishap() {
 	override fun accentColor(env: CastingEnvironment, errorCtx: Context): FrozenPigment = dyeColor(DyeColor.RED)
 	override fun errorMessage(env: CastingEnvironment, errorCtx: Context): Text = error(HexicalMain.MOD_ID + ":active_arch_lamp")
 	override fun execute(env: CastingEnvironment, errorCtx: Context, stack: MutableList<Iota>) {

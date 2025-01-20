@@ -6,7 +6,7 @@ import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.NullIota
 import at.petrak.hexcasting.api.misc.MediaConstants
-import miyucomics.hexical.casting.mishaps.NeedsActiveArchLampMishap
+import miyucomics.hexical.casting.mishaps.NeedsArchGenieLamp
 import miyucomics.hexical.inits.HexicalItems
 import miyucomics.hexical.items.ArchLampItem
 import miyucomics.hexical.items.hasActiveArchLamp
@@ -19,7 +19,7 @@ class OpGetArchLampMedia : ConstMediaAction {
 		if (caster !is ServerPlayerEntity)
 			return listOf(NullIota())
 		if (!hasActiveArchLamp(caster))
-			throw NeedsActiveArchLampMishap()
+			throw NeedsArchGenieLamp()
 		for (stack in caster.inventory.main)
 			if (stack.item == HexicalItems.ARCH_LAMP_ITEM && stack.orCreateNbt.getBoolean("active"))
 				return ((stack.item as ArchLampItem).getMedia(stack).toDouble() / MediaConstants.DUST_UNIT).asActionResult
