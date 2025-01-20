@@ -135,7 +135,7 @@ class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 
 		if (heldItemStack.isOf(HexicalItems.ARCH_LAMP_ITEM) && heldItemStack.orCreateNbt.getBoolean("active")) {
 			syncItemAndEntity(true)
-			val vm = CastingVM(CastingImage(), TurretLampCastEnv(heldItemEntity!!, world as ServerWorld))
+			val vm = CastingVM(CastingImage(), TurretLampCastEnv(heldItemEntity!!, normalVector, world as ServerWorld))
 			vm.queueExecuteAndWrapIotas((heldItemStack.item as ArchLampItem).getHex(heldItemStack, world)!!, world)
 		}
 	}

@@ -1,0 +1,29 @@
+{
+	"name": "hexical.page.turret_lamps.title",
+	"icon": "hexical:pedestal",
+	"category": "hexcasting:lamp",
+	"advancement": "hexical:arch_lamp",
+	"sortnum": 3,
+	"pages": [
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.turret_lamps.0"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.turret_lamps.1"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.turret_lamps.2"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:turret_lamp_normal",
+			"anchor": "hexical:turret_lamp_normal",
+			"input": "",
+			"output": "vector",
+			"text": "hexical.page.turret_lamp_normal.summary"
+		}
+	]
+}

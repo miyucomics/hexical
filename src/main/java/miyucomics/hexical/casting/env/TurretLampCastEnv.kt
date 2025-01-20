@@ -14,9 +14,10 @@ import net.minecraft.text.Text
 import net.minecraft.util.Hand
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d
+import net.minecraft.util.math.Vec3i
 import java.util.function.Predicate
 
-class TurretLampCastEnv(val lamp: ItemEntity, world: ServerWorld) : CastingEnvironment(world) {
+class TurretLampCastEnv(val lamp: ItemEntity, val normal: Vec3i, world: ServerWorld) : CastingEnvironment(world) {
 	private var mediaHolder: ADMediaHolder = IXplatAbstractions.INSTANCE.findMediaHolder(lamp.stack)!!
 
 	override fun getCastingEntity() = null

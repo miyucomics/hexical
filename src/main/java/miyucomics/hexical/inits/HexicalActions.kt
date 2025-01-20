@@ -129,7 +129,8 @@ object HexicalActions {
 		register("get_arch_lamp_media", "qaqwddedaeeeee", HexDir.NORTH_EAST, OpGetArchLampMedia())
 		register("has_arch_lamp", "qaqwddedqeed", HexDir.NORTH_EAST, OpIsUsingArchLamp())
 		register("lamp_finale", "aaddaddad", HexDir.EAST, OpGetFinale())
-		register("turret_position", "qaqwddedweaqwqae", HexDir.NORTH_EAST, OpGetTurretPosition())
+
+		register("turret_lamp_normal", "qaqwddedweaqwqae", HexDir.NORTH_EAST, OpGetTurretNormal())
 
 		register("am_enlightened", "awqaqqq", HexDir.SOUTH_EAST, OpEnlightened())
 		register("is_brainswept", "qqqaqqq", HexDir.SOUTH_EAST, OpBrainswept())
