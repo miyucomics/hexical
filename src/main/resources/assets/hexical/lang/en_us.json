@@ -22,6 +22,7 @@
 	"block.hexical.mage_block": "Mage Block",
 	"block.hexical.media_jar": "Media Jar",
 	"block.hexical.pedestal": "Pedestal",
+	"block.hexical.sentinel_bed": "Sentinel Bed",
 	"death.attack.magic_missile": "%1$s was struck with arcane force by %2$s",
 	"death.attack.magic_missile.item": "%1$s was struck with arcane force by %2$s using %3$s",
 	"death.attack.spike": "%1$s was punctured by %2$s",
@@ -187,6 +188,10 @@
 	"hexical.page.media_jar.title": "Media Jar",
 	"hexical.page.media_jar.0": "I can craft this little decorative jar of liquid _media that glows quite brightly. Unfortunately, it seems the glass is too thick for me to draw _media through it, although I have read tales that ancient _Hexcasters were able to solve this issue and being able to bottle up liquid _media and use it for their _Hexes.",
 	"hexical.page.media_jar.1": "A similar item was built by prior _Hexcasters and they seemed to use it as crystal ball by sipping the fluid. Holding the energy of thought that permeates existence, perhaps its answers hold some merit.$(br2)$(o)Signs point to yes.$()",
+
+	"hexical.page.sentinel_bed.title": "Sentinel Beds",
+	"hexical.page.sentinel_bed.0": "The $(item)Lodestone$() inside seems to make this block $(o)and the entities shoved in it$() always within my _Hexes' ambit, although I prefer to believe the $(item)Wool$() invites my $(l:patterns/spells/sentinels)$(thing)Sentinel$(). Cats seem to find it cozy too, like a lit furnace or a bed.$(br2)I hear rumors of ancient _Hexcasters using this as some kind of iota storage from any range but I imagine to understand how.",
+	"hexical.page.sentinel_bed.1": "$(o)A comfy bed for my sentinel, it always seems eager to return to it.$()",
 
 	"hexical.page.pedestal.title": "Pedestals",
 	"hexical.page.pedestal.0": "A pedestal can keep an item suspended safely for me. Unlike an item frame or a chest though, my _Hexes can still interact with the item as though it were just dropped on the floor. An empty pedestal can pull items near it and it interacts with hoppers about how I would expect. It works even if the item is swapped out.",
