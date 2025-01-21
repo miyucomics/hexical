@@ -3,7 +3,7 @@ package miyucomics.hexical.casting.patterns.tchotchke
 import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.iota.Iota
-import miyucomics.hexical.casting.env.TchotchkeCastEnv
+import miyucomics.hexical.casting.environments.TchotchkeCastEnv
 import miyucomics.hexical.casting.mishaps.NoTchotchkeMishap
 
 class OpReadTchotchke : ConstMediaAction {

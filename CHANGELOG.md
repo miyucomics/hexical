@@ -8,6 +8,7 @@
 - added Ma'at's Gambit - takes a boolean and an iota and if the boolean is false, mishaps and prints the iota
 - added ability to place arch lamps on pedestals to make turret lamps
   - turrent lamps cast with the media of the item
+  - unique system for magic missile
 - added Media Reflection - gets media of casting environment
 - added Media Purification - gets media of player, allay, impetus, or item on floor
 - added Construct spell - places a specific block type from your inventory with parameters for orientation and horizontal vector

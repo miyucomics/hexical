@@ -7,7 +7,7 @@ import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.getVec3
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.misc.MediaConstants
-import miyucomics.hexical.casting.env.TurretLampCastEnv
+import miyucomics.hexical.casting.environments.TurretLampCastEnv
 import miyucomics.hexical.casting.mishaps.MagicMissileMishap
 import miyucomics.hexical.entities.MagicMissileEntity
 import net.minecraft.util.math.Direction

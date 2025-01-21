@@ -12,7 +12,7 @@ import at.petrak.hexcasting.api.item.PigmentItem
 import at.petrak.hexcasting.api.pigment.FrozenPigment
 import at.petrak.hexcasting.common.lib.HexItems
 import at.petrak.hexcasting.xplat.IXplatAbstractions
-import miyucomics.hexical.casting.iota.*
+import miyucomics.hexical.casting.iotas.*
 import net.minecraft.entity.ItemEntity
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.player.PlayerEntity

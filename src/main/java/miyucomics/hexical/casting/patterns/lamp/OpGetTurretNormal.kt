@@ -4,12 +4,8 @@ import at.petrak.hexcasting.api.casting.asActionResult
 import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.iota.Iota
-import at.petrak.hexcasting.api.casting.iota.NullIota
-import miyucomics.hexical.casting.env.HandLampCastEnv
-import miyucomics.hexical.casting.env.TurretLampCastEnv
-import miyucomics.hexical.casting.mishaps.NoHandLampMishap
+import miyucomics.hexical.casting.environments.TurretLampCastEnv
 import miyucomics.hexical.casting.mishaps.NoTurretMishap
-import net.minecraft.nbt.NbtCompound
 import net.minecraft.util.math.Vec3d
 
 class OpGetTurretNormal : ConstMediaAction {
