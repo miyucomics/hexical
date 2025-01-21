@@ -4,7 +4,7 @@ import at.petrak.hexcasting.api.casting.RenderedSpell
 import at.petrak.hexcasting.api.casting.castables.SpellAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.iota.Iota
-import miyucomics.hexical.casting.env.HandLampCastEnv
+import miyucomics.hexical.casting.environments.HandLampCastEnv
 import miyucomics.hexical.casting.mishaps.NoHandLampMishap
 
 class OpSetHandLampStorage : SpellAction {
