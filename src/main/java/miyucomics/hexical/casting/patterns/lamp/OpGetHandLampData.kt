@@ -4,7 +4,7 @@ import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.NullIota
-import miyucomics.hexical.casting.env.HandLampCastEnv
+import miyucomics.hexical.casting.environments.HandLampCastEnv
 import miyucomics.hexical.casting.mishaps.NoHandLampMishap
 import net.minecraft.nbt.NbtCompound
 
