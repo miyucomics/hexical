@@ -21,11 +21,11 @@ import at.petrak.hexcasting.common.casting.actions.stack.OpTwiddling
 import at.petrak.hexcasting.common.lib.hex.HexActions
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.casting.env.*
+import miyucomics.hexical.casting.environments.*
 import miyucomics.hexical.casting.handlers.NephthysSpecialHandler
 import miyucomics.hexical.casting.handlers.SekhmetSpecialHandler
-import miyucomics.hexical.casting.iota.IdentifierIota
-import miyucomics.hexical.casting.iota.asActionResult
+import miyucomics.hexical.casting.iotas.IdentifierIota
+import miyucomics.hexical.casting.iotas.asActionResult
 import miyucomics.hexical.casting.patterns.*
 import miyucomics.hexical.casting.patterns.akashic.OpClearAkashicShelf
 import miyucomics.hexical.casting.patterns.akashic.OpKeyAkashicShelf

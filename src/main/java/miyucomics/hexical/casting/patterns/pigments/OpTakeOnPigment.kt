@@ -3,7 +3,7 @@ package miyucomics.hexical.casting.patterns.pigments
 import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.iota.Iota
-import miyucomics.hexical.casting.iota.getPigment
+import miyucomics.hexical.casting.iotas.getPigment
 
 class OpTakeOnPigment : ConstMediaAction {
 	override val argc = 1

@@ -7,7 +7,7 @@ import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.casting.iota.NullIota
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.xplat.IXplatAbstractions
-import miyucomics.hexical.casting.env.TurretLampCastEnv
+import miyucomics.hexical.casting.environments.TurretLampCastEnv
 import miyucomics.hexical.inits.HexicalBlocks
 import miyucomics.hexical.inits.HexicalItems
 import miyucomics.hexical.items.ArchLampItem
