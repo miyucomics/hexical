@@ -5,9 +5,9 @@ import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.getBlockPos
 import at.petrak.hexcasting.api.casting.getEntity
 import at.petrak.hexcasting.api.casting.iota.*
-import miyucomics.hexical.casting.iota.DyeIota
-import miyucomics.hexical.casting.iota.IdentifierIota
-import miyucomics.hexical.casting.iota.getIdentifier
+import miyucomics.hexical.casting.iotas.DyeIota
+import miyucomics.hexical.casting.iotas.IdentifierIota
+import miyucomics.hexical.casting.iotas.getIdentifier
 import miyucomics.hexical.data.DyeData
 import net.minecraft.block.Block
 import net.minecraft.block.SignBlock
@@ -80,9 +80,10 @@ class OpGetDye : ConstMediaAction {
 
 	private fun processVec3d(position: BlockPos, world: ServerWorld): Iota {
 		val state = world.getBlockState(position)
-		val sign = world.getBlockEntity(position) as SignBlockEntity
-		if (state.block is SignBlock)
+		if (state.block is SignBlock) {
+			val sign = world.getBlockEntity(position) as SignBlockEntity
 			return ListIota(listOf(DyeIota(sign.frontText.color.getName()), DyeIota(sign.backText.color.getName())))
+		}
 		return getDyeFromBlock(world.getBlockState(position).block)
 	}
 

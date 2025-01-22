@@ -1,6 +1,7 @@
 {
 	"replace": false,
 	"values": [
-		"hexical:pedestal"
+		"hexical:pedestal",
+		"hexical:sentinel_bed"
 	]
 }

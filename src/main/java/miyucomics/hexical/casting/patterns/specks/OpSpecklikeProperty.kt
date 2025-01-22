@@ -5,7 +5,7 @@ import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadEntity
-import miyucomics.hexical.casting.iota.getPigment
+import miyucomics.hexical.casting.iotas.getPigment
 import miyucomics.hexical.interfaces.Specklike
 import net.minecraft.command.argument.EntityAnchorArgumentType
 
