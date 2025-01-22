@@ -12,7 +12,7 @@ import at.petrak.hexcasting.api.casting.iota.ListIota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster
 import at.petrak.hexcasting.api.misc.MediaConstants
 import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.casting.env.EvocationCastEnv
+import miyucomics.hexical.casting.environments.EvocationCastEnv
 import miyucomics.hexical.inits.HexicalSounds
 import miyucomics.hexical.state.EvokeState
 import miyucomics.hexical.state.PersistentStateHandler

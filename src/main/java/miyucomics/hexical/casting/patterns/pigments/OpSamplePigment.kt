@@ -6,7 +6,7 @@ import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.getDouble
 import at.petrak.hexcasting.api.casting.getVec3
 import at.petrak.hexcasting.api.casting.iota.Iota
-import miyucomics.hexical.casting.iota.getPigment
+import miyucomics.hexical.casting.iotas.getPigment
 import net.minecraft.util.math.ColorHelper
 import net.minecraft.util.math.Vec3d
 

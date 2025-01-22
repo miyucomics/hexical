@@ -50,22 +50,6 @@
 		},
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:env_evocation",
-			"anchor": "hexical:env_evocation",
-			"input": "",
-			"output": "boolean",
-			"text": "hexical.page.env_evocation.summary"
-		},
-		{
-			"type": "hexcasting:pattern",
-			"op_id": "hexical:env_circle",
-			"anchor": "hexical:env_circle",
-			"input": "",
-			"output": "boolean",
-			"text": "hexical.page.env_circle.summary"
-		},
-		{
-			"type": "hexcasting:pattern",
 			"op_id": "hexical:env_hand_lamp",
 			"anchor": "hexical:env_hand_lamp",
 			"input": "",
@@ -79,6 +63,30 @@
 			"input": "",
 			"output": "boolean",
 			"text": "hexical.page.env_arch_lamp.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:env_turret",
+			"anchor": "hexical:env_turret",
+			"input": "",
+			"output": "boolean",
+			"text": "hexical.page.env_turret.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:env_circle",
+			"anchor": "hexical:env_circle",
+			"input": "",
+			"output": "boolean",
+			"text": "hexical.page.env_circle.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:env_evocation",
+			"anchor": "hexical:env_evocation",
+			"input": "",
+			"output": "boolean",
+			"text": "hexical.page.env_evocation.summary"
 		},
 		{
 			"type": "hexcasting:pattern",

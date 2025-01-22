@@ -1,33 +1,35 @@
 package miyucomics.hexical.casting.patterns.lamp
 
-import at.petrak.hexcasting.api.casting.RenderedSpell
-import at.petrak.hexcasting.api.casting.castables.SpellAction
+import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster
-import miyucomics.hexical.casting.mishaps.NeedsActiveArchLampMishap
+import miyucomics.hexical.casting.environments.TurretLampCastEnv
+import miyucomics.hexical.casting.mishaps.NeedsArchGenieLamp
 import miyucomics.hexical.items.hasActiveArchLamp
 import miyucomics.hexical.state.PersistentStateHandler
 import miyucomics.hexical.utils.CastingUtils
 import net.minecraft.server.network.ServerPlayerEntity
 
-class OpSetArchLampStorage : SpellAction {
+class OpSetArchLampStorage : ConstMediaAction {
 	override val argc = 1
-	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
+	override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
+		val iota = args[0]
+		CastingUtils.assertNoTruename(iota, env)
+
+		if (env is TurretLampCastEnv) {
+			PersistentStateHandler.getArchLampData(env.lamp).storage = IotaType.serialize(iota)
+			return emptyList()
+		}
+
 		val caster = env.castingEntity
 		if (caster !is ServerPlayerEntity)
 			throw MishapBadCaster()
 		if (!hasActiveArchLamp(caster))
-			throw NeedsActiveArchLampMishap()
-		val iota = args[0]
-		CastingUtils.assertNoTruename(iota, env)
-		return SpellAction.Result(Spell(iota), 0, listOf())
-	}
+			throw NeedsArchGenieLamp()
+		PersistentStateHandler.getArchLampData(env.castingEntity!!).storage = IotaType.serialize(iota)
 
-	private data class Spell(val iota: Iota) : RenderedSpell {
-		override fun cast(env: CastingEnvironment) {
-			PersistentStateHandler.getArchLampData(env.castingEntity!!).storage = IotaType.serialize(iota)
-		}
+		return emptyList()
 	}
 }

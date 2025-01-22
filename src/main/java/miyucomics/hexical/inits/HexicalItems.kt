@@ -51,6 +51,7 @@ object HexicalItems {
 	private val MEDIA_JAR_ITEM = BlockItem(HexicalBlocks.MEDIA_JAR_BLOCK, Settings())
 	private val HEX_CANDLE_ITEM = BlockItem(HexicalBlocks.HEX_CANDLE_BLOCK, Settings())
 	private val PEDESTAL_ITEM = BlockItem(HexicalBlocks.PEDESTAL_BLOCK, Settings())
+	private val SENTINEL_BED_ITEM = BlockItem(HexicalBlocks.SENTINEL_BED_BLOCK, Settings())
 
 	@JvmStatic
 	fun init() {
@@ -79,6 +80,7 @@ object HexicalItems {
 			entries.add(ItemStack(MEDIA_JAR_ITEM))
 			entries.add(ItemStack(HEX_CANDLE_ITEM))
 			entries.add(ItemStack(PEDESTAL_ITEM))
+			entries.add(ItemStack(SENTINEL_BED_ITEM))
 		}
 
 		Registry.register(Registries.ITEM, HexicalMain.id("animated_scroll_small"), SMALL_ANIMATED_SCROLL_ITEM)
@@ -96,6 +98,7 @@ object HexicalItems {
 		Registry.register(Registries.ITEM, HexicalMain.id("mage_block"), BlockItem(HexicalBlocks.MAGE_BLOCK, Settings()))
 		Registry.register(Registries.ITEM, HexicalMain.id("media_jar"), MEDIA_JAR_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("pedestal"), PEDESTAL_ITEM)
+		Registry.register(Registries.ITEM, HexicalMain.id("sentinel_bed"), SENTINEL_BED_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("tchotchke"), TCHOTCHKE_ITEM)
 	}
 

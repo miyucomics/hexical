@@ -5,7 +5,7 @@ import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.iota.EntityIota
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
-import miyucomics.hexical.casting.iota.asActionResult
+import miyucomics.hexical.casting.iotas.asActionResult
 import net.minecraft.entity.ItemEntity
 import net.minecraft.entity.decoration.ItemFrameEntity
 import net.minecraft.registry.Registries

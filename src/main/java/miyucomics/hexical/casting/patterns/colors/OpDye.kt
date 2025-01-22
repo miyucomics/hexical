@@ -13,8 +13,8 @@ import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.pigment.FrozenPigment
 import at.petrak.hexcasting.common.lib.HexItems
-import miyucomics.hexical.casting.iota.getDye
-import miyucomics.hexical.casting.iota.getTrueDye
+import miyucomics.hexical.casting.iotas.getDye
+import miyucomics.hexical.casting.iotas.getTrueDye
 import miyucomics.hexical.casting.mishaps.DyeableMishap
 import miyucomics.hexical.data.DyeData
 import miyucomics.hexical.interfaces.Specklike

@@ -9,7 +9,7 @@ import at.petrak.hexcasting.api.casting.mishaps.MishapBadBlock
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.xplat.IXplatAbstractions
-import miyucomics.hexical.casting.iota.getIdentifier
+import miyucomics.hexical.casting.iotas.getIdentifier
 import miyucomics.hexical.utils.ConstructedItemUsageContext
 import net.minecraft.item.BlockItem
 import net.minecraft.item.ItemPlacementContext
@@ -17,7 +17,7 @@ import net.minecraft.item.ItemStack
 import net.minecraft.registry.Registries
 import net.minecraft.util.math.Direction
 
-class OpPlaceBlockType : SpellAction {
+class OpConstruct : SpellAction {
 	override val argc = 4
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val id = args.getIdentifier(0, argc)
