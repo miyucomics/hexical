@@ -6,8 +6,8 @@ import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.getEntity
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
-import miyucomics.hexical.casting.iota.IdentifierIota
-import miyucomics.hexical.casting.iota.asActionResult
+import miyucomics.hexical.casting.iotas.IdentifierIota
+import miyucomics.hexical.casting.iotas.asActionResult
 import net.minecraft.entity.ItemEntity
 import net.minecraft.entity.effect.StatusEffects
 import net.minecraft.entity.projectile.ArrowEntity

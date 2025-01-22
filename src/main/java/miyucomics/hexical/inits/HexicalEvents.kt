@@ -1,5 +1,7 @@
 package miyucomics.hexical.inits
 
+import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
+import miyucomics.hexical.casting.components.SentinelBedComponent
 import miyucomics.hexical.client.ClientStorage
 import miyucomics.hexical.client.ShaderRenderer
 import miyucomics.hexical.state.EvokeState
@@ -9,11 +11,20 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents
 import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents
+import net.minecraft.nbt.NbtCompound
 
 object HexicalEvents {
 	@JvmStatic
 	fun init() {
-		ServerPlayerEvents.AFTER_RESPAWN.register { _, _, _ -> ShaderRenderer.setEffect(null) }
+		CastingEnvironment.addCreateEventListener { env: CastingEnvironment, _: NbtCompound ->
+//			env.addExtension(ScopeComponent(env))
+			env.addExtension(SentinelBedComponent(env))
+		}
+
+		ServerPlayerEvents.AFTER_RESPAWN.register { _, _, alive ->
+			if (!alive)
+				ShaderRenderer.setEffect(null)
+		}
 
 		ServerPlayConnectionEvents.DISCONNECT.register { handler, _ ->
 			val player = handler.player.uuid
