@@ -1,0 +1,8 @@
+{
+	"parent": "block/cube_bottom_top",
+	"textures": {
+		"side": "hexical:block/sentinel_bed_side",
+		"top": "hexical:block/sentinel_bed_top",
+		"bottom": "hexcasting:block/slate"
+	}
+}

@@ -4,7 +4,7 @@ import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
-import miyucomics.hexical.casting.iota.getIdentifier
+import miyucomics.hexical.casting.iotas.getIdentifier
 import net.minecraft.item.FoodComponent
 import net.minecraft.registry.Registries
 

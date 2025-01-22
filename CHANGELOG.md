@@ -4,14 +4,18 @@
 - added ability to use phials in wristpocket
 - added pedestals to hold items
   - also pushes iota to spell circle stacks
+- added sentinel bed - always have ambit inside
 - added Ma'at's Gambit - takes a boolean and an iota and if the boolean is false, mishaps and prints the iota
 - added ability to place arch lamps on pedestals to make turret lamps
   - turrent lamps cast with the media of the item
+  - unique system for magic missile
 - added Media Reflection - gets media of casting environment
 - added Media Purification - gets media of player, allay, impetus, or item on floor
 - added Construct spell - places a specific block type from your inventory with parameters for orientation and horizontal vector
-- changed lamps deactivating as soon as they are dropped: they now wait five seconds before deactivating
+- added scrying pattern for moon phase
+- changed lamps deactivating to only be when they are picked up
 - fixed bug where small animated scrolls do not render
+- fixed bug where Chromatic Purification breaks for vectors
 
 ## 1.5.0
 - added spell to conjure llama spit

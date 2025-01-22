@@ -6,7 +6,7 @@ import at.petrak.hexcasting.api.casting.getLivingEntityButNotArmorStand
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.NullIota
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
-import miyucomics.hexical.casting.iota.getIdentifier
+import miyucomics.hexical.casting.iotas.getIdentifier
 import net.minecraft.entity.effect.StatusEffectInstance
 import net.minecraft.registry.Registries
 

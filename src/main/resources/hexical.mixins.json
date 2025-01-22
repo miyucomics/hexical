@@ -14,12 +14,14 @@
 	"mixins": [
 		"BlockAkashicBookshelfMixin",
 		"CastingVMMixin",
+		"CatSitOnBlockGoalMixin",
 		"FabricIXplatImplMixin",
 		"ItemAbacusMixin",
 		"ItemEntityMixin",
 		"ItemStackMixin",
 		"LivingEntityMixin",
 		"MediaHelperMixin",
+		"OpGetCasterMixin",
 		"OpReadMixin",
 		"PlayerEntityMixin",
 		"WanderingTraderEntityMixin"
