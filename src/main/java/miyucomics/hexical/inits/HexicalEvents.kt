@@ -13,11 +13,13 @@ import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents
 import net.minecraft.nbt.NbtCompound
 
-
 object HexicalEvents {
 	@JvmStatic
 	fun init() {
-		CastingEnvironment.addCreateEventListener { env: CastingEnvironment, _: NbtCompound -> env.addExtension(SentinelBedComponent(env)) }
+		CastingEnvironment.addCreateEventListener { env: CastingEnvironment, _: NbtCompound ->
+//			env.addExtension(ScopeComponent(env))
+			env.addExtension(SentinelBedComponent(env))
+		}
 
 		ServerPlayerEvents.AFTER_RESPAWN.register { _, _, alive ->
 			if (!alive)

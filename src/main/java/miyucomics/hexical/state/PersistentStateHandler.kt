@@ -4,7 +4,6 @@ import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.api.utils.serializeToNBT
 import miyucomics.hexical.HexicalMain
 import net.minecraft.entity.Entity
-import net.minecraft.entity.LivingEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.server.MinecraftServer

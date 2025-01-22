@@ -15,10 +15,10 @@ class CatSitOnBlockGoalMixin {
 	void sits(WorldView worldView, BlockPos blockPos, CallbackInfoReturnable<Boolean> cir) {
 		if (cir.getReturnValue())
 			return;
-
-		if (!worldView.isAir(blockPos.up()))
+		if (!worldView.isAir(blockPos.up())) {
 			cir.setReturnValue(false);
-
+			return;
+		}
 		if (worldView.getBlockState(blockPos).isOf(HexicalBlocks.SENTINEL_BED_BLOCK))
 			cir.setReturnValue(true);
 	}

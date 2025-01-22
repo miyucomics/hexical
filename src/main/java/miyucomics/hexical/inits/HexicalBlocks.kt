@@ -6,12 +6,10 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap
 import net.minecraft.block.AbstractBlock
 import net.minecraft.block.Block
 import net.minecraft.block.Blocks
-import net.minecraft.block.MapColor
 import net.minecraft.block.entity.BlockEntityType
 import net.minecraft.client.render.RenderLayer
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
-import net.minecraft.sound.BlockSoundGroup
 
 object HexicalBlocks {
 	val HEX_CANDLE_BLOCK: HexCandleBlock = HexCandleBlock()
