@@ -16,7 +16,6 @@ on:
         options:
           - none
           - PyPI
-          # - TestPyPI
 
 env:
   PYPI_PACKAGE: hexdoc-hexical
@@ -26,7 +25,7 @@ permissions:
 
 jobs:
   hexdoc:
-    uses: hexdoc-dev/hexdoc/.github/workflows/hexdoc.yml@v1!0.1.dev
+    uses: hexdoc-dev/actions/.github/workflows/hexdoc.yml@v1
     permissions:
       contents: write
       pages: read
@@ -54,33 +53,10 @@ jobs:
       id-token: write
     steps:
       - name: Download package artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: hexdoc-build
           path: dist
 
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
-
-  # Uncomment if you want to try publishing to TestPyPI before using the real index.
-
-  # publish-testpypi:
-  #   runs-on: ubuntu-latest
-  #   needs: hexdoc
-  #   if: github.event_name != 'push' && inputs.publish == 'TestPyPI'
-  #   environment:
-  #     name: testpypi
-  #     url: https://test.pypi.org/p/${{ env.PYPI_PACKAGE }}
-  #   permissions:
-  #     id-token: write
-  #   steps:
-  #     - name: Download package artifact
-  #       uses: actions/download-artifact@v3
-  #       with:
-  #         name: hexdoc-build
-  #         path: dist
-
-  #     - name: Publish to TestPyPI
-  #       uses: pypa/gh-action-pypi-publish@release/v1
-  #       with:
-  #         repository-url: https://test.pypi.org/legacy/
