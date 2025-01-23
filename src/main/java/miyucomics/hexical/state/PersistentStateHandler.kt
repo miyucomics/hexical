@@ -15,6 +15,7 @@ import java.util.*
 class PersistentStateHandler : PersistentState() {
 	private var archLamps = HashMap<UUID, ArchLampData>()
 	private var evocation = HashMap<UUID, NbtCompound>()
+	private var ledgers = HashMap<UUID, LedgerData>()
 	private var wristpockets = HashMap<UUID, ItemStack>()
 
 	override fun writeNbt(nbt: NbtCompound): NbtCompound {
@@ -25,6 +26,10 @@ class PersistentStateHandler : PersistentState() {
 		val nbtEvocation = NbtCompound()
 		evocation.forEach { (uuid, compound) -> nbtEvocation.putCompound(uuid.toString(), compound) }
 		nbt.put("evocation", nbtEvocation)
+
+		val nbtLedgers = NbtCompound()
+		ledgers.forEach { (uuid, ledger) -> nbtLedgers.putCompound(uuid.toString(), ledger.toNbt()) }
+		nbt.put("ledgers", nbtLedgers)
 
 		val nbtWristpockets = NbtCompound()
 		wristpockets.forEach { (uuid, stack) -> nbtWristpockets.putCompound(uuid.toString(), stack.serializeToNBT()) }
@@ -43,6 +48,9 @@ class PersistentStateHandler : PersistentState() {
 			val nbtEvocation = tag.getCompound("evocation")
 			nbtEvocation.keys.forEach { key: String -> state.evocation[UUID.fromString(key)] = nbtEvocation.getCompound(key) }
 
+			val nbtLedgers = tag.getCompound("ledgers")
+			nbtLedgers.keys.forEach { key: String -> state.ledgers[UUID.fromString(key)] = LedgerData.createFromNbt(nbtLedgers.getCompound(key)) }
+
 			val nbtWristpockets = tag.getCompound("wristpocket")
 			nbtWristpockets.keys.forEach { key: String -> state.wristpockets[UUID.fromString(key)] = ItemStack.fromNbt(nbtWristpockets.getCompound(key)) }
 
@@ -57,6 +65,9 @@ class PersistentStateHandler : PersistentState() {
 		}
 
 		fun getArchLampData(entity: Entity) = getServerState(entity.server!!).archLamps.computeIfAbsent(entity.uuid) { ArchLampData() }
+
+		@JvmStatic
+		fun getLedger(player: ServerPlayerEntity) = getServerState(player.server!!).ledgers.computeIfAbsent(player.uuid) { LedgerData() }
 
 		fun getEvocation(player: ServerPlayerEntity) = getServerState(player.getServer()!!).evocation[player.uuid]
 		fun setEvocation(player: ServerPlayerEntity, hex: NbtCompound) {

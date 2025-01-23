@@ -32,7 +32,7 @@ class OpGreaterBlink : SpellAction {
 			.add(upAxis.multiply(providedOffset.y))
 			.add(straightAxis.multiply(providedOffset.z))
 
-		val destination = caster.eyePos.add(worldOffset)
+		val destination = caster.pos.add(worldOffset)
 		if (worldOffset.length() > 128)
 			throw MishapBadLocation(destination)
 		return SpellAction.Result(Spell(destination), MediaConstants.DUST_UNIT * 2, listOf(ParticleSpray.cloud(destination, 1.0)))

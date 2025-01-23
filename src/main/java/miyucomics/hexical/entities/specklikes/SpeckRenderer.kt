@@ -4,15 +4,13 @@ import at.petrak.hexcasting.api.HexAPI.modLoc
 import com.mojang.blaze3d.systems.RenderSystem
 import miyucomics.hexical.utils.RenderUtils
 import net.minecraft.client.font.TextRenderer
-import net.minecraft.client.render.Frustum
-import net.minecraft.client.render.LightmapTextureManager
-import net.minecraft.client.render.RenderLayer
-import net.minecraft.client.render.VertexConsumerProvider
+import net.minecraft.client.render.*
 import net.minecraft.client.render.entity.EntityRenderer
 import net.minecraft.client.render.entity.EntityRendererFactory
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.util.Identifier
 import net.minecraft.util.math.RotationAxis
+import net.minecraft.util.math.Vec2f
 import net.minecraft.util.math.Vec3d
 
 class SpeckRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<SpeckEntity>(ctx) {
@@ -37,9 +35,15 @@ class SpeckRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<SpeckEn
 			RenderSystem.enableCull()
 		} else {
 			val buffer = vertexConsumers.getBuffer(renderLayer)
-			RenderUtils.drawLines(top.positionMatrix, top.normalMatrix, LightmapTextureManager.MAX_LIGHT_COORDINATE, entity.clientThickness * 0.05f / entity.clientSize, buffer, entity.clientVerts) { pos ->
-				entity.clientPigment.colorProvider.getColor(0f, Vec3d(pos.x.toDouble(), pos.y.toDouble(), 0.0).multiply(2.0).add(entity.pos))
-			}
+			fun makeVertex(pos: Vec2f) = buffer.vertex(top.positionMatrix, pos.x, pos.y, 0f)
+				.color(entity.clientPigment.colorProvider.getColor(0f, Vec3d(pos.x.toDouble(), pos.y.toDouble(), 0.0).multiply(2.0).add(entity.pos)))
+				.texture(0f, 0f)
+				.overlay(OverlayTexture.DEFAULT_UV)
+				.light(LightmapTextureManager.MAX_LIGHT_COORDINATE)
+				.normal(top.normalMatrix, 0f, 1f, 0f)
+				.next()
+
+			RenderUtils.quadifyLines(::makeVertex, entity.clientThickness * 0.05f / entity.clientSize, entity.clientVerts)
 		}
 
 		matrices.pop()

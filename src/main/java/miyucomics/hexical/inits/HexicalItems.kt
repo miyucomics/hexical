@@ -45,6 +45,8 @@ object HexicalItems {
 	val MEDIUM_ANIMATED_SCROLL_ITEM = AnimatedScrollItem(2)
 	val LARGE_ANIMATED_SCROLL_ITEM = AnimatedScrollItem(3)
 
+	private val LEDGER_ITEM = LedgerItem()
+
 	private val GAUNTLET_STAFF = ItemStaff(Settings().maxCount(1))
 	private val LIGHTNING_ROD_STAFF = ItemStaff(Settings().maxCount(1))
 
@@ -76,6 +78,8 @@ object HexicalItems {
 			entries.add(ItemStack(GAUNTLET_STAFF))
 			entries.add(ItemStack(LIGHTNING_ROD_STAFF))
 
+			entries.add(ItemStack(LEDGER_ITEM))
+
 			entries.add(ItemStack(GRIMOIRE_ITEM))
 			entries.add(ItemStack(MEDIA_JAR_ITEM))
 			entries.add(ItemStack(HEX_CANDLE_ITEM))
@@ -100,6 +104,7 @@ object HexicalItems {
 		Registry.register(Registries.ITEM, HexicalMain.id("pedestal"), PEDESTAL_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("sentinel_bed"), SENTINEL_BED_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("tchotchke"), TCHOTCHKE_ITEM)
+		Registry.register(Registries.ITEM, HexicalMain.id("ledger"), LEDGER_ITEM)
 	}
 
 	@JvmStatic

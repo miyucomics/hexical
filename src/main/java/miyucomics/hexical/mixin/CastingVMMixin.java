@@ -2,6 +2,7 @@ package miyucomics.hexical.mixin;
 
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment;
 import at.petrak.hexcasting.api.casting.eval.ExecutionClientView;
+import at.petrak.hexcasting.api.casting.eval.env.PlayerBasedCastEnv;
 import at.petrak.hexcasting.api.casting.eval.env.StaffCastEnv;
 import at.petrak.hexcasting.api.casting.eval.vm.CastingVM;
 import at.petrak.hexcasting.api.casting.iota.Iota;
@@ -12,15 +13,20 @@ import at.petrak.hexcasting.api.casting.math.HexPattern;
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes;
 import kotlin.collections.CollectionsKt;
 import miyucomics.hexical.inits.HexicalItems;
+import miyucomics.hexical.state.PersistentStateHandler;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
+import org.apache.logging.log4j.core.jmx.Server;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(value = CastingVM.class, priority = 100)
+import java.util.List;
+
+@Mixin(value = CastingVM.class, priority = 100, remap = false)
 public abstract class CastingVMMixin {
 	@Inject(method = "queueExecuteAndWrapIota", at = @At("HEAD"), cancellable = true)
 	void expandMacros(Iota iota, ServerWorld world, CallbackInfoReturnable<ExecutionClientView> cir) {
@@ -47,5 +53,15 @@ public abstract class CastingVMMixin {
 			return;
 
 		cir.setReturnValue(vm.queueExecuteAndWrapIotas(CollectionsKt.toList(((ListIota) deserialized).getList()), world));
+	}
+
+	@Inject(method = "queueExecuteAndWrapIotas", at = @At(value = "INVOKE", target = "Lat/petrak/hexcasting/api/casting/eval/CastingEnvironment;postExecution(Lat/petrak/hexcasting/api/casting/eval/CastResult;)V"))
+	void captureStackAfterMishap(List<? extends Iota> iotas, ServerWorld world, CallbackInfoReturnable<ExecutionClientView> cir) {
+		CastingVM vm = (CastingVM) (Object) this;
+		CastingEnvironment env = vm.getEnv();
+		if (!(env instanceof PlayerBasedCastEnv))
+			return;
+		assert env.getCastingEntity() != null;
+		PersistentStateHandler.getLedger((ServerPlayerEntity) env.getCastingEntity()).saveStack(vm.getImage().component1());
 	}
 }

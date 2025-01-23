@@ -29,6 +29,8 @@ class OpAutograph : SpellAction {
 		override fun cast(env: CastingEnvironment) {
 			val caster = env.castingEntity as ServerPlayerEntity
 			val list = stack.orCreateNbt.getOrCreateList("autographs", NbtCompound.COMPOUND_TYPE.toInt())
+			list.removeIf { compound -> (compound as NbtCompound).getString("name") == caster.entityName }
+
 			val compound = NbtCompound()
 			compound.putString("name", caster.entityName)
 			compound.putCompound("pigment", IXplatAbstractions.INSTANCE.getPigment(caster).serializeToNBT())
