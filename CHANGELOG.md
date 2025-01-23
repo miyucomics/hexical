@@ -2,6 +2,7 @@
 
 ## 1.6.0
 - added ability to use phials in wristpocket
+- added the ability for beacons to extend ambit upwards
 - added ledgers - a strange clockwork item that records the last few patterns you've casted
   - useful for debugging hexes in staves and casting devices
 - added pedestals to hold items
