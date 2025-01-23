@@ -1,11 +1,13 @@
 package miyucomics.hexical.blocks
 
 import miyucomics.hexical.inits.HexicalSounds
+import miyucomics.hexical.state.PersistentStateHandler
 import net.minecraft.block.BlockRenderType
 import net.minecraft.block.BlockState
 import net.minecraft.block.ShapeContext
 import net.minecraft.block.TransparentBlock
 import net.minecraft.entity.player.PlayerEntity
+import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.sound.BlockSoundGroup
 import net.minecraft.sound.SoundCategory
 import net.minecraft.util.ActionResult
@@ -34,7 +36,6 @@ class MediaJarBlock : TransparentBlock(
 	override fun onUse(state: BlockState, world: World, pos: BlockPos, player: PlayerEntity, hand: Hand, hit: BlockHitResult): ActionResult {
 		if (world.isClient)
 			return ActionResult.SUCCESS
-
 		player.swingHand(hand)
 		world.playSoundFromEntity(null, player, HexicalSounds.PLAYER_SLURP, SoundCategory.PLAYERS, 1f, 1f)
 		return ActionResult.SUCCESS

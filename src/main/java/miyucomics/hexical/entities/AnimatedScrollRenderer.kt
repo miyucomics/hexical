@@ -9,6 +9,7 @@ import net.minecraft.client.render.entity.EntityRendererFactory
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.util.Identifier
 import net.minecraft.util.math.RotationAxis
+import net.minecraft.util.math.Vec2f
 import org.joml.Matrix3f
 import org.joml.Matrix4f
 
@@ -99,7 +100,16 @@ class AnimatedScrollRenderer(ctx: EntityRendererFactory.Context) : EntityRendere
 			val peek = matrices.peek()
 			val buffer = vertexConsumers.getBuffer(RenderLayer.getEntityCutout(WHITE))
 			val zappy = makeZappy(scroll.cachedVerts, null, 10, 1f, 0.1f, 0f, 0.1f, 0.9f, 0.0)
-			RenderUtils.drawLines(peek.positionMatrix, peek.normalMatrix, if (scroll.clientGlow) LightmapTextureManager.MAX_LIGHT_COORDINATE else light, 0.025f / scroll.clientSize, buffer, zappy) { _ -> scroll.clientColor }
+
+			fun makeVertex(pos: Vec2f) = buffer.vertex(peek.positionMatrix, pos.x, pos.y, 0f)
+				.color(scroll.clientColor)
+				.texture(0f, 0f)
+				.overlay(OverlayTexture.DEFAULT_UV)
+				.light(if (scroll.clientGlow) LightmapTextureManager.MAX_LIGHT_COORDINATE else light)
+				.normal(peek.normalMatrix, 0f, 1f, 0f)
+				.next()
+
+			RenderUtils.quadifyLines(::makeVertex, 0.025f / scroll.clientSize, zappy)
 		}
 	}
 }

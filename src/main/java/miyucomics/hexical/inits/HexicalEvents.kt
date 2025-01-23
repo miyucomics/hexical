@@ -1,6 +1,8 @@
 package miyucomics.hexical.inits
 
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
+import at.petrak.hexcasting.api.casting.eval.env.PlayerBasedCastEnv
+import miyucomics.hexical.casting.components.LedgerComponent
 import miyucomics.hexical.casting.components.SentinelBedComponent
 import miyucomics.hexical.client.ClientStorage
 import miyucomics.hexical.client.ShaderRenderer
@@ -17,8 +19,9 @@ object HexicalEvents {
 	@JvmStatic
 	fun init() {
 		CastingEnvironment.addCreateEventListener { env: CastingEnvironment, _: NbtCompound ->
-//			env.addExtension(ScopeComponent(env))
 			env.addExtension(SentinelBedComponent(env))
+			if (env is PlayerBasedCastEnv)
+				env.addExtension(LedgerComponent(env))
 		}
 
 		ServerPlayerEvents.AFTER_RESPAWN.register { _, _, alive ->

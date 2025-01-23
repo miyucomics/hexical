@@ -12,9 +12,11 @@
 		"ScreenMixin"
 	],
 	"mixins": [
+		"BeaconBlockMixin",
 		"BlockAkashicBookshelfMixin",
 		"CastingVMMixin",
 		"CatSitOnBlockGoalMixin",
+		"CircleExecutionStateMixin",
 		"FabricIXplatImplMixin",
 		"ItemAbacusMixin",
 		"ItemEntityMixin",
@@ -23,6 +25,7 @@
 		"MediaHelperMixin",
 		"OpGetCasterMixin",
 		"OpReadMixin",
+		"PlayerBasedCastEnvMixin",
 		"PlayerEntityMixin",
 		"WanderingTraderEntityMixin"
 	],
