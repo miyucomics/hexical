@@ -2,6 +2,8 @@
 
 ## 1.6.0
 - added ability to use phials in wristpocket
+- added ledgers - a strange clockwork item that records the last few patterns you've casted
+  - useful for debugging hexes in staves and casting devices
 - added pedestals to hold items
   - also pushes iota to spell circle stacks
 - added sentinel bed - always have ambit inside
@@ -13,6 +15,7 @@
 - added Media Purification - gets media of player, allay, impetus, or item on floor
 - added Construct spell - places a specific block type from your inventory with parameters for orientation and horizontal vector
 - added scrying pattern for moon phase
+- changed Greater Blink to not move feet to eyes
 - changed lamps deactivating to only be when they are picked up
 - fixed bug where small animated scrolls do not render
 - fixed bug where Chromatic Purification breaks for vectors

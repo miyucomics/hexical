@@ -56,17 +56,17 @@ class PedestalBlock : BlockCircleComponent(Settings.copy(Blocks.DEEPSLATE_TILES)
 	override fun canEnterFromDirection(enterDir: Direction?, pos: BlockPos?, state: BlockState?, world: ServerWorld?) = enterDir != this.normalDir(pos, state, world)
 
 	override fun acceptControlFlow(image: CastingImage, env: CircleCastEnv, enterDir: Direction, pos: BlockPos, state: BlockState, world: ServerWorld): ControlFlow {
-		val exitDirsSet = this.possibleExitDirections(pos, state, world)
-		exitDirsSet.remove(enterDir.opposite)
-		return ControlFlow.Continue((world.getBlockEntity(pos) as PedestalBlockEntity).modifyImage(image), exitDirsSet.map { dir -> exitPositionFromDirection(pos, dir) })
+		val exits = this.possibleExitDirections(pos, state, world)
+		exits.remove(enterDir.opposite)
+		return ControlFlow.Continue((world.getBlockEntity(pos) as PedestalBlockEntity).modifyImage(image), exits.map { dir -> exitPositionFromDirection(pos, dir) })
 	}
 
 	override fun possibleExitDirections(pos: BlockPos?, state: BlockState?, world: World?): EnumSet<Direction> {
-		val allDirs = EnumSet.allOf(Direction::class.java)
+		val exits = EnumSet.allOf(Direction::class.java)
 		val normal = this.normalDir(pos, state, world)
-		allDirs.remove(normal)
-		allDirs.remove(normal.opposite)
-		return allDirs
+		exits.remove(normal)
+		exits.remove(normal.opposite)
+		return exits
 	}
 
 	override fun particleHeight(pos: BlockPos, state: BlockState, world: World) = PedestalBlockEntity.HEIGHT
