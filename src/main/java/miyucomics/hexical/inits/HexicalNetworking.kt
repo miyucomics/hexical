@@ -6,12 +6,14 @@ import at.petrak.hexcasting.api.casting.iota.ListIota
 import dev.kosmx.playerAnim.api.layered.KeyframeAnimationPlayer
 import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationRegistry
 import miyucomics.hexical.HexicalMain
+import miyucomics.hexical.client.ClientStorage
 import miyucomics.hexical.client.PlayerAnimations
 import miyucomics.hexical.client.ShaderRenderer
 import miyucomics.hexical.items.TchotchkeItem
 import miyucomics.hexical.items.getConjuredStaff
 import miyucomics.hexical.state.EvokeState
 import miyucomics.hexical.state.KeybindData
+import miyucomics.hexical.state.LedgerData
 import miyucomics.hexical.utils.CastingUtils
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
@@ -28,6 +30,7 @@ object HexicalNetworking {
 	val START_EVOKE_CHANNEL: Identifier = HexicalMain.id("start_evoking")
 	val END_EVOKING_CHANNEL: Identifier = HexicalMain.id("end_evoking")
 
+	val LEDGER_CHANNEL: Identifier = HexicalMain.id("ledger")
 	val SHADER_CHANNEL: Identifier = HexicalMain.id("shader")
 
 	@JvmStatic
@@ -84,6 +87,8 @@ object HexicalNetworking {
 
 	@JvmStatic
 	fun clientInit() {
+		ClientPlayNetworking.registerGlobalReceiver(LEDGER_CHANNEL) { _, _, packet, _ -> ClientStorage.ledger = LedgerData.createFromNbt(packet.readNbt()!!) }
+
 		ClientPlayNetworking.registerGlobalReceiver(SHADER_CHANNEL) { client, _, packet, _ ->
 			val shader = packet.readString()
 			if (shader == "null")

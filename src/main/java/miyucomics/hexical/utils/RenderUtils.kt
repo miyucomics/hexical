@@ -2,12 +2,8 @@ package miyucomics.hexical.utils
 
 import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.client.render.rotate
-import net.minecraft.client.render.OverlayTexture
-import net.minecraft.client.render.VertexConsumer
 import net.minecraft.util.math.MathHelper
 import net.minecraft.util.math.Vec2f
-import org.joml.Matrix3f
-import org.joml.Matrix4f
 import kotlin.math.*
 
 object RenderUtils {
@@ -25,7 +21,8 @@ object RenderUtils {
 		return lines.toList()
 	}
 
-	fun drawLines(pose: Matrix4f, norm: Matrix3f, light: Int, thickness: Float, buffer: VertexConsumer, points: List<Vec2f>, color: (pos: Vec2f) -> Int) {
+	// takes a list of points, joins them with lines, and calls the vertex function passed in with all the vertices on those lines
+	fun quadifyLines(vertex: (pos: Vec2f) -> Unit, thickness: Float, points: List<Vec2f>) {
 		val pointCount = points.size
 		if (pointCount < 2)
 			return
@@ -37,14 +34,6 @@ object RenderUtils {
 			val offsetToNext = points[i].add(currentPoint.negate())
 			joinAngles[i - 1] = atan2(offsetFromLast.x * offsetToNext.y - offsetFromLast.y * offsetToNext.x, offsetFromLast.x * offsetToNext.x + offsetFromLast.y * offsetToNext.y)
 		}
-
-		fun vertex(pos: Vec2f) = buffer.vertex(pose, pos.x, pos.y, 0f)
-			.color(color(pos))
-			.texture(0f, 0f)
-			.overlay(OverlayTexture.DEFAULT_UV)
-			.light(light)
-			.normal(norm, 0f, 1f, 0f)
-			.next()
 
 		for (i in 0 until pointCount - 1) {
 			val currentPoint = points[i]

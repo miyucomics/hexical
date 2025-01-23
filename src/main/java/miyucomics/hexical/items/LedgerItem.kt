@@ -1,0 +1,24 @@
+package miyucomics.hexical.items
+
+import miyucomics.hexical.inits.HexicalNetworking
+import miyucomics.hexical.screens.LedgerScreen
+import miyucomics.hexical.state.PersistentStateHandler
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
+import net.minecraft.client.MinecraftClient
+import net.minecraft.entity.player.PlayerEntity
+import net.minecraft.item.Item
+import net.minecraft.item.ItemStack
+import net.minecraft.server.network.ServerPlayerEntity
+import net.minecraft.util.Hand
+import net.minecraft.util.TypedActionResult
+import net.minecraft.world.World
+
+class LedgerItem : Item(Settings()) {
+	override fun use(world: World, player: PlayerEntity, hand: Hand): TypedActionResult<ItemStack> {
+		if (world.isClient) {
+			MinecraftClient.getInstance().setScreen(LedgerScreen())
+		} else
+			ServerPlayNetworking.send(player as ServerPlayerEntity, HexicalNetworking.LEDGER_CHANNEL, PersistentStateHandler.getLedger(player).toPacket())
+		return TypedActionResult.success(player.getStackInHand(hand))
+	}
+}
