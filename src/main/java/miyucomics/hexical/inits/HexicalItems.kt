@@ -55,6 +55,9 @@ object HexicalItems {
 	private val PEDESTAL_ITEM = BlockItem(HexicalBlocks.PEDESTAL_BLOCK, Settings())
 	private val SENTINEL_BED_ITEM = BlockItem(HexicalBlocks.SENTINEL_BED_BLOCK, Settings())
 
+	private val WITHERED_SLATE = BlockItem(HexicalBlocks.WITHERED_SLATE, Settings())
+	private val FLAT_RIGHT_CLICK_IMPETUS = BlockItem(HexicalBlocks.FLAT_RIGHT_CLICK_IMPETUS, Settings())
+
 	@JvmStatic
 	fun init() {
 		Registry.register(Registries.ITEM_GROUP, HEXICAL_GROUP_KEY, HEXICAL_GROUP)
@@ -85,6 +88,9 @@ object HexicalItems {
 			entries.add(ItemStack(HEX_CANDLE_ITEM))
 			entries.add(ItemStack(PEDESTAL_ITEM))
 			entries.add(ItemStack(SENTINEL_BED_ITEM))
+
+			entries.add(ItemStack(WITHERED_SLATE))
+			entries.add(ItemStack(FLAT_RIGHT_CLICK_IMPETUS))
 		}
 
 		Registry.register(Registries.ITEM, HexicalMain.id("animated_scroll_small"), SMALL_ANIMATED_SCROLL_ITEM)
@@ -105,6 +111,9 @@ object HexicalItems {
 		Registry.register(Registries.ITEM, HexicalMain.id("sentinel_bed"), SENTINEL_BED_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("tchotchke"), TCHOTCHKE_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("ledger"), LEDGER_ITEM)
+
+		Registry.register(Registries.ITEM, HexicalMain.id("withered_slate"), WITHERED_SLATE)
+		Registry.register(Registries.ITEM, HexicalMain.id("flat_right_click_impetus"), FLAT_RIGHT_CLICK_IMPETUS)
 	}
 
 	@JvmStatic
