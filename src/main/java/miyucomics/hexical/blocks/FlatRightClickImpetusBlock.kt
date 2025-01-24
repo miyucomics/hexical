@@ -1,4 +1,4 @@
-package miyucomics.hexical.blocks.flat_impetii
+package miyucomics.hexical.blocks
 
 import net.minecraft.block.BlockState
 import net.minecraft.entity.player.PlayerEntity

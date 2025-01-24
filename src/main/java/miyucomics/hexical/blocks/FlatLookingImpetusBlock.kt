@@ -1,4 +1,4 @@
-package miyucomics.hexical.blocks.flat_impetii
+package miyucomics.hexical.blocks
 
 import net.minecraft.block.BlockState
 import net.minecraft.block.entity.BlockEntity
@@ -13,6 +13,13 @@ class FlatLookingImpetusBlock : FlatImpetusBlock() {
 	override fun <T : BlockEntity> getTicker(world: World, blockState: BlockState, blockEntityType: BlockEntityType<T>): BlockEntityTicker<T>? {
 		if (world.isClient)
 			return null
-		return BlockEntityTicker { world1, pos, state1, blockEntity -> FlatLookingImpetusBlockEntity.serverTick(world1, pos, state1, blockEntity as FlatLookingImpetusBlockEntity) }
+		return BlockEntityTicker { world1, pos, state1, blockEntity ->
+			FlatLookingImpetusBlockEntity.serverTick(
+				world1,
+				pos,
+				state1,
+				blockEntity as FlatLookingImpetusBlockEntity
+			)
+		}
 	}
 }
