@@ -56,9 +56,13 @@ object HexicalItems {
 	private val SENTINEL_BED_ITEM = BlockItem(HexicalBlocks.SENTINEL_BED_BLOCK, Settings())
 
 	private val WITHERED_SLATE = BlockItem(HexicalBlocks.WITHERED_SLATE_BLOCK, Settings())
-	private val FLAT_LOOKING_IMPETUS = BlockItem(HexicalBlocks.FLAT_LOOKING_IMPETUS_BLOCK, Settings())
-	private val FLAT_REDSTONE_IMPETUS = BlockItem(HexicalBlocks.FLAT_REDSTONE_IMPETUS_BLOCK, Settings())
-	private val FLAT_RIGHT_CLICK_IMPETUS = BlockItem(HexicalBlocks.FLAT_RIGHT_CLICK_IMPETUS_BLOCK, Settings())
+
+	@JvmField
+	val FLAT_LOOKING_IMPETUS = BlockItem(HexicalBlocks.FLAT_LOOKING_IMPETUS_BLOCK, Settings())
+	@JvmField
+	val FLAT_REDSTONE_IMPETUS = BlockItem(HexicalBlocks.FLAT_REDSTONE_IMPETUS_BLOCK, Settings())
+	@JvmField
+	val FLAT_RIGHT_CLICK_IMPETUS = BlockItem(HexicalBlocks.FLAT_RIGHT_CLICK_IMPETUS_BLOCK, Settings())
 
 	@JvmStatic
 	fun init() {

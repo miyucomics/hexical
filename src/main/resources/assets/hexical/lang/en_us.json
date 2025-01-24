@@ -269,6 +269,9 @@
 	"hexcasting.action.hexical:turret_lamp_normal": "Trajectory Reflection",
 	"hexical.page.turret_lamp_normal.summary": "Pushes what direction the $(l:items/pedestals)$(thing)Pedestal$() this $(l:lamp/arch_lamps)$(item)Lamp$() resides on is facing.",
 
+	"hexical.page.flat_impeti.title": "Flat Impeti",
+	"hexical.page.flat_impeti.0": "I find it odd how my $(l:greatwork/impetus)$(thing)Impeti$() jut out of my neat, flush circuit of $(l:items/slate)$(item)slates$(). This egregious anomaly $(o)can not$() be tolerated. By dropping an $(item)Anvil$() on top of an $(l:greatwork/impetus)$(thing)Impetus$(), I can flatten it to the thickness of a regular $(l:items/slate)$(item)Slate$(). It $(o)probably$() doesn't hurt the villager inside.",
+
 	"hexical.page.pedestal_circles.title": "Pedestals in Circles",
 	"hexical.page.pedestal_circles.0": "$(l:items/pedestals)$(thing)Pedestals$() have magical abilities! If they are holding $(l:patterns/readwrite#hexcasting:write)$(item)an item that contains information$() and the $(l:greatwork/spellcircles)$(thing)spell circle$()'s wave passes over them, they push the iota onto the stack. If it happens to be within an unclosed $(l:patterns/patterns_as_iotas#hexcasting:open_paren)Introspection$(), the iota appears inside the constructed list.",
 

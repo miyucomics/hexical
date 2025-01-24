@@ -2,7 +2,6 @@ package miyucomics.hexical.inits
 
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.blocks.*
-import miyucomics.hexical.blocks.flat_impetii.*
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap
 import net.minecraft.block.AbstractBlock.Settings
 import net.minecraft.block.Block

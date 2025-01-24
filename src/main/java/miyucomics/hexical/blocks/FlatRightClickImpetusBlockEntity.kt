@@ -1,4 +1,4 @@
-package miyucomics.hexical.blocks.flat_impetii
+package miyucomics.hexical.blocks
 
 import at.petrak.hexcasting.api.casting.circles.BlockEntityAbstractImpetus
 import miyucomics.hexical.inits.HexicalBlocks
