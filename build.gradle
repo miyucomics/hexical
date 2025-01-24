@@ -35,6 +35,9 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 	modImplementation "net.fabricmc:fabric-language-kotlin:${project.fabric_kotlin_version}"
 
+	modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-api:$cardinal_components_version"
+	modImplementation "me.shedaniel.cloth:cloth-config-fabric:$cloth_config_version"
+	modImplementation "com.samsthenerd.inline:inline-fabric:$minecraft_version-$inline_version"
 	modImplementation "at.petra-k.paucal:paucal-common-$minecraft_version:$paucal_version"
     modImplementation "vazkii.patchouli:Patchouli:$minecraft_version-$patchouli_version-FABRIC"
 	modImplementation("at.petra-k.hexcasting:hexcasting-fabric-$minecraft_version:$hexcasting_version") {
@@ -43,6 +46,7 @@ dependencies {
 		exclude module: "emi"
 	}
 
+	include files("${rootProject.rootDir}/lib/serialization-hooks-0.4.99999.jar")
 	include modImplementation("dev.kosmx.player-anim:player-animation-lib-fabric:${player_animator_version}")
 }
 
@@ -51,6 +55,10 @@ processResources {
 	filesMatching("fabric.mod.json") {
 		expand "version": project.version
 	}
+}
+
+fabricApi {
+	configureDataGeneration()
 }
 
 tasks.withType(JavaCompile).configureEach {

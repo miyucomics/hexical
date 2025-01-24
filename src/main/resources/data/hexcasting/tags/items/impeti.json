@@ -1,6 +1,8 @@
 {
 	"replace": false,
 	"values": [
+		"hexical:flat_looking_impetus",
+		"hexical:flat_redstone_impetus",
 		"hexical:flat_right_click_impetus"
 	]
 }
