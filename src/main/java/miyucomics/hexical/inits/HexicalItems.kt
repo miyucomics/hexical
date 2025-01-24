@@ -55,8 +55,10 @@ object HexicalItems {
 	private val PEDESTAL_ITEM = BlockItem(HexicalBlocks.PEDESTAL_BLOCK, Settings())
 	private val SENTINEL_BED_ITEM = BlockItem(HexicalBlocks.SENTINEL_BED_BLOCK, Settings())
 
-	private val WITHERED_SLATE = BlockItem(HexicalBlocks.WITHERED_SLATE, Settings())
-	private val FLAT_RIGHT_CLICK_IMPETUS = BlockItem(HexicalBlocks.FLAT_RIGHT_CLICK_IMPETUS, Settings())
+	private val WITHERED_SLATE = BlockItem(HexicalBlocks.WITHERED_SLATE_BLOCK, Settings())
+	private val FLAT_LOOKING_IMPETUS = BlockItem(HexicalBlocks.FLAT_LOOKING_IMPETUS_BLOCK, Settings())
+	private val FLAT_REDSTONE_IMPETUS = BlockItem(HexicalBlocks.FLAT_REDSTONE_IMPETUS_BLOCK, Settings())
+	private val FLAT_RIGHT_CLICK_IMPETUS = BlockItem(HexicalBlocks.FLAT_RIGHT_CLICK_IMPETUS_BLOCK, Settings())
 
 	@JvmStatic
 	fun init() {
@@ -90,6 +92,8 @@ object HexicalItems {
 			entries.add(ItemStack(SENTINEL_BED_ITEM))
 
 			entries.add(ItemStack(WITHERED_SLATE))
+			entries.add(ItemStack(FLAT_LOOKING_IMPETUS))
+			entries.add(ItemStack(FLAT_REDSTONE_IMPETUS))
 			entries.add(ItemStack(FLAT_RIGHT_CLICK_IMPETUS))
 		}
 
@@ -111,9 +115,10 @@ object HexicalItems {
 		Registry.register(Registries.ITEM, HexicalMain.id("sentinel_bed"), SENTINEL_BED_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("tchotchke"), TCHOTCHKE_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("ledger"), LEDGER_ITEM)
-
 		Registry.register(Registries.ITEM, HexicalMain.id("withered_slate"), WITHERED_SLATE)
 		Registry.register(Registries.ITEM, HexicalMain.id("flat_right_click_impetus"), FLAT_RIGHT_CLICK_IMPETUS)
+		Registry.register(Registries.ITEM, HexicalMain.id("flat_looking_impetus"), FLAT_LOOKING_IMPETUS)
+		Registry.register(Registries.ITEM, HexicalMain.id("flat_redstone_impetus"), FLAT_REDSTONE_IMPETUS)
 	}
 
 	@JvmStatic
