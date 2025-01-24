@@ -1,0 +1,13 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "hexcasting:slate"
+		}, {
+			"item": "minecraft:wither_rose"
+		}
+	],
+	"result": {
+		"item": "hexical:withered_slate"
+	}
+}
