@@ -15,6 +15,12 @@
 	"icon": "assets/hexical/icon.png",
 	"environment": "*",
 	"entrypoints": {
+		"fabric-datagen": [
+			{
+				"adapter": "kotlin",
+				"value": "miyucomics.hexical.HexicalDatagen"
+			}
+		],
 		"main": [
 			{
 				"adapter": "kotlin",
