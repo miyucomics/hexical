@@ -58,7 +58,9 @@ processResources {
 }
 
 fabricApi {
-	configureDataGeneration()
+	configureDataGeneration() {
+		modId = "hexical"
+	}
 }
 
 tasks.withType(JavaCompile).configureEach {
