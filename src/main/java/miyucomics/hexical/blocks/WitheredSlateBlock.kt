@@ -24,7 +24,6 @@ import net.minecraft.world.BlockView
 import net.minecraft.world.World
 import net.minecraft.world.WorldAccess
 import net.minecraft.world.WorldView
-import java.lang.IllegalStateException
 import java.util.*
 
 class WitheredSlateBlock : BlockCircleComponent(Settings.copy(Blocks.DEEPSLATE_TILES).strength(4f, 4f)), Waterloggable {
@@ -59,10 +58,10 @@ class WitheredSlateBlock : BlockCircleComponent(Settings.copy(Blocks.DEEPSLATE_T
 		null -> throw IllegalStateException()
 	}
 
-	override fun getOutlineShape(pState: BlockState, pLevel: BlockView, pPos: BlockPos, pContext: ShapeContext) = when (pState.get<WallMountLocation>(ATTACH_FACE)) {
+	override fun getOutlineShape(state: BlockState, pLevel: BlockView, pPos: BlockPos, pContext: ShapeContext) = when (state.get<WallMountLocation>(ATTACH_FACE)) {
 		WallMountLocation.FLOOR -> AABB_FLOOR
 		WallMountLocation.CEILING -> AABB_CEILING
-		WallMountLocation.WALL -> when (pState.get(FACING)) {
+		WallMountLocation.WALL -> when (state.get(FACING)) {
 			Direction.NORTH -> AABB_NORTH_WALL
 			Direction.EAST -> AABB_EAST_WALL
 			Direction.SOUTH -> AABB_SOUTH_WALL
@@ -91,16 +90,16 @@ class WitheredSlateBlock : BlockCircleComponent(Settings.copy(Blocks.DEEPSLATE_T
 		return null
 	}
 
-	override fun canPlaceAt(pState: BlockState, pLevel: WorldView, pPos: BlockPos) = canAttach(pLevel, pPos, getConnectedDirection(pState).opposite)
+	override fun canPlaceAt(state: BlockState, pLevel: WorldView, pPos: BlockPos) = canAttach(pLevel, pPos, getConnectedDirection(state).opposite)
 
-	override fun getStateForNeighborUpdate(pState: BlockState, pFacing: Direction, pFacingState: BlockState, pLevel: WorldAccess, pCurrentPos: BlockPos, pFacingPos: BlockPos): BlockState {
-		if (pState.get(WATERLOGGED))
+	override fun getStateForNeighborUpdate(state: BlockState, pFacing: Direction, pFacingState: BlockState, pLevel: WorldAccess, pCurrentPos: BlockPos, pFacingPos: BlockPos): BlockState {
+		if (state.get(WATERLOGGED))
 			pLevel.scheduleFluidTick(pCurrentPos, Fluids.WATER, Fluids.WATER.getTickRate(pLevel))
 
-		return if (getConnectedDirection(pState).opposite == pFacing && !pState.canPlaceAt(pLevel, pCurrentPos))
-			pState.fluidState.blockState
+		return if (getConnectedDirection(state).opposite == pFacing && !state.canPlaceAt(pLevel, pCurrentPos))
+			state.fluidState.blockState
 		else
-			super.getStateForNeighborUpdate(pState, pFacing, pFacingState, pLevel, pCurrentPos, pFacingPos)
+			super.getStateForNeighborUpdate(state, pFacing, pFacingState, pLevel, pCurrentPos, pFacingPos)
 	}
 
 	override fun rotate(state: BlockState, rot: BlockRotation) = state.with(FACING, rot.rotate(state.get(FACING)))
@@ -124,12 +123,10 @@ class WitheredSlateBlock : BlockCircleComponent(Settings.copy(Blocks.DEEPSLATE_T
 			return pReader.getBlockState(blockpos).isSideSolidFullSquare(pReader, blockpos, pDirection.opposite)
 		}
 
-		fun getConnectedDirection(pState: BlockState): Direction {
-			return when (pState.get(ATTACH_FACE)) {
-				WallMountLocation.CEILING -> Direction.DOWN
-				WallMountLocation.FLOOR -> Direction.UP
-				else -> pState.get(FACING)
-			}
+		fun getConnectedDirection(state: BlockState): Direction = when (state.get(ATTACH_FACE)) {
+			WallMountLocation.CEILING -> Direction.DOWN
+			WallMountLocation.FLOOR -> Direction.UP
+			else -> state.get(FACING)
 		}
 	}
 }
