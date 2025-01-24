@@ -1,4 +1,4 @@
-package miyucomics.hexical.blocks.flat_impetii
+package miyucomics.hexical.blocks
 
 import at.petrak.hexcasting.api.block.circle.BlockAbstractImpetus
 import net.minecraft.block.*
@@ -25,10 +25,13 @@ import java.util.*
 
 abstract class FlatImpetusBlock : BlockAbstractImpetus(Settings.copy(Blocks.DEEPSLATE_TILES).strength(4f, 4f)), Waterloggable {
 	init {
-		this.defaultState = stateManager.defaultState.with(ENERGIZED, false).with(FACING, Direction.NORTH).with(WATERLOGGED, false)
+		this.defaultState = stateManager.defaultState.with(ENERGIZED, false).with(FACING, Direction.NORTH).with(
+			WATERLOGGED, false)
 	}
 
-	override fun getOutlineShape(state: BlockState, blockView: BlockView, blockPos: BlockPos, shapeContext: ShapeContext) = when (state.get(ATTACH_FACE)) {
+	override fun getOutlineShape(state: BlockState, blockView: BlockView, blockPos: BlockPos, shapeContext: ShapeContext) = when (state.get(
+		ATTACH_FACE
+	)) {
 		WallMountLocation.FLOOR -> AABB_FLOOR
 		WallMountLocation.CEILING -> AABB_CEILING
 		WallMountLocation.WALL -> when (state.get(FACING)) {
@@ -55,7 +58,9 @@ abstract class FlatImpetusBlock : BlockAbstractImpetus(Settings.copy(Blocks.DEEP
 		return null
 	}
 
-	override fun normalDir(pos: BlockPos, state: BlockState, world: World, recursionLeft: Int): Direction = when (state.get(ATTACH_FACE)) {
+	override fun normalDir(pos: BlockPos, state: BlockState, world: World, recursionLeft: Int): Direction = when (state.get(
+		ATTACH_FACE
+	)) {
 		WallMountLocation.FLOOR -> Direction.UP
 		WallMountLocation.CEILING -> Direction.DOWN
 		WallMountLocation.WALL -> state.get(FACING)
