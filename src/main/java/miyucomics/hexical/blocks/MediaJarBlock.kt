@@ -1,13 +1,11 @@
 package miyucomics.hexical.blocks
 
 import miyucomics.hexical.inits.HexicalSounds
-import miyucomics.hexical.state.PersistentStateHandler
 import net.minecraft.block.BlockRenderType
 import net.minecraft.block.BlockState
 import net.minecraft.block.ShapeContext
 import net.minecraft.block.TransparentBlock
 import net.minecraft.entity.player.PlayerEntity
-import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.sound.BlockSoundGroup
 import net.minecraft.sound.SoundCategory
 import net.minecraft.util.ActionResult

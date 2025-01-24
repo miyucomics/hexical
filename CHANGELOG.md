@@ -20,6 +20,7 @@
 - changed lamps deactivating to only be when they are picked up
 - fixed bug where small animated scrolls do not render
 - fixed bug where Chromatic Purification breaks for vectors
+- fixed lack of cost in Mage Hand documentation
 
 ## 1.5.0
 - added spell to conjure llama spit

@@ -1,6 +1,7 @@
 package miyucomics.hexical.screens
 
 import miyucomics.hexical.client.ClientStorage
+import net.minecraft.client.gui.DrawContext
 import net.minecraft.client.gui.screen.Screen
 import net.minecraft.client.gui.widget.MultilineTextWidget
 import net.minecraft.client.gui.widget.TextWidget
@@ -30,5 +31,9 @@ class LedgerScreen : Screen(Text.literal("Ledger")) {
 		mishap!!.message = ClientStorage.ledger.mishap
 		stack!!.message = ClientStorage.ledger.stack.buffer().fold(Text.empty()) { acc, text -> acc.append(text).append("\n") }
 		patterns!!.message = ClientStorage.ledger.ledger.buffer().fold(Text.empty()) { acc, text -> acc.append(text.toString()) }
+	}
+
+	override fun render(drawContext: DrawContext?, i: Int, j: Int, f: Float) {
+		super.render(drawContext, i, j, f)
 	}
 }
