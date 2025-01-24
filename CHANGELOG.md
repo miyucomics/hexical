@@ -16,6 +16,7 @@
 - added Media Purification - gets media of player, allay, impetus, or item on floor
 - added Construct spell - places a specific block type from your inventory with parameters for orientation and horizontal vector
 - added scrying pattern for moon phase
+- added flat impeti
 - changed Greater Blink to not move feet to eyes
 - changed lamps deactivating to only be when they are picked up
 - fixed bug where small animated scrolls do not render
