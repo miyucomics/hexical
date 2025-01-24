@@ -1,0 +1,137 @@
+{
+	"variants": {
+		"energized=false,face=floor,facing=east": {
+			"model": "hexical:block/flat_redstone_impetus",
+			"y": 270
+		},
+		"energized=false,face=floor,facing=north": {
+			"model": "hexical:block/flat_redstone_impetus",
+			"y": 180
+		},
+		"energized=false,face=floor,facing=south": {
+			"model": "hexical:block/flat_redstone_impetus"
+		},
+		"energized=false,face=floor,facing=west": {
+			"model": "hexical:block/flat_redstone_impetus",
+			"y": 90
+		},
+
+		"energized=false,face=ceiling,facing=east": {
+			"model": "hexical:block/flat_redstone_impetus",
+			"x": 180,
+			"y": 90
+		},
+		"energized=false,face=ceiling,facing=north": {
+			"model": "hexical:block/flat_redstone_impetus",
+			"x": 180
+		},
+		"energized=false,face=ceiling,facing=south": {
+			"model": "hexical:block/flat_redstone_impetus",
+			"x": 180,
+			"y": 180
+		},
+		"energized=false,face=ceiling,facing=west": {
+			"model": "hexical:block/flat_redstone_impetus",
+			"x": 180,
+			"y": 270
+		},
+
+		"energized=false,face=wall,facing=east": {
+			"model": "hexical:block/flat_redstone_impetus",
+			"uvlock": true,
+			"x": 90,
+			"y": 90
+		},
+		"energized=false,face=wall,facing=north": {
+			"model": "hexical:block/flat_redstone_impetus",
+			"uvlock": true,
+			"x": 90
+		},
+		"energized=false,face=wall,facing=south": {
+			"model": "hexical:block/flat_redstone_impetus",
+			"uvlock": true,
+			"x": 90,
+			"y": 180
+		},
+		"energized=false,face=wall,facing=west": {
+			"model": "hexical:block/flat_redstone_impetus",
+			"uvlock": true,
+			"x": 90,
+			"y": 270
+		},
+
+
+		"energized=true,face=floor,facing=east": {
+			"model": "hexical:block/flat_redstone_impetus_active",
+			"y": 270
+		},
+		"energized=true,face=floor,facing=north": {
+			"model": "hexical:block/flat_redstone_impetus_active",
+			"y": 180
+		},
+		"energized=true,face=floor,facing=south": {
+			"model": "hexical:block/flat_redstone_impetus_active"
+		},
+		"energized=true,face=floor,facing=west": {
+			"model": "hexical:block/flat_redstone_impetus_active",
+			"y": 90
+		},
+
+		"energized=true,face=ceiling,facing=east": {
+			"model": "hexical:block/flat_redstone_impetus_active",
+			"x": 180,
+			"y": 90
+		},
+		"energized=true,face=ceiling,facing=north": {
+			"model": "hexical:block/flat_redstone_impetus_active",
+			"x": 180
+		},
+		"energized=true,face=ceiling,facing=south": {
+			"model": "hexical:block/flat_redstone_impetus_active",
+			"x": 180,
+			"y": 180
+		},
+		"energized=true,face=ceiling,facing=west": {
+			"model": "hexical:block/flat_redstone_impetus_active",
+			"x": 180,
+			"y": 270
+		},
+
+		"energized=true,face=wall,facing=east": {
+			"model": "hexical:block/flat_redstone_impetus_active",
+			"uvlock": true,
+			"x": 90,
+			"y": 90
+		},
+		"energized=true,face=wall,facing=north": {
+			"model": "hexical:block/flat_redstone_impetus_active",
+			"uvlock": true,
+			"x": 90
+		},
+		"energized=true,face=wall,facing=south": {
+			"model": "hexical:block/flat_redstone_impetus_active",
+			"uvlock": true,
+			"x": 90,
+			"y": 180
+		},
+		"energized=true,face=wall,facing=west": {
+			"model": "hexical:block/flat_redstone_impetus_active",
+			"uvlock": true,
+			"x": 90,
+			"y": 270
+		},
+
+		"energized=false,face=floor,facing=up": {"model": "hexical:block/flat_redstone_impetus"},
+		"energized=false,face=ceiling,facing=up": {"model": "hexical:block/flat_redstone_impetus"},
+		"energized=false,face=wall,facing=up": {"model": "hexical:block/flat_redstone_impetus"},
+		"energized=false,face=floor,facing=down": {"model": "hexical:block/flat_redstone_impetus"},
+		"energized=false,face=ceiling,facing=down": {"model": "hexical:block/flat_redstone_impetus"},
+		"energized=false,face=wall,facing=down": {"model": "hexical:block/flat_redstone_impetus"},
+		"energized=true,face=floor,facing=up": {"model": "hexical:block/flat_redstone_impetus_active"},
+		"energized=true,face=ceiling,facing=up": {"model": "hexical:block/flat_redstone_impetus_active"},
+		"energized=true,face=wall,facing=up": {"model": "hexical:block/flat_redstone_impetus_active"},
+		"energized=true,face=floor,facing=down": {"model": "hexical:block/flat_redstone_impetus_active"},
+		"energized=true,face=ceiling,facing=down": {"model": "hexical:block/flat_redstone_impetus_active"},
+		"energized=true,face=wall,facing=down": {"model": "hexical:block/flat_redstone_impetus_active"}
+	}
+}
