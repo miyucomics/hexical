@@ -1,9 +1,9 @@
-// 1.20.1	2025-01-24T21:58:37.642683635	Hexical/Model Definitions
+// 1.20.1	2025-01-25T12:10:09.982565706	Hexical/Model Definitions
 679c80d084fc1dbed79b82b86b5d509bf0d1b91b assets/hexical/models/item/conjured_compass_11.json
 d632b9e0c4e0bbad7581f99ce50672586720d891 assets/hexical/models/block/hex_candle_two_candles_lit.json
 b04233bfd8bf1d28179da06f6bb70a14f6e3b461 assets/hexical/models/item/conjured_compass_03.json
-fbc3fac04645e72b48c84d3426b3e3a494e4a541 assets/hexical/blockstates/flat_right_click_impetus.json
 0437462fe5abba9e918fcda2086aaeb4260bf77a assets/hexical/blockstates/flat_redstone_impetus.json
+fbc3fac04645e72b48c84d3426b3e3a494e4a541 assets/hexical/blockstates/flat_right_click_impetus.json
 1cb7aeb20e730a3114e04821ce97adc65e768722 assets/hexical/models/item/flat_looking_impetus.json
 898cd720f454b8e9cbc3f41e26960db4b27d51ad assets/hexical/models/item/conjured_compass_09.json
 fb81d5b9097014385d9af254e397b0f0cf893f31 assets/hexical/models/item/conjured_compass_17.json
@@ -32,6 +32,7 @@ f1e07d643418accf4e525b69fb6f10becad8e1fe assets/hexical/models/block/hex_candle_
 49c4b7c6282e5b2400dd7c3f4af2ae4bd17fba3a assets/hexical/models/block/hex_candle_four_candles_lit.json
 743e5c0f512a017be26aadfa010a5c3c709bc68d assets/hexical/models/item/conjured_compass_23.json
 59576e9fee780d8a9b298682ad6b37f615880129 assets/hexical/models/item/conjured_compass_30.json
+80e6efec5e4bb0c323ae26c4d1cc8ae1f61c7911 assets/hexical/blockstates/multislate.json
 fd8d068f0ee260e907780f731e11e7f0f936c36d assets/hexical/models/item/conjured_compass_15.json
 2ad4d3a7de721bafebc001a8a023bf87fafa07c8 assets/hexical/models/item/conjured_compass_31.json
 0dc74f5c7a8ab8d5563ab4336662bb00a0e0c888 assets/hexical/models/item/conjured_compass_00.json
