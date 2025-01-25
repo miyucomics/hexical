@@ -23,10 +23,6 @@
 	"block.hexical.media_jar": "Media Jar",
 	"block.hexical.pedestal": "Pedestal",
 	"block.hexical.sentinel_bed": "Sentinel Bed",
-	"block.hexical.withered_slate": "Withered Slate",
-	"block.hexical.flat_looking_impetus": "Flat Fletcher Impetus",
-	"block.hexical.flat_redstone_impetus": "Flat Cleric Impetus",
-	"block.hexical.flat_right_click_impetus": "Flat Toolsmith Impetus",
 	"death.attack.magic_missile": "%1$s was struck with arcane force by %2$s",
 	"death.attack.magic_missile.item": "%1$s was struck with arcane force by %2$s using %3$s",
 	"death.attack.spike": "%1$s was punctured by %2$s",
@@ -269,15 +265,8 @@
 	"hexcasting.action.hexical:turret_lamp_normal": "Trajectory Reflection",
 	"hexical.page.turret_lamp_normal.summary": "Pushes what direction the $(l:items/pedestals)$(thing)Pedestal$() this $(l:lamp/arch_lamps)$(item)Lamp$() resides on is facing.",
 
-	"hexical.page.flat_impeti.title": "Flat Impeti",
-	"hexical.page.flat_impeti.0": "I find it odd how my $(l:greatwork/impetus)$(thing)Impeti$() jut out of my neat, flush circuit of $(l:items/slate)$(item)slates$(). This egregious anomaly $(o)can not$() be tolerated. By dropping an $(item)Anvil$() on top of an $(l:greatwork/impetus)$(thing)Impetus$(), I can flatten it to the thickness of a regular $(l:items/slate)$(item)Slate$(). It $(o)probably$() doesn't hurt the villager inside.",
-
 	"hexical.page.pedestal_circles.title": "Pedestals in Circles",
 	"hexical.page.pedestal_circles.0": "$(l:items/pedestals)$(thing)Pedestals$() have magical abilities! If they are holding $(l:patterns/readwrite#hexcasting:write)$(item)an item that contains information$() and the $(l:greatwork/spellcircles)$(thing)spell circle$()'s wave passes over them, they push the iota onto the stack. If it happens to be within an unclosed $(l:patterns/patterns_as_iotas#hexcasting:open_paren)Introspection$(), the iota appears inside the constructed list.",
-
-	"hexical.page.withered_slates.title": "Withered Slates",
-	"hexical.page.withered_slates.0": "$(l:greatwork/spellcircles)$(thing)Spell circles$() are unable to extend upwards past their $(item)$(l:items/slate)slates$() and while I can use $(l:greatwork/directrix)$(item)Directrices$() in order to redirect the wave upwards, that is often an eyesore. Rumors have it that some horrible monster can produce a $(o)flower$() that can help extend the ambit of my $(l:greatwork/spellcircles)$(thing)circle$() upwards and downwards to essentially infinity after the wave passes over it.",
-	"hexical.page.withered_slates.1": "$(o)Any sufficiently advanced technology is indistinguishable from magic.$()",
 
 	"hexical.page.enlightened_patterns.title": "Enlightened Patterns",
 	"hexical.page.enlightened_patterns.0": "After my enlightenment, I find myself acutely aware of certain patterns that seem to aid with my newfound abilities to perceive and manipulate _media. These patterns don't seem to require anything new from me, perhaps I've always been able to cast them but was unaware of their existence. That property means I can give an unenlightened player $(l:items/hexcasting)$(item)casting devices$() with these patterns and they will be able to cast it.",
