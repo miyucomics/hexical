@@ -27,6 +27,8 @@ object HexicalBlocks {
 	val FLAT_LOOKING_IMPETUS_BLOCK = FlatLookingImpetusBlock()
 	val FLAT_REDSTONE_IMPETUS_BLOCK = FlatRedstoneImpetusBlock()
 	val FLAT_RIGHT_CLICK_IMPETUS_BLOCK = FlatRightClickImpetusBlock()
+	@JvmField
+	val MULTISLATE_BLOCK = MultislateBlock()
 
 	val HEX_CANDLE_BLOCK_ENTITY: BlockEntityType<HexCandleBlockEntity> = BlockEntityType.Builder.create(::HexCandleBlockEntity, HEX_CANDLE_BLOCK).build(null)
 	val HEX_CANDLE_CAKE_BLOCK_ENTITY: BlockEntityType<HexCandleCakeBlockEntity> = BlockEntityType.Builder.create(::HexCandleCakeBlockEntity, HEX_CANDLE_CAKE_BLOCK).build(null)
@@ -48,6 +50,7 @@ object HexicalBlocks {
 		Registry.register(Registries.BLOCK, HexicalMain.id("flat_looking_impetus"), FLAT_LOOKING_IMPETUS_BLOCK)
 		Registry.register(Registries.BLOCK, HexicalMain.id("flat_redstone_impetus"), FLAT_REDSTONE_IMPETUS_BLOCK)
 		Registry.register(Registries.BLOCK, HexicalMain.id("flat_right_click_impetus"), FLAT_RIGHT_CLICK_IMPETUS_BLOCK)
+		Registry.register(Registries.BLOCK, HexicalMain.id("multislate"), MULTISLATE_BLOCK)
 
 		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("hex_candle"), HEX_CANDLE_BLOCK_ENTITY)
 		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("hex_cake_candle"), HEX_CANDLE_CAKE_BLOCK_ENTITY)
