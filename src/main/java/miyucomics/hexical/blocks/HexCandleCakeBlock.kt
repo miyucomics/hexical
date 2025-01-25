@@ -4,13 +4,13 @@ import at.petrak.hexcasting.api.pigment.ColorProvider
 import at.petrak.hexcasting.api.pigment.FrozenPigment
 import at.petrak.hexcasting.common.particles.ConjureParticleOptions
 import at.petrak.hexcasting.xplat.IXplatAbstractions
+import miyucomics.hexical.inits.HexicalBlocks
 import net.minecraft.block.*
 import net.minecraft.block.entity.BlockEntity
-import net.minecraft.block.piston.PistonBehavior
+import net.minecraft.block.entity.BlockEntityTicker
+import net.minecraft.block.entity.BlockEntityType
 import net.minecraft.entity.player.PlayerEntity
-import net.minecraft.fluid.FluidState
-import net.minecraft.fluid.Fluids
-import net.minecraft.sound.BlockSoundGroup
+import net.minecraft.particle.ParticleTypes
 import net.minecraft.sound.SoundCategory
 import net.minecraft.sound.SoundEvents
 import net.minecraft.util.ActionResult
@@ -20,18 +20,9 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d
 import net.minecraft.util.math.random.Random
 import net.minecraft.world.World
-import net.minecraft.world.WorldAccess
 import net.minecraft.world.event.GameEvent
 
-class HexCandleBlock : CandleBlock(
-	Settings.create()
-		.mapColor(MapColor.PURPLE)
-		.nonOpaque()
-		.strength(0.1f)
-		.sounds(BlockSoundGroup.CANDLE)
-		.luminance(STATE_TO_LUMINANCE)
-		.pistonBehavior(PistonBehavior.DESTROY)
-), BlockEntityProvider {
+class HexCandleCakeBlock : CandleCakeBlock(HexicalBlocks.HEX_CANDLE_BLOCK, Settings.copy(Blocks.CANDLE_CAKE)), BlockEntityProvider {
 	override fun onUse(state: BlockState, world: World, pos: BlockPos, player: PlayerEntity, hand: Hand, hit: BlockHitResult): ActionResult {
 		if (player.isSneaking)
 			return super.onUse(state, world, pos, player, hand, hit)
@@ -58,14 +49,6 @@ class HexCandleBlock : CandleBlock(
 
 		val colorProvider = blockEntity.getPigment().colorProvider
 		getParticleOffsets(state).forEach { offset: Vec3d -> spawnCandleParticles(world, Vec3d.of(pos).add(offset), random, colorProvider) }
-	}
-
-	override fun tryFillWithFluid(worldAccess: WorldAccess, blockPos: BlockPos, blockState: BlockState, fluidState: FluidState): Boolean {
-		if (blockState.get(WATERLOGGED) || fluidState.fluid !== Fluids.WATER)
-			return false
-		worldAccess.setBlockState(blockPos, blockState.with(WATERLOGGED, true), 3)
-		worldAccess.scheduleFluidTick(blockPos, fluidState.fluid, fluidState.fluid.getTickRate(worldAccess))
-		return true
 	}
 
 	override fun createBlockEntity(pos: BlockPos, state: BlockState): BlockEntity = HexCandleBlockEntity(pos, state)

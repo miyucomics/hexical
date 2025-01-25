@@ -187,7 +187,7 @@
 	"hexical.page.vanish_scroll.summary": "Causes the $(item)Animated Scroll$() to become invisible leaving only the pattern, making it appear as though the pattern were magically etched into the surface the scroll is on.",
 
 	"hexical.page.hex_candle.title": "Hex Candles",
-	"hexical.page.hex_candle.0": "When ignited for the first time, either $(l:patterns/spells/prestidigitation)magically$() or with a $(item)Flint and Steel$(), these delightful little candles have pale white flames. When someone interacts with it though, it copies their pigment. I can also give it with a pigment item to change its color directly. To extinguish, $(thing)$(k:sneak) $(k:use)$().",
+	"hexical.page.hex_candle.0": "When ignited for the first time, either $(l:patterns/spells/prestidigitation)magically$() or with a $(item)Flint and Steel$(), these delightful little candles have pale white flames. They also seem to not extinguish when flooded. When someone interacts with it though, it copies their pigment. I can also give it with a pigment item to change its color directly. To extinguish, $(thing)$(k:sneak) $(k:use)$().",
     "hexical.page.hex_candle.1": "$(o)The doctor found himself in an immense cave lined with countless quivering candles, each representing the duration of a life.$()",
 
 	"hexical.page.media_jar.title": "Media Jar",
