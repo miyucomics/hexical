@@ -12,13 +12,9 @@
 		"ScreenMixin"
 	],
 	"mixins": [
-		"AbstractBlockMixin",
-		"AnvilBlockMixin",
 		"BlockAkashicBookshelfMixin",
-		"BlockItemMixin",
 		"CastingVMMixin",
 		"CatSitOnBlockGoalMixin",
-		"CircleExecutionStateMixin",
 		"FabricIXplatImplMixin",
 		"ItemAbacusMixin",
 		"ItemEntityMixin",
