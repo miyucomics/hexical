@@ -1,5 +1,6 @@
 package miyucomics.hexical
 
+import miyucomics.hexical.inits.HexicalBlocks
 import miyucomics.hexical.inits.HexicalItems
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator
@@ -16,7 +17,7 @@ class HexicalDatagen : DataGeneratorEntrypoint {
 
 private class HexicalModelGenerator(generator: FabricDataOutput) : FabricModelProvider(generator) {
 	override fun generateBlockStateModels(generator: BlockStateModelGenerator) {
-
+		generator.registerCandle(HexicalBlocks.HEX_CANDLE_BLOCK, HexicalBlocks.HEX_CANDLE_CAKE_BLOCK)
 	}
 
 	override fun generateItemModels(generator: ItemModelGenerator) {

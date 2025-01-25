@@ -47,7 +47,6 @@ class FlatLookingImpetusBlockEntity(position: BlockPos, state: BlockState) : Blo
 				return
 
 			val range = 20
-			val prevLookAmt = self.lookAmount
 			var looker: ServerPlayerEntity? = null
 			for (player in world.getNonSpectatingEntities(ServerPlayerEntity::class.java, Box(pos.add(-range, -range, -range), pos.add(range, range, range)))) {
 				val hat = player.getEquippedStack(EquipmentSlot.HEAD)
@@ -62,21 +61,19 @@ class FlatLookingImpetusBlockEntity(position: BlockPos, state: BlockState) : Blo
 				}
 			}
 
-			val newLook = MathHelper.clamp(prevLookAmt + (if (looker == null) -1 else 1), 0, MAX_LOOK_AMOUNT)
-			if (newLook != prevLookAmt) {
-				if (newLook == MAX_LOOK_AMOUNT) {
-					self.lookAmount = 0
-					self.startExecution(looker)
-				} else {
-					if (newLook % 5 == 1) {
-						val t = newLook.toFloat() / MAX_LOOK_AMOUNT
-						val pitch = MathHelper.lerp(t, 0.5f, 1.2f)
-						val volume = MathHelper.lerp(t, 0.2f, 1.2f)
-						world.playSound(null, pos, HexSounds.IMPETUS_LOOK_TICK, SoundCategory.BLOCKS, volume, pitch)
-					}
-					self.lookAmount = newLook
-					self.markDirty()
+			val newLook = MathHelper.clamp(self.lookAmount + (if (looker == null) -1 else 1), 0, MAX_LOOK_AMOUNT)
+			if (newLook == MAX_LOOK_AMOUNT) {
+				self.lookAmount = 0
+				self.startExecution(looker)
+			} else {
+				if (newLook % 5 == 1) {
+					val progress = newLook.toFloat() / MAX_LOOK_AMOUNT
+					val pitch = MathHelper.lerp(progress, 0.5f, 1.2f)
+					val volume = MathHelper.lerp(progress, 0.2f, 1.2f)
+					world.playSound(null, pos, HexSounds.IMPETUS_LOOK_TICK, SoundCategory.BLOCKS, volume, pitch)
 				}
+				self.lookAmount = newLook
+				self.markDirty()
 			}
 		}
 	}
