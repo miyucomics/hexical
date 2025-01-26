@@ -12,7 +12,9 @@ import at.petrak.hexcasting.api.casting.iota.Vec3Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.misc.MediaConstants
+import miyucomics.hexical.casting.mishaps.NeedsWristpocketMishap
 import miyucomics.hexical.state.PersistentStateHandler
+import miyucomics.hexical.utils.WristpocketUtils
 import net.minecraft.entity.ItemEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.item.Items
@@ -22,39 +24,36 @@ import net.minecraft.util.math.Vec3d
 class OpSleight : SpellAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
-		if (env.castingEntity !is ServerPlayerEntity)
-			throw MishapBadCaster()
+		val wristpocket = WristpocketUtils.getWristpocketStack(env) ?: throw NeedsWristpocketMishap()
 
 		when (args[0]) {
 			is EntityIota -> {
 				val item = args.getItemEntity(0, argc)
 				env.assertEntityInRange(item)
-				return SpellAction.Result(SwapSpell(item), MediaConstants.DUST_UNIT / 4, listOf(ParticleSpray.burst(item.pos, 1.0)))
+				return SpellAction.Result(SwapSpell(item, wristpocket), MediaConstants.DUST_UNIT / 4, listOf(ParticleSpray.burst(item.pos, 1.0)))
 			}
 			is Vec3Iota -> {
 				val position = args.getVec3(0, argc)
 				env.assertVecInRange(position)
-				return SpellAction.Result(ConjureSpell(position), MediaConstants.DUST_UNIT / 4, listOf(ParticleSpray.burst(position, 1.0)))
+				return SpellAction.Result(ConjureSpell(position, wristpocket), MediaConstants.DUST_UNIT / 4, listOf(ParticleSpray.burst(position, 1.0)))
 			}
 			else -> throw MishapInvalidIota.of(args[0], 0, "entity_or_vector")
 		}
 	}
 
-	private data class ConjureSpell(val position: Vec3d) : RenderedSpell {
+	private data class ConjureSpell(val position: Vec3d, val wristpocket: ItemStack) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			val wristpocketed = PersistentStateHandler.getWristpocketStack(env.castingEntity as ServerPlayerEntity)
-			if (wristpocketed != ItemStack.EMPTY && wristpocketed.item != Items.AIR)
-				env.world.spawnEntity(ItemEntity(env.world, position.x, position.y, position.z, PersistentStateHandler.getWristpocketStack(env.castingEntity as ServerPlayerEntity)))
-			PersistentStateHandler.setWristpocketStack(env.castingEntity as ServerPlayerEntity, ItemStack.EMPTY)
+			if (!wristpocket.isEmpty)
+				env.world.spawnEntity(ItemEntity(env.world, position.x, position.y, position.z, wristpocket))
+			WristpocketUtils.setWristpocketStack(env, ItemStack.EMPTY)
 		}
 	}
 
-	private data class SwapSpell(val item: ItemEntity) : RenderedSpell {
+	private data class SwapSpell(val item: ItemEntity, val wristpocket: ItemStack) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			val wristpocketed = PersistentStateHandler.getWristpocketStack(env.castingEntity as ServerPlayerEntity)
-			PersistentStateHandler.setWristpocketStack(env.castingEntity as ServerPlayerEntity, item.stack)
-			if (wristpocketed != ItemStack.EMPTY && wristpocketed.item != Items.AIR)
-				item.stack = wristpocketed
+			WristpocketUtils.setWristpocketStack(env, item.stack)
+			if (!wristpocket.isEmpty)
+				item.stack = wristpocket
 			else
 				item.discard()
 		}

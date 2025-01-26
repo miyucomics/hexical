@@ -11,8 +11,12 @@ import at.petrak.hexcasting.api.casting.iota.Vec3Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.misc.MediaConstants
+import miyucomics.hexical.casting.mishaps.NeedsWristpocketMishap
 import miyucomics.hexical.state.PersistentStateHandler
+import miyucomics.hexical.utils.WristpocketUtils
 import net.minecraft.entity.Entity
+import net.minecraft.entity.LivingEntity
+import net.minecraft.item.ItemStack
 import net.minecraft.item.ItemUsageContext
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.Hand
@@ -27,43 +31,49 @@ class OpMageHand : SpellAction {
 		if (env.castingEntity !is ServerPlayerEntity)
 			throw MishapBadCaster()
 
+		val wristpocket = WristpocketUtils.getWristpocketStack(env) ?: throw NeedsWristpocketMishap()
+
 		when (val iota = args[0]) {
 			is EntityIota -> {
 				val entity = args.getEntity(0, argc)
 				env.assertEntityInRange(entity)
-				return SpellAction.Result(EntitySpell(entity), MediaConstants.DUST_UNIT, listOf())
+				return SpellAction.Result(EntitySpell(entity, wristpocket), MediaConstants.DUST_UNIT, listOf())
 			}
 			is Vec3Iota -> {
 				val position = args.getBlockPos(0, argc)
 				env.assertPosInRange(position)
-				return SpellAction.Result(BlockSpell(position), MediaConstants.DUST_UNIT, listOf())
+				return SpellAction.Result(BlockSpell(position, wristpocket), MediaConstants.DUST_UNIT, listOf())
 			}
 			else -> throw MishapInvalidIota.of(iota, 0, "entity_or_vector")
 		}
 	}
 
-	private data class BlockSpell(val position: BlockPos) : RenderedSpell {
+	private data class BlockSpell(val position: BlockPos, val wristpocket: ItemStack) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
 			val caster = env.castingEntity as ServerPlayerEntity
-			val stack = PersistentStateHandler.getWristpocketStack(caster)
 			val originalItem = caster.getStackInHand(env.castingHand)
-			caster.setStackInHand(env.castingHand, stack)
+
+			caster.setStackInHand(env.castingHand, wristpocket)
 			val block = env.world.getBlockState(position)
 			block.onUse(env.world, caster, env.castingHand, BlockHitResult(Vec3d.ofCenter(position), Direction.UP, position, false))
-			stack.useOnBlock(ItemUsageContext(caster, env.castingHand, BlockHitResult(Vec3d.ofCenter(position), Direction.UP, position, false)))
-			PersistentStateHandler.setWristpocketStack(caster, caster.getStackInHand(env.castingHand))
+			wristpocket.useOnBlock(ItemUsageContext(caster, env.castingHand, BlockHitResult(Vec3d.ofCenter(position), Direction.UP, position, false)))
+
+			WristpocketUtils.setWristpocketStack(env, caster.getStackInHand(env.castingHand))
 			caster.setStackInHand(env.castingHand, originalItem)
 		}
 	}
 
-	private data class EntitySpell(val entity: Entity) : RenderedSpell {
+	private data class EntitySpell(val entity: Entity, val wristpocket: ItemStack) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
 			val caster = env.castingEntity as ServerPlayerEntity
-			val stack = PersistentStateHandler.getWristpocketStack(caster)
 			val originalItem = caster.getStackInHand(env.castingHand)
-			caster.setStackInHand(env.castingHand, stack)
-			entity.interact(caster, Hand.MAIN_HAND)
-			PersistentStateHandler.setWristpocketStack(caster, caster.getStackInHand(env.castingHand))
+
+			caster.setStackInHand(env.castingHand, wristpocket)
+			entity.interact(caster, env.castingHand)
+			if (entity is LivingEntity)
+				wristpocket.useOnEntity(caster, entity, env.castingHand)
+
+			WristpocketUtils.setWristpocketStack(env, caster.getStackInHand(env.castingHand))
 			caster.setStackInHand(env.castingHand, originalItem)
 		}
 	}

@@ -5,7 +5,7 @@ import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.NullIota
 import miyucomics.hexical.casting.environments.TurretLampCastEnv
-import miyucomics.hexical.casting.mishaps.NeedsArchGenieLamp
+import miyucomics.hexical.casting.mishaps.NeedsArchGenieLampMishap
 import miyucomics.hexical.items.hasActiveArchLamp
 import miyucomics.hexical.state.ArchLampData
 import miyucomics.hexical.state.PersistentStateHandler
@@ -21,7 +21,7 @@ class OpGetArchLampData(private val process: (CastingEnvironment, ArchLampData) 
 		if (caster !is ServerPlayerEntity)
 			return listOf(NullIota())
 		if (!hasActiveArchLamp(caster))
-			throw NeedsArchGenieLamp()
+			throw NeedsArchGenieLampMishap()
 		return process(env, PersistentStateHandler.getArchLampData(caster))
 	}
 }
