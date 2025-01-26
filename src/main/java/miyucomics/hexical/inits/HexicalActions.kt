@@ -204,13 +204,8 @@ object HexicalActions {
 		register("can_prestidigitate", "wqaqwqaqw", HexDir.NORTH_WEST, OpCanPrestidigitation())
 
 		register("wristpocket", "aaqqa", HexDir.WEST, OpWristpocket())
-		register("wristpocket_item", "aaqqada", HexDir.WEST, OpGetWristpocket { stack ->
-			if (stack.isOf(Items.AIR) || stack == ItemStack.EMPTY)
-				listOf(NullIota())
-			else
-				Registries.ITEM.getId(stack.item).asActionResult()
-		})
-		register("wristpocket_count", "aaqqaaw", HexDir.WEST, OpGetWristpocket { stack -> if (stack.isOf(Items.AIR) || stack == ItemStack.EMPTY) (0).asActionResult else stack.count.asActionResult })
+		register("wristpocket_item", "aaqqada", HexDir.WEST, OpGetWristpocketData { stack -> if (stack.isEmpty) listOf(NullIota()) else Registries.ITEM.getId(stack.item).asActionResult() })
+		register("wristpocket_count", "aaqqaaw", HexDir.WEST, OpGetWristpocketData { stack -> if (stack.isEmpty) (0).asActionResult else stack.count.asActionResult })
 		register("sleight", "aaqqadeeeq", HexDir.WEST, OpSleight())
 		register("mage_hand", "aaqqaeea", HexDir.WEST, OpMageHand())
 		register("mage_mouth", "aaqqadaa", HexDir.WEST, OpMageMouth())
