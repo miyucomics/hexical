@@ -3,7 +3,6 @@ package miyucomics.hexical.inits
 import at.petrak.hexcasting.api.casting.ActionRegistryEntry
 import at.petrak.hexcasting.api.casting.asActionResult
 import at.petrak.hexcasting.api.casting.castables.Action
-import at.petrak.hexcasting.api.casting.castables.SpecialHandler
 import at.petrak.hexcasting.api.casting.eval.env.CircleCastEnv
 import at.petrak.hexcasting.api.casting.eval.env.PackagedItemCastEnv
 import at.petrak.hexcasting.api.casting.eval.env.StaffCastEnv
@@ -17,13 +16,9 @@ import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.utils.vecFromNBT
 import at.petrak.hexcasting.common.blocks.akashic.BlockAkashicBookshelf
 import at.petrak.hexcasting.common.casting.actions.selectors.OpGetEntitiesBy
-import at.petrak.hexcasting.common.casting.actions.stack.OpTwiddling
 import at.petrak.hexcasting.common.lib.hex.HexActions
-import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.casting.environments.*
-import miyucomics.hexical.casting.handlers.NephthysSpecialHandler
-import miyucomics.hexical.casting.handlers.SekhmetSpecialHandler
 import miyucomics.hexical.casting.iotas.IdentifierIota
 import miyucomics.hexical.casting.iotas.asActionResult
 import miyucomics.hexical.casting.patterns.*
@@ -36,7 +31,6 @@ import miyucomics.hexical.casting.patterns.colors.OpDye
 import miyucomics.hexical.casting.patterns.colors.OpGetDye
 import miyucomics.hexical.casting.patterns.colors.OpTranslateDye
 import miyucomics.hexical.casting.patterns.conjure.*
-import miyucomics.hexical.casting.patterns.eval.*
 import miyucomics.hexical.casting.patterns.firework.OpConjureFirework
 import miyucomics.hexical.casting.patterns.firework.OpSimulateFirework
 import miyucomics.hexical.casting.patterns.grimoire.OpGrimoireErase
@@ -66,9 +60,6 @@ import miyucomics.hexical.casting.patterns.scrying.identifier.OpRecognize
 import miyucomics.hexical.casting.patterns.scrying.types.OpGetBlockTypeData
 import miyucomics.hexical.casting.patterns.scrying.types.OpGetFoodTypeData
 import miyucomics.hexical.casting.patterns.scrying.types.OpGetItemTypeData
-import miyucomics.hexical.casting.patterns.soroban.OpSorobanDecrement
-import miyucomics.hexical.casting.patterns.soroban.OpSorobanIncrement
-import miyucomics.hexical.casting.patterns.soroban.OpSorobanReset
 import miyucomics.hexical.casting.patterns.specks.*
 import miyucomics.hexical.casting.patterns.tchotchke.OpConjureTchotchke
 import miyucomics.hexical.casting.patterns.tchotchke.OpReadTchotchke
@@ -84,7 +75,6 @@ import net.minecraft.block.SeaPickleBlock
 import net.minecraft.block.TurtleEggBlock
 import net.minecraft.enchantment.EnchantmentHelper
 import net.minecraft.item.EnchantedBookItem
-import net.minecraft.item.ItemStack
 import net.minecraft.item.Items
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
@@ -133,9 +123,6 @@ object HexicalActions {
 		register("is_brainswept", "qqqaqqq", HexDir.SOUTH_EAST, OpBrainswept())
 
 		register("garbage", "aqawde", HexDir.EAST, Action.makeConstantOp(GarbageIota()))
-		register("swap_one_three", "ddwqaq", HexDir.NORTH_EAST, OpTwiddling(3, intArrayOf(2, 1, 0)))
-		register("swap_two_three", "aawede", HexDir.EAST, OpTwiddling(3, intArrayOf(1, 0, 2)))
-		register("dup_many", "waadadaa", HexDir.EAST, OpDupMany())
 
 		register("deserialize_pattern", "wqqqaqwd", HexDir.EAST, OpDeserializePattern())
 		register("serialize_pattern", "wqaedeqd", HexDir.EAST, OpSerializePattern())
@@ -144,10 +131,6 @@ object HexicalActions {
 		register("shuffle_pattern", "aqqqdae", HexDir.NORTH_EAST, OpShufflePattern())
 
 		register("perlin", "qawedqdq", HexDir.WEST, OpPerlin())
-
-		register("soroban_decrement", "waqdee", HexDir.SOUTH_EAST, OpSorobanDecrement())
-		register("soroban_increment", "wdeaqq", HexDir.NORTH_EAST, OpSorobanIncrement())
-		register("soroban_reset", "qdeeaae", HexDir.NORTH_EAST, OpSorobanReset())
 
 		register("fluid_raycast", "wqqaqwede", HexDir.EAST, OpFluidRaycast())
 		register("fluid_surface_raycast", "weedewqaq", HexDir.EAST, OpFluidSurfaceRaycast())
@@ -165,17 +148,6 @@ object HexicalActions {
 		register("moving_down", "dedwdq", HexDir.SOUTH_WEST, OpGetKeybind("key.back"))
 		register("jumping", "qaqdaqqa", HexDir.SOUTH_WEST, OpGetKeybind("key.jump"))
 		register("sneaking", "wede", HexDir.NORTH_WEST, OpGetKeybind("key.sneak"))
-
-		register("atalanta", "aqdea", HexDir.SOUTH_WEST, OpAtalanta)
-		register("castor", "adadee", HexDir.NORTH_WEST, OpCastor)
-		register("pollux", "dadaqq", HexDir.NORTH_EAST, OpPollux)
-		register("janus", "aadee", HexDir.SOUTH_WEST, OpJanus)
-		register("maat", "qed", HexDir.NORTH_EAST, OpMaat())
-		register("sisyphus", "qaqwede", HexDir.NORTH_EAST, OpSisyphus)
-		register("themis", "dwaad", HexDir.WEST, OpThemis)
-		register("tutu", "eedqa", HexDir.WEST, OpTutu)
-		registerSpecialHandler("nephthys", NephthysSpecialHandler.Factory())
-		registerSpecialHandler("sekhmet", SekhmetSpecialHandler.Factory())
 
 		register("key_shelf", "qaqqadaq", HexDir.EAST, OpKeyAkashicShelf())
 		register("read_shelf", "qaqqqada", HexDir.EAST, OpReadAkashicShelf())
@@ -429,6 +401,4 @@ object HexicalActions {
 
 	private fun register(name: String, signature: String, startDir: HexDir, action: Action) =
 		Registry.register(HexActions.REGISTRY, HexicalMain.id(name), ActionRegistryEntry(HexPattern.fromAngles(signature, startDir), action))
-	private fun <T : SpecialHandler> registerSpecialHandler(name: String, handler: SpecialHandler.Factory<T>) =
-		Registry.register(IXplatAbstractions.INSTANCE.specialHandlerRegistry, HexicalMain.id(name), handler)
 }
