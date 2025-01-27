@@ -23,6 +23,8 @@
 - fixed bug where small animated scrolls do not render
 - fixed bug where Chromatic Purification breaks for vectors
 - fixed lack of cost in Mage Hand documentation
+- fixed bug where Castor's and Pollux's would not pop the iota off
+- fixed mispelling of Sekhmet's Gambit
 
 ## 1.5.0
 - added spell to conjure llama spit

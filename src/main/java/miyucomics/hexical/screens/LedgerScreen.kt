@@ -1,39 +1,34 @@
 package miyucomics.hexical.screens
 
 import miyucomics.hexical.client.ClientStorage
-import net.minecraft.client.gui.DrawContext
 import net.minecraft.client.gui.screen.Screen
-import net.minecraft.client.gui.widget.MultilineTextWidget
-import net.minecraft.client.gui.widget.TextWidget
 import net.minecraft.text.Text
 
 class LedgerScreen : Screen(Text.literal("Ledger")) {
-	private var mishap: TextWidget? = null
-	private var stack: MultilineTextWidget? = null
-	private var patterns: MultilineTextWidget? = null
+	private val widgets: MutableList<SinglePatternWidget> = mutableListOf()
 
 	override fun shouldPause() = false
 
 	override fun init() {
-		val padding = height - (height * 0.95).toInt()
-		val columnWidth = (width / 2) - padding * 2
+		val heightPermitted = (height * 0.5).toInt()
+		val heightPadding = (height - heightPermitted) / 2
+		val widthPermitted = width - 2 * heightPadding
+		val widthPadding = (width - widthPermitted) / 2
 
-		mishap = TextWidget(width / 2, 0, 100, 100, ClientStorage.ledger.mishap, client!!.textRenderer)
-		stack = MultilineTextWidget(padding, padding, ClientStorage.ledger.stack.buffer().fold(Text.empty()) { acc, text -> acc.append(text).append("\n") }, client!!.textRenderer)
-		patterns = MultilineTextWidget(width - columnWidth - padding, padding, ClientStorage.ledger.ledger.buffer().fold(Text.empty()) { acc, text -> acc.append(text.toString()) }, client!!.textRenderer)
-
-		addDrawableChild(stack)
-		addDrawableChild(mishap)
-		addDrawableChild(patterns)
+		widgets.clear()
+		val ledgerData = ClientStorage.ledger.ledger.buffer()
+		for (i in 0..31) {
+			val x = (i % 8).toFloat() / 7.0 * widthPermitted
+			val y = (i / 8).toFloat() / 3.0 * heightPermitted
+			val widget = SinglePatternWidget(ledgerData.getOrNull(i), widthPadding + x.toInt(), heightPadding + y.toInt())
+			widgets.add(widget)
+			addDrawable(widget)
+		}
 	}
 
 	override fun tick() {
-		mishap!!.message = ClientStorage.ledger.mishap
-		stack!!.message = ClientStorage.ledger.stack.buffer().fold(Text.empty()) { acc, text -> acc.append(text).append("\n") }
-		patterns!!.message = ClientStorage.ledger.ledger.buffer().fold(Text.empty()) { acc, text -> acc.append(text.toString()) }
-	}
-
-	override fun render(drawContext: DrawContext?, i: Int, j: Int, f: Float) {
-		super.render(drawContext, i, j, f)
+		val ledgerData = ClientStorage.ledger.ledger.buffer()
+		for (i in 0..31)
+			widgets[i].setPattern(ledgerData.getOrNull(i))
 	}
 }
