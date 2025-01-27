@@ -34,10 +34,11 @@ abstract class OpModifyThoth : Action {
 			}
 		}
 
-		newContinuation = newContinuation.pushFrame(updateFrame(forEach, image.stack.toMutableList()))
+		val newStack = image.stack.toMutableList()
+		newContinuation = newContinuation.pushFrame(updateFrame(forEach, newStack))
 		while (callStack.isNotEmpty())
 			newContinuation = newContinuation.pushFrame(callStack.removeLast())
 
-		return OperationResult(image.withUsedOp(), listOf(), newContinuation, HexEvalSounds.SPELL)
+		return OperationResult(image.copy(stack = newStack).withUsedOp(), listOf(), newContinuation, HexEvalSounds.SPELL)
 	}
 }
