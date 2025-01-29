@@ -61,6 +61,8 @@
 	"tooltip.hexical.scroll_vanished": "Vanished",
 
 	"hexical.autograph.header": "Autographed by:",
+	"hexical.ledger.stack": "Last Recorded Stack:",
+	"hexical.ledger.mishap": "Last Recorded Mishap:",
 
 	"hexcasting.mishap.bad_block.akashic_bookshelf": "an akashic bookshelf",
 	"hexcasting.mishap.bad_block.mage_block": "a mage block",

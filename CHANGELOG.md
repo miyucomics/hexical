@@ -25,6 +25,7 @@
 - fixed lack of cost in Mage Hand documentation
 - fixed bug where Castor's and Pollux's would not pop the iota off
 - fixed mispelling of Sekhmet's Gambit
+- migrated metaeval patterns and soroban to Overevaluate, a new addon
 
 ## 1.5.0
 - added spell to conjure llama spit
