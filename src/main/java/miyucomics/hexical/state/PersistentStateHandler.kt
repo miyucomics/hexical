@@ -68,6 +68,9 @@ class PersistentStateHandler : PersistentState() {
 
 		@JvmStatic
 		fun getLedger(player: ServerPlayerEntity) = getServerState(player.server!!).ledgers.computeIfAbsent(player.uuid) { LedgerData() }
+		fun clearLedger(player: ServerPlayerEntity) {
+			getServerState(player.server!!).ledgers[player.uuid] = LedgerData()
+		}
 
 		fun getEvocation(player: ServerPlayerEntity) = getServerState(player.getServer()!!).evocation[player.uuid]
 		fun setEvocation(player: ServerPlayerEntity, hex: NbtCompound) {

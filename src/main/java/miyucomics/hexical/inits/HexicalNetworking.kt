@@ -14,6 +14,7 @@ import miyucomics.hexical.items.getConjuredStaff
 import miyucomics.hexical.state.EvokeState
 import miyucomics.hexical.state.KeybindData
 import miyucomics.hexical.state.LedgerData
+import miyucomics.hexical.state.PersistentStateHandler
 import miyucomics.hexical.utils.CastingUtils
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
@@ -35,6 +36,8 @@ object HexicalNetworking {
 
 	@JvmStatic
 	fun serverInit() {
+		ServerPlayNetworking.registerGlobalReceiver(LEDGER_CHANNEL) { _, player, _, _, _ -> PersistentStateHandler.clearLedger(player) }
+
 		ServerPlayNetworking.registerGlobalReceiver(TCHOTCHKE_CHANNEL) { server, player, _, buf, _ ->
 			val hand = getConjuredStaff(player) ?: return@registerGlobalReceiver
 			val inputs = mutableListOf<Iota>()
