@@ -8,7 +8,7 @@ import at.petrak.hexcasting.api.casting.iota.PatternIota
 import miyucomics.hexical.state.PersistentStateHandler
 import net.minecraft.server.network.ServerPlayerEntity
 
-class LedgerComponent(val env: PlayerBasedCastEnv) : PostExecution {
+class LedgerRecordComponent(val env: PlayerBasedCastEnv) : PostExecution {
 	override fun getKey() = LedgerKey()
 	class LedgerKey : CastingEnvironmentComponent.Key<PostExecution> {}
 
