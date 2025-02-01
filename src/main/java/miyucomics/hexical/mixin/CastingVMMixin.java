@@ -14,11 +14,16 @@ import at.petrak.hexcasting.common.lib.hex.HexIotaTypes;
 import kotlin.collections.CollectionsKt;
 import miyucomics.hexical.inits.HexicalItems;
 import miyucomics.hexical.state.PersistentStateHandler;
+import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.collection.DefaultedList;
+import org.apache.logging.log4j.core.jmx.Server;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
@@ -30,17 +35,13 @@ public abstract class CastingVMMixin {
 	@Inject(method = "queueExecuteAndWrapIota", at = @At("HEAD"), cancellable = true)
 	void expandMacros(Iota iota, ServerWorld world, CallbackInfoReturnable<ExecutionClientView> cir) {
 		CastingVM vm = (CastingVM) (Object) this;
-		CastingEnvironment env = vm.getEnv();
-
-		if (!(env instanceof StaffCastEnv))
+		if (!(vm.getEnv() instanceof StaffCastEnv env))
 			return;
-
-		var image = vm.getImage();
-		if (image.getEscapeNext() || iota.getType() != HexIotaTypes.PATTERN)
+		if (vm.getImage().getEscapeNext() || iota.getType() != HexIotaTypes.PATTERN)
 			return;
 
 		HexPattern pattern = ((PatternIota) iota).getPattern();
-		ItemStack grimoire = env.queryForMatchingStack(stack -> stack.isOf(HexicalItems.GRIMOIRE_ITEM) && stack.getOrCreateNbt().getCompound("expansions").contains(pattern.anglesSignature()));
+		ItemStack grimoire = getGrimoire((ServerPlayerEntity) env.getCastingEntity(), pattern);
 		if (grimoire == null)
 			return;
 
@@ -62,5 +63,17 @@ public abstract class CastingVMMixin {
 			return;
 		assert env.getCastingEntity() != null;
 		PersistentStateHandler.getLedger((ServerPlayerEntity) env.getCastingEntity()).saveStack(vm.getImage().component1());
+	}
+
+	@Unique
+	private ItemStack getGrimoire(ServerPlayerEntity player, HexPattern pattern) {
+		PlayerInventory inventory = player.getInventory();
+		for (DefaultedList<ItemStack> smallInventory : List.of(inventory.main, inventory.armor, inventory.offHand)) {
+			for (ItemStack stack : smallInventory) {
+				if (stack.isOf(HexicalItems.GRIMOIRE_ITEM) && stack.getOrCreateNbt().getCompound("expansions").contains(pattern.anglesSignature()))
+					return stack;
+			}
+		}
+		return null;
 	}
 }
