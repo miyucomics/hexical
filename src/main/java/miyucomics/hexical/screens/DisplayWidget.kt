@@ -3,7 +3,6 @@ package miyucomics.hexical.screens
 import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.utils.TAU
 import com.mojang.blaze3d.systems.RenderSystem
-import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.utils.RenderUtils
 import net.minecraft.client.gui.DrawContext
 import net.minecraft.client.gui.Drawable

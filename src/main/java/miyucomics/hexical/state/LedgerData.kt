@@ -33,7 +33,7 @@ class LedgerData {
 		stack.buffer().forEach { iota -> nbtStack.add(NbtString.of(Text.Serializer.toJson(iota))) }
 		tag.putList("stack", nbtStack)
 
-		tag.putString("mishap", Text.Serializer.toJson(mishap));
+		tag.putString("mishap", Text.Serializer.toJson(mishap))
 
 		return tag
 	}
