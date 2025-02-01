@@ -190,6 +190,10 @@
 	"hexical.page.media_jar.0": "I can craft this little decorative jar of liquid _media that glows quite brightly. Unfortunately, it seems the glass is too thick for me to draw _media through it, although I have read tales that ancient _Hexcasters were able to solve this issue and being able to bottle up liquid _media and use it for their _Hexes.",
 	"hexical.page.media_jar.1": "A similar item was built by prior _Hexcasters and they seemed to use it as crystal ball by sipping the fluid. Holding the energy of thought that permeates existence, perhaps its answers hold some merit.$(br2)$(o)Signs point to yes.$()",
 
+	"hexical.page.ledger.title": "Ledgers",
+	"hexical.page.ledger.0": "$(l:patterns/meta)When _Hexes cast _Hexes$(), it is easy to lose track of my _Hex and Nature is all too happy to be punish such carelessness. Luckily, a $(item)Ledger$() can record the last 32 patterns I casted, the last mishap I have cast, and the state of the stack right before mishap. The true power of $(item)Ledgers$() is the ability for it to record patterns cast $(o)even by $(l:patterns/meta)meta-evaluations$().",
+	"hexical.page.ledger.1": "I can click the patterns to clear my $(item)Ledger$() before a new _Hex to avoid contamination.$(br2)$(o)Now you may only see a pile of receipts, but I see a story. I can see where this story is going. It does not look good.$()",
+
 	"hexical.page.sentinel_bed.title": "Sentinel Beds",
 	"hexical.page.sentinel_bed.0": "The $(item)Lodestone$() inside seems to make this block $(o)and the entities shoved in it$() always within my _Hexes' ambit, although I prefer to believe the $(item)Wool$() invites my $(l:patterns/spells/sentinels)$(thing)Sentinel$(). Cats seem to find it cozy too, like a lit furnace or a bed.$(br2)I hear rumors of ancient _Hexcasters using this as some kind of iota storage from any range but I struggle to imagine how.",
 	"hexical.page.sentinel_bed.1": "$(o)A comfy bed for my sentinel, it always seems eager to return to it.$()",
