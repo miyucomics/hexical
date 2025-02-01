@@ -5,3 +5,4 @@ accessible field net/minecraft/entity/projectile/ArrowEntity effects Ljava/util/
 accessible field net/minecraft/entity/passive/PufferfishEntity deflateTicks I
 accessible field net/minecraft/entity/passive/PufferfishEntity inflateTicks I
 accessible method net/minecraft/entity/passive/SquidEntity squirt ()V
+accessible class net/minecraft/client/gui/hud/InGameHud$HeartType

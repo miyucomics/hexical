@@ -26,6 +26,7 @@ class HexicalMain : ModInitializer {
 		val RANDOM: Random = Random()
 		const val EVOKE_DURATION: Int = 20
 
+		@JvmStatic
 		fun id(string: String) = Identifier(MOD_ID, string)
 	}
 }

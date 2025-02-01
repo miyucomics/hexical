@@ -55,8 +55,9 @@ class OpMageHand : SpellAction {
 
 			caster.setStackInHand(env.castingHand, wristpocket)
 			val block = env.world.getBlockState(position)
-			block.onUse(env.world, caster, env.castingHand, BlockHitResult(Vec3d.ofCenter(position), Direction.UP, position, false))
-			wristpocket.useOnBlock(ItemUsageContext(caster, env.castingHand, BlockHitResult(Vec3d.ofCenter(position), Direction.UP, position, false)))
+			val result = block.onUse(env.world, caster, env.castingHand, BlockHitResult(Vec3d.ofCenter(position), Direction.UP, position, false))
+			if (!result.isAccepted)
+				wristpocket.useOnBlock(ItemUsageContext(caster, env.castingHand, BlockHitResult(Vec3d.ofCenter(position), Direction.UP, position, false)))
 
 			WristpocketUtils.setWristpocketStack(env, caster.getStackInHand(env.castingHand))
 			caster.setStackInHand(env.castingHand, originalItem)
@@ -69,8 +70,8 @@ class OpMageHand : SpellAction {
 			val originalItem = caster.getStackInHand(env.castingHand)
 
 			caster.setStackInHand(env.castingHand, wristpocket)
-			entity.interact(caster, env.castingHand)
-			if (entity is LivingEntity)
+			val result = entity.interact(caster, env.castingHand)
+			if (!result.isAccepted && entity is LivingEntity)
 				wristpocket.useOnEntity(caster, entity, env.castingHand)
 
 			WristpocketUtils.setWristpocketStack(env, caster.getStackInHand(env.castingHand))
