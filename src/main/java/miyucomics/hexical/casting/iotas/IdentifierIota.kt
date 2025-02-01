@@ -5,7 +5,6 @@ import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.casting.mishaps.MishapNotEnoughArgs
 import at.petrak.hexcasting.api.utils.styledWith
-import miyucomics.hexical.inits.HexicalIota
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.nbt.NbtElement
 import net.minecraft.server.world.ServerWorld
@@ -13,7 +12,7 @@ import net.minecraft.text.Text
 import net.minecraft.util.Formatting
 import net.minecraft.util.Identifier
 
-class IdentifierIota(identifier: Identifier) : Iota(HexicalIota.IDENTIFIER_IOTA, identifier) {
+class IdentifierIota(identifier: Identifier) : Iota(TYPE, identifier) {
 	override fun isTruthy() = true
 	val identifier = this.payload as Identifier
 	override fun toleratesOther(that: Iota) = (typesMatch(this, that) && that is IdentifierIota) && this.identifier == that.identifier
