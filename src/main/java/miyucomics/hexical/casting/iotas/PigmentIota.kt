@@ -6,7 +6,6 @@ import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.casting.mishaps.MishapNotEnoughArgs
 import at.petrak.hexcasting.api.pigment.FrozenPigment
 import at.petrak.hexcasting.api.utils.putCompound
-import miyucomics.hexical.inits.HexicalIota
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.nbt.NbtElement
 import net.minecraft.server.world.ServerWorld
@@ -14,7 +13,7 @@ import net.minecraft.text.Style
 import net.minecraft.text.Text
 import net.minecraft.util.math.Vec3d
 
-class PigmentIota(pigment: FrozenPigment) : Iota(HexicalIota.PIGMENT_IOTA, pigment) {
+class PigmentIota(pigment: FrozenPigment) : Iota(TYPE, pigment) {
 	override fun isTruthy() = true
 	val pigment: FrozenPigment = this.payload as FrozenPigment
 	override fun toleratesOther(that: Iota) = typesMatch(this, that) && this.pigment == (that as PigmentIota).pigment

@@ -21,11 +21,12 @@
 - changed Greater Blink to not move feet to eyes
 - changed lamps deactivating to only be when they are picked up
 - fixed bug where small animated scrolls do not render
+- fixed bug where grimoire does not work in non-hotbar
 - fixed bug where Chromatic Purification breaks for vectors
 - fixed lack of cost in Mage Hand documentation
 - fixed bug where Castor's and Pollux's would not pop the iota off
-- fixed mispelling of Sekhmet's Gambit
 - migrated metaeval patterns and soroban to Overevaluate, a new addon
+- fixed bug where wristpocket does not cancel the interaction when interacting with a block
 
 ## 1.5.0
 - added spell to conjure llama spit
