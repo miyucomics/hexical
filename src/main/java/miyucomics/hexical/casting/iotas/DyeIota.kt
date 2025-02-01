@@ -5,7 +5,6 @@ import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.casting.mishaps.MishapNotEnoughArgs
 import at.petrak.hexcasting.api.utils.styledWith
-import miyucomics.hexical.inits.HexicalIota
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.nbt.NbtElement
 import net.minecraft.server.world.ServerWorld
@@ -13,7 +12,7 @@ import net.minecraft.text.Style
 import net.minecraft.text.Text
 import net.minecraft.util.DyeColor
 
-class DyeIota(color: String) : Iota(HexicalIota.DYE_IOTA, color) {
+class DyeIota(color: String) : Iota(TYPE, color) {
 	override fun isTruthy() = true
 	val dye: String = this.payload as String
 	override fun toleratesOther(that: Iota) = (typesMatch(this, that) && that is DyeIota) && this.dye == that.dye
