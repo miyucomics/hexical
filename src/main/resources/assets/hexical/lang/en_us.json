@@ -83,6 +83,7 @@
 	"hexcasting.mishap.invalid_value.axis_vector": "an axis vector",
 	"hexcasting.mishap.invalid_value.horizontal_axis_vector": "a horizontal axis vector",
 	"hexcasting.mishap.invalid_value.block_id": "an identifier of a block type",
+	"hexcasting.mishap.invalid_value.entity_id": "an identifier of an entity type",
 	"hexcasting.mishap.invalid_value.class.dye": "a dye",
 	"hexcasting.mishap.invalid_value.class.identifier": "an identifier",
 	"hexcasting.mishap.invalid_value.class.pigment": "a pigment",
