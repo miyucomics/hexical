@@ -10,6 +10,7 @@ import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.PatternIota
 import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
+import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.common.msgs.MsgNewSpiralPatternsS2C
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.casting.iotas.getIdentifier
@@ -29,7 +30,7 @@ class OpImitateParrot : SpellAction {
 		val id = args.getIdentifier(1, argc)
 		if (!Registries.ENTITY_TYPE.containsId(id))
 			throw MishapInvalidIota.of(args[0], 0, "entity_id")
-		return SpellAction.Result(Spell(pos, Registries.ENTITY_TYPE.get(id)), 0L, listOf())
+		return SpellAction.Result(Spell(pos, Registries.ENTITY_TYPE.get(id)), MediaConstants.DUST_UNIT / 2, listOf())
 	}
 
 	private data class Spell(val pos: Vec3d, val type: EntityType<*>) : RenderedSpell {
