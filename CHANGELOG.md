@@ -1,6 +1,7 @@
 # Changelog
 
 ## 1.6.0
+- added Squawk spell for fun
 - added ability to use phials in wristpocket
 - added ability for spell circles to use wristpocket by having a pedestal over the impetus
 - added ledgers - a strange clockwork item that records the last few patterns you've casted
