@@ -209,6 +209,7 @@ object HexicalActions {
 		register("ghast_fireball", "wqqqqqwaeaeaeaeae", HexDir.SOUTH_EAST, OpGhastFireball())
 		register("llama_spit", "dwqaqw", HexDir.EAST, OpLlamaSpit())
 		register("gasp", "aweeeeewaweeeee", HexDir.NORTH_WEST, OpGasp())
+		register("parrot", "wweedadw", HexDir.NORTH_EAST, OpImitateParrot())
 		register("myodesopsia", "wadawadawawaaw", HexDir.SOUTH_EAST, OpMyodesopsia())
 
 		register("conjure_compass", "aqwawqwqqwqwq", HexDir.SOUTH_WEST, OpConjureCompass())
