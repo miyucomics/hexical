@@ -27,6 +27,7 @@
 	"death.attack.magic_missile.item": "%1$s was struck with arcane force by %2$s using %3$s",
 	"death.attack.spike": "%1$s was punctured by %2$s",
 	"death.attack.spike.item": "%1$s was punctured by %2$s using %3$s",
+	"effect.hexical.wooleyed": "Wooleyed",
 	"entity.hexical.animated_scroll": "Animated Scroll",
 	"entity.hexical.magic_missile": "Magic Missile",
 	"entity.hexical.mesh": "Mesh",
