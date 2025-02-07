@@ -1,8 +1,8 @@
 # Changelog
 
 ## 1.6.0
-- added Squawk spell for fun
 - added ability to use phials in wristpocket
+- added Squawk spell for fun - play mob sounds
 - added ability for spell circles to use wristpocket by having a pedestal over the impetus
 - added ledgers - a strange clockwork item that records the last few patterns you've casted
   - useful for debugging hexes in staves and casting devices
@@ -17,7 +17,6 @@
 - added Media Purification - gets media of player, allay, impetus, or item on floor
 - added Construct spell - places a specific block type from your inventory with parameters for orientation and horizontal vector
 - added scrying pattern for moon phase
-- added flat impeti
 - changed hex candles to not be extinguished by water
 - changed Greater Blink to not move feet to eyes
 - changed lamps deactivating to only be when they are picked up
