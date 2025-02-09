@@ -2,11 +2,18 @@ package miyucomics.hexical.utils
 
 import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.client.render.rotate
-import net.minecraft.util.math.MathHelper
-import net.minecraft.util.math.Vec2f
+import net.minecraft.client.render.VertexConsumer
+import net.minecraft.client.util.math.MatrixStack
+import net.minecraft.util.math.*
+import org.joml.Quaternionf
+import org.joml.Vector3f
 import kotlin.math.*
 
+
 object RenderUtils {
+	private val NEGATIVE_X_ROTATION: Quaternionf = RotationAxis.POSITIVE_X.rotationDegrees(-90f)
+	private val DIR2ROT: Map<Direction, Quaternionf> = enumValues<Direction>().associateWith { it.opposite.rotationQuaternion.mul(NEGATIVE_X_ROTATION) }
+
 	private const val CIRCLE_RESOLUTION: Int = 20
 
 	fun getNormalizedStrokes(pattern: HexPattern, flipHor: Boolean = false): List<Vec2f> {
@@ -104,5 +111,62 @@ object RenderUtils {
 				vertex(point.add(fan0))
 			}
 		}
+	}
+
+	fun addRect(consumer: VertexConsumer, matrices: MatrixStack, minU: Float, minV: Float, maxU: Float, maxV: Float, width: Float, height: Float, light: Int, color: Int, alpha: Float) {
+		val minV2 = maxV - width
+		val halfWidth = width / 2f
+		val halfHeight = height / 2f
+
+		val red = ColorHelper.Abgr.getRed(color)
+		val green = ColorHelper.Abgr.getGreen(color)
+		val blue = ColorHelper.Abgr.getBlue(color)
+		val alphaInt = (255 * alpha).toInt()
+
+		matrices.push()
+		matrices.translate(0f, halfHeight, 0f)
+
+		for (direction in Direction.values()) {
+			var vStart = minV
+			var depth = halfWidth
+			var y0 = -halfHeight
+			var y1 = halfHeight
+
+			if (direction.axis == Direction.Axis.Y) {
+				depth = halfHeight
+				y0 = -halfWidth
+				y1 = halfWidth
+				vStart = minV2
+			}
+
+			matrices.push()
+			matrices.multiply(DIR2ROT[direction])
+			matrices.translate(0f, 0f, -depth)
+			addQuad(consumer, matrices, -halfWidth, y0, halfWidth, y1, minU, vStart, maxU, maxV, red, green, blue, alphaInt, light)
+			matrices.pop()
+		}
+
+		matrices.pop()
+	}
+
+	private fun addQuad(consumer: VertexConsumer, matrices: MatrixStack, x0: Float, y0: Float, x1: Float, y1: Float, u0: Float, v0: Float, u1: Float, v1: Float, red: Int, green: Int, blue: Int, alpha: Int, light: Int) {
+		val normal = matrices.peek().normalMatrix.transform(Vector3f(0f, 0f, -1f))
+		val nx = normal.x
+		val ny = normal.y
+		val nz = normal.z
+		vertex(consumer, matrices, x0, y1, 0f, u0, v0, red, green, blue, alpha, light, nx, ny, nz)
+		vertex(consumer, matrices, x1, y1, 0f, u1, v0, red, green, blue, alpha, light, nx, ny, nz)
+		vertex(consumer, matrices, x1, y0, 0f, u1, v1, red, green, blue, alpha, light, nx, ny, nz)
+		vertex(consumer, matrices, x0, y0, 0f, u0, v1, red, green, blue, alpha, light, nx, ny, nz)
+	}
+
+	private fun vertex(consumer: VertexConsumer, matrices: MatrixStack, x: Float, y: Float, z: Float, u: Float, v: Float, red: Int, green: Int, blue: Int, alpha: Int, light: Int, nx: Float, ny: Float, nz: Float) {
+		consumer.vertex(matrices.peek().positionMatrix, x, y, z)
+			.color(red, green, blue, alpha)
+			.texture(u, v)
+			.overlay(0, 10)
+			.light(light)
+			.normal(nx, ny, nz)
+			.next()
 	}
 }
