@@ -3,8 +3,9 @@
 ## 1.6.0
 - added ability to use phials in wristpocket
 - added Squawk spell for fun - play mob sounds
+- added Confetti spell for fun - creates a bang and confetti particles
 - added ability for spell circles to use wristpocket by having a pedestal over the impetus
-- added ledgers - a strange clockwork item that records the last few patterns you've casted
+- added ledgers - a strange item that records the last 32 patterns you've casted
   - useful for debugging hexes in staves and casting devices
 - added pedestals to hold items
   - also pushes iota to spell circle stacks
@@ -20,8 +21,10 @@
 - added Construct spell - places a specific block type from your inventory with parameters for orientation and horizontal vector
 - added scrying pattern for moon phase
 - changed media jar
-  - crafting block now
-  - used to get new Wooleyed effect
+  - pretty shader
+  - custom recipe type to transmute with media
+  - bigger collision and model
+  - used to get new Wooleyed effect by drinking it
 - changed hex candles to not be extinguished by water
 - changed Greater Blink to not move feet to eyes
 - changed lamps deactivating to only be when they are picked up

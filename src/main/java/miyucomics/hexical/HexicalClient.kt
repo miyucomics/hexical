@@ -8,8 +8,8 @@ class HexicalClient : ClientModInitializer {
 		HexicalBlocks.clientInit()
 		HexicalEntities.clientInit()
 		HexicalEvents.clientInit()
+		HexicalKeybinds.clientInit()
 		HexicalItems.clientInit()
 		HexicalNetworking.clientInit()
-		HexicalKeybinds.init()
 	}
 }

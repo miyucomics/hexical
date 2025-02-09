@@ -16,7 +16,7 @@ object HexicalKeybinds {
 	private var states = mutableMapOf<String, Boolean>()
 
 	@JvmStatic
-	fun init() {
+	fun clientInit() {
 		KeyBindingHelper.registerKeyBinding(OPEN_HEXBOOK)
 		KeyBindingHelper.registerKeyBinding(EVOKE_KEYBIND)
 		KeyBindingHelper.registerKeyBinding(TELEPATHY_KEYBIND)
