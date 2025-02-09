@@ -6,6 +6,8 @@ import net.minecraft.registry.Registry
 import net.minecraft.sound.SoundEvent
 
 object HexicalSounds {
+	lateinit var AMETHYST_MELT: SoundEvent
+	lateinit var ITEM_DUNKS: SoundEvent
 	lateinit var EVOKING_MURMUR: SoundEvent
 	lateinit var EVOKING_CAST: SoundEvent
 	lateinit var LAMP_ACTIVATE: SoundEvent
@@ -17,6 +19,8 @@ object HexicalSounds {
 
 	@JvmStatic
 	fun init() {
+		AMETHYST_MELT = register("amethyst_melt")
+		ITEM_DUNKS = register("item_dunks")
 		EVOKING_MURMUR = register("evoking_murmur")
 		EVOKING_CAST = register("evoking_casts")
 		LAMP_ACTIVATE = register("lamp_activate")
