@@ -39,7 +39,7 @@ class MediaJarBlock : TransparentBlock(
 	override fun getRenderType(state: BlockState) = BlockRenderType.MODEL
 	override fun getAmbientOcclusionLightLevel(state: BlockState, world: BlockView, pos: BlockPos) = 1f
 	override fun getCameraCollisionShape(state: BlockState, world: BlockView, pos: BlockPos, context: ShapeContext): VoxelShape = VoxelShapes.empty()
-	override fun getOutlineShape(state: BlockState, view: BlockView, pos: BlockPos, context: ShapeContext): VoxelShape = VoxelShapes.cuboid(4.0 / 16, 0.0, 4.0 / 16, 12.0 / 16, 10.0 / 16, 12.0 / 16)
+	override fun getOutlineShape(state: BlockState, view: BlockView, pos: BlockPos, context: ShapeContext): VoxelShape = VoxelShapes.cuboid(3.0 / 16, 0.0, 3.0 / 16, 13.0 / 16, 14.0 / 16, 13.0 / 16)
 	override fun createBlockEntity(pos: BlockPos, state: BlockState) = MediaJarBlockEntity(pos, state)
 
 	override fun onUse(state: BlockState, world: World, pos: BlockPos, player: PlayerEntity, hand: Hand, hit: BlockHitResult): ActionResult {
@@ -75,7 +75,7 @@ class MediaJarBlock : TransparentBlock(
 	}
 
 	companion object {
-		const val MAX_CAPACITY = MediaConstants.CRYSTAL_UNIT * 128
+		const val MAX_CAPACITY = MediaConstants.CRYSTAL_UNIT * 64
 
 		private fun getRecipe(input: ItemStack, world: World): TransmutingRecipe? {
 			world.recipeManager.listAllOfType(HexicalRecipe.TRANSMUTING_RECIPE).forEach { recipe ->
