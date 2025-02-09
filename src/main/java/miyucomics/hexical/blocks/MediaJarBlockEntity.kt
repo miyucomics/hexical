@@ -25,9 +25,6 @@ class MediaJarBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 		this.media = media
 		markDirty()
 	}
-	fun addMedia(media: Long) {
-		setMedia(getMedia() + media)
-	}
 	fun withdrawMedia(media: Long): Boolean {
 		if (getMedia() >= media) {
 			setMedia(getMedia() - media)
