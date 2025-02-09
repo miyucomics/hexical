@@ -20,13 +20,17 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
 import net.minecraft.sound.SoundCategory
+import net.minecraft.sound.SoundEvents
 import net.minecraft.util.Identifier
+import net.minecraft.util.math.Vec3d
 
 object HexicalNetworking {
 	@JvmField
 	val TCHOTCHKE_CHANNEL: Identifier = HexicalMain.id("tchotchke")
 	val PRESSED_KEY_CHANNEL: Identifier = HexicalMain.id("press_key")
 	val RELEASED_KEY_CHANNEL: Identifier = HexicalMain.id("release_key")
+
+	val CONFETTI_CHANNEL: Identifier = HexicalMain.id("confetti")
 
 	val START_EVOKE_CHANNEL: Identifier = HexicalMain.id("start_evoking")
 	val END_EVOKING_CHANNEL: Identifier = HexicalMain.id("end_evoking")
@@ -91,6 +95,23 @@ object HexicalNetworking {
 	@JvmStatic
 	fun clientInit() {
 		ClientPlayNetworking.registerGlobalReceiver(LEDGER_CHANNEL) { _, _, packet, _ -> ClientStorage.ledger = LedgerData.createFromNbt(packet.readNbt()!!) }
+
+		ClientPlayNetworking.registerGlobalReceiver(CONFETTI_CHANNEL) { client, _, packet, _ ->
+			val pos = Vec3d(packet.readDouble(), packet.readDouble(), packet.readDouble())
+			val dir = Vec3d(packet.readDouble(), packet.readDouble(), packet.readDouble())
+			val speed = packet.readDouble()
+			client.execute {
+				client.world!!.playSound(pos.x, pos.y, pos.z, SoundEvents.ENTITY_FIREWORK_ROCKET_BLAST, SoundCategory.MASTER, 1f, 1f, true)
+				for (i in 0..74) {
+					val alteredVelocity = if (dir == Vec3d.ZERO) {
+						Vec3d.fromPolar(HexicalMain.RANDOM.nextFloat() * 180f - 90f, HexicalMain.RANDOM.nextFloat() * 360f).multiply(speed)
+					} else {
+						dir.addRandom(HexicalMain.RANDOM, 1f).multiply((HexicalMain.RANDOM.nextFloat() * 0.25 + 0.75) * speed)
+					}
+					client.world!!.addParticle(HexicalParticles.CONFETTI_PARTICLE, pos.x, pos.y, pos.z, alteredVelocity.x, alteredVelocity.y, alteredVelocity.z)
+				}
+			}
+		}
 
 		ClientPlayNetworking.registerGlobalReceiver(SHADER_CHANNEL) { client, _, packet, _ ->
 			val shader = packet.readString()
