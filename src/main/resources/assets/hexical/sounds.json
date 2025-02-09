@@ -1,4 +1,17 @@
 {
+	"amethyst_melt": {
+		"subtitle": "subtitles.hexical.amethyst_melt",
+		"sounds": ["liquid/lavapop"]
+	},
+	"item_dunks": {
+		"subtitle": "subtitles.hexical.item_dunks",
+		"sounds": [
+			"item/bottle/fill1",
+			"item/bottle/fill2",
+			"item/bottle/fill3",
+			"item/bottle/fill4"
+		]
+	},
 	"lamp_activate": {
 		"subtitle": "subtitles.hexical.lamp_activate",
 		"sounds": ["hexical:lamp_activate"]
