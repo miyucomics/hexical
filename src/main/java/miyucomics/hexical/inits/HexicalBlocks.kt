@@ -1,15 +1,24 @@
 package miyucomics.hexical.inits
 
+import at.petrak.hexcasting.api.client.ScryingLensOverlayRegistry
+import com.mojang.datafixers.util.Pair
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.blocks.*
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap
 import net.minecraft.block.AbstractBlock.Settings
 import net.minecraft.block.Block
+import net.minecraft.block.BlockState
 import net.minecraft.block.Blocks
 import net.minecraft.block.entity.BlockEntityType
 import net.minecraft.client.render.RenderLayer
+import net.minecraft.entity.player.PlayerEntity
+import net.minecraft.item.ItemStack
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
+import net.minecraft.text.Text
+import net.minecraft.util.math.BlockPos
+import net.minecraft.util.math.Direction
+import net.minecraft.world.World
 
 object HexicalBlocks {
 	val HEX_CANDLE_BLOCK: HexCandleBlock = HexCandleBlock()
@@ -47,5 +56,8 @@ object HexicalBlocks {
 	@JvmStatic
 	fun clientInit() {
 		BlockRenderLayerMap.INSTANCE.putBlock(MEDIA_JAR_BLOCK, RenderLayer.getCutout())
+		ScryingLensOverlayRegistry.addDisplayer(MEDIA_JAR_BLOCK) { lines: MutableList<Pair<ItemStack, Text>>, _: BlockState, pos: BlockPos, _: PlayerEntity, world: World, _: Direction ->
+			(world.getBlockEntity(pos) as MediaJarBlockEntity).scryingLensOverlay(lines)
+		}
 	}
 }
