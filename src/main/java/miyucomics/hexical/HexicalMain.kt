@@ -3,7 +3,7 @@ package miyucomics.hexical
 import miyucomics.hexical.inits.*
 import net.fabricmc.api.ModInitializer
 import net.minecraft.util.Identifier
-import java.util.*
+import net.minecraft.util.math.random.Random
 
 class HexicalMain : ModInitializer {
 	override fun onInitialize() {
@@ -16,6 +16,7 @@ class HexicalMain : ModInitializer {
 		HexicalEvents.init()
 		HexicalIota.init()
 		HexicalItems.init()
+		HexicalParticles.init()
 		HexicalRecipe.init()
 		HexicalSounds.init()
 		HexicalNetworking.serverInit()
@@ -25,7 +26,7 @@ class HexicalMain : ModInitializer {
 		const val MOD_ID: String = "hexical"
 
 		@JvmField
-		val RANDOM: Random = Random()
+		val RANDOM: Random = Random.create()
 		const val EVOKE_DURATION: Int = 20
 
 		@JvmStatic
