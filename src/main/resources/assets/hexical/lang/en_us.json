@@ -51,6 +51,8 @@
 	"item.hexical.lightning_rod_staff": "Lightning Rod Staff",
 	"item.hexical.tchotchke": "Tchotchke",
 	"itemGroup.hexical.general": "Hexical",
+	"subtitles.hexical.amethyst_melt": "Amethyst melts",
+	"subtitles.hexical.item_dunks": "Item submerges",
 	"subtitles.hexical.evoking_murmur": "Player chants",
 	"subtitles.hexical.evoking_casts": "Player casts",
 	"subtitles.hexical.lamp_activate": "Lamp activates",

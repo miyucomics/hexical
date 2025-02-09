@@ -1,0 +1,8 @@
+{
+	"type": "hexical:transmuting",
+	"input": {
+		"item": "minecraft:copper_ingot"
+	},
+	"output": "minecraft:gold_ingot",
+	"cost": 50000
+}
