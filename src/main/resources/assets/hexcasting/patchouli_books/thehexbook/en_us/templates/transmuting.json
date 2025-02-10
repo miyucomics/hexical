@@ -1,0 +1,49 @@
+{
+	"processor": "miyucomics.hexical.recipe.TransmutingPatchouli",
+	"components": [
+		{
+			"type": "patchouli:image",
+			"image": "hexical:textures/gui/transmuting.png",
+			"width": 128,
+			"y": 4,
+			"height": 128,
+			"texture_width": 128,
+			"texture_height": 128
+		},
+		{
+			"type": "patchouli:header",
+			"text": "#header",
+			"x": -1,
+			"y": -1
+		},
+		{
+			"type": "patchouli:item",
+			"x": 9,
+			"y": 36,
+			"item": "#input"
+		},
+		{
+			"type": "patchouli:item",
+			"x": 96,
+			"y": 36,
+			"item": "#output0",
+			"link_recipe": true
+		},
+		{
+			"type": "patchouli:item",
+			"item": "hexcasting:amethyst_dust",
+			"y": 78
+		},
+		{
+			"type": "patchouli:text",
+			"text": "#cost",
+			"x": 20,
+			"y": 83
+		},
+		{
+			"type": "patchouli:text",
+			"text": "#text",
+			"y": 96
+		}
+	]
+}
