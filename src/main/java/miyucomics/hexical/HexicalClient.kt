@@ -11,5 +11,6 @@ class HexicalClient : ClientModInitializer {
 		HexicalKeybinds.clientInit()
 		HexicalItems.clientInit()
 		HexicalNetworking.clientInit()
+		HexicalParticles.clientInit()
 	}
 }
