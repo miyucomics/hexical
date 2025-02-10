@@ -33,9 +33,9 @@ class OpGreaterBlink : SpellAction {
 			.add(straightAxis.multiply(providedOffset.z))
 
 		val destination = caster.pos.add(worldOffset)
-		if (worldOffset.length() > 128)
+		if (worldOffset.length() > 64)
 			throw MishapBadLocation(destination)
-		return SpellAction.Result(Spell(destination), MediaConstants.DUST_UNIT * 2, listOf(ParticleSpray.cloud(destination, 1.0)))
+		return SpellAction.Result(Spell(destination), MediaConstants.DUST_UNIT, listOf(ParticleSpray.cloud(destination, 1.0)))
 	}
 
 	private data class Spell(val position: Vec3d) : RenderedSpell {
