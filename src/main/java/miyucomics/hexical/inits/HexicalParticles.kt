@@ -12,7 +12,7 @@ object HexicalParticles {
 	lateinit var CONFETTI_PARTICLE: DefaultParticleType
 
 	@JvmStatic
-	fun init() {
+	fun clientInit() {
 		CONFETTI_PARTICLE = Registry.register(Registries.PARTICLE_TYPE, HexicalMain.id("confetti"), FabricParticleTypes.simple(true))
 		ParticleFactoryRegistry.getInstance().register(CONFETTI_PARTICLE) { sprite -> ConfettiParticle.Factory(sprite) }
 	}
