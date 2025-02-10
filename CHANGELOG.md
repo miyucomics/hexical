@@ -1,6 +1,8 @@
 # Changelog
 
-## 1.6.0
+## 2.0.0
+- major version bump due to various breaking changes
+  - Greater Blink cost, distance, and effect difference
 - added ability to use phials in wristpocket
 - added Squawk spell for fun - play mob sounds
 - added Confetti spell for fun - creates a bang and confetti particles

@@ -53,15 +53,15 @@ public abstract class CastingVMMixin {
 		cir.setReturnValue(vm.queueExecuteAndWrapIotas(CollectionsKt.toList(((ListIota) deserialized).getList()), world));
 	}
 
-	@Inject(method = "queueExecuteAndWrapIotas", at = @At(value = "INVOKE", target = "Lat/petrak/hexcasting/api/casting/eval/CastingEnvironment;postExecution(Lat/petrak/hexcasting/api/casting/eval/CastResult;)V"))
-	void captureStackAfterMishap(List<? extends Iota> iotas, ServerWorld world, CallbackInfoReturnable<ExecutionClientView> cir) {
-		CastingVM vm = (CastingVM) (Object) this;
-		CastingEnvironment env = vm.getEnv();
-		if (!(env instanceof PlayerBasedCastEnv))
-			return;
-		assert env.getCastingEntity() != null;
-		PersistentStateHandler.getLedger((ServerPlayerEntity) env.getCastingEntity()).saveStack(vm.getImage().component1());
-	}
+//	@Inject(method = "queueExecuteAndWrapIotas", at = @At(value = "INVOKE", target = "Lat/petrak/hexcasting/api/casting/eval/CastingEnvironment;postExecution(Lat/petrak/hexcasting/api/casting/eval/CastResult;)V"))
+//	void captureStackAfterMishap(List<? extends Iota> iotas, ServerWorld world, CallbackInfoReturnable<ExecutionClientView> cir) {
+//		CastingVM vm = (CastingVM) (Object) this;
+//		CastingEnvironment env = vm.getEnv();
+//		if (!(env instanceof PlayerBasedCastEnv))
+//			return;
+//		assert env.getCastingEntity() != null;
+//		PersistentStateHandler.getLedger((ServerPlayerEntity) env.getCastingEntity()).saveStack(vm.getImage().component1());
+//	}
 
 	@Unique
 	private ItemStack getGrimoire(ServerPlayerEntity player, HexPattern pattern) {
