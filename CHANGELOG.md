@@ -3,6 +3,7 @@
 ## 2.0.0
 - major version bump due to various breaking changes
   - Greater Blink cost, distance, and effect difference
+  - migrated patterns out
 - added ability to use phials in wristpocket
 - added Squawk spell for fun - play mob sounds
 - added Confetti spell for fun - creates a bang and confetti particles
