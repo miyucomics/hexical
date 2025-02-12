@@ -1,0 +1,45 @@
+{% import "macros/textures.html.jinja" as texture_macros with context -%}
+
+  <details class="details-collapsible transmuting-recipe-details">
+    <summary class="collapse-details">
+      <span class="collapse-recipe-show">{{ _('hexdoc.recipe.show') }}</span>
+      <span class="collapse-recipe-hide">{{ _('hexdoc.recipe.hide') }}</span>
+    </summary>
+    <div>
+      <h5>{{ page.recipe.result.name }}</h5>
+      <div class="transmuting-recipe">
+        <img
+          class="pixelated"
+          alt="Transmuting GUI"
+          src="{{ 'hexical:textures/gui/transmuting.png'|hexdoc_texture }}"
+        >
+
+        {% for item in page.recipe.ingredients %}
+          {% if item.ingredient is defined %}
+            <div class="transmuting-recipe-ingredient transmuting-recipe-ingredient-{{loop.index}}">
+              {{ texture_macros.render_item(item.ingredient.item, count=item.count) }}
+            </div>
+          {% else %}
+            <div class="transmuting-recipe-ingredient transmuting-recipe-ingredient-{{loop.index}}">
+              {{ texture_macros.render_item(item.item) }}
+            </div>
+          {% endif %}
+        {% endfor %}
+
+        <div class="transmuting-recipe-result">
+          {{ texture_macros.render_item(page.recipe.result) }}
+        </div>
+
+        <div class="transmuting-recipe-media-cost">
+          {# {{ texture_macros.render_texture("hexcasting:textures/item/amethyst_dust.png"|hexdoc_texture) }} #}
+          <img
+            class="transmuting-recipe-media-cost-icon pixelated"
+            alt="{{ _('item.hexcasting.amethyst_dust') }}"
+            src="{{ 'hexcasting:textures/item/amethyst_dust.png'|hexdoc_texture }}"
+            style="width: 16px; height:16px"
+          >
+          {{ _("hexical.hexdoc.transmuting_media_cost") % (page.recipe.mediaCost / 1000)}}
+        </div>
+      </div>
+    </div>
+  </details>

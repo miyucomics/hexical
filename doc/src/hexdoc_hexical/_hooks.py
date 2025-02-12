@@ -1,6 +1,9 @@
 from importlib.resources import Package
 from typing_extensions import override
 
+from .book.page import pages
+from .book import hexical_recipe
+
 from hexdoc.plugin import (
     HookReturn,
     ModPlugin,
@@ -20,6 +23,11 @@ class HexicalPlugin(ModPluginImpl):
     @hookimpl
     def hexdoc_mod_plugin(branch: str) -> ModPlugin:
         return HexicalModPlugin(branch=branch)
+
+    @staticmethod
+    @hookimpl
+    def hexdoc_load_tagged_unions() -> HookReturn[Package]:
+        return [hexical_recipe, pages]
 
 
 class HexicalModPlugin(ModPluginWithBook):
