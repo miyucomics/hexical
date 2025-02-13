@@ -2,6 +2,4 @@ __all__ = [
     "TransmutingPage"
 ]
 
-from .pages import (
-    TransmutingPage
-)
+from .pages import TransmutingPage
