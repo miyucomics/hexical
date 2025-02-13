@@ -20,13 +20,13 @@
 		{
 			"type": "hexcasting:transmuting",
 			"recipe": "hexical:transmuting/thoughtknot",
-			"header": "hexical.page.thoughtknot.header",
+			"title": "hexical.page.thoughtknot.header",
 			"text": "hexical.page.thoughtknot.text"
 		},
 		{
 			"type": "hexcasting:transmuting",
 			"recipe": "hexical:transmuting/alchemists_take_this",
-			"header": "hexical.page.alchemists_take_this.header",
+			"title": "hexical.page.alchemists_take_this.header",
 			"text": "hexical.page.alchemists_take_this.text"
 		}
 	]
