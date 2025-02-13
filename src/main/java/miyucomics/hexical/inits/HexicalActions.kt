@@ -207,6 +207,7 @@ object HexicalActions {
 		register("autograph", "wwqqqqq", HexDir.NORTH_EAST, OpAutograph())
 		register("conjure_hexburst", "aadaadqaq", HexDir.EAST, OpConjureHexburst())
 		register("conjure_hextito", "qaqdqaqdwawaw", HexDir.EAST, OpConjureHextito())
+		register("snowball", "ddeeeeewd", HexDir.NORTH_EAST, OpSnowball())
 		register("ghast_fireball", "wqqqqqwaeaeaeaeae", HexDir.SOUTH_EAST, OpGhastFireball())
 		register("llama_spit", "dwqaqw", HexDir.EAST, OpLlamaSpit())
 		register("gasp", "aweeeeewaweeeee", HexDir.NORTH_WEST, OpGasp())

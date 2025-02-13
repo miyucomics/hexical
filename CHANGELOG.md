@@ -4,6 +4,7 @@
 - major version bump due to various breaking changes
   - Greater Blink cost, distance, and effect difference
   - migrated patterns out
+- added Snowball spell for fun - works just like ghast fireball
 - added ability to use phials in wristpocket
 - added Squawk spell for fun - play mob sounds
 - added Confetti spell for fun - creates a bang and confetti particles
@@ -37,6 +38,7 @@
 - fixed lack of cost in Mage Hand documentation
 - fixed bug where Castor's and Pollux's would not pop the iota off
 - fixed bug where Calligrapher's and Chirographer's Purifications were swapped
+- fixed translation error where Ghast Fireball was not documented as pushing an entity
 - optimized Greater Blink to not load chunks in between
 - migrated metaeval patterns and soroban to Overevaluate, a new addon
 - fixed bug where wristpocket does not cancel the interaction when interacting with a block
