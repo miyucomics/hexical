@@ -124,8 +124,8 @@ object HexicalActions {
 
 		register("garbage", "aqawde", HexDir.EAST, Action.makeConstantOp(GarbageIota()))
 
-		register("deserialize_pattern", "wqqqaqwd", HexDir.EAST, OpDeserializePattern())
 		register("serialize_pattern", "wqaedeqd", HexDir.EAST, OpSerializePattern())
+		register("deserialize_pattern", "wqqqaqwd", HexDir.EAST, OpDeserializePattern())
 		register("congruent", "aaqd", HexDir.EAST, OpCongruentPattern())
 		register("draw_pattern", "eadqqqa", HexDir.NORTH_EAST, OpDrawPattern())
 		register("shuffle_pattern", "aqqqdae", HexDir.NORTH_EAST, OpShufflePattern())
