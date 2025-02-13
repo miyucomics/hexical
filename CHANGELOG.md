@@ -36,6 +36,7 @@
 - fixed bug where Chromatic Purification breaks for vectors
 - fixed lack of cost in Mage Hand documentation
 - fixed bug where Castor's and Pollux's would not pop the iota off
+- fixed bug where Calligrapher's and Chirographer's Purifications were swapped
 - optimized Greater Blink to not load chunks in between
 - migrated metaeval patterns and soroban to Overevaluate, a new addon
 - fixed bug where wristpocket does not cancel the interaction when interacting with a block
