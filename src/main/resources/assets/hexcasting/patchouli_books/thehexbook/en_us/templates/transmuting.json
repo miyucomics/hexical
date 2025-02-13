@@ -12,7 +12,7 @@
 		},
 		{
 			"type": "patchouli:header",
-			"text": "#header",
+			"text": "#title",
 			"x": -1,
 			"y": -1
 		},

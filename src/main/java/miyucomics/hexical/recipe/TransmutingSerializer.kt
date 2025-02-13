@@ -18,16 +18,12 @@ class TransmutingSerializer() : RecipeSerializer<TransmutingRecipe> {
 		if (recipeJson.input == null || recipeJson.output == null)
 			throw JsonSyntaxException("Input or output is missing in recipe $recipeId")
 
-		var inputCount = 1
-		if (recipeJson.input!!.has("count"))
-			inputCount = recipeJson.input!!.get("count").asInt
-
 		val outputs = when (val output = recipeJson.output!!) {
 			is JsonArray -> output.map { deriveSingleItem(it, recipeId) }
 			else -> listOf(deriveSingleItem(output, recipeId))
 		}
 
-		return TransmutingRecipe(recipeId, Ingredient.fromJson(recipeJson.input), inputCount, recipeJson.cost, outputs)
+		return TransmutingRecipe(recipeId, Ingredient.fromJson(recipeJson.input), recipeJson.count, recipeJson.cost, outputs)
 	}
 
 	override fun write(buf: PacketByteBuf, recipe: TransmutingRecipe) {
