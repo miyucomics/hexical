@@ -10,7 +10,6 @@ import at.petrak.hexcasting.api.misc.MediaConstants
 import miyucomics.hexical.inits.HexicalNetworking
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
-import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.math.Vec3d
 
 class OpConfetti : SpellAction {
@@ -33,7 +32,7 @@ class OpConfetti : SpellAction {
 			packet.writeDouble(dir.y)
 			packet.writeDouble(dir.z)
 			packet.writeDouble(speed)
-			ServerPlayNetworking.send(env.castingEntity as ServerPlayerEntity, HexicalNetworking.CONFETTI_CHANNEL, packet)
+			env.world.players.forEach { player -> env.world.sendToPlayerIfNearby(player, false, pos.x, pos.y, pos.z, ServerPlayNetworking.createS2CPacket(HexicalNetworking.CONFETTI_CHANNEL, packet)) }
 		}
 	}
 }
