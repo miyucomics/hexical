@@ -20,14 +20,20 @@
 		{
 			"type": "hexcasting:transmuting",
 			"recipe": "hexical:transmuting/thoughtknot",
-			"title": "hexical.page.thoughtknot.header",
-			"text": "hexical.page.thoughtknot.text"
+			"title": "hexical.recipe.thoughtknot.header",
+			"text": "hexical.recipe.thoughtknot.text"
 		},
 		{
 			"type": "hexcasting:transmuting",
 			"recipe": "hexical:transmuting/alchemists_take_this",
-			"title": "hexical.page.alchemists_take_this.header",
-			"text": "hexical.page.alchemists_take_this.text"
+			"title": "hexical.recipe.alchemists_take_this.header",
+			"text": "hexical.recipe.alchemists_take_this.text"
+		},
+		{
+			"type": "hexcasting:transmuting",
+			"recipe": "hexical:transmuting/cry_obsidian",
+			"title": "hexical.recipe.cry_obsidian.header",
+			"text": "hexical.recipe.cry_obsidian.text"
 		}
 	]
 }

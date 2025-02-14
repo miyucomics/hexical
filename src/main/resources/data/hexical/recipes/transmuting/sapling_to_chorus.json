@@ -1,8 +1,0 @@
-{
-	"type": "hexical:transmuting",
-	"input": {
-		"tag": "minecraft:saplings"
-	},
-	"output": "minecraft:chorus_flower",
-	"cost": 50000
-}
