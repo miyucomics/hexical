@@ -33,7 +33,7 @@ object HexicalKeybinds {
 				}
 			}
 
-			for (key in listOf(client.options.forwardKey, client.options.leftKey, client.options.rightKey, client.options.backKey, client.options.jumpKey, client.options.sneakKey, TELEPATHY_KEYBIND, EVOKE_KEYBIND)) {
+			for (key in listOf(client.options.forwardKey, client.options.leftKey, client.options.rightKey, client.options.backKey, client.options.jumpKey, client.options.sneakKey, client.options.useKey, client.options.attackKey, TELEPATHY_KEYBIND, EVOKE_KEYBIND)) {
 				if (states.keys.contains(key.translationKey)) {
 					if (states[key.translationKey] == true && !key.isPressed) {
 						val buf = PacketByteBufs.create()

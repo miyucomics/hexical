@@ -87,6 +87,6 @@ class TransmutingSerializer() : RecipeSerializer<TransmutingRecipe> {
 class TransmutingFormat {
 	var input: JsonObject? = null
 	var output: JsonElement? = null
-	var count: Int = 0
+	var count: Int = 1
 	var cost: Long = 0
 }

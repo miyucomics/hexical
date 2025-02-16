@@ -40,7 +40,7 @@ class OpGreaterBlink : SpellAction {
 
 	private data class Spell(val position: Vec3d) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			env.castingEntity!!.setPosition(position)
+			env.castingEntity!!.requestTeleport(position.x, position.y, position.z)
 		}
 	}
 }

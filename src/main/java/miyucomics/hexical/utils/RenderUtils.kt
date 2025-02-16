@@ -113,7 +113,7 @@ object RenderUtils {
 		}
 	}
 
-	fun addRect(consumer: VertexConsumer, matrices: MatrixStack, minU: Float, minV: Float, maxU: Float, maxV: Float, width: Float, height: Float, light: Int, color: Int, alpha: Float) {
+	fun addRectangularPrism(consumer: VertexConsumer, matrices: MatrixStack, minU: Float, minV: Float, maxU: Float, maxV: Float, width: Float, height: Float, light: Int, color: Int, alpha: Float) {
 		val minV2 = maxV - width
 		val halfWidth = width / 2f
 		val halfHeight = height / 2f
