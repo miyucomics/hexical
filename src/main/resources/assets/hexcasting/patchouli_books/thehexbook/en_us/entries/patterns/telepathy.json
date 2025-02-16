@@ -51,6 +51,22 @@
 		},
 		{
 			"type": "hexcasting:pattern",
+			"op_id": "hexical:left_click",
+			"anchor": "hexical:left_click",
+			"input": "",
+			"output": "number",
+			"text": "hexical.page.left_click.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:right_click",
+			"anchor": "hexical:right_click",
+			"input": "",
+			"output": "number",
+			"text": "hexical.page.right_click.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
 			"op_id": "hexical:moving_up",
 			"anchor": "hexical:moving_up",
 			"input": "",

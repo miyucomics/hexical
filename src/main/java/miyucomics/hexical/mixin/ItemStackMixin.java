@@ -1,7 +1,9 @@
 package miyucomics.hexical.mixin;
 
+import at.petrak.hexcasting.api.misc.MediaConstants;
 import at.petrak.hexcasting.api.pigment.FrozenPigment;
 import miyucomics.hexical.client.ClientStorage;
+import miyucomics.hexical.inits.HexicalItems;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -11,19 +13,29 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.math.Vec3d;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 @Mixin(ItemStack.class)
 public class ItemStackMixin {
+	@Unique
+	private final DecimalFormat format = new DecimalFormat("###,###.##");
+
 	@Inject(method = "getTooltip(Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/client/item/TooltipContext;)Ljava/util/List;", at = @At("RETURN"))
 	public void addAutograph(PlayerEntity player, TooltipContext context, CallbackInfoReturnable<List<Text>> cir) {
-		NbtCompound nbt = ((ItemStack) (Object) this).getNbt();
+		ItemStack stack = ((ItemStack) (Object) this);
+		NbtCompound nbt = stack.getNbt();
 		if (nbt == null)
 			return;
+
+		if (stack.isOf(HexicalItems.MEDIA_JAR_ITEM))
+			cir.getReturnValue().add(Text.translatable("hexcasting.tooltip.media", format.format(((float) nbt.getCompound("BlockEntityTag").getLong("media")) / ((float) MediaConstants.DUST_UNIT))));
+
 		if (!nbt.contains("autographs"))
 			return;
 		
