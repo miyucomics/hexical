@@ -9,7 +9,7 @@ import net.minecraft.registry.DynamicRegistryManager
 import net.minecraft.util.Identifier
 import net.minecraft.world.World
 
-class TransmutingRecipe(private val id: Identifier, val input: Ingredient, val inputCount: Int, val cost: Long, val output: List<ItemStack>) : Recipe<Inventory> {
+class TransmutingRecipe(private val id: Identifier, val input: Ingredient, val cost: Long, val output: List<ItemStack>) : Recipe<Inventory> {
 	override fun getId() = this.id
 	override fun getType() = Type.INSTANCE
 	override fun fits(width: Int, height: Int) = false

@@ -2,7 +2,6 @@ package miyucomics.hexical.blocks
 
 import miyucomics.hexical.HexicalClient
 import miyucomics.hexical.utils.RenderUtils.addRectangularPrism
-import net.minecraft.client.render.RenderLayer
 import net.minecraft.client.render.VertexConsumerProvider
 import net.minecraft.client.render.block.entity.BlockEntityRenderer
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory
