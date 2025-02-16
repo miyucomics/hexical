@@ -7,3 +7,5 @@ accessible field net/minecraft/entity/passive/PufferfishEntity deflateTicks I
 accessible field net/minecraft/entity/passive/PufferfishEntity inflateTicks I
 accessible method net/minecraft/entity/passive/SquidEntity squirt ()V
 accessible class net/minecraft/client/gui/hud/InGameHud$HeartType
+accessible class net/minecraft/client/render/RenderLayer$MultiPhaseParameters
+accessible class net/minecraft/client/render/RenderPhase$Textures

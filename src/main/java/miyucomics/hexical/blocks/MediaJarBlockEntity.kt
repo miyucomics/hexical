@@ -25,6 +25,15 @@ class MediaJarBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 		this.media = media
 		markDirty()
 	}
+	fun insertMedia(media: Long): Long {
+		if (this.media + media > MediaJarBlock.MAX_CAPACITY) {
+			val currentMedia = this.media
+			setMedia(MediaJarBlock.MAX_CAPACITY)
+			return MediaJarBlock.MAX_CAPACITY - currentMedia
+		}
+		setMedia(this.media + media)
+		return media
+	}
 	fun withdrawMedia(media: Long): Boolean {
 		if (getMedia() >= media) {
 			setMedia(getMedia() - media)
