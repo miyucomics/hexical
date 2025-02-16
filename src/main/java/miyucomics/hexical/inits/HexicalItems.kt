@@ -50,7 +50,8 @@ object HexicalItems {
 	private val GAUNTLET_STAFF = ItemStaff(Settings().maxCount(1))
 	private val LIGHTNING_ROD_STAFF = ItemStaff(Settings().maxCount(1))
 
-	private val MEDIA_JAR_ITEM = BlockItem(HexicalBlocks.MEDIA_JAR_BLOCK, Settings())
+	@JvmField
+	val MEDIA_JAR_ITEM = BlockItem(HexicalBlocks.MEDIA_JAR_BLOCK, Settings().maxCount(1))
 	private val HEX_CANDLE_ITEM = BlockItem(HexicalBlocks.HEX_CANDLE_BLOCK, Settings())
 	private val PEDESTAL_ITEM = BlockItem(HexicalBlocks.PEDESTAL_BLOCK, Settings())
 	private val SENTINEL_BED_ITEM = BlockItem(HexicalBlocks.SENTINEL_BED_BLOCK, Settings())

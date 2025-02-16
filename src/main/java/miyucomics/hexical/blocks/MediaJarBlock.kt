@@ -2,13 +2,17 @@ package miyucomics.hexical.blocks
 
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.utils.isMediaItem
+import at.petrak.hexcasting.interop.patchouli.PatchouliUtils.getRecipe
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.inits.HexicalEffects
+import miyucomics.hexical.inits.HexicalItems
 import miyucomics.hexical.inits.HexicalRecipe
 import miyucomics.hexical.inits.HexicalSounds
 import miyucomics.hexical.recipe.TransmutingRecipe
 import miyucomics.hexical.utils.CastingUtils
 import net.minecraft.block.*
+import net.minecraft.block.entity.ShulkerBoxBlockEntity
+import net.minecraft.entity.ItemEntity
 import net.minecraft.entity.effect.StatusEffectInstance
 import net.minecraft.entity.effect.StatusEffects
 import net.minecraft.entity.player.PlayerEntity
@@ -42,15 +46,28 @@ class MediaJarBlock : TransparentBlock(
 	override fun getOutlineShape(state: BlockState, view: BlockView, pos: BlockPos, context: ShapeContext): VoxelShape = VoxelShapes.cuboid(3.0 / 16, 0.0, 3.0 / 16, 13.0 / 16, 14.0 / 16, 13.0 / 16)
 	override fun createBlockEntity(pos: BlockPos, state: BlockState) = MediaJarBlockEntity(pos, state)
 
+	override fun onBreak(world: World, blockPos: BlockPos, blockState: BlockState?, playerEntity: PlayerEntity) {
+		val blockEntity = world.getBlockEntity(blockPos)
+		if (blockEntity is MediaJarBlockEntity) {
+			val itemStack = ItemStack(HexicalItems.MEDIA_JAR_ITEM)
+			blockEntity.setStackNbt(itemStack)
+			val item = ItemEntity(world, blockPos.x.toDouble() + 0.5, blockPos.y.toDouble() + 0.5, blockPos.z.toDouble() + 0.5, itemStack)
+			item.setToDefaultPickupDelay()
+			world.spawnEntity(item)
+		}
+
+		super.onBreak(world, blockPos, blockState, playerEntity)
+	}
+
 	override fun onUse(state: BlockState, world: World, pos: BlockPos, player: PlayerEntity, hand: Hand, hit: BlockHitResult): ActionResult {
 		val jarData = world.getBlockEntity(pos) as MediaJarBlockEntity
 		val stack = player.getStackInHand(hand)
 		player.swingHand(hand)
 
 		if (isMediaItem(stack) && jarData.getMedia() < MAX_CAPACITY) {
-			val mediaHolder = IXplatAbstractions.INSTANCE.findMediaHolder(stack.split(1))!!
-			jarData.setMedia(min(jarData.getMedia() + mediaHolder.media, MAX_CAPACITY))
-			mediaHolder.withdrawMedia(mediaHolder.media, false)
+			val mediaHolder = IXplatAbstractions.INSTANCE.findMediaHolder(stack)!!
+			val consumed = jarData.insertMedia(media = mediaHolder.media)
+			mediaHolder.withdrawMedia(consumed, false)
 			world.playSoundFromEntity(null, player, HexicalSounds.AMETHYST_MELT, SoundCategory.BLOCKS, 1f, 1f)
 			return ActionResult.SUCCESS
 		}
@@ -66,7 +83,7 @@ class MediaJarBlock : TransparentBlock(
 		if (!stack.isEmpty)
 			return ActionResult.FAIL
 
-		if (jarData.withdrawMedia(MediaConstants.CRYSTAL_UNIT)) {
+		if (player.isSneaking && jarData.withdrawMedia(MediaConstants.CRYSTAL_UNIT)) {
 			world.playSoundFromEntity(null, player, HexicalSounds.PLAYER_SLURP, SoundCategory.PLAYERS, 1f, 1f)
 			if (world.isClient)
 				return ActionResult.SUCCESS
