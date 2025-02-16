@@ -3,6 +3,7 @@ package miyucomics.hexical.recipe
 import at.petrak.hexcasting.common.items.magic.ItemMediaHolder
 import net.minecraft.client.MinecraftClient
 import net.minecraft.item.ItemStack
+import net.minecraft.text.MutableText
 import net.minecraft.text.Style
 import net.minecraft.text.Text
 import net.minecraft.util.Identifier
@@ -36,9 +37,17 @@ class TransmutingPatchouli : IComponentProcessor {
 
 		return when (key) {
 			"input" -> IVariable.from(recipe.input)
-			"inputCount" -> IVariable.from(recipe.inputCount)
-			"cost" -> IVariable.from(Text.translatable("hexical.recipe.transmute.media_cost", recipe.cost.toFloat() / 10000f).setStyle(Style.EMPTY.withColor(ItemMediaHolder.HEX_COLOR)))
+			"cost" -> IVariable.from(costText(recipe.cost).setStyle(Style.EMPTY.withColor(ItemMediaHolder.HEX_COLOR)))
 			else -> null
 		}
 	}
+}
+
+fun costText(media: Long): MutableText {
+	val loss = media.toFloat() / 10000f
+	if (loss > 0f)
+		return Text.translatable("hexical.recipe.transmute.media_cost", loss)
+	if (loss < 0f)
+		return Text.translatable("hexical.recipe.transmute.media_yield", -loss)
+	return Text.translatable("hexical.recipe.transmute.media_free")
 }
