@@ -15,20 +15,21 @@ import net.minecraft.util.Identifier
 class TransmutingSerializer() : RecipeSerializer<TransmutingRecipe> {
 	override fun read(recipeId: Identifier, json: JsonObject): TransmutingRecipe {
 		val recipeJson: TransmutingFormat = Gson().fromJson(json, TransmutingFormat::class.java)
-		if (recipeJson.input == null || recipeJson.output == null)
-			throw JsonSyntaxException("Input or output is missing in recipe $recipeId")
+		if (recipeJson.input == null)
+			throw JsonSyntaxException("Input is missing in recipe $recipeId")
+		if (recipeJson.output == null)
+			throw JsonSyntaxException("Output is missing in recipe $recipeId")
 
 		val outputs = when (val output = recipeJson.output!!) {
 			is JsonArray -> output.map { deriveSingleItem(it, recipeId) }
 			else -> listOf(deriveSingleItem(output, recipeId))
 		}
 
-		return TransmutingRecipe(recipeId, Ingredient.fromJson(recipeJson.input), recipeJson.count, recipeJson.cost, outputs)
+		return TransmutingRecipe(recipeId, Ingredient.fromJson(recipeJson.input), recipeJson.cost, outputs)
 	}
 
 	override fun write(buf: PacketByteBuf, recipe: TransmutingRecipe) {
 		recipe.input.write(buf)
-		buf.writeInt(recipe.inputCount)
 		buf.writeLong(recipe.cost)
 		buf.writeInt(recipe.output.size)
 		for (item in recipe.output)
@@ -37,7 +38,6 @@ class TransmutingSerializer() : RecipeSerializer<TransmutingRecipe> {
 
 	override fun read(id: Identifier, buf: PacketByteBuf): TransmutingRecipe {
 		val input = Ingredient.fromPacket(buf)
-		val inputCount = buf.readInt()
 		val mediaCost = buf.readLong()
 
 		val outputs = mutableListOf<ItemStack>()
@@ -45,7 +45,7 @@ class TransmutingSerializer() : RecipeSerializer<TransmutingRecipe> {
 		for (i in 0 until length)
 			outputs.add(buf.readItemStack())
 
-		return TransmutingRecipe(id, input, inputCount, mediaCost, outputs)
+		return TransmutingRecipe(id, input, mediaCost, outputs)
 	}
 
 	companion object {
@@ -87,6 +87,5 @@ class TransmutingSerializer() : RecipeSerializer<TransmutingRecipe> {
 class TransmutingFormat {
 	var input: JsonObject? = null
 	var output: JsonElement? = null
-	var count: Int = 1
 	var cost: Long = 0
 }

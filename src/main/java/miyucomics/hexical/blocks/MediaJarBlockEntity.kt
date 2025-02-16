@@ -12,6 +12,8 @@ import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket
 import net.minecraft.text.Text
 import net.minecraft.util.math.BlockPos
 import java.text.DecimalFormat
+import kotlin.math.max
+import kotlin.math.min
 
 class MediaJarBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(HexicalBlocks.MEDIA_JAR_BLOCK_ENTITY, pos, state) {
 	private var media: Long = 0
@@ -21,18 +23,14 @@ class MediaJarBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 	}
 
 	fun getMedia() = this.media
-	fun setMedia(media: Long) {
-		this.media = media
+	private fun setMedia(media: Long) {
+		this.media = max(min(media, MediaJarBlock.MAX_CAPACITY), 0)
 		markDirty()
 	}
 	fun insertMedia(media: Long): Long {
-		if (this.media + media > MediaJarBlock.MAX_CAPACITY) {
-			val currentMedia = this.media
-			setMedia(MediaJarBlock.MAX_CAPACITY)
-			return MediaJarBlock.MAX_CAPACITY - currentMedia
-		}
+		val currentMedia = this.media
 		setMedia(this.media + media)
-		return media
+		return this.getMedia() - currentMedia
 	}
 	fun withdrawMedia(media: Long): Boolean {
 		if (getMedia() >= media) {
