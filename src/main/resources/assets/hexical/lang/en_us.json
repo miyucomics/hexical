@@ -66,7 +66,9 @@
 	"tooltip.hexical.scroll_vanished": "Vanished",
 
 	"hexical.autograph.header": "Autographed by:",
+	"hexical.recipe.transmute.media_free": "Free",
 	"hexical.recipe.transmute.media_cost": "Costs %d dust",
+	"hexical.recipe.transmute.media_yield": "Yields %d dust",
 	"hexical.ledger.stack": "Last Recorded Stack:",
 	"hexical.ledger.mishap": "Last Recorded Mishap:",
 
@@ -200,12 +202,12 @@
 	"hexical.recipe.alchemists_take_this.text": "Transforms copper ingots to gold.",
 	"hexical.recipe.thoughtknot.header": "Weave Thought-Knot",
 	"hexical.recipe.thoughtknot.text": "Crafts $(l:items/thought_knot)$(item)Thought-Knots$() by submerging $(item)String$() in a large volume of _media rather than brushing an $(l:items/amethyst)$(item)Amethyst Dust$() on it. A slightly more efficient recipe.",
-	"hexical.recipe.unthoughtknot.header": "Disenchant Thought-Knot",
+	"hexical.recipe.unthoughtknot.header": "Release Memory",
 	"hexical.recipe.unthoughtknot.text": "Sucks the _media out of a $(l:items/thought_knot)$(item)Thought-Knot$(). Loses _media compared to the crafting recipe, but useful for recycling the little bit of _media.",
 	"hexical.recipe.cry_obsidian.header": "Sadden Obsidian",
 	"hexical.recipe.cry_obsidian.text": "Infuses $(item)Obsidian$() with _media which leaks out of it, giving it a distinctive crying appearance.",
 	"hexical.recipe.uncry_obsidian.header": "Calm Obsidian",
-	"hexical.recipe.uncry_obsidian.text": "Returns the _media from $(item)Crying Obsidian$() with _media.$(br2)$(o)Therapy! :D$()",
+	"hexical.recipe.uncry_obsidian.text": "Returns the _media from $(item)Crying Obsidian$().$(br2)$(o)Therapy! :D$()",
 
 	"hexical.page.ledger.title": "Ledgers",
 	"hexical.page.ledger.0": "$(l:patterns/meta)When _Hexes cast _Hexes$(), it is easy to lose track of my _Hex and Nature is all too happy to be punish such carelessness. Luckily, a $(item)Ledger$() can record the last 32 patterns I casted, the last mishap I have cast, and the state of the stack right before mishap. The true power of $(item)Ledgers$() is the ability for it to record patterns cast $(o)even by $(l:patterns/meta)meta-evaluations$().",
