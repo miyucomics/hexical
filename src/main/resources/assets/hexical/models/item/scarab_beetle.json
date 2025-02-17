@@ -1,0 +1,12 @@
+{
+	"parent": "minecraft:item/generated",
+	"textures": {
+		"layer0": "hexical:item/scarab_beetle_inactive"
+	},
+	"overrides": [
+		{
+			"predicate": {"active": 1},
+			"model": "hexical:item/scarab_beetle_active"
+		}
+	]
+}

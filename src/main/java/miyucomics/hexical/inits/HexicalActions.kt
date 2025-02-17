@@ -97,6 +97,8 @@ object HexicalActions {
 		register("erase_grimoire", "aqwqaqded", HexDir.WEST, OpGrimoireErase())
 		register("index_grimoire", "aqaeaqwqa", HexDir.SOUTH_EAST, OpGrimoireIndex())
 
+		register("scarab", "wqaqddqaqwdewewdqqdweweqqaq", HexDir.NORTH_EAST, OpScarab())
+
 		register("wish", "eweweweweweewedeaqqqd", HexDir.NORTH_WEST, OpWish())
 		register("recharge_lamp", "qaqwawqwqqwqwqwqwqwqq", HexDir.EAST, OpRechargeLamp())
 		register("promote_lamp", "qweedeqeedeqdqdwewewwewewwewe", HexDir.WEST, OpPromoteLamp())

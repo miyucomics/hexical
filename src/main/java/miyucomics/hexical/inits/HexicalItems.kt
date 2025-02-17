@@ -38,6 +38,8 @@ object HexicalItems {
 	val CONJURED_COMPASS_ITEM = ConjuredCompassItem()
 	@JvmField
 	val GRIMOIRE_ITEM = Item(Settings().maxCount(1))
+	@JvmField
+	val SCARAB_BEETLE_ITEM = ScarabBeetleItem()
 	val TCHOTCHKE_ITEM = TchotchkeItem()
 	val HEXBURST_ITEM = HexburstItem()
 	val HEXTITO_ITEM = HextitoItem()
@@ -81,6 +83,7 @@ object HexicalItems {
 
 			entries.add(ItemStack(LEDGER_ITEM))
 
+			entries.add(ItemStack(SCARAB_BEETLE_ITEM))
 			entries.add(ItemStack(GRIMOIRE_ITEM))
 			entries.add(ItemStack(MEDIA_JAR_ITEM))
 			entries.add(ItemStack(HEX_CANDLE_ITEM))
@@ -94,12 +97,14 @@ object HexicalItems {
 		Registry.register(Registries.ITEM, HexicalMain.id("hand_lamp"), HAND_LAMP_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("arch_lamp"), ARCH_LAMP_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("conjured_compass"), CONJURED_COMPASS_ITEM)
+		Registry.register(Registries.ITEM, HexicalMain.id("scarab_beetle"), SCARAB_BEETLE_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("grimoire"), GRIMOIRE_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("gauntlet_staff"), GAUNTLET_STAFF)
 		Registry.register(Registries.ITEM, HexicalMain.id("lightning_rod_staff"), LIGHTNING_ROD_STAFF)
 		Registry.register(Registries.ITEM, HexicalMain.id("hex_candle"), HEX_CANDLE_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("hexburst"), HEXBURST_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("hextito"), HEXTITO_ITEM)
+
 		Registry.register(Registries.ITEM, HexicalMain.id("mage_block"), BlockItem(HexicalBlocks.MAGE_BLOCK, Settings()))
 		Registry.register(Registries.ITEM, HexicalMain.id("media_jar"), MEDIA_JAR_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("pedestal"), PEDESTAL_ITEM)
@@ -111,6 +116,7 @@ object HexicalItems {
 	@JvmStatic
 	fun clientInit() {
 		ModelPredicateProviderRegistry.register(ARCH_LAMP_ITEM, Identifier("active")) { stack, _, _, _ -> if (stack.nbt?.getBoolean("active") == true) 1.0f else 0.0f }
+		ModelPredicateProviderRegistry.register(SCARAB_BEETLE_ITEM, Identifier("active")) { stack, _, _, _ -> if (stack.nbt?.getBoolean("active") == true) 1.0f else 0.0f }
 		ModelPredicateProviderRegistry.register(CONJURED_COMPASS_ITEM, Identifier("angle"), CompassAnglePredicateProvider(CompassTarget { world: ClientWorld, stack: ItemStack, player: Entity ->
 			val nbt = stack.nbt ?: return@CompassTarget null
 			if (nbt.getString("dimension") != world.dimensionKey.value.toString())
