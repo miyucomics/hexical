@@ -34,6 +34,7 @@
 - changed hex candles to not be extinguished by water
 - changed Greater Blink to not move feet to eyes
 - changed lamps deactivating to only be when they are picked up
+- changed shader spells to no longer require a media jar
 - fixed bug where small animated scrolls do not render
 - fixed bug where grimoire does not work in non-hotbar
 - fixed bug where Chromatic Purification breaks for vectors

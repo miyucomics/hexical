@@ -12,6 +12,16 @@
 			"item/bottle/fill4"
 		]
 	},
+	"scarab_chirps": {
+		"subtitle": "subtitles.hexical.scarab_chirps",
+		"sounds": [
+			"hexical:scarab_chirps_0",
+			"hexical:scarab_chirps_1",
+			"hexical:scarab_chirps_2",
+			"hexical:scarab_chirps_3",
+			"hexical:scarab_chirps_4"
+		]
+	},
 	"lamp_activate": {
 		"subtitle": "subtitles.hexical.lamp_activate",
 		"sounds": ["hexical:lamp_activate"]
