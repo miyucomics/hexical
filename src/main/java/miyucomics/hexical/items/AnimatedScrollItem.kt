@@ -85,6 +85,7 @@ class AnimatedScrollItem(private val size: Int) : Item(Settings()), IotaHolderIt
 			tooltip.add(Text.translatable("tooltip.hexical.scroll_glow").formatted(Formatting.GOLD))
 		if (stack.orCreateNbt.getBoolean("vanished"))
 			tooltip.add(Text.translatable("tooltip.hexical.scroll_vanished").formatted(Formatting.GOLD))
+		super.appendTooltip(stack, world, tooltip, context)
 	}
 
 	override fun readIotaTag(stack: ItemStack): NbtCompound {
