@@ -1,8 +1,7 @@
 from typing import Annotated, Any
 from hexdoc.core import ResourceLocation
-from hexdoc.minecraft.recipe import ItemIngredientList, Recipe, ItemResult
+from hexdoc.minecraft.recipe import ItemIngredient, Recipe, ItemResult
 from pydantic import BeforeValidator, model_validator
-
 
 class TransmutingResult(ItemResult):
     nbt: Any | None = None
@@ -16,7 +15,6 @@ class TransmutingResult(ItemResult):
             case _:
                 return value
 
-
 def _validate_single_item_to_list(value: Any) -> list[Any]:
     match value:
         case list():
@@ -24,14 +22,12 @@ def _validate_single_item_to_list(value: Any) -> list[Any]:
         case _:
             return [value]
 
-
 TransmutingResultList = Annotated[
     list[TransmutingResult],
     BeforeValidator(_validate_single_item_to_list),
 ]
 
-
 class TransmutingRecipe(Recipe, type="hexical:transmuting"):
-    input: ItemIngredientList
+    input: ItemIngredient
     output: TransmutingResultList
     cost: int = 0

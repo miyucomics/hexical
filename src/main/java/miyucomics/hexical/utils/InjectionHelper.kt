@@ -53,7 +53,7 @@ object InjectionHelper {
 		for (smallInventory in listOf(inventory.main, inventory.armor, inventory.offHand)) {
 			for (stack in smallInventory) {
 				val nbt = stack.nbt
-				if (stack.isOf(HexicalItems.SCARAB_BEETLE_ITEM) && nbt != null && nbt.getBoolean("active") && nbt.getString("pattern") == pattern.anglesSignature())
+				if (stack.isOf(HexicalItems.SCARAB_BEETLE_ITEM) && nbt != null && nbt.getBoolean("active") && HexPattern.fromNBT(nbt.getCompound("pattern")).sigsEqual(pattern))
 					return stack
 			}
 		}

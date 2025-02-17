@@ -61,6 +61,7 @@
 	"subtitles.hexical.lamp_deactivate": "Lamp deactivates",
 	"subtitles.hexical.player_slurp": "Player slurps",
 	"subtitles.hexical.replenish_air": "Air appears",
+	"subtitles.hexical.scarab_chirps": "Scarab chirps",
 	"subtitles.hexical.sudden_realization": "Idea pops",
 	"tooltip.hexical.scroll_aged": "Aged",
 	"tooltip.hexical.scroll_glow": "Glowing",
@@ -164,7 +165,7 @@
 
 	"hexical.page.hexical_changes.title": "Hexical Changes",
 	"hexical.page.hexical_changes.0": "I feel strangely more in tune with the ambient _media around me. It feels $(o)friendlier$() somehow. I can even feel it rippling around me, responding to my actions, as if engaging with me. The _media also feels more malleable, more $(o)workable$(); I sense I am able to manipulate it into more precise and specific specialized effects. I can also bring up my $(item)Hex Notebook$() by pressing $(thing)$(k:hexical.open_hexbook).",
-	"hexical.page.hexical_changes.1": "I also find my tools more familiar. I don't require the same level of caution with my $(l:items/staff)$(item)Staff$() and can move around during casting, handy for chasing down targets that get out of my line of sight before I can finish my raycast. I shouldn't become too inattentive though, Nature has not become more forgiving of my miscalculations. I can also write directly into my $(l:items/abacus)$(item)Abacus$() with $(l:patterns/readwrite#hexcasting:write)Scribe's Gambit$().",
+	"hexical.page.hexical_changes.1": "I also find my tools more familiar. I don't require the same level of caution with my $(l:items/staff)$(item)Staff$() and can move around during casting, handy for chasing down targets that get out of my line of sight before I can finish my raycast. I shouldn't become too inattentive though, Nature has not become more forgiving of my miscalculations. I can also write directly into my $(l:items/abacus)$(item)Abacus$() with $(l:patterns/readwrite#hexcasting:write)$(action)Scribe's Gambit$().",
 	"hexical.page.lightning_rod_staff.0": "By fixing a $(item)Block of Amethyst$() to some $(item)Lightning Rods$(), I can make quite the impressive $(l:items/staff)$(item)Staff$(). It is quite weighty to wield but feels absolutely $(o)electrifying$() to use.",
 	"hexical.page.lightning_rod_staff.1": "$(o)I learned there are troubles$(br)Of more than one kind.$(br)Some come from ahead$(br)And some come from behind.$(br2)But I've bought a big bat.$(br)I'm all ready, you see.$(br)Now my troubles are going$(br)To have troubles with $(l)me!$()",
 	"hexical.page.gauntlet_staff.0": "$(l:items/staff)$(item)Staves$() are quite heavy to wield and finnicky to hold. Should I tire of them, I can construct a gauntlet-like device that will allow me to grasp and warp the _media to my will with my own hands.",
@@ -181,9 +182,10 @@
 	"hexical.page.index_grimoire.summary": "Gets a list of all patterns modified by the $(item)Grimoire$() in my offhand.",
 
 	"hexical.page.scarab.title": "Scarab",
-	"hexical.page.scarab.0": "$(item)Scarab Beetles$() are an adorable little trinket that I can make. They are sensitive to _media and I can train them to replace any single pattern with a list of patterns. I can, for example, have a $(item)Scarab Beetle$() replace a dangerous spell with a harmless warning of its danger.$(br2)$(o)Do not stand as a witness against me.$()",
-	"hexcasting.action.hexical:scarab": "Scarab",
-	"hexical.page.scarab.summary": "Trains the $(item)Scarab Beetle$() on the pattern to operate on and the patterns to replace it with.",
+	"hexical.page.scarab.0": "$(item)Scarab Beetles$() are an adorable little amulet that I can make. Their sensitivity to _media lets me train them to replace any single pattern with a list of patterns. They can, for example, replace a dangerous spell with a harmless warning of its danger or inject a check before $(l:patterns/readwrite#hexcasting:write)$(action)Scribe's Gambit$() to not diverge my Name.$(br2)$(o)Do not stand as a witness against me.$()",
+	"hexical.page.scarab.1": "The $(item)Scarabs$() must be activated and deactivated and they deactivate upon dropping; no one will be able to throw a malicious $(item)Scarab$() at me. They can even replace patterns that don't exist yet, allowing me to create a _Hex only players with my $(item)Scarab$() can use.",
+	"hexcasting.action.hexical:scarab": "Scarab Beetle",
+	"hexical.page.scarab.summary": "Teaches the $(item)Scarab Beetle$() the pattern to watch for and the list of patterns to splice in its place. Costs about one $(l:items/amethyst)$(item)Amethyst Shard$().",
 
 	"hexical.page.animated_scroll.title": "Animated Scrolls",
 	"hexical.page.animated_scroll.0": "$(item)Animated Scrolls$() are mixed with a pinch of $(l:items/amethyst)$(item)Amethyst Dust$(), enchanting the ink to move and wiggle like the patterns I draw with my $(l:items/staff)$(item)Staff$(). Not only that, they can display lists of patterns.$(br2)$(o)You can't be a proper writer without a touch of madness, can you?$()",
