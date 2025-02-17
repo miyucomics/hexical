@@ -10,7 +10,7 @@ import miyucomics.hexical.client.ClientStorage
 import miyucomics.hexical.client.PlayerAnimations
 import miyucomics.hexical.client.ShaderRenderer
 import miyucomics.hexical.items.TchotchkeItem
-import miyucomics.hexical.items.getConjuredStaff
+import miyucomics.hexical.items.getTchotchke
 import miyucomics.hexical.state.EvokeState
 import miyucomics.hexical.state.KeybindData
 import miyucomics.hexical.state.LedgerData
@@ -43,7 +43,7 @@ object HexicalNetworking {
 		ServerPlayNetworking.registerGlobalReceiver(LEDGER_CHANNEL) { _, player, _, _, _ -> PersistentStateHandler.clearLedger(player) }
 
 		ServerPlayNetworking.registerGlobalReceiver(TCHOTCHKE_CHANNEL) { server, player, _, buf, _ ->
-			val hand = getConjuredStaff(player) ?: return@registerGlobalReceiver
+			val hand = getTchotchke(player) ?: return@registerGlobalReceiver
 			val inputs = mutableListOf<Iota>()
 			val staffRank = buf.readInt()
 			for (i in 0 until staffRank)
