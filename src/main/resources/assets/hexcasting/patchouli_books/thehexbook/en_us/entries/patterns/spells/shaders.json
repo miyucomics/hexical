@@ -2,7 +2,6 @@
 	"name": "hexical.page.shaders.title",
 	"icon": "minecraft:textures/mob_effect/invisibility.png",
 	"category": "hexcasting:patterns/spells",
-	"advancement": "hexical:media_slurp",
 	"sortnum": 30,
 	"pages": [
 		{
