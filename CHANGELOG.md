@@ -4,6 +4,7 @@
 - major version bump due to various breaking changes
   - Greater Blink cost, distance, and effect difference
   - migrated patterns out
+- added Scarab Beetle item - replaces any single pattern in any context
 - added Snowball spell for fun - works just like ghast fireball
 - added ability to use phials in wristpocket
 - added Squawk spell for fun - play mob sounds
@@ -23,6 +24,7 @@
 - added Media Reflection - gets media of casting environment
 - added Media Purification - gets media of player, allay, impetus, or item on floor
 - added Construct spell - places a specific block type from your inventory with parameters for orientation and horizontal vector
+- added left and right-click telepathy patterns
 - added scrying pattern for moon phase
 - changed media jar
   - pretty shader

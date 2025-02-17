@@ -18,11 +18,12 @@ import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.sound.SoundCategory
 import net.minecraft.util.Hand
+import net.minecraft.util.Rarity
 import net.minecraft.util.TypedActionResult
 import net.minecraft.world.GameMode
 import net.minecraft.world.World
 
-class ArchLampItem : ItemPackagedHex(Settings().maxCount(1)), GenieLamp {
+class ArchLampItem : ItemPackagedHex(Settings().maxCount(1).rarity(Rarity.EPIC)), GenieLamp {
 	override fun use(world: World, user: PlayerEntity, hand: Hand): TypedActionResult<ItemStack> {
 		val stack = user.getStackInHand(hand)
 		if (!hasHex(stack))

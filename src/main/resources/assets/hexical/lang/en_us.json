@@ -50,6 +50,7 @@
 	"item.hexical.gauntlet_staff": "Gauntlet Staff",
 	"item.hexical.ledger": "Ledger",
 	"item.hexical.lightning_rod_staff": "Lightning Rod Staff",
+	"item.hexical.scarab_beetle": "Scarab Beetle",
 	"item.hexical.tchotchke": "Tchotchke",
 	"itemGroup.hexical.general": "Hexical",
 	"subtitles.hexical.amethyst_melt": "Amethyst melts",
@@ -66,6 +67,7 @@
 	"tooltip.hexical.scroll_vanished": "Vanished",
 
 	"hexical.autograph.header": "Autographed by:",
+	"hexical.scarab.replaces_with": "Replaces %s with %s",
 	"hexical.recipe.transmute.media_free": "Free",
 	"hexical.recipe.transmute.media_cost": "Costs %d dust",
 	"hexical.recipe.transmute.media_yield": "Yields %d dust",
@@ -84,6 +86,7 @@
 	"hexcasting.mishap.bad_item.lamp": "a lamp",
 	"hexcasting.mishap.bad_item.mesh": "a mesh",
 	"hexcasting.mishap.bad_item.prestidigitation": "a prestidigitation-sensitive entity",
+	"hexcasting.mishap.bad_item.scarab_beetle": "a scarab beetle",
 	"hexcasting.mishap.bad_item.smart_villager": "a Journeyman or greater level villager",
 	"hexcasting.mishap.bad_item.speck": "a speck",
 	"hexcasting.mishap.bad_item.specklike": "a specklike entity",
@@ -176,6 +179,11 @@
 	"hexical.page.erase_grimoire.summary": "Erases any associations for a pattern that may exist in the $(item)Grimoire$() in my offhand.",
 	"hexcasting.action.hexical:index_grimoire": "Archivist Reflection",
 	"hexical.page.index_grimoire.summary": "Gets a list of all patterns modified by the $(item)Grimoire$() in my offhand.",
+
+	"hexical.page.scarab.title": "Scarab",
+	"hexical.page.scarab.0": "$(item)Scarab Beetles$() are an adorable little trinket that I can make. They are sensitive to _media and I can train them to replace any single pattern with a list of patterns. I can, for example, have a $(item)Scarab Beetle$() replace a dangerous spell with a harmless warning of its danger.$(br2)$(o)Do not stand as a witness against me.$()",
+	"hexcasting.action.hexical:scarab": "Scarab",
+	"hexical.page.scarab.summary": "Trains the $(item)Scarab Beetle$() on the pattern to operate on and the patterns to replace it with.",
 
 	"hexical.page.animated_scroll.title": "Animated Scrolls",
 	"hexical.page.animated_scroll.0": "$(item)Animated Scrolls$() are mixed with a pinch of $(l:items/amethyst)$(item)Amethyst Dust$(), enchanting the ink to move and wiggle like the patterns I draw with my $(l:items/staff)$(item)Staff$(). Not only that, they can display lists of patterns.$(br2)$(o)You can't be a proper writer without a touch of madness, can you?$()",

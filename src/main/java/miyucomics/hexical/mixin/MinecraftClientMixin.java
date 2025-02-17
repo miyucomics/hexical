@@ -21,7 +21,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.ArrayList;
 import java.util.List;
 
-import static miyucomics.hexical.items.TchotchkeItemKt.getConjuredStaff;
+import static miyucomics.hexical.items.TchotchkeItemKt.getTchotchke;
 
 @Mixin(MinecraftClient.class)
 public class MinecraftClientMixin implements MinecraftClientMinterface {
@@ -47,7 +47,7 @@ public class MinecraftClientMixin implements MinecraftClientMinterface {
 		}
 		hexical$timer--;
 
-		Hand hand = getConjuredStaff(player);
+		Hand hand = getTchotchke(player);
 		if (hand == null)
 			return;
 		int rank = player.getStackInHand(hand).getOrCreateNbt().getInt("rank");
@@ -70,7 +70,7 @@ public class MinecraftClientMixin implements MinecraftClientMinterface {
 	public void leftClick() {
 		if (player == null || player.isSpectator())
 			return;
-		Hand hand = getConjuredStaff(player);
+		Hand hand = getTchotchke(player);
 		if (hand == null)
 			return;
 		player.swingHand(hand);
@@ -83,7 +83,7 @@ public class MinecraftClientMixin implements MinecraftClientMinterface {
 	public void rightClick() {
 		if (player == null || player.isSpectator())
 			return;
-		Hand hand = getConjuredStaff(player);
+		Hand hand = getTchotchke(player);
 		if (hand == null)
 			return;
 		player.swingHand(hand);

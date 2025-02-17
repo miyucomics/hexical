@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import static miyucomics.hexical.items.TchotchkeItemKt.getConjuredStaff;
+import static miyucomics.hexical.items.TchotchkeItemKt.getTchotchke;
 
 @Mixin(Mouse.class)
 public class MouseMixin {
@@ -23,7 +23,7 @@ public class MouseMixin {
 			return;
 		if (client.player == null || client.player.isSpectator())
 			return;
-		if (getConjuredStaff(client.player) != null && action == 1) {
+		if (getTchotchke(client.player) != null && action == 1) {
 			if (button == GLFW.GLFW_MOUSE_BUTTON_LEFT) {
 				((MinecraftClientMinterface) client).leftClick();
 				ci.cancel();

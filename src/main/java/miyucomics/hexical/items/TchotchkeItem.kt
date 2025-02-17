@@ -37,7 +37,7 @@ class TchotchkeItem : ItemPackagedHex(Settings().maxCount(1)), VariantItem {
 	}
 }
 
-fun getConjuredStaff(player: PlayerEntity): Hand? {
+fun getTchotchke(player: PlayerEntity): Hand? {
 	if (player.getStackInHand(Hand.OFF_HAND).isOf(HexicalItems.TCHOTCHKE_ITEM))
 		return Hand.OFF_HAND
 	if (player.getStackInHand(Hand.MAIN_HAND).isOf(HexicalItems.TCHOTCHKE_ITEM))
