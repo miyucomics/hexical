@@ -19,7 +19,7 @@ public abstract class PatternIotaMixin {
 	@Shadow public abstract HexPattern getPattern();
 
 	@Inject(method = "execute", at = @At("HEAD"), cancellable = true)
-	void beetle(CastingVM vm, ServerWorld world, SpellContinuation continuation, CallbackInfoReturnable<CastResult> cir) {
+	void scarabsFilch(CastingVM vm, ServerWorld world, SpellContinuation continuation, CallbackInfoReturnable<CastResult> cir) {
 		CastResult newResult = InjectionHelper.handleScarab(vm, (PatternIota) (Object) this, continuation, world);
 		if (newResult != null)
 			cir.setReturnValue(newResult);

@@ -68,7 +68,7 @@
 	"tooltip.hexical.scroll_vanished": "Vanished",
 
 	"hexical.autograph.header": "Autographed by:",
-	"hexical.scarab.replaces_with": "Replaces %s with %s",
+	"hexical.scarab.program": "Contains %s",
 	"hexical.recipe.transmute.media_free": "Free",
 	"hexical.recipe.transmute.media_cost": "Costs %d dust",
 	"hexical.recipe.transmute.media_yield": "Yields %d dust",
@@ -182,10 +182,11 @@
 	"hexical.page.index_grimoire.summary": "Gets a list of all patterns modified by the $(item)Grimoire$() in my offhand.",
 
 	"hexical.page.scarab.title": "Scarab",
-	"hexical.page.scarab.0": "$(item)Scarab Beetles$() are an adorable little amulet that I can make. Their sensitivity to _media lets me train them to replace any single pattern with a list of patterns. They can, for example, replace a dangerous spell with a harmless warning of its danger or inject a check before $(l:patterns/readwrite#hexcasting:write)$(action)Scribe's Gambit$() to not diverge my Name.$(br2)$(o)Do not stand as a witness against me.$()",
-	"hexical.page.scarab.1": "The $(item)Scarabs$() must be activated and deactivated and they deactivate upon dropping; no one will be able to throw a malicious $(item)Scarab$() at me. They can even replace patterns that don't exist yet, allowing me to create a _Hex only players with my $(item)Scarab$() can use.",
+	"hexical.page.scarab.0": "$(item)Scarab Beetles$() are an adorable little amulet that I can make. Once activated, their sensitivity to _media allows them to target and replace patterns that have been rejected by Nature. Specifically, patterns that have no meaning to Nature will be pushed to the stack for the $(item)Scarab's$() judgement.$(br2)$(o)Do not stand as a witness against me.$()",
+	"hexical.page.scarab.1": "I can teach the $(item)Scarab$() to process patterns in a way useful to me. For example, I can instruct it to execute a series of patterns when it encounter a given pattern to make $(o)new$() patterns that work seamlessly for only me, even in $(l:items/hexcasting)$(item)casting devices$().",
 	"hexcasting.action.hexical:scarab": "Scarab Beetle",
-	"hexical.page.scarab.summary": "Teaches the $(item)Scarab Beetle$() the pattern to watch for and the list of patterns to splice in its place. Costs about one $(l:items/amethyst)$(item)Amethyst Shard$().",
+	"hexical.page.scarab.summary": "Teaches the $(item)Scarab Beetle$() how to process the invalid pattern. Costs about one $(l:items/amethyst)$(item)Amethyst Shard$().",
+	"hexical.page.scarab.2": "I shall find $(l:patterns/pattern_manipulation)the meta-manipulation of patterns by patterns$() useful should I want to implement more advanced processing of patterns. I could theoretically create entire families of patterns, similar to $(l:patterns/numbers)number literals$() and $(l:patterns/stackmanip#hexcasting:mask)$(action)Bookkeeper's Gambits$().",
 
 	"hexical.page.animated_scroll.title": "Animated Scrolls",
 	"hexical.page.animated_scroll.0": "$(item)Animated Scrolls$() are mixed with a pinch of $(l:items/amethyst)$(item)Amethyst Dust$(), enchanting the ink to move and wiggle like the patterns I draw with my $(l:items/staff)$(item)Staff$(). Not only that, they can display lists of patterns.$(br2)$(o)You can't be a proper writer without a touch of madness, can you?$()",

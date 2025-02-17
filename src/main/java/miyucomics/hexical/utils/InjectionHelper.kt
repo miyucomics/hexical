@@ -1,6 +1,6 @@
 package miyucomics.hexical.utils
 
-import at.petrak.hexcasting.api.casting.SpellList
+import at.petrak.hexcasting.api.casting.PatternShapeMatch
 import at.petrak.hexcasting.api.casting.eval.CastResult
 import at.petrak.hexcasting.api.casting.eval.ExecutionClientView
 import at.petrak.hexcasting.api.casting.eval.ResolvedPatternType
@@ -8,13 +8,13 @@ import at.petrak.hexcasting.api.casting.eval.env.PlayerBasedCastEnv
 import at.petrak.hexcasting.api.casting.eval.env.StaffCastEnv
 import at.petrak.hexcasting.api.casting.eval.vm.CastingVM
 import at.petrak.hexcasting.api.casting.eval.vm.FrameEvaluate
-import at.petrak.hexcasting.api.casting.eval.vm.FrameFinishEval
 import at.petrak.hexcasting.api.casting.eval.vm.SpellContinuation
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.casting.iota.ListIota
 import at.petrak.hexcasting.api.casting.iota.PatternIota
 import at.petrak.hexcasting.api.casting.math.HexPattern
+import at.petrak.hexcasting.common.casting.PatternRegistryManifest
 import at.petrak.hexcasting.common.lib.hex.HexEvalSounds
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import miyucomics.hexical.casting.frames.ScarabFrame
@@ -30,30 +30,38 @@ object InjectionHelper {
 		val env = vm.env
 		if (env !is PlayerBasedCastEnv)
 			return null
+
 		val pattern = iota.pattern
-		if (ScarabBeetleItem.isScarabAlreadyActive(pattern.anglesSignature(), continuation))
+		val patternTest = PatternRegistryManifest.matchPattern(pattern, env, false)
+		if (patternTest !is PatternShapeMatch.Nothing)
 			return null
-		val scarab = getScarab(env.castingEntity!! as ServerPlayerEntity, pattern) ?: return null
-		val expand = IotaType.deserialize(scarab.getOrCreateNbt().getCompound("expansion"), world) as? ListIota ?: return null
+
+		if (ScarabBeetleItem.wouldBeRecursive(pattern.anglesSignature(), continuation))
+			return null
+		val scarab = getScarab(env.castingEntity!! as ServerPlayerEntity) ?: return null
+		val program = IotaType.deserialize(scarab.getOrCreateNbt().getCompound("program"), world) as? ListIota ?: return null
+
+		val newStack = vm.image.stack.toMutableList()
+		newStack.add(iota)
+
 		return CastResult(
 			iota,
 			continuation
-				.pushFrame(FrameFinishEval)
 				.pushFrame(ScarabFrame(pattern.anglesSignature()))
-				.pushFrame(FrameEvaluate(expand.list, false)),
-			null,
+				.pushFrame(FrameEvaluate(program.list, false)),
+			vm.image.copy(stack = newStack),
 			listOf(),
 			ResolvedPatternType.EVALUATED,
 			HexEvalSounds.NOTHING
 		)
 	}
 
-	private fun getScarab(player: ServerPlayerEntity, pattern: HexPattern): ItemStack? {
+	private fun getScarab(player: ServerPlayerEntity): ItemStack? {
 		val inventory = player.inventory
 		for (smallInventory in listOf(inventory.main, inventory.armor, inventory.offHand)) {
 			for (stack in smallInventory) {
 				val nbt = stack.nbt
-				if (stack.isOf(HexicalItems.SCARAB_BEETLE_ITEM) && nbt != null && nbt.getBoolean("active") && HexPattern.fromNBT(nbt.getCompound("pattern")).sigsEqual(pattern))
+				if (stack.isOf(HexicalItems.SCARAB_BEETLE_ITEM) && nbt != null && nbt.getBoolean("active"))
 					return stack
 			}
 		}

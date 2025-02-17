@@ -18,22 +18,20 @@ import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
 
 class OpScarab : SpellAction {
-	override val argc = 2
+	override val argc = 1
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val stack = env.getHeldItemToOperateOn { stack -> stack.isOf(HexicalItems.SCARAB_BEETLE_ITEM) }
 		if (stack == null)
 			throw MishapBadOffhandItem.of(null, "scarab_beetle")
 
-		val key = args.getPattern(0, argc)
-		args.getList(1, argc)
-		CastingUtils.assertNoTruename(args[1], env)
-		return SpellAction.Result(Spell(stack.stack, key, args[1]), MediaConstants.SHARD_UNIT, listOf())
+		args.getList(0, argc)
+		CastingUtils.assertNoTruename(args[0], env)
+		return SpellAction.Result(Spell(stack.stack, args[0]), MediaConstants.SHARD_UNIT, listOf())
 	}
 
-	private data class Spell(val stack: ItemStack, val key: HexPattern, val expansion: Iota) : RenderedSpell {
+	private data class Spell(val stack: ItemStack, val program: Iota) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			stack.orCreateNbt.putCompound("pattern", key.serializeToNBT())
-			stack.orCreateNbt.putCompound("expansion", IotaType.serialize(expansion))
+			stack.orCreateNbt.putCompound("program", IotaType.serialize(program))
 		}
 	}
 }

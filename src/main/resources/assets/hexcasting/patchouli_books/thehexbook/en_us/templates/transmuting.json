@@ -4,11 +4,12 @@
 		{
 			"type": "patchouli:image",
 			"image": "hexical:textures/gui/transmuting.png",
-			"width": 128,
+			"width": 112,
+			"x": 1,
 			"y": 4,
-			"height": 128,
-			"texture_width": 128,
-			"texture_height": 128
+			"height": 80,
+			"texture_width": 112,
+			"texture_height": 80
 		},
 		{
 			"type": "patchouli:header",
@@ -18,27 +19,27 @@
 		},
 		{
 			"type": "patchouli:item",
-			"x": 7,
+			"x": 8,
 			"y": 36,
 			"item": "#input"
 		},
 		{
 			"type": "patchouli:item",
-			"x": 48,
+			"x": 49,
 			"y": 36,
 			"item": "#output0",
 			"link_recipe": true
 		},
 		{
 			"type": "patchouli:item",
-			"x": 69,
+			"x": 70,
 			"y": 36,
 			"item": "#output1",
 			"link_recipe": true
 		},
 		{
 			"type": "patchouli:item",
-			"x": 90,
+			"x": 91,
 			"y": 36,
 			"item": "#output2",
 			"link_recipe": true
@@ -46,13 +47,13 @@
 		{
 			"type": "patchouli:item",
 			"item": "hexcasting:amethyst_dust",
-			"y": 78
+			"y": 79
 		},
 		{
 			"type": "patchouli:text",
 			"text": "#cost",
 			"x": 20,
-			"y": 82
+			"y": 83
 		},
 		{
 			"type": "patchouli:text",

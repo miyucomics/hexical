@@ -1,13 +1,9 @@
 package miyucomics.hexical.items
 
-import at.petrak.hexcasting.api.casting.eval.vm.ContinuationFrame
 import at.petrak.hexcasting.api.casting.eval.vm.SpellContinuation
 import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.casting.iota.PatternIota
-import at.petrak.hexcasting.api.casting.math.HexDir
 import at.petrak.hexcasting.api.casting.math.HexPattern
-import at.petrak.hexcasting.api.utils.getCompound
-import at.petrak.hexcasting.api.utils.getString
 import at.petrak.hexcasting.api.utils.styledWith
 import miyucomics.hexical.casting.frames.ScarabFrame
 import miyucomics.hexical.inits.HexicalSounds
@@ -35,16 +31,15 @@ class ScarabBeetleItem : Item(Settings().maxCount(1).rarity(Rarity.UNCOMMON)) {
 
 	override fun appendTooltip(stack: ItemStack, world: World?, tooltip: MutableList<Text>, context: TooltipContext) {
 		val nbt = stack.nbt ?: return
-		val pattern = HexPattern.fromNBT(nbt.getCompound("pattern"))
-		if (!nbt.contains("expansion"))
+		if (!nbt.contains("program"))
 			return
-		val expansion = IotaType.getDisplay(nbt.getCompound("expansion"))
-		tooltip.add(Text.translatable("hexical.scarab.replaces_with", PatternIota.display(pattern), expansion).styledWith(Formatting.GRAY))
+		val program = IotaType.getDisplay(nbt.getCompound("program"))
+		tooltip.add(Text.translatable("hexical.scarab.program", program).styledWith(Formatting.GRAY))
 		super.appendTooltip(stack, world, tooltip, context)
 	}
 
 	companion object {
-		fun isScarabAlreadyActive(pattern: String, continuation: SpellContinuation): Boolean {
+		fun wouldBeRecursive(pattern: String, continuation: SpellContinuation): Boolean {
 			var cont = continuation
 			while (cont is SpellContinuation.NotDone) {
 				if (cont.frame is ScarabFrame && (cont.frame as ScarabFrame).signature == pattern)
