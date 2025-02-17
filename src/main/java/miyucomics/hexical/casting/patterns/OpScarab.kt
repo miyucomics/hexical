@@ -10,6 +10,7 @@ import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.casting.iota.ListIota
 import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadOffhandItem
+import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.utils.putCompound
 import miyucomics.hexical.inits.HexicalItems
 import miyucomics.hexical.utils.CastingUtils
@@ -26,12 +27,12 @@ class OpScarab : SpellAction {
 		val key = args.getPattern(0, argc)
 		args.getList(1, argc)
 		CastingUtils.assertNoTruename(args[1], env)
-		return SpellAction.Result(Spell(stack.stack, key, args[1]), 0, listOf())
+		return SpellAction.Result(Spell(stack.stack, key, args[1]), MediaConstants.SHARD_UNIT, listOf())
 	}
 
 	private data class Spell(val stack: ItemStack, val key: HexPattern, val expansion: Iota) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			stack.orCreateNbt.putString("pattern", key.anglesSignature())
+			stack.orCreateNbt.putCompound("pattern", key.serializeToNBT())
 			stack.orCreateNbt.putCompound("expansion", IotaType.serialize(expansion))
 		}
 	}

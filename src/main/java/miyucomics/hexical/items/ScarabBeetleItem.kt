@@ -6,6 +6,7 @@ import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.casting.iota.PatternIota
 import at.petrak.hexcasting.api.casting.math.HexDir
 import at.petrak.hexcasting.api.casting.math.HexPattern
+import at.petrak.hexcasting.api.utils.getCompound
 import at.petrak.hexcasting.api.utils.getString
 import at.petrak.hexcasting.api.utils.styledWith
 import miyucomics.hexical.casting.frames.ScarabFrame
@@ -28,17 +29,17 @@ class ScarabBeetleItem : Item(Settings().maxCount(1).rarity(Rarity.UNCOMMON)) {
 		val nbt = stack.orCreateNbt
 		nbt.putBoolean("active", !nbt.getBoolean("active"))
 		if (world.isClient)
-			world.playSound(user.x, user.y, user.z, if (nbt.getBoolean("active")) HexicalSounds.LAMP_DEACTIVATE else HexicalSounds.LAMP_ACTIVATE, SoundCategory.MASTER, 1f, 1f, true)
+			world.playSound(user.x, user.y, user.z, HexicalSounds.SCARAB_CHIRPS, SoundCategory.MASTER, 1f, 1f, true)
 		return TypedActionResult.success(stack)
 	}
 
 	override fun appendTooltip(stack: ItemStack, world: World?, tooltip: MutableList<Text>, context: TooltipContext) {
 		val nbt = stack.nbt ?: return
-		val pattern = stack.getString("pattern") ?: return
+		val pattern = HexPattern.fromNBT(nbt.getCompound("pattern"))
 		if (!nbt.contains("expansion"))
 			return
 		val expansion = IotaType.getDisplay(nbt.getCompound("expansion"))
-		tooltip.add(Text.translatable("hexical.scarab.replaces_with", PatternIota.display(HexPattern.fromAngles(pattern, HexDir.EAST)), expansion).styledWith(Formatting.GRAY))
+		tooltip.add(Text.translatable("hexical.scarab.replaces_with", PatternIota.display(pattern), expansion).styledWith(Formatting.GRAY))
 		super.appendTooltip(stack, world, tooltip, context)
 	}
 
