@@ -4,7 +4,7 @@
 - major version bump due to various breaking changes
   - Greater Blink cost, distance, and effect difference
   - migrated patterns out
-- added Scarab Beetle item - replaces any single pattern in any context
+- added Scarab Beetle item - catches uncaught patterns for your handling
 - added Snowball spell for fun - works just like ghast fireball
 - added ability to use phials in wristpocket
 - added Squawk spell for fun - play mob sounds
