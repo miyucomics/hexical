@@ -47,6 +47,10 @@
 			"recipe": "hexical:transmuting/uncry_obsidian",
 			"title": "hexical.recipe.uncry_obsidian.header",
 			"text": "hexical.recipe.uncry_obsidian.text"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.media_jar.2"
 		}
 	]
 }

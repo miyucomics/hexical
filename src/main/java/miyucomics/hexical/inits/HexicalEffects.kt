@@ -8,7 +8,7 @@ import net.minecraft.registry.Registry
 
 object HexicalEffects {
 	@JvmField
-	val WOOLEYED_EFFECT = MediaBloodEffect()
+	val WOOLEYED_EFFECT = WooleyedEffect()
 
 	@JvmStatic
 	fun init() {
@@ -16,4 +16,4 @@ object HexicalEffects {
 	}
 }
 
-class MediaBloodEffect : StatusEffect(StatusEffectCategory.BENEFICIAL, 0xff_a678f1.toInt())
+class WooleyedEffect : StatusEffect(StatusEffectCategory.BENEFICIAL, 0xff_a678f1.toInt())

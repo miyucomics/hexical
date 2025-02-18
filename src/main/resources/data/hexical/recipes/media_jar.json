@@ -4,14 +4,14 @@
 		"P": {
 			"item": "hexcasting:edified_pressure_plate"
 		},
-		"A": {
-			"item": "hexcasting:charged_amethyst"
+		"B": {
+			"item": "minecraft:glass_bottle"
 		},
 		"G": {
 			"item": "minecraft:glass_pane"
 		}
 	},
-	"pattern": [" P ", "GAG", " G "],
+	"pattern": [" P ", "GBG", " G "],
 	"result": {
 		"item": "hexical:media_jar"
 	}
