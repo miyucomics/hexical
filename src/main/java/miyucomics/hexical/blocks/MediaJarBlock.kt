@@ -82,7 +82,7 @@ class MediaJarBlock : TransparentBlock(
 			world.playSoundFromEntity(null, player, HexicalSounds.PLAYER_SLURP, SoundCategory.PLAYERS, 1f, 1f)
 			if (world.isClient)
 				return ActionResult.SUCCESS
-			player.addStatusEffect(if (CastingUtils.isEnlightened(player as ServerPlayerEntity)) StatusEffectInstance(HexicalEffects.WOOLEYED_EFFECT, 1200, 0) else StatusEffectInstance(StatusEffects.POISON, 200, 0))
+			player.addStatusEffect(if (CastingUtils.isEnlightened(player as ServerPlayerEntity)) StatusEffectInstance(HexicalEffects.WOOLEYED_EFFECT, 6000, 0, true, true) else StatusEffectInstance(StatusEffects.POISON, 200, 0, true, true))
 			return ActionResult.SUCCESS
 		}
 
