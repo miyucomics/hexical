@@ -72,8 +72,8 @@
 	"hexical.recipe.transmute.media_free": "Free",
 	"hexical.recipe.transmute.media_cost": "Costs %d dust",
 	"hexical.recipe.transmute.media_yield": "Yields %d dust",
-	"hexical.ledger.stack": "Last Recorded Stack:",
-	"hexical.ledger.mishap": "Last Recorded Mishap:",
+	"hexical.ledger.stack": "Last Stack Before Mishap:",
+	"hexical.ledger.mishap": "Last Mishap Message:",
 
 	"hexcasting.mishap.bad_block.akashic_bookshelf": "an akashic bookshelf",
 	"hexcasting.mishap.bad_block.mage_block": "a mage block",
@@ -184,7 +184,7 @@
 	"hexical.page.scarab.title": "Scarab",
 	"hexical.page.scarab.0": "$(item)Scarab Beetles$() are an adorable little amulet that I can make. Once activated, their sensitivity to _media allows them to target and replace patterns that have been rejected by Nature. Specifically, patterns that have no meaning to Nature will be pushed to the stack for the $(item)Scarab's$() judgement.$(br2)$(o)Do not stand as a witness against me.$()",
 	"hexical.page.scarab.1": "I can teach the $(item)Scarab$() to process patterns in a way useful to me. For example, I can instruct it to execute a series of patterns when it encounter a given pattern to make $(o)new$() patterns that work seamlessly for only me, even in $(l:items/hexcasting)$(item)casting devices$().",
-	"hexcasting.action.hexical:scarab": "Scarab Beetle",
+	"hexcasting.action.hexical:scarab": "Teach Scarab",
 	"hexical.page.scarab.summary": "Teaches the $(item)Scarab Beetle$() how to process the invalid pattern. Costs about one $(l:items/amethyst)$(item)Amethyst Shard$().",
 	"hexical.page.scarab.2": "I shall find $(l:patterns/pattern_manipulation)the meta-manipulation of patterns by patterns$() useful should I want to implement more advanced processing of patterns. I could theoretically create entire families of patterns, similar to $(l:patterns/numbers)number literals$() and $(l:patterns/stackmanip#hexcasting:mask)$(action)Bookkeeper's Gambits$().",
 
