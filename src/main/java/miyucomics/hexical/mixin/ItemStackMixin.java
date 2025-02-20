@@ -1,18 +1,25 @@
 package miyucomics.hexical.mixin;
 
+import at.petrak.hexcasting.api.casting.iota.IotaType;
+import at.petrak.hexcasting.api.item.IotaHolderItem;
 import at.petrak.hexcasting.api.misc.MediaConstants;
 import at.petrak.hexcasting.api.pigment.FrozenPigment;
+import at.petrak.hexcasting.common.items.magic.ItemPackagedHex;
 import miyucomics.hexical.client.ClientStorage;
 import miyucomics.hexical.inits.HexicalItems;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.nbt.NbtElement;
+import net.minecraft.nbt.NbtList;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.math.Vec3d;
+import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -23,6 +30,7 @@ import java.util.List;
 
 @Mixin(ItemStack.class)
 public class ItemStackMixin {
+	@Shadow @Nullable private NbtCompound nbt;
 	@Unique
 	private final DecimalFormat format = new DecimalFormat("###,###.##");
 
@@ -35,6 +43,16 @@ public class ItemStackMixin {
 
 		if (stack.isOf(HexicalItems.MEDIA_JAR_ITEM))
 			cir.getReturnValue().add(Text.translatable("hexcasting.tooltip.media", format.format(((float) nbt.getCompound("BlockEntityTag").getLong("media")) / ((float) MediaConstants.DUST_UNIT))));
+
+		if (stack.getItem() instanceof ItemPackagedHex && nbt.getBoolean("cracked")) {
+			cir.getReturnValue().add(Text.translatable("hexical.cracked.cracked").formatted(Formatting.GOLD));
+			if (nbt.contains(ItemPackagedHex.TAG_PROGRAM)) {
+				MutableText text = Text.empty();
+				NbtList entries = nbt.getList(ItemPackagedHex.TAG_PROGRAM, NbtElement.COMPOUND_TYPE);
+				entries.forEach(compound -> text.append(IotaType.getDisplay((NbtCompound) compound)));
+				cir.getReturnValue().add(Text.translatable("hexical.cracked.program").append(text));
+			}
+		}
 
 		if (!nbt.contains("autographs"))
 			return;
