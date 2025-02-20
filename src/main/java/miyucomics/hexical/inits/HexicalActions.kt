@@ -207,6 +207,7 @@ object HexicalActions {
 		// color shift - edqdeqaqedqde
 
 		register("confetti", "awddeqaedd", HexDir.EAST, OpConfetti())
+		register("crack_device", "wwaqqqqqeqdedwqeaeqwdedwqeaeq", HexDir.EAST, OpCrackDevice())
 		register("place_block_type", "wewewewewewdwew", HexDir.NORTH_WEST, OpConstruct())
 		register("autograph", "wwqqqqq", HexDir.NORTH_EAST, OpAutograph())
 		register("conjure_hexburst", "aadaadqaq", HexDir.EAST, OpConjureHexburst())

@@ -5,6 +5,7 @@
   - Greater Blink cost, distance, and effect difference
   - migrated patterns out
 - added Scarab Beetle item - catches uncaught patterns for your handling
+- added Crack Device - a spell to crack an unwritten casting device and reveal its Hex when it is eventually written
 - added Snowball spell for fun - works just like ghast fireball
 - added ability to use phials in wristpocket
 - added Squawk spell for fun - play mob sounds
