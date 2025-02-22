@@ -23,7 +23,7 @@ import net.minecraft.server.world.ServerWorld
 import net.minecraft.sound.SoundCategory
 import net.minecraft.util.Hand
 
-class OpInternalizeHex : SpellAction {
+class OpInculcate : SpellAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		if (env.castingEntity !is ServerPlayerEntity)
