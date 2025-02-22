@@ -23,6 +23,7 @@
 		"ItemStackMixin",
 		"LivingEntityMixin",
 		"MediaHelperMixin",
+		"OpErase$SpellAccessor",
 		"OpErase$SpellMixin",
 		"OpEraseMixin",
 		"OpGetCasterMixin",

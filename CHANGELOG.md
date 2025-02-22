@@ -26,6 +26,7 @@
 - added Media Purification - gets media of player, allay, impetus, or item on floor
 - added Construct spell - places a specific block type from your inventory with parameters for orientation and horizontal vector
 - added left and right-click telepathy patterns
+- added more documentation to magic missile
 - added scrying pattern for moon phase
 - changed media jar
   - pretty shader

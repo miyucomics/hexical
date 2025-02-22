@@ -232,7 +232,7 @@ object HexicalActions {
 
 		register("displace", "qaqqqqeedaqqqa", HexDir.NORTH_EAST, OpDisplace())
 
-		register("internalize_hex", "wwaqqqqqeqdedwwqwqwwdedwwqwqw", HexDir.EAST, OpInternalizeHex())
+		register("inculcate", "wwaqqqqqeqdedwwqwqwwdedwwqwqw", HexDir.EAST, OpInculcate())
 		register("is_evoking", "wwaqqqqqeeaqawwewewwaqawwewew", HexDir.EAST, OpGetKeybind("key.hexical.evoke"))
 
 		register("greater_blink", "wqawawaqwqwqawawaqw", HexDir.SOUTH_WEST, OpGreaterBlink())
