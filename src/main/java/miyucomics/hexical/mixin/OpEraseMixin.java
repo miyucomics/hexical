@@ -1,14 +1,10 @@
 package miyucomics.hexical.mixin;
 
-import at.petrak.hexcasting.api.addldata.ADHexHolder;
 import at.petrak.hexcasting.common.casting.actions.spells.OpErase;
-import at.petrak.hexcasting.xplat.IXplatAbstractions;
-import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
-import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.*;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.ModifyArg;
 
 import java.util.function.Predicate;
 

@@ -1,7 +1,6 @@
 package miyucomics.hexical.mixin;
 
 import at.petrak.hexcasting.api.casting.iota.IotaType;
-import at.petrak.hexcasting.api.item.IotaHolderItem;
 import at.petrak.hexcasting.api.misc.MediaConstants;
 import at.petrak.hexcasting.api.pigment.FrozenPigment;
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex;

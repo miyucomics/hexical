@@ -1,14 +1,15 @@
 package miyucomics.hexical
 
-import com.mojang.datafixers.util.Pair
 import miyucomics.hexical.inits.*
 import net.fabricmc.api.ClientModInitializer
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.gl.ShaderProgram
-import net.minecraft.client.render.*
+import net.minecraft.client.render.RenderLayer
 import net.minecraft.client.render.RenderLayer.MultiPhaseParameters
+import net.minecraft.client.render.RenderPhase
+import net.minecraft.client.render.VertexFormat
+import net.minecraft.client.render.VertexFormats
 import net.minecraft.client.render.block.entity.EndPortalBlockEntityRenderer
-import java.util.function.Consumer
 
 class HexicalClient : ClientModInitializer {
 	override fun onInitializeClient() {
