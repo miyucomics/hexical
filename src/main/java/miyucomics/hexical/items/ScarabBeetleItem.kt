@@ -2,8 +2,6 @@ package miyucomics.hexical.items
 
 import at.petrak.hexcasting.api.casting.eval.vm.SpellContinuation
 import at.petrak.hexcasting.api.casting.iota.IotaType
-import at.petrak.hexcasting.api.casting.iota.PatternIota
-import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.utils.styledWith
 import miyucomics.hexical.casting.frames.ScarabFrame
 import miyucomics.hexical.inits.HexicalSounds
