@@ -1,13 +1,14 @@
 package miyucomics.hexical
 
+import com.mojang.datafixers.util.Pair
 import miyucomics.hexical.inits.*
 import net.fabricmc.api.ClientModInitializer
-import net.minecraft.client.render.RenderLayer
+import net.minecraft.client.MinecraftClient
+import net.minecraft.client.gl.ShaderProgram
+import net.minecraft.client.render.*
 import net.minecraft.client.render.RenderLayer.MultiPhaseParameters
-import net.minecraft.client.render.RenderPhase
-import net.minecraft.client.render.VertexFormat
-import net.minecraft.client.render.VertexFormats
 import net.minecraft.client.render.block.entity.EndPortalBlockEntityRenderer
+import java.util.function.Consumer
 
 class HexicalClient : ClientModInitializer {
 	override fun onInitializeClient() {
@@ -21,6 +22,10 @@ class HexicalClient : ClientModInitializer {
 	}
 
 	companion object {
-		val MEDIA_JAR_RENDER_LAYER: RenderLayer = RenderLayer.of("media_jar", VertexFormats.POSITION, VertexFormat.DrawMode.QUADS, 256, false, false, MultiPhaseParameters.builder().program(RenderPhase.END_PORTAL_PROGRAM).texture(RenderPhase.Textures.create().add(EndPortalBlockEntityRenderer.SKY_TEXTURE, false, false).add(EndPortalBlockEntityRenderer.PORTAL_TEXTURE, false, false).build()).build(false))
+		private val TEXTURE = MultiPhaseParameters.builder()
+			.program(RenderPhase.ShaderProgram { -> ShaderProgram(MinecraftClient.getInstance().resourceManager, "rendertype_media_jar", VertexFormats.POSITION) })
+			.texture(RenderPhase.Textures.create().add(EndPortalBlockEntityRenderer.PORTAL_TEXTURE, false, false).build())
+			.build(false)
+		val MEDIA_JAR_RENDER_LAYER: RenderLayer = RenderLayer.of("media_jar", VertexFormats.POSITION, VertexFormat.DrawMode.QUADS, 256, false, false, TEXTURE)
 	}
 }

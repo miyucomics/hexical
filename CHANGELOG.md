@@ -28,6 +28,9 @@
 - added left and right-click telepathy patterns
 - added more documentation to magic missile
 - added scrying pattern for moon phase
+- added Unautograph spell to unautograph an item ( still erases it )
+- added beautiful little shader to media jars
+- changed Autograph and Unautograph's pattern by swapping them
 - changed media jar
   - pretty shader
   - custom recipe type to transmute with media
