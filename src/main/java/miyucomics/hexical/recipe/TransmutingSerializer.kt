@@ -12,7 +12,7 @@ import net.minecraft.recipe.RecipeSerializer
 import net.minecraft.registry.Registries
 import net.minecraft.util.Identifier
 
-class TransmutingSerializer() : RecipeSerializer<TransmutingRecipe> {
+class TransmutingSerializer : RecipeSerializer<TransmutingRecipe> {
 	override fun read(recipeId: Identifier, json: JsonObject): TransmutingRecipe {
 		val recipeJson: TransmutingFormat = Gson().fromJson(json, TransmutingFormat::class.java)
 		if (recipeJson.input == null)
