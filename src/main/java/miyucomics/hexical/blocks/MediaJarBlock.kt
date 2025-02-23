@@ -78,7 +78,7 @@ class MediaJarBlock : TransparentBlock(
 			return ActionResult.SUCCESS
 		}
 
-		if (stack.isEmpty && player.isSneaking && jarData.withdrawMedia(MediaConstants.CRYSTAL_UNIT)) {
+		if (stack.isEmpty && jarData.withdrawMedia(MediaConstants.CRYSTAL_UNIT)) {
 			world.playSoundFromEntity(null, player, HexicalSounds.PLAYER_SLURP, SoundCategory.PLAYERS, 1f, 1f)
 			if (world.isClient)
 				return ActionResult.SUCCESS

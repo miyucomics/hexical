@@ -24,7 +24,7 @@ class HexicalClient : ClientModInitializer {
 
 	companion object {
 		private val TEXTURE = MultiPhaseParameters.builder()
-			.program(RenderPhase.ShaderProgram { -> ShaderProgram(MinecraftClient.getInstance().resourceManager, "rendertype_media_jar", VertexFormats.POSITION) })
+			.program(RenderPhase.ShaderProgram { ShaderProgram(MinecraftClient.getInstance().resourceManager, "rendertype_media_jar", VertexFormats.POSITION) })
 			.texture(RenderPhase.Textures.create().add(EndPortalBlockEntityRenderer.PORTAL_TEXTURE, false, false).build())
 			.build(false)
 		val MEDIA_JAR_RENDER_LAYER: RenderLayer = RenderLayer.of("media_jar", VertexFormats.POSITION, VertexFormat.DrawMode.QUADS, 256, false, false, TEXTURE)

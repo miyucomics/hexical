@@ -10,7 +10,7 @@ import net.minecraft.server.network.ServerPlayerEntity
 
 class LedgerRecordComponent(val env: PlayerBasedCastEnv) : PostExecution {
 	override fun getKey() = LedgerKey()
-	class LedgerKey : CastingEnvironmentComponent.Key<PostExecution> {}
+	class LedgerKey : CastingEnvironmentComponent.Key<PostExecution>
 
 	override fun onPostExecution(result: CastResult) {
 		val iota = result.cast
