@@ -70,6 +70,7 @@
 	"hexical.autograph.header": "Autographed by:",
 	"hexical.cracked.cracked": "Cracked",
 	"hexical.cracked.program": "Hex: ",
+	"hexical.grimoire.contains": "Contains bindings for ",
 	"hexical.scarab.program": "Contains %s",
 	"hexical.recipe.transmute.media_free": "Free",
 	"hexical.recipe.transmute.media_cost": "Costs %d dust",
