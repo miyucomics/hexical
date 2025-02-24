@@ -13,7 +13,7 @@ import net.minecraft.util.Hand
 import net.minecraft.util.TypedActionResult
 import net.minecraft.world.World
 
-class LedgerItem : Item(Settings()) {
+class LedgerItem : Item(Settings().maxCount(1)) {
 	override fun use(world: World, player: PlayerEntity, hand: Hand): TypedActionResult<ItemStack> {
 		if (world.isClient) {
 			MinecraftClient.getInstance().setScreen(LedgerScreen())

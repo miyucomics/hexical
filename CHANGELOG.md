@@ -5,6 +5,7 @@
   - Greater Blink cost, distance, and effect difference
   - migrated patterns out
 - added Scarab Beetle item - catches uncaught patterns for your handling
+- added tooltip to grimoire, need to cast any grimoire pattern on old grimoires in order to force it to show up
 - added Crack Device - a spell to crack an unwritten casting device and reveal its Hex when it is eventually written
 - added Snowball spell for fun - works just like ghast fireball
 - added ability to use phials in wristpocket
@@ -41,6 +42,7 @@
 - changed lamps deactivating to only be when they are picked up
 - changed shader spells to no longer require a media jar
 - changed Erase Item to remove autographs
+- changed grimoire packet syncing to reduce strain on servers
 - fixed bug where small animated scrolls do not render
 - fixed bug where grimoire does not work in non-hotbar
 - fixed bug where Chromatic Purification breaks for vectors

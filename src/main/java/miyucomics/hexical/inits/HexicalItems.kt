@@ -37,7 +37,7 @@ object HexicalItems {
 	@JvmField
 	val CONJURED_COMPASS_ITEM = ConjuredCompassItem()
 	@JvmField
-	val GRIMOIRE_ITEM = Item(Settings().maxCount(1))
+	val GRIMOIRE_ITEM = GrimoireItem()
 	@JvmField
 	val SCARAB_BEETLE_ITEM = ScarabBeetleItem()
 	val TCHOTCHKE_ITEM = TchotchkeItem()
