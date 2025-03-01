@@ -14,9 +14,8 @@ import at.petrak.hexcasting.api.misc.MediaConstants
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.casting.environments.EvocationCastEnv
 import miyucomics.hexical.inits.HexicalSounds
+import miyucomics.hexical.interfaces.PlayerEntityMinterface
 import miyucomics.hexical.state.EvokeState
-import miyucomics.hexical.state.PersistentStateHandler
-import miyucomics.hexical.state.PersistentStateHandler.Companion.getEvocation
 import miyucomics.hexical.utils.CastingUtils
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld
@@ -35,7 +34,7 @@ class OpInculcate : SpellAction {
 
 	private data class Spell(val hex: Iota) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			PersistentStateHandler.setEvocation(env.castingEntity as ServerPlayerEntity, IotaType.serialize(hex))
+			(env.castingEntity as PlayerEntityMinterface).setEvocation(IotaType.serialize(hex))
 		}
 	}
 
@@ -43,7 +42,7 @@ class OpInculcate : SpellAction {
 		@JvmStatic
 		fun evoke(player: ServerPlayerEntity) {
 			EvokeState.duration[player.uuid] = HexicalMain.EVOKE_DURATION
-			val nbt = getEvocation(player) ?: return
+			val nbt = (player as PlayerEntityMinterface).getEvocation()
 			val hex = IotaType.deserialize(nbt, player.world as ServerWorld)
 			if (hex is ListIota) {
 				val hand = if(!player.getStackInHand(Hand.MAIN_HAND).isEmpty && player.getStackInHand(Hand.OFF_HAND).isEmpty){ Hand.OFF_HAND } else { Hand.MAIN_HAND }
