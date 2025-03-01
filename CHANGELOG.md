@@ -4,6 +4,7 @@
 - major version bump due to various breaking changes
   - Greater Blink cost, distance, and effect difference
   - migrated patterns out
+  - player stores data now; not persistent state
 - added Scarab Beetle item - catches uncaught patterns for your handling
 - added tooltip to grimoire, need to cast any grimoire pattern on old grimoires in order to force it to show up
 - added Crack Device - a spell to crack an unwritten casting device and reveal its Hex when it is eventually written
@@ -37,6 +38,7 @@
   - custom recipe type to transmute with media
   - bigger collision and model
   - used to get new Wooleyed effect by drinking it
+- changed players to store wristpocket, evocation, and such data
 - changed hex candles to not be extinguished by water
 - changed Greater Blink to not move feet to eyes
 - changed lamps deactivating to only be when they are picked up
