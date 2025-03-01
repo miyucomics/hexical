@@ -1,6 +1,6 @@
 package miyucomics.hexical.mixin;
 
-import miyucomics.hexical.casting.patterns.OpInculcate;
+import miyucomics.hexical.casting.patterns.evocation.OpSetEvocation;
 import miyucomics.hexical.interfaces.PlayerEntityMinterface;
 import miyucomics.hexical.state.EvokeState;
 import miyucomics.hexical.utils.CastingUtils;
@@ -33,7 +33,7 @@ public abstract class PlayerEntityMixin implements PlayerEntityMinterface {
 
 		if (EvokeState.isEvoking(player.getUuid()) && CastingUtils.isEnlightened((ServerPlayerEntity) player))
 			if (EvokeState.getDuration(player.getUuid()) == 0)
-				OpInculcate.evoke((ServerPlayerEntity) player);
+				OpSetEvocation.evoke((ServerPlayerEntity) player);
 
 		hexical$archLampCastedThisTick = false;
 	}

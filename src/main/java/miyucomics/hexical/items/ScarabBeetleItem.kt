@@ -1,14 +1,18 @@
 package miyucomics.hexical.items
 
 import at.petrak.hexcasting.api.casting.eval.vm.SpellContinuation
+import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.IotaType
-import at.petrak.hexcasting.api.utils.styledWith
+import at.petrak.hexcasting.api.item.IotaHolderItem
+import at.petrak.hexcasting.api.utils.*
+import at.petrak.hexcasting.common.items.storage.ItemThoughtKnot
 import miyucomics.hexical.casting.frames.ScarabFrame
 import miyucomics.hexical.inits.HexicalSounds
 import net.minecraft.client.item.TooltipContext
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
+import net.minecraft.nbt.NbtCompound
 import net.minecraft.sound.SoundCategory
 import net.minecraft.text.Text
 import net.minecraft.util.Formatting
@@ -17,7 +21,7 @@ import net.minecraft.util.Rarity
 import net.minecraft.util.TypedActionResult
 import net.minecraft.world.World
 
-class ScarabBeetleItem : Item(Settings().maxCount(1).rarity(Rarity.UNCOMMON)) {
+class ScarabBeetleItem : Item(Settings().maxCount(1).rarity(Rarity.UNCOMMON)), IotaHolderItem {
 	override fun use(world: World, user: PlayerEntity, hand: Hand): TypedActionResult<ItemStack> {
 		val stack = user.getStackInHand(hand)
 		val nbt = stack.orCreateNbt
@@ -46,5 +50,16 @@ class ScarabBeetleItem : Item(Settings().maxCount(1).rarity(Rarity.UNCOMMON)) {
 			}
 			return false
 		}
+	}
+
+	override fun readIotaTag(stack: ItemStack) = null
+	override fun canWrite(stack: ItemStack, iota: Iota?) = iota == null || writeable(stack)
+	override fun writeable(stack: ItemStack) = !stack.containsTag("program")
+	override fun writeDatum(stack: ItemStack, iota: Iota?) {
+		if (iota == null) {
+			stack.remove("program")
+			return
+		}
+		stack.putCompound("program", IotaType.serialize(iota))
 	}
 }

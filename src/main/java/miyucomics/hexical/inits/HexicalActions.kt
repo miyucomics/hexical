@@ -31,6 +31,8 @@ import miyucomics.hexical.casting.patterns.colors.OpDye
 import miyucomics.hexical.casting.patterns.colors.OpGetDye
 import miyucomics.hexical.casting.patterns.colors.OpTranslateDye
 import miyucomics.hexical.casting.patterns.conjure.*
+import miyucomics.hexical.casting.patterns.evocation.OpGetEvocation
+import miyucomics.hexical.casting.patterns.evocation.OpSetEvocation
 import miyucomics.hexical.casting.patterns.firework.OpConjureFirework
 import miyucomics.hexical.casting.patterns.firework.OpSimulateFirework
 import miyucomics.hexical.casting.patterns.grimoire.OpGrimoireErase
@@ -96,8 +98,6 @@ object HexicalActions {
 		register("write_grimoire", "aqwqaeaqa", HexDir.WEST, OpGrimoireWrite())
 		register("erase_grimoire", "aqwqaqded", HexDir.WEST, OpGrimoireErase())
 		register("index_grimoire", "aqaeaqwqa", HexDir.SOUTH_EAST, OpGrimoireIndex())
-
-		register("scarab", "wqaqddqaqwdewewdqqdweweqqaq", HexDir.NORTH_EAST, OpScarab())
 
 		register("wish", "eweweweweweewedeaqqqd", HexDir.NORTH_WEST, OpWish())
 		register("recharge_lamp", "qaqwawqwqqwqwqwqwqwqq", HexDir.EAST, OpRechargeLamp())
@@ -233,7 +233,8 @@ object HexicalActions {
 
 		register("displace", "qaqqqqeedaqqqa", HexDir.NORTH_EAST, OpDisplace())
 
-		register("inculcate", "wwaqqqqqeqdedwwqwqwwdedwwqwqw", HexDir.EAST, OpInculcate())
+		register("get_evocation", "wwdeeeeeqeaqawwewewwaqawwewew", HexDir.EAST, OpGetEvocation())
+		register("set_evocation", "wwaqqqqqeqdedwwqwqwwdedwwqwqw", HexDir.EAST, OpSetEvocation())
 		register("is_evoking", "wwaqqqqqeeaqawwewewwaqawwewew", HexDir.EAST, OpGetKeybind("key.hexical.evoke"))
 
 		register("greater_blink", "wqawawaqwqwqawawaqw", HexDir.SOUTH_WEST, OpGreaterBlink())

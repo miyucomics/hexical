@@ -12,11 +12,19 @@
 		},
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:inculcate",
-			"anchor": "hexical:inculcate",
+			"op_id": "hexical:set_evocation",
+			"anchor": "hexical:set_evocation",
 			"input": "list of patterns",
 			"output": "",
-			"text": "hexical.page.inculcate.summary"
+			"text": "hexical.page.set_evocation.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:get_evocation",
+			"anchor": "hexical:get_evocation",
+			"input": "",
+			"output": "list of patterns",
+			"text": "hexical.page.get_evocation.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
