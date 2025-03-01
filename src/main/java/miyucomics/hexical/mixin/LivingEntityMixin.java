@@ -2,7 +2,7 @@ package miyucomics.hexical.mixin;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import miyucomics.hexical.state.PersistentStateHandler;
+import miyucomics.hexical.interfaces.PlayerEntityMinterface;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityStatuses;
@@ -29,9 +29,9 @@ public abstract class LivingEntityMixin {
 		if (!(instance instanceof ServerPlayerEntity player))
 			return original.call(instance, source);
 
-		ItemStack wristpocket = PersistentStateHandler.getWristpocketStack(player);
+		ItemStack wristpocket = ((PlayerEntityMinterface) player).getWristpocket();
 		if (wristpocket.isOf(Items.TOTEM_OF_UNDYING)) {
-			PersistentStateHandler.setWristpocketStack(player, ItemStack.EMPTY);
+			((PlayerEntityMinterface) player).setWristpocket(ItemStack.EMPTY);
 			player.incrementStat(Stats.USED.getOrCreateStat(Items.TOTEM_OF_UNDYING));
 			Criteria.USED_TOTEM.trigger(player, wristpocket);
 

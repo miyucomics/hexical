@@ -5,7 +5,7 @@ import at.petrak.hexcasting.api.casting.eval.env.CircleCastEnv
 import at.petrak.hexcasting.api.casting.eval.env.PlayerBasedCastEnv
 import miyucomics.hexical.blocks.PedestalBlockEntity
 import miyucomics.hexical.inits.HexicalBlocks
-import miyucomics.hexical.state.PersistentStateHandler
+import miyucomics.hexical.interfaces.PlayerEntityMinterface
 import net.minecraft.entity.ItemEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.server.network.ServerPlayerEntity
@@ -22,11 +22,11 @@ object WristpocketUtils {
 				}
 
 				if (env.castingEntity is ServerPlayerEntity)
-					return PersistentStateHandler.getWristpocketStack(env.castingEntity as ServerPlayerEntity)
+					return (env.castingEntity as PlayerEntityMinterface).getWristpocket()
 
 				return null
 			}
-			is PlayerBasedCastEnv -> return PersistentStateHandler.getWristpocketStack(env.castingEntity as ServerPlayerEntity)
+			is PlayerBasedCastEnv -> return (env.castingEntity as PlayerEntityMinterface).getWristpocket()
 			else -> return null
 		}
 	}
@@ -46,9 +46,9 @@ object WristpocketUtils {
 				}
 
 				if (env.castingEntity is ServerPlayerEntity)
-					PersistentStateHandler.setWristpocketStack(env.castingEntity as ServerPlayerEntity, stack)
+					(env.castingEntity as PlayerEntityMinterface).setWristpocket(stack)
 			}
-			is PlayerBasedCastEnv -> PersistentStateHandler.setWristpocketStack(env.castingEntity as ServerPlayerEntity, stack)
+			is PlayerBasedCastEnv -> (env.castingEntity as PlayerEntityMinterface).setWristpocket(stack)
 		}
 	}
 }
