@@ -1,4 +1,4 @@
-package miyucomics.hexical.casting.patterns
+package miyucomics.hexical.casting.patterns.evocation
 
 import at.petrak.hexcasting.api.casting.RenderedSpell
 import at.petrak.hexcasting.api.casting.castables.SpellAction
@@ -22,7 +22,7 @@ import net.minecraft.server.world.ServerWorld
 import net.minecraft.sound.SoundCategory
 import net.minecraft.util.Hand
 
-class OpInculcate : SpellAction {
+class OpSetEvocation : SpellAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		if (env.castingEntity !is ServerPlayerEntity)

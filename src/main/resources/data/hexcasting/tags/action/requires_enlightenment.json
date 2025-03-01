@@ -3,6 +3,7 @@
     "values": [
         "hexical:conjure_mesh",
         "hexical:greater_blink",
-        "hexical:inculcate"
+        "hexical:get_evocation",
+        "hexical:set_evocation"
     ]
 }
