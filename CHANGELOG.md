@@ -46,6 +46,7 @@
 - changed shader spells to no longer require a media jar
 - changed Erase Item to remove autographs
 - changed grimoire packet syncing to reduce strain on servers
+- fixed Ambit Purification returning true for out-of-world positions
 - fixed bug where small animated scrolls do not render
 - fixed bug where grimoire does not work in non-hotbar
 - fixed bug where Chromatic Purification breaks for vectors
