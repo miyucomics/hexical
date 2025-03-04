@@ -13,6 +13,7 @@ import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster
 import at.petrak.hexcasting.api.misc.MediaConstants
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.casting.environments.EvocationCastEnv
+import miyucomics.hexical.inits.HexicalAdvancements
 import miyucomics.hexical.inits.HexicalSounds
 import miyucomics.hexical.interfaces.PlayerEntityMinterface
 import miyucomics.hexical.state.EvokeState
@@ -41,6 +42,8 @@ class OpSetEvocation : SpellAction {
 	companion object {
 		@JvmStatic
 		fun evoke(player: ServerPlayerEntity) {
+			player.incrementStat(HexicalAdvancements.EVOCATION_STATISTIC)
+
 			EvokeState.duration[player.uuid] = HexicalMain.EVOKE_DURATION
 			val nbt = (player as PlayerEntityMinterface).getEvocation()
 			val hex = IotaType.deserialize(nbt, player.world as ServerWorld)
