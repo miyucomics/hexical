@@ -7,7 +7,11 @@ import net.minecraft.advancement.criterion.AbstractCriterionConditions
 import net.minecraft.advancement.criterion.Criteria
 import net.minecraft.predicate.entity.AdvancementEntityPredicateDeserializer
 import net.minecraft.predicate.entity.LootContextPredicate
+import net.minecraft.registry.Registries
+import net.minecraft.registry.Registry
 import net.minecraft.server.network.ServerPlayerEntity
+import net.minecraft.stat.StatFormatter
+import net.minecraft.stat.Stats
 import net.minecraft.util.Identifier
 
 object HexicalAdvancements {
@@ -18,8 +22,12 @@ object HexicalAdvancements {
 	lateinit var EDUCATE_GENIE: EducateGenieCriterion
 	lateinit var RELOAD_LAMP: ReloadLampCriterion
 
+	val EVOCATION_STATISTIC: Identifier = HexicalMain.id("evocation")
+
 	@JvmStatic
 	fun init() {
+		Registry.register(Registries.CUSTOM_STAT, "hexical_evocation", EVOCATION_STATISTIC)
+
 		AR = Criteria.register(ARCriterion())
 		HEXXY = Criteria.register(HexxyCriterion())
 		DIY = Criteria.register(DIYCriterion())
