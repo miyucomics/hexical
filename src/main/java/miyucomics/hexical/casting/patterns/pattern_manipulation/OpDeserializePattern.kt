@@ -19,7 +19,7 @@ class OpDeserializePattern : ConstMediaAction {
 		val strokes = input.map { element ->
 			if (element !is DoubleIota)
 				throw MishapInvalidIota.of(args[0], 0, "number_list")
-			val value = element.double.toInt() % HexDir.values().size
+			val value = element.double.toInt().mod(HexDir.values().size)
 			HexDir.values()[value]
 		}
 		return HexPattern(strokes[0], strokes.asSequence().windowed(2).map { (a, b) -> b.angleFrom(a) }.toMutableList()).asActionResult

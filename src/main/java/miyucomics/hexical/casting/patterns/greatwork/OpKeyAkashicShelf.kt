@@ -1,4 +1,4 @@
-package miyucomics.hexical.casting.patterns.akashic
+package miyucomics.hexical.casting.patterns.greatwork
 
 import at.petrak.hexcasting.api.casting.asActionResult
 import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
