@@ -33,6 +33,7 @@
 - added scrying pattern for moon phase
 - added Unautograph spell to unautograph an item ( still erases it )
 - added beautiful little shader to media jars
+- added pattern for reading and writing to slate
 - changed Autograph and Unautograph's pattern by swapping them
 - changed media jar
   - pretty shader
@@ -54,9 +55,10 @@
 - fixed bug where Castor's and Pollux's would not pop the iota off
 - fixed bug where Calligrapher's and Chirographer's Purifications were swapped
 - fixed translation error where Ghast Fireball was not documented as pushing an entity
+- fixed bug where wristpocket does not cancel the interaction when interacting with a block
+- fixed poor translation of Tool and Accessory Purification
 - optimized Greater Blink to not load chunks in between
 - migrated metaeval patterns and soroban to Overevaluate, a new addon
-- fixed bug where wristpocket does not cancel the interaction when interacting with a block
 
 ## 1.5.0
 - added spell to conjure llama spit

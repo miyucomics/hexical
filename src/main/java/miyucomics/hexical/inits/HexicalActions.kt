@@ -22,10 +22,6 @@ import miyucomics.hexical.casting.environments.*
 import miyucomics.hexical.casting.iotas.IdentifierIota
 import miyucomics.hexical.casting.iotas.asActionResult
 import miyucomics.hexical.casting.patterns.*
-import miyucomics.hexical.casting.patterns.akashic.OpClearAkashicShelf
-import miyucomics.hexical.casting.patterns.akashic.OpKeyAkashicShelf
-import miyucomics.hexical.casting.patterns.akashic.OpReadAkashicShelf
-import miyucomics.hexical.casting.patterns.akashic.OpWriteAkashicShelf
 import miyucomics.hexical.casting.patterns.circle.OpDisplace
 import miyucomics.hexical.casting.patterns.colors.OpDye
 import miyucomics.hexical.casting.patterns.colors.OpGetDye
@@ -35,6 +31,7 @@ import miyucomics.hexical.casting.patterns.evocation.OpGetEvocation
 import miyucomics.hexical.casting.patterns.evocation.OpSetEvocation
 import miyucomics.hexical.casting.patterns.firework.OpConjureFirework
 import miyucomics.hexical.casting.patterns.firework.OpSimulateFirework
+import miyucomics.hexical.casting.patterns.greatwork.*
 import miyucomics.hexical.casting.patterns.grimoire.OpGrimoireErase
 import miyucomics.hexical.casting.patterns.grimoire.OpGrimoireIndex
 import miyucomics.hexical.casting.patterns.grimoire.OpGrimoireWrite
@@ -157,6 +154,8 @@ object HexicalActions {
 		register("read_shelf", "qaqqqada", HexDir.EAST, OpReadAkashicShelf())
 		register("write_shelf", "edeeedad", HexDir.SOUTH_WEST, OpWriteAkashicShelf())
 		register("clear_shelf", "edeedade", HexDir.SOUTH_WEST, OpClearAkashicShelf())
+		register("read_slate", "aqqqqqeawqwaw", HexDir.EAST, OpReadSlate())
+		register("write_slate", "deeeeeqdwewewewdw", HexDir.EAST, OpWriteSlate())
 
 		register("conjure_mage_block", "dee", HexDir.NORTH_WEST, OpConjureMageBlock())
 		register("modify_block_bouncy", "deeqa", HexDir.NORTH_WEST, OpModifyMageBlock("bouncy"))
