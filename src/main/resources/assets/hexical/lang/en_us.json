@@ -385,7 +385,7 @@
 	"hexical.page.sneaking.summary": "Pushes how many twentieths of a second I've been intending to $(thing)$(k:sneak)$(), or -1 if I am not.",
 
 	"hexical.page.greatwork_utils.title": "Grand Work Utilities",
-	"hexical.page.greatwork_utils.0": "I have discovered some convenient features of $(l:greatwork/akashiclib)Akashic Bookshelves$() and $(l:items/slate)$(item)Slates$()! I can $(thing)$(k:use)$() or $(l:patterns/spells/prestidigitation)magically interact$() with a filled bookshelf to copy its iota onto my stack. I have also discovered patterns to read and write directly to a $(l:greatwork/akashiclib)$(item)Bookshelf$() or $(l:item/slate)$(item)Slate$() within ambit.",
+	"hexical.page.greatwork_utils.0": "I have discovered some convenient features of $(l:greatwork/akashiclib)Akashic Bookshelves$() and $(l:items/slate)$(item)Slates$()! I can $(thing)$(k:use)$() or $(l:patterns/spells/prestidigitation)magically interact$() with a filled bookshelf to copy its iota onto my stack. I have also discovered patterns to read and write directly to a $(l:greatwork/akashiclib)$(item)Bookshelf$() or $(l:items/slate)$(item)Slate$() within ambit.",
 	"hexcasting.action.hexical:key_shelf": "Librarian's Purification",
 	"hexical.page.key_shelf.summary": "Reads the pattern key of an $(l:greatwork/akashiclib)Akashic Bookshelf$(). Free.",
 	"hexcasting.action.hexical:read_shelf": "Librarian's Purification II",
