@@ -47,14 +47,14 @@
 			"op_id": "hexical:read_slate",
 			"anchor": "hexical:read_slate",
 			"input": "vector",
-			"output": "pattern",
+			"output": "pattern/null",
 			"text": "hexical.page.read_slate.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:write_slate",
 			"anchor": "hexical:write_slate",
-			"input": "vector, pattern",
+			"input": "vector, pattern/null",
 			"output": "",
 			"text": "hexical.page.write_slate.summary"
 		}
