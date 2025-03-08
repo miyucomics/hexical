@@ -2,7 +2,7 @@ package miyucomics.hexical.mixin;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import miyucomics.hexical.inits.HexicalItems;
+import miyucomics.hexical.registry.HexicalItems;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;

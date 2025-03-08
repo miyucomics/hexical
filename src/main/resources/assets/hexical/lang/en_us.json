@@ -115,6 +115,7 @@
 	"hexcasting.mishap.invalid_value.mesh_design": "a list of up to 32 vectors with magnitudes less than 10",
 	"hexcasting.mishap.invalid_value.nonempty_list": "a non-empty list",
 	"hexcasting.mishap.invalid_value.number_list": "a non-empty list of numbers",
+	"hexcasting.mishap.invalid_value.null_or_pattern": "null or a pattern",
 	"hexcasting.mishap.invalid_value.number_or_vector": "a number or a vector",
 	"hexcasting.mishap.invalid_value.potion_holding": "a food, potion, or tipped arrow item entity",
 	"hexcasting.mishap.invalid_value.recognizable": "a target with extra information",
@@ -228,7 +229,6 @@
 	"hexical.recipe.cry_obsidian.text": "Infuses $(item)Obsidian$() with _media which leaks out of it, giving it a distinctive crying appearance.",
 	"hexical.recipe.uncry_obsidian.header": "Calm Obsidian",
 	"hexical.recipe.uncry_obsidian.text": "Returns the _media from $(item)Crying Obsidian$().$(br2)$(o)Therapy! :D$()",
-	"hexical.page.media_jar.2": "Drinking this liquid seems to blur the line between matter and _media, making my blood $(o)so much$() more efficient as payment for my _Hexes than I am used to. The required doseage is about one $(l:items/amethyst)$(item)Charged Amethyst$() and the effect lasts roughly five minutes. I believe that my body's new _media-like composition may allow for certain manipulations now possible otherwise.",
 
 	"hexical.page.ledger.title": "Ledgers",
 	"hexical.page.ledger.0": "$(l:patterns/meta)When _Hexes cast _Hexes$(), it is easy to lose track of my _Hex and Nature is all too happy to be punish such carelessness. Luckily, a $(item)Ledger$() can record the last 32 patterns I casted, the last mishap I have cast, and the state of the stack right before mishap. The true power of $(item)Ledgers$() is the ability for it to record patterns cast $(o)even by $(l:patterns/meta)meta-evaluations$().",
@@ -395,9 +395,9 @@
     "hexcasting.action.hexical:clear_shelf": "Librarian's Gambit II",
     "hexical.page.clear_shelf.summary": "Clears an $(l:greatwork/akashiclib)Akashic Bookshelf$(). Free.",
 	"hexcasting.action.hexical:read_slate": "Ritualist's Purification",
-	"hexical.page.read_slate.summary": "Reads the pattern inscribed in a $(l:items/slate)$(item)Slate$(). Free.",
+	"hexical.page.read_slate.summary": "Reads the pattern inscribed in a $(l:items/slate)$(item)Slate$(), or $(l:casting/influences)$(thing)Null$() if the slate is empty. Free.",
 	"hexcasting.action.hexical:write_slate": "Ritualist's Gambit",
-	"hexical.page.write_slate.summary": "Writes a pattern into a $(l:items/slate)$(item)Slate$(). Costs about three-eighths of an $(l:items/amethyst)$(item)Amethyst Dust$().",
+	"hexical.page.write_slate.summary": "Writes a pattern into or if given $(l:casting/influences)$(thing)Null$(), erases a $(l:items/slate)$(item)Slate$(). Costs about half of an $(l:items/amethyst)$(item)Amethyst Dust$().",
 
 	"hexical.page.mage_block.title": "Mage Blocks",
 	"hexical.page.mage_block": "The blocks from $(l:patterns/spells/blockworks#hexcasting:conjure_block)$(action)Conjure Block$() last forever, are consequently a pain to clean up, and are not too versatile. Luckily, Nature offers an elegant and flexible alternative. These mage blocks come with a suite of $(o)modifiers$(). I could even stack multiple modifiers on one block or reapply a modifier to toggle it off.",

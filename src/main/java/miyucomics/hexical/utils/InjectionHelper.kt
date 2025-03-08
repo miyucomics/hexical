@@ -18,8 +18,8 @@ import at.petrak.hexcasting.common.casting.PatternRegistryManifest
 import at.petrak.hexcasting.common.lib.hex.HexEvalSounds
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import miyucomics.hexical.casting.frames.ScarabFrame
-import miyucomics.hexical.inits.HexicalItems
 import miyucomics.hexical.items.ScarabBeetleItem
+import miyucomics.hexical.registry.HexicalItems
 import net.minecraft.item.ItemStack
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld

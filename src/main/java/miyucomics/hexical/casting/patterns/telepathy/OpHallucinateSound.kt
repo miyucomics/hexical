@@ -3,7 +3,7 @@ package miyucomics.hexical.casting.patterns.telepathy
 import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.iota.Iota
-import miyucomics.hexical.inits.HexicalAdvancements
+import miyucomics.hexical.registry.HexicalAdvancements
 import net.minecraft.network.packet.s2c.play.PlaySoundS2CPacket
 import net.minecraft.registry.entry.RegistryEntry
 import net.minecraft.server.network.ServerPlayerEntity

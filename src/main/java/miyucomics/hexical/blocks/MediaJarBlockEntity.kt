@@ -3,7 +3,7 @@ package miyucomics.hexical.blocks
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.common.lib.HexItems
 import com.mojang.datafixers.util.Pair
-import miyucomics.hexical.inits.HexicalBlocks
+import miyucomics.hexical.registry.HexicalBlocks
 import net.minecraft.block.BlockState
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.item.ItemStack

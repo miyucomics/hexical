@@ -8,9 +8,9 @@ import at.petrak.hexcasting.api.casting.iota.NullIota
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.casting.environments.TurretLampCastEnv
-import miyucomics.hexical.inits.HexicalBlocks
-import miyucomics.hexical.inits.HexicalItems
 import miyucomics.hexical.items.ArchLampItem
+import miyucomics.hexical.registry.HexicalBlocks
+import miyucomics.hexical.registry.HexicalItems
 import miyucomics.hexical.state.PersistentStateHandler
 import net.minecraft.block.BlockState
 import net.minecraft.block.entity.BlockEntity

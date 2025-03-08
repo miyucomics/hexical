@@ -8,8 +8,8 @@ import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.api.utils.serializeToNBT
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
 import miyucomics.hexical.casting.environments.HandLampCastEnv
-import miyucomics.hexical.inits.HexicalSounds
 import miyucomics.hexical.interfaces.GenieLamp
+import miyucomics.hexical.registry.HexicalSounds
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack

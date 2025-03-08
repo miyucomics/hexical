@@ -5,7 +5,7 @@ import at.petrak.hexcasting.api.misc.MediaConstants;
 import at.petrak.hexcasting.api.pigment.FrozenPigment;
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex;
 import miyucomics.hexical.client.ClientStorage;
-import miyucomics.hexical.inits.HexicalItems;
+import miyucomics.hexical.registry.HexicalItems;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
