@@ -7,9 +7,9 @@ import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.NullIota
 import at.petrak.hexcasting.api.misc.MediaConstants
 import miyucomics.hexical.casting.mishaps.NeedsArchGenieLampMishap
-import miyucomics.hexical.inits.HexicalItems
 import miyucomics.hexical.items.ArchLampItem
 import miyucomics.hexical.items.hasActiveArchLamp
+import miyucomics.hexical.registry.HexicalItems
 import net.minecraft.server.network.ServerPlayerEntity
 
 class OpGetArchLampMedia : ConstMediaAction {

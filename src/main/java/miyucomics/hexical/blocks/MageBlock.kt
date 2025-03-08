@@ -1,7 +1,7 @@
 package miyucomics.hexical.blocks
 
 import at.petrak.hexcasting.common.blocks.BlockConjured
-import miyucomics.hexical.inits.HexicalBlocks
+import miyucomics.hexical.registry.HexicalBlocks
 import net.minecraft.block.BlockState
 import net.minecraft.block.Blocks
 import net.minecraft.block.MapColor

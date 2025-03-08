@@ -22,7 +22,8 @@ class OpGhastFireball : SpellAction {
 	private data class Spell(val position: Vec3d) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {}
 		override fun cast(env: CastingEnvironment, image: CastingImage): CastingImage {
-			val fireball = FireballEntity(env.world, env.castingEntity, position.x, position.y, position.z, 1)
+			val fireball = FireballEntity(env.world, env.castingEntity, 0.0, 0.0, 0.0, 1)
+			fireball.setPosition(position)
 			env.world.spawnEntity(fireball)
 			return image.copy(stack = image.stack.toList().plus(EntityIota(fireball)))
 		}

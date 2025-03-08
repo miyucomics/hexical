@@ -10,7 +10,7 @@ import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadOffhandItem
 import at.petrak.hexcasting.api.utils.getOrCreateCompound
 import at.petrak.hexcasting.api.utils.putCompound
-import miyucomics.hexical.inits.HexicalItems
+import miyucomics.hexical.registry.HexicalItems
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
 

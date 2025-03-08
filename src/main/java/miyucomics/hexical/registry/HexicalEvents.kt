@@ -1,4 +1,4 @@
-package miyucomics.hexical.inits
+package miyucomics.hexical.registry
 
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.eval.env.PlayerBasedCastEnv

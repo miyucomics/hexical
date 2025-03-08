@@ -1,7 +1,7 @@
 package miyucomics.hexical.screens
 
 import miyucomics.hexical.client.ClientStorage
-import miyucomics.hexical.inits.HexicalNetworking
+import miyucomics.hexical.registry.HexicalNetworking
 import miyucomics.hexical.state.LedgerData
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs

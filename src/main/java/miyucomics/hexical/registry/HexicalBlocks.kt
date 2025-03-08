@@ -1,4 +1,4 @@
-package miyucomics.hexical.inits
+package miyucomics.hexical.registry
 
 import at.petrak.hexcasting.api.client.ScryingLensOverlayRegistry
 import com.mojang.datafixers.util.Pair
@@ -65,6 +65,6 @@ object HexicalBlocks {
 		ScryingLensOverlayRegistry.addDisplayer(MEDIA_JAR_BLOCK) { lines: MutableList<Pair<ItemStack, Text>>, _: BlockState, pos: BlockPos, _: PlayerEntity, world: World, _: Direction -> (world.getBlockEntity(pos) as MediaJarBlockEntity).scryingLensOverlay(lines) }
 
 		BlockEntityRendererFactories.register(MEDIA_JAR_BLOCK_ENTITY, ::MediaJarBlockEntityRenderer)
-		BlockEntityRendererFactories.register(PILLOW_BLOCK_ENTITY, ::PillowBlockEntityRenderer)
+//		BlockEntityRendererFactories.register(PILLOW_BLOCK_ENTITY, ::PillowBlockEntityRenderer)
 	}
 }

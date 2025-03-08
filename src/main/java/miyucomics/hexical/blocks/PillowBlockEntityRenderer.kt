@@ -1,6 +1,6 @@
 package miyucomics.hexical.blocks
 
-import miyucomics.hexical.inits.HexicalItems
+import miyucomics.hexical.registry.HexicalItems
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.render.VertexConsumerProvider
 import net.minecraft.client.render.WorldRenderer

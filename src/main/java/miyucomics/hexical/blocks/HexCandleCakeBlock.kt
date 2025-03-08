@@ -4,7 +4,7 @@ import at.petrak.hexcasting.api.pigment.ColorProvider
 import at.petrak.hexcasting.api.pigment.FrozenPigment
 import at.petrak.hexcasting.common.particles.ConjureParticleOptions
 import at.petrak.hexcasting.xplat.IXplatAbstractions
-import miyucomics.hexical.inits.HexicalBlocks
+import miyucomics.hexical.registry.HexicalBlocks
 import net.minecraft.block.*
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.entity.player.PlayerEntity

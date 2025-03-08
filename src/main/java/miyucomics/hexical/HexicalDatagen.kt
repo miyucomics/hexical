@@ -1,7 +1,7 @@
 package miyucomics.hexical
 
-import miyucomics.hexical.inits.HexicalBlocks
-import miyucomics.hexical.inits.HexicalItems
+import miyucomics.hexical.registry.HexicalBlocks
+import miyucomics.hexical.registry.HexicalItems
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput

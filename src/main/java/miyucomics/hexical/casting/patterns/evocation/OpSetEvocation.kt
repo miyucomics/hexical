@@ -13,9 +13,9 @@ import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster
 import at.petrak.hexcasting.api.misc.MediaConstants
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.casting.environments.EvocationCastEnv
-import miyucomics.hexical.inits.HexicalAdvancements
-import miyucomics.hexical.inits.HexicalSounds
 import miyucomics.hexical.interfaces.PlayerEntityMinterface
+import miyucomics.hexical.registry.HexicalAdvancements
+import miyucomics.hexical.registry.HexicalSounds
 import miyucomics.hexical.state.EvokeState
 import miyucomics.hexical.utils.CastingUtils
 import net.minecraft.server.network.ServerPlayerEntity

@@ -1,7 +1,7 @@
 package miyucomics.hexical.mixin;
 
 import at.petrak.hexcasting.client.gui.GuiSpellcasting;
-import miyucomics.hexical.inits.HexicalKeybinds;
+import miyucomics.hexical.registry.HexicalKeybinds;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.util.Identifier;

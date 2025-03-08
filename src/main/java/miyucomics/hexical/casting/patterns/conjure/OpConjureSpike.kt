@@ -10,7 +10,7 @@ import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.misc.MediaConstants
 import miyucomics.hexical.entities.SpikeEntity
-import miyucomics.hexical.inits.HexicalEntities
+import miyucomics.hexical.registry.HexicalEntities
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Box

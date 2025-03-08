@@ -4,7 +4,7 @@ import at.petrak.hexcasting.api.casting.iota.Vec3Iota
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.api.utils.putList
 import dev.kosmx.playerAnim.core.util.Vec3f
-import miyucomics.hexical.inits.HexicalEntities
+import miyucomics.hexical.registry.HexicalEntities
 import net.minecraft.entity.EntityType
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.nbt.NbtElement

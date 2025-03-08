@@ -8,8 +8,8 @@ import at.petrak.hexcasting.api.casting.iota.PatternIota
 import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
-import miyucomics.hexical.inits.HexicalEntities
-import miyucomics.hexical.inits.HexicalItems
+import miyucomics.hexical.registry.HexicalEntities
+import miyucomics.hexical.registry.HexicalItems
 import miyucomics.hexical.utils.RenderUtils
 import net.minecraft.block.AbstractRedstoneGateBlock
 import net.minecraft.entity.Entity

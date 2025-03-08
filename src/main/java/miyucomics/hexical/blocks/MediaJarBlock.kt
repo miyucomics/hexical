@@ -3,20 +3,15 @@ package miyucomics.hexical.blocks
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.utils.isMediaItem
 import at.petrak.hexcasting.xplat.IXplatAbstractions
-import miyucomics.hexical.inits.HexicalEffects
-import miyucomics.hexical.inits.HexicalItems
-import miyucomics.hexical.inits.HexicalRecipe
-import miyucomics.hexical.inits.HexicalSounds
 import miyucomics.hexical.recipe.TransmutingRecipe
-import miyucomics.hexical.utils.CastingUtils
+import miyucomics.hexical.registry.HexicalItems
+import miyucomics.hexical.registry.HexicalRecipe
+import miyucomics.hexical.registry.HexicalSounds
 import net.minecraft.block.*
 import net.minecraft.entity.ItemEntity
-import net.minecraft.entity.effect.StatusEffectInstance
-import net.minecraft.entity.effect.StatusEffects
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.inventory.SimpleInventory
 import net.minecraft.item.ItemStack
-import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.sound.BlockSoundGroup
 import net.minecraft.sound.SoundCategory
 import net.minecraft.util.ActionResult
@@ -75,14 +70,6 @@ class MediaJarBlock : TransparentBlock(
 			jarData.withdrawMedia(recipe.cost)
 			recipe.output.forEach { reward -> player.giveItemStack(reward.copy()) }
 			world.playSound(null, pos, HexicalSounds.ITEM_DUNKS, SoundCategory.BLOCKS, 1f, 1f)
-			return ActionResult.SUCCESS
-		}
-
-		if (stack.isEmpty && jarData.withdrawMedia(MediaConstants.CRYSTAL_UNIT)) {
-			world.playSoundFromEntity(null, player, HexicalSounds.PLAYER_SLURP, SoundCategory.PLAYERS, 1f, 1f)
-			if (world.isClient)
-				return ActionResult.SUCCESS
-			player.addStatusEffect(if (CastingUtils.isEnlightened(player as ServerPlayerEntity)) StatusEffectInstance(HexicalEffects.WOOLEYED_EFFECT, 6000, 0, true, true) else StatusEffectInstance(StatusEffects.POISON, 200, 0, true, true))
 			return ActionResult.SUCCESS
 		}
 

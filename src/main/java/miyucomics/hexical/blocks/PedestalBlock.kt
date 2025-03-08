@@ -53,7 +53,7 @@ class PedestalBlock : BlockCircleComponent(Settings.copy(Blocks.DEEPSLATE_TILES)
 		builder.add(FACING)
 	}
 
-	override fun canEnterFromDirection(enterDir: Direction?, pos: BlockPos?, state: BlockState?, world: ServerWorld?) = enterDir != this.normalDir(pos, state, world)
+	override fun canEnterFromDirection(enterDir: Direction, pos: BlockPos, state: BlockState, world: ServerWorld) = enterDir != this.normalDir(pos, state, world)
 
 	override fun acceptControlFlow(image: CastingImage, env: CircleCastEnv, enterDir: Direction, pos: BlockPos, state: BlockState, world: ServerWorld): ControlFlow {
 		val exits = this.possibleExitDirections(pos, state, world)
@@ -61,7 +61,7 @@ class PedestalBlock : BlockCircleComponent(Settings.copy(Blocks.DEEPSLATE_TILES)
 		return ControlFlow.Continue((world.getBlockEntity(pos) as PedestalBlockEntity).modifyImage(image), exits.map { dir -> exitPositionFromDirection(pos, dir) })
 	}
 
-	override fun possibleExitDirections(pos: BlockPos?, state: BlockState?, world: World?): EnumSet<Direction> {
+	override fun possibleExitDirections(pos: BlockPos, state: BlockState, world: World): EnumSet<Direction> {
 		val exits = EnumSet.allOf(Direction::class.java)
 		val normal = this.normalDir(pos, state, world)
 		exits.remove(normal)

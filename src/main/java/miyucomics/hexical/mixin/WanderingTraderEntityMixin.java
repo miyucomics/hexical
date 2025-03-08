@@ -3,7 +3,7 @@ package miyucomics.hexical.mixin;
 import at.petrak.hexcasting.api.misc.MediaConstants;
 import at.petrak.hexcasting.xplat.IXplatAbstractions;
 import miyucomics.hexical.HexicalMain;
-import miyucomics.hexical.inits.HexicalItems;
+import miyucomics.hexical.registry.HexicalItems;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.passive.MerchantEntity;
 import net.minecraft.entity.passive.WanderingTraderEntity;

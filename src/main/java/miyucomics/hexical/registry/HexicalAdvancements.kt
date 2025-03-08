@@ -1,4 +1,4 @@
-package miyucomics.hexical.inits
+package miyucomics.hexical.registry
 
 import com.google.gson.JsonObject
 import miyucomics.hexical.HexicalMain
@@ -10,8 +10,6 @@ import net.minecraft.predicate.entity.LootContextPredicate
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.server.network.ServerPlayerEntity
-import net.minecraft.stat.StatFormatter
-import net.minecraft.stat.Stats
 import net.minecraft.util.Identifier
 
 object HexicalAdvancements {

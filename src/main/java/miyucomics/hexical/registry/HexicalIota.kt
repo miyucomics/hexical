@@ -1,4 +1,4 @@
-package miyucomics.hexical.inits
+package miyucomics.hexical.registry
 
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import miyucomics.hexical.HexicalMain

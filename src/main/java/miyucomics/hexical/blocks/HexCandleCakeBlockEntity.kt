@@ -1,7 +1,7 @@
 package miyucomics.hexical.blocks
 
 import at.petrak.hexcasting.api.pigment.FrozenPigment
-import miyucomics.hexical.inits.HexicalBlocks
+import miyucomics.hexical.registry.HexicalBlocks
 import net.minecraft.block.BlockState
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.nbt.NbtCompound

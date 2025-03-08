@@ -1,6 +1,6 @@
 package miyucomics.hexical.mixin;
 
-import miyucomics.hexical.inits.HexicalBlocks;
+import miyucomics.hexical.registry.HexicalBlocks;
 import net.minecraft.entity.ai.goal.CatSitOnBlockGoal;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.WorldView;

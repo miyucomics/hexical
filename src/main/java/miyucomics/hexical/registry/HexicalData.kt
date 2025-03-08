@@ -1,4 +1,4 @@
-package miyucomics.hexical.inits
+package miyucomics.hexical.registry
 
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.data.DyeData

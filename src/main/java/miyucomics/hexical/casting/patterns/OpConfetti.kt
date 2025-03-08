@@ -11,7 +11,7 @@ import at.petrak.hexcasting.api.casting.iota.Vec3Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.misc.MediaConstants
 import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.inits.HexicalNetworking
+import miyucomics.hexical.registry.HexicalNetworking
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
 import net.minecraft.util.math.Vec3d

@@ -7,8 +7,8 @@ import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadBlock
 import miyucomics.hexical.blocks.MageBlock
 import miyucomics.hexical.blocks.MageBlockEntity
-import miyucomics.hexical.inits.HexicalAdvancements
-import miyucomics.hexical.inits.HexicalBlocks
+import miyucomics.hexical.registry.HexicalAdvancements
+import miyucomics.hexical.registry.HexicalBlocks
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d

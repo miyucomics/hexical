@@ -4,8 +4,8 @@ import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.eval.env.CircleCastEnv
 import at.petrak.hexcasting.api.casting.eval.env.PlayerBasedCastEnv
 import miyucomics.hexical.blocks.PedestalBlockEntity
-import miyucomics.hexical.inits.HexicalBlocks
 import miyucomics.hexical.interfaces.PlayerEntityMinterface
+import miyucomics.hexical.registry.HexicalBlocks
 import net.minecraft.entity.ItemEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.server.network.ServerPlayerEntity

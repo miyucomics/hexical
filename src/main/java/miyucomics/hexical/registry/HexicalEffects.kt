@@ -1,4 +1,4 @@
-package miyucomics.hexical.inits
+package miyucomics.hexical.registry
 
 import miyucomics.hexical.HexicalMain
 import net.minecraft.entity.effect.StatusEffect

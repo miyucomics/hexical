@@ -11,8 +11,8 @@ import at.petrak.hexcasting.api.casting.mishaps.MishapBadEntity
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadOffhandItem
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.xplat.IXplatAbstractions
-import miyucomics.hexical.inits.HexicalAdvancements
 import miyucomics.hexical.interfaces.GenieLamp
+import miyucomics.hexical.registry.HexicalAdvancements
 import net.minecraft.entity.mob.MobEntity
 import net.minecraft.entity.passive.VillagerEntity
 import net.minecraft.item.ItemStack

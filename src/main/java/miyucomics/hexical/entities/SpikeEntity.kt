@@ -1,8 +1,8 @@
 package miyucomics.hexical.entities
 
 import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.inits.HexicalDamageTypes
-import miyucomics.hexical.inits.HexicalEntities
+import miyucomics.hexical.registry.HexicalDamageTypes
+import miyucomics.hexical.registry.HexicalEntities
 import net.minecraft.entity.*
 import net.minecraft.entity.data.DataTracker
 import net.minecraft.entity.data.TrackedData

@@ -12,7 +12,7 @@ import at.petrak.hexcasting.api.casting.math.HexDir
 import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.misc.MediaConstants
 import miyucomics.hexical.entities.specklikes.SpeckEntity
-import miyucomics.hexical.inits.HexicalAdvancements
+import miyucomics.hexical.registry.HexicalAdvancements
 import net.minecraft.command.argument.EntityAnchorArgumentType
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.math.Vec3d

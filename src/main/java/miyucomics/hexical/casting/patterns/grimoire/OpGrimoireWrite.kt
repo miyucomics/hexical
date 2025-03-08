@@ -12,7 +12,7 @@ import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadOffhandItem
 import at.petrak.hexcasting.api.utils.putCompound
 import miyucomics.hexical.casting.patterns.grimoire.OpGrimoireIndex.Companion.populateGrimoireMetadata
-import miyucomics.hexical.inits.HexicalItems
+import miyucomics.hexical.registry.HexicalItems
 import miyucomics.hexical.utils.CastingUtils
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound

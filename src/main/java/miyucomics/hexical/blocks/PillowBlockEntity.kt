@@ -1,7 +1,7 @@
 package miyucomics.hexical.blocks
 
 import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.inits.HexicalBlocks
+import miyucomics.hexical.registry.HexicalBlocks
 import net.minecraft.block.BlockState
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.util.math.BlockPos

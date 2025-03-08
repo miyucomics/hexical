@@ -1,6 +1,6 @@
 package miyucomics.hexical
 
-import miyucomics.hexical.inits.*
+import miyucomics.hexical.registry.*
 import net.fabricmc.api.ClientModInitializer
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.gl.ShaderProgram
