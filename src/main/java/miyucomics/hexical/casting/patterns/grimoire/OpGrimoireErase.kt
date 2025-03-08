@@ -8,7 +8,7 @@ import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadOffhandItem
 import miyucomics.hexical.casting.patterns.grimoire.OpGrimoireIndex.Companion.populateGrimoireMetadata
-import miyucomics.hexical.inits.HexicalItems
+import miyucomics.hexical.registry.HexicalItems
 import net.minecraft.item.ItemStack
 
 class OpGrimoireErase : SpellAction {

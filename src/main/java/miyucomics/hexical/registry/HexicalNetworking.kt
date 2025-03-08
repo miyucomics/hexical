@@ -1,4 +1,4 @@
-package miyucomics.hexical.inits
+package miyucomics.hexical.registry
 
 import at.petrak.hexcasting.api.casting.iota.BooleanIota
 import at.petrak.hexcasting.api.casting.iota.Iota

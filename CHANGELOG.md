@@ -13,6 +13,7 @@
 - added Squawk spell for fun - play mob sounds
 - added Confetti spell for fun - creates a bang and confetti particles
 - added ability for spell circles to use wristpocket by having a pedestal over the impetus
+- added Ritualist Purification and Gambit from HexGloop: read and write to slates
 - added ledgers - a strange item that records the last 32 patterns you've casted
   - useful for debugging hexes in staves and casting devices
 - added pedestals to hold items
@@ -52,6 +53,7 @@
 - fixed bug where grimoire does not work in non-hotbar
 - fixed bug where Chromatic Purification breaks for vectors
 - fixed lack of cost in Mage Hand documentation
+- fixed bug where Fireball would fly off in some random direction
 - fixed bug where Castor's and Pollux's would not pop the iota off
 - fixed bug where Calligrapher's and Chirographer's Purifications were swapped
 - fixed translation error where Ghast Fireball was not documented as pushing an entity

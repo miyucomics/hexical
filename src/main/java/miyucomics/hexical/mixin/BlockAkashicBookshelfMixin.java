@@ -3,7 +3,7 @@ package miyucomics.hexical.mixin;
 import at.petrak.hexcasting.api.casting.iota.IotaType;
 import at.petrak.hexcasting.common.blocks.akashic.BlockAkashicBookshelf;
 import at.petrak.hexcasting.common.blocks.akashic.BlockEntityAkashicBookshelf;
-import miyucomics.hexical.inits.HexicalSounds;
+import miyucomics.hexical.registry.HexicalSounds;
 import miyucomics.hexical.utils.CastingUtils;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;

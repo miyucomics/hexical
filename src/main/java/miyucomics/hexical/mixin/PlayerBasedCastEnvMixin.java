@@ -6,7 +6,7 @@ import at.petrak.hexcasting.api.casting.eval.sideeffects.OperatorSideEffect;
 import at.petrak.hexcasting.api.mod.HexConfig;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import miyucomics.hexical.inits.HexicalEffects;
+import miyucomics.hexical.registry.HexicalEffects;
 import miyucomics.hexical.state.PersistentStateHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;

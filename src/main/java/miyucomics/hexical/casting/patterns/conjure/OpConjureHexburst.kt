@@ -9,7 +9,7 @@ import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.utils.putCompound
-import miyucomics.hexical.inits.HexicalItems
+import miyucomics.hexical.registry.HexicalItems
 import miyucomics.hexical.utils.CastingUtils
 import net.minecraft.entity.ItemEntity
 import net.minecraft.item.ItemStack

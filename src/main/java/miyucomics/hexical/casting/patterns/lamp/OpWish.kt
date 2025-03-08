@@ -7,8 +7,8 @@ import at.petrak.hexcasting.api.casting.getList
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadOffhandItem
 import at.petrak.hexcasting.xplat.IXplatAbstractions
-import miyucomics.hexical.inits.HexicalAdvancements
 import miyucomics.hexical.interfaces.GenieLamp
+import miyucomics.hexical.registry.HexicalAdvancements
 import miyucomics.hexical.utils.CastingUtils
 import net.minecraft.item.ItemStack
 import net.minecraft.server.network.ServerPlayerEntity
