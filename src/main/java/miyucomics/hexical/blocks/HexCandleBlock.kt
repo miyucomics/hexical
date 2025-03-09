@@ -10,6 +10,8 @@ import net.minecraft.block.piston.PistonBehavior
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.fluid.FluidState
 import net.minecraft.fluid.Fluids
+import net.minecraft.item.Item
+import net.minecraft.registry.tag.ItemTags
 import net.minecraft.sound.BlockSoundGroup
 import net.minecraft.sound.SoundCategory
 import net.minecraft.sound.SoundEvents
@@ -33,6 +35,9 @@ class HexCandleBlock : CandleBlock(
 		.pistonBehavior(PistonBehavior.DESTROY)
 ), BlockEntityProvider {
 	override fun onUse(state: BlockState, world: World, pos: BlockPos, player: PlayerEntity, hand: Hand, hit: BlockHitResult): ActionResult {
+		val item = player.getStackInHand(hand)
+		println(item.isIn(ItemTags.CANDLES))
+
 		if (player.isSneaking)
 			return super.onUse(state, world, pos, player, hand, hit)
 		if (!state.get(AbstractCandleBlock.LIT))

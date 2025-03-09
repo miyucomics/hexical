@@ -44,7 +44,7 @@ object HexicalBlocks {
 	@JvmStatic
 	fun init() {
 		Registry.register(Registries.BLOCK, HexicalMain.id("hex_candle"), HEX_CANDLE_BLOCK)
-		Registry.register(Registries.BLOCK, HexicalMain.id("hex_cake_candle"), HEX_CANDLE_CAKE_BLOCK)
+		Registry.register(Registries.BLOCK, HexicalMain.id("hex_candle_cake"), HEX_CANDLE_CAKE_BLOCK)
 		Registry.register(Registries.BLOCK, HexicalMain.id("mage_block"), MAGE_BLOCK)
 		Registry.register(Registries.BLOCK, HexicalMain.id("media_jar"), MEDIA_JAR_BLOCK)
 		Registry.register(Registries.BLOCK, HexicalMain.id("pedestal"), PEDESTAL_BLOCK)
@@ -52,7 +52,7 @@ object HexicalBlocks {
 		Registry.register(Registries.BLOCK, HexicalMain.id("pillow"), PILLOW_BLOCK)
 
 		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("hex_candle"), HEX_CANDLE_BLOCK_ENTITY)
-		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("hex_cake_candle"), HEX_CANDLE_CAKE_BLOCK_ENTITY)
+		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("hex_candle_cake"), HEX_CANDLE_CAKE_BLOCK_ENTITY)
 		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("media_jar"), MEDIA_JAR_BLOCK_ENTITY)
 		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("mage_block"), MAGE_BLOCK_ENTITY)
 		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("pedestal"), PEDESTAL_BLOCK_ENTITY)
