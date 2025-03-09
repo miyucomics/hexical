@@ -357,6 +357,7 @@ object HexicalActions {
 		register("env_evocation", "waaqeaqa", HexDir.NORTH_EAST, OpGetEnvData { env -> (env is EvocationCastEnv).asActionResult })
 		register("env_tchotchke", "waaqwwaqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpGetEnvData { env -> (env is TchotchkeCastEnv).asActionResult })
 
+		register("edible", "adaqqqdd", HexDir.WEST, OpGetItemTypeData { item -> item.isFood.asActionResult })
 		register("get_hunger", "adaqqqddqe", HexDir.WEST, OpGetFoodTypeData { food -> food.hunger.asActionResult })
 		register("get_saturation", "adaqqqddqw", HexDir.WEST, OpGetFoodTypeData { food -> food.saturationModifier.asActionResult })
 		register("is_meat", "adaqqqddaed", HexDir.WEST, OpGetFoodTypeData { food -> food.isMeat.asActionResult })
@@ -372,7 +373,7 @@ object HexicalActions {
 		register("count_max_stack", "edeeweeew", HexDir.WEST, OpGetItemTypeData { item -> item.maxCount.asActionResult })
 		register("damage_stack", "eeweeewdeq", HexDir.NORTH_EAST, OpGetItemStackData { stack -> stack.damage.asActionResult })
 		register("damage_max_stack", "qqwqqqwaqe", HexDir.NORTH_WEST, OpGetItemTypeData { item -> item.maxDamage.asActionResult })
-		register("edible", "adaqqqdd", HexDir.WEST, OpGetItemTypeData { item -> item.isFood.asActionResult })
+		register("media_max_stack", "ddeaq", HexDir.EAST, OpGetMaxMedia())
 
 		register("get_effects_entity", "wqqq", HexDir.SOUTH_WEST, OpGetLivingEntityData { entity ->
 			val list = mutableListOf<Iota>()

@@ -17,8 +17,6 @@ class PillowBlockEntityRenderer(ctx: BlockEntityRendererFactory.Context) : Block
 	override fun render(entity: PillowBlockEntity, tickDelta: Float, matrices: MatrixStack, vertexConsumers: VertexConsumerProvider, light: Int, overlay: Int) {
 		matrices.push()
 		matrices.translate(0.5, 1.0, 0.5)
-		matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(entity.currentYaw))
-		matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(entity.currentPitch))
 		matrices.scale(1.5f, 1.5f, 1.5f)
 
 		val lightAbove = WorldRenderer.getLightmapCoordinates(entity.world, entity.pos.up())
