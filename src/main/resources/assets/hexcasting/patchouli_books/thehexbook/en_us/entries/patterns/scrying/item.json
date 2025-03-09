@@ -35,6 +35,14 @@
 			"input": "identifier",
 			"output": "number",
 			"text": "hexical.page.damage_max_stack.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:media_max_stack",
+			"anchor": "hexical:media_max_stack",
+			"input": "entity",
+			"output": "number/null",
+			"text": "hexical.page.media_max_stack.summary"
 		}
 	]
 }

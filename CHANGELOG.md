@@ -35,6 +35,7 @@
 - added Unautograph spell to unautograph an item ( still erases it )
 - added beautiful little shader to media jars
 - added pattern for reading and writing to slate
+- added Potential Purification - max media that something can hold
 - changed Autograph and Unautograph's pattern by swapping them
 - changed media jar
   - pretty shader

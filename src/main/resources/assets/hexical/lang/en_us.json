@@ -719,6 +719,8 @@
 	"hexical.page.damage_stack.summary": "Takes in an item entity and pushes how much damage the item has sustained.",
 	"hexcasting.action.hexical:damage_max_stack": "Fragility Purification",
 	"hexical.page.damage_max_stack.summary": "Takes in an item entity and pushes how much durability the item can have at its peak.",
+	"hexcasting.action.hexical:media_max_stack": "Potential Purification",
+	"hexical.page.media_max_stack.summary": "Takes in an item entity and pushes either $(l:casting/influences)$(thing)Null$() if the item does not have any media-holding potential, or the amount of _media it is capable of holding at its peak.",
 
 	"hexical.page.status_effects.title": "Status Effects",
 	"hexcasting.action.hexical:get_effects_entity": "Diagnosis Purification",
