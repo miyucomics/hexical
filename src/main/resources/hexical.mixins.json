@@ -7,7 +7,7 @@
 		"AbstractClientPlayerEntityMixin",
 		"ClientPlayerEntityMixin",
 		"GameRendererMixin",
-		"HeldItemFeatureRendererMixin",
+		"HeldItemRendererMixin",
 		"InGameHudMixin",
 		"MinecraftClientMixin",
 		"MouseMixin",

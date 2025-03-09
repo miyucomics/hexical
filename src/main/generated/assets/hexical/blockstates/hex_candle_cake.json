@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "hexical:block/hex_candle_cake"
+    },
+    "lit=true": {
+      "model": "hexical:block/hex_candle_cake_lit"
+    }
+  }
+}
