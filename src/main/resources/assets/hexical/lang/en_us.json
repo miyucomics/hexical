@@ -52,6 +52,10 @@
 	"item.hexical.lightning_rod_staff": "Lightning Rod Staff",
 	"item.hexical.scarab_beetle": "Scarab Beetle",
 	"item.hexical.tchotchke": "Tchotchke",
+	"item.minecraft.potion.effect.wooleyed": "Potion of Wooleyeing",
+	"item.minecraft.splash_potion.effect.wooleyed": "Splash Potion of Wooleyeing",
+	"item.minecraft.lingering_potion.effect.wooleyed": "Lingering Potion of Wooleyeing",
+	"item.minecraft.tipped_arrow.effect.wooleyed": "Arrow of Wooleyeing",
 	"itemGroup.hexical.general": "Hexical",
 	"stat.hexical.evocation": "Times Wololoed",
 	"subtitles.hexical.amethyst_melt": "Amethyst melts",
@@ -237,6 +241,11 @@
 	"hexical.page.sentinel_bed.title": "Sentinel Beds",
 	"hexical.page.sentinel_bed.0": "The $(item)Lodestone$() inside seems to make this block $(o)and the entities shoved in it$() always within my _Hexes' ambit, although I prefer to believe the $(item)Wool$() invites my $(l:patterns/spells/sentinels)$(thing)Sentinel$(). Cats seem to find it cozy too, like a lit furnace or a bed.$(br2)I hear rumors of ancient _Hexcasters using this as some kind of iota storage from any range but I struggle to imagine how.",
 	"hexical.page.sentinel_bed.1": "$(o)A comfy bed for my sentinel, it always seems eager to return to it.$()",
+
+	"hexical.page.wooleyed_potion.title": "Potions of Wooleyeing",
+	"hexical.page.wooleyed_potion.0": "These $(item)Potions$() seem to blur the line between physical matter and the _media. A single dose lasts about ten minutes and under its influence, I find myself capable of far greater miracles than I am used to.$(br2)The most notable of these changes is my greater ability to trade my life for _media. I estimate that each one of my hearts is worth a full $(l:items/amethyst)Amethyst Shard$().",
+	"hexical.page.wooleyed_potion.header": "Potions of Wooleyeing",
+	"hexical.page.wooleyed_potion.1": "I can brew one by boiling a $(l:items/hexcasting)$(item)Cypher$() into a simple $(item)Awkward Potion$().",
 
 	"hexical.page.pedestal.title": "Pedestals",
 	"hexical.page.pedestal.0": "A pedestal can keep an item suspended safely for me. Unlike an item frame or a chest though, my _Hexes can still interact with the item as though it were just dropped on the floor. An empty pedestal can pull items near it and it interacts with hoppers about how I would expect. It works even if the item is swapped out.",

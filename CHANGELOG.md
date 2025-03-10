@@ -24,7 +24,6 @@
   - unique system for magic missile
 - added Wooleyed status effect
   - better blood to media conversion rate
-  - new spells for affecting yourself when you are wooleyed
 - added Media Reflection - gets media of casting environment
 - added Media Purification - gets media of player, allay, impetus, or item on floor
 - added Construct spell - places a specific block type from your inventory with parameters for orientation and horizontal vector
@@ -36,6 +35,7 @@
 - added beautiful little shader to media jars
 - added pattern for reading and writing to slate
 - added Potential Purification - max media that something can hold
+- added Hex Candle cakes
 - changed Autograph and Unautograph's pattern by swapping them
 - changed media jar
   - pretty shader
