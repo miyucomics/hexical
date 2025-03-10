@@ -1,0 +1,19 @@
+{
+	"name": "hexical.page.wooleyed_potion.title",
+	"icon": "minecraft:potion{Potion:\"hexical:wooleyed\"}",
+	"advancement": "hexcasting:root",
+	"category": "hexcasting:items",
+	"sortnum": 8,
+	"pages": [
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.wooleyed_potion.0"
+		},
+		{
+			"type": "patchouli:spotlight",
+			"title": "hexical.page.wooleyed_potion.header",
+			"text": "hexical.page.wooleyed_potion.1",
+			"item": "minecraft:potion{Potion:\"hexical:wooleyed\"}"
+		}
+	]
+}
