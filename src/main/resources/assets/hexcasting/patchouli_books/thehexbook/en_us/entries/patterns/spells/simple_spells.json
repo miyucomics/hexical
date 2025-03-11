@@ -19,6 +19,18 @@
 		},
 		{
 			"type": "hexcasting:pattern",
+			"op_id": "hexical:block_ping",
+			"anchor": "hexical:block_ping",
+			"input": "vector, vector, number",
+			"output": "",
+			"text": "hexical.page.block_ping.summary"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.block_ping.description"
+		},
+		{
+			"type": "hexcasting:pattern",
 			"op_id": "hexical:crack_device",
 			"anchor": "hexical:crack_device",
 			"input": "",
