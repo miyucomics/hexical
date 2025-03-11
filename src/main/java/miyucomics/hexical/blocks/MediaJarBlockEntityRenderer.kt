@@ -14,14 +14,13 @@ class MediaJarBlockEntityRenderer(ctx: BlockEntityRendererFactory.Context) : Blo
 	override fun render(jarData: MediaJarBlockEntity?, tickDelta: Float, matrices: MatrixStack, vertexConsumers: VertexConsumerProvider, light: Int, overlay: Int) {
 		if (jarData == null)
 			return
-		val filled = jarData.getMedia().toFloat() / MediaJarBlock.MAX_CAPACITY.toFloat()
 
+		val filled = jarData.getMedia().toFloat() / MediaJarBlock.MAX_CAPACITY.toFloat()
 		val consumer = vertexConsumers.getBuffer(HexicalClient.MEDIA_JAR_RENDER_LAYER)
-		val height = filled * 12f / 16f
 
 		matrices.push()
 		matrices.translate(0.5f, 1f / 16f, 0.5f)
-		addRectangularPrism(consumer, matrices, width = 0.5f, height = height)
+		addRectangularPrism(consumer, matrices, height = filled * 12f / 16f)
 		matrices.pop()
 	}
 
@@ -29,8 +28,8 @@ class MediaJarBlockEntityRenderer(ctx: BlockEntityRendererFactory.Context) : Blo
 		private val NEGATIVE_X_ROTATION: Quaternionf = RotationAxis.POSITIVE_X.rotationDegrees(-90f)
 		private val DIR2ROT: Map<Direction, Quaternionf> = enumValues<Direction>().associateWith { it.opposite.rotationQuaternion.mul(NEGATIVE_X_ROTATION) }
 
-		private fun addRectangularPrism(consumer: VertexConsumer, matrices: MatrixStack, width: Float, height: Float) {
-			val halfWidth = width / 2f
+		private fun addRectangularPrism(consumer: VertexConsumer, matrices: MatrixStack, height: Float) {
+			val halfWidth = 0.5f / 2f
 			val halfHeight = height / 2f
 
 			matrices.push()
