@@ -9,7 +9,6 @@ import net.minecraft.client.render.block.entity.BlockEntityRendererFactory
 import net.minecraft.client.render.model.json.ModelTransformationMode
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.item.ItemStack
-import net.minecraft.util.math.RotationAxis
 
 class PillowBlockEntityRenderer(ctx: BlockEntityRendererFactory.Context) : BlockEntityRenderer<PillowBlockEntity> {
 	private val swordStack: ItemStack = ItemStack(HexicalItems.HAND_LAMP_ITEM)
