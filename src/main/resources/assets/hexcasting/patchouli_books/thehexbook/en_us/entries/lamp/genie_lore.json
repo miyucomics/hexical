@@ -1,32 +1,24 @@
 {
-	"name": "hexical.page.replacement.title",
+	"name": "hexical.page.genie_lore.title",
 	"icon": "minecraft:textures/particle/soul_7.png",
 	"category": "hexcasting:lamp",
 	"sortnum": 1,
 	"pages": [
 		{
 			"type": "patchouli:text",
-			"text": "hexical.page.replacement.0"
-		},
-		{
-			"type": "patchouli:text",
-			"text": "hexical.page.replacement.1"
+			"text": "hexical.page.genie_lore.0"
 		},
 		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:recharge_lamp",
 			"anchor": "hexical:recharge_lamp",
-			"input": "entity, number",
+			"input": "number",
 			"output": "",
 			"text": "hexical.page.recharge_lamp.summary"
 		},
 		{
 			"type": "patchouli:text",
-			"text": "hexical.page.replacement.2"
-		},
-		{
-			"type": "patchouli:text",
-			"text": "hexical.page.replacement.3"
+			"text": "hexical.page.genie_lore.1"
 		},
 		{
 			"type": "hexcasting:pattern",

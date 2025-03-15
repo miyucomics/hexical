@@ -50,6 +50,7 @@
 - changed shader spells to no longer require a media jar
 - changed Erase Item to remove autographs
 - changed grimoire packet syncing to reduce strain on servers
+- changed lamp recharge patterns to not need a mind
 - fixed Ambit Purification returning true for out-of-world positions
 - fixed bug where small animated scrolls do not render
 - fixed bug where grimoire does not work in non-hotbar
