@@ -21,32 +21,21 @@ import net.minecraft.village.VillagerData
 import kotlin.math.min
 
 class OpRechargeLamp : SpellAction {
-	override val argc = 2
+	override val argc = 1
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
-		val sacrifice = args.getEntity(0, argc)
-		env.assertEntityInRange(sacrifice)
-
-		if (sacrifice is MobEntity && IXplatAbstractions.INSTANCE.isBrainswept(sacrifice))
-			throw MishapBadEntity.of(sacrifice, "has_brain")
-		if (sacrifice !is VillagerEntity || sacrifice.villagerData.level < 3)
-			throw MishapBadEntity.of(sacrifice, "smart_villager")
-
 		val stack = env.getHeldItemToOperateOn { stack -> stack.item is GenieLamp }
 		if (stack == null)
 			throw MishapBadOffhandItem.of(null, "lamp")
 
 		val mediaHolder = IXplatAbstractions.INSTANCE.findMediaHolder(stack.stack)!!
 		val leftToFull = 200000 * MediaConstants.DUST_UNIT - mediaHolder.media
-		val battery = min(leftToFull.toDouble(), args.getPositiveDoubleUnderInclusive(1, 200000.0, argc))
+		val battery = min(leftToFull.toDouble(), args.getPositiveDoubleUnderInclusive(0, 200000.0, argc))
 
-		return SpellAction.Result(Spell(sacrifice, (battery * MediaConstants.DUST_UNIT).toInt(), stack.stack), MediaConstants.CRYSTAL_UNIT + (battery * MediaConstants.DUST_UNIT).toInt(), listOf(ParticleSpray.cloud(sacrifice.eyePos, 1.0)))
+		return SpellAction.Result(Spell((battery * MediaConstants.DUST_UNIT).toInt(), stack.stack), MediaConstants.CRYSTAL_UNIT + (battery * MediaConstants.DUST_UNIT).toInt(), listOf())
 	}
 
-	private data class Spell(val sacrifice: VillagerEntity, val battery: Int, val stack: ItemStack) : RenderedSpell {
+	private data class Spell(val battery: Int, val stack: ItemStack) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			sacrifice.villagerData = sacrifice.villagerData.withLevel(sacrifice.villagerData.level - 1)
-			sacrifice.experience = VillagerData.getLowerLevelExperience(sacrifice.villagerData.level)
-
 			val hexHolder = IXplatAbstractions.INSTANCE.findHexHolder(stack)!!
 			hexHolder.writeHex(hexHolder.getHex(env.world) ?: listOf(), null, IXplatAbstractions.INSTANCE.findMediaHolder(stack)!!.media + battery)
 
