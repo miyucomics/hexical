@@ -3,7 +3,6 @@ package miyucomics.hexical.items
 import miyucomics.hexical.data.LedgerData
 import miyucomics.hexical.registry.HexicalNetworking
 import miyucomics.hexical.screens.LedgerScreen
-import miyucomics.hexical.state.PersistentStateHandler
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
 import net.minecraft.client.MinecraftClient
 import net.minecraft.entity.player.PlayerEntity

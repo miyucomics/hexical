@@ -1,8 +1,9 @@
 package miyucomics.hexical.mixin;
 
 import miyucomics.hexical.casting.patterns.evocation.OpSetEvocation;
-import miyucomics.hexical.interfaces.PlayerEntityMinterface;
+import miyucomics.hexical.data.ArchLampState;
 import miyucomics.hexical.data.EvokeState;
+import miyucomics.hexical.interfaces.PlayerEntityMinterface;
 import miyucomics.hexical.utils.CastingUtils;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -16,9 +17,11 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(PlayerEntity.class)
-public abstract class PlayerEntityMixin implements PlayerEntityMinterface {
+public class PlayerEntityMixin implements PlayerEntityMinterface {
 	@Unique
 	private boolean hexical$archLampCastedThisTick = false;
+	@Unique
+	private ArchLampState hexical$archLampState = new ArchLampState();
 	@Unique
 	private NbtCompound hexical$evocation = new NbtCompound();
 	@Unique
@@ -40,6 +43,9 @@ public abstract class PlayerEntityMixin implements PlayerEntityMinterface {
 
 	@Inject(method = "readCustomDataFromNbt", at = @At("HEAD"))
 	void reaadPlayerData(NbtCompound nbtCompound, CallbackInfo ci) {
+		if (nbtCompound.contains("arch_lamp"))
+			hexical$archLampState = ArchLampState.createFromNbt(nbtCompound.getCompound("arch_lamp"));
+
 		if (nbtCompound.contains("evocation"))
 			hexical$evocation = nbtCompound.getCompound("evocation");
 
@@ -48,6 +54,8 @@ public abstract class PlayerEntityMixin implements PlayerEntityMinterface {
 
 	@Inject(method = "writeCustomDataToNbt", at = @At("HEAD"))
 	void writePlayerData(NbtCompound nbtCompound, CallbackInfo ci) {
+		nbtCompound.put("arch_lamp", hexical$archLampState.toNbt());
+
 		if (hexical$evocation != null)
 			nbtCompound.put("evocation", hexical$evocation);
 
@@ -63,6 +71,11 @@ public abstract class PlayerEntityMixin implements PlayerEntityMinterface {
 	@Override
 	public void archLampCasted() {
 		hexical$archLampCastedThisTick = true;
+	}
+
+	@Override
+	public @NotNull ArchLampState getArchLampState() {
+		return hexical$archLampState;
 	}
 
 	@Override
