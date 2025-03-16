@@ -8,7 +8,6 @@ import at.petrak.hexcasting.api.casting.eval.vm.CastingVM;
 import at.petrak.hexcasting.api.casting.iota.Iota;
 import com.llamalad7.mixinextras.sugar.Local;
 import miyucomics.hexical.data.LedgerData;
-import miyucomics.hexical.state.PersistentStateHandler;
 import miyucomics.hexical.utils.InjectionHelper;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;

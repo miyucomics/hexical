@@ -1,4 +1,4 @@
-package miyucomics.hexical.state
+package miyucomics.hexical.data
 
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.api.utils.serializeToNBT
@@ -6,7 +6,7 @@ import at.petrak.hexcasting.api.utils.vecFromNBT
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.util.math.Vec3d
 
-class ArchLampData {
+class ArchLampState {
 	var position: Vec3d = Vec3d.ZERO
 	var rotation: Vec3d = Vec3d.ZERO
 	var velocity: Vec3d = Vec3d.ZERO
@@ -24,8 +24,9 @@ class ArchLampData {
 	}
 
 	companion object {
-		fun createFromNbt(tag: NbtCompound): ArchLampData {
-			val state = ArchLampData()
+		@JvmStatic
+		fun createFromNbt(tag: NbtCompound): ArchLampState {
+			val state = ArchLampState()
 			state.position = vecFromNBT(tag.getLongArray("position"))
 			state.rotation = vecFromNBT(tag.getLongArray("rotation"))
 			state.velocity = vecFromNBT(tag.getLongArray("velocity"))

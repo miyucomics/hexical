@@ -6,9 +6,9 @@ import miyucomics.hexical.casting.components.LedgerRecordComponent
 import miyucomics.hexical.casting.components.SentinelBedComponent
 import miyucomics.hexical.client.ClientStorage
 import miyucomics.hexical.client.ShaderRenderer
-import miyucomics.hexical.interfaces.PlayerEntityMinterface
 import miyucomics.hexical.data.EvokeState
 import miyucomics.hexical.data.KeybindData
+import miyucomics.hexical.interfaces.PlayerEntityMinterface
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents
 import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents
