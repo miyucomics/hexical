@@ -8,7 +8,6 @@ import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import miyucomics.hexical.data.LedgerData;
 import miyucomics.hexical.registry.HexicalEffects;
-import miyucomics.hexical.state.PersistentStateHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import org.spongepowered.asm.mixin.Final;

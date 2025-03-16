@@ -7,6 +7,7 @@ import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.iota.NullIota
 import at.petrak.hexcasting.api.pigment.FrozenPigment
 import at.petrak.hexcasting.xplat.IXplatAbstractions
+import miyucomics.hexical.data.ArchLampState
 import net.minecraft.entity.ItemEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.server.world.ServerWorld
@@ -17,7 +18,7 @@ import net.minecraft.util.math.Vec3d
 import net.minecraft.util.math.Vec3i
 import java.util.function.Predicate
 
-class TurretLampCastEnv(val lamp: ItemEntity, val normal: Vec3i, world: ServerWorld) : CastingEnvironment(world) {
+class TurretLampCastEnv(val lamp: ItemEntity, val normal: Vec3i, val archLampState: ArchLampState, world: ServerWorld) : CastingEnvironment(world) {
 	private var mediaHolder: ADMediaHolder = IXplatAbstractions.INSTANCE.findMediaHolder(lamp.stack)!!
 
 	override fun getCastingEntity() = null

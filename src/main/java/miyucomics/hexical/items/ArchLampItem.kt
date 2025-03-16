@@ -10,7 +10,6 @@ import miyucomics.hexical.interfaces.GenieLamp
 import miyucomics.hexical.interfaces.PlayerEntityMinterface
 import miyucomics.hexical.registry.HexicalItems
 import miyucomics.hexical.registry.HexicalSounds
-import miyucomics.hexical.state.PersistentStateHandler
 import net.minecraft.entity.Entity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
@@ -47,7 +46,7 @@ class ArchLampItem : ItemPackagedHex(Settings().maxCount(1).rarity(Rarity.EPIC))
 
 		stackNbt.putBoolean("active", true)
 
-		val state = PersistentStateHandler.getArchLampData(user)
+		val state = (user as PlayerEntityMinterface).getArchLampState()
 		state.position = user.eyePos
 		state.rotation = user.rotationVector
 		state.velocity = user.velocity

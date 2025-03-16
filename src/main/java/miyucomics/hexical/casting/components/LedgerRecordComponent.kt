@@ -6,7 +6,6 @@ import at.petrak.hexcasting.api.casting.eval.CastingEnvironmentComponent.PostExe
 import at.petrak.hexcasting.api.casting.eval.env.PlayerBasedCastEnv
 import at.petrak.hexcasting.api.casting.iota.PatternIota
 import miyucomics.hexical.data.LedgerData
-import miyucomics.hexical.state.PersistentStateHandler
 import net.minecraft.server.network.ServerPlayerEntity
 
 class LedgerRecordComponent(val env: PlayerBasedCastEnv) : PostExecution {
