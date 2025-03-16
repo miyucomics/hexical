@@ -1,4 +1,4 @@
-package miyucomics.hexical.state
+package miyucomics.hexical.data
 
 import java.util.*
 

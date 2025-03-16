@@ -2,7 +2,7 @@ package miyucomics.hexical.screens
 
 import miyucomics.hexical.client.ClientStorage
 import miyucomics.hexical.registry.HexicalNetworking
-import miyucomics.hexical.state.LedgerData
+import miyucomics.hexical.data.LedgerInstance
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
 import net.minecraft.client.gui.DrawContext
@@ -54,7 +54,7 @@ class LedgerScreen : Screen(Text.literal("Ledger")) {
 		patternWidgets.forEach { widget ->
 			if (mouseX >= widget.x && mouseY >= widget.y && mouseX < widget.x + widget.width && mouseY < widget.y + widget.height) {
 				ClientPlayNetworking.send(HexicalNetworking.LEDGER_CHANNEL, PacketByteBufs.empty())
-				ClientStorage.ledger = LedgerData()
+				ClientStorage.ledger = LedgerInstance()
 				return true
 			}
 		}

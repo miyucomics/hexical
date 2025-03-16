@@ -1,9 +1,9 @@
 package miyucomics.hexical.client
 
-import miyucomics.hexical.state.LedgerData
+import miyucomics.hexical.data.LedgerInstance
 
 object ClientStorage {
 	@JvmField
 	var time: Int = 0
-	var ledger: LedgerData = LedgerData()
+	var ledger: LedgerInstance = LedgerInstance()
 }

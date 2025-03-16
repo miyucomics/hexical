@@ -1,5 +1,6 @@
 package miyucomics.hexical.items
 
+import miyucomics.hexical.data.LedgerData
 import miyucomics.hexical.registry.HexicalNetworking
 import miyucomics.hexical.screens.LedgerScreen
 import miyucomics.hexical.state.PersistentStateHandler
@@ -18,7 +19,7 @@ class LedgerItem : Item(Settings().maxCount(1)) {
 		if (world.isClient) {
 			MinecraftClient.getInstance().setScreen(LedgerScreen())
 		} else
-			ServerPlayNetworking.send(player as ServerPlayerEntity, HexicalNetworking.LEDGER_CHANNEL, PersistentStateHandler.getLedger(player).toPacket())
+			ServerPlayNetworking.send(player as ServerPlayerEntity, HexicalNetworking.LEDGER_CHANNEL, LedgerData.getLedger(player).toPacket())
 		return TypedActionResult.success(player.getStackInHand(hand))
 	}
 }

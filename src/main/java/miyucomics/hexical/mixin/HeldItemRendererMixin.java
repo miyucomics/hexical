@@ -1,7 +1,7 @@
 package miyucomics.hexical.mixin;
 
 import at.petrak.hexcasting.xplat.IXplatAbstractions;
-import miyucomics.hexical.state.EvokeState;
+import miyucomics.hexical.data.EvokeState;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.item.HeldItemRenderer;

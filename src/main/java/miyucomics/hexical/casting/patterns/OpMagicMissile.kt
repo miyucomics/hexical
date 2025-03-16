@@ -59,7 +59,7 @@ class OpMagicMissile : SpellAction {
 			if (env.castingEntity != null) {
 				val caster = env.castingEntity!!
 				val (straightAxis, upAxis) = getAxisForLivingEntity(caster)
-				return caster.pos
+				return caster.eyePos
 					.add(straightAxis.crossProduct(upAxis).normalize().multiply(relative.x))
 					.add(upAxis.multiply(relative.y))
 					.add(straightAxis.multiply(relative.z))

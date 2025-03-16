@@ -34,7 +34,6 @@
 - added scrying pattern for moon phase
 - added Unautograph spell to unautograph an item ( still erases it )
 - added beautiful little shader to media jars
-- added pattern for reading and writing to slate
 - added Potential Purification - max media that something can hold
 - added Hex Candle cakes
 - changed Autograph and Unautograph's pattern by swapping them
