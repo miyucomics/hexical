@@ -11,9 +11,10 @@ import miyucomics.hexical.client.PlayerAnimations
 import miyucomics.hexical.client.ShaderRenderer
 import miyucomics.hexical.items.TchotchkeItem
 import miyucomics.hexical.items.getTchotchke
-import miyucomics.hexical.state.EvokeState
-import miyucomics.hexical.state.KeybindData
-import miyucomics.hexical.state.LedgerData
+import miyucomics.hexical.data.EvokeState
+import miyucomics.hexical.data.KeybindData
+import miyucomics.hexical.data.LedgerData
+import miyucomics.hexical.data.LedgerInstance
 import miyucomics.hexical.state.PersistentStateHandler
 import miyucomics.hexical.utils.CastingUtils
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
@@ -41,7 +42,7 @@ object HexicalNetworking {
 
 	@JvmStatic
 	fun serverInit() {
-		ServerPlayNetworking.registerGlobalReceiver(LEDGER_CHANNEL) { _, player, _, _, _ -> PersistentStateHandler.clearLedger(player) }
+		ServerPlayNetworking.registerGlobalReceiver(LEDGER_CHANNEL) { _, player, _, _, _ -> LedgerData.clearLedger(player) }
 
 		ServerPlayNetworking.registerGlobalReceiver(TCHOTCHKE_CHANNEL) { server, player, _, buf, _ ->
 			val hand = getTchotchke(player) ?: return@registerGlobalReceiver
@@ -95,7 +96,7 @@ object HexicalNetworking {
 
 	@JvmStatic
 	fun clientInit() {
-		ClientPlayNetworking.registerGlobalReceiver(LEDGER_CHANNEL) { _, _, packet, _ -> ClientStorage.ledger = LedgerData.createFromNbt(packet.readNbt()!!) }
+		ClientPlayNetworking.registerGlobalReceiver(LEDGER_CHANNEL) { _, _, packet, _ -> ClientStorage.ledger = LedgerInstance.createFromNbt(packet.readNbt()!!) }
 
 		ClientPlayNetworking.registerGlobalReceiver(CONFETTI_CHANNEL) { client, _, packet, _ ->
 			val random = Random(packet.readLong())

@@ -2,7 +2,7 @@ package miyucomics.hexical.mixin;
 
 import miyucomics.hexical.casting.patterns.evocation.OpSetEvocation;
 import miyucomics.hexical.interfaces.PlayerEntityMinterface;
-import miyucomics.hexical.state.EvokeState;
+import miyucomics.hexical.data.EvokeState;
 import miyucomics.hexical.utils.CastingUtils;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;

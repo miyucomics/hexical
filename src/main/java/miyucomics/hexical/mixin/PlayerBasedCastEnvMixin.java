@@ -6,6 +6,7 @@ import at.petrak.hexcasting.api.casting.eval.sideeffects.OperatorSideEffect;
 import at.petrak.hexcasting.api.mod.HexConfig;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import miyucomics.hexical.data.LedgerData;
 import miyucomics.hexical.registry.HexicalEffects;
 import miyucomics.hexical.state.PersistentStateHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -32,6 +33,6 @@ public class PlayerBasedCastEnvMixin {
 	private void captureMishap(OperatorSideEffect.DoMishap mishap, CallbackInfo ci) {
 		Text message = mishap.getMishap().errorMessageWithName((CastingEnvironment) (Object) this, mishap.getErrorCtx());
 		if (message != null)
-			PersistentStateHandler.getLedger(caster).setMishap(message);
+			LedgerData.getLedger(caster).setMishap(message);
 	}
 }
