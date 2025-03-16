@@ -7,8 +7,8 @@ import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster
 import miyucomics.hexical.casting.environments.TurretLampCastEnv
 import miyucomics.hexical.casting.mishaps.NeedsArchGenieLampMishap
+import miyucomics.hexical.interfaces.PlayerEntityMinterface
 import miyucomics.hexical.items.hasActiveArchLamp
-import miyucomics.hexical.state.PersistentStateHandler
 import miyucomics.hexical.utils.CastingUtils
 import net.minecraft.server.network.ServerPlayerEntity
 
@@ -19,7 +19,7 @@ class OpSetArchLampStorage : ConstMediaAction {
 		CastingUtils.assertNoTruename(iota, env)
 
 		if (env is TurretLampCastEnv) {
-			PersistentStateHandler.getArchLampData(env.lamp).storage = IotaType.serialize(iota)
+			env.archLampState.storage = IotaType.serialize(iota)
 			return emptyList()
 		}
 
@@ -28,7 +28,7 @@ class OpSetArchLampStorage : ConstMediaAction {
 			throw MishapBadCaster()
 		if (!hasActiveArchLamp(caster))
 			throw NeedsArchGenieLampMishap()
-		PersistentStateHandler.getArchLampData(env.castingEntity!!).storage = IotaType.serialize(iota)
+		(env.castingEntity!! as PlayerEntityMinterface).getArchLampState().storage = IotaType.serialize(iota)
 
 		return emptyList()
 	}
