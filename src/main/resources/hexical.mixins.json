@@ -25,7 +25,6 @@
 		"LivingEntityMixin",
 		"MediaHelperMixin",
 		"OpEraseMixin",
-		"OpGetCasterMixin",
 		"OpReadMixin",
 		"PatternIotaMixin",
 		"PlayerBasedCastEnvMixin",
