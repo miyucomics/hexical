@@ -22,6 +22,8 @@ import miyucomics.hexical.casting.environments.*
 import miyucomics.hexical.casting.iotas.IdentifierIota
 import miyucomics.hexical.casting.iotas.asActionResult
 import miyucomics.hexical.casting.patterns.*
+import miyucomics.hexical.casting.patterns.autograph.OpAutograph
+import miyucomics.hexical.casting.patterns.autograph.OpUnautograph
 import miyucomics.hexical.casting.patterns.circle.OpDisplace
 import miyucomics.hexical.casting.patterns.colors.OpDye
 import miyucomics.hexical.casting.patterns.colors.OpGetDye
@@ -66,6 +68,9 @@ import miyucomics.hexical.casting.patterns.tchotchke.OpWriteTchotchke
 import miyucomics.hexical.casting.patterns.telepathy.OpHallucinateSound
 import miyucomics.hexical.casting.patterns.telepathy.OpSendTelepathy
 import miyucomics.hexical.casting.patterns.telepathy.OpShoutTelepathy
+import miyucomics.hexical.casting.patterns.vfx.OpBlockPing
+import miyucomics.hexical.casting.patterns.vfx.OpConfetti
+import miyucomics.hexical.casting.patterns.vfx.OpSparkle
 import miyucomics.hexical.casting.patterns.wristpocket.*
 import miyucomics.hexical.interfaces.Specklike
 import miyucomics.hexical.items.HandLampItem
@@ -214,6 +219,7 @@ object HexicalActions {
 		register("unautograph", "wwqqqqq", HexDir.NORTH_EAST, OpUnautograph())
 		register("conjure_hexburst", "aadaadqaq", HexDir.EAST, OpConjureHexburst())
 		register("conjure_hextito", "qaqdqaqdwawaw", HexDir.EAST, OpConjureHextito())
+		register("flower", "weqqqqqwaeaeaeaeaea", HexDir.NORTH_EAST, OpConjureFlower())
 		register("snowball", "ddeeeeewd", HexDir.NORTH_EAST, OpSnowball())
 		register("ghast_fireball", "wqqqqqwaeaeaeaeae", HexDir.SOUTH_EAST, OpGhastFireball())
 		register("llama_spit", "dwqaqw", HexDir.EAST, OpLlamaSpit())
