@@ -1,4 +1,5 @@
 accessWidener   v2  named
+accessible field net/minecraft/block/FlowerPotBlock CONTENT_TO_POTTED Ljava/util/Map;
 accessible field net/minecraft/entity/mob/CreeperEntity IGNITED Lnet/minecraft/entity/data/TrackedData;
 accessible field net/minecraft/entity/projectile/ArrowEntity potion Lnet/minecraft/potion/Potion;
 accessible field net/minecraft/entity/passive/ParrotEntity MOB_SOUNDS Ljava/util/Map;

@@ -6,6 +6,7 @@
   - migrated patterns out
   - player stores data now; not persistent state
 - added block highlight spell
+- added Conjure Flower spell
 - added Sparkle spell to create a sparkle ( my mod advertised in another mod!! )
 - added Scarab Beetle item - catches uncaught patterns for your handling
 - added tooltip to grimoire, need to cast any grimoire pattern on old grimoires in order to force it to show up
