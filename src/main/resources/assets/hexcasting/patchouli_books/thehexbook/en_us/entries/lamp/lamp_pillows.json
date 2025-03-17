@@ -1,0 +1,13 @@
+{
+	"name": "hexical.page.lamp_pillows.title",
+	"icon": "hexical:pedestal",
+	"category": "hexcasting:lamp",
+	"advancement": "hexical:arch_lamp",
+	"sortnum": 3,
+	"pages": [
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.lamp_pillows.0"
+		}
+	]
+}
