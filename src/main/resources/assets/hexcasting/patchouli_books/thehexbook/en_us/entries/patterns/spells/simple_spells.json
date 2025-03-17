@@ -127,6 +127,18 @@
 		},
 		{
 			"type": "hexcasting:pattern",
+			"op_id": "hexical:light",
+			"anchor": "hexical:light",
+			"input": "vector, number",
+			"output": "",
+			"text": "hexical.page.light.summary"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.light.description"
+		},
+		{
+			"type": "hexcasting:pattern",
 			"op_id": "hexical:snowball",
 			"anchor": "hexical:snowball",
 			"input": "vector",

@@ -50,7 +50,7 @@ class OpMagicMissile : SpellAction {
 
 			if (env is TurretLampCastEnv) {
 				val (straightAxis, upAxis) = getAxisForTurret(env)
-				return env.lamp.pos
+				return env.position
 					.add(straightAxis.crossProduct(upAxis).normalize().multiply(relative.x))
 					.add(upAxis.multiply(relative.y))
 					.add(straightAxis.multiply(relative.z))

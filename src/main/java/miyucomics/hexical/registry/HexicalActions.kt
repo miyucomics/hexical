@@ -121,8 +121,6 @@ object HexicalActions {
 		register("has_arch_lamp", "qaqwddedqeed", HexDir.NORTH_EAST, OpIsUsingArchLamp())
 		register("lamp_finale", "aaddaddad", HexDir.EAST, OpGetFinale())
 
-		register("turret_lamp_normal", "qaqwddedweaqwqae", HexDir.NORTH_EAST, OpGetTurretNormal())
-
 		register("am_enlightened", "awqaqqq", HexDir.SOUTH_EAST, OpEnlightened())
 		register("is_brainswept", "qqqaqqq", HexDir.SOUTH_EAST, OpBrainswept())
 
@@ -220,6 +218,7 @@ object HexicalActions {
 		register("conjure_hexburst", "aadaadqaq", HexDir.EAST, OpConjureHexburst())
 		register("conjure_hextito", "qaqdqaqdwawaw", HexDir.EAST, OpConjureHextito())
 		register("flower", "weqqqqqwaeaeaeaeaea", HexDir.NORTH_EAST, OpConjureFlower())
+		register("light", "aeaeaeaeaeawqqqqq", HexDir.SOUTH_EAST, OpConjureLight())
 		register("snowball", "ddeeeeewd", HexDir.NORTH_EAST, OpSnowball())
 		register("ghast_fireball", "wqqqqqwaeaeaeaeae", HexDir.SOUTH_EAST, OpGhastFireball())
 		register("llama_spit", "dwqaqw", HexDir.EAST, OpLlamaSpit())
