@@ -78,8 +78,8 @@
 	"hexical.grimoire.contains": "Contains bindings for ",
 	"hexical.scarab.program": "Contains %s",
 	"hexical.recipe.transmute.media_free": "Free",
-	"hexical.recipe.transmute.media_cost": "Costs %d dust",
-	"hexical.recipe.transmute.media_yield": "Yields %d dust",
+	"hexical.recipe.transmute.media_cost": "Costs %s dust",
+	"hexical.recipe.transmute.media_yield": "Yields %s dust",
 	"hexical.ledger.stack": "Last Stack Before Mishap:",
 	"hexical.ledger.mishap": "Last Mishap Message:",
 

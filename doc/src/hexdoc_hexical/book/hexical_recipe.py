@@ -34,16 +34,14 @@ class TransmutingRecipe(Recipe, type="hexical:transmuting"):
 
     @property
     def cost_translation_key(self) -> str:
-        if cost == 0:
+        if self.cost == 0:
             return "hexical.recipe.transmute.media_free"
-        if cost > 0:
+        if self.cost > 0:
             return "hexical.recipe.transmute.media_cost"
         return "hexical.recipe.transmute.media_yield"
 
     @property
-    def cost_translation_number(self) -> str:
-        if cost == 0:
-            return ""
-        if cost > 0:
-            return str(int(cost / 100) / 100)
-        return str(int(-cost / 100) / 100)
+    def cost_translation_number(self) -> float:
+        if self.cost == 0:
+            return 0
+        return round(abs(self.cost) / 10000, 2)
