@@ -9,6 +9,10 @@
 			"text": "hexical.page.genie_lore.0"
 		},
 		{
+			"type": "patchouli:text",
+			"text": "hexical.page.genie_lore.1"
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:recharge_lamp",
 			"anchor": "hexical:recharge_lamp",
@@ -18,7 +22,11 @@
 		},
 		{
 			"type": "patchouli:text",
-			"text": "hexical.page.genie_lore.1"
+			"text": "hexical.page.genie_lore.2"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.genie_lore.3"
 		},
 		{
 			"type": "hexcasting:pattern",

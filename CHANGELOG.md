@@ -23,16 +23,13 @@
 - added pedestals to hold items
   - also pushes iota to spell circle stacks
 - added sentinel bed - always have ambit inside
-- added ability to place arch lamps on pedestals to make turret lamps
-  - turrent lamps cast with the media of the item
-  - unique system for magic missile
 - added Wooleyed status effect
   - better blood to media conversion rate
 - added Media Reflection - gets media of casting environment
 - added Media Purification - gets media of player, allay, impetus, or item on floor
 - added Construct spell - places a specific block type from your inventory with parameters for orientation and horizontal vector
 - added left and right-click telepathy patterns
-- added patttern to get evocation hex
+- added pattern to get evocation hex
 - added more documentation to magic missile
 - added scrying pattern for moon phase
 - added Unautograph spell to unautograph an item ( still erases it )
@@ -44,13 +41,11 @@
   - pretty shader
   - custom recipe type to transmute with media
   - bigger collision and model
-  - used to get new Wooleyed effect by drinking it
 - changed players to store wristpocket, evocation, and such data
 - changed hex candles to not be extinguished by water
 - changed Greater Blink to not move feet to eyes
 - changed lamps deactivating to only be when they are picked up
 - changed shader spells to no longer require a media jar
-- changed Erase Item to remove autographs
 - changed grimoire packet syncing to reduce strain on servers
 - changed lamp recharge patterns to not need a mind
 - fixed Ambit Purification returning true for out-of-world positions
@@ -59,8 +54,7 @@
 - fixed bug where Chromatic Purification breaks for vectors
 - fixed lack of cost in Mage Hand documentation
 - fixed bug where Fireball would fly off in some random direction
-- fixed bug where Castor's and Pollux's would not pop the iota off
-- fixed bug where Calligrapher's and Chirographer's Purifications were swapped
+- fixed bug where Calligrapher's and Chirographer's Purification documentation were swapped
 - fixed translation error where Ghast Fireball was not documented as pushing an entity
 - fixed bug where wristpocket does not cancel the interaction when interacting with a block
 - fixed poor translation of Tool and Accessory Purification
