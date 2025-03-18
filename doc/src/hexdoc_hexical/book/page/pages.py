@@ -4,7 +4,7 @@ from hexdoc.patchouli.text import FormatTree
 
 from ..hexical_recipe import TransmutingRecipe
 
-class TransmutingPage(Page, type="hexcasting:transmuting"):
+class TransmutingPage(Page, type="hexical:transmuting"):
     title: LocalizedStr
     recipe: TransmutingRecipe
     text: FormatTree
