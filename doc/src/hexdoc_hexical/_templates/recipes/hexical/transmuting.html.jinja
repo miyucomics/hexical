@@ -23,7 +23,7 @@
 			<div class="transmuting-cost">
 				{# {{ texture_macros.render_texture("hexcasting:textures/item/amethyst_dust.png"|hexdoc_texture) }} #}
 				<img class="transmuting-cost-icon pixelated" alt="{{ _('item.hexcasting.amethyst_dust') }}" src="{{ 'hexcasting:textures/item/amethyst_dust.png'|hexdoc_texture }}" style="width: 16px; height:16px" >
-				{{ _(hexical.recipe.transmute.cost_translation_key) % (page.recipe.cost_translation_number) }}
+				{{ _(page.recipe.cost_translation_key) % (page.recipe.cost_translation_number) }}
 			</div>
 		</div>
 	</div>

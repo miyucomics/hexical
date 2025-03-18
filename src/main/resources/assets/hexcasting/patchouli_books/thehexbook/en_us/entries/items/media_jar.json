@@ -19,31 +19,31 @@
 			"text": "hexical.page.media_jar.1"
 		},
 		{
-			"type": "hexcasting:transmuting",
+			"type": "hexical:transmuting",
 			"recipe": "hexical:transmuting/alchemists_take_this",
 			"title": "hexical.recipe.alchemists_take_this.header",
 			"text": "hexical.recipe.alchemists_take_this.text"
 		},
 		{
-			"type": "hexcasting:transmuting",
+			"type": "hexical:transmuting",
 			"recipe": "hexical:transmuting/thoughtknot",
 			"title": "hexical.recipe.thoughtknot.header",
 			"text": "hexical.recipe.thoughtknot.text"
 		},
 		{
-			"type": "hexcasting:transmuting",
+			"type": "hexical:transmuting",
 			"recipe": "hexical:transmuting/unthoughtknot",
 			"title": "hexical.recipe.unthoughtknot.header",
 			"text": "hexical.recipe.unthoughtknot.text"
 		},
 		{
-			"type": "hexcasting:transmuting",
+			"type": "hexical:transmuting",
 			"recipe": "hexical:transmuting/cry_obsidian",
 			"title": "hexical.recipe.cry_obsidian.header",
 			"text": "hexical.recipe.cry_obsidian.text"
 		},
 		{
-			"type": "hexcasting:transmuting",
+			"type": "hexical:transmuting",
 			"recipe": "hexical:transmuting/uncry_obsidian",
 			"title": "hexical.recipe.uncry_obsidian.header",
 			"text": "hexical.recipe.uncry_obsidian.text"
