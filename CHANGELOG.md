@@ -2,7 +2,7 @@
 
 ## 2.0.0
 - major version bump due to various breaking changes
-  - Greater Blink cost, distance, and effect difference
+  - Greater Blink bug fixed
   - migrated patterns out
   - player stores data now; not persistent state
 - added Ping Block spell - highlight a block

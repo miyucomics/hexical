@@ -777,7 +777,7 @@
 
 	"hexcasting.action.hexical:greater_blink": "Greater Blink",
 	"hexical.page.greater_blink.0": "Greater Blink is a significantly cheaper alternative to $(l:patterns/great_spells/teleport)$(action)Greater Teleport$(). It also does not carry the risk of splattering my items upon arrival. However, it only has pitiful range compared to $(l:patterns/great_spells/teleport)$(action)Greater Teleport$() and its destination calculations are... esoteric. Its target is also exclusively myself.",
-	"hexical.page.greater_blink.summary": "Teleports me up to 64 blocks away, relative to my position and rotation. Costs about a single $(l:items/amethyst)$(item)Amethyst Dust$().",
+	"hexical.page.greater_blink.summary": "Teleports me up to 128 blocks away, relative to my position and rotation. Costs about two $(l:items/amethyst)$(item)Amethyst Dust$().",
 	"hexical.page.greater_blink.1": "A vector of (0, 0, 1) would teleport me one block in the direction I'm facing. A vector of (0, 1, 0) would teleport me one block \"up\" in the direction of the top of my head. A vector of (0, 1, 10) would teleport me ten blocks forward in the direction I'm facing and one block upwards from the top of my head. A vector of (1, 0, 0) teleports me one block to my right.",
 	"hexical.page.greater_blink.2": "$(o)Long Jaunt! Longer than you think-$()",
 
