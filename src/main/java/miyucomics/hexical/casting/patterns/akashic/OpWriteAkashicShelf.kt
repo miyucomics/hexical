@@ -1,4 +1,4 @@
-package miyucomics.hexical.casting.patterns.greatwork
+package miyucomics.hexical.casting.patterns.akashic
 
 import at.petrak.hexcasting.api.casting.RenderedSpell
 import at.petrak.hexcasting.api.casting.castables.SpellAction
