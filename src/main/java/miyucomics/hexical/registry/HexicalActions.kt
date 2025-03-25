@@ -22,6 +22,10 @@ import miyucomics.hexical.casting.environments.*
 import miyucomics.hexical.casting.iotas.IdentifierIota
 import miyucomics.hexical.casting.iotas.asActionResult
 import miyucomics.hexical.casting.patterns.*
+import miyucomics.hexical.casting.patterns.akashic.OpClearAkashicShelf
+import miyucomics.hexical.casting.patterns.akashic.OpKeyAkashicShelf
+import miyucomics.hexical.casting.patterns.akashic.OpReadAkashicShelf
+import miyucomics.hexical.casting.patterns.akashic.OpWriteAkashicShelf
 import miyucomics.hexical.casting.patterns.autograph.OpAutograph
 import miyucomics.hexical.casting.patterns.autograph.OpUnautograph
 import miyucomics.hexical.casting.patterns.circle.OpDisplace
@@ -33,7 +37,6 @@ import miyucomics.hexical.casting.patterns.evocation.OpGetEvocation
 import miyucomics.hexical.casting.patterns.evocation.OpSetEvocation
 import miyucomics.hexical.casting.patterns.firework.OpConjureFirework
 import miyucomics.hexical.casting.patterns.firework.OpSimulateFirework
-import miyucomics.hexical.casting.patterns.akashic.*
 import miyucomics.hexical.casting.patterns.grimoire.OpGrimoireErase
 import miyucomics.hexical.casting.patterns.grimoire.OpGrimoireIndex
 import miyucomics.hexical.casting.patterns.grimoire.OpGrimoireWrite

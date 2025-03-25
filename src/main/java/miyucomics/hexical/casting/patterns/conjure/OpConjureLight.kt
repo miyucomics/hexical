@@ -4,23 +4,14 @@ import at.petrak.hexcasting.api.casting.ParticleSpray
 import at.petrak.hexcasting.api.casting.RenderedSpell
 import at.petrak.hexcasting.api.casting.castables.SpellAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
-import at.petrak.hexcasting.api.casting.eval.vm.FrameFinishEval.type
 import at.petrak.hexcasting.api.casting.getBlockPos
 import at.petrak.hexcasting.api.casting.getPositiveIntUnderInclusive
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadBlock
-import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.misc.MediaConstants
-import miyucomics.hexical.casting.iotas.getIdentifier
-import miyucomics.hexical.registry.HexicalBlocks
-import net.minecraft.block.Block
 import net.minecraft.block.Blocks
-import net.minecraft.block.FlowerPotBlock
 import net.minecraft.block.LightBlock
-import net.minecraft.registry.Registries
-import net.minecraft.registry.tag.BlockTags
 import net.minecraft.util.math.BlockPos
-import net.minecraft.util.math.Direction
 import net.minecraft.util.math.Vec3d
 
 class OpConjureLight : SpellAction {

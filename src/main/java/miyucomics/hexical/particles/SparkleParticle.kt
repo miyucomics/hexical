@@ -6,7 +6,6 @@ import net.minecraft.client.particle.*
 import net.minecraft.client.world.ClientWorld
 import net.minecraft.network.PacketByteBuf
 import net.minecraft.particle.AbstractDustParticleEffect
-import net.minecraft.particle.DefaultParticleType
 import net.minecraft.particle.ParticleEffect
 import net.minecraft.particle.ParticleType
 import org.joml.Vector3f

@@ -31,7 +31,6 @@ object HexicalBlocks {
 
 	val MAGE_BLOCK: MageBlock = MageBlock()
 	val MEDIA_JAR_BLOCK: MediaJarBlock = MediaJarBlock()
-	val PEDESTAL_BLOCK: PedestalBlock = PedestalBlock()
 
 	@JvmField
 	val SENTINEL_BED_BLOCK: Block = Block(Settings.copy(Blocks.DEEPSLATE_TILES).strength(4f, 6f))
@@ -43,7 +42,6 @@ object HexicalBlocks {
 	val HEX_CANDLE_CAKE_BLOCK_ENTITY: BlockEntityType<HexCandleCakeBlockEntity> = BlockEntityType.Builder.create(::HexCandleCakeBlockEntity, HEX_CANDLE_CAKE_BLOCK).build(null)
 	val MEDIA_JAR_BLOCK_ENTITY: BlockEntityType<MediaJarBlockEntity> = BlockEntityType.Builder.create(::MediaJarBlockEntity, MEDIA_JAR_BLOCK).build(null)
 	val MAGE_BLOCK_ENTITY: BlockEntityType<MageBlockEntity> = BlockEntityType.Builder.create(::MageBlockEntity, MAGE_BLOCK).build(null)
-	val PEDESTAL_BLOCK_ENTITY: BlockEntityType<PedestalBlockEntity> = BlockEntityType.Builder.create(::PedestalBlockEntity, PEDESTAL_BLOCK).build(null)
 
 	@JvmStatic
 	fun init() {
@@ -51,7 +49,6 @@ object HexicalBlocks {
 		Registry.register(Registries.BLOCK, HexicalMain.id("hex_candle_cake"), HEX_CANDLE_CAKE_BLOCK)
 		Registry.register(Registries.BLOCK, HexicalMain.id("mage_block"), MAGE_BLOCK)
 		Registry.register(Registries.BLOCK, HexicalMain.id("media_jar"), MEDIA_JAR_BLOCK)
-		Registry.register(Registries.BLOCK, HexicalMain.id("pedestal"), PEDESTAL_BLOCK)
 		Registry.register(Registries.BLOCK, HexicalMain.id("sentinel_bed"), SENTINEL_BED_BLOCK)
 		Registry.register(Registries.BLOCK, HexicalMain.id("pillow"), PILLOW_BLOCK)
 
@@ -59,7 +56,6 @@ object HexicalBlocks {
 		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("hex_candle_cake"), HEX_CANDLE_CAKE_BLOCK_ENTITY)
 		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("media_jar"), MEDIA_JAR_BLOCK_ENTITY)
 		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("mage_block"), MAGE_BLOCK_ENTITY)
-		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("pedestal"), PEDESTAL_BLOCK_ENTITY)
 		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("pillow"), PILLOW_BLOCK_ENTITY)
 	}
 
