@@ -287,7 +287,7 @@
 	"hexical.page.genie_lore.1": "低等级$(l:items/hexcasting)$(item)施法物品$()通常会把一部分$(media)媒质$()浪费到噪声和粒子中去；好在$(item)神灯$()不会浪费，而是会捕获用来修复精灵的意识。实际过程基本没有浪费$(media)媒质$()，真是难以置信。但$(item)神灯$()终究还是会枯竭，幸运的是，直接充入$(media)媒质$()就能解决。",
 	"hexcasting.action.hexical:recharge_lamp": "神灯充能",
 	"hexical.page.recharge_lamp.summary": "为我副手中的$(item)神灯$()充能。消耗大约 1 个$(l:items/amethyst)$(item)充能紫水晶$()，同时消耗我送入$(item)神灯$()的$(media)媒质$()。",
-	"hexical.page.genie_lore.2": "$(item)神灯$()似乎能够存下无限多的$(media)媒质$()。要是原来就有$(media)媒质$()就去充能，它的容量只会相应增加。真可谓是$(hex)咒法学$()科技树上的奇观。",
+	"hexical.page.genie_lore.2": "$(item)神灯$()似乎能够存下无限多的$(media)媒质$()。要是原来有$(media)媒质$()时去充能，它的容量只会相应增加。真可谓是$(hex)咒法学$()科技树上的奇观。",
 	"hexical.page.genie_lore.3": "在进一步的考察后，我发现$(item)神灯$()中的精灵似乎只是极为简单的思维与$(media)媒质$()网络，简单到甚至像人力所为。我认为这不太能叫生物，更像是$(o)咒灵$()。把它换成更加复杂、具有$(o)感知力$()的意识，带来的或许就是质变。所需的意识必须品质极高，经过处理后还需保留些许能力；花费一生精进手艺的村民应该足够。",
 	"hexcasting.action.hexical:promote_lamp": "晋升神灯",
 	"hexical.page.promote_lamp.summary": "在另一只手中持有神灯时施放。消耗大约 10 个$(l:items/amethyst)$(item)充能紫水晶$()。",
