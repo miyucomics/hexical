@@ -1,6 +1,6 @@
 {
 	"name": "hexical.page.lamp_pillows.title",
-	"icon": "hexical:pedestal",
+	"icon": "minecraft:red_wool",
 	"category": "hexcasting:lamp",
 	"advancement": "hexical:arch_lamp",
 	"sortnum": 3,
