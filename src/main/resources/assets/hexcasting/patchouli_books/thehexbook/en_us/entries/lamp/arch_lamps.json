@@ -82,11 +82,7 @@
 			"text": "hexical.page.get_arch_lamp_storage.summary"
 		},
 		{
-			"type": "hexcasting:pattern",
-			"op_id": "hexical:lamp_finale",
-			"anchor": "hexical:lamp_finale",
-			"input": "",
-			"output": "boolean",
+			"type": "patchouli:text",
 			"text": "hexical.page.lamp_finale.arch"
 		}
 	]
