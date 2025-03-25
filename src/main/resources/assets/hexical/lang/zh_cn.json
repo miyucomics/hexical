@@ -202,7 +202,7 @@
 	"hexical.page.scarab.0": "$(item)圣甲虫$()是个可爱的护符。它们对$(media)媒质$()相当敏感；因此在启动后，它们能定位被自然忽略的图案，并加以替换。特别来说，对自然而言没有意义的图案会压入栈顶，供$(item)圣甲虫$()判别。$(br2)$(o)我不管了，上吧圣甲虫。$()",
 	"hexical.page.scarab.1": "我可以教导$(item)圣甲虫$()，让它将图案处理成方便使用的形式。比如说，可以让它在碰到给定图案时执行一系列图案，以无缝衔接那些$(o)新$()图案，甚至连$(l:items/hexcasting)$(item)施法物品$()中的图案也行。",
 	"hexical.page.scarab.2": "$(l:patterns/readwrite#hexcasting:write)$(action)书吏之策略$()可以教导$(item)圣甲虫$()图案列表。此列表后续不可通过$(l:patterns/readwrite#hexcasting:read)$(action)书吏之精思$()反向读出；它们的感知力足以抵抗读心，不过它们确实会自豪地展出$(hex)咒术$()。这些指示也不可覆盖；传达新指示前必须先$(l:patterns/spells/hexcasting#hexcasting:erase)$(action)清除$()。",
-	"hexical.page.scarab.3": "如果需要进一步处理图案，$(l:patterns/pattern_manipulation)能操纵图案的元操作图案$()会很有用。理论上来说，我可以创造出一整族的图案，类似$(l:patterns/numbers)数字面量$()和$(l:patterns/stackmanip#hexcasting:mask)$(action)书吏之策略$()等，而且所有$(l:items/staff)法杖$()或者$(l:items/hexcasting)$(item)施法物品$()都可以用。",
+	"hexical.page.scarab.3": "如果需要进一步处理图案，$(l:patterns/pattern_manipulation)能操纵图案的元操作图案$()会很有用。理论上来说，我可以创造出一整族的图案，类似$(l:patterns/numbers)数字面量$()和$(l:patterns/stackmanip#hexcasting:mask)$(action)簿记员之策略$()等，而且所有$(l:items/staff)法杖$()或者$(l:items/hexcasting)$(item)施法物品$()都可以用。",
 
 	"hexical.page.animated_scroll.title": "活线卷轴",
 	"hexical.page.animated_scroll.0": "$(item)活线卷轴$()中混有一小份紫水晶，其上墨迹会像$(l:items/staff)$(item)法杖$()绘制出的图案那样颤动。$(item)活线卷轴$()的神奇之处还不止于此，它还能展示图案列表。$(br2)$(o)不带点疯劲，怎么能叫作家呢？$()",
