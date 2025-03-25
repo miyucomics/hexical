@@ -21,7 +21,6 @@
 	"block.hexical.hex_candle": "咒术蜡烛",
 	"block.hexical.mage_block": "术师方块",
 	"block.hexical.media_jar": "媒质罐",
-	"block.hexical.pedestal": "支座",
 	"block.hexical.sentinel_bed": "哨卫床",
 	"death.attack.magic_missile": "%1$s的魔法存在被%2$s刺穿了",
 	"death.attack.magic_missile.item": "%1$s的魔法存在被%2$s用%3$s刺穿了",
@@ -249,10 +248,6 @@
 	"hexical.page.wooleyed_potion.header": "毡障药水",
 	"hexical.page.wooleyed_potion.1": "向$(item)尴尬的药水$()里酿入一枚$(l:items/hexcasting)$(item)杂件$()，即可制成毡障药水。",
 
-	"hexical.page.pedestal.title": "支座",
-	"hexical.page.pedestal.0": "支座可以让物品悬浮在其上。和物品展示框和箱子不一样的是，我的$(hex)咒术$()仍可以和其上物品交互，就像和掉在地上的物品交互一样。空支座可吸引周围的物品，其与漏斗的交互也和我想的契合。就算物品被换走，它也能正常运作。",
-	"hexical.page.pedestal.1": "$(o)展示用的支座和任何狭小封闭的空间没什么两样——都和监狱差不多。$()",
-
 	"hexical.category.lamp": "精灵神灯",
 	"hexical.category.lamp.desc": "我曾在村民讲述的故事中听到过一个魔法物件。村民说有一个能实现愿望的精灵住在里面，但我怀疑这不过是数百年来口口相传所生的附会罢了。不过传说必然不会毫无来由，这件物品必然有强大之处；因此我分出了这一章，用于记录我对它的研究。",
 
@@ -315,9 +310,6 @@
 
 	"hexical.page.lamp_pillows.title": "枕座",
 	"hexical.page.lamp_pillows.0": "似乎$(l:lamp/arch_lamps)$(item)大精灵神灯$()会在无人持有时抑制精灵的施法能力，也许是为阻止精灵用$(media)媒质$()削弱神灯的禁锢。我从未见到过这种表现；大概能设计如此精妙的仪器的意识总是才智与偏执并存吧。",
-
-	"hexical.page.pedestal_circles.title": "法术环中的支座",
-	"hexical.page.pedestal_circles.0": "$(l:items/pedestals)$(thing)支座$()也具有魔法功用！其中若放有$(l:patterns/readwrite#hexcasting:write)$(item)带着信息的物品$()，同时有$(l:greatwork/spellcircles)$(thing)法术环$()的媒质波穿过它，则它会将物品中的 iota 压入栈顶。如果该 iota 刚好处于未闭合的$(l:patterns/patterns_as_iotas#hexcasting:open_paren)内省$()中，则其会进入所构造的列表。",
 
 	"hexical.page.enlightened_patterns.title": "启迪后图案",
 	"hexical.page.enlightened_patterns.0": "在经过启迪之后，我敏锐地意识到，世上真的存在协助我感知和操纵$(media)媒质$()的图案。这些图案并无其他更进一步的需求，也许我一直都能运行它们，但也一直浑然不觉。这也意味着，我可以给未经启迪的玩家带有这些图案的$(l:items/hexcasting)$(item)施法物品$()，他们在施放过程中不会受到阻碍。",
@@ -695,7 +687,6 @@
 	"hexcasting.action.hexical:env_arch_lamp": "大愿之精思",
 	"hexical.page.env_arch_lamp.summary": "检验该图案是否由$(l:lamp/arch_lamps)$(item)大精灵神灯$()施放。",
 	"hexcasting.action.hexical:env_turret": "炮塔之精思",
-	"hexical.page.env_turret.summary": "检验该图案是否由处于$(l:items/pedestals)$(thing)支座$()中的$(l:lamp/arch_lamps)$(item)大精灵神灯$()施放。",
 	"hexcasting.action.hexical:env_circle": "建构之精思",
 	"hexical.page.env_circle.summary": "检验该图案是否由某种$(l:greatwork/spellcircles)$(thing)$(o)卓伟之作$()施放。",
 	"hexcasting.action.hexical:env_evocation": "灵能之精思",
