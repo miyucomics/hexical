@@ -33,7 +33,7 @@ import miyucomics.hexical.casting.patterns.evocation.OpGetEvocation
 import miyucomics.hexical.casting.patterns.evocation.OpSetEvocation
 import miyucomics.hexical.casting.patterns.firework.OpConjureFirework
 import miyucomics.hexical.casting.patterns.firework.OpSimulateFirework
-import miyucomics.hexical.casting.patterns.greatwork.*
+import miyucomics.hexical.casting.patterns.akashic.*
 import miyucomics.hexical.casting.patterns.grimoire.OpGrimoireErase
 import miyucomics.hexical.casting.patterns.grimoire.OpGrimoireIndex
 import miyucomics.hexical.casting.patterns.grimoire.OpGrimoireWrite
@@ -157,8 +157,6 @@ object HexicalActions {
 		register("read_shelf", "qaqqqada", HexDir.EAST, OpReadAkashicShelf())
 		register("write_shelf", "edeeedad", HexDir.SOUTH_WEST, OpWriteAkashicShelf())
 		register("clear_shelf", "edeedade", HexDir.SOUTH_WEST, OpClearAkashicShelf())
-		register("read_slate", "aqqqqqeawqwaw", HexDir.EAST, OpReadSlate())
-		register("write_slate", "deeeeeqdwewewewdw", HexDir.EAST, OpWriteSlate())
 
 		register("conjure_mage_block", "dee", HexDir.NORTH_WEST, OpConjureMageBlock())
 		register("modify_block_bouncy", "deeqa", HexDir.NORTH_WEST, OpModifyMageBlock("bouncy"))
