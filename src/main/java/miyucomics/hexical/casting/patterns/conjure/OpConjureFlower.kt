@@ -9,8 +9,8 @@ import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadBlock
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.misc.MediaConstants
-import miyucomics.hexical.casting.iotas.getIdentifier
 import miyucomics.hexical.registry.HexicalBlocks
+import miyucomics.hexposition.iotas.getIdentifier
 import net.minecraft.block.Block
 import net.minecraft.block.FlowerPotBlock
 import net.minecraft.registry.Registries
