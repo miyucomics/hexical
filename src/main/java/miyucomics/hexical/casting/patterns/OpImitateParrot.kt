@@ -7,7 +7,7 @@ import at.petrak.hexcasting.api.casting.getVec3
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.misc.MediaConstants
-import miyucomics.hexical.casting.iotas.getIdentifier
+import miyucomics.hexposition.iotas.getIdentifier
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.passive.ParrotEntity
 import net.minecraft.registry.Registries

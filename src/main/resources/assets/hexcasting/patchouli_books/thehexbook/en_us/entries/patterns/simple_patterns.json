@@ -12,14 +12,6 @@
 			"input": "",
 			"output": "garbage",
 			"text": "hexical.page.garbage.summary"
-		},
-		{
-			"type": "hexcasting:pattern",
-			"op_id": "hexical:get_media",
-			"anchor": "hexical:get_media",
-			"input": "entity | vector",
-			"output": "number",
-			"text": "hexical.page.get_media.summary"
 		}
 	]
 }

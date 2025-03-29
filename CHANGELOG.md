@@ -17,6 +17,7 @@
 - added Squawk spell for fun - play mob sounds
 - added Confetti spell for fun - creates a bang and confetti particles
 - added Ritualist Purification and Gambit from HexGloop: read and write to slates
+- added HexGloop's Cut Stone spell
 - added ledgers - a strange item that records the last 32 patterns you've casted
   - useful for debugging hexes in staves and casting devices
 - added sentinel bed - always have ambit inside

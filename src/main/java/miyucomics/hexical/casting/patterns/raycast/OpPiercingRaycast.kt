@@ -6,8 +6,8 @@ import at.petrak.hexcasting.api.casting.getVec3
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.NullIota
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
-import miyucomics.hexical.casting.iotas.getIdentifier
 import miyucomics.hexical.utils.DDAUtils
+import miyucomics.hexposition.iotas.getIdentifier
 import net.minecraft.registry.Registries
 import net.minecraft.util.math.Vec3d
 

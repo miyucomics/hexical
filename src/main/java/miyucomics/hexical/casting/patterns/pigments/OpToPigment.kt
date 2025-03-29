@@ -13,6 +13,8 @@ import at.petrak.hexcasting.api.pigment.FrozenPigment
 import at.petrak.hexcasting.common.lib.HexItems
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.casting.iotas.*
+import miyucomics.hexposition.iotas.IdentifierIota
+import miyucomics.hexposition.iotas.getIdentifier
 import net.minecraft.entity.ItemEntity
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.player.PlayerEntity
