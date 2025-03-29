@@ -9,8 +9,8 @@ import at.petrak.hexcasting.api.casting.mishaps.MishapBadBlock
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.xplat.IXplatAbstractions
-import miyucomics.hexical.casting.iotas.getIdentifier
 import miyucomics.hexical.utils.ConstructedItemUsageContext
+import miyucomics.hexposition.iotas.getIdentifier
 import net.minecraft.item.BlockItem
 import net.minecraft.item.ItemPlacementContext
 import net.minecraft.item.ItemStack

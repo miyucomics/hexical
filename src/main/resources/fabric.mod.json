@@ -43,6 +43,7 @@
 		"fabricloader": ">=0.16.7",
 		"fabric-api": "*",
 		"fabric-language-kotlin": ">=1.10.10+kotlin.1.9.10",
-		"hexcasting": ">=0.11.1-7-pre-646"
+		"hexcasting": ">=0.11.1-7-pre-646",
+		"hexposition": "*"
 	}
 }

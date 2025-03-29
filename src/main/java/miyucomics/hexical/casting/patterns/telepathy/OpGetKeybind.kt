@@ -1,4 +1,4 @@
-package miyucomics.hexical.casting.patterns.scrying
+package miyucomics.hexical.casting.patterns.telepathy
 
 import at.petrak.hexcasting.api.casting.asActionResult
 import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
