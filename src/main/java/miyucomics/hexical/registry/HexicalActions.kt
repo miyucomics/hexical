@@ -220,11 +220,6 @@ object HexicalActions {
 		register("is_evoking", "wwaqqqqqeeaqawwewewwaqawwewew", HexDir.EAST, OpGetKeybind("key.hexical.evoke"))
 
 		register("greater_blink", "wqawawaqwqwqawawaqw", HexDir.SOUTH_WEST, OpGreaterBlink())
-
-		register("conjure_mesh", "qaqqqqqwqqqdeeweweeaeewewee", HexDir.EAST, OpConjureMesh())
-		register("weave_mesh", "qaqqqqqwqqqdeewewee", HexDir.EAST, OpWeaveMesh())
-		register("read_mesh", "edeeeeeweeeaqqwqwqq", HexDir.SOUTH_WEST, OpReadMesh())
-
 		register("theodolite", "wqaa", HexDir.EAST, OpGetEntityData { entity ->
 			val upPitch = (-entity.pitch + 90) * (Math.PI.toFloat() / 180)
 			val yaw = -entity.headYaw * (Math.PI.toFloat() / 180)
@@ -236,6 +231,10 @@ object HexicalActions {
 				h * j
 			).asActionResult
 		})
+
+		register("conjure_mesh", "qaqqqqqwqqqdeeweweeaeewewee", HexDir.EAST, OpConjureMesh())
+		register("weave_mesh", "qaqqqqqwqqqdeewewee", HexDir.EAST, OpWeaveMesh())
+		register("read_mesh", "edeeeeeweeeaqqwqwqq", HexDir.SOUTH_WEST, OpReadMesh())
 	}
 
 	private fun register(name: String, signature: String, startDir: HexDir, action: Action) =
