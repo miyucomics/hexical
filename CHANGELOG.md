@@ -57,6 +57,7 @@
 - fixed bug where wristpocket does not cancel the interaction when interacting with a block
 - fixed poor translation of Tool and Accessory Purification
 - optimized Greater Blink to not load chunks in between
+- migrated scrying to Hexposition, a new addon
 - migrated metaeval patterns and soroban to Overevaluate, a new addon
 
 ## 1.5.0

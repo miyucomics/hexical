@@ -50,7 +50,7 @@ dependencies {
 	modLocalRuntime "com.samsthenerd.inline:inline-fabric:$minecraft_version-$inline_version"
 	modLocalRuntime files("${rootProject.rootDir}/libs/serialization-hooks-0.4.99999.jar")
 
-	modImplementation 'miyucomics:Hexposition:1.0.0'
+	modImplementation 'miyucomics:hexposition:1.0.0'
 }
 
 processResources {
