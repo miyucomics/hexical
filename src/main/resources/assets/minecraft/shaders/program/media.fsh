@@ -5,7 +5,6 @@ out vec4 fragColor;
 
 uniform sampler2D DiffuseSampler;
 
-// Function to convert RGB to HSV
 vec3 rgbToHsv(vec3 color) {
     float maxC = max(max(color.r, color.g), color.b);
     float minC = min(min(color.r, color.g), color.b);
@@ -28,7 +27,6 @@ vec3 rgbToHsv(vec3 color) {
     return vec3(h, s, maxC);
 }
 
-// Function to convert HSV back to RGB
 vec3 hsvToRgb(vec3 hsv) {
     float c = hsv.z * hsv.y;
     float x = c * (1.0 - abs(mod(hsv.x * 6.0, 2.0) - 1.0));
