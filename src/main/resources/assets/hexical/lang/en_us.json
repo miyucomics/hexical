@@ -27,7 +27,7 @@
 	"death.attack.spike": "%1$s was punctured by %2$s",
 	"death.attack.spike.item": "%1$s was punctured by %2$s using %3$s",
 	"effect.hexical.wooleyed": "Wooleyed",
-	"effect.hexical.wooleyed.description": "Blurs the line between my material body and the media.",
+	"effect.hexical.wooleyed.description": "Helps me unsee some of the horrors I have seen.",
 	"entity.hexical.animated_scroll": "Animated Scroll",
 	"entity.hexical.magic_missile": "Magic Missile",
 	"entity.hexical.mesh": "Mesh",
@@ -216,7 +216,7 @@
 	"hexical.page.sentinel_bed.1": "$(o)A comfy bed for my sentinel, it always seems eager to return to it.$()",
 
 	"hexical.page.wooleyed_potion.title": "Potions of Wooleyeing",
-	"hexical.page.wooleyed_potion.0": "These $(item)Potions$() seem to blur the line between physical matter and the _media. A single dose lasts about ten minutes and under its influence, I find myself capable of far greater miracles than I am used to.$(br2)The most notable of these changes is my greater ability to trade my life for _media. I estimate that each one of my hearts is worth a full $(l:items/amethyst)Amethyst Shard$().",
+	"hexical.page.wooleyed_potion.0": "These $(item)Potions$() help me forget some of the Horrors that I have witnessed as a _Hexcaster. A basic dosage allows me to voluntarily give up my ability to trade my own life for _media, useful if I do not want to be carried away from a miscalculation. Higher potencies remove the ability to cast great spells, possibly useful as an offensive tool.$(br2)$(o)It is unseen.$()",
 	"hexical.page.wooleyed_potion.header": "Potions of Wooleyeing",
 	"hexical.page.wooleyed_potion.1": "I can brew one by boiling a $(l:items/hexcasting)$(item)Cypher$() into a simple $(item)Awkward Potion$().",
 

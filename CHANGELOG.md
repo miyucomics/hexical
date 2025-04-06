@@ -22,7 +22,7 @@
   - useful for debugging hexes in staves and casting devices
 - added sentinel bed - always have ambit inside
 - added Wooleyed status effect
-  - better blood to media conversion rate
+  - acts as a coping saw
 - added Media Reflection - gets media of casting environment
 - added Media Purification - gets media of player, allay, impetus, or item on floor
 - added Construct spell - places a specific block type from your inventory with parameters for orientation and horizontal vector
