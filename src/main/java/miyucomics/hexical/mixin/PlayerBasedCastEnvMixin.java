@@ -3,9 +3,8 @@ package miyucomics.hexical.mixin;
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment;
 import at.petrak.hexcasting.api.casting.eval.env.PlayerBasedCastEnv;
 import at.petrak.hexcasting.api.casting.eval.sideeffects.OperatorSideEffect;
-import at.petrak.hexcasting.api.mod.HexConfig;
+import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
-import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import miyucomics.hexical.data.LedgerData;
 import miyucomics.hexical.registry.HexicalEffects;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -21,11 +20,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class PlayerBasedCastEnvMixin {
 	@Shadow @Final protected ServerPlayerEntity caster;
 
-	@WrapOperation(method = "extractMediaFromInventory", at = @At(value = "INVOKE", target = "Lat/petrak/hexcasting/api/mod/HexConfig$CommonConfigAccess;mediaToHealthRate()D"))
-	private double richerBlood(HexConfig.CommonConfigAccess instance, Operation<Double> original) {
-		if (caster.hasStatusEffect(HexicalEffects.WOOLEYED_EFFECT))
-			return original.call(instance) * 2.5;
-		return original.call(instance);
+	@WrapMethod(method = "canOvercast")
+	private boolean canOvercast(Operation<Boolean> original) {
+		if (this.caster.hasStatusEffect(HexicalEffects.WOOLEYED_EFFECT))
+			return false;
+		return original.call();
 	}
 
 	@Inject(method = "sendMishapMsgToPlayer(Lat/petrak/hexcasting/api/casting/eval/sideeffects/OperatorSideEffect$DoMishap;)V", at = @At("HEAD"))
