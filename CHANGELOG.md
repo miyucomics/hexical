@@ -64,6 +64,7 @@
 - optimized Greater Blink to not load chunks in between
 - migrated scrying to Hexposition, a new addon
 - migrated metaeval patterns and soroban to Overevaluate, a new addon
+- removed rank from tchotchke, should basically affect no one since they pop the iota off anyways
 
 ## 1.5.0
 - added spell to conjure llama spit
