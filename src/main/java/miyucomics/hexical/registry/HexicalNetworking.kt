@@ -45,12 +45,8 @@ object HexicalNetworking {
 
 		ServerPlayNetworking.registerGlobalReceiver(TCHOTCHKE_CHANNEL) { server, player, _, buf, _ ->
 			val hand = getTchotchke(player) ?: return@registerGlobalReceiver
-			val inputs = mutableListOf<Iota>()
-			val staffRank = buf.readInt()
-			for (i in 0 until staffRank)
-				inputs.add(BooleanIota(buf.readBoolean()))
 			server.execute {
-				TchotchkeItem.cast(player, hand, player.getStackInHand(hand), ListIota(inputs))
+				TchotchkeItem.cast(player, hand, player.getStackInHand(hand), buf.readBoolean())
 			}
 		}
 

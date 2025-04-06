@@ -2,6 +2,7 @@ package miyucomics.hexical.items
 
 import at.petrak.hexcasting.api.casting.eval.vm.CastingImage
 import at.petrak.hexcasting.api.casting.eval.vm.CastingVM
+import at.petrak.hexcasting.api.casting.iota.BooleanIota
 import at.petrak.hexcasting.api.casting.iota.ListIota
 import at.petrak.hexcasting.api.item.VariantItem
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
@@ -30,8 +31,8 @@ class TchotchkeItem : ItemPackagedHex(Settings().maxCount(1)), VariantItem {
 	}
 
 	companion object {
-		fun cast(user: ServerPlayerEntity, hand: Hand, itemStack: ItemStack, inputs: ListIota) {
-			val vm = CastingVM(CastingImage().copy(stack = listOf(inputs)), TchotchkeCastEnv(user, hand, itemStack))
+		fun cast(user: ServerPlayerEntity, hand: Hand, itemStack: ItemStack, input: Boolean) {
+			val vm = CastingVM(CastingImage().copy(stack = listOf(BooleanIota(input))), TchotchkeCastEnv(user, hand, itemStack))
 			vm.queueExecuteAndWrapIotas((itemStack.item as TchotchkeItem).getHex(itemStack, user.serverWorld)!!, user.serverWorld)
 		}
 	}
