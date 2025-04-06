@@ -18,6 +18,15 @@
 			"input": "",
 			"output": "identifier",
 			"text": "hexical.page.periwinkle.summary"
+		},
+		{
+			"type": "patchouli:crafting",
+			"recipe": "hexical:lei",
+			"text": "hexical.page.lei.summary"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.lei.description"
 		}
 	]
 }

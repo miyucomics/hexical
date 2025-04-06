@@ -23,6 +23,11 @@
 - added sentinel bed - always have ambit inside
 - added Wooleyed status effect
   - acts as a coping saw
+- added periwinkle, a flower that can only be created via Hexcasting
+  - it is the core ingredient of the Wooleyed potion
+  - it can be used to craft a lei
+    - lei gives a small little grid size boost but mostly just looks adorable
+    - you can right-click other players to put the lei on them
 - added Media Reflection - gets media of casting environment
 - added Media Purification - gets media of player, allay, impetus, or item on floor
 - added Construct spell - places a specific block type from your inventory with parameters for orientation and horizontal vector
