@@ -1,0 +1,14 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "hexical:periwinkle"
+		},
+		{
+			"item": "hexical:periwinkle"
+		}
+	],
+	"result": {
+		"item": "hexical:lei"
+	}
+}

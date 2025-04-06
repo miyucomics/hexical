@@ -5,6 +5,7 @@ import at.petrak.hexcasting.common.items.ItemStaff
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.items.*
+import miyucomics.hexical.misc.LeiArmorMaterial
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents
 import net.minecraft.client.item.CompassAnglePredicateProvider
@@ -12,9 +13,8 @@ import net.minecraft.client.item.CompassAnglePredicateProvider.CompassTarget
 import net.minecraft.client.item.ModelPredicateProviderRegistry
 import net.minecraft.client.world.ClientWorld
 import net.minecraft.entity.Entity
+import net.minecraft.item.*
 import net.minecraft.item.Item.Settings
-import net.minecraft.item.ItemGroup
-import net.minecraft.item.ItemStack
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.registry.RegistryKey
@@ -47,6 +47,7 @@ object HexicalItems {
 
 	private val LEDGER_ITEM = LedgerItem()
 
+	private val LEI = LeiItem()
 	private val GAUNTLET_STAFF = ItemStaff(Settings().maxCount(1))
 	private val LIGHTNING_ROD_STAFF = ItemStaff(Settings().maxCount(1))
 
@@ -75,6 +76,7 @@ object HexicalItems {
 
 			entries.add(ItemStack(LEDGER_ITEM))
 
+			entries.add(ItemStack(LEI))
 			entries.add(ItemStack(SCARAB_BEETLE_ITEM))
 			entries.add(ItemStack(GRIMOIRE_ITEM))
 		}
@@ -91,7 +93,7 @@ object HexicalItems {
 		Registry.register(Registries.ITEM, HexicalMain.id("lightning_rod_staff"), LIGHTNING_ROD_STAFF)
 		Registry.register(Registries.ITEM, HexicalMain.id("hexburst"), HEXBURST_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("hextito"), HEXTITO_ITEM)
-
+		Registry.register(Registries.ITEM, HexicalMain.id("lei"), LEI)
 		Registry.register(Registries.ITEM, HexicalMain.id("tchotchke"), TCHOTCHKE_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("ledger"), LEDGER_ITEM)
 	}
