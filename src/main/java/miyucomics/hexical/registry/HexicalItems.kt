@@ -47,7 +47,8 @@ object HexicalItems {
 
 	private val LEDGER_ITEM = LedgerItem()
 
-	private val LEI = LeiItem()
+	@JvmField
+	val LEI = LeiItem()
 	private val GAUNTLET_STAFF = ItemStaff(Settings().maxCount(1))
 	private val LIGHTNING_ROD_STAFF = ItemStaff(Settings().maxCount(1))
 
