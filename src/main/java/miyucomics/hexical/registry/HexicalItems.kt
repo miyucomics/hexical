@@ -12,7 +12,6 @@ import net.minecraft.client.item.CompassAnglePredicateProvider.CompassTarget
 import net.minecraft.client.item.ModelPredicateProviderRegistry
 import net.minecraft.client.world.ClientWorld
 import net.minecraft.entity.Entity
-import net.minecraft.item.BlockItem
 import net.minecraft.item.Item.Settings
 import net.minecraft.item.ItemGroup
 import net.minecraft.item.ItemStack
@@ -26,7 +25,7 @@ import net.minecraft.util.math.GlobalPos
 
 object HexicalItems {
 	private val HEXICAL_GROUP_KEY: RegistryKey<ItemGroup> = RegistryKey.of(Registries.ITEM_GROUP.key, HexicalMain.id("general"))
-	private val HEXICAL_GROUP: ItemGroup = FabricItemGroup.builder().icon { ItemStack(TCHOTCHKE_ITEM) }.displayName(Text.translatable("itemGroup.hexical.general")).build()
+	val HEXICAL_GROUP: ItemGroup = FabricItemGroup.builder().icon { ItemStack(TCHOTCHKE_ITEM) }.displayName(Text.translatable("itemGroup.hexical.general")).build()
 
 	@JvmField
 	val HAND_LAMP_ITEM = HandLampItem()
@@ -50,11 +49,6 @@ object HexicalItems {
 
 	private val GAUNTLET_STAFF = ItemStaff(Settings().maxCount(1))
 	private val LIGHTNING_ROD_STAFF = ItemStaff(Settings().maxCount(1))
-
-	@JvmField
-	val MEDIA_JAR_ITEM = BlockItem(HexicalBlocks.MEDIA_JAR_BLOCK, Settings().maxCount(1))
-	private val HEX_CANDLE_ITEM = BlockItem(HexicalBlocks.HEX_CANDLE_BLOCK, Settings())
-	private val SENTINEL_BED_ITEM = BlockItem(HexicalBlocks.SENTINEL_BED_BLOCK, Settings())
 
 	@JvmStatic
 	fun init() {
@@ -83,9 +77,6 @@ object HexicalItems {
 
 			entries.add(ItemStack(SCARAB_BEETLE_ITEM))
 			entries.add(ItemStack(GRIMOIRE_ITEM))
-			entries.add(ItemStack(MEDIA_JAR_ITEM))
-			entries.add(ItemStack(HEX_CANDLE_ITEM))
-			entries.add(ItemStack(SENTINEL_BED_ITEM))
 		}
 
 		Registry.register(Registries.ITEM, HexicalMain.id("animated_scroll_small"), SMALL_ANIMATED_SCROLL_ITEM)
@@ -98,13 +89,9 @@ object HexicalItems {
 		Registry.register(Registries.ITEM, HexicalMain.id("grimoire"), GRIMOIRE_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("gauntlet_staff"), GAUNTLET_STAFF)
 		Registry.register(Registries.ITEM, HexicalMain.id("lightning_rod_staff"), LIGHTNING_ROD_STAFF)
-		Registry.register(Registries.ITEM, HexicalMain.id("hex_candle"), HEX_CANDLE_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("hexburst"), HEXBURST_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("hextito"), HEXTITO_ITEM)
 
-		Registry.register(Registries.ITEM, HexicalMain.id("mage_block"), BlockItem(HexicalBlocks.MAGE_BLOCK, Settings()))
-		Registry.register(Registries.ITEM, HexicalMain.id("media_jar"), MEDIA_JAR_ITEM)
-		Registry.register(Registries.ITEM, HexicalMain.id("sentinel_bed"), SENTINEL_BED_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("tchotchke"), TCHOTCHKE_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("ledger"), LEDGER_ITEM)
 	}

@@ -6,7 +6,7 @@ import at.petrak.hexcasting.api.casting.eval.sideeffects.OperatorSideEffect;
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import miyucomics.hexical.data.LedgerData;
-import miyucomics.hexical.registry.HexicalEffects;
+import miyucomics.hexical.registry.HexicalPotions;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import org.spongepowered.asm.mixin.Final;
@@ -22,7 +22,7 @@ public class PlayerBasedCastEnvMixin {
 
 	@WrapMethod(method = "canOvercast")
 	private boolean canOvercast(Operation<Boolean> original) {
-		if (this.caster.hasStatusEffect(HexicalEffects.WOOLEYED_EFFECT))
+		if (this.caster.hasStatusEffect(HexicalPotions.WOOLEYED_EFFECT))
 			return false;
 		return original.call();
 	}

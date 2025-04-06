@@ -5,6 +5,7 @@ import at.petrak.hexcasting.api.misc.MediaConstants;
 import at.petrak.hexcasting.api.pigment.FrozenPigment;
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex;
 import miyucomics.hexical.client.ClientStorage;
+import miyucomics.hexical.registry.HexicalBlocks;
 import miyucomics.hexical.registry.HexicalItems;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
@@ -29,7 +30,6 @@ import java.util.List;
 
 @Mixin(ItemStack.class)
 public class ItemStackMixin {
-	@Shadow @Nullable private NbtCompound nbt;
 	@Unique
 	private final DecimalFormat format = new DecimalFormat("###,###.##");
 
@@ -40,7 +40,7 @@ public class ItemStackMixin {
 		if (nbt == null)
 			return;
 
-		if (stack.isOf(HexicalItems.MEDIA_JAR_ITEM))
+		if (stack.isOf(HexicalBlocks.MEDIA_JAR_ITEM))
 			cir.getReturnValue().add(Text.translatable("hexcasting.tooltip.media", format.format(((float) nbt.getCompound("BlockEntityTag").getLong("media")) / ((float) MediaConstants.DUST_UNIT))));
 
 		if (stack.getItem() instanceof ItemPackagedHex && nbt.getBoolean("cracked")) {

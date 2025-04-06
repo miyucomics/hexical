@@ -1,0 +1,23 @@
+{
+	"name": "hexical.page.periwinkle.title",
+	"icon": "hexical:periwinkle",
+	"advancement": "hexcasting:root",
+	"category": "hexcasting:items",
+	"sortnum": 8,
+	"pages": [
+		{
+			"type": "patchouli:spotlight",
+			"title": "hexical.page.periwinkle.title",
+			"text": "hexical.page.periwinkle.0",
+			"item": "hexical:periwinkle"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:periwinkle",
+			"anchor": "hexical:periwinkle",
+			"input": "",
+			"output": "identifier",
+			"text": "hexical.page.periwinkle.summary"
+		}
+	]
+}

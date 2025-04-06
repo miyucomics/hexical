@@ -10,6 +10,7 @@ import at.petrak.hexcasting.api.casting.math.HexDir
 import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.utils.vecFromNBT
+import at.petrak.hexcasting.common.casting.actions.local.OpPushLocal
 import at.petrak.hexcasting.common.casting.actions.selectors.OpGetEntitiesBy
 import at.petrak.hexcasting.common.lib.hex.HexActions
 import miyucomics.hexical.HexicalMain
@@ -63,6 +64,7 @@ import miyucomics.hexical.casting.patterns.vfx.OpSparkle
 import miyucomics.hexical.casting.patterns.wristpocket.*
 import miyucomics.hexical.interfaces.Specklike
 import miyucomics.hexical.items.HandLampItem
+import miyucomics.hexposition.iotas.IdentifierIota
 import miyucomics.hexposition.iotas.asActionResult
 import miyucomics.hexposition.patterns.OpGetEntityData
 import net.minecraft.registry.Registries
@@ -82,6 +84,8 @@ object HexicalActions {
 		register("write_grimoire", "aqwqaeaqa", HexDir.WEST, OpGrimoireWrite())
 		register("erase_grimoire", "aqwqaqded", HexDir.WEST, OpGrimoireErase())
 		register("index_grimoire", "aqaeaqwqa", HexDir.SOUTH_EAST, OpGrimoireIndex())
+
+		register("periwinkle", "qaqwqaqwqaq", HexDir.NORTH_EAST, Action.makeConstantOp(IdentifierIota(HexicalMain.id("periwinkle"))))
 
 		register("wish", "eweweweweweewedeaqqqd", HexDir.NORTH_WEST, OpWish())
 		register("recharge_lamp", "qaqwawqwqqwqwqwqwqwqq", HexDir.EAST, OpRechargeLamp())
