@@ -4,6 +4,7 @@ import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.utils.isMediaItem
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.recipe.TransmutingRecipe
+import miyucomics.hexical.registry.HexicalBlocks
 import miyucomics.hexical.registry.HexicalItems
 import miyucomics.hexical.registry.HexicalRecipe
 import miyucomics.hexical.registry.HexicalSounds
@@ -41,7 +42,7 @@ class MediaJarBlock : TransparentBlock(
 	override fun onBreak(world: World, blockPos: BlockPos, blockState: BlockState?, playerEntity: PlayerEntity) {
 		val blockEntity = world.getBlockEntity(blockPos)
 		if (blockEntity is MediaJarBlockEntity) {
-			val itemStack = ItemStack(HexicalItems.MEDIA_JAR_ITEM)
+			val itemStack = ItemStack(HexicalBlocks.MEDIA_JAR_ITEM)
 			blockEntity.setStackNbt(itemStack)
 			val item = ItemEntity(world, blockPos.x.toDouble() + 0.5, blockPos.y.toDouble() + 0.5, blockPos.z.toDouble() + 0.5, itemStack)
 			item.setToDefaultPickupDelay()

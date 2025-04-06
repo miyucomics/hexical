@@ -27,12 +27,14 @@
 		"minecraft:acacia_sapling",
 		"minecraft:cherry_sapling",
 		"minecraft:dark_oak_sapling",
-		"minecraft:bamboo_block",
+		"minecraft:bamboo",
 		"minecraft:fern",
 		"minecraft:grass",
 		"minecraft:flowering_azalea",
 		"minecraft:crimson_fungus",
 		"minecraft:warped_fungus",
-		"minecraft:nether_wart"
+		"minecraft:nether_wart",
+		"minecraft:pink_petals",
+		"hexical:periwinkle"
 	]
 }
