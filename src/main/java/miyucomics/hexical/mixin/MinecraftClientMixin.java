@@ -39,7 +39,7 @@ public class MinecraftClientMixin implements MinecraftClientMinterface {
 		if (hand == null)
 			return;
 		player.swingHand(hand);
-		player.getWorld().playSound(player, player.getX(), player.getY(), player.getZ(), HexSounds.ADD_TO_PATTERN, SoundCategory.PLAYERS, 1f, 1f);
+		player.getWorld().playSound(player, player.getX(), player.getY(), player.getZ(), HexSounds.CAST_HERMES, SoundCategory.PLAYERS, 1f, 1f);
 
 		PacketByteBuf buf = PacketByteBufs.create();
 		buf.writeBoolean(input);
