@@ -14,6 +14,7 @@
 - added tooltip to grimoire, need to cast any grimoire pattern on old grimoires in order to force it to show up
 - added Crack Device - a spell to crack an unwritten casting device and reveal its Hex when it is eventually written
 - added Snowball spell for fun - works just like ghast fireball
+- added Egg spell for fun
 - added ability to use phials in wristpocket
 - added Squawk spell for fun - play mob sounds
 - added Confetti spell for fun - creates a bang and confetti particles
