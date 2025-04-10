@@ -1,0 +1,14 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"tag": "minecraft:wool_carpets"
+		},
+		{
+			"item": "hexcasting:amethyst_dust"
+		}
+	],
+	"result": {
+		"item": "hexical:casting_carpet"
+	}
+}

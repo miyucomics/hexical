@@ -18,6 +18,7 @@
 	"advancements.hexical.media_slurp.title": "Tripping",
 	"advancements.hexical.media_slurp.description": "\"You sense that something is off.\"",
 
+	"block.hexical.casting_carpet": "Casting Carpet",
 	"block.hexical.hex_candle": "Hex Candle",
 	"block.hexical.mage_block": "Mage Block",
 	"block.hexical.media_jar": "Media Jar",
@@ -216,6 +217,10 @@
 	"hexical.recipe.cry_obsidian.text": "Infuses $(item)Obsidian$() with _media which leaks out of it, giving it a distinctive crying appearance.",
 	"hexical.recipe.uncry_obsidian.header": "Calm Obsidian",
 	"hexical.recipe.uncry_obsidian.text": "Returns the _media from $(item)Crying Obsidian$().$(br2)$(o)Therapy! :D$()",
+
+	"hexical.page.casting_carpet.title": "Casting Carpets",
+	"hexical.page.casting_carpet.0": "I can weave $(l:items/amethyst)$(item)Amethyst$() into any ordinary rug to create this wonderfully comfy rug. Stepping on the carpet, I can feel the _media coursing under my feet. It feels disorienting but surprisingly puts me at peace.$(br2)I feel very inspired, as if I were wearing a $(l:items/lens)$(item)Scrying Lens$() although weaker. My _Hexcasting vision seems to have been expanded.",
+	"hexical.page.casting_carpet.recipe": "$(o)Why is the red carpet red? It can be any color.$()",
 
 	"hexical.page.ledger.title": "Ledgers",
 	"hexical.page.ledger.0": "$(l:patterns/meta)When _Hexes cast _Hexes$(), it is easy to lose track of my _Hex and Nature is all too happy to be punish such carelessness. Luckily, a $(item)Ledger$() can record the last 32 patterns I casted, the last mishap I have cast, and the state of the stack right before mishap. The true power of $(item)Ledgers$() is the ability for it to record patterns cast $(o)even by $(l:patterns/meta)meta-evaluations$().",
@@ -513,7 +518,7 @@
 	"hexical.page.myodesopsia.description": "These patterns are similar to the \"floaters\" that appear when I cast using other methods. I can imagine this spell as conjuring what would have appeared had I casted the list. Interestingly, each pattern shows up exactly once no matter how many times it appears in the list.",
 
 	"hexical.page.meta_effects.title": "Hexcasting Effects",
-	"hexcasting.action.hexical:effect_clouding": "Foggy Sky's Zenith",
+	"hexcasting.action.hexical:effect_clouding": "Foggy Sky's Nadir",
 	"hexical.page.effect_clouding.summary": "Bestows $(thing)clouding$(), an effect that impedes _Hexcasting vision. Base cost is about one $(l:items/amethyst)$(item)Amethyst Dust$() per three seconds. Follows $(l:patterns/spells/nadirs)nadir$() cost scaling.",
 	"hexcasting.action.hexical:effect_clarity": "Clear Sky's Zenith",
 	"hexical.page.effect_clarity.summary": "Bestows $(thing)clarity$(), an effect that extends _Hexcasting vision. Base cost is about one $(l:items/amethyst)$(item)Amethyst Dust$() per second. Follows $(l:patterns/great_spells/zeniths)zenith$() cost scaling.",
