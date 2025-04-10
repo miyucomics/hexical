@@ -12,6 +12,8 @@ import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.utils.vecFromNBT
 import at.petrak.hexcasting.common.casting.actions.local.OpPushLocal
 import at.petrak.hexcasting.common.casting.actions.selectors.OpGetEntitiesBy
+import at.petrak.hexcasting.common.casting.actions.spells.OpPotionEffect
+import at.petrak.hexcasting.common.lib.HexMobEffects
 import at.petrak.hexcasting.common.lib.hex.HexActions
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.casting.patterns.*
@@ -195,8 +197,6 @@ object HexicalActions {
 		register("place_block_type", "wewewewewewdwew", HexDir.NORTH_WEST, OpConstruct())
 		register("autograph", "eeeeeww", HexDir.WEST, OpAutograph())
 		register("unautograph", "wwqqqqq", HexDir.NORTH_EAST, OpUnautograph())
-		register("conjure_hexburst", "aadaadqaq", HexDir.EAST, OpConjureHexburst())
-		register("conjure_hextito", "qaqdqaqdwawaw", HexDir.EAST, OpConjureHextito())
 		register("flower", "weqqqqqwaeaeaeaeaea", HexDir.NORTH_EAST, OpConjureFlower())
 		register("light", "aeaeaeaeaeawqqqqq", HexDir.SOUTH_EAST, OpConjureLight())
 		register("snowball", "ddeeeeewd", HexDir.NORTH_EAST, OpSnowball())
@@ -206,6 +206,12 @@ object HexicalActions {
 		register("parrot", "wweedadw", HexDir.NORTH_EAST, OpImitateParrot())
 		register("myodesopsia", "wadawadawawaaw", HexDir.SOUTH_EAST, OpMyodesopsia())
 
+		register("effect_clouding", "wddwaqqeawaeqwa", HexDir.SOUTH_EAST, OpPotionEffect(HexMobEffects.SHRINK_GRID, MediaConstants.DUST_UNIT / 3, allowPotency = true, potencyCubic = false))
+		register("effect_clarity", "wdwdqeeeeedwqwddwq", HexDir.SOUTH_EAST, OpPotionEffect(HexMobEffects.ENLARGE_GRID, MediaConstants.DUST_UNIT, allowPotency = true, potencyCubic = true))
+
+		register("conjure_gummy", "eeewdw", HexDir.SOUTH_WEST, OpConjureGummy())
+		register("conjure_hexburst", "aadaadqaq", HexDir.EAST, OpConjureHexburst())
+		register("conjure_hextito", "qaqdqaqdwawaw", HexDir.EAST, OpConjureHextito())
 		register("conjure_compass", "aqwawqwqqwqwq", HexDir.SOUTH_WEST, OpConjureCompass())
 
 		register("spike", "qdqdqdqdww", HexDir.NORTH_EAST, OpConjureSpike())
