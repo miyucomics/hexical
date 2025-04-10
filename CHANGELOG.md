@@ -41,6 +41,7 @@
 - added Potential Purification - max media that something can hold
 - added Hex Candle cakes
 - added hex gummies
+- added casting carpet
 - changed Autograph and Unautograph's pattern by swapping them
 - changed media jar
   - pretty shader

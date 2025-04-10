@@ -23,6 +23,7 @@ import net.minecraft.registry.RegistryKeys
 import net.minecraft.registry.tag.TagKey
 import net.minecraft.sound.BlockSoundGroup
 import net.minecraft.text.Text
+import net.minecraft.util.DyeColor
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
 import net.minecraft.world.World
@@ -34,12 +35,16 @@ object HexicalBlocks {
 	val HEX_CANDLE_CAKE_BLOCK: HexCandleCakeBlock = HexCandleCakeBlock()
 
 	val MAGE_BLOCK: MageBlock = MageBlock()
-	val MEDIA_JAR_BLOCK: MediaJarBlock = MediaJarBlock()
+	private val MEDIA_JAR_BLOCK: MediaJarBlock = MediaJarBlock()
+
+	@JvmField
+	val CASTING_CARPET = DyedCarpetBlock(DyeColor.PURPLE, Settings.create().mapColor(MapColor.PURPLE).strength(0.1f).sounds(BlockSoundGroup.WOOL).burnable())
+	private val CASTING_CARPET_ITEM = BlockItem(CASTING_CARPET, Item.Settings())
 
 	@JvmField
 	val SENTINEL_BED_BLOCK: Block = Block(Settings.copy(Blocks.DEEPSLATE_TILES).strength(4f, 6f))
 
-	val PILLOW_BLOCK: PillowBlock = PillowBlock()
+	private val PILLOW_BLOCK: PillowBlock = PillowBlock()
 	val PILLOW_BLOCK_ENTITY: BlockEntityType<PillowBlockEntity> = BlockEntityType.Builder.create(::PillowBlockEntity, PILLOW_BLOCK).build(null)
 
 	val HEX_CANDLE_BLOCK_ENTITY: BlockEntityType<HexCandleBlockEntity> = BlockEntityType.Builder.create(::HexCandleBlockEntity, HEX_CANDLE_BLOCK).build(null)
@@ -63,6 +68,7 @@ object HexicalBlocks {
 
 			entries.add(ItemStack(MEDIA_JAR_ITEM))
 			entries.add(ItemStack(HEX_CANDLE_ITEM))
+			entries.add(ItemStack(CASTING_CARPET_ITEM))
 			entries.add(ItemStack(SENTINEL_BED_ITEM))
 			entries.add(ItemStack(PERIWINKLE_FLOWER_ITEM))
 		}
@@ -74,6 +80,7 @@ object HexicalBlocks {
 		Registry.register(Registries.BLOCK, HexicalMain.id("sentinel_bed"), SENTINEL_BED_BLOCK)
 		Registry.register(Registries.BLOCK, HexicalMain.id("pillow"), PILLOW_BLOCK)
 		Registry.register(Registries.BLOCK, HexicalMain.id("periwinkle"), PERIWINKLE_FLOWER)
+		Registry.register(Registries.BLOCK, HexicalMain.id("casting_carpet"), CASTING_CARPET)
 
 		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("hex_candle"), HEX_CANDLE_BLOCK_ENTITY)
 		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("hex_candle_cake"), HEX_CANDLE_CAKE_BLOCK_ENTITY)
@@ -86,6 +93,7 @@ object HexicalBlocks {
 		Registry.register(Registries.ITEM, HexicalMain.id("sentinel_bed"), SENTINEL_BED_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("media_jar"), MEDIA_JAR_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("periwinkle"), PERIWINKLE_FLOWER_ITEM)
+		Registry.register(Registries.ITEM, HexicalMain.id("casting_carpet"), CASTING_CARPET_ITEM)
 	}
 
 	@JvmStatic
