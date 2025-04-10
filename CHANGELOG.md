@@ -5,6 +5,7 @@
   - Greater Blink bug fixed
   - migrated patterns out
   - player stores data now; not persistent state
+- added Clarity and Clouding zeniths/nadirs
 - added Ping Block spell - highlight a block
 - added Conjure Flower spell - conjure a flower of your choosing
 - added Illuminate spell - conjure an invisible light of your chosen strength
@@ -39,6 +40,7 @@
 - added beautiful little shader to media jars
 - added Potential Purification - max media that something can hold
 - added Hex Candle cakes
+- added hex gummies
 - changed Autograph and Unautograph's pattern by swapping them
 - changed media jar
   - pretty shader
@@ -51,6 +53,7 @@
 - changed shader spells to no longer require a media jar
 - changed grimoire packet syncing to reduce strain on servers
 - changed lamp recharge patterns to not need a mind
+- changed book layout slightly
 - fixed Ambit Purification returning true for out-of-world positions
 - fixed bug where small animated scrolls do not render
 - fixed bug where grimoire does not work in non-hotbar

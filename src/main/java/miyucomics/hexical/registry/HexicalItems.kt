@@ -5,7 +5,6 @@ import at.petrak.hexcasting.common.items.ItemStaff
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.items.*
-import miyucomics.hexical.misc.LeiArmorMaterial
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents
 import net.minecraft.client.item.CompassAnglePredicateProvider
@@ -45,6 +44,8 @@ object HexicalItems {
 	val MEDIUM_ANIMATED_SCROLL_ITEM = AnimatedScrollItem(2)
 	val LARGE_ANIMATED_SCROLL_ITEM = AnimatedScrollItem(3)
 
+	val HEX_GUMMY = Item(Settings().food(FoodComponent.Builder().hunger(2).saturationModifier(0.5f).alwaysEdible().snack().build()))
+
 	private val LEDGER_ITEM = LedgerItem()
 
 	@JvmField
@@ -72,6 +73,8 @@ object HexicalItems {
 			entries.add(ItemStack(MEDIUM_ANIMATED_SCROLL_ITEM))
 			entries.add(ItemStack(LARGE_ANIMATED_SCROLL_ITEM))
 
+			entries.add(ItemStack(HEX_GUMMY))
+
 			entries.add(ItemStack(GAUNTLET_STAFF))
 			entries.add(ItemStack(LIGHTNING_ROD_STAFF))
 
@@ -92,6 +95,7 @@ object HexicalItems {
 		Registry.register(Registries.ITEM, HexicalMain.id("grimoire"), GRIMOIRE_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("gauntlet_staff"), GAUNTLET_STAFF)
 		Registry.register(Registries.ITEM, HexicalMain.id("lightning_rod_staff"), LIGHTNING_ROD_STAFF)
+		Registry.register(Registries.ITEM, HexicalMain.id("hex_gummy"), HEX_GUMMY)
 		Registry.register(Registries.ITEM, HexicalMain.id("hexburst"), HEXBURST_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("hextito"), HEXTITO_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("lei"), LEI)
