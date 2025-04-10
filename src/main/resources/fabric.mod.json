@@ -32,6 +32,9 @@
 				"adapter": "kotlin",
 				"value": "miyucomics.hexical.HexicalClient"
 			}
+		],
+		"cardinal-components": [
+			"miyucomics.hexical.HexicalCardinalComponents"
 		]
 	},
 	"accessWidener" : "hexical.accesswidener",

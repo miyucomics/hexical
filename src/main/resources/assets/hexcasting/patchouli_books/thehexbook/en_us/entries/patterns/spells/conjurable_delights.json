@@ -1,0 +1,57 @@
+{
+	"name": "hexical.page.conjurable_delights.title",
+	"icon": "hexical:conjured_compass",
+	"category": "hexcasting:patterns/spells",
+	"advancement": "hexcasting:root",
+	"sortnum": 21,
+	"pages": [
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.conjurable_delights.0"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:conjure_gummy",
+			"anchor": "hexical:conjure_gummy",
+			"input": "vector",
+			"output": "",
+			"text": "hexical.page.conjure_gummy.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:conjure_hexburst",
+			"anchor": "hexical:conjure_hexburst",
+			"input": "vector, any",
+			"output": "",
+			"text": "hexical.page.conjure_hexburst.summary"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.conjure_hexburst.description"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:conjure_hextito",
+			"anchor": "hexical:conjure_hextito",
+			"input": "vector, list of patterns",
+			"output": "",
+			"text": "hexical.page.conjure_hextito.summary"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.conjure_hextito.description"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:conjure_compass",
+			"anchor": "hexical:conjure_compass",
+			"input": "vector, vector",
+			"output": "",
+			"text": "hexical.page.conjure_compass.summary"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.conjure_compass.description"
+		}
+	]
+}

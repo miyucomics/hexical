@@ -4,6 +4,7 @@
         "hexical:conjure_mesh",
         "hexical:greater_blink",
         "hexical:get_evocation",
-        "hexical:set_evocation"
+        "hexical:set_evocation",
+        "hexical:effect_clarity"
     ]
 }
