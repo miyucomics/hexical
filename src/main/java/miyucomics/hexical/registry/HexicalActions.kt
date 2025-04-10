@@ -201,6 +201,7 @@ object HexicalActions {
 		register("light", "aeaeaeaeaeawqqqqq", HexDir.SOUTH_EAST, OpConjureLight())
 		register("snowball", "ddeeeeewd", HexDir.NORTH_EAST, OpSnowball())
 		register("ghast_fireball", "wqqqqqwaeaeaeaeae", HexDir.SOUTH_EAST, OpGhastFireball())
+		register("egg", "qqqwaqaaqeeewdedde", HexDir.SOUTH_EAST, OpEgg())
 		register("llama_spit", "dwqaqw", HexDir.EAST, OpLlamaSpit())
 		register("gasp", "aweeeeewaweeeee", HexDir.NORTH_WEST, OpGasp())
 		register("parrot", "wweedadw", HexDir.NORTH_EAST, OpImitateParrot())
