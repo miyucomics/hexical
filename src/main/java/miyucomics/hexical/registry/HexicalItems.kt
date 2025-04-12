@@ -46,7 +46,7 @@ object HexicalItems {
 
 	val HEX_GUMMY = Item(Settings().food(FoodComponent.Builder().hunger(2).saturationModifier(0.5f).alwaysEdible().snack().build()))
 
-	private val LEDGER_ITEM = LedgerItem()
+	private val MEDIA_LOG_ITEM = MediaLogItem()
 
 	@JvmField
 	val LEI = LeiItem()
@@ -78,7 +78,7 @@ object HexicalItems {
 			entries.add(ItemStack(GAUNTLET_STAFF))
 			entries.add(ItemStack(LIGHTNING_ROD_STAFF))
 
-			entries.add(ItemStack(LEDGER_ITEM))
+			entries.add(ItemStack(MEDIA_LOG_ITEM))
 
 			entries.add(ItemStack(LEI))
 			entries.add(ItemStack(SCARAB_BEETLE_ITEM))
@@ -100,7 +100,7 @@ object HexicalItems {
 		Registry.register(Registries.ITEM, HexicalMain.id("hextito"), HEXTITO_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("lei"), LEI)
 		Registry.register(Registries.ITEM, HexicalMain.id("tchotchke"), TCHOTCHKE_ITEM)
-		Registry.register(Registries.ITEM, HexicalMain.id("ledger"), LEDGER_ITEM)
+		Registry.register(Registries.ITEM, HexicalMain.id("media_log"), MEDIA_LOG_ITEM)
 	}
 
 	@JvmStatic

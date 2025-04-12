@@ -13,7 +13,7 @@ import net.minecraft.util.Hand
 import net.minecraft.util.TypedActionResult
 import net.minecraft.world.World
 
-class LedgerItem : Item(Settings().maxCount(1)) {
+class MediaLogItem : Item(Settings().maxCount(1)) {
 	override fun use(world: World, player: PlayerEntity, hand: Hand): TypedActionResult<ItemStack> {
 		if (world.isClient) {
 			MinecraftClient.getInstance().setScreen(LedgerScreen())
@@ -21,4 +21,6 @@ class LedgerItem : Item(Settings().maxCount(1)) {
 			ServerPlayNetworking.send(player as ServerPlayerEntity, HexicalNetworking.LEDGER_CHANNEL, LedgerData.getLedger(player).toPacket())
 		return TypedActionResult.success(player.getStackInHand(hand))
 	}
+
+	override fun getTranslationKey() = "item.hexical.media_log." + ((System.currentTimeMillis() / 200) % 10).toString()
 }
