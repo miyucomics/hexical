@@ -1,0 +1,14 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "minecraft:amethyst_shard"
+		},
+		{
+			"item": "hexcasting:edified_log"
+		}
+    ],
+	"result": {
+		"item": "hexical:media_log"
+	}
+}
