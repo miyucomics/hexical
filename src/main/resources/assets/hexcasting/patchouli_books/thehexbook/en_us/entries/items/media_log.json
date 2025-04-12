@@ -1,0 +1,18 @@
+{
+	"name": "hexical.page.media_log.title",
+	"icon": "hexical:media_log",
+	"advancement": "hexcasting:root",
+	"category": "hexcasting:items",
+	"sortnum": 5,
+	"pages": [
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.media_log.0"
+		},
+		{
+			"type": "patchouli:crafting",
+			"recipe": "hexical:media_log",
+			"text": "hexical.page.media_log.1"
+		}
+	]
+}
