@@ -1,6 +1,6 @@
 {
 	"parent": "minecraft:item/generated",
 	"textures": {
-		"layer0": "hexical:item/ledger"
+		"layer0": "hexical:item/media_log"
 	}
 }
