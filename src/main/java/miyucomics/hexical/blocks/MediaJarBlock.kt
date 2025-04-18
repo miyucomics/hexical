@@ -5,7 +5,6 @@ import at.petrak.hexcasting.api.utils.isMediaItem
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.recipe.TransmutingRecipe
 import miyucomics.hexical.registry.HexicalBlocks
-import miyucomics.hexical.registry.HexicalItems
 import miyucomics.hexical.registry.HexicalRecipe
 import miyucomics.hexical.registry.HexicalSounds
 import net.minecraft.block.*
