@@ -12,8 +12,11 @@ import net.minecraft.client.item.CompassAnglePredicateProvider.CompassTarget
 import net.minecraft.client.item.ModelPredicateProviderRegistry
 import net.minecraft.client.world.ClientWorld
 import net.minecraft.entity.Entity
-import net.minecraft.item.*
+import net.minecraft.item.FoodComponent
+import net.minecraft.item.Item
 import net.minecraft.item.Item.Settings
+import net.minecraft.item.ItemGroup
+import net.minecraft.item.ItemStack
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.registry.RegistryKey
