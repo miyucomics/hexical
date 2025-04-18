@@ -9,18 +9,19 @@ import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.server.network.ServerPlayerEntity
+import net.minecraft.sound.SoundCategory
 import net.minecraft.util.Hand
 import net.minecraft.util.TypedActionResult
 import net.minecraft.world.World
 
 class MediaLogItem : Item(Settings().maxCount(1)) {
 	override fun use(world: World, player: PlayerEntity, hand: Hand): TypedActionResult<ItemStack> {
-		if (world.isClient) {
+		if (world.isClient)
 			MinecraftClient.getInstance().setScreen(LedgerScreen())
-		} else
+		else
 			ServerPlayNetworking.send(player as ServerPlayerEntity, HexicalNetworking.LEDGER_CHANNEL, LedgerData.getLedger(player).toPacket())
 		return TypedActionResult.success(player.getStackInHand(hand))
 	}
 
-	override fun getTranslationKey() = "item.hexical.media_log." + ((System.currentTimeMillis() / 200) % 10).toString()
+	override fun getTranslationKey() = "item.hexical.media_log." + ((System.currentTimeMillis() / 2000) % 2).toString()
 }
