@@ -1,0 +1,57 @@
+{
+	"name": "hexical.page.projectiles.title",
+	"icon": "minecraft:egg",
+	"category": "hexcasting:patterns/spells",
+	"advancement": "hexcasting:root",
+	"sortnum": 10,
+	"pages": [
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:snowball",
+			"anchor": "hexical:snowball",
+			"input": "vector",
+			"output": "entity",
+			"text": "hexical.page.snowball.summary"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.snowball.description"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:ghast_fireball",
+			"anchor": "hexical:ghast_fireball",
+			"input": "vector",
+			"output": "entity",
+			"text": "hexical.page.ghast_fireball.summary"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.ghast_fireball.description"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:egg",
+			"anchor": "hexical:egg",
+			"input": "vector",
+			"output": "entity",
+			"text": "hexical.page.egg.summary"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.egg.description"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:llama_spit",
+			"anchor": "hexical:llama_spit",
+			"input": "vector",
+			"output": "",
+			"text": "hexical.page.llama_spit.summary"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.llama_spit.description"
+		}
+	]
+}

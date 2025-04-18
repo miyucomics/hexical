@@ -10,7 +10,6 @@ import at.petrak.hexcasting.api.casting.math.HexDir
 import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.utils.vecFromNBT
-import at.petrak.hexcasting.common.casting.actions.local.OpPushLocal
 import at.petrak.hexcasting.common.casting.actions.selectors.OpGetEntitiesBy
 import at.petrak.hexcasting.common.casting.actions.spells.OpPotionEffect
 import at.petrak.hexcasting.common.lib.HexMobEffects
@@ -192,6 +191,11 @@ object HexicalActions {
 		register("shader_spider", "qaqdedaedqqdedaqaedeqd", HexDir.NORTH_EAST, OpShader(HexicalMain.id("shaders/post/spider.json")))
 		// color shift - edqdeqaqedqde
 
+		register("snowball", "ddeeeeewd", HexDir.NORTH_EAST, OpSnowball())
+		register("ghast_fireball", "wqqqqqwaeaeaeaeae", HexDir.SOUTH_EAST, OpGhastFireball())
+		register("egg", "qqqwaqaaqeeewdedde", HexDir.SOUTH_EAST, OpEgg())
+		register("llama_spit", "dwqaqw", HexDir.EAST, OpLlamaSpit())
+
 		register("confetti", "awddeqaedd", HexDir.EAST, OpConfetti())
 		register("sparkle", "dqa", HexDir.NORTH_EAST, OpSparkle())
 		register("block_ping", "dwwdwwdwewdwwdwwdeq", HexDir.NORTH_EAST, OpBlockPing())
@@ -202,13 +206,8 @@ object HexicalActions {
 		register("unautograph", "wwqqqqq", HexDir.NORTH_EAST, OpUnautograph())
 		register("flower", "weqqqqqwaeaeaeaeaea", HexDir.NORTH_EAST, OpConjureFlower())
 		register("light", "aeaeaeaeaeawqqqqq", HexDir.SOUTH_EAST, OpConjureLight())
-		register("snowball", "ddeeeeewd", HexDir.NORTH_EAST, OpSnowball())
-		register("ghast_fireball", "wqqqqqwaeaeaeaeae", HexDir.SOUTH_EAST, OpGhastFireball())
-		register("egg", "qqqwaqaaqeeewdedde", HexDir.SOUTH_EAST, OpEgg())
-		register("llama_spit", "dwqaqw", HexDir.EAST, OpLlamaSpit())
 		register("gasp", "aweeeeewaweeeee", HexDir.NORTH_WEST, OpGasp())
 		register("parrot", "wweedadw", HexDir.NORTH_EAST, OpImitateParrot())
-		register("myodesopsia", "wadawadawawaaw", HexDir.SOUTH_EAST, OpMyodesopsia())
 
 		register("effect_clouding", "wddwaqqeawaeqwa", HexDir.SOUTH_EAST, OpPotionEffect(HexMobEffects.SHRINK_GRID, MediaConstants.DUST_UNIT / 3, allowPotency = true, potencyCubic = false))
 		register("effect_clarity", "wdwdqeeeeedwqwddwq", HexDir.SOUTH_EAST, OpPotionEffect(HexMobEffects.ENLARGE_GRID, MediaConstants.DUST_UNIT, allowPotency = true, potencyCubic = true))

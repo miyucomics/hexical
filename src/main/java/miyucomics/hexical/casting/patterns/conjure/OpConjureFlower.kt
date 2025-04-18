@@ -17,11 +17,9 @@ import net.minecraft.block.TallPlantBlock
 import net.minecraft.block.enums.DoubleBlockHalf
 import net.minecraft.registry.Registries
 import net.minecraft.registry.tag.BlockTags
-import net.minecraft.state.property.Properties
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
 import net.minecraft.util.math.Vec3d
-import kotlin.text.Typography.half
 
 class OpConjureFlower : SpellAction {
 	override val argc = 2
@@ -51,8 +49,8 @@ class OpConjureFlower : SpellAction {
 
 	private data class GroundPlant(val position: BlockPos, val flower: Block) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			env.world.setBlockState(position.up(), flower.defaultState.with(TallPlantBlock.HALF, DoubleBlockHalf.UPPER))
-			env.world.setBlockState(position, flower.defaultState.with(TallPlantBlock.HALF, DoubleBlockHalf.LOWER))
+			env.world.setBlockState(position.up(), flower.defaultState.with(TallPlantBlock.HALF, DoubleBlockHalf.UPPER), Block.FORCE_STATE or Block.NOTIFY_LISTENERS)
+			env.world.setBlockState(position, flower.defaultState.with(TallPlantBlock.HALF, DoubleBlockHalf.LOWER), Block.FORCE_STATE or Block.NOTIFY_LISTENERS)
 		}
 	}
 

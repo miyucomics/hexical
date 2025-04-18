@@ -1,10 +1,11 @@
 # Changelog
 
 ## 2.0.0
-- major version bump due to various breaking changes
+- major version bump due to breaking changes
   - Greater Blink bug fixed
   - migrated patterns out
   - player stores data now; not persistent state
+  - removed Myodesopsia spell
 - added Clarity and Clouding zeniths/nadirs
 - added Ping Block spell - highlight a block
 - added Conjure Flower spell - conjure a flower of your choosing
@@ -13,36 +14,33 @@
 - added Scarab Beetle item - catches uncaught patterns for your handling
 - added tooltip to grimoire, need to cast any grimoire pattern on old grimoires in order to force it to show up
 - added Crack Device - a spell to crack an unwritten casting device and reveal its Hex when it is eventually written
-- added Snowball spell for fun - works just like ghast fireball
-- added Egg spell for fun
+- added Projectiles chapter
+  - added Snowball spell for fun
+  - added Egg spell for fun
+  - moved Spit and Fireball here
 - added ability to use phials in wristpocket
 - added Squawk spell for fun - play mob sounds
 - added Confetti spell for fun - creates a bang and confetti particles
-- added Ritualist Purification and Gambit from HexGloop: read and write to slates
 - added HexGloop's Cut Stone spell
 - added ledgers - a strange item that records the last 32 patterns you've casted
   - useful for debugging hexes in staves and casting devices
 - added sentinel bed - always have ambit inside
-- added Wooleyed status effect
-  - acts as a coping saw
 - added periwinkle, a flower that can only be created via Hexcasting
   - it is the core ingredient of the Wooleyed potion
   - it can be used to craft a lei
     - lei gives a small little grid size boost but mostly just looks adorable
     - you can right-click other players to put the lei on them
-- added Media Reflection - gets media of casting environment
-- added Media Purification - gets media of player, allay, impetus, or item on floor
+- added Wooleyed status effect
+  - acts as a coping saw
 - added Construct spell - places a specific block type from your inventory with parameters for orientation and horizontal vector
 - added left and right-click telepathy patterns
 - added pattern to get evocation hex
 - added more documentation to magic missile
-- added scrying pattern for moon phase
 - added Unautograph spell to unautograph an item ( still erases it )
 - added beautiful little shader to media jars
-- added Potential Purification - max media that something can hold
 - added Hex Candle cakes
-- added hex gummies
-- added casting carpet
+- added Hex Gummies
+- added Casting Carpet - carpet that boosts your ambit a little
 - changed Autograph and Unautograph's pattern by swapping them
 - changed media jar
   - pretty shader
@@ -56,20 +54,25 @@
 - changed grimoire packet syncing to reduce strain on servers
 - changed lamp recharge patterns to not need a mind
 - changed book layout slightly
-- fixed Ambit Purification returning true for out-of-world positions
 - fixed bug where small animated scrolls do not render
 - fixed bug where grimoire does not work in non-hotbar
 - fixed bug where Chromatic Purification breaks for vectors
 - fixed lack of cost in Mage Hand documentation
 - fixed bug where Fireball would fly off in some random direction
-- fixed bug where Calligrapher's and Chirographer's Purification documentation were swapped
-- fixed translation error where Ghast Fireball was not documented as pushing an entity
+- fixed getting to document Ghast Fireball pushing an entity
+- fixed swapped documentation of Calligrapher's and Chirographer's Purification
 - fixed bug where wristpocket does not cancel the interaction when interacting with a block
-- fixed poor translation of Tool and Accessory Purification
-- optimized Greater Blink to not load chunks in between
 - migrated scrying to Hexposition, a new addon
+  - added scrying pattern for moon phase
+  - added Media Reflection - gets media of casting environment
+  - added Media Purification - gets media of player, allay, impetus, or item on floor
+  - added Potential Purification - max media that something can hold
+  - fixed Ambit Purification returning true for out-of-world positions
+  - fixed poor translation of Tool and Accessory Purification
 - migrated metaeval patterns and soroban to Overevaluate, a new addon
+- optimized Greater Blink to not load chunks in between
 - removed rank from tchotchke, should basically affect no one since they pop the iota off anyways
+- removed the Myodesopsia spell
 
 ## 1.5.0
 - added spell to conjure llama spit

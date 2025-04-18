@@ -3,7 +3,6 @@ package miyucomics.hexical.items
 import at.petrak.hexcasting.api.casting.eval.vm.CastingImage
 import at.petrak.hexcasting.api.casting.eval.vm.CastingVM
 import at.petrak.hexcasting.api.casting.iota.BooleanIota
-import at.petrak.hexcasting.api.casting.iota.ListIota
 import at.petrak.hexcasting.api.item.VariantItem
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
 import miyucomics.hexical.casting.environments.TchotchkeCastEnv

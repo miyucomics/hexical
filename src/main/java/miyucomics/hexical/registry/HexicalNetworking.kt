@@ -1,8 +1,5 @@
 package miyucomics.hexical.registry
 
-import at.petrak.hexcasting.api.casting.iota.BooleanIota
-import at.petrak.hexcasting.api.casting.iota.Iota
-import at.petrak.hexcasting.api.casting.iota.ListIota
 import dev.kosmx.playerAnim.api.layered.KeyframeAnimationPlayer
 import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationRegistry
 import miyucomics.hexical.HexicalMain
