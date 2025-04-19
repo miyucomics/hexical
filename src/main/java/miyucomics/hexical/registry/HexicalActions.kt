@@ -199,6 +199,8 @@ object HexicalActions {
 		register("confetti", "awddeqaedd", HexDir.EAST, OpConfetti())
 		register("sparkle", "dqa", HexDir.NORTH_EAST, OpSparkle())
 		register("block_ping", "dwwdwwdwewdwwdwwdeq", HexDir.NORTH_EAST, OpBlockPing())
+		register("hopper_in", "qwawqwaeqqq", HexDir.SOUTH_EAST, OpHopperInsert())
+		register("hopper_out", "qqqeawqwawq", HexDir.SOUTH_WEST, OpHopperExtract())
 		register("dispense", "wqwawqwddaeeead", HexDir.SOUTH_WEST, OpDispense())
 		register("stonecut", "qqqqqwaeaeaeaeaeadawa", HexDir.EAST, OpStonecut())
 		register("crack_device", "wwaqqqqqeqdedwqeaeqwdedwqeaeq", HexDir.EAST, OpCrackDevice())

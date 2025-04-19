@@ -43,6 +43,30 @@
 		},
 		{
 			"type": "hexcasting:pattern",
+			"op_id": "hexical:hopper_in",
+			"anchor": "hexical:hopper_in",
+			"input": "item entity, vector, vector",
+			"output": "",
+			"text": "hexical.page.hopper_in.summary"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.hopper_in.description"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:hopper_out",
+			"anchor": "hexical:hopper_out",
+			"input": "vector, vector, vector",
+			"output": "item entity | null",
+			"text": "hexical.page.hopper_out.summary"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.hopper_out.description"
+		},
+		{
+			"type": "hexcasting:pattern",
 			"op_id": "hexical:dispense",
 			"anchor": "hexical:dispense",
 			"input": "item entity, vector, vector",
