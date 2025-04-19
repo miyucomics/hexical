@@ -494,6 +494,7 @@
 	"hexical.page.snowball.summary": "Conjures a harmless snowball. Costs about half of an $(l:items/amethyst)$(item)Amethyst Dust$().",
 	"hexcasting.action.hexical:ghast_fireball": "Conjure Fireball",
 	"hexical.page.ghast_fireball.summary": "Conjures an explosive fireball that can be $(o)percussively propelled$(). Costs about three $(l:items/amethyst)$(item)Amethyst Dust$().",
+	"hexical.page.projectiles.1": "There exist other spells too complex to be given justice in this chapter—I have dedicated other chapters to them.$(br2)$(l:patterns/spells/magic_missile#hexical:magic_missile)$(action)Magic Missile$() is a standard quick and versatile spear of amethyst that can be produced and fired at arbitrary speed.$(br2)I can also utilize $(l:patterns/spells/pyrotechnics)fireworks$() for battle.$(br2)Finally, a $(l:patterns/spells/simple_spells#hexical:dispense)$(action)certain spell$() allows the ability to fire potions and arrows.",
 
 	"hexical.page.simple_spells.title": "Hexical Spells",
 	"hexcasting.action.hexical:confetti": "Confetti",
