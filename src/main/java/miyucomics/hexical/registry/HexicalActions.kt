@@ -71,6 +71,11 @@ import miyucomics.hexposition.iotas.IdentifierIota
 import miyucomics.hexposition.iotas.asActionResult
 import miyucomics.hexposition.patterns.OpGetEntityData
 import miyucomics.hexposition.patterns.OpGetItemStackData
+import net.minecraft.entity.EntityType
+import net.minecraft.entity.projectile.FireballEntity
+import net.minecraft.entity.projectile.LlamaSpitEntity
+import net.minecraft.entity.projectile.thrown.EggEntity
+import net.minecraft.entity.projectile.thrown.SnowballEntity
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
@@ -82,7 +87,7 @@ object HexicalActions {
 	@JvmStatic
 	fun init() {
 		// make it do something special later
-		register("ungodly", "wedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqeedqawqeewdeaqqewdeaqeewdeaqeedqawqqedqawqqewdeaqeedqawqeewdeaqqewdeaqeewdeaqeedqawqqedqawqqewdeaqqedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqqedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqeedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqqedqawqeewdeaqqewdeaqeewdeaqeedqawqqedqawqqewdeaqe", HexDir.EAST, OpEgg())
+		register("ungodly", "wedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqeedqawqeewdeaqqewdeaqeewdeaqeedqawqqedqawqqewdeaqeedqawqeewdeaqqewdeaqeewdeaqeedqawqqedqawqqewdeaqqedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqqedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqeedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqqedqawqeewdeaqqewdeaqeewdeaqeedqawqqedqawqqewdeaqe", HexDir.EAST, OpWish())
 
 		register("age_scroll", "waeqqqqeqqqwqeaeaeaeq", HexDir.EAST, OpAgeScroll())
 		register("color_scroll", "waeqqqqewqqwqqeqeqqwqqeq", HexDir.EAST, OpColorScroll())
@@ -199,10 +204,27 @@ object HexicalActions {
 		register("shader_spider", "qaqdedaedqqdedaqaedeqd", HexDir.NORTH_EAST, OpShader(HexicalMain.id("shaders/post/spider.json")))
 		// color shift - edqdeqaqedqde
 
-		register("snowball", "ddeeeeewd", HexDir.NORTH_EAST, OpSnowball())
-		register("ghast_fireball", "wqqqqqwaeaeaeaeae", HexDir.SOUTH_EAST, OpGhastFireball())
-		register("egg", "qqqwaqaaqeeewdedde", HexDir.SOUTH_EAST, OpEgg())
-		register("llama_spit", "dwqaqw", HexDir.EAST, OpLlamaSpit())
+		register("egg", "qqqwaqaaqeeewdedde", HexDir.SOUTH_EAST, OpConjureProjectile(MediaConstants.DUST_UNIT * 2) { world, position, caster ->
+			val egg = EggEntity(world, position.x, position.y, position.z)
+			egg.owner = caster
+			return@OpConjureProjectile egg
+		})
+		register("llama_spit", "dwqaqw", HexDir.EAST, OpConjureProjectile(MediaConstants.DUST_UNIT / 4) { world, position, caster ->
+			val spit = LlamaSpitEntity(EntityType.LLAMA_SPIT, world)
+			spit.setPosition(position)
+			spit.owner = caster
+			return@OpConjureProjectile spit
+		})
+		register("snowball", "ddeeeeewd", HexDir.NORTH_EAST, OpConjureProjectile(MediaConstants.DUST_UNIT / 2) { world, position, caster ->
+			val snowball = SnowballEntity(world, position.x, position.y, position.z)
+			snowball.owner = caster
+			return@OpConjureProjectile snowball
+		})
+		register("ghast_fireball", "wqqqqqwaeaeaeaeae", HexDir.SOUTH_EAST, OpConjureProjectile(MediaConstants.DUST_UNIT * 3) { world, position, caster ->
+			val fireball = FireballEntity(world, caster, 0.0, 0.0, 0.0, 1)
+			fireball.setPosition(position)
+			return@OpConjureProjectile fireball
+		})
 
 		register("confetti", "awddeqaedd", HexDir.EAST, OpConfetti())
 		register("sparkle", "dqa", HexDir.NORTH_EAST, OpSparkle())
