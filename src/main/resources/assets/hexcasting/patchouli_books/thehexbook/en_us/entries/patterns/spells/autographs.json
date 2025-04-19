@@ -1,0 +1,41 @@
+{
+	"name": "hexical.page.autographs.title",
+	"icon": "minecraft:feather",
+	"category": "hexcasting:patterns/spells",
+	"advancement": "hexcasting:root",
+	"sortnum": 2,
+	"pages": [
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.autographs.0"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:autograph",
+			"anchor": "hexical:autograph",
+			"input": "",
+			"output": "",
+			"text": "hexical.page.autograph.summary"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.autographs.1"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:unautograph",
+			"anchor": "hexical:unautograph",
+			"input": "",
+			"output": "",
+			"text": "hexical.page.unautograph.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:has_autograph",
+			"anchor": "hexical:has_autograph",
+			"input": "item stack, entity",
+			"output": "boolean",
+			"text": "hexical.page.has_autograph.summary"
+		}
+	]
+}
