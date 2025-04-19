@@ -40,6 +40,10 @@
 			"input": "vector",
 			"output": "entity",
 			"text": "hexical.page.ghast_fireball.summary"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.projectiles.1"
 		}
 	]
 }
