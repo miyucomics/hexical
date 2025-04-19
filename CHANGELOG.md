@@ -6,6 +6,7 @@
   - migrated patterns out
   - player stores data now; not persistent state
   - removed Myodesopsia spell
+- added HexGloop's Dispense spell
 - added Clarity and Clouding zeniths/nadirs
 - added Ping Block spell - highlight a block
 - added Conjure Flower spell - conjure a flower of your choosing

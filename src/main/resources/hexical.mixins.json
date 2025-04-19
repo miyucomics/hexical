@@ -19,6 +19,7 @@
 		"CastingEnvironmentMixin",
 		"CastingVMMixin",
 		"CatSitOnBlockGoalMixin",
+		"DispenserBlockInvoker",
 		"FabricIXplatImplMixin",
 		"ItemAbacusMixin",
 		"ItemEntityMixin",
