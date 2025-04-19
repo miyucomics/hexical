@@ -9,6 +9,7 @@ import at.petrak.hexcasting.api.casting.iota.NullIota
 import at.petrak.hexcasting.api.casting.math.HexDir
 import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.misc.MediaConstants
+import at.petrak.hexcasting.api.utils.getOrCreateList
 import at.petrak.hexcasting.api.utils.vecFromNBT
 import at.petrak.hexcasting.common.casting.actions.selectors.OpGetEntitiesBy
 import at.petrak.hexcasting.common.casting.actions.spells.OpPotionEffect
@@ -21,6 +22,7 @@ import miyucomics.hexical.casting.patterns.akashic.OpKeyAkashicShelf
 import miyucomics.hexical.casting.patterns.akashic.OpReadAkashicShelf
 import miyucomics.hexical.casting.patterns.akashic.OpWriteAkashicShelf
 import miyucomics.hexical.casting.patterns.autograph.OpAutograph
+import miyucomics.hexical.casting.patterns.autograph.OpHasAutograph
 import miyucomics.hexical.casting.patterns.autograph.OpUnautograph
 import miyucomics.hexical.casting.patterns.circle.OpDisplace
 import miyucomics.hexical.casting.patterns.colors.OpDye
@@ -68,6 +70,8 @@ import miyucomics.hexical.items.HandLampItem
 import miyucomics.hexposition.iotas.IdentifierIota
 import miyucomics.hexposition.iotas.asActionResult
 import miyucomics.hexposition.patterns.OpGetEntityData
+import miyucomics.hexposition.patterns.OpGetItemStackData
+import net.minecraft.nbt.NbtCompound
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.sound.SoundEvents
@@ -151,6 +155,10 @@ object HexicalActions {
 		register("modify_block_replaceable", "deewqaqqqqq", HexDir.NORTH_WEST, OpModifyMageBlock("replaceable"))
 		register("modify_block_volatile", "deewedeeeee", HexDir.NORTH_WEST, OpModifyMageBlock("volatile"))
 
+		register("autograph", "eeeeeww", HexDir.WEST, OpAutograph())
+		register("unautograph", "wwqqqqq", HexDir.NORTH_EAST, OpUnautograph())
+		register("has_autograph", "wwqqqqqaw", HexDir.NORTH_EAST, OpHasAutograph())
+
 		register("get_dye", "weedwa", HexDir.NORTH_EAST, OpGetDye())
 		register("dye", "dwaqqw", HexDir.NORTH_WEST, OpDye())
 		register("translate_dye", "wdwwaawwewdwwewwdwwe", HexDir.EAST, OpTranslateDye())
@@ -205,8 +213,6 @@ object HexicalActions {
 		register("stonecut", "qqqqqwaeaeaeaeaeadawa", HexDir.EAST, OpStonecut())
 		register("crack_device", "wwaqqqqqeqdedwqeaeqwdedwqeaeq", HexDir.EAST, OpCrackDevice())
 		register("place_block_type", "wewewewewewdwew", HexDir.NORTH_WEST, OpConstruct())
-		register("autograph", "eeeeeww", HexDir.WEST, OpAutograph())
-		register("unautograph", "wwqqqqq", HexDir.NORTH_EAST, OpUnautograph())
 		register("flower", "weqqqqqwaeaeaeaeaea", HexDir.NORTH_EAST, OpConjureFlower())
 		register("light", "aeaeaeaeaeawqqqqq", HexDir.SOUTH_EAST, OpConjureLight())
 		register("gasp", "aweeeeewaweeeee", HexDir.NORTH_WEST, OpGasp())

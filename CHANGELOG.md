@@ -38,11 +38,13 @@
 - added left and right-click telepathy patterns
 - added pattern to get evocation hex
 - added more documentation to magic missile
-- added Unautograph spell to unautograph an item ( still erases it )
 - added beautiful little shader to media jars
 - added Hex Candle cakes
 - added Hex Gummies
 - added Casting Carpet - carpet that boosts your ambit a little
+- added pattern to test if an item stack has an autograph
+- added pattern to check if an item has been autographed by a specific person
+- added Unautograph spell to unautograph an item ( still erases it )
 - changed Autograph and Unautograph's pattern by swapping them
 - changed media jar
   - pretty shader

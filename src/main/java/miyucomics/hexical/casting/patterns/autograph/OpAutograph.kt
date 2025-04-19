@@ -5,11 +5,13 @@ import at.petrak.hexcasting.api.casting.castables.SpellAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.eval.env.StaffCastEnv
 import at.petrak.hexcasting.api.casting.iota.Iota
+import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadOffhandItem
 import at.petrak.hexcasting.api.utils.getOrCreateList
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.casting.mishaps.NoStaffMishap
+import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.server.network.ServerPlayerEntity
@@ -17,6 +19,8 @@ import net.minecraft.server.network.ServerPlayerEntity
 class OpAutograph : SpellAction {
 	override val argc = 0
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
+		if (env.castingEntity !is PlayerEntity)
+			throw MishapBadCaster()
 		if (env !is StaffCastEnv)
 			throw NoStaffMishap()
 		val stack = env.getHeldItemToOperateOn { true }
@@ -34,7 +38,7 @@ class OpAutograph : SpellAction {
 			val compound = NbtCompound()
 			compound.putString("name", caster.entityName)
 			compound.putCompound("pigment", IXplatAbstractions.INSTANCE.getPigment(caster).serializeToNBT())
-			list.add(compound)
+			list.addFirst(compound)
 		}
 	}
 }
