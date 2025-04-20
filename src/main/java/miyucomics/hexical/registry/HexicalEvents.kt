@@ -2,15 +2,19 @@ package miyucomics.hexical.registry
 
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.eval.env.PlayerBasedCastEnv
+import at.petrak.hexcasting.client.render.HexAdditionalRenderers
 import miyucomics.hexical.casting.components.LedgerRecordComponent
 import miyucomics.hexical.casting.components.SentinelBedComponent
 import miyucomics.hexical.client.ClientStorage
 import miyucomics.hexical.client.ShaderRenderer
 import miyucomics.hexical.data.EvokeState
 import miyucomics.hexical.data.KeybindData
+import miyucomics.hexical.data.LesserSentinelState
 import miyucomics.hexical.interfaces.PlayerEntityMinterface
+import miyucomics.hexical.utils.HexagonRendering
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents
+import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents
 import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents
@@ -19,6 +23,8 @@ import net.minecraft.nbt.NbtCompound
 object HexicalEvents {
 	@JvmStatic
 	fun init() {
+		LesserSentinelState.registerServerReciever()
+
 		CastingEnvironment.addCreateEventListener { env: CastingEnvironment, _: NbtCompound ->
 			env.addExtension(SentinelBedComponent(env))
 			if (env is PlayerBasedCastEnv)
@@ -60,6 +66,9 @@ object HexicalEvents {
 	@JvmStatic
 	fun clientInit() {
 		ClientPlayConnectionEvents.DISCONNECT.register { _, _ -> ShaderRenderer.setEffect(null) }
-		ClientTickEvents.END_CLIENT_TICK.register { ClientStorage.time += 1 }
+		ClientTickEvents.END_CLIENT_TICK.register { ClientStorage.ticks += 1 }
+		WorldRenderEvents.AFTER_TRANSLUCENT.register { ctx ->
+			ClientStorage.lesserSentinels.forEach { HexagonRendering.renderHexagon(ctx, it) }
+		}
 	}
 }

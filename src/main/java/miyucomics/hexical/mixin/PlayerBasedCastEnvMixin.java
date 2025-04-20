@@ -33,6 +33,6 @@ public class PlayerBasedCastEnvMixin {
 	private void captureMishap(OperatorSideEffect.DoMishap mishap, CallbackInfo ci) {
 		Text message = mishap.getMishap().errorMessageWithName((CastingEnvironment) (Object) this, mishap.getErrorCtx());
 		if (message != null)
-			LedgerData.getLedger(caster).setMishap(message);
+			LedgerData.getLedger(caster).saveMishap(message);
 	}
 }
