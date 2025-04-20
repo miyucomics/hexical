@@ -29,7 +29,7 @@ public abstract class ScreenMixin {
 
 	@Inject(method = "keyPressed", at = @At("HEAD"))
 	void openHexbook(int keycode, int scancode, int modifiers, CallbackInfoReturnable<Boolean> cir) {
-		if ((Screen) (Object) this instanceof GuiSpellcasting screen && HexicalKeybinds.getOPEN_HEXBOOK().matchesKey(keycode, scancode)) {
+		if ((Screen) (Object) this instanceof GuiSpellcasting screen && HexicalKeybinds.OPEN_HEXBOOK.matchesKey(keycode, scancode)) {
 			PatchouliAPI.get().openBookGUI(new Identifier("hexcasting", "thehexbook"));
 			staffScreen = screen;
 		}
