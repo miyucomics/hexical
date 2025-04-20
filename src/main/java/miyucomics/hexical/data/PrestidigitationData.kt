@@ -7,6 +7,8 @@ import miyucomics.hexical.interfaces.PrestidigitationEffect
 import miyucomics.hexical.prestidigitation.*
 import net.fabricmc.fabric.api.event.registry.FabricRegistryBuilder
 import net.fabricmc.fabric.api.event.registry.RegistryAttribute
+import net.fabricmc.fabric.api.resource.ResourceManagerHelper
+import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener
 import net.minecraft.block.Block
 import net.minecraft.block.Blocks
 import net.minecraft.entity.Entity
@@ -16,6 +18,8 @@ import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.registry.RegistryKey
 import net.minecraft.registry.SimpleRegistry
+import net.minecraft.resource.ResourceManager
+import net.minecraft.resource.ResourceType
 import net.minecraft.state.property.Properties
 import net.minecraft.util.Identifier
 import java.io.InputStream
@@ -29,6 +33,12 @@ object PrestidigitationData {
 
 	@JvmStatic
 	fun init() {
+		ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(object :
+			SimpleSynchronousResourceReloadListener {
+			override fun getFabricId() = HexicalMain.id("prestidigitation")
+			override fun reload(manager: ResourceManager) = manager.findResources("prestidigitation") { path -> path.path.endsWith(".json") }.keys.forEach { id -> loadData(manager.getResource(id).get().inputStream) }
+		})
+
 		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("arm_stands"), ArmStandsEffect())
 		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("deprime_tnt"), DeprimeTntEffect())
 		Registry.register(PRESTIDIGITATION_EFFECTS, HexicalMain.id("trigger_impetus"), TriggerImpetusEffect())
@@ -63,7 +73,7 @@ object PrestidigitationData {
 	fun entityEffect(entity: Entity): PrestidigitationEffect? =
 		PRESTIDIGITATION_EFFECTS.get(ENTITY_LOOKUP[Registries.ENTITY_TYPE.getId(entity.type)])
 
-	fun loadData(stream: InputStream) {
+	private fun loadData(stream: InputStream) {
 		val json = JsonParser.parseReader(InputStreamReader(stream, "UTF-8")) as JsonObject
 		if (json.has("blocks")) {
 			val blocks = json.get("blocks").asJsonObject
