@@ -23,7 +23,7 @@ class LedgerScreen : Screen(Text.literal("Ledger")) {
 		addDrawable(MishapWidget(width / 2 + padding, padding * 2 + heightPermitted / 2, panelWidth, heightPermitted / 2 - padding))
 
 		patternWidgets.clear()
-		val ledgerData = ClientStorage.ledger.ledger.buffer()
+		val ledgerData = ClientStorage.ledger.patterns.buffer()
 		for (i in 0..31) {
 			val x = (i % 8).toFloat() / 7.0 * (panelWidth - DisplayWidget.PATTERN_SIZE)
 			val y = (i / 8).toFloat() / 3.0 * (heightPermitted / 2 - DisplayWidget.PATTERN_SIZE * 2)
@@ -38,7 +38,7 @@ class LedgerScreen : Screen(Text.literal("Ledger")) {
 	}
 
 	override fun tick() {
-		val ledgerData = ClientStorage.ledger.ledger.buffer()
+		val ledgerData = ClientStorage.ledger.patterns.buffer()
 		for (i in 0..31)
 			patternWidgets[i].setPattern(ledgerData.getOrNull(i))
 	}

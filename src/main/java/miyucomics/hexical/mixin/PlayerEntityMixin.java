@@ -3,11 +3,13 @@ package miyucomics.hexical.mixin;
 import miyucomics.hexical.casting.patterns.evocation.OpSetEvocation;
 import miyucomics.hexical.data.ArchLampState;
 import miyucomics.hexical.data.EvokeState;
+import miyucomics.hexical.data.LesserSentinelState;
 import miyucomics.hexical.interfaces.PlayerEntityMinterface;
 import miyucomics.hexical.utils.CastingUtils;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.nbt.NbtElement;
 import net.minecraft.server.network.ServerPlayerEntity;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
@@ -26,6 +28,8 @@ public class PlayerEntityMixin implements PlayerEntityMinterface {
 	private NbtCompound hexical$evocation = new NbtCompound();
 	@Unique
 	private ItemStack hexical$wristpocket = ItemStack.EMPTY;
+	@Unique
+	private LesserSentinelState hexical$lesserSentinels = new LesserSentinelState();
 
 	@Inject(method = "tick", at = @At("TAIL"))
 	void tick(CallbackInfo ci) {
@@ -42,19 +46,23 @@ public class PlayerEntityMixin implements PlayerEntityMinterface {
 	}
 
 	@Inject(method = "readCustomDataFromNbt", at = @At("HEAD"))
-	void reaadPlayerData(NbtCompound nbtCompound, CallbackInfo ci) {
-		if (nbtCompound.contains("arch_lamp"))
-			hexical$archLampState = ArchLampState.createFromNbt(nbtCompound.getCompound("arch_lamp"));
+	void reaadPlayerData(NbtCompound compound, CallbackInfo ci) {
+		if (compound.contains("arch_lamp"))
+			hexical$archLampState = ArchLampState.createFromNbt(compound.getCompound("arch_lamp"));
 
-		if (nbtCompound.contains("evocation"))
-			hexical$evocation = nbtCompound.getCompound("evocation");
+		if (compound.contains("evocation"))
+			hexical$evocation = compound.getCompound("evocation");
 
-		hexical$wristpocket = ItemStack.fromNbt(nbtCompound.getCompound("wristpocket"));
+		if (compound.contains("lesser_sentinels"))
+			hexical$lesserSentinels = LesserSentinelState.createFromNbt(compound.getList("lesser_sentinels", NbtElement.DOUBLE_TYPE));
+
+		hexical$wristpocket = ItemStack.fromNbt(compound.getCompound("wristpocket"));
 	}
 
 	@Inject(method = "writeCustomDataToNbt", at = @At("HEAD"))
 	void writePlayerData(NbtCompound nbtCompound, CallbackInfo ci) {
 		nbtCompound.put("arch_lamp", hexical$archLampState.toNbt());
+		nbtCompound.put("lesser_sentinels", hexical$lesserSentinels.toNbt());
 
 		if (hexical$evocation != null)
 			nbtCompound.put("evocation", hexical$evocation);
@@ -96,5 +104,10 @@ public class PlayerEntityMixin implements PlayerEntityMinterface {
 	@Override
 	public void setEvocation(@NotNull NbtCompound hex) {
 		hexical$evocation = hex;
+	}
+
+	@Override
+	public LesserSentinelState getLesserSentinels() {
+		return hexical$lesserSentinels;
 	}
 }

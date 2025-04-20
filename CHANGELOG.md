@@ -6,6 +6,7 @@
   - migrated patterns out
   - player stores data now; not persistent state
   - removed Myodesopsia spell
+- added lesser sentinels
 - added HexGloop's Dispense spell
 - added hopper spells
 - added Clarity and Clouding zeniths/nadirs
@@ -58,6 +59,7 @@
 - changed grimoire packet syncing to reduce strain on servers
 - changed lamp recharge patterns to not need a mind
 - changed book layout slightly
+- changed some textures
 - fixed bug where small animated scrolls do not render
 - fixed bug where grimoire does not work in non-hotbar
 - fixed bug where Chromatic Purification breaks for vectors

@@ -1,5 +1,7 @@
 package miyucomics.hexical.items
 
+import at.petrak.hexcasting.api.utils.putBoolean
+import at.petrak.hexcasting.api.utils.remove
 import miyucomics.hexical.data.LedgerData
 import miyucomics.hexical.registry.HexicalNetworking
 import miyucomics.hexical.screens.LedgerScreen
@@ -15,11 +17,12 @@ import net.minecraft.world.World
 
 class MediaLogItem : Item(Settings().maxCount(1)) {
 	override fun use(world: World, player: PlayerEntity, hand: Hand): TypedActionResult<ItemStack> {
+		val stack = player.getStackInHand(hand)
 		if (world.isClient)
 			MinecraftClient.getInstance().setScreen(LedgerScreen())
 		else
 			ServerPlayNetworking.send(player as ServerPlayerEntity, HexicalNetworking.LEDGER_CHANNEL, LedgerData.getLedger(player).toPacket())
-		return TypedActionResult.success(player.getStackInHand(hand))
+		return TypedActionResult.success(stack)
 	}
 
 	override fun getTranslationKey() = "item.hexical.media_log." + ((System.currentTimeMillis() / 2000) % 2).toString()

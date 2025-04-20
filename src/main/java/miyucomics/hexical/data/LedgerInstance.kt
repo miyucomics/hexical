@@ -12,11 +12,19 @@ import net.minecraft.network.PacketByteBuf
 import net.minecraft.text.Text
 
 class LedgerInstance {
-	var ledger: RingBuffer<HexPattern> = RingBuffer(32)
+	var patterns: RingBuffer<HexPattern> = RingBuffer(32)
 	var stack: RingBuffer<Text> = RingBuffer(16)
 	var mishap: Text = Text.empty()
+	var active = true
 
-	fun pushPattern(pattern: HexPattern) = ledger.add(pattern)
+	fun saveMishap(text: Text) {
+		mishap = text
+	}
+
+	fun pushPattern(pattern: HexPattern) {
+		patterns.add(pattern)
+	}
+
 	fun saveStack(iotas: List<Iota>) {
 		stack.clear()
 		iotas.forEach { iota -> stack.add(iota.display()) }
@@ -26,7 +34,7 @@ class LedgerInstance {
 		val tag = NbtCompound()
 
 		val nbtLedger = NbtList()
-		ledger.buffer().forEach { pattern -> nbtLedger.add(pattern.serializeToNBT()) }
+		patterns.buffer().forEach { pattern -> nbtLedger.add(pattern.serializeToNBT()) }
 		tag.putList("ledger", nbtLedger)
 
 		val nbtStack = NbtList()
@@ -47,7 +55,7 @@ class LedgerInstance {
 	companion object {
 		fun createFromNbt(tag: NbtCompound): LedgerInstance {
 			val state = LedgerInstance()
-			tag.getList("ledger", NbtCompound.COMPOUND_TYPE.toInt()).forEach { pattern -> state.ledger.add(HexPattern.fromNBT(pattern as NbtCompound)) }
+			tag.getList("ledger", NbtCompound.COMPOUND_TYPE.toInt()).forEach { pattern -> state.patterns.add(HexPattern.fromNBT(pattern as NbtCompound)) }
 			tag.getList("stack", NbtCompound.STRING_TYPE.toInt()).forEach { iota -> state.stack.add(Text.Serializer.fromJson((iota as NbtString).asString())!!) }
 			state.mishap = Text.Serializer.fromJson(tag.getString("mishap"))!!
 			return state

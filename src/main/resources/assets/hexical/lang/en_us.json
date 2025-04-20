@@ -121,6 +121,7 @@
 	"hexcasting.mishap.invalid_value.class.pigment": "a pigment",
 	"hexcasting.mishap.invalid_value.conjurable_flower_id": "an identifier of a conjurable flower type",
 	"hexcasting.mishap.invalid_value.entity_or_vector": "an entity or a vector",
+	"hexcasting.mishap.invalid_value.lesser_sentinel_list": "a list of vectors",
 	"hexcasting.mishap.invalid_value.mesh_design": "a list of up to 32 vectors with magnitudes less than 10",
 	"hexcasting.mishap.invalid_value.nonempty_list": "a non-empty list",
 	"hexcasting.mishap.invalid_value.number_list": "a non-empty list of numbers",
@@ -614,6 +615,14 @@
 	"hexical.page.shader_media.summary": "Transforms my vision to perceive only the most important things...",
 	"hexcasting.action.hexical:shader_spider": "Split Vision",
 	"hexical.page.shader_spider.summary": "Splits my vision into multiple sections, similar to what a spider might see. I am unsure whether it actually grants me more vision...",
+
+	"hexical.page.lesser_sentinels.title": "Lesser Sentinels",
+	"hexical.page.lesser_sentinels.0": "A bit of sentinel theory: a $(l:patterns/spells/sentinels)$(thing)Sentinel$() is metaphysically-detached shard of my Self. I can banish, query, and summon it via link but each interaction requires a bit of _media to facilitate the \"handshake\". I can $(l:patterns/great_spells/greater_sentinel)$(action)give even more of my Self$(), essentially creating a separate yet near-equally conscious fragment that can cast _Hexes beyond my regular reach and even \"walk\".",
+	"hexical.page.lesser_sentinels.1": "$(thing)Lesser Sentinels$() are a more diminutive construction: little more than a tagged pocket of _media blessed with a whisper of my Self. They are just enough to hold their ground where deployed and to be visible to me.$(br2)Due to their lesser sentience, I can establish connections, reposition, banish, and bring forth more of them with ease. I can only have one $(l:patterns/spells/sentinels)$(thing)Sentinel$() out at once; I can have a virtually endless number of $(thing)Lesser Sentinels$().",
+	"hexcasting.action.hexical:set_lesser_sentinels": "Deploy Sentinels",
+	"hexical.page.set_lesser_sentinels.summary": "Dismisses any existing $(thing)Lesser Sentinels$() and deploys a $(thing)Lesser Sentinel$() at every position in the list.",
+	"hexcasting.action.hexical:get_lesser_sentinels": "Infiltration Reflection",
+	"hexical.page.get_lesser_sentinels.summary": "Returns a list of vectors corresponding to the positions of all my $(thing)Lesser Sentinels$().",
 
 	"hexcasting.action.hexical:greater_blink": "Greater Blink",
 	"hexical.page.greater_blink.0": "Greater Blink is a significantly cheaper alternative to $(l:patterns/great_spells/teleport)$(action)Greater Teleport$(). It also does not carry the risk of splattering my items upon arrival. However, it only has pitiful range compared to $(l:patterns/great_spells/teleport)$(action)Greater Teleport$() and its destination calculations are... esoteric. Its target is also exclusively myself.",

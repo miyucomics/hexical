@@ -6,10 +6,7 @@ import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.client.ClientStorage
 import miyucomics.hexical.client.PlayerAnimations
 import miyucomics.hexical.client.ShaderRenderer
-import miyucomics.hexical.data.EvokeState
-import miyucomics.hexical.data.KeybindData
-import miyucomics.hexical.data.LedgerData
-import miyucomics.hexical.data.LedgerInstance
+import miyucomics.hexical.data.*
 import miyucomics.hexical.items.TchotchkeItem
 import miyucomics.hexical.items.getTchotchke
 import miyucomics.hexical.utils.CastingUtils
@@ -89,6 +86,8 @@ object HexicalNetworking {
 
 	@JvmStatic
 	fun clientInit() {
+		LesserSentinelState.registerClientReciever()
+
 		ClientPlayNetworking.registerGlobalReceiver(LEDGER_CHANNEL) { _, _, packet, _ -> ClientStorage.ledger = LedgerInstance.createFromNbt(packet.readNbt()!!) }
 
 		ClientPlayNetworking.registerGlobalReceiver(CONFETTI_CHANNEL) { client, _, packet, _ ->

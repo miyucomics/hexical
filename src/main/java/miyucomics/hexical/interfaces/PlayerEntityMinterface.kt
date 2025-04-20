@@ -1,6 +1,7 @@
 package miyucomics.hexical.interfaces
 
 import miyucomics.hexical.data.ArchLampState
+import miyucomics.hexical.data.LesserSentinelState
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
 
@@ -14,4 +15,6 @@ interface PlayerEntityMinterface {
 
 	fun getEvocation(): NbtCompound
 	fun setEvocation(hex: NbtCompound)
+
+	fun getLesserSentinels(): LesserSentinelState
 }

@@ -37,6 +37,8 @@ import miyucomics.hexical.casting.patterns.grimoire.OpGrimoireErase
 import miyucomics.hexical.casting.patterns.grimoire.OpGrimoireIndex
 import miyucomics.hexical.casting.patterns.grimoire.OpGrimoireWrite
 import miyucomics.hexical.casting.patterns.lamp.*
+import miyucomics.hexical.casting.patterns.lesser_sentinel.OpLesserSentinelGet
+import miyucomics.hexical.casting.patterns.lesser_sentinel.OpLesserSentinelSet
 import miyucomics.hexical.casting.patterns.mage_blocks.OpConjureMageBlock
 import miyucomics.hexical.casting.patterns.mage_blocks.OpModifyMageBlock
 import miyucomics.hexical.casting.patterns.pattern_manipulation.*
@@ -254,14 +256,17 @@ object HexicalActions {
 		register("write_tchotchke", "waqqqqqedeqdqdqdqdqe", HexDir.NORTH_EAST, OpWriteTchotchke())
 		register("read_tchotchke", "waqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpReadTchotchke())
 
-		register("conjure_firework", "dedwaqwwawwqa", HexDir.SOUTH_WEST, OpConjureFirework())
-		register("simulate_firework", "dedwaqwqqwqa", HexDir.SOUTH_WEST, OpSimulateFirework())
-
-		register("displace", "qaqqqqeedaqqqa", HexDir.NORTH_EAST, OpDisplace())
-
 		register("get_evocation", "wwdeeeeeqeaqawwewewwaqawwewew", HexDir.EAST, OpGetEvocation())
 		register("set_evocation", "wwaqqqqqeqdedwwqwqwwdedwwqwqw", HexDir.EAST, OpSetEvocation())
 		register("is_evoking", "wwaqqqqqeeaqawwewewwaqawwewew", HexDir.EAST, OpGetKeybind("key.hexical.evoke"))
+
+		register("conjure_firework", "dedwaqwwawwqa", HexDir.SOUTH_WEST, OpConjureFirework())
+		register("simulate_firework", "dedwaqwqqwqa", HexDir.SOUTH_WEST, OpSimulateFirework())
+
+		register("set_lesser_sentinels", "aeaae", HexDir.EAST, OpLesserSentinelSet())
+		register("get_lesser_sentinels", "dqddq", HexDir.WEST, OpLesserSentinelGet())
+
+		register("displace", "qaqqqqeedaqqqa", HexDir.NORTH_EAST, OpDisplace())
 
 		register("greater_blink", "wqawawaqwqwqawawaqw", HexDir.SOUTH_WEST, OpGreaterBlink())
 		register("theodolite", "wqaa", HexDir.EAST, OpGetEntityData { entity ->

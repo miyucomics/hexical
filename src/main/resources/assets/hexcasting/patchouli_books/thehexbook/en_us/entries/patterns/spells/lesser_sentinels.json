@@ -1,0 +1,33 @@
+{
+	"name": "hexical.page.lesser_sentinels.title",
+	"icon": "minecraft:pink_petals",
+	"category": "hexcasting:patterns/spells",
+	"advancement": "hexcasting:root",
+	"sortnum": 30,
+	"pages": [
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.lesser_sentinels.0"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.lesser_sentinels.1"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:set_lesser_sentinels",
+			"anchor": "hexical:set_lesser_sentinels",
+			"input": "list of vectors",
+			"output": "",
+			"text": "hexical.page.set_lesser_sentinels.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:get_lesser_sentinels",
+			"anchor": "hexical:get_lesser_sentinels",
+			"input": "",
+			"output": "list of vectors",
+			"text": "hexical.page.get_lesser_sentinels.summary"
+		}
+	]
+}
