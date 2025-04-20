@@ -419,7 +419,7 @@
 	"hexical.page.translate_dye.summary": "Translates a dye color into a vector, where each component is from 0 to 1 and represents the red, green, and blueness of the dye respectively.",
 
 	"hexical.page.pigments.title": "Pigment Manipulation",
-	"hexical.page.pigments.0": "Like how I can manipulate dyes with patterns, I can also manipulate pigments. I can even store multiple of them and have my hexes randomly choose one to give me for example.",
+	"hexical.page.pigments.0": "Like how I can manipulate $(l:patterns/spells/dyes)dyes$() with _Hexcasting, I can also manipulate pigments. I can even store multiple of them and have my _Hexes randomly choose one to give me for example.",
 	"hexcasting.action.hexical:to_pigment": "Pigment Purification",
 	"hexical.page.to_pigment.summary": "Takes a colored dye iota and transforms it into a pigment, takes a player and returns their pigment, or takes an item containing a pigment and returns its pigment.",
 	"hexcasting.action.hexical:sample_pigment": "Pigment Exaltation",
