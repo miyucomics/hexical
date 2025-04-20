@@ -64,7 +64,7 @@ public class ItemStackMixin {
 			MutableText output = Text.literal("");
 			int steps = name.length();
 			for (int i = 0; i < steps; i++) {
-				int color = pigment.getColorProvider().getColor(ClientStorage.time * 3, new Vec3d(0, i, 0));
+				int color = pigment.getColorProvider().getColor(ClientStorage.ticks * 3, new Vec3d(0, i, 0));
 				output.append(Text.literal(String.valueOf(name.charAt(i))).styled(style -> style.withColor(color)));
 			}
 			cir.getReturnValue().add(output);
