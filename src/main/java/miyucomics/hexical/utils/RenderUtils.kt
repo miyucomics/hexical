@@ -6,7 +6,6 @@ import net.minecraft.util.math.MathHelper
 import net.minecraft.util.math.Vec2f
 import kotlin.math.*
 
-
 object RenderUtils {
 	private const val CIRCLE_RESOLUTION: Int = 20
 
