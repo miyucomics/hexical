@@ -10,6 +10,7 @@ import miyucomics.hexical.interfaces.GenieLamp
 import miyucomics.hexical.interfaces.PlayerEntityMinterface
 import miyucomics.hexical.registry.HexicalItems
 import miyucomics.hexical.registry.HexicalSounds
+import net.minecraft.client.item.ModelPredicateProviderRegistry
 import net.minecraft.entity.Entity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
@@ -17,6 +18,7 @@ import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.sound.SoundCategory
 import net.minecraft.util.Hand
+import net.minecraft.util.Identifier
 import net.minecraft.util.Rarity
 import net.minecraft.util.TypedActionResult
 import net.minecraft.world.GameMode
@@ -80,6 +82,17 @@ class ArchLampItem : ItemPackagedHex(Settings().maxCount(1).rarity(Rarity.EPIC))
 	override fun canRecharge(stack: ItemStack) = false
 	override fun breakAfterDepletion() = false
 	override fun cooldown() = 0
+
+	companion object {
+		fun registerModelPredicate() {
+			ModelPredicateProviderRegistry.register(HexicalItems.ARCH_LAMP_ITEM, Identifier("active")) { stack, _, _, _ ->
+				if (stack.nbt?.getBoolean("active") == true)
+					1.0f
+				else
+					0.0f
+			}
+		}
+	}
 }
 
 fun hasActiveArchLamp(player: ServerPlayerEntity): Boolean {
