@@ -17,6 +17,7 @@
 - added Scarab Beetle item - catches uncaught patterns for your handling
 - added tooltip to grimoire, need to cast any grimoire pattern on old grimoires in order to force it to show up
 - added Crack Device - a spell to crack an unwritten casting device and reveal its Hex when it is eventually written
+- added more prestidigitation effects - cause soul fire, used more block tags
 - added Projectiles chapter
   - added Snowball spell for fun
   - added Egg spell for fun
@@ -79,6 +80,7 @@
 - optimized Greater Blink to not load chunks in between
 - removed rank from tchotchke, should basically affect no one since they pop the iota off anyways
 - removed the Myodesopsia spell
+- removed Alteration Purification
 - reworked prestidigitation backend
 
 ## 1.5.0

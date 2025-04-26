@@ -48,8 +48,8 @@ object PrestidigitationData {
 				if (!state.isOf(Blocks.COMPARATOR))
 					return false
 				when (state.get(Properties.COMPARATOR_MODE)!!) {
-					ComparatorMode.COMPARE -> env.world.setBlockState(position, state.with(Properties.COMPARATOR_MODE, ComparatorMode.SUBTRACT), Block.NOTIFY_ALL or Block.REDRAW_ON_MAIN_THREAD)
-					ComparatorMode.SUBTRACT -> env.world.setBlockState(position, state.with(Properties.COMPARATOR_MODE, ComparatorMode.COMPARE), Block.NOTIFY_ALL or Block.REDRAW_ON_MAIN_THREAD)
+					ComparatorMode.COMPARE -> env.world.setBlockState(position, state.with(Properties.COMPARATOR_MODE, ComparatorMode.SUBTRACT))
+					ComparatorMode.SUBTRACT -> env.world.setBlockState(position, state.with(Properties.COMPARATOR_MODE, ComparatorMode.COMPARE))
 				}
 				return true
 			}
@@ -60,7 +60,7 @@ object PrestidigitationData {
 				val state = env.world.getBlockState(position)
 				if (!state.isOf(Blocks.PUMPKIN))
 					return false
-				env.world.setBlockState(position, Blocks.CARVED_PUMPKIN.defaultState.with(Properties.HORIZONTAL_FACING, Properties.HORIZONTAL_FACING.values.random()), Block.NOTIFY_ALL or Block.REDRAW_ON_MAIN_THREAD)
+				env.world.setBlockState(position, Blocks.CARVED_PUMPKIN.defaultState.with(Properties.HORIZONTAL_FACING, Properties.HORIZONTAL_FACING.values.random()))
 				return true
 			}
 		})
@@ -70,7 +70,7 @@ object PrestidigitationData {
 				val state = env.world.getBlockState(position)
 				if (!AxeItem.STRIPPED_BLOCKS.containsKey(state.block))
 					return false
-				env.world.setBlockState(position, AxeItem.STRIPPED_BLOCKS[state.block]!!.defaultState, Block.NOTIFY_ALL or Block.REDRAW_ON_MAIN_THREAD)
+				env.world.setBlockState(position, AxeItem.STRIPPED_BLOCKS[state.block]!!.defaultState)
 				return true
 			}
 		})
@@ -80,7 +80,7 @@ object PrestidigitationData {
 				val state = env.world.getBlockState(position)
 				if (!ShovelItem.PATH_STATES.containsKey(state.block))
 					return false
-				env.world.setBlockState(position, ShovelItem.PATH_STATES[state.block], Block.NOTIFY_ALL or Block.REDRAW_ON_MAIN_THREAD)
+				env.world.setBlockState(position, ShovelItem.PATH_STATES[state.block])
 				return true
 			}
 		})
@@ -97,12 +97,44 @@ object PrestidigitationData {
 			}
 		})
 
+		Registry.register(PRESTIDIGITATION_HANDLER, HexicalMain.id("extinguish_fires"), object : PrestidigitationHandler {
+			override fun tryHandleBlock(env: CastingEnvironment, position: BlockPos): Boolean {
+				val state = env.world.getBlockState(position)
+				if (!state.isIn(BlockTags.FIRE))
+					return false
+				env.world.removeBlock(position, false)
+				return true
+			}
+		})
+
+		Registry.register(PRESTIDIGITATION_HANDLER, HexicalMain.id("create_soul_fire"), object : PrestidigitationHandler {
+			override fun tryHandleBlock(env: CastingEnvironment, position: BlockPos): Boolean {
+				val state = env.world.getBlockState(position)
+				if (!state.isIn(BlockTags.SOUL_FIRE_BASE_BLOCKS))
+					return false
+				if (!env.world.getBlockState(position.up()).isAir)
+					return false
+				env.world.setBlockState(position.up(), Blocks.SOUL_FIRE.defaultState)
+				return true
+			}
+		})
+
 		Registry.register(PRESTIDIGITATION_HANDLER, HexicalMain.id("pressure_pressure_plates"), object : PrestidigitationHandler {
 			override fun tryHandleBlock(env: CastingEnvironment, position: BlockPos): Boolean {
 				val state = env.world.getBlockState(position)
 				if (!state.isIn(BlockTags.PRESSURE_PLATES))
 					return false
-				env.world.setBlockState(position, state.with(Properties.POWERED, !state.get(Properties.POWERED)), Block.NOTIFY_ALL or Block.REDRAW_ON_MAIN_THREAD)
+				env.world.setBlockState(position, state.with(Properties.POWERED, !state.get(Properties.POWERED)))
+				return true
+			}
+		})
+
+		Registry.register(PRESTIDIGITATION_HANDLER, HexicalMain.id("drain_cauldrons"), object : PrestidigitationHandler {
+			override fun tryHandleBlock(env: CastingEnvironment, position: BlockPos): Boolean {
+				val state = env.world.getBlockState(position)
+				if (!state.isIn(BlockTags.CAULDRONS))
+					return false
+				env.world.setBlockState(position, Blocks.CAULDRON.defaultState)
 				return true
 			}
 		})
@@ -112,7 +144,7 @@ object PrestidigitationData {
 				val state = env.world.getBlockState(position)
 				if (!state.isIn(BlockTags.CANDLES) && !state.isIn(BlockTags.CANDLE_CAKES) && !state.isIn(BlockTags.CAMPFIRES))
 					return false
-				env.world.setBlockState(position, state.with(Properties.LIT, !state.get(Properties.LIT)), Block.NOTIFY_ALL or Block.REDRAW_ON_MAIN_THREAD)
+				env.world.setBlockState(position, state.with(Properties.LIT, !state.get(Properties.LIT)))
 				return true
 			}
 		})
@@ -122,7 +154,7 @@ object PrestidigitationData {
 				val state = env.world.getBlockState(position)
 				if (!state.isIn(BlockTags.DOORS) && !state.isIn(BlockTags.TRAPDOORS) && !state.isIn(BlockTags.FENCE_GATES))
 					return false
-				env.world.setBlockState(position, state.with(Properties.OPEN, !state.get(Properties.OPEN)), Block.NOTIFY_ALL or Block.REDRAW_ON_MAIN_THREAD)
+				env.world.setBlockState(position, state.with(Properties.OPEN, !state.get(Properties.OPEN)))
 				return true
 			}
 		})

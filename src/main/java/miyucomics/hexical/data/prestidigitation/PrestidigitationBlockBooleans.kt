@@ -37,7 +37,7 @@ object PrestidigitationBlockBooleans {
 				val state = env.world.getBlockState(position)
 				if (state.block !in map)
 					return false
-				env.world.setBlockState(position, state.with(map[state.block], !state.get(map[state.block])), Block.NOTIFY_ALL or Block.REDRAW_ON_MAIN_THREAD)
+				env.world.setBlockState(position, state.with(map[state.block], !state.get(map[state.block])))
 				return true
 			}
 		})
