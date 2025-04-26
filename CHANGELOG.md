@@ -79,6 +79,7 @@
 - optimized Greater Blink to not load chunks in between
 - removed rank from tchotchke, should basically affect no one since they pop the iota off anyways
 - removed the Myodesopsia spell
+- reworked prestidigitation backend
 
 ## 1.5.0
 - added spell to conjure llama spit

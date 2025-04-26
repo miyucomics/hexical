@@ -1,0 +1,9 @@
+{
+	"minecraft:lava_cauldron": "minecraft:cauldron",
+	"minecraft:water_cauldron": "minecraft:cauldron",
+	"minecraft:powder_snow_cauldron": "minecraft:cauldron",
+	"minecraft:fire": "minecraft:air",
+	"minecraft:soul_fire": "minecraft:air",
+	"minecraft:mud": "minecraft:clay",
+	"minecraft:dirt_path": "minecraft:farmland"
+}
