@@ -9,7 +9,6 @@ import at.petrak.hexcasting.api.casting.iota.NullIota
 import at.petrak.hexcasting.api.casting.math.HexDir
 import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.misc.MediaConstants
-import at.petrak.hexcasting.api.utils.getOrCreateList
 import at.petrak.hexcasting.api.utils.vecFromNBT
 import at.petrak.hexcasting.common.casting.actions.selectors.OpGetEntitiesBy
 import at.petrak.hexcasting.common.casting.actions.spells.OpPotionEffect
@@ -45,8 +44,7 @@ import miyucomics.hexical.casting.patterns.pattern_manipulation.*
 import miyucomics.hexical.casting.patterns.pigments.OpSamplePigment
 import miyucomics.hexical.casting.patterns.pigments.OpTakeOnPigment
 import miyucomics.hexical.casting.patterns.pigments.OpToPigment
-import miyucomics.hexical.casting.patterns.prestidigitation.OpCanPrestidigitation
-import miyucomics.hexical.casting.patterns.prestidigitation.OpPrestidigitation
+import miyucomics.hexical.casting.patterns.OpPrestidigitation
 import miyucomics.hexical.casting.patterns.raycast.OpFluidRaycast
 import miyucomics.hexical.casting.patterns.raycast.OpFluidSurfaceRaycast
 import miyucomics.hexical.casting.patterns.raycast.OpPiercingRaycast
@@ -72,13 +70,11 @@ import miyucomics.hexical.items.HandLampItem
 import miyucomics.hexposition.iotas.IdentifierIota
 import miyucomics.hexposition.iotas.asActionResult
 import miyucomics.hexposition.patterns.OpGetEntityData
-import miyucomics.hexposition.patterns.OpGetItemStackData
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.projectile.FireballEntity
 import net.minecraft.entity.projectile.LlamaSpitEntity
 import net.minecraft.entity.projectile.thrown.EggEntity
 import net.minecraft.entity.projectile.thrown.SnowballEntity
-import net.minecraft.nbt.NbtCompound
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.sound.SoundEvents
@@ -177,7 +173,6 @@ object HexicalActions {
 		register("take_on_pigment", "weeeweeqeeeewqaqweeee", HexDir.EAST, OpTakeOnPigment())
 
 		register("prestidigitation", "wedewedew", HexDir.NORTH_EAST, OpPrestidigitation())
-		register("can_prestidigitate", "wqaqwqaqw", HexDir.NORTH_WEST, OpCanPrestidigitation())
 
 		register("wristpocket", "aaqqa", HexDir.WEST, OpWristpocket())
 		register("wristpocket_item", "aaqqada", HexDir.WEST, OpGetWristpocketData { stack -> if (stack.isEmpty) listOf(NullIota()) else Registries.ITEM.getId(stack.item).asActionResult() })
