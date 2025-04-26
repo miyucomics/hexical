@@ -18,6 +18,7 @@
 	"advancements.hexical.media_slurp.title": "Tripping",
 	"advancements.hexical.media_slurp.description": "\"You sense that something is off.\"",
 
+	"block.hexical.hex_candle_cake": "Hex Candle Cake",
 	"block.hexical.casting_carpet": "Casting Carpet",
 	"block.hexical.hex_candle": "Hex Candle",
 	"block.hexical.mage_block": "Mage Block",
@@ -97,7 +98,6 @@
 
 	"hexcasting.mishap.bad_block.akashic_bookshelf": "an akashic bookshelf",
 	"hexcasting.mishap.bad_block.mage_block": "a mage block",
-	"hexcasting.mishap.bad_block.prestidigitation": "a prestidigitation-sensitive block",
 	"hexcasting.mishap.bad_block.flower_spawnable": "air or a flower pot",
 	"hexcasting.mishap.bad_block.solid_platform": "a solid platform",
 	"hexcasting.mishap.bad_item.animated_scroll": "an animated scroll",
@@ -110,7 +110,6 @@
 	"hexcasting.mishap.bad_item.hand_lamp": "a Hand Genie Lamp",
 	"hexcasting.mishap.bad_item.lamp": "a lamp",
 	"hexcasting.mishap.bad_item.mesh": "a mesh",
-	"hexcasting.mishap.bad_item.prestidigitation": "a prestidigitation-sensitive entity",
 	"hexcasting.mishap.bad_item.scarab_beetle": "a scarab beetle",
 	"hexcasting.mishap.bad_item.smart_villager": "a Journeyman or greater level villager",
 	"hexcasting.mishap.bad_item.speck": "a speck",
@@ -435,12 +434,10 @@
 	"hexical.page.magic_missile.2": "The second vector is velocity and thankfully much less complicated. It is a simple offset vector, similar to the one that $(l:patterns/spells/basic#hexcasting:add_motion)$(action)Impulse$() takes in. Unlike $(l:patterns/spells/basic#hexcasting:add_motion)$(action)Impulse$() though, this vector can be of arbitrary magnitude without incurring additional costs.$(br2)Unlike $(item)Arrows$() though, $(item)Magic Missiles$() will not increase in damage simply by travelling faster. They also apply an odd knockback effect that ignores the entity's mass or the projectile's speed.",
 
 	"hexcasting.action.hexical:prestidigitation": "Prestidigitation",
-	"hexical.page.prestidigitation.summary": "Causes a small magical effect on the block or entity, usually not too distinct from the original nature or function of the block or entity. Costs about a tenth of one $(l:items/amethyst)$(item)Amethyst Dust$().",
 	"hexical.page.prestidigitation.0": "This spell differs from all others I've seen. Rather than a single specific effect, this spell seems to combine dozens of small effects into a single spell. It targets a vast array of blocks and entities, and I am constantly finding uses for it. I have documented them on the following pages. I can think of it as general basic magic tricks.",
-	"hexcasting.action.hexical:can_prestidigitate": "Alteration Purification",
-	"hexical.page.can_prestidigitate.summary": "Pushes whether an entity or location is able to be manipulated with Prestidigitation.",
+	"hexical.page.prestidigitation.summary": "Causes a small magical effect on the block or entity, usually not too distinct from the original nature or function of the block or entity. Costs about a tenth of one $(l:items/amethyst)$(item)Amethyst Dust$().",
 	"hexical.page.prestidigitation.1": "I've compiled all of its recorded uses from my notes: opens and close fence gates, trapdoors, and doors of all materials; flicks levers and presses buttons; holds down and releases pressure plates; extinguishes fire and soul fire; lights and extinguishes candles and campfires; rings bells; strips wood; carves pumpkins; makes a note block play its sound; triggers dispensers and droppers; dries mud into clay; turns most soil blocks into path blocks and path blocks into tilled soil...",
-	"hexical.page.prestidigitation.2": "toggles Redstone lamps; drain cauldrons; modifies the state of Redstone repeaters, comparators, and daylight sensors, ignites and deprimes TNT and creepers; shear sheep; give and take arms from armor stands; makes squid squirt ink; makes pandas sneeze; removes the helmet of a snow golem; make pufferfish instantly swell up; take honeycomb from beehives and nests, and activates some kind of \"great work\" whatever that is.",
+	"hexical.page.prestidigitation.2": "toggles Redstone lamps; drain cauldrons; modifies the state of Redstone repeaters, comparators, and daylight sensors; ignites and deprimes TNT and creepers; shear sheep; give and take arms from armor stands; makes squid squirt ink; makes pandas sneeze; removes the helmet of a snow golem; make pufferfish instantly swell up; take honeycomb from beehives and nests, and activates some kind of \"great work\" whatever that is.",
 
 	"hexical.page.wristpocket.title": "Wristpocket",
 	"hexical.page.wristpocket.0": "I can perform the standard magic trick of vanishing an item and bringing it back. The item hides in the $(o)wristpocket$(), where I can use _media to manipulate it. The wristpocketed item stays with me even after death and I can recall it once I can cast again.$(br2)$(o)Because making something disappear isn't enough; you have to bring it back.$()",
