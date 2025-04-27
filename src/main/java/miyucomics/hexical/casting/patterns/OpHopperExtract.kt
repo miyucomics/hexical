@@ -58,8 +58,6 @@ class OpHopperExtract : SpellAction {
 			if (blockEntity !is Inventory)
 				return ItemStack.EMPTY
 
-			println("Extracting")
-
 			if (blockEntity is SidedInventory) {
 				for (slot in blockEntity.getAvailableSlots(fromDirection)) {
 					val stack = blockEntity.getStack(slot)

@@ -53,6 +53,7 @@
   - custom recipe type to transmute with media
   - bigger collision and model
 - changed players to store wristpocket, evocation, and such data
+- changed wristpocket reflection to return an item stack
 - changed hex candles to not be extinguished by water
 - changed Greater Blink to not move feet to eyes
 - changed lamps deactivating to only be when they are picked up
@@ -81,6 +82,7 @@
 - removed rank from tchotchke, should basically affect no one since they pop the iota off anyways
 - removed the Myodesopsia spell
 - removed Alteration Purification
+- removed Pocket Reflection II
 - reworked prestidigitation backend
 
 ## 1.5.0

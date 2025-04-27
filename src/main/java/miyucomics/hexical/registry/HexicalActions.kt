@@ -68,6 +68,7 @@ import miyucomics.hexical.casting.patterns.wristpocket.*
 import miyucomics.hexical.interfaces.Specklike
 import miyucomics.hexical.items.HandLampItem
 import miyucomics.hexposition.iotas.IdentifierIota
+import miyucomics.hexposition.iotas.ItemStackIota
 import miyucomics.hexposition.iotas.asActionResult
 import miyucomics.hexposition.patterns.OpGetEntityData
 import net.minecraft.entity.EntityType
@@ -175,8 +176,7 @@ object HexicalActions {
 		register("prestidigitation", "wedewedew", HexDir.NORTH_EAST, OpPrestidigitation())
 
 		register("wristpocket", "aaqqa", HexDir.WEST, OpWristpocket())
-		register("wristpocket_item", "aaqqada", HexDir.WEST, OpGetWristpocketData { stack -> if (stack.isEmpty) listOf(NullIota()) else Registries.ITEM.getId(stack.item).asActionResult() })
-		register("wristpocket_count", "aaqqaaw", HexDir.WEST, OpGetWristpocketData { stack -> if (stack.isEmpty) (0).asActionResult else stack.count.asActionResult })
+		register("wristpocket_item", "aaqqada", HexDir.WEST, OpGetWristpocketData { stack -> if (stack.isEmpty) listOf(NullIota()) else stack.asActionResult() })
 		register("sleight", "aaqqadeeeq", HexDir.WEST, OpSleight())
 		register("mage_hand", "aaqqaeea", HexDir.WEST, OpMageHand())
 		register("mage_mouth", "aaqqadaa", HexDir.WEST, OpMageMouth())
