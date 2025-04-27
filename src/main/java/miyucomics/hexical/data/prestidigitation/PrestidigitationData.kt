@@ -212,6 +212,17 @@ object PrestidigitationData {
 			}
 		})
 
+		Registry.register(PRESTIDIGITATION_HANDLER, HexicalMain.id("prime_tnt"), object : PrestidigitationHandler {
+			override fun tryHandleBlock(env: CastingEnvironment, position: BlockPos): Boolean {
+				val state = env.world.getBlockState(position)
+				if (state.block !is TntBlock)
+					return false
+				TntBlock.primeTnt(env.world, position)
+				env.world.removeBlock(position, false)
+				return true
+			}
+		})
+
 		Registry.register(PRESTIDIGITATION_HANDLER, HexicalMain.id("learn_akashic"), object : PrestidigitationHandler {
 			override fun tryHandleBlock(env: CastingEnvironment, position: BlockPos): Boolean {
 				if (env.castingEntity !is ServerPlayerEntity)
