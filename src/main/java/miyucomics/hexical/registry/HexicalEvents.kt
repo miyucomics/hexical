@@ -34,6 +34,7 @@ object HexicalEvents {
 		ServerPlayerEvents.AFTER_RESPAWN.register { oldPlayer, newPlayer, alive ->
 			if (!alive)
 				ShaderRenderer.setEffect(null)
+			(newPlayer as PlayerEntityMinterface).setLesserSentinels((oldPlayer as PlayerEntityMinterface).getLesserSentinels())
 			(newPlayer as PlayerEntityMinterface).setEvocation((oldPlayer as PlayerEntityMinterface).getEvocation())
 			(newPlayer as PlayerEntityMinterface).setWristpocket((oldPlayer as PlayerEntityMinterface).getWristpocket())
 		}
