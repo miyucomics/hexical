@@ -110,4 +110,9 @@ public class PlayerEntityMixin implements PlayerEntityMinterface {
 	public LesserSentinelState getLesserSentinels() {
 		return hexical$lesserSentinels;
 	}
+
+	@Override
+	public void setLesserSentinels(LesserSentinelState state) {
+		hexical$lesserSentinels = state;
+	}
 }
