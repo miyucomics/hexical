@@ -17,4 +17,5 @@ interface PlayerEntityMinterface {
 	fun setEvocation(hex: NbtCompound)
 
 	fun getLesserSentinels(): LesserSentinelState
+	fun setLesserSentinels(state: LesserSentinelState)
 }
