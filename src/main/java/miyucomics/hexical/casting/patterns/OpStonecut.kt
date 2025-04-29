@@ -42,7 +42,7 @@ class OpStonecut : SpellAction {
 		override fun cast(env: CastingEnvironment) {
 			val stack = item.stack
 			val result = recipe.craft(SimpleInventory(stack), DynamicRegistryManager.EMPTY)
-			result.count = stack.count
+			result.count *= stack.count
 			stack.count = 0
 			val resultItem = ItemEntity(env.world, item.x, item.y, item.z, result)
 			env.world.spawnEntity(resultItem)
