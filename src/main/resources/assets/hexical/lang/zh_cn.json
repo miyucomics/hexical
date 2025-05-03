@@ -427,7 +427,7 @@
 	"hexcasting.action.hexical:magic_missile": "魔法飞弹",
 	"hexical.page.magic_missile.summary": "构筑一小片紫水晶，对命中目标固定造成 1 颗心的伤害，同时强令目标退后。消耗大约 1 个$(l:items/amethyst)$(item)紫水晶粉$()。",
 	"hexical.page.magic_missile.0": "弹射物有种几项特别的性质。它在存在大约 10 秒后会自动消失，击中实体或方块后会碎裂。它会穿过所有形式的盔甲和保护，也不受重力和水的影响。$(br2)$(o)晶莹闪亮的弹射物，不算很强，但非常迷人……$()",
-	"hexical.page.magic_missile.1": "第一个向量是构筑的位置，其性质相当奇妙：怪不得大多数$(hex)咒术师$()都只选择在面前构筑它们。这一参数以我的头部位置为原点，我$(l:patterns/basics#hexcasting:get_entity_look)$(action)面朝的方向$()是 Z 轴正向，$(l:patterns/great_spells/greater_blink#hexical:theodolite)$(action)头顶向上的方向$()是 Y 轴正向，头部向右的方向是 X 轴正向。平常使用时，零向量对应在我的头颅内部构筑，形如 (0, 0, n) 的向量则会在我面前 n 格处构筑。",
+	"hexical.page.magic_missile.1": "第一个向量是构筑的位置，其性质相当奇妙：怪不得大多数$(hex)咒术师$()都只选择在面前构筑它们。这一参数以我的头部位置为原点，我$(l:patterns/basics#hexcasting:get_entity_look)$(action)面朝的方向$()是 Z 轴正向，$(l:patterns/scrying/entities#hexposition:theodolite)$(action)头顶向上的方向$()是 Y 轴正向，头部向右的方向是 X 轴正向。平常使用时，零向量对应在我的头颅内部构筑，形如 (0, 0, n) 的向量则会在我面前 n 格处构筑。",
 	"hexical.page.magic_missile.2": "第二个向量是速率，好在比第一参数简单不少。它就是简单的偏移向量，与$(l:patterns/spells/basic#hexcasting:add_motion)$(action)驱动$()接受的向量类似。而与$(l:patterns/spells/basic#hexcasting:add_motion)$(action)驱动$()不同的是，本法术的向量没有模长限制，也不会因模长增加而增大消耗。$(br2)$(item)魔法飞弹$()与$(item)箭$()的不同之处在于，前者不会因为飞行速度快而造成更多伤害。飞弹还会产生一种奇怪的击退效果，无视实体的质量和弹射物的速度。",
 
 	"hexcasting.action.hexical:prestidigitation": "戏法",

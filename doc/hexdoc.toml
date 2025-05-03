@@ -8,6 +8,7 @@ resource_dirs = [
     "{_common.src}/main/resources",
     { path="{^_common.src}/main/generated" },
     { modid="hexcasting" },
+    { modid="hexposition" },
     { modid="minecraft" },
     { modid="hexdoc" },
 ]
@@ -17,6 +18,7 @@ export_dir = "src/hexdoc_hexical/_export/generated"
 icon = "icon.png"
 include = [
     "hexical",
+    "hexposition",
     "hexcasting",
     "hexdoc",
 ]
