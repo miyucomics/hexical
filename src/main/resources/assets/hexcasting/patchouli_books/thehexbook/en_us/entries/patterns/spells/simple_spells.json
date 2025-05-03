@@ -57,8 +57,8 @@
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:hopper_out",
 			"anchor": "hexical:hopper_out",
-			"input": "vector, vector, vector",
-			"output": "item entity | null",
+			"input": "vec, vec, vec",
+			"output": "entity | null",
 			"text": "hexical.page.hopper_out.summary"
 		},
 		{
