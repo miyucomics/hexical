@@ -312,10 +312,6 @@
 	"hexical.page.lamp_pillows.title": "The Pillow",
 	"hexical.page.lamp_pillows.0": "It seems that $(l:lamp/arch_lamps)$(item)Archgenie Lamps$() inhibit the genie's ability to cast unless someone is actively grasping it, possibly to prevent the genie from applying _media as a form of attrition to wear down its prison. However I have never noted any behavior of the sort; perhaps it is just the paranoia that comes with the brilliance it takes to design such a marvellous device.",
 
-	"hexical.page.simple_patterns.title": "Hexical Patterns",
-	"hexcasting.action.hexical:garbage": "Garbage Reflection",
-	"hexical.page.garbage.summary": "Pushes $(l:casting/influences)$(action)Garbage$() to my stack. I am unsure why I would ever want this pattern but it exists.",
-
 	"hexical.page.patterns.title": "Pattern Manipulation",
 	"hexical.page.patterns.0": "I have discovered a set of patterns that concern the construction and manipulation of other $(l:patterns/patterns_as_iotas)patterns$(). Strangely, they can be used to construct patterns that are $(o)impossible$() to draw with a $(l:items/staff)$(item)Staff$(), although fortunately I don't believe Nature has associated an effect with any of these \"illegal\" patterns. They can be considered free to use with my $(l:items/scarab)$(item)Scarab Beetle$().",
 	"hexcasting.action.hexical:congruent": "Congruence Distillation",
