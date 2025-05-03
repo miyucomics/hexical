@@ -119,8 +119,6 @@ object HexicalActions {
 		register("has_arch_lamp", "qaqwddedqeed", HexDir.NORTH_EAST, OpIsUsingArchLamp())
 		register("lamp_finale", "aaddaddad", HexDir.EAST, OpGetFinale())
 
-		register("garbage", "aqawde", HexDir.EAST, Action.makeConstantOp(GarbageIota()))
-
 		register("serialize_pattern", "wqaedeqd", HexDir.EAST, OpSerializePattern())
 		register("deserialize_pattern", "wqqqaqwd", HexDir.EAST, OpDeserializePattern())
 		register("congruent", "aaqd", HexDir.EAST, OpCongruentPattern())
