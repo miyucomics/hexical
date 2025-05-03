@@ -10,11 +10,16 @@ import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 
 object HexicalParticles {
-	val CONFETTI_PARTICLE: DefaultParticleType = Registry.register(Registries.PARTICLE_TYPE, HexicalMain.id("confetti"), FabricParticleTypes.simple(true))
-	val CUBE_PARTICLE: ParticleType<CubeParticleEffect> = Registry.register(Registries.PARTICLE_TYPE, HexicalMain.id("cube"), FabricParticleTypes.complex(CubeParticleEffect.Factory))
-	val SPARKLE_PARTICLE: ParticleType<SparkleParticleEffect> = Registry.register(Registries.PARTICLE_TYPE, HexicalMain.id("sparkle"), FabricParticleTypes.complex(SparkleParticleEffect.Factory))
+	val CONFETTI_PARTICLE: DefaultParticleType = FabricParticleTypes.simple(true)
+	val CUBE_PARTICLE: ParticleType<CubeParticleEffect> = FabricParticleTypes.complex(CubeParticleEffect.Factory)
+	val SPARKLE_PARTICLE: ParticleType<SparkleParticleEffect> = FabricParticleTypes.complex(SparkleParticleEffect.Factory)
 
-	@JvmStatic
+	fun init() {
+		Registry.register(Registries.PARTICLE_TYPE, HexicalMain.id("confetti"), CONFETTI_PARTICLE)
+		Registry.register(Registries.PARTICLE_TYPE, HexicalMain.id("cube"), CUBE_PARTICLE)
+		Registry.register(Registries.PARTICLE_TYPE, HexicalMain.id("sparkle"), SPARKLE_PARTICLE)
+	}
+
 	fun clientInit() {
 		ParticleFactoryRegistry.getInstance().register(CONFETTI_PARTICLE) { sprite -> ConfettiParticle.Factory(sprite) }
 		ParticleFactoryRegistry.getInstance().register(CUBE_PARTICLE) { sprite -> CubeParticle.Factory(sprite) }
