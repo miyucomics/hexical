@@ -38,7 +38,7 @@ class OpAutograph : SpellAction {
 			val compound = NbtCompound()
 			compound.putString("name", caster.entityName)
 			compound.putCompound("pigment", IXplatAbstractions.INSTANCE.getPigment(caster).serializeToNBT())
-			list.addFirst(compound)
+			list.add(0, compound)
 		}
 	}
 }
