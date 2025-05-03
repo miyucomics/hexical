@@ -262,17 +262,6 @@ object HexicalActions {
 		register("displace", "qaqqqqeedaqqqa", HexDir.NORTH_EAST, OpDisplace())
 
 		register("greater_blink", "wqawawaqwqwqawawaqw", HexDir.SOUTH_WEST, OpGreaterBlink())
-		register("theodolite", "wqaa", HexDir.EAST, OpGetEntityData { entity ->
-			val upPitch = (-entity.pitch + 90) * (Math.PI.toFloat() / 180)
-			val yaw = -entity.headYaw * (Math.PI.toFloat() / 180)
-			val h = MathHelper.cos(yaw).toDouble()
-			val j = MathHelper.cos(upPitch).toDouble()
-			Vec3d(
-				MathHelper.sin(yaw).toDouble() * j,
-				MathHelper.sin(upPitch).toDouble(),
-				h * j
-			).asActionResult
-		})
 
 		register("conjure_mesh", "qaqqqqqwqqqdeeweweeaeewewee", HexDir.EAST, OpConjureMesh())
 		register("weave_mesh", "qaqqqqqwqqqdeewewee", HexDir.EAST, OpWeaveMesh())
