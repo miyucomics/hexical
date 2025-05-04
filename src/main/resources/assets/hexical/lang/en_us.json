@@ -170,11 +170,6 @@
 	"hexcasting.action.book.hexical:modify_block_replaceable": "Replaceable",
 	"hexcasting.action.book.hexical:modify_block_volatile": "Volatile",
 
-	"hexical.page.ungodly.title": "Horrible",
-	"hexical.page.ungodly.0": "Of all the spells I have recorded, I have never met one as strange as this. $(o)How does someone even begin to draw this?$()",
-	"hexcasting.action.hexical:ungodly": "Summon?",
-	"hexical.page.ungodly.summary": "Judging by the pattern signature, I can only imagine that it summons something.",
-
 	"hexical.page.hexical_changes.title": "Hexical Changes",
 	"hexical.page.hexical_changes.0": "I feel strangely more in tune with the ambient _media around me. It feels $(o)friendlier$() somehow. I can even feel it rippling around me, responding to my actions, as if engaging with me. The _media also feels more malleable, more $(o)workable$(); I sense I am able to manipulate it into more precise and specific specialized effects. I can also bring up my $(item)Hex Notebook$() by pressing $(thing)$(k:hexical.open_hexbook).",
 	"hexical.page.hexical_changes.1": "I also find my tools more familiar. I don't require the same level of caution with my $(l:items/staff)$(item)Staff$() and can move around during casting, handy for chasing down targets that get out of my line of sight before I can finish my raycast. I shouldn't become too inattentive though, Nature has not become more forgiving of my miscalculations. I can also write directly into my $(l:items/abacus)$(item)Abacus$() with $(l:patterns/readwrite#hexcasting:write)$(action)Scribe's Gambit$().",
@@ -323,7 +318,8 @@
 	"hexical.page.lamp_pillows.0": "It seems that $(l:lamp/arch_lamps)$(item)Archgenie Lamps$() inhibit the genie's ability to cast unless someone is actively grasping it, possibly to prevent the genie from applying _media as a form of attrition to wear down its prison. However I have never noted any behavior of the sort; perhaps it is just the paranoia that comes with the brilliance it takes to design such a marvellous device.",
 
 	"hexical.page.pedestal_circles.title": "Pedestals in Circles",
-	"hexical.page.pedestal_circles.0": "$(l:items/pedestals)$(thing)Pedestals$() have magical abilities! If they are holding $(l:patterns/readwrite#hexcasting:write)$(item)an item that contains information$() and the $(l:greatwork/spellcircles)$(thing)spell circle$()'s wave passes over them, they push the iota onto the stack. If it happens to be within an unclosed $(l:patterns/patterns_as_iotas#hexcasting:open_paren)Introspection$(), the iota appears inside the constructed list.",
+	"hexical.page.pedestal_circles.0": "$(l:items/pedestals)$(thing)Pedestals$() have magical abilities!$(br2)If they are holding $(l:patterns/readwrite#hexcasting:write)$(item)an item that contains information$() and the $(l:greatwork/spellcircles)$(thing)spell circle$()'s wave passes over them as if they were a $(l:items/slate)$(item)Slate$(), they push the iota onto the stack. If the $(l:items/pedestals)$(thing)Pedestal$() happens to processed inside an unclosed $(l:patterns/patterns_as_iotas#hexcasting:open_paren)Introspection$(), the iota appears inside the constructed list.",
+	"hexical.page.pedestal_circles.1": "If placed directly on top of an $(l:greatwork/spellcircles)$(item)Impetus$() instead, the $(l:items/pedestals)$(item)Pedestal$() acts as the circle's $(o)other hand$(), useful for spells such as the $(l:patterns/spells/hexcasting)casting device crafting spells$(), $(l:patterns/spells/hexcasting#hexcasting:recharge)$(action)Recharge Item$(), and $(l:patterns/spells/hexcasting#hexcasting:erase)$(action)Erase Item$().$(br2)This includes $(l:patterns/readwrite#hexcasting:read)$(action)Scribe's Reflection$() and $(l:patterns/readwrite#hexcasting:write)$(action)Scribe's Gambit$(), allowing me to create $(l:greatwork/spellcircles)$(thing)spell circles$() to automatically fill in my $(l:items/focus)$(item)Foci$().",
 
 	"hexical.page.patterns.title": "Pattern Manipulation",
 	"hexical.page.patterns.0": "I have discovered a set of patterns that concern the construction and manipulation of other $(l:patterns/patterns_as_iotas)patterns$(). Strangely, they can be used to construct patterns that are $(o)impossible$() to draw with a $(l:items/staff)$(item)Staff$(), although fortunately I don't believe Nature has associated an effect with any of these \"illegal\" patterns. They can be considered free to use with my $(l:items/scarab)$(item)Scarab Beetle$().",
@@ -378,6 +374,11 @@
 	"hexical.page.jumping.summary": "Pushes how many twentieths of a second I've been intending to $(thing)$(k:jump)$(), or -1 if I am not.",
 	"hexcasting.action.hexical:sneaking": "Stealthy Reflection",
 	"hexical.page.sneaking.summary": "Pushes how many twentieths of a second I've been intending to $(thing)$(k:sneak)$(), or -1 if I am not.",
+
+	"hexical.page.ungodly.title": "Horrible",
+	"hexical.page.ungodly.0": "Of all the spells I have recorded in my exploration of ancient _Hexcasting, I have never seen one even remotely like this one. $(o)How does someone even begin to draw this?$()",
+	"hexcasting.action.hexical:ungodly": "Summon?",
+	"hexical.page.ungodly.summary": "Judging by the pattern signature, I can only imagine that it summons something.",
 
 	"hexical.page.akashic_conveniences.title": "Akashic Utilities",
 	"hexical.page.akashic_conveniences.0": "Being designed to be receptive to _media and store information, it should not surprise me that there are more conveniences than meets the eye. I can $(thing)$(k:use)$() or $(l:patterns/spells/prestidigitation)magically interact$() with a filled $(l:greatwork/akashiclib)$(item)Bookshelf$() to copy its iota onto my stack. I can also $(thing)$(k:use)$() with a $(l:items/scroll)$(item)Scroll$() to copy the pattern key onto it. There are also a set of patterns to read and write directly to a $(l:greatwork/akashiclib)$(item)Bookshelf$() within ambit for free.",
