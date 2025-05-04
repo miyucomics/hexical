@@ -1,4 +1,4 @@
-package miyucomics.hexical.casting.patterns
+package miyucomics.hexical.casting.patterns.block_mimicry
 
 import at.petrak.hexcasting.api.casting.*
 import at.petrak.hexcasting.api.casting.castables.SpellAction
@@ -9,7 +9,6 @@ import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.NullIota
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.misc.MediaConstants
-import miyucomics.hexical.casting.patterns.OpHopperInsert.Companion.insert
 import net.minecraft.entity.ItemEntity
 import net.minecraft.inventory.Inventory
 import net.minecraft.inventory.SidedInventory

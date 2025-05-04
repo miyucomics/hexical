@@ -1,10 +1,11 @@
-package miyucomics.hexical.casting.patterns
+package miyucomics.hexical.casting.patterns.block_mimicry
 
 import at.petrak.hexcasting.api.casting.RenderedSpell
 import at.petrak.hexcasting.api.casting.castables.SpellAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.getItemEntity
 import at.petrak.hexcasting.api.casting.iota.Iota
+import at.petrak.hexcasting.api.casting.mishaps.MishapBadItem
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.misc.MediaConstants
 import miyucomics.hexposition.iotas.getIdentifier
@@ -29,13 +30,9 @@ class OpStonecut : SpellAction {
 		val recipe = env.world.recipeManager
 			.getAllMatches(RecipeType.STONECUTTING, SimpleInventory(item.stack), env.world)
 			.firstOrNull { it.getOutput(DynamicRegistryManager.EMPTY).isOf(type) }
-			?: return  SpellAction.Result(Noop(item), 0, listOf())
+			?: throw MishapBadItem.of(item, "target.stonecutting")
 
 		return SpellAction.Result(Spell(recipe, item), MediaConstants.DUST_UNIT / 8, listOf())
-	}
-
-	private data class Noop(val item: ItemEntity) : RenderedSpell {
-		override fun cast(env: CastingEnvironment) {}
 	}
 
 	private data class Spell(val recipe: StonecuttingRecipe, val item: ItemEntity) : RenderedSpell {

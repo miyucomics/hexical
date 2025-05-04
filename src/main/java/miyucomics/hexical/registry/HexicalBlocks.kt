@@ -60,6 +60,10 @@ object HexicalBlocks {
 	private val HEX_CANDLE_ITEM = BlockItem(HEX_CANDLE_BLOCK, Item.Settings())
 	private val SENTINEL_BED_ITEM = BlockItem(SENTINEL_BED_BLOCK, Item.Settings())
 
+	val PEDESTAL_BLOCK: PedestalBlock = PedestalBlock()
+	val PEDESTAL_BLOCK_ENTITY: BlockEntityType<PedestalBlockEntity> = BlockEntityType.Builder.create(::PedestalBlockEntity, PEDESTAL_BLOCK).build(null)
+	private val PEDESTAL_ITEM = BlockItem(PEDESTAL_BLOCK, Item.Settings())
+
 	@JvmStatic
 	fun init() {
 		ItemGroupEvents.MODIFY_ENTRIES_ALL.register { tab, entries ->
@@ -71,6 +75,7 @@ object HexicalBlocks {
 			entries.add(ItemStack(CASTING_CARPET_ITEM))
 			entries.add(ItemStack(SENTINEL_BED_ITEM))
 			entries.add(ItemStack(PERIWINKLE_FLOWER_ITEM))
+			entries.add(ItemStack(PEDESTAL_ITEM))
 		}
 
 		Registry.register(Registries.BLOCK, HexicalMain.id("hex_candle"), HEX_CANDLE_BLOCK)
@@ -81,12 +86,14 @@ object HexicalBlocks {
 		Registry.register(Registries.BLOCK, HexicalMain.id("pillow"), PILLOW_BLOCK)
 		Registry.register(Registries.BLOCK, HexicalMain.id("periwinkle"), PERIWINKLE_FLOWER)
 		Registry.register(Registries.BLOCK, HexicalMain.id("casting_carpet"), CASTING_CARPET)
+		Registry.register(Registries.BLOCK, HexicalMain.id("pedestal"), PEDESTAL_BLOCK)
 
 		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("hex_candle"), HEX_CANDLE_BLOCK_ENTITY)
 		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("hex_candle_cake"), HEX_CANDLE_CAKE_BLOCK_ENTITY)
 		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("media_jar"), MEDIA_JAR_BLOCK_ENTITY)
 		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("mage_block"), MAGE_BLOCK_ENTITY)
 		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("pillow"), PILLOW_BLOCK_ENTITY)
+		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("pedestal"), PEDESTAL_BLOCK_ENTITY)
 
 		Registry.register(Registries.ITEM, HexicalMain.id("mage_block"), BlockItem(MAGE_BLOCK, Item.Settings()))
 		Registry.register(Registries.ITEM, HexicalMain.id("hex_candle"), HEX_CANDLE_ITEM)
@@ -94,6 +101,7 @@ object HexicalBlocks {
 		Registry.register(Registries.ITEM, HexicalMain.id("media_jar"), MEDIA_JAR_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("periwinkle"), PERIWINKLE_FLOWER_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("casting_carpet"), CASTING_CARPET_ITEM)
+		Registry.register(Registries.ITEM, HexicalMain.id("pedestal"), PEDESTAL_ITEM)
 	}
 
 	@JvmStatic
