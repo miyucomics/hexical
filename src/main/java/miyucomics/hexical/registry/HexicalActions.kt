@@ -22,6 +22,7 @@ import miyucomics.hexical.casting.patterns.akashic.OpWriteAkashicShelf
 import miyucomics.hexical.casting.patterns.autograph.OpAutograph
 import miyucomics.hexical.casting.patterns.autograph.OpHasAutograph
 import miyucomics.hexical.casting.patterns.autograph.OpUnautograph
+import miyucomics.hexical.casting.patterns.block_mimicry.*
 import miyucomics.hexical.casting.patterns.circle.OpDisplace
 import miyucomics.hexical.casting.patterns.colors.OpDye
 import miyucomics.hexical.casting.patterns.colors.OpGetDye
@@ -43,8 +44,6 @@ import miyucomics.hexical.casting.patterns.pattern_manipulation.*
 import miyucomics.hexical.casting.patterns.pigments.OpSamplePigment
 import miyucomics.hexical.casting.patterns.pigments.OpTakeOnPigment
 import miyucomics.hexical.casting.patterns.pigments.OpToPigment
-import miyucomics.hexical.casting.patterns.OpPrestidigitation
-import miyucomics.hexical.casting.patterns.block_mimicry.*
 import miyucomics.hexical.casting.patterns.raycast.OpFluidRaycast
 import miyucomics.hexical.casting.patterns.raycast.OpFluidSurfaceRaycast
 import miyucomics.hexical.casting.patterns.raycast.OpPiercingRaycast

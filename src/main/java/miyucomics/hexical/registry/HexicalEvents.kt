@@ -2,7 +2,6 @@ package miyucomics.hexical.registry
 
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.eval.env.PlayerBasedCastEnv
-import at.petrak.hexcasting.client.render.HexAdditionalRenderers
 import miyucomics.hexical.casting.components.LedgerRecordComponent
 import miyucomics.hexical.casting.components.SentinelBedComponent
 import miyucomics.hexical.client.ClientStorage

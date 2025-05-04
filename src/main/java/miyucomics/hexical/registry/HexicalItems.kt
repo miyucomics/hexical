@@ -7,11 +7,6 @@ import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.items.*
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents
-import net.minecraft.client.item.CompassAnglePredicateProvider
-import net.minecraft.client.item.CompassAnglePredicateProvider.CompassTarget
-import net.minecraft.client.item.ModelPredicateProviderRegistry
-import net.minecraft.client.world.ClientWorld
-import net.minecraft.entity.Entity
 import net.minecraft.item.FoodComponent
 import net.minecraft.item.Item
 import net.minecraft.item.Item.Settings
@@ -21,9 +16,6 @@ import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.registry.RegistryKey
 import net.minecraft.text.Text
-import net.minecraft.util.Identifier
-import net.minecraft.util.math.BlockPos
-import net.minecraft.util.math.GlobalPos
 
 object HexicalItems {
 	private val HEXICAL_GROUP_KEY: RegistryKey<ItemGroup> = RegistryKey.of(Registries.ITEM_GROUP.key, HexicalMain.id("general"))

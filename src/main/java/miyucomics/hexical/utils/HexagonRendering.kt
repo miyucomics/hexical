@@ -5,7 +5,10 @@ import com.mojang.blaze3d.systems.RenderSystem
 import miyucomics.hexical.client.ClientStorage
 import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderContext
 import net.minecraft.client.MinecraftClient
-import net.minecraft.client.render.*
+import net.minecraft.client.render.GameRenderer
+import net.minecraft.client.render.Tessellator
+import net.minecraft.client.render.VertexFormat
+import net.minecraft.client.render.VertexFormats
 import net.minecraft.util.math.RotationAxis
 import net.minecraft.util.math.Vec2f
 import net.minecraft.util.math.Vec3d
