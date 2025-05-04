@@ -245,7 +245,7 @@ class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 		// item stack is gone
 		if (heldItemStack.isEmpty) {
 			heldItemEntity?.let {
-				it.stack = heldItemStack
+				it.stack = ItemStack.EMPTY
 				heldItemEntity = null
 				markDirty()
 			}

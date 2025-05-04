@@ -60,6 +60,7 @@ object HexicalBlocks {
 	private val HEX_CANDLE_ITEM = BlockItem(HEX_CANDLE_BLOCK, Item.Settings())
 	private val SENTINEL_BED_ITEM = BlockItem(SENTINEL_BED_BLOCK, Item.Settings())
 
+	@JvmField
 	val PEDESTAL_BLOCK: PedestalBlock = PedestalBlock()
 	val PEDESTAL_BLOCK_ENTITY: BlockEntityType<PedestalBlockEntity> = BlockEntityType.Builder.create(::PedestalBlockEntity, PEDESTAL_BLOCK).build(null)
 	private val PEDESTAL_ITEM = BlockItem(PEDESTAL_BLOCK, Item.Settings())

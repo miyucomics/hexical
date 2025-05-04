@@ -10,6 +10,7 @@
 - added HexGloop's Dispense spell
 - added pedestals - holds your items for you!
   - if used in a circle, it pushes the iota from the item on the pedestal
+  - acts as a circle's other hand
 - added all variants of cooking blocks
 - added hopper spells
 - added Clarity and Clouding zeniths/nadirs

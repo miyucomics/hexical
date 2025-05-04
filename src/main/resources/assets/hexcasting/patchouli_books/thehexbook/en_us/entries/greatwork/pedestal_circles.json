@@ -8,6 +8,10 @@
 		{
 			"type": "patchouli:text",
 			"text": "hexical.page.pedestal_circles.0"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.pedestal_circles.1"
 		}
 	]
 }
