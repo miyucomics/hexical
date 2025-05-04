@@ -12,7 +12,6 @@ import net.minecraft.nbt.NbtDouble
 import net.minecraft.nbt.NbtList
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.math.Vec3d
-import org.joml.Vector3f
 
 class LesserSentinelState {
 	var lesserSentinels: MutableList<Vec3d> = mutableListOf()

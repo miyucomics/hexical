@@ -1,7 +1,5 @@
 package miyucomics.hexical.items
 
-import at.petrak.hexcasting.api.utils.putBoolean
-import at.petrak.hexcasting.api.utils.remove
 import miyucomics.hexical.data.LedgerData
 import miyucomics.hexical.registry.HexicalNetworking
 import miyucomics.hexical.screens.LedgerScreen

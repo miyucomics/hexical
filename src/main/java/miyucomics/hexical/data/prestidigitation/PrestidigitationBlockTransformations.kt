@@ -8,16 +8,12 @@ import net.fabricmc.fabric.api.resource.ResourceManagerHelper
 import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener
 import net.minecraft.block.Block
 import net.minecraft.block.BlockState
-import net.minecraft.block.Blocks
-import net.minecraft.block.NoteBlock
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.resource.ResourceManager
 import net.minecraft.resource.ResourceType
 import net.minecraft.util.Identifier
 import net.minecraft.util.math.BlockPos
-import net.minecraft.world.event.GameEvent
-import java.io.InputStream
 import java.io.InputStreamReader
 
 object PrestidigitationBlockTransformations {
