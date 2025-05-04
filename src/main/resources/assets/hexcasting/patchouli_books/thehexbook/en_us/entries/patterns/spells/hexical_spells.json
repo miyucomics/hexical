@@ -1,5 +1,5 @@
 {
-	"name": "hexical.page.simple_spells.title",
+	"name": "hexical.page.hexical_spells.title",
 	"icon": "hexical:hexburst",
 	"category": "hexcasting:patterns/spells",
 	"advancement": "hexcasting:root",
@@ -40,54 +40,6 @@
 		{
 			"type": "patchouli:text",
 			"text": "hexical.page.block_ping.description"
-		},
-		{
-			"type": "hexcasting:pattern",
-			"op_id": "hexical:hopper_in",
-			"anchor": "hexical:hopper_in",
-			"input": "item entity, vector, vector",
-			"output": "",
-			"text": "hexical.page.hopper_in.summary"
-		},
-		{
-			"type": "patchouli:text",
-			"text": "hexical.page.hopper_in.description"
-		},
-		{
-			"type": "hexcasting:pattern",
-			"op_id": "hexical:hopper_out",
-			"anchor": "hexical:hopper_out",
-			"input": "vec, vec, vec",
-			"output": "entity | null",
-			"text": "hexical.page.hopper_out.summary"
-		},
-		{
-			"type": "patchouli:text",
-			"text": "hexical.page.hopper_out.description"
-		},
-		{
-			"type": "hexcasting:pattern",
-			"op_id": "hexical:dispense",
-			"anchor": "hexical:dispense",
-			"input": "item entity, vector, vector",
-			"output": "",
-			"text": "hexical.page.dispense.summary"
-		},
-		{
-			"type": "patchouli:text",
-			"text": "hexical.page.dispense.description"
-		},
-		{
-			"type": "hexcasting:pattern",
-			"op_id": "hexical:stonecut",
-			"anchor": "hexical:stonecut",
-			"input": "item entity, identifier",
-			"output": "",
-			"text": "hexical.page.stonecut.summary"
-		},
-		{
-			"type": "patchouli:text",
-			"text": "hexical.page.stonecut.description"
 		},
 		{
 			"type": "hexcasting:pattern",

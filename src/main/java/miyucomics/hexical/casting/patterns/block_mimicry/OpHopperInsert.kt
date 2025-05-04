@@ -1,4 +1,4 @@
-package miyucomics.hexical.casting.patterns
+package miyucomics.hexical.casting.patterns.block_mimicry
 
 import at.petrak.hexcasting.api.casting.ParticleSpray
 import at.petrak.hexcasting.api.casting.RenderedSpell

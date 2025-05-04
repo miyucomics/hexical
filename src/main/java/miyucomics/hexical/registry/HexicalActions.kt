@@ -3,7 +3,6 @@ package miyucomics.hexical.registry
 import at.petrak.hexcasting.api.casting.ActionRegistryEntry
 import at.petrak.hexcasting.api.casting.asActionResult
 import at.petrak.hexcasting.api.casting.castables.Action
-import at.petrak.hexcasting.api.casting.iota.GarbageIota
 import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.casting.iota.NullIota
 import at.petrak.hexcasting.api.casting.math.HexDir
@@ -45,6 +44,7 @@ import miyucomics.hexical.casting.patterns.pigments.OpSamplePigment
 import miyucomics.hexical.casting.patterns.pigments.OpTakeOnPigment
 import miyucomics.hexical.casting.patterns.pigments.OpToPigment
 import miyucomics.hexical.casting.patterns.OpPrestidigitation
+import miyucomics.hexical.casting.patterns.block_mimicry.*
 import miyucomics.hexical.casting.patterns.raycast.OpFluidRaycast
 import miyucomics.hexical.casting.patterns.raycast.OpFluidSurfaceRaycast
 import miyucomics.hexical.casting.patterns.raycast.OpPiercingRaycast
@@ -68,19 +68,16 @@ import miyucomics.hexical.casting.patterns.wristpocket.*
 import miyucomics.hexical.interfaces.Specklike
 import miyucomics.hexical.items.HandLampItem
 import miyucomics.hexposition.iotas.IdentifierIota
-import miyucomics.hexposition.iotas.ItemStackIota
 import miyucomics.hexposition.iotas.asActionResult
-import miyucomics.hexposition.patterns.OpGetEntityData
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.projectile.FireballEntity
 import net.minecraft.entity.projectile.LlamaSpitEntity
 import net.minecraft.entity.projectile.thrown.EggEntity
 import net.minecraft.entity.projectile.thrown.SnowballEntity
+import net.minecraft.recipe.RecipeType
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.sound.SoundEvents
-import net.minecraft.util.math.MathHelper
-import net.minecraft.util.math.Vec3d
 
 object HexicalActions {
 	@JvmStatic
@@ -224,10 +221,6 @@ object HexicalActions {
 		register("confetti", "awddeqaedd", HexDir.EAST, OpConfetti())
 		register("sparkle", "dqa", HexDir.NORTH_EAST, OpSparkle())
 		register("block_ping", "dwwdwwdwewdwwdwwdeq", HexDir.NORTH_EAST, OpBlockPing())
-		register("hopper_in", "qwawqwaeqqq", HexDir.SOUTH_EAST, OpHopperInsert())
-		register("hopper_out", "qqqeawqwawq", HexDir.SOUTH_WEST, OpHopperExtract())
-		register("dispense", "wqwawqwddaeeead", HexDir.SOUTH_WEST, OpDispense())
-		register("stonecut", "qqqqqwaeaeaeaeaeadawa", HexDir.EAST, OpStonecut())
 		register("crack_device", "wwaqqqqqeqdedwqeaeqwdedwqeaeq", HexDir.EAST, OpCrackDevice())
 		register("place_block_type", "wewewewewewdwew", HexDir.NORTH_WEST, OpConstruct())
 		register("flower", "weqqqqqwaeaeaeaeaea", HexDir.NORTH_EAST, OpConjureFlower())
@@ -260,6 +253,15 @@ object HexicalActions {
 		register("get_lesser_sentinels", "dqddq", HexDir.WEST, OpLesserSentinelGet())
 
 		register("displace", "qaqqqqeedaqqqa", HexDir.NORTH_EAST, OpDisplace())
+
+		register("dispense", "wqwawqwddaeeead", HexDir.SOUTH_WEST, OpDispense())
+		register("smelt", "qwqqadadadewewewe", HexDir.SOUTH_EAST, OpCook(RecipeType.SMELTING, "target.smelting"))
+		register("roast", "aqqwwqqawdadedad", HexDir.NORTH_WEST, OpCook(RecipeType.CAMPFIRE_COOKING, "target.roasting"))
+		register("smoke", "qwqqadadadewdqqdwe", HexDir.SOUTH_EAST, OpCook(RecipeType.SMOKING, "target.smoking"))
+		register("blast", "qwqqadadadewweewwe", HexDir.SOUTH_EAST, OpCook(RecipeType.BLASTING, "target.blasting"))
+		register("stonecut", "qqqqqwaeaeaeaeaeadawa", HexDir.EAST, OpStonecut())
+		register("hopper_in", "qwawqwaeqqq", HexDir.SOUTH_EAST, OpHopperInsert())
+		register("hopper_out", "qqqeawqwawq", HexDir.SOUTH_WEST, OpHopperExtract())
 
 		register("greater_blink", "wqawawaqwqwqawawaqw", HexDir.SOUTH_WEST, OpGreaterBlink())
 
