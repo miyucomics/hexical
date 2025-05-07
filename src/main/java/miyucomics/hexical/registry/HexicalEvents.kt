@@ -66,7 +66,7 @@ object HexicalEvents {
 	fun clientInit() {
 		ClientPlayConnectionEvents.DISCONNECT.register { _, _ -> ShaderRenderer.setEffect(null) }
 		ClientTickEvents.END_CLIENT_TICK.register { ClientStorage.ticks += 1 }
-		WorldRenderEvents.AFTER_TRANSLUCENT.register { ctx ->
+		WorldRenderEvents.LAST.register { ctx ->
 			ClientStorage.lesserSentinels.forEach { HexagonRendering.renderHexagon(ctx, it) }
 		}
 	}
