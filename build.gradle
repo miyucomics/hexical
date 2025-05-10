@@ -6,11 +6,11 @@ plugins {
 	id "org.jetbrains.kotlin.jvm" version "1.8.0"
 }
 
-version = project.mod_version
-group = project.maven_group
+version = mod_version
+group = maven_group
 
 base {
-	archivesName = project.archives_base_name
+	archivesName = archives_base_name
 }
 
 loom {
@@ -18,28 +18,28 @@ loom {
 }
 
 repositories {
-    maven { url = "https://maven.terraformersmc.com/releases" }
-    maven { url = "https://maven.shedaniel.me/" }
+	maven { url = "https://api.modrinth.com/maven" }
     maven { url = "https://maven.blamejared.com/" }
     maven { url = "https://maven.jamieswhiteshirt.com/libs-release/" }
-    maven { url = "https://mvn.devos.one/snapshots/" }
-    maven { url = "https://maven.ladysnake.org/releases" }
-	maven { url = "https://api.modrinth.com/maven" }
 	maven { url = "https://maven.kosmx.dev/" }
+    maven { url = "https://maven.shedaniel.me/" }
+    maven { url = "https://maven.terraformersmc.com/releases" }
+    maven { url = "https://maven.ladysnake.org/releases" }
+    maven { url = "https://mvn.devos.one/snapshots/" }
 	mavenLocal()
 }
 
 dependencies {
-	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-	mappings "net.fabricmc:yarn:${project.yarn_mappings}"
-	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
-	modImplementation "net.fabricmc:fabric-language-kotlin:${project.fabric_kotlin_version}"
+	minecraft "com.mojang:minecraft:$minecraft_version"
+	mappings "net.fabricmc:yarn:$yarn_mappings"
+	modImplementation "net.fabricmc:fabric-loader:$loader_version"
+	modImplementation "net.fabricmc.fabric-api:fabric-api:$fabric_api_version"
+	modImplementation "net.fabricmc:fabric-language-kotlin:$fabric_kotlin_version"
 
+	include modImplementation("dev.kosmx.player-anim:player-animation-lib-fabric:$player_animator_version")
 	modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-api:$cardinal_components_version"
-	include modImplementation("dev.kosmx.player-anim:player-animation-lib-fabric:${player_animator_version}")
-	modImplementation "at.petra-k.paucal:paucal-fabric-$minecraft_version:$paucal_version"
     modImplementation "vazkii.patchouli:Patchouli:$minecraft_version-$patchouli_version-FABRIC"
+	modImplementation "at.petra-k.paucal:paucal-fabric-$minecraft_version:$paucal_version"
 	modImplementation("at.petra-k.hexcasting:hexcasting-fabric-$minecraft_version:$hexcasting_version") {
 		exclude module: "phosphor"
         exclude module: "lithium"
@@ -48,15 +48,15 @@ dependencies {
 
 	modLocalRuntime "me.shedaniel.cloth:cloth-config-fabric:$cloth_config_version"
 	modLocalRuntime "com.samsthenerd.inline:inline-fabric:$minecraft_version-$inline_version"
-	modLocalRuntime files("${rootProject.rootDir}/libs/serialization-hooks-0.4.99999.jar")
+	modLocalRuntime files("$rootProject.rootDir/libs/serialization-hooks-0.4.99999.jar")
 
-	modImplementation 'miyucomics:hexposition:1.0.1'
+	modImplementation "miyucomics:hexposition:$hexposition_version"
 }
 
 processResources {
-	inputs.property "version", project.version
+	inputs.property "version", version
 	filesMatching("fabric.mod.json") {
-		expand "version": project.version
+		expand "version": version
 	}
 }
 
