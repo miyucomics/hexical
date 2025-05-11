@@ -12,6 +12,8 @@ import net.minecraft.util.Identifier
 import net.minecraft.util.math.RotationAxis
 import net.minecraft.util.math.Vec2f
 import net.minecraft.util.math.Vec3d
+import org.joml.Matrix3f
+import org.joml.Matrix4f
 
 class SpeckRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<SpeckEntity>(ctx) {
 	override fun getTexture(entity: SpeckEntity?): Identifier? = null
@@ -29,9 +31,10 @@ class SpeckRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<SpeckEn
 		val top = matrices.peek()
 		if (entity.clientIsText) {
 			RenderSystem.disableCull()
+			val overlayConsumer = OverlayAwareVertexConsumerProvider(vertexConsumers)
 			val height = (-textRenderer.getWidth(entity.clientText) / 2).toFloat()
 			matrices.scale(0.025f, -0.025f, 0.025f)
-			textRenderer.draw(entity.clientText, height, 0f, -1, false, top.positionMatrix, vertexConsumers, TextRenderer.TextLayerType.NORMAL, 0, light)
+			textRenderer.draw(entity.clientText, height, 0f, -1, false, top.positionMatrix, overlayConsumer, TextRenderer.TextLayerType.NORMAL, 0, light)
 			RenderSystem.enableCull()
 		} else {
 			val buffer = vertexConsumers.getBuffer(renderLayer)
@@ -51,5 +54,38 @@ class SpeckRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<SpeckEn
 
 	companion object {
 		private val renderLayer = RenderLayer.getEntityCutoutNoCull(modLoc("textures/entity/white.png"))
+	}
+}
+
+private class OverlayAwareVertexConsumerProvider(private val victim: VertexConsumerProvider) : VertexConsumerProvider {
+	override fun getBuffer(layer: RenderLayer): VertexConsumer {
+		val originalConsumer = victim.getBuffer(layer)
+		return OverlayAwareVertexConsumer(originalConsumer)
+	}
+
+	private class OverlayAwareVertexConsumer(private val victim: VertexConsumer) : VertexConsumer {
+		private var didOverlay = false
+
+		override fun color(red: Int, green: Int, blue: Int, alpha: Int): VertexConsumer = victim.color(red, green, blue, alpha)
+		override fun fixedColor(i: Int, j: Int, k: Int, l: Int) = victim.fixedColor(i, j, k, l)
+		override fun light(u: Int, v: Int): VertexConsumer = victim.light(u, v)
+		override fun normal(x: Float, y: Float, z: Float): VertexConsumer = victim.normal(x, y, z)
+		override fun normal(matrix: Matrix3f, x: Float, y: Float, z: Float): VertexConsumer	= victim.normal(matrix, x, y, z)
+		override fun texture(u: Float, v: Float): VertexConsumer = victim.texture(u, v)
+		override fun unfixColor() =	victim.unfixColor()
+		override fun vertex(x: Double, y: Double, z: Double): VertexConsumer  = victim.vertex(x, y, z)
+		override fun vertex(matrix: Matrix4f, x: Float, y: Float, z: Float): VertexConsumer = victim.vertex(matrix, x, y, z)
+
+		override fun overlay(u: Int, v: Int): VertexConsumer {
+			didOverlay = true
+			return victim.overlay(u, v)
+		}
+
+		override fun next() {
+			if (!didOverlay)
+				victim.overlay(OverlayTexture.DEFAULT_UV)
+			victim.next()
+			didOverlay = false
+		}
 	}
 }
