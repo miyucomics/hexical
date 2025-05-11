@@ -336,16 +336,6 @@
 	"hexcasting.action.hexical:shuffle_pattern": "Glyphmaker's Distillation",
 	"hexical.page.shuffle_pattern.summary": "Uses the number to shuffle the pattern into one of the same shape, but different stroke order. My notes reveal that ancient _Hexcasters used this for some $(o)grand library$().",
 
-	"hexical.page.special_raycasts.title": "Special Raycasts",
-	"hexcasting.action.hexical:fluid_raycast": "Naval Distillation",
-	"hexical.page.fluid_raycast.summary": "Works similar to $(l:patterns/basics#hexcasting:raycast)$(action)Archer's Distillation$() but targets only liquids, piercing through all other blocks.",
-	"hexcasting.action.hexical:fluid_surface_raycast": "Lilypad Distillation",
-	"hexical.page.fluid_surface_raycast.summary": "Works similar to $(l:patterns/basics#hexcasting:raycast/axis)$(action)Architect's Distillation$() but targets only liquids, piercing through all other blocks.",
-	"hexcasting.action.hexical:piercing_raycast": "Railgun Exaltation",
-	"hexical.page.piercing_raycast.summary": "Works similar to $(l:patterns/basics#hexcasting:raycast)$(action)Archer's Distillation$() but accepts an additional identifier. It will pierce all blocks until it hits the block specified by the identifier.",
-	"hexcasting.action.hexical:piercing_surface_raycast": "Laser Exaltation",
-	"hexical.page.piercing_surface_raycast.summary": "Works similar to $(l:patterns/basics#hexcasting:raycast/axis)$(action)Architect's Distillation$() but accepts an additional identifier. It will pierce all blocks until it hits the block specified by the identifier.",
-
 	"hexical.page.telepathy.title": "Telepathy",
 	"hexical.page.telepathy": "_Media is the energy of thought and consequently, it can interact with thoughts as well. Unfortunately or perhaps fortunately for me, the minds of players are too resistant to be swayed by _Hexes and even the minds of villagers resist tampering. There is a notable exception though: my own mind is open to my own _media, allowing me to read my own intentions and write thoughts to myself.",
 	"hexcasting.action.hexical:get_telepathy": "Telepathic Reflection",

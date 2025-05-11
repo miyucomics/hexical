@@ -76,9 +76,12 @@
 - fixed bug where wristpocket does not cancel the interaction when interacting with a block
 - migrated scrying to Hexposition, a new addon
   - added scrying pattern for moon phase
+  - added scrying pattern for projectile shooter
+  - added scrying pattern for riding entities
   - added Media Reflection - gets media of casting environment
   - added Media Purification - gets media of player, allay, impetus, or item on floor
   - added Potential Purification - max media that something can hold
+  - moved piercing raycasts to Hexposition
   - fixed Ambit Purification returning true for out-of-world positions
   - fixed poor translation of Tool and Accessory Purification
 - migrated metaeval patterns and soroban to Overevaluate, a new addon
