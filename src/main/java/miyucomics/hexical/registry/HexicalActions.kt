@@ -44,10 +44,6 @@ import miyucomics.hexical.casting.patterns.pattern_manipulation.*
 import miyucomics.hexical.casting.patterns.pigments.OpSamplePigment
 import miyucomics.hexical.casting.patterns.pigments.OpTakeOnPigment
 import miyucomics.hexical.casting.patterns.pigments.OpToPigment
-import miyucomics.hexical.casting.patterns.raycast.OpFluidRaycast
-import miyucomics.hexical.casting.patterns.raycast.OpFluidSurfaceRaycast
-import miyucomics.hexical.casting.patterns.raycast.OpPiercingRaycast
-import miyucomics.hexical.casting.patterns.raycast.OpPiercingSurfaceRaycast
 import miyucomics.hexical.casting.patterns.scroll.OpAgeScroll
 import miyucomics.hexical.casting.patterns.scroll.OpColorScroll
 import miyucomics.hexical.casting.patterns.scroll.OpGlowScroll
@@ -120,11 +116,6 @@ object HexicalActions {
 		register("congruent", "aaqd", HexDir.EAST, OpCongruentPattern())
 		register("draw_pattern", "eadqqqa", HexDir.NORTH_EAST, OpDrawPattern())
 		register("shuffle_pattern", "aqqqdae", HexDir.NORTH_EAST, OpShufflePattern())
-
-		register("fluid_raycast", "wqqaqwede", HexDir.EAST, OpFluidRaycast())
-		register("fluid_surface_raycast", "weedewqaq", HexDir.EAST, OpFluidSurfaceRaycast())
-		register("piercing_raycast", "wqqddqeqddq", HexDir.EAST, OpPiercingRaycast())
-		register("piercing_surface_raycast", "weeaaeqeaae", HexDir.EAST, OpPiercingSurfaceRaycast())
 
 		register("get_telepathy", "wqqadaw", HexDir.EAST, OpGetKeybind("key.hexical.telepathy"))
 		register("send_telepathy", "qqqqwaqa", HexDir.EAST, OpSendTelepathy())

@@ -10,6 +10,6 @@ import miyucomics.hexical.registry.HexicalItems
 
 class HexicalCardinalComponents : ItemComponentInitializer {
 	override fun registerItemComponentFactories(registry: ItemComponentFactoryRegistry) {
-		registry.register(HexicalItems.HEX_GUMMY, HexCardinalComponents.MEDIA_HOLDER) { stack -> CCMediaHolder.Static({ MediaConstants.DUST_UNIT / 10 }, ADMediaHolder.CHARGED_AMETHYST_PRIORITY, stack) }
+		registry.register(HexicalItems.HEX_GUMMY, HexCardinalComponents.MEDIA_HOLDER) { stack -> CCMediaHolder.Static({ MediaConstants.DUST_UNIT / 10 }, ADMediaHolder.AMETHYST_DUST_PRIORITY, stack) }
 	}
 }
