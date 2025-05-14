@@ -111,6 +111,9 @@ object HexicalActions {
 		register("has_arch_lamp", "qaqwddedqeed", HexDir.NORTH_EAST, OpIsUsingArchLamp())
 		register("lamp_finale", "aaddaddad", HexDir.EAST, OpGetFinale())
 
+		register("rotate_entity", "qqqdaqqqa", HexDir.EAST, OpRotateEntity())
+		register("rotate_block", "edeeeeeweewadeeed", HexDir.EAST, OpRotateBlock())
+
 		register("shuffle_pattern", "aqqqdae", HexDir.NORTH_EAST, OpShufflePattern())
 		register("congruent", "aaqd", HexDir.EAST, OpCongruentPattern())
 		register("similar", "aedd", HexDir.EAST, OpSimilarPattern())
