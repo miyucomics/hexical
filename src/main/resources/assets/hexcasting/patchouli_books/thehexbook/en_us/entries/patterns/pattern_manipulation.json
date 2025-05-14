@@ -11,11 +11,27 @@
 		},
 		{
 			"type": "hexcasting:pattern",
+			"op_id": "hexical:shuffle_pattern",
+			"anchor": "hexical:shuffle_pattern",
+			"input": "pattern, number",
+			"output": "pattern",
+			"text": "hexical.page.shuffle_pattern.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
 			"op_id": "hexical:congruent",
 			"anchor": "hexical:congruent",
 			"input": "pattern, pattern",
 			"output": "boolean",
 			"text": "hexical.page.congruent.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:similar",
+			"anchor": "hexical:similar",
+			"input": "pattern, pattern",
+			"output": "boolean",
+			"text": "hexical.page.similar.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -48,14 +64,6 @@
 			"input": "pattern",
 			"output": "list of vectors",
 			"text": "hexical.page.draw_pattern.summary"
-		},
-		{
-			"type": "hexcasting:pattern",
-			"op_id": "hexical:shuffle_pattern",
-			"anchor": "hexical:shuffle_pattern",
-			"input": "pattern, number",
-			"output": "pattern",
-			"text": "hexical.page.shuffle_pattern.summary"
 		}
 	]
 }
