@@ -7,6 +7,7 @@
   - player stores data now; not persistent state
   - removed Myodesopsia spell
 - added lesser sentinels
+- added Horrible
 - added HexGloop's Dispense spell
 - added pedestals - holds your items for you!
   - if used in a circle, it pushes the iota from the item on the pedestal
@@ -30,8 +31,9 @@
 - added Squawk spell for fun - play mob sounds
 - added Confetti spell for fun - creates a bang and confetti particles
 - added HexGloop's Cut Stone spell
-- added ledgers - a strange item that records the last 32 patterns you've casted
+- added media log - a strange item that records the last 32 patterns you've casted
   - useful for debugging hexes in staves and casting devices
+- added Similarity Purification - tests if two patterns have the same shape but different stroke order
 - added sentinel bed - always have ambit inside
 - added periwinkle, a flower that can only be created via Hexcasting
   - it is the core ingredient of the Wooleyed potion

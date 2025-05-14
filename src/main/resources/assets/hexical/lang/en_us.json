@@ -323,8 +323,12 @@
 
 	"hexical.page.patterns.title": "Pattern Manipulation",
 	"hexical.page.patterns.0": "I have discovered a set of patterns that concern the construction and manipulation of other $(l:patterns/patterns_as_iotas)patterns$(). Strangely, they can be used to construct patterns that are $(o)impossible$() to draw with a $(l:items/staff)$(item)Staff$(), although fortunately I don't believe Nature has associated an effect with any of these \"illegal\" patterns. They can be considered free to use with my $(l:items/scarab)$(item)Scarab Beetle$().",
+	"hexcasting.action.hexical:shuffle_pattern": "Glyphmaker's Distillation",
+	"hexical.page.shuffle_pattern.summary": "Uses the number to shuffle the pattern into one of the same shape, but different stroke order. My notes hint that ancient _Hexcasters used this for some $(o)grand library$().",
 	"hexcasting.action.hexical:congruent": "Congruence Distillation",
-	"hexical.page.congruent.summary": "Pushes whether two patterns have the same shape and orientation.",
+	"hexical.page.congruent.summary": "Pushes whether two patterns have the same shape, stroke order, and orientation.",
+	"hexcasting.action.hexical:similar": "Similarity Distillation",
+	"hexical.page.similar.summary": "Pushes whether two patterns have same shape but not necessarily the same stroke order.",
 	"hexcasting.action.hexical:serialize_pattern": "Chirographer's Purification",
 	"hexical.page.serialize_pattern.summary": "Turns a pattern into a list of numbers for my splitting, analysis, and dissection. The inverse of $(l:patterns/pattern_manipulation#hexical:deserialize_pattern)$(action)Calligrapher's Purification$().",
 	"hexcasting.action.hexical:deserialize_pattern": "Calligrapher's Purification",
@@ -333,8 +337,6 @@
 	"hexical.page.patterns.2": "These lists have multiple fascinating properties. By adding or subtracting constant values, I can rotate the pattern. I can splice off the beginning and ends to check for pattern prefixes and suffixes. In cyclical patterns, I can rotate the list by moving the first element to the end or vice versa to cycle the starting position. By carefully altering numbers with list manipulation, I can also make some kind of $(o)backwards stroke$().",
 	"hexcasting.action.hexical:draw_pattern": "Handwriting Distillation",
 	"hexical.page.draw_pattern.summary": "Takes a pattern and produces a normalized list of vectors. The z-component of these vectors is zero. I feel this may be useful for artistic _Hexes.",
-	"hexcasting.action.hexical:shuffle_pattern": "Glyphmaker's Distillation",
-	"hexical.page.shuffle_pattern.summary": "Uses the number to shuffle the pattern into one of the same shape, but different stroke order. My notes reveal that ancient _Hexcasters used this for some $(o)grand library$().",
 
 	"hexical.page.telepathy.title": "Telepathy",
 	"hexical.page.telepathy": "_Media is the energy of thought and consequently, it can interact with thoughts as well. Unfortunately or perhaps fortunately for me, the minds of players are too resistant to be swayed by _Hexes and even the minds of villagers resist tampering. There is a notable exception though: my own mind is open to my own _media, allowing me to read my own intentions and write thoughts to myself.",
