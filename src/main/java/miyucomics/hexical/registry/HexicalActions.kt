@@ -111,11 +111,12 @@ object HexicalActions {
 		register("has_arch_lamp", "qaqwddedqeed", HexDir.NORTH_EAST, OpIsUsingArchLamp())
 		register("lamp_finale", "aaddaddad", HexDir.EAST, OpGetFinale())
 
+		register("shuffle_pattern", "aqqqdae", HexDir.NORTH_EAST, OpShufflePattern())
+		register("congruent", "aaqd", HexDir.EAST, OpCongruentPattern())
+		register("similar", "aedd", HexDir.EAST, OpSimilarPattern())
 		register("serialize_pattern", "wqaedeqd", HexDir.EAST, OpSerializePattern())
 		register("deserialize_pattern", "wqqqaqwd", HexDir.EAST, OpDeserializePattern())
-		register("congruent", "aaqd", HexDir.EAST, OpCongruentPattern())
 		register("draw_pattern", "eadqqqa", HexDir.NORTH_EAST, OpDrawPattern())
-		register("shuffle_pattern", "aqqqdae", HexDir.NORTH_EAST, OpShufflePattern())
 
 		register("get_telepathy", "wqqadaw", HexDir.EAST, OpGetKeybind("key.hexical.telepathy"))
 		register("send_telepathy", "qqqqwaqa", HexDir.EAST, OpSendTelepathy())
