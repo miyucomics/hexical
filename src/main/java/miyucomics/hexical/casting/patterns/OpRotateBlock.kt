@@ -7,11 +7,13 @@ import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.getBlockPos
 import at.petrak.hexcasting.api.casting.getVec3
 import at.petrak.hexcasting.api.casting.iota.Iota
+import at.petrak.hexcasting.api.casting.mishaps.MishapBadBlock
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import net.minecraft.block.BlockState
 import net.minecraft.server.world.ServerWorld
+import net.minecraft.state.property.DirectionProperty
 import net.minecraft.state.property.Properties
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
@@ -24,7 +26,14 @@ class OpRotateBlock : SpellAction {
 		env.assertPosInRange(target)
 		val rotation = args.getVec3(1, argc)
 		val direction = Direction.fromVector(rotation.x.toInt(), rotation.y.toInt(), rotation.z.toInt()) ?: throw MishapInvalidIota.of(args[1], 0, "axis_vector")
-		return SpellAction.Result(Spell(target, direction), MediaConstants.DUST_UNIT / 8, listOf(ParticleSpray.burst(target.toCenterPos(), 1.0)))
+
+		val block = env.world.getBlockState(target)
+		rotationProperties.forEach {
+			if (block.contains(it))
+				return SpellAction.Result(Spell(target, direction), MediaConstants.DUST_UNIT / 8, listOf(ParticleSpray.burst(target.toCenterPos(), 1.0)))
+		}
+
+		throw MishapBadBlock.of(target, "rotatable")
 	}
 
 	private data class Spell(val target: BlockPos, val direction: Direction) : RenderedSpell {
@@ -37,6 +46,8 @@ class OpRotateBlock : SpellAction {
 	}
 
 	companion object {
+		private val rotationProperties: List<DirectionProperty> = listOf(Properties.FACING, Properties.HOPPER_FACING, Properties.HORIZONTAL_FACING, Properties.VERTICAL_DIRECTION);
+
 		private fun setBlockDirection(world: ServerWorld, blockPos: BlockPos, newDirection: Direction) {
 			val blockState = world.getBlockState(blockPos)
 			var modifiedState: BlockState? = null
