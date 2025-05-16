@@ -35,6 +35,7 @@
   - useful for debugging hexes in staves and casting devices
 - added Similarity Purification - tests if two patterns have the same shape but different stroke order
 - added sentinel bed - always have ambit inside
+- added rotation spells for blocks and entities
 - added periwinkle, a flower that can only be created via Hexcasting
   - it is the core ingredient of the Wooleyed potion
   - it can be used to craft a lei
