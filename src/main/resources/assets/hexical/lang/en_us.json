@@ -100,6 +100,7 @@
 	"hexcasting.mishap.bad_block.akashic_bookshelf": "an akashic bookshelf",
 	"hexcasting.mishap.bad_block.mage_block": "a mage block",
 	"hexcasting.mishap.bad_block.flower_spawnable": "air or a flower pot",
+	"hexcasting.mishap.bad_block.rotatable": "a block with direction",
 	"hexcasting.mishap.bad_block.solid_platform": "a solid platform",
 	"hexcasting.mishap.bad_item.animated_scroll": "an animated scroll",
 	"hexcasting.mishap.bad_item.anything": "any item",
@@ -408,7 +409,7 @@
 	"hexical.page.hopper_out.description": "If no item could be extracted, the spell pushes $(l:casting/influences)$(thing)Null$(). Only one item will be extracted at a time similar to a hopper.$(br2)$(o)Upon request, I can also perform a hug.$()",
 
 	"hexical.page.mage_block.title": "Mage Blocks",
-	"hexical.page.mage_block": "The blocks from $(l:patterns/spells/blockworks#hexcasting:conjure_block)$(action)Conjure Block$() last forever, are consequently a pain to clean up, and are not too versatile. Luckily, Nature offers an elegant and flexible alternative. These mage blocks come with a suite of $(o)modifiers$(). I could even stack multiple modifiers on one block or reapply a modifier to toggle it off.",
+	"hexical.page.mage_block.0": "The blocks from $(l:patterns/spells/blockworks#hexcasting:conjure_block)$(action)Conjure Block$() last forever, are consequently a pain to clean up, and are not too versatile. Luckily, Nature offers an elegant and flexible alternative. These mage blocks come with a suite of $(o)modifiers$(). I could even stack multiple modifiers on one block or reapply a modifier to toggle it off.",
 	"hexcasting.action.hexical:conjure_mage_block": "Conjure Mage Block",
 	"hexical.page.conjure_mage_block.summary": "Conjures a mage block at the location. Costs about three $(l:items/amethyst)$(item)Amethyst Dust$().$(br2)$(o)I can create a city out of nothing, or I can cover it in volcanic rock.$()",
 	"hexcasting.action.hexical:modify_block_bouncy": "Modify Block: Bouncy",
@@ -423,6 +424,14 @@
 	"hexical.page.modify_block_replaceable.summary": "This modifier is useful for construction! With this modifier applied, I find I can easily place another block in the place of the mage block.",
 	"hexcasting.action.hexical:modify_block_volatile": "Modify Block: Volatile",
 	"hexical.page.modify_block_volatile.summary": "This modifier makes the block break other mage blocks it's touching. Notably, if it breaks another volatile block, that block breaks and so on until every volatile block shatters.",
+
+	"hexical.page.rotation.title": "Rotation",
+	"hexical.page.rotation.0": "Rotation is done via with stationary teleportation at a different orientation. The sudden perspective change is already highly disorienting; the floor leaving your feet only to be shoved back onto it again is more so.$(br2)For this reason, Nature abhors entity rotation... or perhaps it trivializes Nature's carefully constructed schemes.",
+	"hexcasting.action.hexical:rotate_block": "Rotate Block",
+	"hexical.page.rotate_block.summary": "Rotates a block to face a certain vector direction. Requires a rotatable block. Costs about an eighth of an $(l:items/amethyst)$(item)Amethyst Dust$().",
+	"hexcasting.action.hexical:rotate_entity": "Rotate Entity",
+	"hexical.page.rotate_entity.summary": "Rotates an entity by a given change in pitch and yaw, expressed in units of full circles.",
+	"hexical.page.rotate_entity.description": "Nature seems to be against entity rotation. Rather than a straightforward vector, Nature demands measurements in fractions of full circles by which to turn horizontally and vertically.$(br2)The cost is strange and multilayered too. Free if cast on myself, about half of an $(l:items/amethyst)$(item)Amethyst Dust$() for other entities, and the natural aura of _media surrounding a player elevates the cost to about a whole $(l:items/amethyst)$(item)Charged Amethyst$().",
 
 	"hexical.page.autographs.title": "Autographs",
 	"hexical.page.autographs.0": "Using precise manipulation of _media, I can magically $(o)etch$() my signature onto any item! It must be done with my $(l:items/staff)$(item)Staff$() as proof of intentionality.$(br2)An autographed item proudly displays every autographer's name in shimmering $(l:items/pigments)$(item)Pigment$().$(br2)$(o)I disagree strongly with whatever work this quote is attached to.$()",
