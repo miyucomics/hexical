@@ -1,7 +1,6 @@
 package miyucomics.hexical.entities.specklikes
 
 import at.petrak.hexcasting.api.HexAPI.modLoc
-import com.mojang.blaze3d.systems.RenderSystem
 import miyucomics.hexical.utils.RenderUtils
 import net.minecraft.client.font.TextRenderer
 import net.minecraft.client.render.*
@@ -12,9 +11,6 @@ import net.minecraft.util.Identifier
 import net.minecraft.util.math.RotationAxis
 import net.minecraft.util.math.Vec2f
 import net.minecraft.util.math.Vec3d
-import org.joml.Matrix3f
-import org.joml.Matrix4f
-import org.lwjgl.opengl.GL11
 
 class SpeckRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<SpeckEntity>(ctx) {
 	override fun getTexture(entity: SpeckEntity?): Identifier? = null
@@ -31,11 +27,10 @@ class SpeckRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<SpeckEn
 
 		val top = matrices.peek()
 		if (entity.clientIsText) {
-			RenderSystem.disableCull()
-			val height = (-textRenderer.getWidth(entity.clientText) / 2).toFloat()
 			matrices.scale(0.025f, -0.025f, 0.025f)
-			textRenderer.draw(entity.clientText, height, 0f, -1, false, top.positionMatrix, vertexConsumers, TextRenderer.TextLayerType.NORMAL, 0, light)
-			RenderSystem.enableCull()
+			val xOffset = -textRenderer.getWidth(entity.clientText) / 2f
+			val buffer = vertexConsumers.getBuffer(renderLayer)
+			textRenderer.draw(entity.clientText, xOffset, 0f, 0xffffff, false, top.positionMatrix, { buffer }, TextRenderer.TextLayerType.NORMAL, 0, LightmapTextureManager.MAX_LIGHT_COORDINATE)
 		} else {
 			val buffer = vertexConsumers.getBuffer(renderLayer)
 			fun makeVertex(pos: Vec2f) = buffer.vertex(top.positionMatrix, pos.x, pos.y, 0f)
