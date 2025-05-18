@@ -11,6 +11,9 @@ import net.minecraft.util.Identifier
 import net.minecraft.util.math.RotationAxis
 import net.minecraft.util.math.Vec2f
 import net.minecraft.util.math.Vec3d
+import org.joml.Matrix4f
+import java.awt.SystemColor.text
+
 
 class SpeckRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<SpeckEntity>(ctx) {
 	override fun getTexture(entity: SpeckEntity?): Identifier? = null
@@ -25,13 +28,13 @@ class SpeckRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<SpeckEn
 		matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(entity.clientRoll))
 		matrices.scale(entity.clientSize, entity.clientSize, entity.clientSize)
 
-		val top = matrices.peek()
 		if (entity.clientIsText) {
 			matrices.scale(0.025f, -0.025f, 0.025f)
+			val top = matrices.peek()
 			val xOffset = -textRenderer.getWidth(entity.clientText) / 2f
-			val buffer = vertexConsumers.getBuffer(renderLayer)
-			textRenderer.draw(entity.clientText, xOffset, 0f, 0xffffff, false, top.positionMatrix, { buffer }, TextRenderer.TextLayerType.NORMAL, 0, LightmapTextureManager.MAX_LIGHT_COORDINATE)
+			textRenderer.draw(entity.clientText, xOffset, 0f, -0x1, false, top.positionMatrix, vertexConsumers, TextRenderer.TextLayerType.NORMAL, 0x00000000, light)
 		} else {
+			val top = matrices.peek()
 			val buffer = vertexConsumers.getBuffer(renderLayer)
 			fun makeVertex(pos: Vec2f) = buffer.vertex(top.positionMatrix, pos.x, pos.y, 0f)
 				.color(entity.clientPigment.colorProvider.getColor(0f, Vec3d(pos.x.toDouble(), pos.y.toDouble(), 0.0).multiply(2.0).add(entity.pos)))
