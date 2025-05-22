@@ -11,9 +11,6 @@ import net.minecraft.util.Identifier
 import net.minecraft.util.math.RotationAxis
 import net.minecraft.util.math.Vec2f
 import net.minecraft.util.math.Vec3d
-import org.joml.Matrix4f
-import java.awt.SystemColor.text
-
 
 class SpeckRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<SpeckEntity>(ctx) {
 	override fun getTexture(entity: SpeckEntity?): Identifier? = null
