@@ -15,13 +15,12 @@ import net.minecraft.util.Hand
 import net.minecraft.util.TypedActionResult
 import net.minecraft.world.World
 
-class TchotchkeItem : ItemPackagedHex(Settings().maxCount(1)), VariantItem {
+class TchotchkeItem : ItemPackagedHex(Settings().maxCount(1)) {
 	override fun use(world: World, player: PlayerEntity, usedHand: Hand): TypedActionResult<ItemStack> = TypedActionResult.success(player.getStackInHand(usedHand))
 	override fun canDrawMediaFromInventory(stack: ItemStack) = false
 	override fun isItemBarVisible(stack: ItemStack) = false
 	override fun canRecharge(stack: ItemStack) = false
 	override fun breakAfterDepletion() = true
-	override fun numVariants() = 10
 	override fun cooldown() = 0
 
 	override fun inventoryTick(stack: ItemStack, world: World, entity: Entity, slot: Int, selected: Boolean) {
@@ -35,12 +34,4 @@ class TchotchkeItem : ItemPackagedHex(Settings().maxCount(1)), VariantItem {
 			vm.queueExecuteAndWrapIotas((itemStack.item as TchotchkeItem).getHex(itemStack, user.serverWorld)!!, user.serverWorld)
 		}
 	}
-}
-
-fun getTchotchke(player: PlayerEntity): Hand? {
-	if (player.getStackInHand(Hand.OFF_HAND).isOf(HexicalItems.TCHOTCHKE_ITEM))
-		return Hand.OFF_HAND
-	if (player.getStackInHand(Hand.MAIN_HAND).isOf(HexicalItems.TCHOTCHKE_ITEM))
-		return Hand.MAIN_HAND
-	return null
 }
