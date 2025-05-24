@@ -23,16 +23,20 @@ class OpHexTweak : SpellAction {
 		CastingUtils.assertNoTruename(args[0], env)
 
 		val battery = args.getPositiveDouble(1, argc)
-		return SpellAction.Result(Spell(stack.stack, args[0], (battery * MediaConstants.DUST_UNIT).toLong()), MediaConstants.CRYSTAL_UNIT + MediaConstants.DUST_UNIT * battery.toInt(), listOf())
+		return SpellAction.Result(Spell(stack.stack, args[0], (battery * MediaConstants.DUST_UNIT).toLong(), true, true, true, true), MediaConstants.CRYSTAL_UNIT + MediaConstants.DUST_UNIT * battery.toInt(), listOf())
 	}
 
-	private data class Spell(val stack: ItemStack, val instructions: Iota, val battery: Long) : RenderedSpell {
+	private data class Spell(val stack: ItemStack, val instructions: Iota, val battery: Long, val left: Boolean, val right: Boolean, val leftSneak: Boolean, val rightSneak: Boolean) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
 			val nbt = stack.orCreateNbt
 			val hexTweak = NbtCompound()
 			hexTweak.putLong("media", battery)
 			hexTweak.putLong("max_media", battery)
 			hexTweak.putCompound("instructions", IotaType.serialize(instructions))
+			hexTweak.putBoolean("left", left)
+			hexTweak.putBoolean("right", right)
+			hexTweak.putBoolean("left_sneak", leftSneak)
+			hexTweak.putBoolean("right_sneak", rightSneak)
 			nbt.putCompound("hex_tweak", hexTweak)
 		}
 	}
