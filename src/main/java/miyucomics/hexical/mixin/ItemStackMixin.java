@@ -3,7 +3,10 @@ package miyucomics.hexical.mixin;
 import at.petrak.hexcasting.api.casting.iota.IotaType;
 import at.petrak.hexcasting.api.misc.MediaConstants;
 import at.petrak.hexcasting.api.pigment.FrozenPigment;
+import at.petrak.hexcasting.api.utils.MediaHelper;
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex;
+import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import miyucomics.hexical.client.ClientStorage;
 import miyucomics.hexical.registry.HexicalBlocks;
 import net.minecraft.client.item.TooltipContext;
@@ -29,6 +32,47 @@ import java.util.List;
 public class ItemStackMixin {
 	@Unique
 	private final DecimalFormat format = new DecimalFormat("###,###.##");
+
+	@WrapMethod(method = "isItemBarVisible")
+	public boolean addMediaTchotchkeDisplay(Operation<Boolean> original) {
+		ItemStack stack = ((ItemStack) (Object) this);
+		NbtCompound nbt = stack.getNbt();
+		if (nbt == null)
+			return original.call();
+		if (!nbt.contains("hex_tweak"))
+			return original.call();
+		return true;
+	}
+
+	@WrapMethod(method = "getItemBarStep")
+	public int addMediaTchotchkeStep(Operation<Integer> original) {
+		ItemStack stack = ((ItemStack) (Object) this);
+		NbtCompound nbt = stack.getNbt();
+		if (nbt == null)
+			return original.call();
+		if (!nbt.contains("hex_tweak"))
+			return original.call();
+
+		NbtCompound hexTweak = nbt.getCompound("hex_tweak");
+		int maxMedia = hexTweak.getInt("max_media");
+		int media = hexTweak.getInt("media");
+		return MediaHelper.mediaBarWidth(media, maxMedia);
+	}
+
+	@WrapMethod(method = "getItemBarColor")
+	public int addMediaTchotchkeColor(Operation<Integer> original) {
+		ItemStack stack = ((ItemStack) (Object) this);
+		NbtCompound nbt = stack.getNbt();
+		if (nbt == null)
+			return original.call();
+		if (!nbt.contains("hex_tweak"))
+			return original.call();
+
+		NbtCompound hexTweak = nbt.getCompound("hex_tweak");
+		int maxMedia = hexTweak.getInt("max_media");
+		int media = hexTweak.getInt("media");
+		return MediaHelper.mediaBarColor(media, maxMedia);
+	}
 
 	@Inject(method = "getTooltip(Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/client/item/TooltipContext;)Ljava/util/List;", at = @At("RETURN"))
 	public void addAutograph(PlayerEntity player, TooltipContext context, CallbackInfoReturnable<List<Text>> cir) {

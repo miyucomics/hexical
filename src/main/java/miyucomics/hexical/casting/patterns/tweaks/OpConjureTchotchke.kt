@@ -1,4 +1,4 @@
-package miyucomics.hexical.casting.patterns.tchotchke
+package miyucomics.hexical.casting.patterns.tweaks
 
 import at.petrak.hexcasting.api.casting.*
 import at.petrak.hexcasting.api.casting.castables.SpellAction

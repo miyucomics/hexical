@@ -24,15 +24,15 @@ public class MinecraftClientMixin implements MinecraftClientMinterface {
 
 	@Override
 	public void leftClick() {
-		tchotchke(false);
+		triggerTweakedItem(false);
 	}
 
 	@Override
 	public void rightClick() {
-		tchotchke(true);
+		triggerTweakedItem(true);
 	}
 
-	private void tchotchke(boolean input) {
+	private void triggerTweakedItem(boolean input) {
 		if (player == null || player.isSpectator())
 			return;
 		Hand hand = getTchotchke(player);
