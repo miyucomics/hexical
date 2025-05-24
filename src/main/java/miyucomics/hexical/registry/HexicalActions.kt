@@ -49,9 +49,10 @@ import miyucomics.hexical.casting.patterns.scroll.OpColorScroll
 import miyucomics.hexical.casting.patterns.scroll.OpGlowScroll
 import miyucomics.hexical.casting.patterns.scroll.OpVanishScroll
 import miyucomics.hexical.casting.patterns.specks.*
-import miyucomics.hexical.casting.patterns.tchotchke.OpConjureTchotchke
-import miyucomics.hexical.casting.patterns.tchotchke.OpReadTchotchke
-import miyucomics.hexical.casting.patterns.tchotchke.OpWriteTchotchke
+import miyucomics.hexical.casting.patterns.tweaks.OpConjureTchotchke
+import miyucomics.hexical.casting.patterns.tweaks.OpHexTweak
+import miyucomics.hexical.casting.patterns.tweaks.OpReadTchotchke
+import miyucomics.hexical.casting.patterns.tweaks.OpWriteTchotchke
 import miyucomics.hexical.casting.patterns.telepathy.OpGetKeybind
 import miyucomics.hexical.casting.patterns.telepathy.OpHallucinateSound
 import miyucomics.hexical.casting.patterns.telepathy.OpSendTelepathy
@@ -79,6 +80,8 @@ object HexicalActions {
 	fun init() {
 		// make it do something special later
 		register("horrible", "wedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqeedqawqeewdeaqqewdeaqeewdeaqeedqawqqedqawqqewdeaqeedqawqeewdeaqqewdeaqeewdeaqeedqawqqedqawqqewdeaqqedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqqedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqeedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqqedqawqeewdeaqqewdeaqeewdeaqeedqawqqedqawqqewdeaqe", HexDir.EAST, OpHorrible())
+
+		register("hex_tweak", "deqawq", HexDir.SOUTH_EAST, OpHexTweak())
 
 		register("age_scroll", "waeqqqqeqqqwqeaeaeaeq", HexDir.EAST, OpAgeScroll())
 		register("color_scroll", "waeqqqqewqqwqqeqeqqwqqeq", HexDir.EAST, OpColorScroll())
