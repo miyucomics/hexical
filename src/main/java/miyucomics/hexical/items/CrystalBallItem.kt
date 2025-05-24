@@ -30,7 +30,7 @@ class CrystalBallItem : ItemPackagedHex(Settings().maxCount(1)) {
 			stack.putBoolean("active", true)
 			val vm = CastingVM(CastingImage(), CrystalBallCastEnv(player as ServerPlayerEntity, stack, 3))
 			try {
-				vm.queueExecuteAndWrapIotas((stack.item as TchotchkeItem).getHex(stack, player.serverWorld)!!, player.serverWorld)
+				vm.queueExecuteAndWrapIotas((stack.item as CrystalBallItem).getHex(stack, player.serverWorld)!!, player.serverWorld)
 				stack.putBoolean("active", false)
 				stack.remove("continuation")
 				stack.remove("image")
@@ -52,7 +52,7 @@ class CrystalBallItem : ItemPackagedHex(Settings().maxCount(1)) {
 
 		val vm = CastingVM(image, CrystalBallCastEnv(entity as ServerPlayerEntity, stack, 3, continuation))
 		try {
-			vm.queueExecuteAndWrapIotas((stack.item as TchotchkeItem).getHex(stack, world)!!, world)
+			vm.queueExecuteAndWrapIotas((stack.item as CrystalBallItem).getHex(stack, world)!!, world)
 			stack.putBoolean("active", false)
 			stack.remove("continuation")
 			stack.remove("image")

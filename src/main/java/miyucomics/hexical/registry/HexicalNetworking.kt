@@ -1,15 +1,18 @@
 package miyucomics.hexical.registry
 
+import at.petrak.hexcasting.api.casting.asActionResult
+import at.petrak.hexcasting.api.casting.eval.vm.CastingImage
+import at.petrak.hexcasting.api.casting.eval.vm.CastingVM
 import dev.kosmx.playerAnim.api.layered.KeyframeAnimationPlayer
 import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationRegistry
 import miyucomics.hexical.HexicalMain
+import miyucomics.hexical.casting.environments.TweakedItemCastEnv
 import miyucomics.hexical.client.ClientStorage
 import miyucomics.hexical.client.PlayerAnimations
 import miyucomics.hexical.client.ShaderRenderer
 import miyucomics.hexical.data.*
-import miyucomics.hexical.items.TchotchkeItem
-import miyucomics.hexical.items.getTchotchke
 import miyucomics.hexical.utils.CastingUtils
+import miyucomics.hexical.utils.TweakedItemsUtils
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
@@ -21,7 +24,7 @@ import kotlin.random.Random
 
 object HexicalNetworking {
 	@JvmField
-	val TCHOTCHKE_CHANNEL: Identifier = HexicalMain.id("tchotchke")
+	val TWEAKED_ITEM_CHANNEL: Identifier = HexicalMain.id("tweaked_item")
 	val PRESSED_KEY_CHANNEL: Identifier = HexicalMain.id("press_key")
 	val RELEASED_KEY_CHANNEL: Identifier = HexicalMain.id("release_key")
 
@@ -37,11 +40,12 @@ object HexicalNetworking {
 	fun serverInit() {
 		ServerPlayNetworking.registerGlobalReceiver(LEDGER_CHANNEL) { _, player, _, _, _ -> LedgerData.clearLedger(player) }
 
-		ServerPlayNetworking.registerGlobalReceiver(TCHOTCHKE_CHANNEL) { server, player, _, buf, _ ->
-			val hand = getTchotchke(player) ?: return@registerGlobalReceiver
-			val boolean = buf.readBoolean()
+		ServerPlayNetworking.registerGlobalReceiver(TWEAKED_ITEM_CHANNEL) { server, player, _, buf, _ ->
+			val tweakedItem = TweakedItemsUtils.getTweakedItem(player) ?: return@registerGlobalReceiver
+			val inputMethod = buf.readInt()
 			server.execute {
-				TchotchkeItem.cast(player, hand, player.getStackInHand(hand), boolean)
+				val vm = CastingVM(CastingImage().copy(stack = inputMethod.asActionResult), TweakedItemCastEnv(player, tweakedItem.first, tweakedItem.second))
+				vm.queueExecuteAndWrapIotas(TweakedItemsUtils.getHex(tweakedItem.second, player.serverWorld), player.serverWorld)
 			}
 		}
 

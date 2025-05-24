@@ -32,7 +32,7 @@ object HexicalItems {
 	val GRIMOIRE_ITEM = GrimoireItem()
 	@JvmField
 	val SCARAB_BEETLE_ITEM = ScarabBeetleItem()
-	val TCHOTCHKE_ITEM = TchotchkeItem()
+	val TCHOTCHKE_ITEM = Item(Settings().maxCount(1))
 	val HEXBURST_ITEM = HexburstItem()
 	val HEXTITO_ITEM = HextitoItem()
 	val SMALL_ANIMATED_SCROLL_ITEM = AnimatedScrollItem(1)
