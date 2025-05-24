@@ -48,6 +48,10 @@ object HexicalItems {
 	private val GAUNTLET_STAFF = ItemStaff(Settings().maxCount(1))
 	private val LIGHTNING_ROD_STAFF = ItemStaff(Settings().maxCount(1))
 
+	private val HEXXY = Registry.register(Registries.ITEM, HexicalMain.id("plush_hexxy"), Item(Settings().maxCount(1)))
+	private val IRISSY = Registry.register(Registries.ITEM, HexicalMain.id("plush_irissy"), Item(Settings().maxCount(1)))
+	private val QUADXXY = Registry.register(Registries.ITEM, HexicalMain.id("plush_quadxxy"), Item(Settings().maxCount(1)))
+
 	@JvmStatic
 	fun init() {
 		Registry.register(Registries.ITEM_GROUP, HEXICAL_GROUP_KEY, HEXICAL_GROUP)
@@ -78,6 +82,10 @@ object HexicalItems {
 			entries.add(ItemStack(LEI))
 			entries.add(ItemStack(SCARAB_BEETLE_ITEM))
 			entries.add(ItemStack(GRIMOIRE_ITEM))
+
+			entries.add(HEXXY)
+			entries.add(IRISSY)
+			entries.add(QUADXXY)
 		}
 
 		Registry.register(Registries.ITEM, HexicalMain.id("animated_scroll_small"), SMALL_ANIMATED_SCROLL_ITEM)
