@@ -4,11 +4,13 @@ import at.petrak.hexcasting.api.casting.iota.IotaType;
 import at.petrak.hexcasting.api.misc.MediaConstants;
 import at.petrak.hexcasting.api.pigment.FrozenPigment;
 import at.petrak.hexcasting.api.utils.MediaHelper;
+import at.petrak.hexcasting.common.items.magic.ItemMediaHolder;
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex;
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import miyucomics.hexical.client.ClientStorage;
 import miyucomics.hexical.registry.HexicalBlocks;
+import miyucomics.hexical.utils.TweakedItemsUtils;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -17,6 +19,7 @@ import net.minecraft.nbt.NbtElement;
 import net.minecraft.nbt.NbtList;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
+import net.minecraft.text.TextColor;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.math.Vec3d;
 import org.spongepowered.asm.mixin.Mixin;
@@ -80,6 +83,19 @@ public class ItemStackMixin {
 		NbtCompound nbt = stack.getNbt();
 		if (nbt == null)
 			return;
+
+		if (TweakedItemsUtils.isStackTweaked(stack)) {
+			long maxMedia = TweakedItemsUtils.getMaxMedia(stack);
+			long media = TweakedItemsUtils.getMedia(stack);
+			var color = TextColor.fromRgb(MediaHelper.mediaBarColor(media, maxMedia));
+			var mediamount = Text.literal(TweakedItemsUtils.DUST_AMOUNT.format(media / (float) MediaConstants.DUST_UNIT));
+			var percentFull = Text.literal(TweakedItemsUtils.PERCENTAGE.format(100f * media / maxMedia) + "%");
+			var maxCapacity = Text.translatable("hexcasting.tooltip.media", TweakedItemsUtils.DUST_AMOUNT.format(maxMedia / (float) MediaConstants.DUST_UNIT));
+			mediamount.styled(style -> style.withColor(ItemMediaHolder.HEX_COLOR));
+			maxCapacity.styled(style -> style.withColor(ItemMediaHolder.HEX_COLOR));
+			percentFull.styled(style -> style.withColor(color));
+			cir.getReturnValue().add(Text.translatable("hexcasting.tooltip.media_amount.advanced", mediamount, maxCapacity, percentFull));
+		}
 
 		if (stack.isOf(HexicalBlocks.MEDIA_JAR_ITEM))
 			cir.getReturnValue().add(Text.translatable("hexcasting.tooltip.media", format.format(((float) nbt.getCompound("BlockEntityTag").getLong("media")) / ((float) MediaConstants.DUST_UNIT))));
