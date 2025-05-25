@@ -54,6 +54,10 @@ object TweakedItemsUtils {
 
 	@JvmStatic
 	fun deductMedia(stack: ItemStack, cost: Long) {
-		stack.nbt!!.getCompound("hex_tweak").putLong("media", stack.nbt!!.getLong("media") - cost)
+		val oldMedia = getMedia(stack)
+		if (oldMedia == cost)
+			stack.nbt!!.remove("hex_tweak")
+		else
+			stack.nbt!!.getCompound("hex_tweak").putLong("media", oldMedia - cost)
 	}
 }

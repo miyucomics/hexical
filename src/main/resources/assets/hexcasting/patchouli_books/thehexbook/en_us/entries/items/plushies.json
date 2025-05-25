@@ -1,0 +1,29 @@
+{
+	"name": "hexical.page.plushies.title",
+	"icon": "hexical:plush_hexxy",
+	"advancement": "hexcasting:root",
+	"category": "hexcasting:items",
+	"sortnum": 8,
+	"pages": [
+		{
+			"type": "patchouli:text",
+			"title": "hexical.page.plushies.title",
+			"text": "hexical.page.plushies.0"
+		},
+		{
+			"type": "patchouli:spotlight",
+			"text": "hexical.page.plushies.hexxy",
+			"item": "hexical:plush_hexxy"
+		},
+		{
+			"type": "patchouli:spotlight",
+			"text": "hexical.page.plushies.irissy",
+			"item": "hexical:plush_irissy"
+		},
+		{
+			"type": "patchouli:spotlight",
+			"text": "hexical.page.plushies.quadxxy",
+			"item": "hexical:plush_quadxxy"
+		}
+	]
+}
