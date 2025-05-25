@@ -17,12 +17,10 @@ class TweakedItemCastEnv(caster: ServerPlayerEntity, castingHand: Hand, val stac
 		if (caster.isCreative) return 0
 		var costLeft = cost
 		val currentMedia = TweakedItemsUtils.getMedia(stack)
-		costLeft -= currentMedia
-		if (simulate) {
-			val mediaLeft = currentMedia - cost
-			TweakedItemsUtils.deductMedia(stack, mediaLeft)
-		}
-		println(costLeft)
+		val mediaToDeduct = minOf(currentMedia, costLeft)
+		costLeft -= mediaToDeduct
+		if (!simulate)
+			TweakedItemsUtils.deductMedia(stack, mediaToDeduct)
 		return costLeft
 	}
 

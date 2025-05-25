@@ -249,6 +249,12 @@
 	"hexical.page.lei.summary": "Once I have recovered some, I can craft the flowers into a $(item)Lei$()! The $(item)Lei$() gives a small boost to my _Hexcasting reach, not unlike a $(l:items/lens)$(item)Scrying Lens$() although without the same ability to perceive extra information.",
 	"hexical.page.lei.description": "When worn, it prevents Nature from claiming my life as payment for _Hexes.$(br2)Unlike other armor, a $(item)Lei$() can be placed on other players if they are not currently wearing anything! Ancient _Hexcasters did this as a sign of endearment and affection due to the $(item)Lei$()'s protective and calming abilities, as well as the rarity of obtaining the flowers.",
 
+	"hexical.page.plushies.title": "Plushies",
+	"hexical.page.plushies.0": "The ancient _Hexcasters have these delightful $(item)Plushies$()! They seem to be references to some of the patterns I use in _Hexcasting. I'm not sure if they do anything, but they are a lovely little collector's item.$(br2)It seems they have been lost to time, but the occasional wandering merchant might have picked up one or two during their travels.",
+	"hexical.page.plushies.hexxy": "This one looks slightly deranged. I feel slightly anxious having it in my inventory.",
+	"hexical.page.plushies.irissy": "This one seems to stare directly at me no matter where I put it. What have you seen, great Irissy?",
+	"hexical.page.plushies.quadxxy": "This one might have been made by a bad craftsman. It's not even on a hexagonal grid!",
+
 	"hexical.page.wooleyed_potion.title": "Potions of Wooleyeing",
 	"hexical.page.wooleyed_potion.0": "These $(item)Potions$() let me forget some of the eldritch knowledge _Hexcasting provides. A base dose removes my ability to trade my own life for _media, useful if I do not want to be carried off from a mere miscalculation. Higher potencies remove the ability to cast great spells entirely, possibly useful as an offensive tool.$(br2)$(o)It is unseen.$()",
 	"hexical.page.wooleyed_potion.header": "Potion of Wooleyeing",
