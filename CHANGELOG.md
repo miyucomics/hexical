@@ -7,8 +7,10 @@
   - player stores data now; not persistent state
   - removed Myodesopsia spell
 - added lesser sentinels
+- added plushies
 - added Horrible
 - added HexGloop's Dispense spell
+- changed tchotchke's old features to be an enchantment you can place on any item
 - added pedestals - holds your items for you!
   - if used in a circle, it pushes the iota from the item on the pedestal
   - acts as a circle's other hand
