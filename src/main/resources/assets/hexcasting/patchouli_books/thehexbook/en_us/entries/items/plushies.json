@@ -17,6 +17,11 @@
 		},
 		{
 			"type": "patchouli:spotlight",
+			"text": "hexical.page.plushies.thothy",
+			"item": "hexical:plush_thothy"
+		},
+		{
+			"type": "patchouli:spotlight",
 			"text": "hexical.page.plushies.irissy",
 			"item": "hexical:plush_irissy"
 		},
@@ -24,6 +29,16 @@
 			"type": "patchouli:spotlight",
 			"text": "hexical.page.plushies.quadxxy",
 			"item": "hexical:plush_quadxxy"
+		},
+		{
+			"type": "patchouli:spotlight",
+			"text": "hexical.page.plushies.pentxxy",
+			"item": "hexical:plush_pentxxy"
+		},
+		{
+			"type": "patchouli:spotlight",
+			"text": "hexical.page.plushies.flexxy",
+			"item": "hexical:plush_flexxy"
 		}
 	]
 }
