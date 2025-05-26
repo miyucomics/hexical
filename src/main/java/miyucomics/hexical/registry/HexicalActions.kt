@@ -49,10 +49,10 @@ import miyucomics.hexical.casting.patterns.scroll.OpColorScroll
 import miyucomics.hexical.casting.patterns.scroll.OpGlowScroll
 import miyucomics.hexical.casting.patterns.scroll.OpVanishScroll
 import miyucomics.hexical.casting.patterns.specks.*
-import miyucomics.hexical.casting.patterns.tweaks.OpConjureTchotchke
-import miyucomics.hexical.casting.patterns.tweaks.OpHexTweak
-import miyucomics.hexical.casting.patterns.tweaks.OpReadTchotchke
-import miyucomics.hexical.casting.patterns.tweaks.OpWriteTchotchke
+import miyucomics.hexical.casting.patterns.OpConjureTchotchke
+import miyucomics.hexical.casting.patterns.charms.OpCharmItem
+import miyucomics.hexical.casting.patterns.charms.OpReadCharmed
+import miyucomics.hexical.casting.patterns.charms.OpWriteCharmed
 import miyucomics.hexical.casting.patterns.telepathy.OpGetKeybind
 import miyucomics.hexical.casting.patterns.telepathy.OpHallucinateSound
 import miyucomics.hexical.casting.patterns.telepathy.OpSendTelepathy
@@ -80,8 +80,6 @@ object HexicalActions {
 	fun init() {
 		// make it do something special later
 		register("horrible", "wedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqeedqawqeewdeaqqewdeaqeewdeaqeedqawqqedqawqqewdeaqeedqawqeewdeaqqewdeaqeewdeaqeedqawqqedqawqqewdeaqqedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqqedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqeedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqqedqawqeewdeaqqewdeaqeewdeaqeedqawqqedqawqqewdeaqe", HexDir.EAST, OpHorrible())
-
-		register("hex_tweak", "deqawq", HexDir.SOUTH_EAST, OpHexTweak())
 
 		register("age_scroll", "waeqqqqeqqqwqeaeaeaeq", HexDir.EAST, OpAgeScroll())
 		register("color_scroll", "waeqqqqewqqwqqeqeqqwqqeq", HexDir.EAST, OpColorScroll())
@@ -236,8 +234,6 @@ object HexicalActions {
 		register("spike", "qdqdqdqdww", HexDir.NORTH_EAST, OpConjureSpike())
 
 		register("conjure_tchotchke", "wwwwwaqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpConjureTchotchke())
-		register("write_tchotchke", "waqqqqqedeqdqdqdqdqe", HexDir.NORTH_EAST, OpWriteTchotchke())
-		register("read_tchotchke", "waqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpReadTchotchke())
 
 		register("get_evocation", "wwdeeeeeqeaqawwewewwaqawwewew", HexDir.EAST, OpGetEvocation())
 		register("set_evocation", "wwaqqqqqeqdedwwqwqwwdedwwqwqw", HexDir.EAST, OpSetEvocation())
@@ -259,6 +255,10 @@ object HexicalActions {
 		register("stonecut", "qqqqqwaeaeaeaeaeadawa", HexDir.EAST, OpStonecut())
 		register("hopper_in", "qwawqwaeqqq", HexDir.SOUTH_EAST, OpHopperInsert())
 		register("hopper_out", "qqqeawqwawq", HexDir.SOUTH_WEST, OpHopperExtract())
+
+		register("charm", "edeeeeeqaaqeeeadweeqeeqdqeeqeeqde", HexDir.SOUTH_EAST, OpCharmItem())
+		register("write_charmed", "waqqqqqedeqdqdqdqdqe", HexDir.NORTH_EAST, OpWriteCharmed())
+		register("read_charmed", "waqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpReadCharmed())
 
 		register("greater_blink", "wqawawaqwqwqawawaqw", HexDir.SOUTH_WEST, OpGreaterBlink())
 
