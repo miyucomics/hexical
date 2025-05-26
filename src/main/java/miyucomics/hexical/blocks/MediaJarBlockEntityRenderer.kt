@@ -14,7 +14,6 @@ class MediaJarBlockEntityRenderer(ctx: BlockEntityRendererFactory.Context) : Blo
 	override fun render(jarData: MediaJarBlockEntity?, tickDelta: Float, matrices: MatrixStack, vertexConsumers: VertexConsumerProvider, light: Int, overlay: Int) {
 		if (jarData == null)
 			return
-
 		val filled = jarData.getMedia().toFloat() / MediaJarBlock.MAX_CAPACITY.toFloat()
 		val consumer = vertexConsumers.getBuffer(HexicalClient.MEDIA_JAR_RENDER_LAYER)
 

@@ -5,13 +5,6 @@ import at.petrak.hexcasting.api.casting.castables.SpellAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.getVec3
 import at.petrak.hexcasting.api.casting.iota.Iota
-import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
-import at.petrak.hexcasting.api.misc.MediaConstants
-import miyucomics.hexposition.iotas.getIdentifier
-import net.minecraft.entity.EntityType
-import net.minecraft.entity.passive.ParrotEntity
-import net.minecraft.registry.Registries
-import net.minecraft.sound.SoundCategory
 import net.minecraft.util.math.Vec3d
 
 class OpHorrible : SpellAction {

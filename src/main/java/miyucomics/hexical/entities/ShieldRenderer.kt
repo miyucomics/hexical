@@ -2,7 +2,6 @@ package miyucomics.hexical.entities
 
 import at.petrak.hexcasting.api.HexAPI.modLoc
 import net.minecraft.client.render.*
-import net.minecraft.client.render.RenderPhase.TRANSLUCENT_TRANSPARENCY
 import net.minecraft.client.render.entity.EntityRenderer
 import net.minecraft.client.render.entity.EntityRendererFactory
 import net.minecraft.client.util.math.MatrixStack

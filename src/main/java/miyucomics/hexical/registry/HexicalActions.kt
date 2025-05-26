@@ -23,6 +23,9 @@ import miyucomics.hexical.casting.patterns.autograph.OpAutograph
 import miyucomics.hexical.casting.patterns.autograph.OpHasAutograph
 import miyucomics.hexical.casting.patterns.autograph.OpUnautograph
 import miyucomics.hexical.casting.patterns.block_mimicry.*
+import miyucomics.hexical.casting.patterns.charms.OpCharmItem
+import miyucomics.hexical.casting.patterns.charms.OpReadCharmed
+import miyucomics.hexical.casting.patterns.charms.OpWriteCharmed
 import miyucomics.hexical.casting.patterns.circle.OpDisplace
 import miyucomics.hexical.casting.patterns.colors.OpDye
 import miyucomics.hexical.casting.patterns.colors.OpGetDye
@@ -49,10 +52,6 @@ import miyucomics.hexical.casting.patterns.scroll.OpColorScroll
 import miyucomics.hexical.casting.patterns.scroll.OpGlowScroll
 import miyucomics.hexical.casting.patterns.scroll.OpVanishScroll
 import miyucomics.hexical.casting.patterns.specks.*
-import miyucomics.hexical.casting.patterns.OpConjureTchotchke
-import miyucomics.hexical.casting.patterns.charms.OpCharmItem
-import miyucomics.hexical.casting.patterns.charms.OpReadCharmed
-import miyucomics.hexical.casting.patterns.charms.OpWriteCharmed
 import miyucomics.hexical.casting.patterns.telepathy.OpGetKeybind
 import miyucomics.hexical.casting.patterns.telepathy.OpHallucinateSound
 import miyucomics.hexical.casting.patterns.telepathy.OpSendTelepathy
