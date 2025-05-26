@@ -1,8 +1,9 @@
 {
     "replace": false,
     "values": [
+        "hexical:charm",
         "hexical:conjure_mesh",
-        "hexical:greater_blink",
-        "hexical:effect_clarity"
+        "hexical:effect_clarity",
+        "hexical:greater_blink"
     ]
 }

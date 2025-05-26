@@ -1,10 +1,11 @@
 {
     "replace": false,
     "values": [
+        "hexical:charm",
         "hexical:conjure_mesh",
+        "hexical:effect_clarity",
         "hexical:greater_blink",
         "hexical:get_evocation",
-        "hexical:set_evocation",
-        "hexical:effect_clarity"
+        "hexical:set_evocation"
     ]
 }

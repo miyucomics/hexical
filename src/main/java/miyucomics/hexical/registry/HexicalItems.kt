@@ -16,6 +16,7 @@ import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.registry.RegistryKey
 import net.minecraft.text.Text
+import kotlin.random.Random
 
 object HexicalItems {
 	private val HEXICAL_GROUP_KEY: RegistryKey<ItemGroup> = RegistryKey.of(Registries.ITEM_GROUP.key, HexicalMain.id("general"))
@@ -50,7 +51,16 @@ object HexicalItems {
 
 	private val HEXXY = Registry.register(Registries.ITEM, HexicalMain.id("plush_hexxy"), Item(Settings().maxCount(1)))
 	private val IRISSY = Registry.register(Registries.ITEM, HexicalMain.id("plush_irissy"), Item(Settings().maxCount(1)))
+	private val PENTXXY = Registry.register(Registries.ITEM, HexicalMain.id("plush_pentxxy"), Item(Settings().maxCount(1)))
 	private val QUADXXY = Registry.register(Registries.ITEM, HexicalMain.id("plush_quadxxy"), Item(Settings().maxCount(1)))
+	private val THOTHY = Registry.register(Registries.ITEM, HexicalMain.id("plush_thothy"), Item(Settings().maxCount(1)))
+	private val FLEXXY = Registry.register(Registries.ITEM, HexicalMain.id("plush_flexxy"), Item(Settings().maxCount(1)))
+
+	@JvmStatic
+	fun randomPlush(): ItemStack {
+		val itemType = listOf(HEXXY, IRISSY, PENTXXY, QUADXXY, THOTHY, FLEXXY)[Random.nextInt(0, 7)]
+		return ItemStack(itemType)
+	}
 
 	@JvmStatic
 	fun init() {
@@ -85,7 +95,10 @@ object HexicalItems {
 
 			entries.add(HEXXY)
 			entries.add(IRISSY)
+			entries.add(PENTXXY)
 			entries.add(QUADXXY)
+			entries.add(THOTHY)
+			entries.add(FLEXXY)
 		}
 
 		Registry.register(Registries.ITEM, HexicalMain.id("animated_scroll_small"), SMALL_ANIMATED_SCROLL_ITEM)
