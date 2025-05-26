@@ -10,7 +10,7 @@ import net.minecraft.util.Hand
 import java.math.RoundingMode
 import java.text.DecimalFormat
 
-object TweakedItemsUtils {
+object CharmedItemUtilities {
 	@JvmField
 	val PERCENTAGE: DecimalFormat = DecimalFormat("####")
 	@JvmField
@@ -21,43 +21,43 @@ object TweakedItemsUtils {
 	}
 
 	@JvmStatic
-	fun getTweakedItem(player: PlayerEntity): Pair<Hand, ItemStack>? {
-		if (isStackTweaked(player.getStackInHand(Hand.OFF_HAND))) return Pair(Hand.OFF_HAND, player.getStackInHand(Hand.OFF_HAND))
-		if (isStackTweaked(player.getStackInHand(Hand.MAIN_HAND))) return Pair(Hand.MAIN_HAND, player.getStackInHand(Hand.MAIN_HAND))
+	fun getCharmedItem(player: PlayerEntity): Pair<Hand, ItemStack>? {
+		if (isStackCharmed(player.getStackInHand(Hand.OFF_HAND))) return Pair(Hand.OFF_HAND, player.getStackInHand(Hand.OFF_HAND))
+		if (isStackCharmed(player.getStackInHand(Hand.MAIN_HAND))) return Pair(Hand.MAIN_HAND, player.getStackInHand(Hand.MAIN_HAND))
 		return null
 	}
 
 	@JvmStatic
-	fun isStackTweaked(stack: ItemStack): Boolean {
-		return stack.hasNbt() && stack.nbt!!.contains("hex_tweak")
+	fun isStackCharmed(stack: ItemStack): Boolean {
+		return stack.hasNbt() && stack.nbt!!.contains("charmed")
 	}
 
 	@JvmStatic
 	fun getBoolean(stack: ItemStack, target: String): Boolean {
-		return stack.nbt!!.getCompound("hex_tweak").getBoolean(target)
+		return stack.nbt!!.getCompound("charmed").getBoolean(target)
 	}
 
 	@JvmStatic
 	fun getHex(stack: ItemStack, world: ServerWorld): List<Iota> {
-		return (IotaType.deserialize(stack.nbt!!.getCompound("hex_tweak").getCompound("instructions"), world) as ListIota).list.toList()
+		return (IotaType.deserialize(stack.nbt!!.getCompound("charmed").getCompound("instructions"), world) as ListIota).list.toList()
 	}
 
 	@JvmStatic
 	fun getMedia(stack: ItemStack): Long {
-		return stack.nbt!!.getCompound("hex_tweak").getLong("media")
+		return stack.nbt!!.getCompound("charmed").getLong("media")
 	}
 
 	@JvmStatic
 	fun getMaxMedia(stack: ItemStack): Long {
-		return stack.nbt!!.getCompound("hex_tweak").getLong("max_media")
+		return stack.nbt!!.getCompound("charmed").getLong("max_media")
 	}
 
 	@JvmStatic
 	fun deductMedia(stack: ItemStack, cost: Long) {
 		val oldMedia = getMedia(stack)
 		if (oldMedia == cost)
-			stack.nbt!!.remove("hex_tweak")
+			stack.nbt!!.remove("charmed")
 		else
-			stack.nbt!!.getCompound("hex_tweak").putLong("media", oldMedia - cost)
+			stack.nbt!!.getCompound("charmed").putLong("media", oldMedia - cost)
 	}
 }

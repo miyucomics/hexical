@@ -1,0 +1,45 @@
+{
+	"name": "hexcasting.action.hexical:charm",
+	"icon": "minecraft:enchanted_book",
+	"category": "hexcasting:patterns/great_spells",
+	"advancement": "hexcasting:root",
+	"sortnum": 3,
+	"pages": [
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.charm.0"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.charm.1"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:charm",
+			"anchor": "hexical:charm",
+			"input": "list, num, num",
+			"output": "",
+			"text": "hexical.page.charm.summary"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.charm.description"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:write_charmed",
+			"anchor": "hexical:write_charmed",
+			"input": "any",
+			"output": "",
+			"text": "hexical.page.write_charmed.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:read_charmed",
+			"anchor": "hexical:read_charmed",
+			"input": "",
+			"output": "any",
+			"text": "hexical.page.read_charmed.summary"
+		}
+	]
+}

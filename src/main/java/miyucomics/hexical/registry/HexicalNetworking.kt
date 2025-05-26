@@ -6,13 +6,13 @@ import at.petrak.hexcasting.api.casting.eval.vm.CastingVM
 import dev.kosmx.playerAnim.api.layered.KeyframeAnimationPlayer
 import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationRegistry
 import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.casting.environments.TweakedItemCastEnv
+import miyucomics.hexical.casting.environments.CharmedItemCastEnv
 import miyucomics.hexical.client.ClientStorage
 import miyucomics.hexical.client.PlayerAnimations
 import miyucomics.hexical.client.ShaderRenderer
 import miyucomics.hexical.data.*
 import miyucomics.hexical.utils.CastingUtils
-import miyucomics.hexical.utils.TweakedItemsUtils
+import miyucomics.hexical.utils.CharmedItemUtilities
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
@@ -24,7 +24,7 @@ import kotlin.random.Random
 
 object HexicalNetworking {
 	@JvmField
-	val TWEAKED_ITEM_CHANNEL: Identifier = HexicalMain.id("tweaked_item")
+	val CHARMED_ITEM_USE_CHANNEL: Identifier = HexicalMain.id("charmed_item")
 	val PRESSED_KEY_CHANNEL: Identifier = HexicalMain.id("press_key")
 	val RELEASED_KEY_CHANNEL: Identifier = HexicalMain.id("release_key")
 
@@ -40,12 +40,12 @@ object HexicalNetworking {
 	fun serverInit() {
 		ServerPlayNetworking.registerGlobalReceiver(LEDGER_CHANNEL) { _, player, _, _, _ -> LedgerData.clearLedger(player) }
 
-		ServerPlayNetworking.registerGlobalReceiver(TWEAKED_ITEM_CHANNEL) { server, player, _, buf, _ ->
-			val tweakedItem = TweakedItemsUtils.getTweakedItem(player) ?: return@registerGlobalReceiver
+		ServerPlayNetworking.registerGlobalReceiver(CHARMED_ITEM_USE_CHANNEL) { server, player, _, buf, _ ->
+			val charmedItem = CharmedItemUtilities.getCharmedItem(player) ?: return@registerGlobalReceiver
 			val inputMethod = buf.readInt()
 			server.execute {
-				val vm = CastingVM(CastingImage().copy(stack = inputMethod.asActionResult), TweakedItemCastEnv(player, tweakedItem.first, tweakedItem.second))
-				vm.queueExecuteAndWrapIotas(TweakedItemsUtils.getHex(tweakedItem.second, player.serverWorld), player.serverWorld)
+				val vm = CastingVM(CastingImage().copy(stack = inputMethod.asActionResult), CharmedItemCastEnv(player, charmedItem.first, charmedItem.second))
+				vm.queueExecuteAndWrapIotas(CharmedItemUtilities.getHex(charmedItem.second, player.serverWorld), player.serverWorld)
 			}
 		}
 

@@ -10,7 +10,7 @@ import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import miyucomics.hexical.client.ClientStorage;
 import miyucomics.hexical.registry.HexicalBlocks;
-import miyucomics.hexical.utils.TweakedItemsUtils;
+import miyucomics.hexical.utils.CharmedItemUtilities;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -37,43 +37,43 @@ public class ItemStackMixin {
 	private final DecimalFormat format = new DecimalFormat("###,###.##");
 
 	@WrapMethod(method = "isItemBarVisible")
-	public boolean addMediaTchotchkeDisplay(Operation<Boolean> original) {
+	public boolean addCharmedMediaDisplay(Operation<Boolean> original) {
 		ItemStack stack = ((ItemStack) (Object) this);
 		NbtCompound nbt = stack.getNbt();
 		if (nbt == null)
 			return original.call();
-		if (!nbt.contains("hex_tweak"))
+		if (!nbt.contains("charmed"))
 			return original.call();
 		return true;
 	}
 
 	@WrapMethod(method = "getItemBarStep")
-	public int addMediaTchotchkeStep(Operation<Integer> original) {
+	public int addCharmedMediaStep(Operation<Integer> original) {
 		ItemStack stack = ((ItemStack) (Object) this);
 		NbtCompound nbt = stack.getNbt();
 		if (nbt == null)
 			return original.call();
-		if (!nbt.contains("hex_tweak"))
+		if (!nbt.contains("charmed"))
 			return original.call();
 
-		NbtCompound hexTweak = nbt.getCompound("hex_tweak");
-		int maxMedia = hexTweak.getInt("max_media");
-		int media = hexTweak.getInt("media");
+		NbtCompound charm = nbt.getCompound("charmed");
+		int maxMedia = charm.getInt("max_media");
+		int media = charm.getInt("media");
 		return MediaHelper.mediaBarWidth(media, maxMedia);
 	}
 
 	@WrapMethod(method = "getItemBarColor")
-	public int addMediaTchotchkeColor(Operation<Integer> original) {
+	public int addCharmedMediaColor(Operation<Integer> original) {
 		ItemStack stack = ((ItemStack) (Object) this);
 		NbtCompound nbt = stack.getNbt();
 		if (nbt == null)
 			return original.call();
-		if (!nbt.contains("hex_tweak"))
+		if (!nbt.contains("charmed"))
 			return original.call();
 
-		NbtCompound hexTweak = nbt.getCompound("hex_tweak");
-		int maxMedia = hexTweak.getInt("max_media");
-		int media = hexTweak.getInt("media");
+		NbtCompound charm = nbt.getCompound("charmed");
+		int maxMedia = charm.getInt("max_media");
+		int media = charm.getInt("media");
 		return MediaHelper.mediaBarColor(media, maxMedia);
 	}
 
@@ -84,16 +84,17 @@ public class ItemStackMixin {
 		if (nbt == null)
 			return;
 
-		if (TweakedItemsUtils.isStackTweaked(stack)) {
-			long maxMedia = TweakedItemsUtils.getMaxMedia(stack);
-			long media = TweakedItemsUtils.getMedia(stack);
+		if (CharmedItemUtilities.isStackCharmed(stack)) {
+			long maxMedia = CharmedItemUtilities.getMaxMedia(stack);
+			long media = CharmedItemUtilities.getMedia(stack);
 			var color = TextColor.fromRgb(MediaHelper.mediaBarColor(media, maxMedia));
-			var mediamount = Text.literal(TweakedItemsUtils.DUST_AMOUNT.format(media / (float) MediaConstants.DUST_UNIT));
-			var percentFull = Text.literal(TweakedItemsUtils.PERCENTAGE.format(100f * media / maxMedia) + "%");
-			var maxCapacity = Text.translatable("hexcasting.tooltip.media", TweakedItemsUtils.DUST_AMOUNT.format(maxMedia / (float) MediaConstants.DUST_UNIT));
+			var mediamount = Text.literal(CharmedItemUtilities.DUST_AMOUNT.format(media / (float) MediaConstants.DUST_UNIT));
+			var percentFull = Text.literal(CharmedItemUtilities.PERCENTAGE.format(100f * media / maxMedia) + "%");
+			var maxCapacity = Text.translatable("hexcasting.tooltip.media", CharmedItemUtilities.DUST_AMOUNT.format(maxMedia / (float) MediaConstants.DUST_UNIT));
 			mediamount.styled(style -> style.withColor(ItemMediaHolder.HEX_COLOR));
 			maxCapacity.styled(style -> style.withColor(ItemMediaHolder.HEX_COLOR));
 			percentFull.styled(style -> style.withColor(color));
+			cir.getReturnValue().add(Text.translatable("hexical.charmed").styled(style -> style.withColor(ItemMediaHolder.HEX_COLOR)));
 			cir.getReturnValue().add(Text.translatable("hexcasting.tooltip.media_amount.advanced", mediamount, maxCapacity, percentFull));
 		}
 

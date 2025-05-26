@@ -7,20 +7,20 @@ import at.petrak.hexcasting.api.casting.iota.NullIota
 import at.petrak.hexcasting.api.pigment.FrozenPigment
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.xplat.IXplatAbstractions
-import miyucomics.hexical.utils.TweakedItemsUtils
+import miyucomics.hexical.utils.CharmedItemUtilities
 import net.minecraft.item.ItemStack
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.Hand
 
-class TweakedItemCastEnv(caster: ServerPlayerEntity, castingHand: Hand, val stack: ItemStack) : PlayerBasedCastEnv(caster, castingHand) {
+class CharmedItemCastEnv(caster: ServerPlayerEntity, castingHand: Hand, val stack: ItemStack) : PlayerBasedCastEnv(caster, castingHand) {
 	override fun extractMediaEnvironment(cost: Long, simulate: Boolean): Long {
 		if (caster.isCreative) return 0
 		var costLeft = cost
-		val currentMedia = TweakedItemsUtils.getMedia(stack)
+		val currentMedia = CharmedItemUtilities.getMedia(stack)
 		val mediaToDeduct = minOf(currentMedia, costLeft)
 		costLeft -= mediaToDeduct
 		if (!simulate)
-			TweakedItemsUtils.deductMedia(stack, mediaToDeduct)
+			CharmedItemUtilities.deductMedia(stack, mediaToDeduct)
 		return costLeft
 	}
 
@@ -29,11 +29,11 @@ class TweakedItemCastEnv(caster: ServerPlayerEntity, castingHand: Hand, val stac
 
 	fun getInternalStorage(): Iota {
 		val nbt = this.stack.orCreateNbt
-		if (nbt.contains("tweaked_storage"))
-			return IotaType.deserialize(nbt.getCompound("tweaked_storage"), caster.serverWorld)
+		if (nbt.contains("charmed_storage"))
+			return IotaType.deserialize(nbt.getCompound("charmed_storage"), caster.serverWorld)
 		return NullIota()
 	}
 
 	fun setInternalStorage(iota: Iota) =
-		this.stack.orCreateNbt.putCompound("tweaked_storage", IotaType.serialize(iota))
+		this.stack.orCreateNbt.putCompound("charmed_storage", IotaType.serialize(iota))
 }
