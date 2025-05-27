@@ -26,7 +26,7 @@ class OpCharmItem : SpellAction {
 		args.getList(0, argc)
 		CastingUtils.assertNoTruename(args[0], env)
 		val battery = args.getPositiveDouble(1, argc)
-		val inputs = args.getPositiveIntUnderInclusive(0, 15, argc)
+		val inputs = args.getPositiveIntUnderInclusive(2, 15, argc)
 		val a = (inputs and 0b1000) != 0
 		val b = (inputs and 0b0100) != 0
 		val c = (inputs and 0b0010) != 0
@@ -34,7 +34,7 @@ class OpCharmItem : SpellAction {
 		return SpellAction.Result(Spell(stack.stack, args[0], (battery * MediaConstants.DUST_UNIT).toLong(), a, b, c, d), 3 * MediaConstants.CRYSTAL_UNIT + MediaConstants.DUST_UNIT * battery.toInt(), listOf())
 	}
 
-	private data class Spell(val stack: ItemStack, val instructions: Iota, val battery: Long, val left: Boolean, val right: Boolean, val leftSneak: Boolean, val rightSneak: Boolean) : RenderedSpell {
+	private data class Spell(val stack: ItemStack, val instructions: Iota, val battery: Long, val left: Boolean, val leftSneak: Boolean, val right: Boolean, val rightSneak: Boolean) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
 			val nbt = stack.orCreateNbt
 			val charm = NbtCompound()

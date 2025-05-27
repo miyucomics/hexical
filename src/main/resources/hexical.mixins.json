@@ -27,6 +27,7 @@
 		"LivingEntityMixin",
 		"MediaHelperMixin",
 		"OpEraseMixin",
+		"OpEraseSpellMixin",
 		"OpReadMixin",
 		"PacketByteBufMixin",
 		"PatternIotaMixin",
