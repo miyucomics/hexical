@@ -33,6 +33,11 @@ object CharmedItemUtilities {
 	}
 
 	@JvmStatic
+	fun removeCharm(stack: ItemStack) {
+		stack.nbt!!.remove("charmed")
+	}
+
+	@JvmStatic
 	fun getBoolean(stack: ItemStack, target: String): Boolean {
 		return stack.nbt!!.getCompound("charmed").getBoolean(target)
 	}
@@ -55,8 +60,8 @@ object CharmedItemUtilities {
 	@JvmStatic
 	fun deductMedia(stack: ItemStack, cost: Long) {
 		val oldMedia = getMedia(stack)
-		if (oldMedia == cost)
-			stack.nbt!!.remove("charmed")
+		if (oldMedia <= cost)
+			removeCharm(stack)
 		else
 			stack.nbt!!.getCompound("charmed").putLong("media", oldMedia - cost)
 	}

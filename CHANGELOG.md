@@ -92,7 +92,7 @@
   - fixed poor translation of Tool and Accessory Purification
 - migrated metaeval patterns and soroban to Overevaluate, a new addon
 - optimized Greater Blink to not load chunks in between
-- removed rank from tchotchke, should basically affect no one since they pop the iota off anyways
+- removed tchotchkes
 - removed the Myodesopsia spell
 - removed Alteration Purification
 - removed Pocket Reflection II
