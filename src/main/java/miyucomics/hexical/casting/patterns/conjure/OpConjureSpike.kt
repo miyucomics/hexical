@@ -28,11 +28,11 @@ class OpConjureSpike : SpellAction {
 		val direction = Direction.fromVector(offset.x, offset.y, offset.z) ?: throw MishapInvalidIota.of(args[1], 1, "axis_vector")
 		if (!env.world.getBlockState(position).isSideSolidFullSquare(env.world, position, direction))
 			throw MishapBadBlock.of(position, "solid_platform")
-		if (env.world.getEntitiesByType(HexicalEntities.SPIKE_ENTITY, Box.of(Vec3d.ofCenter(position.add(offset)), 0.9, 0.9, 0.9)) { true }.size > 0)
+		if (env.world.getEntitiesByType(HexicalEntities.SPIKE_ENTITY, Box.of(Vec3d.ofCenter(position.add(offset)), 0.9, 0.9, 0.9)) { true }.isNotEmpty())
 			return SpellAction.Result(Noop(position), 0, listOf())
 		val delay = floor(args.getPositiveDoubleUnderInclusive(2, 10.0, argc) * 20.0).toInt()
 		val spawn = Vec3d.ofBottomCenter(position).add(Vec3d.of(direction.vector))
-		return SpellAction.Result(Spell(spawn, direction, delay), MediaConstants.SHARD_UNIT, listOf(ParticleSpray.cloud(spawn, 1.0)))
+		return SpellAction.Result(Spell(spawn, direction, delay), MediaConstants.DUST_UNIT, listOf(ParticleSpray.cloud(spawn, 1.0)))
 	}
 
 	private data class Noop(val position: BlockPos) : RenderedSpell {
