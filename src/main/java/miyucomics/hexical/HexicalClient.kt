@@ -31,7 +31,9 @@ class HexicalClient : ClientModInitializer {
 			false,
 			MultiPhaseParameters.builder()
 				.program(RenderPhase.ShaderProgram { ShaderProgram(MinecraftClient.getInstance().resourceManager, "rendertype_media_jar", VertexFormats.POSITION) })
-				.transparency(RenderLayer.TRANSLUCENT_TRANSPARENCY)
+				.writeMaskState(RenderPhase.COLOR_MASK)
+				.depthTest(RenderPhase.LEQUAL_DEPTH_TEST)
+				.cull(RenderPhase.DISABLE_CULLING)
 				.build(false)
 		)
 	}
