@@ -55,16 +55,19 @@ class LesserSentinelState {
 		}
 
 		fun registerClientReciever() {
-			ClientPlayNetworking.registerGlobalReceiver(LESSER_SENTINEL_CHANNEL) { _, _, packet, _ ->
+			ClientPlayNetworking.registerGlobalReceiver(LESSER_SENTINEL_CHANNEL) { client, _, packet, _ ->
 				val count = packet.readInt()
-				ClientStorage.lesserSentinels.clear()
-				for (i in 0 until count) {
+				val list = mutableListOf<Vec3d>()
+				repeat(count) {
 					val x = packet.readDouble()
 					val y = packet.readDouble()
 					val z = packet.readDouble()
-					ClientStorage.lesserSentinels.add(Vec3d(x, y, z))
+					list.add(Vec3d(x, y, z))
 				}
-				println(ClientStorage.lesserSentinels)
+				client.execute {
+					ClientStorage.lesserSentinels.clear()
+					ClientStorage.lesserSentinels.addAll(list)
+				}
 			}
 		}
 	}
