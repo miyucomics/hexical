@@ -14,7 +14,6 @@ import miyucomics.hexposition.iotas.getIdentifier
 import net.minecraft.block.Block
 import net.minecraft.block.FlowerPotBlock
 import net.minecraft.block.TallPlantBlock
-import net.minecraft.block.enums.DoubleBlockHalf
 import net.minecraft.registry.Registries
 import net.minecraft.registry.tag.BlockTags
 import net.minecraft.util.math.BlockPos
@@ -49,8 +48,12 @@ class OpConjureFlower : SpellAction {
 
 	private data class GroundPlant(val position: BlockPos, val flower: Block) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			env.world.setBlockState(position.up(), flower.defaultState.with(TallPlantBlock.HALF, DoubleBlockHalf.UPPER), Block.FORCE_STATE or Block.NOTIFY_LISTENERS)
-			env.world.setBlockState(position, flower.defaultState.with(TallPlantBlock.HALF, DoubleBlockHalf.LOWER), Block.FORCE_STATE or Block.NOTIFY_LISTENERS)
+			if (flower is TallPlantBlock) {
+				TallPlantBlock.placeAt(env.world, flower.defaultState, position, Block.NOTIFY_LISTENERS or Block.FORCE_STATE)
+			}
+			else {
+				env.world.setBlockState(position, flower.defaultState)
+			}
 		}
 	}
 
