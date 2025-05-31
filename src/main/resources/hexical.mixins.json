@@ -21,7 +21,6 @@
     "CircleCastEnvMixin",
     "DispenserBlockInvoker",
     "FabricIXplatImplMixin",
-    "FabricXplatImplMixin",
     "ItemAbacusMixin",
     "ItemEntityMixin",
     "ItemStackMixin",
