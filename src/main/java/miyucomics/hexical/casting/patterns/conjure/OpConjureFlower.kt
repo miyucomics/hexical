@@ -14,7 +14,6 @@ import miyucomics.hexposition.iotas.getIdentifier
 import net.minecraft.block.Block
 import net.minecraft.block.FlowerPotBlock
 import net.minecraft.block.TallPlantBlock
-import net.minecraft.block.enums.DoubleBlockHalf
 import net.minecraft.registry.Registries
 import net.minecraft.registry.tag.BlockTags
 import net.minecraft.util.math.BlockPos
