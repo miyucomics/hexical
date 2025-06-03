@@ -21,7 +21,7 @@ import java.util.List;
 @Mixin(value = FabricXplatImpl.class, remap = false)
 public class FabricIXplatImplMixin {
 	@Inject(method = "findDataHolder(Lnet/minecraft/entity/Entity;)Lat/petrak/hexcasting/api/addldata/ADIotaHolder;", at = @At("HEAD"), cancellable = true)
-	private void readFromLivingScrolls(Entity entity, CallbackInfoReturnable<ADIotaHolder> cir) {
+	private void readFromAnimatedScrolls(Entity entity, CallbackInfoReturnable<ADIotaHolder> cir) {
 		if (entity instanceof AnimatedScrollEntity)
 			cir.setReturnValue((AnimatedScrollEntity) entity);
 	}
