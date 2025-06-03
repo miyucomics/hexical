@@ -89,7 +89,7 @@ object HexicalActions {
 		register("erase_grimoire", "aqwqaqded", HexDir.WEST, OpGrimoireErase())
 		register("index_grimoire", "aqaeaqwqa", HexDir.SOUTH_EAST, OpGrimoireIndex())
 
-		register("periwinkle", "qaqwqaqwqaq", HexDir.NORTH_EAST, Action.makeConstantOp(IdentifierIota(HexicalMain.id("periwinkle"))))
+		register("periwinkle", "wwwaqdadaadadqqqeaeq", HexDir.EAST, Action.makeConstantOp(IdentifierIota(HexicalMain.id("periwinkle"))))
 
 		register("wish", "eweweweweweewedeaqqqd", HexDir.NORTH_WEST, OpWish())
 		register("recharge_lamp", "qaqwawqwqqwqwqwqwqwqq", HexDir.EAST, OpRechargeLamp())
@@ -222,7 +222,7 @@ object HexicalActions {
 		register("gasp", "aweeeeewaweeeee", HexDir.NORTH_WEST, OpGasp())
 		register("parrot", "wweedadw", HexDir.NORTH_EAST, OpImitateParrot())
 
-		register("effect_clouding", "wddwaqqeawaeqwa", HexDir.SOUTH_EAST, OpPotionEffect(HexMobEffects.SHRINK_GRID, MediaConstants.DUST_UNIT / 3, allowPotency = true, potencyCubic = false))
+		register("effect_clouding", "qqqqqeawawwwawqaeweaqwaww", HexDir.SOUTH_EAST, OpPotionEffect(HexMobEffects.SHRINK_GRID, MediaConstants.DUST_UNIT / 3, allowPotency = true, potencyCubic = false))
 		register("effect_clarity", "wdwdqeeeeedwqwddwq", HexDir.SOUTH_EAST, OpPotionEffect(HexMobEffects.ENLARGE_GRID, MediaConstants.DUST_UNIT, allowPotency = true, potencyCubic = true))
 
 		register("conjure_gummy", "eeewdw", HexDir.SOUTH_WEST, OpConjureGummy())
