@@ -10,7 +10,10 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
+import net.minecraft.registry.RegistryKey;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -54,7 +57,7 @@ public class PlayerEntityMixin implements PlayerEntityMinterface {
 			hexical$evocation = compound.getCompound("evocation");
 
 		if (compound.contains("lesser_sentinels"))
-			hexical$lesserSentinels = LesserSentinelState.createFromNbt(compound.getList("lesser_sentinels", NbtElement.DOUBLE_TYPE));
+			hexical$lesserSentinels = LesserSentinelState.createFromNbt(compound.getList("lesser_sentinels", NbtElement.COMPOUND_TYPE));
 
 		hexical$wristpocket = ItemStack.fromNbt(compound.getCompound("wristpocket"));
 	}

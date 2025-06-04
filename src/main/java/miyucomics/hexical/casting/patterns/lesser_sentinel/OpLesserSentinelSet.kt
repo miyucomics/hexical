@@ -28,7 +28,7 @@ class OpLesserSentinelSet : SpellAction {
 	private data class Spell(val pos: List<Vec3d>) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
 			val lesserSentinels = (env.castingEntity as PlayerEntityMinterface).getLesserSentinels()
-			lesserSentinels.lesserSentinels = pos.toMutableList()
+			lesserSentinels.getCurrentInstance(env.castingEntity as ServerPlayerEntity).lesserSentinels = pos.toMutableList()
 			lesserSentinels.syncToClient(env.castingEntity as ServerPlayerEntity)
 		}
 	}

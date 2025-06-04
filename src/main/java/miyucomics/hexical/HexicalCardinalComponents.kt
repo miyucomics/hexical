@@ -14,7 +14,7 @@ import miyucomics.hexical.registry.HexicalItems
 
 class HexicalCardinalComponents : EntityComponentInitializer, ItemComponentInitializer {
 	override fun registerEntityComponentFactories(registry: EntityComponentFactoryRegistry) {
-		registry.registerFor(AnimatedScrollEntity::class.java, HexCardinalComponents.IOTA_HOLDER) { entity -> CCIotaHolder }
+//		registry.registerFor(AnimatedScrollEntity::class.java, HexCardinalComponents.IOTA_HOLDER) { entity -> CCIotaHolder }
 	}
 
 	override fun registerItemComponentFactories(registry: ItemComponentFactoryRegistry) {
