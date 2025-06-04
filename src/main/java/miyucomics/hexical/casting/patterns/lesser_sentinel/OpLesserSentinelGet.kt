@@ -14,6 +14,6 @@ class OpLesserSentinelGet : ConstMediaAction {
 	override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
 		if (env.castingEntity !is ServerPlayerEntity)
 			throw MishapBadCaster()
-		return (env.castingEntity as PlayerEntityMinterface).getLesserSentinels().lesserSentinels.map { Vec3Iota(it) }.asActionResult
+		return (env.castingEntity as PlayerEntityMinterface).getLesserSentinels().getCurrentInstance(env.castingEntity as ServerPlayerEntity).lesserSentinels.map { Vec3Iota(it) }.asActionResult
 	}
 }
