@@ -1,7 +1,9 @@
 package miyucomics.hexical
 
+import miyucomics.hexical.client.AnimatedPatternTooltipComponent
 import miyucomics.hexical.registry.*
 import net.fabricmc.api.ClientModInitializer
+import net.fabricmc.fabric.api.client.rendering.v1.TooltipComponentCallback
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.gl.ShaderProgram
 import net.minecraft.client.render.RenderLayer
@@ -19,6 +21,8 @@ class HexicalClient : ClientModInitializer {
 		HexicalItems.clientInit()
 		HexicalNetworking.clientInit()
 		HexicalParticles.clientInit()
+
+		TooltipComponentCallback.EVENT.register(AnimatedPatternTooltipComponent::tryConvert)
 	}
 
 	companion object {
