@@ -1,21 +1,30 @@
 package miyucomics.hexical.items
 
 import at.petrak.hexcasting.api.casting.iota.*
+import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.item.IotaHolderItem
-import at.petrak.hexcasting.api.utils.hasCompound
+import at.petrak.hexcasting.api.utils.asCompound
+import at.petrak.hexcasting.api.utils.containsTag
+import at.petrak.hexcasting.api.utils.getBoolean
+import at.petrak.hexcasting.api.utils.getList
 import at.petrak.hexcasting.api.utils.hasInt
+import at.petrak.hexcasting.api.utils.putList
 import at.petrak.hexcasting.common.blocks.akashic.BlockEntityAkashicBookshelf
 import at.petrak.hexcasting.common.lib.HexBlocks
 import at.petrak.hexcasting.common.lib.HexSounds
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
+import miyucomics.hexical.client.AnimatedPatternTooltip
+import miyucomics.hexical.client.ClientStorage
 import miyucomics.hexical.entities.AnimatedScrollEntity
 import net.minecraft.client.item.TooltipContext
+import net.minecraft.client.item.TooltipData
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.item.ItemUsageContext
 import net.minecraft.nbt.NbtCompound
-import net.minecraft.server.world.ServerWorld
+import net.minecraft.nbt.NbtElement
+import net.minecraft.nbt.NbtList
 import net.minecraft.sound.SoundCategory
 import net.minecraft.text.Text
 import net.minecraft.util.ActionResult
@@ -24,6 +33,7 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
 import net.minecraft.world.World
 import net.minecraft.world.event.GameEvent
+import java.util.*
 
 class AnimatedScrollItem(private val size: Int) : Item(Settings()), IotaHolderItem {
 	private fun canPlaceOn(player: PlayerEntity, side: Direction, stack: ItemStack, pos: BlockPos) = !side.axis.isVertical && player.canPlaceOn(pos, side, stack)
@@ -48,14 +58,7 @@ class AnimatedScrollItem(private val size: Int) : Item(Settings()), IotaHolderIt
 		if (player != null && !canPlaceOn(player, direction, stack, position))
 			return ActionResult.FAIL
 
-		val patternList = mutableListOf<NbtCompound>()
-		if (stack.hasCompound("patterns") && !world.isClient) {
-			val list = (IotaType.deserialize(stack.orCreateNbt.getCompound("patterns")!!, world as ServerWorld) as ListIota).list
-			for (iota in list)
-				patternList.add((iota as PatternIota).pattern.serializeToNBT())
-		}
-
-		val scroll = AnimatedScrollEntity(world, position, direction, size, patternList)
+		val scroll = AnimatedScrollEntity(world, position, direction, size, stack.getList("patterns", NbtElement.COMPOUND_TYPE.toInt())!!.map { it.asCompound })
 		if (stack.orCreateNbt.getBoolean("aged"))
 			scroll.toggleAged()
 		if (stack.orCreateNbt.getBoolean("glow"))
@@ -79,31 +82,42 @@ class AnimatedScrollItem(private val size: Int) : Item(Settings()), IotaHolderIt
 	}
 
 	override fun appendTooltip(stack: ItemStack, world: World?, tooltip: MutableList<Text>, context: TooltipContext) {
-		if (stack.orCreateNbt.getBoolean("aged"))
+		if (stack.getBoolean("aged"))
 			tooltip.add(Text.translatable("tooltip.hexical.scroll_aged").formatted(Formatting.GOLD))
-		if (stack.orCreateNbt.getBoolean("glow"))
+		if (stack.getBoolean("glow"))
 			tooltip.add(Text.translatable("tooltip.hexical.scroll_glow").formatted(Formatting.GOLD))
-		if (stack.orCreateNbt.getBoolean("vanished"))
+		if (stack.getBoolean("vanished"))
 			tooltip.add(Text.translatable("tooltip.hexical.scroll_vanished").formatted(Formatting.GOLD))
 		super.appendTooltip(stack, world, tooltip, context)
 	}
 
+	override fun getTooltipData(stack: ItemStack): Optional<TooltipData> {
+		val patterns = stack.getList("patterns", NbtElement.COMPOUND_TYPE.toInt())
+		if (patterns != null) {
+			val pattern = HexPattern.fromNBT(patterns[(ClientStorage.ticks / 20) % patterns.size].asCompound)
+			return Optional.of(AnimatedPatternTooltip(if (stack.containsTag("color")) stack.orCreateNbt.getInt("color") else 0xff_000000.toInt(), pattern, stack.getBoolean("aged")))
+		}
+		return Optional.empty()
+	}
+
 	override fun readIotaTag(stack: ItemStack): NbtCompound {
-		if (stack.orCreateNbt.hasCompound("patterns"))
-			return stack.orCreateNbt.getCompound("patterns")
-		return IotaType.serialize(NullIota())
+		val patterns = stack.getList("patterns", NbtElement.COMPOUND_TYPE.toInt())
+		if (patterns == null)
+			return IotaType.serialize(NullIota())
+		return IotaType.serialize(ListIota(patterns.map { PatternIota(HexPattern.fromNBT(it.asCompound)) }))
 	}
 
 	override fun writeable(stack: ItemStack) = true
 
 	override fun canWrite(stack: ItemStack, iota: Iota?): Boolean {
 		if (iota == null)
+			return stack.containsTag("patterns")
+		if (iota is PatternIota)
 			return true
-		if (iota.type == HexIotaTypes.PATTERN)
-			return true
-		if (iota.type != HexIotaTypes.LIST)
+		if (iota !is ListIota)
 			return false
-		(iota as ListIota).list.forEach {
+
+		iota.list.forEach {
 			if (it.type != HexIotaTypes.PATTERN)
 				return false
 		}
@@ -113,11 +127,14 @@ class AnimatedScrollItem(private val size: Int) : Item(Settings()), IotaHolderIt
 	override fun writeDatum(stack: ItemStack, iota: Iota?) {
 		if (iota == null) {
 			stack.orCreateNbt.remove("patterns")
-		} else {
-			var toSerialize = iota
-			if (iota.type == HexIotaTypes.PATTERN)
-				toSerialize = ListIota(listOf(iota))
-			stack.orCreateNbt.put("patterns", IotaType.serialize(toSerialize))
+			return
 		}
+
+		val list = NbtList()
+		when (iota) {
+			is PatternIota -> list.add(iota.pattern.serializeToNBT())
+			is ListIota -> iota.list.forEach { list.add((it as PatternIota).pattern.serializeToNBT()) }
+		}
+		stack.orCreateNbt.putList("patterns", list)
 	}
 }

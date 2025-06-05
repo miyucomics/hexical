@@ -6,6 +6,7 @@ import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.casting.iota.ListIota
 import at.petrak.hexcasting.api.casting.iota.PatternIota
 import at.petrak.hexcasting.api.casting.math.HexPattern
+import at.petrak.hexcasting.api.utils.asCompound
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import miyucomics.hexical.registry.HexicalEntities
@@ -23,6 +24,7 @@ import net.minecraft.entity.decoration.AbstractDecorationEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
+import net.minecraft.nbt.NbtElement
 import net.minecraft.nbt.NbtList
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket
 import net.minecraft.sound.SoundEvents
@@ -34,7 +36,7 @@ import net.minecraft.world.GameRules
 import net.minecraft.world.World
 
 class AnimatedScrollEntity(entityType: EntityType<AnimatedScrollEntity>, world: World) : AbstractDecorationEntity(entityType, world), ADIotaHolder {
-	var patterns: MutableList<NbtCompound> = mutableListOf()
+	var patterns: List<NbtCompound> = listOf()
 
 	var clientAged = false
 	var clientGlow = false
@@ -45,7 +47,7 @@ class AnimatedScrollEntity(entityType: EntityType<AnimatedScrollEntity>, world: 
 
 	constructor(world: World) : this(HexicalEntities.ANIMATED_SCROLL_ENTITY, world)
 
-	constructor(world: World, position: BlockPos, dir: Direction, size: Int, patterns: MutableList<NbtCompound>) : this(world) {
+	constructor(world: World, position: BlockPos, dir: Direction, size: Int, patterns: List<NbtCompound>) : this(world) {
 		this.attachmentPos = position
 		this.patterns = patterns
 		this.dataTracker.set(sizeDataTracker, size)
@@ -130,10 +132,7 @@ class AnimatedScrollEntity(entityType: EntityType<AnimatedScrollEntity>, world: 
 		setFacing(this.facing)
 		updateAttachmentPosition()
 
-		val data = nbt.get("patterns") as NbtList
-		this.patterns = mutableListOf()
-		for (pattern in data)
-			this.patterns.add(pattern as NbtCompound)
+		this.patterns = nbt.getList("patterns", NbtElement.COMPOUND_TYPE.toInt()).map { it.asCompound }
 		updateRender()
 
 		super.readCustomDataFromNbt(nbt)
