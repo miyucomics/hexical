@@ -99,7 +99,7 @@ public class ItemStackMixin {
 		}
 
 		if (stack.isOf(HexicalBlocks.MEDIA_JAR_ITEM))
-			cir.getReturnValue().add(Text.translatable("hexcasting.tooltip.media", format.format(((float) nbt.getCompound("BlockEntityTag").getLong("media")) / ((float) MediaConstants.DUST_UNIT))));
+			cir.getReturnValue().add(Text.translatable("hexcasting.tooltip.media", format.format(((float) nbt.getCompound("BlockEntityTag").getLong("media")) / ((float) MediaConstants.DUST_UNIT))).styled(style -> style.withColor(ItemMediaHolder.HEX_COLOR)));
 
 		if (stack.getItem() instanceof ItemPackagedHex && nbt.getBoolean("cracked")) {
 			cir.getReturnValue().add(Text.translatable("hexical.cracked.cracked").formatted(Formatting.GOLD));
