@@ -58,7 +58,12 @@ class AnimatedScrollItem(private val size: Int) : Item(Settings()), IotaHolderIt
 		if (player != null && !canPlaceOn(player, direction, stack, position))
 			return ActionResult.FAIL
 
-		val scroll = AnimatedScrollEntity(world, position, direction, size, stack.getList("patterns", NbtElement.COMPOUND_TYPE.toInt())!!.map { it.asCompound })
+		val patterns = if (stack.containsTag("patterns"))
+			stack.getList("patterns", NbtElement.COMPOUND_TYPE.toInt())!!.map { it.asCompound }
+		else
+			listOf()
+
+		val scroll = AnimatedScrollEntity(world, position, direction, size, patterns)
 		if (stack.orCreateNbt.getBoolean("aged"))
 			scroll.toggleAged()
 		if (stack.orCreateNbt.getBoolean("glow"))
