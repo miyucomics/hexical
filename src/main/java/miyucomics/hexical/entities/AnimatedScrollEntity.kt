@@ -8,6 +8,7 @@ import at.petrak.hexcasting.api.casting.iota.PatternIota
 import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.utils.asCompound
 import at.petrak.hexcasting.api.utils.putCompound
+import at.petrak.hexcasting.api.utils.putList
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import miyucomics.hexical.registry.HexicalEntities
 import miyucomics.hexical.registry.HexicalItems
@@ -152,14 +153,15 @@ class AnimatedScrollEntity(entityType: EntityType<AnimatedScrollEntity>, world: 
 					else -> throw IllegalStateException()
 				}
 			)
-			val constructed = mutableListOf<PatternIota>()
-			for (pattern in this.patterns)
-				constructed.add(PatternIota(HexPattern.fromNBT(pattern)))
+
+			val constructed = NbtList()
+			this.patterns.forEach { constructed.add(it) }
+			stack.orCreateNbt.putList("patterns", constructed)
+
 			stack.orCreateNbt.putBoolean("aged", this.dataTracker.get(agedDataTracker))
 			stack.orCreateNbt.putBoolean("glow", this.dataTracker.get(glowDataTracker))
 			stack.orCreateNbt.putBoolean("vanished", this.dataTracker.get(vanishedDataTracker))
 			stack.orCreateNbt.putInt("color", this.dataTracker.get(colorDataTracker))
-			stack.orCreateNbt.putCompound("patterns", IotaType.serialize(ListIota(constructed.toList())))
 			this.dropStack(stack)
 		}
 	}
