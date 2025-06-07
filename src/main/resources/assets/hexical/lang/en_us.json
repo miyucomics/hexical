@@ -1,5 +1,5 @@
 {
-	"advancements.hexical.arch_lamp.title": "Daemon",
+	"advancements.hexical.arch_lamp.title": "Guardian Genie",
 	"advancements.hexical.arch_lamp.description": "Acquire an archgenie lamp.",
 	"advancements.hexical.reload_lamp.title": "Phenomenal Cosmic Powers!",
 	"advancements.hexical.reload_lamp.description": "Reload the lamp.",
@@ -15,8 +15,6 @@
 	"advancements.hexical.conjure_hexxy.description": "Give Hexxy a physical form in your world.",
 	"advancements.hexical.hallucinate.title": "Only In My Head",
 	"advancements.hexical.hallucinate.description": "Play a sound only you can hear!",
-	"advancements.hexical.media_slurp.title": "Tripping",
-	"advancements.hexical.media_slurp.description": "\"You sense that something is off.\"",
 
 	"block.hexical.hex_candle_cake": "Hex Candle Cake",
 	"block.hexical.casting_carpet": "Casting Carpet",
