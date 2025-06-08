@@ -28,7 +28,7 @@ class OpColorScroll : SpellAction {
 		override fun cast(env: CastingEnvironment) {
 			scroll.setColor(
 				ColorHelper.Argb.getArgb(
-					1,
+					255,
 					(max(min(color.x, 1.0), 0.0) * 255).toInt(),
 					(max(min(color.y, 1.0), 0.0) * 255).toInt(),
 					(max(min(color.z, 1.0), 0.0) * 255).toInt()
