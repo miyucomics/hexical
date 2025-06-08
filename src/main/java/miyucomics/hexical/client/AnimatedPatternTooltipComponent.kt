@@ -9,7 +9,6 @@ import net.minecraft.client.font.TextRenderer
 import net.minecraft.client.gui.DrawContext
 import net.minecraft.client.gui.tooltip.TooltipComponent
 import net.minecraft.client.item.TooltipData
-import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.util.Identifier
 
 class AnimatedPatternTooltipComponent(tooltip: AnimatedPatternTooltip) : TooltipComponent {
@@ -54,15 +53,6 @@ class AnimatedPatternTooltipComponent(tooltip: AnimatedPatternTooltip) : Tooltip
 			if (data is AnimatedPatternTooltip)
 				return AnimatedPatternTooltipComponent(data)
 			return null
-		}
-
-		fun renderPattern(patternlike: HexPatternLike, ps: MatrixStack, patSets: PatternSettings, color: Int) {
-			val oldShader = RenderSystem.getShader()
-			val staticPoints = HexPatternPoints.getStaticPoints(patternlike, patSets, 0.0)
-			val nonzappyLines = patternlike.nonZappyPoints
-			val zappyPattern = makeZappy(nonzappyLines, findDupIndices(nonzappyLines), patSets.hops, patSets.variance, patSets.speed, patSets.flowIrregular, patSets.readabilityOffset, patSets.lastSegmentProp, 0.0)
-			drawLineSeq(ps.peek().getPositionMatrix(), staticPoints.scaleVecs(zappyPattern), patSets.getInnerWidth(staticPoints.finalScale).toFloat(), color, color, VCDrawHelper.getHelper(null, ps, 0.001f))
-			RenderSystem.setShader { oldShader }
 		}
 	}
 }

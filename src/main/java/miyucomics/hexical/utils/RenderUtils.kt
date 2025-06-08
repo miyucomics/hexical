@@ -4,10 +4,18 @@ import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.client.render.rotate
 import net.minecraft.util.math.MathHelper
 import net.minecraft.util.math.Vec2f
+import java.math.RoundingMode
+import java.text.DecimalFormat
 import kotlin.math.*
 
 object RenderUtils {
 	private const val CIRCLE_RESOLUTION: Int = 20
+	val PERCENTAGE: DecimalFormat = DecimalFormat("####")
+	val DUST_AMOUNT: DecimalFormat = DecimalFormat("###,###.##")
+
+	init {
+		PERCENTAGE.roundingMode = RoundingMode.DOWN;
+	}
 
 	fun getNormalizedStrokes(pattern: HexPattern, flipHor: Boolean = false): List<Vec2f> {
 		val lines = pattern.toLines(1f, pattern.getCenter(1f).negate()).toMutableList()
