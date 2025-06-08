@@ -82,8 +82,6 @@ class AnimatedScrollItem(private val size: Int) : Item(Settings()), IotaHolderIt
 	}
 
 	override fun appendTooltip(stack: ItemStack, world: World?, tooltip: MutableList<Text>, context: TooltipContext) {
-		if (stack.getBoolean("aged"))
-			tooltip.add(Text.translatable("tooltip.hexical.scroll_aged").formatted(Formatting.GOLD))
 		if (stack.getBoolean("glow"))
 			tooltip.add(Text.translatable("tooltip.hexical.scroll_glow").formatted(Formatting.GOLD))
 		if (stack.getBoolean("vanished"))
