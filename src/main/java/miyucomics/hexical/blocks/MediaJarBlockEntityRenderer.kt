@@ -1,67 +1,13 @@
 package miyucomics.hexical.blocks
 
-import net.minecraft.client.render.LightmapTextureManager
-import net.minecraft.client.render.RenderLayer
-import net.minecraft.client.render.VertexConsumer
+import miyucomics.hexical.utils.MediaJarRenderStuffs
 import net.minecraft.client.render.VertexConsumerProvider
 import net.minecraft.client.render.block.entity.BlockEntityRenderer
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory
 import net.minecraft.client.util.math.MatrixStack
-import net.minecraft.util.math.Direction
-import net.minecraft.util.math.RotationAxis
-import org.joml.Quaternionf
-import org.joml.Vector3f
 
 class MediaJarBlockEntityRenderer(ctx: BlockEntityRendererFactory.Context) : BlockEntityRenderer<MediaJarBlockEntity> {
-	override fun render(jarData: MediaJarBlockEntity?, tickDelta: Float, matrices: MatrixStack, vertexConsumers: VertexConsumerProvider, light: Int, overlay: Int) {
-		if (jarData == null)
-			return
-		val filled = jarData.getMedia().toFloat() / MediaJarBlock.MAX_CAPACITY.toFloat()
-		val consumer = vertexConsumers.getBuffer(RenderLayer.getSolid())
-
-		matrices.push()
-		matrices.translate(0.5f, 1f / 16f, 0.5f)
-		addRectangularPrism(consumer, matrices, height = filled * 12f / 16f)
-		matrices.pop()
-	}
-
-	companion object {
-		private val NEGATIVE_X_ROTATION: Quaternionf = RotationAxis.POSITIVE_X.rotationDegrees(-90f)
-		private val DIR2ROT: Map<Direction, Quaternionf> = enumValues<Direction>().associateWith { it.opposite.rotationQuaternion.mul(NEGATIVE_X_ROTATION) }
-
-		private fun addRectangularPrism(consumer: VertexConsumer, matrices: MatrixStack, height: Float) {
-			val halfWidth = 0.5f / 2f
-			val halfHeight = height / 2f
-
-			matrices.push()
-			matrices.translate(0f, halfHeight, 0f)
-
-			for (direction in Direction.values()) {
-				var depth = halfWidth
-				var y0 = -halfHeight
-				var y1 = halfHeight
-
-				if (direction.axis == Direction.Axis.Y) {
-					depth = halfHeight
-					y0 = -halfWidth
-					y1 = halfWidth
-				}
-
-				matrices.push()
-				matrices.multiply(DIR2ROT[direction])
-				matrices.translate(0f, 0f, -depth)
-				addQuad(consumer, matrices, -halfWidth, y0, halfWidth, y1, direction.unitVector)
-				matrices.pop()
-			}
-
-			matrices.pop()
-		}
-
-		private fun addQuad(consumer: VertexConsumer, matrices: MatrixStack, x0: Float, y0: Float, x1: Float, y1: Float, direction: Vector3f) {
-			consumer.vertex(matrices.peek().positionMatrix, x0, y1, 0f).color(255, 255, 255, 255).texture(0f, 1f).light(LightmapTextureManager.MAX_BLOCK_LIGHT_COORDINATE).normal(direction.x, direction.y, direction.z).next()
-			consumer.vertex(matrices.peek().positionMatrix, x1, y1, 0f).color(255, 255, 255, 255).texture(1f, 1f).light(LightmapTextureManager.MAX_BLOCK_LIGHT_COORDINATE).normal(direction.x, direction.y, direction.z).next()
-			consumer.vertex(matrices.peek().positionMatrix, x1, y0, 0f).color(255, 255, 255, 255).texture(1f, 0f).light(LightmapTextureManager.MAX_BLOCK_LIGHT_COORDINATE).normal(direction.x, direction.y, direction.z).next()
-			consumer.vertex(matrices.peek().positionMatrix, x0, y0, 0f).color(255, 255, 255, 255).texture(0f, 0f).light(LightmapTextureManager.MAX_BLOCK_LIGHT_COORDINATE).normal(direction.x, direction.y, direction.z).next()
-		}
+	override fun render(jar: MediaJarBlockEntity, tickDelta: Float, matrices: MatrixStack, vertexConsumers: VertexConsumerProvider, light: Int, overlay: Int) {
+		MediaJarRenderStuffs.renderFluid(matrices, vertexConsumers, jar.getMedia().toFloat() / MediaJarBlock.MAX_CAPACITY.toFloat())
 	}
 }
