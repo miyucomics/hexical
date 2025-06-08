@@ -7,19 +7,8 @@ import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.util.Hand
-import java.math.RoundingMode
-import java.text.DecimalFormat
 
 object CharmedItemUtilities {
-	@JvmField
-	val PERCENTAGE: DecimalFormat = DecimalFormat("####")
-	@JvmField
-	val DUST_AMOUNT: DecimalFormat = DecimalFormat("###,###.##")
-
-	init {
-		PERCENTAGE.roundingMode = RoundingMode.DOWN;
-	}
-
 	@JvmStatic
 	fun getCharmedItem(player: PlayerEntity): Pair<Hand, ItemStack>? {
 		if (isStackCharmed(player.getStackInHand(Hand.OFF_HAND))) return Pair(Hand.OFF_HAND, player.getStackInHand(Hand.OFF_HAND))
