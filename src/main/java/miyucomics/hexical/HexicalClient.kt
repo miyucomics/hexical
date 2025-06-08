@@ -16,6 +16,7 @@ class HexicalClient : ClientModInitializer {
 		HexicalItems.clientInit()
 		HexicalNetworking.clientInit()
 		HexicalParticles.clientInit()
+		HexicalRenderLayers.clientInit()
 
 		BuiltinItemRendererRegistry.INSTANCE.register(HexicalBlocks.MEDIA_JAR_ITEM, MediaJarItemRenderer())
 		TooltipComponentCallback.EVENT.register(AnimatedPatternTooltipComponent::tryConvert)
