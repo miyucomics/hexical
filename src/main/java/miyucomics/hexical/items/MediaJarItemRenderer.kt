@@ -1,24 +1,30 @@
-package miyucomics.hexical.blocks
+package miyucomics.hexical.items
 
+import miyucomics.hexical.blocks.MediaJarBlock
+import miyucomics.hexical.registry.HexicalBlocks
+import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry
+import net.minecraft.client.MinecraftClient
 import net.minecraft.client.render.LightmapTextureManager
 import net.minecraft.client.render.RenderLayer
 import net.minecraft.client.render.VertexConsumer
 import net.minecraft.client.render.VertexConsumerProvider
-import net.minecraft.client.render.block.entity.BlockEntityRenderer
-import net.minecraft.client.render.block.entity.BlockEntityRendererFactory
+import net.minecraft.client.render.model.json.ModelTransformationMode
 import net.minecraft.client.util.math.MatrixStack
+import net.minecraft.item.ItemStack
 import net.minecraft.util.math.Direction
 import net.minecraft.util.math.RotationAxis
 import org.joml.Quaternionf
 import org.joml.Vector3f
 
-class MediaJarBlockEntityRenderer(ctx: BlockEntityRendererFactory.Context) : BlockEntityRenderer<MediaJarBlockEntity> {
-	override fun render(jarData: MediaJarBlockEntity?, tickDelta: Float, matrices: MatrixStack, vertexConsumers: VertexConsumerProvider, light: Int, overlay: Int) {
-		if (jarData == null)
-			return
-		val filled = jarData.getMedia().toFloat() / MediaJarBlock.MAX_CAPACITY.toFloat()
-		val consumer = vertexConsumers.getBuffer(RenderLayer.getSolid())
+class MediaJarItemRenderer : BuiltinItemRendererRegistry.DynamicItemRenderer {
+	override fun render(stack: ItemStack, mode: ModelTransformationMode, matrices: MatrixStack, vertexConsumers: VertexConsumerProvider, light: Int, overlay: Int) {
+		MinecraftClient.getInstance().blockRenderManager.renderBlockAsEntity(HexicalBlocks.MEDIA_JAR_BLOCK.defaultState, matrices, vertexConsumers, light, overlay)
 
+		val tag = stack.nbt?.getCompound("BlockEntityTag")
+		val media = tag?.getLong("media") ?: 0
+		val filled = media.toFloat() / MediaJarBlock.MAX_CAPACITY.toFloat()
+
+		val consumer = vertexConsumers.getBuffer(RenderLayer.getSolid())
 		matrices.push()
 		matrices.translate(0.5f, 1f / 16f, 0.5f)
 		addRectangularPrism(consumer, matrices, height = filled * 12f / 16f)

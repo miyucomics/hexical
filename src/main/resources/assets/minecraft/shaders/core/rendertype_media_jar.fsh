@@ -1,11 +1,7 @@
-#version 150
+#version 120
 
-in vec3 fragPos;
-in vec2 fragUV;
-uniform float GameTime;
-
-out vec4 fragColor;
+varying vec2 vUv;
 
 void main() {
-    fragColor = vec4(fragUV.x, fragUV.y, 1.0, 1.0);
+    gl_FragColor = vec4(vUv, 0.0, 1.0);
 }

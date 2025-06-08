@@ -1,13 +1,10 @@
 package miyucomics.hexical.mixin;
 
 import at.petrak.hexcasting.api.addldata.ADHexHolder;
-import at.petrak.hexcasting.api.addldata.ADIotaHolder;
 import at.petrak.hexcasting.api.casting.iota.Iota;
 import at.petrak.hexcasting.api.pigment.FrozenPigment;
 import at.petrak.hexcasting.fabric.xplat.FabricXplatImpl;
-import miyucomics.hexical.entities.AnimatedScrollEntity;
 import miyucomics.hexical.utils.CharmedItemUtilities;
-import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
 import org.jetbrains.annotations.Nullable;

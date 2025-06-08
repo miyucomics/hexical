@@ -1,8 +1,6 @@
 package miyucomics.hexical.mixin;
 
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment;
-import at.petrak.hexcasting.common.casting.actions.spells.OpErase;
-import com.llamalad7.mixinextras.sugar.Local;
 import miyucomics.hexical.utils.CharmedItemUtilities;
 import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Final;

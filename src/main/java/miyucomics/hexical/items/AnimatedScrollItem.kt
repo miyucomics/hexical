@@ -3,12 +3,7 @@ package miyucomics.hexical.items
 import at.petrak.hexcasting.api.casting.iota.*
 import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.item.IotaHolderItem
-import at.petrak.hexcasting.api.utils.asCompound
-import at.petrak.hexcasting.api.utils.containsTag
-import at.petrak.hexcasting.api.utils.getBoolean
-import at.petrak.hexcasting.api.utils.getList
-import at.petrak.hexcasting.api.utils.hasInt
-import at.petrak.hexcasting.api.utils.putList
+import at.petrak.hexcasting.api.utils.*
 import at.petrak.hexcasting.common.blocks.akashic.BlockEntityAkashicBookshelf
 import at.petrak.hexcasting.common.lib.HexBlocks
 import at.petrak.hexcasting.common.lib.HexSounds

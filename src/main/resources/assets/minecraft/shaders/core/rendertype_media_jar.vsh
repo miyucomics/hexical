@@ -1,15 +1,11 @@
-#version 150
+#version 120
 
-in vec3 Position;
+attribute vec3 Position;
+attribute vec2 UV0;
 
-uniform mat4 ModelViewMat;
-uniform mat4 ProjMat;
-
-out vec3 fragPos;
-out vec2 fragUV;
+varying vec2 vUv;
 
 void main() {
-    gl_Position = ProjMat * ModelViewMat * vec4(Position, 1.0);
-    fragPos = Position;
-    fragUV = Position.xz;
+    vUv = UV0;
+    gl_Position = vec4(Position, 1.0);
 }
