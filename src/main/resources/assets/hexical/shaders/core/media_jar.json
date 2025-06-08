@@ -4,8 +4,8 @@
         "srcrgb": "srcalpha",
         "dstrgb": "1-srcalpha"
     },
-    "vertex": "rendertype_media_jar",
-    "fragment": "rendertype_media_jar",
+    "vertex": "hexical:media_jar",
+    "fragment": "hexical:media_jar",
     "samplers": [
         { "name": "Sampler0" }
     ],

@@ -13,7 +13,7 @@ object MediaJarRenderStuffs {
 	fun renderFluid(matrices: MatrixStack, vertexConsumers: VertexConsumerProvider, filled: Float) {
 		if (filled == 0f)
 			return
-		val consumer = vertexConsumers.getBuffer(HexicalRenderLayers.UV_VISUALIZER_LAYER)
+		val consumer = vertexConsumers.getBuffer(HexicalRenderLayers.mediaJarRenderLayer)
 		matrices.push()
 		matrices.translate(0.5f, 1f / 16f, 0.5f)
 		addRectangularPrism(consumer, matrices, height = filled * 12f / 16f)
