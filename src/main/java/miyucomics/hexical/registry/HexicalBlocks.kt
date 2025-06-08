@@ -4,6 +4,7 @@ import at.petrak.hexcasting.api.client.ScryingLensOverlayRegistry
 import com.mojang.datafixers.util.Pair
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.blocks.*
+import miyucomics.hexical.items.MediaJarItem
 import miyucomics.hexical.registry.HexicalItems.HEXICAL_GROUP
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents
@@ -35,7 +36,7 @@ object HexicalBlocks {
 	val HEX_CANDLE_CAKE_BLOCK: HexCandleCakeBlock = HexCandleCakeBlock()
 
 	val MAGE_BLOCK: MageBlock = MageBlock()
-	private val MEDIA_JAR_BLOCK: MediaJarBlock = MediaJarBlock()
+	val MEDIA_JAR_BLOCK: MediaJarBlock = MediaJarBlock()
 
 	@JvmField
 	val CASTING_CARPET = DyedCarpetBlock(DyeColor.PURPLE, Settings.create().mapColor(MapColor.PURPLE).strength(0.1f).sounds(BlockSoundGroup.WOOL).burnable())
@@ -56,7 +57,7 @@ object HexicalBlocks {
 	val PERIWINKLE_FLOWER_ITEM = BlockItem(PERIWINKLE_FLOWER, Item.Settings())
 
 	@JvmField
-	val MEDIA_JAR_ITEM = BlockItem(MEDIA_JAR_BLOCK, Item.Settings().maxCount(1))
+	val MEDIA_JAR_ITEM = MediaJarItem()
 	private val HEX_CANDLE_ITEM = BlockItem(HEX_CANDLE_BLOCK, Item.Settings())
 	private val SENTINEL_BED_ITEM = BlockItem(SENTINEL_BED_BLOCK, Item.Settings())
 

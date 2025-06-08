@@ -3,7 +3,6 @@ package miyucomics.hexical.client
 import at.petrak.hexcasting.api.HexAPI
 import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.client.render.*
-import at.petrak.hexcasting.client.render.WorldlyPatternRenderHelpers
 import com.mojang.blaze3d.systems.RenderSystem
 import net.minecraft.client.font.TextRenderer
 import net.minecraft.client.gui.DrawContext
