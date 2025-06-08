@@ -219,9 +219,9 @@
     "hexical.page.hex_candle.1": "$(o)The doctor found himself in an immense cave lined with countless quivering candles, each representing the duration of a life.$()",
 
 	"hexical.page.media_jar.title": "Media Jar",
-	"hexical.page.media_jar.0": "I can melt down all my $(l:items/amethyst)$(item)Amethyst$() in this little jar! Unfortunately, the glass is too thick for me to draw _media through it, although I have read tales that ancient _Hexcasters were able to solve this issue and were able to bottle up liquid _media in some kind of flask to use in their _Hexes. However, this $(item)Media Jar$() also has some fascinating properties for recycling media.",
+	"hexical.page.media_jar.0": "I can melt down all my $(l:items/amethyst)$(item)Amethyst$() in this little jar! Unfortunately, the glass is too thick for me to draw _media through it, although I have read tales that ancient _Hexcasters were able to solve this issue and were able to bottle up liquid _media in some kind of flask to use in their _Hexes. However, this $(item)Media Jar$() also has some fascinating properties for recycling _media.",
 	"hexical.page.media_jar.description": "$(o)There, sure enough, she saw the faint translucent outline of something aboout the size of a hen's egg. There was just a touch of color in it, a pale sea-green, soft and shimmering and very beautiful.",
-	"hexical.page.media_jar.1": "I can dunk items into the liquid in order to imbue the item with pure _media. The _media seeps into the item and $(o)alters$() it in a variety of surprising and unpredictable ways.$(br2)I can only imagine what would happen if I were to ingest such a concentrated form of media.",
+	"hexical.page.media_jar.1": "I can dunk items into the liquid in order to imbue the item with pure _media. The _media seeps into the item and $(o)alters$() it in a variety of surprising and unpredictable ways.",
 	"hexical.recipe.alchemists_take_this.header": "Make Gold",
 	"hexical.recipe.alchemists_take_this.text": "Transforms copper ingots to gold.",
 	"hexical.recipe.thoughtknot.header": "Weave Thought-Knot",
@@ -278,7 +278,7 @@
 	"hexical.page.lamp_finale.arch": "When an $(item)Archgenie Lamp$() is turned off, it casts an additional time. I can use $(l:lamp/hand_lamps#hexical:lamp_finale)$(action)Finale Reflection$() to recognize whether a cast is that last burst of energy.",
 
 	"hexical.page.hand_lamps.title": "Hand Lamps",
-	"hexical.page.hand_lamps.0": "So this is the subject of a thousand years of rumor! To think a mere wandering trader could be in possession of such a strong artifact. The $(item)Hand Lamp$() emanates a vague residue of _media, vacuous in feeling... it reminds me of the $(o)hollow media structure$() of a $(l:items/focus)$(item)Focus$() that enables it to store iota. I can also sense a presence inside the $(item)Lamp$() with similar magical capabilities to my own.",
+	"hexical.page.hand_lamps.0": "So this is the subject of a thousand years of rumor! To think a mere wandering trader could be in possession of such a strong artifact. The $(item)Hand Lamp$() emanates a vague residue of _media, vacuous in feeling... it reminds me of the $(o)hollow _media structure$() of a $(l:items/focus)$(item)Focus$() that enables it to store iota. I can also sense a presence inside the $(item)Lamp$() with similar magical capabilities to my own.",
     "hexical.page.hand_lamps.1": "The signs are unmistakable; within the $(item)Lamp$() is a $(o)living, sentient$() mind, kept alive and trapped via magic not yet known to me. The $(item)Lamp$()'s design is simply ingenious, if its use weren't so horrible. When I hold down the trigger, my patterns are revealed to the \"genie\" as I will be calling it, and it, out of desperation and boredom, casts.",
 	"hexcasting.action.hexical:wish": "Wish",
 	"hexical.page.wish.summary": "Wish the genie to cast a _Hex for me. Because I am $(o)teaching$() a mind rather than $(o)etching$() a $(l:items/hexcasting)$(item)casting device$(), I can freely reteach the genie a new _Hex any time without losing _media.",
@@ -603,7 +603,7 @@
 	"hexical.page.conjure_tchotchke.summary": "Conjures a $(item)Tchotchke$() at the location with the amount of _media. Costs about one $(l:items/amethyst)$(item)Charged Amethyst$() and the _media used for the battery.",
 
 	"hexical.page.circle_spells.title": "Circle Spells",
-	"hexical.page.circle_spells.0": "When the _media courses through the boundaries of a $(l:greatwork/spellcircles)circle$(), it saturates the domain inside with _media, allowing far greater magical effects and flexibility of _media manipulation than I am used to. The following are some spells which rely on that increased density of media and are to only be cast by an $(l:greatwork/impetus)impetus$().",
+	"hexical.page.circle_spells.0": "When the _media courses through the boundaries of a $(l:greatwork/spellcircles)circle$(), it saturates the domain inside with _media, allowing far greater magical effects and flexibility of _media manipulation than I am used to. The following are some spells which rely on that increased density of _media and are to only be cast by an $(l:greatwork/impetus)impetus$().",
 	"hexcasting.action.hexical:displace": "Displace",
 	"hexical.page.displace.summary": "Teleports an entity within the $(l:greatwork/spellcircles)circle$() to any other point inside within the same $(l:greatwork/spellcircles)circle$(). Unlike $(l:patterns/great_spells/teleport)$(action)Greater Teleport$(), this spell takes in world coordinates rather than an offset. Free.",
 
