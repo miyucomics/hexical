@@ -43,6 +43,7 @@ object HexicalItems {
 	val HEX_GUMMY = Item(Settings().food(FoodComponent.Builder().hunger(2).saturationModifier(0.5f).alwaysEdible().snack().build()))
 
 	private val MEDIA_LOG_ITEM = MediaLogItem()
+	private val SONIC_SCREWDRIVER = SonicScrewdriverItem()
 
 	@JvmField
 	val LEI = LeiItem()
@@ -99,6 +100,8 @@ object HexicalItems {
 			entries.add(QUADXXY)
 			entries.add(THOTHY)
 			entries.add(FLEXXY)
+
+			entries.add(ItemStack(SONIC_SCREWDRIVER))
 		}
 
 		Registry.register(Registries.ITEM, HexicalMain.id("animated_scroll_small"), SMALL_ANIMATED_SCROLL_ITEM)
@@ -117,6 +120,7 @@ object HexicalItems {
 		Registry.register(Registries.ITEM, HexicalMain.id("lei"), LEI)
 		Registry.register(Registries.ITEM, HexicalMain.id("tchotchke"), TCHOTCHKE_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("media_log"), MEDIA_LOG_ITEM)
+		Registry.register(Registries.ITEM, HexicalMain.id("sonic_screwdriver"), SONIC_SCREWDRIVER)
 	}
 
 	@JvmStatic
