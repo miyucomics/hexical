@@ -3,7 +3,6 @@ package miyucomics.hexical.casting.environments
 import at.petrak.hexcasting.api.addldata.ADMediaHolder
 import at.petrak.hexcasting.api.casting.ParticleSpray
 import at.petrak.hexcasting.api.casting.eval.CastResult
-import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.eval.env.PackagedItemCastEnv
 import at.petrak.hexcasting.api.casting.iota.NullIota
 import at.petrak.hexcasting.api.pigment.FrozenPigment

@@ -18,7 +18,6 @@ import miyucomics.hexical.data.EvokeState
 import miyucomics.hexical.data.KeybindData
 import miyucomics.hexical.data.LesserSentinelState
 import miyucomics.hexical.interfaces.PlayerEntityMinterface
-import miyucomics.hexical.utils.CharmedItemUtilities
 import miyucomics.hexical.utils.CharmedItemUtilities.getMaxMedia
 import miyucomics.hexical.utils.CharmedItemUtilities.getMedia
 import miyucomics.hexical.utils.CharmedItemUtilities.isStackCharmed
@@ -32,7 +31,6 @@ import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.render.GameRenderer
-import net.minecraft.client.render.GameRenderer.getPositionColorProgram
 import net.minecraft.client.render.Tessellator
 import net.minecraft.client.render.VertexFormat
 import net.minecraft.client.render.VertexFormats
@@ -55,12 +53,6 @@ object HexicalEvents {
 	@JvmStatic
 	fun init() {
 		LesserSentinelState.registerServerReciever()
-
-		ItemTooltipCallback.EVENT.register { stack, context, lines ->
-			val nbt = stack.nbt ?: return@register
-			if (stack.isOf(HexicalBlocks.MEDIA_JAR_ITEM))
-				lines.add(Text.translatable("hexcasting.tooltip.media", format.format(((nbt.getCompound("BlockEntityTag").getLong("media").toFloat()) / (MediaConstants.DUST_UNIT.toFloat())).toDouble())).styled { style -> style.withColor(ItemMediaHolder.HEX_COLOR) })
-		}
 
 		ItemTooltipCallback.EVENT.register { stack, context, lines ->
 			if (!isStackCharmed(stack))
