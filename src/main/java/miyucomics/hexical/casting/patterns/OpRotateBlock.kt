@@ -46,7 +46,7 @@ class OpRotateBlock : SpellAction {
 	}
 
 	companion object {
-		private val rotationProperties: List<DirectionProperty> = listOf(Properties.FACING, Properties.HOPPER_FACING, Properties.HORIZONTAL_FACING, Properties.VERTICAL_DIRECTION);
+		private val rotationProperties: List<DirectionProperty> = listOf(Properties.FACING, Properties.HOPPER_FACING, Properties.HORIZONTAL_FACING, Properties.VERTICAL_DIRECTION)
 
 		private fun setBlockDirection(world: ServerWorld, blockPos: BlockPos, newDirection: Direction) {
 			val blockState = world.getBlockState(blockPos)

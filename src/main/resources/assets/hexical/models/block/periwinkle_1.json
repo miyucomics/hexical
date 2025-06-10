@@ -1,0 +1,7 @@
+{
+	"parent": "minecraft:block/flowerbed_1",
+	"textures": {
+		"flowerbed": "hexical:block/periwinkle",
+		"stem": "minecraft:block/pink_petals_stem"
+	}
+}

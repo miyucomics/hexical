@@ -61,7 +61,9 @@ public class MouseMixin {
 		}
 	}
 
+	@Unique
 	private void sendMessage(Hand hand, int inputMethod) {
+		assert client.player != null;
 		client.player.swingHand(hand);
 		client.player.getWorld().playSound(client.player, client.player.getX(), client.player.getY(), client.player.getZ(), HexSounds.CAST_HERMES, SoundCategory.PLAYERS, 1f, 1f);
 		PacketByteBuf buf = PacketByteBufs.create();
