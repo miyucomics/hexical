@@ -46,14 +46,8 @@ object HexicalBlocks {
 	val SENTINEL_BED_BLOCK: Block = Block(Settings.copy(Blocks.DEEPSLATE_TILES).strength(4f, 6f))
 
 	private val PILLOW_BLOCK: PillowBlock = PillowBlock()
-	val PILLOW_BLOCK_ENTITY: BlockEntityType<PillowBlockEntity> = BlockEntityType.Builder.create(::PillowBlockEntity, PILLOW_BLOCK).build(null)
 
-	val HEX_CANDLE_BLOCK_ENTITY: BlockEntityType<HexCandleBlockEntity> = BlockEntityType.Builder.create(::HexCandleBlockEntity, HEX_CANDLE_BLOCK).build(null)
-	val HEX_CANDLE_CAKE_BLOCK_ENTITY: BlockEntityType<HexCandleCakeBlockEntity> = BlockEntityType.Builder.create(::HexCandleCakeBlockEntity, HEX_CANDLE_CAKE_BLOCK).build(null)
-	val MEDIA_JAR_BLOCK_ENTITY: BlockEntityType<MediaJarBlockEntity> = BlockEntityType.Builder.create(::MediaJarBlockEntity, MEDIA_JAR_BLOCK).build(null)
-	val MAGE_BLOCK_ENTITY: BlockEntityType<MageBlockEntity> = BlockEntityType.Builder.create(::MageBlockEntity, MAGE_BLOCK).build(null)
-
-	private val PERIWINKLE_FLOWER: FlowerBlock = FlowerBlock(HexicalPotions.WOOLEYED_EFFECT, 100, Settings.create().mapColor(MapColor.DARK_GREEN).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS).offset(AbstractBlock.OffsetType.XZ).pistonBehavior(PistonBehavior.DESTROY))
+	val PERIWINKLE_FLOWER = FlowerbedBlock(Settings.create().mapColor(MapColor.PURPLE).noCollision().sounds(BlockSoundGroup.PINK_PETALS).pistonBehavior(PistonBehavior.DESTROY))
 	val PERIWINKLE_FLOWER_ITEM = BlockItem(PERIWINKLE_FLOWER, Item.Settings())
 
 	@JvmField
@@ -63,8 +57,14 @@ object HexicalBlocks {
 
 	@JvmField
 	val PEDESTAL_BLOCK: PedestalBlock = PedestalBlock()
-	val PEDESTAL_BLOCK_ENTITY: BlockEntityType<PedestalBlockEntity> = BlockEntityType.Builder.create(::PedestalBlockEntity, PEDESTAL_BLOCK).build(null)
 	private val PEDESTAL_ITEM = BlockItem(PEDESTAL_BLOCK, Item.Settings())
+
+	val PILLOW_BLOCK_ENTITY: BlockEntityType<PillowBlockEntity> = BlockEntityType.Builder.create(::PillowBlockEntity, PILLOW_BLOCK).build(null)
+	val HEX_CANDLE_BLOCK_ENTITY: BlockEntityType<HexCandleBlockEntity> = BlockEntityType.Builder.create(::HexCandleBlockEntity, HEX_CANDLE_BLOCK).build(null)
+	val HEX_CANDLE_CAKE_BLOCK_ENTITY: BlockEntityType<HexCandleCakeBlockEntity> = BlockEntityType.Builder.create(::HexCandleCakeBlockEntity, HEX_CANDLE_CAKE_BLOCK).build(null)
+	val MEDIA_JAR_BLOCK_ENTITY: BlockEntityType<MediaJarBlockEntity> = BlockEntityType.Builder.create(::MediaJarBlockEntity, MEDIA_JAR_BLOCK).build(null)
+	val MAGE_BLOCK_ENTITY: BlockEntityType<MageBlockEntity> = BlockEntityType.Builder.create(::MageBlockEntity, MAGE_BLOCK).build(null)
+	val PEDESTAL_BLOCK_ENTITY: BlockEntityType<PedestalBlockEntity> = BlockEntityType.Builder.create(::PedestalBlockEntity, PEDESTAL_BLOCK).build(null)
 
 	@JvmStatic
 	fun init() {
@@ -90,13 +90,6 @@ object HexicalBlocks {
 		Registry.register(Registries.BLOCK, HexicalMain.id("casting_carpet"), CASTING_CARPET)
 		Registry.register(Registries.BLOCK, HexicalMain.id("pedestal"), PEDESTAL_BLOCK)
 
-		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("hex_candle"), HEX_CANDLE_BLOCK_ENTITY)
-		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("hex_candle_cake"), HEX_CANDLE_CAKE_BLOCK_ENTITY)
-		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("media_jar"), MEDIA_JAR_BLOCK_ENTITY)
-		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("mage_block"), MAGE_BLOCK_ENTITY)
-		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("pillow"), PILLOW_BLOCK_ENTITY)
-		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("pedestal"), PEDESTAL_BLOCK_ENTITY)
-
 		Registry.register(Registries.ITEM, HexicalMain.id("mage_block"), BlockItem(MAGE_BLOCK, Item.Settings()))
 		Registry.register(Registries.ITEM, HexicalMain.id("hex_candle"), HEX_CANDLE_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("sentinel_bed"), SENTINEL_BED_ITEM)
@@ -104,6 +97,13 @@ object HexicalBlocks {
 		Registry.register(Registries.ITEM, HexicalMain.id("periwinkle"), PERIWINKLE_FLOWER_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("casting_carpet"), CASTING_CARPET_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("pedestal"), PEDESTAL_ITEM)
+
+		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("hex_candle"), HEX_CANDLE_BLOCK_ENTITY)
+		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("hex_candle_cake"), HEX_CANDLE_CAKE_BLOCK_ENTITY)
+		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("media_jar"), MEDIA_JAR_BLOCK_ENTITY)
+		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("mage_block"), MAGE_BLOCK_ENTITY)
+		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("pillow"), PILLOW_BLOCK_ENTITY)
+		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("pedestal"), PEDESTAL_BLOCK_ENTITY)
 	}
 
 	@JvmStatic

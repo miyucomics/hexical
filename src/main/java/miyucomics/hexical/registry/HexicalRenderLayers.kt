@@ -2,7 +2,6 @@ package miyucomics.hexical.registry
 
 import miyucomics.hexical.HexicalMain
 import net.fabricmc.fabric.api.client.rendering.v1.CoreShaderRegistrationCallback
-import net.minecraft.client.MinecraftClient
 import net.minecraft.client.render.RenderLayer
 import net.minecraft.client.render.RenderPhase
 import net.minecraft.client.render.VertexFormat

@@ -14,7 +14,7 @@ object RenderUtils {
 	val DUST_AMOUNT: DecimalFormat = DecimalFormat("###,###.##")
 
 	init {
-		PERCENTAGE.roundingMode = RoundingMode.DOWN;
+		PERCENTAGE.roundingMode = RoundingMode.DOWN
 	}
 
 	fun getNormalizedStrokes(pattern: HexPattern, flipHor: Boolean = false): List<Vec2f> {

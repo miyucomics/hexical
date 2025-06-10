@@ -32,7 +32,7 @@ public class FabricIXplatImplMixin {
 				}
 
 				@Override
-				public @Nullable List<Iota> getHex(ServerWorld level) {
+				public List<Iota> getHex(ServerWorld level) {
 					return CharmedItemUtilities.getHex(stack, level);
 				}
 

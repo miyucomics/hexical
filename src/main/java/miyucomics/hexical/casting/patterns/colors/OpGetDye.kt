@@ -54,7 +54,7 @@ class OpGetDye : ConstMediaAction {
 
 	private fun processEntity(entity: Entity): Iota {
 		return when (entity) {
-			is CatEntity -> DyeIota(entity.collarColor.getName())
+			is CatEntity -> DyeIota(entity.collarColor.name)
 			is ItemEntity -> {
 				when (val item = entity.stack.item) {
 					is BlockItem -> getDyeFromBlock(item.block)
@@ -66,14 +66,14 @@ class OpGetDye : ConstMediaAction {
 					}
 				}
 			}
-			is SheepEntity -> DyeIota(entity.color.getName())
+			is SheepEntity -> DyeIota(entity.color.name)
 			is ShulkerEntity -> {
 				if (entity.color == null)
 					NullIota()
 				else
-					DyeIota(entity.color!!.getName())
+					DyeIota(entity.color!!.name)
 			}
-			is WolfEntity -> DyeIota(entity.collarColor.getName())
+			is WolfEntity -> DyeIota(entity.collarColor.name)
 			else -> NullIota()
 		}
 	}
@@ -82,7 +82,7 @@ class OpGetDye : ConstMediaAction {
 		val state = world.getBlockState(position)
 		if (state.block is SignBlock) {
 			val sign = world.getBlockEntity(position) as SignBlockEntity
-			return ListIota(listOf(DyeIota(sign.frontText.color.getName()), DyeIota(sign.backText.color.getName())))
+			return ListIota(listOf(DyeIota(sign.frontText.color.name), DyeIota(sign.backText.color.name)))
 		}
 		return getDyeFromBlock(world.getBlockState(position).block)
 	}
