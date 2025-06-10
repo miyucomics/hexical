@@ -25,6 +25,7 @@ public abstract class WanderingTraderEntityMixin extends MerchantEntity {
 		super(entityType, world);
 	}
 
+	@SuppressWarnings("DataFlowIssue")
 	@Inject(method = "fillRecipes", at = @At("RETURN"))
 	public void addNewTrades(CallbackInfo info) {
 		TradeOfferList tradeOfferList = getOffers();

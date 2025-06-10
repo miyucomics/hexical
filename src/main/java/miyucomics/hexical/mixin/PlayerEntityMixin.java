@@ -18,6 +18,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+@SuppressWarnings("AddedMixinMembersNamePattern")
 @Mixin(PlayerEntity.class)
 public class PlayerEntityMixin implements PlayerEntityMinterface {
 	@Unique
@@ -97,7 +98,7 @@ public class PlayerEntityMixin implements PlayerEntityMinterface {
 	}
 
 	@Override
-	public NbtCompound getEvocation() {
+	public @NotNull NbtCompound getEvocation() {
 		return hexical$evocation;
 	}
 
@@ -107,12 +108,12 @@ public class PlayerEntityMixin implements PlayerEntityMinterface {
 	}
 
 	@Override
-	public LesserSentinelState getLesserSentinels() {
+	public @NotNull LesserSentinelState getLesserSentinels() {
 		return hexical$lesserSentinels;
 	}
 
 	@Override
-	public void setLesserSentinels(LesserSentinelState state) {
+	public void setLesserSentinels(@NotNull LesserSentinelState state) {
 		hexical$lesserSentinels = state;
 	}
 }
