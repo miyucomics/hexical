@@ -42,14 +42,11 @@ import net.minecraft.util.Formatting
 import net.minecraft.util.math.RotationAxis
 import net.minecraft.util.math.Vec2f
 import net.minecraft.util.math.Vec3d
-import java.text.DecimalFormat
 import java.util.function.Consumer
 import kotlin.math.cos
 import kotlin.math.sin
 
 object HexicalEvents {
-	private val format = DecimalFormat("###,###.##")
-
 	@JvmStatic
 	fun init() {
 		LesserSentinelState.registerServerReciever()

@@ -14,11 +14,11 @@ class OpHasAutograph : ConstMediaAction {
 	override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
 		val stack = args.getItemStack(0, argc)
 		if (!stack.hasNbt())
-			return (false).asActionResult
+			return false.asActionResult
 		if (!stack.nbt!!.contains("autographs"))
-			return (false).asActionResult
+			return false.asActionResult
 		val player = args.getPlayer(1, argc)
 		val list = stack.nbt!!.getList("autographs", NbtElement.COMPOUND_TYPE.toInt())
-		return (list.count() { (it as NbtCompound).getString("name") == player.entityName } > 0).asActionResult
+		return (list.count { (it as NbtCompound).getString("name") == player.entityName } > 0).asActionResult
 	}
 }

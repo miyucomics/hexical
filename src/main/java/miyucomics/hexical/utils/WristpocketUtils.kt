@@ -7,9 +7,9 @@ import net.minecraft.item.ItemStack
 
 object WristpocketUtils {
 	fun getWristpocketStack(env: CastingEnvironment): ItemStack? {
-		when (env) {
-			is PlayerBasedCastEnv -> return (env.castingEntity as PlayerEntityMinterface).getWristpocket()
-			else -> return null
+		return when (env) {
+			is PlayerBasedCastEnv -> (env.castingEntity as PlayerEntityMinterface).getWristpocket()
+			else -> null
 		}
 	}
 

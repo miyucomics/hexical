@@ -60,6 +60,7 @@ public class CastingVMMixin {
 			CastingEnvironment env = vm.getEnv();
 			if (!(env instanceof PlayerBasedCastEnv))
 				return;
+			//noinspection DataFlowIssue
 			LedgerData.getLedger((ServerPlayerEntity) env.getCastingEntity()).saveStack(vm.getImage().getStack());
 		}
 	}
