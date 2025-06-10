@@ -617,6 +617,12 @@
 	"hexical.page.is_evoking.summary": "Pushes how long since a player has been evoking. Is -1 if they are not currently evoking.",
 	"hexical.page.evocation.1": "The ancient texts I have learned this technique from reveals many other interesting trifles: _Hexcasters used to perform evocation without any a _Hex, as a greeting or group ritual by waving their arms and chanting in unison. Experiments have also been done to see if a villager could be granted the ability to shift _media but the results of those experiments were either never documented or have been lost to time.",
 
+	"hexical.page.hotbar.title": "Hotbar",
+	"hexcasting.action.hexical:get_hotbar": "Handy Reflection",
+	"hexical.page.get_hotbar.summary": "Pushes a number relating to which of my current items I am currently holding.",
+	"hexcasting.action.hexical:set_hotbar": "Switch",
+	"hexical.page.set_hotbar.summary": "Takes a number 0 to 8 and switches my current item to it.$(br2)$(o)Remember, switching to your pistol is always faster than reloading.$()",
+
 	"hexical.page.pyrotechnics.title": "Pyrotechnics",
 	"hexical.page.pyrotechnics.0": "I have stumbled across some spells related to pyrotechnics. The _media hums quite festively around the patterns, as if they were once used for grand celebrations, although I shudder to imagine how effective they'd be as a weaponized projectile.$(br2)$(o)You don’t need to say anything. Just watch the fireworks.$()",
 	"hexcasting.action.hexical:simulate_firework": "Simulate Firework",

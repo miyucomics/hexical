@@ -38,6 +38,8 @@ import miyucomics.hexical.casting.patterns.firework.OpSimulateFirework
 import miyucomics.hexical.casting.patterns.grimoire.OpGrimoireErase
 import miyucomics.hexical.casting.patterns.grimoire.OpGrimoireIndex
 import miyucomics.hexical.casting.patterns.grimoire.OpGrimoireWrite
+import miyucomics.hexical.casting.patterns.hotbar.OpGetHotbar
+import miyucomics.hexical.casting.patterns.hotbar.OpSetHotbar
 import miyucomics.hexical.casting.patterns.lamp.*
 import miyucomics.hexical.casting.patterns.lesser_sentinel.OpLesserSentinelGet
 import miyucomics.hexical.casting.patterns.lesser_sentinel.OpLesserSentinelSet
@@ -237,6 +239,9 @@ object HexicalActions {
 		register("get_evocation", "wwdeeeeeqeaqawwewewwaqawwewew", HexDir.EAST, OpGetEvocation())
 		register("set_evocation", "wwaqqqqqeqdedwwqwqwwdedwwqwqw", HexDir.EAST, OpSetEvocation())
 		register("is_evoking", "wwaqqqqqeeaqawwewewwaqawwewew", HexDir.EAST, OpGetKeybind("key.hexical.evoke"))
+
+		register("get_hotbar", "qwawqwa", HexDir.EAST, OpGetHotbar())
+		register("set_hotbar", "dwewdwe", HexDir.WEST, OpSetHotbar())
 
 		register("conjure_firework", "dedwaqwwawwqa", HexDir.SOUTH_WEST, OpConjureFirework())
 		register("simulate_firework", "dedwaqwqqwqa", HexDir.SOUTH_WEST, OpSimulateFirework())
