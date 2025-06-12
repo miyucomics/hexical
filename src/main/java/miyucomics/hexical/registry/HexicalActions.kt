@@ -49,6 +49,8 @@ import miyucomics.hexical.casting.patterns.pattern_manipulation.*
 import miyucomics.hexical.casting.patterns.pigments.OpSamplePigment
 import miyucomics.hexical.casting.patterns.pigments.OpTakeOnPigment
 import miyucomics.hexical.casting.patterns.pigments.OpToPigment
+import miyucomics.hexical.casting.patterns.rotate.OpRotateBlock
+import miyucomics.hexical.casting.patterns.rotate.OpRotateEntity
 import miyucomics.hexical.casting.patterns.scroll.OpAgeScroll
 import miyucomics.hexical.casting.patterns.scroll.OpColorScroll
 import miyucomics.hexical.casting.patterns.scroll.OpGlowScroll
