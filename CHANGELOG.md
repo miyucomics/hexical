@@ -12,6 +12,7 @@
 - added lesser sentinels
 - added plushies
 - added Horrible
+- added 512 pattern cap to grimoires
 - added HexGloop's Dispense spell
 - changed tchotchke's old features to be an enchantment you can place on any item
 - added pedestals - holds your items for you!
