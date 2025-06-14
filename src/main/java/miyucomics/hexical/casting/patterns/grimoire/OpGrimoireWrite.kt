@@ -10,6 +10,9 @@ import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.casting.iota.ListIota
 import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadOffhandItem
+import at.petrak.hexcasting.api.utils.containsTag
+import at.petrak.hexcasting.api.utils.getCompound
+import at.petrak.hexcasting.api.utils.getList
 import at.petrak.hexcasting.api.utils.putCompound
 import miyucomics.hexical.casting.patterns.grimoire.OpGrimoireIndex.Companion.populateGrimoireMetadata
 import miyucomics.hexical.registry.HexicalItems
@@ -29,6 +32,10 @@ class OpGrimoireWrite : SpellAction {
 		val key = args.getPattern(0, argc)
 		args.getList(1, argc)
 		CastingUtils.assertNoTruename(args[1], env)
+
+		if (stack.containsTag("expansions") && stack.getCompound("expansions")!!.size > 512)
+			throw MishapBadOffhandItem.of(null, "nonfull_grimoire")
+
 		return SpellAction.Result(Spell(stack, key, args[1] as ListIota), 0, listOf())
 	}
 
