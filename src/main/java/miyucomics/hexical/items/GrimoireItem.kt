@@ -19,9 +19,14 @@ class GrimoireItem : Item(Settings().maxCount(1)) {
 
 		val metadata = stack.nbt!!.getCompound("metadata")
 		val text = Text.translatable("hexical.grimoire.contains")
-		for (key in metadata.keys) {
-			val data = metadata.getCompound(key)
-			text.append(PatternIota(HexPattern.fromAngles(key, HexDir.values()[data.getInt("direction")])).display()).append(",")
+
+		val components = metadata.keys.map { key -> PatternIota(HexPattern.fromAngles(key, HexDir.values()[metadata.getCompound(key).getInt("direction")])).display() }
+
+		if (components.isNotEmpty()) {
+			text.append(components[0])
+			for (i in 1 until components.size) {
+				text.append(", ").append(components[i])
+			}
 		}
 
 		list.add(text.formatted(Formatting.GRAY))
