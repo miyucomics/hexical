@@ -66,8 +66,8 @@ import miyucomics.hexical.casting.patterns.vfx.OpSparkle
 import miyucomics.hexical.casting.patterns.wristpocket.*
 import miyucomics.hexical.interfaces.Specklike
 import miyucomics.hexical.items.HandLampItem
-import miyucomics.hexposition.iotas.IdentifierIota
-import miyucomics.hexposition.iotas.asActionResult
+import miyucomics.hexpose.iotas.IdentifierIota
+import miyucomics.hexpose.iotas.asActionResult
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.projectile.FireballEntity
 import net.minecraft.entity.projectile.LlamaSpitEntity
@@ -217,6 +217,7 @@ object HexicalActions {
 		})
 
 		register("confetti", "awddeqaedd", HexDir.EAST, OpConfetti())
+		register("vibration", "wwawawwd", HexDir.EAST, OpVibrate())
 		register("sparkle", "dqa", HexDir.NORTH_EAST, OpSparkle())
 		register("block_ping", "dwwdwwdwewdwwdwwdeq", HexDir.NORTH_EAST, OpBlockPing())
 		register("crack_device", "wwaqqqqqeqdedwqeaeqwdedwqeaeq", HexDir.EAST, OpCrackDevice())

@@ -15,8 +15,8 @@ import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.casting.iotas.DyeIota
 import miyucomics.hexical.casting.iotas.PigmentIota
 import miyucomics.hexical.casting.iotas.getTrueDye
-import miyucomics.hexposition.iotas.IdentifierIota
-import miyucomics.hexposition.iotas.getIdentifier
+import miyucomics.hexpose.iotas.IdentifierIota
+import miyucomics.hexpose.iotas.getIdentifier
 import net.minecraft.entity.ItemEntity
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.player.PlayerEntity
