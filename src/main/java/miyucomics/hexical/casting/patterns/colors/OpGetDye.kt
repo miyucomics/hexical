@@ -7,8 +7,8 @@ import at.petrak.hexcasting.api.casting.getEntity
 import at.petrak.hexcasting.api.casting.iota.*
 import miyucomics.hexical.casting.iotas.DyeIota
 import miyucomics.hexical.data.DyeData
-import miyucomics.hexposition.iotas.IdentifierIota
-import miyucomics.hexposition.iotas.getIdentifier
+import miyucomics.hexpose.iotas.IdentifierIota
+import miyucomics.hexpose.iotas.getIdentifier
 import net.minecraft.block.Block
 import net.minecraft.block.SignBlock
 import net.minecraft.block.entity.SignBlockEntity

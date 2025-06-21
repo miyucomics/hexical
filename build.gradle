@@ -39,7 +39,7 @@ dependencies {
 	include modImplementation("dev.kosmx.player-anim:player-animation-lib-fabric:$player_animator_version")
 	modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-api:$cardinal_components_version"
 	modImplementation "vazkii.patchouli:Patchouli:$minecraft_version-$patchouli_version-FABRIC"
-	modImplementation "miyucomics:hexposition:$hexposition_version"
+	modImplementation "miyucomics:hexpose:$hexpose_version"
 	modImplementation("at.petra-k.hexcasting:hexcasting-fabric-$minecraft_version:$hexcasting_version") {
 		exclude module: "phosphor"
         exclude module: "lithium"
