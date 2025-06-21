@@ -6,6 +6,7 @@
   - migrated patterns out
   - player stores data now; not persistent state
   - removed Myodesopsia spell
+- added Vibrate spell
 - added pattern preview to animated scrolls
 - added hotbar spells
 - added sonic screwdrivers

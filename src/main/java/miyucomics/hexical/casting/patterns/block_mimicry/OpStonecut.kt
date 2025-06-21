@@ -8,7 +8,7 @@ import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadItem
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.misc.MediaConstants
-import miyucomics.hexposition.iotas.getIdentifier
+import miyucomics.hexpose.iotas.getIdentifier
 import net.minecraft.entity.ItemEntity
 import net.minecraft.inventory.SimpleInventory
 import net.minecraft.recipe.RecipeType
