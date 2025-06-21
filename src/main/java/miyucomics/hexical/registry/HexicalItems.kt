@@ -59,7 +59,7 @@ object HexicalItems {
 
 	@JvmStatic
 	fun randomPlush(): ItemStack {
-		val itemType = listOf(HEXXY, IRISSY, PENTXXY, QUADXXY, THOTHY, FLEXXY)[Random.nextInt(0, 7)]
+		val itemType = listOf(HEXXY, IRISSY, PENTXXY, QUADXXY, THOTHY, FLEXXY).random()
 		return ItemStack(itemType)
 	}
 
