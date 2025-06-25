@@ -39,24 +39,23 @@ public class MouseMixin {
 
 	@Unique
 	private void handleButtonPress(Hand hand, ItemStack stack, int button, boolean sneaking, CallbackInfo ci) {
-		String key = switch (button) {
-			case GLFW.GLFW_MOUSE_BUTTON_LEFT -> sneaking ? "left_sneak" : "left";
-			case GLFW.GLFW_MOUSE_BUTTON_RIGHT -> sneaking ? "right_sneak" : "right";
-			default -> null;
+		int buttonPressed = switch (button) {
+			case GLFW.GLFW_MOUSE_BUTTON_1 -> 1; // left
+			case GLFW.GLFW_MOUSE_BUTTON_2 -> 2; // right
+			case GLFW.GLFW_MOUSE_BUTTON_3 -> 3; // middle
+			case GLFW.GLFW_MOUSE_BUTTON_4 -> 4;
+			case GLFW.GLFW_MOUSE_BUTTON_5 -> 5;
+			case GLFW.GLFW_MOUSE_BUTTON_6 -> 6;
+			case GLFW.GLFW_MOUSE_BUTTON_7 -> 7;
+			case GLFW.GLFW_MOUSE_BUTTON_8 -> 8;
+			default -> -1;
 		};
 
-		if (key == null)
+		if (buttonPressed == -1)
 			return;
 
-		if (CharmedItemUtilities.getBoolean(stack, key)) {
-			int inputMethod = switch (key) {
-				case "left" -> 0;
-				case "left_sneak" -> 1;
-				case "right" -> 2;
-				case "right_sneak" -> 3;
-				default -> -1;
-			};
-			sendMessage(hand, inputMethod);
+		if (CharmedItemUtilities.shouldIntercept(stack, buttonPressed, sneaking)) {
+			sendMessage(hand, buttonPressed);
 			ci.cancel();
 		}
 	}
