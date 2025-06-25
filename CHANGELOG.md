@@ -17,8 +17,8 @@
 - changed tchotchke's old features to be an enchantment you can place on any item
 - added pedestals - holds your items for you!
   - if used in a circle, it pushes the iota from the item on the pedestal
-  - acts as a circle's other hand
-- added all variants of cooking blocks
+  - acts as a circle's other hand if placed on top of an impetus
+- added all variants of cooking blocks as spells
 - added hopper spells
 - added Clarity and Clouding zeniths/nadirs
 - added Ping Block spell - highlight a block
@@ -42,7 +42,6 @@
 - added Similarity Purification - tests if two patterns have the same shape but different stroke order
 - added sentinel bed - always have ambit inside
 - added rotation spells for blocks and entities
-- added Frieren shields
 - added periwinkle, a flower that can only be created via Hexcasting
   - it is the core ingredient of the Wooleyed potion
   - it can be used to craft a lei
@@ -85,7 +84,7 @@
 - fixed getting to document Ghast Fireball pushing an entity
 - fixed swapped documentation of Calligrapher's and Chirographer's Purification
 - fixed bug where wristpocket does not cancel the interaction when interacting with a block
-- migrated scrying to Hexposition, a new addon
+- migrated scrying to Hexpose, a new addon
   - added scrying pattern for moon phase
   - added scrying pattern for projectile shooter
   - added scrying pattern for riding entities
