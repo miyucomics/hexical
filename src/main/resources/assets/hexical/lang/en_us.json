@@ -331,9 +331,6 @@
 	"hexcasting.action.hexical:get_arch_lamp_storage": "Archgenie Reflection: Memory",
 	"hexical.page.get_arch_lamp_storage.summary": "Can be cast by a $(l:items/hexcasting)$(item)casting device$(), $(l:items/staff)$(item)Staff$(), or within the $(l:lamp/arch_lamps)$(item)Archgenie Lamp$() to push the stored iota.",
 
-	"hexical.page.lamp_pillows.title": "The Pillow",
-	"hexical.page.lamp_pillows.0": "It seems that $(l:lamp/arch_lamps)$(item)Archgenie Lamps$() inhibit the genie's ability to cast unless someone is actively grasping it, possibly to prevent the genie from applying _media as a form of attrition to wear down its prison. However I have never noted any behavior of the sort; perhaps it is just the paranoia that comes with the brilliance it takes to design such a marvellous device.",
-
 	"hexical.page.pedestal_circles.title": "Pedestals in Circles",
 	"hexical.page.pedestal_circles.0": "$(l:items/pedestals)$(thing)Pedestals$() have magical abilities!$(br2)If they are holding $(l:patterns/readwrite#hexcasting:write)$(item)an item that contains information$() and the $(l:greatwork/spellcircles)$(thing)spell circle$()'s wave passes over them as if they were a $(l:items/slate)$(item)Slate$(), they push the iota onto the stack. If the $(l:items/pedestals)$(thing)Pedestal$() happens to processed inside an unclosed $(l:patterns/patterns_as_iotas#hexcasting:open_paren)Introspection$(), the iota appears inside the constructed list.",
 	"hexical.page.pedestal_circles.1": "If placed directly on top of an $(l:greatwork/spellcircles)$(item)Impetus$() instead, the $(l:items/pedestals)$(item)Pedestal$() acts as the circle's $(o)other hand$(), useful for spells such as the $(l:patterns/spells/hexcasting)casting device crafting spells$(), $(l:patterns/spells/hexcasting#hexcasting:recharge)$(action)Recharge Item$(), and $(l:patterns/spells/hexcasting#hexcasting:erase)$(action)Erase Item$().$(br2)This includes $(l:patterns/readwrite#hexcasting:read)$(action)Scribe's Reflection$() and $(l:patterns/readwrite#hexcasting:write)$(action)Scribe's Gambit$(), allowing me to create $(l:greatwork/spellcircles)$(thing)spell circles$() to automatically fill in my $(l:items/focus)$(item)Foci$().",
@@ -362,7 +359,7 @@
 	"hexcasting.action.hexical:send_telepathy": "Send Thought",
 	"hexical.page.send_telepathy.summary": "Momentarily displays an iota above my hotbar. If cast repeatedly, each cast overwrites the previous instantly.",
 	"hexcasting.action.hexical:shout_telepathy": "Shout Thought",
-	"hexical.page.shout_telepathy.summary": "Grandly flahes an iota across my vision. It obstructs my vision and takes some time to fade in, so I shall only use it sparingly.",
+	"hexical.page.shout_telepathy.summary": "Grandly flashes an iota across my vision. It obstructs my vision and takes some time to fade in, so I shall only use it sparingly.",
 	"hexcasting.action.hexical:pling": "Hallucinate Pling",
 	"hexical.page.pling.summary": "Causes me to hear a pling that is inaudible to other players.",
 	"hexcasting.action.hexical:click": "Hallucinate Click",

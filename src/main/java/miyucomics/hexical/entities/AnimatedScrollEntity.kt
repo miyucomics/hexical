@@ -37,12 +37,6 @@ import net.minecraft.world.World
 
 class AnimatedScrollEntity(entityType: EntityType<AnimatedScrollEntity>, world: World) : AbstractDecorationEntity(entityType, world), ADIotaHolder {
 	var patterns: List<NbtCompound> = listOf()
-
-	var clientAged = false
-	var clientGlow = false
-	var clientVanished = false
-	var clientSize = 1
-	var clientColor: Int = (0xff_000000).toInt()
 	var cachedVerts: List<Vec2f> = listOf()
 
 	constructor(world: World) : this(HexicalEntities.ANIMATED_SCROLL_ENTITY, world)
@@ -98,20 +92,19 @@ class AnimatedScrollEntity(entityType: EntityType<AnimatedScrollEntity>, world: 
 
 	private fun updateRender() {
 		if (this.patterns.isNotEmpty())
-			this.dataTracker.set(renderDataTracker, patterns[((world.time / 20).toInt() % patterns.size)])
+			this.dataTracker.set(patternDataTracker, patterns[((world.time / 20).toInt() % patterns.size)])
 		else {
 			val compound = NbtCompound()
 			compound.putBoolean("empty", true)
-			this.dataTracker.set(renderDataTracker, compound)
+			this.dataTracker.set(patternDataTracker, compound)
 		}
 	}
 
 	override fun writeCustomDataToNbt(nbt: NbtCompound) {
 		nbt.putInt("direction", facing.id)
-		nbt.putBoolean("aged", this.dataTracker.get(agedDataTracker))
+		nbt.putInt("state", this.dataTracker.get(stateDataTracker))
 		nbt.putInt("color", this.dataTracker.get(colorDataTracker))
 		nbt.putBoolean("glow", this.dataTracker.get(glowDataTracker))
-		nbt.putBoolean("vanished", this.dataTracker.get(vanishedDataTracker))
 		nbt.putInt("size", this.dataTracker.get(sizeDataTracker))
 
 		val data = NbtList()
@@ -124,10 +117,9 @@ class AnimatedScrollEntity(entityType: EntityType<AnimatedScrollEntity>, world: 
 
 	override fun readCustomDataFromNbt(nbt: NbtCompound) {
 		this.facing = Direction.byId(nbt.getInt("direction"))
-		this.dataTracker.set(agedDataTracker, nbt.getBoolean("aged"))
+		this.dataTracker.set(stateDataTracker, nbt.getInt("state"))
 		this.dataTracker.set(glowDataTracker, nbt.getBoolean("glow"))
 		this.dataTracker.set(colorDataTracker, nbt.getInt("color"))
-		this.dataTracker.set(vanishedDataTracker, nbt.getBoolean("vanished"))
 		this.dataTracker.set(sizeDataTracker, nbt.getInt("size"))
 		setFacing(this.facing)
 		updateAttachmentPosition()
@@ -157,10 +149,9 @@ class AnimatedScrollEntity(entityType: EntityType<AnimatedScrollEntity>, world: 
 			this.patterns.forEach { constructed.add(it) }
 			stack.orCreateNbt.putList("patterns", constructed)
 
-			stack.orCreateNbt.putBoolean("aged", this.dataTracker.get(agedDataTracker))
 			stack.orCreateNbt.putBoolean("glow", this.dataTracker.get(glowDataTracker))
-			stack.orCreateNbt.putBoolean("vanished", this.dataTracker.get(vanishedDataTracker))
 			stack.orCreateNbt.putInt("color", this.dataTracker.get(colorDataTracker))
+			stack.orCreateNbt.putInt("state", this.dataTracker.get(stateDataTracker))
 			this.dropStack(stack)
 		}
 	}
@@ -187,32 +178,24 @@ class AnimatedScrollEntity(entityType: EntityType<AnimatedScrollEntity>, world: 
 		this.setFacing(Direction.byId(packet.entityData))
 	}
 
-	fun toggleAged() = this.dataTracker.set(agedDataTracker, !this.dataTracker.get(agedDataTracker))
-	fun toggleGlow() = this.dataTracker.set(glowDataTracker, !this.dataTracker.get(glowDataTracker))
-	fun toggleVanished() = this.dataTracker.set(vanishedDataTracker, !this.dataTracker.get(vanishedDataTracker))
+	fun setState(state: Int) = this.dataTracker.set(stateDataTracker, state)
+	fun makeAncient() = this.dataTracker.set(stateDataTracker, 1)
 	fun setColor(color: Int) = this.dataTracker.set(colorDataTracker, color)
+	fun toggleGlow() = this.dataTracker.set(glowDataTracker, !this.dataTracker.get(glowDataTracker))
 
 	override fun initDataTracker() {
-		this.dataTracker.startTracking(agedDataTracker, false)
 		this.dataTracker.startTracking(colorDataTracker, (0xff_000000).toInt())
 		this.dataTracker.startTracking(glowDataTracker, false)
-		this.dataTracker.startTracking(vanishedDataTracker, false)
+		this.dataTracker.startTracking(stateDataTracker, 0)
 		this.dataTracker.startTracking(sizeDataTracker, 1)
-		this.dataTracker.startTracking(renderDataTracker, NbtCompound())
+		this.dataTracker.startTracking(patternDataTracker, NbtCompound())
 	}
 
 	override fun onTrackedDataSet(data: TrackedData<*>) {
 		when (data) {
-			agedDataTracker -> this.clientAged = this.dataTracker.get(agedDataTracker)
-			colorDataTracker -> this.clientColor = this.dataTracker.get(colorDataTracker)
-			glowDataTracker -> this.clientGlow = this.dataTracker.get(glowDataTracker)
-			vanishedDataTracker -> this.clientVanished = this.dataTracker.get(vanishedDataTracker)
-			sizeDataTracker -> {
-				this.updateAttachmentPosition()
-				this.clientSize = this.dataTracker.get(sizeDataTracker)
-			}
-			renderDataTracker -> {
-				val nbt = dataTracker.get(renderDataTracker)
+			sizeDataTracker -> this.updateAttachmentPosition()
+			patternDataTracker -> {
+				val nbt = dataTracker.get(patternDataTracker)
 				this.cachedVerts = if (nbt.contains("empty")) listOf() else RenderUtils.getNormalizedStrokes(HexPattern.fromNBT(nbt), true)
 			}
 			else -> {}
@@ -220,12 +203,11 @@ class AnimatedScrollEntity(entityType: EntityType<AnimatedScrollEntity>, world: 
 	}
 
 	companion object {
-		private val agedDataTracker: TrackedData<Boolean> = DataTracker.registerData(AnimatedScrollEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
-		private val glowDataTracker: TrackedData<Boolean> = DataTracker.registerData(AnimatedScrollEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
-		private val vanishedDataTracker: TrackedData<Boolean> = DataTracker.registerData(AnimatedScrollEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
-		private val colorDataTracker: TrackedData<Int> = DataTracker.registerData(AnimatedScrollEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
-		private val sizeDataTracker: TrackedData<Int> = DataTracker.registerData(AnimatedScrollEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
-		private val renderDataTracker: TrackedData<NbtCompound> = DataTracker.registerData(AnimatedScrollEntity::class.java, TrackedDataHandlerRegistry.NBT_COMPOUND)
+		private val patternDataTracker: TrackedData<NbtCompound> = DataTracker.registerData(AnimatedScrollEntity::class.java, TrackedDataHandlerRegistry.NBT_COMPOUND)
+		val glowDataTracker: TrackedData<Boolean> = DataTracker.registerData(AnimatedScrollEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
+		val colorDataTracker: TrackedData<Int> = DataTracker.registerData(AnimatedScrollEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
+		val sizeDataTracker: TrackedData<Int> = DataTracker.registerData(AnimatedScrollEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
+		val stateDataTracker: TrackedData<Int> = DataTracker.registerData(AnimatedScrollEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
 	}
 
 	override fun readIotaTag(): NbtCompound? {

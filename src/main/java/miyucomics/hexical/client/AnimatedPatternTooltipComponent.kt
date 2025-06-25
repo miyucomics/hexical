@@ -12,7 +12,7 @@ import net.minecraft.util.Identifier
 
 class AnimatedPatternTooltipComponent(tooltip: AnimatedPatternTooltip) : TooltipComponent {
 	private val color: Int = tooltip.color
-	private val ancient: Boolean = tooltip.ancient
+	private val state: Int = tooltip.state
 	private val pattern: HexPattern = tooltip.pattern
 
 	override fun drawItems(font: TextRenderer?, mouseX: Int, mouseY: Int, graphics: DrawContext) {
@@ -22,7 +22,8 @@ class AnimatedPatternTooltipComponent(tooltip: AnimatedPatternTooltip) : Tooltip
 		matrices.translate(mouseX.toFloat(), mouseY.toFloat(), 500f)
 		RenderSystem.enableBlend()
 
-		graphics.drawTexture(if (ancient) ANCIENT_BG else PRISTINE_BG, 0, 0, RENDER_SIZE.toInt(), RENDER_SIZE.toInt(), 0f, 0f, TEXTURE_SIZE, TEXTURE_SIZE, TEXTURE_SIZE, TEXTURE_SIZE)
+		if (state != 2)
+			graphics.drawTexture(if (state == 1) ANCIENT_BG else PRISTINE_BG, 0, 0, RENDER_SIZE.toInt(), RENDER_SIZE.toInt(), 0f, 0f, TEXTURE_SIZE, TEXTURE_SIZE, TEXTURE_SIZE, TEXTURE_SIZE)
 		matrices.translate(0f, 0f, 100f)
 		matrices.scale(RENDER_SIZE, RENDER_SIZE, 1f)
 
