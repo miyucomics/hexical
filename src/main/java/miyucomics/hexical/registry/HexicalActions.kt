@@ -51,10 +51,8 @@ import miyucomics.hexical.casting.patterns.pigments.OpTakeOnPigment
 import miyucomics.hexical.casting.patterns.pigments.OpToPigment
 import miyucomics.hexical.casting.patterns.rotate.OpRotateBlock
 import miyucomics.hexical.casting.patterns.rotate.OpRotateEntity
-import miyucomics.hexical.casting.patterns.scroll.OpAgeScroll
+import miyucomics.hexical.casting.patterns.scroll.OpAlterScroll
 import miyucomics.hexical.casting.patterns.scroll.OpColorScroll
-import miyucomics.hexical.casting.patterns.scroll.OpGlowScroll
-import miyucomics.hexical.casting.patterns.scroll.OpVanishScroll
 import miyucomics.hexical.casting.patterns.specks.*
 import miyucomics.hexical.casting.patterns.telepathy.OpGetKeybind
 import miyucomics.hexical.casting.patterns.telepathy.OpHallucinateSound
@@ -84,10 +82,11 @@ object HexicalActions {
 		// make it do something special later
 		register("horrible", "wedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqeedqawqeewdeaqqewdeaqeewdeaqeedqawqqedqawqqewdeaqeedqawqeewdeaqqewdeaqeewdeaqeedqawqqedqawqqewdeaqqedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqqedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqeedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqqedqawqeewdeaqqewdeaqeewdeaqeedqawqqedqawqqewdeaqe", HexDir.EAST, OpHorrible())
 
-		register("age_scroll", "waeqqqqeqqqwqeaeaeaeq", HexDir.EAST, OpAgeScroll())
-		register("color_scroll", "waeqqqqewqqwqqeqeqqwqqeq", HexDir.EAST, OpColorScroll())
-		register("glow_scroll", "waeqqqqedeqdqdqdqeqdwwd", HexDir.EAST, OpGlowScroll())
-		register("vanish_scroll", "waeqqqqedeqeeweeqewee", HexDir.EAST, OpVanishScroll())
+		register("normalize_scroll", "wqwawqwqawawa", HexDir.SOUTH_WEST, OpAlterScroll { it.setState(0) })
+		register("age_scroll", "wqwawqwqawwwdwdwwwa", HexDir.SOUTH_WEST, OpAlterScroll { it.setState(1) })
+		register("vanish_scroll", "wqwawqwqaqqa", HexDir.SOUTH_WEST, OpAlterScroll { it.setState(2) })
+		register("color_scroll", "wqwawqwqawawaedd", HexDir.SOUTH_WEST, OpColorScroll())
+		register("glow_scroll", "wqwawqwqawawaewdwdw", HexDir.SOUTH_WEST, OpAlterScroll { it.toggleGlow() })
 
 		register("write_grimoire", "aqwqaeaqa", HexDir.WEST, OpGrimoireWrite())
 		register("erase_grimoire", "aqwqaqded", HexDir.WEST, OpGrimoireErase())

@@ -59,12 +59,9 @@ class AnimatedScrollItem(private val size: Int) : Item(Settings()), IotaHolderIt
 			listOf()
 
 		val scroll = AnimatedScrollEntity(world, position, direction, size, patterns)
-		if (stack.orCreateNbt.getBoolean("aged"))
-			scroll.toggleAged()
+		scroll.setState(stack.orCreateNbt.getInt("state"))
 		if (stack.orCreateNbt.getBoolean("glow"))
 			scroll.toggleGlow()
-		if (stack.orCreateNbt.getBoolean("vanished"))
-			scroll.toggleVanished()
 		if (stack.orCreateNbt.hasInt("color"))
 			scroll.setColor(stack.orCreateNbt.getInt("color"))
 
@@ -84,16 +81,14 @@ class AnimatedScrollItem(private val size: Int) : Item(Settings()), IotaHolderIt
 	override fun appendTooltip(stack: ItemStack, world: World?, tooltip: MutableList<Text>, context: TooltipContext) {
 		if (stack.getBoolean("glow"))
 			tooltip.add(Text.translatable("tooltip.hexical.scroll_glow").formatted(Formatting.GOLD))
-		if (stack.getBoolean("vanished"))
-			tooltip.add(Text.translatable("tooltip.hexical.scroll_vanished").formatted(Formatting.GOLD))
 		super.appendTooltip(stack, world, tooltip, context)
 	}
 
 	override fun getTooltipData(stack: ItemStack): Optional<TooltipData> {
 		val patterns = stack.getList("patterns", NbtElement.COMPOUND_TYPE.toInt())
-		if (patterns != null) {
+		if (patterns != null && patterns.isNotEmpty()) {
 			val pattern = HexPattern.fromNBT(patterns[(ClientStorage.ticks / 20) % patterns.size].asCompound)
-			return Optional.of(AnimatedPatternTooltip(if (stack.containsTag("color")) stack.orCreateNbt.getInt("color") else 0xff_000000.toInt(), pattern, stack.getBoolean("aged")))
+			return Optional.of(AnimatedPatternTooltip(if (stack.containsTag("color")) stack.orCreateNbt.getInt("color") else 0xff_000000.toInt(), pattern, stack.getInt("state")))
 		}
 		return Optional.empty()
 	}
