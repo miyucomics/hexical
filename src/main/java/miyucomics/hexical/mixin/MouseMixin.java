@@ -16,7 +16,6 @@ import org.lwjgl.glfw.GLFW;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -34,11 +33,6 @@ public class MouseMixin {
 		Pair<Hand, ItemStack> charmedItem = CharmedItemUtilities.getCharmedItem(client.player);
 		if (charmedItem == null) return;
 
-		handleButtonPress(charmedItem.getFirst(), charmedItem.getSecond(), button, client.player.isSneaking(), ci);
-	}
-
-	@Unique
-	private void handleButtonPress(Hand hand, ItemStack stack, int button, boolean sneaking, CallbackInfo ci) {
 		int buttonPressed = switch (button) {
 			case GLFW.GLFW_MOUSE_BUTTON_1 -> 1; // left
 			case GLFW.GLFW_MOUSE_BUTTON_2 -> 2; // right
@@ -54,19 +48,14 @@ public class MouseMixin {
 		if (buttonPressed == -1)
 			return;
 
-		if (CharmedItemUtilities.shouldIntercept(stack, buttonPressed, sneaking)) {
-			sendMessage(hand, buttonPressed);
+		if (CharmedItemUtilities.shouldIntercept(charmedItem.getSecond(), buttonPressed, client.player.isSneaking())) {
+			assert client.player != null;
+			client.player.swingHand(charmedItem.getFirst());
+			client.player.getWorld().playSound(client.player, client.player.getX(), client.player.getY(), client.player.getZ(), HexSounds.CAST_HERMES, SoundCategory.PLAYERS, 1f, 1f);
+			PacketByteBuf buf = PacketByteBufs.create();
+			buf.writeInt(buttonPressed);
+			ClientPlayNetworking.send(HexicalNetworking.CHARMED_ITEM_USE_CHANNEL, buf);
 			ci.cancel();
 		}
-	}
-
-	@Unique
-	private void sendMessage(Hand hand, int inputMethod) {
-		assert client.player != null;
-		client.player.swingHand(hand);
-		client.player.getWorld().playSound(client.player, client.player.getX(), client.player.getY(), client.player.getZ(), HexSounds.CAST_HERMES, SoundCategory.PLAYERS, 1f, 1f);
-		PacketByteBuf buf = PacketByteBufs.create();
-		buf.writeInt(inputMethod);
-		ClientPlayNetworking.send(HexicalNetworking.CHARMED_ITEM_USE_CHANNEL, buf);
 	}
 }
