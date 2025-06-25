@@ -9,7 +9,6 @@
 - added Vibrate spell
 - added pattern preview to animated scrolls
 - added hotbar spells
-- added sonic screwdrivers
 - added lesser sentinels
 - added plushies
 - added Horrible

@@ -19,16 +19,16 @@ class AnimatedScrollRenderer(ctx: EntityRendererFactory.Context) : EntityRendere
 		matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(scroll!!.pitch))
 		matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180.0f - scroll.yaw))
 		val worldLight = WorldRenderer.getLightmapCoordinates(scroll.world, scroll.blockPos)
-		if (!scroll.clientVanished)
-			drawFrame(matrices, vertexConsumers, getTexture(scroll), scroll.clientSize.toFloat(), worldLight)
+		if (scroll.dataTracker.get(AnimatedScrollEntity.stateDataTracker) != 2)
+			drawFrame(matrices, vertexConsumers, getTexture(scroll), scroll.dataTracker.get(AnimatedScrollEntity.sizeDataTracker).toFloat(), worldLight)
 		drawPattern(matrices, vertexConsumers, scroll, worldLight)
 		matrices.pop()
 	}
 
-	override fun getTexture(scroll: AnimatedScrollEntity?) = when (scroll!!.clientSize) {
-		1 -> if (scroll.clientAged) ANCIENT_SMALL else PRISTINE_SMALL
-		2 -> if (scroll.clientAged) ANCIENT_MEDIUM else PRISTINE_MEDIUM
-		3 -> if (scroll.clientAged) ANCIENT_LARGE else PRISTINE_LARGE
+	override fun getTexture(scroll: AnimatedScrollEntity) = when (scroll.dataTracker.get(AnimatedScrollEntity.sizeDataTracker)) {
+		1 -> if (scroll.dataTracker.get(AnimatedScrollEntity.stateDataTracker) == 1) ANCIENT_SMALL else PRISTINE_SMALL
+		2 -> if (scroll.dataTracker.get(AnimatedScrollEntity.stateDataTracker) == 1) ANCIENT_MEDIUM else PRISTINE_MEDIUM
+		3 -> if (scroll.dataTracker.get(AnimatedScrollEntity.stateDataTracker) == 1) ANCIENT_LARGE else PRISTINE_LARGE
 		else -> ANCIENT_SMALL
 	}
 
@@ -88,9 +88,9 @@ class AnimatedScrollRenderer(ctx: EntityRendererFactory.Context) : EntityRendere
 		}
 
 		private fun drawPattern(matrices: MatrixStack, vertexConsumers: VertexConsumerProvider, scroll: AnimatedScrollEntity, light: Int) {
-			if (!scroll.clientVanished)
+			if (scroll.dataTracker.get(AnimatedScrollEntity.stateDataTracker) != 2)
 				matrices.translate(0.0, 0.0, -0.75 / 16.0)
-			val scale = when (scroll.clientSize) {
+			val scale = when (scroll.dataTracker.get(AnimatedScrollEntity.sizeDataTracker)) {
 				1 -> 0.5f
 				2 -> 1.25f
 				3 -> 2f
@@ -102,14 +102,14 @@ class AnimatedScrollRenderer(ctx: EntityRendererFactory.Context) : EntityRendere
 			val zappy = makeZappy(scroll.cachedVerts, null, 10, 1f, 0.1f, 0f, 0.1f, 0.9f, 0.0)
 
 			fun makeVertex(pos: Vec2f) = buffer.vertex(peek.positionMatrix, pos.x, pos.y, 0f)
-				.color(scroll.clientColor)
+				.color(scroll.dataTracker.get(AnimatedScrollEntity.colorDataTracker))
 				.texture(0f, 0f)
 				.overlay(OverlayTexture.DEFAULT_UV)
-				.light(if (scroll.clientGlow) LightmapTextureManager.MAX_LIGHT_COORDINATE else light)
+				.light(if (scroll.dataTracker.get(AnimatedScrollEntity.glowDataTracker)) LightmapTextureManager.MAX_LIGHT_COORDINATE else light)
 				.normal(peek.normalMatrix, 0f, 1f, 0f)
 				.next()
 
-			RenderUtils.quadifyLines(::makeVertex, 0.025f / scroll.clientSize, zappy)
+			RenderUtils.quadifyLines(::makeVertex, 0.025f / scroll.dataTracker.get(AnimatedScrollEntity.sizeDataTracker), zappy)
 		}
 	}
 }
