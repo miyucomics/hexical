@@ -331,9 +331,6 @@
 	"hexcasting.action.hexical:get_arch_lamp_storage": "大精灵之精思：记忆型",
 	"hexical.page.get_arch_lamp_storage.summary": "可由$(l:items/hexcasting)$(item)施法物品$()、$(l:items/staff)$(item)法杖$()，以及$(l:lamp/arch_lamps)$(item)大精灵神灯$()自身运行。获取神灯的 iota 存储。",
 
-	"hexical.page.lamp_pillows.title": "枕座",
-	"hexical.page.lamp_pillows.0": "似乎$(l:lamp/arch_lamps)$(item)大精灵神灯$()会在无人持有时抑制精灵的施法能力，也许是为阻止精灵用$(media)媒质$()削弱神灯的禁锢。我从未见到过这种表现；大概能设计如此精妙的仪器的意识总是才智与偏执并存吧。",
-
 	"hexical.page.pedestal_circles.title": "法术环中的支座",
 	"hexical.page.pedestal_circles.0": "$(l:items/pedestals)$(thing)支座$()有魔力！$(br2)如果其中存在$(l:patterns/readwrite#hexcasting:write)$(item)带有信息的物品$()，同时还有$(l:greatwork/spellcircles)$(thing)法术环$()的媒质波如穿过$(l:items/slate)$(item)石板$()一样流过，那么它就会把物品中的 iota 压入栈顶。如果$(l:items/pedestals)$(thing)支座$()恰好处于未闭合的$(l:patterns/patterns_as_iotas#hexcasting:open_paren)内省$()中，该 iota 便会出现在所创建的列表内。",
 	"hexical.page.pedestal_circles.1": "如果直接把$(l:items/pedestals)$(item)支座$()放在$(l:greatwork/spellcircles)$(item)促动石$()上方，那么它就会变成法术环的$(o)另一只手$()，适用于$(l:patterns/spells/hexcasting)合成施法物品等法术$()、$(l:patterns/spells/hexcasting#hexcasting:recharge)$(action)重新充能$()，以及$(l:patterns/spells/hexcasting#hexcasting:erase)$(action)清除物品$()。$(br2)有关法术也包括$(l:patterns/readwrite#hexcasting:read)$(action)书吏之精思$()还有$(l:patterns/readwrite#hexcasting:write)$(action)书吏之策略$()。可借此让$(l:greatwork/spellcircles)$(thing)法术环$()自动向$(l:items/focus)$(item)核心$()写入。",
@@ -548,6 +545,9 @@
 	"hexcasting.action.hexical:confetti": "彩花",
 	"hexical.page.confetti.summary": "在给定位置以给定方向、速率、速度制造一阵类似$(l:patterns/spells/pyrotechnics)烟花$()的响声及一簇色彩鲜艳的粒子。消耗大约 1/2 个$(l:items/amethyst)$(item)紫水晶粉$()。",
 	"hexical.page.confetti.description": "这些粒子不会造成伤害，且在触地前会四处飘动。第一个向量控制位置。第二个参数控制方向；若传入数，则表示向所有方向爆炸的速度；若传入向量，则会令粒子偏向该方向。数的绝对值和向量的模长均不可超过 2。$(br2)$(o)剩下的不过是些彩花。$()",
+	"hexcasting.action.hexical:vibration": "振动",
+	"hexical.page.vibration.summary": "产生一道可视的振动波，其会从一个位置向量处到一个实体或另一个位置向量处飞行，总计所给数秒。消耗大约 1/16 个$(l:items/amethyst)$(item)紫水晶粉$()。",
+	"hexical.page.vibration.description": "这种效果和$(item)幽匿感测体$()产生的振动看上去很相似，但实质上完全不同。前者只是视觉效果。$(br2)飞行时间可为 0 秒到 10 秒间任选。$(br2)$(o)如果森林里有棵树倒了，但附近没人听见，那它还算是发出了声音吗？$()",
 	"hexcasting.action.hexical:sparkle": "烁星",
 	"hexical.page.sparkle.summary": "在给定位置以给定颜色和持续时间制造一颗闪光的小粒子。消耗极少量$(media)媒质$()。",
 	"hexical.page.sparkle.description": "第一个向量控制位置，第二个控制颜色。第二向量各分量应为 0 到 1 的数，分别对应红、绿、蓝三色。最后的数代表烁星应存在多少个 1/20 秒，最多可存在 5 秒。$(br2)$(o)闪光的不一定是金子。$()",
