@@ -7,7 +7,8 @@ import at.petrak.hexcasting.api.casting.iota.ListIota
 import at.petrak.hexcasting.api.casting.iota.PatternIota
 import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.utils.asCompound
-import at.petrak.hexcasting.api.utils.putList
+import at.petrak.hexcasting.api.utils.putCompound
+import at.petrak.hexcasting.api.utils.serializeToNBT
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import miyucomics.hexical.registry.HexicalEntities
 import miyucomics.hexical.registry.HexicalItems
@@ -38,13 +39,15 @@ import net.minecraft.world.World
 class AnimatedScrollEntity(entityType: EntityType<AnimatedScrollEntity>, world: World) : AbstractDecorationEntity(entityType, world), ADIotaHolder {
 	var patterns: List<NbtCompound> = listOf()
 	var cachedVerts: List<Vec2f> = listOf()
+	lateinit var scroll: ItemStack
 
 	constructor(world: World) : this(HexicalEntities.ANIMATED_SCROLL_ENTITY, world)
 
-	constructor(world: World, position: BlockPos, dir: Direction, size: Int, patterns: List<NbtCompound>) : this(world) {
+	constructor(world: World, position: BlockPos, dir: Direction, size: Int, patterns: List<NbtCompound>, scroll: ItemStack) : this(world) {
 		this.attachmentPos = position
 		this.patterns = patterns
 		this.dataTracker.set(sizeDataTracker, size)
+		this.scroll = scroll
 		setFacing(dir)
 		if (!world.isClient)
 			updateRender()
@@ -90,7 +93,7 @@ class AnimatedScrollEntity(entityType: EntityType<AnimatedScrollEntity>, world: 
 		updateAttachmentPosition()
 	}
 
-	private fun updateRender() {
+	fun updateRender() {
 		if (this.patterns.isNotEmpty())
 			this.dataTracker.set(patternDataTracker, patterns[((world.time / 20).toInt() % patterns.size)])
 		else {
@@ -106,6 +109,7 @@ class AnimatedScrollEntity(entityType: EntityType<AnimatedScrollEntity>, world: 
 		nbt.putInt("color", this.dataTracker.get(colorDataTracker))
 		nbt.putBoolean("glow", this.dataTracker.get(glowDataTracker))
 		nbt.putInt("size", this.dataTracker.get(sizeDataTracker))
+		nbt.putCompound("scroll", this.scroll.serializeToNBT())
 
 		val data = NbtList()
 		for (pattern in this.patterns)
@@ -121,6 +125,7 @@ class AnimatedScrollEntity(entityType: EntityType<AnimatedScrollEntity>, world: 
 		this.dataTracker.set(glowDataTracker, nbt.getBoolean("glow"))
 		this.dataTracker.set(colorDataTracker, nbt.getInt("color"))
 		this.dataTracker.set(sizeDataTracker, nbt.getInt("size"))
+		this.scroll = ItemStack.fromNbt(nbt.getCompound("scroll"))
 		setFacing(this.facing)
 		updateAttachmentPosition()
 
@@ -133,27 +138,8 @@ class AnimatedScrollEntity(entityType: EntityType<AnimatedScrollEntity>, world: 
 	override fun onPlace() = playSound(SoundEvents.ENTITY_PAINTING_PLACE, 1.0F, 1.0F)
 	override fun onBreak(entity: Entity?) {
 		this.playSound(SoundEvents.ENTITY_PAINTING_BREAK, 1.0f, 1.0f)
-		if (this.world.gameRules.getBoolean(GameRules.DO_ENTITY_DROPS)) {
-			if (entity is PlayerEntity && entity.abilities.creativeMode)
-				return
-			val stack = ItemStack(
-				when (this.dataTracker.get(sizeDataTracker)) {
-					1 -> HexicalItems.SMALL_ANIMATED_SCROLL_ITEM
-					2 -> HexicalItems.MEDIUM_ANIMATED_SCROLL_ITEM
-					3 -> HexicalItems.LARGE_ANIMATED_SCROLL_ITEM
-					else -> throw IllegalStateException()
-				}
-			)
-
-			val constructed = NbtList()
-			this.patterns.forEach { constructed.add(it) }
-			stack.orCreateNbt.putList("patterns", constructed)
-
-			stack.orCreateNbt.putBoolean("glow", this.dataTracker.get(glowDataTracker))
-			stack.orCreateNbt.putInt("color", this.dataTracker.get(colorDataTracker))
-			stack.orCreateNbt.putInt("state", this.dataTracker.get(stateDataTracker))
-			this.dropStack(stack)
-		}
+		if (this.world.gameRules.getBoolean(GameRules.DO_ENTITY_DROPS))
+			this.dropStack(this.scroll)
 	}
 
 	override fun getPickBlockStack() = ItemStack(
@@ -179,7 +165,6 @@ class AnimatedScrollEntity(entityType: EntityType<AnimatedScrollEntity>, world: 
 	}
 
 	fun setState(state: Int) = this.dataTracker.set(stateDataTracker, state)
-	fun makeAncient() = this.dataTracker.set(stateDataTracker, 1)
 	fun setColor(color: Int) = this.dataTracker.set(colorDataTracker, color)
 	fun toggleGlow() = this.dataTracker.set(glowDataTracker, !this.dataTracker.get(glowDataTracker))
 

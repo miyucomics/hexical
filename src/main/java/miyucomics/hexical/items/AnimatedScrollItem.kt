@@ -5,12 +5,14 @@ import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.item.IotaHolderItem
 import at.petrak.hexcasting.api.utils.*
 import at.petrak.hexcasting.common.blocks.akashic.BlockEntityAkashicBookshelf
+import at.petrak.hexcasting.common.entities.EntityWallScroll
 import at.petrak.hexcasting.common.lib.HexBlocks
 import at.petrak.hexcasting.common.lib.HexSounds
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import miyucomics.hexical.client.AnimatedPatternTooltip
 import miyucomics.hexical.client.ClientStorage
 import miyucomics.hexical.entities.AnimatedScrollEntity
+import net.minecraft.advancement.criterion.ConstructBeaconCriterion.Conditions.level
 import net.minecraft.client.item.TooltipContext
 import net.minecraft.client.item.TooltipData
 import net.minecraft.entity.player.PlayerEntity
@@ -58,7 +60,10 @@ class AnimatedScrollItem(private val size: Int) : Item(Settings()), IotaHolderIt
 		else
 			listOf()
 
-		val scroll = AnimatedScrollEntity(world, position, direction, size, patterns)
+		val scrollStack = stack.copy()
+		scrollStack.count = 1
+		val scroll = AnimatedScrollEntity(world, position, direction, size, patterns, scrollStack)
+
 		scroll.setState(stack.orCreateNbt.getInt("state"))
 		if (stack.orCreateNbt.getBoolean("glow"))
 			scroll.toggleGlow()
