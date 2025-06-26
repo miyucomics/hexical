@@ -47,6 +47,8 @@ import kotlin.math.cos
 import kotlin.math.sin
 
 object HexicalEvents {
+	val CHARMED_COLOR: TextColor = TextColor.fromRgb(0xe83d72)
+
 	@JvmStatic
 	fun init() {
 		LesserSentinelState.registerServerReciever()
@@ -56,7 +58,7 @@ object HexicalEvents {
 				return@register
 			val media = getMedia(stack)
 			val maxMedia = getMaxMedia(stack)
-			lines.add(Text.translatable("hexical.charmed").styled { style -> style.withColor(ItemMediaHolder.HEX_COLOR) })
+			lines.add(Text.translatable("hexical.charmed").styled { style -> style.withColor(CHARMED_COLOR) })
 			lines.add(Text.translatable("hexcasting.tooltip.media_amount.advanced",
 				Text.literal(RenderUtils.DUST_AMOUNT.format((media / MediaConstants.DUST_UNIT.toFloat()).toDouble())).styled { style -> style.withColor(ItemMediaHolder.HEX_COLOR) },
 				Text.translatable("hexcasting.tooltip.media", RenderUtils.DUST_AMOUNT.format((maxMedia / MediaConstants.DUST_UNIT.toFloat()).toDouble())).styled { style -> style.withColor(ItemMediaHolder.HEX_COLOR) },

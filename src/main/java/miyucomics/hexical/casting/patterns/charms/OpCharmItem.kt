@@ -1,5 +1,6 @@
 package miyucomics.hexical.casting.patterns.charms
 
+import at.petrak.hexcasting.api.casting.ParticleSpray
 import at.petrak.hexcasting.api.casting.RenderedSpell
 import at.petrak.hexcasting.api.casting.castables.SpellAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
@@ -40,7 +41,7 @@ class OpCharmItem : SpellAction {
 				args.getBool(6, argc)
 			),
 			3 * MediaConstants.CRYSTAL_UNIT + MediaConstants.DUST_UNIT * battery.toInt(),
-			listOf()
+			listOf(ParticleSpray.burst(item.pos, 1.0))
 		)
 	}
 

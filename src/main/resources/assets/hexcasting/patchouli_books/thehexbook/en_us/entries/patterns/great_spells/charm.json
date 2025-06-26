@@ -56,6 +56,14 @@
 			"input": "",
 			"output": "any",
 			"text": "hexical.page.read_charmed_proxy.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:discharm",
+			"anchor": "hexical:discharm",
+			"input": "entity",
+			"output": "",
+			"text": "hexical.page.discharm.summary"
 		}
 	]
 }
