@@ -3,11 +3,13 @@ package miyucomics.hexical.casting.patterns.charms
 import at.petrak.hexcasting.api.casting.RenderedSpell
 import at.petrak.hexcasting.api.casting.castables.SpellAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
+import at.petrak.hexcasting.api.casting.getBool
+import at.petrak.hexcasting.api.casting.getItemEntity
 import at.petrak.hexcasting.api.casting.getList
 import at.petrak.hexcasting.api.casting.getPositiveDouble
-import at.petrak.hexcasting.api.casting.getPositiveIntUnderInclusive
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.IotaType
+import at.petrak.hexcasting.api.casting.mishaps.MishapBadEntity
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadOffhandItem
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.utils.putCompound
@@ -17,21 +19,28 @@ import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
 
 class OpCharmItem : SpellAction {
-	override val argc = 3
+	override val argc = 7
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
-		val stack = env.getHeldItemToOperateOn { !CharmedItemUtilities.isStackCharmed(it) }
-		if (stack == null)
-			throw MishapBadOffhandItem.of(null, "uncharmed")
+		val item = args.getItemEntity(0, argc)
+		env.assertEntityInRange(item)
+		if (CharmedItemUtilities.isStackCharmed(item.stack))
+			throw MishapBadEntity.of(item, "uncharmed_item")
 
-		args.getList(0, argc)
-		CastingUtils.assertNoTruename(args[0], env)
-		val battery = args.getPositiveDouble(1, argc)
-		val inputs = args.getPositiveIntUnderInclusive(2, 15, argc)
-		val a = (inputs and 0b1000) != 0
-		val b = (inputs and 0b0100) != 0
-		val c = (inputs and 0b0010) != 0
-		val d = (inputs and 0b0001) != 0
-		return SpellAction.Result(Spell(stack.stack, args[0], (battery * MediaConstants.DUST_UNIT).toLong(), a, b, c, d), 3 * MediaConstants.CRYSTAL_UNIT + MediaConstants.DUST_UNIT * battery.toInt(), listOf())
+		args.getList(1, argc)
+		CastingUtils.assertNoTruename(args[1], env)
+		val battery = args.getPositiveDouble(2, argc)
+		return SpellAction.Result(
+			Spell(
+				item.stack,
+				args[0], (battery * MediaConstants.DUST_UNIT).toLong(),
+				args.getBool(3, argc),
+				args.getBool(4, argc),
+				args.getBool(5, argc),
+				args.getBool(6, argc)
+			),
+			3 * MediaConstants.CRYSTAL_UNIT + MediaConstants.DUST_UNIT * battery.toInt(),
+			listOf()
+		)
 	}
 
 	private data class Spell(val stack: ItemStack, val instructions: Iota, val battery: Long, val left: Boolean, val leftSneak: Boolean, val right: Boolean, val rightSneak: Boolean) : RenderedSpell {
