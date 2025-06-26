@@ -24,6 +24,8 @@ import miyucomics.hexical.casting.patterns.autograph.OpHasAutograph
 import miyucomics.hexical.casting.patterns.autograph.OpUnautograph
 import miyucomics.hexical.casting.patterns.block_mimicry.*
 import miyucomics.hexical.casting.patterns.charms.OpCharmItem
+import miyucomics.hexical.casting.patterns.charms.OpProxyReadCharmed
+import miyucomics.hexical.casting.patterns.charms.OpProxyWriteCharmed
 import miyucomics.hexical.casting.patterns.charms.OpReadCharmed
 import miyucomics.hexical.casting.patterns.charms.OpWriteCharmed
 import miyucomics.hexical.casting.patterns.circle.OpDisplace
@@ -262,6 +264,8 @@ object HexicalActions {
 		register("charm", "edeeeeeqaaqeeeadweeqeeqdqeeqeeqde", HexDir.SOUTH_EAST, OpCharmItem())
 		register("write_charmed", "waqqqqqedeqdqdqdqdqe", HexDir.NORTH_EAST, OpWriteCharmed())
 		register("read_charmed", "waqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpReadCharmed())
+		register("write_charmed_proxy", "edewqaqqdeeeee", HexDir.SOUTH_EAST, OpProxyWriteCharmed())
+		register("read_charmed_proxy", "qaqwedeeaqqqqq", HexDir.NORTH_EAST, OpProxyReadCharmed())
 
 		register("greater_blink", "wqawawaqwqwqawawaqw", HexDir.SOUTH_WEST, OpGreaterBlink())
 
