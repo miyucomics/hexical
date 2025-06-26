@@ -32,7 +32,8 @@ class OpCharmItem : SpellAction {
 		return SpellAction.Result(
 			Spell(
 				item.stack,
-				args[0], (battery * MediaConstants.DUST_UNIT).toLong(),
+				args[1],
+				(battery * MediaConstants.DUST_UNIT).toLong(),
 				args.getBool(3, argc),
 				args.getBool(4, argc),
 				args.getBool(5, argc),

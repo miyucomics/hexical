@@ -11,8 +11,7 @@ import net.minecraft.util.Hand
 
 object CastingUtils {
 	fun assertNoTruename(iota: Iota, env: CastingEnvironment) {
-		val original = if (env.castingEntity is ServerPlayerEntity) env.castingEntity as ServerPlayerEntity else null
-		val truename = MishapOthersName.getTrueNameFromDatum(iota, original)
+		val truename = MishapOthersName.getTrueNameFromDatum(iota, env.castingEntity as? ServerPlayerEntity)
 		if (truename != null)
 			throw MishapOthersName(truename)
 	}
