@@ -570,7 +570,7 @@
 	"hexcasting.action.hexical:spike": "Conjure Spike",
 	"hexical.page.spike.summary": "Takes a non-air position, an axis vector, and a delay in seconds up to ten seconds long and conjures a spike at that location. Costs about one $(l:items/amethyst)$(item)Amethyst Dust$().",
 	"hexical.page.spike.1": "Each spike takes about a half second to strike and deal a hefty three full hearts of damage before slowly sinking back into the ground. If I cast this spell where a spike has not yet disappeared, it will do nothing. Spikes will also throw back targets in the direction they were conjured.",
-	
+
 	"hexical.page.block_mimicry.title": "Block Mimicry",
 	"hexical.page.block_mimicry.0": "The Art of _Hexcasting is a versatile craft; I can use _media to simulate a lot of the actions that I rely on blocks to perform without requiring any physical infrastructure. With just my staff, I can $(l:patterns/spells/block_mimicry#hexical:stonecut)cut stone into stairs$(), $(l:patterns/spells/block_mimicry#hexical:dispense)launch arrows$(), and automate the $(l:patterns/spells/block_mimicry#hexical:hopper_in)push$() and $(l:patterns/spells/block_mimicry#hexical:hopper_out)pull$() of items into inventories.",
 	"hexical.page.block_mimicry.1": "Tales speak of ancient _Hexcasters that have set up entire magical factories without placing a single block.$(br2)$(o)And I need a bigger office, I need a bigger chair$(br)A bigger desk, a bigger staff$(br)A bigger hat to wear",
@@ -664,6 +664,10 @@
 	"hexical.page.write_charmed.summary": "Writes an iota to the charmed item’s internal storage. Subject to the Transgress Others mishap.",
 	"hexcasting.action.hexical:read_charmed": "Charmed Reflection",
 	"hexical.page.read_charmed.summary": "Pushes the stored iota from the charmed item’s internal storage.",
+	"hexcasting.action.hexical:write_charmed_proxy": "Charmed Gambit II",
+	"hexical.page.write_charmed_proxy.summary": "If the item charged features an iota storage by default, such as a $(l:items/focus)$(item)Focus$(), writes an iota into it.",
+	"hexcasting.action.hexical:read_charmed_proxy": "Charmed Reflection II",
+	"hexical.page.read_charmed_proxy.summary": "If the item charged features an iota storage by default, such as a $(l:items/focus)$(item)Focus$(), reads an iota from it.",
 
 	"hexcasting.action.hexical:greater_blink": "Greater Blink",
 	"hexical.page.greater_blink.0": "Greater Blink is a significantly cheaper alternative to $(l:patterns/great_spells/teleport)$(action)Greater Teleport$(). It also does not carry the risk of splattering my items upon arrival. However, it only has pitiful range compared to $(l:patterns/great_spells/teleport)$(action)Greater Teleport$() and its destination calculations are... esoteric. Its target is also exclusively myself.",

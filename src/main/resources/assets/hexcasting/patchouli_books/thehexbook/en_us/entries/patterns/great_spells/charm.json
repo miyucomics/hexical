@@ -40,6 +40,22 @@
 			"input": "",
 			"output": "any",
 			"text": "hexical.page.read_charmed.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:write_charmed_proxy",
+			"anchor": "hexical:write_charmed_proxy",
+			"input": "any",
+			"output": "",
+			"text": "hexical.page.write_charmed_proxy.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:read_charmed_proxy",
+			"anchor": "hexical:read_charmed_proxy",
+			"input": "",
+			"output": "any",
+			"text": "hexical.page.read_charmed_proxy.summary"
 		}
 	]
 }
