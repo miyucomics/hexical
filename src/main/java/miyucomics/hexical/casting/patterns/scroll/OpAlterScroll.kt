@@ -16,7 +16,7 @@ class OpAlterScroll(val process: (AnimatedScrollEntity) -> Unit) : SpellAction {
 		env.assertEntityInRange(scroll)
 		if (scroll !is AnimatedScrollEntity)
 			throw MishapBadEntity.of(scroll, "animated_scroll")
-		return SpellAction.Result(Spell(scroll, process), MediaConstants.DUST_UNIT / 4, listOf())
+		return SpellAction.Result(Spell(scroll, process), 0, listOf())
 	}
 
 	private data class Spell(val scroll: AnimatedScrollEntity, val process: (AnimatedScrollEntity) -> Unit) : RenderedSpell {
