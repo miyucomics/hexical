@@ -9,7 +9,6 @@ import at.petrak.hexcasting.api.casting.eval.env.CircleCastEnv
 import at.petrak.hexcasting.api.casting.getVec3
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.misc.MediaConstants
-import miyucomics.hexical.casting.environments.TurretLampCastEnv
 import miyucomics.hexical.casting.mishaps.MagicMissileMishap
 import miyucomics.hexical.entities.MagicMissileEntity
 import net.minecraft.entity.Entity
@@ -48,14 +47,6 @@ class OpMagicMissile : SpellAction {
 					.add(straightAxis.multiply(relative.z))
 			}
 
-			if (env is TurretLampCastEnv) {
-				val (straightAxis, upAxis) = getAxisForTurret(env)
-				return env.position
-					.add(straightAxis.crossProduct(upAxis).normalize().multiply(relative.x))
-					.add(upAxis.multiply(relative.y))
-					.add(straightAxis.multiply(relative.z))
-			}
-
 			if (env.castingEntity != null) {
 				val caster = env.castingEntity!!
 				val (straightAxis, upAxis) = getAxisForLivingEntity(caster)
@@ -70,12 +61,6 @@ class OpMagicMissile : SpellAction {
 
 		private fun getAxisForCircle(impetus: BlockEntityAbstractImpetus): Pair<Vec3d, Vec3d> {
 			val straightAxis = Vec3d.of(impetus.startDirection.vector)
-			val upAxis = Vec3d.of(if (abs(straightAxis.dotProduct(Vec3d(0.0, 1.0, 0.0))) > 0.9) Direction.NORTH.vector else Direction.UP.vector)
-			return straightAxis to upAxis
-		}
-
-		private fun getAxisForTurret(env: TurretLampCastEnv): Pair<Vec3d, Vec3d> {
-			val straightAxis = Vec3d.of(env.normal)
 			val upAxis = Vec3d.of(if (abs(straightAxis.dotProduct(Vec3d(0.0, 1.0, 0.0))) > 0.9) Direction.NORTH.vector else Direction.UP.vector)
 			return straightAxis to upAxis
 		}
