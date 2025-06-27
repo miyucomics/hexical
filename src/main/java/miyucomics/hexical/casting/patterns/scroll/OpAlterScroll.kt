@@ -6,7 +6,6 @@ import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.getEntity
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadEntity
-import at.petrak.hexcasting.api.misc.MediaConstants
 import miyucomics.hexical.entities.AnimatedScrollEntity
 
 class OpAlterScroll(val process: (AnimatedScrollEntity) -> Unit) : SpellAction {

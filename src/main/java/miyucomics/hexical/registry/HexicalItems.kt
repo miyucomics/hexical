@@ -16,11 +16,10 @@ import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.registry.RegistryKey
 import net.minecraft.text.Text
-import kotlin.random.Random
 
 object HexicalItems {
 	private val HEXICAL_GROUP_KEY: RegistryKey<ItemGroup> = RegistryKey.of(Registries.ITEM_GROUP.key, HexicalMain.id("general"))
-	val HEXICAL_GROUP: ItemGroup = FabricItemGroup.builder().icon { ItemStack(TCHOTCHKE_ITEM) }.displayName(Text.translatable("itemGroup.hexical.general")).build()
+	val HEXICAL_GROUP: ItemGroup = FabricItemGroup.builder().icon { ItemStack(CONJURED_COMPASS_ITEM) }.displayName(Text.translatable("itemGroup.hexical.general")).build()
 
 	@JvmField
 	val HAND_LAMP_ITEM = HandLampItem()
@@ -33,7 +32,6 @@ object HexicalItems {
 	val GRIMOIRE_ITEM = GrimoireItem()
 	@JvmField
 	val SCARAB_BEETLE_ITEM = ScarabBeetleItem()
-	val TCHOTCHKE_ITEM = Item(Settings().maxCount(1))
 	val HEXBURST_ITEM = HexburstItem()
 	val HEXTITO_ITEM = HextitoItem()
 	val SMALL_ANIMATED_SCROLL_ITEM = AnimatedScrollItem(1)
@@ -115,8 +113,9 @@ object HexicalItems {
 		Registry.register(Registries.ITEM, HexicalMain.id("hexburst"), HEXBURST_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("hextito"), HEXTITO_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("lei"), LEI)
-		Registry.register(Registries.ITEM, HexicalMain.id("tchotchke"), TCHOTCHKE_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("media_log"), MEDIA_LOG_ITEM)
+
+		Registry.register(Registries.ITEM, HexicalMain.id("tchotchke"), TchotchkeItem())
 	}
 
 	@JvmStatic
