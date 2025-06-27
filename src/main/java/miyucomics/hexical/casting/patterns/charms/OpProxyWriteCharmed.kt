@@ -6,12 +6,10 @@ import at.petrak.hexcasting.api.casting.castables.SpellAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadOffhandItem
-import at.petrak.hexcasting.api.casting.mishaps.MishapOthersName
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.casting.environments.CharmedItemCastEnv
 import miyucomics.hexical.casting.mishaps.NotCharmedItemMishap
 import miyucomics.hexical.utils.CastingUtils
-import net.minecraft.server.network.ServerPlayerEntity
 
 class OpProxyWriteCharmed : SpellAction {
 	override val argc = 1

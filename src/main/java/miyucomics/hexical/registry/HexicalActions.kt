@@ -23,12 +23,7 @@ import miyucomics.hexical.casting.patterns.autograph.OpAutograph
 import miyucomics.hexical.casting.patterns.autograph.OpHasAutograph
 import miyucomics.hexical.casting.patterns.autograph.OpUnautograph
 import miyucomics.hexical.casting.patterns.block_mimicry.*
-import miyucomics.hexical.casting.patterns.charms.OpCharmItem
-import miyucomics.hexical.casting.patterns.charms.OpDischarmItem
-import miyucomics.hexical.casting.patterns.charms.OpProxyReadCharmed
-import miyucomics.hexical.casting.patterns.charms.OpProxyWriteCharmed
-import miyucomics.hexical.casting.patterns.charms.OpReadCharmed
-import miyucomics.hexical.casting.patterns.charms.OpWriteCharmed
+import miyucomics.hexical.casting.patterns.charms.*
 import miyucomics.hexical.casting.patterns.circle.OpDisplace
 import miyucomics.hexical.casting.patterns.colors.OpDye
 import miyucomics.hexical.casting.patterns.colors.OpGetDye

@@ -12,7 +12,7 @@ import net.minecraft.item.Items
 import net.minecraft.util.math.Vec3d
 
 class OpHorrible : SpellAction {
-	override val argc = 2
+	override val argc = 1
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val pos = args.getVec3(0, argc)
 		env.assertVecInRange(pos)
