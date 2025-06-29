@@ -53,6 +53,7 @@ import miyucomics.hexical.casting.patterns.scroll.OpAlterScroll
 import miyucomics.hexical.casting.patterns.scroll.OpColorScroll
 import miyucomics.hexical.casting.patterns.specks.*
 import miyucomics.hexical.casting.patterns.telepathy.OpGetKeybind
+import miyucomics.hexical.casting.patterns.telepathy.OpGetScroll
 import miyucomics.hexical.casting.patterns.telepathy.OpHallucinateSound
 import miyucomics.hexical.casting.patterns.telepathy.OpSendTelepathy
 import miyucomics.hexical.casting.patterns.telepathy.OpShoutTelepathy
@@ -132,6 +133,7 @@ object HexicalActions {
 		register("moving_right", "qaqda", HexDir.SOUTH_WEST, OpGetKeybind("key.right"))
 		register("jumping", "qaqdaqqa", HexDir.SOUTH_WEST, OpGetKeybind("key.jump"))
 		register("sneaking", "wede", HexDir.NORTH_WEST, OpGetKeybind("key.sneak"))
+		register("scroll", "qadeeee", HexDir.NORTH_EAST, OpGetScroll())
 
 		register("key_shelf", "qaqqadaq", HexDir.EAST, OpKeyAkashicShelf())
 		register("read_shelf", "qaqqqada", HexDir.EAST, OpReadAkashicShelf())

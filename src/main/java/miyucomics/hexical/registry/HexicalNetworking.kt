@@ -28,6 +28,8 @@ object HexicalNetworking {
 	val PRESSED_KEY_CHANNEL: Identifier = HexicalMain.id("press_key")
 	val RELEASED_KEY_CHANNEL: Identifier = HexicalMain.id("release_key")
 
+	val SCROLL_CHANNEL: Identifier = HexicalMain.id("scroll")
+
 	val CONFETTI_CHANNEL: Identifier = HexicalMain.id("confetti")
 
 	val START_EVOKE_CHANNEL: Identifier = HexicalMain.id("start_evoking")
@@ -57,11 +59,16 @@ object HexicalNetworking {
 			val key = buf.readString()
 			KeybindData.active[player.uuid]!![key] = true
 			KeybindData.duration[player.uuid]!![key] = 0
+			if (key == "key.hexical.telepathy")
+				KeybindData.scroll[player.uuid] = 0
 		}
 		ServerPlayNetworking.registerGlobalReceiver(RELEASED_KEY_CHANNEL) { _, player, _, buf, _ ->
 			val key = buf.readString()
 			KeybindData.active[player.uuid]!![key] = false
 			KeybindData.duration[player.uuid]!![key] = 0
+		}
+		ServerPlayNetworking.registerGlobalReceiver(SCROLL_CHANNEL) { _, player, _, buf, _ ->
+			KeybindData.scroll[player.uuid] = KeybindData.scroll.getOrDefault(player.uuid, 0) + buf.readInt()
 		}
 
 		ServerPlayNetworking.registerGlobalReceiver(START_EVOKE_CHANNEL) { server, player, _, _, _ ->

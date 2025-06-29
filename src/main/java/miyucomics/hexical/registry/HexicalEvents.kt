@@ -8,7 +8,9 @@ import at.petrak.hexcasting.api.pigment.FrozenPigment
 import at.petrak.hexcasting.api.utils.mediaBarColor
 import at.petrak.hexcasting.common.items.magic.ItemMediaHolder
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
+import at.petrak.hexcasting.fabric.event.MouseScrollCallback
 import at.petrak.hexcasting.xplat.IXplatAbstractions
+import com.google.common.math.LinearTransformation.vertical
 import com.mojang.blaze3d.systems.RenderSystem
 import miyucomics.hexical.casting.components.LedgerRecordComponent
 import miyucomics.hexical.casting.components.SentinelBedComponent
@@ -25,9 +27,12 @@ import miyucomics.hexical.utils.RenderUtils
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
 import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents
+import net.fabricmc.fabric.api.client.screen.v1.ScreenMouseEvents
 import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents
+import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.render.GameRenderer
@@ -42,6 +47,7 @@ import net.minecraft.util.Formatting
 import net.minecraft.util.math.RotationAxis
 import net.minecraft.util.math.Vec2f
 import net.minecraft.util.math.Vec3d
+import java.awt.SystemColor.window
 import java.util.function.Consumer
 import kotlin.math.cos
 import kotlin.math.sin
@@ -53,7 +59,17 @@ object HexicalEvents {
 	fun init() {
 		LesserSentinelState.registerServerReciever()
 
-		ItemTooltipCallback.EVENT.register { stack, context, lines ->
+		MouseScrollCallback.EVENT.register { delta ->
+			if (HexicalKeybinds.TELEPATHY_KEYBIND.isPressed) {
+				val buf = PacketByteBufs.create()
+				buf.writeInt(delta.toInt())
+				ClientPlayNetworking.send(HexicalNetworking.SCROLL_CHANNEL, buf)
+				return@register true
+			}
+			return@register false
+		}
+
+		ItemTooltipCallback.EVENT.register { stack, _, lines ->
 			if (!isStackCharmed(stack))
 				return@register
 			val media = getMedia(stack)
@@ -66,7 +82,7 @@ object HexicalEvents {
 			))
 		}
 
-		ItemTooltipCallback.EVENT.register { stack, context, lines ->
+		ItemTooltipCallback.EVENT.register { stack, _, lines ->
 			val nbt = stack.nbt ?: return@register
 			if (stack.item !is ItemPackagedHex || !nbt.getBoolean("cracked"))
 				return@register
@@ -80,7 +96,7 @@ object HexicalEvents {
 			}
 		}
 
-		ItemTooltipCallback.EVENT.register { stack, context, lines ->
+		ItemTooltipCallback.EVENT.register { stack, _, lines ->
 			val nbt = stack.nbt ?: return@register
 			if (!nbt.contains("autographs"))
 				return@register
