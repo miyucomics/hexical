@@ -12,6 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.Hand;
+import org.jetbrains.annotations.NotNull;
 import org.lwjgl.glfw.GLFW;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -19,6 +20,8 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import java.util.List;
 
 @Mixin(value = Mouse.class)
 public class MouseMixin {
@@ -30,32 +33,33 @@ public class MouseMixin {
 		if (client.player == null || client.player.isSpectator()) return;
 		if (action != GLFW.GLFW_PRESS) return;
 
-		Pair<Hand, ItemStack> charmedItem = CharmedItemUtilities.getCharmedItem(client.player);
-		if (charmedItem == null) return;
-
 		int buttonPressed = switch (button) {
-			case GLFW.GLFW_MOUSE_BUTTON_1 -> 1; // left
-			case GLFW.GLFW_MOUSE_BUTTON_2 -> 2; // right
-			case GLFW.GLFW_MOUSE_BUTTON_3 -> 3; // middle
-			case GLFW.GLFW_MOUSE_BUTTON_4 -> 4;
-			case GLFW.GLFW_MOUSE_BUTTON_5 -> 5;
-			case GLFW.GLFW_MOUSE_BUTTON_6 -> 6;
-			case GLFW.GLFW_MOUSE_BUTTON_7 -> 7;
-			case GLFW.GLFW_MOUSE_BUTTON_8 -> 8;
+			case GLFW.GLFW_MOUSE_BUTTON_1 -> 0; // left
+			case GLFW.GLFW_MOUSE_BUTTON_2 -> 1; // right
+			case GLFW.GLFW_MOUSE_BUTTON_3 -> 2; // middle
+			case GLFW.GLFW_MOUSE_BUTTON_4 -> 3;
+			case GLFW.GLFW_MOUSE_BUTTON_5 -> 4;
+			case GLFW.GLFW_MOUSE_BUTTON_6 -> 5;
+			case GLFW.GLFW_MOUSE_BUTTON_7 -> 6;
+			case GLFW.GLFW_MOUSE_BUTTON_8 -> 7;
 			default -> -1;
 		};
 
 		if (buttonPressed == -1)
 			return;
 
-		if (CharmedItemUtilities.shouldIntercept(charmedItem.getSecond(), buttonPressed, client.player.isSneaking())) {
-			assert client.player != null;
-			client.player.swingHand(charmedItem.getFirst());
+		for (Pair<Hand, ItemStack> pair : CharmedItemUtilities.getUseableCharmedItems(client.player)) {
+			if (!CharmedItemUtilities.shouldIntercept(pair.getSecond(), buttonPressed, client.player.isSneaking()))
+				continue;
+
+			client.player.swingHand(pair.getFirst());
 			client.player.getWorld().playSound(client.player, client.player.getX(), client.player.getY(), client.player.getZ(), HexSounds.CAST_HERMES, SoundCategory.PLAYERS, 1f, 1f);
 			PacketByteBuf buf = PacketByteBufs.create();
 			buf.writeInt(buttonPressed);
+			buf.writeInt(pair.getFirst().ordinal());
 			ClientPlayNetworking.send(HexicalNetworking.CHARMED_ITEM_USE_CHANNEL, buf);
 			ci.cancel();
+			return;
 		}
 	}
 }

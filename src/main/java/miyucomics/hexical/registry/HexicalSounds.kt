@@ -6,31 +6,18 @@ import net.minecraft.registry.Registry
 import net.minecraft.sound.SoundEvent
 
 object HexicalSounds {
-	lateinit var AMETHYST_MELT: SoundEvent
-	lateinit var ITEM_DUNKS: SoundEvent
-	lateinit var EVOKING_MURMUR: SoundEvent
-	lateinit var EVOKING_CAST: SoundEvent
-	lateinit var LAMP_ACTIVATE: SoundEvent
-	lateinit var LAMP_DEACTIVATE: SoundEvent
-	@JvmStatic
-	lateinit var SUDDEN_REALIZATION: SoundEvent
-	lateinit var PLAYER_SLURP: SoundEvent
-	lateinit var REPLENISH_AIR: SoundEvent
-	lateinit var SCARAB_CHIRPS: SoundEvent
+	val AMETHYST_MELT: SoundEvent = register("amethyst_melt")
+	val ITEM_DUNKS: SoundEvent = register("item_dunks")
+	val EVOKING_MURMUR: SoundEvent = register("evoking_murmur")
+	val EVOKING_CAST: SoundEvent = register("evoking_casts")
+	val LAMP_ACTIVATE: SoundEvent = register("lamp_activate")
+	val LAMP_DEACTIVATE: SoundEvent = register("lamp_deactivate")
+	@JvmField
+	val SUDDEN_REALIZATION: SoundEvent = register("sudden_realization")
+	val REPLENISH_AIR: SoundEvent = register("replenish_air")
+	val SCARAB_CHIRPS: SoundEvent = register("scarab_chirps")
 
-	@JvmStatic
-	fun init() {
-		AMETHYST_MELT = register("amethyst_melt")
-		ITEM_DUNKS = register("item_dunks")
-		EVOKING_MURMUR = register("evoking_murmur")
-		EVOKING_CAST = register("evoking_casts")
-		LAMP_ACTIVATE = register("lamp_activate")
-		LAMP_DEACTIVATE = register("lamp_deactivate")
-		SUDDEN_REALIZATION = register("sudden_realization")
-		PLAYER_SLURP = register("player_slurp")
-		REPLENISH_AIR = register("replenish_air")
-		SCARAB_CHIRPS = register("scarab_chirps")
-	}
+	fun init() {}
 
 	private fun register(name: String): SoundEvent {
 		val id = HexicalMain.id(name)

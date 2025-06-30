@@ -22,7 +22,6 @@ object HexicalAdvancements {
 
 	val EVOCATION_STATISTIC: Identifier = HexicalMain.id("evocation")
 
-	@JvmStatic
 	fun init() {
 		Registry.register(Registries.CUSTOM_STAT, "hexical_evocation", EVOCATION_STATISTIC)
 

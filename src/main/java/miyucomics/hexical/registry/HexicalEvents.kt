@@ -10,7 +10,6 @@ import at.petrak.hexcasting.common.items.magic.ItemMediaHolder
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
 import at.petrak.hexcasting.fabric.event.MouseScrollCallback
 import at.petrak.hexcasting.xplat.IXplatAbstractions
-import com.google.common.math.LinearTransformation.vertical
 import com.mojang.blaze3d.systems.RenderSystem
 import miyucomics.hexical.casting.components.LedgerRecordComponent
 import miyucomics.hexical.casting.components.SentinelBedComponent
@@ -29,7 +28,6 @@ import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
 import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents
-import net.fabricmc.fabric.api.client.screen.v1.ScreenMouseEvents
 import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
@@ -47,7 +45,6 @@ import net.minecraft.util.Formatting
 import net.minecraft.util.math.RotationAxis
 import net.minecraft.util.math.Vec2f
 import net.minecraft.util.math.Vec3d
-import java.awt.SystemColor.window
 import java.util.function.Consumer
 import kotlin.math.cos
 import kotlin.math.sin
@@ -55,7 +52,6 @@ import kotlin.math.sin
 object HexicalEvents {
 	val CHARMED_COLOR: TextColor = TextColor.fromRgb(0xe83d72)
 
-	@JvmStatic
 	fun init() {
 		LesserSentinelState.registerServerReciever()
 
@@ -97,7 +93,6 @@ object HexicalEvents {
 		}
 	}
 
-	@JvmStatic
 	fun clientInit() {
 		MouseScrollCallback.EVENT.register { delta ->
 			if (HexicalKeybinds.TELEPATHY_KEYBIND.isPressed) {

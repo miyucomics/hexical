@@ -60,7 +60,6 @@ object HexicalItems {
 		return ItemStack(itemType)
 	}
 
-	@JvmStatic
 	fun init() {
 		Registry.register(Registries.ITEM_GROUP, HEXICAL_GROUP_KEY, HEXICAL_GROUP)
 
@@ -118,7 +117,6 @@ object HexicalItems {
 		Registry.register(Registries.ITEM, HexicalMain.id("tchotchke"), TchotchkeItem())
 	}
 
-	@JvmStatic
 	fun clientInit() {
 		ArchLampItem.registerModelPredicate()
 		ConjuredCompassItem.registerModelPredicate()

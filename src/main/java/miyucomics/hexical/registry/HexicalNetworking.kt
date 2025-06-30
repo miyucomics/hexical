@@ -18,6 +18,7 @@ import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
 import net.minecraft.sound.SoundCategory
 import net.minecraft.sound.SoundEvents
+import net.minecraft.util.Hand
 import net.minecraft.util.Identifier
 import net.minecraft.util.math.Vec3d
 import kotlin.random.Random
@@ -38,16 +39,16 @@ object HexicalNetworking {
 	val LEDGER_CHANNEL: Identifier = HexicalMain.id("ledger")
 	val SHADER_CHANNEL: Identifier = HexicalMain.id("shader")
 
-	@JvmStatic
 	fun serverInit() {
 		ServerPlayNetworking.registerGlobalReceiver(LEDGER_CHANNEL) { _, player, _, _, _ -> LedgerData.clearLedger(player) }
 
 		ServerPlayNetworking.registerGlobalReceiver(CHARMED_ITEM_USE_CHANNEL) { server, player, _, buf, _ ->
-			val charmedItem = CharmedItemUtilities.getCharmedItem(player) ?: return@registerGlobalReceiver
 			val inputMethod = buf.readInt()
+			val hand = enumValues<Hand>()[buf.readInt()]
+			val stack = player.getStackInHand(hand)
 			server.execute {
-				val vm = CastingVM(CastingImage().copy(stack = inputMethod.asActionResult), CharmedItemCastEnv(player, charmedItem.first, charmedItem.second))
-				vm.queueExecuteAndWrapIotas(CharmedItemUtilities.getHex(charmedItem.second, player.serverWorld), player.serverWorld)
+				val vm = CastingVM(CastingImage().copy(stack = inputMethod.asActionResult), CharmedItemCastEnv(player, hand, stack))
+				vm.queueExecuteAndWrapIotas(CharmedItemUtilities.getHex(stack, player.serverWorld), player.serverWorld)
 			}
 		}
 
@@ -95,7 +96,6 @@ object HexicalNetworking {
 		}
 	}
 
-	@JvmStatic
 	fun clientInit() {
 		LesserSentinelState.registerClientReciever()
 

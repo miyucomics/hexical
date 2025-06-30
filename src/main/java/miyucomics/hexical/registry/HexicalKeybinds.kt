@@ -15,7 +15,6 @@ object HexicalKeybinds {
 	private val EVOKE_KEYBIND = KeyBinding("key.hexical.evoke", GLFW.GLFW_KEY_R, "key.categories.hexical")
 	private var states = mutableMapOf<String, Boolean>()
 
-	@JvmStatic
 	fun clientInit() {
 		KeyBindingHelper.registerKeyBinding(OPEN_HEXBOOK)
 		KeyBindingHelper.registerKeyBinding(EVOKE_KEYBIND)

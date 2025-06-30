@@ -18,7 +18,6 @@ object HexicalPotions {
 	private val LONG_WOOLEYED_POTION = Potion(StatusEffectInstance(WOOLEYED_EFFECT, 48000, 0))
 	private val STRONG_WOOLEYED_POTION = Potion(StatusEffectInstance(WOOLEYED_EFFECT, 6000, 1))
 
-	@JvmStatic
 	fun init() {
 		Registry.register(Registries.STATUS_EFFECT, HexicalMain.id("wooleyed"), WOOLEYED_EFFECT)
 		Registry.registerReference(Registries.POTION, HexicalMain.id("wooleyed"), WOOLEYED_POTION)

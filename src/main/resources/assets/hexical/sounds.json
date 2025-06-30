@@ -42,18 +42,6 @@
 		"subtitle": "subtitles.hexical.sudden_realization",
 		"sounds": ["random/pop"]
 	},
-	"player_slurp": {
-		"subtitle": "subtitles.hexical.player_slurp",
-		"sounds": [
-			"item/bottle/drink_honey1", "item/bottle/drink_honey2", {
-				"name": "item/bottle/drink_honey3",
-				"volume": 0.35
-			}, {
-				"name": "item/bottle/drink_honey3",
-				"volume": 0.75
-			}
-		]
-	},
 	"replenish_air": {
 		"subtitle": "subtitles.hexical.replenish_air",
 		"sounds": [
