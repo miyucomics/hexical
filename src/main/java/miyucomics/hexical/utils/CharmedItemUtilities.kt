@@ -31,8 +31,8 @@ object CharmedItemUtilities {
 	fun shouldIntercept(stack: ItemStack, button: Int, sneaking: Boolean): Boolean {
 		val charmed = stack.nbt!!.getCompound("charmed")
 		val key = when (button) {
-			1 -> if (sneaking) "left_sneak" else "left"
-			2 -> if (sneaking) "right_sneak" else "right"
+			0 -> if (sneaking) "left_sneak" else "left"
+			1 -> if (sneaking) "right_sneak" else "right"
 			else -> return true
 		}
 		return charmed.getBoolean(key)
