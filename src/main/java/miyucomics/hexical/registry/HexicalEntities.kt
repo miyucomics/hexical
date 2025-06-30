@@ -19,7 +19,6 @@ object HexicalEntities {
 	val SPECK_ENTITY: EntityType<SpeckEntity> = EntityType.Builder.create(::SpeckEntity, SpawnGroup.MISC).setDimensions(0.5f, 0.5f).maxTrackingRange(32).trackingTickInterval(1).build(HexicalMain.MOD_ID + ":speck")
 	val MESH_ENTITY: EntityType<MeshEntity> = EntityType.Builder.create(::MeshEntity, SpawnGroup.MISC).setDimensions(0.5f, 0.5f).maxTrackingRange(32).trackingTickInterval(1).build(HexicalMain.MOD_ID + ":mesh")
 
-	@JvmStatic
 	fun init() {
 		Registry.register(Registries.ENTITY_TYPE, HexicalMain.id("animated_scroll"), ANIMATED_SCROLL_ENTITY)
 		Registry.register(Registries.ENTITY_TYPE, HexicalMain.id("magic_missile"), MAGIC_MISSILE_ENTITY)
@@ -28,7 +27,6 @@ object HexicalEntities {
 		Registry.register(Registries.ENTITY_TYPE, HexicalMain.id("mesh"), MESH_ENTITY)
 	}
 
-	@JvmStatic
 	fun clientInit() {
 		EntityRendererRegistry.register(ANIMATED_SCROLL_ENTITY) { ctx -> AnimatedScrollRenderer(ctx) }
 		EntityRendererRegistry.register(MAGIC_MISSILE_ENTITY) { ctx -> MagicMissileRenderer(ctx) }
