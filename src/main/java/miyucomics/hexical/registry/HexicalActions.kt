@@ -52,11 +52,7 @@ import miyucomics.hexical.casting.patterns.rotate.OpRotateEntity
 import miyucomics.hexical.casting.patterns.scroll.OpAlterScroll
 import miyucomics.hexical.casting.patterns.scroll.OpColorScroll
 import miyucomics.hexical.casting.patterns.specks.*
-import miyucomics.hexical.casting.patterns.telepathy.OpGetKeybind
-import miyucomics.hexical.casting.patterns.telepathy.OpGetScroll
-import miyucomics.hexical.casting.patterns.telepathy.OpHallucinateSound
-import miyucomics.hexical.casting.patterns.telepathy.OpSendTelepathy
-import miyucomics.hexical.casting.patterns.telepathy.OpShoutTelepathy
+import miyucomics.hexical.casting.patterns.telepathy.*
 import miyucomics.hexical.casting.patterns.vfx.OpBlockPing
 import miyucomics.hexical.casting.patterns.vfx.OpConfetti
 import miyucomics.hexical.casting.patterns.vfx.OpSparkle
@@ -76,7 +72,6 @@ import net.minecraft.registry.Registry
 import net.minecraft.sound.SoundEvents
 
 object HexicalActions {
-	@JvmStatic
 	fun init() {
 		register("normalize_scroll", "wqwawqwqawawa", HexDir.SOUTH_WEST, OpAlterScroll { it.setState(0) })
 		register("age_scroll", "wqwawqwqawwwdwdwwwa", HexDir.SOUTH_WEST, OpAlterScroll { it.setState(1) })
