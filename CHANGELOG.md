@@ -14,7 +14,6 @@
 - added Horrible
 - added 512 pattern cap to grimoires
 - added HexGloop's Dispense spell
-- changed tchotchke's old features to be an enchantment you can place on any item
 - added pedestals - holds your items for you!
   - if used in a circle, it pushes the iota from the item on the pedestal
   - acts as a circle's other hand if placed on top of an impetus
@@ -56,6 +55,7 @@
 - added beautiful little shader to media jars
 - added Hex Candle cakes
 - added Hex Gummies
+- added charmed items - replaces tchotchke, lets you charm anything
 - added Casting Carpet - carpet that boosts your ambit a little
 - added pattern to test if an item stack has an autograph
 - added pattern to check if an item has been autographed by a specific person

@@ -13,6 +13,8 @@
 	"advancements.hexical.diy_conjuring.description": "Add a custom modifier to a mage block.",
 	"advancements.hexical.conjure_hexxy.title": "Conjure Hexxy",
 	"advancements.hexical.conjure_hexxy.description": "Give Hexxy a physical form in your world.",
+	"advancements.hexical.conjure_cake.title": "The Cake is a Lie",
+	"advancements.hexical.conjure_cake.description": "Summon a free cake from some mysterious benefactor.",
 	"advancements.hexical.hallucinate.title": "Only In My Head",
 	"advancements.hexical.hallucinate.description": "Play a sound only you can hear!",
 
@@ -655,8 +657,8 @@
 	"hexical.page.shader_spider.summary": "Splits my vision into multiple sections, similar to what a spider might see. I am unsure whether it actually grants me more vision...",
 
 	"hexical.page.horrible.title": "Horrible",
-	"hexical.page.horrible.0": "Of all the spells I have recorded in my exploration of ancient _Hexcasting, I have never seen one even remotely like this one. $(o)How does someone even begin to draw this?$()",
-	"hexcasting.action.hexical:horrible": "Summon?",
+	"hexical.page.horrible.0": "Of all the spells I have discovered in my exploration of ancient _Hexcasting notes, there has not been a single pattern remotely like this one. I believe its existence is proof of some greater force that had compelled _Hexcasters to draw it.$(br2)$(o)How does one even begin to draw this, let alone discover it?$()",
+	"hexcasting.action.hexical:horrible": "Horrible",
 	"hexical.page.horrible.summary": "Judging by the pattern signature, I can only imagine that it summons something.",
 
 	"hexcasting.action.hexical:charm": "Charm",
