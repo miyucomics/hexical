@@ -27,7 +27,7 @@ class HexCandleCakeBlock : CandleCakeBlock(HexicalBlocks.HEX_CANDLE_BLOCK, Setti
 			return super.onUse(state, world, pos, player, hand, hit)
 
 		val stack = player.getStackInHand(hand)
-		val candle = (world.getBlockEntity(pos)!! as HexCandleBlockEntity)
+		val candle = (world.getBlockEntity(pos)!! as HexCandleCakeBlockEntity)
 		if (IXplatAbstractions.INSTANCE.isPigment(stack))
 			candle.setPigment(FrozenPigment(stack.copy(), player.uuid))
 		else
@@ -41,14 +41,14 @@ class HexCandleCakeBlock : CandleCakeBlock(HexicalBlocks.HEX_CANDLE_BLOCK, Setti
 			return
 
 		val blockEntity = world.getBlockEntity(pos)
-		if (blockEntity !is HexCandleBlockEntity)
+		if (blockEntity !is HexCandleCakeBlockEntity)
 			return
 
 		val colorProvider = blockEntity.getPigment().colorProvider
 		getParticleOffsets(state).forEach { offset: Vec3d -> spawnCandleParticles(world, Vec3d.of(pos).add(offset), random, colorProvider) }
 	}
 
-	override fun createBlockEntity(pos: BlockPos, state: BlockState): BlockEntity = HexCandleBlockEntity(pos, state)
+	override fun createBlockEntity(pos: BlockPos, state: BlockState): BlockEntity = HexCandleCakeBlockEntity(pos, state)
 
 	companion object {
 		fun spawnCandleParticles(world: World, position: Vec3d, random: Random, colorProvider: ColorProvider) {
