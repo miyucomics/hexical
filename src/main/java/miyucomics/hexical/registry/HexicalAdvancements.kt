@@ -14,6 +14,7 @@ import net.minecraft.util.Identifier
 
 object HexicalAdvancements {
 	lateinit var AR: ARCriterion
+	lateinit var CONJURE_CAKE: ConjureCakeCriterion
 	lateinit var HEXXY: HexxyCriterion
 	lateinit var DIY: DIYCriterion
 	lateinit var HALLUCINATE: HallucinateCriterion
@@ -23,14 +24,15 @@ object HexicalAdvancements {
 	val EVOCATION_STATISTIC: Identifier = HexicalMain.id("evocation")
 
 	fun init() {
-		Registry.register(Registries.CUSTOM_STAT, "hexical_evocation", EVOCATION_STATISTIC)
-
 		AR = Criteria.register(ARCriterion())
+		CONJURE_CAKE = Criteria.register(ConjureCakeCriterion())
 		HEXXY = Criteria.register(HexxyCriterion())
 		DIY = Criteria.register(DIYCriterion())
 		HALLUCINATE = Criteria.register(HallucinateCriterion())
 		EDUCATE_GENIE = Criteria.register(EducateGenieCriterion())
 		RELOAD_LAMP = Criteria.register(ReloadLampCriterion())
+
+		Registry.register(Registries.CUSTOM_STAT, "hexical_evocation", EVOCATION_STATISTIC)
 	}
 }
 
@@ -45,6 +47,11 @@ abstract class BaseCriterion<T : BaseCriterion.BaseCondition>(private val id: Id
 class ARCriterion : BaseCriterion<ARCriterion.Condition>(HexicalMain.id("augmented_reality")) {
 	override fun createCondition() = Condition()
 	class Condition : BaseCondition(HexicalMain.id("augmented_reality"))
+}
+
+class ConjureCakeCriterion : BaseCriterion<ConjureCakeCriterion.Condition>(HexicalMain.id("conjure_cake")) {
+	override fun createCondition() = Condition()
+	class Condition : BaseCondition(HexicalMain.id("conjure_cake"))
 }
 
 class DIYCriterion : BaseCriterion<DIYCriterion.Condition>(HexicalMain.id("diy_conjuring")) {
