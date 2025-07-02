@@ -13,25 +13,17 @@ import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.Identifier
 
 object HexicalAdvancements {
-	lateinit var AR: ARCriterion
-	lateinit var CONJURE_CAKE: ConjureCakeCriterion
-	lateinit var HEXXY: HexxyCriterion
-	lateinit var DIY: DIYCriterion
-	lateinit var HALLUCINATE: HallucinateCriterion
-	lateinit var EDUCATE_GENIE: EducateGenieCriterion
-	lateinit var RELOAD_LAMP: ReloadLampCriterion
+	val AR: SpecklikeCriterion = Criteria.register(SpecklikeCriterion())
+	val CONJURE_CAKE: ConjureCakeCriterion = Criteria.register(ConjureCakeCriterion())
+	val HEXXY: HexxyCriterion = Criteria.register(HexxyCriterion())
+	val DIY: DIYCriterion = Criteria.register(DIYCriterion())
+	val HALLUCINATE: HallucinateCriterion = Criteria.register(HallucinateCriterion())
+	val EDUCATE_GENIE: EducateGenieCriterion = Criteria.register(EducateGenieCriterion())
+	val RELOAD_LAMP: ReloadLampCriterion = Criteria.register(ReloadLampCriterion())
 
 	val EVOCATION_STATISTIC: Identifier = HexicalMain.id("evocation")
 
 	fun init() {
-		AR = Criteria.register(ARCriterion())
-		CONJURE_CAKE = Criteria.register(ConjureCakeCriterion())
-		HEXXY = Criteria.register(HexxyCriterion())
-		DIY = Criteria.register(DIYCriterion())
-		HALLUCINATE = Criteria.register(HallucinateCriterion())
-		EDUCATE_GENIE = Criteria.register(EducateGenieCriterion())
-		RELOAD_LAMP = Criteria.register(ReloadLampCriterion())
-
 		Registry.register(Registries.CUSTOM_STAT, "hexical_evocation", EVOCATION_STATISTIC)
 	}
 }
@@ -42,11 +34,6 @@ abstract class BaseCriterion<T : BaseCriterion.BaseCondition>(private val id: Id
 	fun trigger(player: ServerPlayerEntity) = trigger(player) { true }
 	protected abstract fun createCondition(): T
 	override fun getId(): Identifier = id
-}
-
-class ARCriterion : BaseCriterion<ARCriterion.Condition>(HexicalMain.id("augmented_reality")) {
-	override fun createCondition() = Condition()
-	class Condition : BaseCondition(HexicalMain.id("augmented_reality"))
 }
 
 class ConjureCakeCriterion : BaseCriterion<ConjureCakeCriterion.Condition>(HexicalMain.id("conjure_cake")) {
@@ -77,4 +64,9 @@ class EducateGenieCriterion : BaseCriterion<EducateGenieCriterion.Condition>(Hex
 class ReloadLampCriterion : BaseCriterion<ReloadLampCriterion.Condition>(HexicalMain.id("reload_lamp")) {
 	override fun createCondition() = Condition()
 	class Condition : BaseCondition(HexicalMain.id("reload_lamp"))
+}
+
+class SpecklikeCriterion : BaseCriterion<SpecklikeCriterion.Condition>(HexicalMain.id("specklike")) {
+	override fun createCondition() = Condition()
+	class Condition : BaseCondition(HexicalMain.id("specklike"))
 }
