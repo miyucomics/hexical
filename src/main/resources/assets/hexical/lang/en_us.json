@@ -551,11 +551,11 @@
 	"hexical.page.parrot.summary": "Emits a sound associated with a mob near a location, as though a parrot had imitated that mob. Costs about a half of an $(l:items/amethyst)$(item)Amethyst Dust$().",
 	"hexical.page.parrot.description": "This spell does nothing but still consumes my _media if a parrot can not replicate the sound.$(br2)I can already imagine this spell's use for playing practical jokes on my friends and enemies. Perhaps Nature does permit me to have fun occasionally with my _Hexes.$(br2)$(o)Hisss...$()",
 
-	"hexical.page.meta_effects.title": "Hexcasting Effects",
-	"hexcasting.action.hexical:effect_clouding": "Foggy Sky's Nadir",
-	"hexical.page.effect_clouding.summary": "Bestows $(thing)clouding$(), an effect that impedes _Hexcasting vision. Base cost is about one $(l:items/amethyst)$(item)Amethyst Dust$() per three seconds. Follows $(l:patterns/spells/nadirs)nadir$() cost scaling.",
-	"hexcasting.action.hexical:effect_clarity": "Clear Sky's Zenith",
-	"hexical.page.effect_clarity.summary": "Bestows $(thing)clarity$(), an effect that extends _Hexcasting vision. Base cost is about one $(l:items/amethyst)$(item)Amethyst Dust$() per second. Follows $(l:patterns/great_spells/zeniths)zenith$() cost scaling.",
+	"hexical.page.break_special.title": "Specialized Breaking",
+	"hexcasting.action.hexical:break_fortune": "Extract Block",
+	"hexical.page.break_fortune.summary": "Targets structural faults in a block, resulting in a higher yield. Costs about one, three, and five $(l:items/amethyst)$(item)Amethyst Dust$() when power input is 0, 1, and 2 respectively.",
+	"hexcasting.action.hexical:break_silk": "Collect Block",
+	"hexical.page.break_silk.summary": "Breaks a block gently, perserving the block better than standard mining. Costs about half of an $(l:items/amethyst)$(item)Amethyst Dust$().",
 
 	"hexical.page.conjurable_delights.title": "Conjurable Delights",
 	"hexical.page.conjurable_delights.0": "Ancient _Hexcasters seem to have devised spells to conjure a multitude of items, to both further their Art and to convenience their collaboration. I can only link these items together by their being $(o)vaguely$() edible.$(br2)$(o)What nicer thing can you do for somebody than make them breakfast?$()",
