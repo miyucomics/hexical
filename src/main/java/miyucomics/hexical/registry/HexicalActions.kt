@@ -23,6 +23,8 @@ import miyucomics.hexical.casting.patterns.autograph.OpAutograph
 import miyucomics.hexical.casting.patterns.autograph.OpHasAutograph
 import miyucomics.hexical.casting.patterns.autograph.OpUnautograph
 import miyucomics.hexical.casting.patterns.block_mimicry.*
+import miyucomics.hexical.casting.patterns.breaking.OpBreakFortune
+import miyucomics.hexical.casting.patterns.breaking.OpBreakSilk
 import miyucomics.hexical.casting.patterns.charms.*
 import miyucomics.hexical.casting.patterns.circle.OpDisplace
 import miyucomics.hexical.casting.patterns.colors.OpDye
@@ -210,8 +212,8 @@ object HexicalActions {
 		register("gasp", "aweeeeewaweeeee", HexDir.NORTH_WEST, OpGasp())
 		register("parrot", "wweedadw", HexDir.NORTH_EAST, OpImitateParrot())
 
-		register("effect_clouding", "qqqqqeawawwwawqaeweaqwaww", HexDir.SOUTH_EAST, OpPotionEffect(HexMobEffects.SHRINK_GRID, MediaConstants.DUST_UNIT / 3, allowPotency = true, potencyCubic = false))
-		register("effect_clarity", "wdwdqeeeeedwqwddwq", HexDir.SOUTH_EAST, OpPotionEffect(HexMobEffects.ENLARGE_GRID, MediaConstants.DUST_UNIT, allowPotency = true, potencyCubic = true))
+		register("break_fortune", "qaqqqqqdeeeqeee", HexDir.EAST, OpBreakFortune())
+		register("break_silk", "aqaeaqdeeweweedq", HexDir.EAST, OpBreakSilk())
 
 		register("conjure_gummy", "eeewdw", HexDir.SOUTH_WEST, OpConjureGummy())
 		register("conjure_hexburst", "aadaadqaq", HexDir.EAST, OpConjureHexburst())
