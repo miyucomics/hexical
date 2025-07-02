@@ -19,7 +19,6 @@
   - acts as a circle's other hand if placed on top of an impetus
 - added all variants of cooking blocks as spells
 - added hopper spells
-- added Clarity and Clouding zeniths/nadirs
 - added Ping Block spell - highlight a block
 - added Conjure Flower spell - conjure a flower of your choosing
 - added Illuminate spell - conjure an invisible light of your chosen strength
@@ -48,6 +47,8 @@
     - you can right-click other players to put the lei on them
 - added Wooleyed status effect
   - acts as a coping saw
+- added spell to break block with fortune
+- added spell to break block with silk touch
 - added Construct spell - places a specific block type from your inventory with parameters for orientation and horizontal vector
 - added left and right-click telepathy patterns
 - added pattern to get evocation hex
@@ -91,6 +92,7 @@
   - added Media Reflection - gets media of casting environment
   - added Media Purification - gets media of player, allay, impetus, or item on floor
   - added Potential Purification - max media that something can hold
+  - added item scrying patterns
   - moved piercing raycasts to Hexposition
   - fixed Ambit Purification returning true for out-of-world positions
   - fixed poor translation of Tool and Accessory Purification
