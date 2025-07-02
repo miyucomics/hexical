@@ -10,6 +10,7 @@ import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.misc.MediaConstants
 import net.minecraft.entity.Entity
 import net.minecraft.entity.player.PlayerEntity
+import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.math.MathHelper
 
 class OpRotateEntity : SpellAction {
@@ -34,6 +35,8 @@ class OpRotateEntity : SpellAction {
 			target.yaw += yaw
 			target.headYaw += yaw
 			target.pitch += pitch
+			if (target is ServerPlayerEntity)
+				target.networkHandler.requestTeleport(target.x, target.y, target.z, target.yaw, target.pitch)
 		}
 	}
 }
