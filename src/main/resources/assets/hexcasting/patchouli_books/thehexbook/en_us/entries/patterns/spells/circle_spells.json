@@ -17,6 +17,22 @@
 			"input": "entity, vector",
 			"output": "",
 			"text": "hexical.page.displace.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:absorb_arm",
+			"anchor": "hexical:absorb_arm",
+			"input": "vector",
+			"output": "",
+			"text": "hexical.page.absorb_arm.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:create_dust",
+			"anchor": "hexical:create_dust",
+			"input": "vector, number",
+			"output": "",
+			"text": "hexical.page.create_dust.summary"
 		}
 	]
 }
