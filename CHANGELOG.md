@@ -16,7 +16,8 @@
 - added HexGloop's Dispense spell
 - added pedestals - holds your items for you!
   - if used in a circle, it pushes the iota from the item on the pedestal
-  - acts as a circle's other hand if placed on top of an impetus
+- added spell to make a circle use a pedestal as its other hand
+- added spell to let a circle conjure dust
 - added all variants of cooking blocks as spells
 - added hopper spells
 - added Ping Block spell - highlight a block

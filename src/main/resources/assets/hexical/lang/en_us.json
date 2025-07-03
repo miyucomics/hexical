@@ -106,6 +106,7 @@
 
 	"hexcasting.mishap.bad_block.akashic_bookshelf": "an akashic bookshelf",
 	"hexcasting.mishap.bad_block.mage_block": "a mage block",
+	"hexcasting.mishap.bad_block.pedestal": "a pedestal",
 	"hexcasting.mishap.bad_block.flower_spawnable": "air or a flower pot",
 	"hexcasting.mishap.bad_block.rotatable": "a block with direction",
 	"hexcasting.mishap.bad_block.solid_platform": "a solid platform",
@@ -338,7 +339,7 @@
 
 	"hexical.page.pedestal_circles.title": "Pedestals in Circles",
 	"hexical.page.pedestal_circles.0": "$(l:items/pedestals)$(thing)Pedestals$() have magical abilities!$(br2)If they are holding $(l:patterns/readwrite#hexcasting:write)$(item)an item that contains information$() and the $(l:greatwork/spellcircles)$(thing)spell circle$()'s wave passes over them as if they were a $(l:items/slate)$(item)Slate$(), they push the iota onto the stack. If the $(l:items/pedestals)$(thing)Pedestal$() happens to processed inside an unclosed $(l:patterns/patterns_as_iotas#hexcasting:open_paren)Introspection$(), the iota appears inside the constructed list.",
-	"hexical.page.pedestal_circles.1": "If placed directly on top of an $(l:greatwork/spellcircles)$(item)Impetus$() instead, the $(l:items/pedestals)$(item)Pedestal$() acts as the circle's $(o)other hand$(), useful for spells such as the $(l:patterns/spells/hexcasting)casting device crafting spells$(), $(l:patterns/spells/hexcasting#hexcasting:recharge)$(action)Recharge Item$(), and $(l:patterns/spells/hexcasting#hexcasting:erase)$(action)Erase Item$().$(br2)This includes $(l:patterns/readwrite#hexcasting:read)$(action)Scribe's Reflection$() and $(l:patterns/readwrite#hexcasting:write)$(action)Scribe's Gambit$(), allowing me to create $(l:greatwork/spellcircles)$(thing)spell circles$() to automatically fill in my $(l:items/focus)$(item)Foci$().",
+	"hexical.page.pedestal_circles.1": "An $(l:greatwork/spellcircles)$(item)Impetus$() can also $(l:patterns/spells/circle_spells#hexical:absorb_arm)use$() a $(l:items/pedestals)$(item)Pedestal$() as its $(o)other hand$(), useful for spells such as the $(l:patterns/spells/hexcasting)casting device crafting spells$(), $(l:patterns/spells/hexcasting#hexcasting:recharge)$(action)Recharge Item$(), and $(l:patterns/spells/hexcasting#hexcasting:erase)$(action)Erase Item$().$(br2)This is useful for creating automated constructions to $(l:patterns/spells/hexcasting#hexcasting:recharge)recharge$() my $(l:items/hexcasting)casting devices$().",
 
 	"hexical.page.patterns.title": "Pattern Manipulation",
 	"hexical.page.patterns.0": "I have discovered a set of patterns that concern the construction and manipulation of other $(l:patterns/patterns_as_iotas)patterns$(). Strangely, they can be used to construct patterns that are $(o)impossible$() to draw with a $(l:items/staff)$(item)Staff$(), although fortunately I don't believe Nature has associated an effect with any of these \"illegal\" patterns. They can be considered free to use with my $(l:items/scarab)$(item)Scarab Beetle$().",
@@ -602,9 +603,13 @@
 	"hexical.page.hopper_out.description": "If no item could be extracted, the spell pushes $(l:casting/influences)$(thing)Null$(). Only one item will be extracted at a time similar to a hopper.$(br2)$(o)Upon request, I can also perform a hug.$()",
 
 	"hexical.page.circle_spells.title": "Circle Spells",
-	"hexical.page.circle_spells.0": "When the _media courses through the boundaries of a $(l:greatwork/spellcircles)circle$(), it saturates the domain inside with _media, allowing far greater magical effects and flexibility of _media manipulation than I am used to. The following are some spells which rely on that increased density of _media and are to only be cast by an $(l:greatwork/impetus)impetus$().",
+	"hexical.page.circle_spells.0": "When the _media courses through the boundaries of a $(l:greatwork/spellcircles)$(thing)circle$(), it saturates the domain inside with _media, allowing far greater magical effects and flexibility of _media manipulation than I am used to. The following are some spells which rely on that increased density of _media or properties of the $(l:greatwork/spellcircles)circle$() itself and are to only be cast by an $(l:greatwork/impetus)$(item)Impetus$().",
 	"hexcasting.action.hexical:displace": "Displace",
-	"hexical.page.displace.summary": "Teleports an entity within the $(l:greatwork/spellcircles)circle$() to any other point inside within the same $(l:greatwork/spellcircles)circle$(). Unlike $(l:patterns/great_spells/teleport)$(action)Greater Teleport$(), this spell takes in world coordinates rather than an offset. Free.",
+	"hexical.page.displace.summary": "Teleports an entity within the $(l:greatwork/spellcircles)circle$() to another point within the same $(l:greatwork/spellcircles)$(thing)circle$(). Unlike $(l:patterns/great_spells/teleport)$(action)Greater Teleport$(), this spell takes in world coordinates rather than an offset. Free.",
+	"hexcasting.action.hexical:absorb_arm": "Appendage",
+	"hexical.page.absorb_arm.summary": "Allows a $(l:greatwork/spellcircles)circle$() to hook onto a $(l:items/pedestal)$(item)Pedestal$() within ambit to use as its $(o)other arm$(). Useful for certain spells that demand an item held in my other hand. Free.",
+	"hexcasting.action.hexical:create_dust": "Export Media",
+	"hexical.page.create_dust.summary": "Exports _media out of an $(l:greatwork/impetus)$(item)Impetus$() at a rate of about two $(l:items/amethyst)$(item)Amethyst Dust$() per $(l:items/amethyst)$(item)Amethyst Dust$() created. Takes a location and a number of up to a stack of $(l:items/amethyst)$(item)Amethyst Dust$().",
 
 	"hexical.page.evocation.title": "Evocation",
 	"hexical.page.evocation.0": "_Media is the energy of thought, so it stands to reason that I should be able to simply $(o)think$() magic into existence rather than waving around a $(item)$(l:items/staff)Staff$(). After all, I have roughly two chunks' worth of $(l:items/amethyst)$(item)Charged Amethyst$() in me at my prime, double that of my $(l:items/staff)$(item)Staff$(). While I can not yet shift arbitrary effects into reality, I can bring it forth a prepared _Hex with a mere gesture, taking _media from my inventory.",
