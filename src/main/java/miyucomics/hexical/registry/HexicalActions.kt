@@ -26,6 +26,8 @@ import miyucomics.hexical.casting.patterns.block_mimicry.*
 import miyucomics.hexical.casting.patterns.breaking.OpBreakFortune
 import miyucomics.hexical.casting.patterns.breaking.OpBreakSilk
 import miyucomics.hexical.casting.patterns.charms.*
+import miyucomics.hexical.casting.patterns.circle.OpAbsorbArm
+import miyucomics.hexical.casting.patterns.circle.OpCreateDust
 import miyucomics.hexical.casting.patterns.circle.OpDisplace
 import miyucomics.hexical.casting.patterns.colors.OpDye
 import miyucomics.hexical.casting.patterns.colors.OpGetDye
@@ -232,6 +234,8 @@ object HexicalActions {
 		register("hopper_out", "qqqeawqwawq", HexDir.SOUTH_WEST, OpHopperExtract())
 
 		register("displace", "qaqqqqeedaqqqa", HexDir.NORTH_EAST, OpDisplace())
+		register("absorb_arm", "aaqqadaqwqa", HexDir.WEST, OpAbsorbArm())
+		register("create_dust", "eaqwedqdqddqqwae", HexDir.SOUTH_WEST, OpCreateDust())
 
 		register("get_evocation", "wwdeeeeeqeaqawwewewwaqawwewew", HexDir.EAST, OpGetEvocation())
 		register("set_evocation", "wwaqqqqqeqdedwwqwqwwdedwwqwqw", HexDir.EAST, OpSetEvocation())
