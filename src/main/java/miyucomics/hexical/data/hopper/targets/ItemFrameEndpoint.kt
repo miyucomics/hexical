@@ -1,42 +1,52 @@
 package miyucomics.hexical.data.hopper.targets
 
-import miyucomics.hexical.data.hopper.HopperEndpoint
-import net.minecraft.command.argument.EntityArgumentType.player
+import miyucomics.hexical.data.hopper.HopperDestination
+import miyucomics.hexical.data.hopper.HopperSource
 import net.minecraft.entity.decoration.ItemFrameEntity
 import net.minecraft.item.ItemStack
-import net.minecraft.server.network.ServerPlayerEntity
 
-class ItemFrameEndpoint(val frame: ItemFrameEntity) : HopperEndpoint.Source {
+class ItemFrameEndpoint(val frame: ItemFrameEntity) : HopperSource, HopperDestination {
 	override fun getItems(): List<ItemStack> {
 		val stack = frame.heldItemStack
 		return if (stack.isEmpty) emptyList() else listOf(stack.copy())
 	}
 
-	override fun remove(stack: ItemStack, amount: Int): Boolean {
+	override fun withdraw(stack: ItemStack, amount: Int): Boolean {
 		val existing = frame.heldItemStack
-		if (!ItemStack.areItemsEqual(existing, stack)) return false
-		if (existing.count < amount) return false
-
-		existing.decrement(amount)
-
-		if (existing.isEmpty) {
-			frame.setHeldItemStack(ItemStack.EMPTY, true)
-		} else {
-			frame.setHeldItemStack(existing, true)
-		}
-
+		if (!ItemStack.areItemsEqual(existing, stack))
+			return false
+		if (existing.count < amount)
+			return false
+		if (amount != 1)
+			return false
+		frame.setHeldItemStack(ItemStack.EMPTY, true)
 		return true
 	}
 
-	override fun insert(stack: ItemStack): ItemStack {
+	override fun deposit(stack: ItemStack): ItemStack {
 		val existing = frame.heldItemStack
-		if (existing.isEmpty) {
-			val placed = stack.copy()
-			placed.count = 1
-			frame.setHeldItemStack(placed, true)
-			return if (stack.count > 1) stack.copy().also { it.decrement(1) } else ItemStack.EMPTY
-		}
+		if (!existing.isEmpty)
+			return stack
 
-		return stack
+		val single = stack.copy()
+		single.count = 1
+		frame.setHeldItemStack(single, true)
+
+		return if (stack.count > 1) {
+			val leftover = stack.copy()
+			leftover.decrement(1)
+			leftover
+		} else {
+			ItemStack.EMPTY
+		}
+	}
+
+	override fun simulateDeposit(stack: ItemStack): Int {
+		val existing = frame.heldItemStack
+		if (!existing.isEmpty)
+			return 0
+		if (stack.isEmpty)
+			return 0
+		return 1
 	}
 }
