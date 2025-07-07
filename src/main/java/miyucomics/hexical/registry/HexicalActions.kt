@@ -4,14 +4,11 @@ import at.petrak.hexcasting.api.casting.ActionRegistryEntry
 import at.petrak.hexcasting.api.casting.asActionResult
 import at.petrak.hexcasting.api.casting.castables.Action
 import at.petrak.hexcasting.api.casting.iota.IotaType
-import at.petrak.hexcasting.api.casting.iota.NullIota
 import at.petrak.hexcasting.api.casting.math.HexDir
 import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.utils.vecFromNBT
 import at.petrak.hexcasting.common.casting.actions.selectors.OpGetEntitiesBy
-import at.petrak.hexcasting.common.casting.actions.spells.OpPotionEffect
-import at.petrak.hexcasting.common.lib.HexMobEffects
 import at.petrak.hexcasting.common.lib.hex.HexActions
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.casting.patterns.*
@@ -65,6 +62,7 @@ import miyucomics.hexical.interfaces.Specklike
 import miyucomics.hexical.items.HandLampItem
 import miyucomics.hexpose.iotas.IdentifierIota
 import miyucomics.hexpose.iotas.asActionResult
+import net.minecraft.command.argument.EntityAnchorArgumentType
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.projectile.FireballEntity
 import net.minecraft.entity.projectile.LlamaSpitEntity
@@ -77,6 +75,8 @@ import net.minecraft.sound.SoundEvents
 
 object HexicalActions {
 	fun init() {
+		register("hopper", "qwawqwaeqqq", HexDir.SOUTH_EAST, OpHopper())
+
 		register("normalize_scroll", "wqwawqwqawawa", HexDir.SOUTH_WEST, OpAlterScroll { it.setState(0) })
 		register("age_scroll", "wqwawqwqawwwdwdwwwa", HexDir.SOUTH_WEST, OpAlterScroll { it.setState(1) })
 		register("vanish_scroll", "wqwawqwqaqqa", HexDir.SOUTH_WEST, OpAlterScroll { it.setState(2) })
@@ -164,7 +164,7 @@ object HexicalActions {
 		register("prestidigitation", "wedewedew", HexDir.NORTH_EAST, OpPrestidigitation())
 
 		register("wristpocket", "aaqqa", HexDir.WEST, OpWristpocket())
-		register("wristpocket_item", "aaqqada", HexDir.WEST, OpGetWristpocketData { stack -> if (stack.isEmpty) listOf(NullIota()) else stack.asActionResult() })
+		register("wristpocket_item", "aaqqada", HexDir.WEST, OpGetWristpocket())
 		register("sleight", "aaqqadeeeq", HexDir.WEST, OpSleight())
 		register("mage_hand", "aaqqaeea", HexDir.WEST, OpMageHand())
 		register("mage_mouth", "aaqqadaa", HexDir.WEST, OpMageMouth())
@@ -230,8 +230,6 @@ object HexicalActions {
 		register("smoke", "qwqqadadadewdqqdwe", HexDir.SOUTH_EAST, OpCook(RecipeType.SMOKING, "target.smoking"))
 		register("blast", "qwqqadadadewweewwe", HexDir.SOUTH_EAST, OpCook(RecipeType.BLASTING, "target.blasting"))
 		register("stonecut", "qqqqqwaeaeaeaeaeadawa", HexDir.EAST, OpStonecut())
-		register("hopper_in", "qwawqwaeqqq", HexDir.SOUTH_EAST, OpHopperInsert())
-		register("hopper_out", "qqqeawqwawq", HexDir.SOUTH_WEST, OpHopperExtract())
 
 		register("displace", "qaqqqqeedaqqqa", HexDir.NORTH_EAST, OpDisplace())
 		register("absorb_arm", "aaqqadaqwqa", HexDir.WEST, OpAbsorbArm())
