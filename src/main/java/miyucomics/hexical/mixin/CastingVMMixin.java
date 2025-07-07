@@ -8,7 +8,7 @@ import at.petrak.hexcasting.api.casting.eval.vm.CastingVM;
 import at.petrak.hexcasting.api.casting.iota.Iota;
 import com.llamalad7.mixinextras.sugar.Local;
 import miyucomics.hexical.data.LedgerData;
-import miyucomics.hexical.utils.InjectionHelper;
+import miyucomics.hexical.utils.HexInjectionHelper;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import org.spongepowered.asm.mixin.Mixin;
@@ -23,7 +23,7 @@ import java.util.List;
 public class CastingVMMixin {
 	@Inject(method = "queueExecuteAndWrapIota", at = @At("HEAD"), cancellable = true)
 	void expandGrimoire(Iota iota, ServerWorld world, CallbackInfoReturnable<ExecutionClientView> cir) {
-		ExecutionClientView view = InjectionHelper.handleGrimoire((CastingVM) (Object) this, iota, world);
+		ExecutionClientView view = HexInjectionHelper.handleGrimoire((CastingVM) (Object) this, iota, world);
 		if (view != null)
 			cir.setReturnValue(view);
 	}

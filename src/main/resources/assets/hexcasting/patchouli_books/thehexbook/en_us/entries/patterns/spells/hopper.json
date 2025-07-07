@@ -1,0 +1,17 @@
+{
+	"name": "hexical.page.hopper.title",
+	"icon": "minecraft:hopper",
+	"category": "hexcasting:patterns/spells",
+	"advancement": "hexcasting:root",
+	"sortnum": 30,
+	"pages": [
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:hopper",
+			"anchor": "hexical:hopper",
+			"input": "source, destination, list",
+			"output": "",
+			"text": "hexical.page.hopper.summary"
+		}
+	]
+}

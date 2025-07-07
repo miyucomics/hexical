@@ -18,16 +18,6 @@ object CharmedItemUtilities {
 	}
 
 	@JvmStatic
-	fun isStackCharmed(stack: ItemStack): Boolean {
-		return stack.hasNbt() && stack.nbt!!.contains("charmed")
-	}
-
-	@JvmStatic
-	fun removeCharm(stack: ItemStack) {
-		stack.nbt!!.remove("charmed")
-	}
-
-	@JvmStatic
 	fun shouldIntercept(stack: ItemStack, button: Int, sneaking: Boolean): Boolean {
 		val charmed = stack.nbt!!.getCompound("charmed")
 		val key = when (button) {
@@ -38,22 +28,26 @@ object CharmedItemUtilities {
 		return charmed.getBoolean(key)
 	}
 
-	@JvmStatic
+	fun isStackCharmed(stack: ItemStack): Boolean {
+		return stack.hasNbt() && stack.nbt!!.contains("charmed")
+	}
+
+	fun removeCharm(stack: ItemStack) {
+		stack.nbt!!.remove("charmed")
+	}
+
 	fun getHex(stack: ItemStack, world: ServerWorld): List<Iota> {
 		return (IotaType.deserialize(stack.nbt!!.getCompound("charmed").getCompound("instructions"), world) as ListIota).list.toList()
 	}
 
-	@JvmStatic
 	fun getMedia(stack: ItemStack): Long {
 		return stack.nbt!!.getCompound("charmed").getLong("media")
 	}
 
-	@JvmStatic
 	fun getMaxMedia(stack: ItemStack): Long {
 		return stack.nbt!!.getCompound("charmed").getLong("max_media")
 	}
 
-	@JvmStatic
 	fun deductMedia(stack: ItemStack, cost: Long) {
 		val oldMedia = getMedia(stack)
 		if (oldMedia <= cost)
