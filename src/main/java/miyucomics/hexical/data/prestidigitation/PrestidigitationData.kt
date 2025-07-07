@@ -36,7 +36,6 @@ import net.minecraft.state.property.Properties
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.event.GameEvent
 
-@Suppress("DEPRECATION")
 object PrestidigitationData {
 	private val PRESTIDIGITATION_HANDLER_KEY: RegistryKey<Registry<PrestidigitationHandler>> = RegistryKey.ofRegistry(HexicalMain.id("prestidigitation_handler"))
 	val PRESTIDIGITATION_HANDLER: SimpleRegistry<PrestidigitationHandler> = FabricRegistryBuilder.createSimple(PRESTIDIGITATION_HANDLER_KEY).attribute(RegistryAttribute.MODDED).buildAndRegister()

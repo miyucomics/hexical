@@ -579,7 +579,7 @@
 	"hexical.page.spike.1": "Each spike takes about a half second to strike and deal a hefty three full hearts of damage before slowly sinking back into the ground. If I cast this spell where a spike has not yet disappeared, it will do nothing. Spikes will also throw back targets in the direction they were conjured.",
 
 	"hexical.page.block_mimicry.title": "Block Mimicry",
-	"hexical.page.block_mimicry.0": "The Art of _Hexcasting is a versatile craft; I can use _media to simulate a lot of the actions that I rely on blocks to perform without requiring any physical infrastructure. With just my staff, I can $(l:patterns/spells/block_mimicry#hexical:stonecut)cut stone into stairs$(), $(l:patterns/spells/block_mimicry#hexical:dispense)launch arrows$(), and automate the $(l:patterns/spells/block_mimicry#hexical:hopper_in)push$() and $(l:patterns/spells/block_mimicry#hexical:hopper_out)pull$() of items into inventories.",
+	"hexical.page.block_mimicry.0": "The Art of _Hexcasting is a versatile craft; I can use _media to simulate a lot of the actions that I rely on blocks to perform without requiring any physical infrastructure. With just my staff, I can $(l:patterns/spells/block_mimicry#hexical:stonecut)cut stone into stairs$(), $(l:patterns/spells/block_mimicry#hexical:dispense)launch arrows$(), and $(l:patterns/spells/block_mimicry#hexical:smelt)cook$() my items for me.",
 	"hexical.page.block_mimicry.1": "Tales speak of ancient _Hexcasters that have set up entire magical factories without placing a single block.$(br2)$(o)And I need a bigger office, I need a bigger chair$(br)A bigger desk, a bigger staff$(br)A bigger hat to wear",
 	"hexcasting.action.hexical:dispense": "Dispense",
 	"hexical.page.dispense.summary": "Takes an item entity, a position, and an axis vector and dispenses the item. For most applications, costs about half of one $(l:items/amethyst)$(item)Amethyst Dust$().",
@@ -595,12 +595,6 @@
 	"hexcasting.action.hexical:stonecut": "Cut Stone",
 	"hexical.page.stonecut.summary": "Takes an item entity and cuts the item into the shape of an item identifier. Costs about an eighth of one $(l:items/amethyst)$(item)Amethyst Dust$().",
 	"hexical.page.stonecut.description": "The target item must be possible to carve from the source item in a $(item)Stonecutter$(). For instance, $(item)Stone$() can be cut into all manners of stairs, slabs, and walls.$(br2)$(o)I saw the angel in the marble and carved until I set him free.$()",
-	"hexcasting.action.hexical:hopper_in": "Deposit",
-	"hexical.page.hopper_in.summary": "Takes an item entity, an inventory location, and an axis vector. Inserts the item through that side if possible. Costs about one $(l:items/amethyst)$(item)Amethyst Dust$().",
-	"hexical.page.hopper_in.description": "If the block is not an inventory, the block is full, or the item can not be inserted for any other reason, nothing happens. Items that overflow the inventory are simply left in the original item entity.$(br2)$(o)Upon request, I can also perform a hug.$()",
-	"hexcasting.action.hexical:hopper_out": "Withdraw",
-	"hexical.page.hopper_out.summary": "Takes a spawning vector, an inventory location, and an axis vector. Extracts a single item from that side into the location and pushes it. Costs about one $(l:items/amethyst)$(item)Amethyst Dust$().",
-	"hexical.page.hopper_out.description": "If no item could be extracted, the spell pushes $(l:casting/influences)$(thing)Null$(). Only one item will be extracted at a time similar to a hopper.$(br2)$(o)Upon request, I can also perform a hug.$()",
 
 	"hexical.page.circle_spells.title": "Circle Spells",
 	"hexical.page.circle_spells.0": "When the _media courses through the boundaries of a $(l:greatwork/spellcircles)$(thing)circle$(), it saturates the domain inside with _media, allowing far greater magical effects and flexibility of _media manipulation than I am used to. The following are some spells which rely on that increased density of _media or properties of the $(l:greatwork/spellcircles)circle$() itself and are to only be cast by an $(l:greatwork/impetus)$(item)Impetus$().",
