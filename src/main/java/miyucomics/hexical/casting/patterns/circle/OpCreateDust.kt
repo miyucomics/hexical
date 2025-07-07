@@ -31,7 +31,7 @@ class OpCreateDust : SpellAction {
 			throw OutsideCircleMishap()
 		val amount = args.getPositiveIntUnderInclusive(1, 64, argc)
 
-		return SpellAction.Result(Spell(position, amount), MediaConstants.DUST_UNIT * amount * 1.1, listOf(ParticleSpray.burst(position, 1.0)))
+		return SpellAction.Result(Spell(position, amount), (MediaConstants.DUST_UNIT * amount * 1.1).toLong(), listOf(ParticleSpray.burst(position, 1.0)))
 	}
 
 	private data class Spell(val position: Vec3d, val amount: Int) : RenderedSpell {
