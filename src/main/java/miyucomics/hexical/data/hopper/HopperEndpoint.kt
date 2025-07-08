@@ -10,15 +10,6 @@ interface HopperSource : HopperEndpoint {
 }
 
 interface HopperDestination : HopperEndpoint {
-	/**
-	* Simulates how many items from the stack could be accepted.
-	* Must not mutate anything.
-	*/
 	fun simulateDeposit(stack: ItemStack): Int
-
-	/**
-	* Actually deposits items. May mutate world state.
-	* Returns leftover stack (i.e., what couldn't be inserted).
-	*/
 	fun deposit(stack: ItemStack): ItemStack
 }

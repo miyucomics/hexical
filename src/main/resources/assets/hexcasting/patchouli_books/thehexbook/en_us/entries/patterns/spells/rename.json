@@ -1,0 +1,24 @@
+{
+	"name": "hexical.page.rename.title",
+	"icon": "minecraft:name_tag",
+	"category": "hexcasting:patterns/spells",
+	"sortnum": 30,
+	"pages": [
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:item_name",
+			"anchor": "hexical:item_name",
+			"input": "entity, text/null",
+			"output": "",
+			"text": "hexical.page.item_name.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:item_lore",
+			"anchor": "hexical:item_lore",
+			"input": "entity, list of text/null",
+			"output": "",
+			"text": "hexical.page.item_lore.summary"
+		}
+	]
+}
