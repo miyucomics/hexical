@@ -1,0 +1,25 @@
+{
+	"name": "hexical.page.break_special.title",
+	"icon": "minecraft:golden_pickaxe",
+	"category": "hexcasting:patterns/spells",
+	"advancement": "hexcasting:root",
+	"sortnum": 11,
+	"pages": [
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:break_fortune",
+			"anchor": "hexical:break_fortune",
+			"input": "vector, number",
+			"output": "",
+			"text": "hexical.page.break_fortune.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:break_silk",
+			"anchor": "hexical:break_silk",
+			"input": "vector",
+			"output": "",
+			"text": "hexical.page.break_silk.summary"
+		}
+	]
+}

@@ -12,14 +12,16 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.Hand;
+import org.jetbrains.annotations.NotNull;
 import org.lwjgl.glfw.GLFW;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import java.util.List;
 
 @Mixin(value = Mouse.class)
 public class MouseMixin {
@@ -31,43 +33,33 @@ public class MouseMixin {
 		if (client.player == null || client.player.isSpectator()) return;
 		if (action != GLFW.GLFW_PRESS) return;
 
-		Pair<Hand, ItemStack> charmedItem = CharmedItemUtilities.getCharmedItem(client.player);
-		if (charmedItem == null) return;
-
-		handleButtonPress(charmedItem.getFirst(), charmedItem.getSecond(), button, client.player.isSneaking(), ci);
-	}
-
-	@Unique
-	private void handleButtonPress(Hand hand, ItemStack stack, int button, boolean sneaking, CallbackInfo ci) {
-		String key = switch (button) {
-			case GLFW.GLFW_MOUSE_BUTTON_LEFT -> sneaking ? "left_sneak" : "left";
-			case GLFW.GLFW_MOUSE_BUTTON_RIGHT -> sneaking ? "right_sneak" : "right";
-			default -> null;
+		int buttonPressed = switch (button) {
+			case GLFW.GLFW_MOUSE_BUTTON_1 -> 0; // left
+			case GLFW.GLFW_MOUSE_BUTTON_2 -> 1; // right
+			case GLFW.GLFW_MOUSE_BUTTON_3 -> 2; // middle
+			case GLFW.GLFW_MOUSE_BUTTON_4 -> 3;
+			case GLFW.GLFW_MOUSE_BUTTON_5 -> 4;
+			case GLFW.GLFW_MOUSE_BUTTON_6 -> 5;
+			case GLFW.GLFW_MOUSE_BUTTON_7 -> 6;
+			case GLFW.GLFW_MOUSE_BUTTON_8 -> 7;
+			default -> -1;
 		};
 
-		if (key == null)
+		if (buttonPressed == -1)
 			return;
 
-		if (CharmedItemUtilities.getBoolean(stack, key)) {
-			int inputMethod = switch (key) {
-				case "left" -> 0;
-				case "left_sneak" -> 1;
-				case "right" -> 2;
-				case "right_sneak" -> 3;
-				default -> -1;
-			};
-			sendMessage(hand, inputMethod);
-			ci.cancel();
-		}
-	}
+		for (Pair<Hand, ItemStack> pair : CharmedItemUtilities.getUseableCharmedItems(client.player)) {
+			if (!CharmedItemUtilities.shouldIntercept(pair.getSecond(), buttonPressed, client.player.isSneaking()))
+				continue;
 
-	@Unique
-	private void sendMessage(Hand hand, int inputMethod) {
-		assert client.player != null;
-		client.player.swingHand(hand);
-		client.player.getWorld().playSound(client.player, client.player.getX(), client.player.getY(), client.player.getZ(), HexSounds.CAST_HERMES, SoundCategory.PLAYERS, 1f, 1f);
-		PacketByteBuf buf = PacketByteBufs.create();
-		buf.writeInt(inputMethod);
-		ClientPlayNetworking.send(HexicalNetworking.CHARMED_ITEM_USE_CHANNEL, buf);
+			client.player.swingHand(pair.getFirst());
+			client.player.getWorld().playSound(client.player, client.player.getX(), client.player.getY(), client.player.getZ(), HexSounds.CAST_HERMES, SoundCategory.PLAYERS, 1f, 1f);
+			PacketByteBuf buf = PacketByteBufs.create();
+			buf.writeInt(buttonPressed);
+			buf.writeInt(pair.getFirst().ordinal());
+			ClientPlayNetworking.send(HexicalNetworking.CHARMED_ITEM_USE_CHANNEL, buf);
+			ci.cancel();
+			return;
+		}
 	}
 }
