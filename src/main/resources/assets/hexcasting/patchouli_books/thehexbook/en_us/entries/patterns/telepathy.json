@@ -112,6 +112,14 @@
 			"input": "",
 			"output": "number",
 			"text": "hexical.page.sneaking.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:scroll",
+			"anchor": "hexical:scroll",
+			"input": "",
+			"output": "number",
+			"text": "hexical.page.scroll.summary"
 		}
 	]
 }

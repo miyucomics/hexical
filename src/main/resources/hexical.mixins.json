@@ -1,41 +1,39 @@
 {
-  "required": true,
-  "package": "miyucomics.hexical.mixin",
-  "compatibilityLevel": "JAVA_17",
-  "minVersion": "0.8",
-  "client": [
-    "AbstractClientPlayerEntityMixin",
-    "ClientPlayerEntityMixin",
-    "GameRendererMixin",
-    "GuiSpellcastingMixin",
-    "HeldItemRendererMixin",
-    "InGameHudMixin",
-    "MouseMixin",
-    "ScreenMixin"
-  ],
-  "mixins": [
-    "BlockAkashicBookshelfMixin",
-    "CastingEnvironmentMixin",
-    "CastingVMMixin",
-    "CatSitOnBlockGoalMixin",
-    "CircleCastEnvMixin",
-    "DispenserBlockInvoker",
-    "FabricIXplatImplMixin",
-    "ItemAbacusMixin",
-    "ItemEntityMixin",
-    "ItemStackMixin",
-    "LivingEntityMixin",
-    "MediaHelperMixin",
-    "OpEraseMixin",
-    "OpEraseSpellMixin",
-    "OpReadMixin",
-    "PacketByteBufMixin",
-    "PatternIotaMixin",
-    "PlayerBasedCastEnvMixin",
-    "PlayerEntityMixin",
-    "WanderingTraderEntityMixin"
-  ],
-  "injectors": {
-    "defaultRequire": 1
+	"required": true,
+	"package": "miyucomics.hexical.mixin",
+	"compatibilityLevel": "JAVA_17",
+	"minVersion": "0.8",
+	"client": [
+		"AbstractClientPlayerEntityMixin",
+		"ClientPlayerEntityMixin",
+		"GameRendererMixin",
+		"GuiSpellcastingMixin",
+		"HeldItemRendererMixin",
+		"InGameHudMixin",
+		"MouseMixin",
+		"ScreenMixin"
+	],
+	"mixins": [
+		"BlockAkashicBookshelfMixin",
+		"CastingEnvironmentMixin",
+		"CastingVMMixin",
+		"CatSitOnBlockGoalMixin",
+		"CircleCastEnvMixin",
+		"DispenserBlockInvoker",
+		"ItemAbacusMixin",
+		"ItemEntityMixin",
+		"ItemStackMixin",
+		"LivingEntityMixin",
+		"MediaHelperMixin",
+		"OpEraseMixin",
+		"OpReadMixin",
+		"PacketByteBufMixin",
+		"PatternIotaMixin",
+		"PlayerBasedCastEnvMixin",
+		"PlayerEntityMixin",
+		"WanderingTraderEntityMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
 	}
 }

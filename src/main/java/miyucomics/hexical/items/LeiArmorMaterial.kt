@@ -1,4 +1,4 @@
-package miyucomics.hexical.misc
+package miyucomics.hexical.items
 
 import net.minecraft.item.ArmorItem
 import net.minecraft.item.ArmorMaterial

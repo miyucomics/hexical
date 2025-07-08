@@ -5,7 +5,6 @@ import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster
-import miyucomics.hexical.casting.environments.TurretLampCastEnv
 import miyucomics.hexical.casting.mishaps.NeedsArchGenieLampMishap
 import miyucomics.hexical.interfaces.PlayerEntityMinterface
 import miyucomics.hexical.items.hasActiveArchLamp
@@ -17,11 +16,6 @@ class OpSetArchLampStorage : ConstMediaAction {
 	override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
 		val iota = args[0]
 		CastingUtils.assertNoTruename(iota, env)
-
-		if (env is TurretLampCastEnv) {
-			env.archLampState.storage = IotaType.serialize(iota)
-			return emptyList()
-		}
 
 		val caster = env.castingEntity
 		if (caster !is ServerPlayerEntity)

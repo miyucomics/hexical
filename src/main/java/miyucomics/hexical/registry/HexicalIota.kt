@@ -7,7 +7,6 @@ import miyucomics.hexical.casting.iotas.PigmentIota
 import net.minecraft.registry.Registry
 
 object HexicalIota {
-	@JvmStatic
 	fun init() {
 		Registry.register(HexIotaTypes.REGISTRY, HexicalMain.id("dye"), DyeIota.TYPE)
 		Registry.register(HexIotaTypes.REGISTRY, HexicalMain.id("pigment"), PigmentIota.TYPE)

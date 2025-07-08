@@ -43,10 +43,6 @@ public class ItemStackMixin {
 			return original.call();
 		if (!nbt.contains("charmed"))
 			return original.call();
-
-		NbtCompound charm = nbt.getCompound("charmed");
-		int maxMedia = charm.getInt("max_media");
-		int media = charm.getInt("media");
-		return MediaHelper.mediaBarColor(media, maxMedia);
+		return 0xff_e83d72;
 	}
 }

@@ -18,6 +18,7 @@ import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
 import net.minecraft.sound.SoundCategory
 import net.minecraft.sound.SoundEvents
+import net.minecraft.util.Hand
 import net.minecraft.util.Identifier
 import net.minecraft.util.math.Vec3d
 import kotlin.random.Random
@@ -28,6 +29,8 @@ object HexicalNetworking {
 	val PRESSED_KEY_CHANNEL: Identifier = HexicalMain.id("press_key")
 	val RELEASED_KEY_CHANNEL: Identifier = HexicalMain.id("release_key")
 
+	val SCROLL_CHANNEL: Identifier = HexicalMain.id("scroll")
+
 	val CONFETTI_CHANNEL: Identifier = HexicalMain.id("confetti")
 
 	val START_EVOKE_CHANNEL: Identifier = HexicalMain.id("start_evoking")
@@ -36,16 +39,16 @@ object HexicalNetworking {
 	val LEDGER_CHANNEL: Identifier = HexicalMain.id("ledger")
 	val SHADER_CHANNEL: Identifier = HexicalMain.id("shader")
 
-	@JvmStatic
 	fun serverInit() {
 		ServerPlayNetworking.registerGlobalReceiver(LEDGER_CHANNEL) { _, player, _, _, _ -> LedgerData.clearLedger(player) }
 
 		ServerPlayNetworking.registerGlobalReceiver(CHARMED_ITEM_USE_CHANNEL) { server, player, _, buf, _ ->
-			val charmedItem = CharmedItemUtilities.getCharmedItem(player) ?: return@registerGlobalReceiver
 			val inputMethod = buf.readInt()
+			val hand = enumValues<Hand>()[buf.readInt()]
+			val stack = player.getStackInHand(hand)
 			server.execute {
-				val vm = CastingVM(CastingImage().copy(stack = inputMethod.asActionResult), CharmedItemCastEnv(player, charmedItem.first, charmedItem.second))
-				vm.queueExecuteAndWrapIotas(CharmedItemUtilities.getHex(charmedItem.second, player.serverWorld), player.serverWorld)
+				val vm = CastingVM(CastingImage().copy(stack = inputMethod.asActionResult), CharmedItemCastEnv(player, hand, stack))
+				vm.queueExecuteAndWrapIotas(CharmedItemUtilities.getHex(stack, player.serverWorld), player.serverWorld)
 			}
 		}
 
@@ -57,11 +60,16 @@ object HexicalNetworking {
 			val key = buf.readString()
 			KeybindData.active[player.uuid]!![key] = true
 			KeybindData.duration[player.uuid]!![key] = 0
+			if (key == "key.hexical.telepathy")
+				KeybindData.scroll[player.uuid] = 0
 		}
 		ServerPlayNetworking.registerGlobalReceiver(RELEASED_KEY_CHANNEL) { _, player, _, buf, _ ->
 			val key = buf.readString()
 			KeybindData.active[player.uuid]!![key] = false
 			KeybindData.duration[player.uuid]!![key] = 0
+		}
+		ServerPlayNetworking.registerGlobalReceiver(SCROLL_CHANNEL) { _, player, _, buf, _ ->
+			KeybindData.scroll[player.uuid] = KeybindData.scroll.getOrDefault(player.uuid, 0) + buf.readInt()
 		}
 
 		ServerPlayNetworking.registerGlobalReceiver(START_EVOKE_CHANNEL) { server, player, _, _, _ ->
@@ -88,7 +96,6 @@ object HexicalNetworking {
 		}
 	}
 
-	@JvmStatic
 	fun clientInit() {
 		LesserSentinelState.registerClientReciever()
 

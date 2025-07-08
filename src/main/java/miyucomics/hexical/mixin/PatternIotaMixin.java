@@ -5,7 +5,7 @@ import at.petrak.hexcasting.api.casting.eval.vm.CastingVM;
 import at.petrak.hexcasting.api.casting.eval.vm.SpellContinuation;
 import at.petrak.hexcasting.api.casting.iota.PatternIota;
 import at.petrak.hexcasting.api.casting.math.HexPattern;
-import miyucomics.hexical.utils.InjectionHelper;
+import miyucomics.hexical.utils.HexInjectionHelper;
 import net.minecraft.server.world.ServerWorld;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -19,7 +19,7 @@ public abstract class PatternIotaMixin {
 
 	@Inject(method = "execute", at = @At("HEAD"), cancellable = true)
 	void scarabsFilch(CastingVM vm, ServerWorld world, SpellContinuation continuation, CallbackInfoReturnable<CastResult> cir) {
-		CastResult newResult = InjectionHelper.handleScarab(vm, (PatternIota) (Object) this, continuation, world);
+		CastResult newResult = HexInjectionHelper.handleScarab(vm, (PatternIota) (Object) this, continuation, world);
 		if (newResult != null)
 			cir.setReturnValue(newResult);
 	}

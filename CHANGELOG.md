@@ -14,13 +14,12 @@
 - added Horrible
 - added 512 pattern cap to grimoires
 - added HexGloop's Dispense spell
-- changed tchotchke's old features to be an enchantment you can place on any item
 - added pedestals - holds your items for you!
   - if used in a circle, it pushes the iota from the item on the pedestal
-  - acts as a circle's other hand
-- added all variants of cooking blocks
+- added spell to make a circle use a pedestal as its other hand
+- added spell to let a circle conjure dust
+- added all variants of cooking blocks as spells
 - added hopper spells
-- added Clarity and Clouding zeniths/nadirs
 - added Ping Block spell - highlight a block
 - added Conjure Flower spell - conjure a flower of your choosing
 - added Illuminate spell - conjure an invisible light of your chosen strength
@@ -42,7 +41,6 @@
 - added Similarity Purification - tests if two patterns have the same shape but different stroke order
 - added sentinel bed - always have ambit inside
 - added rotation spells for blocks and entities
-- added Frieren shields
 - added periwinkle, a flower that can only be created via Hexcasting
   - it is the core ingredient of the Wooleyed potion
   - it can be used to craft a lei
@@ -50,6 +48,8 @@
     - you can right-click other players to put the lei on them
 - added Wooleyed status effect
   - acts as a coping saw
+- added spell to break block with fortune
+- added spell to break block with silk touch
 - added Construct spell - places a specific block type from your inventory with parameters for orientation and horizontal vector
 - added left and right-click telepathy patterns
 - added pattern to get evocation hex
@@ -57,11 +57,13 @@
 - added beautiful little shader to media jars
 - added Hex Candle cakes
 - added Hex Gummies
+- added charmed items - replaces tchotchke, lets you charm anything
 - added Casting Carpet - carpet that boosts your ambit a little
 - added pattern to test if an item stack has an autograph
 - added pattern to check if an item has been autographed by a specific person
 - added Unautograph spell to unautograph an item ( still erases it )
 - changed Autograph and Unautograph's pattern by swapping them
+- changed Promote Genie to be a great spell
 - changed media jar
   - pretty shader
   - custom recipe type to transmute with media
@@ -85,13 +87,14 @@
 - fixed getting to document Ghast Fireball pushing an entity
 - fixed swapped documentation of Calligrapher's and Chirographer's Purification
 - fixed bug where wristpocket does not cancel the interaction when interacting with a block
-- migrated scrying to Hexposition, a new addon
+- migrated scrying to Hexpose, a new addon
   - added scrying pattern for moon phase
   - added scrying pattern for projectile shooter
   - added scrying pattern for riding entities
   - added Media Reflection - gets media of casting environment
   - added Media Purification - gets media of player, allay, impetus, or item on floor
   - added Potential Purification - max media that something can hold
+  - added item scrying patterns
   - moved piercing raycasts to Hexposition
   - fixed Ambit Purification returning true for out-of-world positions
   - fixed poor translation of Tool and Accessory Purification
