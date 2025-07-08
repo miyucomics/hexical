@@ -75,7 +75,7 @@ import net.minecraft.sound.SoundEvents
 
 object HexicalActions {
 	fun init() {
-		register("hopper", "qwawqwaeqqq", HexDir.SOUTH_EAST, OpHopper())
+		register("hopper", "qwawqwaeqqq", HexDir.SOUTH_EAST, OpHopper)
 
 		register("normalize_scroll", "wqwawqwqawawa", HexDir.SOUTH_WEST, OpAlterScroll { it.setState(0) })
 		register("age_scroll", "wqwawqwqawwwdwdwwwa", HexDir.SOUTH_WEST, OpAlterScroll { it.setState(1) })
