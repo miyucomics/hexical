@@ -9,7 +9,7 @@ import net.minecraft.item.ItemStack
 
 class SlottedInventoryEndpoint(private val inventory: Inventory, private val slot: Int, iota: Iota) : HopperSource, HopperDestination {
 	init {
-		if (slot >= inventory.size())
+		if (slot >= inventory.size() || slot < 0)
 			throw NotEnoughSlotsMishap(iota, slot)
 	}
 

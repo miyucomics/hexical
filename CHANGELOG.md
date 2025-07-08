@@ -19,7 +19,7 @@
 - added spell to make a circle use a pedestal as its other hand
 - added spell to let a circle conjure dust
 - added all variants of cooking blocks as spells
-- added hopper spells
+- added Hopper spell - transport of items from almost any source to almost any other
 - added Ping Block spell - highlight a block
 - added Conjure Flower spell - conjure a flower of your choosing
 - added Illuminate spell - conjure an invisible light of your chosen strength
