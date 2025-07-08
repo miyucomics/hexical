@@ -1,16 +1,13 @@
-package miyucomics.hexical.casting.patterns
+package miyucomics.hexical.casting.patterns.hopper
 
 import at.petrak.hexcasting.api.casting.RenderedSpell
 import at.petrak.hexcasting.api.casting.castables.Action
-import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.eval.OperationResult
 import at.petrak.hexcasting.api.casting.eval.sideeffects.OperatorSideEffect
 import at.petrak.hexcasting.api.casting.eval.vm.CastingImage
 import at.petrak.hexcasting.api.casting.eval.vm.SpellContinuation
 import at.petrak.hexcasting.api.casting.iota.DoubleIota
-import at.petrak.hexcasting.api.casting.iota.Iota
-import at.petrak.hexcasting.api.casting.mishaps.Mishap
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.casting.mishaps.MishapNotEnoughArgs
 import at.petrak.hexcasting.api.misc.MediaConstants
@@ -35,7 +32,7 @@ object OpHopper : Action {
 			throw MishapNotEnoughArgs(2, 1)
 		val destinationIota = stack.removeLast()
 		val destination = HopperEndpointRegistry.resolve(destinationIota, env, outputSlot) as? HopperDestination
-			?: throw MishapInvalidIota.of(destinationIota, inputsConsumed, "hopper_destination")
+			?: throw MishapInvalidIota.Companion.of(destinationIota, inputsConsumed, "hopper_destination")
 		inputsConsumed += 1
 
 		if (stack.isNotEmpty() && stack.last() is DoubleIota) {
@@ -47,16 +44,18 @@ object OpHopper : Action {
 			throw MishapNotEnoughArgs(inputsConsumed + 1, inputsConsumed)
 		val sourceIota = stack.removeLast()
 		val source = HopperEndpointRegistry.resolve(sourceIota, env, inputSlot) as? HopperSource
-			?: throw MishapInvalidIota.of(sourceIota, inputsConsumed, "hopper_source")
+			?: throw MishapInvalidIota.Companion.of(sourceIota, inputsConsumed, "hopper_source")
 
-		return OperationResult(image.withUsedOp().copy(stack = stack), listOf(
-			OperatorSideEffect.ConsumeMedia(MediaConstants.SHARD_UNIT),
-			OperatorSideEffect.AttemptSpell(
-				Spell(source, destination),
-				hasCastingSound = true,
-				awardStat = true
-			)
-		), continuation, HexEvalSounds.SPELL)
+		return OperationResult(
+			image.withUsedOp().copy(stack = stack), listOf(
+				OperatorSideEffect.ConsumeMedia(MediaConstants.SHARD_UNIT),
+				OperatorSideEffect.AttemptSpell(
+					Spell(source, destination),
+					hasCastingSound = true,
+					awardStat = true
+				)
+			), continuation, HexEvalSounds.SPELL
+		)
 	}
 
 	private data class Spell(val source: HopperSource, val destination: HopperDestination) : RenderedSpell {

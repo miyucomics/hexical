@@ -5,7 +5,7 @@ import miyucomics.hexical.data.hopper.HopperSource
 import net.minecraft.inventory.Inventory
 import net.minecraft.item.ItemStack
 
-class InventoryEndpoint(private val inventory: Inventory) : HopperSource, HopperDestination {
+class InventoryEndpoint(val inventory: Inventory) : HopperSource, HopperDestination {
 	override fun getItems(): List<ItemStack> {
 		return (0 until inventory.size()).map { inventory.getStack(it).copy() }.filterNot { it.isEmpty }
 	}

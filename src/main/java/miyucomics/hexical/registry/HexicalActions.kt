@@ -37,6 +37,8 @@ import miyucomics.hexical.casting.patterns.firework.OpSimulateFirework
 import miyucomics.hexical.casting.patterns.grimoire.OpGrimoireErase
 import miyucomics.hexical.casting.patterns.grimoire.OpGrimoireIndex
 import miyucomics.hexical.casting.patterns.grimoire.OpGrimoireWrite
+import miyucomics.hexical.casting.patterns.hopper.OpHopper
+import miyucomics.hexical.casting.patterns.hopper.OpIndexHopper
 import miyucomics.hexical.casting.patterns.hotbar.OpGetHotbar
 import miyucomics.hexical.casting.patterns.hotbar.OpSetHotbar
 import miyucomics.hexical.casting.patterns.lamp.*
@@ -61,8 +63,6 @@ import miyucomics.hexical.casting.patterns.wristpocket.*
 import miyucomics.hexical.interfaces.Specklike
 import miyucomics.hexical.items.HandLampItem
 import miyucomics.hexpose.iotas.IdentifierIota
-import miyucomics.hexpose.iotas.asActionResult
-import net.minecraft.command.argument.EntityAnchorArgumentType
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.projectile.FireballEntity
 import net.minecraft.entity.projectile.LlamaSpitEntity
@@ -75,8 +75,6 @@ import net.minecraft.sound.SoundEvents
 
 object HexicalActions {
 	fun init() {
-		register("hopper", "qwawqwaeqqq", HexDir.SOUTH_EAST, OpHopper)
-
 		register("normalize_scroll", "wqwawqwqawawa", HexDir.SOUTH_WEST, OpAlterScroll { it.setState(0) })
 		register("age_scroll", "wqwawqwqawwwdwdwwwa", HexDir.SOUTH_WEST, OpAlterScroll { it.setState(1) })
 		register("vanish_scroll", "wqwawqwqaqqa", HexDir.SOUTH_WEST, OpAlterScroll { it.setState(2) })
@@ -255,6 +253,9 @@ object HexicalActions {
 		register("shader_media", "eewdweqaqewdwee", HexDir.WEST, OpShader(HexicalMain.id("shaders/post/media.json")))
 		register("shader_spider", "qaqdedaedqqdedaqaedeqd", HexDir.NORTH_EAST, OpShader(HexicalMain.id("shaders/post/spider.json")))
 		// color shift - edqdeqaqedqde
+
+		register("hopper", "qwawqwaeqqq", HexDir.SOUTH_EAST, OpHopper)
+		register("index_hopper", "qqqeawqwawq", HexDir.SOUTH_WEST, OpIndexHopper)
 
 		register("horrible", "wedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqeedqawqeewdeaqqewdeaqeewdeaqeedqawqqedqawqqewdeaqeedqawqeewdeaqqewdeaqeewdeaqeedqawqqedqawqqewdeaqqedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqqedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqeedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqqedqawqeewdeaqqewdeaqeewdeaqeedqawqqedqawqqewdeaqe", HexDir.EAST, OpHorrible())
 

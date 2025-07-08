@@ -7,6 +7,7 @@ import at.petrak.hexcasting.api.casting.iota.NullIota
 import at.petrak.hexcasting.api.casting.iota.Vec3Iota
 import jdk.incubator.vector.VectorShuffle.iota
 import miyucomics.hexical.data.hopper.targets.*
+import miyucomics.hexical.interfaces.PlayerEntityMinterface
 import net.minecraft.command.argument.BlockPosArgumentType.blockPos
 import net.minecraft.entity.Entity
 import net.minecraft.entity.ItemEntity
@@ -32,6 +33,13 @@ object HopperEndpointRegistry {
 	private val resolvers = mutableListOf<HopperEndpointResolver>()
 
 	fun init() {
+		register { iota, env, slot ->
+			val caster = env.castingEntity
+			if (iota is EntityIota && iota.entity == caster && caster is ServerPlayerEntity && slot == -1)
+				return@register WristpocketEndpoint(caster as PlayerEntityMinterface)
+			null
+		}
+
 		register { iota, env, slot ->
 			val caster = env.castingEntity
 			if (iota is EntityIota && iota.entity == caster && caster is ServerPlayerEntity)
