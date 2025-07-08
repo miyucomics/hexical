@@ -34,6 +34,8 @@ object CharmedItemUtilities {
 
 	fun removeCharm(stack: ItemStack) {
 		stack.nbt!!.remove("charmed")
+		if (stack.nbt!!.isEmpty)
+			stack.nbt = null
 	}
 
 	fun getHex(stack: ItemStack, world: ServerWorld): List<Iota> {

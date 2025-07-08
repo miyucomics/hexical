@@ -5,14 +5,25 @@ import at.petrak.hexcasting.api.casting.iota.EntityIota
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.NullIota
 import at.petrak.hexcasting.api.casting.iota.Vec3Iota
+import jdk.incubator.vector.VectorShuffle.iota
 import miyucomics.hexical.data.hopper.targets.*
 import net.minecraft.command.argument.BlockPosArgumentType.blockPos
+import net.minecraft.entity.Entity
 import net.minecraft.entity.ItemEntity
+import net.minecraft.entity.decoration.ArmorStandEntity
 import net.minecraft.entity.decoration.ItemFrameEntity
+import net.minecraft.entity.passive.DonkeyEntity
+import net.minecraft.entity.passive.HorseEntity
 import net.minecraft.entity.player.PlayerEntity
+import net.minecraft.entity.vehicle.ChestBoatEntity
+import net.minecraft.entity.vehicle.ChestMinecartEntity
+import net.minecraft.entity.vehicle.FurnaceMinecartEntity
+import net.minecraft.entity.vehicle.HopperMinecartEntity
 import net.minecraft.inventory.Inventory
 import net.minecraft.inventory.SidedInventory
+import net.minecraft.item.ItemStack
 import net.minecraft.server.network.ServerPlayerEntity
+import net.minecraft.util.collection.DefaultedList
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
 import kotlin.math.abs
@@ -21,30 +32,21 @@ object HopperEndpointRegistry {
 	private val resolvers = mutableListOf<HopperEndpointResolver>()
 
 	fun init() {
-		register { iota, env ->
+		register { iota, env, slot ->
 			val caster = env.castingEntity
 			if (iota is EntityIota && iota.entity == caster && caster is ServerPlayerEntity)
-				return@register InventoryEndpoint(caster.inventory)
+				return@register getSlottedInventory(caster.inventory, slot, iota)
 			null
 		}
 
-		register { iota, env ->
-			if (iota is EntityIota && iota.entity is ItemEntity) {
-				env.assertEntityInRange(iota.entity)
-				return@register DroppedItemEndpoint(iota.entity as ItemEntity)
-			}
-			null
-		}
+		registerInventoryEntity<ArmorStandEntity> { ArmorStandInventory(it.armorItems as DefaultedList<ItemStack>, it.handItems as DefaultedList<ItemStack>) }
+		registerInventoryEntity<ChestBoatEntity> { ListBackedInventory(it.inventory) }
+		registerInventoryEntity<ChestMinecartEntity> { ListBackedInventory(it.inventory) }
+		registerInventoryEntity<HopperMinecartEntity> { ListBackedInventory(it.inventory) }
+		registerEntityEndpoint<ItemEntity> { DroppedItemEndpoint(it) }
+		registerEntityEndpoint<ItemFrameEntity> { ItemFrameEndpoint(it) }
 
-		register { iota, env ->
-			if (iota is EntityIota && iota.entity is ItemFrameEntity) {
-				env.assertEntityInRange(iota.entity)
-				return@register ItemFrameEndpoint(iota.entity as ItemFrameEntity)
-			}
-			null
-		}
-
-		register { iota, env ->
+		register { iota, env, slot ->
 			if (iota !is Vec3Iota)
 				return@register null
 			val vec = iota.vec3
@@ -52,6 +54,8 @@ object HopperEndpointRegistry {
 			env.assertPosInRange(blockPos)
 			val inventory = env.world.getBlockEntity(blockPos)
 			if (inventory is SidedInventory) {
+				if (slot != null)
+					return@register SlottedInventoryEndpoint(inventory, slot, iota)
 				val dx = vec.x - (blockPos.x + 0.5)
 				val dy = vec.y - (blockPos.y + 0.5)
 				val dz = vec.z - (blockPos.z + 0.5)
@@ -59,15 +63,12 @@ object HopperEndpointRegistry {
 				val ay = abs(dy)
 				val az = abs(dz)
 				val threshold = 0.05
-				val direction =
-					if (ax < threshold && ay < threshold && az < threshold)
-						null
-					else if (ax >= ay && ax >= az)
-						if (dx > 0) Direction.EAST else Direction.WEST
-					else if (ay >= ax && ay >= az)
-						if (dy > 0) Direction.UP else Direction.DOWN
-					else
-						if (dz > 0) Direction.SOUTH else Direction.NORTH
+				val direction = when {
+					ax < threshold && ay < threshold && az < threshold -> null
+					ax >= ay && ax >= az -> if (dx > 0) Direction.EAST else Direction.WEST
+					ay >= ax && ay >= az -> if (dy > 0) Direction.UP else Direction.DOWN
+					else -> if (dz > 0) Direction.SOUTH else Direction.NORTH
+				}
 
 				return@register if (direction != null)
 					SidedInventoryEndpoint(inventory, direction)
@@ -77,18 +78,18 @@ object HopperEndpointRegistry {
 			null
 		}
 
-		register { iota, env ->
+		register { iota, env, slot ->
 			if (iota !is Vec3Iota)
 				return@register null
 			val blockPos = BlockPos.ofFloored(iota.vec3)
 			env.assertPosInRange(blockPos)
 			val inventory = env.world.getBlockEntity(blockPos)
 			if (inventory is Inventory)
-				return@register InventoryEndpoint(inventory)
+				return@register getSlottedInventory(inventory, slot, iota)
 			null
 		}
 
-		register { iota, env ->
+		register { iota, env, slot ->
 			if (iota is Vec3Iota) {
 				env.assertVecInRange(iota.vec3)
 				return@register DispenseEndpoint(iota.vec3, env.world)
@@ -96,9 +97,9 @@ object HopperEndpointRegistry {
 			null
 		}
 
-		register { iota, env ->
+		register { iota, env, slot ->
 			if (iota is NullIota && env.castingEntity is PlayerEntity)
-				return@register InventoryEndpoint((env.castingEntity as PlayerEntity).enderChestInventory)
+				return@register getSlottedInventory((env.castingEntity as PlayerEntity).enderChestInventory, slot, iota)
 			null
 		}
 	}
@@ -107,7 +108,29 @@ object HopperEndpointRegistry {
 		resolvers += resolver
 	}
 
-	fun resolve(iota: Iota, env: CastingEnvironment): HopperEndpoint? {
-		return resolvers.firstNotNullOfOrNull { it.resolve(iota, env) }
+	fun resolve(iota: Iota, env: CastingEnvironment, slot: Int?): HopperEndpoint? {
+		return resolvers.firstNotNullOfOrNull { it.resolve(iota, env, slot) }
+	}
+
+	fun getSlottedInventory(inventory: Inventory, slot: Int?, iota: Iota): HopperEndpoint {
+		if (slot == null)
+			return InventoryEndpoint(inventory)
+		return SlottedInventoryEndpoint(inventory, slot, iota)
+	}
+
+	private inline fun <reified T : Entity> registerInventoryEntity(crossinline getInventory: (T) -> Inventory) {
+		register { iota, env, slot ->
+			val entity = (iota as? EntityIota)?.entity as? T ?: return@register null
+			env.assertEntityInRange(entity)
+			getSlottedInventory(getInventory(entity), slot, iota)
+		}
+	}
+
+	private inline fun <reified T : Entity> registerEntityEndpoint(crossinline endpoint: (T) -> HopperEndpoint) {
+		register { iota, env, _ ->
+			val entity = (iota as? EntityIota)?.entity as? T ?: return@register null
+			env.assertEntityInRange(entity)
+			endpoint(entity)
+		}
 	}
 }
