@@ -58,7 +58,10 @@ class AnimatedScrollItem(private val size: Int) : Item(Settings()), IotaHolderIt
 		else
 			listOf()
 
-		val scroll = AnimatedScrollEntity(world, position, direction, size, patterns)
+		val scrollStack = stack.copy()
+		scrollStack.count = 1
+		val scroll = AnimatedScrollEntity(world, position, direction, size, patterns, scrollStack)
+
 		scroll.setState(stack.orCreateNbt.getInt("state"))
 		if (stack.orCreateNbt.getBoolean("glow"))
 			scroll.toggleGlow()

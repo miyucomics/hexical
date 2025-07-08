@@ -24,7 +24,7 @@ import net.minecraft.item.ItemStack
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld
 
-object InjectionHelper {
+object HexInjectionHelper {
 	@JvmStatic
 	fun handleScarab(vm: CastingVM, iota: PatternIota, continuation: SpellContinuation, world: ServerWorld): CastResult? {
 		val env = vm.env

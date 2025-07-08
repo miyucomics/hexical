@@ -1,17 +1,17 @@
 {
 	"parent": "hexcasting:root",
 	"criteria": {
-		"conjure": {
-			"trigger": "hexical:augmented_reality"
+		"specklike": {
+			"trigger": "hexical:specklike"
 		}
 	},
 	"display": {
 		"announce_to_chat": true,
 		"title": {
-			"translate": "advancements.hexical.augmented_reality.title"
+			"translate": "advancements.hexical.specklike.title"
 		},
 		"description": {
-			"translate": "advancements.hexical.augmented_reality.description"
+			"translate": "advancements.hexical.specklike.description"
 		},
 		"frame": "task",
 		"hidden": false,
@@ -20,5 +20,5 @@
 		},
 		"show_toast": true
 	},
-	"requirements": [["conjure"]]
+	"requirements": [["specklike"]]
 }

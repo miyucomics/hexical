@@ -3,7 +3,6 @@ package miyucomics.hexical.items
 import at.petrak.hexcasting.common.lib.HexAttributes
 import com.google.common.collect.ImmutableMultimap
 import com.google.common.collect.Multimap
-import miyucomics.hexical.misc.LeiArmorMaterial
 import net.minecraft.entity.EquipmentSlot
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.attribute.EntityAttribute

@@ -4,14 +4,11 @@ import at.petrak.hexcasting.api.casting.ActionRegistryEntry
 import at.petrak.hexcasting.api.casting.asActionResult
 import at.petrak.hexcasting.api.casting.castables.Action
 import at.petrak.hexcasting.api.casting.iota.IotaType
-import at.petrak.hexcasting.api.casting.iota.NullIota
 import at.petrak.hexcasting.api.casting.math.HexDir
 import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.utils.vecFromNBT
 import at.petrak.hexcasting.common.casting.actions.selectors.OpGetEntitiesBy
-import at.petrak.hexcasting.common.casting.actions.spells.OpPotionEffect
-import at.petrak.hexcasting.common.lib.HexMobEffects
 import at.petrak.hexcasting.common.lib.hex.HexActions
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.casting.patterns.*
@@ -23,9 +20,11 @@ import miyucomics.hexical.casting.patterns.autograph.OpAutograph
 import miyucomics.hexical.casting.patterns.autograph.OpHasAutograph
 import miyucomics.hexical.casting.patterns.autograph.OpUnautograph
 import miyucomics.hexical.casting.patterns.block_mimicry.*
-import miyucomics.hexical.casting.patterns.charms.OpCharmItem
-import miyucomics.hexical.casting.patterns.charms.OpReadCharmed
-import miyucomics.hexical.casting.patterns.charms.OpWriteCharmed
+import miyucomics.hexical.casting.patterns.breaking.OpBreakFortune
+import miyucomics.hexical.casting.patterns.breaking.OpBreakSilk
+import miyucomics.hexical.casting.patterns.charms.*
+import miyucomics.hexical.casting.patterns.circle.OpAbsorbArm
+import miyucomics.hexical.casting.patterns.circle.OpCreateDust
 import miyucomics.hexical.casting.patterns.circle.OpDisplace
 import miyucomics.hexical.casting.patterns.colors.OpDye
 import miyucomics.hexical.casting.patterns.colors.OpGetDye
@@ -54,10 +53,7 @@ import miyucomics.hexical.casting.patterns.rotate.OpRotateEntity
 import miyucomics.hexical.casting.patterns.scroll.OpAlterScroll
 import miyucomics.hexical.casting.patterns.scroll.OpColorScroll
 import miyucomics.hexical.casting.patterns.specks.*
-import miyucomics.hexical.casting.patterns.telepathy.OpGetKeybind
-import miyucomics.hexical.casting.patterns.telepathy.OpHallucinateSound
-import miyucomics.hexical.casting.patterns.telepathy.OpSendTelepathy
-import miyucomics.hexical.casting.patterns.telepathy.OpShoutTelepathy
+import miyucomics.hexical.casting.patterns.telepathy.*
 import miyucomics.hexical.casting.patterns.vfx.OpBlockPing
 import miyucomics.hexical.casting.patterns.vfx.OpConfetti
 import miyucomics.hexical.casting.patterns.vfx.OpSparkle
@@ -66,6 +62,7 @@ import miyucomics.hexical.interfaces.Specklike
 import miyucomics.hexical.items.HandLampItem
 import miyucomics.hexpose.iotas.IdentifierIota
 import miyucomics.hexpose.iotas.asActionResult
+import net.minecraft.command.argument.EntityAnchorArgumentType
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.projectile.FireballEntity
 import net.minecraft.entity.projectile.LlamaSpitEntity
@@ -77,10 +74,8 @@ import net.minecraft.registry.Registry
 import net.minecraft.sound.SoundEvents
 
 object HexicalActions {
-	@JvmStatic
 	fun init() {
-		// make it do something special later
-		register("horrible", "wedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqeedqawqeewdeaqqewdeaqeewdeaqeedqawqqedqawqqewdeaqeedqawqeewdeaqqewdeaqeewdeaqeedqawqqedqawqqewdeaqqedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqqedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqeedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqqedqawqeewdeaqqewdeaqeewdeaqeedqawqqedqawqqewdeaqe", HexDir.EAST, OpHorrible())
+		register("hopper", "qwawqwaeqqq", HexDir.SOUTH_EAST, OpHopper())
 
 		register("normalize_scroll", "wqwawqwqawawa", HexDir.SOUTH_WEST, OpAlterScroll { it.setState(0) })
 		register("age_scroll", "wqwawqwqawwwdwdwwwa", HexDir.SOUTH_WEST, OpAlterScroll { it.setState(1) })
@@ -137,6 +132,7 @@ object HexicalActions {
 		register("moving_right", "qaqda", HexDir.SOUTH_WEST, OpGetKeybind("key.right"))
 		register("jumping", "qaqdaqqa", HexDir.SOUTH_WEST, OpGetKeybind("key.jump"))
 		register("sneaking", "wede", HexDir.NORTH_WEST, OpGetKeybind("key.sneak"))
+		register("scroll", "qadeeee", HexDir.NORTH_EAST, OpGetScroll())
 
 		register("key_shelf", "qaqqadaq", HexDir.EAST, OpKeyAkashicShelf())
 		register("read_shelf", "qaqqqada", HexDir.EAST, OpReadAkashicShelf())
@@ -168,7 +164,7 @@ object HexicalActions {
 		register("prestidigitation", "wedewedew", HexDir.NORTH_EAST, OpPrestidigitation())
 
 		register("wristpocket", "aaqqa", HexDir.WEST, OpWristpocket())
-		register("wristpocket_item", "aaqqada", HexDir.WEST, OpGetWristpocketData { stack -> if (stack.isEmpty) listOf(NullIota()) else stack.asActionResult() })
+		register("wristpocket_item", "aaqqada", HexDir.WEST, OpGetWristpocket())
 		register("sleight", "aaqqadeeeq", HexDir.WEST, OpSleight())
 		register("mage_hand", "aaqqaeea", HexDir.WEST, OpMageHand())
 		register("mage_mouth", "aaqqadaa", HexDir.WEST, OpMageMouth())
@@ -184,14 +180,6 @@ object HexicalActions {
 		register("lifetime_specklike", "adeqqaawdd", HexDir.SOUTH_WEST, OpSpecklikeProperty(5))
 		register("pigment_specklike", "adeqqaq", HexDir.SOUTH_WEST, OpSpecklikeProperty(6))
 		register("zone_specklike", "qqqqqwdeddwqde", HexDir.SOUTH_EAST, OpGetEntitiesBy({ entity -> entity is Specklike }, false))
-
-		register("shader_clear", "eeeeeqaqeeeee", HexDir.WEST, OpShader(null))
-		register("shader_owl", "edewawede", HexDir.WEST, OpShader(HexicalMain.id("shaders/post/night_vision.json")))
-		register("shader_lines", "eedwwawwdee", HexDir.WEST, OpShader(HexicalMain.id("shaders/post/outlines_only.json")))
-		register("shader_tv", "wewdwewwawwewdwew", HexDir.WEST, OpShader(HexicalMain.id("shaders/post/television.json")))
-		register("shader_media", "eewdweqaqewdwee", HexDir.WEST, OpShader(HexicalMain.id("shaders/post/media.json")))
-		register("shader_spider", "qaqdedaedqqdedaqaedeqd", HexDir.NORTH_EAST, OpShader(HexicalMain.id("shaders/post/spider.json")))
-		// color shift - edqdeqaqedqde
 
 		register("egg", "qqqwaqaaqeeewdedde", HexDir.SOUTH_EAST, OpConjureProjectile(MediaConstants.DUST_UNIT * 2) { world, position, caster ->
 			val egg = EggEntity(world, position.x, position.y, position.z)
@@ -226,8 +214,8 @@ object HexicalActions {
 		register("gasp", "aweeeeewaweeeee", HexDir.NORTH_WEST, OpGasp())
 		register("parrot", "wweedadw", HexDir.NORTH_EAST, OpImitateParrot())
 
-		register("effect_clouding", "qqqqqeawawwwawqaeweaqwaww", HexDir.SOUTH_EAST, OpPotionEffect(HexMobEffects.SHRINK_GRID, MediaConstants.DUST_UNIT / 3, allowPotency = true, potencyCubic = false))
-		register("effect_clarity", "wdwdqeeeeedwqwddwq", HexDir.SOUTH_EAST, OpPotionEffect(HexMobEffects.ENLARGE_GRID, MediaConstants.DUST_UNIT, allowPotency = true, potencyCubic = true))
+		register("break_fortune", "qaqqqqqdeeeqeee", HexDir.EAST, OpBreakFortune())
+		register("break_silk", "aqaeaqdeeweweedq", HexDir.EAST, OpBreakSilk())
 
 		register("conjure_gummy", "eeewdw", HexDir.SOUTH_WEST, OpConjureGummy())
 		register("conjure_hexburst", "aadaadqaq", HexDir.EAST, OpConjureHexburst())
@@ -236,35 +224,46 @@ object HexicalActions {
 
 		register("spike", "qdqdqdqdww", HexDir.NORTH_EAST, OpConjureSpike())
 
-		register("conjure_tchotchke", "wwwwwaqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpConjureTchotchke())
-
-		register("get_evocation", "wwdeeeeeqeaqawwewewwaqawwewew", HexDir.EAST, OpGetEvocation())
-		register("set_evocation", "wwaqqqqqeqdedwwqwqwwdedwwqwqw", HexDir.EAST, OpSetEvocation())
-		register("is_evoking", "wwaqqqqqeeaqawwewewwaqawwewew", HexDir.EAST, OpGetKeybind("key.hexical.evoke"))
-
-		register("get_hotbar", "qwawqwa", HexDir.EAST, OpGetHotbar())
-		register("set_hotbar", "dwewdwe", HexDir.WEST, OpSetHotbar())
-
-		register("conjure_firework", "dedwaqwwawwqa", HexDir.SOUTH_WEST, OpConjureFirework())
-		register("simulate_firework", "dedwaqwqqwqa", HexDir.SOUTH_WEST, OpSimulateFirework())
-
-		register("set_lesser_sentinels", "aeaae", HexDir.EAST, OpLesserSentinelSet())
-		register("get_lesser_sentinels", "dqddq", HexDir.WEST, OpLesserSentinelGet())
-
-		register("displace", "qaqqqqeedaqqqa", HexDir.NORTH_EAST, OpDisplace())
-
 		register("dispense", "wqwawqwddaeeead", HexDir.SOUTH_WEST, OpDispense())
 		register("smelt", "qwqqadadadewewewe", HexDir.SOUTH_EAST, OpCook(RecipeType.SMELTING, "target.smelting"))
 		register("roast", "aqqwwqqawdadedad", HexDir.NORTH_WEST, OpCook(RecipeType.CAMPFIRE_COOKING, "target.roasting"))
 		register("smoke", "qwqqadadadewdqqdwe", HexDir.SOUTH_EAST, OpCook(RecipeType.SMOKING, "target.smoking"))
 		register("blast", "qwqqadadadewweewwe", HexDir.SOUTH_EAST, OpCook(RecipeType.BLASTING, "target.blasting"))
 		register("stonecut", "qqqqqwaeaeaeaeaeadawa", HexDir.EAST, OpStonecut())
-		register("hopper_in", "qwawqwaeqqq", HexDir.SOUTH_EAST, OpHopperInsert())
-		register("hopper_out", "qqqeawqwawq", HexDir.SOUTH_WEST, OpHopperExtract())
+
+		register("displace", "qaqqqqeedaqqqa", HexDir.NORTH_EAST, OpDisplace())
+		register("absorb_arm", "aaqqadaqwqa", HexDir.WEST, OpAbsorbArm())
+		register("create_dust", "eaqwedqdqddqqwae", HexDir.SOUTH_WEST, OpCreateDust())
+
+		register("get_evocation", "wwdeeeeeqeaqawwewewwaqawwewew", HexDir.EAST, OpGetEvocation())
+		register("set_evocation", "wwaqqqqqeqdedwwqwqwwdedwwqwqw", HexDir.EAST, OpSetEvocation())
+		register("is_evoking", "wwaqqqqqeeaqawwewewwaqawwewew", HexDir.EAST, OpGetKeybind("key.hexical.evoke"))
+
+		register("conjure_firework", "dedwaqwwawwqa", HexDir.SOUTH_WEST, OpConjureFirework())
+		register("simulate_firework", "dedwaqwqqwqa", HexDir.SOUTH_WEST, OpSimulateFirework())
+
+		register("get_hotbar", "qwawqwa", HexDir.EAST, OpGetHotbar())
+		register("set_hotbar", "dwewdwe", HexDir.WEST, OpSetHotbar())
+
+		register("set_lesser_sentinels", "aeaae", HexDir.EAST, OpLesserSentinelSet())
+		register("get_lesser_sentinels", "dqddq", HexDir.WEST, OpLesserSentinelGet())
+
+		register("shader_clear", "eeeeeqaqeeeee", HexDir.WEST, OpShader(null))
+		register("shader_owl", "edewawede", HexDir.WEST, OpShader(HexicalMain.id("shaders/post/night_vision.json")))
+		register("shader_lines", "eedwwawwdee", HexDir.WEST, OpShader(HexicalMain.id("shaders/post/outlines_only.json")))
+		register("shader_tv", "wewdwewwawwewdwew", HexDir.WEST, OpShader(HexicalMain.id("shaders/post/television.json")))
+		register("shader_media", "eewdweqaqewdwee", HexDir.WEST, OpShader(HexicalMain.id("shaders/post/media.json")))
+		register("shader_spider", "qaqdedaedqqdedaqaedeqd", HexDir.NORTH_EAST, OpShader(HexicalMain.id("shaders/post/spider.json")))
+		// color shift - edqdeqaqedqde
+
+		register("horrible", "wedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqeedqawqeewdeaqqewdeaqeewdeaqeedqawqqedqawqqewdeaqeedqawqeewdeaqqewdeaqeewdeaqeedqawqqedqawqqewdeaqqedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqqedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqeedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqqedqawqeewdeaqqewdeaqeewdeaqeedqawqqedqawqqewdeaqe", HexDir.EAST, OpHorrible())
 
 		register("charm", "edeeeeeqaaqeeeadweeqeeqdqeeqeeqde", HexDir.SOUTH_EAST, OpCharmItem())
 		register("write_charmed", "waqqqqqedeqdqdqdqdqe", HexDir.NORTH_EAST, OpWriteCharmed())
 		register("read_charmed", "waqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpReadCharmed())
+		register("write_charmed_proxy", "edewqaqqdeeeee", HexDir.SOUTH_EAST, OpProxyWriteCharmed())
+		register("read_charmed_proxy", "qaqwedeeaqqqqq", HexDir.NORTH_EAST, OpProxyReadCharmed())
+		register("discharm", "qaqwddaaeawaea", HexDir.NORTH_EAST, OpDischarmItem())
 
 		register("greater_blink", "wqawawaqwqwqawawaqw", HexDir.SOUTH_WEST, OpGreaterBlink())
 

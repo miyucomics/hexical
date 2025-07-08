@@ -19,7 +19,7 @@ object HexicalRenderLayers {
 					"media_jar_shader",
 					VertexFormats.POSITION_COLOR_TEXTURE,
 					VertexFormat.DrawMode.QUADS,
-					256,
+					512,
 					RenderLayer.MultiPhaseParameters.builder()
 						.program(RenderPhase.ShaderProgram { shader })
 						.texture(RenderPhase.Textures.create()
