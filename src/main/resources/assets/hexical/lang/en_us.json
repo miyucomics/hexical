@@ -156,6 +156,7 @@
 	"hexcasting.mishap.hexical:needs_staff": "Expected to be cast by a staff.",
 	"hexcasting.mishap.hexical:outside_circle": "Spell exceeds the domain of the spell circle.",
 	"hexcasting.mishap.hexical:illegal_jailbreak": "Attempted to crack a casting device with a Hex in it.",
+	"hexcasting.mishap.hexical:not_enough_slots": "Slot %d exceeds the capabilities of the inventory specified by %s.",
 
 	"hexcasting.action.book.hexical:get_arch_lamp_position": "Arch. Refl.: Spatial",
 	"hexcasting.action.book.hexical:get_arch_lamp_rotation": "Arch. Refl.: Rotational",

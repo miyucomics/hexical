@@ -15,6 +15,6 @@ class OpGetWristpocket : ConstMediaAction {
 		val wristpocket = WristpocketUtils.getWristpocketStack(env) ?: throw NeedsWristpocketMishap()
 		if (wristpocket.isEmpty)
 			return listOf(NullIota())
-		return wristpocket.asActionResult()
+		return wristpocket.asActionResult
 	}
 }
