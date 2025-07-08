@@ -20,22 +20,41 @@
 		},
 		{
 			"type": "patchouli:crafting",
-			"recipe": "hexical:animated_scroll_large",
+			"recipe": "hexical:animated_scroll_large"
+		},
+		{
+			"type": "patchouli:text",
 			"text": "hexical.page.animated_scroll.2"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:normalize_scroll",
+			"anchor": "hexical:normalize_scroll",
+			"input": "entity",
+			"output": "",
+			"text": "hexical.page.normalize_scroll.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:age_scroll",
 			"anchor": "hexical:age_scroll",
-			"input": "animated scroll entity",
+			"input": "entity",
 			"output": "",
 			"text": "hexical.page.age_scroll.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
+			"op_id": "hexical:vanish_scroll",
+			"anchor": "hexical:vanish_scroll",
+			"input": "entity",
+			"output": "",
+			"text": "hexical.page.vanish_scroll.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
 			"op_id": "hexical:color_scroll",
 			"anchor": "hexical:color_scroll",
-			"input": "animated scroll entity, vector",
+			"input": "entity, vector",
 			"output": "",
 			"text": "hexical.page.color_scroll.summary"
 		},
@@ -43,17 +62,9 @@
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:glow_scroll",
 			"anchor": "hexical:glow_scroll",
-			"input": "animated scroll entity",
+			"input": "entity",
 			"output": "",
 			"text": "hexical.page.glow_scroll.summary"
-		},
-		{
-			"type": "hexcasting:pattern",
-			"op_id": "hexical:vanish_scroll",
-			"anchor": "hexical:vanish_scroll",
-			"input": "animated scroll entity",
-			"output": "",
-			"text": "hexical.page.vanish_scroll.summary"
 		}
 	]
 }
