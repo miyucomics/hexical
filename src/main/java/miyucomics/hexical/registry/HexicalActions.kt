@@ -44,6 +44,8 @@ import miyucomics.hexical.casting.patterns.hotbar.OpSetHotbar
 import miyucomics.hexical.casting.patterns.lamp.*
 import miyucomics.hexical.casting.patterns.lesser_sentinel.OpLesserSentinelGet
 import miyucomics.hexical.casting.patterns.lesser_sentinel.OpLesserSentinelSet
+import miyucomics.hexical.casting.patterns.lore.OpItemLore
+import miyucomics.hexical.casting.patterns.lore.OpItemName
 import miyucomics.hexical.casting.patterns.mage_blocks.OpConjureMageBlock
 import miyucomics.hexical.casting.patterns.mage_blocks.OpModifyMageBlock
 import miyucomics.hexical.casting.patterns.pattern_manipulation.*
@@ -245,6 +247,9 @@ object HexicalActions {
 
 		register("set_lesser_sentinels", "aeaae", HexDir.EAST, OpLesserSentinelSet())
 		register("get_lesser_sentinels", "dqddq", HexDir.WEST, OpLesserSentinelGet())
+
+		register("item_name", "qwawqwaadwa", HexDir.SOUTH_EAST, OpItemName)
+		register("item_lore", "dwewdweedwa", HexDir.NORTH_WEST, OpItemLore)
 
 		register("shader_clear", "eeeeeqaqeeeee", HexDir.WEST, OpShader(null))
 		register("shader_owl", "edewawede", HexDir.WEST, OpShader(HexicalMain.id("shaders/post/night_vision.json")))
