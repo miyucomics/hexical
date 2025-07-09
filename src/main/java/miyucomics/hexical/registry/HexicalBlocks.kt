@@ -40,7 +40,7 @@ object HexicalBlocks {
 
 	@JvmField
 	val CASTING_CARPET = DyedCarpetBlock(DyeColor.PURPLE, Settings.create().mapColor(MapColor.PURPLE).strength(0.1f).sounds(BlockSoundGroup.WOOL).burnable())
-	private val CASTING_CARPET_ITEM = BlockItem(CASTING_CARPET, Item.Settings())
+	val CASTING_CARPET_ITEM = BlockItem(CASTING_CARPET, Item.Settings())
 
 	@JvmField
 	val SENTINEL_BED_BLOCK: Block = Block(Settings.copy(Blocks.DEEPSLATE_TILES).strength(4f, 6f))
@@ -50,12 +50,12 @@ object HexicalBlocks {
 
 	@JvmField
 	val MEDIA_JAR_ITEM = MediaJarItem()
-	private val HEX_CANDLE_ITEM = BlockItem(HEX_CANDLE_BLOCK, Item.Settings())
-	private val SENTINEL_BED_ITEM = BlockItem(SENTINEL_BED_BLOCK, Item.Settings())
+	val HEX_CANDLE_ITEM = BlockItem(HEX_CANDLE_BLOCK, Item.Settings())
+	val SENTINEL_BED_ITEM = BlockItem(SENTINEL_BED_BLOCK, Item.Settings())
 
 	@JvmField
 	val PEDESTAL_BLOCK: PedestalBlock = PedestalBlock()
-	private val PEDESTAL_ITEM = BlockItem(PEDESTAL_BLOCK, Item.Settings())
+	val PEDESTAL_ITEM = BlockItem(PEDESTAL_BLOCK, Item.Settings())
 
 	val HEX_CANDLE_BLOCK_ENTITY: BlockEntityType<HexCandleBlockEntity> = BlockEntityType.Builder.create(::HexCandleBlockEntity, HEX_CANDLE_BLOCK).build(null)
 	val HEX_CANDLE_CAKE_BLOCK_ENTITY: BlockEntityType<HexCandleCakeBlockEntity> = BlockEntityType.Builder.create(::HexCandleCakeBlockEntity, HEX_CANDLE_CAKE_BLOCK).build(null)
@@ -64,18 +64,6 @@ object HexicalBlocks {
 	val PEDESTAL_BLOCK_ENTITY: BlockEntityType<PedestalBlockEntity> = BlockEntityType.Builder.create(::PedestalBlockEntity, PEDESTAL_BLOCK).build(null)
 
 	fun init() {
-		ItemGroupEvents.MODIFY_ENTRIES_ALL.register { tab, entries ->
-			if (tab != HEXICAL_GROUP)
-				return@register
-
-			entries.add(ItemStack(MEDIA_JAR_ITEM))
-			entries.add(ItemStack(HEX_CANDLE_ITEM))
-			entries.add(ItemStack(CASTING_CARPET_ITEM))
-			entries.add(ItemStack(SENTINEL_BED_ITEM))
-			entries.add(ItemStack(PERIWINKLE_FLOWER_ITEM))
-			entries.add(ItemStack(PEDESTAL_ITEM))
-		}
-
 		Registry.register(Registries.BLOCK, HexicalMain.id("hex_candle"), HEX_CANDLE_BLOCK)
 		Registry.register(Registries.BLOCK, HexicalMain.id("hex_candle_cake"), HEX_CANDLE_CAKE_BLOCK)
 		Registry.register(Registries.BLOCK, HexicalMain.id("mage_block"), MAGE_BLOCK)
