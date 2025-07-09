@@ -9,11 +9,13 @@ import net.minecraft.client.gui.DrawContext
 import net.minecraft.client.gui.tooltip.TooltipComponent
 import net.minecraft.client.item.TooltipData
 import net.minecraft.util.Identifier
+import net.minecraft.util.math.ColorHelper
 
 class AnimatedPatternTooltipComponent(tooltip: AnimatedPatternTooltip) : TooltipComponent {
 	private val color: Int = tooltip.color
 	private val state: Int = tooltip.state
 	private val pattern: HexPattern = tooltip.pattern
+	private val glowing: Boolean = tooltip.glowing
 
 	override fun drawItems(font: TextRenderer?, mouseX: Int, mouseY: Int, graphics: DrawContext) {
 		val matrices = graphics.matrices
@@ -33,6 +35,15 @@ class AnimatedPatternTooltipComponent(tooltip: AnimatedPatternTooltip) : Tooltip
 		val staticPoints = HexPatternPoints.getStaticPoints(patternlike, patternSettings, 0.0)
 		val nonzappyLines = patternlike.nonZappyPoints
 		val zappyPattern = makeZappy(nonzappyLines, findDupIndices(nonzappyLines), patternSettings.hops, patternSettings.variance, patternSettings.speed, patternSettings.flowIrregular, patternSettings.readabilityOffset, patternSettings.lastSegmentProp, 0.0)
+
+		if (glowing) {
+			val red = ColorHelper.Argb.getRed(color)
+			val green = ColorHelper.Argb.getGreen(color)
+			val blue = ColorHelper.Argb.getBlue(color)
+			val transparentColor = ColorHelper.Argb.getArgb(64, red, green, blue)
+			drawLineSeq(matrices.peek().getPositionMatrix(), staticPoints.scaleVecs(zappyPattern), 0.07f, transparentColor, transparentColor, VCDrawHelper.getHelper(null, matrices, 0.001f))
+		}
+
 		drawLineSeq(matrices.peek().getPositionMatrix(), staticPoints.scaleVecs(zappyPattern), patternSettings.getInnerWidth(staticPoints.finalScale).toFloat(), color, color, VCDrawHelper.getHelper(null, matrices, 0.001f))
 		RenderSystem.setShader { oldShader }
 
