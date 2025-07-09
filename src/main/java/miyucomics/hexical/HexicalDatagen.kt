@@ -8,6 +8,10 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider
 import net.minecraft.data.client.BlockStateModelGenerator
 import net.minecraft.data.client.ItemModelGenerator
+import net.minecraft.data.client.Models
+import net.minecraft.item.Item
+
+
 
 class HexicalDatagen : DataGeneratorEntrypoint {
 	override fun onInitializeDataGenerator(generator: FabricDataGenerator) {
@@ -23,5 +27,7 @@ private class HexicalModelGenerator(generator: FabricDataOutput) : FabricModelPr
 
 	override fun generateItemModels(generator: ItemModelGenerator) {
 		generator.registerCompass(HexicalItems.CONJURED_COMPASS_ITEM)
+		for (plushie in HexicalItems.PLUSHIES)
+			generator.register(plushie, Models.GENERATED)
 	}
 }

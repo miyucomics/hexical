@@ -15,13 +15,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class SnifferBrainMixin {
 	@Inject(method = "shouldKeepRunning(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/entity/passive/SnifferEntity;J)Z", at = @At("HEAD"), cancellable = true)
 	private void allowCustomDigging(ServerWorld world, SnifferEntity sniffer, long l, CallbackInfoReturnable<Boolean> cir) {
-		if (((SnifferEntityMinterface) sniffer).hasCustomItem())
+		if (((SnifferEntityMinterface) sniffer).isDiggingCustom())
 			cir.setReturnValue(true);
 	}
 
 	@Inject(method = "finishRunning(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/entity/passive/SnifferEntity;J)V", at = @At("HEAD"), cancellable = true)
 	private void forceDiggingSuccess(ServerWorld world, SnifferEntity sniffer, long l, CallbackInfo ci) {
-		if (((SnifferEntityMinterface) sniffer).hasCustomItem()) {
+		if (((SnifferEntityMinterface) sniffer).isDiggingCustom()) {
 			sniffer.getBrain().remember(MemoryModuleType.SNIFF_COOLDOWN, Unit.INSTANCE, 9600L);
 			ci.cancel();
 		}

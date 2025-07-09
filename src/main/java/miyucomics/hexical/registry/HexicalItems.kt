@@ -47,18 +47,10 @@ object HexicalItems {
 	private val GAUNTLET_STAFF = ItemStaff(Settings().maxCount(1))
 	private val LIGHTNING_ROD_STAFF = ItemStaff(Settings().maxCount(1))
 
-	private val HEXXY = Registry.register(Registries.ITEM, HexicalMain.id("plush_hexxy"), Item(Settings().maxCount(1)))
-	private val IRISSY = Registry.register(Registries.ITEM, HexicalMain.id("plush_irissy"), Item(Settings().maxCount(1)))
-	private val PENTXXY = Registry.register(Registries.ITEM, HexicalMain.id("plush_pentxxy"), Item(Settings().maxCount(1)))
-	private val QUADXXY = Registry.register(Registries.ITEM, HexicalMain.id("plush_quadxxy"), Item(Settings().maxCount(1)))
-	private val THOTHY = Registry.register(Registries.ITEM, HexicalMain.id("plush_thothy"), Item(Settings().maxCount(1)))
-	private val FLEXXY = Registry.register(Registries.ITEM, HexicalMain.id("plush_flexxy"), Item(Settings().maxCount(1)))
-
+	val PLUSHIES: MutableList<Item> = mutableListOf()
+	val PLUSHIES_NAMES: List<String> = listOf("hexxy", "irissy", "pentxxy", "quadxxy", "thothy", "flexxy")
 	@JvmStatic
-	fun randomPlush(): ItemStack {
-		val itemType = listOf(HEXXY, IRISSY, PENTXXY, QUADXXY, THOTHY, FLEXXY).random()
-		return ItemStack(itemType)
-	}
+	fun randomPlush() = ItemStack(PLUSHIES.random())
 
 	fun init() {
 		Registry.register(Registries.ITEM_GROUP, HEXICAL_GROUP_KEY, HEXICAL_GROUP)
@@ -90,12 +82,8 @@ object HexicalItems {
 			entries.add(ItemStack(SCARAB_BEETLE_ITEM))
 			entries.add(ItemStack(GRIMOIRE_ITEM))
 
-			entries.add(HEXXY)
-			entries.add(IRISSY)
-			entries.add(PENTXXY)
-			entries.add(QUADXXY)
-			entries.add(THOTHY)
-			entries.add(FLEXXY)
+			for (item in PLUSHIES)
+				entries.add(item)
 		}
 
 		Registry.register(Registries.ITEM, HexicalMain.id("animated_scroll_small"), SMALL_ANIMATED_SCROLL_ITEM)
@@ -115,6 +103,9 @@ object HexicalItems {
 		Registry.register(Registries.ITEM, HexicalMain.id("media_log"), MEDIA_LOG_ITEM)
 
 		Registry.register(Registries.ITEM, HexicalMain.id("tchotchke"), TchotchkeItem())
+
+		for (name in PLUSHIES_NAMES)
+			PLUSHIES.add(Registry.register(Registries.ITEM, HexicalMain.id("plush_$name"), Item(Settings().maxCount(1))))
 	}
 
 	fun clientInit() {
