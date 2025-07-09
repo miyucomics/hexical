@@ -87,7 +87,7 @@ object HexicalActions {
 		register("erase_grimoire", "aqwqaqded", HexDir.WEST, OpGrimoireErase())
 		register("index_grimoire", "aqaeaqwqa", HexDir.SOUTH_EAST, OpGrimoireIndex())
 
-		register("periwinkle", "wwwaqdadaadadqqqeaeq", HexDir.EAST, Action.makeConstantOp(IdentifierIota(HexicalMain.id("periwinkle"))))
+		register("periwinkle", "wwwaqdadaadadqqqeaeq", HexDir.EAST, OpCompelSniffer)
 
 		register("wish", "eweweweweweewedeaqqqd", HexDir.NORTH_WEST, OpWish())
 		register("recharge_lamp", "qaqwawqwqqwqwqwqwqwqq", HexDir.EAST, OpRechargeLamp())

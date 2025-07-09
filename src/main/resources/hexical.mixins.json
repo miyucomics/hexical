@@ -31,6 +31,8 @@
 		"PatternIotaMixin",
 		"PlayerBasedCastEnvMixin",
 		"PlayerEntityMixin",
+		"SnifferBrainMixin",
+		"SnifferEntityMixin",
 		"WanderingTraderEntityMixin"
 	],
 	"injectors": {
