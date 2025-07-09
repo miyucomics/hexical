@@ -4,5 +4,5 @@ import net.minecraft.item.ItemStack
 
 interface SnifferEntityMinterface {
 	fun produceItem(stack: ItemStack)
-	fun hasCustomItem(): Boolean
+	fun isDiggingCustom(): Boolean
 }

@@ -5,7 +5,6 @@ import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import miyucomics.hexical.interfaces.SnifferEntityMinterface;
-import net.minecraft.entity.ai.brain.Activity;
 import net.minecraft.entity.ai.brain.Brain;
 import net.minecraft.entity.ai.brain.MemoryModuleType;
 import net.minecraft.entity.passive.SnifferEntity;
@@ -24,17 +23,17 @@ public abstract class SnifferEntityMixin implements SnifferEntityMinterface {
 	@Shadow public abstract SnifferEntity startState(SnifferEntity.State state);
 	@Shadow public abstract Brain<SnifferEntity> getBrain();
 	@Unique private ItemStack customItem = null;
-	@Unique private boolean isForceDigging = false;
+	@Unique private boolean isDiggingCustom = false;
 
 	@Override
-	public boolean hasCustomItem() {
-		return customItem != null;
+	public boolean isDiggingCustom() {
+		return isDiggingCustom;
 	}
 
 	@Override
 	public void produceItem(@NotNull ItemStack stack) {
 		this.customItem = stack;
-		this.isForceDigging = true;
+		this.isDiggingCustom = true;
 		getBrain().forget(MemoryModuleType.SNIFF_COOLDOWN);
 		getBrain().forget(MemoryModuleType.DIG_COOLDOWN);
 		getBrain().forget(MemoryModuleType.WALK_TARGET);
@@ -50,25 +49,25 @@ public abstract class SnifferEntityMixin implements SnifferEntityMinterface {
 
 	@WrapMethod(method = "canTryToDig")
 	public boolean youWantToDig(Operation<Boolean> original) {
-		if (isForceDigging)
+		if (isDiggingCustom)
 			return true;
 		return original.call();
 	}
 
 	@WrapMethod(method = "canDig")
 	public boolean youCanDig(Operation<Boolean> original) {
-		if (isForceDigging)
+		if (isDiggingCustom)
 			return true;
 		return original.call();
 	}
 
 	@WrapOperation(method = "dropSeeds", at = @At(value = "INVOKE", target = "Lnet/minecraft/loot/LootTable;generateLoot(Lnet/minecraft/loot/context/LootContextParameterSet;)Lit/unimi/dsi/fastutil/objects/ObjectArrayList;"))
 	public ObjectArrayList<ItemStack> alterDrops(LootTable instance, LootContextParameterSet lootContextParameterSet, Operation<ObjectArrayList<ItemStack>> original) {
-		if (customItem != null) {
+		if (isDiggingCustom) {
 			ObjectArrayList<ItemStack> newDrops = new ObjectArrayList<>();
 			newDrops.add(customItem);
 			customItem = null;
-			isForceDigging = false;
+			isDiggingCustom = false;
 			return newDrops;
 		}
 		return original.call(instance, lootContextParameterSet);

@@ -81,17 +81,11 @@ class AnimatedScrollItem(private val size: Int) : Item(Settings()), IotaHolderIt
 		return ActionResult.CONSUME
 	}
 
-	override fun appendTooltip(stack: ItemStack, world: World?, tooltip: MutableList<Text>, context: TooltipContext) {
-		if (stack.getBoolean("glow"))
-			tooltip.add(Text.translatable("tooltip.hexical.scroll_glow").formatted(Formatting.GOLD))
-		super.appendTooltip(stack, world, tooltip, context)
-	}
-
 	override fun getTooltipData(stack: ItemStack): Optional<TooltipData> {
 		val patterns = stack.getList("patterns", NbtElement.COMPOUND_TYPE.toInt())
 		if (patterns != null && patterns.isNotEmpty()) {
 			val pattern = HexPattern.fromNBT(patterns[(ClientStorage.ticks / 20) % patterns.size].asCompound)
-			return Optional.of(AnimatedPatternTooltip(if (stack.containsTag("color")) stack.orCreateNbt.getInt("color") else 0xff_000000.toInt(), pattern, stack.getInt("state")))
+			return Optional.of(AnimatedPatternTooltip(if (stack.containsTag("color")) stack.orCreateNbt.getInt("color") else 0xff_000000.toInt(), pattern, stack.getInt("state"), stack.getBoolean("glow")))
 		}
 		return Optional.empty()
 	}
