@@ -51,7 +51,7 @@ object HexicalItems {
 	private val GAUNTLET_STAFF = registerItem("gauntlet_staff", ItemStaff(Settings().maxCount(1)))
 	private val LIGHTNING_ROD_STAFF = registerItem("lightning_rod_staff", ItemStaff(Settings().maxCount(1)))
 
-	val BOBBLES_NAMES: List<String> = listOf("bismuth", "clover", "conch", "cube", "handbell", "heart", "interlock", "key", "staff")
+	val BOBBLES_NAMES: List<String> = listOf("bismuth", "clover", "conch", "cube", "flute", "handbell", "heart", "interlock", "key", "staff", "charm", "strange", "beauty", "truth", "up", "down")
 	val BOBBLES: List<Item> = BOBBLES_NAMES.map { registerItem("bobble_$it", Item(Settings().maxCount(1))) }
 
 	val PLUSHIES_NAMES: List<String> = listOf("hexxy", "irissy", "pentxxy", "quadxxy", "thothy", "flexxy")
@@ -71,8 +71,6 @@ object HexicalItems {
 			entries.add(ItemStack(LARGE_ANIMATED_SCROLL_ITEM))
 
 			entries.add(ItemStack(HEX_GUMMY))
-			entries.add(ItemStack(HEXTITO_ITEM))
-			entries.add(ItemStack(HEXBURST_ITEM))
 
 			entries.add(ItemStack(CONJURED_COMPASS_ITEM))
 			entries.add(ItemStack(GRIMOIRE_ITEM))
@@ -94,6 +92,8 @@ object HexicalItems {
 			entries.add(ItemStack(HexicalBlocks.PERIWINKLE_FLOWER_ITEM))
 			entries.add(ItemStack(HexicalBlocks.PEDESTAL_ITEM))
 
+			for (item in BOBBLES)
+				entries.add(item)
 			for (item in PLUSHIES)
 				entries.add(item)
 		}
