@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "hexical:item/bobble_down"
+    "layer0": "hexical:item/curio_down"
   }
 }
