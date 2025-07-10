@@ -1,0 +1,30 @@
+{
+  "parent": "hexical:root",
+  "criteria": {
+    "hallucinate": {
+      "conditions": {},
+      "trigger": "hexical:hallucinate"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.hexical.hallucinate.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "minecraft:white_banner"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.hexical.hallucinate.title"
+    }
+  },
+  "requirements": [
+    [
+      "hallucinate"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
