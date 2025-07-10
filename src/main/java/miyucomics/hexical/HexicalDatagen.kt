@@ -1,7 +1,12 @@
 package miyucomics.hexical
 
+import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.mod.HexTags
 import at.petrak.hexcasting.common.lib.HexItems
+import com.google.gson.JsonArray
+import com.google.gson.JsonObject
+import miyucomics.hexical.Transmutations.createTransmutingPage
+import miyucomics.hexical.recipe.TransmutingJsonProvider
 import miyucomics.hexical.registry.*
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator
@@ -14,6 +19,10 @@ import net.minecraft.advancement.Advancement
 import net.minecraft.advancement.AdvancementFrame
 import net.minecraft.advancement.criterion.CriterionConditions
 import net.minecraft.advancement.criterion.InventoryChangedCriterion
+import net.minecraft.advancement.criterion.InventoryChangedCriterion.Conditions.items
+import net.minecraft.data.DataOutput
+import net.minecraft.data.DataProvider
+import net.minecraft.data.DataWriter
 import net.minecraft.data.client.BlockStateModelGenerator
 import net.minecraft.data.client.ItemModelGenerator
 import net.minecraft.data.client.Models
@@ -28,15 +37,19 @@ import net.minecraft.recipe.book.RecipeCategory
 import net.minecraft.registry.Registries
 import net.minecraft.text.Text
 import net.minecraft.util.Identifier
+import java.util.concurrent.CompletableFuture
 import java.util.function.Consumer
 
 class HexicalDatagen : DataGeneratorEntrypoint {
 	override fun onInitializeDataGenerator(generator: FabricDataGenerator) {
+		Transmutations.init()
+
 		val pack = generator.createPack()
 		pack.addProvider(::HexicalAdvancementGenerator)
 		pack.addProvider(::HexicalBlockLoottableGenerator)
 		pack.addProvider(::HexicalModelGenerator)
 		pack.addProvider(::HexicalRecipeGenerator)
+		pack.addProvider(::HexicalPatchouliDataProvider)
 	}
 }
 
@@ -100,12 +113,77 @@ private class HexicalModelGenerator(generator: FabricDataOutput) : FabricModelPr
 	}
 }
 
+class HexicalPatchouliDataProvider(val output: FabricDataOutput) : DataProvider {
+	override fun run(writer: DataWriter): CompletableFuture<*> {
+		val finalJson = JsonObject().apply {
+			addProperty("name", "hexical.page.media_jar.title")
+			addProperty("icon", "hexical:media_jar")
+			addProperty("advancement", "hexcasting:root")
+			addProperty("category", "hexcasting:items")
+			addProperty("sortnum", 4)
+			add("pages", JsonArray().apply {
+				add(JsonObject().apply {
+					addProperty("type", "patchouli:text")
+					addProperty("text", "hexical.page.media_jar.0")
+				})
+				add(JsonObject().apply {
+					addProperty("type", "patchouli:crafting")
+					addProperty("recipe", "hexical:media_jar")
+					addProperty("text", "hexical.page.media_jar.description")
+				})
+				add(JsonObject().apply {
+					addProperty("type", "patchouli:text")
+					addProperty("text", "hexical.page.media_jar.1")
+				})
+				Transmutations.transmutationRecipePages.forEach { add(it) }
+			})
+		}
+
+		val path = output.getResolver(DataOutput.OutputType.RESOURCE_PACK, "patchouli_books/thehexbook/en_us/entries/items")
+		return CompletableFuture.allOf(DataProvider.writeToPath(writer, finalJson, path.resolve(Identifier("hexcasting", "media_jar"), "json")))
+	}
+
+	override fun getName(): String = "Patchouli Pages"
+}
+
 class HexicalRecipeGenerator(generator: FabricDataOutput) : FabricRecipeProvider(generator) {
 	override fun generate(exporter: Consumer<RecipeJsonProvider>) {
 		HexicalItems.CURIOS.forEach { curio ->
 			SingleItemRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(HexItems.CHARGED_AMETHYST), RecipeCategory.MISC, curio, 1)
 				.criterion(hasItem(HexItems.CHARGED_AMETHYST), conditionsFromItem(HexItems.CHARGED_AMETHYST))
-				.offerTo(exporter, Identifier("items/" + Registries.ITEM.getId(curio).path + "_from_stonecutting"))
+				.offerTo(exporter, Identifier("curio/${Registries.ITEM.getId(curio).path}_from_stonecutting"))
 		}
+
+		for (provider in Transmutations.transmutationRecipeJsons)
+			exporter.accept(provider)
+	}
+}
+
+object Transmutations {
+	val transmutationRecipeJsons = mutableListOf<TransmutingJsonProvider>()
+	val transmutationRecipePages = mutableListOf<JsonObject>()
+
+	fun init() {
+		makeTransmutation("alchemists_take_this", Items.COPPER_INGOT, Items.GOLD_INGOT, MediaConstants.SHARD_UNIT)
+		makeTransmutation("cry_obsidian", Items.OBSIDIAN, Items.CRYING_OBSIDIAN, MediaConstants.SHARD_UNIT)
+		makeTransmutation("uncry_obsidian", Items.CRYING_OBSIDIAN, Items.OBSIDIAN, -2 * MediaConstants.DUST_UNIT)
+		makeTransmutation("thoughtknot", Items.STRING, HexItems.THOUGHT_KNOT, (0.75 * MediaConstants.DUST_UNIT).toLong())
+		makeTransmutation("unthoughtknot", HexItems.THOUGHT_KNOT, Items.STRING, MediaConstants.DUST_UNIT / -2)
+		makeTransmutation("fossil_fuel", Items.CHARCOAL, Items.COAL, MediaConstants.DUST_UNIT / 2)
+		makeTransmutation("renewable_fuel", Items.COAL, Items.CHARCOAL, MediaConstants.DUST_UNIT / -4)
+	}
+
+	fun makeTransmutation(name: String, original: Item, new: Item, cost: Long) {
+		transmutationRecipeJsons.add(TransmutingJsonProvider(HexicalMain.id("transmuting/$name"), Ingredient.ofItems(original), listOf(ItemStack(new)), cost))
+		transmutationRecipePages.add(createTransmutingPage(name))
+	}
+
+	fun createTransmutingPage(name: String): JsonObject {
+		val obj = JsonObject()
+		obj.addProperty("type", "hexcasting:transmuting")
+		obj.addProperty("recipe", "hexical:transmuting/$name")
+		obj.addProperty("title", "hexical.recipe.$name.header")
+		obj.addProperty("text", "hexical.recipe.$name.text")
+		return obj
 	}
 }
