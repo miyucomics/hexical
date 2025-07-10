@@ -261,6 +261,10 @@
 	"hexical.recipe.cry_obsidian.text": "Infuses $(item)Obsidian$() with _media which leaks out of it, giving it a distinctive crying appearance.",
 	"hexical.recipe.uncry_obsidian.header": "Calm Obsidian",
 	"hexical.recipe.uncry_obsidian.text": "Returns the _media from $(item)Crying Obsidian$().$(br2)$(o)Therapy! :D$()",
+	"hexical.recipe.fossil_fuel.header": "Coal",
+	"hexical.recipe.fossil_fuel.text": "Transforms $(item)Charcoal$() into $(item)Coal$() by infusing thought into it and then immediately killing it. Good for compacting.",
+	"hexical.recipe.renewable_fuel.header": "Charcoal",
+	"hexical.recipe.renewable_fuel.text": "Transforms $(item)Coal$() into $(item)Charcoal$(). Why?",
 
 	"hexical.page.casting_carpet.title": "Casting Carpets",
 	"hexical.page.casting_carpet.0": "I can weave $(l:items/amethyst)$(item)Amethyst$() into any ordinary rug to create this wonderfully comfy rug. Stepping on the carpet, I can feel the _media coursing under my feet. It feels disorienting but surprisingly puts me at peace.$(br2)I feel very inspired, as if I were wearing a $(l:items/lens)$(item)Scrying Lens$() although weaker. My _Hexcasting vision seems to have been expanded.",
