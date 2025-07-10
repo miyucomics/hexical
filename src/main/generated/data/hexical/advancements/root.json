@@ -1,0 +1,36 @@
+{
+  "criteria": {
+    "start_hexcasting": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "hexcasting:grants_root_advancement"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "background": "minecraft:textures/block/blackstone.png",
+    "description": {
+      "translate": "advancement.hexical:root.description"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "item": "hexical:conjured_compass"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.hexical:root.title"
+    }
+  },
+  "requirements": [
+    [
+      "start_hexcasting"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
