@@ -14,6 +14,7 @@ import miyucomics.hexical.registry.HexicalEntities
 import miyucomics.hexical.registry.HexicalItems
 import miyucomics.hexical.utils.RenderUtils
 import net.minecraft.block.AbstractRedstoneGateBlock
+import net.minecraft.command.argument.ColorArgumentType.color
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityDimensions
 import net.minecraft.entity.EntityPose
@@ -163,9 +164,18 @@ class AnimatedScrollEntity(entityType: EntityType<AnimatedScrollEntity>, world: 
 		this.setFacing(Direction.byId(packet.entityData))
 	}
 
-	fun setState(state: Int) = this.dataTracker.set(stateDataTracker, state)
-	fun setColor(color: Int) = this.dataTracker.set(colorDataTracker, color)
-	fun toggleGlow() = this.dataTracker.set(glowDataTracker, !this.dataTracker.get(glowDataTracker))
+	fun setState(state: Int) {
+		scroll.orCreateNbt.putInt("state", state)
+		this.dataTracker.set(stateDataTracker, state)
+	}
+	fun setColor(color: Int) {
+		scroll.orCreateNbt.putInt("color", color)
+		this.dataTracker.set(colorDataTracker, color)
+	}
+	fun toggleGlow() {
+		this.dataTracker.set(glowDataTracker, !this.dataTracker.get(glowDataTracker))
+		scroll.orCreateNbt.putBoolean("glow", this.dataTracker.get(glowDataTracker))
+	}
 
 	override fun initDataTracker() {
 		this.dataTracker.startTracking(colorDataTracker, (0xff_000000).toInt())

@@ -61,16 +61,16 @@ public class PlayerEntityMixin implements PlayerEntityMinterface {
 	}
 
 	@Inject(method = "writeCustomDataToNbt", at = @At("HEAD"))
-	void writePlayerData(NbtCompound nbtCompound, CallbackInfo ci) {
-		nbtCompound.put("arch_lamp", hexical$archLampState.toNbt());
-		nbtCompound.put("lesser_sentinels", hexical$lesserSentinels.toNbt());
+	void writePlayerData(NbtCompound compound, CallbackInfo ci) {
+		compound.put("arch_lamp", hexical$archLampState.toNbt());
+		compound.put("lesser_sentinels", hexical$lesserSentinels.toNbt());
 
 		if (hexical$evocation != null)
-			nbtCompound.put("evocation", hexical$evocation);
+			compound.put("evocation", hexical$evocation);
 
 		NbtCompound wristpocket = new NbtCompound();
 		hexical$wristpocket.writeNbt(wristpocket);
-		nbtCompound.put("wristpocket", wristpocket);
+		compound.put("wristpocket", wristpocket);
 	}
 
 	public boolean getArchLampCastedThisTick() {
