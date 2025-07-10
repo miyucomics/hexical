@@ -1,7 +1,6 @@
 package miyucomics.hexical.registry
 
 import at.petrak.hexcasting.api.misc.MediaConstants
-import at.petrak.hexcasting.api.utils.getOrCreateCompound
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.common.items.ItemStaff
 import at.petrak.hexcasting.xplat.IXplatAbstractions
@@ -19,7 +18,6 @@ import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.registry.RegistryKey
 import net.minecraft.text.Text
-import net.minecraft.util.Identifier
 
 object HexicalItems {
 	private val HEXICAL_GROUP_KEY: RegistryKey<ItemGroup> = RegistryKey.of(Registries.ITEM_GROUP.key, HexicalMain.id("general"))
@@ -51,11 +49,11 @@ object HexicalItems {
 	private val GAUNTLET_STAFF = registerItem("gauntlet_staff", ItemStaff(Settings().maxCount(1)))
 	private val LIGHTNING_ROD_STAFF = registerItem("lightning_rod_staff", ItemStaff(Settings().maxCount(1)))
 
-	val BOBBLES_NAMES: List<String> = listOf("bismuth", "clover", "conch", "cube", "flute", "handbell", "heart", "interlock", "key", "staff", "charm", "strange", "beauty", "truth", "up", "down")
-	val BOBBLES: List<Item> = BOBBLES_NAMES.map { registerItem("bobble_$it", Item(Settings().maxCount(1))) }
+	val CURIO_NAMES: List<String> = listOf("bismuth", "clover", "conch", "cube", "flute", "handbell", "heart", "interlock", "key", "staff", "charm", "strange", "beauty", "truth", "up", "down")
+	val CURIOS: List<Item> = CURIO_NAMES.map { registerItem("curio_$it", Item(Settings().maxCount(1))) }
 
-	val PLUSHIES_NAMES: List<String> = listOf("hexxy", "irissy", "pentxxy", "quadxxy", "thothy", "flexxy")
-	val PLUSHIES: List<Item> = PLUSHIES_NAMES.map { registerItem("plush_$it", Item(Settings().maxCount(1))) }
+	val PLUSHIE_NAMES: List<String> = listOf("hexxy", "irissy", "pentxxy", "quadxxy", "thothy", "flexxy")
+	val PLUSHIES: List<Item> = PLUSHIE_NAMES.map { registerItem("plush_$it", Item(Settings().maxCount(1))) }
 	@JvmStatic
 	fun randomPlush() = ItemStack(PLUSHIES.random())
 
@@ -92,7 +90,7 @@ object HexicalItems {
 			entries.add(ItemStack(HexicalBlocks.PERIWINKLE_FLOWER_ITEM))
 			entries.add(ItemStack(HexicalBlocks.PEDESTAL_ITEM))
 
-			for (item in BOBBLES)
+			for (item in CURIOS)
 				entries.add(item)
 			for (item in PLUSHIES)
 				entries.add(item)
