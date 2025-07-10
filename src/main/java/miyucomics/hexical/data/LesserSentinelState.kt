@@ -9,6 +9,7 @@ import miyucomics.hexical.interfaces.PlayerEntityMinterface
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
 import net.fabricmc.fabric.api.entity.event.v1.ServerEntityWorldChangeEvents
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
+import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.nbt.NbtDouble
@@ -58,6 +59,10 @@ class LesserSentinelState {
 		}
 
 		fun registerServerReciever() {
+			ServerPlayConnectionEvents.JOIN.register { handler, _, server ->
+				(handler.player as PlayerEntityMinterface).getLesserSentinels().syncToClient(handler.player)
+			}
+
 			ServerEntityWorldChangeEvents.AFTER_PLAYER_CHANGE_WORLD.register { player, origin, destination ->
 				(player as PlayerEntityMinterface).getLesserSentinels().syncToClient(player)
 			}
@@ -103,7 +108,9 @@ data class LesserSentinelsInstance(var lesserSentinels: MutableList<Vec3d>, val 
 	companion object {
 		fun createFromNbt(compound: NbtCompound): LesserSentinelsInstance {
 			val lesserSentinels = mutableListOf<Vec3d>()
-			compound.getList("positional", NbtElement.COMPOUND_TYPE.toInt()).windowed(3, 3, false) { lesserSentinels.add(Vec3d(it[0].asDouble, it[1].asDouble, it[2].asDouble)) }
+			val positions = compound.getList("positional", NbtElement.DOUBLE_TYPE.toInt()).toMutableList()
+			while (positions.isNotEmpty())
+				lesserSentinels.add(Vec3d(positions.removeFirst().asDouble, positions.removeFirst().asDouble, positions.removeFirst().asDouble))
 			return LesserSentinelsInstance(lesserSentinels, RegistryKey.of(RegistryKeys.WORLD, Identifier(compound.getString("dimension"))))
 		}
 	}
