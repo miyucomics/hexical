@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "hexcasting:charged_amethyst"
+  },
+  "result": "hexical:curio_bismuth"
+}
