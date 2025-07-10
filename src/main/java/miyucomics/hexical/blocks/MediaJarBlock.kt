@@ -109,7 +109,7 @@ class MediaJarBlock : Block(
 		val WATERLOGGED: BooleanProperty = Properties.WATERLOGGED
 		const val MAX_CAPACITY = MediaConstants.CRYSTAL_UNIT * 64
 
-		private fun getRecipe(input: ItemStack, world: World): TransmutingRecipe? {
+		fun getRecipe(input: ItemStack, world: World): TransmutingRecipe? {
 			world.recipeManager.listAllOfType(HexicalRecipe.TRANSMUTING_RECIPE).forEach { recipe ->
 				if (recipe.matches(SimpleInventory(input), world))
 					return recipe
