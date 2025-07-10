@@ -26,9 +26,9 @@ import miyucomics.hexical.casting.patterns.charms.*
 import miyucomics.hexical.casting.patterns.circle.OpAbsorbArm
 import miyucomics.hexical.casting.patterns.circle.OpCreateDust
 import miyucomics.hexical.casting.patterns.circle.OpDisplace
-import miyucomics.hexical.casting.patterns.colors.OpDye
-import miyucomics.hexical.casting.patterns.colors.OpGetDye
-import miyucomics.hexical.casting.patterns.colors.OpTranslateDye
+import miyucomics.hexical.casting.patterns.dyes.OpDye
+import miyucomics.hexical.casting.patterns.dyes.OpGetDye
+import miyucomics.hexical.casting.patterns.dyes.OpTranslateDye
 import miyucomics.hexical.casting.patterns.conjure.*
 import miyucomics.hexical.casting.patterns.evocation.OpGetEvocation
 import miyucomics.hexical.casting.patterns.evocation.OpSetEvocation
@@ -64,7 +64,6 @@ import miyucomics.hexical.casting.patterns.vfx.OpSparkle
 import miyucomics.hexical.casting.patterns.wristpocket.*
 import miyucomics.hexical.interfaces.Specklike
 import miyucomics.hexical.items.HandLampItem
-import miyucomics.hexpose.iotas.IdentifierIota
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.projectile.FireballEntity
 import net.minecraft.entity.projectile.LlamaSpitEntity

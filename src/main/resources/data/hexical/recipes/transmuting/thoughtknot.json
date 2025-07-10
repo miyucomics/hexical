@@ -1,8 +1,0 @@
-{
-	"type": "hexical:transmuting",
-	"input": {
-		"item": "minecraft:string"
-	},
-	"output": "hexcasting:thought_knot",
-	"cost": 9000
-}

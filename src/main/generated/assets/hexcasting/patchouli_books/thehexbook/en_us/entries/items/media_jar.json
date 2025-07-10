@@ -1,0 +1,64 @@
+{
+  "advancement": "hexcasting:root",
+  "category": "hexcasting:items",
+  "icon": "hexical:media_jar",
+  "name": "hexical.page.media_jar.title",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "hexical.page.media_jar.0"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexical:media_jar",
+      "text": "hexical.page.media_jar.description"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "hexical.page.media_jar.1"
+    },
+    {
+      "type": "hexcasting:transmuting",
+      "recipe": "hexical:transmuting/alchemists_take_this",
+      "text": "hexical.recipe.alchemists_take_this.text",
+      "title": "hexical.recipe.alchemists_take_this.header"
+    },
+    {
+      "type": "hexcasting:transmuting",
+      "recipe": "hexical:transmuting/cry_obsidian",
+      "text": "hexical.recipe.cry_obsidian.text",
+      "title": "hexical.recipe.cry_obsidian.header"
+    },
+    {
+      "type": "hexcasting:transmuting",
+      "recipe": "hexical:transmuting/uncry_obsidian",
+      "text": "hexical.recipe.uncry_obsidian.text",
+      "title": "hexical.recipe.uncry_obsidian.header"
+    },
+    {
+      "type": "hexcasting:transmuting",
+      "recipe": "hexical:transmuting/thoughtknot",
+      "text": "hexical.recipe.thoughtknot.text",
+      "title": "hexical.recipe.thoughtknot.header"
+    },
+    {
+      "type": "hexcasting:transmuting",
+      "recipe": "hexical:transmuting/unthoughtknot",
+      "text": "hexical.recipe.unthoughtknot.text",
+      "title": "hexical.recipe.unthoughtknot.header"
+    },
+    {
+      "type": "hexcasting:transmuting",
+      "recipe": "hexical:transmuting/fossil_fuel",
+      "text": "hexical.recipe.fossil_fuel.text",
+      "title": "hexical.recipe.fossil_fuel.header"
+    },
+    {
+      "type": "hexcasting:transmuting",
+      "recipe": "hexical:transmuting/renewable_fuel",
+      "text": "hexical.recipe.renewable_fuel.text",
+      "title": "hexical.recipe.renewable_fuel.header"
+    }
+  ],
+  "sortnum": 4
+}
