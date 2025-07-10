@@ -17,15 +17,11 @@ class InventoryEndpoint(val inventory: Inventory) : HopperSource, HopperDestinat
 			val existing = inventory.getStack(i)
 			if (!ItemStack.areItemsEqual(existing, stack)) continue
 			if (existing.isEmpty) continue
-
 			val toTake = remaining.coerceAtMost(existing.count)
-			existing.decrement(toTake)
-			remaining -= toTake
-
+			remaining -= inventory.removeStack(i, toTake).count
 			if (remaining <= 0) return true
 		}
 
-		// Failed to withdraw full amount — no rollback, so this leaves inventory partially changed
 		return false
 	}
 
@@ -47,7 +43,6 @@ class InventoryEndpoint(val inventory: Inventory) : HopperSource, HopperDestinat
 			}
 		}
 
-		// Then, try to place in empty slots
 		for (i in 0 until inventory.size()) {
 			if (!inventory.isValid(i, remaining)) continue
 			val existing = inventory.getStack(i)
@@ -69,7 +64,6 @@ class InventoryEndpoint(val inventory: Inventory) : HopperSource, HopperDestinat
 		var remaining = stack.count
 		val maxStackSize = stack.maxCount
 
-		// Simulate merging into existing stacks
 		for (i in 0 until inventory.size()) {
 			val existing = inventory.getStack(i)
 			if (!inventory.isValid(i, stack)) continue
@@ -81,7 +75,6 @@ class InventoryEndpoint(val inventory: Inventory) : HopperSource, HopperDestinat
 			}
 		}
 
-		// Simulate inserting into empty slots
 		for (i in 0 until inventory.size()) {
 			val existing = inventory.getStack(i)
 			if (!inventory.isValid(i, stack)) continue

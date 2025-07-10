@@ -7,6 +7,7 @@
   - player stores data now; not persistent state
   - removed Myodesopsia spell
 - added Vibrate spell
+- added ability to transmute items in the inventory like a bundle
 - added pattern preview to animated scrolls
 - added hotbar spells
 - added lesser sentinels
