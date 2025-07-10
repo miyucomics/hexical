@@ -1,0 +1,30 @@
+{
+  "parent": "hexical:root",
+  "criteria": {
+    "conjure_hexxy": {
+      "conditions": {},
+      "trigger": "hexical:summon_hexxy"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.hexical.conjure_hexxy.description"
+    },
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "item": "hexcasting:lens"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.hexical.conjure_hexxy.title"
+    }
+  },
+  "requirements": [
+    [
+      "conjure_hexxy"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
