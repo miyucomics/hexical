@@ -1,0 +1,30 @@
+{
+  "parent": "hexical:root",
+  "criteria": {
+    "diy_conjuring": {
+      "conditions": {},
+      "trigger": "hexical:diy_conjuring"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.hexical.diy_conjuring.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "minecraft:scaffolding"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.hexical.diy_conjuring.title"
+    }
+  },
+  "requirements": [
+    [
+      "diy_conjuring"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

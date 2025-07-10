@@ -1,4 +1,4 @@
-// 1.20.1	2025-07-09T20:48:20.022755614	Hexical/Model Definitions
+// 1.20.1	2025-07-09T22:30:25.320225452	Hexical/Model Definitions
 679c80d084fc1dbed79b82b86b5d509bf0d1b91b assets/hexical/models/item/conjured_compass_11.json
 d632b9e0c4e0bbad7581f99ce50672586720d891 assets/hexical/models/block/hex_candle_two_candles_lit.json
 b04233bfd8bf1d28179da06f6bb70a14f6e3b461 assets/hexical/models/item/conjured_compass_03.json
@@ -40,8 +40,8 @@ d71b127b9830f963ea17880dc4f922cd952600e0 assets/hexical/blockstates/hex_candle.j
 f1e07d643418accf4e525b69fb6f10becad8e1fe assets/hexical/models/block/hex_candle_two_candles.json
 94c6e2d47390b7e54f0fc9eec7f46fa869c91265 assets/hexical/models/item/curio_heart.json
 728209aaf5b1e6bcead1e93a86d1085cf5ffeed1 assets/hexical/models/item/curio_down.json
-49c4b7c6282e5b2400dd7c3f4af2ae4bd17fba3a assets/hexical/models/block/hex_candle_four_candles_lit.json
 743e5c0f512a017be26aadfa010a5c3c709bc68d assets/hexical/models/item/conjured_compass_23.json
+49c4b7c6282e5b2400dd7c3f4af2ae4bd17fba3a assets/hexical/models/block/hex_candle_four_candles_lit.json
 59576e9fee780d8a9b298682ad6b37f615880129 assets/hexical/models/item/conjured_compass_30.json
 fd8d068f0ee260e907780f731e11e7f0f936c36d assets/hexical/models/item/conjured_compass_15.json
 2ad4d3a7de721bafebc001a8a023bf87fafa07c8 assets/hexical/models/item/conjured_compass_31.json
@@ -57,8 +57,8 @@ f5dc98f3ae2b6ab9fbf28c2404260f6e087ceb96 assets/hexical/models/block/hex_candle_
 69c87b1fc81c030f00ffa98b5713c53db11ea27e assets/hexical/models/block/hex_candle_three_candles.json
 6793860f425605872eda3ef992ef967a4dd7f9d4 assets/hexical/models/item/conjured_compass_08.json
 7416518bfcd1f6b697e1653544072205360bc190 assets/hexical/models/item/plush_thothy.json
-cf98a50217958400a935ac6a367e52ca207ae0a3 assets/hexical/models/item/conjured_compass_19.json
 017a7e1b94777c3c8c789c253cd3918358fa7e0b assets/hexical/models/item/plush_hexxy.json
+cf98a50217958400a935ac6a367e52ca207ae0a3 assets/hexical/models/item/conjured_compass_19.json
 b1e7e9367947eca44509b4d9f2ee09883a20dc02 assets/hexical/models/item/conjured_compass_10.json
 90712e6d1b109465c5fd10719f3471f85813457a assets/hexical/models/block/hex_candle_four_candles.json
 a742166b45db71aa69a7aa378385f6f4b3f69f28 assets/hexical/models/item/conjured_compass_24.json
