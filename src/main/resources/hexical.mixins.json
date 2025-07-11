@@ -6,6 +6,7 @@
 	"client": [
 		"AbstractClientPlayerEntityMixin",
 		"ClientPlayerEntityMixin",
+		"ClientWorldMixin",
 		"GameRendererMixin",
 		"GuiSpellcastingMixin",
 		"HeldItemRendererMixin",
