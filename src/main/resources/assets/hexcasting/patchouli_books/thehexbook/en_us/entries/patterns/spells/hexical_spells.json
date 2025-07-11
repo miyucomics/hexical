@@ -67,18 +67,6 @@
 		},
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:place_block_type",
-			"anchor": "hexical:place_block_type",
-			"input": "identifier, vec, vec, vec",
-			"output": "",
-			"text": "hexical.page.place_block_type.summary"
-		},
-		{
-			"type": "patchouli:text",
-			"text": "hexical.page.place_block_type.description"
-		},
-		{
-			"type": "hexcasting:pattern",
 			"op_id": "hexical:flower",
 			"anchor": "hexical:flower",
 			"input": "vector, identifer",

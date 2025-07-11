@@ -207,7 +207,6 @@ object HexicalActions {
 		register("sparkle", "dqa", HexDir.NORTH_EAST, OpSparkle())
 		register("block_ping", "dwwdwwdwewdwwdwwdeq", HexDir.NORTH_EAST, OpBlockPing())
 		register("crack_device", "wwaqqqqqeqdedwqeaeqwdedwqeaeq", HexDir.EAST, OpCrackDevice())
-		register("place_block_type", "wewewewewewdwew", HexDir.NORTH_WEST, OpConstruct())
 		register("flower", "weqqqqqwaeaeaeaeaea", HexDir.NORTH_EAST, OpConjureFlower())
 		register("light", "aeaeaeaeaeawqqqqq", HexDir.SOUTH_EAST, OpConjureLight())
 		register("gasp", "aweeeeewaweeeee", HexDir.NORTH_WEST, OpGasp())
