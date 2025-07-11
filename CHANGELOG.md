@@ -7,16 +7,17 @@
   - player stores data now; not persistent state
   - removed Myodesopsia spell
 - added Vibrate spell
-- added ability to transmute items in the inventory like a bundle
 - added pattern preview to animated scrolls
 - added hotbar spells
 - added lesser sentinels
 - added plushies
 - added Horrible
 - added 512 pattern cap to grimoires
+- added name and lore spell that uses text iota
 - added HexGloop's Dispense spell
 - added pedestals - holds your items for you!
   - if used in a circle, it pushes the iota from the item on the pedestal
+- added ability to transmute items in the inventory like a bundle with the media jar
 - added spell to make a circle use a pedestal as its other hand
 - added spell to let a circle conjure dust
 - added all variants of cooking blocks as spells
@@ -51,8 +52,8 @@
   - acts as a coping saw
 - added spell to break block with fortune
 - added spell to break block with silk touch
-- added Construct spell - places a specific block type from your inventory with parameters for orientation and horizontal vector
 - added left and right-click telepathy patterns
+- added telepathy pattern for scroling
 - added pattern to get evocation hex
 - added more documentation to magic missile
 - added beautiful little shader to media jars
