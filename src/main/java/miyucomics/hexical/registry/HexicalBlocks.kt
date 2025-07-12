@@ -5,9 +5,7 @@ import com.mojang.datafixers.util.Pair
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.blocks.*
 import miyucomics.hexical.items.MediaJarItem
-import miyucomics.hexical.registry.HexicalItems.HEXICAL_GROUP
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents
 import net.minecraft.block.*
 import net.minecraft.block.AbstractBlock.Settings
 import net.minecraft.block.entity.BlockEntityType

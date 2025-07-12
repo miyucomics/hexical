@@ -5,7 +5,6 @@ import at.petrak.hexcasting.api.mod.HexTags
 import at.petrak.hexcasting.common.lib.HexItems
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
-import miyucomics.hexical.Transmutations.createTransmutingPage
 import miyucomics.hexical.recipe.TransmutingJsonProvider
 import miyucomics.hexical.registry.*
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint
@@ -19,7 +18,6 @@ import net.minecraft.advancement.Advancement
 import net.minecraft.advancement.AdvancementFrame
 import net.minecraft.advancement.criterion.CriterionConditions
 import net.minecraft.advancement.criterion.InventoryChangedCriterion
-import net.minecraft.advancement.criterion.InventoryChangedCriterion.Conditions.items
 import net.minecraft.data.DataOutput
 import net.minecraft.data.DataProvider
 import net.minecraft.data.DataWriter

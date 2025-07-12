@@ -8,7 +8,6 @@ import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.Vec3Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadEntity
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
-import com.mojang.serialization.codecs.RecordCodecBuilder.point
 import dev.kosmx.playerAnim.core.util.Vec3f
 import miyucomics.hexical.entities.specklikes.MeshEntity
 
