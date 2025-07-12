@@ -90,6 +90,6 @@ object HexicalBlocks {
 		BlockRenderLayerMap.INSTANCE.putBlock(MEDIA_JAR_BLOCK, RenderLayer.getCutout())
 		BlockRenderLayerMap.INSTANCE.putBlock(PERIWINKLE_FLOWER, RenderLayer.getCutout())
 		ScryingLensOverlayRegistry.addDisplayer(MEDIA_JAR_BLOCK) { lines: MutableList<Pair<ItemStack, Text>>, _: BlockState, pos: BlockPos, _: PlayerEntity, world: World, _: Direction -> (world.getBlockEntity(pos) as MediaJarBlockEntity).scryingLensOverlay(lines) }
-		BlockEntityRendererFactories.register(MEDIA_JAR_BLOCK_ENTITY, ::MediaJarBlockEntityRenderer)
+		BlockEntityRendererFactories.register(MEDIA_JAR_BLOCK_ENTITY) { MediaJarBlockEntityRenderer() }
 	}
 }

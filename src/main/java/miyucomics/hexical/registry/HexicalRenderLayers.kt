@@ -14,10 +14,10 @@ object HexicalRenderLayers {
 
 	fun clientInit() {
 		CoreShaderRegistrationCallback.EVENT.register { context ->
-			context.register(HexicalMain.id("media_jar"), VertexFormats.POSITION_COLOR_TEXTURE) { shader ->
+			context.register(HexicalMain.id("media_jar"), VertexFormats.POSITION_TEXTURE_COLOR_NORMAL) { shader ->
 				mediaJarRenderLayer = RenderLayer.of(
 					"media_jar_shader",
-					VertexFormats.POSITION_COLOR_TEXTURE,
+					VertexFormats.POSITION_TEXTURE_COLOR_NORMAL,
 					VertexFormat.DrawMode.QUADS,
 					512,
 					RenderLayer.MultiPhaseParameters.builder()
