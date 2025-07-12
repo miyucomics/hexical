@@ -1,10 +1,10 @@
 package miyucomics.hexical.utils
 
-import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.casting.iota.ListIota
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
+import net.minecraft.nbt.NbtCompound
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.util.Hand
 
@@ -28,26 +28,10 @@ object CharmedItemUtilities {
 		return charmed.getBoolean(key)
 	}
 
-	fun isStackCharmed(stack: ItemStack): Boolean {
-		return stack.hasNbt() && stack.nbt!!.contains("charmed")
-	}
-
 	fun removeCharm(stack: ItemStack) {
 		stack.nbt!!.remove("charmed")
 		if (stack.nbt!!.isEmpty)
 			stack.nbt = null
-	}
-
-	fun getHex(stack: ItemStack, world: ServerWorld): List<Iota> {
-		return (IotaType.deserialize(stack.nbt!!.getCompound("charmed").getCompound("instructions"), world) as ListIota).list.toList()
-	}
-
-	fun getMedia(stack: ItemStack): Long {
-		return stack.nbt!!.getCompound("charmed").getLong("media")
-	}
-
-	fun getMaxMedia(stack: ItemStack): Long {
-		return stack.nbt!!.getCompound("charmed").getLong("max_media")
 	}
 
 	fun deductMedia(stack: ItemStack, cost: Long) {
@@ -55,6 +39,12 @@ object CharmedItemUtilities {
 		if (oldMedia <= cost)
 			removeCharm(stack)
 		else
-			stack.nbt!!.getCompound("charmed").putLong("media", oldMedia - cost)
+			getCompound(stack).putLong("media", oldMedia - cost)
 	}
+
+	fun isStackCharmed(stack: ItemStack) = stack.hasNbt() && stack.nbt!!.contains("charmed")
+	fun getCompound(stack: ItemStack): NbtCompound = stack.nbt!!.getCompound("charmed")
+	fun getHex(stack: ItemStack, world: ServerWorld) = (IotaType.deserialize(getCompound(stack).getCompound("instructions"), world) as ListIota).list.toList()
+	fun getMedia(stack: ItemStack) = getCompound(stack).getLong("media")
+	fun getMaxMedia(stack: ItemStack) = getCompound(stack).getLong("max_media")
 }
