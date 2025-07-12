@@ -2,7 +2,6 @@ package miyucomics.hexical.data.hopper.targets
 
 import miyucomics.hexical.data.hopper.HopperDestination
 import miyucomics.hexical.data.hopper.HopperSource
-import net.minecraft.inventory.Inventory
 import net.minecraft.inventory.SidedInventory
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.Direction

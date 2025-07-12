@@ -1,13 +1,12 @@
 package miyucomics.hexical.blocks
 
 import at.petrak.hexcasting.api.misc.MediaConstants
-import at.petrak.hexcasting.api.utils.isMediaItem
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.api.utils.serializeToNBT
 import at.petrak.hexcasting.common.lib.HexItems
-import at.petrak.hexcasting.xplat.IXplatAbstractions
 import com.mojang.datafixers.util.Pair
-import miyucomics.hexical.blocks.MediaJarBlock.Companion.getRecipe
+import miyucomics.hexical.blocks.MediaJarBlock.Companion.TransmutationResult
+import miyucomics.hexical.blocks.MediaJarBlock.Companion.transmuteItem
 import miyucomics.hexical.registry.HexicalBlocks
 import miyucomics.hexical.registry.HexicalSounds
 import net.minecraft.block.Block
@@ -43,7 +42,7 @@ class MediaJarBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 	}
 	fun insertMedia(media: Long): Long {
 		val currentMedia = this.media
-		setMedia(this.media + media)
+		setMedia(currentMedia + media)
 		return this.getMedia() - currentMedia
 	}
 	fun withdrawMedia(media: Long): Boolean {
@@ -90,31 +89,26 @@ class MediaJarBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 	}
 
 	override fun setStack(i: Int, stack: ItemStack) {
-		if (i == 0) {
-			if (world == null)
-				return
+		if (i != 0)
+			return
+		if (world == null)
+			return
 
-			if (isMediaItem(stack) && getMedia() < MediaJarBlock.MAX_CAPACITY) {
-				val mediaHolder = IXplatAbstractions.INSTANCE.findMediaHolder(stack)!!
-				insertMedia(mediaHolder.withdrawMedia(-1, false))
-				world!!.playSoundAtBlockCenter(pos, HexicalSounds.AMETHYST_MELT, SoundCategory.BLOCKS, 1f, 1f, true)
-				return
-			}
-
-			val recipe = getRecipe(stack, world!!)
-			if (recipe != null && getMedia() >= recipe.cost) {
-				withdrawMedia(recipe.cost)
-				val outputs = recipe.output.toMutableList()
+		when (val result = transmuteItem(world!!, stack, getMedia(), ::insertMedia, ::withdrawMedia)) {
+			is TransmutationResult.AbsorbedMedia -> world!!.playSoundAtBlockCenter(pos, HexicalSounds.AMETHYST_MELT, SoundCategory.BLOCKS, 1f, 1f, true)
+			is TransmutationResult.TransmutedItems -> {
+				val outputs = result.output.toMutableList()
 				heldStack = outputs.removeFirst().copy()
 				val spawnPosition = pos.down().toCenterPos()
 				outputs.forEach { world!!.spawnEntity(ItemEntity(world!!, spawnPosition.x, spawnPosition.y, spawnPosition.z, it.copy(), 0.0, 0.0, 0.0)) }
 				world!!.playSoundAtBlockCenter(pos, HexicalSounds.ITEM_DUNKS, SoundCategory.BLOCKS, 1f, 1f, true)
-				return
 			}
-
-			heldStack = stack
-			markDirty()
+			is TransmutationResult.Pass -> {
+				heldStack = stack
+			}
 		}
+
+		markDirty()
 	}
 
 	override fun clear() {

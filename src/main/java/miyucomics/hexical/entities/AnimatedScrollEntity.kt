@@ -14,7 +14,6 @@ import miyucomics.hexical.registry.HexicalEntities
 import miyucomics.hexical.registry.HexicalItems
 import miyucomics.hexical.utils.RenderUtils
 import net.minecraft.block.AbstractRedstoneGateBlock
-import net.minecraft.command.argument.ColorArgumentType.color
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityDimensions
 import net.minecraft.entity.EntityPose

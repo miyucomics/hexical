@@ -65,28 +65,22 @@ class MediaJarBlock : Block(
 	}
 
 	override fun onUse(state: BlockState, world: World, pos: BlockPos, player: PlayerEntity, hand: Hand, hit: BlockHitResult): ActionResult {
-		val jarData = world.getBlockEntity(pos) as MediaJarBlockEntity
+		val jar = world.getBlockEntity(pos) as MediaJarBlockEntity
 		val stack = player.getStackInHand(hand)
 		player.swingHand(hand)
 
-		if (isMediaItem(stack) && jarData.getMedia() < MAX_CAPACITY) {
-			val mediaHolder = IXplatAbstractions.INSTANCE.findMediaHolder(stack)!!
-			val consumed = jarData.insertMedia(mediaHolder.media)
-			mediaHolder.withdrawMedia(consumed, false)
-			world.playSoundFromEntity(null, player, HexicalSounds.AMETHYST_MELT, SoundCategory.BLOCKS, 1f, 1f)
-			return ActionResult.SUCCESS
+		return when (val result = transmuteItem(world, stack, jar.getMedia(), jar::insertMedia, jar::withdrawMedia)) {
+			is TransmutationResult.AbsorbedMedia -> {
+				world.playSoundFromEntity(null, player, HexicalSounds.AMETHYST_MELT, SoundCategory.BLOCKS, 1f, 1f)
+				ActionResult.SUCCESS
+			}
+			is TransmutationResult.TransmutedItems -> {
+				world.playSound(null, pos, HexicalSounds.ITEM_DUNKS, SoundCategory.BLOCKS, 1f, 1f)
+				result.output.forEach(player::giveItemStack)
+				ActionResult.SUCCESS
+			}
+			is TransmutationResult.Pass -> ActionResult.FAIL
 		}
-
-		val recipe = getRecipe(stack, world)
-		if (recipe != null && jarData.getMedia() >= recipe.cost) {
-			stack.decrement(1)
-			jarData.withdrawMedia(recipe.cost)
-			recipe.output.forEach { reward -> player.giveItemStack(reward.copy()) }
-			world.playSound(null, pos, HexicalSounds.ITEM_DUNKS, SoundCategory.BLOCKS, 1f, 1f)
-			return ActionResult.SUCCESS
-		}
-
-		return ActionResult.FAIL
 	}
 
 	override fun getStateForNeighborUpdate(blockState: BlockState, direction: Direction, blockState2: BlockState, worldAccess: WorldAccess, blockPos: BlockPos, blockPos2: BlockPos): BlockState {
@@ -109,12 +103,36 @@ class MediaJarBlock : Block(
 		val WATERLOGGED: BooleanProperty = Properties.WATERLOGGED
 		const val MAX_CAPACITY = MediaConstants.CRYSTAL_UNIT * 64
 
-		fun getRecipe(input: ItemStack, world: World): TransmutingRecipe? {
+		private fun getRecipe(input: ItemStack, world: World): TransmutingRecipe? {
 			world.recipeManager.listAllOfType(HexicalRecipe.TRANSMUTING_RECIPE).forEach { recipe ->
 				if (recipe.matches(SimpleInventory(input), world))
 					return recipe
 			}
 			return null
+		}
+
+		fun transmuteItem(world: World, stack: ItemStack, media: Long, insertMedia: (Long) -> Long, withdrawMedia: (Long) -> Boolean): TransmutationResult {
+			if (isMediaItem(stack) && media < MAX_CAPACITY) {
+				val mediaHolder = IXplatAbstractions.INSTANCE.findMediaHolder(stack)!!
+				val consumed = insertMedia(mediaHolder.media)
+				mediaHolder.withdrawMedia(consumed, false)
+				return TransmutationResult.AbsorbedMedia
+			}
+
+			val recipe = getRecipe(stack, world)
+			if (recipe != null && media >= recipe.cost) {
+				stack.decrement(1)
+				withdrawMedia(recipe.cost)
+				return TransmutationResult.TransmutedItems(recipe.output.map { it.copy() })
+			}
+
+			return TransmutationResult.Pass
+		}
+
+		sealed class TransmutationResult {
+			object AbsorbedMedia : TransmutationResult()
+			object Pass : TransmutationResult()
+			data class TransmutedItems(val output: List<ItemStack>) : TransmutationResult()
 		}
 	}
 }

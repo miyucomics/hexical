@@ -5,17 +5,12 @@ import at.petrak.hexcasting.api.casting.RenderedSpell
 import at.petrak.hexcasting.api.casting.castables.SpellAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.getBlockPos
-import at.petrak.hexcasting.api.casting.getVec3
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadBlock
-import miyucomics.hexical.blocks.HexCandleCakeBlock
 import miyucomics.hexical.blocks.HexCandleCakeBlockEntity
 import miyucomics.hexical.registry.HexicalAdvancements
 import miyucomics.hexical.registry.HexicalBlocks
 import net.minecraft.block.AbstractCandleBlock
-import net.minecraft.entity.ItemEntity
-import net.minecraft.item.ItemStack
-import net.minecraft.item.Items
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d

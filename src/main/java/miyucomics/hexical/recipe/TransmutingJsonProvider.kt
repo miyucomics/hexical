@@ -3,7 +3,6 @@ package miyucomics.hexical.recipe
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import com.mojang.serialization.JsonOps
-import miyucomics.hexical.HexicalMain
 import net.minecraft.data.server.recipe.RecipeJsonProvider
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtOps
