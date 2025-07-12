@@ -11,7 +11,6 @@ import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import miyucomics.hexical.client.AnimatedPatternTooltip
 import miyucomics.hexical.client.ClientStorage
 import miyucomics.hexical.entities.AnimatedScrollEntity
-import net.minecraft.client.item.TooltipContext
 import net.minecraft.client.item.TooltipData
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.Item
@@ -21,12 +20,9 @@ import net.minecraft.nbt.NbtCompound
 import net.minecraft.nbt.NbtElement
 import net.minecraft.nbt.NbtList
 import net.minecraft.sound.SoundCategory
-import net.minecraft.text.Text
 import net.minecraft.util.ActionResult
-import net.minecraft.util.Formatting
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
-import net.minecraft.world.World
 import net.minecraft.world.event.GameEvent
 import java.util.*
 
