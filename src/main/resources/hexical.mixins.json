@@ -16,7 +16,6 @@
 	],
 	"mixins": [
 		"BlockAkashicBookshelfMixin",
-		"CastingEnvironmentAccessor",
 		"CastingEnvironmentMixin",
 		"CastingVMMixin",
 		"CatSitOnBlockGoalMixin",
