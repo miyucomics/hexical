@@ -71,7 +71,7 @@ class MediaJarBlock : Block(
 
 		if (isMediaItem(stack) && jarData.getMedia() < MAX_CAPACITY) {
 			val mediaHolder = IXplatAbstractions.INSTANCE.findMediaHolder(stack)!!
-			val consumed = jarData.insertMedia(media = mediaHolder.media)
+			val consumed = jarData.insertMedia(mediaHolder.media)
 			mediaHolder.withdrawMedia(consumed, false)
 			world.playSoundFromEntity(null, player, HexicalSounds.AMETHYST_MELT, SoundCategory.BLOCKS, 1f, 1f)
 			return ActionResult.SUCCESS

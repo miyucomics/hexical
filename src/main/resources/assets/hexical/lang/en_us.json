@@ -250,7 +250,7 @@
 	"hexical.page.media_jar.title": "Media Jar",
 	"hexical.page.media_jar.0": "I can melt down all my $(l:items/amethyst)$(item)Amethyst$() in this little jar! Unfortunately, the glass is too thick for me to draw _media through it, although I have read tales that ancient _Hexcasters were able to solve this issue and were able to bottle up liquid _media in some kind of flask to use in their _Hexes. However, this $(item)Media Jar$() also has some fascinating properties for recycling _media.",
 	"hexical.page.media_jar.description": "$(o)There, sure enough, she saw the faint translucent outline of something aboout the size of a hen's egg. There was just a touch of color in it, a pale sea-green, soft and shimmering and very beautiful.",
-	"hexical.page.media_jar.1": "I can dunk items into the liquid in order to imbue the item with pure _media. The _media seeps into the item and $(o)alters$() it in a variety of surprising and unpredictable ways.",
+	"hexical.page.media_jar.1": "I can dunk items into the liquid in order to imbue the item with pure _media. The _media seeps into the item and $(o)alters$() it in a variety of surprising and unpredictable ways.$(br2)This can be done either in-world by using an item on the jar, or in my inventory just by right-clicking an item with the jar. I can also use a $(item)Hopper$() to insert and extract items and _media, or use the $(l:patterns/spells/hopper)$(action)Hopper$() spell.",
 	"hexical.recipe.alchemists_take_this.header": "Make Gold",
 	"hexical.recipe.alchemists_take_this.text": "Transforms copper ingots to gold.",
 	"hexical.recipe.thoughtknot.header": "Weave Thought-Knot",
