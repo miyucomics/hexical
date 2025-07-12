@@ -2,15 +2,12 @@ package miyucomics.hexical.casting.patterns.specks
 
 import at.petrak.hexcasting.api.casting.*
 import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
-import at.petrak.hexcasting.api.casting.castables.SpellAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadEntity
 import miyucomics.hexical.casting.iotas.getPigment
 import miyucomics.hexical.interfaces.Specklike
 import net.minecraft.command.argument.EntityAnchorArgumentType
-import net.minecraft.entity.Entity
-import org.apache.commons.lang3.ObjectUtils.mode
 
 class OpSpecklikeProperty(private val mode: Int) : ConstMediaAction {
 	override val argc = 2

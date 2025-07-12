@@ -10,10 +10,8 @@ import at.petrak.hexcasting.api.casting.mishaps.MishapBadEntity
 import at.petrak.hexcasting.api.misc.MediaConstants
 import miyucomics.hexical.interfaces.SnifferEntityMinterface
 import miyucomics.hexical.registry.HexicalBlocks
-import miyucomics.hexical.registry.HexicalItems
 import net.minecraft.entity.passive.SnifferEntity
 import net.minecraft.item.ItemStack
-import net.minecraft.item.Items
 
 object OpCompelSniffer : SpellAction {
 	override val argc = 1

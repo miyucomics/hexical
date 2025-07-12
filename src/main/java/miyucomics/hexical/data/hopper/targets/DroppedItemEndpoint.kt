@@ -4,8 +4,6 @@ import miyucomics.hexical.data.hopper.HopperDestination
 import miyucomics.hexical.data.hopper.HopperSource
 import net.minecraft.entity.ItemEntity
 import net.minecraft.item.ItemStack
-import net.minecraft.server.world.ServerWorld
-import net.minecraft.util.math.Vec3d
 
 class DroppedItemEndpoint(private val entity: ItemEntity) : HopperSource, HopperDestination {
 	override fun getItems(): List<ItemStack> {

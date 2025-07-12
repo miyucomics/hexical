@@ -3,7 +3,6 @@ package miyucomics.hexical.data.hopper
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.inventory.Inventory
 import net.minecraft.item.ItemStack
-import kotlin.collections.all
 
 class ListBackedInventory(private val stacks: MutableList<ItemStack>) : Inventory {
 	override fun removeStack(slot: Int, amount: Int): ItemStack = stacks[slot].split(amount)
