@@ -2,6 +2,7 @@ package miyucomics.hexical.features.media_log
 
 import at.petrak.hexcasting.client.render.*
 import com.mojang.blaze3d.systems.RenderSystem
+import miyucomics.hexical.inits.Hook
 import miyucomics.hexical.misc.ClientStorage
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback
@@ -11,10 +12,10 @@ import net.minecraft.util.math.MathHelper
 import kotlin.math.max
 import kotlin.math.min
 
-object MediaLogDisplayer {
+object MediaLogRenderer : Hook() {
 	const val FADE_IN_DURATION: Int = 100
 
-	fun registerClientCallbacks() {
+	override fun registerCallbacks() {
 		ClientTickEvents.END_CLIENT_TICK.register {
 			if (ClientStorage.fadingInLog)
 				ClientStorage.fadingInLogTweener = min(ClientStorage.ticks - ClientStorage.fadingInLogStart, FADE_IN_DURATION)

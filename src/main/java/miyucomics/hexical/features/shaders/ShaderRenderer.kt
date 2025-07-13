@@ -1,4 +1,4 @@
-package miyucomics.hexical.misc
+package miyucomics.hexical.features.shaders
 
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.gl.PostEffectProcessor
