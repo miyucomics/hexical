@@ -5,7 +5,7 @@ import at.petrak.hexcasting.api.casting.iota.PatternIota
 import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.utils.putCompound
 import miyucomics.hexical.inits.HexicalEntities
-import miyucomics.hexical.utils.RenderUtils
+import miyucomics.hexical.misc.RenderUtils
 import net.minecraft.entity.EntityType
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.text.Text

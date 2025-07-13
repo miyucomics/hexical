@@ -8,8 +8,8 @@ import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadEntity
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.utils.putCompound
-import miyucomics.hexical.utils.CastingUtils
-import miyucomics.hexical.utils.CharmedItemUtilities
+import miyucomics.hexical.misc.CastingUtils
+import miyucomics.hexical.features.charms.CharmedItemUtilities
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
 

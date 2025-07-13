@@ -5,7 +5,7 @@ import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.NullIota
-import miyucomics.hexical.features.player_state.fields.serverScroll
+import miyucomics.hexical.features.player.fields.serverScroll
 import net.minecraft.server.network.ServerPlayerEntity
 
 class OpGetScroll : ConstMediaAction {

@@ -2,7 +2,7 @@ package miyucomics.hexical.features.items
 
 import at.petrak.hexcasting.api.casting.iota.GarbageIota
 import at.petrak.hexcasting.api.casting.iota.IotaType
-import miyucomics.hexical.utils.CastingUtils
+import miyucomics.hexical.misc.CastingUtils
 import net.minecraft.entity.LivingEntity
 import net.minecraft.item.FoodComponent
 import net.minecraft.item.Item

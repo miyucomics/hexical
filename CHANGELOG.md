@@ -22,7 +22,6 @@
 - added spell to let a circle conjure dust
 - added all variants of cooking blocks as spells
 - added Hopper spell - transport of items from almost any source to almost any other
-- added Ping Block spell - highlight a block
 - added Conjure Flower spell - conjure a flower of your choosing
 - added Illuminate spell - conjure an invisible light of your chosen strength
 - added Sparkle spell to create a sparkle ( my mod advertised in another mod!! )

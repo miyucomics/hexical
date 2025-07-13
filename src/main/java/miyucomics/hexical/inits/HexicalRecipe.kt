@@ -1,8 +1,8 @@
 package miyucomics.hexical.inits
 
 import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.recipe.TransmutingRecipe
-import miyucomics.hexical.recipe.TransmutingSerializer
+import miyucomics.hexical.features.transmutation.TransmutingRecipe
+import miyucomics.hexical.features.transmutation.TransmutingSerializer
 import net.minecraft.recipe.RecipeType
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry

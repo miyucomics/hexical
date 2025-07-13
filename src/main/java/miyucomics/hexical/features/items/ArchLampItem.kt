@@ -6,10 +6,9 @@ import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.casting.iota.NullIota
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
 import miyucomics.hexical.casting.environments.ArchLampCastEnv
-import miyucomics.hexical.features.player_state.fields.getArchLampField
+import miyucomics.hexical.features.player.fields.getArchLampField
 import miyucomics.hexical.inits.HexicalItems
 import miyucomics.hexical.inits.HexicalSounds
-import miyucomics.hexical.interfaces.GenieLamp
 import net.minecraft.client.item.ModelPredicateProviderRegistry
 import net.minecraft.entity.Entity
 import net.minecraft.entity.player.PlayerEntity
@@ -24,7 +23,7 @@ import net.minecraft.util.TypedActionResult
 import net.minecraft.world.GameMode
 import net.minecraft.world.World
 
-class ArchLampItem : ItemPackagedHex(Settings().maxCount(1).rarity(Rarity.EPIC)), GenieLamp {
+class ArchLampItem : ItemPackagedHex(Settings().maxCount(1).rarity(Rarity.EPIC)) {
 	override fun use(world: World, user: PlayerEntity, hand: Hand): TypedActionResult<ItemStack> {
 		val stack = user.getStackInHand(hand)
 		if (!hasHex(stack))

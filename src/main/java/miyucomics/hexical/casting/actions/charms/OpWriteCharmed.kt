@@ -5,7 +5,7 @@ import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.iota.Iota
 import miyucomics.hexical.casting.environments.CharmedItemCastEnv
 import miyucomics.hexical.casting.mishaps.NotCharmedItemMishap
-import miyucomics.hexical.utils.CastingUtils
+import miyucomics.hexical.misc.CastingUtils
 
 class OpWriteCharmed : ConstMediaAction {
 	override val argc = 1

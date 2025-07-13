@@ -4,7 +4,7 @@ import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster
-import miyucomics.hexical.inits.HexicalNetworking
+import miyucomics.hexical.inits.HexicalCallbacks
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
 import net.minecraft.entity.player.PlayerEntity
@@ -18,7 +18,7 @@ class OpShader(private val shader: Identifier?) : ConstMediaAction {
 			throw MishapBadCaster()
 		val packet = PacketByteBufs.create()
 		packet.writeString(shader.toString())
-		ServerPlayNetworking.send(env.castingEntity as ServerPlayerEntity, HexicalNetworking.SHADER_CHANNEL, packet)
+		ServerPlayNetworking.send(env.castingEntity as ServerPlayerEntity, HexicalCallbacks.SHADER_CHANNEL, packet)
 		return listOf()
 	}
 }

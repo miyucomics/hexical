@@ -2,7 +2,7 @@ package miyucomics.hexical.features.entities
 
 import at.petrak.hexcasting.api.HexAPI.modLoc
 import at.petrak.hexcasting.client.render.makeZappy
-import miyucomics.hexical.utils.RenderUtils
+import miyucomics.hexical.misc.RenderUtils
 import net.minecraft.client.render.*
 import net.minecraft.client.render.entity.EntityRenderer
 import net.minecraft.client.render.entity.EntityRendererFactory

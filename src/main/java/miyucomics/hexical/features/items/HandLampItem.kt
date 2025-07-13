@@ -9,7 +9,6 @@ import at.petrak.hexcasting.api.utils.serializeToNBT
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
 import miyucomics.hexical.casting.environments.HandLampCastEnv
 import miyucomics.hexical.inits.HexicalSounds
-import miyucomics.hexical.interfaces.GenieLamp
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
@@ -22,7 +21,7 @@ import net.minecraft.util.TypedActionResult
 import net.minecraft.util.UseAction
 import net.minecraft.world.World
 
-class HandLampItem : ItemPackagedHex(Settings().maxCount(1).rarity(Rarity.RARE)), GenieLamp {
+class HandLampItem : ItemPackagedHex(Settings().maxCount(1).rarity(Rarity.RARE)) {
 	override fun use(world: World, user: PlayerEntity, hand: Hand): TypedActionResult<ItemStack> {
 		val stack = user.getStackInHand(hand)
 		if (!hasHex(stack)) return TypedActionResult.fail(stack)

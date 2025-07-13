@@ -4,11 +4,14 @@ import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.casting.iota.ListIota
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
+import net.minecraft.client.item.TooltipContext
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.item.Items
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.server.world.ServerWorld
+import net.minecraft.text.Text
+import net.minecraft.util.Formatting
 import net.minecraft.util.Hand
 import net.minecraft.util.TypedActionResult
 import net.minecraft.world.World
@@ -29,7 +32,7 @@ class TchotchkeItem : ItemPackagedHex(Settings().maxCount(1)) {
 			val nbt = charmed.orCreateNbt
 			val charm = NbtCompound()
 			charm.putLong("media", getMedia(stack))
-			charm.putLong("max_media", getMedia(stack))
+			charm.putLong("max_media", getMaxMedia(stack))
 			charm.putCompound("instructions", IotaType.serialize(ListIota(getHex(stack, world as ServerWorld)!!)))
 			charm.putBoolean("left", true)
 			charm.putBoolean("right", true)
@@ -39,5 +42,9 @@ class TchotchkeItem : ItemPackagedHex(Settings().maxCount(1)) {
 			player.setStackInHand(usedHand, charmed)
 		}
 		return TypedActionResult.success(player.getStackInHand(usedHand))
+	}
+
+	override fun appendTooltip(stack: ItemStack, world: World?, lines: MutableList<Text>, advanced: TooltipContext) {
+		lines.add(Text.literal("Right-click this item to get a charmed stick before tchotchkes go away forever!! Your media will be converted safely.").formatted(Formatting.RED))
 	}
 }

@@ -1,6 +1,6 @@
 package miyucomics.hexical
 
-import miyucomics.hexical.client.AnimatedPatternTooltipComponent
+import miyucomics.hexical.misc.AnimatedPatternTooltipComponent
 import miyucomics.hexical.features.items.MediaJarItemRenderer
 import miyucomics.hexical.inits.*
 import net.fabricmc.api.ClientModInitializer
@@ -14,7 +14,7 @@ class HexicalClient : ClientModInitializer {
 		HexicalEvents.clientInit()
 		HexicalKeybinds.clientInit()
 		HexicalItems.clientInit()
-		HexicalNetworking.clientInit()
+		HexicalCallbacks.clientInit()
 		HexicalParticles.clientInit()
 		HexicalRenderLayers.clientInit()
 

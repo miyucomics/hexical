@@ -11,7 +11,7 @@ import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.utils.putCompound
 import miyucomics.hexical.inits.HexicalItems
-import miyucomics.hexical.utils.CastingUtils
+import miyucomics.hexical.misc.CastingUtils
 import net.minecraft.entity.ItemEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.Vec3d

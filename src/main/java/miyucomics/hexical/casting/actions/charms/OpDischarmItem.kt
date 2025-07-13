@@ -8,7 +8,7 @@ import at.petrak.hexcasting.api.casting.getItemEntity
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadEntity
 import at.petrak.hexcasting.api.misc.MediaConstants
-import miyucomics.hexical.utils.CharmedItemUtilities
+import miyucomics.hexical.features.charms.CharmedItemUtilities
 import net.minecraft.item.ItemStack
 
 class OpDischarmItem : SpellAction {

@@ -1,7 +1,7 @@
 package miyucomics.hexical.inits
 
-import miyucomics.hexical.features.player_state.fields.EvocationField
-import miyucomics.hexical.features.player_state.fields.KeybindField
+import miyucomics.hexical.features.player.fields.EvocationField
+import miyucomics.hexical.features.player.fields.KeybindField
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking

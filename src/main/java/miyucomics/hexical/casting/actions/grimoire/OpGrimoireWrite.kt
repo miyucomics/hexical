@@ -15,7 +15,7 @@ import at.petrak.hexcasting.api.utils.getCompound
 import at.petrak.hexcasting.api.utils.putCompound
 import miyucomics.hexical.casting.actions.grimoire.OpGrimoireIndex.Companion.populateGrimoireMetadata
 import miyucomics.hexical.inits.HexicalItems
-import miyucomics.hexical.utils.CastingUtils
+import miyucomics.hexical.misc.CastingUtils
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
 

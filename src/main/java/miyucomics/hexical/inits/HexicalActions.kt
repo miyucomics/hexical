@@ -60,7 +60,6 @@ import miyucomics.hexical.casting.actions.scroll.OpAlterScroll
 import miyucomics.hexical.casting.actions.scroll.OpColorScroll
 import miyucomics.hexical.casting.actions.specks.*
 import miyucomics.hexical.casting.actions.telepathy.*
-import miyucomics.hexical.casting.actions.vfx.OpBlockPing
 import miyucomics.hexical.casting.actions.vfx.OpConfetti
 import miyucomics.hexical.casting.actions.vfx.OpSparkle
 import miyucomics.hexical.casting.actions.wristpocket.*
@@ -207,7 +206,6 @@ object HexicalActions {
 		register("confetti", "awddeqaedd", HexDir.EAST, OpConfetti())
 		register("vibration", "wwawawwd", HexDir.EAST, OpVibrate())
 		register("sparkle", "dqa", HexDir.NORTH_EAST, OpSparkle())
-		register("block_ping", "dwwdwwdwewdwwdwwdeq", HexDir.NORTH_EAST, OpBlockPing())
 		register("crack_device", "wwaqqqqqeqdedwqeaeqwdedwqeaeq", HexDir.EAST, OpCrackDevice())
 		register("flower", "weqqqqqwaeaeaeaeaea", HexDir.NORTH_EAST, OpConjureFlower())
 		register("light", "aeaeaeaeaeawqqqqq", HexDir.SOUTH_EAST, OpConjureLight())
