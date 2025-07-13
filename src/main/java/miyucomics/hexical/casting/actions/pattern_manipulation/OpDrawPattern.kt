@@ -6,7 +6,7 @@ import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.getPattern
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.Vec3Iota
-import miyucomics.hexical.utils.RenderUtils
+import miyucomics.hexical.misc.RenderUtils
 import net.minecraft.util.math.Vec3d
 
 class OpDrawPattern : ConstMediaAction {

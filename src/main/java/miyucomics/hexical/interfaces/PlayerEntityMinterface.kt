@@ -1,7 +1,7 @@
 package miyucomics.hexical.interfaces
 
-import miyucomics.hexical.features.player_state.PlayerState
+import miyucomics.hexical.features.player.PlayerManager
 
 interface PlayerEntityMinterface {
-	fun getPlayerState(): PlayerState
+	fun getPlayerManager(): PlayerManager
 }

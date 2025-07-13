@@ -5,8 +5,8 @@ import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.api.utils.serializeToNBT
 import at.petrak.hexcasting.common.lib.HexItems
 import com.mojang.datafixers.util.Pair
-import miyucomics.hexical.features.blocks.MediaJarBlock.Companion.TransmutationResult
-import miyucomics.hexical.features.blocks.MediaJarBlock.Companion.transmuteItem
+import miyucomics.hexical.features.transmutation.TransmutationHelper
+import miyucomics.hexical.features.transmutation.TransmutationResult
 import miyucomics.hexical.inits.HexicalBlocks
 import miyucomics.hexical.inits.HexicalSounds
 import net.minecraft.block.Block
@@ -94,7 +94,7 @@ class MediaJarBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 		if (world == null)
 			return
 
-		when (val result = transmuteItem(world!!, stack, getMedia(), ::insertMedia, ::withdrawMedia)) {
+		when (val result = TransmutationHelper.transmuteItem(world!!, stack, getMedia(), ::insertMedia, ::withdrawMedia)) {
 			is TransmutationResult.AbsorbedMedia -> world!!.playSoundAtBlockCenter(pos, HexicalSounds.AMETHYST_MELT, SoundCategory.BLOCKS, 1f, 1f, true)
 			is TransmutationResult.TransmutedItems -> {
 				val outputs = result.output.toMutableList()

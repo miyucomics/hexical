@@ -8,8 +8,8 @@ import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadOffhandItem
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.inits.HexicalAdvancements
-import miyucomics.hexical.interfaces.GenieLamp
-import miyucomics.hexical.utils.CastingUtils
+import miyucomics.hexical.inits.HexicalItems
+import miyucomics.hexical.misc.CastingUtils
 import net.minecraft.item.ItemStack
 import net.minecraft.server.network.ServerPlayerEntity
 
@@ -18,7 +18,7 @@ class OpWish : SpellAction {
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val patterns = args.getList(0, argc).toList()
 		CastingUtils.assertNoTruename(args[0], env)
-		val stack = env.getHeldItemToOperateOn { stack -> stack.item is GenieLamp }
+		val stack = env.getHeldItemToOperateOn { stack -> stack.isOf(HexicalItems.HAND_LAMP_ITEM) || stack.isOf(HexicalItems.ARCH_LAMP_ITEM) }
 		if (stack == null)
 			throw MishapBadOffhandItem.of(null, "lamp")
 		return SpellAction.Result(Spell(patterns, stack.stack), 0, listOf())

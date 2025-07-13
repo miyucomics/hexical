@@ -9,7 +9,7 @@ import at.petrak.hexcasting.api.casting.mishaps.MishapBadOffhandItem
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.casting.environments.CharmedItemCastEnv
 import miyucomics.hexical.casting.mishaps.NotCharmedItemMishap
-import miyucomics.hexical.utils.CastingUtils
+import miyucomics.hexical.misc.CastingUtils
 
 class OpProxyWriteCharmed : SpellAction {
 	override val argc = 1
