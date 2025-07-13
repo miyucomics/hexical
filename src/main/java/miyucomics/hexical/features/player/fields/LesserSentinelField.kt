@@ -3,7 +3,7 @@ package miyucomics.hexical.features.player.fields
 import at.petrak.hexcasting.api.utils.asCompound
 import at.petrak.hexcasting.api.utils.asDouble
 import at.petrak.hexcasting.api.utils.putList
-import miyucomics.hexical.features.lesser_sentinel.ServerLesserSentinelPusher
+import miyucomics.hexical.features.lesser_sentinels.ServerLesserSentinelPusher
 import miyucomics.hexical.features.player.getHexicalPlayerManager
 import miyucomics.hexical.features.player.types.PlayerField
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
