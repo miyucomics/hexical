@@ -1,8 +1,8 @@
 package miyucomics.hexical
 
 import miyucomics.hexical.client.AnimatedPatternTooltipComponent
-import miyucomics.hexical.items.MediaJarItemRenderer
-import miyucomics.hexical.registry.*
+import miyucomics.hexical.features.items.MediaJarItemRenderer
+import miyucomics.hexical.inits.*
 import net.fabricmc.api.ClientModInitializer
 import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry
 import net.fabricmc.fabric.api.client.rendering.v1.TooltipComponentCallback
