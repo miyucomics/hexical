@@ -2,8 +2,8 @@ package miyucomics.hexical.mixin;
 
 import at.petrak.hexcasting.common.lib.HexSounds;
 import kotlin.Pair;
-import miyucomics.hexical.inits.HexicalCallbacks;
 import miyucomics.hexical.features.charms.CharmedItemUtilities;
+import miyucomics.hexical.inits.HexicalHooks;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.client.MinecraftClient;
@@ -54,7 +54,7 @@ public class MouseMixin {
 			PacketByteBuf buf = PacketByteBufs.create();
 			buf.writeInt(buttonPressed);
 			buf.writeInt(pair.getFirst().ordinal());
-			ClientPlayNetworking.send(HexicalCallbacks.CHARMED_ITEM_USE_CHANNEL, buf);
+			ClientPlayNetworking.send(HexicalHooks.CHARMED_ITEM_USE_CHANNEL, buf);
 			ci.cancel();
 			return;
 		}
