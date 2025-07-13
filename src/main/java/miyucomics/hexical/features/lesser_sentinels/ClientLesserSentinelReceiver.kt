@@ -1,4 +1,4 @@
-package miyucomics.hexical.features.lesser_sentinel
+package miyucomics.hexical.features.lesser_sentinels
 
 import miyucomics.hexical.inits.Hook
 import miyucomics.hexical.misc.ClientStorage

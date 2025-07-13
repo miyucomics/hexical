@@ -1,4 +1,4 @@
-package miyucomics.hexical.features.lesser_sentinel
+package miyucomics.hexical.features.lesser_sentinels
 
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import com.mojang.blaze3d.systems.RenderSystem

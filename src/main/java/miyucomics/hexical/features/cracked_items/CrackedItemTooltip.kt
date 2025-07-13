@@ -1,17 +1,13 @@
 package miyucomics.hexical.features.cracked_items
 
 import at.petrak.hexcasting.api.casting.iota.IotaType
-import at.petrak.hexcasting.api.pigment.FrozenPigment
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
 import miyucomics.hexical.inits.Hook
-import miyucomics.hexical.misc.ClientStorage
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.nbt.NbtElement
 import net.minecraft.text.Text
 import net.minecraft.util.Formatting
-import net.minecraft.util.math.Vec3d
-import java.util.function.Consumer
 
 object CrackedItemTooltip : Hook() {
 	override fun registerCallbacks() {
