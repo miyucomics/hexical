@@ -12,7 +12,7 @@ import at.petrak.hexcasting.api.utils.serializeToNBT
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import miyucomics.hexical.inits.HexicalEntities
 import miyucomics.hexical.inits.HexicalItems
-import miyucomics.hexical.utils.RenderUtils
+import miyucomics.hexical.misc.RenderUtils
 import net.minecraft.block.AbstractRedstoneGateBlock
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityDimensions

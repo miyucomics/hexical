@@ -1,6 +1,6 @@
 package miyucomics.hexical.features.blocks
 
-import miyucomics.hexical.utils.MediaJarRenderStuffs
+import miyucomics.hexical.misc.MediaJarRenderStuffs
 import net.minecraft.client.render.VertexConsumerProvider
 import net.minecraft.client.render.block.entity.BlockEntityRenderer
 import net.minecraft.client.util.math.MatrixStack

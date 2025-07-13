@@ -1,7 +1,7 @@
 package miyucomics.hexical.features.entities.specklikes
 
 import at.petrak.hexcasting.api.HexAPI.modLoc
-import miyucomics.hexical.utils.RenderUtils
+import miyucomics.hexical.misc.RenderUtils
 import net.minecraft.client.font.TextRenderer
 import net.minecraft.client.render.*
 import net.minecraft.client.render.entity.EntityRenderer

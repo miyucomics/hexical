@@ -2,14 +2,13 @@ package miyucomics.hexical.mixin;
 
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment;
 import at.petrak.hexcasting.api.casting.eval.ExecutionClientView;
-import at.petrak.hexcasting.api.casting.eval.env.PlayerBasedCastEnv;
 import at.petrak.hexcasting.api.casting.eval.sideeffects.OperatorSideEffect;
 import at.petrak.hexcasting.api.casting.eval.vm.CastingVM;
 import at.petrak.hexcasting.api.casting.iota.Iota;
 import com.llamalad7.mixinextras.sugar.Local;
-import miyucomics.hexical.features.player_state.fields.LedgerField;
-import miyucomics.hexical.features.player_state.fields.LedgerFieldKt;
-import miyucomics.hexical.utils.HexInjectionHelper;
+import miyucomics.hexical.features.player.fields.MediaLogFieldKt;
+import miyucomics.hexical.features.player.fields.MediaLogField;
+import miyucomics.hexical.misc.HexInjectionHelper;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import org.spongepowered.asm.mixin.Mixin;
@@ -34,9 +33,9 @@ public class CastingVMMixin {
 		if (sideEffect instanceof OperatorSideEffect.DoMishap) {
 			CastingVM vm = (CastingVM) (Object) this;
 			CastingEnvironment env = vm.getEnv();
-			if (!LedgerField.isEnvCompatible(env))
+			if (!MediaLogField.isEnvCompatible(env))
 				return;
-			LedgerFieldKt.getLedger((ServerPlayerEntity) env.getCastingEntity()).saveStack(vm.getImage().getStack());
+			MediaLogFieldKt.getMediaLog((ServerPlayerEntity) env.getCastingEntity()).saveStack(vm.getImage().getStack());
 		}
 	}
 }
