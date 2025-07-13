@@ -2,19 +2,15 @@ package miyucomics.hexical.features.player.fields
 
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.eval.env.PackagedItemCastEnv
-import at.petrak.hexcasting.api.casting.eval.env.PlayerBasedCastEnv
 import at.petrak.hexcasting.api.casting.eval.env.StaffCastEnv
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.api.utils.putList
 import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.casting.components.MediaLogComponent
 import miyucomics.hexical.features.player.getHexicalPlayerManager
 import miyucomics.hexical.features.player.types.PlayerField
-import miyucomics.hexical.misc.ClientStorage
 import miyucomics.hexical.misc.RingBuffer
-import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
 import net.minecraft.entity.player.PlayerEntity
@@ -80,19 +76,6 @@ class MediaLogField : PlayerField {
 
 		@JvmStatic
 		fun isEnvCompatible(env: CastingEnvironment) = env is StaffCastEnv || env is PackagedItemCastEnv
-
-		fun registerServerCallbacks() {
-			CastingEnvironment.addCreateEventListener { env: CastingEnvironment, _: NbtCompound ->
-				if (isEnvCompatible(env))
-					env.addExtension(MediaLogComponent(env as PlayerBasedCastEnv))
-			}
-		}
-
-		fun registerClientCallbacks() {
-			ClientPlayNetworking.registerGlobalReceiver(MEDIA_LOG_CHANNEL) { _, _, packet, _ ->
-				ClientStorage.mediaLog = MediaLogField().also { it.fromNbt(packet.readNbt()!!) }
-			}
-		}
 	}
 }
 
