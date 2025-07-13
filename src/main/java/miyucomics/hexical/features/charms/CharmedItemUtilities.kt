@@ -2,16 +2,10 @@ package miyucomics.hexical.features.charms
 
 import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.casting.iota.ListIota
-import at.petrak.hexcasting.api.misc.MediaConstants
-import at.petrak.hexcasting.api.utils.mediaBarColor
-import at.petrak.hexcasting.common.items.magic.ItemMediaHolder
-import miyucomics.hexical.misc.RenderUtils
-import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.server.world.ServerWorld
-import net.minecraft.text.Text
 import net.minecraft.text.TextColor
 import net.minecraft.util.Hand
 
