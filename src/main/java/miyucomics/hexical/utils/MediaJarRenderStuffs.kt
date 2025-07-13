@@ -1,6 +1,6 @@
 package miyucomics.hexical.utils
 
-import miyucomics.hexical.registry.HexicalRenderLayers
+import miyucomics.hexical.inits.HexicalRenderLayers
 import net.minecraft.client.render.VertexConsumer
 import net.minecraft.client.render.VertexConsumerProvider
 import net.minecraft.client.util.math.MatrixStack
