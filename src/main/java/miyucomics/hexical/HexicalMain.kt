@@ -19,7 +19,7 @@ class HexicalMain : ModInitializer {
 		HexicalPotions.init()
 		HexicalRecipe.init()
 		HexicalSounds.init()
-		HexicalNetworking.serverInit()
+		HexicalCallbacks.serverInit()
 	}
 
 	companion object {

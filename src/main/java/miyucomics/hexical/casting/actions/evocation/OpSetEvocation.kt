@@ -13,11 +13,11 @@ import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster
 import at.petrak.hexcasting.api.misc.MediaConstants
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.casting.environments.EvocationCastEnv
-import miyucomics.hexical.features.player_state.fields.evocation
-import miyucomics.hexical.features.player_state.fields.evocationDuration
+import miyucomics.hexical.features.player.fields.evocation
+import miyucomics.hexical.features.player.fields.evocationDuration
 import miyucomics.hexical.inits.HexicalAdvancements
 import miyucomics.hexical.inits.HexicalSounds
-import miyucomics.hexical.utils.CastingUtils
+import miyucomics.hexical.misc.CastingUtils
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld

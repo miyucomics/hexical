@@ -1,18 +1,15 @@
 package miyucomics.hexical.features.blocks
 
 import at.petrak.hexcasting.api.misc.MediaConstants
-import at.petrak.hexcasting.api.utils.isMediaItem
-import at.petrak.hexcasting.xplat.IXplatAbstractions
+import miyucomics.hexical.features.transmutation.TransmutationHelper
+import miyucomics.hexical.features.transmutation.TransmutationResult
 import miyucomics.hexical.inits.HexicalBlocks
-import miyucomics.hexical.inits.HexicalRecipe
 import miyucomics.hexical.inits.HexicalSounds
-import miyucomics.hexical.recipe.TransmutingRecipe
 import net.minecraft.block.*
 import net.minecraft.entity.ItemEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.fluid.FluidState
 import net.minecraft.fluid.Fluids
-import net.minecraft.inventory.SimpleInventory
 import net.minecraft.item.ItemPlacementContext
 import net.minecraft.item.ItemStack
 import net.minecraft.sound.BlockSoundGroup
@@ -69,7 +66,7 @@ class MediaJarBlock : Block(
 		val stack = player.getStackInHand(hand)
 		player.swingHand(hand)
 
-		return when (val result = transmuteItem(world, stack, jar.getMedia(), jar::insertMedia, jar::withdrawMedia)) {
+		return when (val result = TransmutationHelper.transmuteItem(world, stack, jar.getMedia(), jar::insertMedia, jar::withdrawMedia)) {
 			is TransmutationResult.AbsorbedMedia -> {
 				world.playSoundFromEntity(null, player, HexicalSounds.AMETHYST_MELT, SoundCategory.BLOCKS, 1f, 1f)
 				ActionResult.SUCCESS
@@ -102,37 +99,5 @@ class MediaJarBlock : Block(
 	companion object {
 		val WATERLOGGED: BooleanProperty = Properties.WATERLOGGED
 		const val MAX_CAPACITY = MediaConstants.CRYSTAL_UNIT * 64
-
-		private fun getRecipe(input: ItemStack, world: World): TransmutingRecipe? {
-			world.recipeManager.listAllOfType(HexicalRecipe.TRANSMUTING_RECIPE).forEach { recipe ->
-				if (recipe.matches(SimpleInventory(input), world))
-					return recipe
-			}
-			return null
-		}
-
-		fun transmuteItem(world: World, stack: ItemStack, media: Long, insertMedia: (Long) -> Long, withdrawMedia: (Long) -> Boolean): TransmutationResult {
-			if (isMediaItem(stack) && media < MAX_CAPACITY) {
-				val mediaHolder = IXplatAbstractions.INSTANCE.findMediaHolder(stack)!!
-				val consumed = insertMedia(mediaHolder.media)
-				mediaHolder.withdrawMedia(consumed, false)
-				return TransmutationResult.AbsorbedMedia
-			}
-
-			val recipe = getRecipe(stack, world)
-			if (recipe != null && media >= recipe.cost) {
-				stack.decrement(1)
-				withdrawMedia(recipe.cost)
-				return TransmutationResult.TransmutedItems(recipe.output.map { it.copy() })
-			}
-
-			return TransmutationResult.Pass
-		}
-
-		sealed class TransmutationResult {
-			object AbsorbedMedia : TransmutationResult()
-			object Pass : TransmutationResult()
-			data class TransmutedItems(val output: List<ItemStack>) : TransmutationResult()
-		}
 	}
 }

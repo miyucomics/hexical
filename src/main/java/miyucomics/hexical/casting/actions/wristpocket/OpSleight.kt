@@ -12,7 +12,7 @@ import at.petrak.hexcasting.api.casting.iota.Vec3Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.misc.MediaConstants
 import miyucomics.hexical.casting.mishaps.NeedsWristpocketMishap
-import miyucomics.hexical.utils.WristpocketUtils
+import miyucomics.hexical.misc.WristpocketUtils
 import net.minecraft.entity.ItemEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.Vec3d
