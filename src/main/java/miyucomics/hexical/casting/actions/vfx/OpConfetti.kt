@@ -10,10 +10,7 @@ import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.Vec3Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.misc.MediaConstants
-import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.inits.HexicalHooks
-import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
-import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
+import miyucomics.hexical.features.confetti.ConfettiHelper
 import net.minecraft.util.math.Vec3d
 
 class OpConfetti : SpellAction {
@@ -40,16 +37,7 @@ class OpConfetti : SpellAction {
 
 	private data class Spell(val pos: Vec3d, val dir: Vec3d, val speed: Double) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			val packet = PacketByteBufs.create()
-			packet.writeLong(HexicalMain.RANDOM.nextLong())
-			packet.writeDouble(pos.x)
-			packet.writeDouble(pos.y)
-			packet.writeDouble(pos.z)
-			packet.writeDouble(dir.x)
-			packet.writeDouble(dir.y)
-			packet.writeDouble(dir.z)
-			packet.writeDouble(speed)
-			env.world.players.forEach { player -> env.world.sendToPlayerIfNearby(player, false, pos.x, pos.y, pos.z, ServerPlayNetworking.createS2CPacket(HexicalHooks.CONFETTI_CHANNEL, packet)) }
+			ConfettiHelper.spawn(env.world, pos, dir, speed)
 		}
 	}
 }

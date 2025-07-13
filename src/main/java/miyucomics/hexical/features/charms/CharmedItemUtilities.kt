@@ -60,19 +60,4 @@ object CharmedItemUtilities {
 	fun getHex(stack: ItemStack, world: ServerWorld) = (IotaType.deserialize(getCompound(stack).getCompound("instructions"), world) as ListIota).list.toList()
 	fun getMedia(stack: ItemStack) = getCompound(stack).getLong("media")
 	fun getMaxMedia(stack: ItemStack) = getCompound(stack).getLong("max_media")
-
-	fun registerClientCallbacks() {
-		ItemTooltipCallback.EVENT.register { stack, _, lines ->
-			if (!isStackCharmed(stack))
-				return@register
-			val media = getMedia(stack)
-			val maxMedia = getMaxMedia(stack)
-			lines.add(Text.translatable("hexical.charmed").styled { style -> style.withColor(CHARMED_COLOR) })
-			lines.add(Text.translatable("hexcasting.tooltip.media_amount.advanced",
-				Text.literal(RenderUtils.DUST_AMOUNT.format((media / MediaConstants.DUST_UNIT.toFloat()).toDouble())).styled { style -> style.withColor(ItemMediaHolder.HEX_COLOR) },
-				Text.translatable("hexcasting.tooltip.media", RenderUtils.DUST_AMOUNT.format((maxMedia / MediaConstants.DUST_UNIT.toFloat()).toDouble())).styled { style -> style.withColor(ItemMediaHolder.HEX_COLOR) },
-				Text.literal(RenderUtils.PERCENTAGE.format((100f * media / maxMedia).toDouble()) + "%").styled { style -> style.withColor(TextColor.fromRgb(mediaBarColor(media, maxMedia))) }
-			))
-		}
-	}
 }
