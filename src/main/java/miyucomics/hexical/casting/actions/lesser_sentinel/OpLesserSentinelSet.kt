@@ -8,7 +8,8 @@ import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.Vec3Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
-import miyucomics.hexical.features.player.fields.getLesserSentinels
+import miyucomics.hexical.features.player.fields.currentLesserSentinels
+import miyucomics.hexical.features.player.fields.syncLesserSentinels
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.math.Vec3d
 
@@ -27,9 +28,9 @@ class OpLesserSentinelSet : SpellAction {
 
 	private data class Spell(val pos: List<Vec3d>) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			val lesserSentinels = (env.castingEntity as ServerPlayerEntity).getLesserSentinels()
-			lesserSentinels.getCurrentInstance(env.castingEntity as ServerPlayerEntity).lesserSentinels = pos.toMutableList()
-			lesserSentinels.syncToClient(env.castingEntity as ServerPlayerEntity)
+			val caster = (env.castingEntity as ServerPlayerEntity)
+			caster.currentLesserSentinels = pos.toMutableList()
+			caster.syncLesserSentinels()
 		}
 	}
 }

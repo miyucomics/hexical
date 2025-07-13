@@ -1,32 +1,31 @@
 package miyucomics.hexical.features.player.tickers
 
-import at.petrak.hexcasting.api.utils.putCompound
+import at.petrak.hexcasting.api.casting.eval.vm.CastingImage
+import at.petrak.hexcasting.api.casting.eval.vm.CastingVM
+import at.petrak.hexcasting.api.casting.iota.IotaType
+import at.petrak.hexcasting.api.casting.iota.ListIota
 import at.petrak.hexcasting.xplat.IXplatAbstractions
-import dev.kosmx.playerAnim.api.layered.KeyframeAnimationPlayer
-import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationRegistry
 import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.casting.actions.evocation.OpSetEvocation
-import miyucomics.hexical.misc.PlayerAnimations
-import miyucomics.hexical.features.player.PlayerField
-import miyucomics.hexical.features.player.PlayerTicker
-import miyucomics.hexical.features.player.getHexicalPlayerManager
+import miyucomics.hexical.casting.environments.EvocationCastEnv
+import miyucomics.hexical.features.player.fields.evocation
+import miyucomics.hexical.features.player.fields.evocationActive
+import miyucomics.hexical.features.player.fields.evocationDuration
+import miyucomics.hexical.features.player.types.PlayerTicker
+import miyucomics.hexical.inits.HexicalAdvancements
 import miyucomics.hexical.inits.HexicalSounds
 import miyucomics.hexical.misc.CastingUtils
-import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
-import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
-import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
 import net.minecraft.entity.player.PlayerEntity
-import net.minecraft.nbt.NbtCompound
 import net.minecraft.particle.ParticleTypes
 import net.minecraft.server.network.ServerPlayerEntity
+import net.minecraft.server.world.ServerWorld
 import net.minecraft.sound.SoundCategory
-import net.minecraft.util.Identifier
+import net.minecraft.util.Hand
 import net.minecraft.util.math.ColorHelper
 import net.minecraft.util.math.MathHelper
 
 class EvocationTicker : PlayerTicker {
 	override fun tick(player: PlayerEntity) {
-		if (player.world.isClient && this.active) {
+		if (player.world.isClient && player.evocationActive) {
 			val rot = player.bodyYaw * (Math.PI.toFloat() / 180) + MathHelper.cos(player.age.toFloat() * 0.6662f) * 0.25f
 			val cos = MathHelper.cos(rot)
 			val sin = MathHelper.sin(rot)
@@ -40,9 +39,20 @@ class EvocationTicker : PlayerTicker {
 
 		if (player.world.isClient)
 			return
-		if (this.active)
-			this.duration -= 1
-		if (this.active && this.duration == 0 && CastingUtils.isEnlightened(player as ServerPlayerEntity))
-			OpSetEvocation.evoke(player)
+
+		if (player.evocationActive)
+			player.evocationDuration -= 1
+
+		if (player.evocationActive && player.evocationDuration == 0 && CastingUtils.isEnlightened(player as ServerPlayerEntity)) {
+			player.incrementStat(HexicalAdvancements.EVOCATION_STATISTIC)
+			player.evocationDuration = HexicalMain.EVOKE_DURATION
+			val hex = IotaType.deserialize(player.evocation, player.world as ServerWorld)
+			if (hex is ListIota) {
+				val hand = if(!player.getStackInHand(Hand.MAIN_HAND).isEmpty && player.getStackInHand(Hand.OFF_HAND).isEmpty){ Hand.OFF_HAND } else { Hand.MAIN_HAND }
+				val vm = CastingVM(CastingImage(), EvocationCastEnv(player, hand))
+				vm.queueExecuteAndWrapIotas(hex.list.toList(), player.serverWorld)
+				player.world.playSound(null, player.x, player.y, player.z, HexicalSounds.EVOKING_CAST, SoundCategory.PLAYERS, 1f, 1f)
+			}
+		}
 	}
 }
