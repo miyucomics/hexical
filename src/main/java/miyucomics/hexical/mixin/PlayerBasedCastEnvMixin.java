@@ -5,9 +5,10 @@ import at.petrak.hexcasting.api.casting.eval.env.PlayerBasedCastEnv;
 import at.petrak.hexcasting.api.casting.eval.sideeffects.OperatorSideEffect;
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
-import miyucomics.hexical.data.LedgerData;
-import miyucomics.hexical.registry.HexicalItems;
-import miyucomics.hexical.registry.HexicalPotions;
+import miyucomics.hexical.features.player_state.fields.LedgerField;
+import miyucomics.hexical.features.player_state.fields.LedgerFieldKt;
+import miyucomics.hexical.inits.HexicalItems;
+import miyucomics.hexical.inits.HexicalPotions;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
@@ -32,7 +33,7 @@ public class PlayerBasedCastEnvMixin {
 	@Inject(method = "sendMishapMsgToPlayer(Lat/petrak/hexcasting/api/casting/eval/sideeffects/OperatorSideEffect$DoMishap;)V", at = @At("HEAD"))
 	private void captureMishap(OperatorSideEffect.DoMishap mishap, CallbackInfo ci) {
 		Text message = mishap.getMishap().errorMessageWithName((CastingEnvironment) (Object) this, mishap.getErrorCtx());
-		if (message != null)
-			LedgerData.getLedger(caster).saveMishap(message);
+		if (message != null && LedgerField.isEnvCompatible((CastingEnvironment) (Object) this))
+			LedgerFieldKt.getLedger(caster).saveMishap(message);
 	}
 }

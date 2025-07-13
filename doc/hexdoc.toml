@@ -37,7 +37,7 @@ _pattern_regex = { "!Raw" = 'register\("(?P<name>[^"]+)"?,\s"(?P<signature>[qwea
 "hexical:media_jar" = { texture="hexical:textures/item/media_jar.png" }
 
 [[extra.hexcasting.pattern_stubs]]
-path = "{^^^_common.package}/registry/HexicalActions.kt"
+path = "{^^^_common.package}/inits/HexicalActions.kt"
 regex = "{^_pattern_regex}"
 
 [_common]
