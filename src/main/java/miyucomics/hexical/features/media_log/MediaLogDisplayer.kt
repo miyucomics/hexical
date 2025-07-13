@@ -1,12 +1,6 @@
 package miyucomics.hexical.features.media_log
 
-import at.petrak.hexcasting.client.render.HexPatternLike
-import at.petrak.hexcasting.client.render.HexPatternPoints
-import at.petrak.hexcasting.client.render.VCDrawHelper
-import at.petrak.hexcasting.client.render.WorldlyPatternRenderHelpers
-import at.petrak.hexcasting.client.render.drawLineSeq
-import at.petrak.hexcasting.client.render.findDupIndices
-import at.petrak.hexcasting.client.render.makeZappy
+import at.petrak.hexcasting.client.render.*
 import com.mojang.blaze3d.systems.RenderSystem
 import miyucomics.hexical.misc.ClientStorage
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents

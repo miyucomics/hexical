@@ -1,8 +1,8 @@
 package miyucomics.hexical.features.player.fields
 
 import at.petrak.hexcasting.api.utils.serializeToNBT
-import miyucomics.hexical.features.player.PlayerField
 import miyucomics.hexical.features.player.getHexicalPlayerManager
+import miyucomics.hexical.features.player.types.PlayerField
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound

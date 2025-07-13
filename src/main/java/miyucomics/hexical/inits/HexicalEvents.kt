@@ -5,12 +5,11 @@ import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.pigment.FrozenPigment
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
 import miyucomics.hexical.casting.components.SentinelBedComponent
-import miyucomics.hexical.misc.ClientStorage
-import miyucomics.hexical.misc.ShaderRenderer
 import miyucomics.hexical.features.charms.CharmedItemUtilities
 import miyucomics.hexical.features.player.fields.MediaLogField
-import miyucomics.hexical.features.player.fields.LesserSentinelField
 import miyucomics.hexical.features.player.getHexicalPlayerManager
+import miyucomics.hexical.misc.ClientStorage
+import miyucomics.hexical.misc.ShaderRenderer
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents
@@ -24,7 +23,6 @@ import java.util.function.Consumer
 
 object HexicalEvents {
 	fun init() {
-		LesserSentinelField.registerServerCallbacks()
 		MediaLogField.registerServerCallbacks()
 
 		CastingEnvironment.addCreateEventListener { env: CastingEnvironment, _: NbtCompound ->

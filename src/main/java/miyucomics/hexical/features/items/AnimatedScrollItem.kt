@@ -8,9 +8,9 @@ import at.petrak.hexcasting.common.blocks.akashic.BlockEntityAkashicBookshelf
 import at.petrak.hexcasting.common.lib.HexBlocks
 import at.petrak.hexcasting.common.lib.HexSounds
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
+import miyucomics.hexical.features.entities.AnimatedScrollEntity
 import miyucomics.hexical.misc.AnimatedPatternTooltip
 import miyucomics.hexical.misc.ClientStorage
-import miyucomics.hexical.features.entities.AnimatedScrollEntity
 import net.minecraft.client.item.TooltipData
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.Item

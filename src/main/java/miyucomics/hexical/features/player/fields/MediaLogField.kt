@@ -10,8 +10,8 @@ import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.api.utils.putList
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.casting.components.MediaLogComponent
-import miyucomics.hexical.features.player.PlayerField
 import miyucomics.hexical.features.player.getHexicalPlayerManager
+import miyucomics.hexical.features.player.types.PlayerField
 import miyucomics.hexical.misc.ClientStorage
 import miyucomics.hexical.misc.RingBuffer
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking

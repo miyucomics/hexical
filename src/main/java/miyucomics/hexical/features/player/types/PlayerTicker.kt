@@ -1,7 +1,6 @@
-package miyucomics.hexical.features.player
+package miyucomics.hexical.features.player.types
 
 import net.minecraft.entity.player.PlayerEntity
-import net.minecraft.nbt.NbtCompound
 
 interface PlayerTicker {
 	fun tick(player: PlayerEntity) {}

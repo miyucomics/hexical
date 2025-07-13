@@ -6,7 +6,7 @@ import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.Vec3Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster
-import miyucomics.hexical.features.player.fields.getLesserSentinels
+import miyucomics.hexical.features.player.fields.currentLesserSentinels
 import net.minecraft.server.network.ServerPlayerEntity
 
 class OpLesserSentinelGet : ConstMediaAction {
@@ -15,6 +15,6 @@ class OpLesserSentinelGet : ConstMediaAction {
 		if (env.castingEntity !is ServerPlayerEntity)
 			throw MishapBadCaster()
 		val caster = env.castingEntity as ServerPlayerEntity
-		return caster.getLesserSentinels().getCurrentInstance(caster).lesserSentinels.map { Vec3Iota(it) }.asActionResult
+		return caster.currentLesserSentinels.map { Vec3Iota(it) }.asActionResult
 	}
 }

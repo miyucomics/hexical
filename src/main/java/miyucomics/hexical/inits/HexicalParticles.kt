@@ -1,7 +1,9 @@
 package miyucomics.hexical.inits
 
 import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.features.particles.*
+import miyucomics.hexical.features.particles.ConfettiParticle
+import miyucomics.hexical.features.particles.SparkleParticle
+import miyucomics.hexical.features.particles.SparkleParticleEffect
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry
 import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes
 import net.minecraft.particle.DefaultParticleType

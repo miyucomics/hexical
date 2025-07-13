@@ -5,13 +5,10 @@ import at.petrak.hexcasting.api.casting.eval.vm.CastingImage
 import at.petrak.hexcasting.api.casting.eval.vm.CastingVM
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.casting.environments.CharmedItemCastEnv
-import miyucomics.hexical.misc.ShaderRenderer
-import miyucomics.hexical.features.player.fields.EvocationField
-import miyucomics.hexical.features.player.fields.KeybindField
-import miyucomics.hexical.features.player.fields.MediaLogField
-import miyucomics.hexical.features.player.fields.LesserSentinelField
 import miyucomics.hexical.features.charms.CharmedItemUtilities
 import miyucomics.hexical.features.media_log.MediaLogDisplayer
+import miyucomics.hexical.features.player.fields.MediaLogField
+import miyucomics.hexical.misc.ShaderRenderer
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
 import net.minecraft.sound.SoundCategory
@@ -21,7 +18,7 @@ import net.minecraft.util.Identifier
 import net.minecraft.util.math.Vec3d
 import kotlin.random.Random
 
-object HexicalCallbacks {
+object HexicalHooks {
 	@JvmField
 	val CHARMED_ITEM_USE_CHANNEL: Identifier = HexicalMain.id("charmed_item")
 	val CONFETTI_CHANNEL: Identifier = HexicalMain.id("confetti")
@@ -37,15 +34,9 @@ object HexicalCallbacks {
 				vm.queueExecuteAndWrapIotas(CharmedItemUtilities.getHex(stack, player.serverWorld), player.serverWorld)
 			}
 		}
-
-		EvocationField.registerServerCallbacks()
-		KeybindField.registerServerCallbacks()
 	}
 
 	fun clientInit() {
-		EvocationField.registerClientCallbacks()
-		KeybindField.registerClientCallbacks()
-		LesserSentinelField.registerClientCallbacks()
 		MediaLogField.registerClientCallbacks()
 		MediaLogDisplayer.registerClientCallbacks()
 
