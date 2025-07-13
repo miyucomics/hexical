@@ -1,7 +1,7 @@
 package miyucomics.hexical.features.items
 
-import miyucomics.hexical.misc.ClientStorage
 import miyucomics.hexical.features.player.fields.syncMediaLog
+import miyucomics.hexical.misc.ClientStorage
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.Item

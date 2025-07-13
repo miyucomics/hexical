@@ -1,7 +1,10 @@
 package miyucomics.hexical.features.player
 
 import miyucomics.hexical.features.player.fields.*
-import miyucomics.hexical.features.player.fields.MediaLogField
+import miyucomics.hexical.features.player.tickers.EvocationTicker
+import miyucomics.hexical.features.player.tickers.KeybindTicker
+import miyucomics.hexical.features.player.types.PlayerField
+import miyucomics.hexical.features.player.types.PlayerTicker
 import miyucomics.hexical.interfaces.PlayerEntityMinterface
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.nbt.NbtCompound
@@ -10,8 +13,11 @@ import kotlin.reflect.KClass
 class PlayerManager {
 	@Suppress("UNCHECKED_CAST")
 	fun <T : PlayerField> get(clazz: KClass<T>): T { return fields[clazz] as? T ?: error("No field registered for $clazz") }
-	private fun registerField(field: PlayerField) { fields[field::class] = field }
 	private val fields = mutableMapOf<KClass<out PlayerField>, PlayerField>()
+	private fun registerField(field: PlayerField) { fields[field::class] = field }
+
+	private val tickers = mutableListOf<PlayerTicker>()
+	private fun registerTicker(ticker: PlayerTicker) { tickers.add(ticker) }
 
 	init {
 		registerField(ArchLampField())
@@ -20,11 +26,14 @@ class PlayerManager {
 		registerField(MediaLogField())
 		registerField(LesserSentinelField())
 		registerField(WristpocketField())
+
+		registerTicker(EvocationTicker())
+		registerTicker(KeybindTicker())
 	}
 
 	fun tick(player: PlayerEntity) {
-		for (field in fields.values)
-			field.tick(player)
+		for (ticker in tickers)
+			ticker.tick(player)
 	}
 
 	fun readNbt(compound: NbtCompound) {

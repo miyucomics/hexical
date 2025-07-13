@@ -3,8 +3,8 @@ package miyucomics.hexical.features.player.fields
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.api.utils.serializeToNBT
 import at.petrak.hexcasting.api.utils.vecFromNBT
-import miyucomics.hexical.features.player.PlayerField
 import miyucomics.hexical.features.player.getHexicalPlayerManager
+import miyucomics.hexical.features.player.types.PlayerField
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.util.math.Vec3d

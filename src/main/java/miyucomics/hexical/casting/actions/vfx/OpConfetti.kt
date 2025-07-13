@@ -11,7 +11,7 @@ import at.petrak.hexcasting.api.casting.iota.Vec3Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.misc.MediaConstants
 import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.inits.HexicalCallbacks
+import miyucomics.hexical.inits.HexicalHooks
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
 import net.minecraft.util.math.Vec3d
@@ -49,7 +49,7 @@ class OpConfetti : SpellAction {
 			packet.writeDouble(dir.y)
 			packet.writeDouble(dir.z)
 			packet.writeDouble(speed)
-			env.world.players.forEach { player -> env.world.sendToPlayerIfNearby(player, false, pos.x, pos.y, pos.z, ServerPlayNetworking.createS2CPacket(HexicalCallbacks.CONFETTI_CHANNEL, packet)) }
+			env.world.players.forEach { player -> env.world.sendToPlayerIfNearby(player, false, pos.x, pos.y, pos.z, ServerPlayNetworking.createS2CPacket(HexicalHooks.CONFETTI_CHANNEL, packet)) }
 		}
 	}
 }
