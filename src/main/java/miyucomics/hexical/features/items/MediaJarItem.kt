@@ -56,6 +56,10 @@ class MediaJarItem : BlockItem(HexicalBlocks.MEDIA_JAR_BLOCK, Settings().maxCoun
 				output.forEach(player::giveItemStack)
 				true
 			}
+			is TransmutationResult.RefilledPhial -> {
+				world.playSound(player.x, player.y, player.z, HexicalSounds.ITEM_DUNKS, SoundCategory.BLOCKS, 1f, 1f, true)
+				true
+			}
 			is TransmutationResult.Pass -> false
 		}
 	}

@@ -13,7 +13,7 @@ import net.minecraft.entity.LivingEntity
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.util.math.Vec3d
 
-class OpConjureProjectile(val cost: Long, private val instantiate: (world: ServerWorld, position: Vec3d, caster: LivingEntity?) -> Entity) : SpellAction {
+class OpConjureEntity(val cost: Long, private val instantiate: (world: ServerWorld, position: Vec3d, caster: LivingEntity?) -> Entity) : SpellAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val position = args.getVec3(0, argc)
