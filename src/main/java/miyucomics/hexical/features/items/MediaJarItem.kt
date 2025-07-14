@@ -56,7 +56,7 @@ class MediaJarItem : BlockItem(HexicalBlocks.MEDIA_JAR_BLOCK, Settings().maxCoun
 				output.forEach(player::giveItemStack)
 				true
 			}
-			is TransmutationResult.RefilledPhial -> {
+			is TransmutationResult.RefilledHolder -> {
 				world.playSound(player.x, player.y, player.z, HexicalSounds.ITEM_DUNKS, SoundCategory.BLOCKS, 1f, 1f, true)
 				true
 			}
@@ -65,8 +65,8 @@ class MediaJarItem : BlockItem(HexicalBlocks.MEDIA_JAR_BLOCK, Settings().maxCoun
 	}
 
 	companion object {
-		private fun getMedia(jarData: NbtCompound) = jarData.getLong("media")
-		private fun setMedia(jarData: NbtCompound, media: Long) {
+		fun getMedia(jarData: NbtCompound) = jarData.getLong("media")
+		fun setMedia(jarData: NbtCompound, media: Long) {
 			jarData.putLong("media", max(min(media, MediaJarBlock.MAX_CAPACITY), 0))
 		}
 

@@ -3,7 +3,9 @@ package miyucomics.hexical.features.transmutation
 import at.petrak.hexcasting.api.utils.isMediaItem
 import at.petrak.hexcasting.common.lib.HexItems
 import at.petrak.hexcasting.xplat.IXplatAbstractions
-import miyucomics.hexical.features.blocks.MediaJarBlock.Companion.MAX_CAPACITY
+import miyucomics.hexical.features.blocks.MediaJarBlock
+import miyucomics.hexical.features.items.MediaJarItem
+import miyucomics.hexical.inits.HexicalBlocks
 import miyucomics.hexical.inits.HexicalRecipe
 import net.minecraft.inventory.SimpleInventory
 import net.minecraft.item.ItemStack
@@ -17,10 +19,18 @@ object TransmutationHelper {
 			val given = min(mediaHolder.maxMedia - mediaHolder.media, media)
 			mediaHolder.insertMedia(given, false)
 			withdrawMedia(given)
-			return TransmutationResult.RefilledPhial
+			return TransmutationResult.RefilledHolder
 		}
 
-		if (isMediaItem(stack) && media < MAX_CAPACITY) {
+		if (stack.isOf(HexicalBlocks.MEDIA_JAR_ITEM) && stack.hasNbt() && stack.nbt!!.contains("BlockEntityTag")) {
+			val jarData = stack.nbt!!.getCompound("BlockEntityTag")
+			val given = min(MediaJarBlock.MAX_CAPACITY - MediaJarItem.getMedia(jarData), media)
+			MediaJarItem.insertMedia(jarData, given)
+			withdrawMedia(given)
+			return TransmutationResult.RefilledHolder
+		}
+
+		if (isMediaItem(stack) && media < MediaJarBlock.MAX_CAPACITY) {
 			val mediaHolder = IXplatAbstractions.INSTANCE.findMediaHolder(stack)!!
 			val consumed = insertMedia(mediaHolder.media)
 			mediaHolder.withdrawMedia(consumed, false)
@@ -49,6 +59,6 @@ object TransmutationHelper {
 sealed class TransmutationResult {
 	object AbsorbedMedia : TransmutationResult()
 	object Pass : TransmutationResult()
-	object RefilledPhial : TransmutationResult()
+	object RefilledHolder : TransmutationResult()
 	data class TransmutedItems(val output: List<ItemStack>) : TransmutationResult()
 }
