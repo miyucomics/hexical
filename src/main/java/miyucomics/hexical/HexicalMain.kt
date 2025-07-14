@@ -1,6 +1,6 @@
 package miyucomics.hexical
 
-import miyucomics.hexical.registry.*
+import miyucomics.hexical.inits.*
 import net.fabricmc.api.ModInitializer
 import net.minecraft.util.Identifier
 import net.minecraft.util.math.random.Random
@@ -12,14 +12,14 @@ class HexicalMain : ModInitializer {
 		HexicalBlocks.init()
 		HexicalData.init()
 		HexicalEntities.init()
-		HexicalEvents.init()
 		HexicalIota.init()
 		HexicalItems.init()
 		HexicalParticles.init()
 		HexicalPotions.init()
 		HexicalRecipe.init()
 		HexicalSounds.init()
-		HexicalNetworking.serverInit()
+
+		HexicalHooksServer.init()
 	}
 
 	companion object {
