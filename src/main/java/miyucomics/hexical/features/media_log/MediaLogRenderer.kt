@@ -24,8 +24,8 @@ object MediaLogRenderer : Hook() {
 		}
 
 		HudRenderCallback.EVENT.register { context, tickDelta ->
-			val progress = ClientStorage.fadingInLogTweener / FADE_IN_DURATION.toFloat()
-			context.drawTextWithShadow(MinecraftClient.getInstance().textRenderer, progress.toString(), context.scaledWindowWidth / 2, context.scaledWindowHeight / 2, 0xff_ff0000.toInt())
+//			val progress = ClientStorage.fadingInLogTweener / FADE_IN_DURATION.toFloat()
+//			context.drawTextWithShadow(MinecraftClient.getInstance().textRenderer, progress.toString(), context.scaledWindowWidth / 2, context.scaledWindowHeight / 2, 0xff_ff0000.toInt())
 
 //			val mishapAlpha = MathHelper.clamp((progress / 0.2f), 0f, 1f)
 //			drawMishapText(mishapAlpha)
