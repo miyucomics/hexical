@@ -9,7 +9,6 @@ import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.util.math.ColorHelper
-import net.minecraft.util.math.MathHelper
 import kotlin.math.max
 import kotlin.math.min
 
