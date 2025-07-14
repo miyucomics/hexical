@@ -76,7 +76,7 @@ class MediaJarBlock : Block(
 				result.output.forEach(player::giveItemStack)
 				ActionResult.SUCCESS
 			}
-			is TransmutationResult.RefilledPhial -> {
+			is TransmutationResult.RefilledHolder -> {
 				world.playSound(null, pos, HexicalSounds.ITEM_DUNKS, SoundCategory.BLOCKS, 1f, 1f)
 				ActionResult.SUCCESS
 			}
