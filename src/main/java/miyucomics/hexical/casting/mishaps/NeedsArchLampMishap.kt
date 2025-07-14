@@ -1,6 +1,5 @@
 package miyucomics.hexical.casting.mishaps
 
-import at.petrak.hexcasting.api.casting.ParticleSpray
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.Mishap
@@ -9,9 +8,10 @@ import miyucomics.hexical.HexicalMain
 import net.minecraft.text.Text
 import net.minecraft.util.DyeColor
 
-class MagicMissileMishap : Mishap() {
+class NeedsArchLampMishap : Mishap() {
 	override fun accentColor(env: CastingEnvironment, errorCtx: Context): FrozenPigment = dyeColor(DyeColor.RED)
-	override fun particleSpray(env: CastingEnvironment) = ParticleSpray.burst(env.mishapSprayPos(), 1.0)
-	override fun errorMessage(env: CastingEnvironment, errorCtx: Context): Text = error(HexicalMain.MOD_ID + ":magic_missile_coordinates")
-	override fun execute(env: CastingEnvironment, errorCtx: Context, stack: MutableList<Iota>) {}
+	override fun errorMessage(env: CastingEnvironment, errorCtx: Context): Text = error(HexicalMain.MOD_ID + ":active_arch_lamp")
+	override fun execute(env: CastingEnvironment, errorCtx: Context, stack: MutableList<Iota>) {
+		env.mishapEnvironment.dropHeldItems()
+	}
 }
