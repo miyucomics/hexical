@@ -2,7 +2,7 @@
 	"name": "hexical.page.arch_lamps.title",
 	"icon": "hexical:arch_lamp",
 	"category": "hexcasting:lamp",
-	"advancement": "hexical:arch_lamp",
+	"advancement": "hexical:acquire_arch_lamp",
 	"sortnum": 2,
 	"pages": [
 		{
@@ -12,10 +12,6 @@
 		{
 			"type": "patchouli:text",
 			"text": "hexical.page.arch_lamps.1"
-		},
-		{
-			"type": "patchouli:text",
-			"text": "hexical.page.arch_lamps.2"
 		},
 		{
 			"type": "hexcasting:pattern",

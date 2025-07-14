@@ -6,6 +6,7 @@ import miyucomics.hexical.inits.Hook
 import miyucomics.hexical.misc.ClientStorage
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback
+import net.minecraft.client.MinecraftClient
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.util.math.ColorHelper
 import net.minecraft.util.math.MathHelper
@@ -25,27 +26,28 @@ object MediaLogRenderer : Hook() {
 
 		HudRenderCallback.EVENT.register { context, tickDelta ->
 			val progress = ClientStorage.fadingInLogTweener / FADE_IN_DURATION.toFloat()
+			context.drawTextWithShadow(MinecraftClient.getInstance().textRenderer, progress.toString(), context.scaledWindowWidth / 2, context.scaledWindowHeight / 2, 0xff_ff0000.toInt())
 
-			val mishapAlpha = MathHelper.clamp((progress / 0.2f), 0f, 1f)
-			drawMishapText(mishapAlpha)
-
-			val patternProgress = MathHelper.clamp((progress - 0.2f) / 0.5f, 0f, 1f)
-			val patternsVisible = (patternProgress * 16).toInt()
-			val patternAlpha = (patternProgress * 16) % 1
-
-			for (i in 0 until patternsVisible)
-				drawMediaLogPattern(context.matrices, i, 1f)
-			if (patternsVisible < 16)
-				drawMediaLogPattern(context.matrices, patternsVisible, patternAlpha)
-
-			val stackProgress = MathHelper.clamp((progress - 0.7f) / 0.3f, 0f, 1f)
-			val stackVisible = (stackProgress * 8).toInt()
-			val stackAlpha = (stackProgress * 8) % 1
-
-			for (i in 0 until stackVisible)
-				drawStackItem(i, 1f)
-			if (stackVisible < 8)
-				drawStackItem(stackVisible, stackAlpha)
+//			val mishapAlpha = MathHelper.clamp((progress / 0.2f), 0f, 1f)
+//			drawMishapText(mishapAlpha)
+//
+//			val patternProgress = MathHelper.clamp((progress - 0.2f) / 0.5f, 0f, 1f)
+//			val patternsVisible = (patternProgress * 16).toInt()
+//			val patternAlpha = (patternProgress * 16) % 1
+//
+//			for (i in 0 until patternsVisible)
+//				drawMediaLogPattern(context.matrices, i, 1f)
+//			if (patternsVisible < 16)
+//				drawMediaLogPattern(context.matrices, patternsVisible, patternAlpha)
+//
+//			val stackProgress = MathHelper.clamp((progress - 0.7f) / 0.3f, 0f, 1f)
+//			val stackVisible = (stackProgress * 8).toInt()
+//			val stackAlpha = (stackProgress * 8) % 1
+//
+//			for (i in 0 until stackVisible)
+//				drawStackItem(i, 1f)
+//			if (stackVisible < 8)
+//				drawStackItem(stackVisible, stackAlpha)
 		}
 	}
 
