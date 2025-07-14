@@ -4,7 +4,7 @@ import at.petrak.hexcasting.api.addldata.ADMediaHolder;
 import at.petrak.hexcasting.api.utils.MediaHelper;
 import at.petrak.hexcasting.common.lib.HexItems;
 import at.petrak.hexcasting.xplat.IXplatAbstractions;
-import miyucomics.hexical.interfaces.PlayerEntityMinterface;
+import miyucomics.hexical.features.player.fields.WristpocketFieldKt;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
 import org.spongepowered.asm.mixin.Mixin;
@@ -18,7 +18,7 @@ import java.util.List;
 public class MediaHelperMixin {
 	@Inject(method = "scanPlayerForMediaStuff", at = @At("RETURN"))
 	private static void useWristpocketPhial(ServerPlayerEntity player, CallbackInfoReturnable<List<ADMediaHolder>> cir) {
-		ItemStack wristpocket = ((PlayerEntityMinterface) player).getWristpocket();
+		ItemStack wristpocket = WristpocketFieldKt.getWristpocket(player);
 		if (wristpocket.isOf(HexItems.BATTERY))
 			cir.getReturnValue().add(0, IXplatAbstractions.INSTANCE.findMediaHolder(wristpocket));
 	}

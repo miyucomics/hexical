@@ -3,7 +3,7 @@ package miyucomics.hexical.casting.components
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironmentComponent
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironmentComponent.IsVecInRange
-import miyucomics.hexical.registry.HexicalBlocks
+import miyucomics.hexical.inits.HexicalBlocks
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d
 

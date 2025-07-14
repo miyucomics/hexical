@@ -2,6 +2,7 @@
 
 in vec2 fragUV;
 in vec2 quadSize;
+in vec3 offset;
 
 uniform float GameTime;
 uniform sampler2D Sampler0;
@@ -54,9 +55,9 @@ vec3 getGradientColor(float t) {
 }
 
 void main() {
-    vec2 pixelCoord = floor(fragUV * quadSize);
+    vec2 pixelCoord = floor(fract(fragUV + offset.xy) * quadSize);
     vec2 pixelatedUV = pixelCoord / quadSize;
-    float zCoordForNoise = GameTime * 20.0 * 64.0 * 10.0;
+    float zCoordForNoise = GameTime * 20.0 * 64.0 * 10.0 + offset.z * 64.0;
     float noiseSample = sample3DNoise(vec3(pixelatedUV, zCoordForNoise));
     fragColor = vec4(getGradientColor(noiseSample), 1.0);
 }
