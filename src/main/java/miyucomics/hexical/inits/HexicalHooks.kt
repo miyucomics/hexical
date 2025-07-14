@@ -5,16 +5,20 @@ import miyucomics.hexical.features.charms.CharmedItemTooltip
 import miyucomics.hexical.features.charms.ServerCharmedUseReceiver
 import miyucomics.hexical.features.confetti.ClientConfettiReceiver
 import miyucomics.hexical.features.cracked_items.CrackedItemTooltip
+import miyucomics.hexical.features.curios.CompassCurioSpinner
 import miyucomics.hexical.features.evocation.ClientEvocationReceiver
 import miyucomics.hexical.features.lesser_sentinels.ClientLesserSentinelReceiver
 import miyucomics.hexical.features.lesser_sentinels.LesserSentinelRenderer
 import miyucomics.hexical.features.lesser_sentinels.ServerLesserSentinelPusher
+import miyucomics.hexical.features.media_jar.MediaJarRenderHooks
+import miyucomics.hexical.features.media_jar.MediaJarShader
 import miyucomics.hexical.features.media_log.ClientMediaLogReceiver
 import miyucomics.hexical.features.media_log.MediaLogRenderer
 import miyucomics.hexical.features.media_log.ServerSpyingHooks
 import miyucomics.hexical.features.peripherals.ClientPeripheralPusher
 import miyucomics.hexical.features.peripherals.ServerPeripheralReceiver
 import miyucomics.hexical.features.player.RespawnPersistHook
+import miyucomics.hexical.features.scarabs.ScarabWingRenderer
 import miyucomics.hexical.features.sentinel_beds.SentinelBedAmbitHook
 import miyucomics.hexical.features.shaders.ClientShaderReceiver
 import miyucomics.hexical.features.shaders.ServerShaderManager
@@ -35,6 +39,10 @@ object HexicalHooksClient {
 		register(CrackedItemTooltip)
 		register(CharmedItemTooltip)
 		register(ClientShaderReceiver)
+		register(CompassCurioSpinner)
+		register(ScarabWingRenderer)
+		register(MediaJarRenderHooks)
+		register(MediaJarShader)
 
 		for (hook in hooks)
 			hook.registerCallbacks()

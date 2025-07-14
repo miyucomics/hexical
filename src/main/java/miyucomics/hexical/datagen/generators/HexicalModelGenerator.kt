@@ -14,9 +14,12 @@ class HexicalModelGenerator(generator: FabricDataOutput) : FabricModelProvider(g
 	}
 
 	override fun generateItemModels(generator: ItemModelGenerator) {
-		generator.registerCompass(HexicalItems.CONJURED_COMPASS_ITEM)
-		for (curio in HexicalItems.CURIOS)
-			generator.register(curio, Models.GENERATED)
+		for (curio in HexicalItems.CURIOS) {
+			if (curio == HexicalItems.CURIO_COMPASS)
+				generator.registerCompass(curio)
+			else
+				generator.register(curio, Models.GENERATED)
+		}
 		for (plushie in HexicalItems.PLUSHIES)
 			generator.register(plushie, Models.GENERATED)
 	}

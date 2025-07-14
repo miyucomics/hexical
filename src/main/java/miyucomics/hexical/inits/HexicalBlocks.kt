@@ -1,7 +1,5 @@
 package miyucomics.hexical.inits
 
-import at.petrak.hexcasting.api.client.ScryingLensOverlayRegistry
-import com.mojang.datafixers.util.Pair
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.features.blocks.*
 import miyucomics.hexical.features.items.MediaJarItem
@@ -11,21 +9,14 @@ import net.minecraft.block.AbstractBlock.Settings
 import net.minecraft.block.entity.BlockEntityType
 import net.minecraft.block.piston.PistonBehavior
 import net.minecraft.client.render.RenderLayer
-import net.minecraft.client.render.block.entity.BlockEntityRendererFactories
-import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.BlockItem
 import net.minecraft.item.Item
-import net.minecraft.item.ItemStack
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.registry.RegistryKeys
 import net.minecraft.registry.tag.TagKey
 import net.minecraft.sound.BlockSoundGroup
-import net.minecraft.text.Text
 import net.minecraft.util.DyeColor
-import net.minecraft.util.math.BlockPos
-import net.minecraft.util.math.Direction
-import net.minecraft.world.World
 
 object HexicalBlocks {
 	val CONJURABLE_FLOWERS: TagKey<Block> = TagKey.of(RegistryKeys.BLOCK, HexicalMain.id("conjurable_flower"))
@@ -87,9 +78,6 @@ object HexicalBlocks {
 	}
 
 	fun clientInit() {
-		BlockRenderLayerMap.INSTANCE.putBlock(MEDIA_JAR_BLOCK, RenderLayer.getCutout())
 		BlockRenderLayerMap.INSTANCE.putBlock(PERIWINKLE_FLOWER, RenderLayer.getCutout())
-		ScryingLensOverlayRegistry.addDisplayer(MEDIA_JAR_BLOCK) { lines: MutableList<Pair<ItemStack, Text>>, _: BlockState, pos: BlockPos, _: PlayerEntity, world: World, _: Direction -> (world.getBlockEntity(pos) as MediaJarBlockEntity).scryingLensOverlay(lines) }
-		BlockEntityRendererFactories.register(MEDIA_JAR_BLOCK_ENTITY) { MediaJarBlockEntityRenderer() }
 	}
 }
