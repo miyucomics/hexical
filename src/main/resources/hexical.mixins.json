@@ -9,7 +9,6 @@
 		"ClientWorldMixin",
 		"GameRendererMixin",
 		"GuiSpellcastingMixin",
-		"HeldItemRendererMixin",
 		"InGameHudMixin",
 		"MouseMixin",
 		"ScreenMixin"

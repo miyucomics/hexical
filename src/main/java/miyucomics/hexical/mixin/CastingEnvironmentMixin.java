@@ -3,7 +3,7 @@ package miyucomics.hexical.mixin;
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment;
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
-import miyucomics.hexical.registry.HexicalPotions;
+import miyucomics.hexical.inits.HexicalPotions;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import org.jetbrains.annotations.Nullable;
