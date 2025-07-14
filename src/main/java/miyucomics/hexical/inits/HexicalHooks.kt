@@ -1,0 +1,64 @@
+package miyucomics.hexical.inits
+
+import miyucomics.hexical.features.autographs.AutographTooltip
+import miyucomics.hexical.features.charms.CharmedItemTooltip
+import miyucomics.hexical.features.charms.ServerCharmedUseReceiver
+import miyucomics.hexical.features.confetti.ClientConfettiReceiver
+import miyucomics.hexical.features.cracked_items.CrackedItemTooltip
+import miyucomics.hexical.features.evocation.ClientEvocationReceiver
+import miyucomics.hexical.features.lesser_sentinels.ClientLesserSentinelReceiver
+import miyucomics.hexical.features.lesser_sentinels.LesserSentinelRenderer
+import miyucomics.hexical.features.lesser_sentinels.ServerLesserSentinelPusher
+import miyucomics.hexical.features.media_log.ClientMediaLogReceiver
+import miyucomics.hexical.features.media_log.MediaLogRenderer
+import miyucomics.hexical.features.media_log.ServerSpyingHooks
+import miyucomics.hexical.features.peripherals.ClientPeripheralPusher
+import miyucomics.hexical.features.peripherals.ServerPeripheralReceiver
+import miyucomics.hexical.features.player.RespawnPersistHook
+import miyucomics.hexical.features.sentinel_beds.SentinelBedAmbitHook
+import miyucomics.hexical.features.shaders.ClientShaderReceiver
+import miyucomics.hexical.features.shaders.ServerShaderManager
+
+object HexicalHooksClient {
+	private val hooks = mutableListOf<Hook>()
+	fun register(hook: Hook) { hooks.add(hook) }
+
+	fun init() {
+		register(ClientConfettiReceiver)
+		register(ClientEvocationReceiver)
+		register(ClientLesserSentinelReceiver)
+		register(LesserSentinelRenderer)
+		register(ClientPeripheralPusher)
+		register(ClientMediaLogReceiver)
+		register(MediaLogRenderer)
+		register(AutographTooltip)
+		register(CrackedItemTooltip)
+		register(CharmedItemTooltip)
+		register(ClientShaderReceiver)
+
+		for (hook in hooks)
+			hook.registerCallbacks()
+	}
+}
+
+object HexicalHooksServer {
+	private val hooks = mutableListOf<Hook>()
+	fun register(hook: Hook) { hooks.add(hook) }
+
+	fun init() {
+		register(ServerCharmedUseReceiver)
+		register(ServerLesserSentinelPusher)
+		register(ServerPeripheralReceiver)
+		register(ServerSpyingHooks)
+		register(ServerShaderManager)
+		register(RespawnPersistHook)
+		register(SentinelBedAmbitHook)
+
+		for (hook in hooks)
+			hook.registerCallbacks()
+	}
+}
+
+abstract class Hook {
+	abstract fun registerCallbacks()
+}
