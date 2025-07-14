@@ -20,6 +20,7 @@ import net.minecraft.nbt.NbtCompound
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket
 import net.minecraft.sound.SoundCategory
 import net.minecraft.text.Text
+import net.minecraft.util.ActionResult
 import net.minecraft.util.math.BlockPos
 import java.text.DecimalFormat
 import kotlin.math.max
@@ -102,6 +103,10 @@ class MediaJarBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 				val spawnPosition = pos.down().toCenterPos()
 				outputs.forEach { world!!.spawnEntity(ItemEntity(world!!, spawnPosition.x, spawnPosition.y, spawnPosition.z, it.copy(), 0.0, 0.0, 0.0)) }
 				world!!.playSoundAtBlockCenter(pos, HexicalSounds.ITEM_DUNKS, SoundCategory.BLOCKS, 1f, 1f, true)
+			}
+			is TransmutationResult.RefilledPhial -> {
+				world!!.playSoundAtBlockCenter(pos, HexicalSounds.ITEM_DUNKS, SoundCategory.BLOCKS, 1f, 1f, true)
+				heldStack = stack
 			}
 			is TransmutationResult.Pass -> {
 				heldStack = stack
