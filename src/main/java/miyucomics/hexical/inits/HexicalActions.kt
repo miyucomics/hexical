@@ -218,7 +218,6 @@ object HexicalActions {
 		register("conjure_gummy", "eeewdw", HexDir.SOUTH_WEST, OpConjureGummy())
 		register("conjure_hexburst", "aadaadqaq", HexDir.EAST, OpConjureHexburst())
 		register("conjure_hextito", "qaqdqaqdwawaw", HexDir.EAST, OpConjureHextito())
-		register("conjure_compass", "aqwawqwqqwqwq", HexDir.SOUTH_WEST, OpConjureCompass())
 
 		register("spike", "qdqdqdqdww", HexDir.NORTH_EAST, OpConjureSpike())
 
