@@ -20,7 +20,7 @@ import java.util.function.Consumer
 class HexicalAdvancementGenerator(generator: FabricDataOutput) : FabricAdvancementProvider(generator) {
 	override fun generateAdvancement(consumer: Consumer<Advancement>) {
 		val root = Advancement.Builder.create()
-			.display(ItemStack(HexicalItems.CONJURED_COMPASS_ITEM),
+			.display(ItemStack(HexicalItems.CURIO_COMPASS),
 				Text.translatable("advancement.hexical:root.title"),
 				Text.translatable("advancement.hexical:root.description"),
 				Identifier("minecraft", "textures/block/blackstone.png"),
