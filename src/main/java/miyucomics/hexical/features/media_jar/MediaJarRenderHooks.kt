@@ -1,8 +1,6 @@
 package miyucomics.hexical.features.media_jar
 
 import at.petrak.hexcasting.api.client.ScryingLensOverlayRegistry
-import miyucomics.hexical.features.blocks.MediaJarBlockEntity
-import miyucomics.hexical.features.blocks.MediaJarBlockEntityRenderer
 import miyucomics.hexical.inits.HexicalBlocks.MEDIA_JAR_BLOCK
 import miyucomics.hexical.inits.HexicalBlocks.MEDIA_JAR_BLOCK_ENTITY
 import miyucomics.hexical.inits.Hook

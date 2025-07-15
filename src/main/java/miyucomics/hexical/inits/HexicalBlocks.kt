@@ -3,6 +3,10 @@ package miyucomics.hexical.inits
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.features.blocks.*
 import miyucomics.hexical.features.items.MediaJarItem
+import miyucomics.hexical.features.media_jar.MediaJarBlock
+import miyucomics.hexical.features.media_jar.MediaJarBlockEntity
+import miyucomics.hexical.features.pedestal.PedestalBlock
+import miyucomics.hexical.features.pedestal.PedestalBlockEntity
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap
 import net.minecraft.block.*
 import net.minecraft.block.AbstractBlock.Settings

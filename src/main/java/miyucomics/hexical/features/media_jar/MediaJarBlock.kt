@@ -1,4 +1,4 @@
-package miyucomics.hexical.features.blocks
+package miyucomics.hexical.features.media_jar
 
 import at.petrak.hexcasting.api.misc.MediaConstants
 import miyucomics.hexical.features.transmutation.TransmutationHelper

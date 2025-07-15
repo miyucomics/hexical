@@ -11,7 +11,7 @@ import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadBlock
 import at.petrak.hexcasting.api.casting.mishaps.circle.MishapNoSpellCircle
 import miyucomics.hexical.casting.mishaps.OutsideCircleMishap
-import miyucomics.hexical.features.blocks.PedestalBlockEntity
+import miyucomics.hexical.features.pedestal.PedestalBlockEntity
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d
 

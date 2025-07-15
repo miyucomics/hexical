@@ -3,7 +3,7 @@ package miyucomics.hexical.features.transmutation
 import at.petrak.hexcasting.api.utils.isMediaItem
 import at.petrak.hexcasting.common.lib.HexItems
 import at.petrak.hexcasting.xplat.IXplatAbstractions
-import miyucomics.hexical.features.blocks.MediaJarBlock
+import miyucomics.hexical.features.media_jar.MediaJarBlock
 import miyucomics.hexical.features.items.MediaJarItem
 import miyucomics.hexical.inits.HexicalBlocks
 import miyucomics.hexical.inits.HexicalRecipe
