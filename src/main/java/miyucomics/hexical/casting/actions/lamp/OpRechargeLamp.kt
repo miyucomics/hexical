@@ -25,7 +25,7 @@ class OpRechargeLamp : SpellAction {
 		val leftToFull = 200000 * MediaConstants.DUST_UNIT - mediaHolder.media
 		val battery = min(leftToFull.toDouble(), args.getPositiveDoubleUnderInclusive(0, 200000.0, argc))
 
-		return SpellAction.Result(Spell((battery * MediaConstants.DUST_UNIT).toInt(), stack.stack), MediaConstants.CRYSTAL_UNIT + (battery * MediaConstants.DUST_UNIT).toInt(), listOf())
+		return SpellAction.Result(Spell((battery * MediaConstants.DUST_UNIT).toInt(), stack.stack), (battery * MediaConstants.DUST_UNIT).toLong(), listOf())
 	}
 
 	private data class Spell(val battery: Int, val stack: ItemStack) : RenderedSpell {
