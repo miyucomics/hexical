@@ -5,7 +5,7 @@ import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.common.items.ItemStaff
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.features.blocks.MediaJarBlock
+import miyucomics.hexical.features.media_jar.MediaJarBlock
 import miyucomics.hexical.features.items.*
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup
 import net.minecraft.item.FoodComponent
