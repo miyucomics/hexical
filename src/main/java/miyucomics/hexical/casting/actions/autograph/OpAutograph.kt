@@ -10,7 +10,7 @@ import at.petrak.hexcasting.api.casting.mishaps.MishapBadOffhandItem
 import at.petrak.hexcasting.api.utils.getOrCreateList
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.xplat.IXplatAbstractions
-import miyucomics.hexical.casting.mishaps.NoStaffMishap
+import miyucomics.hexical.casting.mishaps.NeedsStaffMishap
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
@@ -22,7 +22,7 @@ class OpAutograph : SpellAction {
 		if (env.castingEntity !is PlayerEntity)
 			throw MishapBadCaster()
 		if (env !is StaffCastEnv)
-			throw NoStaffMishap()
+			throw NeedsStaffMishap()
 		val stack = env.getHeldItemToOperateOn { true }
 		if (stack == null)
 			throw MishapBadOffhandItem.of(null, "anything")

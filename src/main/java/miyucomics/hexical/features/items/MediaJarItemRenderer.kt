@@ -1,8 +1,8 @@
 package miyucomics.hexical.features.items
 
 import miyucomics.hexical.features.blocks.MediaJarBlock
+import miyucomics.hexical.features.media_jar.MediaJarRenderStuffs
 import miyucomics.hexical.inits.HexicalBlocks
-import miyucomics.hexical.misc.MediaJarRenderStuffs
 import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.render.VertexConsumerProvider

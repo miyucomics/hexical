@@ -63,6 +63,7 @@
 - added pattern to test if an item stack has an autograph
 - added pattern to check if an item has been autographed by a specific person
 - added Unautograph spell to unautograph an item ( still erases it )
+- changed cost of Refuel Lamp
 - changed Autograph and Unautograph's pattern by swapping them
 - changed Promote Genie to be a great spell
 - changed media jar
@@ -103,6 +104,7 @@
 - optimized Greater Blink to not load chunks in between
 - removed tchotchkes
 - removed the Myodesopsia spell
+- removed limitation on arch lamps per person
 - removed Alteration Purification
 - removed Pocket Reflection II
 - reworked prestidigitation backend

@@ -16,7 +16,6 @@ class HexicalClient : ClientModInitializer {
 		HexicalKeybinds.clientInit()
 		HexicalItems.clientInit()
 		HexicalParticles.clientInit()
-		HexicalRenderLayers.clientInit()
 
 		HexicalHooksClient.init()
 

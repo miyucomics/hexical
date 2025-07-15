@@ -20,7 +20,7 @@
     "frame": "task",
     "hidden": true,
     "icon": {
-      "item": "hexical:conjured_compass"
+      "item": "hexical:curio_compass"
     },
     "show_toast": true,
     "title": {

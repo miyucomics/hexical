@@ -103,6 +103,10 @@ class MediaJarBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 				outputs.forEach { world!!.spawnEntity(ItemEntity(world!!, spawnPosition.x, spawnPosition.y, spawnPosition.z, it.copy(), 0.0, 0.0, 0.0)) }
 				world!!.playSoundAtBlockCenter(pos, HexicalSounds.ITEM_DUNKS, SoundCategory.BLOCKS, 1f, 1f, true)
 			}
+			is TransmutationResult.RefilledHolder -> {
+				world!!.playSoundAtBlockCenter(pos, HexicalSounds.ITEM_DUNKS, SoundCategory.BLOCKS, 1f, 1f, true)
+				heldStack = stack
+			}
 			is TransmutationResult.Pass -> {
 				heldStack = stack
 			}

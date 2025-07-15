@@ -9,7 +9,7 @@ import at.petrak.hexcasting.api.casting.eval.env.CircleCastEnv
 import at.petrak.hexcasting.api.casting.getVec3
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.misc.MediaConstants
-import miyucomics.hexical.casting.mishaps.MagicMissileMishap
+import miyucomics.hexical.casting.mishaps.NoSpatialAxisMishap
 import miyucomics.hexical.features.entities.MagicMissileEntity
 import net.minecraft.entity.Entity
 import net.minecraft.util.math.Direction
@@ -39,7 +39,7 @@ class OpMagicMissile : SpellAction {
 	companion object {
 		private fun getSpawnPosition(env: CastingEnvironment, relative: Vec3d): Vec3d {
 			if (env is CircleCastEnv) {
-				val impetus = env.impetus ?: throw MagicMissileMishap()
+				val impetus = env.impetus ?: throw NoSpatialAxisMishap()
 				val (straightAxis, upAxis) = getAxisForCircle(impetus)
 				return Vec3d.ofCenter(impetus.pos)
 					.add(straightAxis.crossProduct(upAxis).normalize().multiply(relative.x))
@@ -56,7 +56,7 @@ class OpMagicMissile : SpellAction {
 					.add(straightAxis.multiply(relative.z))
 			}
 
-			throw MagicMissileMishap()
+			throw NoSpatialAxisMishap()
 		}
 
 		private fun getAxisForCircle(impetus: BlockEntityAbstractImpetus): Pair<Vec3d, Vec3d> {
