@@ -1,6 +1,6 @@
 package miyucomics.hexical.features.items
 
-import miyucomics.hexical.features.blocks.MediaJarBlock
+import miyucomics.hexical.features.media_jar.MediaJarBlock
 import miyucomics.hexical.features.media_jar.MediaJarRenderStuffs
 import miyucomics.hexical.inits.HexicalBlocks
 import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry

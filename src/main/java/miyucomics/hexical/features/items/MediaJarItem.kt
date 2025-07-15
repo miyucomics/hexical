@@ -3,7 +3,7 @@ package miyucomics.hexical.features.items
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.utils.mediaBarColor
 import at.petrak.hexcasting.common.items.magic.ItemMediaHolder
-import miyucomics.hexical.features.blocks.MediaJarBlock
+import miyucomics.hexical.features.media_jar.MediaJarBlock
 import miyucomics.hexical.features.transmutation.TransmutationHelper
 import miyucomics.hexical.features.transmutation.TransmutationResult
 import miyucomics.hexical.inits.HexicalBlocks

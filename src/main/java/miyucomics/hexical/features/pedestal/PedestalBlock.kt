@@ -1,4 +1,4 @@
-package miyucomics.hexical.features.blocks
+package miyucomics.hexical.features.pedestal
 
 import at.petrak.hexcasting.api.block.circle.BlockCircleComponent
 import at.petrak.hexcasting.api.casting.circles.ICircleComponent.ControlFlow

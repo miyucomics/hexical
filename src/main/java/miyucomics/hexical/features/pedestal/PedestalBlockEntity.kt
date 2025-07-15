@@ -1,4 +1,4 @@
-package miyucomics.hexical.features.blocks
+package miyucomics.hexical.features.pedestal
 
 import at.petrak.hexcasting.api.casting.eval.vm.CastingImage
 import at.petrak.hexcasting.api.casting.eval.vm.CastingImage.ParenthesizedIota
