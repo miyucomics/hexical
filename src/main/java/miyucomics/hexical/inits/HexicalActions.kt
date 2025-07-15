@@ -181,26 +181,26 @@ object HexicalActions {
 		register("pigment_specklike", "adeqqaq", HexDir.SOUTH_WEST, OpSpecklikeProperty(6))
 		register("zone_specklike", "qqqqqwdeddwqde", HexDir.SOUTH_EAST, OpGetEntitiesBy({ entity -> entity is Specklike }, false))
 
-		register("egg", "qqqwaqaaqeeewdedde", HexDir.SOUTH_EAST, OpConjureProjectile(MediaConstants.DUST_UNIT * 2) { world, position, caster ->
+		register("egg", "qqqwaqaaqeeewdedde", HexDir.SOUTH_EAST, OpConjureEntity(MediaConstants.DUST_UNIT * 2) { world, position, caster ->
 			val egg = EggEntity(world, position.x, position.y, position.z)
 			egg.owner = caster
-			return@OpConjureProjectile egg
+			return@OpConjureEntity egg
 		})
-		register("llama_spit", "dwqaqw", HexDir.EAST, OpConjureProjectile(MediaConstants.DUST_UNIT / 4) { world, position, caster ->
+		register("llama_spit", "dwqaqw", HexDir.EAST, OpConjureEntity(MediaConstants.DUST_UNIT / 4) { world, position, caster ->
 			val spit = LlamaSpitEntity(EntityType.LLAMA_SPIT, world)
 			spit.setPosition(position)
 			spit.owner = caster
-			return@OpConjureProjectile spit
+			return@OpConjureEntity spit
 		})
-		register("snowball", "ddeeeeewd", HexDir.NORTH_EAST, OpConjureProjectile(MediaConstants.DUST_UNIT / 2) { world, position, caster ->
+		register("snowball", "ddeeeeewd", HexDir.NORTH_EAST, OpConjureEntity(MediaConstants.DUST_UNIT / 2) { world, position, caster ->
 			val snowball = SnowballEntity(world, position.x, position.y, position.z)
 			snowball.owner = caster
-			return@OpConjureProjectile snowball
+			return@OpConjureEntity snowball
 		})
-		register("ghast_fireball", "wqqqqqwaeaeaeaeae", HexDir.SOUTH_EAST, OpConjureProjectile(MediaConstants.DUST_UNIT * 3) { world, position, caster ->
+		register("ghast_fireball", "wqqqqqwaeaeaeaeae", HexDir.SOUTH_EAST, OpConjureEntity(MediaConstants.DUST_UNIT * 3) { world, position, caster ->
 			val fireball = FireballEntity(world, caster, 0.0, 0.0, 0.0, 1)
 			fireball.setPosition(position)
-			return@OpConjureProjectile fireball
+			return@OpConjureEntity fireball
 		})
 
 		register("confetti", "awddeqaedd", HexDir.EAST, OpConfetti())
@@ -218,7 +218,6 @@ object HexicalActions {
 		register("conjure_gummy", "eeewdw", HexDir.SOUTH_WEST, OpConjureGummy())
 		register("conjure_hexburst", "aadaadqaq", HexDir.EAST, OpConjureHexburst())
 		register("conjure_hextito", "qaqdqaqdwawaw", HexDir.EAST, OpConjureHextito())
-		register("conjure_compass", "aqwawqwqqwqwq", HexDir.SOUTH_WEST, OpConjureCompass())
 
 		register("spike", "qdqdqdqdww", HexDir.NORTH_EAST, OpConjureSpike())
 

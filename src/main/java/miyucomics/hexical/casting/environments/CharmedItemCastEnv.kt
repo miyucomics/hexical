@@ -8,6 +8,7 @@ import at.petrak.hexcasting.api.pigment.FrozenPigment
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.features.charms.CharmedItemUtilities
+import miyucomics.hexical.features.curios.CompassCurioSpinner
 import net.minecraft.item.ItemStack
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.Hand
@@ -34,6 +35,8 @@ class CharmedItemCastEnv(caster: ServerPlayerEntity, castingHand: Hand, val stac
 		return NullIota()
 	}
 
-	fun setInternalStorage(iota: Iota) =
+	fun setInternalStorage(iota: Iota) {
 		this.stack.orCreateNbt.putCompound("charmed_storage", IotaType.serialize(iota))
+		CompassCurioSpinner.saveVectorForTheClient(stack, iota)
+	}
 }
