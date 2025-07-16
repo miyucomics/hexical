@@ -32,7 +32,7 @@ object PrestidigitationBlockBooleans {
 			}
 		})
 
-		Registry.register(PrestidigitationData.PRESTIDIGITATION_HANDLER, HexicalMain.id("boolean_block"), object : PrestidigitationHandler {
+		Registry.register(PrestidigitationHandlersHook.PRESTIDIGITATION_HANDLER, HexicalMain.id("boolean_block"), object : PrestidigitationHandler {
 			override fun tryHandleBlock(env: CastingEnvironment, position: BlockPos): Boolean {
 				val state = env.world.getBlockState(position)
 				if (state.block !in map)

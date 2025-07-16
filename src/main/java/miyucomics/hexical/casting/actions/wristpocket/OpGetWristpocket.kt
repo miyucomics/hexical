@@ -5,7 +5,7 @@ import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.NullIota
 import miyucomics.hexical.casting.mishaps.NeedsWristpocketMishap
-import miyucomics.hexical.misc.WristpocketUtils
+import miyucomics.hexical.features.wristpocket.WristpocketUtils
 import miyucomics.hexpose.iotas.asActionResult
 
 class OpGetWristpocket : ConstMediaAction {

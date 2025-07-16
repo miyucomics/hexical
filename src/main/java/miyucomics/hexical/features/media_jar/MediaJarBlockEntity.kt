@@ -9,6 +9,7 @@ import miyucomics.hexical.features.transmutation.TransmutationHelper
 import miyucomics.hexical.features.transmutation.TransmutationResult
 import miyucomics.hexical.inits.HexicalBlocks
 import miyucomics.hexical.inits.HexicalSounds
+import miyucomics.hexical.misc.RenderUtils
 import net.minecraft.block.Block
 import net.minecraft.block.BlockState
 import net.minecraft.block.entity.BlockEntity
@@ -21,7 +22,6 @@ import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket
 import net.minecraft.sound.SoundCategory
 import net.minecraft.text.Text
 import net.minecraft.util.math.BlockPos
-import java.text.DecimalFormat
 import kotlin.math.max
 import kotlin.math.min
 
@@ -30,7 +30,7 @@ class MediaJarBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 	private var heldStack = ItemStack.EMPTY
 
 	fun scryingLensOverlay(lines: MutableList<Pair<ItemStack, Text>>) {
-		lines.add(Pair(ItemStack(HexItems.AMETHYST_DUST), Text.translatable("hexcasting.tooltip.media", format.format(media.toFloat() / MediaConstants.DUST_UNIT.toFloat()))))
+		lines.add(Pair(ItemStack(HexItems.AMETHYST_DUST), Text.translatable("hexcasting.tooltip.media", RenderUtils.DUST_AMOUNT.format(media.toFloat() / MediaConstants.DUST_UNIT.toFloat()))))
 	}
 
 	fun getMedia() = this.media
@@ -122,8 +122,4 @@ class MediaJarBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 
 	override fun toInitialChunkDataNbt(): NbtCompound = createNbt()
 	override fun toUpdatePacket(): BlockEntityUpdateS2CPacket = BlockEntityUpdateS2CPacket.create(this)
-
-	companion object {
-		private val format = DecimalFormat("###,###.##")
-	}
 }

@@ -2,16 +2,16 @@ package miyucomics.hexical.features.peripherals
 
 import at.petrak.hexcasting.fabric.event.MouseScrollCallback
 import miyucomics.hexical.inits.HexicalKeybinds
-import miyucomics.hexical.inits.Hook
+import miyucomics.hexical.inits.InitHook
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
 import net.minecraft.client.MinecraftClient
 
-object ClientPeripheralPusher : Hook() {
+object ClientPeripheralPusher : InitHook() {
 	private var previousState = mutableMapOf<String, Boolean>()
 
-	override fun registerCallbacks() {
+	override fun init() {
 		ClientTickEvents.END_CLIENT_TICK.register { client: MinecraftClient ->
 			if (client.player == null)
 				return@register

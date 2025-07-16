@@ -3,13 +3,11 @@ package miyucomics.hexical.features.evocation
 import dev.kosmx.playerAnim.api.layered.KeyframeAnimationPlayer
 import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationRegistry
 import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.features.player.fields.evocationActive
-import miyucomics.hexical.inits.Hook
-import miyucomics.hexical.misc.PlayerAnimations
+import miyucomics.hexical.inits.InitHook
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
 
-object ClientEvocationReceiver : Hook() {
-	override fun registerCallbacks() {
+object ClientEvocationReceiver : InitHook() {
+	override fun init() {
 		ClientPlayNetworking.registerGlobalReceiver(ServerEvocationManager.START_EVOKE_CHANNEL) { client, _, packet, _ ->
 			val uuid = packet.readUuid()
 			val player = client.world!!.getPlayerByUuid(uuid) ?: return@registerGlobalReceiver

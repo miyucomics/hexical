@@ -6,7 +6,7 @@ import at.petrak.hexcasting.api.casting.getBlockPos
 import at.petrak.hexcasting.api.casting.getEntity
 import at.petrak.hexcasting.api.casting.iota.*
 import miyucomics.hexical.casting.iotas.DyeIota
-import miyucomics.hexical.features.dyes.DyeData
+import miyucomics.hexical.features.dyes.DyeDataHook
 import miyucomics.hexpose.iotas.IdentifierIota
 import miyucomics.hexpose.iotas.getIdentifier
 import net.minecraft.block.Block
@@ -36,8 +36,8 @@ class OpGetDye : ConstMediaAction {
 				when (val item = Registries.ITEM.get(args.getIdentifier(0, argc))) {
 					is BlockItem -> getDyeFromBlock(item.block)
 					else -> {
-						if (DyeData.getDye(item) != null)
-							DyeIota(DyeData.getDye(item)!!)
+						if (DyeDataHook.getDye(item) != null)
+							DyeIota(DyeDataHook.getDye(item)!!)
 						else
 							NullIota()
 					}
@@ -59,8 +59,8 @@ class OpGetDye : ConstMediaAction {
 				when (val item = entity.stack.item) {
 					is BlockItem -> getDyeFromBlock(item.block)
 					else -> {
-						if (DyeData.getDye(item) != null)
-							DyeIota(DyeData.getDye(item)!!)
+						if (DyeDataHook.getDye(item) != null)
+							DyeIota(DyeDataHook.getDye(item)!!)
 						else
 							NullIota()
 					}
@@ -88,7 +88,7 @@ class OpGetDye : ConstMediaAction {
 	}
 
 	private fun getDyeFromBlock(block: Block): Iota {
-		val dye = DyeData.getDye(block) ?: return NullIota()
+		val dye = DyeDataHook.getDye(block) ?: return NullIota()
 		return DyeIota(dye)
 	}
 }

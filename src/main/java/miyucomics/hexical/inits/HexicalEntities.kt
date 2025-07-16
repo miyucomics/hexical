@@ -1,11 +1,16 @@
 package miyucomics.hexical.inits
 
 import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.features.entities.*
-import miyucomics.hexical.features.entities.specklikes.MeshEntity
-import miyucomics.hexical.features.entities.specklikes.MeshRenderer
-import miyucomics.hexical.features.entities.specklikes.SpeckEntity
-import miyucomics.hexical.features.entities.specklikes.SpeckRenderer
+import miyucomics.hexical.features.animated_scrolls.AnimatedScrollEntity
+import miyucomics.hexical.features.animated_scrolls.AnimatedScrollRenderer
+import miyucomics.hexical.features.magic_missile.MagicMissileEntity
+import miyucomics.hexical.features.magic_missile.MagicMissileRenderer
+import miyucomics.hexical.features.specklikes.MeshEntity
+import miyucomics.hexical.features.specklikes.MeshRenderer
+import miyucomics.hexical.features.specklikes.SpeckEntity
+import miyucomics.hexical.features.specklikes.SpeckRenderer
+import miyucomics.hexical.features.spike.SpikeEntity
+import miyucomics.hexical.features.spike.SpikeRenderer
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.SpawnGroup

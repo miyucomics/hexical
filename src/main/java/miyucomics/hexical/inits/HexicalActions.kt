@@ -63,8 +63,8 @@ import miyucomics.hexical.casting.actions.telepathy.*
 import miyucomics.hexical.casting.actions.vfx.OpConfetti
 import miyucomics.hexical.casting.actions.vfx.OpSparkle
 import miyucomics.hexical.casting.actions.wristpocket.*
-import miyucomics.hexical.features.items.HandLampItem
-import miyucomics.hexical.interfaces.Specklike
+import miyucomics.hexical.features.lamps.HandLampItem
+import miyucomics.hexical.features.specklikes.Specklike
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.projectile.FireballEntity
 import net.minecraft.entity.projectile.LlamaSpitEntity
