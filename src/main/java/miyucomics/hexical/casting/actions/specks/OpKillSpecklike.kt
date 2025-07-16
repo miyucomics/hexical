@@ -5,7 +5,7 @@ import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.getEntity
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadEntity
-import miyucomics.hexical.interfaces.Specklike
+import miyucomics.hexical.features.specklikes.Specklike
 
 class OpKillSpecklike : ConstMediaAction {
 	override val argc = 1

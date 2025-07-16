@@ -1,7 +1,7 @@
 package miyucomics.hexical.features.autographs
 
 import at.petrak.hexcasting.api.pigment.FrozenPigment
-import miyucomics.hexical.inits.Hook
+import miyucomics.hexical.inits.InitHook
 import miyucomics.hexical.misc.ClientStorage
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback
 import net.minecraft.nbt.NbtCompound
@@ -11,8 +11,8 @@ import net.minecraft.util.Formatting
 import net.minecraft.util.math.Vec3d
 import java.util.function.Consumer
 
-object AutographTooltip : Hook() {
-	override fun registerCallbacks() {
+object AutographTooltip : InitHook() {
+	override fun init() {
 		ItemTooltipCallback.EVENT.register { stack, _, lines ->
 			val nbt = stack.nbt ?: return@register
 			if (!nbt.contains("autographs"))

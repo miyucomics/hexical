@@ -1,23 +1,38 @@
 package miyucomics.hexical.inits
 
+import at.petrak.hexcasting.api.casting.iota.IotaType
+import at.petrak.hexcasting.api.casting.iota.ListIota
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.common.items.ItemStaff
+import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.HexicalMain
+import miyucomics.hexical.features.animated_scrolls.AnimatedScrollItem
+import miyucomics.hexical.features.confection.HexburstItem
+import miyucomics.hexical.features.confection.HextitoItem
+import miyucomics.hexical.features.grimoires.GrimoireItem
+import miyucomics.hexical.features.lamps.ArchLampItem
+import miyucomics.hexical.features.lamps.HandLampItem
+import miyucomics.hexical.features.lei.LeiItem
 import miyucomics.hexical.features.media_jar.MediaJarBlock
-import miyucomics.hexical.features.items.*
+import miyucomics.hexical.features.media_log.MediaLogItem
+import miyucomics.hexical.features.scarabs.ScarabBeetleItem
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup
-import net.minecraft.item.FoodComponent
-import net.minecraft.item.Item
+import net.minecraft.client.item.TooltipContext
+import net.minecraft.entity.player.PlayerEntity
+import net.minecraft.item.*
 import net.minecraft.item.Item.Settings
-import net.minecraft.item.ItemGroup
-import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.registry.RegistryKey
+import net.minecraft.server.world.ServerWorld
 import net.minecraft.text.Text
+import net.minecraft.util.Formatting
+import net.minecraft.util.Hand
+import net.minecraft.util.TypedActionResult
+import net.minecraft.world.World
 
 object HexicalItems {
 	private val HEXICAL_GROUP_KEY: RegistryKey<ItemGroup> = RegistryKey.of(Registries.ITEM_GROUP.key, HexicalMain.id("general"))
@@ -100,8 +115,37 @@ object HexicalItems {
 		Registry.register(Registries.ITEM_GROUP, HEXICAL_GROUP_KEY, HEXICAL_GROUP)
 		registerItem("tchotchke", TchotchkeItem())
 	}
+}
 
-	fun clientInit() {
-		ArchLampItem.registerModelPredicate()
+class TchotchkeItem : ItemPackagedHex(Settings().maxCount(1)) {
+	override fun canDrawMediaFromInventory(stack: ItemStack) = false
+	override fun isItemBarVisible(stack: ItemStack) = false
+	override fun canRecharge(stack: ItemStack) = false
+	override fun breakAfterDepletion() = true
+	override fun cooldown() = 0
+
+	override fun use(world: World, player: PlayerEntity, usedHand: Hand): TypedActionResult<ItemStack> {
+		if (world.isClient)
+			return TypedActionResult.success(player.getStackInHand(usedHand))
+		val stack = player.getStackInHand(usedHand)
+		if (hasHex(stack) && getMedia(stack) > 0) {
+			val charmed = ItemStack(Items.STICK)
+			val nbt = charmed.orCreateNbt
+			val charm = NbtCompound()
+			charm.putLong("media", getMedia(stack))
+			charm.putLong("max_media", getMaxMedia(stack))
+			charm.putCompound("instructions", IotaType.serialize(ListIota(getHex(stack, world as ServerWorld)!!)))
+			charm.putBoolean("left", true)
+			charm.putBoolean("right", true)
+			charm.putBoolean("left_sneak", true)
+			charm.putBoolean("right_sneak", true)
+			nbt.putCompound("charmed", charm)
+			player.setStackInHand(usedHand, charmed)
+		}
+		return TypedActionResult.success(player.getStackInHand(usedHand))
+	}
+
+	override fun appendTooltip(stack: ItemStack, world: World?, lines: MutableList<Text>, advanced: TooltipContext) {
+		lines.add(Text.literal("Right-click this item to get a charmed stick before tchotchkes go away forever!! Your media will be converted safely.").formatted(Formatting.RED))
 	}
 }

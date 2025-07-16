@@ -6,6 +6,7 @@ import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.NullIota
 import at.petrak.hexcasting.api.casting.iota.Vec3Iota
 import miyucomics.hexical.features.hopper.targets.*
+import miyucomics.hexical.inits.InitHook
 import net.minecraft.entity.Entity
 import net.minecraft.entity.ItemEntity
 import net.minecraft.entity.decoration.ArmorStandEntity
@@ -23,10 +24,10 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
 import kotlin.math.abs
 
-object HopperEndpointRegistry {
+object HopperEndpointRegistry : InitHook() {
 	private val resolvers = mutableListOf<HopperEndpointResolver>()
 
-	fun init() {
+	override fun init() {
 		register { iota, env, slot ->
 			val caster = env.castingEntity
 			if (iota is EntityIota && iota.entity == caster && caster is ServerPlayerEntity && slot == -1)

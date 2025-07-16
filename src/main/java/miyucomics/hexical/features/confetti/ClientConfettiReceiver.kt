@@ -1,15 +1,15 @@
 package miyucomics.hexical.features.confetti
 
 import miyucomics.hexical.inits.HexicalParticles
-import miyucomics.hexical.inits.Hook
+import miyucomics.hexical.inits.InitHook
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
 import net.minecraft.sound.SoundCategory
 import net.minecraft.sound.SoundEvents
 import net.minecraft.util.math.Vec3d
 import kotlin.random.Random
 
-object ClientConfettiReceiver : Hook() {
-	override fun registerCallbacks() {
+object ClientConfettiReceiver : InitHook() {
+	override fun init() {
 		ClientPlayNetworking.registerGlobalReceiver(ConfettiHelper.CONFETTI_CHANNEL) { client, _, packet, _ ->
 			val random = Random(packet.readLong())
 			val pos = Vec3d(packet.readDouble(), packet.readDouble(), packet.readDouble())

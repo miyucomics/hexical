@@ -4,7 +4,7 @@ import com.mojang.authlib.GameProfile;
 import dev.kosmx.playerAnim.api.layered.IAnimation;
 import dev.kosmx.playerAnim.api.layered.ModifierLayer;
 import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationAccess;
-import miyucomics.hexical.misc.PlayerAnimations;
+import miyucomics.hexical.features.evocation.PlayerAnimations;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.world.ClientWorld;
 import org.jetbrains.annotations.NotNull;

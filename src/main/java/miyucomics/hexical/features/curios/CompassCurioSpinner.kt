@@ -3,7 +3,7 @@ package miyucomics.hexical.features.curios
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.Vec3Iota
 import miyucomics.hexical.inits.HexicalItems
-import miyucomics.hexical.inits.Hook
+import miyucomics.hexical.inits.InitHook
 import net.minecraft.client.item.CompassAnglePredicateProvider
 import net.minecraft.client.item.ModelPredicateProviderRegistry
 import net.minecraft.client.world.ClientWorld
@@ -13,8 +13,8 @@ import net.minecraft.util.Identifier
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.GlobalPos
 
-object CompassCurioSpinner : Hook() {
-	override fun registerCallbacks() {
+object CompassCurioSpinner : InitHook() {
+	override fun init() {
 		ModelPredicateProviderRegistry.register(HexicalItems.CURIO_COMPASS, Identifier("angle"), CompassAnglePredicateProvider(
 			CompassAnglePredicateProvider.CompassTarget { world: ClientWorld, stack: ItemStack, player: Entity ->
 				if (!stack.hasNbt() || !stack.nbt?.contains("needle")!!)

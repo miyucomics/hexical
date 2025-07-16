@@ -2,7 +2,7 @@ package miyucomics.hexical.features.hopper.targets
 
 import miyucomics.hexical.features.hopper.HopperDestination
 import miyucomics.hexical.features.hopper.HopperSource
-import miyucomics.hexical.features.player.fields.wristpocket
+import miyucomics.hexical.features.wristpocket.wristpocket
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
 
