@@ -7,7 +7,7 @@ import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.getBlockPos
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadBlock
-import miyucomics.hexical.features.blocks.HexCandleCakeBlockEntity
+import miyucomics.hexical.features.hex_candles.HexCandleCakeBlockEntity
 import miyucomics.hexical.inits.HexicalAdvancements
 import miyucomics.hexical.inits.HexicalBlocks
 import net.minecraft.block.AbstractCandleBlock

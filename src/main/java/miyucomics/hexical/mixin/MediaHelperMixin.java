@@ -4,7 +4,7 @@ import at.petrak.hexcasting.api.addldata.ADMediaHolder;
 import at.petrak.hexcasting.api.utils.MediaHelper;
 import at.petrak.hexcasting.common.lib.HexItems;
 import at.petrak.hexcasting.xplat.IXplatAbstractions;
-import miyucomics.hexical.features.player.fields.WristpocketFieldKt;
+import miyucomics.hexical.features.wristpocket.WristpocketFieldKt;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
 import org.spongepowered.asm.mixin.Mixin;

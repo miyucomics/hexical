@@ -12,7 +12,7 @@ import dev.onyxstudios.cca.api.v3.entity.EntityComponentFactoryRegistry
 import dev.onyxstudios.cca.api.v3.entity.EntityComponentInitializer
 import dev.onyxstudios.cca.api.v3.item.ItemComponentFactoryRegistry
 import dev.onyxstudios.cca.api.v3.item.ItemComponentInitializer
-import miyucomics.hexical.features.entities.AnimatedScrollEntity
+import miyucomics.hexical.features.animated_scrolls.AnimatedScrollEntity
 import miyucomics.hexical.inits.HexicalItems
 import net.minecraft.nbt.NbtElement
 

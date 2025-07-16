@@ -10,7 +10,7 @@ import at.petrak.hexcasting.api.casting.getVec3
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.misc.MediaConstants
 import miyucomics.hexical.casting.mishaps.NoSpatialAxisMishap
-import miyucomics.hexical.features.entities.MagicMissileEntity
+import miyucomics.hexical.features.magic_missile.MagicMissileEntity
 import net.minecraft.entity.Entity
 import net.minecraft.util.math.Direction
 import net.minecraft.util.math.MathHelper

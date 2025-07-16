@@ -5,9 +5,9 @@ import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.NullIota
 import miyucomics.hexical.casting.mishaps.NeedsArchLampMishap
-import miyucomics.hexical.features.items.hasActiveArchLamp
-import miyucomics.hexical.features.player.fields.ArchLampField
-import miyucomics.hexical.features.player.fields.getArchLampField
+import miyucomics.hexical.features.lamps.ArchLampField
+import miyucomics.hexical.features.lamps.getArchLampField
+import miyucomics.hexical.features.lamps.hasActiveArchLamp
 import net.minecraft.server.network.ServerPlayerEntity
 
 class OpGetArchLampData(private val process: (CastingEnvironment, ArchLampField) -> List<Iota>) : ConstMediaAction {

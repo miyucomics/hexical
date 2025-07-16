@@ -8,8 +8,8 @@ import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.Vec3Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
-import miyucomics.hexical.features.player.fields.currentLesserSentinels
-import miyucomics.hexical.features.player.fields.syncLesserSentinels
+import miyucomics.hexical.features.lesser_sentinels.currentLesserSentinels
+import miyucomics.hexical.features.lesser_sentinels.syncLesserSentinels
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.math.Vec3d
 
