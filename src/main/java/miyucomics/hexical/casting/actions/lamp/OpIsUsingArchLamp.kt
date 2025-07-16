@@ -5,7 +5,7 @@ import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.getPlayer
 import at.petrak.hexcasting.api.casting.iota.Iota
-import miyucomics.hexical.features.items.hasActiveArchLamp
+import miyucomics.hexical.features.lamps.hasActiveArchLamp
 
 class OpIsUsingArchLamp : ConstMediaAction {
 	override val argc = 1

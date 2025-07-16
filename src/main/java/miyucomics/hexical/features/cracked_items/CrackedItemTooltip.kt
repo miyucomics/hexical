@@ -2,15 +2,15 @@ package miyucomics.hexical.features.cracked_items
 
 import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
-import miyucomics.hexical.inits.Hook
+import miyucomics.hexical.inits.InitHook
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.nbt.NbtElement
 import net.minecraft.text.Text
 import net.minecraft.util.Formatting
 
-object CrackedItemTooltip : Hook() {
-	override fun registerCallbacks() {
+object CrackedItemTooltip : InitHook() {
+	override fun init() {
 		ItemTooltipCallback.EVENT.register { stack, _, lines ->
 			val nbt = stack.nbt ?: return@register
 			if (stack.item !is ItemPackagedHex || !nbt.getBoolean("cracked"))

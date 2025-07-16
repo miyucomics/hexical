@@ -16,8 +16,8 @@ import at.petrak.hexcasting.common.lib.HexItems
 import miyucomics.hexical.casting.iotas.getDye
 import miyucomics.hexical.casting.iotas.getTrueDye
 import miyucomics.hexical.casting.mishaps.DyeableMishap
-import miyucomics.hexical.features.dyes.DyeData
-import miyucomics.hexical.interfaces.Specklike
+import miyucomics.hexical.features.dyes.DyeDataHook
+import miyucomics.hexical.features.specklikes.Specklike
 import net.minecraft.block.*
 import net.minecraft.block.entity.ShulkerBoxBlockEntity
 import net.minecraft.entity.ItemEntity
@@ -66,13 +66,13 @@ class OpDye : SpellAction {
 					is ItemEntity -> {
 						when (val item = entity.stack.item) {
 							is BlockItem -> {
-								if (DyeData.isDyeable(item.block))
+								if (DyeDataHook.isDyeable(item.block))
 									SpellAction.Result(BlockItemSpell(entity, item.block, dye), cost, listOf(ParticleSpray.cloud(entity.pos, 1.0)))
 								else
 									throw DyeableMishap(entity.pos)
 							}
 							else -> {
-								if (DyeData.isDyeable(item))
+								if (DyeDataHook.isDyeable(item))
 									SpellAction.Result(ItemSpell(entity, item, dye), cost, listOf(ParticleSpray.cloud(entity.pos, 1.0)))
 								else
 									throw DyeableMishap(entity.pos)
@@ -86,7 +86,7 @@ class OpDye : SpellAction {
 				val position = args.getBlockPos(0, argc)
 				env.assertPosInRange(position)
 				val state = env.world.getBlockState(position)
-				if (!DyeData.isDyeable(state.block))
+				if (!DyeDataHook.isDyeable(state.block))
 					throw DyeableMishap(position.toCenterPos())
 				return SpellAction.Result(BlockSpell(position, state, dye), cost, listOf(ParticleSpray.cloud(Vec3d.ofCenter(position), 1.0)))
 			}
@@ -99,29 +99,29 @@ class OpDye : SpellAction {
 			when (state.block) {
 				is CandleBlock -> env.world.setBlockState(
 					position,
-					DyeData.getNewBlock(state.block, dye)
+					DyeDataHook.getNewBlock(state.block, dye)
 						.with(CandleBlock.LIT, state.get(CandleBlock.LIT))
 						.with(CandleBlock.CANDLES, state.get(CandleBlock.CANDLES))
 				)
 				is CandleCakeBlock -> env.world.setBlockState(
 					position,
-					DyeData.getNewBlock(state.block, dye)
+					DyeDataHook.getNewBlock(state.block, dye)
 						.with(CandleCakeBlock.LIT, state.get(CandleCakeBlock.LIT))
 				)
 				is GlazedTerracottaBlock -> env.world.setBlockState(
 					position,
-					DyeData.getNewBlock(state.block, dye)
+					DyeDataHook.getNewBlock(state.block, dye)
 						.with(GlazedTerracottaBlock.FACING, state.get(GlazedTerracottaBlock.FACING))
 				)
 				is SlabBlock -> env.world.setBlockState(
 					position,
-					DyeData.getNewBlock(state.block, dye)
+					DyeDataHook.getNewBlock(state.block, dye)
 						.with(SlabBlock.TYPE, state.get(SlabBlock.TYPE))
 						.with(SlabBlock.WATERLOGGED, state.get(SlabBlock.WATERLOGGED))
 				)
 				is StairsBlock -> env.world.setBlockState(
 					position,
-					DyeData.getNewBlock(state.block, dye)
+					DyeDataHook.getNewBlock(state.block, dye)
 						.with(StairsBlock.FACING, state.get(StairsBlock.FACING))
 						.with(StairsBlock.HALF, state.get(StairsBlock.HALF))
 						.with(StairsBlock.SHAPE, state.get(StairsBlock.SHAPE))
@@ -129,7 +129,7 @@ class OpDye : SpellAction {
 				)
 				is WallBlock -> env.world.setBlockState(
 					position,
-					DyeData.getNewBlock(state.block, dye)
+					DyeDataHook.getNewBlock(state.block, dye)
 						.with(WallBlock.NORTH_SHAPE, state.get(WallBlock.NORTH_SHAPE))
 						.with(WallBlock.EAST_SHAPE, state.get(WallBlock.EAST_SHAPE))
 						.with(WallBlock.SOUTH_SHAPE, state.get(WallBlock.SOUTH_SHAPE))
@@ -142,28 +142,28 @@ class OpDye : SpellAction {
 					val nbt = blockEntity.createNbt()
 					env.world.setBlockState(
 						position,
-						DyeData.getNewBlock(state.block, dye)
+						DyeDataHook.getNewBlock(state.block, dye)
 							.with(ShulkerBoxBlock.FACING, state.get(ShulkerBoxBlock.FACING))
 					)
 					(env.world.getBlockEntity(position)!! as ShulkerBoxBlockEntity).readNbt(nbt)
 				}
 				is StainedGlassPaneBlock -> env.world.setBlockState(
 					position,
-					DyeData.getNewBlock(state.block, dye)
+					DyeDataHook.getNewBlock(state.block, dye)
 						.with(StainedGlassPaneBlock.NORTH, state.get(StainedGlassPaneBlock.NORTH))
 						.with(StainedGlassPaneBlock.EAST, state.get(StainedGlassPaneBlock.EAST))
 						.with(StainedGlassPaneBlock.SOUTH, state.get(StainedGlassPaneBlock.SOUTH))
 						.with(StainedGlassPaneBlock.WEST, state.get(StainedGlassPaneBlock.WEST))
 						.with(StainedGlassPaneBlock.WATERLOGGED, state.get(StainedGlassPaneBlock.WATERLOGGED))
 				)
-				else -> env.world.setBlockState(position, DyeData.getNewBlock(state.block, dye))
+				else -> env.world.setBlockState(position, DyeDataHook.getNewBlock(state.block, dye))
 			}
 		}
 	}
 
 	private data class BlockItemSpell(val item: ItemEntity, val block: Block, val dye: String) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			val newStack = ItemStack(DyeData.getNewBlock(block, dye).block.asItem(), item.stack.count)
+			val newStack = ItemStack(DyeDataHook.getNewBlock(block, dye).block.asItem(), item.stack.count)
 			newStack.nbt = item.stack.nbt
 			item.stack = newStack
 		}
@@ -177,7 +177,7 @@ class OpDye : SpellAction {
 
 	private data class ItemSpell(val entity: ItemEntity, val item: Item, val dye: String) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			val newStack = ItemStack(DyeData.getNewItem(item, dye), entity.stack.count)
+			val newStack = ItemStack(DyeDataHook.getNewItem(item, dye), entity.stack.count)
 			newStack.nbt = entity.stack.nbt
 			entity.stack = newStack
 		}

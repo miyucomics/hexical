@@ -1,12 +1,12 @@
 package miyucomics.hexical.features.lesser_sentinels
 
-import miyucomics.hexical.inits.Hook
+import miyucomics.hexical.inits.InitHook
 import miyucomics.hexical.misc.ClientStorage
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
 import net.minecraft.util.math.Vec3d
 
-object ClientLesserSentinelReceiver : Hook() {
-	override fun registerCallbacks() {
+object ClientLesserSentinelReceiver : InitHook() {
+	override fun init() {
 		ClientPlayNetworking.registerGlobalReceiver(ServerLesserSentinelPusher.LESSER_SENTINEL_CHANNEL) { client, _, packet, _ ->
 			val count = packet.readInt()
 			val list = mutableListOf<Vec3d>()

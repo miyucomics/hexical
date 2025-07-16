@@ -5,8 +5,8 @@ import at.petrak.hexcasting.api.casting.castables.SpellAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadBlock
-import miyucomics.hexical.features.blocks.MageBlock
-import miyucomics.hexical.features.blocks.MageBlockEntity
+import miyucomics.hexical.features.mage_blocks.MageBlock
+import miyucomics.hexical.features.mage_blocks.MageBlockEntity
 import miyucomics.hexical.inits.HexicalAdvancements
 import miyucomics.hexical.inits.HexicalBlocks
 import net.minecraft.server.network.ServerPlayerEntity

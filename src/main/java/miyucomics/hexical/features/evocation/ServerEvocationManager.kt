@@ -1,8 +1,6 @@
 package miyucomics.hexical.features.evocation
 
 import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.features.player.fields.evocationActive
-import miyucomics.hexical.features.player.fields.evocationDuration
 import miyucomics.hexical.inits.HexicalSounds
 import miyucomics.hexical.misc.CastingUtils
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs

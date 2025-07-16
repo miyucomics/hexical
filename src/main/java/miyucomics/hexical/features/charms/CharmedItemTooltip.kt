@@ -7,14 +7,14 @@ import miyucomics.hexical.features.charms.CharmedItemUtilities.CHARMED_COLOR
 import miyucomics.hexical.features.charms.CharmedItemUtilities.getMaxMedia
 import miyucomics.hexical.features.charms.CharmedItemUtilities.getMedia
 import miyucomics.hexical.features.charms.CharmedItemUtilities.isStackCharmed
-import miyucomics.hexical.inits.Hook
+import miyucomics.hexical.inits.InitHook
 import miyucomics.hexical.misc.RenderUtils
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback
 import net.minecraft.text.Text
 import net.minecraft.text.TextColor
 
-object CharmedItemTooltip : Hook() {
-	override fun registerCallbacks() {
+object CharmedItemTooltip : InitHook() {
+	override fun init() {
 		ItemTooltipCallback.EVENT.register { stack, _, lines ->
 			if (!isStackCharmed(stack))
 				return@register

@@ -1,7 +1,7 @@
 package miyucomics.hexical.mixin;
 
+import miyucomics.hexical.features.player.PlayerEntityMinterface;
 import miyucomics.hexical.features.player.PlayerManager;
-import miyucomics.hexical.interfaces.PlayerEntityMinterface;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import org.jetbrains.annotations.NotNull;

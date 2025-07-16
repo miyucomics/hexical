@@ -9,7 +9,7 @@ import at.petrak.hexcasting.api.casting.iota.Vec3Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadEntity
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import dev.kosmx.playerAnim.core.util.Vec3f
-import miyucomics.hexical.features.entities.specklikes.MeshEntity
+import miyucomics.hexical.features.specklikes.MeshEntity
 
 class OpWeaveMesh : ConstMediaAction {
 	override val argc = 2

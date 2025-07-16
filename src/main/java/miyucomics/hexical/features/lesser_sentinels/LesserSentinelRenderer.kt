@@ -2,7 +2,7 @@ package miyucomics.hexical.features.lesser_sentinels
 
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import com.mojang.blaze3d.systems.RenderSystem
-import miyucomics.hexical.inits.Hook
+import miyucomics.hexical.inits.InitHook
 import miyucomics.hexical.misc.ClientStorage
 import miyucomics.hexical.misc.RenderUtils
 import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents
@@ -16,8 +16,8 @@ import net.minecraft.util.math.Vec2f
 import kotlin.math.cos
 import kotlin.math.sin
 
-object LesserSentinelRenderer : Hook() {
-	override fun registerCallbacks() {
+object LesserSentinelRenderer : InitHook() {
+	override fun init() {
 		WorldRenderEvents.LAST.register { ctx ->
 			ClientStorage.lesserSentinels.forEach { pos ->
 				val matrices = ctx.matrixStack()

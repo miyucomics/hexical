@@ -6,7 +6,10 @@ import miyucomics.hexical.features.charms.ServerCharmedUseReceiver
 import miyucomics.hexical.features.confetti.ClientConfettiReceiver
 import miyucomics.hexical.features.cracked_items.CrackedItemTooltip
 import miyucomics.hexical.features.curios.CompassCurioSpinner
+import miyucomics.hexical.features.dyes.DyeDataHook
 import miyucomics.hexical.features.evocation.ClientEvocationReceiver
+import miyucomics.hexical.features.hopper.HopperEndpointRegistry
+import miyucomics.hexical.features.lamps.ArchLampModelProvider
 import miyucomics.hexical.features.lesser_sentinels.ClientLesserSentinelReceiver
 import miyucomics.hexical.features.lesser_sentinels.LesserSentinelRenderer
 import miyucomics.hexical.features.lesser_sentinels.ServerLesserSentinelPusher
@@ -18,14 +21,15 @@ import miyucomics.hexical.features.media_log.ServerSpyingHooks
 import miyucomics.hexical.features.peripherals.ClientPeripheralPusher
 import miyucomics.hexical.features.peripherals.ServerPeripheralReceiver
 import miyucomics.hexical.features.player.RespawnPersistHook
+import miyucomics.hexical.features.prestidigitation.PrestidigitationHandlersHook
 import miyucomics.hexical.features.scarabs.ScarabWingRenderer
 import miyucomics.hexical.features.sentinel_beds.SentinelBedAmbitHook
 import miyucomics.hexical.features.shaders.ClientShaderReceiver
 import miyucomics.hexical.features.shaders.ServerShaderManager
 
 object HexicalHooksClient {
-	private val hooks = mutableListOf<Hook>()
-	fun register(hook: Hook) { hooks.add(hook) }
+	private val hooks = mutableListOf<InitHook>()
+	fun register(hook: InitHook) { hooks.add(hook) }
 
 	fun init() {
 		register(ClientConfettiReceiver)
@@ -43,15 +47,16 @@ object HexicalHooksClient {
 		register(ScarabWingRenderer)
 		register(MediaJarRenderHooks)
 		register(MediaJarShader)
+		register(ArchLampModelProvider)
 
 		for (hook in hooks)
-			hook.registerCallbacks()
+			hook.init()
 	}
 }
 
 object HexicalHooksServer {
-	private val hooks = mutableListOf<Hook>()
-	fun register(hook: Hook) { hooks.add(hook) }
+	private val hooks = mutableListOf<InitHook>()
+	fun register(hook: InitHook) { hooks.add(hook) }
 
 	fun init() {
 		register(ServerCharmedUseReceiver)
@@ -61,12 +66,15 @@ object HexicalHooksServer {
 		register(ServerShaderManager)
 		register(RespawnPersistHook)
 		register(SentinelBedAmbitHook)
+		register(PrestidigitationHandlersHook)
+		register(HopperEndpointRegistry)
+		register(DyeDataHook)
 
 		for (hook in hooks)
-			hook.registerCallbacks()
+			hook.init()
 	}
 }
 
-abstract class Hook {
-	abstract fun registerCallbacks()
+abstract class InitHook {
+	abstract fun init()
 }

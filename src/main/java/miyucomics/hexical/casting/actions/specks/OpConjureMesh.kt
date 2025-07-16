@@ -8,7 +8,7 @@ import at.petrak.hexcasting.api.casting.getVec3
 import at.petrak.hexcasting.api.casting.iota.EntityIota
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.misc.MediaConstants
-import miyucomics.hexical.features.entities.specklikes.MeshEntity
+import miyucomics.hexical.features.specklikes.MeshEntity
 import miyucomics.hexical.inits.HexicalAdvancements
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.math.Vec3d

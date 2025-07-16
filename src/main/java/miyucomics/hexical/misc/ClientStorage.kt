@@ -1,6 +1,6 @@
 package miyucomics.hexical.misc
 
-import miyucomics.hexical.features.player.fields.MediaLogField
+import miyucomics.hexical.features.media_log.MediaLogField
 import net.minecraft.util.math.Vec3d
 
 object ClientStorage {

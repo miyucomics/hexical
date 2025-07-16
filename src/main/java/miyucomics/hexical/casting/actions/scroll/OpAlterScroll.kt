@@ -6,7 +6,7 @@ import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.getEntity
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadEntity
-import miyucomics.hexical.features.entities.AnimatedScrollEntity
+import miyucomics.hexical.features.animated_scrolls.AnimatedScrollEntity
 
 class OpAlterScroll(val process: (AnimatedScrollEntity) -> Unit) : SpellAction {
 	override val argc = 1

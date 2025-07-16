@@ -6,7 +6,7 @@ import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadEntity
 import miyucomics.hexical.casting.iotas.getPigment
-import miyucomics.hexical.interfaces.Specklike
+import miyucomics.hexical.features.specklikes.Specklike
 import net.minecraft.command.argument.EntityAnchorArgumentType
 
 class OpSpecklikeProperty(private val mode: Int) : ConstMediaAction {

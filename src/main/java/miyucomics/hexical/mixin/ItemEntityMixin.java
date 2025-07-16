@@ -16,9 +16,9 @@ public abstract class ItemEntityMixin {
 
 	@Shadow private int pickupDelay;
 
-	@Inject(method = "onPlayerCollision", at = @At("HEAD"))
+	@Inject(method = "tick", at = @At("HEAD"))
 	void deactivateDroppedLamp(CallbackInfo ci) {
-		if (!((Entity) (Object) this).getWorld().isClient && this.getStack().getItem() == HexicalItems.ARCH_LAMP_ITEM && this.getStack().getNbt() != null && this.pickupDelay == 0)
-			this.getStack().getNbt().putBoolean("active", false);
+		if (!((Entity) (Object) this).getWorld().isClient && this.getStack().isOf(HexicalItems.ARCH_LAMP_ITEM))
+			this.getStack().getOrCreateNbt().putBoolean("active", false);
 	}
 }

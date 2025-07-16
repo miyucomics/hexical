@@ -1,8 +1,8 @@
 package miyucomics.hexical
 
-import miyucomics.hexical.features.items.MediaJarItemRenderer
+import miyucomics.hexical.features.animated_scrolls.AnimatedPatternTooltipComponent
+import miyucomics.hexical.features.media_jar.MediaJarItemRenderer
 import miyucomics.hexical.inits.*
-import miyucomics.hexical.misc.AnimatedPatternTooltipComponent
 import miyucomics.hexical.misc.ClientStorage
 import net.fabricmc.api.ClientModInitializer
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
@@ -14,7 +14,6 @@ class HexicalClient : ClientModInitializer {
 		HexicalBlocks.clientInit()
 		HexicalEntities.clientInit()
 		HexicalKeybinds.clientInit()
-		HexicalItems.clientInit()
 		HexicalParticles.clientInit()
 
 		HexicalHooksClient.init()

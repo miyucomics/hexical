@@ -1,11 +1,15 @@
 package miyucomics.hexical.features.player
 
-import miyucomics.hexical.features.player.fields.*
-import miyucomics.hexical.features.player.tickers.EvocationTicker
-import miyucomics.hexical.features.player.tickers.KeybindTicker
+import miyucomics.hexical.features.evocation.EvocationField
+import miyucomics.hexical.features.evocation.EvocationTicker
+import miyucomics.hexical.features.lamps.ArchLampField
+import miyucomics.hexical.features.lesser_sentinels.LesserSentinelField
+import miyucomics.hexical.features.media_log.MediaLogField
+import miyucomics.hexical.features.peripherals.KeybindField
+import miyucomics.hexical.features.peripherals.KeybindTicker
 import miyucomics.hexical.features.player.types.PlayerField
 import miyucomics.hexical.features.player.types.PlayerTicker
-import miyucomics.hexical.interfaces.PlayerEntityMinterface
+import miyucomics.hexical.features.wristpocket.WristpocketField
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.nbt.NbtCompound
 import kotlin.reflect.KClass

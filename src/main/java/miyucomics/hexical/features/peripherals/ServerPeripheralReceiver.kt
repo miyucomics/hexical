@@ -2,19 +2,16 @@ package miyucomics.hexical.features.peripherals
 
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.features.evocation.ServerEvocationManager
-import miyucomics.hexical.features.player.fields.serverKeybindActive
-import miyucomics.hexical.features.player.fields.serverKeybindDuration
-import miyucomics.hexical.features.player.fields.serverScroll
-import miyucomics.hexical.inits.Hook
+import miyucomics.hexical.inits.InitHook
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
 import net.minecraft.util.Identifier
 
-object ServerPeripheralReceiver : Hook() {
+object ServerPeripheralReceiver : InitHook() {
 	val PRESSED_KEY_CHANNEL: Identifier = HexicalMain.id("press_key")
 	val RELEASED_KEY_CHANNEL: Identifier = HexicalMain.id("release_key")
 	val SCROLL_CHANNEL: Identifier = HexicalMain.id("scroll")
 
-	override fun registerCallbacks() {
+	override fun init() {
 		ServerPlayNetworking.registerGlobalReceiver(PRESSED_KEY_CHANNEL) { server, player, _, buf, _ ->
 			val key = buf.readString()
 			player.serverKeybindActive()[key] = true

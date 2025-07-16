@@ -11,7 +11,7 @@ import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.Vec3Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.misc.MediaConstants
-import miyucomics.hexical.features.prestidigitation.PrestidigitationData
+import miyucomics.hexical.features.prestidigitation.PrestidigitationHandlersHook
 import net.minecraft.entity.Entity
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d
@@ -36,7 +36,7 @@ class OpPrestidigitation : SpellAction {
 
 	private data class BlockSpell(val position: BlockPos) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			PrestidigitationData.PRESTIDIGITATION_HANDLER.forEach {
+			PrestidigitationHandlersHook.PRESTIDIGITATION_HANDLER.forEach {
 				if (it.tryHandleBlock(env, position))
 					return
 			}
@@ -45,7 +45,7 @@ class OpPrestidigitation : SpellAction {
 
 	private data class EntitySpell(val entity: Entity) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			PrestidigitationData.PRESTIDIGITATION_HANDLER.forEach {
+			PrestidigitationHandlersHook.PRESTIDIGITATION_HANDLER.forEach {
 				if (it.tryHandleEntity(env, entity))
 					return
 			}

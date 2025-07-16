@@ -8,8 +8,8 @@ import at.petrak.hexcasting.api.casting.getEntity
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadEntity
 import at.petrak.hexcasting.api.misc.MediaConstants
+import miyucomics.hexical.features.lei.SnifferEntityMinterface
 import miyucomics.hexical.inits.HexicalBlocks
-import miyucomics.hexical.interfaces.SnifferEntityMinterface
 import net.minecraft.entity.passive.SnifferEntity
 import net.minecraft.item.ItemStack
 

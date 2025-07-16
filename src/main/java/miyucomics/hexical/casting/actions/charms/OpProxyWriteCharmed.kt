@@ -7,14 +7,14 @@ import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadOffhandItem
 import at.petrak.hexcasting.xplat.IXplatAbstractions
-import miyucomics.hexical.casting.environments.CharmedItemCastEnv
+import miyucomics.hexical.casting.environments.CurioCastEnv
 import miyucomics.hexical.casting.mishaps.NeedsCharmedItemMishap
 import miyucomics.hexical.misc.CastingUtils
 
 class OpProxyWriteCharmed : SpellAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
-		if (env !is CharmedItemCastEnv)
+		if (env !is CurioCastEnv)
 			throw NeedsCharmedItemMishap()
 
 		val iota = args[0]

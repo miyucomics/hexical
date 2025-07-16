@@ -5,8 +5,8 @@ import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.NullIota
-import miyucomics.hexical.features.player.fields.serverKeybindActive
-import miyucomics.hexical.features.player.fields.serverKeybindDuration
+import miyucomics.hexical.features.peripherals.serverKeybindActive
+import miyucomics.hexical.features.peripherals.serverKeybindDuration
 import net.minecraft.server.network.ServerPlayerEntity
 
 class OpGetKeybind(private val key: String) : ConstMediaAction {

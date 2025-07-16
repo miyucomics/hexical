@@ -8,7 +8,7 @@ import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster
 import at.petrak.hexcasting.api.misc.MediaConstants
-import miyucomics.hexical.features.player.fields.evocation
+import miyucomics.hexical.features.evocation.evocation
 import miyucomics.hexical.misc.CastingUtils
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.server.network.ServerPlayerEntity

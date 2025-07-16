@@ -7,7 +7,7 @@ import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster
 import at.petrak.hexcasting.api.misc.MediaConstants
 import miyucomics.hexical.casting.mishaps.InedibleWristpocketMishap
-import miyucomics.hexical.features.player.fields.wristpocket
+import miyucomics.hexical.features.wristpocket.wristpocket
 import net.minecraft.item.ItemStack
 import net.minecraft.item.Items
 import net.minecraft.server.network.ServerPlayerEntity
