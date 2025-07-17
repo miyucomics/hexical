@@ -4,7 +4,7 @@ import at.petrak.hexcasting.api.casting.asActionResult
 import at.petrak.hexcasting.api.casting.eval.vm.CastingImage
 import at.petrak.hexcasting.api.casting.eval.vm.CastingVM
 import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.casting.environments.CurioCastEnv
+import miyucomics.hexical.features.curios.CurioCastEnv
 import miyucomics.hexical.inits.InitHook
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
 import net.minecraft.util.Hand

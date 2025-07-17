@@ -4,7 +4,6 @@ import at.petrak.hexcasting.api.casting.eval.vm.CastingVM
 import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.casting.iota.ListIota
 import at.petrak.hexcasting.xplat.IXplatAbstractions
-import miyucomics.hexical.casting.environments.HextitoCastEnv
 import net.minecraft.entity.LivingEntity
 import net.minecraft.item.FoodComponent
 import net.minecraft.item.Item

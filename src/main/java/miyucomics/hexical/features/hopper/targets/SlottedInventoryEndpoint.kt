@@ -1,9 +1,9 @@
 package miyucomics.hexical.features.hopper.targets
 
 import at.petrak.hexcasting.api.casting.iota.Iota
-import miyucomics.hexical.casting.mishaps.NotEnoughSlotsMishap
 import miyucomics.hexical.features.hopper.HopperDestination
 import miyucomics.hexical.features.hopper.HopperSource
+import miyucomics.hexical.features.hopper.NotEnoughSlotsMishap
 import net.minecraft.inventory.Inventory
 import net.minecraft.item.ItemStack
 

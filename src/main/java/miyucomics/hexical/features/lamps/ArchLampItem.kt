@@ -5,7 +5,6 @@ import at.petrak.hexcasting.api.casting.eval.vm.CastingVM
 import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.casting.iota.NullIota
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
-import miyucomics.hexical.casting.environments.ArchLampCastEnv
 import miyucomics.hexical.inits.HexicalItems
 import miyucomics.hexical.inits.HexicalSounds
 import net.minecraft.entity.Entity

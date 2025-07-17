@@ -15,9 +15,7 @@ class HexicalMain : ModInitializer {
 		HexicalItems.init()
 		HexicalParticles.init()
 		HexicalPotions.init()
-		HexicalRecipe.init()
 		HexicalSounds.init()
-
 		HexicalHooksServer.init()
 	}
 

@@ -4,7 +4,7 @@ import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.common.lib.HexItems
 import com.google.gson.JsonObject
 import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.features.transmutation.TransmutingJsonProvider
+import miyucomics.hexical.features.transmuting.TransmutingJsonProvider
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.item.Items
