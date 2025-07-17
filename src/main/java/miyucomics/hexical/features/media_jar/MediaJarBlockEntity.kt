@@ -5,8 +5,8 @@ import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.api.utils.serializeToNBT
 import at.petrak.hexcasting.common.lib.HexItems
 import com.mojang.datafixers.util.Pair
-import miyucomics.hexical.features.transmutation.TransmutationHelper
-import miyucomics.hexical.features.transmutation.TransmutationResult
+import miyucomics.hexical.features.transmuting.TransmutationResult
+import miyucomics.hexical.features.transmuting.TransmutingHelper
 import miyucomics.hexical.inits.HexicalBlocks
 import miyucomics.hexical.inits.HexicalSounds
 import miyucomics.hexical.misc.RenderUtils
@@ -94,17 +94,20 @@ class MediaJarBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 		if (world == null)
 			return
 
-		when (val result = TransmutationHelper.transmuteItem(world!!, stack, getMedia(), ::insertMedia, ::withdrawMedia)) {
-			is TransmutationResult.AbsorbedMedia -> world!!.playSoundAtBlockCenter(pos, HexicalSounds.AMETHYST_MELT, SoundCategory.BLOCKS, 1f, 1f, true)
+		when (val result = TransmutingHelper.transmuteItem(world!!, stack, getMedia(), ::insertMedia, ::withdrawMedia)) {
+			is TransmutationResult.AbsorbedMedia -> {
+				world!!.playSound(null, pos, HexicalSounds.AMETHYST_MELT, SoundCategory.BLOCKS, 1f, 1f)
+				heldStack = stack
+			}
 			is TransmutationResult.TransmutedItems -> {
 				val outputs = result.output.toMutableList()
 				heldStack = outputs.removeFirst().copy()
 				val spawnPosition = pos.down().toCenterPos()
 				outputs.forEach { world!!.spawnEntity(ItemEntity(world!!, spawnPosition.x, spawnPosition.y, spawnPosition.z, it.copy(), 0.0, 0.0, 0.0)) }
-				world!!.playSoundAtBlockCenter(pos, HexicalSounds.ITEM_DUNKS, SoundCategory.BLOCKS, 1f, 1f, true)
+				world!!.playSound(null, pos, HexicalSounds.ITEM_DUNKS, SoundCategory.BLOCKS, 1f, 1f)
 			}
 			is TransmutationResult.RefilledHolder -> {
-				world!!.playSoundAtBlockCenter(pos, HexicalSounds.ITEM_DUNKS, SoundCategory.BLOCKS, 1f, 1f, true)
+				world!!.playSound(null, pos, HexicalSounds.ITEM_DUNKS, SoundCategory.BLOCKS, 1f, 1f)
 				heldStack = stack
 			}
 			is TransmutationResult.Pass -> {

@@ -12,13 +12,20 @@ import at.petrak.hexcasting.api.casting.iota.ListIota
 import at.petrak.hexcasting.api.casting.iota.PatternIota
 import at.petrak.hexcasting.common.casting.PatternRegistryManifest
 import at.petrak.hexcasting.common.lib.hex.HexEvalSounds
-import miyucomics.hexical.casting.frames.ScarabFrame
+import at.petrak.hexcasting.xplat.IXplatAbstractions
+import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.inits.HexicalItems
+import miyucomics.hexical.inits.InitHook
 import net.minecraft.item.ItemStack
+import net.minecraft.registry.Registry
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld
 
-object ScarabHandler {
+object ScarabHandler : InitHook() {
+	override fun init() {
+		Registry.register(IXplatAbstractions.INSTANCE.continuationTypeRegistry, HexicalMain.id("scarab"), ScarabFrame.TYPE)
+	}
+
 	@JvmStatic
 	fun handleScarab(vm: CastingVM, iota: PatternIota, continuation: SpellContinuation, world: ServerWorld): CastResult? {
 		val env = vm.env

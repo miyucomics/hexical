@@ -64,6 +64,7 @@
 - added pattern to check if an item has been autographed by a specific person
 - added Unautograph spell to unautograph an item ( still erases it )
 - changed cost of Refuel Lamp
+- changed Displace to cost half a dust
 - changed Autograph and Unautograph's pattern by swapping them
 - changed Promote Genie to be a great spell
 - changed media jar
