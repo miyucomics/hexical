@@ -1,0 +1,98 @@
+{
+  "advancement": "hexcasting:root",
+  "category": "hexcasting:items",
+  "icon": "hexical:curio_clover",
+  "name": "hexical.page.curios.title",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "hexical.page.curios.0"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexical:curio_bismuth",
+      "text": "hexical.page.curio_bismuth.summary"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexical:curio_clover",
+      "text": "hexical.page.curio_clover.summary"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexical:curio_compass",
+      "text": "hexical.page.curio_compass.summary"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexical:curio_conch",
+      "text": "hexical.page.curio_conch.summary"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexical:curio_cube",
+      "text": "hexical.page.curio_cube.summary"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexical:curio_flute",
+      "text": "hexical.page.curio_flute.summary"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexical:curio_handbell",
+      "text": "hexical.page.curio_handbell.summary"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexical:curio_heart",
+      "text": "hexical.page.curio_heart.summary"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexical:curio_interlock",
+      "text": "hexical.page.curio_interlock.summary"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexical:curio_key",
+      "text": "hexical.page.curio_key.summary"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexical:curio_staff",
+      "text": "hexical.page.curio_staff.summary"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexical:curio_charm",
+      "text": "hexical.page.curio_charm.summary"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexical:curio_strange",
+      "text": "hexical.page.curio_strange.summary"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexical:curio_beauty",
+      "text": "hexical.page.curio_beauty.summary"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexical:curio_truth",
+      "text": "hexical.page.curio_truth.summary"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexical:curio_up",
+      "text": "hexical.page.curio_up.summary"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexical:curio_down",
+      "text": "hexical.page.curio_down.summary"
+    }
+  ],
+  "sortnum": 10
+}

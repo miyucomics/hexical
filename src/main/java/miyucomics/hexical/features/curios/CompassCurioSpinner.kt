@@ -26,7 +26,11 @@ object CompassCurioSpinner : InitHook() {
 	}
 
 	fun saveVectorForTheClient(stack: ItemStack, iota: Iota) {
-		if (stack.isOf(HexicalItems.CURIO_COMPASS) && iota is Vec3Iota)
+		if (!stack.isOf(HexicalItems.CURIO_COMPASS))
+			return
+		if (iota is Vec3Iota)
 			stack.orCreateNbt.putIntArray("needle", listOf(iota.vec3.x.toInt(), iota.vec3.y.toInt(), iota.vec3.z.toInt()))
+		else
+			stack.orCreateNbt.remove("needle")
 	}
 }
