@@ -1,8 +1,8 @@
 package miyucomics.hexical.features.media_jar
 
 import at.petrak.hexcasting.api.misc.MediaConstants
-import miyucomics.hexical.features.transmutation.TransmutationHelper
-import miyucomics.hexical.features.transmutation.TransmutationResult
+import miyucomics.hexical.features.transmuting.TransmutationResult
+import miyucomics.hexical.features.transmuting.TransmutingHelper
 import miyucomics.hexical.inits.HexicalBlocks
 import miyucomics.hexical.inits.HexicalSounds
 import net.minecraft.block.*
@@ -66,7 +66,7 @@ class MediaJarBlock : Block(
 		val stack = player.getStackInHand(hand)
 		player.swingHand(hand)
 
-		return when (val result = TransmutationHelper.transmuteItem(world, stack, jar.getMedia(), jar::insertMedia, jar::withdrawMedia)) {
+		return when (val result = TransmutingHelper.transmuteItem(world, stack, jar.getMedia(), jar::insertMedia, jar::withdrawMedia)) {
 			is TransmutationResult.AbsorbedMedia -> {
 				world.playSoundFromEntity(null, player, HexicalSounds.AMETHYST_MELT, SoundCategory.BLOCKS, 1f, 1f)
 				ActionResult.SUCCESS

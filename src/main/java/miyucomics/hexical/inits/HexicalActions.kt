@@ -11,60 +11,80 @@ import at.petrak.hexcasting.api.utils.vecFromNBT
 import at.petrak.hexcasting.common.casting.actions.selectors.OpGetEntitiesBy
 import at.petrak.hexcasting.common.lib.hex.HexActions
 import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.casting.actions.*
-import miyucomics.hexical.casting.actions.akashic.OpClearAkashicShelf
-import miyucomics.hexical.casting.actions.akashic.OpKeyAkashicShelf
-import miyucomics.hexical.casting.actions.akashic.OpReadAkashicShelf
-import miyucomics.hexical.casting.actions.akashic.OpWriteAkashicShelf
-import miyucomics.hexical.casting.actions.autograph.OpAutograph
-import miyucomics.hexical.casting.actions.autograph.OpHasAutograph
-import miyucomics.hexical.casting.actions.autograph.OpUnautograph
-import miyucomics.hexical.casting.actions.block_mimicry.OpCook
-import miyucomics.hexical.casting.actions.block_mimicry.OpDispense
-import miyucomics.hexical.casting.actions.block_mimicry.OpStonecut
-import miyucomics.hexical.casting.actions.breaking.OpBreakFortune
-import miyucomics.hexical.casting.actions.breaking.OpBreakSilk
-import miyucomics.hexical.casting.actions.charms.*
-import miyucomics.hexical.casting.actions.circle.OpAbsorbArm
-import miyucomics.hexical.casting.actions.circle.OpCreateDust
-import miyucomics.hexical.casting.actions.circle.OpDisplace
-import miyucomics.hexical.casting.actions.conjure.*
-import miyucomics.hexical.casting.actions.dyes.OpDye
-import miyucomics.hexical.casting.actions.dyes.OpGetDye
-import miyucomics.hexical.casting.actions.dyes.OpTranslateDye
-import miyucomics.hexical.casting.actions.evocation.OpGetEvocation
-import miyucomics.hexical.casting.actions.evocation.OpSetEvocation
-import miyucomics.hexical.casting.actions.firework.OpConjureFirework
-import miyucomics.hexical.casting.actions.firework.OpSimulateFirework
-import miyucomics.hexical.casting.actions.grimoire.OpGrimoireErase
-import miyucomics.hexical.casting.actions.grimoire.OpGrimoireIndex
-import miyucomics.hexical.casting.actions.grimoire.OpGrimoireWrite
-import miyucomics.hexical.casting.actions.hopper.OpHopper
-import miyucomics.hexical.casting.actions.hopper.OpIndexHopper
-import miyucomics.hexical.casting.actions.hotbar.OpGetHotbar
-import miyucomics.hexical.casting.actions.hotbar.OpSetHotbar
-import miyucomics.hexical.casting.actions.lamp.*
-import miyucomics.hexical.casting.actions.lesser_sentinel.OpLesserSentinelGet
-import miyucomics.hexical.casting.actions.lesser_sentinel.OpLesserSentinelSet
-import miyucomics.hexical.casting.actions.lore.OpItemLore
-import miyucomics.hexical.casting.actions.lore.OpItemName
-import miyucomics.hexical.casting.actions.mage_blocks.OpConjureMageBlock
-import miyucomics.hexical.casting.actions.mage_blocks.OpModifyMageBlock
-import miyucomics.hexical.casting.actions.pattern_manipulation.*
-import miyucomics.hexical.casting.actions.pigments.OpSamplePigment
-import miyucomics.hexical.casting.actions.pigments.OpTakeOnPigment
-import miyucomics.hexical.casting.actions.pigments.OpToPigment
-import miyucomics.hexical.casting.actions.rotate.OpRotateBlock
-import miyucomics.hexical.casting.actions.rotate.OpRotateEntity
-import miyucomics.hexical.casting.actions.scroll.OpAlterScroll
-import miyucomics.hexical.casting.actions.scroll.OpColorScroll
-import miyucomics.hexical.casting.actions.specks.*
-import miyucomics.hexical.casting.actions.telepathy.*
-import miyucomics.hexical.casting.actions.vfx.OpConfetti
-import miyucomics.hexical.casting.actions.vfx.OpSparkle
-import miyucomics.hexical.casting.actions.wristpocket.*
-import miyucomics.hexical.features.lamps.HandLampItem
+import miyucomics.hexical.features.akashic.OpClearAkashicShelf
+import miyucomics.hexical.features.akashic.OpKeyAkashicShelf
+import miyucomics.hexical.features.akashic.OpReadAkashicShelf
+import miyucomics.hexical.features.akashic.OpWriteAkashicShelf
+import miyucomics.hexical.features.animated_scrolls.OpAlterScroll
+import miyucomics.hexical.features.animated_scrolls.OpColorScroll
+import miyucomics.hexical.features.autographs.OpAutograph
+import miyucomics.hexical.features.autographs.OpHasAutograph
+import miyucomics.hexical.features.autographs.OpUnautograph
+import miyucomics.hexical.features.block_mimicry.OpCook
+import miyucomics.hexical.features.block_mimicry.OpDispense
+import miyucomics.hexical.features.block_mimicry.OpStonecut
+import miyucomics.hexical.features.breaking.OpBreakFortune
+import miyucomics.hexical.features.breaking.OpBreakSilk
+import miyucomics.hexical.features.charms.*
+import miyucomics.hexical.features.circle.OpAbsorbArm
+import miyucomics.hexical.features.circle.OpCreateDust
+import miyucomics.hexical.features.circle.OpDisplace
+import miyucomics.hexical.features.confection.OpConjureGummy
+import miyucomics.hexical.features.confection.OpConjureHexburst
+import miyucomics.hexical.features.confection.OpConjureHextito
+import miyucomics.hexical.features.conjure.OpConjureEntity
+import miyucomics.hexical.features.conjure.OpConjureFlower
+import miyucomics.hexical.features.conjure.OpConjureLight
+import miyucomics.hexical.features.conjure.OpConjureSpike
+import miyucomics.hexical.features.cracked_items.OpCrackDevice
+import miyucomics.hexical.features.dyes.OpDye
+import miyucomics.hexical.features.dyes.OpGetDye
+import miyucomics.hexical.features.dyes.OpTranslateDye
+import miyucomics.hexical.features.evocation.OpGetEvocation
+import miyucomics.hexical.features.evocation.OpSetEvocation
+import miyucomics.hexical.features.grimoires.OpGrimoireErase
+import miyucomics.hexical.features.grimoires.OpGrimoireIndex
+import miyucomics.hexical.features.grimoires.OpGrimoireWrite
+import miyucomics.hexical.features.hopper.OpHopper
+import miyucomics.hexical.features.hopper.OpIndexHopper
+import miyucomics.hexical.features.hotbar.OpGetHotbar
+import miyucomics.hexical.features.hotbar.OpSetHotbar
+import miyucomics.hexical.features.lamps.*
+import miyucomics.hexical.features.lei.OpCompelSniffer
+import miyucomics.hexical.features.lesser_sentinels.OpLesserSentinelGet
+import miyucomics.hexical.features.lesser_sentinels.OpLesserSentinelSet
+import miyucomics.hexical.features.lore.OpItemLore
+import miyucomics.hexical.features.lore.OpItemName
+import miyucomics.hexical.features.mage_blocks.OpConjureMageBlock
+import miyucomics.hexical.features.mage_blocks.OpModifyMageBlock
+import miyucomics.hexical.features.magic_missile.OpMagicMissile
+import miyucomics.hexical.features.misc_actions.*
+import miyucomics.hexical.features.particles.OpConfetti
+import miyucomics.hexical.features.particles.OpSparkle
+import miyucomics.hexical.features.pattern_manipulation.*
+import miyucomics.hexical.features.peripherals.OpGetKeybind
+import miyucomics.hexical.features.peripherals.OpGetScroll
+import miyucomics.hexical.features.pigments.OpSamplePigment
+import miyucomics.hexical.features.pigments.OpTakeOnPigment
+import miyucomics.hexical.features.pigments.OpToPigment
+import miyucomics.hexical.features.prestidigitation.OpPrestidigitation
+import miyucomics.hexical.features.pyrotechnics.OpConjureFirework
+import miyucomics.hexical.features.pyrotechnics.OpSimulateFirework
+import miyucomics.hexical.features.rotate.OpRotateBlock
+import miyucomics.hexical.features.rotate.OpRotateEntity
+import miyucomics.hexical.features.shaders.OpShader
+import miyucomics.hexical.features.specklikes.OpKillSpecklike
+import miyucomics.hexical.features.specklikes.OpSpecklikeProperty
 import miyucomics.hexical.features.specklikes.Specklike
+import miyucomics.hexical.features.specklikes.mesh.OpConjureMesh
+import miyucomics.hexical.features.specklikes.mesh.OpReadMesh
+import miyucomics.hexical.features.specklikes.mesh.OpWeaveMesh
+import miyucomics.hexical.features.specklikes.speck.OpConjureSpeck
+import miyucomics.hexical.features.specklikes.speck.OpIotaSpeck
+import miyucomics.hexical.features.telepathy.OpHallucinateSound
+import miyucomics.hexical.features.telepathy.OpSendTelepathy
+import miyucomics.hexical.features.telepathy.OpShoutTelepathy
+import miyucomics.hexical.features.wristpocket.*
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.projectile.FireballEntity
 import net.minecraft.entity.projectile.LlamaSpitEntity
@@ -92,18 +112,32 @@ object HexicalActions {
 		register("wish", "eweweweweweewedeaqqqd", HexDir.NORTH_WEST, OpWish())
 		register("recharge_lamp", "qaqwawqwqqwqwqwqwqwqq", HexDir.EAST, OpRechargeLamp())
 		register("promote_lamp", "qweedeqeedeqdqdwewewwewewwewe", HexDir.WEST, OpPromoteLamp())
-		register("get_hand_lamp_position", "qwddedqdd", HexDir.SOUTH_WEST, OpGetHandLampData { _, nbt -> vecFromNBT(nbt.getCompound("position")).asActionResult })
-		register("get_hand_lamp_rotation", "qwddedadw", HexDir.SOUTH_WEST, OpGetHandLampData { _, nbt -> vecFromNBT(nbt.getCompound("rotation")).asActionResult })
-		register("get_hand_lamp_velocity", "qwddedqew", HexDir.SOUTH_WEST, OpGetHandLampData { _, nbt -> vecFromNBT(nbt.getCompound("velocity")).asActionResult })
-		register("get_hand_lamp_use_time", "qwddedqwddwa", HexDir.SOUTH_WEST, OpGetHandLampData { env, nbt -> (env.world.time - (nbt.getDouble("start_time") + 1.0)).asActionResult })
-		register("get_hand_lamp_media", "qwddedaeeeee", HexDir.SOUTH_WEST, OpGetHandLampData { env, _ -> ((env.castingEntity!!.activeItem.item as HandLampItem).getMedia(env.castingEntity!!.activeItem).toDouble() / MediaConstants.DUST_UNIT).asActionResult })
-		register("get_hand_lamp_storage", "qwddedqwaqqqqq", HexDir.SOUTH_WEST, OpGetHandLampData { env, nbt -> listOf(IotaType.deserialize(nbt.getCompound("storage"), env.world)) })
+		register("get_hand_lamp_position", "qwddedqdd", HexDir.SOUTH_WEST,
+			OpGetHandLampData { _, nbt -> vecFromNBT(nbt.getCompound("position")).asActionResult })
+		register("get_hand_lamp_rotation", "qwddedadw", HexDir.SOUTH_WEST,
+			OpGetHandLampData { _, nbt -> vecFromNBT(nbt.getCompound("rotation")).asActionResult })
+		register("get_hand_lamp_velocity", "qwddedqew", HexDir.SOUTH_WEST,
+			OpGetHandLampData { _, nbt -> vecFromNBT(nbt.getCompound("velocity")).asActionResult })
+		register("get_hand_lamp_use_time", "qwddedqwddwa", HexDir.SOUTH_WEST,
+			OpGetHandLampData { env, nbt -> (env.world.time - (nbt.getDouble("start_time") + 1.0)).asActionResult })
+		register("get_hand_lamp_media", "qwddedaeeeee", HexDir.SOUTH_WEST,
+			OpGetHandLampData { env, _ ->
+				((env.castingEntity!!.activeItem.item as HandLampItem).getMedia(env.castingEntity!!.activeItem)
+					.toDouble() / MediaConstants.DUST_UNIT).asActionResult
+			})
+		register("get_hand_lamp_storage", "qwddedqwaqqqqq", HexDir.SOUTH_WEST,
+			OpGetHandLampData { env, nbt -> listOf(IotaType.deserialize(nbt.getCompound("storage"), env.world)) })
 		register("set_hand_lamp_storage", "qwddedqedeeeee", HexDir.SOUTH_WEST, OpSetHandLampStorage())
-		register("get_arch_lamp_position", "qaqwddedqdd", HexDir.NORTH_EAST, OpGetArchLampData { _, data -> data.position.asActionResult } )
-		register("get_arch_lamp_rotation", "qaqwddedadw", HexDir.NORTH_EAST, OpGetArchLampData { _, data -> data.rotation.asActionResult } )
-		register("get_arch_lamp_velocity", "qaqwddedqew", HexDir.NORTH_EAST, OpGetArchLampData { _, data -> data.velocity.asActionResult } )
-		register("get_arch_lamp_use_time", "qaqwddedqwddwa", HexDir.NORTH_EAST, OpGetArchLampData { ctx, data -> (ctx.world.time - (data.time + 1)).asActionResult } )
-		register("get_arch_lamp_storage", "qaqwddedqwaqqqqq", HexDir.NORTH_EAST, OpGetArchLampData { ctx, data -> listOf(IotaType.deserialize(data.storage, ctx.world)) } )
+		register("get_arch_lamp_position", "qaqwddedqdd", HexDir.NORTH_EAST,
+			OpGetArchLampData { _, data -> data.position.asActionResult })
+		register("get_arch_lamp_rotation", "qaqwddedadw", HexDir.NORTH_EAST,
+			OpGetArchLampData { _, data -> data.rotation.asActionResult })
+		register("get_arch_lamp_velocity", "qaqwddedqew", HexDir.NORTH_EAST,
+			OpGetArchLampData { _, data -> data.velocity.asActionResult })
+		register("get_arch_lamp_use_time", "qaqwddedqwddwa", HexDir.NORTH_EAST,
+			OpGetArchLampData { ctx, data -> (ctx.world.time - (data.time + 1)).asActionResult })
+		register("get_arch_lamp_storage", "qaqwddedqwaqqqqq", HexDir.NORTH_EAST,
+			OpGetArchLampData { ctx, data -> listOf(IotaType.deserialize(data.storage, ctx.world)) })
 		register("set_arch_lamp_storage", "qaqwddedqedeeeee", HexDir.NORTH_EAST, OpSetArchLampStorage())
 		register("get_arch_lamp_media", "qaqwddedaeeeee", HexDir.NORTH_EAST, OpGetArchLampMedia())
 		register("has_arch_lamp", "qaqwddedqeed", HexDir.NORTH_EAST, OpIsUsingArchLamp())
@@ -250,16 +284,24 @@ object HexicalActions {
 
 		register("shader_clear", "eeeeeqaqeeeee", HexDir.WEST, OpShader(null))
 		register("shader_owl", "edewawede", HexDir.WEST, OpShader(HexicalMain.id("shaders/post/night_vision.json")))
-		register("shader_lines", "eedwwawwdee", HexDir.WEST, OpShader(HexicalMain.id("shaders/post/outlines_only.json")))
-		register("shader_tv", "wewdwewwawwewdwew", HexDir.WEST, OpShader(HexicalMain.id("shaders/post/television.json")))
+		register("shader_lines", "eedwwawwdee", HexDir.WEST,
+			OpShader(HexicalMain.id("shaders/post/outlines_only.json"))
+		)
+		register("shader_tv", "wewdwewwawwewdwew", HexDir.WEST,
+			OpShader(HexicalMain.id("shaders/post/television.json"))
+		)
 		register("shader_media", "eewdweqaqewdwee", HexDir.WEST, OpShader(HexicalMain.id("shaders/post/media.json")))
-		register("shader_spider", "qaqdedaedqqdedaqaedeqd", HexDir.NORTH_EAST, OpShader(HexicalMain.id("shaders/post/spider.json")))
+		register("shader_spider", "qaqdedaedqqdedaqaedeqd", HexDir.NORTH_EAST,
+			OpShader(HexicalMain.id("shaders/post/spider.json"))
+		)
 		// color shift - edqdeqaqedqde
 
 		register("hopper", "qwawqwaeqqq", HexDir.SOUTH_EAST, OpHopper)
 		register("index_hopper", "qqqeawqwawq", HexDir.SOUTH_WEST, OpIndexHopper)
 
-		register("horrible", "wedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqeedqawqeewdeaqqewdeaqeewdeaqeedqawqqedqawqqewdeaqeedqawqeewdeaqqewdeaqeewdeaqeedqawqqedqawqqewdeaqqedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqqedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqeedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqqedqawqeewdeaqqewdeaqeewdeaqeedqawqqedqawqqewdeaqe", HexDir.EAST, OpHorrible())
+		register("horrible", "wedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqeedqawqeewdeaqqewdeaqeewdeaqeedqawqqedqawqqewdeaqeedqawqeewdeaqqewdeaqeewdeaqeedqawqqedqawqqewdeaqqedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqqedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqeedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqqedqawqeewdeaqqewdeaqeewdeaqeedqawqqedqawqqewdeaqe", HexDir.EAST,
+			OpHorrible()
+		)
 
 		register("charm", "edeeeeeqaaqeeeadweeqeeqdqeeqeeqde", HexDir.SOUTH_EAST, OpCharmItem())
 		register("write_charmed", "waqqqqqedeqdqdqdqdqe", HexDir.NORTH_EAST, OpWriteCharmed())

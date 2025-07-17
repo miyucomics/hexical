@@ -3,8 +3,8 @@ package miyucomics.hexical.features.media_jar
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.utils.mediaBarColor
 import at.petrak.hexcasting.common.items.magic.ItemMediaHolder
-import miyucomics.hexical.features.transmutation.TransmutationHelper
-import miyucomics.hexical.features.transmutation.TransmutationResult
+import miyucomics.hexical.features.transmuting.TransmutationResult
+import miyucomics.hexical.features.transmuting.TransmutingHelper
 import miyucomics.hexical.inits.HexicalBlocks
 import miyucomics.hexical.inits.HexicalSounds
 import miyucomics.hexical.misc.RenderUtils
@@ -42,7 +42,7 @@ class MediaJarItem : BlockItem(HexicalBlocks.MEDIA_JAR_BLOCK, Settings().maxCoun
 		val world = player.world
 		val jarData = jar.nbt?.getCompound("BlockEntityTag") ?: return false
 
-		return when (val result = TransmutationHelper.transmuteItem(world, stack, jarData.getLong("media"), { insertMedia(jarData, it) }, { withdrawMedia(jarData, it) })) {
+		return when (val result = TransmutingHelper.transmuteItem(world, stack, jarData.getLong("media"), { insertMedia(jarData, it) }, { withdrawMedia(jarData, it) })) {
 			is TransmutationResult.AbsorbedMedia -> {
 				world.playSound(player.x, player.y, player.z, HexicalSounds.AMETHYST_MELT, SoundCategory.BLOCKS, 1f, 1f, true)
 				true

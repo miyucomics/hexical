@@ -7,7 +7,6 @@ import at.petrak.hexcasting.api.casting.iota.NullIota
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.api.utils.serializeToNBT
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
-import miyucomics.hexical.casting.environments.HandLampCastEnv
 import miyucomics.hexical.inits.HexicalSounds
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.player.PlayerEntity

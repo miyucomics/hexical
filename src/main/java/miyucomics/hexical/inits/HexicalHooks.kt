@@ -22,10 +22,12 @@ import miyucomics.hexical.features.peripherals.ClientPeripheralPusher
 import miyucomics.hexical.features.peripherals.ServerPeripheralReceiver
 import miyucomics.hexical.features.player.RespawnPersistHook
 import miyucomics.hexical.features.prestidigitation.PrestidigitationHandlersHook
+import miyucomics.hexical.features.scarabs.ScarabHandler
 import miyucomics.hexical.features.scarabs.ScarabWingRenderer
 import miyucomics.hexical.features.sentinel_beds.SentinelBedAmbitHook
 import miyucomics.hexical.features.shaders.ClientShaderReceiver
 import miyucomics.hexical.features.shaders.ServerShaderManager
+import miyucomics.hexical.features.transmuting.TransmutingHelper
 
 object HexicalHooksClient {
 	private val hooks = mutableListOf<InitHook>()
@@ -69,6 +71,8 @@ object HexicalHooksServer {
 		register(PrestidigitationHandlersHook)
 		register(HopperEndpointRegistry)
 		register(DyeDataHook)
+		register(TransmutingHelper)
+		register(ScarabHandler)
 
 		for (hook in hooks)
 			hook.init()

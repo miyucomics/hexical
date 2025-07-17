@@ -1,5 +1,5 @@
 {
-	"processor": "miyucomics.hexical.features.transmutation.TransmutingPatchouli",
+	"processor": "miyucomics.hexical.features.transmuting.TransmutingPatchouli",
 	"components": [
 		{
 			"type": "patchouli:image",
