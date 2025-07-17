@@ -1,4 +1,4 @@
-// 1.20.1	2025-07-14T09:25:04.285877515	Hexical/Model Definitions
+// 1.20.1	2025-07-17T18:03:32.09074091	Hexical/Model Definitions
 d632b9e0c4e0bbad7581f99ce50672586720d891 assets/hexical/models/block/hex_candle_two_candles_lit.json
 06001cb23c4a272e472561e997cadacb0a66923c assets/hexical/models/item/curio_compass_10.json
 9057b5bc99c15716c216f3f6acb2b1a03279c591 assets/hexical/models/item/curio_compass_15.json
@@ -10,11 +10,11 @@ c1d2de0e050e65c46da36a6d55e41e58fa5e58b4 assets/hexical/models/item/curio_compas
 b187ad0d36f6c7979591a6a489e16ea8f67475d8 assets/hexical/models/item/curio_key.json
 c5d357a66250944d9875a23df518a8c5a65d2765 assets/hexical/models/item/curio_compass_01.json
 4c1f8feb5a91ab8f0e9d97178d2be940853936d0 assets/hexical/models/block/hex_candle_cake.json
-b55f4df1e3abe56e376fa9533742a2cd4459d5e7 assets/hexical/models/item/curio_truth.json
 ba2517f09678ff7191e7838e6020ca9a1a55e868 assets/hexical/models/block/hex_candle_one_candle_lit.json
+b55f4df1e3abe56e376fa9533742a2cd4459d5e7 assets/hexical/models/item/curio_truth.json
 f291ef4aa6eeb99a4fc6620c52ac71489e42b8c4 assets/hexical/models/item/plush_quadxxy.json
-112798556a669f142d216a8aacd51dbe7290f670 assets/hexical/models/item/curio_compass_24.json
 3514f10c3773cc6431753ca94b647496eec94311 assets/hexical/models/item/curio_clover.json
+112798556a669f142d216a8aacd51dbe7290f670 assets/hexical/models/item/curio_compass_24.json
 0bcac85508236e4a62dc021bd79ef02d975b05ec assets/hexical/models/item/curio_compass_17.json
 dabea1a868913376384a4f8c62208e368f78613a assets/hexical/models/item/curio_compass_14.json
 6cefe201d7f63f9ff4c3eb56d717c62dc682889d assets/hexical/models/item/curio_compass_00.json
