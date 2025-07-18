@@ -2,7 +2,7 @@ package miyucomics.hexical.mixin;
 
 import at.petrak.hexcasting.common.lib.HexSounds;
 import kotlin.Pair;
-import miyucomics.hexical.features.charms.CharmedItemUtilities;
+import miyucomics.hexical.features.charms.CharmUtilities;
 import miyucomics.hexical.features.charms.ServerCharmedUseReceiver;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
@@ -45,8 +45,8 @@ public class MouseMixin {
 		if (buttonPressed == -1)
 			return;
 
-		for (Pair<Hand, ItemStack> pair : CharmedItemUtilities.getUseableCharmedItems(client.player)) {
-			if (!CharmedItemUtilities.shouldIntercept(pair.getSecond(), buttonPressed, client.player.isSneaking()))
+		for (Pair<Hand, ItemStack> pair : CharmUtilities.getUseableCharmedItems(client.player)) {
+			if (!CharmUtilities.shouldIntercept(pair.getSecond(), buttonPressed, client.player.isSneaking()))
 				continue;
 
 			client.player.swingHand(pair.getFirst());

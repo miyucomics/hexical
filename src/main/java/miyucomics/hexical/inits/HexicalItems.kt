@@ -11,6 +11,7 @@ import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.features.animated_scrolls.AnimatedScrollItem
 import miyucomics.hexical.features.confection.HexburstItem
 import miyucomics.hexical.features.confection.HextitoItem
+import miyucomics.hexical.features.curios.CurioItem
 import miyucomics.hexical.features.grimoires.GrimoireItem
 import miyucomics.hexical.features.lamps.ArchLampItem
 import miyucomics.hexical.features.lamps.HandLampItem
@@ -64,7 +65,7 @@ object HexicalItems {
 	private val LIGHTNING_ROD_STAFF = registerItem("lightning_rod_staff", ItemStaff(Settings().maxCount(1)))
 
 	val CURIO_NAMES: List<String> = listOf("bismuth", "clover", "compass", "conch", "cube", "flute", "handbell", "heart", "interlock", "key", "staff", "charm", "strange", "beauty", "truth", "up", "down")
-	val CURIOS: List<Item> = CURIO_NAMES.map { registerItem("curio_$it", Item(Settings().maxCount(1))) }
+	val CURIOS: List<Item> = CURIO_NAMES.map { registerItem("curio_$it", CurioItem.getCurioFromName(it)) }
 	@JvmField val CURIO_COMPASS = CURIOS[CURIO_NAMES.indexOf("compass")]
 
 	val PLUSHIE_NAMES: List<String> = listOf("hexxy", "irissy", "pentxxy", "quadxxy", "thothy", "flexxy")

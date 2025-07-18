@@ -1,7 +1,11 @@
 package miyucomics.hexical.features.charms
 
+import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.casting.iota.ListIota
+import at.petrak.hexcasting.api.casting.iota.NullIota
+import at.petrak.hexcasting.api.utils.putCompound
+import miyucomics.hexical.features.curios.CurioItem
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
@@ -9,7 +13,7 @@ import net.minecraft.server.world.ServerWorld
 import net.minecraft.text.TextColor
 import net.minecraft.util.Hand
 
-object CharmedItemUtilities {
+object CharmUtilities {
 	val CHARMED_COLOR: TextColor = TextColor.fromRgb(0xe83d72)
 
 	@JvmStatic
@@ -54,4 +58,17 @@ object CharmedItemUtilities {
 	fun getHex(stack: ItemStack, world: ServerWorld) = (IotaType.deserialize(getCompound(stack).getCompound("instructions"), world) as ListIota).list.toList()
 	fun getMedia(stack: ItemStack) = getCompound(stack).getLong("media")
 	fun getMaxMedia(stack: ItemStack) = getCompound(stack).getLong("max_media")
+
+	fun getInternalStorage(stack: ItemStack, world: ServerWorld): Iota {
+		val nbt = stack.orCreateNbt
+		if (nbt.contains("charmed_storage"))
+			return IotaType.deserialize(nbt.getCompound("charmed_storage"), world)
+		return NullIota()
+	}
+
+	fun setInternalStorage(stack: ItemStack, iota: Iota) {
+		stack.orCreateNbt.putCompound("charmed_storage", IotaType.serialize(iota))
+		if (stack.item is CurioItem)
+			(stack.item as CurioItem).postWrite(stack, iota)
+	}
 }

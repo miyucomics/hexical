@@ -2,6 +2,7 @@
 	"name": "hexical.page.hotbar.title",
 	"icon": "minecraft:item_frame",
 	"category": "hexcasting:patterns/spells",
+	"advancement": "hexcasting:root",
 	"sortnum": 30,
 	"pages": [
 		{

@@ -5,7 +5,7 @@ import miyucomics.hexical.features.charms.CharmedItemTooltip
 import miyucomics.hexical.features.charms.ServerCharmedUseReceiver
 import miyucomics.hexical.features.confetti.ClientConfettiReceiver
 import miyucomics.hexical.features.cracked_items.CrackedItemTooltip
-import miyucomics.hexical.features.curios.CompassCurioSpinner
+import miyucomics.hexical.features.curios.curios.CompassCurioModelHook
 import miyucomics.hexical.features.dyes.DyeDataHook
 import miyucomics.hexical.features.evocation.ClientEvocationReceiver
 import miyucomics.hexical.features.hopper.HopperEndpointRegistry
@@ -45,7 +45,7 @@ object HexicalHooksClient {
 		register(CrackedItemTooltip)
 		register(CharmedItemTooltip)
 		register(ClientShaderReceiver)
-		register(CompassCurioSpinner)
+		register(CompassCurioModelHook)
 		register(ScarabWingRenderer)
 		register(MediaJarRenderHooks)
 		register(MediaJarShader)

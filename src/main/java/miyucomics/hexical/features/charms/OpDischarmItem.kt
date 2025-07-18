@@ -15,14 +15,14 @@ class OpDischarmItem : SpellAction {
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val item = args.getItemEntity(0, argc)
 		env.assertEntityInRange(item)
-		if (!CharmedItemUtilities.isStackCharmed(item.stack))
+		if (!CharmUtilities.isStackCharmed(item.stack))
 			throw MishapBadEntity.of(item, "charmed_item")
 		return SpellAction.Result(Spell(item.stack), MediaConstants.DUST_UNIT, listOf(ParticleSpray.burst(item.pos, 1.0)))
 	}
 
 	private data class Spell(val stack: ItemStack) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			CharmedItemUtilities.removeCharm(stack)
+			CharmUtilities.removeCharm(stack)
 		}
 	}
 }
