@@ -3,7 +3,6 @@ package miyucomics.hexical.features.charms
 import at.petrak.hexcasting.api.casting.asActionResult
 import at.petrak.hexcasting.api.casting.eval.vm.CastingImage
 import at.petrak.hexcasting.api.casting.eval.vm.CastingVM
-import jdk.incubator.vector.VectorShuffle.iota
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.features.curios.CurioItem
 import miyucomics.hexical.inits.InitHook

@@ -1,9 +1,8 @@
 package miyucomics.hexical.inits
 
-import at.petrak.hexcasting.api.casting.iota.IotaType
-import at.petrak.hexcasting.api.casting.iota.ListIota
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.utils.putCompound
+import at.petrak.hexcasting.api.utils.putList
 import at.petrak.hexcasting.common.items.ItemStaff
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
 import at.petrak.hexcasting.xplat.IXplatAbstractions
@@ -19,6 +18,7 @@ import miyucomics.hexical.features.lei.LeiItem
 import miyucomics.hexical.features.media_jar.MediaJarBlock
 import miyucomics.hexical.features.media_log.MediaLogItem
 import miyucomics.hexical.features.scarabs.ScarabBeetleItem
+import miyucomics.hexical.misc.SerializationUtils
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup
 import net.minecraft.client.item.TooltipContext
 import net.minecraft.entity.player.PlayerEntity
@@ -135,7 +135,7 @@ class TchotchkeItem : ItemPackagedHex(Settings().maxCount(1)) {
 			val charm = NbtCompound()
 			charm.putLong("media", getMedia(stack))
 			charm.putLong("max_media", getMaxMedia(stack))
-			charm.putCompound("instructions", IotaType.serialize(ListIota(getHex(stack, world as ServerWorld)!!)))
+			charm.putList("hex", SerializationUtils.serializeHex(getHex(stack, world as ServerWorld)!!))
 			charm.putBoolean("left", true)
 			charm.putBoolean("right", true)
 			charm.putBoolean("left_sneak", true)
@@ -147,6 +147,6 @@ class TchotchkeItem : ItemPackagedHex(Settings().maxCount(1)) {
 	}
 
 	override fun appendTooltip(stack: ItemStack, world: World?, lines: MutableList<Text>, advanced: TooltipContext) {
-		lines.add(Text.literal("Right-click this item to get a charmed stick before tchotchkes go away forever!! Your media will be converted safely.").formatted(Formatting.RED))
+		lines.add(Text.literal("Right-click this item to get a charmed stick.").formatted(Formatting.RED))
 	}
 }

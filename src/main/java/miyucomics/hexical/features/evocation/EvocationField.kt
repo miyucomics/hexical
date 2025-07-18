@@ -1,23 +1,24 @@
 package miyucomics.hexical.features.evocation
 
-import at.petrak.hexcasting.api.utils.putCompound
+import at.petrak.hexcasting.api.utils.putList
 import miyucomics.hexical.features.player.getHexicalPlayerManager
 import miyucomics.hexical.features.player.types.PlayerField
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.nbt.NbtCompound
+import net.minecraft.nbt.NbtElement
+import net.minecraft.nbt.NbtList
 
 class EvocationField : PlayerField {
 	var active: Boolean = false
 	var duration: Int = -1
-	var evocation: NbtCompound? = NbtCompound()
+	var evocation: NbtList = NbtList()
 
 	override fun readNbt(compound: NbtCompound) {
-		if (compound.contains("evocation"))
-			this.evocation = compound.getCompound("evocation")
+		this.evocation = compound.getList("evocation_hex", NbtElement.COMPOUND_TYPE.toInt())
 	}
 
 	override fun writeNbt(compound: NbtCompound) {
-		this.evocation?.let { compound.putCompound("evocation", it) }
+		compound.putList("evocation_hex", evocation)
 	}
 
 	override fun handleRespawn(new: PlayerEntity, old: PlayerEntity) {
@@ -31,6 +32,6 @@ var PlayerEntity.evocationActive: Boolean
 var PlayerEntity.evocationDuration: Int
 	get() = this.getHexicalPlayerManager().get(EvocationField::class).duration
 	set(duration) { this.getHexicalPlayerManager().get(EvocationField::class).duration = duration }
-var PlayerEntity.evocation: NbtCompound?
+var PlayerEntity.evocation: NbtList
 	get() = this.getHexicalPlayerManager().get(EvocationField::class).evocation
 	set(hex) { this.getHexicalPlayerManager().get(EvocationField::class).evocation = hex }

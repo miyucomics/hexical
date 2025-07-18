@@ -2,15 +2,16 @@ package miyucomics.hexical.features.scarabs
 
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.IotaType
+import at.petrak.hexcasting.api.casting.iota.ListIota
 import at.petrak.hexcasting.api.item.IotaHolderItem
-import at.petrak.hexcasting.api.utils.putCompound
-import at.petrak.hexcasting.api.utils.remove
-import at.petrak.hexcasting.api.utils.styledWith
+import at.petrak.hexcasting.api.utils.*
 import miyucomics.hexical.inits.HexicalSounds
+import miyucomics.hexical.misc.SerializationUtils
 import net.minecraft.client.item.TooltipContext
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
+import net.minecraft.nbt.NbtElement
 import net.minecraft.sound.SoundCategory
 import net.minecraft.text.Text
 import net.minecraft.util.Formatting
@@ -31,21 +32,19 @@ class ScarabBeetleItem : Item(Settings().maxCount(1).rarity(Rarity.UNCOMMON)), I
 
 	override fun appendTooltip(stack: ItemStack, world: World?, tooltip: MutableList<Text>, context: TooltipContext) {
 		val nbt = stack.nbt ?: return
-		if (!nbt.contains("program"))
+		if (!nbt.contains("hex"))
 			return
-		val program = IotaType.getDisplay(nbt.getCompound("program"))
-		tooltip.add(Text.translatable("hexical.scarab.program", program).styledWith(Formatting.GRAY))
+		tooltip.add("hexical.scarab.hex".asTranslatedComponent(stack.getList("hex", NbtElement.COMPOUND_TYPE.toInt())!!.fold(Text.empty()) { acc, curr -> acc.append(IotaType.getDisplay(curr.asCompound)) }).styledWith(Formatting.GRAY))
 		super.appendTooltip(stack, world, tooltip, context)
 	}
 
 	override fun readIotaTag(stack: ItemStack) = null
 	override fun writeable(stack: ItemStack) = true
-	override fun canWrite(stack: ItemStack, iota: Iota?) = true
+	override fun canWrite(stack: ItemStack, iota: Iota?) = iota == null || iota is ListIota
 	override fun writeDatum(stack: ItemStack, iota: Iota?) {
-		if (iota == null) {
-			stack.remove("program")
-			return
-		}
-		stack.putCompound("program", IotaType.serialize(iota))
+		if (iota == null)
+			stack.remove("hex")
+		else
+			stack.putList("hex", SerializationUtils.serializeHex((iota as ListIota).list.toList()))
 	}
 }

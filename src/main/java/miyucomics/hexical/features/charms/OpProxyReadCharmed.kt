@@ -6,7 +6,6 @@ import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.NullIota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadOffhandItem
 import at.petrak.hexcasting.xplat.IXplatAbstractions
-import miyucomics.hexical.features.charms.CharmCastEnv
 
 class OpProxyReadCharmed : ConstMediaAction {
 	override val argc = 0

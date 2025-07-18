@@ -1,22 +1,24 @@
 package miyucomics.hexical.features.scarabs
 
 import at.petrak.hexcasting.api.casting.PatternShapeMatch
+import at.petrak.hexcasting.api.casting.SpellList
 import at.petrak.hexcasting.api.casting.eval.CastResult
 import at.petrak.hexcasting.api.casting.eval.ResolvedPatternType
 import at.petrak.hexcasting.api.casting.eval.env.PlayerBasedCastEnv
 import at.petrak.hexcasting.api.casting.eval.vm.CastingVM
 import at.petrak.hexcasting.api.casting.eval.vm.FrameEvaluate
 import at.petrak.hexcasting.api.casting.eval.vm.SpellContinuation
-import at.petrak.hexcasting.api.casting.iota.IotaType
-import at.petrak.hexcasting.api.casting.iota.ListIota
 import at.petrak.hexcasting.api.casting.iota.PatternIota
+import at.petrak.hexcasting.api.utils.getList
 import at.petrak.hexcasting.common.casting.PatternRegistryManifest
 import at.petrak.hexcasting.common.lib.hex.HexEvalSounds
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.inits.HexicalItems
 import miyucomics.hexical.inits.InitHook
+import miyucomics.hexical.misc.SerializationUtils
 import net.minecraft.item.ItemStack
+import net.minecraft.nbt.NbtElement
 import net.minecraft.registry.Registry
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld
@@ -40,7 +42,7 @@ object ScarabHandler : InitHook() {
 		if (wouldBeRecursive(pattern.anglesSignature(), continuation))
 			return null
 		val scarab = getScarab(env.castingEntity!! as ServerPlayerEntity) ?: return null
-		val program = IotaType.deserialize(scarab.getOrCreateNbt().getCompound("program"), world) as? ListIota ?: return null
+		val program = SerializationUtils.deserializeHex(scarab.getList("hex", NbtElement.COMPOUND_TYPE.toInt()) ?: return null, world)
 
 		val newStack = vm.image.stack.toMutableList()
 		newStack.add(iota)
@@ -49,7 +51,7 @@ object ScarabHandler : InitHook() {
 			iota,
 			continuation
 				.pushFrame(ScarabFrame(pattern.anglesSignature()))
-				.pushFrame(FrameEvaluate(program.list, false)),
+				.pushFrame(FrameEvaluate(SpellList.LList(program), false)),
 			vm.image.copy(stack = newStack),
 			listOf(),
 			ResolvedPatternType.EVALUATED,
