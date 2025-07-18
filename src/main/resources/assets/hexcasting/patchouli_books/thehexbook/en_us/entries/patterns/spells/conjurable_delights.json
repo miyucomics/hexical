@@ -1,6 +1,6 @@
 {
 	"name": "hexical.page.conjurable_delights.title",
-	"icon": "hexical:conjured_compass",
+	"icon": "hexical:hex_gummy",
 	"category": "hexcasting:patterns/spells",
 	"advancement": "hexcasting:root",
 	"sortnum": 21,
