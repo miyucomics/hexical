@@ -2,6 +2,7 @@
 	"name": "hexical.page.genie_lore.title",
 	"icon": "minecraft:textures/particle/soul_7.png",
 	"category": "hexcasting:lamp",
+	"advancement": "hexcasting:root",
 	"sortnum": 1,
 	"pages": [
 		{

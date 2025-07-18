@@ -3,10 +3,10 @@ package miyucomics.hexical.features.charms
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.utils.mediaBarColor
 import at.petrak.hexcasting.common.items.magic.ItemMediaHolder
-import miyucomics.hexical.features.charms.CharmedItemUtilities.CHARMED_COLOR
-import miyucomics.hexical.features.charms.CharmedItemUtilities.getMaxMedia
-import miyucomics.hexical.features.charms.CharmedItemUtilities.getMedia
-import miyucomics.hexical.features.charms.CharmedItemUtilities.isStackCharmed
+import miyucomics.hexical.features.charms.CharmUtilities.CHARMED_COLOR
+import miyucomics.hexical.features.charms.CharmUtilities.getMaxMedia
+import miyucomics.hexical.features.charms.CharmUtilities.getMedia
+import miyucomics.hexical.features.charms.CharmUtilities.isStackCharmed
 import miyucomics.hexical.inits.InitHook
 import miyucomics.hexical.misc.RenderUtils
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback
