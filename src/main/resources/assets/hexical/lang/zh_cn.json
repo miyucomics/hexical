@@ -310,7 +310,7 @@
 
 	"hexcasting.action.hexical:lamp_finale": "终局之精思",
 	"hexical.page.lamp_finale.hand": "放下$(item)神灯$()的那一刹那，它会额外施法一次。这个图案能判断精灵的施法是否是最后一次，并据此做出反应。",
-	"hexical.page.lamp_finale.arch": "停止$(item)大精灵神灯$()时，它会额外施法一次。和普通的$(l:items/hand_lamps)$(item)手持式精灵神灯$()一样，我可以使用$(l:lamp/hand_lamps#hexical:lamp_finale)$(action)终局之精思$()来判断某一次施法是否是最后的残响。",
+	"hexical.page.lamp_finale.arch": "停止$(item)大精灵神灯$()时，它会额外施法一次。和普通的$(l:lamp/hand_lamps)$(item)手持式精灵神灯$()一样，我可以使用$(l:lamp/hand_lamps#hexical:lamp_finale)$(action)终局之精思$()来判断某一次施法是否是最后的残响。",
 
 	"hexical.page.hand_lamps.title": "手持式灯壶",
 	"hexical.page.hand_lamps.0": "我终于找到了上千年传言中说的东西了！如此物件居然是在一位流浪商人的手里。这件$(item)手持式神灯$()仍带有难以捉摸的残存$(media)媒质$()气息，就好像里面缺了什么东西……很像$(l:items/focus)$(item)核心$()里用来存储 iota 的$(o)媒质空腔结构$()。我还感受到$(item)神灯$()里有一个存在，它的施法能力与我相当。",
@@ -345,7 +345,7 @@
 	"hexical.page.promote_lamp.summary": "在另一只手中持有神灯时施放。消耗大约 10 个$(l:items/amethyst)$(item)充能紫水晶$()和所需祭品。",
 
 	"hexical.page.arch_lamps.title": "大精灵神灯",
-	"hexical.page.arch_lamps.0": "$(l:items/hand_lamps)$(item)神灯$()和祭品$(o)融合$()了。我还能听见祭品的气息。我将产物称作$(item)大精灵神灯$()。$(br2)我已经……成功升级了$(item)神灯$()的处理器件，它的运作所需的注意力也大幅降低：我可在物品栏内启用它，此后它们会每时每刻施法，就好像我一直握着一盏$(l:items/hand_lamps)$(item)手持式神灯$()一样。",
+	"hexical.page.arch_lamps.0": "$(l:lamp/hand_lamps)$(item)神灯$()和祭品$(o)融合$()了。我还能听见祭品的气息。我将产物称作$(item)大精灵神灯$()。$(br2)我已经……成功升级了$(item)神灯$()的处理器件，它的运作所需的注意力也大幅降低：我可在物品栏内启用它，此后它们会每时每刻施法，就好像我一直握着一盏$(l:lamp/hand_lamps)$(item)手持式神灯$()一样。",
 	"hexical.page.arch_lamps.1": "精灵会在它认为持有者换人时停止施法。没人能强迫我施法。$(o)我是一大团肉乎乎的东西，体表圆滑，没有嘴。原来曾经是眼睛的地方如今是两个冒着白烟的洞，两根橡胶棒似的东西曾经是我的双臂。肉向四周摊开变成一堆没有腿的肉团，柔软滑腻。$(br2)我没有嘴，但我必须呐喊。$()",
 	"hexcasting.action.hexical:has_arch_lamp": "大精灵之纯化",
 	"hexical.page.has_arch_lamp.summary": "判断玩家当前是否已启动$(l:lamp/arch_lamps)$(item)大精灵神灯$()。",
@@ -619,7 +619,7 @@
 	"hexcasting.action.hexical:displace": "转移",
 	"hexical.page.displace.summary": "无需任何媒质，就可将$(l:greatwork/spellcircles)$(thing)环$()中实体传送至同一$(l:greatwork/spellcircles)$(thing)法术环$()中任意一处。与$(l:patterns/great_spells/teleport)$(action)卓越传送$()不同在于，此法术接受的是绝对坐标。无需消耗$(media)媒质$()。",
 	"hexcasting.action.hexical:absorb_arm": "附肢",
-	"hexical.page.absorb_arm.summary": "将$(l:greatwork/spellcircles)法术环$()连接至影响范围内的$(l:items/pedestal)$(item)支座$()，以将其视作$(o)另一只手$()。适合需要另一只手中持有物品的法术。无需消耗$(media)媒质$()。",
+	"hexical.page.absorb_arm.summary": "将$(l:greatwork/spellcircles)法术环$()连接至影响范围内的$(l:items/pedestals)$(item)支座$()，以将其视作$(o)另一只手$()。适合需要另一只手中持有物品的法术。无需消耗$(media)媒质$()。",
 	"hexcasting.action.hexical:create_dust": "导出媒质",
 	"hexical.page.create_dust.summary": "导出$(l:greatwork/impetus)$(item)促动石$()中的$(media)媒质$()，每清除大约 11 个$(l:items/amethyst)$(item)紫水晶粉$()产出 10 个$(l:items/amethyst)$(item)紫水晶粉$()。需提供一个位置和代表$(l:items/amethyst)$(item)紫水晶粉$()数量的数，最多接受一组。",
 

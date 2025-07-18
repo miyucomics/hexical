@@ -98,7 +98,7 @@
   - added Media Purification - gets media of player, allay, impetus, or item on floor
   - added Potential Purification - max media that something can hold
   - added item scrying patterns
-  - moved piercing raycasts to Hexposition
+  - moved piercing raycasts to Hexpose
   - fixed Ambit Purification returning true for out-of-world positions
   - fixed poor translation of Tool and Accessory Purification
 - migrated metaeval patterns and soroban to Overevaluate, a new addon
