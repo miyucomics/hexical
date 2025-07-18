@@ -2,10 +2,10 @@ package miyucomics.hexical.features.charms
 
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.IotaType
-import at.petrak.hexcasting.api.casting.iota.ListIota
 import at.petrak.hexcasting.api.casting.iota.NullIota
 import at.petrak.hexcasting.api.utils.putCompound
 import miyucomics.hexical.features.curios.CurioItem
+import miyucomics.hexical.misc.SerializationUtils
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
@@ -57,19 +57,19 @@ object CharmUtilities {
 
 	fun isStackCharmed(stack: ItemStack) = stack.hasNbt() && stack.nbt!!.contains("charmed")
 	fun getCompound(stack: ItemStack): NbtCompound = stack.nbt!!.getCompound("charmed")
-	fun getHex(stack: ItemStack, world: ServerWorld) = (IotaType.deserialize(getCompound(stack).getCompound("instructions"), world) as ListIota).list.toList()
+	fun getHex(stack: ItemStack, world: ServerWorld) = SerializationUtils.backwardsCompatibleReadHex(getCompound(stack), "hex", world)
 	fun getMedia(stack: ItemStack) = getCompound(stack).getLong("media")
 	fun getMaxMedia(stack: ItemStack) = getCompound(stack).getLong("max_media")
 
 	fun getInternalStorage(stack: ItemStack, world: ServerWorld): Iota {
-		val nbt = stack.orCreateNbt
-		if (nbt.contains("charmed_storage"))
-			return IotaType.deserialize(nbt.getCompound("charmed_storage"), world)
+		val nbt = getCompound(stack)
+		if (nbt.contains("storage"))
+			return IotaType.deserialize(nbt.getCompound("storage"), world)
 		return NullIota()
 	}
 
 	fun setInternalStorage(stack: ItemStack, iota: Iota) {
-		stack.orCreateNbt.putCompound("charmed_storage", IotaType.serialize(iota))
+		getCompound(stack).putCompound("storage", IotaType.serialize(iota))
 		if (stack.item is CurioItem)
 			(stack.item as CurioItem).postWrite(stack, iota)
 	}
