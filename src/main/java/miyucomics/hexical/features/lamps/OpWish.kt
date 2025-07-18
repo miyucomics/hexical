@@ -16,12 +16,11 @@ import net.minecraft.server.network.ServerPlayerEntity
 class OpWish : SpellAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
-		val patterns = args.getList(0, argc).toList()
 		CastingUtils.assertNoTruename(args[0], env)
 		val stack = env.getHeldItemToOperateOn { stack -> stack.isOf(HexicalItems.HAND_LAMP_ITEM) || stack.isOf(HexicalItems.ARCH_LAMP_ITEM) }
 		if (stack == null)
 			throw MishapBadOffhandItem.of(null, "lamp")
-		return SpellAction.Result(Spell(patterns, stack.stack), 0, listOf())
+		return SpellAction.Result(Spell(args.getList(0, argc).toList(), stack.stack), 0, listOf())
 	}
 
 	private data class Spell(val patterns: List<Iota>, val stack: ItemStack) : RenderedSpell {

@@ -3,7 +3,6 @@ package miyucomics.hexical.features.charms
 import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.iota.Iota
-import miyucomics.hexical.features.charms.CharmCastEnv
 import miyucomics.hexical.misc.CastingUtils
 
 class OpWriteCharmed : ConstMediaAction {
