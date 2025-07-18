@@ -4,13 +4,11 @@ import at.petrak.hexcasting.api.casting.eval.ExecutionClientView
 import at.petrak.hexcasting.api.casting.eval.env.StaffCastEnv
 import at.petrak.hexcasting.api.casting.eval.vm.CastingVM
 import at.petrak.hexcasting.api.casting.iota.Iota
-import at.petrak.hexcasting.api.casting.iota.IotaType
-import at.petrak.hexcasting.api.casting.iota.ListIota
 import at.petrak.hexcasting.api.casting.iota.PatternIota
 import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import miyucomics.hexical.inits.HexicalItems
-import net.minecraft.item.ItemStack
+import miyucomics.hexical.misc.SerializationUtils
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld
 
@@ -24,23 +22,19 @@ object GrimoireHandler {
 			return null
 
 		val pattern = (iota as PatternIota).pattern
-		val grimoire = getGrimoire(env.castingEntity!! as ServerPlayerEntity, pattern) ?: return null
-
-		val data = grimoire.getOrCreateNbt().getCompound("expansions")
-		if (!data.contains(pattern.anglesSignature())) return null
-		val deserialized = IotaType.deserialize(data.getCompound(pattern.anglesSignature()), world) as? ListIota ?: return null
-
-		return vm.queueExecuteAndWrapIotas(deserialized.list.toList(), world)
+		val expansion = getExpansion(env.castingEntity!! as ServerPlayerEntity, pattern) ?: return null
+		return vm.queueExecuteAndWrapIotas(expansion, world)
 	}
 
-	private fun getGrimoire(player: ServerPlayerEntity, pattern: HexPattern): ItemStack? {
+	private fun getExpansion(player: ServerPlayerEntity, pattern: HexPattern): List<Iota>? {
 		val inventory = player.inventory
-		for (smallInventory in listOf(inventory.main, inventory.armor, inventory.offHand)) {
-			for (stack in smallInventory) {
-				val nbt = stack.nbt
-				if (stack.isOf(HexicalItems.GRIMOIRE_ITEM) && nbt != null && nbt.getCompound("expansions").contains(pattern.anglesSignature()))
-					return stack
-			}
+		inventory.offHand.toMutableList().also {
+			it.addAll(inventory.main)
+			it.addAll(inventory.armor)
+		}.forEach {
+			val nbt = it.nbt?.getCompound("expansions")
+			if (it.isOf(HexicalItems.GRIMOIRE_ITEM) && nbt != null && nbt.contains(pattern.anglesSignature()))
+				return SerializationUtils.backwardsCompatibleReadHex(it.getOrCreateNbt().getCompound("expansions"), pattern.anglesSignature(), player.serverWorld)
 		}
 		return null
 	}

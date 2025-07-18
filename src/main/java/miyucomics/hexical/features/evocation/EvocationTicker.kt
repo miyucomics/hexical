@@ -2,14 +2,13 @@ package miyucomics.hexical.features.evocation
 
 import at.petrak.hexcasting.api.casting.eval.vm.CastingImage
 import at.petrak.hexcasting.api.casting.eval.vm.CastingVM
-import at.petrak.hexcasting.api.casting.iota.IotaType
-import at.petrak.hexcasting.api.casting.iota.ListIota
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.features.player.types.PlayerTicker
 import miyucomics.hexical.inits.HexicalAdvancements
 import miyucomics.hexical.inits.HexicalSounds
 import miyucomics.hexical.misc.CastingUtils
+import miyucomics.hexical.misc.SerializationUtils
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.particle.ParticleTypes
 import net.minecraft.server.network.ServerPlayerEntity
@@ -42,13 +41,10 @@ class EvocationTicker : PlayerTicker {
 		if (player.evocationActive && player.evocationDuration == 0 && CastingUtils.isEnlightened(player as ServerPlayerEntity)) {
 			player.incrementStat(HexicalAdvancements.EVOCATION_STATISTIC)
 			player.evocationDuration = HexicalMain.Companion.EVOKE_DURATION
-			val hex = IotaType.deserialize(player.evocation, player.world as ServerWorld)
-			if (hex is ListIota) {
-				val hand = if(!player.getStackInHand(Hand.MAIN_HAND).isEmpty && player.getStackInHand(Hand.OFF_HAND).isEmpty){ Hand.OFF_HAND } else { Hand.MAIN_HAND }
-				val vm = CastingVM(CastingImage(), EvocationCastEnv(player, hand))
-				vm.queueExecuteAndWrapIotas(hex.list.toList(), player.serverWorld)
-				player.world.playSound(null, player.x, player.y, player.z, HexicalSounds.EVOKING_CAST, SoundCategory.PLAYERS, 1f, 1f)
-			}
+			val hand = if(!player.getStackInHand(Hand.MAIN_HAND).isEmpty && player.getStackInHand(Hand.OFF_HAND).isEmpty){ Hand.OFF_HAND } else { Hand.MAIN_HAND }
+			val vm = CastingVM(CastingImage(), EvocationCastEnv(player, hand))
+			vm.queueExecuteAndWrapIotas(SerializationUtils.deserializeHex(player.evocation, player.world as ServerWorld), player.serverWorld)
+			player.world.playSound(null, player.x, player.y, player.z, HexicalSounds.EVOKING_CAST, SoundCategory.PLAYERS, 1f, 1f)
 		}
 	}
 }
