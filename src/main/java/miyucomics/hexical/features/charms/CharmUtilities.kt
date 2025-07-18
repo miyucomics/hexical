@@ -43,6 +43,8 @@ object CharmUtilities {
 		stack.nbt!!.remove("charmed")
 		if (stack.nbt!!.isEmpty)
 			stack.nbt = null
+		if (stack.item is CurioItem)
+			stack.decrement(1)
 	}
 
 	fun deductMedia(stack: ItemStack, cost: Long) {
