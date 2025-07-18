@@ -17,7 +17,7 @@ class OpCharmItem : SpellAction {
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val item = args.getItemEntity(0, argc)
 		env.assertEntityInRange(item)
-		if (CharmedItemUtilities.isStackCharmed(item.stack))
+		if (CharmUtilities.isStackCharmed(item.stack))
 			throw MishapBadEntity.of(item, "uncharmed_item")
 
 		args.getList(1, argc)

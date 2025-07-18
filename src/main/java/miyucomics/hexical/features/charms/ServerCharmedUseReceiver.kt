@@ -3,8 +3,9 @@ package miyucomics.hexical.features.charms
 import at.petrak.hexcasting.api.casting.asActionResult
 import at.petrak.hexcasting.api.casting.eval.vm.CastingImage
 import at.petrak.hexcasting.api.casting.eval.vm.CastingVM
+import jdk.incubator.vector.VectorShuffle.iota
 import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.features.curios.CurioCastEnv
+import miyucomics.hexical.features.curios.CurioItem
 import miyucomics.hexical.inits.InitHook
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
 import net.minecraft.util.Hand
@@ -20,8 +21,10 @@ object ServerCharmedUseReceiver : InitHook() {
 			val hand = enumValues<Hand>()[buf.readInt()]
 			val stack = player.getStackInHand(hand)
 			server.execute {
-				val vm = CastingVM(CastingImage().copy(stack = inputMethod.asActionResult), CurioCastEnv(player, hand, stack))
-				vm.queueExecuteAndWrapIotas(CharmedItemUtilities.getHex(stack, player.serverWorld), player.serverWorld)
+				val vm = CastingVM(CastingImage().copy(stack = inputMethod.asActionResult), CharmCastEnv(player, hand, stack))
+				vm.queueExecuteAndWrapIotas(CharmUtilities.getHex(stack, player.serverWorld), player.serverWorld)
+				if (stack.item is CurioItem)
+					(stack.item as CurioItem).postUse(player, stack, player.serverWorld)
 			}
 		}
 	}

@@ -2,6 +2,7 @@
 	"name": "hexical.page.hand_lamps.title",
 	"icon": "hexical:hand_lamp",
 	"category": "hexcasting:lamp",
+	"advancement": "hexcasting:root",
 	"sortnum": 0,
 	"pages": [
 		{
