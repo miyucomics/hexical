@@ -17,7 +17,7 @@ import net.minecraft.entity.mob.MobEntity
 import net.minecraft.entity.passive.VillagerEntity
 import net.minecraft.item.ItemStack
 
-class OpPromoteLamp : SpellAction {
+object OpPromoteLamp : SpellAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val sacrifice = args.getEntity(0, argc)

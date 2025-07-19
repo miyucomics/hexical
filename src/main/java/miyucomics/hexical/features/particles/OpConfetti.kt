@@ -13,7 +13,7 @@ import at.petrak.hexcasting.api.misc.MediaConstants
 import miyucomics.hexical.features.confetti.ConfettiHelper
 import net.minecraft.util.math.Vec3d
 
-class OpConfetti : SpellAction {
+object OpConfetti : SpellAction {
 	override val argc = 2
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val position = args.getVec3(0, argc)

@@ -14,7 +14,7 @@ import net.minecraft.registry.Registries
 import net.minecraft.sound.SoundCategory
 import net.minecraft.util.math.Vec3d
 
-class OpImitateParrot : SpellAction {
+object OpImitateParrot : SpellAction {
 	override val argc = 2
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val pos = args.getVec3(0, argc)

@@ -15,7 +15,7 @@ import net.minecraft.entity.Entity
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d
 
-class OpPrestidigitation : SpellAction {
+object OpPrestidigitation : SpellAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		return when (args[0]) {

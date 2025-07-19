@@ -15,7 +15,7 @@ import net.minecraft.entity.ItemEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.util.math.Vec3d
 
-class OpCreateDust : SpellAction {
+object OpCreateDust : SpellAction {
 	override val argc = 2
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		if (env !is CircleCastEnv)

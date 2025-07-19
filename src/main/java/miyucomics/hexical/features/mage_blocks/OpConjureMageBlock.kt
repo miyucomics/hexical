@@ -12,7 +12,7 @@ import miyucomics.hexical.inits.HexicalBlocks
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d
 
-class OpConjureMageBlock : SpellAction {
+object OpConjureMageBlock : SpellAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val position = args.getBlockPos(0, argc)

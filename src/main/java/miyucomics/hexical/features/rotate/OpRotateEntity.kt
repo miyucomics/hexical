@@ -13,7 +13,7 @@ import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.math.MathHelper
 
-class OpRotateEntity : SpellAction {
+object OpRotateEntity : SpellAction {
 	override val argc = 3
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val target = args.getEntity(0, argc)

@@ -12,7 +12,7 @@ import at.petrak.hexcasting.common.blocks.akashic.BlockEntityAkashicBookshelf
 import at.petrak.hexcasting.common.lib.HexBlocks
 import miyucomics.hexical.misc.CastingUtils
 
-class OpWriteAkashicShelf : SpellAction {
+object OpWriteAkashicShelf : SpellAction {
 	override val argc = 3
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val position = args.getBlockPos(0, argc)

@@ -29,7 +29,7 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d
 import java.util.*
 
-class OpDye : SpellAction {
+object OpDye : SpellAction {
 	override val argc = 2
 	private val cost = MediaConstants.DUST_UNIT / 8
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
