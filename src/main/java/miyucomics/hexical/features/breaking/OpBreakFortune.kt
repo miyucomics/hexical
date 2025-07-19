@@ -13,7 +13,7 @@ import net.minecraft.item.ItemStack
 import net.minecraft.item.Items
 import net.minecraft.util.math.BlockPos
 
-class OpBreakFortune : SpellAction {
+object OpBreakFortune : SpellAction {
 	override val argc = 2
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val pos = args.getBlockPos(0, argc)

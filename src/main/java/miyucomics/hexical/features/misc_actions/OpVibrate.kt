@@ -17,7 +17,7 @@ import net.minecraft.world.event.BlockPositionSource
 import net.minecraft.world.event.EntityPositionSource
 import net.minecraft.world.event.PositionSource
 
-class OpVibrate : SpellAction {
+object OpVibrate : SpellAction {
 	override val argc = 3
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val test = args[1]

@@ -14,7 +14,7 @@ import miyucomics.hexical.inits.HexicalItems
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
 
-class OpGrimoireIndex : ConstMediaAction {
+object OpGrimoireIndex : ConstMediaAction {
 	override val argc = 0
 	override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
 		val itemInfo = env.getHeldItemToOperateOn { stack -> stack.isOf(HexicalItems.GRIMOIRE_ITEM) }
@@ -31,17 +31,15 @@ class OpGrimoireIndex : ConstMediaAction {
 		return listOf(ListIota(result.toList()))
 	}
 
-	companion object {
-		fun populateGrimoireMetadata(grimoire: ItemStack) {
-			if (grimoire.orCreateNbt.contains("metadata"))
-				return
-			val metadata = NbtCompound()
-			for (key in grimoire.orCreateNbt.getOrCreateCompound("expansions").keys) {
-				val data = NbtCompound()
-				data.putInt("direction", HexDir.EAST.ordinal)
-				metadata.putCompound(key, data)
-			}
-			grimoire.orCreateNbt.putCompound("metadata", metadata)
+	fun populateGrimoireMetadata(grimoire: ItemStack) {
+		if (grimoire.orCreateNbt.contains("metadata"))
+			return
+		val metadata = NbtCompound()
+		for (key in grimoire.orCreateNbt.getOrCreateCompound("expansions").keys) {
+			val data = NbtCompound()
+			data.putInt("direction", HexDir.EAST.ordinal)
+			metadata.putCompound(key, data)
 		}
+		grimoire.orCreateNbt.putCompound("metadata", metadata)
 	}
 }

@@ -10,7 +10,7 @@ import at.petrak.hexcasting.api.casting.mishaps.MishapBadEntity
 import at.petrak.hexcasting.api.misc.MediaConstants
 import net.minecraft.item.ItemStack
 
-class OpDischarmItem : SpellAction {
+object OpDischarmItem : SpellAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val item = args.getItemEntity(0, argc)

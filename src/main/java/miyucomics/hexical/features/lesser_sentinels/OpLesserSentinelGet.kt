@@ -8,7 +8,7 @@ import at.petrak.hexcasting.api.casting.iota.Vec3Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster
 import net.minecraft.server.network.ServerPlayerEntity
 
-class OpLesserSentinelGet : ConstMediaAction {
+object OpLesserSentinelGet : ConstMediaAction {
 	override val argc = 0
 	override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
 		if (env.castingEntity !is ServerPlayerEntity)

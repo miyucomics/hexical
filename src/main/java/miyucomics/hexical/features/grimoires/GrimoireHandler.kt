@@ -8,7 +8,7 @@ import at.petrak.hexcasting.api.casting.iota.PatternIota
 import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import miyucomics.hexical.inits.HexicalItems
-import miyucomics.hexical.misc.SerializationUtils
+import miyucomics.hexical.misc.HexSerialization
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld
 
@@ -34,7 +34,7 @@ object GrimoireHandler {
 		}.forEach {
 			val nbt = it.nbt?.getCompound("expansions")
 			if (it.isOf(HexicalItems.GRIMOIRE_ITEM) && nbt != null && nbt.contains(pattern.anglesSignature()))
-				return SerializationUtils.backwardsCompatibleReadHex(it.getOrCreateNbt().getCompound("expansions"), pattern.anglesSignature(), player.serverWorld)
+				return HexSerialization.backwardsCompatibleReadHex(it.getOrCreateNbt().getCompound("expansions"), pattern.anglesSignature(), player.serverWorld)
 		}
 		return null
 	}

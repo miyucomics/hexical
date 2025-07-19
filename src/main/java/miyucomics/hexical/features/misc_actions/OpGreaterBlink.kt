@@ -12,7 +12,7 @@ import at.petrak.hexcasting.api.misc.MediaConstants
 import net.minecraft.util.math.MathHelper
 import net.minecraft.util.math.Vec3d
 
-class OpGreaterBlink : SpellAction {
+object OpGreaterBlink : SpellAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val caster = env.castingEntity ?: throw MishapBadCaster()

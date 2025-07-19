@@ -22,7 +22,7 @@ import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.registry.Registries
 
-class OpToPigment : ConstMediaAction {
+object OpToPigment : ConstMediaAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
 		if (env.castingEntity == null)

@@ -12,14 +12,13 @@ import at.petrak.hexcasting.api.utils.containsTag
 import at.petrak.hexcasting.api.utils.getCompound
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.api.utils.putList
-import miyucomics.hexical.features.grimoires.OpGrimoireIndex.Companion.populateGrimoireMetadata
 import miyucomics.hexical.inits.HexicalItems
 import miyucomics.hexical.misc.CastingUtils
-import miyucomics.hexical.misc.SerializationUtils
+import miyucomics.hexical.misc.HexSerialization
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
 
-class OpGrimoireWrite : SpellAction {
+object OpGrimoireWrite : SpellAction {
 	override val argc = 2
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val itemInfo = env.getHeldItemToOperateOn { stack -> stack.isOf(HexicalItems.GRIMOIRE_ITEM) }
@@ -30,7 +29,7 @@ class OpGrimoireWrite : SpellAction {
 		if (stack.containsTag("expansions") && stack.getCompound("expansions")!!.size > 512)
 			throw MishapBadOffhandItem.of(null, "nonfull_grimoire")
 
-		populateGrimoireMetadata(stack)
+		OpGrimoireIndex.populateGrimoireMetadata(stack)
 		CastingUtils.assertNoTruename(args[1], env)
 
 		return SpellAction.Result(Spell(stack, args.getPattern(0, argc), args.getList(1, argc).toList()), 0, listOf())
@@ -40,7 +39,7 @@ class OpGrimoireWrite : SpellAction {
 		override fun cast(env: CastingEnvironment) {
 			if (!stack.orCreateNbt.contains("expansions"))
 				stack.orCreateNbt.putCompound("expansions", NbtCompound())
-			stack.orCreateNbt.getCompound("expansions").putList(key.anglesSignature(), SerializationUtils.serializeHex(expansion))
+			stack.orCreateNbt.getCompound("expansions").putList(key.anglesSignature(), HexSerialization.serializeHex(expansion))
 
 			if (!stack.orCreateNbt.contains("metadata"))
 				stack.orCreateNbt.putCompound("metadata", NbtCompound())

@@ -13,7 +13,7 @@ import miyucomics.hexical.misc.CastingUtils
 import net.minecraft.item.ItemStack
 import net.minecraft.server.network.ServerPlayerEntity
 
-class OpWish : SpellAction {
+object OpWish : SpellAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		CastingUtils.assertNoTruename(args[0], env)

@@ -7,18 +7,17 @@ import at.petrak.hexcasting.api.casting.getPattern
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadOffhandItem
-import miyucomics.hexical.features.grimoires.OpGrimoireIndex.Companion.populateGrimoireMetadata
 import miyucomics.hexical.inits.HexicalItems
 import net.minecraft.item.ItemStack
 
-class OpGrimoireErase : SpellAction {
+object OpGrimoireErase : SpellAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val itemInfo = env.getHeldItemToOperateOn { stack -> stack.isOf(HexicalItems.GRIMOIRE_ITEM) }
 		if (itemInfo == null)
 			throw MishapBadOffhandItem.of(null, "grimoire")
 		val stack = itemInfo.stack
-		populateGrimoireMetadata(stack)
+		OpGrimoireIndex.populateGrimoireMetadata(stack)
 		val pattern = args.getPattern(0, argc)
 		return SpellAction.Result(Spell(stack, pattern), 0, listOf())
 	}

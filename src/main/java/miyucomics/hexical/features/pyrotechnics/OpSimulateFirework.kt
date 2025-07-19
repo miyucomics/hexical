@@ -17,7 +17,7 @@ import net.minecraft.nbt.NbtCompound
 import net.minecraft.nbt.NbtList
 import net.minecraft.util.math.Vec3d
 
-class OpSimulateFirework : SpellAction {
+object OpSimulateFirework : SpellAction {
 	override val argc = 3
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val position = args.getVec3(0, argc)

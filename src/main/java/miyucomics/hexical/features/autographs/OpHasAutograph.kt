@@ -9,7 +9,7 @@ import miyucomics.hexpose.iotas.getItemStack
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.nbt.NbtElement
 
-class OpHasAutograph : ConstMediaAction {
+object OpHasAutograph : ConstMediaAction {
 	override val argc = 2
 	override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
 		val stack = args.getItemStack(0, argc)

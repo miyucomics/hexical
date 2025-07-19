@@ -11,7 +11,7 @@ import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.math.Vec3d
 
-class OpLesserSentinelSet : SpellAction {
+object OpLesserSentinelSet : SpellAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		if (env.castingEntity !is ServerPlayerEntity)

@@ -8,7 +8,7 @@ import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster
 import net.minecraft.server.network.ServerPlayerEntity
 
-class OpGetHotbar : ConstMediaAction {
+object OpGetHotbar : ConstMediaAction {
 	override val argc = 0
 	override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
 		if (env !is PlayerBasedCastEnv)

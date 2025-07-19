@@ -10,7 +10,7 @@ import at.petrak.hexcasting.api.casting.mishaps.MishapBadBlock
 import at.petrak.hexcasting.common.blocks.akashic.BlockEntityAkashicBookshelf
 import at.petrak.hexcasting.common.lib.HexBlocks
 
-class OpReadAkashicShelf : ConstMediaAction {
+object OpReadAkashicShelf : ConstMediaAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
 		val position = args.getBlockPos(0, argc)

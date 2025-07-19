@@ -9,7 +9,7 @@ import net.minecraft.nbt.NbtCompound
 import net.minecraft.nbt.NbtList
 import net.minecraft.server.world.ServerWorld
 
-object SerializationUtils {
+object HexSerialization {
 	fun serializeHex(hex: List<Iota>) = NbtList().also { hex.forEach { iota -> it.add(IotaType.serialize(iota)) } }
 	fun deserializeHex(list: NbtList, world: ServerWorld) = list.map { IotaType.deserialize(it.asCompound, world) }
 

@@ -9,7 +9,7 @@ import at.petrak.hexcasting.api.casting.iota.Iota
 import net.minecraft.util.math.ColorHelper
 import net.minecraft.util.math.Vec3d
 
-class OpSamplePigment : ConstMediaAction {
+object OpSamplePigment : ConstMediaAction {
 	override val argc = 3
 	override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
 		val pigment = args.getPigment(0, argc)

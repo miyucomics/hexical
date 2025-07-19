@@ -9,7 +9,7 @@ import at.petrak.hexcasting.api.casting.iota.Vec3Iota
 import miyucomics.hexical.misc.RenderUtils
 import net.minecraft.util.math.Vec3d
 
-class OpDrawPattern : ConstMediaAction {
+object OpDrawPattern : ConstMediaAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
 		val output = mutableListOf<Vec3Iota>()

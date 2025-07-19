@@ -13,7 +13,7 @@ import at.petrak.hexcasting.api.misc.MediaConstants
 import net.minecraft.entity.Entity
 import net.minecraft.util.math.Vec3d
 
-class OpDisplace : SpellAction {
+object OpDisplace : SpellAction {
 	override val argc = 2
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		if (env !is CircleCastEnv)

@@ -9,11 +9,11 @@ import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.api.utils.putList
 import miyucomics.hexical.misc.CastingUtils
-import miyucomics.hexical.misc.SerializationUtils
+import miyucomics.hexical.misc.HexSerialization
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
 
-class OpCharmItem : SpellAction {
+object OpCharmItem : SpellAction {
 	override val argc = 7
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val item = args.getItemEntity(0, argc)
@@ -45,7 +45,7 @@ class OpCharmItem : SpellAction {
 			val charm = NbtCompound()
 			charm.putLong("media", battery)
 			charm.putLong("max_media", battery)
-			charm.putList("hex", SerializationUtils.serializeHex(hex))
+			charm.putList("hex", HexSerialization.serializeHex(hex))
 			charm.putBoolean("left", left)
 			charm.putBoolean("right", right)
 			charm.putBoolean("left_sneak", leftSneak)

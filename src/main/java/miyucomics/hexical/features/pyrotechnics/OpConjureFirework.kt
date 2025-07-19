@@ -16,7 +16,7 @@ import net.minecraft.nbt.NbtList
 import net.minecraft.util.DyeColor
 import net.minecraft.util.math.Vec3d
 
-class OpConjureFirework : SpellAction {
+object OpConjureFirework : SpellAction {
 	override val argc = 8
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val position = args.getVec3(0, argc)

@@ -19,7 +19,7 @@ import net.minecraft.util.math.Direction
 import net.minecraft.util.math.Vec3d
 import kotlin.math.floor
 
-class OpConjureSpike : SpellAction {
+object OpConjureSpike : SpellAction {
 	override val argc = 3
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val position = args.getBlockPos(0, argc)

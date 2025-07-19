@@ -18,7 +18,7 @@ import miyucomics.hexical.features.lei.LeiItem
 import miyucomics.hexical.features.media_jar.MediaJarBlock
 import miyucomics.hexical.features.media_log.MediaLogItem
 import miyucomics.hexical.features.scarabs.ScarabBeetleItem
-import miyucomics.hexical.misc.SerializationUtils
+import miyucomics.hexical.misc.HexSerialization
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup
 import net.minecraft.client.item.TooltipContext
 import net.minecraft.entity.player.PlayerEntity
@@ -135,7 +135,7 @@ class TchotchkeItem : ItemPackagedHex(Settings().maxCount(1)) {
 			val charm = NbtCompound()
 			charm.putLong("media", getMedia(stack))
 			charm.putLong("max_media", getMaxMedia(stack))
-			charm.putList("hex", SerializationUtils.serializeHex(getHex(stack, world as ServerWorld)!!))
+			charm.putList("hex", HexSerialization.serializeHex(getHex(stack, world as ServerWorld)!!))
 			charm.putBoolean("left", true)
 			charm.putBoolean("right", true)
 			charm.putBoolean("left_sneak", true)

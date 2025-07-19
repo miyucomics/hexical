@@ -9,7 +9,7 @@ import at.petrak.hexcasting.api.misc.MediaConstants
 import miyucomics.hexical.inits.HexicalItems
 import net.minecraft.server.network.ServerPlayerEntity
 
-class OpGetArchLampMedia : ConstMediaAction {
+object OpGetArchLampMedia : ConstMediaAction {
 	override val argc = 0
 	override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
 		val caster = env.castingEntity

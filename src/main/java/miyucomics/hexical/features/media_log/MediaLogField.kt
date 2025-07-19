@@ -23,7 +23,7 @@ import net.minecraft.text.Text
 import net.minecraft.util.Identifier
 
 class MediaLogField : PlayerField {
-	var patterns: RingBuffer<HexPattern> = RingBuffer(16)
+	var patterns: RingBuffer<HexPattern> = RingBuffer(32)
 	var stack: RingBuffer<Text> = RingBuffer(8)
 	var mishap: Text = Text.empty()
 	var active = true

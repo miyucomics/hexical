@@ -7,7 +7,7 @@ import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster
 import net.minecraft.network.packet.s2c.play.TitleS2CPacket
 import net.minecraft.server.network.ServerPlayerEntity
 
-class OpShoutTelepathy : ConstMediaAction {
+object OpShoutTelepathy : ConstMediaAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
 		val caster = env.castingEntity

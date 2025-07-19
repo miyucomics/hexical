@@ -16,7 +16,7 @@ import net.minecraft.recipe.StonecuttingRecipe
 import net.minecraft.registry.DynamicRegistryManager
 import net.minecraft.registry.Registries
 
-class OpStonecut : SpellAction {
+object OpStonecut : SpellAction {
 	override val argc = 2
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val item = args.getItemEntity(0, argc)

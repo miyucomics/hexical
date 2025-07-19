@@ -10,7 +10,7 @@ import at.petrak.hexcasting.api.misc.MediaConstants
 import net.minecraft.util.math.Vec3d
 import org.joml.Vector3f
 
-class OpSparkle : SpellAction {
+object OpSparkle : SpellAction {
 	override val argc = 3
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val position = args.getVec3(0, argc)

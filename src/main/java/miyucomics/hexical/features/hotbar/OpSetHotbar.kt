@@ -9,7 +9,7 @@ import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster
 import net.minecraft.network.packet.s2c.play.UpdateSelectedSlotS2CPacket
 import net.minecraft.server.network.ServerPlayerEntity
 
-class OpSetHotbar : ConstMediaAction {
+object OpSetHotbar : ConstMediaAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
 		if (env !is PlayerBasedCastEnv)
