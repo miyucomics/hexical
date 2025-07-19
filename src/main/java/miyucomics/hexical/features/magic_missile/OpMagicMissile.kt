@@ -15,7 +15,7 @@ import net.minecraft.util.math.MathHelper
 import net.minecraft.util.math.Vec3d
 import kotlin.math.abs
 
-class OpMagicMissile : SpellAction {
+object OpMagicMissile : SpellAction {
 	override val argc = 2
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val position = getSpawnPosition(env, args.getVec3(0, argc))
@@ -34,54 +34,52 @@ class OpMagicMissile : SpellAction {
 		}
 	}
 
-	companion object {
-		private fun getSpawnPosition(env: CastingEnvironment, relative: Vec3d): Vec3d {
-			if (env is CircleCastEnv) {
-				val impetus = env.impetus ?: throw NoSpatialAxisMishap()
-				val (straightAxis, upAxis) = getAxisForCircle(impetus)
-				return Vec3d.ofCenter(impetus.pos)
-					.add(straightAxis.crossProduct(upAxis).normalize().multiply(relative.x))
-					.add(upAxis.multiply(relative.y))
-					.add(straightAxis.multiply(relative.z))
-			}
-
-			if (env.castingEntity != null) {
-				val caster = env.castingEntity!!
-				val (straightAxis, upAxis) = getAxisForLivingEntity(caster)
-				return caster.eyePos
-					.add(straightAxis.crossProduct(upAxis).normalize().multiply(relative.x))
-					.add(upAxis.multiply(relative.y))
-					.add(straightAxis.multiply(relative.z))
-			}
-
-			throw NoSpatialAxisMishap()
+	private fun getSpawnPosition(env: CastingEnvironment, relative: Vec3d): Vec3d {
+		if (env is CircleCastEnv) {
+			val impetus = env.impetus ?: throw NoSpatialAxisMishap()
+			val (straightAxis, upAxis) = getAxisForCircle(impetus)
+			return Vec3d.ofCenter(impetus.pos)
+				.add(straightAxis.crossProduct(upAxis).normalize().multiply(relative.x))
+				.add(upAxis.multiply(relative.y))
+				.add(straightAxis.multiply(relative.z))
 		}
 
-		private fun getAxisForCircle(impetus: BlockEntityAbstractImpetus): Pair<Vec3d, Vec3d> {
-			val straightAxis = Vec3d.of(impetus.startDirection.vector)
-			val upAxis = Vec3d.of(if (abs(
-					straightAxis.dotProduct(
-						Vec3d(
-							0.0,
-							1.0,
-							0.0
-						)
+		if (env.castingEntity != null) {
+			val caster = env.castingEntity!!
+			val (straightAxis, upAxis) = getAxisForLivingEntity(caster)
+			return caster.eyePos
+				.add(straightAxis.crossProduct(upAxis).normalize().multiply(relative.x))
+				.add(upAxis.multiply(relative.y))
+				.add(straightAxis.multiply(relative.z))
+		}
+
+		throw NoSpatialAxisMishap()
+	}
+
+	private fun getAxisForCircle(impetus: BlockEntityAbstractImpetus): Pair<Vec3d, Vec3d> {
+		val straightAxis = Vec3d.of(impetus.startDirection.vector)
+		val upAxis = Vec3d.of(if (abs(
+				straightAxis.dotProduct(
+					Vec3d(
+						0.0,
+						1.0,
+						0.0
 					)
-				) > 0.9) Direction.NORTH.vector else Direction.UP.vector)
-			return straightAxis to upAxis
-		}
+				)
+			) > 0.9) Direction.NORTH.vector else Direction.UP.vector)
+		return straightAxis to upAxis
+	}
 
-		private fun getAxisForLivingEntity(entity: Entity): Pair<Vec3d, Vec3d> {
-			val straightAxis = entity.rotationVector
-			val upPitch = (-entity.pitch + 90) * (Math.PI.toFloat() / 180)
-			val yaw = -entity.headYaw * (Math.PI.toFloat() / 180)
-			val j = MathHelper.cos(upPitch).toDouble()
-			val upAxis = Vec3d(
-				MathHelper.sin(yaw).toDouble() * j,
-				MathHelper.sin(upPitch).toDouble(),
-				MathHelper.cos(yaw).toDouble() * j
-			)
-			return straightAxis to upAxis
-		}
+	private fun getAxisForLivingEntity(entity: Entity): Pair<Vec3d, Vec3d> {
+		val straightAxis = entity.rotationVector
+		val upPitch = (-entity.pitch + 90) * (Math.PI.toFloat() / 180)
+		val yaw = -entity.headYaw * (Math.PI.toFloat() / 180)
+		val j = MathHelper.cos(upPitch).toDouble()
+		val upAxis = Vec3d(
+			MathHelper.sin(yaw).toDouble() * j,
+			MathHelper.sin(upPitch).toDouble(),
+			MathHelper.cos(yaw).toDouble() * j
+		)
+		return straightAxis to upAxis
 	}
 }

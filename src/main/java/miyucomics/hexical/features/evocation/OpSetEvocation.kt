@@ -8,11 +8,11 @@ import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster
 import at.petrak.hexcasting.api.misc.MediaConstants
 import miyucomics.hexical.misc.CastingUtils
-import miyucomics.hexical.misc.SerializationUtils
+import miyucomics.hexical.misc.HexSerialization
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.server.network.ServerPlayerEntity
 
-class OpSetEvocation : SpellAction {
+object OpSetEvocation : SpellAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		if (env.castingEntity !is ServerPlayerEntity)
@@ -23,7 +23,7 @@ class OpSetEvocation : SpellAction {
 
 	private data class Spell(val hex: List<Iota>) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			(env.castingEntity as PlayerEntity).evocation = SerializationUtils.serializeHex(hex)
+			(env.castingEntity as PlayerEntity).evocation = HexSerialization.serializeHex(hex)
 		}
 	}
 }

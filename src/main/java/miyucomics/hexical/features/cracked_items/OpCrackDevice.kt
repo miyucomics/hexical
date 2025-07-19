@@ -11,7 +11,7 @@ import miyucomics.hexical.features.charms.CharmUtilities
 import miyucomics.hexical.features.curios.CurioItem
 import net.minecraft.item.ItemStack
 
-class OpCrackDevice : SpellAction {
+object OpCrackDevice : SpellAction {
 	override val argc = 0
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val heldData = env.getHeldItemToOperateOn { it.item is ItemPackagedHex || it.item is CurioItem }

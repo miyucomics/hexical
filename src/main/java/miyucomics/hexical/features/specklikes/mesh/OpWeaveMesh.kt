@@ -10,7 +10,7 @@ import at.petrak.hexcasting.api.casting.mishaps.MishapBadEntity
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import dev.kosmx.playerAnim.core.util.Vec3f
 
-class OpWeaveMesh : ConstMediaAction {
+object OpWeaveMesh : ConstMediaAction {
 	override val argc = 2
 	override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
 		val mesh = args.getEntity(0, argc)

@@ -16,7 +16,7 @@ import net.minecraft.command.argument.EntityAnchorArgumentType
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.math.Vec3d
 
-class OpConjureSpeck : SpellAction {
+object OpConjureSpeck : SpellAction {
 	override val argc = 3
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val position = args.getVec3(1, argc)

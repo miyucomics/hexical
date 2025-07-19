@@ -7,7 +7,7 @@ import at.petrak.hexcasting.api.casting.getPattern
 import at.petrak.hexcasting.api.casting.iota.DoubleIota
 import at.petrak.hexcasting.api.casting.iota.Iota
 
-class OpSerializePattern : ConstMediaAction {
+object OpSerializePattern : ConstMediaAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, env: CastingEnvironment) =
 		args.getPattern(0, argc).directions()

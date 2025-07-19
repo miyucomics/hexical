@@ -14,7 +14,7 @@ import miyucomics.hexical.features.pedestal.PedestalBlockEntity
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d
 
-class OpAbsorbArm : SpellAction {
+object OpAbsorbArm : SpellAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		if (env !is CircleCastEnv)

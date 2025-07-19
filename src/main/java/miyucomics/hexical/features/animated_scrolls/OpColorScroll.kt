@@ -12,7 +12,7 @@ import net.minecraft.util.math.Vec3d
 import kotlin.math.max
 import kotlin.math.min
 
-class OpColorScroll : SpellAction {
+object OpColorScroll : SpellAction {
 	override val argc = 2
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val scroll = args.getEntity(0, argc)

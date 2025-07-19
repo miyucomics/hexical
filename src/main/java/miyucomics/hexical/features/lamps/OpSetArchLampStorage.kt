@@ -8,7 +8,7 @@ import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster
 import miyucomics.hexical.misc.CastingUtils
 import net.minecraft.server.network.ServerPlayerEntity
 
-class OpSetArchLampStorage : ConstMediaAction {
+object OpSetArchLampStorage : ConstMediaAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
 		val iota = args[0]

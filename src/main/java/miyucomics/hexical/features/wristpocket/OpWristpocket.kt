@@ -9,7 +9,7 @@ import at.petrak.hexcasting.api.misc.MediaConstants
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.Hand
 
-class OpWristpocket : SpellAction {
+object OpWristpocket : SpellAction {
 	override val argc = 0
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val caster = env.castingEntity

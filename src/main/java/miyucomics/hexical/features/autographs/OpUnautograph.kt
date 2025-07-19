@@ -9,7 +9,7 @@ import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import net.minecraft.item.ItemStack
 
-class OpUnautograph : SpellAction {
+object OpUnautograph : SpellAction {
 	override val argc = 0
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val stack = env.getHeldItemToOperateOn { it.hasNbt() && it.orCreateNbt.contains("autographs") }
