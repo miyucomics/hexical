@@ -6,7 +6,7 @@ import at.petrak.hexcasting.api.casting.iota.ListIota
 import at.petrak.hexcasting.api.item.IotaHolderItem
 import at.petrak.hexcasting.api.utils.*
 import miyucomics.hexical.inits.HexicalSounds
-import miyucomics.hexical.misc.SerializationUtils
+import miyucomics.hexical.misc.HexSerialization
 import net.minecraft.client.item.TooltipContext
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.Item
@@ -45,6 +45,6 @@ class ScarabBeetleItem : Item(Settings().maxCount(1).rarity(Rarity.UNCOMMON)), I
 		if (iota == null)
 			stack.remove("hex")
 		else
-			stack.putList("hex", SerializationUtils.serializeHex((iota as ListIota).list.toList()))
+			stack.putList("hex", HexSerialization.serializeHex((iota as ListIota).list.toList()))
 	}
 }

@@ -21,7 +21,7 @@ import net.minecraft.registry.Registries
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.util.math.BlockPos
 
-class OpGetDye : ConstMediaAction {
+object OpGetDye : ConstMediaAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, env: CastingEnvironment) = listOf(
 		when (args[0]) {

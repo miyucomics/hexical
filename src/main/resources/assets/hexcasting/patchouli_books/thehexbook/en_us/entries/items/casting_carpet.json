@@ -12,7 +12,7 @@
 		{
 			"type": "patchouli:crafting",
 			"recipe": "hexical:casting_carpet",
-			"text": "hexical.page.casting_carpet.recipe"
+			"text": "hexical.page.casting_carpet.1"
 		}
 	]
 }

@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack
 import net.minecraft.item.Items
 import net.minecraft.server.network.ServerPlayerEntity
 
-class OpMageMouth : SpellAction {
+object OpMageMouth : SpellAction {
 	override val argc = 0
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		if (env.castingEntity !is ServerPlayerEntity)

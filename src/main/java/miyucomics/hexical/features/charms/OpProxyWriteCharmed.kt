@@ -9,7 +9,7 @@ import at.petrak.hexcasting.api.casting.mishaps.MishapBadOffhandItem
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.misc.CastingUtils
 
-class OpProxyWriteCharmed : SpellAction {
+object OpProxyWriteCharmed : SpellAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		if (env !is CharmCastEnv)

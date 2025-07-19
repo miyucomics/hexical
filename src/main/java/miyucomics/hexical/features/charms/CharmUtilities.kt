@@ -5,7 +5,7 @@ import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.casting.iota.NullIota
 import at.petrak.hexcasting.api.utils.putCompound
 import miyucomics.hexical.features.curios.CurioItem
-import miyucomics.hexical.misc.SerializationUtils
+import miyucomics.hexical.misc.HexSerialization
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
@@ -57,7 +57,7 @@ object CharmUtilities {
 
 	fun isStackCharmed(stack: ItemStack) = stack.hasNbt() && stack.nbt!!.contains("charmed")
 	fun getCompound(stack: ItemStack): NbtCompound = stack.nbt!!.getCompound("charmed")
-	fun getHex(stack: ItemStack, world: ServerWorld) = SerializationUtils.backwardsCompatibleReadHex(getCompound(stack), "hex", world)
+	fun getHex(stack: ItemStack, world: ServerWorld) = HexSerialization.backwardsCompatibleReadHex(getCompound(stack), "hex", world)
 	fun getMedia(stack: ItemStack) = getCompound(stack).getLong("media")
 	fun getMaxMedia(stack: ItemStack) = getCompound(stack).getLong("max_media")
 

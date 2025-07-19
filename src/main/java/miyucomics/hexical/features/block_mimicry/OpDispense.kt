@@ -21,7 +21,7 @@ import net.minecraft.util.math.BlockPointerImpl
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
 
-class OpDispense : SpellAction {
+object OpDispense : SpellAction {
 	override val argc = 3
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val item = args.getItemEntity(0, argc)

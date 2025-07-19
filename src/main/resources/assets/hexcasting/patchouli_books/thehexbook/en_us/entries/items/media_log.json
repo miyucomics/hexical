@@ -13,6 +13,14 @@
 			"type": "patchouli:crafting",
 			"recipe": "hexical:media_log",
 			"text": "hexical.page.media_log.1"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.media_log.2"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.media_log.3"
 		}
 	]
 }

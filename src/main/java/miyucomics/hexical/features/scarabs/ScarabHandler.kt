@@ -16,7 +16,7 @@ import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.inits.HexicalItems
 import miyucomics.hexical.inits.InitHook
-import miyucomics.hexical.misc.SerializationUtils
+import miyucomics.hexical.misc.HexSerialization
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtElement
 import net.minecraft.registry.Registry
@@ -42,7 +42,7 @@ object ScarabHandler : InitHook() {
 		if (wouldBeRecursive(pattern.anglesSignature(), continuation))
 			return null
 		val scarab = getScarab(env.castingEntity!! as ServerPlayerEntity) ?: return null
-		val program = SerializationUtils.deserializeHex(scarab.getList("hex", NbtElement.COMPOUND_TYPE.toInt()) ?: return null, world)
+		val program = HexSerialization.deserializeHex(scarab.getList("hex", NbtElement.COMPOUND_TYPE.toInt()) ?: return null, world)
 
 		val newStack = vm.image.stack.toMutableList()
 		newStack.add(iota)

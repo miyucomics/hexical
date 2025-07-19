@@ -14,7 +14,7 @@ import net.minecraft.item.ItemStack
 import net.minecraft.server.network.ServerPlayerEntity
 import kotlin.math.min
 
-class OpRechargeLamp : SpellAction {
+object OpRechargeLamp : SpellAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val stack = env.getHeldItemToOperateOn { stack -> stack.isOf(HexicalItems.HAND_LAMP_ITEM) || stack.isOf(HexicalItems.ARCH_LAMP_ITEM) }
