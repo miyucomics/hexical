@@ -23,9 +23,9 @@ import kotlin.math.roundToInt
 object FluteCurio : CurioItem() {
 	override fun use(world: World, user: PlayerEntity, hand: Hand): TypedActionResult<ItemStack> {
 		if (world.isClient)
-			return TypedActionResult.success(user.getStackInHand(hand))
-		playSound(world, user, hand, floor((MathHelper.clamp(user.pitch, -40f, 40f) / 80f + 0.5f) * 25f).toInt())
-		return TypedActionResult.success(user.getStackInHand(hand))
+			return TypedActionResult.pass(user.getStackInHand(hand))
+		playSound(world, user, hand, floor((MathHelper.clamp(user.pitch, -40f, 40f) / -80f + 0.5f) * 25f).toInt())
+		return TypedActionResult.pass(user.getStackInHand(hand))
 	}
 
 	override fun postUse(user: ServerPlayerEntity, item: ItemStack, hand: Hand, world: ServerWorld, stack: List<Iota>) {

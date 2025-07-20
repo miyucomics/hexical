@@ -12,7 +12,7 @@ import net.minecraft.util.DyeColor
 
 class OutsideCircleMishap : Mishap() {
 	override fun accentColor(env: CastingEnvironment, errorCtx: Context): FrozenPigment = dyeColor(DyeColor.GREEN)
-	override fun errorMessage(env: CastingEnvironment, errorCtx: Context): Text = error(HexicalMain.Companion.MOD_ID + ":outside_circle")
+	override fun errorMessage(env: CastingEnvironment, errorCtx: Context): Text = error(HexicalMain.MOD_ID + ":outside_circle")
 	override fun execute(env: CastingEnvironment, errorCtx: Context, stack: MutableList<Iota>) {
 		if (env.castingEntity == null)
 			return

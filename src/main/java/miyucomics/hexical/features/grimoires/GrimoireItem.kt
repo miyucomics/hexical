@@ -21,7 +21,7 @@ class GrimoireItem : Item(Settings().maxCount(1)) {
 		val text = Text.translatable("hexical.grimoire.contains")
 
 		val components = metadata.keys.map { key -> PatternIota(
-			HexPattern.Companion.fromAngles(
+			HexPattern.fromAngles(
 				key,
 				HexDir.values()[metadata.getCompound(key).getInt("direction")]
 			)

@@ -50,7 +50,6 @@ import miyucomics.hexical.features.hopper.OpIndexHopper
 import miyucomics.hexical.features.hotbar.OpGetHotbar
 import miyucomics.hexical.features.hotbar.OpSetHotbar
 import miyucomics.hexical.features.lamps.*
-import miyucomics.hexical.features.lei.OpCompelSniffer
 import miyucomics.hexical.features.lesser_sentinels.OpLesserSentinelGet
 import miyucomics.hexical.features.lesser_sentinels.OpLesserSentinelSet
 import miyucomics.hexical.features.lore.OpItemLore
@@ -64,6 +63,7 @@ import miyucomics.hexical.features.particles.OpSparkle
 import miyucomics.hexical.features.pattern_manipulation.*
 import miyucomics.hexical.features.peripherals.OpGetKeybind
 import miyucomics.hexical.features.peripherals.OpGetScroll
+import miyucomics.hexical.features.periwinkle.OpCompelSniffer
 import miyucomics.hexical.features.pigments.OpSamplePigment
 import miyucomics.hexical.features.pigments.OpTakeOnPigment
 import miyucomics.hexical.features.pigments.OpToPigment

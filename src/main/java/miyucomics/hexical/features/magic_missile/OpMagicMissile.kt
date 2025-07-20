@@ -20,7 +20,7 @@ object OpMagicMissile : SpellAction {
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val position = getSpawnPosition(env, args.getVec3(0, argc))
 		env.assertVecInRange(position)
-		return SpellAction.Result(Spell(position, args.getVec3(1, argc)), MediaConstants.DUST_UNIT, listOf(ParticleSpray.Companion.cloud(position, 1.0)))
+		return SpellAction.Result(Spell(position, args.getVec3(1, argc)), MediaConstants.DUST_UNIT, listOf(ParticleSpray.cloud(position, 1.0)))
 	}
 
 	private data class Spell(val position: Vec3d, val velocity: Vec3d) : RenderedSpell {

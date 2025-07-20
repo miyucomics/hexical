@@ -29,7 +29,7 @@ object OpHopper : Action {
 			throw MishapNotEnoughArgs(2, 1)
 		val destinationIota = stack.removeLast()
 		val destination = HopperEndpointRegistry.resolve(destinationIota, env, outputSlot) as? HopperDestination
-			?: throw MishapInvalidIota.Companion.of(destinationIota, inputsConsumed, "hopper_destination")
+			?: throw MishapInvalidIota.of(destinationIota, inputsConsumed, "hopper_destination")
 		inputsConsumed += 1
 
 		if (stack.isNotEmpty() && stack.last() is DoubleIota) {
@@ -41,7 +41,7 @@ object OpHopper : Action {
 			throw MishapNotEnoughArgs(inputsConsumed + 1, inputsConsumed)
 		val sourceIota = stack.removeLast()
 		val source = HopperEndpointRegistry.resolve(sourceIota, env, inputSlot) as? HopperSource
-			?: throw MishapInvalidIota.Companion.of(sourceIota, inputsConsumed, "hopper_source")
+			?: throw MishapInvalidIota.of(sourceIota, inputsConsumed, "hopper_source")
 
 		return OperationResult(
 			image.withUsedOp().copy(stack = stack), listOf(
