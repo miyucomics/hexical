@@ -1,0 +1,22 @@
+{
+	"format_version": "1.21.6",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"flute": "hexical:item/flute_model"
+	},
+	"elements": [
+		{
+			"from": [7, -1.5, 7],
+			"to": [9, 12.5, 9],
+			"faces": {
+				"north": {"uv": [4, 2, 6, 16], "texture": "#flute"},
+				"east": {"uv": [2, 2, 4, 16], "texture": "#flute"},
+				"south": {"uv": [2, 2, 0, 16], "texture": "#flute"},
+				"west": {"uv": [6, 2, 8, 16], "texture": "#flute"},
+				"up": {"uv": [4, 0, 6, 2], "texture": "#flute"},
+				"down": {"uv": [2, 0, 4, 2], "texture": "#flute"}
+			}
+		}
+	],
+	"gui_light": "front"
+}
