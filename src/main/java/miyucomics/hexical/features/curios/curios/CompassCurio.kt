@@ -4,12 +4,17 @@ import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.Vec3Iota
 import miyucomics.hexical.features.curios.CurioItem
 import net.minecraft.item.ItemStack
+import net.minecraft.server.network.ServerPlayerEntity
+import net.minecraft.server.world.ServerWorld
+import net.minecraft.util.Hand
 
 object CompassCurio : CurioItem() {
-	override fun postWrite(stack: ItemStack, iota: Iota) {
-		if (iota is Vec3Iota)
-			stack.orCreateNbt.putIntArray("needle", listOf(iota.vec3.x.toInt(), iota.vec3.y.toInt(), iota.vec3.z.toInt()))
-		else
-			stack.orCreateNbt.remove("needle")
+	override fun postUse(user: ServerPlayerEntity, item: ItemStack, hand: Hand, world: ServerWorld, stack: List<Iota>) {
+		val location = stack.lastOrNull()
+		if (location !is Vec3Iota) {
+			item.orCreateNbt.remove("needle")
+			return
+		}
+		item.orCreateNbt.putIntArray("needle", listOf(location.vec3.x.toInt(), location.vec3.y.toInt(), location.vec3.z.toInt()))
 	}
 }

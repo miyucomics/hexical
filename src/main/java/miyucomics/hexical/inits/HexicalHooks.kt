@@ -20,6 +20,7 @@ import miyucomics.hexical.features.media_log.MediaLogRenderer
 import miyucomics.hexical.features.media_log.ServerSpyingHooks
 import miyucomics.hexical.features.peripherals.ClientPeripheralPusher
 import miyucomics.hexical.features.peripherals.ServerPeripheralReceiver
+import miyucomics.hexical.features.player.PlayerAnimatorHook
 import miyucomics.hexical.features.player.RespawnPersistHook
 import miyucomics.hexical.features.prestidigitation.PrestidigitationHandlersHook
 import miyucomics.hexical.features.scarabs.ScarabHandler
@@ -50,6 +51,7 @@ object HexicalHooksClient {
 		register(MediaJarRenderHooks)
 		register(MediaJarShader)
 		register(ArchLampModelProvider)
+		register(PlayerAnimatorHook)
 
 		for (hook in hooks)
 			hook.init()
