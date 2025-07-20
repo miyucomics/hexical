@@ -49,7 +49,6 @@ public class MouseMixin {
 			if (!CharmUtilities.shouldIntercept(pair.getSecond(), buttonPressed, client.player.isSneaking()))
 				continue;
 
-			client.player.swingHand(pair.getFirst());
 			PacketByteBuf buf = PacketByteBufs.create();
 			buf.writeInt(buttonPressed);
 			buf.writeInt(pair.getFirst().ordinal());

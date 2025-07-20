@@ -68,6 +68,7 @@ object HexicalItems {
 	val CURIOS: List<Item> = CURIO_NAMES.map { registerItem("curio_$it", CurioItem.getCurioFromName(it)) }
 	@JvmField val CURIO_COMPASS = CURIOS[CURIO_NAMES.indexOf("compass")]
 	@JvmField val CURIO_FLUTE = CURIOS[CURIO_NAMES.indexOf("flute")]
+	@JvmField val CURIO_HANDBELL = CURIOS[CURIO_NAMES.indexOf("handbell")]
 	@JvmField val CURIO_STAFF = CURIOS[CURIO_NAMES.indexOf("staff")]
 
 	val PLUSHIE_NAMES: List<String> = listOf("hexxy", "irissy", "pentxxy", "quadxxy", "thothy", "flexxy")

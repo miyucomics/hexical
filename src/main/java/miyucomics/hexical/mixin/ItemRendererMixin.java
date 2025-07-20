@@ -4,6 +4,7 @@ import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.sugar.Local;
 import com.llamalad7.mixinextras.sugar.ref.LocalRef;
+import miyucomics.hexical.features.curios.curios.HandbellCurioItemModel;
 import miyucomics.hexical.features.curios.curios.FluteCurioItemModel;
 import miyucomics.hexical.inits.HexicalItems;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -30,6 +31,8 @@ public class ItemRendererMixin {
 	private BakedModel injectModel(ItemStack itemStack, World world, LivingEntity livingEntity, int i, Operation<BakedModel> original) {
 		if (itemStack.isOf(HexicalItems.CURIO_FLUTE))
 			return this.models.getModelManager().getModel(FluteCurioItemModel.heldFluteModel);
+		if (itemStack.isOf(HexicalItems.CURIO_HANDBELL))
+			return this.models.getModelManager().getModel(HandbellCurioItemModel.heldHandbellModel);
 		return original.call(itemStack, world, livingEntity, i);
 	}
 
@@ -37,5 +40,7 @@ public class ItemRendererMixin {
 	private void renderFlatFlute(ItemStack stack, ModelTransformationMode mode, boolean bl, MatrixStack matrices, VertexConsumerProvider vertices, int i, int j, BakedModel model, CallbackInfo ci, @Local(argsOnly = true) LocalRef<BakedModel> modelReference) {
 		if ((mode == ModelTransformationMode.GUI || mode == ModelTransformationMode.GROUND || mode == ModelTransformationMode.FIXED) && stack.isOf(HexicalItems.CURIO_FLUTE))
 			modelReference.set(this.models.getModelManager().getModel(FluteCurioItemModel.fluteModel));
+		if ((mode == ModelTransformationMode.GUI || mode == ModelTransformationMode.GROUND || mode == ModelTransformationMode.FIXED) && stack.isOf(HexicalItems.CURIO_HANDBELL))
+			modelReference.set(this.models.getModelManager().getModel(HandbellCurioItemModel.handbellModel));
 	}
 }

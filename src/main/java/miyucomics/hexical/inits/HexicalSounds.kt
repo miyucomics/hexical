@@ -16,6 +16,7 @@ object HexicalSounds {
 	val SUDDEN_REALIZATION: SoundEvent = register("sudden_realization")
 	val REPLENISH_AIR: SoundEvent = register("replenish_air")
 	val SCARAB_CHIRPS: SoundEvent = register("scarab_chirps")
+	val HANDBELL_CHIMES: SoundEvent = register("handbell_chimes")
 
 	fun init() {}
 
