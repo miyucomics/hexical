@@ -70,7 +70,5 @@ object CharmUtilities {
 
 	fun setInternalStorage(stack: ItemStack, iota: Iota) {
 		getCompound(stack).putCompound("storage", IotaType.serialize(iota))
-		if (stack.item is CurioItem)
-			(stack.item as CurioItem).postWrite(stack, iota)
 	}
 }

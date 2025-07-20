@@ -16,8 +16,8 @@ class MediaLogItem : Item(Settings().maxCount(1)) {
 		if (!world.isClient)
 			(player as ServerPlayerEntity).syncMediaLog()
 		else {
-			ClientStorage.fadingInLog = true
-			ClientStorage.fadingInLogStart = ClientStorage.ticks
+			MediaLogRenderer.fadingInLog = true
+			MediaLogRenderer.fadingInLogStart = ClientStorage.ticks
 		}
 		player.setCurrentHand(hand)
 		return TypedActionResult.success(stack)
@@ -25,7 +25,7 @@ class MediaLogItem : Item(Settings().maxCount(1)) {
 
 	override fun onStoppedUsing(stack: ItemStack, world: World, user: LivingEntity, remainingUseTicks: Int) {
 		if (world.isClient)
-			ClientStorage.fadingInLog = false
+			MediaLogRenderer.fadingInLog = false
 	}
 
 	override fun getTranslationKey() = "item.hexical.media_log." + ((System.currentTimeMillis() / 2000) % 2).toString()

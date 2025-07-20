@@ -67,6 +67,8 @@ object HexicalItems {
 	val CURIO_NAMES: List<String> = listOf("bismuth", "clover", "compass", "conch", "cube", "flute", "handbell", "heart", "interlock", "key", "staff", "charm", "strange", "beauty", "truth", "up", "down")
 	val CURIOS: List<Item> = CURIO_NAMES.map { registerItem("curio_$it", CurioItem.getCurioFromName(it)) }
 	@JvmField val CURIO_COMPASS = CURIOS[CURIO_NAMES.indexOf("compass")]
+	@JvmField val CURIO_FLUTE = CURIOS[CURIO_NAMES.indexOf("flute")]
+	@JvmField val CURIO_STAFF = CURIOS[CURIO_NAMES.indexOf("staff")]
 
 	val PLUSHIE_NAMES: List<String> = listOf("hexxy", "irissy", "pentxxy", "quadxxy", "thothy", "flexxy")
 	val PLUSHIES: List<Item> = PLUSHIE_NAMES.map { registerItem("plush_$it", Item(Settings().maxCount(1))) }
@@ -76,7 +78,7 @@ object HexicalItems {
 	val HEXICAL_GROUP: ItemGroup = FabricItemGroup.builder()
 		.icon { ItemStack(CURIO_COMPASS) }
 		.displayName(Text.translatable("itemGroup.hexical.general"))
-		.entries { context, entries ->
+		.entries { _, entries ->
 			entries.add(ItemStack(HAND_LAMP_ITEM).also { IXplatAbstractions.INSTANCE.findHexHolder(it)!!.writeHex(listOf(), null, 32000 * MediaConstants.DUST_UNIT) })
 			entries.add(ItemStack(ARCH_LAMP_ITEM).also { IXplatAbstractions.INSTANCE.findHexHolder(it)!!.writeHex(listOf(), null, 32000 * MediaConstants.DUST_UNIT) })
 

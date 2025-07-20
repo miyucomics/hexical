@@ -16,16 +16,12 @@ object CompassCurioModelHook : InitHook() {
 		ModelPredicateProviderRegistry.register(
 			HexicalItems.CURIO_COMPASS,
 			Identifier("angle"),
-			CompassAnglePredicateProvider(
-				CompassAnglePredicateProvider.CompassTarget { world: ClientWorld, stack: ItemStack, player: Entity ->
-					if (!stack.hasNbt() || !stack.nbt?.contains("needle")!!)
-						return@CompassTarget null
-					val needle = stack.nbt!!.getIntArray("needle")
-					return@CompassTarget GlobalPos.create(
-						player.world.registryKey,
-						BlockPos(needle[0], needle[1], needle[2])
-					)
-				}
-			))
+			CompassAnglePredicateProvider(CompassAnglePredicateProvider.CompassTarget { world: ClientWorld, stack: ItemStack, player: Entity ->
+				if (!stack.hasNbt() || !stack.nbt?.contains("needle")!!)
+					return@CompassTarget null
+				val needle = stack.nbt!!.getIntArray("needle")
+				return@CompassTarget GlobalPos.create(player.world.registryKey, BlockPos(needle[0], needle[1], needle[2]))
+			})
+		)
 	}
 }
