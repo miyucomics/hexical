@@ -1,4 +1,4 @@
-package miyucomics.hexical.features.lei
+package miyucomics.hexical.features.periwinkle
 
 import at.petrak.hexcasting.common.lib.HexAttributes
 import com.google.common.collect.ImmutableMultimap

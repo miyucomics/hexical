@@ -25,7 +25,7 @@ object DyeDataHook : InitHook() {
 	override fun init() {
 		ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(object :
 			SimpleSynchronousResourceReloadListener {
-			override fun getFabricId() = HexicalMain.Companion.id("dyes")
+			override fun getFabricId() = HexicalMain.id("dyes")
 			override fun reload(manager: ResourceManager) = manager.findResources("dyes") { path -> path.path.endsWith(".json") }.keys.forEach { id -> loadData(manager.getResource(id).get().inputStream) }
 		})
 	}

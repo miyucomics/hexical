@@ -1,6 +1,5 @@
 package miyucomics.hexical.mixin;
 
-import at.petrak.hexcasting.common.lib.HexSounds;
 import kotlin.Pair;
 import miyucomics.hexical.features.charms.CharmUtilities;
 import miyucomics.hexical.features.charms.ServerCharmedUseReceiver;
@@ -10,7 +9,6 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.Mouse;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
-import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.Hand;
 import org.lwjgl.glfw.GLFW;
 import org.spongepowered.asm.mixin.Final;

@@ -18,6 +18,7 @@
 - added pedestals - holds your items for you!
   - if used in a circle, it pushes the iota from the item on the pedestal
 - added ability to transmute items in the inventory like a bundle with the media jar
+- added curios - amethyst items meant to be charmed with animations and sound effects
 - added spell to make a circle use a pedestal as its other hand
 - added spell to let a circle conjure dust
 - added all variants of cooking blocks as spells
@@ -37,12 +38,12 @@
 - added Squawk spell for fun - play mob sounds
 - added Confetti spell for fun - creates a bang and confetti particles
 - added HexGloop's Cut Stone spell
-- added media log - a strange item that records the last 32 patterns you've casted
-  - useful for debugging hexes in staves and casting devices
+- added media log - a strange item useful for debugging hexes in staves and casting devices
 - added Similarity Purification - tests if two patterns have the same shape but different stroke order
 - added sentinel bed - always have ambit inside
 - added rotation spells for blocks and entities
 - added periwinkle, a flower that can only be created via Hexcasting
+  - obtained by casting a spell on sniffer
   - it is the core ingredient of the Wooleyed potion
   - it can be used to craft a lei
     - lei gives a small little grid size boost but mostly just looks adorable
@@ -52,7 +53,7 @@
 - added spell to break block with fortune
 - added spell to break block with silk touch
 - added left and right-click telepathy patterns
-- added telepathy pattern for scroling
+- added telepathy pattern for scrolling
 - added pattern to get evocation hex
 - added more documentation to magic missile
 - added beautiful little shader to media jars

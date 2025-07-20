@@ -30,7 +30,6 @@ class PlayerManager {
 		registerField(MediaLogField())
 		registerField(LesserSentinelField())
 		registerField(WristpocketField())
-
 		registerTicker(EvocationTicker())
 		registerTicker(KeybindTicker())
 	}

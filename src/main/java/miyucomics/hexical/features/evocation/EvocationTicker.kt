@@ -3,7 +3,6 @@ package miyucomics.hexical.features.evocation
 import at.petrak.hexcasting.api.casting.eval.vm.CastingImage
 import at.petrak.hexcasting.api.casting.eval.vm.CastingVM
 import at.petrak.hexcasting.xplat.IXplatAbstractions
-import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.features.player.types.PlayerTicker
 import miyucomics.hexical.inits.HexicalAdvancements
 import miyucomics.hexical.inits.HexicalSounds
@@ -40,7 +39,7 @@ class EvocationTicker : PlayerTicker {
 
 		if (player.evocationActive && player.evocationDuration == 0 && CastingUtils.isEnlightened(player as ServerPlayerEntity)) {
 			player.incrementStat(HexicalAdvancements.EVOCATION_STATISTIC)
-			player.evocationDuration = HexicalMain.Companion.EVOKE_DURATION
+			player.evocationDuration = ServerEvocationManager.EVOKE_DURATION
 			val hand = if(!player.getStackInHand(Hand.MAIN_HAND).isEmpty && player.getStackInHand(Hand.OFF_HAND).isEmpty){ Hand.OFF_HAND } else { Hand.MAIN_HAND }
 			val vm = CastingVM(CastingImage(), EvocationCastEnv(player, hand))
 			vm.queueExecuteAndWrapIotas(HexSerialization.deserializeHex(player.evocation, player.world as ServerWorld), player.serverWorld)
