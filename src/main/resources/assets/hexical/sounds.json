@@ -30,6 +30,10 @@
 		"subtitle": "subtitles.hexical.lamp_deactivate",
 		"sounds": ["hexical:lamp_deactivate"]
 	},
+	"handbell_chimes": {
+		"subtitle": "subtitles.hexical.handbell_chimes",
+		"sounds": ["hexical:handbell"]
+	},
 	"evoking_murmur": {
 		"subtitle": "subtitles.hexical.evoking_murmur",
 		"sounds": ["mob/evocation_illager/prepare_wololo"]

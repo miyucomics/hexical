@@ -4,13 +4,12 @@ import at.petrak.hexcasting.client.render.*
 import com.mojang.blaze3d.systems.RenderSystem
 import miyucomics.hexical.inits.InitHook
 import miyucomics.hexical.misc.ClientStorage
-import miyucomics.hexical.misc.RenderUtils
+import miyucomics.hexical.misc.ClientStorage.ticks
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.gui.DrawContext
 import net.minecraft.client.util.math.MatrixStack
-import net.minecraft.command.argument.ColorArgumentType.color
 import net.minecraft.util.math.ColorHelper
 import net.minecraft.util.math.MathHelper
 import kotlin.math.max
@@ -18,53 +17,30 @@ import kotlin.math.min
 
 object MediaLogRenderer : InitHook() {
 	const val FADE_IN_DURATION: Int = 40
+	var fadingInLog = false
+	var fadingInLogStart = 0
+	var fadingInLogTweener = 0
 
 	override fun init() {
 		ClientTickEvents.END_CLIENT_TICK.register {
-			if (ClientStorage.fadingInLog)
-				ClientStorage.fadingInLogTweener = min(ClientStorage.ticks - ClientStorage.fadingInLogStart, FADE_IN_DURATION)
-			else
-				ClientStorage.fadingInLogTweener = max(ClientStorage.fadingInLogTweener - 5, 0)
+			fadingInLogTweener = if (fadingInLog) min(ticks - fadingInLogStart, FADE_IN_DURATION) else max(fadingInLogTweener - 5, 0)
 		}
 
 		HudRenderCallback.EVENT.register { context, tickDelta ->
-			val progress = ClientStorage.fadingInLogTweener / FADE_IN_DURATION.toFloat()
-			if (progress == 0f)
-				return@register
+			if (fadingInLogTweener == 0) return@register
+			val progress = (fadingInLogTweener + tickDelta) / FADE_IN_DURATION.toFloat()
 
 			val backgroundColor = ColorHelper.Argb.getArgb((progress * 100).toInt(), 0, 0, 0)
 			context.fillGradient(0, 0, context.scaledWindowWidth, context.scaledWindowHeight, backgroundColor, backgroundColor)
 
-//			val progress = 1f
-
 			context.matrices.push()
 			context.matrices.translate(context.scaledWindowWidth / 2f, context.scaledWindowHeight / 2f, 0f)
 
-			val mishapAlpha = MathHelper.clamp((progress / 0.2f), 0f, 1f)
-			drawMishapText(context, mishapAlpha)
-
-			if (ClientStorage.mediaLog.patterns.buffer().isNotEmpty()) {
-				val patternProgress = MathHelper.clamp((progress - 0.2f) / 0.5f, 0f, 1f)
-				val patternsVisible = (patternProgress * 16).toInt()
-				val patternAlpha = (patternProgress * 16) % 1
-				val oldShader = RenderSystem.getShader()
-
-				for (i in 0 until patternsVisible)
-					drawMediaLogPattern(context.matrices, i, 1f)
-				if (patternsVisible < 15)
-					drawMediaLogPattern(context.matrices, patternsVisible, patternAlpha)
-
-				RenderSystem.setShader { oldShader }
+			for (phase in phases) {
+				val localProgress = (progress - phase.start) / phase.duration
+				if (localProgress in 0f..1f)
+					phase.render(context, localProgress)
 			}
-
-			val stackProgress = MathHelper.clamp((progress - 0.7f) / 0.3f, 0f, 1f)
-			val stackVisible = (stackProgress * 8).toInt()
-			val stackAlpha = (stackProgress * 8) % 1
-
-			for (i in 0 until stackVisible)
-				drawStackItem(context, i, 1f)
-			if (stackVisible < 7)
-				drawStackItem(context, stackVisible, stackAlpha)
 
 			context.matrices.pop()
 		}
@@ -99,4 +75,35 @@ object MediaLogRenderer : InitHook() {
 		context.drawCenteredTextWithShadow(MinecraftClient.getInstance().textRenderer, iotas[index], 17, 16 * (4 - index), ColorHelper.Argb.getArgb((alpha * 255).toInt(), 255, 255, 255))
 		context.matrices.pop()
 	}
+
+	private val phases = listOf(
+		Phase(0.0f, 0.2f) { ctx, t ->
+			drawMishapText(ctx, t)
+		},
+		Phase(0.2f, 0.5f) { ctx, t ->
+			val progress = MathHelper.clamp(t, 0f, 1f)
+			val visible = (progress * 16).toInt()
+			val alpha = (progress * 16) % 1
+			for (i in 0 until visible)
+				drawMediaLogPattern(ctx.matrices, i, 1f)
+			if (visible < 15)
+				drawMediaLogPattern(ctx.matrices, visible, alpha)
+		},
+		Phase(0.7f, 0.3f) { ctx, t ->
+			val progress = MathHelper.clamp(t, 0f, 1f)
+			val visible = (progress * 8).toInt()
+			val alpha = (progress * 8) % 1
+			for (i in 0 until visible)
+				drawStackItem(ctx, i, 1f)
+			if (visible < 7)
+				drawStackItem(ctx, visible, alpha)
+		}
+	)
+
+	private data class Phase(
+		val start: Float,
+		val duration: Float,
+		val render: (DrawContext, Float) -> Unit
+	)
 }
+
