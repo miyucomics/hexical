@@ -1,9 +1,12 @@
 package miyucomics.hexical.features.curios.curios
 
 import at.petrak.hexcasting.api.casting.iota.Iota
+import dev.kosmx.playerAnim.api.IPlayer
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.features.curios.CurioItem
 import miyucomics.hexical.inits.HexicalSounds
+import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.server.network.ServerPlayerEntity
@@ -15,11 +18,18 @@ import net.minecraft.world.World
 
 object HandbellCurio : CurioItem() {
 	override fun use(world: World, user: PlayerEntity, hand: Hand): TypedActionResult<ItemStack> {
-		world.playSound(null, user.x, user.y, user.z, HexicalSounds.HANDBELL_CHIMES, SoundCategory.MASTER, 1f, 0.5f + HexicalMain.RANDOM.nextFloat() * 0.7f)
-		return TypedActionResult.success(user.getStackInHand(hand))
+		if (world.isClient)
+			return TypedActionResult.pass(user.getStackInHand(hand))
+		playSound(world as ServerWorld, user as ServerPlayerEntity)
+		return TypedActionResult.pass(user.getStackInHand(hand))
 	}
 
 	override fun postUse(user: ServerPlayerEntity, item: ItemStack, hand: Hand, world: ServerWorld, stack: List<Iota>) {
-		world.playSound(null, user.x, user.y, user.z, HexicalSounds.HANDBELL_CHIMES, SoundCategory.MASTER, 1f, 0.9f + HexicalMain.RANDOM.nextFloat() * 0.2f)
+		playSound(world, user)
+	}
+
+	private fun playSound(world: ServerWorld, user: ServerPlayerEntity) {
+		ServerPlayNetworking.send(user, HandbellCurioItemModel.clientReceiver, PacketByteBufs.create().also { it.writeUuid(user.uuid) })
+		world.playSound(null, user.x, user.y, user.z, HexicalSounds.HANDBELL_CHIMES, SoundCategory.MASTER, 1f, 0.8f + HexicalMain.RANDOM.nextFloat() * 0.3f)
 	}
 }

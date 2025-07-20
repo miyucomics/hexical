@@ -6,6 +6,7 @@ import miyucomics.hexical.features.charms.ServerCharmedUseReceiver
 import miyucomics.hexical.features.confetti.ClientConfettiReceiver
 import miyucomics.hexical.features.cracked_items.CrackedItemTooltip
 import miyucomics.hexical.features.curios.curios.CompassCurioModelHook
+import miyucomics.hexical.features.curios.curios.HandbellCurioItemModel
 import miyucomics.hexical.features.dyes.DyeDataHook
 import miyucomics.hexical.features.evocation.ClientEvocationReceiver
 import miyucomics.hexical.features.hopper.HopperEndpointRegistry
@@ -52,6 +53,7 @@ object HexicalHooksClient {
 		register(MediaJarRenderHooks)
 		register(MediaJarShader)
 		register(ArchLampModelProvider)
+		register(HandbellCurioItemModel)
 		register(PlayerAnimatorHook)
 
 		for (hook in hooks)
