@@ -20,6 +20,7 @@ import miyucomics.hexical.features.media_log.MediaLogRenderer
 import miyucomics.hexical.features.media_log.ServerSpyingHooks
 import miyucomics.hexical.features.peripherals.ClientPeripheralPusher
 import miyucomics.hexical.features.peripherals.ServerPeripheralReceiver
+import miyucomics.hexical.features.periwinkle.WooleyedEffectRegister
 import miyucomics.hexical.features.player.PlayerAnimatorHook
 import miyucomics.hexical.features.player.RespawnPersistHook
 import miyucomics.hexical.features.prestidigitation.PrestidigitationHandlersHook
@@ -75,6 +76,7 @@ object HexicalHooksServer {
 		register(DyeDataHook)
 		register(TransmutingHelper)
 		register(ScarabHandler)
+		register(WooleyedEffectRegister)
 
 		for (hook in hooks)
 			hook.init()

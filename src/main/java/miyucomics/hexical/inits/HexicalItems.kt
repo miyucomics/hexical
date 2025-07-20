@@ -14,9 +14,9 @@ import miyucomics.hexical.features.curios.CurioItem
 import miyucomics.hexical.features.grimoires.GrimoireItem
 import miyucomics.hexical.features.lamps.ArchLampItem
 import miyucomics.hexical.features.lamps.HandLampItem
-import miyucomics.hexical.features.lei.LeiItem
 import miyucomics.hexical.features.media_jar.MediaJarBlock
 import miyucomics.hexical.features.media_log.MediaLogItem
+import miyucomics.hexical.features.periwinkle.LeiItem
 import miyucomics.hexical.features.scarabs.ScarabBeetleItem
 import miyucomics.hexical.misc.HexSerialization
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup

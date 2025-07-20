@@ -15,7 +15,7 @@ class EvocationAnimation(val player: PlayerEntity) : IAnimation {
 	override fun getFirstPersonMode(tickDelta: Float) = FirstPersonMode.THIRD_PERSON_MODEL
 	override fun getFirstPersonConfiguration(tickDelta: Float): FirstPersonConfiguration = FirstPersonConfiguration().setShowLeftArm(true).setShowRightArm(true)
 	override fun get3DTransform(modelName: String, type: TransformType, tickDelta: Float, original: Vec3f): Vec3f {
-		val rotation = MathHelper.PI * (1 + MathHelper.sin(ClientStorage.ticks.toFloat() + tickDelta) / 6)
+		val rotation = -MathHelper.PI * (1 + MathHelper.sin(ClientStorage.ticks.toFloat() + tickDelta) / 6)
 		if (modelName == "leftArm" && type == TransformType.ROTATION)
 			return Vec3f(rotation, 0f, MathHelper.PI / 6)
 		if (modelName == "rightArm" && type == TransformType.ROTATION)

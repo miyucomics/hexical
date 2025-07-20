@@ -1,7 +1,6 @@
 package miyucomics.hexical.features.media_log
 
 import at.petrak.hexcasting.client.render.*
-import com.mojang.blaze3d.systems.RenderSystem
 import miyucomics.hexical.inits.InitHook
 import miyucomics.hexical.misc.ClientStorage
 import miyucomics.hexical.misc.ClientStorage.ticks

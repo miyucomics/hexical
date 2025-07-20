@@ -10,6 +10,6 @@ import net.minecraft.util.DyeColor
 
 class NeedsCharmedItemMishap : Mishap() {
 	override fun accentColor(env: CastingEnvironment, errorCtx: Context): FrozenPigment = dyeColor(DyeColor.RED)
-	override fun errorMessage(env: CastingEnvironment, errorCtx: Context): Text = error(HexicalMain.Companion.MOD_ID + ":needs_charmed_item")
+	override fun errorMessage(env: CastingEnvironment, errorCtx: Context): Text = error(HexicalMain.MOD_ID + ":needs_charmed_item")
 	override fun execute(env: CastingEnvironment, errorCtx: Context, stack: MutableList<Iota>) {}
 }

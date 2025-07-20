@@ -1,6 +1,4 @@
 {
-	"format_version": "1.21.6",
-	"credit": "Made with Blockbench",
 	"textures": {
 		"flute": "hexical:item/flute_model"
 	},
@@ -18,5 +16,20 @@
 			}
 		}
 	],
-	"gui_light": "front"
+	"gui_light": "front",
+	"display": {
+		"thirdperson_righthand": {
+			"translation": [0, 0, 2]
+		},
+		"firstperson_righthand": {
+			"rotation": [90, 0, 90],
+			"translation": [-6, 5, 5],
+			"scale": [0.75, 0.75, 0.75]
+		},
+		"firstperson_lefthand": {
+			"rotation": [170, 0, 90],
+			"translation": [-6, 5, 5],
+			"scale": [0.75, 0.75, 0.75]
+		}
+	}
 }

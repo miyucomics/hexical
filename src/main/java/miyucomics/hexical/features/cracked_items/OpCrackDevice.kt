@@ -16,7 +16,7 @@ object OpCrackDevice : SpellAction {
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val heldData = env.getHeldItemToOperateOn { it.item is ItemPackagedHex || it.item is CurioItem }
 		if (heldData == null)
-			throw MishapBadOffhandItem.Companion.of(null, "crackable_item")
+			throw MishapBadOffhandItem.of(null, "crackable_item")
 		val stack = heldData.stack
 		if (stack.item is ItemPackagedHex && (stack.item as ItemPackagedHex).hasHex(stack))
 			throw IllegalJailbreakMishap()

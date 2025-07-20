@@ -1,6 +1,6 @@
 package miyucomics.hexical.mixin;
 
-import miyucomics.hexical.features.lei.SnifferEntityMinterface;
+import miyucomics.hexical.features.periwinkle.SnifferEntityMinterface;
 import net.minecraft.entity.ai.brain.MemoryModuleType;
 import net.minecraft.entity.passive.SnifferEntity;
 import net.minecraft.server.world.ServerWorld;

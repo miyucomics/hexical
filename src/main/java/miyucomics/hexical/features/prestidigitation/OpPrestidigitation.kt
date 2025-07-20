@@ -22,16 +22,16 @@ object OpPrestidigitation : SpellAction {
 			is EntityIota -> {
 				val entity = args.getEntity(0, argc)
 				env.assertEntityInRange(entity)
-				SpellAction.Result(EntitySpell(entity), MediaConstants.DUST_UNIT / 10, listOf(ParticleSpray.Companion.cloud(entity.pos, 1.0)))
+				SpellAction.Result(EntitySpell(entity), MediaConstants.DUST_UNIT / 10, listOf(ParticleSpray.cloud(entity.pos, 1.0)))
 			}
 			is Vec3Iota -> {
 				val position = args.getBlockPos(0, argc)
 				env.assertPosInRange(position)
 				SpellAction.Result(BlockSpell(position), MediaConstants.DUST_UNIT / 10, listOf(
-					ParticleSpray.Companion.cloud(
+					ParticleSpray.cloud(
 						Vec3d.ofCenter(position), 1.0)))
 			}
-			else -> throw MishapInvalidIota.Companion.of(args[0], 0, "entity_or_vector")
+			else -> throw MishapInvalidIota.of(args[0], 0, "entity_or_vector")
 		}
 	}
 

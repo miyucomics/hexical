@@ -12,8 +12,6 @@ import net.minecraft.util.math.MathHelper
 
 class HandbellCurioPlayerModel(val player: PlayerEntity) : IAnimation {
 	override fun setupAnim(tickDelta: Float) {}
-	override fun getFirstPersonMode(tickDelta: Float) = FirstPersonMode.THIRD_PERSON_MODEL
-	override fun getFirstPersonConfiguration(tickDelta: Float): FirstPersonConfiguration = FirstPersonConfiguration().setShowRightArm(true)
 	override fun isActive() = player.getStackInHand(Hand.MAIN_HAND).isOf(HexicalItems.CURIO_HANDBELL) || player.getStackInHand(Hand.OFF_HAND).isOf(HexicalItems.CURIO_HANDBELL)
 	override fun get3DTransform(modelName: String, type: TransformType, tickDelta: Float, original: Vec3f): Vec3f {
 		if (modelName == "rightArm" && type == TransformType.ROTATION)
