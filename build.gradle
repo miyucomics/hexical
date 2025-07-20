@@ -26,7 +26,6 @@ repositories {
     maven { url = "https://maven.terraformersmc.com/releases" }
     maven { url = "https://maven.ladysnake.org/releases" }
     maven { url = "https://mvn.devos.one/snapshots/" }
-	mavenLocal()
 }
 
 dependencies {
@@ -39,7 +38,7 @@ dependencies {
 	include modImplementation("dev.kosmx.player-anim:player-animation-lib-fabric:$player_animator_version")
 	modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-api:$cardinal_components_version"
 	modImplementation "vazkii.patchouli:Patchouli:$minecraft_version-$patchouli_version-FABRIC"
-	modImplementation "miyucomics:hexpose:$hexpose_version"
+	modImplementation "miyucomics.hexpose:hexpose:$hexpose_version"
 	modImplementation("at.petra-k.hexcasting:hexcasting-fabric-$minecraft_version:$hexcasting_version") {
 		exclude module: "phosphor"
         exclude module: "lithium"
