@@ -11,7 +11,7 @@ import net.minecraft.util.DyeColor
 
 class NoSpatialAxisMishap : Mishap() {
 	override fun accentColor(env: CastingEnvironment, errorCtx: Context): FrozenPigment = dyeColor(DyeColor.RED)
-	override fun particleSpray(env: CastingEnvironment) = ParticleSpray.Companion.burst(env.mishapSprayPos(), 1.0)
-	override fun errorMessage(env: CastingEnvironment, errorCtx: Context): Text = error(HexicalMain.Companion.MOD_ID + ":magic_missile_coordinates")
+	override fun particleSpray(env: CastingEnvironment) = ParticleSpray.burst(env.mishapSprayPos(), 1.0)
+	override fun errorMessage(env: CastingEnvironment, errorCtx: Context): Text = error(HexicalMain.MOD_ID + ":magic_missile_coordinates")
 	override fun execute(env: CastingEnvironment, errorCtx: Context, stack: MutableList<Iota>) {}
 }

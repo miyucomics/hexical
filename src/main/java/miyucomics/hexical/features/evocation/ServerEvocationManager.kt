@@ -13,12 +13,13 @@ import net.minecraft.util.Identifier
 object ServerEvocationManager {
 	val START_EVOKE_CHANNEL: Identifier = HexicalMain.id("start_evoking")
 	val END_EVOKING_CHANNEL: Identifier = HexicalMain.id("end_evoking")
+	const val EVOKE_DURATION: Int = 20
 
 	fun startEvocation(player: ServerPlayerEntity, server: MinecraftServer) {
 		if (!CastingUtils.isEnlightened(player))
 			return
 		player.evocationActive = true
-		player.evocationDuration = HexicalMain.EVOKE_DURATION
+		player.evocationDuration = EVOKE_DURATION
 		player.world.playSound(null, player.x, player.y, player.z, HexicalSounds.EVOKING_MURMUR, SoundCategory.PLAYERS, 1f, 1f)
 		for (receiver in server.playerManager.playerList)
 			ServerPlayNetworking.send(receiver, START_EVOKE_CHANNEL, PacketByteBufs.create().also { it.writeUuid(player.uuid) })

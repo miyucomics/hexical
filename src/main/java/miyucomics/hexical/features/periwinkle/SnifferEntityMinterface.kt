@@ -1,4 +1,4 @@
-package miyucomics.hexical.features.lei
+package miyucomics.hexical.features.periwinkle
 
 import net.minecraft.item.ItemStack
 

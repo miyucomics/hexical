@@ -7,8 +7,8 @@ import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import miyucomics.hexical.features.media_log.MediaLogField;
 import miyucomics.hexical.features.media_log.MediaLogFieldKt;
+import miyucomics.hexical.features.periwinkle.WooleyedEffect;
 import miyucomics.hexical.inits.HexicalItems;
-import miyucomics.hexical.inits.HexicalPotions;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
@@ -25,7 +25,7 @@ public class PlayerBasedCastEnvMixin {
 
 	@WrapMethod(method = "canOvercast")
 	private boolean canOvercast(Operation<Boolean> original) {
-		if (this.caster.getEquippedStack(EquipmentSlot.HEAD).isOf(HexicalItems.LEI) || this.caster.hasStatusEffect(HexicalPotions.WOOLEYED_EFFECT))
+		if (this.caster.getEquippedStack(EquipmentSlot.HEAD).isOf(HexicalItems.LEI) || this.caster.hasStatusEffect(WooleyedEffect.INSTANCE))
 			return false;
 		return original.call();
 	}

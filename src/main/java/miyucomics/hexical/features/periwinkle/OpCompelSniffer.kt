@@ -1,4 +1,4 @@
-package miyucomics.hexical.features.lei
+package miyucomics.hexical.features.periwinkle
 
 import at.petrak.hexcasting.api.casting.ParticleSpray
 import at.petrak.hexcasting.api.casting.RenderedSpell
@@ -18,8 +18,8 @@ object OpCompelSniffer : SpellAction {
 		val sniffer = args.getEntity(0, argc)
 		env.assertEntityInRange(sniffer)
 		if (sniffer !is SnifferEntity)
-			throw MishapBadEntity.Companion.of(sniffer, "sniffer")
-		return SpellAction.Result(Spell(sniffer), MediaConstants.CRYSTAL_UNIT, listOf(ParticleSpray.Companion.cloud(sniffer.eyePos, 1.0)))
+			throw MishapBadEntity.of(sniffer, "sniffer")
+		return SpellAction.Result(Spell(sniffer), MediaConstants.CRYSTAL_UNIT, listOf(ParticleSpray.cloud(sniffer.eyePos, 1.0)))
 	}
 
 	private data class Spell(val sniffer: SnifferEntity) : RenderedSpell {
