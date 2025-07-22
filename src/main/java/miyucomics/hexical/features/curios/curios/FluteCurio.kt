@@ -28,7 +28,7 @@ object FluteCurio : CurioItem() {
 		return TypedActionResult.pass(user.getStackInHand(hand))
 	}
 
-	override fun postUse(user: ServerPlayerEntity, item: ItemStack, hand: Hand, world: ServerWorld, stack: List<Iota>) {
+	override fun postCharmCast(user: ServerPlayerEntity, item: ItemStack, hand: Hand, world: ServerWorld, stack: List<Iota>) {
 		val note = stack.lastOrNull()
 		if (note !is DoubleIota || note.double < 0 || note.double > 24 || abs(note.double - note.double.roundToInt()) > DoubleIota.TOLERANCE)
 			return

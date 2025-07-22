@@ -9,7 +9,7 @@ import net.minecraft.server.world.ServerWorld
 import net.minecraft.util.Hand
 
 object CompassCurio : CurioItem() {
-	override fun postUse(user: ServerPlayerEntity, item: ItemStack, hand: Hand, world: ServerWorld, stack: List<Iota>) {
+	override fun postCharmCast(user: ServerPlayerEntity, item: ItemStack, hand: Hand, world: ServerWorld, stack: List<Iota>) {
 		val location = stack.lastOrNull()
 		if (location !is Vec3Iota) {
 			item.orCreateNbt.remove("needle")
