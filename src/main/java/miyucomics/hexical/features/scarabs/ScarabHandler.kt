@@ -15,8 +15,8 @@ import at.petrak.hexcasting.common.lib.hex.HexEvalSounds
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.inits.HexicalItems
-import miyucomics.hexical.inits.InitHook
 import miyucomics.hexical.misc.HexSerialization
+import miyucomics.hexical.misc.InitHook
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtElement
 import net.minecraft.registry.Registry

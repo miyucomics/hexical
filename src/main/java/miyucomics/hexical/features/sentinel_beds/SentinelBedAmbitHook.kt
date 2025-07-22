@@ -1,7 +1,7 @@
 package miyucomics.hexical.features.sentinel_beds
 
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
-import miyucomics.hexical.inits.InitHook
+import miyucomics.hexical.misc.InitHook
 import net.minecraft.nbt.NbtCompound
 
 object SentinelBedAmbitHook : InitHook() {

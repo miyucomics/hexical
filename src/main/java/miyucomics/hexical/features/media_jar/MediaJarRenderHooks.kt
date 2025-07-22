@@ -3,7 +3,7 @@ package miyucomics.hexical.features.media_jar
 import at.petrak.hexcasting.api.client.ScryingLensOverlayRegistry
 import miyucomics.hexical.inits.HexicalBlocks.MEDIA_JAR_BLOCK
 import miyucomics.hexical.inits.HexicalBlocks.MEDIA_JAR_BLOCK_ENTITY
-import miyucomics.hexical.inits.InitHook
+import miyucomics.hexical.misc.InitHook
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap
 import net.minecraft.client.render.RenderLayer
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories
