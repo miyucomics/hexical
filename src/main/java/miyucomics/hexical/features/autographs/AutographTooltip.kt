@@ -1,8 +1,8 @@
 package miyucomics.hexical.features.autographs
 
 import at.petrak.hexcasting.api.pigment.FrozenPigment
-import miyucomics.hexical.inits.InitHook
 import miyucomics.hexical.misc.ClientStorage
+import miyucomics.hexical.misc.InitHook
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.nbt.NbtElement

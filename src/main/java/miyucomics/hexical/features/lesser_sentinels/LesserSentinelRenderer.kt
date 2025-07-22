@@ -2,8 +2,8 @@ package miyucomics.hexical.features.lesser_sentinels
 
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import com.mojang.blaze3d.systems.RenderSystem
-import miyucomics.hexical.inits.InitHook
 import miyucomics.hexical.misc.ClientStorage
+import miyucomics.hexical.misc.InitHook
 import miyucomics.hexical.misc.RenderUtils
 import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents
 import net.minecraft.client.MinecraftClient

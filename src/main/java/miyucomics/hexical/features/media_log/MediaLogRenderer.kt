@@ -1,9 +1,9 @@
 package miyucomics.hexical.features.media_log
 
 import at.petrak.hexcasting.client.render.*
-import miyucomics.hexical.inits.InitHook
 import miyucomics.hexical.misc.ClientStorage
 import miyucomics.hexical.misc.ClientStorage.ticks
+import miyucomics.hexical.misc.InitHook
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback
 import net.minecraft.client.MinecraftClient

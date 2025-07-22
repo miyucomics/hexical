@@ -1,7 +1,7 @@
 package miyucomics.hexical.features.confetti
 
 import miyucomics.hexical.inits.HexicalParticles
-import miyucomics.hexical.inits.InitHook
+import miyucomics.hexical.misc.InitHook
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
 import net.minecraft.sound.SoundCategory
 import net.minecraft.sound.SoundEvents
