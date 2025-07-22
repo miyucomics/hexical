@@ -10,7 +10,7 @@ import at.petrak.hexcasting.api.utils.putList
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.features.player.getHexicalPlayerManager
 import miyucomics.hexical.features.player.types.PlayerField
-import miyucomics.hexical.misc.RingBuffer
+import miyucomics.hexpose.utils.RingBuffer
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
 import net.minecraft.entity.player.PlayerEntity
