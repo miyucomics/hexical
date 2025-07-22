@@ -12,7 +12,7 @@ import net.minecraft.server.world.ServerWorld
 import net.minecraft.util.Hand
 
 abstract class CurioItem : Item(Settings().maxCount(1)) {
-	open fun postUse(user: ServerPlayerEntity, item: ItemStack, hand: Hand, world: ServerWorld, stack: List<Iota>) {}
+	open fun postCharmCast(user: ServerPlayerEntity, item: ItemStack, hand: Hand, world: ServerWorld, stack: List<Iota>) {}
 
 	companion object {
 		private val specialCurios = mapOf(
