@@ -60,7 +60,7 @@ object HexicalItems {
 	private val MEDIA_LOG_ITEM = registerItem("media_log", MediaLogItem())
 
 	@JvmField
-	val LEI = registerItem("lei", LeiItem())
+	val LEI = registerItem("lei", LeiItem)
 	private val GAUNTLET_STAFF = registerItem("gauntlet_staff", ItemStaff(Settings().maxCount(1)))
 	private val LIGHTNING_ROD_STAFF = registerItem("lightning_rod_staff", ItemStaff(Settings().maxCount(1)))
 

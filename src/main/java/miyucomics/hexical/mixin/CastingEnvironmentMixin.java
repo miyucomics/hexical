@@ -4,8 +4,10 @@ import at.petrak.hexcasting.api.casting.eval.CastingEnvironment;
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import miyucomics.hexical.features.periwinkle.WooleyedEffect;
+import miyucomics.hexical.inits.HexicalItems;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.player.PlayerEntity;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -18,10 +20,11 @@ public abstract class CastingEnvironmentMixin {
 	private boolean canOvercast(Operation<Boolean> original) {
 		if (this.getCastingEntity() == null)
 			return original.call();
+		if (this.getCastingEntity() instanceof PlayerEntity player && player.getInventory().armor.get(3).isOf(HexicalItems.LEI))
+			return true;
 		StatusEffectInstance wooleye = this.getCastingEntity().getStatusEffect(WooleyedEffect.INSTANCE);
 		if (wooleye == null)
 			return original.call();
-		System.out.println(wooleye.getAmplifier());
 		return wooleye.getAmplifier() < 1;
 	}
 }

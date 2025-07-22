@@ -1,6 +1,6 @@
 package miyucomics.hexical.features.player
 
-import miyucomics.hexical.inits.InitHook
+import miyucomics.hexical.misc.InitHook
 import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents
 
 object RespawnPersistHook : InitHook() {

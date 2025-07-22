@@ -1,7 +1,7 @@
 package miyucomics.hexical.features.media_log
 
-import miyucomics.hexical.inits.InitHook
 import miyucomics.hexical.misc.ClientStorage
+import miyucomics.hexical.misc.InitHook
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
 
 object ClientMediaLogReceiver : InitHook() {

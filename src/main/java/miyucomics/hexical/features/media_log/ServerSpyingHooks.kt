@@ -2,7 +2,7 @@ package miyucomics.hexical.features.media_log
 
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.eval.env.PlayerBasedCastEnv
-import miyucomics.hexical.inits.InitHook
+import miyucomics.hexical.misc.InitHook
 import net.minecraft.nbt.NbtCompound
 
 object ServerSpyingHooks : InitHook() {

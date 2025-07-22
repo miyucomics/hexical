@@ -14,8 +14,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class ItemEntityMixin {
 	@Shadow public abstract ItemStack getStack();
 
-	@Shadow private int pickupDelay;
-
 	@Inject(method = "tick", at = @At("HEAD"))
 	void deactivateDroppedLamp(CallbackInfo ci) {
 		if (!((Entity) (Object) this).getWorld().isClient && this.getStack().isOf(HexicalItems.ARCH_LAMP_ITEM))

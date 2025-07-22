@@ -6,7 +6,7 @@ import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.NullIota
 import at.petrak.hexcasting.api.casting.iota.Vec3Iota
 import miyucomics.hexical.features.hopper.targets.*
-import miyucomics.hexical.inits.InitHook
+import miyucomics.hexical.misc.InitHook
 import net.minecraft.entity.Entity
 import net.minecraft.entity.ItemEntity
 import net.minecraft.entity.decoration.ArmorStandEntity

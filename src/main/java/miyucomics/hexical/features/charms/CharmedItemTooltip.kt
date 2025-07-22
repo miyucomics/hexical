@@ -7,7 +7,7 @@ import miyucomics.hexical.features.charms.CharmUtilities.CHARMED_COLOR
 import miyucomics.hexical.features.charms.CharmUtilities.getMaxMedia
 import miyucomics.hexical.features.charms.CharmUtilities.getMedia
 import miyucomics.hexical.features.charms.CharmUtilities.isStackCharmed
-import miyucomics.hexical.inits.InitHook
+import miyucomics.hexical.misc.InitHook
 import miyucomics.hexical.misc.RenderUtils
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback
 import net.minecraft.text.Text

@@ -2,7 +2,7 @@ package miyucomics.hexical.features.peripherals
 
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.features.evocation.ServerEvocationManager
-import miyucomics.hexical.inits.InitHook
+import miyucomics.hexical.misc.InitHook
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
 import net.minecraft.util.Identifier
 

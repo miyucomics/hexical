@@ -6,8 +6,8 @@ import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.common.blocks.akashic.BlockEntityAkashicBookshelf
 import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.inits.InitHook
 import miyucomics.hexical.misc.CastingUtils
+import miyucomics.hexical.misc.InitHook
 import net.fabricmc.fabric.api.event.registry.FabricRegistryBuilder
 import net.fabricmc.fabric.api.event.registry.RegistryAttribute
 import net.minecraft.block.*

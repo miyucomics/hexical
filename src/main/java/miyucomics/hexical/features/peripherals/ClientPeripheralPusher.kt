@@ -2,7 +2,7 @@ package miyucomics.hexical.features.peripherals
 
 import at.petrak.hexcasting.fabric.event.MouseScrollCallback
 import miyucomics.hexical.inits.HexicalKeybinds
-import miyucomics.hexical.inits.InitHook
+import miyucomics.hexical.misc.InitHook
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs

@@ -1,7 +1,6 @@
 package miyucomics.hexical.features.curios.curios
 
 import at.petrak.hexcasting.api.casting.iota.Iota
-import dev.kosmx.playerAnim.api.IPlayer
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.features.curios.CurioItem
 import miyucomics.hexical.inits.HexicalSounds

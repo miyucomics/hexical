@@ -8,7 +8,7 @@ import miyucomics.hexical.features.media_jar.MediaJarBlock
 import miyucomics.hexical.features.media_jar.MediaJarItem
 import miyucomics.hexical.features.transmuting.TransmutingRecipe.Type
 import miyucomics.hexical.inits.HexicalBlocks
-import miyucomics.hexical.inits.InitHook
+import miyucomics.hexical.misc.InitHook
 import net.minecraft.inventory.SimpleInventory
 import net.minecraft.item.ItemStack
 import net.minecraft.recipe.RecipeType

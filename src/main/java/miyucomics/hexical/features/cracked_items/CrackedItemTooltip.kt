@@ -6,7 +6,7 @@ import at.petrak.hexcasting.api.utils.asTranslatedComponent
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
 import miyucomics.hexical.features.charms.CharmUtilities
 import miyucomics.hexical.features.curios.CurioItem
-import miyucomics.hexical.inits.InitHook
+import miyucomics.hexical.misc.InitHook
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback
 import net.minecraft.nbt.NbtElement
 import net.minecraft.nbt.NbtList

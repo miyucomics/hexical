@@ -1,7 +1,7 @@
 package miyucomics.hexical.features.media_jar
 
 import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.inits.InitHook
+import miyucomics.hexical.misc.InitHook
 import net.fabricmc.fabric.api.client.rendering.v1.CoreShaderRegistrationCallback
 import net.minecraft.client.render.RenderLayer
 import net.minecraft.client.render.RenderPhase

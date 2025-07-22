@@ -5,7 +5,7 @@ import at.petrak.hexcasting.api.casting.eval.vm.CastingImage
 import at.petrak.hexcasting.api.casting.eval.vm.CastingVM
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.features.curios.CurioItem
-import miyucomics.hexical.inits.InitHook
+import miyucomics.hexical.misc.InitHook
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
 import net.minecraft.util.Hand
 import net.minecraft.util.Identifier

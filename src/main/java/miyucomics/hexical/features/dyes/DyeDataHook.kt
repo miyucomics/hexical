@@ -3,7 +3,7 @@ package miyucomics.hexical.features.dyes
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.inits.InitHook
+import miyucomics.hexical.misc.InitHook
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper
 import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener
 import net.minecraft.block.Block

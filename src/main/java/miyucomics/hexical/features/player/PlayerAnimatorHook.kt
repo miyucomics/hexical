@@ -3,13 +3,12 @@ package miyucomics.hexical.features.player
 import dev.kosmx.playerAnim.api.layered.ModifierLayer
 import dev.kosmx.playerAnim.api.layered.modifier.MirrorModifier
 import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationAccess
-import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.features.curios.curios.FluteCurioPlayerModel
 import miyucomics.hexical.features.curios.curios.HandbellCurioItemModel
 import miyucomics.hexical.features.curios.curios.HandbellCurioPlayerModel
 import miyucomics.hexical.features.evocation.EvocationAnimation
 import miyucomics.hexical.inits.HexicalItems
-import miyucomics.hexical.inits.InitHook
+import miyucomics.hexical.misc.InitHook
 import net.minecraft.util.Arm
 import net.minecraft.util.Hand
 

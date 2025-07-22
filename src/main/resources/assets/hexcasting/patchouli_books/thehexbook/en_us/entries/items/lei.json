@@ -1,0 +1,18 @@
+{
+	"name": "item.hexical.lei",
+	"icon": "hexical:lei",
+	"advancement": "hexcasting:root",
+	"category": "hexcasting:items",
+	"sortnum": 8,
+	"pages": [
+		{
+			"type": "patchouli:crafting",
+			"recipe": "hexical:lei",
+			"text": "hexical.page.lei.summary"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.lei.description"
+		}
+	]
+}
