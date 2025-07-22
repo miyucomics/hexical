@@ -1,7 +1,7 @@
 package miyucomics.hexical.features.lamps
 
 import miyucomics.hexical.inits.HexicalItems
-import miyucomics.hexical.inits.InitHook
+import miyucomics.hexical.misc.InitHook
 import net.minecraft.client.item.ModelPredicateProviderRegistry
 import net.minecraft.util.Identifier
 

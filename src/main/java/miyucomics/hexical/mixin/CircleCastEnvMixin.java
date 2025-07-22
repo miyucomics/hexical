@@ -24,7 +24,7 @@ public abstract class CircleCastEnvMixin {
 
 	@WrapMethod(method = "getPrimaryStacks")
 	public List<CastingEnvironment.HeldItemInfo> addHands(Operation<List<CastingEnvironment.HeldItemInfo>> original) {
-		if (circleState().currentImage.getUserData().contains("impetusHand")) {
+		if (circleState().currentImage.getUserData().contains("impetus_hand")) {
 			PedestalBlockEntity pedestal = getPedestal();
 			return List.of(new CastingEnvironment.HeldItemInfo(pedestal.getStack(0), Hand.OFF_HAND));
 		}
@@ -33,7 +33,7 @@ public abstract class CircleCastEnvMixin {
 
 	@WrapMethod(method = "replaceItem")
 	public boolean addHands(Predicate<ItemStack> stackOk, ItemStack replaceWith, @Nullable Hand hand, Operation<Boolean> original) {
-		if (circleState().currentImage.getUserData().contains("impetusHand")) {
+		if (circleState().currentImage.getUserData().contains("impetus_hand")) {
 			PedestalBlockEntity pedestal = getPedestal();
 			ItemStack heldStack = pedestal.getStack(0);
 			if (stackOk.test(heldStack)) {
@@ -47,7 +47,7 @@ public abstract class CircleCastEnvMixin {
 
 	@Unique
 	private PedestalBlockEntity getPedestal() {
-		int[] position = circleState().currentImage.getUserData().getIntArray("impetusHand");
+		int[] position = circleState().currentImage.getUserData().getIntArray("impetus_hand");
 		ServerWorld world = ((CastingEnvironment) (Object) this).getWorld();
 		PedestalBlockEntity pedestal = (PedestalBlockEntity) world.getBlockEntity(new BlockPos(position[0], position[1], position[2]));
 		assert pedestal != null;

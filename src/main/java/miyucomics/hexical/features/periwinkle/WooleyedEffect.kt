@@ -2,7 +2,7 @@ package miyucomics.hexical.features.periwinkle
 
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.inits.HexicalBlocks
-import miyucomics.hexical.inits.InitHook
+import miyucomics.hexical.misc.InitHook
 import net.minecraft.entity.effect.StatusEffect
 import net.minecraft.entity.effect.StatusEffectCategory
 import net.minecraft.entity.effect.StatusEffectInstance

@@ -1,6 +1,6 @@
 package miyucomics.hexical.features.evocation
 
-import miyucomics.hexical.inits.InitHook
+import miyucomics.hexical.misc.InitHook
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
 
 object ClientEvocationReceiver : InitHook() {

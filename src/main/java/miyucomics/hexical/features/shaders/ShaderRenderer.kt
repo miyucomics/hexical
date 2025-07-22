@@ -35,9 +35,7 @@ object ShaderRenderer {
         try {
             val client = MinecraftClient.getInstance()
             activeShader = PostEffectProcessor(client.textureManager, client.resourceManager, client.framebuffer, location)
-        }  catch (ioexception: IOException) {
-            println(ioexception)
-        }
+        } catch (_: IOException) {}
     }
 
     private fun updateEffectSize(effect: PostEffectProcessor) {
