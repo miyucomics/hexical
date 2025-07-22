@@ -23,7 +23,7 @@ object ServerCharmedUseReceiver : InitHook() {
 				val vm = CastingVM(CastingImage().copy(stack = inputMethod.asActionResult), CharmCastEnv(player, hand, stack))
 				vm.queueExecuteAndWrapIotas(CharmUtilities.getHex(stack, player.serverWorld), player.serverWorld)
 				if (stack.item is CurioItem)
-					(stack.item as CurioItem).postUse(player, stack, hand, player.serverWorld, vm.image.stack)
+					(stack.item as CurioItem).postCharmCast(player, stack, hand, player.serverWorld, vm.image.stack)
 			}
 		}
 	}

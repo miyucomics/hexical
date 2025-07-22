@@ -1,14 +1,17 @@
 package miyucomics.hexical.mixin;
 
+import at.petrak.hexcasting.common.lib.HexSounds;
 import kotlin.Pair;
 import miyucomics.hexical.features.charms.CharmUtilities;
 import miyucomics.hexical.features.charms.ServerCharmedUseReceiver;
+import miyucomics.hexical.features.curios.CurioItem;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.Mouse;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.Hand;
 import org.lwjgl.glfw.GLFW;
 import org.spongepowered.asm.mixin.Final;
@@ -46,6 +49,11 @@ public class MouseMixin {
 		for (Pair<Hand, ItemStack> pair : CharmUtilities.getUseableCharmedItems(client.player)) {
 			if (!CharmUtilities.shouldIntercept(pair.getSecond(), buttonPressed, client.player.isSneaking()))
 				continue;
+
+			if (!(pair.getSecond().getItem() instanceof CurioItem)) {
+				client.player.swingHand(pair.getFirst());
+				client.player.clientWorld.playSound(null, client.player.getX(), client.player.getY(), client.player.getZ(), HexSounds.CAST_HERMES, SoundCategory.MASTER, 0.25f, 1f);
+			}
 
 			PacketByteBuf buf = PacketByteBufs.create();
 			buf.writeInt(buttonPressed);
