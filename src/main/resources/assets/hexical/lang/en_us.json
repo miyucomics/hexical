@@ -245,7 +245,7 @@
 	"hexical.page.glow_scroll.summary": "Causes the ink of an $(item)Animated Scroll$() to brightly glow, regardless of lighting conditions.",
 
 	"hexical.page.hex_candle.title": "Hex Candles",
-	"hexical.page.hex_candle.0": "When ignited for the first time, either $(l:patterns/spells/prestidigitation)magically$() or with a $(item)Flint and Steel$(), these delightful little candles have pale white flames. Their flames change to copy the $(l:items/pigment)Pigment$() of anyone who interacts with them. I can also give them a $(item)$(l:items/pigment)Pigment$() item directly to change its color.$(br2)To extinguish, sneak use.",
+	"hexical.page.hex_candle.0": "When ignited for the first time, either $(l:patterns/spells/prestidigitation)magically$() or with a $(item)Flint and Steel$(), these delightful little candles have pale white flames. Their flames change to copy the $(l:items/pigments)Pigment$() of anyone who interacts with them. I can also give them a $(item)$(l:items/pigments)Pigment$() item directly to change its color.$(br2)To extinguish, sneak use.",
     "hexical.page.hex_candle.1": "Like with regular $(item)Candles$(), I can place them on $(item)Cakes$() as well.$(br2)$(o)The doctor found himself in an immense cave lined with countless quivering candles, each representing the duration of a life.$()",
 
 	"hexical.page.media_jar.title": "Media Jar",
