@@ -23,7 +23,7 @@ object HandbellCurio : CurioItem() {
 		return TypedActionResult.pass(user.getStackInHand(hand))
 	}
 
-	override fun postUse(user: ServerPlayerEntity, item: ItemStack, hand: Hand, world: ServerWorld, stack: List<Iota>) {
+	override fun postCharmCast(user: ServerPlayerEntity, item: ItemStack, hand: Hand, world: ServerWorld, stack: List<Iota>) {
 		playSound(world, user)
 	}
 
