@@ -66,6 +66,7 @@ class MediaJarBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 	}
 
 	override fun size() = 1
+	override fun getMaxCountPerStack() = 1
 	override fun canPlayerUse(playerEntity: PlayerEntity) = false
 	override fun getStack(i: Int): ItemStack = if (i == 0) heldStack else ItemStack.EMPTY
 	override fun isEmpty() = heldStack.isEmpty
