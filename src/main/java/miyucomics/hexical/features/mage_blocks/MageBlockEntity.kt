@@ -4,8 +4,10 @@ import at.petrak.hexcasting.api.block.HexBlockEntity
 import at.petrak.hexcasting.api.casting.getPositiveInt
 import at.petrak.hexcasting.api.casting.getPositiveIntUnder
 import at.petrak.hexcasting.api.casting.iota.Iota
+import at.petrak.hexcasting.api.utils.putCompound
 import miyucomics.hexical.inits.HexicalBlocks
 import net.minecraft.block.BlockState
+import net.minecraft.block.Blocks
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.util.math.BlockPos
 
