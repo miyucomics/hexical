@@ -134,16 +134,13 @@ class TchotchkeItem : ItemPackagedHex(Settings().maxCount(1)) {
 		val stack = player.getStackInHand(usedHand)
 		if (hasHex(stack) && getMedia(stack) > 0) {
 			val charmed = ItemStack(Items.STICK)
-			val nbt = charmed.orCreateNbt
-			val charm = NbtCompound()
-			charm.putLong("media", getMedia(stack))
-			charm.putLong("max_media", getMaxMedia(stack))
-			charm.putList("hex", HexSerialization.serializeHex(getHex(stack, world as ServerWorld)!!))
-			charm.putBoolean("left", true)
-			charm.putBoolean("right", true)
-			charm.putBoolean("left_sneak", true)
-			charm.putBoolean("right_sneak", true)
-			nbt.putCompound("charmed", charm)
+			charmed.orCreateNbt.putCompound("charmed", NbtCompound().also {
+				it.putLong("media", getMedia(stack))
+				it.putLong("max_media", getMaxMedia(stack))
+				it.putList("hex", HexSerialization.serializeHex(getHex(stack, world as ServerWorld)!!))
+				it.putIntArray("normal_inputs", listOf(0, 1))
+				it.putIntArray("sneak_inputs", listOf(0, 1))
+			})
 			player.setStackInHand(usedHand, charmed)
 		}
 		return TypedActionResult.success(player.getStackInHand(usedHand))
