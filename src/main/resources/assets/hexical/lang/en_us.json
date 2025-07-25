@@ -409,8 +409,15 @@
 	"hexcasting.action.hexical:draw_pattern": "Handwriting Distillation",
 	"hexical.page.draw_pattern.summary": "Takes a pattern and produces a normalized list of vectors. The z-component of these vectors is zero. I feel this may be useful for artistic _Hexes.",
 
+	"hexical.page.grok.title": "Grok",
+	"hexical.page.grok.0": "Where $(l:patterns/telepathy)Telepathy$() is concerned with reading my intentions and allowing my _Hexes to directly inform me, $(thing)Grokking$() deals with transferring iotas. The stack accessible with my $(l:items/staff)$(item)Staff$() is persistent, unlike the ones of $(l:items/hexcasting)$(item)casting devices$(). These two patterns allow me to push and pull iotas directly to it.",
+	"hexcasting.action.hexical:grok_pull": "Grokking Reflection",
+	"hexical.page.grok_pull.summary": "Pushes the top iota from my $(l:items/staff)$(thing)staff stack$() or pushes $(l:casting/influences)$(thing)Garbage$(). Subject to the Transgress Others mishap.",
+	"hexcasting.action.hexical:grok_push": "Grokking Gambit",
+	"hexical.page.grok_push.summary": "Pops an iota and pushes it onto my $(l:items/staff)$(thing)staff stack$(). Subject to the Transgress Others mishap.",
+
 	"hexical.page.telepathy.title": "Telepathy",
-	"hexical.page.telepathy": "_Media is the energy of thought and consequently, it can interact with thoughts as well. Unfortunately or perhaps fortunately for me, the minds of _Hexcasters are too resistant to be swayed by _Hexes and even the minds of villagers resist tampering. There is a notable exception though: my own mind is open to my own _media, allowing me to read my own intentions and write thoughts to myself.",
+	"hexical.page.telepathy.0": "_Media is the energy of thought and consequently, it can interact with thoughts as well. Unfortunately or perhaps fortunately for me, the minds of _Hexcasters are too resistant to be swayed by _Hexes and even the minds of villagers resist tampering. There is a notable exception though: my own mind is open to my own _media, allowing me to read my own intentions and write thoughts to myself.",
 	"hexcasting.action.hexical:get_telepathy": "Telepathic Reflection",
 	"hexical.page.get_telepathy.summary": "By focusing on a particular image, I can detect that concentration via this pattern. Pushes how many twentieths of a second I've been intending to $(thing)$(k:hexical.telepathy)$(), or -1 if I am not.",
 	"hexcasting.action.hexical:send_telepathy": "Send Thought",
