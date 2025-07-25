@@ -35,7 +35,6 @@ class ScarabBeetleItem : Item(Settings().maxCount(1).rarity(Rarity.UNCOMMON)), I
 		if (!nbt.contains("hex"))
 			return
 		tooltip.add("hexical.scarab.hex".asTranslatedComponent(stack.getList("hex", NbtElement.COMPOUND_TYPE.toInt())!!.fold(Text.empty()) { acc, curr -> acc.append(IotaType.getDisplay(curr.asCompound)) }).styledWith(Formatting.GRAY))
-		super.appendTooltip(stack, world, tooltip, context)
 	}
 
 	override fun readIotaTag(stack: ItemStack) = null

@@ -141,8 +141,8 @@ object HexicalActions {
 		register("deserialize_pattern", "wqqqaqwd", HexDir.EAST, OpDeserializePattern)
 		register("draw_pattern", "eadqqqa", HexDir.NORTH_EAST, OpDrawPattern)
 
-		register("grok_push", "aqawwqaw", HexDir.EAST, OpGrokPush)
-		register("grok_pull", "ewdewwde", HexDir.EAST, OpGrokPull)
+		register("grok_pull", "aqawwqaw", HexDir.EAST, OpGrokPull)
+		register("grok_push", "ewdewwde", HexDir.EAST, OpGrokPush)
 
 		register("get_telepathy", "wqqadaw", HexDir.EAST, OpGetKeybind("key.hexical.telepathy"))
 		register("send_telepathy", "qqqqwaqa", HexDir.EAST, OpSendTelepathy)
