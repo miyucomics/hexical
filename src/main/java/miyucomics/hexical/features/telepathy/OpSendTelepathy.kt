@@ -13,6 +13,6 @@ object OpSendTelepathy : ConstMediaAction {
 		if (caster !is ServerPlayerEntity)
 			throw MishapBadCaster()
 		caster.sendMessage(args[0].display(), true)
-		return listOf()
+		return emptyList()
 	}
 }

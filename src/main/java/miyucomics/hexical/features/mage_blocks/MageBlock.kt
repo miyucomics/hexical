@@ -2,8 +2,6 @@ package miyucomics.hexical.features.mage_blocks
 
 import at.petrak.hexcasting.common.blocks.BlockConjured
 import miyucomics.hexical.inits.HexicalBlocks
-import net.fabricmc.fabric.api.block.v1.FabricBlock
-import net.minecraft.block.BlockRenderType
 import net.minecraft.block.BlockState
 import net.minecraft.block.Blocks
 import net.minecraft.block.MapColor
@@ -22,7 +20,6 @@ import net.minecraft.util.Hand
 import net.minecraft.util.hit.BlockHitResult
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
-import net.minecraft.world.BlockRenderView
 import net.minecraft.world.BlockView
 import net.minecraft.world.World
 import net.minecraft.world.event.GameEvent

@@ -13,6 +13,6 @@ object OpIotaSpeck : ConstMediaAction {
 		if (speck !is SpeckEntity)
 			throw MishapBadEntity.of(speck, "speck")
 		speck.setIota(args[1])
-		return listOf()
+		return emptyList()
 	}
 }

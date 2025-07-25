@@ -14,6 +14,6 @@ class OpShader(private val shader: Identifier?) : ConstMediaAction {
 		if (env.castingEntity !is PlayerEntity)
 			throw MishapBadCaster()
 		ServerShaderManager.setShader(env.castingEntity as ServerPlayerEntity, shader)
-		return listOf()
+		return emptyList()
 	}
 }

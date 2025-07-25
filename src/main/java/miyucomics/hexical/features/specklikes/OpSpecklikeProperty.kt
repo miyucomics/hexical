@@ -27,6 +27,6 @@ class OpSpecklikeProperty(private val mode: Int) : ConstMediaAction {
 			5 -> specklike.setLifespan(args.getInt(1, argc))
 			6 -> specklike.setPigment(args.getPigment(1, argc))
 		}
-		return listOf()
+		return emptyList()
 	}
 }

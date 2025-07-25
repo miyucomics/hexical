@@ -14,6 +14,6 @@ object OpShoutTelepathy : ConstMediaAction {
 		if (caster !is ServerPlayerEntity)
 			throw MishapBadCaster()
 		caster.networkHandler.sendPacket(TitleS2CPacket(args[0].display()))
-		return listOf()
+		return emptyList()
 	}
 }

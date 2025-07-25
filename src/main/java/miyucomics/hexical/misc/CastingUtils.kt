@@ -16,7 +16,6 @@ object CastingUtils {
 			throw MishapOthersName(truename)
 	}
 
-	@JvmStatic
 	fun isEnlightened(player: ServerPlayerEntity): Boolean {
 		val advancement = player.getServer()!!.advancementLoader[HexAPI.modLoc("enlightenment")]
 		val tracker = player.advancementTracker

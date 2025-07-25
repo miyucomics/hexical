@@ -13,6 +13,6 @@ object OpWriteCharmed : ConstMediaAction {
 		val iota = args[0]
 		CastingUtils.assertNoTruename(iota, env)
 		env.setInternalStorage(iota)
-		return listOf()
+		return emptyList()
 	}
 }
