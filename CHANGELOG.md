@@ -7,6 +7,11 @@
   - player stores data now; not persistent state
   - removed Myodesopsia spell
 - added Vibrate spell
+- added pattern to pull iota from staff stack
+- added pattern to push iota to staff stack
+- added spell to set model position
+- added tooltips to hexbursts
+- added tooltips to hextito
 - added pattern preview to animated scrolls
 - added hotbar spells
 - added lesser sentinels
