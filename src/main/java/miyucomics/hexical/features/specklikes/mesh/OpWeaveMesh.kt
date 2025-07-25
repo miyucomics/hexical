@@ -30,6 +30,6 @@ object OpWeaveMesh : ConstMediaAction {
 		}
 
 		mesh.setShape(points)
-		return listOf()
+		return emptyList()
 	}
 }
