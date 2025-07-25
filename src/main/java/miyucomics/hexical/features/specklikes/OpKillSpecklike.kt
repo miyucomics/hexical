@@ -13,6 +13,6 @@ object OpKillSpecklike : ConstMediaAction {
 		if (speck !is Specklike)
 			throw MishapBadEntity.of(speck, "speck")
 		speck.kill()
-		return listOf()
+		return emptyList()
 	}
 }
