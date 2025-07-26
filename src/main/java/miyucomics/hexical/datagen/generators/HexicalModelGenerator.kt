@@ -4,13 +4,12 @@ import miyucomics.hexical.inits.HexicalBlocks
 import miyucomics.hexical.inits.HexicalItems
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider
-import net.minecraft.data.client.BlockStateModelGenerator
-import net.minecraft.data.client.ItemModelGenerator
-import net.minecraft.data.client.Models
+import net.minecraft.data.client.*
 
 class HexicalModelGenerator(generator: FabricDataOutput) : FabricModelProvider(generator) {
 	override fun generateBlockStateModels(generator: BlockStateModelGenerator) {
 		generator.registerCandle(HexicalBlocks.HEX_CANDLE_BLOCK, HexicalBlocks.HEX_CANDLE_CAKE_BLOCK)
+		generator.blockStateCollector.accept(VariantsBlockStateSupplier.create(HexicalBlocks.SENTINEL_BED_BLOCK, BlockStateVariant.create().put(VariantSettings.MODEL, ModelIds.getBlockModelId(HexicalBlocks.SENTINEL_BED_BLOCK))).coordinate(BlockStateModelGenerator.createNorthDefaultRotationStates()))
 	}
 
 	override fun generateItemModels(generator: ItemModelGenerator) {

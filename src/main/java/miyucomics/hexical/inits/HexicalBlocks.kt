@@ -12,6 +12,7 @@ import miyucomics.hexical.features.media_jar.MediaJarBlockEntity
 import miyucomics.hexical.features.media_jar.MediaJarItem
 import miyucomics.hexical.features.pedestal.PedestalBlock
 import miyucomics.hexical.features.pedestal.PedestalBlockEntity
+import miyucomics.hexical.features.sentinel_beds.SentinelBedBlock
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap
 import net.minecraft.block.*
 import net.minecraft.block.AbstractBlock.Settings
@@ -41,7 +42,7 @@ object HexicalBlocks {
 	val CASTING_CARPET_ITEM = BlockItem(CASTING_CARPET, Item.Settings())
 
 	@JvmField
-	val SENTINEL_BED_BLOCK: Block = Block(Settings.copy(Blocks.DEEPSLATE_TILES).strength(4f, 6f))
+	val SENTINEL_BED_BLOCK = SentinelBedBlock()
 
 	val PERIWINKLE_FLOWER = FlowerbedBlock(Settings.create().mapColor(MapColor.PURPLE).noCollision().sounds(BlockSoundGroup.PINK_PETALS).pistonBehavior(PistonBehavior.DESTROY))
 	val PERIWINKLE_FLOWER_ITEM = BlockItem(PERIWINKLE_FLOWER, Item.Settings())
