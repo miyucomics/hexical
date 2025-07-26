@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "hexical:block/sentinel_bed",
+      "x": 90
+    },
+    "facing=east": {
+      "model": "hexical:block/sentinel_bed",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "hexical:block/sentinel_bed"
+    },
+    "facing=south": {
+      "model": "hexical:block/sentinel_bed",
+      "y": 180
+    },
+    "facing=up": {
+      "model": "hexical:block/sentinel_bed",
+      "x": 270
+    },
+    "facing=west": {
+      "model": "hexical:block/sentinel_bed",
+      "y": 270
+    }
+  }
+}
