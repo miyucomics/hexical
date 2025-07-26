@@ -1,8 +1,29 @@
 {
-	"parent": "block/cube_bottom_top",
+	"parent": "block/block",
 	"textures": {
+		"bottom": "hexcasting:block/slate",
+		"particle": "hexical:block/sentinel_bed_side",
 		"side": "hexical:block/sentinel_bed_side",
-		"top": "hexical:block/sentinel_bed_top",
-		"bottom": "hexcasting:block/slate"
+		"front": "hexical:block/sentinel_bed_top"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [16, 16, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#front", "cullface": "north"},
+				"east": {"uv": [0, 0, 16, 16], "rotation": 270, "texture": "#side", "cullface": "east"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#bottom", "cullface": "south"},
+				"west": {"uv": [0, 0, 16, 16], "rotation": 90, "texture": "#side", "cullface": "west"},
+				"up": {"uv": [0, 16, 16, 0], "texture": "#side", "cullface": "up"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#side", "cullface": "down"}
+			}
+		}
+	],
+	"display": {
+		"gui": {
+			"rotation": [-60, -180, 45],
+			"scale": [0.625, 0.625, 0.625]
+		}
 	}
 }
