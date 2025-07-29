@@ -63,7 +63,7 @@ object MediaLogRenderer : InitHook() {
 			matrices.scale(25f, 25f, 25f)
 			val color = ColorHelper.Argb.getArgb((alpha * 255).toInt(), 255, 255, 255)
 			val patternlike = HexPatternLike.of(ClientStorage.mediaLog.patterns.buffer()[index])
-			val patternSettings = WorldlyPatternRenderHelpers.WORLDLY_SETTINGS_WOBBLY
+			val patternSettings = WorldlyPatternRenderHelpers.READABLE_SCROLL_SETTINGS
 			val staticPoints = HexPatternPoints.getStaticPoints(patternlike, patternSettings, 0.0)
 			val nonzappyLines = patternlike.nonZappyPoints
 			val zappyPattern = makeZappy(nonzappyLines, findDupIndices(nonzappyLines), patternSettings.hops, patternSettings.variance, patternSettings.speed, patternSettings.flowIrregular, patternSettings.readabilityOffset, patternSettings.lastSegmentProp, 0.0)
