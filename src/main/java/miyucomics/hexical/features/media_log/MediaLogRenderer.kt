@@ -11,6 +11,7 @@ import net.minecraft.client.gui.DrawContext
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.util.math.ColorHelper
 import net.minecraft.util.math.MathHelper
+import net.minecraft.util.math.Vec2f
 import kotlin.math.max
 import kotlin.math.min
 
@@ -26,8 +27,9 @@ object MediaLogRenderer : InitHook() {
 		}
 
 		HudRenderCallback.EVENT.register { context, tickDelta ->
-			if (fadingInLogTweener == 0) return@register
-			val progress = (fadingInLogTweener + tickDelta) / FADE_IN_DURATION.toFloat()
+//			if (fadingInLogTweener == 0) return@register
+//			val progress = (fadingInLogTweener + tickDelta) / FADE_IN_DURATION.toFloat()
+			val progress = 1f
 
 			val backgroundColor = ColorHelper.Argb.getArgb((progress * 100).toInt(), 0, 0, 0)
 			context.fillGradient(0, 0, context.scaledWindowWidth, context.scaledWindowHeight, backgroundColor, backgroundColor)
@@ -52,16 +54,23 @@ object MediaLogRenderer : InitHook() {
 
 	fun drawMediaLogPattern(matrices: MatrixStack, index: Int, alpha: Float) {
 		matrices.push()
-		matrices.translate((index - 8).toFloat() * 30f - 12.5f, -12.5f, 0f)
-		matrices.scale(25f, 25f, 25f)
+		val x = index % 8
+		val y = (index / 8)
+		matrices.translate(x * 50f, y * 50f, 0f)
 
-		val color = ColorHelper.Argb.getArgb((alpha * 255).toInt(), 255, 255, 255)
-		val patternlike = HexPatternLike.of(ClientStorage.mediaLog.patterns.buffer()[index])
-		val patternSettings = WorldlyPatternRenderHelpers.WORLDLY_SETTINGS_WOBBLY
-		val staticPoints = HexPatternPoints.getStaticPoints(patternlike, patternSettings, 0.0)
-		val nonzappyLines = patternlike.nonZappyPoints
-		val zappyPattern = makeZappy(nonzappyLines, findDupIndices(nonzappyLines), patternSettings.hops, patternSettings.variance, patternSettings.speed, patternSettings.flowIrregular, patternSettings.readabilityOffset, patternSettings.lastSegmentProp, 0.0)
-		drawLineSeq(matrices.peek().getPositionMatrix(), staticPoints.scaleVecs(zappyPattern), 0.05f, color, color, VCDrawHelper.getHelper(null, matrices, 0.001f))
+		if (ClientStorage.mediaLog.patterns.buffer().size > index) {
+			matrices.translate(-12.5f, -12.5f, 0f)
+			matrices.scale(25f, 25f, 25f)
+			val color = ColorHelper.Argb.getArgb((alpha * 255).toInt(), 255, 255, 255)
+			val patternlike = HexPatternLike.of(ClientStorage.mediaLog.patterns.buffer()[index])
+			val patternSettings = WorldlyPatternRenderHelpers.WORLDLY_SETTINGS_WOBBLY
+			val staticPoints = HexPatternPoints.getStaticPoints(patternlike, patternSettings, 0.0)
+			val nonzappyLines = patternlike.nonZappyPoints
+			val zappyPattern = makeZappy(nonzappyLines, findDupIndices(nonzappyLines), patternSettings.hops, patternSettings.variance, patternSettings.speed, patternSettings.flowIrregular, patternSettings.readabilityOffset, patternSettings.lastSegmentProp, 0.0)
+			drawLineSeq(matrices.peek().getPositionMatrix(), staticPoints.scaleVecs(zappyPattern), 0.05f, color, color, VCDrawHelper.getHelper(null, matrices, 0.001f))
+		} else {
+			drawSpot(matrices.peek().positionMatrix, Vec2f.ZERO, 0.2f, 1f, 1f, 1f, alpha)
+		}
 
 		matrices.pop()
 	}
@@ -81,11 +90,11 @@ object MediaLogRenderer : InitHook() {
 		},
 		Phase(0.2f, 0.5f) { ctx, t ->
 			val progress = MathHelper.clamp(t, 0f, 1f)
-			val visible = (progress * 16).toInt()
-			val alpha = (progress * 16) % 1
+			val visible = (progress * 32).toInt()
+			val alpha = (progress * 32) % 1
 			for (i in 0 until visible)
 				drawMediaLogPattern(ctx.matrices, i, 1f)
-			if (visible < 15)
+			if (visible < 31)
 				drawMediaLogPattern(ctx.matrices, visible, alpha)
 		},
 		Phase(0.7f, 0.3f) { ctx, t ->
