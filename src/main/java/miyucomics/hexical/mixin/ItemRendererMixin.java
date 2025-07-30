@@ -1,7 +1,5 @@
 package miyucomics.hexical.mixin;
 
-import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
-import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.sugar.Local;
 import com.llamalad7.mixinextras.sugar.ref.LocalRef;
 import miyucomics.hexical.features.curios.curios.FluteCurioItemModel;
@@ -22,18 +20,18 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(ItemRenderer.class)
 public class ItemRendererMixin {
 	@Shadow @Final private ItemModels models;
 
-	@WrapMethod(method = "getModel")
-	private BakedModel injectModel(ItemStack itemStack, World world, LivingEntity livingEntity, int i, Operation<BakedModel> original) {
+	@Inject(method = "getModel", at = @At("HEAD"), cancellable = true)
+	private void injectModel(ItemStack itemStack, World world, LivingEntity livingEntity, int i, CallbackInfoReturnable<BakedModel> cir) {
 		if (itemStack.isOf(HexicalItems.CURIO_FLUTE))
-			return this.models.getModelManager().getModel(FluteCurioItemModel.heldFluteModel);
+			cir.setReturnValue(this.models.getModelManager().getModel(FluteCurioItemModel.heldFluteModel));
 		if (itemStack.isOf(HexicalItems.CURIO_HANDBELL))
-			return this.models.getModelManager().getModel(HandbellCurioItemModel.heldHandbellModel);
-		return original.call(itemStack, world, livingEntity, i);
+			cir.setReturnValue(this.models.getModelManager().getModel(HandbellCurioItemModel.heldHandbellModel));
 	}
 
 	@Inject(method = "renderItem(Lnet/minecraft/item/ItemStack;Lnet/minecraft/client/render/model/json/ModelTransformationMode;ZLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;IILnet/minecraft/client/render/model/BakedModel;)V", at = @At("HEAD"))
