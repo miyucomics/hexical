@@ -10,7 +10,6 @@
 		"GuiSpellcastingMixin",
 		"InGameHudMixin",
 		"ItemRendererMixin",
-		"ModelLoaderMixin",
 		"MouseMixin",
 		"ScreenMixin"
 	],

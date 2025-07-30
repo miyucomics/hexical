@@ -1,6 +1,5 @@
 package miyucomics.hexical.mixin;
 
-import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
@@ -17,6 +16,8 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(SnifferEntity.class)
 public abstract class SnifferEntityMixin implements SnifferEntityMinterface {
@@ -47,18 +48,16 @@ public abstract class SnifferEntityMixin implements SnifferEntityMinterface {
 		startState(SnifferEntity.State.DIGGING);
 	}
 
-	@WrapMethod(method = "canTryToDig")
-	public boolean youWantToDig(Operation<Boolean> original) {
+	@Inject(method = "canTryToDig", at = @At("HEAD"), cancellable = true)
+	public void youWantToDig(CallbackInfoReturnable<Boolean> cir) {
 		if (isDiggingCustom)
-			return true;
-		return original.call();
+			cir.setReturnValue(true);
 	}
 
-	@WrapMethod(method = "canDig")
-	public boolean youCanDig(Operation<Boolean> original) {
+	@Inject(method = "canDig", at = @At("HEAD"), cancellable = true)
+	public void youCanDig(CallbackInfoReturnable<Boolean> cir) {
 		if (isDiggingCustom)
-			return true;
-		return original.call();
+			cir.setReturnValue(true);
 	}
 
 	@WrapOperation(method = "dropSeeds", at = @At(value = "INVOKE", target = "Lnet/minecraft/loot/LootTable;generateLoot(Lnet/minecraft/loot/context/LootContextParameterSet;)Lit/unimi/dsi/fastutil/objects/ObjectArrayList;"))
