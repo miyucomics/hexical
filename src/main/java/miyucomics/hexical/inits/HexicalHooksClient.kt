@@ -5,6 +5,7 @@ import miyucomics.hexical.features.charms.CharmedItemTooltip
 import miyucomics.hexical.features.confetti.ClientConfettiReceiver
 import miyucomics.hexical.features.cracked_items.CrackedItemTooltip
 import miyucomics.hexical.features.curios.curios.CompassCurioModelHook
+import miyucomics.hexical.features.curios.curios.FluteCurioItemModel
 import miyucomics.hexical.features.curios.curios.HandbellCurioItemModel
 import miyucomics.hexical.features.evocation.ClientEvocationReceiver
 import miyucomics.hexical.features.lamps.ArchLampModelProvider
@@ -36,11 +37,12 @@ object HexicalHooksClient {
 		register(CharmedItemTooltip)
 		register(CrackedItemTooltip)
 		register(ClientShaderReceiver)
-		register(CompassCurioModelHook)
 		register(ScarabWingRenderer)
 		register(MediaJarRenderHooks)
 		register(MediaJarShader)
 		register(ArchLampModelProvider)
+		register(CompassCurioModelHook)
+		register(FluteCurioItemModel)
 		register(HandbellCurioItemModel)
 		register(PlayerAnimatorHook)
 
