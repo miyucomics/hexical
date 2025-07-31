@@ -34,6 +34,7 @@ object HexicalBlocks {
 	val HEX_CANDLE_BLOCK: HexCandleBlock = HexCandleBlock()
 	val HEX_CANDLE_CAKE_BLOCK: HexCandleCakeBlock = HexCandleCakeBlock()
 
+	@JvmField
 	val MAGE_BLOCK: MageBlock = MageBlock()
 	val MEDIA_JAR_BLOCK: MediaJarBlock = MediaJarBlock()
 
