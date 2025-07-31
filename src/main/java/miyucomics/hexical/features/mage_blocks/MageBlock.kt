@@ -16,7 +16,6 @@ import net.minecraft.entity.Entity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.BlockItem
 import net.minecraft.item.ItemPlacementContext
-import net.minecraft.server.world.ServerWorld
 import net.minecraft.sound.BlockSoundGroup
 import net.minecraft.sound.SoundCategory
 import net.minecraft.sound.SoundEvents
@@ -95,7 +94,6 @@ class MageBlock : BlockConjured(Settings.create().nonOpaque().dropsNothing().bre
 
 	override fun createBlockEntity(pos: BlockPos, state: BlockState) = MageBlockEntity(pos, state)
 	override fun <T : BlockEntity> getTicker(pworld: World, pstate: BlockState, type: BlockEntityType<T>): BlockEntityTicker<T> = BlockEntityTicker { world, position, state, blockEntity ->
-		if (!world.isClient)
-			(blockEntity as MageBlockEntity).modifiers.forEach { it -> it.value.tick(world as ServerWorld, position, state) }
+		(blockEntity as MageBlockEntity).modifiers.forEach { it -> it.value.tick(world, position, state) }
 	}
 }
