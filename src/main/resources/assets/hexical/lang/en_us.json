@@ -460,7 +460,7 @@
     "hexical.page.clear_shelf.summary": "Clears an $(l:greatwork/akashiclib)$(item)Akashic Bookshelf$().",
 
 	"hexical.page.mage_block.title": "Mage Blocks",
-	"hexical.page.mage_block.0": "The blocks from $(l:patterns/spells/blockworks#hexcasting:conjure_block)$(action)Conjure Block$() last forever, are consequently a pain to clean up, and are not too versatile. Luckily, Nature offers an elegant and flexible alternative. These mage blocks come with a suite of $(o)modifiers$(). I could even stack multiple modifiers on one block or reapply a modifier to toggle it off.",
+	"hexical.page.mage_block.0": "The blocks from $(l:patterns/spells/blockworks#hexcasting:conjure_block)$(action)Conjure Block$() last forever, are consequently a pain to clean up, and are not too versatile. Luckily, Nature offers an elegant and flexible alternative. These $(thing)Mage Blocks$() come with a suite of $(o)modifiers$(). I could even stack multiple modifiers on one block and analyze its composition with a $(l:items/lens)$(item)Scrying Lens$().",
 	"hexcasting.action.hexical:conjure_mage_block": "Conjure Mage Block",
 	"hexical.page.conjure_mage_block.summary": "Conjures a mage block at the location. Costs about three $(l:items/amethyst)$(item)Amethyst Dust$().$(br2)$(o)I can create a city out of nothing, or I can cover it in volcanic rock.$()",
 	"hexcasting.action.hexical:modify_block_bouncy": "Modify Block: Bouncy",
@@ -469,8 +469,6 @@
 	"hexical.page.modify_block_energized.summary": "This modifier makes the block emit a Redstone signal, with the number corresponding to the power level of the output.",
 	"hexcasting.action.hexical:modify_block_ephemeral": "Modify Block: Ephemeral",
 	"hexical.page.modify_block_ephemeral.summary": "This modifier takes in a number in addition to a position and shatters the block after many twentieths of a second. Subsequent casts can lengthen or shorten the duration.",
-	"hexcasting.action.hexical:modify_block_invisible": "Modify Block: Invisible",
-	"hexical.page.modify_block_invisible.summary": "This modifier prevents the block from emitting the telltale particles that accompany my casting, even when being stood on.",
 	"hexcasting.action.hexical:modify_block_replaceable": "Modify Block: Replaceable",
 	"hexical.page.modify_block_replaceable.summary": "This modifier is useful for construction! With this modifier applied, I find I can easily place another block in the place of the mage block.",
 	"hexcasting.action.hexical:modify_block_volatile": "Modify Block: Volatile",
