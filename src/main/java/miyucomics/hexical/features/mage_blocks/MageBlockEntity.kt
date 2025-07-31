@@ -44,11 +44,10 @@ class MageBlockEntity(pos: BlockPos, state: BlockState) : HexBlockEntity(Hexical
 	}
 
 	override fun loadModData(compound: NbtCompound) {
-		clearModifiers()
-		val modifiers = compound.getCompound("modifiers")
-		modifiers.keys.forEach { key ->
+		val serializedModifiers = compound.getCompound("modifiers")
+		serializedModifiers.keys.forEach { key ->
 			val modifierType = MageBlockModifierRegistry.MODIFIER_REGISTRY.get(Identifier(key))!!
-			addModifier(modifierType.deserialize(modifiers.get(key)!!))
+			modifiers[modifierType.id] = modifierType.deserialize(serializedModifiers.get(key)!!)
 		}
 	}
 }

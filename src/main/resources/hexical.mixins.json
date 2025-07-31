@@ -11,7 +11,8 @@
 		"InGameHudMixin",
 		"ItemRendererMixin",
 		"MouseMixin",
-		"ScreenMixin"
+		"ScreenMixin",
+		"ScryingLensOverlaysMixin"
 	],
 	"mixins": [
 		"BlockAkashicBookshelfMixin",
