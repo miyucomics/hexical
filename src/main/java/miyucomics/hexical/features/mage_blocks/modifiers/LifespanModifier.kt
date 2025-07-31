@@ -10,15 +10,15 @@ import miyucomics.hexical.inits.HexicalBlocks
 import net.minecraft.block.BlockState
 import net.minecraft.nbt.NbtElement
 import net.minecraft.nbt.NbtInt
-import net.minecraft.server.world.ServerWorld
 import net.minecraft.util.math.BlockPos
+import net.minecraft.world.World
 
 class LifespanModifier : MageBlockModifier {
 	override val type: MageBlockModifierType<*> = TYPE
 	var lifespan = 0
 
 	override fun serialize(): NbtElement = NbtInt.of(lifespan)
-	override fun tick(world: ServerWorld, pos: BlockPos, state: BlockState) {
+	override fun tick(world: World, pos: BlockPos, state: BlockState) {
 		lifespan--
 		if (lifespan <= 0)
 			HexicalBlocks.MAGE_BLOCK.onBreak(world, pos, state, null)

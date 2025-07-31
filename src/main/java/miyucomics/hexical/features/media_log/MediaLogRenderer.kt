@@ -27,9 +27,8 @@ object MediaLogRenderer : InitHook() {
 		}
 
 		HudRenderCallback.EVENT.register { context, tickDelta ->
-//			if (fadingInLogTweener == 0) return@register
-//			val progress = (fadingInLogTweener + tickDelta) / FADE_IN_DURATION.toFloat()
-			val progress = 1f
+			if (fadingInLogTweener == 0) return@register
+			val progress = (fadingInLogTweener + tickDelta) / FADE_IN_DURATION.toFloat()
 
 			val backgroundColor = ColorHelper.Argb.getArgb((progress * 100).toInt(), 0, 0, 0)
 			context.fillGradient(0, 0, context.scaledWindowWidth, context.scaledWindowHeight, backgroundColor, backgroundColor)
