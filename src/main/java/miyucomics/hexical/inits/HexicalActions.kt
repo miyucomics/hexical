@@ -56,8 +56,13 @@ import miyucomics.hexical.features.lesser_sentinels.OpLesserSentinelGet
 import miyucomics.hexical.features.lesser_sentinels.OpLesserSentinelSet
 import miyucomics.hexical.features.lore.OpItemLore
 import miyucomics.hexical.features.lore.OpItemName
+import miyucomics.hexical.features.mage_blocks.OpConfigureMageBlock
 import miyucomics.hexical.features.mage_blocks.OpConjureMageBlock
-import miyucomics.hexical.features.mage_blocks.OpModifyMageBlock
+import miyucomics.hexical.features.mage_blocks.modifiers.BouncyModifier
+import miyucomics.hexical.features.mage_blocks.modifiers.LifespanModifier
+import miyucomics.hexical.features.mage_blocks.modifiers.RedstoneModifier
+import miyucomics.hexical.features.mage_blocks.modifiers.ReplaceableModifier
+import miyucomics.hexical.features.mage_blocks.modifiers.VolatileModifier
 import miyucomics.hexical.features.magic_missile.OpMagicMissile
 import miyucomics.hexical.features.misc_actions.*
 import miyucomics.hexical.features.particles.OpConfetti
@@ -165,12 +170,11 @@ object HexicalActions {
 		register("clear_shelf", "edeedade", HexDir.SOUTH_WEST, OpClearAkashicShelf)
 
 		register("conjure_mage_block", "dee", HexDir.NORTH_WEST, OpConjureMageBlock)
-		register("modify_block_bouncy", "deeqa", HexDir.NORTH_WEST, OpModifyMageBlock("bouncy"))
-		register("modify_block_energized", "deewad", HexDir.NORTH_WEST, OpModifyMageBlock("energized", 1))
-		register("modify_block_ephemeral", "deewwaawd", HexDir.NORTH_WEST, OpModifyMageBlock("ephemeral", 1))
-		register("modify_block_invisible", "deeqedeaqqqwqqq", HexDir.NORTH_WEST, OpModifyMageBlock("invisible"))
-		register("modify_block_replaceable", "deewqaqqqqq", HexDir.NORTH_WEST, OpModifyMageBlock("replaceable"))
-		register("modify_block_volatile", "deewedeeeee", HexDir.NORTH_WEST, OpModifyMageBlock("volatile"))
+		register("modify_block_bouncy", "deeqa", HexDir.NORTH_WEST, OpConfigureMageBlock(BouncyModifier.TYPE))
+		register("modify_block_ephemeral", "deewwaawd", HexDir.NORTH_WEST, OpConfigureMageBlock(LifespanModifier.TYPE))
+		register("modify_block_energized", "deewad", HexDir.NORTH_WEST, OpConfigureMageBlock(RedstoneModifier.TYPE))
+		register("modify_block_replaceable", "deewqaqqqqq", HexDir.NORTH_WEST, OpConfigureMageBlock(ReplaceableModifier.TYPE))
+		register("modify_block_volatile", "deewedeeeee", HexDir.NORTH_WEST, OpConfigureMageBlock(VolatileModifier.TYPE))
 
 		register("autograph", "eeeeeww", HexDir.WEST, OpAutograph)
 		register("unautograph", "wwqqqqq", HexDir.NORTH_EAST, OpUnautograph)
