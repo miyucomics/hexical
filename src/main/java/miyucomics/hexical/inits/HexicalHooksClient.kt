@@ -11,6 +11,7 @@ import miyucomics.hexical.features.evocation.ClientEvocationReceiver
 import miyucomics.hexical.features.lamps.ArchLampModelProvider
 import miyucomics.hexical.features.lesser_sentinels.ClientLesserSentinelReceiver
 import miyucomics.hexical.features.lesser_sentinels.LesserSentinelRenderer
+import miyucomics.hexical.features.mage_blocks.MageBlockScryingOverlay
 import miyucomics.hexical.features.media_jar.MediaJarRenderHooks
 import miyucomics.hexical.features.media_jar.MediaJarShader
 import miyucomics.hexical.features.media_log.ClientMediaLogReceiver
@@ -45,6 +46,7 @@ object HexicalHooksClient {
 		register(FluteCurioItemModel)
 		register(HandbellCurioItemModel)
 		register(PlayerAnimatorHook)
+		register(MageBlockScryingOverlay)
 
 		for (hook in hooks)
 			hook.init()

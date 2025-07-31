@@ -2,9 +2,12 @@ package miyucomics.hexical.features.mage_blocks
 
 import at.petrak.hexcasting.api.block.HexBlockEntity
 import at.petrak.hexcasting.api.utils.putCompound
+import com.mojang.datafixers.util.Pair
 import miyucomics.hexical.inits.HexicalBlocks
 import net.minecraft.block.BlockState
+import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
+import net.minecraft.text.Text
 import net.minecraft.util.Identifier
 import net.minecraft.util.math.BlockPos
 
@@ -23,6 +26,14 @@ class MageBlockEntity(pos: BlockPos, state: BlockState) : HexBlockEntity(Hexical
 
 	fun <T : MageBlockModifier> getModifier(type: MageBlockModifierType<T>): T = modifiers[type.id] as T
 	fun hasModifier(type: MageBlockModifierType<*>) = modifiers.containsKey(type.id)
+
+	fun addScryingLensLines(lines: MutableList<Pair<ItemStack, Text>>) {
+		modifiers.forEach {
+			val line = it.value.getScryingLens()
+			if (line != null)
+				lines.add(line)
+		}
+	}
 
 	override fun saveModData(compound: NbtCompound) {
 		compound.putCompound("modifiers", NbtCompound().apply {

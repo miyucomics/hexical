@@ -121,6 +121,11 @@
 	"hexical.recipe.transmute.media_yield": "Yields %s dust",
 	"hexical.ledger.stack": "Last Stack Before Mishap:",
 	"hexical.ledger.mishap": "Last Mishap Message:",
+	"hexical.mage_block.bouncy": "Bouncy",
+	"hexical.mage_block.lifespan": "Lifespan: %d",
+	"hexical.mage_block.redstone": "Energized: %d",
+	"hexical.mage_block.replaceable": "Replaceable",
+	"hexical.mage_block.volatile": "Volatile",
 
 	"hexcasting.mishap.bad_block.akashic_bookshelf": "an akashic bookshelf",
 	"hexcasting.mishap.bad_block.mage_block": "a mage block",
