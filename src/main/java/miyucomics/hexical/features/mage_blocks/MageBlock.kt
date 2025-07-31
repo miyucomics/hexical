@@ -49,9 +49,7 @@ class MageBlock : BlockConjured(
 
 	override fun onLandedUpon(world: World, state: BlockState, pos: BlockPos, entity: Entity, fallDistance: Float) {
 		val tile = world.getBlockEntity(pos) as MageBlockEntity
-		if (tile.properties["bouncy"]!!)
-			entity.handleFallDamage(fallDistance, 0.0f, world.damageSources.fall())
-		else
+		if (!tile.properties["bouncy"]!!)
 			super.onLandedUpon(world, state, pos, entity, fallDistance)
 	}
 
@@ -102,15 +100,11 @@ class MageBlock : BlockConjured(
 	}
 
 	override fun createBlockEntity(pos: BlockPos, state: BlockState) = MageBlockEntity(pos, state)
-	override fun <T : BlockEntity> getTicker(pworld: World, pstate: BlockState, type: BlockEntityType<T>): BlockEntityTicker<T> = BlockEntityTicker { world, position, state, blockEntity -> tick(world, position, state, blockEntity as MageBlockEntity) }
-
-	companion object {
-		fun tick(world: World, position: BlockPos, state: BlockState, blockEntity: MageBlockEntity) {
-			if (blockEntity.properties["ephemeral"]!!) {
-				blockEntity.lifespan--
-				if (blockEntity.lifespan <= 0)
-					HexicalBlocks.MAGE_BLOCK.onBreak(world, position, state, null)
-			}
+	override fun <T : BlockEntity> getTicker(pworld: World, pstate: BlockState, type: BlockEntityType<T>): BlockEntityTicker<T> = BlockEntityTicker { world, position, state, blockEntity ->
+		if ((blockEntity as MageBlockEntity).properties["ephemeral"]!!) {
+			blockEntity.lifespan--
+			if (blockEntity.lifespan <= 0)
+				HexicalBlocks.MAGE_BLOCK.onBreak(world, position, state, null)
 		}
 	}
 }
