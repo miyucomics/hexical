@@ -16,6 +16,7 @@ import miyucomics.hexical.features.media_jar.MediaJarRenderHooks
 import miyucomics.hexical.features.media_jar.MediaJarShader
 import miyucomics.hexical.features.media_log.ClientMediaLogReceiver
 import miyucomics.hexical.features.media_log.MediaLogRenderer
+import miyucomics.hexical.features.pedestal.PedestalRenderHooks
 import miyucomics.hexical.features.peripherals.ClientPeripheralPusher
 import miyucomics.hexical.features.player.PlayerAnimatorHook
 import miyucomics.hexical.features.scarabs.ScarabWingRenderer
@@ -47,6 +48,7 @@ object HexicalHooksClient {
 		register(HandbellCurioItemModel)
 		register(PlayerAnimatorHook)
 		register(MageBlockScryingOverlay)
+		register(PedestalRenderHooks)
 
 		for (hook in hooks)
 			hook.init()
