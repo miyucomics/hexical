@@ -9,6 +9,7 @@
 		"GameRendererMixin",
 		"GuiSpellcastingMixin",
 		"InGameHudMixin",
+		"ItemEntityRendererMixin",
 		"ItemRendererMixin",
 		"MouseMixin",
 		"ScreenMixin",
