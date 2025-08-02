@@ -53,6 +53,7 @@ class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 				stackInHand.decrement(amount)
 				updateItemEntity()
 			}
+			markDirty()
 			return ActionResult.SUCCESS
 		}
 
@@ -68,11 +69,14 @@ class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 			updateItemEntity()
 		}
 
+		markDirty()
 		return ActionResult.SUCCESS
 	}
 
 	fun tick(world: World) {
-		if (world.isClient) return
+		if (world.isClient)
+			return
+
 		updateItemStack()
 		suckOrMergeItems()
 		heldEntity?.apply {
@@ -93,6 +97,7 @@ class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 				heldStack = stack.copy()
 				entity.discard()
 				updateItemEntity()
+				markDirty()
 				return
 			} else if (ItemStack.canCombine(heldStack, stack)) {
 				val toTransfer = min(heldStack.maxCount - heldStack.count, stack.count)
@@ -100,6 +105,7 @@ class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 				stack.decrement(toTransfer)
 				if (stack.isEmpty) entity.discard()
 				updateItemEntity()
+				markDirty()
 				return
 			}
 		}
@@ -171,6 +177,7 @@ class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 				noClip = true
 				setNeverDespawn()
 				isInvulnerable = true
+				isInvisible = true
 				serverWorld.spawnEntity(this)
 			}
 		}
@@ -216,12 +223,17 @@ class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 	override fun toUpdatePacket(): BlockEntityUpdateS2CPacket = BlockEntityUpdateS2CPacket.create(this)
 	override fun toInitialChunkDataNbt(): NbtCompound = NbtCompound().also { writeNbt(it) }
 
+	override fun markDirty() {
+		world?.updateListeners(pos, cachedState, cachedState, 3)
+		super.markDirty()
+	}
+
 	private fun generateUniqueUUID(): UUID {
-		val sw = world as? ServerWorld ?: return UUID.randomUUID()
+		val serverWorld = world as? ServerWorld ?: return UUID.randomUUID()
 		var candidate: UUID
 		do {
 			candidate = UUID.randomUUID()
-		} while (sw.getEntity(candidate) != null)
+		} while (serverWorld.getEntity(candidate) != null)
 		return candidate
 	}
 
