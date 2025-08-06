@@ -62,33 +62,48 @@ class InventoryEndpoint(val inventory: Inventory) : HopperSource, HopperDestinat
 		return remaining
 	}
 
-	override fun simulateDeposit(stack: ItemStack): Int {
-		var remaining = stack.count
+	override fun simulateDeposits(stacks: List<ItemStack>): Map<ItemStack, Int> {
+		val simulatedTransfers = LinkedHashMap<ItemStack, Int>()
+		val modifiedSlotStacks = HashMap<Int, ItemStack>()
+		stackloop@ for (stack in stacks) {
+			if (stack.isEmpty)
+				continue
+			var remaining = stack.count
 
-		// First, try to merge into existing stacks
-		for (i in 0 until inventory.size()) {
-			val existing = inventory.getStack(i)
-			if (!inventory.isValid(i, stack)) continue
-			if (ItemStack.canCombine(existing, stack)) {
-				val slotLimit = minOf(inventory.maxCountPerStack, existing.maxCount)
-				val space = slotLimit - existing.count
-				val toInsert = remaining.coerceAtMost(space)
-				remaining -= toInsert
-				if (remaining <= 0) return stack.count
+			// First, try to merge into existing stacks
+			for (i in 0 until inventory.size()) {
+				val existing = modifiedSlotStacks[i] ?: inventory.getStack(i)
+				if (!inventory.isValid(i, stack)) continue
+				if (ItemStack.canCombine(existing, stack)) {
+					val slotLimit = minOf(inventory.maxCountPerStack, existing.maxCount)
+					val space = slotLimit - existing.count
+					val toInsert = remaining.coerceAtMost(space)
+					remaining -= toInsert
+					modifiedSlotStacks[i] = existing.copyWithCount(existing.count + toInsert)
+					if (remaining <= 0) {
+						simulatedTransfers[stack] = stack.count
+						continue@stackloop
+					}
+				}
 			}
+
+			val effectiveMax = minOf(stack.maxCount, inventory.maxCountPerStack)
+			for (i in 0 until inventory.size()) {
+				val existing = modifiedSlotStacks[i] ?: inventory.getStack(i)
+				if (!inventory.isValid(i, stack)) continue
+				if (!existing.isEmpty) continue
+
+				val toInsert = remaining.coerceAtMost(effectiveMax)
+				remaining -= toInsert
+				modifiedSlotStacks[i] = stack.copyWithCount(toInsert)
+				if (remaining <= 0) {
+					simulatedTransfers[stack] = stack.count
+					continue@stackloop
+				}
+			}
+
+			simulatedTransfers[stack] = stack.count - remaining
 		}
-
-		val effectiveMax = minOf(stack.maxCount, inventory.maxCountPerStack)
-		for (i in 0 until inventory.size()) {
-			val existing = inventory.getStack(i)
-			if (!inventory.isValid(i, stack)) continue
-			if (!existing.isEmpty) continue
-
-			val toInsert = remaining.coerceAtMost(effectiveMax)
-			remaining -= toInsert
-			if (remaining <= 0) return stack.count
-		}
-
-		return stack.count - remaining
+		return simulatedTransfers
 	}
 }
