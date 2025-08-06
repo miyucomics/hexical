@@ -29,29 +29,41 @@ class SidedInventoryEndpoint(private val inventory: SidedInventory, private val 
 		return false
 	}
 
-	override fun simulateDeposit(stack: ItemStack): Int {
-		var remaining = stack.count
-		val slots = inventory.getAvailableSlots(direction)
-		val slotLimit = minOf(stack.maxCount, inventory.maxCountPerStack)
+	override fun simulateDeposits(stacks: List<ItemStack>): Map<ItemStack, Int> {
+		val simulatedTransfers = LinkedHashMap<ItemStack, Int>()
+		val modifiedSlotStacks = HashMap<Int, ItemStack>()
+		stackloop@ for (stack in stacks) {
+			if (stack.isEmpty)
+				continue
+			var remaining = stack.count
+			val slots = inventory.getAvailableSlots(direction)
+			val slotLimit = minOf(stack.maxCount, inventory.maxCountPerStack)
 
-		for (slot in slots) {
-			if (!inventory.canInsert(slot, stack, direction)) continue
+			for (slot in slots) {
+				if (!inventory.canInsert(slot, stack, direction)) continue
 
-			val existing = inventory.getStack(slot)
+				val existing = modifiedSlotStacks[slot] ?: inventory.getStack(slot)
 
-			if (existing.isEmpty) {
-				val toInsert = remaining.coerceAtMost(slotLimit)
-				remaining -= toInsert
-			} else if (ItemStack.canCombine(existing, stack)) {
-				val space = slotLimit - existing.count
-				val toInsert = remaining.coerceAtMost(space)
-				remaining -= toInsert
+				if (existing.isEmpty) {
+					val toInsert = remaining.coerceAtMost(slotLimit)
+					remaining -= toInsert
+					modifiedSlotStacks[slot] = stack.copyWithCount(toInsert)
+				} else if (ItemStack.canCombine(existing, stack)) {
+					val space = slotLimit - existing.count
+					val toInsert = remaining.coerceAtMost(space)
+					remaining -= toInsert
+					modifiedSlotStacks[slot] = existing.copyWithCount(existing.count + toInsert)
+				}
+
+				if (remaining <= 0) {
+					simulatedTransfers[stack] = stack.count
+					continue@stackloop
+				}
 			}
 
-			if (remaining <= 0) break
+			simulatedTransfers[stack] = stack.count - remaining
 		}
-
-		return stack.count - remaining
+		return simulatedTransfers	
 	}
 
 	override fun deposit(stack: ItemStack): ItemStack {
