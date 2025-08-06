@@ -7,7 +7,7 @@ import net.minecraft.server.world.ServerWorld
 import net.minecraft.util.math.Vec3d
 
 class DispenseEndpoint(private val pos: Vec3d, private val world: ServerWorld) : HopperDestination {
-	override fun simulateDeposit(stack: ItemStack) = stack.count
+	override fun simulateDeposits(stacks: List<ItemStack>): Map<ItemStack, Int> = stacks.associateBy({it}, {it.count})
 
 	override fun deposit(stack: ItemStack): ItemStack {
 		if (stack.isEmpty)
