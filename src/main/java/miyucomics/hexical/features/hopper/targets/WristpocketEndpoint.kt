@@ -46,12 +46,23 @@ class WristpocketEndpoint(private val player: PlayerEntity) : HopperSource, Hopp
 		return stack
 	}
 
-	override fun simulateDeposit(stack: ItemStack): Int {
-		val current = player.wristpocket
-		return when {
-			current.isEmpty -> stack.count.coerceAtMost(stack.maxCount)
-			ItemStack.canCombine(current, stack) -> (current.maxCount - current.count).coerceAtLeast(0).coerceAtMost(stack.count)
-			else -> 0
+	override fun simulateDeposits(stacks: List<ItemStack>): Map<ItemStack, Int> {
+		val simulatedTransfers = LinkedHashMap<ItemStack, Int>()
+		var current = player.wristpocket
+		for (stack in stacks) {
+			var remaining = stack.count
+			if (current.isEmpty) {
+				val toInsert = stack.count
+				remaining -= toInsert
+				current = stack.copyWithCount(toInsert)
+			} else if (ItemStack.canCombine(current, stack)) {
+				val toInsert = (current.maxCount - current.count).coerceAtLeast(0).coerceAtMost(stack.count)
+				remaining -= toInsert
+				current = stack.copyWithCount(current.count + toInsert)
+			}
+			if (remaining < stack.count)
+				simulatedTransfers[stack] = stack.count - remaining
 		}
+		return simulatedTransfers
 	}
 }

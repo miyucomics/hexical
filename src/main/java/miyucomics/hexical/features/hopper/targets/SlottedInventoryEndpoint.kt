@@ -49,13 +49,27 @@ class SlottedInventoryEndpoint(private val inventory: Inventory, private val slo
 		return if (stack.count > insertedStack) stack.copy().apply { decrement(insertedStack) } else ItemStack.EMPTY
 	}
 
-	override fun simulateDeposit(stack: ItemStack): Int {
-		val target = inventory.getStack(slot)
-		if (!inventory.isValid(slot, stack)) return 0
-		val slotLimit = minOf(stack.maxCount, inventory.maxCountPerStack)
-		if (target.isEmpty) return stack.count.coerceAtMost(slotLimit)
-		if (!ItemStack.canCombine(target, stack)) return 0
-		val space = slotLimit - target.count
-		return stack.count.coerceAtMost(space)
+	override fun simulateDeposits(stacks: List<ItemStack>): Map<ItemStack, Int> {
+		val simulatedTransfers = LinkedHashMap<ItemStack, Int>()
+		var target = inventory.getStack(slot)
+		for (stack in stacks) {
+			var remaining = stack.count
+			if (!inventory.isValid(slot, stack))
+				continue
+			val slotLimit = minOf(stack.maxCount, inventory.maxCountPerStack)
+			if (target.isEmpty) {
+				val toInsert = stack.count.coerceAtMost(slotLimit)
+				remaining -= toInsert
+				target = stack.copyWithCount(toInsert)
+			} else if (ItemStack.canCombine(target, stack)) {
+				val space = slotLimit - target.count
+				val toInsert = stack.count.coerceAtMost(space)
+				remaining -= toInsert
+				target = target.copyWithCount(target.count + toInsert)
+			}
+			if (remaining < stack.count)
+				simulatedTransfers[stack] = stack.count - remaining
+		}
+		return simulatedTransfers
 	}
 }
