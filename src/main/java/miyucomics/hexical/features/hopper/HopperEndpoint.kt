@@ -10,6 +10,6 @@ interface HopperSource : HopperEndpoint {
 }
 
 interface HopperDestination : HopperEndpoint {
-	fun simulateDeposit(stack: ItemStack): Int
+	fun simulateDeposits(stacks: List<ItemStack>): Map<ItemStack, Int>
 	fun deposit(stack: ItemStack): ItemStack
 }
