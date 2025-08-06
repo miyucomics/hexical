@@ -41,12 +41,13 @@ class ItemFrameEndpoint(val frame: ItemFrameEntity) : HopperSource, HopperDestin
 		}
 	}
 
-	override fun simulateDeposit(stack: ItemStack): Int {
+	override fun simulateDeposits(stacks: List<ItemStack>): Map<ItemStack, Int> {
 		val existing = frame.heldItemStack
 		if (!existing.isEmpty)
-			return 0
-		if (stack.isEmpty)
-			return 0
-		return 1
+			return mapOf()
+		val firstItem = stacks.getOrNull(0)
+		if (firstItem == null)
+			return mapOf()
+		return mapOf(firstItem to 1)
 	}
 }
