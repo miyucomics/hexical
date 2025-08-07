@@ -22,13 +22,20 @@ class DroppedItemEndpoint(private val entity: ItemEntity) : HopperSource, Hopper
 		return true
 	}
 
-	override fun simulateDeposit(stack: ItemStack): Int {
-		val existing = entity.stack
-		if (ItemStack.canCombine(existing, stack)) {
-			val space = existing.maxCount - existing.count
-			return stack.count.coerceAtMost(space)
+	override fun simulateDeposits(stacks: List<ItemStack>): Map<ItemStack, Int> {
+		val simulatedTransfers = LinkedHashMap<ItemStack, Int>()
+		var existing = entity.stack
+		for (stack in stacks) {
+			if (ItemStack.canCombine(existing, stack)) {
+				val space = existing.maxCount - existing.count
+				val toInsert = stack.count.coerceAtMost(space)
+				if (toInsert > 0) {
+					existing = existing.copyWithCount(existing.count + toInsert)
+					simulatedTransfers[stack] = toInsert
+				}
+			}
 		}
-		return 0
+		return simulatedTransfers
 	}
 
 	override fun deposit(stack: ItemStack): ItemStack {

@@ -14,7 +14,11 @@ import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -24,25 +28,24 @@ public abstract class CircleCastEnvMixin {
 
 	@WrapMethod(method = "getPrimaryStacks")
 	public List<CastingEnvironment.HeldItemInfo> addHands(Operation<List<CastingEnvironment.HeldItemInfo>> original) {
+		List<CastingEnvironment.HeldItemInfo> initial = new ArrayList<>(original.call());
 		if (circleState().currentImage.getUserData().contains("impetus_hand")) {
 			PedestalBlockEntity pedestal = getPedestal();
-			return List.of(new CastingEnvironment.HeldItemInfo(pedestal.getStack(0), Hand.OFF_HAND));
+			initial.add(new CastingEnvironment.HeldItemInfo(pedestal.getStack(0), Hand.OFF_HAND));
 		}
-		return original.call();
+		return initial;
 	}
 
-	@WrapMethod(method = "replaceItem")
-	public boolean addHands(Predicate<ItemStack> stackOk, ItemStack replaceWith, @Nullable Hand hand, Operation<Boolean> original) {
+	@Inject(method = "replaceItem", at = @At("HEAD"), cancellable = true)
+	public void addHands(Predicate<ItemStack> stackOk, ItemStack replaceWith, @Nullable Hand hand, CallbackInfoReturnable<Boolean> cir) {
 		if (circleState().currentImage.getUserData().contains("impetus_hand")) {
 			PedestalBlockEntity pedestal = getPedestal();
 			ItemStack heldStack = pedestal.getStack(0);
 			if (stackOk.test(heldStack)) {
 				pedestal.setStack(0, replaceWith);
-				return true;
+				cir.setReturnValue(true);
 			}
-			return false;
 		}
-		return original.call(stackOk, replaceWith, hand);
 	}
 
 	@Unique
