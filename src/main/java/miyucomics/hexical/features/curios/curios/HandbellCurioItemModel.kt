@@ -3,7 +3,9 @@ package miyucomics.hexical.features.curios.curios
 import dev.kosmx.playerAnim.api.layered.ModifierLayer
 import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationAccess
 import miyucomics.hexical.HexicalMain
+import miyucomics.hexical.features.curios.curios.FluteCurioItemModel.heldFluteModel
 import miyucomics.hexical.misc.InitHook
+import net.fabricmc.fabric.api.client.model.loading.v1.ModelLoadingPlugin
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
 import net.minecraft.client.network.AbstractClientPlayerEntity
 import net.minecraft.client.util.ModelIdentifier
@@ -14,6 +16,10 @@ object HandbellCurioItemModel : InitHook() {
 	val clientReceiver = HexicalMain.id("handbell")
 
 	override fun init() {
+		ModelLoadingPlugin.register { context ->
+			context.addModels(heldHandbellModel)
+		}
+
 		ClientPlayNetworking.registerGlobalReceiver(clientReceiver) { client, handler, buf, responseSender ->
 			val player = client.world!!.getPlayerByUuid(buf.readUuid()) ?: return@registerGlobalReceiver
 			val handbellAnimation = (PlayerAnimationAccess.getPlayerAssociatedData(player as AbstractClientPlayerEntity).get(clientReceiver) as ModifierLayer<HandbellCurioPlayerModel>).animation

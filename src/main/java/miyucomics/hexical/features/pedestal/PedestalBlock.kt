@@ -8,6 +8,7 @@ import net.minecraft.block.*
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.block.entity.BlockEntityTicker
 import net.minecraft.block.entity.BlockEntityType
+import net.minecraft.entity.ai.pathing.NavigationType
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.inventory.Inventory
 import net.minecraft.item.ItemPlacementContext
@@ -40,6 +41,8 @@ class PedestalBlock : BlockCircleComponent(Settings.copy(Blocks.DEEPSLATE_TILES)
 			blockEntity.onBlockBreak()
 		super.onStateReplaced(state, world, pos, newState, moved)
 	}
+
+	override fun canPathfindThrough(state: BlockState, world: BlockView, pos: BlockPos, navigationType: NavigationType) = false
 
 	override fun onUse(state: BlockState, world: World, pos: BlockPos, player: PlayerEntity, hand: Hand, hit: BlockHitResult): ActionResult {
 		val blockEntity = world.getBlockEntity(pos)
@@ -83,7 +86,7 @@ class PedestalBlock : BlockCircleComponent(Settings.copy(Blocks.DEEPSLATE_TILES)
 	}
 
 	override fun createBlockEntity(pos: BlockPos, state: BlockState) = PedestalBlockEntity(pos, state)
-	override fun <T : BlockEntity> getTicker(world: World, state: BlockState, type: BlockEntityType<T>): BlockEntityTicker<T> = BlockEntityTicker { world1, pos, _, blockEntity -> (blockEntity as PedestalBlockEntity).tick(world1, pos) }
+	override fun <T : BlockEntity> getTicker(world: World, state: BlockState, type: BlockEntityType<T>): BlockEntityTicker<T> = BlockEntityTicker { world1, pos, _, blockEntity -> (blockEntity as PedestalBlockEntity).tick(world1) }
 
 	companion object {
 		val FACING: DirectionProperty = Properties.FACING

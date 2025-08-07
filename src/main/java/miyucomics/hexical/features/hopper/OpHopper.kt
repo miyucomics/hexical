@@ -11,7 +11,9 @@ import at.petrak.hexcasting.api.casting.iota.DoubleIota
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.casting.mishaps.MishapNotEnoughArgs
 import at.petrak.hexcasting.api.misc.MediaConstants
+import at.petrak.hexcasting.api.HexAPI
 import at.petrak.hexcasting.common.lib.hex.HexEvalSounds
+import net.minecraft.item.ItemStack
 
 object OpHopper : Action {
 	override fun operate(env: CastingEnvironment, image: CastingImage, continuation: SpellContinuation): OperationResult {
@@ -43,11 +45,14 @@ object OpHopper : Action {
 		val source = HopperEndpointRegistry.resolve(sourceIota, env, inputSlot) as? HopperSource
 			?: throw MishapInvalidIota.of(sourceIota, inputsConsumed, "hopper_source")
 
+		val itemsToMove = destination.simulateDeposits(source.getItems())
+		val totalItems = itemsToMove.values.sum()
+
 		return OperationResult(
 			image.withUsedOp().copy(stack = stack), listOf(
-				OperatorSideEffect.ConsumeMedia(MediaConstants.SHARD_UNIT),
+				OperatorSideEffect.ConsumeMedia(totalItems * MediaConstants.DUST_UNIT * 3/64),
 				OperatorSideEffect.AttemptSpell(
-					Spell(source, destination),
+					Spell(source, destination, itemsToMove),
 					hasCastingSound = true,
 					awardStat = true
 				)
@@ -55,20 +60,19 @@ object OpHopper : Action {
 		)
 	}
 
-	private data class Spell(val source: HopperSource, val destination: HopperDestination) : RenderedSpell {
+	private data class Spell(val source: HopperSource, val destination: HopperDestination, val itemsToMove: Map<ItemStack, Int>) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			for (item in source.getItems()) {
-				if (item.isEmpty)
-					continue
-				val simCount = destination.simulateDeposit(item)
-				if (simCount <= 0)
-					continue
-				val toMove = item.copy()
-				toMove.count = simCount
-				val didWithdraw = source.withdraw(item, simCount)
+			for (entry in itemsToMove) {
+				val didWithdraw = source.withdraw(entry.key, entry.value)
 				if (!didWithdraw)
 					continue
-				destination.deposit(toMove)
+				// deposit() returns the remainder stack, so we can subtract its count from 
+				// the initial count to find how many items were actually inserted
+				val added = entry.key.count - destination.deposit(entry.key.copy()).count
+				if (added > entry.value)
+					HexAPI.LOGGER.warn("OpHopper somehow added more items ($added) than expected (${entry.value})")
+				if (added < entry.value)
+					HexAPI.LOGGER.warn("OpHopper somehow added fewer items ($added) than expected (${entry.value})")
 			}
 		}
 	}

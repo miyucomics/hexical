@@ -115,6 +115,7 @@
 - removed Alteration Purification
 - removed Pocket Reflection II
 - reworked prestidigitation backend
+- reworked mage block modifier backend
 
 ## 1.5.0
 - added spell to conjure llama spit

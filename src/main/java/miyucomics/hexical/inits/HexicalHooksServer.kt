@@ -4,6 +4,7 @@ import miyucomics.hexical.features.charms.ServerCharmedUseReceiver
 import miyucomics.hexical.features.dyes.DyeDataHook
 import miyucomics.hexical.features.hopper.HopperEndpointRegistry
 import miyucomics.hexical.features.lesser_sentinels.ServerLesserSentinelPusher
+import miyucomics.hexical.features.mage_blocks.MageBlockModifierRegistry
 import miyucomics.hexical.features.media_log.ServerSpyingHooks
 import miyucomics.hexical.features.peripherals.ServerPeripheralReceiver
 import miyucomics.hexical.features.periwinkle.WooleyedEffectRegister
@@ -35,6 +36,7 @@ object HexicalHooksServer {
 		register(ScarabHandler)
 		register(WooleyedEffectRegister)
 		register(SentinelBedPoi)
+		register(MageBlockModifierRegistry)
 
 		for (hook in hooks)
 			hook.init()
