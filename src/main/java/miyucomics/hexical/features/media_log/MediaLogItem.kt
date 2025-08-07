@@ -8,6 +8,7 @@ import net.minecraft.item.ItemStack
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.Hand
 import net.minecraft.util.TypedActionResult
+import net.minecraft.util.UseAction
 import net.minecraft.world.World
 
 class MediaLogItem : Item(Settings().maxCount(1)) {
@@ -28,5 +29,6 @@ class MediaLogItem : Item(Settings().maxCount(1)) {
 			MediaLogRenderer.fadingInLog = false
 	}
 
+	override fun getUseAction(itemStack: ItemStack) = UseAction.BOW
 	override fun getTranslationKey() = "item.hexical.media_log." + ((System.currentTimeMillis() / 2000) % 2).toString()
 }

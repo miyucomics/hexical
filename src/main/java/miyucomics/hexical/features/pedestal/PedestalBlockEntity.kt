@@ -7,292 +7,234 @@ import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.inits.HexicalBlocks
 import net.minecraft.block.BlockState
 import net.minecraft.block.entity.BlockEntity
-import net.minecraft.entity.Entity
 import net.minecraft.entity.ItemEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.inventory.Inventory
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket
-import net.minecraft.predicate.entity.EntityPredicates
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.util.ActionResult
 import net.minecraft.util.Hand
-import net.minecraft.util.math.BlockBox
-import net.minecraft.util.math.BlockPos
-import net.minecraft.util.math.Box
-import net.minecraft.util.math.Vec3i
+import net.minecraft.util.math.*
 import net.minecraft.world.World
 import java.util.*
 import kotlin.math.min
 
 class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(HexicalBlocks.PEDESTAL_BLOCK_ENTITY, pos, state), Inventory {
-	private var heldItemStack: ItemStack = ItemStack.EMPTY
-	private var heldItemEntity: ItemEntity? = null
+	var heldStack: ItemStack = ItemStack.EMPTY
+	private var heldEntity: ItemEntity? = null
 	private var persistentUUID: UUID? = null
-	private val normalVector: Vec3i = cachedState.get(PedestalBlock.FACING).vector
+	val normalVector: Vec3i = cachedState.get(PedestalBlock.FACING).vector
 
 	fun onBlockBreak() {
-		if (heldItemEntity != null)
-			heldItemEntity!!.discard()
-		if (world !is ServerWorld)
-			return
-		if (!heldItemStack.isEmpty) {
-			val heightOffset = HEIGHT - 0.5
-			(world as ServerWorld).spawnEntity(ItemEntity(world, pos.x + 0.5 + heightOffset * normalVector.x, pos.y + 0.5 + heightOffset * normalVector.y, pos.z + 0.5 + heightOffset * normalVector.z, heldItemStack))
+		heldEntity?.discard()
+		if (world is ServerWorld && !heldStack.isEmpty) {
+			val spawnPos = getItemPosition()
+			(world as ServerWorld).spawnEntity(ItemEntity(world, spawnPos.x, spawnPos.y, spawnPos.z, heldStack))
 		}
 		markDirty()
 	}
 
 	fun onUse(player: PlayerEntity, hand: Hand): ActionResult {
-		val heldStack = player.getStackInHand(hand)
-
-		if (heldItemStack.isEmpty) {
-			if (heldStack.isEmpty)
-				return ActionResult.PASS
-			setStack(0, heldStack.copy())
-			heldStack.decrement(heldStack.count)
+		val stackInHand = player.getStackInHand(hand)
+		if (stackInHand.isEmpty && !heldStack.isEmpty) {
+			player.setStackInHand(hand, heldStack.copy())
+			heldStack = ItemStack.EMPTY
+			updateItemEntity()
+			markDirty()
 			return ActionResult.SUCCESS
 		}
 
-		if (ItemStack.canCombine(heldItemStack, heldStack)) {
+		if (ItemStack.canCombine(heldStack, stackInHand)) {
 			if (!world!!.isClient) {
-				val amount = min((heldItemStack.maxCount - heldItemStack.count), heldStack.count)
-				heldItemStack.increment(amount)
-				heldStack.decrement(amount)
-				syncItemAndEntity(true)
+				val amount = min(heldStack.maxCount - heldStack.count, stackInHand.count)
+				heldStack.increment(amount)
+				stackInHand.decrement(amount)
+				updateItemEntity()
 			}
+			markDirty()
 			return ActionResult.SUCCESS
 		}
-
-		if (ItemStack.canCombine(heldItemStack, player.getStackInHand(if (hand == Hand.MAIN_HAND) Hand.OFF_HAND else Hand.MAIN_HAND)))
-			return ActionResult.PASS
 
 		if (!world!!.isClient) {
-			val stackToGive = removeStack(0)
-			if (hand == Hand.MAIN_HAND) {
-				setStack(0, heldStack.copy())
-				heldStack.decrement(heldStack.count)
+			val previousStack = heldStack
+			heldStack = stackInHand.copy()
+			stackInHand.decrement(stackInHand.count)
+			if (!previousStack.isEmpty) {
+				if (!player.giveItemStack(previousStack)) {
+					player.dropItem(previousStack, false)
+				}
 			}
-
-			if (!stackToGive.isEmpty) {
-				if (player.mainHandStack.isEmpty)
-					player.setStackInHand(Hand.MAIN_HAND, stackToGive)
-				else
-					player.inventory.offerOrDrop(stackToGive)
-			}
+			updateItemEntity()
 		}
 
+		markDirty()
 		return ActionResult.SUCCESS
 	}
 
-	fun tick(world: World, pos: BlockPos) {
-		if (world.isClient())
+	fun tick(world: World) {
+		if (world.isClient)
 			return
 
-		if (heldItemEntity != null) {
-			val xPos = pos.x + 0.5 + (HEIGHT - 0.2) * normalVector.x
-			val yPos = pos.y + 0.5 + (HEIGHT - 0.2) * normalVector.y
-			val zPos = pos.z + 0.5 + (HEIGHT - 0.2) * normalVector.z
-			heldItemEntity!!.setPos(xPos, yPos, zPos)
-			heldItemEntity!!.setVelocity(0.0, 0.0, 0.0)
+		updateItemStack()
+		suckOrMergeItems()
+		heldEntity?.apply {
+			setPos(getItemPosition().x, getItemPosition().y, getItemPosition().z)
+			setPickupDelayInfinite()
+			velocity = Vec3d.ZERO
 		}
-
-		syncItemAndEntity(false)
-
-		val inputtedItems = getInputItemEntities()
-			.sortedWith { a: ItemEntity, b: ItemEntity -> (pos.getSquaredDistance(a.pos) - pos.getSquaredDistance(b.pos)).toInt() }
-
-		var wasItemUpdated = false
-
-		for (newItemEntity in inputtedItems) {
-			val newStack = newItemEntity.stack
-
-			if (heldItemStack.isEmpty) {
-				heldItemStack = newStack.copy()
-				newStack.decrement(newStack.count)
-				wasItemUpdated = true
-				break
-			}
-
-			if (ItemStack.canCombine(heldItemStack, newStack)) {
-				val amount = min((heldItemStack.maxCount - heldItemStack.count), newStack.count)
-				heldItemStack.increment(amount)
-				newStack.decrement(amount)
-				wasItemUpdated = true
-				break
-			}
-		}
-
-		if (wasItemUpdated)
-			syncItemAndEntity(true)
 	}
 
-	private fun getInputItemEntities() =
-		world!!.getEntitiesByClass(ItemEntity::class.java, Box.from(BlockBox(pos))) { item -> item.uuid != persistentUUID && EntityPredicates.VALID_ENTITY.test(item) }
+	private fun suckOrMergeItems() {
+		val box = Box.from(BlockBox(pos)).expand(0.5)
+		val candidates = world!!.getEntitiesByClass(ItemEntity::class.java, box) {
+			it.uuid != persistentUUID && !it.isRemoved
+		}
+		for (entity in candidates) {
+			val stack = entity.stack
+			if (heldStack.isEmpty) {
+				heldStack = stack.copy()
+				entity.discard()
+				updateItemEntity()
+				markDirty()
+				return
+			} else if (ItemStack.canCombine(heldStack, stack)) {
+				val toTransfer = min(heldStack.maxCount - heldStack.count, stack.count)
+				heldStack.increment(toTransfer)
+				stack.decrement(toTransfer)
+				if (stack.isEmpty) entity.discard()
+				updateItemEntity()
+				markDirty()
+				return
+			}
+		}
+	}
 
 	fun modifyImage(image: CastingImage): CastingImage {
-		val data = IXplatAbstractions.INSTANCE.findDataHolder(heldItemStack) ?: return image
+		val data = IXplatAbstractions.INSTANCE.findDataHolder(heldStack) ?: return image
 		val iota = data.readIota(world as ServerWorld) ?: return image
 		return if (image.parenCount == 0) {
-			val stack = image.stack.toMutableList()
-			stack.add(iota)
-			image.copy(stack = stack)
+			image.copy(stack = image.stack + iota)
 		} else {
-			val parenthesized = image.parenthesized.toMutableList()
-			parenthesized.add(ParenthesizedIota(iota, false))
-			image.copy(parenthesized = parenthesized)
+			image.copy(parenthesized = image.parenthesized + ParenthesizedIota(iota, false))
 		}
 	}
 
 	override fun size() = 1
-	override fun isEmpty() = heldItemStack.isEmpty
-
-	override fun getStack(slot: Int): ItemStack {
-		if (slot == 0)
-			return heldItemStack
-		return ItemStack.EMPTY
-	}
-
+	override fun isEmpty() = heldStack.isEmpty
+	override fun getStack(slot: Int): ItemStack = if (slot == 0) heldStack else ItemStack.EMPTY
 	override fun setStack(slot: Int, stack: ItemStack) {
 		if (slot == 0) {
-			heldItemStack = stack
-			syncItemAndEntity(true)
+			heldStack = stack
+			updateItemEntity()
 			markDirty()
 		}
 	}
 
-	override fun removeStack(slot: Int): ItemStack {
-		if (slot == 0) {
-			val temp = heldItemStack
-			heldItemStack = ItemStack.EMPTY
-			syncItemAndEntity(true)
-			markDirty()
-			return temp
-		}
-		return ItemStack.EMPTY
-	}
+	override fun removeStack(slot: Int): ItemStack = if (slot == 0) {
+		val removed = heldStack
+		heldStack = ItemStack.EMPTY
+		updateItemEntity()
+		markDirty()
+		removed
+	} else ItemStack.EMPTY
 
-	override fun removeStack(slot: Int, amount: Int): ItemStack {
-		if (slot == 0) {
-			val newSplit = heldItemStack.split(amount)
-			syncItemAndEntity(true)
-			markDirty()
-			return newSplit
-		}
-		return ItemStack.EMPTY
-	}
+	override fun removeStack(slot: Int, amount: Int): ItemStack = if (slot == 0) {
+		val removed = heldStack.split(amount)
+		updateItemEntity()
+		markDirty()
+		removed
+	} else ItemStack.EMPTY
 
 	override fun canPlayerUse(player: PlayerEntity) = false
-
 	override fun clear() {
-		heldItemStack = ItemStack.EMPTY
-		syncItemAndEntity(true)
+		heldStack = ItemStack.EMPTY
+		updateItemEntity()
 		markDirty()
-	}
-
-	override fun markDirty() {
-		if (world !is ServerWorld)
-			return
-		(world as ServerWorld).chunkManager.markForUpdate(pos)
-		super.markDirty()
-	}
-
-	private fun generateUniqueUUID(): UUID {
-		val world = getWorld()
-		var newUUID = UUID.randomUUID()
-		if (world !is ServerWorld)
-			return newUUID
-		while (world.getEntity(newUUID) != null)
-			newUUID = UUID.randomUUID()
-		return newUUID
 	}
 
 	private fun populateHeldItemEntity() {
 		val serverWorld = world as? ServerWorld ?: return
+		if (heldStack.isEmpty) return
 
-		if (persistentUUID == null)
+		if (persistentUUID == null) {
 			persistentUUID = generateUniqueUUID()
+		}
 
-		if (heldItemStack.isEmpty)
-			return
+		heldEntity?.discard()
+		heldEntity = null
 
-		heldItemEntity?.discard()
-		heldItemEntity = null
-
-		val possibleOverItem = serverWorld.getEntity(persistentUUID)
-		if (possibleOverItem is ItemEntity) {
-			heldItemEntity = possibleOverItem
-			heldItemEntity!!.stack = heldItemStack
+		val existing = serverWorld.getEntity(persistentUUID!!)
+		heldEntity = if (existing is ItemEntity) {
+			existing.stack = heldStack
+			existing
 		} else {
-			val xPos = pos.x + 0.5 + (HEIGHT - 0.2) * normalVector.x
-			val yPos = pos.y + 0.5 + (HEIGHT - 0.2) * normalVector.y
-			val zPos = pos.z + 0.5 + (HEIGHT - 0.2) * normalVector.z
-			heldItemEntity = ItemEntity(serverWorld, xPos, yPos, zPos, heldItemStack, 0.0, 0.0, 0.0)
-			heldItemEntity!!.uuid = persistentUUID
-			heldItemEntity!!.setNoGravity(true)
-			heldItemEntity!!.noClip = true
-			heldItemEntity!!.setPickupDelayInfinite()
-			heldItemEntity!!.setNeverDespawn()
-			heldItemEntity!!.isInvulnerable = true
-			serverWorld.spawnEntity(heldItemEntity)
+			val position = getItemPosition()
+			ItemEntity(serverWorld, position.x, position.y, position.z, heldStack).apply {
+				uuid = persistentUUID!!
+				setNoGravity(true)
+				noClip = true
+				setNeverDespawn()
+				isInvulnerable = true
+				isInvisible = true
+				serverWorld.spawnEntity(this)
+			}
 		}
 	}
 
-	private fun syncItemAndEntity(changeItemEntity: Boolean) {
+	private fun updateItemEntity() {
 		if (world!!.isClient) return
-
-		// item stack is gone
-		if (heldItemStack.isEmpty) {
-			heldItemEntity?.let {
-				it.stack = ItemStack.EMPTY
-				heldItemEntity = null
-				markDirty()
-			}
-			return
-		}
-
-		// item entity is gone for whatever reason
-		if (heldItemEntity == null || heldItemEntity!!.isRemoved) {
-			if (heldItemEntity != null && (heldItemEntity!!.removalReason == Entity.RemovalReason.DISCARDED || (heldItemEntity!!.removalReason == Entity.RemovalReason.KILLED && (heldItemEntity!!.stack == null || heldItemEntity!!.stack.isEmpty))) && !changeItemEntity) {
-				heldItemStack = ItemStack.EMPTY
-				markDirty()
-				return
-			}
+		if (heldStack.isEmpty) {
+			heldEntity?.discard()
+			heldEntity = null
+			markDirty()
+		} else if (heldEntity == null || heldEntity!!.stack != heldStack) {
 			populateHeldItemEntity()
-			return
-		}
-
-		// item entity or item stack are out of sync
-		if (heldItemStack != heldItemEntity!!.stack) {
-			if (changeItemEntity) {
-				heldItemEntity!!.stack = heldItemStack
-			} else {
-				heldItemStack = heldItemEntity!!.stack
-				markDirty()
-			}
 		}
 	}
+
+	private fun updateItemStack() {
+		if (world!!.isClient) return
+		if (heldEntity == null || heldEntity!!.isRemoved) {
+			populateHeldItemEntity()
+		} else if (heldEntity!!.stack != heldStack) {
+			heldStack = heldEntity!!.stack
+			markDirty()
+		}
+	}
+
+	fun getItemPosition(): Vec3d = Vec3d.of(pos).add(Vec3d(0.5, 0.5, 0.5)).add(Vec3d.of(normalVector).multiply(HEIGHT - 0.2))
 
 	override fun readNbt(nbt: NbtCompound) {
 		super.readNbt(nbt)
-		this.heldItemStack = ItemStack.fromNbt(nbt.getCompound("item"))
-		if (nbt.containsUuid("persistent_uuid"))
-			this.persistentUUID = nbt.getUuid("persistent_uuid")
+		heldStack = ItemStack.fromNbt(nbt.getCompound("item"))
+		if (nbt.containsUuid("persistent_uuid")) {
+			persistentUUID = nbt.getUuid("persistent_uuid")
+		}
 	}
 
 	override fun writeNbt(nbt: NbtCompound) {
 		super.writeNbt(nbt)
-		nbt.putCompound("item", heldItemStack.writeNbt(NbtCompound()))
-		if (persistentUUID != null)
-			nbt.putUuid("persistent_uuid", persistentUUID)
+		nbt.putCompound("item", heldStack.writeNbt(NbtCompound()))
+		persistentUUID?.let { nbt.putUuid("persistent_uuid", it) }
 	}
 
 	override fun toUpdatePacket(): BlockEntityUpdateS2CPacket = BlockEntityUpdateS2CPacket.create(this)
-	override fun toInitialChunkDataNbt(): NbtCompound {
-		val tag = NbtCompound()
-		this.writeNbt(tag)
-		return tag
+	override fun toInitialChunkDataNbt(): NbtCompound = NbtCompound().also { writeNbt(it) }
+
+	override fun markDirty() {
+		world?.updateListeners(pos, cachedState, cachedState, 3)
+		super.markDirty()
+	}
+
+	private fun generateUniqueUUID(): UUID {
+		val serverWorld = world as? ServerWorld ?: return UUID.randomUUID()
+		var candidate: UUID
+		do {
+			candidate = UUID.randomUUID()
+		} while (serverWorld.getEntity(candidate) != null)
+		return candidate
 	}
 
 	companion object {

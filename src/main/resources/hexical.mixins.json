@@ -9,10 +9,11 @@
 		"GameRendererMixin",
 		"GuiSpellcastingMixin",
 		"InGameHudMixin",
+		"ItemEntityRendererMixin",
 		"ItemRendererMixin",
-		"ModelLoaderMixin",
 		"MouseMixin",
-		"ScreenMixin"
+		"ScreenMixin",
+		"ScryingLensOverlaysMixin"
 	],
 	"mixins": [
 		"BlockAkashicBookshelfMixin",

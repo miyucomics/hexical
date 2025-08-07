@@ -3,8 +3,6 @@ package miyucomics.hexical.mixin;
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment;
 import at.petrak.hexcasting.api.casting.eval.env.PlayerBasedCastEnv;
 import at.petrak.hexcasting.api.casting.eval.sideeffects.OperatorSideEffect;
-import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
-import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import miyucomics.hexical.features.media_log.MediaLogField;
 import miyucomics.hexical.features.media_log.MediaLogFieldKt;
 import miyucomics.hexical.features.periwinkle.WooleyedEffect;
@@ -18,16 +16,16 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(value = PlayerBasedCastEnv.class, remap = false)
 public class PlayerBasedCastEnvMixin {
 	@Shadow @Final protected ServerPlayerEntity caster;
 
-	@WrapMethod(method = "canOvercast")
-	private boolean canOvercast(Operation<Boolean> original) {
+	@Inject(method = "canOvercast", at = @At("HEAD"), cancellable = true)
+	private void canOvercast(CallbackInfoReturnable<Boolean> cir) {
 		if (this.caster.getEquippedStack(EquipmentSlot.HEAD).isOf(HexicalItems.LEI) || this.caster.hasStatusEffect(WooleyedEffect.INSTANCE))
-			return false;
-		return original.call();
+			cir.setReturnValue(false);
 	}
 
 	@Inject(method = "sendMishapMsgToPlayer(Lat/petrak/hexcasting/api/casting/eval/sideeffects/OperatorSideEffect$DoMishap;)V", at = @At("HEAD"))
