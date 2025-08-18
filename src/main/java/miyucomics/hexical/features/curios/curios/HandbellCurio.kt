@@ -16,6 +16,8 @@ import net.minecraft.util.TypedActionResult
 import net.minecraft.world.World
 
 object HandbellCurio : CurioItem() {
+	val CHANNEL = HexicalMain.id("handbell")
+
 	override fun use(world: World, user: PlayerEntity, hand: Hand): TypedActionResult<ItemStack> {
 		if (world.isClient)
 			return TypedActionResult.pass(user.getStackInHand(hand))
@@ -28,7 +30,7 @@ object HandbellCurio : CurioItem() {
 	}
 
 	private fun playSound(world: ServerWorld, user: ServerPlayerEntity) {
-		ServerPlayNetworking.send(user, HandbellCurioItemModel.clientReceiver, PacketByteBufs.create().also { it.writeUuid(user.uuid) })
+		ServerPlayNetworking.send(user, CHANNEL, PacketByteBufs.create().also { it.writeUuid(user.uuid) })
 		world.playSound(null, user.x, user.y, user.z, HexicalSounds.HANDBELL_CHIMES, SoundCategory.MASTER, 1f, 0.8f + HexicalMain.RANDOM.nextFloat() * 0.3f)
 	}
 }
