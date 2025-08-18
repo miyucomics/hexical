@@ -32,6 +32,7 @@ import miyucomics.hexical.features.circle.OpDisplace
 import miyucomics.hexical.features.confection.OpConjureGummy
 import miyucomics.hexical.features.confection.OpConjureHexburst
 import miyucomics.hexical.features.confection.OpConjureHextito
+import miyucomics.hexical.features.confetti.OpConfetti
 import miyucomics.hexical.features.conjure.OpConjureEntity
 import miyucomics.hexical.features.conjure.OpConjureFlower
 import miyucomics.hexical.features.conjure.OpConjureLight
@@ -59,15 +60,9 @@ import miyucomics.hexical.features.lore.OpItemName
 import miyucomics.hexical.features.mage_blocks.OpConfigureMageBlock
 import miyucomics.hexical.features.mage_blocks.OpConjureMageBlock
 import miyucomics.hexical.features.mage_blocks.OpResetMageBlock
-import miyucomics.hexical.features.mage_blocks.modifiers.BouncyModifier
-import miyucomics.hexical.features.mage_blocks.modifiers.LifespanModifier
-import miyucomics.hexical.features.mage_blocks.modifiers.RedstoneModifier
-import miyucomics.hexical.features.mage_blocks.modifiers.ReplaceableModifier
-import miyucomics.hexical.features.mage_blocks.modifiers.VolatileModifier
+import miyucomics.hexical.features.mage_blocks.modifiers.*
 import miyucomics.hexical.features.magic_missile.OpMagicMissile
 import miyucomics.hexical.features.misc_actions.*
-import miyucomics.hexical.features.particles.OpConfetti
-import miyucomics.hexical.features.particles.OpSparkle
 import miyucomics.hexical.features.pattern_manipulation.*
 import miyucomics.hexical.features.peripherals.OpGetKeybind
 import miyucomics.hexical.features.peripherals.OpGetScroll
@@ -81,6 +76,7 @@ import miyucomics.hexical.features.pyrotechnics.OpSimulateFirework
 import miyucomics.hexical.features.rotate.OpRotateBlock
 import miyucomics.hexical.features.rotate.OpRotateEntity
 import miyucomics.hexical.features.shaders.OpShader
+import miyucomics.hexical.features.sparkle.OpSparkle
 import miyucomics.hexical.features.specklikes.OpKillSpecklike
 import miyucomics.hexical.features.specklikes.OpSpecklikeProperty
 import miyucomics.hexical.features.specklikes.Specklike
@@ -171,7 +167,7 @@ object HexicalActions {
 		register("clear_shelf", "edeedade", HexDir.SOUTH_WEST, OpClearAkashicShelf)
 
 		register("conjure_mage_block", "dee", HexDir.NORTH_WEST, OpConjureMageBlock)
-		register("reset_mage_block", "deew", HexDir.NORTH_WEST, OpResetMageBlock)
+		register("reset_mage_block", "deeaw", HexDir.NORTH_WEST, OpResetMageBlock)
 		register("modify_block_bouncy", "deeqa", HexDir.NORTH_WEST, OpConfigureMageBlock(BouncyModifier.TYPE))
 		register("modify_block_ephemeral", "deewwaawd", HexDir.NORTH_WEST, OpConfigureMageBlock(LifespanModifier.TYPE))
 		register("modify_block_energized", "deewad", HexDir.NORTH_WEST, OpConfigureMageBlock(RedstoneModifier.TYPE))

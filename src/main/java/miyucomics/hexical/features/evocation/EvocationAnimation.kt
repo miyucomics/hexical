@@ -1,8 +1,6 @@
 package miyucomics.hexical.features.evocation
 
 import dev.kosmx.playerAnim.api.TransformType
-import dev.kosmx.playerAnim.api.firstPerson.FirstPersonConfiguration
-import dev.kosmx.playerAnim.api.firstPerson.FirstPersonMode
 import dev.kosmx.playerAnim.api.layered.IAnimation
 import dev.kosmx.playerAnim.core.util.Vec3f
 import miyucomics.hexical.misc.ClientStorage

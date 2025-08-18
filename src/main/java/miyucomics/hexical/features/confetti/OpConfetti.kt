@@ -1,4 +1,4 @@
-package miyucomics.hexical.features.particles
+package miyucomics.hexical.features.confetti
 
 import at.petrak.hexcasting.api.casting.RenderedSpell
 import at.petrak.hexcasting.api.casting.castables.SpellAction
@@ -10,7 +10,6 @@ import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.Vec3Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.misc.MediaConstants
-import miyucomics.hexical.features.confetti.ConfettiHelper
 import net.minecraft.util.math.Vec3d
 
 object OpConfetti : SpellAction {

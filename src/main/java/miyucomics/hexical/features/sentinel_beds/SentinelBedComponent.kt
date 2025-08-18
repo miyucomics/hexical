@@ -2,7 +2,6 @@ package miyucomics.hexical.features.sentinel_beds
 
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironmentComponent
-import miyucomics.hexical.inits.HexicalBlocks
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d
 

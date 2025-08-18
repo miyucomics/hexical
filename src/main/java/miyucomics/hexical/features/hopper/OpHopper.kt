@@ -1,5 +1,6 @@
 package miyucomics.hexical.features.hopper
 
+import at.petrak.hexcasting.api.HexAPI
 import at.petrak.hexcasting.api.casting.RenderedSpell
 import at.petrak.hexcasting.api.casting.castables.Action
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
@@ -11,7 +12,6 @@ import at.petrak.hexcasting.api.casting.iota.DoubleIota
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.casting.mishaps.MishapNotEnoughArgs
 import at.petrak.hexcasting.api.misc.MediaConstants
-import at.petrak.hexcasting.api.HexAPI
 import at.petrak.hexcasting.common.lib.hex.HexEvalSounds
 import net.minecraft.item.ItemStack
 

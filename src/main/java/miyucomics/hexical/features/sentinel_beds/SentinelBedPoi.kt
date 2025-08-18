@@ -4,13 +4,10 @@ import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.inits.HexicalBlocks
 import miyucomics.hexical.misc.InitHook
 import net.fabricmc.fabric.api.`object`.builder.v1.world.poi.PointOfInterestHelper
-import net.minecraft.registry.Registries
-import net.minecraft.registry.Registry
 import net.minecraft.registry.RegistryKey
 import net.minecraft.registry.RegistryKeys
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.util.math.BlockPos
-import net.minecraft.world.poi.PointOfInterestType
 
 object SentinelBedPoi : InitHook() {
 	private val SENTINEL_BED_POI_KEY = RegistryKey.of(RegistryKeys.POINT_OF_INTEREST_TYPE, HexicalMain.id("sentinel_bed"))
