@@ -39,6 +39,10 @@
 	},
 	"accessWidener" : "hexical.accesswidener",
 	"mixins": [
+		{
+			"config": "hexical.client.mixins.json",
+			"environment": "client"
+		},
 		"hexical.mixins.json"
 	],
 	"depends": {
