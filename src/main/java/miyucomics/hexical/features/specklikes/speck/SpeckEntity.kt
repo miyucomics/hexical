@@ -6,7 +6,7 @@ import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.utils.putCompound
 import miyucomics.hexical.features.specklikes.BaseSpecklike
 import miyucomics.hexical.inits.HexicalEntities
-import miyucomics.hexical.misc.RenderUtils
+import miyucomics.hexical.misc.PatternUtils
 import net.minecraft.entity.EntityType
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.text.Text
@@ -47,7 +47,7 @@ class SpeckEntity(entityType: EntityType<out SpeckEntity>, world: World) : BaseS
 			this.clientText = Text.Serializer.fromJson(raw.getString("text"))!!
 		} else {
 			this.clientIsText = false
-			this.clientVerts = RenderUtils.getNormalizedStrokes(HexPattern.fromNBT(raw))
+			this.clientVerts = PatternUtils.getNormalizedStrokes(HexPattern.fromNBT(raw))
 		}
 	}
 }

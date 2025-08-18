@@ -2,16 +2,10 @@ package miyucomics.hexical.inits
 
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.features.animated_scrolls.AnimatedScrollEntity
-import miyucomics.hexical.features.animated_scrolls.AnimatedScrollRenderer
 import miyucomics.hexical.features.magic_missile.MagicMissileEntity
-import miyucomics.hexical.features.magic_missile.MagicMissileRenderer
 import miyucomics.hexical.features.specklikes.mesh.MeshEntity
-import miyucomics.hexical.features.specklikes.mesh.MeshRenderer
 import miyucomics.hexical.features.specklikes.speck.SpeckEntity
-import miyucomics.hexical.features.specklikes.speck.SpeckRenderer
 import miyucomics.hexical.features.spike.SpikeEntity
-import miyucomics.hexical.features.spike.SpikeRenderer
-import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.SpawnGroup
 import net.minecraft.registry.Registries
@@ -30,13 +24,5 @@ object HexicalEntities {
 		Registry.register(Registries.ENTITY_TYPE, HexicalMain.id("spike"), SPIKE_ENTITY)
 		Registry.register(Registries.ENTITY_TYPE, HexicalMain.id("speck"), SPECK_ENTITY)
 		Registry.register(Registries.ENTITY_TYPE, HexicalMain.id("mesh"), MESH_ENTITY)
-	}
-
-	fun clientInit() {
-		EntityRendererRegistry.register(ANIMATED_SCROLL_ENTITY) { ctx -> AnimatedScrollRenderer(ctx) }
-		EntityRendererRegistry.register(MAGIC_MISSILE_ENTITY) { ctx -> MagicMissileRenderer(ctx) }
-		EntityRendererRegistry.register(SPIKE_ENTITY) { ctx -> SpikeRenderer(ctx) }
-		EntityRendererRegistry.register(SPECK_ENTITY) { ctx -> SpeckRenderer(ctx) }
-		EntityRendererRegistry.register(MESH_ENTITY) { ctx -> MeshRenderer(ctx) }
 	}
 }

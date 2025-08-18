@@ -34,7 +34,7 @@ object OpAbsorbArm : SpellAction {
 
 	private data class Spell(val pedestal: BlockPos) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {}
-		override fun cast(env: CastingEnvironment, image: CastingImage): CastingImage? {
+		override fun cast(env: CastingEnvironment, image: CastingImage): CastingImage {
 			val newImage = (env as CircleCastEnv).circleState().currentImage.copy()
 			newImage.userData.putIntArray("impetus_hand", listOf(pedestal.x, pedestal.y, pedestal.z))
 			return newImage

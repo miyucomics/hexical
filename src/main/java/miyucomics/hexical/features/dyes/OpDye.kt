@@ -31,7 +31,7 @@ import java.util.*
 
 object OpDye : SpellAction {
 	override val argc = 2
-	private val cost = MediaConstants.DUST_UNIT / 8
+	private const val COST = MediaConstants.DUST_UNIT / 8
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val dye = args.getDye(1, argc)
 		when (args[0]) {
@@ -41,35 +41,35 @@ object OpDye : SpellAction {
 				return when (entity) {
 					is CatEntity -> {
 						val trueDye = args.getTrueDye(1, argc)
-						SpellAction.Result(CatSpell(entity, trueDye), cost, listOf(ParticleSpray.cloud(entity.pos, 1.0)))
+						SpellAction.Result(CatSpell(entity, trueDye), COST, listOf(ParticleSpray.cloud(entity.pos, 1.0)))
 					}
 					is SheepEntity -> {
 						val trueDye = args.getTrueDye(1, argc)
-						SpellAction.Result(SheepSpell(entity, trueDye), cost, listOf(ParticleSpray.cloud(entity.pos, 1.0)))
+						SpellAction.Result(SheepSpell(entity, trueDye), COST, listOf(ParticleSpray.cloud(entity.pos, 1.0)))
 					}
 					is ShulkerEntity -> {
 						val trueDye = args.getTrueDye(1, argc)
-						SpellAction.Result(ShulkerSpell(entity, trueDye), cost, listOf(ParticleSpray.cloud(entity.pos, 1.0)))
+						SpellAction.Result(ShulkerSpell(entity, trueDye), COST, listOf(ParticleSpray.cloud(entity.pos, 1.0)))
 					}
 					is Specklike -> {
 						val trueDye = args.getTrueDye(1, argc)
-						SpellAction.Result(SpecklikeSpell(entity, trueDye), cost, listOf(ParticleSpray.cloud(entity.pos, 1.0)))
+						SpellAction.Result(SpecklikeSpell(entity, trueDye), COST, listOf(ParticleSpray.cloud(entity.pos, 1.0)))
 					}
 					is WolfEntity -> {
 						val trueDye = args.getTrueDye(1, argc)
-						SpellAction.Result(WolfSpell(entity, trueDye), cost, listOf(ParticleSpray.cloud(entity.pos, 1.0)))
+						SpellAction.Result(WolfSpell(entity, trueDye), COST, listOf(ParticleSpray.cloud(entity.pos, 1.0)))
 					}
 					is ItemEntity -> {
 						when (val item = entity.stack.item) {
 							is BlockItem -> {
 								if (DyeDataHook.isDyeable(item.block))
-									SpellAction.Result(BlockItemSpell(entity, item.block, dye), cost, listOf(ParticleSpray.cloud(entity.pos, 1.0)))
+									SpellAction.Result(BlockItemSpell(entity, item.block, dye), COST, listOf(ParticleSpray.cloud(entity.pos, 1.0)))
 								else
 									throw DyeableMishap(entity.pos)
 							}
 							else -> {
 								if (DyeDataHook.isDyeable(item))
-									SpellAction.Result(ItemSpell(entity, item, dye), cost, listOf(ParticleSpray.cloud(entity.pos, 1.0)))
+									SpellAction.Result(ItemSpell(entity, item, dye), COST, listOf(ParticleSpray.cloud(entity.pos, 1.0)))
 								else
 									throw DyeableMishap(entity.pos)
 							}
@@ -84,7 +84,7 @@ object OpDye : SpellAction {
 				val state = env.world.getBlockState(position)
 				if (!DyeDataHook.isDyeable(state.block))
 					throw DyeableMishap(position.toCenterPos())
-				return SpellAction.Result(BlockSpell(position, state, dye), cost, listOf(ParticleSpray.cloud(Vec3d.ofCenter(position), 1.0)))
+				return SpellAction.Result(BlockSpell(position, state, dye), COST, listOf(ParticleSpray.cloud(Vec3d.ofCenter(position), 1.0)))
 			}
 			else -> throw MishapInvalidIota.of(args[0], 1, "entity_or_vector")
 		}
