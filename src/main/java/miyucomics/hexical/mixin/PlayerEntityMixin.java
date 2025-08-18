@@ -12,6 +12,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(PlayerEntity.class)
+@SuppressWarnings("AddedMixinMembersNamePattern")
 public class PlayerEntityMixin implements PlayerEntityMinterface {
 	@Unique
 	private final PlayerManager hexicalPlayerManager = new PlayerManager();

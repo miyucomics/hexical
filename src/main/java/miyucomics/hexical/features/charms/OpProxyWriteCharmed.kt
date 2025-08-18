@@ -16,9 +16,7 @@ object OpProxyWriteCharmed : SpellAction {
 			throw NeedsCharmedItemMishap()
 
 		val iota = args[0]
-		val dataHolder = IXplatAbstractions.INSTANCE.findDataHolder(env.stack)
-		if (dataHolder == null)
-			throw MishapBadOffhandItem.of(env.stack, "iota.write")
+		val dataHolder = IXplatAbstractions.INSTANCE.findDataHolder(env.stack) ?: throw MishapBadOffhandItem.of(env.stack, "iota.write")
 		if (!dataHolder.writeIota(iota, true))
 			throw MishapBadOffhandItem.of(env.stack, "iota.readonly", iota.display())
 		CastingUtils.assertNoTruename(iota, env)

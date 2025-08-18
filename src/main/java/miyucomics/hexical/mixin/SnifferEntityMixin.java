@@ -20,6 +20,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(SnifferEntity.class)
+@SuppressWarnings("AddedMixinMembersNamePattern")
 public abstract class SnifferEntityMixin implements SnifferEntityMinterface {
 	@Shadow public abstract SnifferEntity startState(SnifferEntity.State state);
 	@Shadow public abstract Brain<SnifferEntity> getBrain();

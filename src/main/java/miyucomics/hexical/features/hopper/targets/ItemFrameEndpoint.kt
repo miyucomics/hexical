@@ -45,9 +45,7 @@ class ItemFrameEndpoint(val frame: ItemFrameEntity) : HopperSource, HopperDestin
 		val existing = frame.heldItemStack
 		if (!existing.isEmpty)
 			return mapOf()
-		val firstItem = stacks.getOrNull(0)
-		if (firstItem == null)
-			return mapOf()
+		val firstItem = stacks.getOrNull(0) ?: return mapOf()
 		return mapOf(firstItem to 1)
 	}
 }

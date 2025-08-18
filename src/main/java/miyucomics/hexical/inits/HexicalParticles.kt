@@ -1,10 +1,7 @@
 package miyucomics.hexical.inits
 
 import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.features.confetti.ConfettiParticle
-import miyucomics.hexical.features.sparkle.SparkleParticle
 import miyucomics.hexical.features.sparkle.SparkleParticleEffect
-import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry
 import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes
 import net.minecraft.particle.DefaultParticleType
 import net.minecraft.particle.ParticleType
@@ -18,10 +15,5 @@ object HexicalParticles {
 	fun init() {
 		Registry.register(Registries.PARTICLE_TYPE, HexicalMain.id("confetti"), CONFETTI_PARTICLE)
 		Registry.register(Registries.PARTICLE_TYPE, HexicalMain.id("sparkle"), SPARKLE_PARTICLE)
-	}
-
-	fun clientInit() {
-		ParticleFactoryRegistry.getInstance().register(CONFETTI_PARTICLE) { sprite -> ConfettiParticle.Factory(sprite) }
-		ParticleFactoryRegistry.getInstance().register(SPARKLE_PARTICLE) { sprite -> SparkleParticle.Factory(sprite) }
 	}
 }
