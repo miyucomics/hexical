@@ -109,6 +109,7 @@
   - fixed poor translation of Tool and Accessory Purification
 - migrated metaeval patterns and soroban to Overevaluate, a new addon
 - optimized Greater Blink to not load chunks in between
+- refactored code massively; split sources, no more server errors hopefully
 - removed tchotchkes
 - removed the Myodesopsia spell
 - removed limitation on arch lamps per person

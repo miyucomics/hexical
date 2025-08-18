@@ -6,7 +6,6 @@ import miyucomics.hexical.features.hopper.HopperEndpointRegistry
 import miyucomics.hexical.features.lesser_sentinels.ServerLesserSentinelPusher
 import miyucomics.hexical.features.mage_blocks.MageBlockModifierRegistry
 import miyucomics.hexical.features.media_log.ServerSpyingHooks
-import miyucomics.hexical.features.peripherals.ServerPeripheralReceiver
 import miyucomics.hexical.features.periwinkle.WooleyedEffectRegister
 import miyucomics.hexical.features.player.RespawnPersistHook
 import miyucomics.hexical.features.prestidigitation.PrestidigitationHandlersHook
@@ -14,6 +13,7 @@ import miyucomics.hexical.features.scarabs.ScarabHandler
 import miyucomics.hexical.features.sentinel_beds.SentinelBedAmbitHook
 import miyucomics.hexical.features.sentinel_beds.SentinelBedPoi
 import miyucomics.hexical.features.shaders.ServerShaderManager
+import miyucomics.hexical.features.telepathy.ServerPeripheralReceiver
 import miyucomics.hexical.features.transmuting.TransmutingHelper
 import miyucomics.hexical.misc.InitHook
 

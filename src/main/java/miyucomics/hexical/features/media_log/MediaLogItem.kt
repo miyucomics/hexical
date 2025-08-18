@@ -1,7 +1,5 @@
 package miyucomics.hexical.features.media_log
 
-import miyucomics.hexical.misc.ClientStorage
-import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
@@ -16,17 +14,8 @@ class MediaLogItem : Item(Settings().maxCount(1)) {
 		val stack = player.getStackInHand(hand)
 		if (!world.isClient)
 			(player as ServerPlayerEntity).syncMediaLog()
-		else {
-			MediaLogRenderer.fadingInLog = true
-			MediaLogRenderer.fadingInLogStart = ClientStorage.ticks
-		}
 		player.setCurrentHand(hand)
 		return TypedActionResult.success(stack)
-	}
-
-	override fun onStoppedUsing(stack: ItemStack, world: World, user: LivingEntity, remainingUseTicks: Int) {
-		if (world.isClient)
-			MediaLogRenderer.fadingInLog = false
 	}
 
 	override fun getUseAction(itemStack: ItemStack) = UseAction.BOW

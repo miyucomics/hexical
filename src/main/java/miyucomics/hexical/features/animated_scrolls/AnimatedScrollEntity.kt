@@ -12,7 +12,7 @@ import at.petrak.hexcasting.api.utils.serializeToNBT
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import miyucomics.hexical.inits.HexicalEntities
 import miyucomics.hexical.inits.HexicalItems
-import miyucomics.hexical.misc.RenderUtils
+import miyucomics.hexical.misc.PatternUtils
 import net.minecraft.block.AbstractRedstoneGateBlock
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityDimensions
@@ -189,7 +189,7 @@ class AnimatedScrollEntity(entityType: EntityType<AnimatedScrollEntity>, world: 
 			sizeDataTracker -> this.updateAttachmentPosition()
 			patternDataTracker -> {
 				val nbt = dataTracker.get(patternDataTracker)
-				this.cachedVerts = if (nbt.contains("empty")) listOf() else RenderUtils.getNormalizedStrokes(HexPattern.fromNBT(nbt), true)
+				this.cachedVerts = if (nbt.contains("empty")) listOf() else PatternUtils.getNormalizedStrokes(HexPattern.fromNBT(nbt), true)
 			}
 			else -> {}
 		}

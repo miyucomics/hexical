@@ -1,15 +1,11 @@
 package miyucomics.hexical.features.media_jar
 
-import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.api.utils.serializeToNBT
-import at.petrak.hexcasting.common.lib.HexItems
-import com.mojang.datafixers.util.Pair
 import miyucomics.hexical.features.transmuting.TransmutationResult
 import miyucomics.hexical.features.transmuting.TransmutingHelper
 import miyucomics.hexical.inits.HexicalBlocks
 import miyucomics.hexical.inits.HexicalSounds
-import miyucomics.hexical.misc.RenderUtils
 import net.minecraft.block.Block
 import net.minecraft.block.BlockState
 import net.minecraft.block.entity.BlockEntity
@@ -20,7 +16,6 @@ import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket
 import net.minecraft.sound.SoundCategory
-import net.minecraft.text.Text
 import net.minecraft.util.math.BlockPos
 import kotlin.math.max
 import kotlin.math.min
@@ -28,10 +23,6 @@ import kotlin.math.min
 class MediaJarBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(HexicalBlocks.MEDIA_JAR_BLOCK_ENTITY, pos, state), Inventory {
 	private var media: Long = 0
 	private var heldStack = ItemStack.EMPTY
-
-	fun scryingLensOverlay(lines: MutableList<Pair<ItemStack, Text>>) {
-		lines.add(Pair(ItemStack(HexItems.AMETHYST_DUST), Text.translatable("hexcasting.tooltip.media", RenderUtils.DUST_AMOUNT.format(media.toFloat() / MediaConstants.DUST_UNIT.toFloat()))))
-	}
 
 	fun getMedia() = this.media
 	private fun setMedia(media: Long) {

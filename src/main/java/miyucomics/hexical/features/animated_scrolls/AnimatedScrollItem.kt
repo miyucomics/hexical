@@ -8,7 +8,6 @@ import at.petrak.hexcasting.common.blocks.akashic.BlockEntityAkashicBookshelf
 import at.petrak.hexcasting.common.lib.HexBlocks
 import at.petrak.hexcasting.common.lib.HexSounds
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
-import miyucomics.hexical.misc.ClientStorage
 import net.minecraft.client.item.TooltipData
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.Item
@@ -23,6 +22,7 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
 import net.minecraft.world.event.GameEvent
 import java.util.*
+import kotlin.collections.map
 
 class AnimatedScrollItem(private val size: Int) : Item(Settings()), IotaHolderItem {
 	private fun canPlaceOn(player: PlayerEntity, side: Direction, stack: ItemStack, pos: BlockPos) = !side.axis.isVertical && player.canPlaceOn(pos, side, stack)
@@ -77,17 +77,14 @@ class AnimatedScrollItem(private val size: Int) : Item(Settings()), IotaHolderIt
 
 	override fun getTooltipData(stack: ItemStack): Optional<TooltipData> {
 		val patterns = stack.getList("patterns", NbtElement.COMPOUND_TYPE.toInt())
-		if (patterns != null && patterns.isNotEmpty()) {
-			val pattern = HexPattern.fromNBT(patterns[(ClientStorage.ticks / 20) % patterns.size].asCompound)
-			return Optional.of(AnimatedPatternTooltip(if (stack.containsTag("color")) stack.orCreateNbt.getInt("color") else 0xff_000000.toInt(), pattern, stack.getInt("state"), stack.getBoolean("glow")))
-		}
+		if (patterns != null)
+			return Optional.of(AnimatedPatternTooltip(if (stack.containsTag("color")) stack.orCreateNbt.getInt("color") else 0xff_000000.toInt(), (patterns as List<NbtCompound>).map(HexPattern::fromNBT), stack.getInt("state"), stack.getBoolean("glow")))
 		return Optional.empty()
 	}
 
 	override fun readIotaTag(stack: ItemStack): NbtCompound {
-		val patterns = stack.getList("patterns", NbtElement.COMPOUND_TYPE.toInt())
-		if (patterns == null)
-			return IotaType.serialize(NullIota())
+		val patterns =
+			stack.getList("patterns", NbtElement.COMPOUND_TYPE.toInt()) ?: return IotaType.serialize(NullIota())
 		return IotaType.serialize(ListIota(patterns.map { PatternIota(HexPattern.fromNBT(it.asCompound)) }))
 	}
 

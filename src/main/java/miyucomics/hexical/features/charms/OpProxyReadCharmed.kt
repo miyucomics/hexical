@@ -12,9 +12,7 @@ object OpProxyReadCharmed : ConstMediaAction {
 	override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
 		if (env !is CharmCastEnv)
 			throw NeedsCharmedItemMishap()
-		val dataHolder = IXplatAbstractions.INSTANCE.findDataHolder(env.stack)
-		if (dataHolder == null)
-			throw MishapBadOffhandItem.of(env.stack, "iota.read")
+		val dataHolder = IXplatAbstractions.INSTANCE.findDataHolder(env.stack) ?: throw MishapBadOffhandItem.of(env.stack, "iota.read")
 		return listOf(dataHolder.readIota(env.world) ?: return listOf(NullIota()))
 	}
 }

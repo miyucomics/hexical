@@ -19,7 +19,7 @@ class SentinelBedBlock : FacingBlock(Settings.copy(Blocks.DEEPSLATE_TILES).stren
 		builder.add(FACING)
 	}
 
-	override fun mirror(state: BlockState, mirror: BlockMirror) = state.rotate(mirror.getRotation(state.get(FACING)))
-	override fun rotate(state: BlockState, rotation: BlockRotation) = state.with(FACING, rotation.rotate(state.get(FACING)))
+	override fun mirror(state: BlockState, mirror: BlockMirror): BlockState = state.rotate(mirror.getRotation(state.get(FACING)))
+	override fun rotate(state: BlockState, rotation: BlockRotation): BlockState = state.with(FACING, rotation.rotate(state.get(FACING)))
 	override fun getPlacementState(context: ItemPlacementContext): BlockState = this.defaultState.with(FACING, context.playerLookDirection.opposite)
 }

@@ -7,7 +7,7 @@ import miyucomics.hexical.features.transmuting.TransmutationResult
 import miyucomics.hexical.features.transmuting.TransmutingHelper
 import miyucomics.hexical.inits.HexicalBlocks
 import miyucomics.hexical.inits.HexicalSounds
-import miyucomics.hexical.misc.RenderUtils
+import miyucomics.hexical.misc.DecimalFormats
 import net.minecraft.client.item.TooltipContext
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.BlockItem
@@ -27,9 +27,9 @@ class MediaJarItem : BlockItem(HexicalBlocks.MEDIA_JAR_BLOCK, Settings().maxCoun
 		val tag = stack.nbt?.getCompound("BlockEntityTag")
 		val media = tag?.getLong("media") ?: 0
 		list.add(Text.translatable("hexcasting.tooltip.media_amount.advanced",
-			Text.literal(RenderUtils.DUST_AMOUNT.format((media / MediaConstants.DUST_UNIT.toFloat()).toDouble())).styled { style -> style.withColor(ItemMediaHolder.HEX_COLOR) },
-			Text.translatable("hexcasting.tooltip.media", RenderUtils.DUST_AMOUNT.format((MediaJarBlock.MAX_CAPACITY / MediaConstants.DUST_UNIT.toFloat()).toDouble())).styled { style -> style.withColor(ItemMediaHolder.HEX_COLOR) },
-			Text.literal(RenderUtils.PERCENTAGE.format((100f * media / MediaJarBlock.MAX_CAPACITY).toDouble()) + "%").styled { style -> style.withColor(TextColor.fromRgb(mediaBarColor(media, MediaJarBlock.MAX_CAPACITY))) }
+			Text.literal(DecimalFormats.DUST_AMOUNT.format((media / MediaConstants.DUST_UNIT.toFloat()).toDouble())).styled { style -> style.withColor(ItemMediaHolder.HEX_COLOR) },
+			Text.translatable("hexcasting.tooltip.media", DecimalFormats.DUST_AMOUNT.format((MediaJarBlock.MAX_CAPACITY / MediaConstants.DUST_UNIT.toFloat()).toDouble())).styled { style -> style.withColor(ItemMediaHolder.HEX_COLOR) },
+			Text.literal(DecimalFormats.PERCENTAGE.format((100f * media / MediaJarBlock.MAX_CAPACITY).toDouble()) + "%").styled { style -> style.withColor(TextColor.fromRgb(mediaBarColor(media, MediaJarBlock.MAX_CAPACITY))) }
 		))
 	}
 

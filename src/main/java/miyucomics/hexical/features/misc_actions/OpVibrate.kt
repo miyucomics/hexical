@@ -20,8 +20,7 @@ import net.minecraft.world.event.PositionSource
 object OpVibrate : SpellAction {
 	override val argc = 3
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
-		val test = args[1]
-		val to = when (test) {
+		val to = when (val test = args[1]) {
 			is EntityIota -> EntityPositionSource(test.entity, test.entity.getEyeHeight(test.entity.pose))
 			is Vec3Iota -> BlockPositionSource(args.getBlockPos(1, argc))
 			else -> throw MishapInvalidIota.of(args[0], 1, "entity_or_vector")

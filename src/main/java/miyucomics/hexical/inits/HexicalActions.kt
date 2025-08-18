@@ -37,7 +37,6 @@ import miyucomics.hexical.features.conjure.OpConjureEntity
 import miyucomics.hexical.features.conjure.OpConjureFlower
 import miyucomics.hexical.features.conjure.OpConjureLight
 import miyucomics.hexical.features.conjure.OpConjureSpike
-import miyucomics.hexical.features.cracked_items.OpCrackDevice
 import miyucomics.hexical.features.dyes.OpDye
 import miyucomics.hexical.features.dyes.OpGetDye
 import miyucomics.hexical.features.dyes.OpTranslateDye
@@ -52,6 +51,7 @@ import miyucomics.hexical.features.hopper.OpHopper
 import miyucomics.hexical.features.hopper.OpIndexHopper
 import miyucomics.hexical.features.hotbar.OpGetHotbar
 import miyucomics.hexical.features.hotbar.OpSetHotbar
+import miyucomics.hexical.features.jailbreak.OpJailbreakDevice
 import miyucomics.hexical.features.lamps.*
 import miyucomics.hexical.features.lesser_sentinels.OpLesserSentinelGet
 import miyucomics.hexical.features.lesser_sentinels.OpLesserSentinelSet
@@ -64,8 +64,6 @@ import miyucomics.hexical.features.mage_blocks.modifiers.*
 import miyucomics.hexical.features.magic_missile.OpMagicMissile
 import miyucomics.hexical.features.misc_actions.*
 import miyucomics.hexical.features.pattern_manipulation.*
-import miyucomics.hexical.features.peripherals.OpGetKeybind
-import miyucomics.hexical.features.peripherals.OpGetScroll
 import miyucomics.hexical.features.periwinkle.OpCompelSniffer
 import miyucomics.hexical.features.pigments.OpSamplePigment
 import miyucomics.hexical.features.pigments.OpTakeOnPigment
@@ -85,9 +83,7 @@ import miyucomics.hexical.features.specklikes.mesh.OpReadMesh
 import miyucomics.hexical.features.specklikes.mesh.OpWeaveMesh
 import miyucomics.hexical.features.specklikes.speck.OpConjureSpeck
 import miyucomics.hexical.features.specklikes.speck.OpIotaSpeck
-import miyucomics.hexical.features.telepathy.OpHallucinateSound
-import miyucomics.hexical.features.telepathy.OpSendTelepathy
-import miyucomics.hexical.features.telepathy.OpShoutTelepathy
+import miyucomics.hexical.features.telepathy.*
 import miyucomics.hexical.features.wristpocket.*
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.projectile.FireballEntity
@@ -233,7 +229,7 @@ object HexicalActions {
 		register("confetti", "awddeqaedd", HexDir.EAST, OpConfetti)
 		register("vibration", "wwawawwd", HexDir.EAST, OpVibrate)
 		register("sparkle", "dqa", HexDir.NORTH_EAST, OpSparkle)
-		register("crack_device", "wwaqqqqqeqdedwqeaeqwdedwqeaeq", HexDir.EAST, OpCrackDevice)
+		register("jailbreak", "wwaqqqqqeqdedwqeaeqwdedwqeaeq", HexDir.EAST, OpJailbreakDevice)
 		register("flower", "weqqqqqwaeaeaeaeaea", HexDir.NORTH_EAST, OpConjureFlower)
 		register("light", "aeaeaeaeaeawqqqqq", HexDir.SOUTH_EAST, OpConjureLight)
 		register("gasp", "aweeeeewaweeeee", HexDir.NORTH_WEST, OpGasp)
