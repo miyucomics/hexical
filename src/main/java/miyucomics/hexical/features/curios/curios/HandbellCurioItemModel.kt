@@ -3,7 +3,6 @@ package miyucomics.hexical.features.curios.curios
 import dev.kosmx.playerAnim.api.layered.ModifierLayer
 import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationAccess
 import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.features.curios.curios.FluteCurioItemModel.heldFluteModel
 import miyucomics.hexical.misc.InitHook
 import net.fabricmc.fabric.api.client.model.loading.v1.ModelLoadingPlugin
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking

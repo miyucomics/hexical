@@ -12,8 +12,8 @@ import net.minecraft.block.Block
 import net.minecraft.enchantment.Enchantments
 import net.minecraft.item.ItemStack
 import net.minecraft.item.Items
-import net.minecraft.util.math.BlockPos
 import net.minecraft.server.network.ServerPlayerEntity
+import net.minecraft.util.math.BlockPos
 
 object OpBreakSilk : SpellAction {
 	override val argc = 1
@@ -31,12 +31,7 @@ object OpBreakSilk : SpellAction {
 				!state.isAir
                 && state.getHardness(env.world, pos) >= 0f
                 && IXplatAbstractions.INSTANCE.isCorrectTierForDrops(tier, state)
-                && IXplatAbstractions.INSTANCE.isBreakingAllowed(
-                    env.world,
-                    pos,
-                    state,
-                    env.castingEntity as? ServerPlayerEntity
-                )
+                && IXplatAbstractions.INSTANCE.isBreakingAllowed(env.world, pos, state, env.castingEntity as? ServerPlayerEntity)
 			) {
 				val tool = ItemStack(Items.DIAMOND_PICKAXE)
 				tool.addEnchantment(Enchantments.SILK_TOUCH, 1)

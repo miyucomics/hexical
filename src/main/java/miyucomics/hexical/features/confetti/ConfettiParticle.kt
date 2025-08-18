@@ -1,4 +1,4 @@
-package miyucomics.hexical.features.particles
+package miyucomics.hexical.features.confetti
 
 import miyucomics.hexical.HexicalMain
 import net.minecraft.client.particle.*
