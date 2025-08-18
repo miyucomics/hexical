@@ -2,7 +2,6 @@ package miyucomics.hexical.features.curios.curios
 
 import dev.kosmx.playerAnim.api.layered.ModifierLayer
 import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationAccess
-import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.misc.InitHook
 import net.fabricmc.fabric.api.client.model.loading.v1.ModelLoadingPlugin
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
@@ -12,16 +11,15 @@ import net.minecraft.client.util.ModelIdentifier
 object HandbellCurioItemModel : InitHook() {
 	@JvmField val heldHandbellModel: ModelIdentifier = ModelIdentifier("hexical", "held_curio_handbell", "inventory")
 	@JvmField val handbellModel: ModelIdentifier = ModelIdentifier("hexical", "curio_handbell", "inventory")
-	val clientReceiver = HexicalMain.id("handbell")
 
 	override fun init() {
 		ModelLoadingPlugin.register { context ->
 			context.addModels(heldHandbellModel)
 		}
 
-		ClientPlayNetworking.registerGlobalReceiver(clientReceiver) { client, handler, buf, responseSender ->
+		ClientPlayNetworking.registerGlobalReceiver(HandbellCurio.CHANNEL) { client, _, buf, _ ->
 			val player = client.world!!.getPlayerByUuid(buf.readUuid()) ?: return@registerGlobalReceiver
-			val handbellAnimation = (PlayerAnimationAccess.getPlayerAssociatedData(player as AbstractClientPlayerEntity).get(clientReceiver) as ModifierLayer<HandbellCurioPlayerModel>).animation
+			val handbellAnimation = (PlayerAnimationAccess.getPlayerAssociatedData(player as AbstractClientPlayerEntity).get(HandbellCurio.CHANNEL) as ModifierLayer<HandbellCurioPlayerModel>).animation
 			handbellAnimation!!.shakingBellTimer = 10
 		}
 	}
