@@ -1,4 +1,4 @@
-package miyucomics.hexical.features.particles
+package miyucomics.hexical.features.sparkle
 
 import at.petrak.hexcasting.api.casting.RenderedSpell
 import at.petrak.hexcasting.api.casting.castables.SpellAction
@@ -22,7 +22,14 @@ object OpSparkle : SpellAction {
 
 	private data class Spell(val position: Vec3d, val color: Vec3d, val lifespan: Int) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			env.world.spawnParticles(SparkleParticleEffect(Vector3f(color.x.toFloat(), color.y.toFloat(), color.z.toFloat()), lifespan), position.x, position.y, position.z, 1, 0.0, 0.0, 0.0, 0.0)
+			env.world.spawnParticles(
+				SparkleParticleEffect(
+					Vector3f(
+						color.x.toFloat(),
+						color.y.toFloat(),
+						color.z.toFloat()
+					), lifespan
+				), position.x, position.y, position.z, 1, 0.0, 0.0, 0.0, 0.0)
 		}
 	}
 }
