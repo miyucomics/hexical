@@ -14,8 +14,11 @@ import miyucomics.hexical.features.pedestal.PedestalBlock
 import miyucomics.hexical.features.pedestal.PedestalBlockEntity
 import miyucomics.hexical.features.sentinel_beds.SentinelBedBlock
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap
-import net.minecraft.block.*
 import net.minecraft.block.AbstractBlock.Settings
+import net.minecraft.block.Block
+import net.minecraft.block.DyedCarpetBlock
+import net.minecraft.block.FlowerbedBlock
+import net.minecraft.block.MapColor
 import net.minecraft.block.entity.BlockEntityType
 import net.minecraft.block.piston.PistonBehavior
 import net.minecraft.client.render.RenderLayer

@@ -1,4 +1,4 @@
-package miyucomics.hexical.features.particles
+package miyucomics.hexical.features.sparkle
 
 import com.mojang.brigadier.StringReader
 import miyucomics.hexical.inits.HexicalParticles
