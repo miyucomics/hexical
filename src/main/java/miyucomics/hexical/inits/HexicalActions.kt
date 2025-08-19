@@ -146,7 +146,7 @@ object HexicalActions {
 		register("send_telepathy", "qqqqwaqa", HexDir.EAST, OpSendTelepathy)
 		register("shout_telepathy", "daqqqqwa", HexDir.EAST, OpShoutTelepathy)
 		register("pling", "eqqqada", HexDir.NORTH_EAST, OpHallucinateSound(Registries.SOUND_EVENT.getEntry(SoundEvents.ENTITY_PLAYER_LEVELUP)))
-		register("click", "eqqadaq", HexDir.NORTH_EAST, OpHallucinateSound(Registries.SOUND_EVENT.getEntry(SoundEvents.UI_BUTTON_CLICK.comp_349())))
+		register("click", "eqqadaq", HexDir.NORTH_EAST, OpHallucinateSound(Registries.SOUND_EVENT.getEntry(SoundEvents.UI_BUTTON_CLICK.value())))
 		register("left_click", "qadee", HexDir.NORTH_EAST, OpGetKeybind("key.attack"))
 		register("right_click", "edaqq", HexDir.NORTH_WEST, OpGetKeybind("key.use"))
 		register("moving_up", "aqaddq", HexDir.SOUTH_EAST, OpGetKeybind("key.forward"))
