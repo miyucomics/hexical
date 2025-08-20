@@ -35,6 +35,9 @@
 		],
 		"cardinal-components": [
 			"miyucomics.hexical.HexicalCardinalComponents"
+		],
+		"emi": [
+			"miyucomics.hexical.features.integrations.HexicalEmi"
 		]
 	},
 	"accessWidener" : "hexical.accesswidener",

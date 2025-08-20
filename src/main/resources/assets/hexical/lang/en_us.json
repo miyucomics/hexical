@@ -19,7 +19,6 @@
 	"advancements.hexical.conjure_cake.description": "Summon a free cake from a mysterious benefactor.",
 	"advancements.hexical.hallucinate.title": "Only In My Head",
 	"advancements.hexical.hallucinate.description": "Play a sound only you can hear!",
-
 	"block.hexical.hex_candle_cake": "Hex Candle Cake",
 	"block.hexical.casting_carpet": "Casting Carpet",
 	"block.hexical.hex_candle": "Hex Candle",
@@ -34,6 +33,7 @@
 	"death.attack.spike.item": "%1$s was punctured by %2$s using %3$s",
 	"effect.hexical.wooleyed": "Wooleyed",
 	"effect.hexical.wooleyed.description": "Helps me unsee some of the horrors I have seen.",
+	"emi.category.hexical.transmuting": "Transmuting",
 	"entity.hexical.animated_scroll": "Animated Scroll",
 	"entity.hexical.magic_missile": "Magic Missile",
 	"entity.hexical.mesh": "Mesh",
