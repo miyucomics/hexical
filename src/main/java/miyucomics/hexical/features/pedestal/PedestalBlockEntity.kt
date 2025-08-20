@@ -177,7 +177,7 @@ class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 				noClip = true
 				setNeverDespawn()
 				isInvulnerable = true
-				isInvisible = true
+				isInvisible = false
 				serverWorld.spawnEntity(this)
 			}
 		}
@@ -204,7 +204,12 @@ class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 		}
 	}
 
-	fun getItemPosition(): Vec3d = Vec3d.of(pos).add(Vec3d(0.5, 0.5, 0.5)).add(Vec3d.of(normalVector).multiply(HEIGHT - 0.2))
+	fun getItemPosition(): Vec3d {
+		if (Direction.fromVector(normalVector.x, normalVector.y, normalVector.z)?.axis == Direction.Axis.Y)
+			return Vec3d.ofCenter(pos).add(Vec3d.of(normalVector).multiply(HEIGHT - 0.1))
+		return Vec3d.ofCenter(pos).add(Vec3d.of(normalVector).multiply(HEIGHT)).add(0.0, -0.3, 0.0)
+		// test these values
+	}
 
 	override fun readNbt(nbt: NbtCompound) {
 		super.readNbt(nbt)
@@ -238,6 +243,6 @@ class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 	}
 
 	companion object {
-		const val HEIGHT = 0.75f
+		const val HEIGHT = 0.75
 	}
 }
