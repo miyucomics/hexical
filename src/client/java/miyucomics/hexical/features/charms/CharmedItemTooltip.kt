@@ -3,8 +3,8 @@ package miyucomics.hexical.features.charms
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.utils.mediaBarColor
 import at.petrak.hexcasting.common.items.magic.ItemMediaHolder
-import miyucomics.hexical.misc.TextUtilities
 import miyucomics.hexical.misc.InitHook
+import miyucomics.hexical.misc.TextUtilities
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback
 import net.minecraft.text.Text
 import net.minecraft.text.TextColor
