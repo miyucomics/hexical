@@ -6,8 +6,8 @@ import at.petrak.hexcasting.common.lib.HexItems
 import com.mojang.datafixers.util.Pair
 import miyucomics.hexical.inits.HexicalBlocks.MEDIA_JAR_BLOCK
 import miyucomics.hexical.inits.HexicalBlocks.MEDIA_JAR_BLOCK_ENTITY
-import miyucomics.hexical.misc.TextUtilities
 import miyucomics.hexical.misc.InitHook
+import miyucomics.hexical.misc.TextUtilities
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap
 import net.minecraft.client.render.RenderLayer
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories
