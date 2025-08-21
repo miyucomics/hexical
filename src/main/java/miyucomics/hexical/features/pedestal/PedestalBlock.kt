@@ -36,18 +36,20 @@ class PedestalBlock : BlockCircleComponent(Settings.copy(Blocks.DEEPSLATE_TILES)
 	}
 
 	override fun onStateReplaced(state: BlockState, world: World, pos: BlockPos, newState: BlockState, moved: Boolean) {
-		val blockEntity = world.getBlockEntity(pos)
-		if (blockEntity is PedestalBlockEntity && newState.block != this)
-			blockEntity.onBlockBreak()
+		val pedestal = world.getBlockEntity(pos)
+		if (pedestal is PedestalBlockEntity && newState.block != this)
+			pedestal.onBlockBreak()
 		super.onStateReplaced(state, world, pos, newState, moved)
 	}
 
 	override fun canPathfindThrough(state: BlockState, world: BlockView, pos: BlockPos, navigationType: NavigationType) = false
 
 	override fun onUse(state: BlockState, world: World, pos: BlockPos, player: PlayerEntity, hand: Hand, hit: BlockHitResult): ActionResult {
-		val blockEntity = world.getBlockEntity(pos)
-		if (blockEntity is PedestalBlockEntity)
-			return blockEntity.onUse(player, hand)
+		val pedestal = world.getBlockEntity(pos)
+		if (pedestal is PedestalBlockEntity) {
+			pedestal.onUse(player, hand)
+			return ActionResult.SUCCESS
+		}
 		return ActionResult.PASS
 	}
 
