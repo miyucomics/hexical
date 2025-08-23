@@ -13,14 +13,9 @@ import net.minecraft.block.entity.BlockEntityTicker
 import net.minecraft.block.entity.BlockEntityType
 import net.minecraft.entity.Entity
 import net.minecraft.entity.player.PlayerEntity
-import net.minecraft.item.BlockItem
-import net.minecraft.item.ItemPlacementContext
 import net.minecraft.sound.BlockSoundGroup
 import net.minecraft.sound.SoundCategory
 import net.minecraft.sound.SoundEvents
-import net.minecraft.util.ActionResult
-import net.minecraft.util.Hand
-import net.minecraft.util.hit.BlockHitResult
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
 import net.minecraft.world.BlockView
@@ -56,19 +51,6 @@ class MageBlock : BlockConjured(Settings.create().nonOpaque().dropsNothing().bre
 			}
 		} else
 			super.onEntityLand(world, entity)
-	}
-
-	override fun onUse(state: BlockState, world: World, pos: BlockPos, player: PlayerEntity, hand: Hand, hit: BlockHitResult): ActionResult {
-		val blockEntity = world.getBlockEntity(pos) as MageBlockEntity
-		val stack = player.getStackInHand(hand)
-		val item = stack.item
-		if (item !is BlockItem)
-			return ActionResult.PASS
-		if (!player.isCreative)
-			stack.decrement(1)
-		world.playSound(pos.x.toDouble(), pos.y.toDouble(), pos.z.toDouble(), SoundEvents.BLOCK_AMETHYST_BLOCK_BREAK, SoundCategory.BLOCKS, 1f, 1f, true)
-		world.setBlockState(pos, item.block.getPlacementState(ItemPlacementContext(player, hand, stack, hit)))
-		return ActionResult.SUCCESS
 	}
 
 	override fun onBreak(world: World, position: BlockPos, state: BlockState, player: PlayerEntity?) {

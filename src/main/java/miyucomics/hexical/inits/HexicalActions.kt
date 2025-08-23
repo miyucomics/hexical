@@ -60,7 +60,10 @@ import miyucomics.hexical.features.lore.OpItemName
 import miyucomics.hexical.features.mage_blocks.OpConfigureMageBlock
 import miyucomics.hexical.features.mage_blocks.OpConjureMageBlock
 import miyucomics.hexical.features.mage_blocks.OpResetMageBlock
-import miyucomics.hexical.features.mage_blocks.modifiers.*
+import miyucomics.hexical.features.mage_blocks.modifiers.BouncyModifier
+import miyucomics.hexical.features.mage_blocks.modifiers.LifespanModifier
+import miyucomics.hexical.features.mage_blocks.modifiers.RedstoneModifier
+import miyucomics.hexical.features.mage_blocks.modifiers.VolatileModifier
 import miyucomics.hexical.features.magic_missile.OpMagicMissile
 import miyucomics.hexical.features.misc_actions.*
 import miyucomics.hexical.features.pattern_manipulation.*
