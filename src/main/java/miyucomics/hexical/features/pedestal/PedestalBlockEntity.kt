@@ -30,6 +30,15 @@ class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 		heldEntity?.discard()
 	}
 
+	fun onBlockPlace() {
+		this.persistentUUID = UUID.randomUUID()
+		val position = Vec3d.ofCenter(this.pos)
+		this.heldEntity = ItemEntity(this.world, position.x, position.y, position.z, this.heldStack)
+		this.heldEntity!!.uuid = this.persistentUUID
+		configureItemEntity()
+		this.world?.spawnEntity(this.heldEntity)
+	}
+
 	fun onUse(player: PlayerEntity, hand: Hand) {
 		val playerStack = player.getStackInHand(hand)
 
@@ -165,7 +174,7 @@ class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 
 	fun tryFillItemEntity(): Boolean {
 		if (this.persistentUUID == null)
-			this.persistentUUID = generateUniqueUUID()
+			this.persistentUUID = UUID.randomUUID()
 		if (this.heldEntity != null)
 			return true
 		val serverWorld = this.world as? ServerWorld ?: return true
@@ -213,15 +222,6 @@ class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 	}
 
 	fun getItemPosition(): Vec3d = Vec3d.ofCenter(this.pos).add(Vec3d.of(normalVector).multiply(HEIGHT))
-
-	private fun generateUniqueUUID(): UUID {
-		val serverWorld = world as? ServerWorld ?: return UUID.randomUUID()
-		var candidate: UUID
-		do {
-			candidate = UUID.randomUUID()
-		} while (serverWorld.getEntity(candidate) != null)
-		return candidate
-	}
 
 	companion object {
 		const val HEIGHT = 0.75

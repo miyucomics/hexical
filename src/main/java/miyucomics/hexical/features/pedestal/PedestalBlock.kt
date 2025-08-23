@@ -8,6 +8,7 @@ import net.minecraft.block.*
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.block.entity.BlockEntityTicker
 import net.minecraft.block.entity.BlockEntityType
+import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.ai.pathing.NavigationType
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.inventory.Inventory
@@ -35,6 +36,11 @@ class PedestalBlock : BlockCircleComponent(Settings.copy(Blocks.DEEPSLATE_TILES)
 		defaultState = stateManager.defaultState
 			.with(ENERGIZED, false)
 			.with(FACING, Direction.NORTH)
+	}
+
+	override fun onPlaced(world: World, pos: BlockPos, state: BlockState, placer: LivingEntity?, stack: ItemStack) {
+		(world.getBlockEntity(pos) as PedestalBlockEntity).onBlockPlace()
+		super.onPlaced(world, pos, state, placer, stack)
 	}
 
 	override fun onStateReplaced(state: BlockState, world: World, pos: BlockPos, newState: BlockState, moved: Boolean) {
