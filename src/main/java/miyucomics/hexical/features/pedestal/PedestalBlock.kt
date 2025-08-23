@@ -12,6 +12,7 @@ import net.minecraft.entity.ai.pathing.NavigationType
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.inventory.Inventory
 import net.minecraft.item.ItemPlacementContext
+import net.minecraft.item.ItemStack
 import net.minecraft.screen.ScreenHandler
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.state.StateManager
@@ -19,6 +20,7 @@ import net.minecraft.state.property.DirectionProperty
 import net.minecraft.state.property.Properties
 import net.minecraft.util.ActionResult
 import net.minecraft.util.Hand
+import net.minecraft.util.ItemScatterer
 import net.minecraft.util.hit.BlockHitResult
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
@@ -36,9 +38,14 @@ class PedestalBlock : BlockCircleComponent(Settings.copy(Blocks.DEEPSLATE_TILES)
 	}
 
 	override fun onStateReplaced(state: BlockState, world: World, pos: BlockPos, newState: BlockState, moved: Boolean) {
+		if (state.isOf(newState.block))
+			return
 		val pedestal = world.getBlockEntity(pos)
-		if (pedestal is PedestalBlockEntity && newState.block != this)
+		if (pedestal is PedestalBlockEntity) {
+			ItemScatterer.spawn(world, pos, pedestal)
+			world.updateComparators(pos, this)
 			pedestal.onBlockBreak()
+		}
 		super.onStateReplaced(state, world, pos, newState, moved)
 	}
 

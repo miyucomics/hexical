@@ -28,11 +28,6 @@ class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 
 	fun onBlockBreak() {
 		heldEntity?.discard()
-		if (world is ServerWorld && !heldStack.isEmpty) {
-			val spawnPos = Vec3d.ofCenter(this.pos)
-			(world as ServerWorld).spawnEntity(ItemEntity(world, spawnPos.x, spawnPos.y, spawnPos.z, heldStack))
-		}
-		markDirty()
 	}
 
 	fun onUse(player: PlayerEntity, hand: Hand) {
