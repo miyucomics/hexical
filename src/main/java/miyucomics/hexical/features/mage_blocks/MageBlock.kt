@@ -3,7 +3,6 @@ package miyucomics.hexical.features.mage_blocks
 import at.petrak.hexcasting.common.blocks.BlockConjured
 import miyucomics.hexical.features.mage_blocks.modifiers.BouncyModifier
 import miyucomics.hexical.features.mage_blocks.modifiers.RedstoneModifier
-import miyucomics.hexical.features.mage_blocks.modifiers.ReplaceableModifier
 import miyucomics.hexical.features.mage_blocks.modifiers.VolatileModifier
 import miyucomics.hexical.inits.HexicalBlocks
 import net.minecraft.block.BlockState
@@ -61,8 +60,6 @@ class MageBlock : BlockConjured(Settings.create().nonOpaque().dropsNothing().bre
 
 	override fun onUse(state: BlockState, world: World, pos: BlockPos, player: PlayerEntity, hand: Hand, hit: BlockHitResult): ActionResult {
 		val blockEntity = world.getBlockEntity(pos) as MageBlockEntity
-		if (!blockEntity.hasModifier(ReplaceableModifier.TYPE))
-			return ActionResult.PASS
 		val stack = player.getStackInHand(hand)
 		val item = stack.item
 		if (item !is BlockItem)
