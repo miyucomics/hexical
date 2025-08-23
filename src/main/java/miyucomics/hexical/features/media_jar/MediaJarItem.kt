@@ -51,7 +51,7 @@ class MediaJarItem : BlockItem(HexicalBlocks.MEDIA_JAR_BLOCK, Settings().maxCoun
 				world.playSound(player.x, player.y, player.z, HexicalSounds.ITEM_DUNKS, SoundCategory.BLOCKS, 1f, 1f, true)
 				val output = result.output.toMutableList()
 				if (slot.stack.isEmpty)
-					slot.stack = output.removeFirst()
+					slot.stack = output.removeAt(0)
 				output.forEach(player::giveItemStack)
 				true
 			}
