@@ -21,11 +21,17 @@ object OpGrokPull : ConstMediaAction {
 		var newIota: Iota
 		val newImage = if (image.parenCount == 0) {
 			val stack = image.stack.toMutableList()
-			newIota = stack.removeLastOrNull() ?: GarbageIota()
+			newIota = if (stack.isEmpty())
+				GarbageIota()
+			else
+				stack.removeAt(stack.lastIndex)
 			image.copy(stack = stack)
 		} else {
 			val parenthesized = image.parenthesized.toMutableList()
-			newIota = parenthesized.removeLastOrNull()?.iota ?: GarbageIota()
+			newIota = if (parenthesized.isEmpty())
+				GarbageIota()
+			else
+				parenthesized.removeAt(parenthesized.lastIndex).iota
 			image.copy(parenthesized = parenthesized)
 		}
 		IXplatAbstractions.INSTANCE.setStaffcastImage(player, newImage)

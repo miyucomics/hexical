@@ -23,25 +23,25 @@ object OpHopper : Action {
 		var inputSlot: Int? = null
 		var outputSlot: Int? = null
 		if (stack.isNotEmpty() && stack.last() is DoubleIota) {
-			outputSlot = (stack.removeLast() as DoubleIota).double.toInt()
+			outputSlot = (stack.removeAt(0) as DoubleIota).double.toInt()
 			inputsConsumed += 1
 		}
 
 		if (stack.isEmpty())
 			throw MishapNotEnoughArgs(2, 1)
-		val destinationIota = stack.removeLast()
+		val destinationIota = stack.removeAt(stack.lastIndex)
 		val destination = HopperEndpointRegistry.resolve(destinationIota, env, outputSlot) as? HopperDestination
 			?: throw MishapInvalidIota.of(destinationIota, inputsConsumed, "hopper_destination")
 		inputsConsumed += 1
 
 		if (stack.isNotEmpty() && stack.last() is DoubleIota) {
-			inputSlot = (stack.removeLast() as DoubleIota).double.toInt()
+			inputSlot = (stack.removeAt(stack.lastIndex) as DoubleIota).double.toInt()
 			inputsConsumed += 1
 		}
 
 		if (stack.isEmpty())
 			throw MishapNotEnoughArgs(inputsConsumed + 1, inputsConsumed)
-		val sourceIota = stack.removeLast()
+		val sourceIota = stack.removeAt(stack.lastIndex)
 		val source = HopperEndpointRegistry.resolve(sourceIota, env, inputSlot) as? HopperSource
 			?: throw MishapInvalidIota.of(sourceIota, inputsConsumed, "hopper_source")
 
