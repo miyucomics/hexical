@@ -21,7 +21,6 @@ object MageBlockModifierRegistry : InitHook() {
 		register(BouncyModifier.TYPE)
 		register(LifespanModifier.TYPE)
 		register(RedstoneModifier.TYPE)
-		register(ReplaceableModifier.TYPE)
 		register(VolatileModifier.TYPE)
 	}
 }

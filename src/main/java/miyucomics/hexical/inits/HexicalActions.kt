@@ -167,7 +167,6 @@ object HexicalActions {
 		register("modify_block_bouncy", "deeqa", HexDir.NORTH_WEST, OpConfigureMageBlock(BouncyModifier.TYPE))
 		register("modify_block_ephemeral", "deewwaawd", HexDir.NORTH_WEST, OpConfigureMageBlock(LifespanModifier.TYPE))
 		register("modify_block_energized", "deewad", HexDir.NORTH_WEST, OpConfigureMageBlock(RedstoneModifier.TYPE))
-		register("modify_block_replaceable", "deewqaqqqqq", HexDir.NORTH_WEST, OpConfigureMageBlock(ReplaceableModifier.TYPE))
 		register("modify_block_volatile", "deewedeeeee", HexDir.NORTH_WEST, OpConfigureMageBlock(VolatileModifier.TYPE))
 
 		register("autograph", "eeeeeww", HexDir.WEST, OpAutograph)

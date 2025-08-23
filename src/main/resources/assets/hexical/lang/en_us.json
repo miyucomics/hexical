@@ -125,7 +125,6 @@
 	"hexical.mage_block.bouncy": "Bouncy",
 	"hexical.mage_block.lifespan": "Lifespan: %d",
 	"hexical.mage_block.redstone": "Energized: %d",
-	"hexical.mage_block.replaceable": "Replaceable",
 	"hexical.mage_block.volatile": "Volatile",
 
 	"hexcasting.mishap.bad_block.akashic_bookshelf": "an akashic bookshelf",
@@ -209,7 +208,6 @@
 	"hexcasting.action.book.hexical:modify_block_energized": "Energized",
 	"hexcasting.action.book.hexical:modify_block_ephemeral": "Ephemeral",
 	"hexcasting.action.book.hexical:modify_block_invisible": "Invisible",
-	"hexcasting.action.book.hexical:modify_block_replaceable": "Replaceable",
 	"hexcasting.action.book.hexical:modify_block_volatile": "Volatile",
 
 	"hexical.page.hexical_changes.title": "Hexical Changes",
@@ -477,8 +475,6 @@
 	"hexical.page.modify_block_energized.summary": "Sets the Redstone power outputted by this $(thing)Mage Block$().",
 	"hexcasting.action.hexical:modify_block_ephemeral": "Modify Block: Ephemeral",
 	"hexical.page.modify_block_ephemeral.summary": "Sets the duration after which a $(thing)Mage Block$() will spontaneously disappear.",
-	"hexcasting.action.hexical:modify_block_replaceable": "Modify Block: Replaceable",
-	"hexical.page.modify_block_replaceable.summary": "With this modifier applied, I find it easy to slot another block in the place of the $(thing)Mage Block$(). Useful for building!",
 	"hexcasting.action.hexical:modify_block_volatile": "Modify Block: Volatile",
 	"hexical.page.modify_block_volatile.summary": "Breaking volatile $(thing)Mage Blocks$() shatters others it is touching. This can cascade until every connected volatile block shatters.",
 
