@@ -4,7 +4,7 @@ import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.inventory.Inventory
 import net.minecraft.item.ItemStack
 
-class ListBackedInventory(private val stacks: MutableList<ItemStack>) : Inventory {
+class ListBackedInventory(private val stacks: MutableList<ItemStack>, val size: Int = stacks.size) : Inventory {
 	override fun removeStack(slot: Int, amount: Int): ItemStack = stacks[slot].split(amount)
 
 	override fun removeStack(slot: Int): ItemStack {
@@ -22,8 +22,8 @@ class ListBackedInventory(private val stacks: MutableList<ItemStack>) : Inventor
 			stacks[i] = ItemStack.EMPTY
 	}
 
+	override fun size() = size
 	override fun markDirty() {}
-	override fun size() = stacks.size
 	override fun getStack(slot: Int) = stacks[slot]
 	override fun isEmpty() = stacks.all { it.isEmpty }
 	override fun canPlayerUse(player: PlayerEntity?) = true
