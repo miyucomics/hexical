@@ -1,7 +1,10 @@
 package miyucomics.hexical.features.mage_blocks
 
 import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.features.mage_blocks.modifiers.*
+import miyucomics.hexical.features.mage_blocks.modifiers.BouncyModifier
+import miyucomics.hexical.features.mage_blocks.modifiers.LifespanModifier
+import miyucomics.hexical.features.mage_blocks.modifiers.RedstoneModifier
+import miyucomics.hexical.features.mage_blocks.modifiers.VolatileModifier
 import miyucomics.hexical.misc.InitHook
 import net.fabricmc.fabric.api.event.registry.FabricRegistryBuilder
 import net.fabricmc.fabric.api.event.registry.RegistryAttribute
