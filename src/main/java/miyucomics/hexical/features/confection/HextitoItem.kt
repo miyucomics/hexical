@@ -2,10 +2,7 @@ package miyucomics.hexical.features.confection
 
 import at.petrak.hexcasting.api.casting.eval.vm.CastingVM
 import at.petrak.hexcasting.api.casting.iota.IotaType
-import at.petrak.hexcasting.api.utils.asCompound
-import at.petrak.hexcasting.api.utils.asTranslatedComponent
-import at.petrak.hexcasting.api.utils.getList
-import at.petrak.hexcasting.api.utils.styledWith
+import at.petrak.hexcasting.api.utils.*
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.misc.HexSerialization
 import net.minecraft.client.item.TooltipContext
@@ -37,6 +34,13 @@ class HextitoItem : Item(Settings().maxCount(16).food(FoodComponent.Builder().al
 	}
 
 	override fun appendTooltip(stack: ItemStack, world: World?, list: MutableList<Text>, context: TooltipContext) {
-		list.add("hexical.hextito.hex".asTranslatedComponent(stack.getList("hex", NbtElement.COMPOUND_TYPE.toInt())!!.fold(Text.empty()) { acc, curr -> acc.append(IotaType.getDisplay(curr.asCompound)) }).styledWith(Formatting.GRAY))
+		if (stack.nbt == null || !stack.containsTag("hex"))
+			return
+		list.add("hexical.hextito.hex".asTranslatedComponent(
+			stack.getList("hex", NbtElement.COMPOUND_TYPE.toInt())!!
+				.fold(Text.empty()) { acc, curr ->
+					acc.append(IotaType.getDisplay(curr.asCompound))
+				}
+		).styledWith(Formatting.GRAY))
 	}
 }
