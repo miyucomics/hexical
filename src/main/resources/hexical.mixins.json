@@ -5,6 +5,7 @@
 	"minVersion": "0.8",
 	"mixins": [
 		"BlockAkashicBookshelfMixin",
+		"BlockItemMixin",
 		"CastingEnvironmentMixin",
 		"CastingVMMixin",
 		"CatSitOnBlockGoalMixin",
