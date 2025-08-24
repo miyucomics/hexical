@@ -12,6 +12,7 @@ import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.resource.ResourceManager
 import net.minecraft.resource.ResourceType
+import net.minecraft.state.property.BooleanProperty
 import net.minecraft.util.Identifier
 import net.minecraft.util.math.BlockPos
 import java.io.InputStreamReader
@@ -26,7 +27,10 @@ object PrestidigitationBlockTransformations {
 				map.clear()
 				manager.findResources("prestidigitation") { it.path.endsWith("block_transformations.json") }.keys.forEach { path ->
 					(JsonParser.parseReader(InputStreamReader(manager.getResource(path).get().inputStream, "UTF-8")) as JsonObject).entrySet().forEach {
-						map[Registries.BLOCK.get(Identifier(it.key))] = Registries.BLOCK.get(Identifier(it.value.asString)).defaultState
+						val from = Identifier(it.key)
+						val to = Identifier(it.value.asString)
+						if (Registries.BLOCK.containsId(from) || Registries.BLOCK.containsId(to))
+							map[Registries.BLOCK.get(from)] = Registries.BLOCK.get(to).defaultState
 					}
 				}
 			}
