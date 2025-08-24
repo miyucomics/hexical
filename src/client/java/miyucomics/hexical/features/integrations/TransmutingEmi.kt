@@ -8,7 +8,7 @@ import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.features.transmuting.TransmutingRecipe
 import net.minecraft.util.Identifier
 
-class TransmutingEmi(val recipe: TransmutingRecipe) : BasicEmiRecipe(HexicalEmi.TRANSMUTING_CATEGORY, recipe.getId(), 134, 45) {
+class TransmutingEmi(val recipe: TransmutingRecipe) : BasicEmiRecipe(HexicalEmi.TRANSMUTING_CATEGORY, recipe.getId(), 134, 52) {
 	init {
 		this.inputs.add(EmiIngredient.of(recipe.input))
 		this.outputs.addAll(recipe.output.map(EmiStack::of))
