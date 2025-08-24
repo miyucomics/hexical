@@ -24,9 +24,11 @@ object PrestidigitationBlockBooleans {
 			override fun getFabricId() = HexicalMain.id("prestidigitation_block_boolean")
 			override fun reload(manager: ResourceManager) {
 				map.clear()
-				manager.findResources("prestidigitation") { it.path.endsWith("block_boolean.json") }.keys.forEach { path ->
+				manager.findResources("prestidigitation") { it.path.endsWith("block_booleans.json") }.keys.forEach { path ->
 					(JsonParser.parseReader(InputStreamReader(manager.getResource(path).get().inputStream, "UTF-8")) as JsonObject).entrySet().forEach {
-						map[Registries.BLOCK.get(Identifier(it.key))] = BooleanProperty.of(it.value.asString)
+						val id = Identifier(it.key)
+						if (Registries.BLOCK.containsId(id))
+							map[Registries.BLOCK.get(id)] = BooleanProperty.of(it.value.asString)
 					}
 				}
 			}

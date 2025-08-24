@@ -27,9 +27,7 @@ object OpPrestidigitation : SpellAction {
 			is Vec3Iota -> {
 				val position = args.getBlockPos(0, argc)
 				env.assertPosInRange(position)
-				SpellAction.Result(BlockSpell(position), MediaConstants.DUST_UNIT / 10, listOf(
-					ParticleSpray.cloud(
-						Vec3d.ofCenter(position), 1.0)))
+				SpellAction.Result(BlockSpell(position), MediaConstants.DUST_UNIT / 10, listOf(ParticleSpray.cloud(Vec3d.ofCenter(position), 1.0)))
 			}
 			else -> throw MishapInvalidIota.of(args[0], 0, "entity_or_vector")
 		}
