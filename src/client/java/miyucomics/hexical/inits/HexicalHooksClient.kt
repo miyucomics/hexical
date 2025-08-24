@@ -7,7 +7,7 @@ import miyucomics.hexical.features.curios.CompassCurioModelHook
 import miyucomics.hexical.features.curios.FluteCurioItemModel
 import miyucomics.hexical.features.curios.HandbellCurioItemModel
 import miyucomics.hexical.features.evocation.ClientEvocationReceiver
-import miyucomics.hexical.features.jailbreak.CrackedItemTooltip
+import miyucomics.hexical.features.jailbreak.JailbrokenItemTooltip
 import miyucomics.hexical.features.lamps.ArchLampModelProvider
 import miyucomics.hexical.features.lesser_sentinels.ClientLesserSentinelReceiver
 import miyucomics.hexical.features.lesser_sentinels.LesserSentinelRenderer
@@ -37,7 +37,7 @@ object HexicalHooksClient {
 		register(MediaLogRenderer)
 		register(AutographTooltip)
 		register(CharmedItemTooltip)
-		register(CrackedItemTooltip)
+		register(JailbrokenItemTooltip)
 		register(ClientShaderReceiver)
 		register(ScarabWingRenderer)
 		register(MediaJarRenderHooks)
