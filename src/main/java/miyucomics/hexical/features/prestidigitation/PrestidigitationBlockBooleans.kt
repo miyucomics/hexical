@@ -34,13 +34,11 @@ object PrestidigitationBlockBooleans {
 			}
 		})
 
-		Registry.register(PrestidigitationHandlersHook.PRESTIDIGITATION_HANDLER, HexicalMain.id("boolean_block"), object : PrestidigitationHandler {
-			override fun tryHandleBlock(env: CastingEnvironment, position: BlockPos): Boolean {
-				val state = env.world.getBlockState(position)
-				if (state.block !in map)
-					return false
-				env.world.setBlockState(position, state.with(map[state.block], !state.get(map[state.block])))
-				return true
+		PrestidigitationHandlersHook.register("boolean_block", object : PrestidigitationHandlerBlock() {
+			override fun canAffectBlock(env: CastingEnvironment, pos: BlockPos) = map.containsKey(getBlock(env, pos))
+			override fun affect(env: CastingEnvironment, pos: BlockPos) {
+				val state = getBlockState(env, pos)
+				setBlockState(env, pos, state.with(map[state.block], !state.get(map[state.block])))
 			}
 		})
 	}
