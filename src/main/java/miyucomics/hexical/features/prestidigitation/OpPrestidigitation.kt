@@ -22,13 +22,13 @@ object OpPrestidigitation : SpellAction {
 			is EntityIota -> {
 				val entity = args.getEntity(0, argc)
 				env.assertEntityInRange(entity)
-				val handler = PrestidigitationHandlersHook.PRESTIDIGITATION_HANDLER.first { it is PrestidigitationHandlerEntity<*> && it.canAffectEntity(env, entity) } ?: throw MishapNoPrestidigitation(entity.eyePos)
+				val handler = PrestidigitationHandlersHook.PRESTIDIGITATION_HANDLER.firstOrNull { it is PrestidigitationHandlerEntity<*> && it.canAffectEntity(env, entity) } ?: throw MishapNoPrestidigitation(entity.eyePos)
 				SpellAction.Result(EntitySpell(entity, handler as PrestidigitationHandlerEntity<*>), MediaConstants.DUST_UNIT / 10, listOf(ParticleSpray.cloud(entity.pos, 1.0)))
 			}
 			is Vec3Iota -> {
 				val pos = args.getBlockPos(0, argc)
 				env.assertPosInRange(pos)
-				val handler = PrestidigitationHandlersHook.PRESTIDIGITATION_HANDLER.first { it is PrestidigitationHandlerBlock && it.canAffectBlock(env, pos) } ?: throw MishapNoPrestidigitation(Vec3d.ofCenter(pos))
+				val handler = PrestidigitationHandlersHook.PRESTIDIGITATION_HANDLER.firstOrNull { it is PrestidigitationHandlerBlock && it.canAffectBlock(env, pos) } ?: throw MishapNoPrestidigitation(Vec3d.ofCenter(pos))
 				SpellAction.Result(BlockSpell(pos, handler as PrestidigitationHandlerBlock), MediaConstants.DUST_UNIT / 10, listOf(ParticleSpray.cloud(Vec3d.ofCenter(pos), 1.0)))
 			}
 			else -> throw MishapInvalidIota.of(args[0], 0, "entity_or_vector")
