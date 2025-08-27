@@ -185,6 +185,7 @@
 	"hexcasting.mishap.hexical:outside_circle": "Spell exceeds the domain of the spell circle.",
 	"hexcasting.mishap.hexical:illegal_jailbreak": "Attempted to crack a casting device with a Hex in it.",
 	"hexcasting.mishap.hexical:invalid_slot": "%d does not fit in the capabilities of the inventory specified by %s.",
+	"hexcasting.mishap.hexical:no_prestidigitation": "Target had no prestidigitation effects.",
 
 	"hexcasting.action.book.hexical:get_arch_lamp_position": "Arch. Refl.: Spatial",
 	"hexcasting.action.book.hexical:get_arch_lamp_rotation": "Arch. Refl.: Rotational",

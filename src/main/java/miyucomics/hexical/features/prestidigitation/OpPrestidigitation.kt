@@ -22,32 +22,28 @@ object OpPrestidigitation : SpellAction {
 			is EntityIota -> {
 				val entity = args.getEntity(0, argc)
 				env.assertEntityInRange(entity)
-				SpellAction.Result(EntitySpell(entity), MediaConstants.DUST_UNIT / 10, listOf(ParticleSpray.cloud(entity.pos, 1.0)))
+				val handler = PrestidigitationHandlersHook.PRESTIDIGITATION_HANDLER.first { it is PrestidigitationHandlerEntity<*> && it.canAffectEntity(env, entity) } ?: throw MishapNoPrestidigitation(entity.eyePos)
+				SpellAction.Result(EntitySpell(entity, handler as PrestidigitationHandlerEntity<*>), MediaConstants.DUST_UNIT / 10, listOf(ParticleSpray.cloud(entity.pos, 1.0)))
 			}
 			is Vec3Iota -> {
-				val position = args.getBlockPos(0, argc)
-				env.assertPosInRange(position)
-				SpellAction.Result(BlockSpell(position), MediaConstants.DUST_UNIT / 10, listOf(ParticleSpray.cloud(Vec3d.ofCenter(position), 1.0)))
+				val pos = args.getBlockPos(0, argc)
+				env.assertPosInRange(pos)
+				val handler = PrestidigitationHandlersHook.PRESTIDIGITATION_HANDLER.first { it is PrestidigitationHandlerBlock && it.canAffectBlock(env, pos) } ?: throw MishapNoPrestidigitation(Vec3d.ofCenter(pos))
+				SpellAction.Result(BlockSpell(pos, handler as PrestidigitationHandlerBlock), MediaConstants.DUST_UNIT / 10, listOf(ParticleSpray.cloud(Vec3d.ofCenter(pos), 1.0)))
 			}
 			else -> throw MishapInvalidIota.of(args[0], 0, "entity_or_vector")
 		}
 	}
 
-	private data class BlockSpell(val position: BlockPos) : RenderedSpell {
+	private data class BlockSpell(val pos: BlockPos, val handler: PrestidigitationHandlerBlock) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			PrestidigitationHandlersHook.PRESTIDIGITATION_HANDLER.forEach {
-				if (it.tryHandleBlock(env, position))
-					return
-			}
+			handler.affect(env, pos)
 		}
 	}
 
-	private data class EntitySpell(val entity: Entity) : RenderedSpell {
+	private data class EntitySpell(val entity: Entity, val handler: PrestidigitationHandlerEntity<*>) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			PrestidigitationHandlersHook.PRESTIDIGITATION_HANDLER.forEach {
-				if (it.tryHandleEntity(env, entity))
-					return
-			}
+			handler.affectSafely(env, entity)
 		}
 	}
 }
