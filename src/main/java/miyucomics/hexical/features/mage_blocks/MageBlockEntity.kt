@@ -3,6 +3,7 @@ package miyucomics.hexical.features.mage_blocks
 import at.petrak.hexcasting.api.utils.putCompound
 import com.mojang.datafixers.util.Pair
 import miyucomics.hexical.inits.HexicalBlocks
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
 import net.minecraft.block.BlockState
 import net.minecraft.block.Blocks
 import net.minecraft.block.entity.BlockEntity
@@ -12,7 +13,8 @@ import net.minecraft.nbt.NbtHelper
 import net.minecraft.network.listener.ClientPlayPacketListener
 import net.minecraft.network.packet.Packet
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket
-import net.minecraft.registry.RegistryKeys
+import net.minecraft.registry.Registries
+import net.minecraft.server.world.ServerWorld
 import net.minecraft.text.Text
 import net.minecraft.util.Identifier
 import net.minecraft.util.math.BlockPos
@@ -41,7 +43,8 @@ class MageBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(HexicalBlo
 		this.world!!.updateListeners(this.getPos(), this.cachedState, this.cachedState, 3)
 	}
 
-	override fun toUpdatePacket(): Packet<ClientPlayPacketListener> = BlockEntityUpdateS2CPacket.create(this)
+	override fun toInitialChunkDataNbt(): NbtCompound = createNbt()
+	override fun toUpdatePacket(): BlockEntityUpdateS2CPacket = BlockEntityUpdateS2CPacket.create(this)
 
 	fun <T : MageBlockModifier> getModifier(type: MageBlockModifierType<T>): T = modifiers[type.id] as T
 	fun hasModifier(type: MageBlockModifierType<*>) = modifiers.containsKey(type.id)
@@ -64,7 +67,7 @@ class MageBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(HexicalBlo
 	}
 
 	override fun readNbt(compound: NbtCompound) {
-		this.disguise = NbtHelper.toBlockState(this.world!!.createCommandRegistryWrapper(RegistryKeys.BLOCK), compound.getCompound("disguise"))
+		this.disguise = NbtHelper.toBlockState(Registries.BLOCK.getReadOnlyWrapper(), compound.getCompound("disguise"))
 		val serializedModifiers = compound.getCompound("modifiers")
 		serializedModifiers.keys.forEach { key ->
 			val modifierType = MageBlockModifierRegistry.MODIFIER_REGISTRY.get(Identifier(key))!!
