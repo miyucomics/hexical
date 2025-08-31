@@ -1,10 +1,7 @@
 package miyucomics.hexical.features.prestidigitation
 
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
-import net.minecraft.block.Block
-import net.minecraft.block.BlockState
 import net.minecraft.entity.Entity
-import net.minecraft.util.math.BlockPos
 
 abstract class PrestidigitationHandlerEntity<T>(private val handledClass: Class<T>) : PrestidigitationHandler {
 	fun canAffectEntity(env: CastingEnvironment, entity: Entity): Boolean = handledClass.isInstance(entity)

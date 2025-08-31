@@ -1,6 +1,5 @@
 package miyucomics.hexical.features.prestidigitation
 
-import at.petrak.hexcasting.api.block.circle.BlockAbstractImpetus
 import at.petrak.hexcasting.api.casting.circles.BlockEntityAbstractImpetus
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.iota.IotaType

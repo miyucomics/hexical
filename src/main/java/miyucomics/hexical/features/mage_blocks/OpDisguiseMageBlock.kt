@@ -8,9 +8,7 @@ import at.petrak.hexcasting.api.casting.getBlockPos
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadBlock
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
-import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota.Companion
 import miyucomics.hexical.inits.HexicalAdvancements
-import miyucomics.hexical.inits.HexicalBlocks
 import miyucomics.hexpose.iotas.getIdentifier
 import net.minecraft.block.Block
 import net.minecraft.registry.Registries
