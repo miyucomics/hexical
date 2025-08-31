@@ -29,7 +29,6 @@ class OpConfigureMageBlock(private val modifier: MageBlockModifierType<*>) : Spe
 			if (env.castingEntity is ServerPlayerEntity)
 				HexicalAdvancements.DIY.trigger(env.castingEntity as ServerPlayerEntity)
 			(env.world.getBlockEntity(pos) as MageBlockEntity).addModifier(modifier)
-			env.world.updateNeighborsAlways(pos, HexicalBlocks.MAGE_BLOCK)
 		}
 	}
 }
