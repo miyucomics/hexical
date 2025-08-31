@@ -43,10 +43,10 @@ class MageBlockModel : BakedModel, UnbakedModel, FabricBakedModel {
     override fun getOverrides(): ModelOverrideList = ModelOverrideList.EMPTY
     override fun getModelDependencies() = emptyList<Identifier>()
     override fun getParticleSprite() = this.sprite
-    override fun useAmbientOcclusion() = false
+    override fun useAmbientOcclusion() = true
     override fun isBuiltin() = false
     override fun isSideLit() = true
-    override fun hasDepth() = false
+    override fun hasDepth() = true
 
     companion object {
         val SPRITE_ID = SpriteIdentifier(PlayerScreenHandler.BLOCK_ATLAS_TEXTURE, Identifier("block/amethyst_block"))
