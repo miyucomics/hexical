@@ -39,7 +39,7 @@ object OpCharmItem : SpellAction {
 
 		return SpellAction.Result(
 			Spell(item.stack, hex, (battery * MediaConstants.DUST_UNIT).toLong(), normalInputs, sneakInputs),
-			3 * MediaConstants.CRYSTAL_UNIT + MediaConstants.DUST_UNIT * battery.toInt(),
+			(3 * MediaConstants.CRYSTAL_UNIT + MediaConstants.DUST_UNIT * battery.toInt()) * item.stack.count,
 			listOf(ParticleSpray.burst(item.pos, 1.0))
 		)
 	}
