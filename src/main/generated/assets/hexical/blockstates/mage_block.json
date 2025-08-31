@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "hexical:block/mage_block"
+    }
+  }
+}

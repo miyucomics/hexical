@@ -1,28 +1,47 @@
 package miyucomics.hexical.features.mage_blocks
 
-import at.petrak.hexcasting.api.block.HexBlockEntity
 import at.petrak.hexcasting.api.utils.putCompound
 import com.mojang.datafixers.util.Pair
 import miyucomics.hexical.inits.HexicalBlocks
 import net.minecraft.block.BlockState
+import net.minecraft.block.Blocks
+import net.minecraft.block.entity.BlockEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
+import net.minecraft.nbt.NbtHelper
+import net.minecraft.network.listener.ClientPlayPacketListener
+import net.minecraft.network.packet.Packet
+import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket
+import net.minecraft.registry.RegistryKeys
 import net.minecraft.text.Text
 import net.minecraft.util.Identifier
 import net.minecraft.util.math.BlockPos
 
-class MageBlockEntity(pos: BlockPos, state: BlockState) : HexBlockEntity(HexicalBlocks.MAGE_BLOCK_ENTITY, pos, state) {
+class MageBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(HexicalBlocks.MAGE_BLOCK_ENTITY, pos, state) {
 	val modifiers: MutableMap<Identifier, MageBlockModifier> = mutableMapOf()
+	var disguise: BlockState = Blocks.AMETHYST_BLOCK.defaultState
 
 	fun addModifier(modifier: MageBlockModifier) {
 		modifiers[modifier.type.id] = modifier
-		sync()
+		this.sync()
 	}
 
 	fun clearModifiers() {
 		modifiers.clear()
-		sync()
+		this.sync()
 	}
+
+	fun setBlockState(state: BlockState) {
+		this.disguise = state
+		this.sync()
+	}
+
+	fun sync() {
+		this.markDirty()
+		this.world!!.updateListeners(this.getPos(), this.cachedState, this.cachedState, 3)
+	}
+
+	override fun toUpdatePacket(): Packet<ClientPlayPacketListener> = BlockEntityUpdateS2CPacket.create(this)
 
 	fun <T : MageBlockModifier> getModifier(type: MageBlockModifierType<T>): T = modifiers[type.id] as T
 	fun hasModifier(type: MageBlockModifierType<*>) = modifiers.containsKey(type.id)
@@ -35,7 +54,8 @@ class MageBlockEntity(pos: BlockPos, state: BlockState) : HexBlockEntity(Hexical
 		}
 	}
 
-	override fun saveModData(compound: NbtCompound) {
+	override fun writeNbt(compound: NbtCompound) {
+		compound.putCompound("disguise", NbtHelper.fromBlockState(disguise))
 		compound.putCompound("modifiers", NbtCompound().apply {
 			modifiers.forEach {
 				put(it.key.toString(), it.value.serialize())
@@ -43,7 +63,8 @@ class MageBlockEntity(pos: BlockPos, state: BlockState) : HexBlockEntity(Hexical
 		})
 	}
 
-	override fun loadModData(compound: NbtCompound) {
+	override fun readNbt(compound: NbtCompound) {
+		this.disguise = NbtHelper.toBlockState(this.world!!.createCommandRegistryWrapper(RegistryKeys.BLOCK), compound.getCompound("disguise"))
 		val serializedModifiers = compound.getCompound("modifiers")
 		serializedModifiers.keys.forEach { key ->
 			val modifierType = MageBlockModifierRegistry.MODIFIER_REGISTRY.get(Identifier(key))!!
