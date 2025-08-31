@@ -39,10 +39,10 @@ class MageBlockModel : BakedModel, UnbakedModel, FabricBakedModel {
     }
 
     override fun getQuads(state: BlockState?, face: Direction?, random: Random) = emptyList<BakedQuad>()
+    override fun getTransformation(): ModelTransformation = ModelTransformation.NONE
     override fun setParents(modelLoader: Function<Identifier, UnbakedModel>) {}
-    override fun getTransformation(): ModelTransformation? = null
+    override fun getOverrides(): ModelOverrideList = ModelOverrideList.EMPTY
     override fun getModelDependencies() = emptyList<Identifier>()
-    override fun getOverrides(): ModelOverrideList? = null
     override fun getParticleSprite() = this.sprite
     override fun useAmbientOcclusion() = false
     override fun isBuiltin() = false
