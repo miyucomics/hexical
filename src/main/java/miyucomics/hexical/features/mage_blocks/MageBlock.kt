@@ -4,12 +4,7 @@ import miyucomics.hexical.features.mage_blocks.modifiers.BouncyModifier
 import miyucomics.hexical.features.mage_blocks.modifiers.RedstoneModifier
 import miyucomics.hexical.features.mage_blocks.modifiers.VolatileModifier
 import miyucomics.hexical.inits.HexicalBlocks
-import net.minecraft.block.Block
-import net.minecraft.block.BlockEntityProvider
-import net.minecraft.block.BlockState
-import net.minecraft.block.Blocks
-import net.minecraft.block.MapColor
-import net.minecraft.block.ShapeContext
+import net.minecraft.block.*
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.block.entity.BlockEntityTicker
 import net.minecraft.block.entity.BlockEntityType
@@ -37,7 +32,6 @@ class MageBlock : Block(Settings.create().nonOpaque().dropsNothing().breakInstan
 		return 0
 	}
 
-	override fun getCameraCollisionShape(state: BlockState, world: BlockView, pos: BlockPos, context: ShapeContext): VoxelShape = VoxelShapes.empty()
 
 	override fun onLandedUpon(world: World, state: BlockState, pos: BlockPos, entity: Entity, fallDistance: Float) {
 		val blockEntity = world.getBlockEntity(pos) as MageBlockEntity
@@ -61,10 +55,7 @@ class MageBlock : Block(Settings.create().nonOpaque().dropsNothing().breakInstan
 
 	override fun onBreak(world: World, position: BlockPos, state: BlockState, player: PlayerEntity?) {
 		val blockEntity = world.getBlockEntity(position) as MageBlockEntity
-		world.playSound(position.x.toDouble(), position.y.toDouble(), position.z.toDouble(), SoundEvents.BLOCK_AMETHYST_BLOCK_BREAK, SoundCategory.BLOCKS, 1f, 1f, true)
-		world.emitGameEvent(GameEvent.BLOCK_DESTROY, position, GameEvent.Emitter.of(player, state))
 		world.setBlockState(position, Blocks.AIR.defaultState)
-		world.removeBlockEntity(position)
 
 		if (blockEntity.hasModifier(VolatileModifier.TYPE)) {
 			for (offset in Direction.stream()) {
@@ -75,10 +66,30 @@ class MageBlock : Block(Settings.create().nonOpaque().dropsNothing().breakInstan
 					block.onBreak(world, positionToTest, otherState, player)
 			}
 		}
+
+		super.onBreak(world, position, state, player)
 	}
 
 	override fun createBlockEntity(pos: BlockPos, state: BlockState) = MageBlockEntity(pos, state)
 	override fun <T : BlockEntity> getTicker(pworld: World, pstate: BlockState, type: BlockEntityType<T>): BlockEntityTicker<T> = BlockEntityTicker { world, position, state, blockEntity ->
 		(blockEntity as MageBlockEntity).modifiers.forEach { it -> it.value.tick(world, position, state) }
 	}
+
+	// defer shapes to disguise
+	private fun getBlockDisguise(world: BlockView, pos: BlockPos): BlockState? = (world.getBlockEntity(pos) as? MageBlockEntity)?.disguise
+
+	override fun getOutlineShape(state: BlockState, world: BlockView, pos: BlockPos, context: ShapeContext): VoxelShape =
+		getBlockDisguise(world, pos)?.getOutlineShape(world, pos, context) ?: VoxelShapes.fullCube()
+
+	override fun getCullingShape(state: BlockState, world: BlockView, pos: BlockPos): VoxelShape =
+		getBlockDisguise(world, pos)?.getCullingShape(world, pos) ?: VoxelShapes.fullCube()
+
+	override fun getRaycastShape(state: BlockState, world: BlockView, pos: BlockPos): VoxelShape =
+		getBlockDisguise(world, pos)?.getRaycastShape(world, pos) ?: VoxelShapes.fullCube()
+
+	override fun getCollisionShape(state: BlockState, world: BlockView, pos: BlockPos, context: ShapeContext): VoxelShape =
+		getBlockDisguise(world, pos)?.getCollisionShape(world, pos, context) ?: VoxelShapes.fullCube()
+
+	override fun getCameraCollisionShape(state: BlockState, world: BlockView, pos: BlockPos, context: ShapeContext): VoxelShape =
+		getBlockDisguise(world, pos)?.getCameraCollisionShape(world, pos, context) ?: VoxelShapes.fullCube()
 }
