@@ -18,8 +18,6 @@ import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.sound.BlockSoundGroup
 import net.minecraft.sound.SoundCategory
 import net.minecraft.sound.SoundEvents
-import net.minecraft.state.StateManager
-import net.minecraft.state.property.BooleanProperty
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
 import net.minecraft.util.shape.VoxelShape
@@ -29,15 +27,6 @@ import net.minecraft.world.World
 import net.minecraft.world.event.GameEvent
 
 class MageBlock : Block(Settings.create().nonOpaque().dropsNothing().breakInstantly().mapColor(MapColor.CLEAR).suffocates { _, _, _ -> false }.blockVision { _, _, _ -> false }.allowsSpawning { _, _, _, _ -> false }.sounds(BlockSoundGroup.AMETHYST_CLUSTER)), BlockEntityProvider {
-	init {
-		defaultState = this.stateManager.getDefaultState().with(UPDATE_TRIGGER, false)
-	}
-
-	override fun appendProperties(builder: StateManager.Builder<Block, BlockState>) {
-		builder.add(UPDATE_TRIGGER)
-		super.appendProperties(builder)
-	}
-
 	override fun emitsRedstonePower(state: BlockState) = true
 	override fun getWeakRedstonePower(state: BlockState, world: BlockView, pos: BlockPos, direction: Direction): Int {
 		val blockEntity = world.getBlockEntity(pos)
@@ -91,9 +80,5 @@ class MageBlock : Block(Settings.create().nonOpaque().dropsNothing().breakInstan
 	override fun createBlockEntity(pos: BlockPos, state: BlockState) = MageBlockEntity(pos, state)
 	override fun <T : BlockEntity> getTicker(pworld: World, pstate: BlockState, type: BlockEntityType<T>): BlockEntityTicker<T> = BlockEntityTicker { world, position, state, blockEntity ->
 		(blockEntity as MageBlockEntity).modifiers.forEach { it -> it.value.tick(world, position, state) }
-	}
-
-	companion object {
-		val UPDATE_TRIGGER: BooleanProperty = BooleanProperty.of("useless")
 	}
 }
