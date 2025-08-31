@@ -31,9 +31,6 @@ class MageBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(HexicalBlo
 
 	fun setBlockState(state: BlockState) {
 		this.disguise = state
-		val currentState = this.cachedState
-		val newState = currentState.with(MageBlock.UPDATE_TRIGGER, !currentState.get(MageBlock.UPDATE_TRIGGER))
-		this.world!!.setBlockState(this.pos, newState, 3)
 		this.sync()
 	}
 
