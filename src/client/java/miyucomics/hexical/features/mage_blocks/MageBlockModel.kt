@@ -1,6 +1,5 @@
 package miyucomics.hexical.features.mage_blocks
 
-import miyucomics.hexical.HexicalMain
 import net.fabricmc.fabric.api.renderer.v1.model.FabricBakedModel
 import net.fabricmc.fabric.api.renderer.v1.render.RenderContext
 import net.minecraft.block.BlockState

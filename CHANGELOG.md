@@ -9,6 +9,7 @@
 - added Vibrate spell
 - added pattern to pull iota from staff stack
 - added pattern to push iota to staff stack
+- added mage block disguising spell
 - added spell to set model position
 - added tooltips to hexbursts
 - added tooltips to hextito
