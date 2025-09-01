@@ -27,7 +27,7 @@ object MageBlockModelLoadingHook : InitHook() {
 
         ModelLoadingPlugin.register { pluginContext ->
             pluginContext.modifyModelOnLoad().register { original: UnbakedModel, context: OnLoad.Context ->
-                when (context.id() as? ModelIdentifier) {
+                when (context.id()) {
                     ModelIdentifier(HexicalMain.id("mage_block"), "") -> MageBlockModel()
                     ModelIdentifier(HexicalMain.id("mage_block"), "inventory") -> context.getOrLoadModel(Identifier("item/amethyst_shard"))
                     else -> original
