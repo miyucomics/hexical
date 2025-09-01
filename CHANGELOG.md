@@ -84,7 +84,6 @@
 - changed Greater Blink to not move feet to eyes
 - changed lamps deactivating to only be when they are picked up
 - changed shader spells to no longer require a media jar
-- changed grimoire packet syncing to reduce strain on servers
 - changed lamp recharge patterns to not need a mind
 - changed book layout slightly
 - changed some textures
