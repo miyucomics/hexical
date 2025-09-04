@@ -98,7 +98,7 @@ object PrestidigitationHandlersHook : InitHook() {
 			}
 		})
 
-		Registry.register(PRESTIDIGITATION_HANDLER, HexicalMain.id("pressure_pressure_plates"), object : PrestidigitationHandlerBlock() {
+		register("pressure_pressure_plates", object : PrestidigitationHandlerBlock() {
 			override fun canAffectBlock(env: CastingEnvironment, pos: BlockPos) = getBlockState(env, pos).isIn(BlockTags.PRESSURE_PLATES)
 			override fun affect(env: CastingEnvironment, pos: BlockPos) {
 				val state = getBlockState(env, pos)
@@ -106,14 +106,14 @@ object PrestidigitationHandlersHook : InitHook() {
 			}
 		})
 
-		Registry.register(PRESTIDIGITATION_HANDLER, HexicalMain.id("drain_cauldrons"), object : PrestidigitationHandlerBlock() {
+		register("drain_cauldrons", object : PrestidigitationHandlerBlock() {
 			override fun canAffectBlock(env: CastingEnvironment, pos: BlockPos) = getBlockState(env, pos).isIn(BlockTags.CAULDRONS)
 			override fun affect(env: CastingEnvironment, pos: BlockPos) {
 				setBlockState(env, pos, Blocks.CAULDRON.defaultState)
 			}
 		})
 
-		Registry.register(PRESTIDIGITATION_HANDLER, HexicalMain.id("light_candle"), object : PrestidigitationHandlerBlock() {
+		register("light_candle", object : PrestidigitationHandlerBlock() {
 			override fun canAffectBlock(env: CastingEnvironment, pos: BlockPos): Boolean {
 				val state = getBlockState(env, pos)
 				return state.isIn(BlockTags.CANDLES) || state.isIn(BlockTags.CANDLE_CAKES) || state.isIn(BlockTags.CAMPFIRES)
@@ -125,7 +125,7 @@ object PrestidigitationHandlersHook : InitHook() {
 			}
 		})
 
-		Registry.register(PRESTIDIGITATION_HANDLER, HexicalMain.id("open_doors"), object : PrestidigitationHandlerBlock() {
+		register("open_doors", object : PrestidigitationHandlerBlock() {
 			override fun canAffectBlock(env: CastingEnvironment, pos: BlockPos): Boolean {
 				val state = getBlockState(env, pos)
 				return state.isIn(BlockTags.DOORS) || state.isIn(BlockTags.TRAPDOORS) || state.isIn(BlockTags.FENCE_GATES)
@@ -137,7 +137,7 @@ object PrestidigitationHandlersHook : InitHook() {
 			}
 		})
 
-		Registry.register(PRESTIDIGITATION_HANDLER, HexicalMain.id("steal_honey"), object : PrestidigitationHandlerBlock() {
+		register("steal_honey", object : PrestidigitationHandlerBlock() {
 			override fun canAffectBlock(env: CastingEnvironment, pos: BlockPos): Boolean {
 				val state = getBlockState(env, pos)
 				return state.isIn(BlockTags.BEEHIVES) && state.get(BeehiveBlock.HONEY_LEVEL) == 5
@@ -152,7 +152,7 @@ object PrestidigitationHandlersHook : InitHook() {
 			}
 		})
 
-		Registry.register(PRESTIDIGITATION_HANDLER, HexicalMain.id("play_note"), object : PrestidigitationHandlerBlock() {
+		register("play_note", object : PrestidigitationHandlerBlock() {
 			override fun canAffectBlock(env: CastingEnvironment, pos: BlockPos) = getBlockState(env, pos).isOf(Blocks.NOTE_BLOCK)
 			override fun affect(env: CastingEnvironment, pos: BlockPos) {
 				env.world.addSyncedBlockEvent(pos, Blocks.NOTE_BLOCK, 0, 0)
@@ -160,7 +160,7 @@ object PrestidigitationHandlersHook : InitHook() {
 			}
 		})
 
-		Registry.register(PRESTIDIGITATION_HANDLER, HexicalMain.id("ring_bell"), object : PrestidigitationHandlerBlock() {
+		register("ring_bell", object : PrestidigitationHandlerBlock() {
 			override fun canAffectBlock(env: CastingEnvironment, pos: BlockPos) = getBlockState(env, pos).isOf(Blocks.BELL)
 			override fun affect(env: CastingEnvironment, pos: BlockPos) {
 				val state = getBlockState(env, pos)
@@ -176,7 +176,7 @@ object PrestidigitationHandlersHook : InitHook() {
 			}
 		})
 
-		Registry.register(PRESTIDIGITATION_HANDLER, HexicalMain.id("dispense"), object : PrestidigitationHandlerBlock() {
+		register("dispense", object : PrestidigitationHandlerBlock() {
 			override fun canAffectBlock(env: CastingEnvironment, pos: BlockPos) = getBlock(env, pos) is DispenserBlock
 			override fun affect(env: CastingEnvironment, pos: BlockPos) {
 				val state = getBlockState(env, pos)
@@ -184,7 +184,7 @@ object PrestidigitationHandlersHook : InitHook() {
 			}
 		})
 
-		Registry.register(PRESTIDIGITATION_HANDLER, HexicalMain.id("prime_tnt"), object : PrestidigitationHandlerBlock() {
+		register("prime_tnt", object : PrestidigitationHandlerBlock() {
 			override fun canAffectBlock(env: CastingEnvironment, pos: BlockPos) = getBlockState(env, pos).isOf(Blocks.TNT)
 			override fun affect(env: CastingEnvironment, pos: BlockPos) {
 				TntBlock.primeTnt(env.world, pos)
@@ -192,7 +192,7 @@ object PrestidigitationHandlersHook : InitHook() {
 			}
 		})
 
-		Registry.register(PRESTIDIGITATION_HANDLER, HexicalMain.id("learn_akashic"), object : PrestidigitationHandlerBlock() {
+		register("learn_akashic", object : PrestidigitationHandlerBlock() {
 			override fun canAffectBlock(env: CastingEnvironment, pos: BlockPos) = env.castingEntity is ServerPlayerEntity && getBlockState(env, pos).isOf(HexBlocks.AKASHIC_BOOKSHELF)
 			override fun affect(env: CastingEnvironment, pos: BlockPos) {
 				val caster = env.castingEntity as ServerPlayerEntity
@@ -201,7 +201,7 @@ object PrestidigitationHandlersHook : InitHook() {
 			}
 		})
 
-		Registry.register(PRESTIDIGITATION_HANDLER, HexicalMain.id("trigger_impetus"), object : PrestidigitationHandlerBlock() {
+		register("trigger_impetus", object : PrestidigitationHandlerBlock() {
 			override fun canAffectBlock(env: CastingEnvironment, pos: BlockPos) = env.castingEntity is ServerPlayerEntity && getBlockState(env, pos).isIn(HexTags.Blocks.IMPETI)
 			override fun affect(env: CastingEnvironment, pos: BlockPos) {
 				(env.world.getBlockEntity(pos) as BlockEntityAbstractImpetus).startExecution(env.castingEntity as ServerPlayerEntity)
