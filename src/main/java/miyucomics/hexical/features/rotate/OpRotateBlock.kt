@@ -50,10 +50,6 @@ object OpRotateBlock : SpellAction {
 	private fun setBlockDirection(world: ServerWorld, blockPos: BlockPos, newDirection: Direction) {
 		val blockState = world.getBlockState(blockPos)
 		var modifiedState: BlockState? = null
-		if (blockState.properties.contains(Properties.FACING))
-			modifiedState = blockState.with(Properties.FACING, newDirection)
-		if (blockState.properties.contains(Properties.HOPPER_FACING))
-			modifiedState = blockState.with(Properties.HOPPER_FACING, if (newDirection == Direction.UP) Direction.DOWN else newDirection)
 		if (blockState.properties.contains(Properties.HORIZONTAL_FACING)) {
 			if (newDirection == Direction.UP || newDirection == Direction.DOWN)
 				return
@@ -62,6 +58,9 @@ object OpRotateBlock : SpellAction {
 		if (blockState.properties.contains(Properties.VERTICAL_DIRECTION)) {
 			if (newDirection == Direction.EAST || newDirection == Direction.WEST || newDirection == Direction.NORTH || newDirection == Direction.SOUTH)
 				return
+			modifiedState = blockState.with(Properties.VERTICAL_DIRECTION, newDirection)
+		}
+		if (blockState.properties.contains(Properties.AXIS)) {
 			modifiedState = blockState.with(Properties.VERTICAL_DIRECTION, newDirection)
 		}
 
