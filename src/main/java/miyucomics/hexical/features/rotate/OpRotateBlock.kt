@@ -12,9 +12,6 @@ import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import net.minecraft.block.BlockState
-import net.minecraft.server.world.ServerWorld
-import net.minecraft.state.property.DirectionProperty
-import net.minecraft.state.property.Properties
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
 
@@ -22,51 +19,24 @@ object OpRotateBlock : SpellAction {
 	override val argc = 2
 
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
-		val target = args.getBlockPos(0, argc)
-		env.assertPosInRange(target)
+		val pos = args.getBlockPos(0, argc)
+		env.assertPosInRange(pos)
+		val state = env.world.getBlockState(pos)
 		val rotation = args.getVec3(1, argc)
 		val direction = Direction.fromVector(rotation.x.toInt(), rotation.y.toInt(), rotation.z.toInt()) ?: throw MishapInvalidIota.of(args[1], 0, "axis_vector")
 
-		val block = env.world.getBlockState(target)
-		rotationProperties.forEach {
-			if (block.contains(it))
-				return SpellAction.Result(Spell(target, direction), MediaConstants.DUST_UNIT / 8, listOf(ParticleSpray.burst(target.toCenterPos(), 1.0)))
+		when (val result = BlockRotationHandlerRegistry.modify(state, direction)) {
+			null -> throw MishapBadBlock.of(pos, "rotatable")
+			else -> return SpellAction.Result(Spell(pos, result), MediaConstants.DUST_UNIT / 8, listOf(ParticleSpray.burst(pos.toCenterPos(), 1.0)))
 		}
-
-		throw MishapBadBlock.of(target, "rotatable")
 	}
 
-	private data class Spell(val target: BlockPos, val direction: Direction) : RenderedSpell {
+	private data class Spell(val pos: BlockPos, val state: BlockState) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			val blockState = env.world.getBlockState(target)
-			if (!env.canEditBlockAt(target) || !IXplatAbstractions.INSTANCE.isBreakingAllowed(env.world, target, blockState, env.caster))
+			if (!env.canEditBlockAt(pos) || !IXplatAbstractions.INSTANCE.isBreakingAllowed(env.world, pos, env.world.getBlockState(pos), env.caster))
 				return
-			setBlockDirection(env.world, target, direction)
+			env.world.setBlockState(pos, state)
+			env.world.updateNeighbors(pos, state.block)
 		}
-	}
-
-	private val rotationProperties: List<DirectionProperty> = listOf(Properties.FACING, Properties.HOPPER_FACING, Properties.HORIZONTAL_FACING, Properties.VERTICAL_DIRECTION)
-
-	private fun setBlockDirection(world: ServerWorld, blockPos: BlockPos, newDirection: Direction) {
-		val blockState = world.getBlockState(blockPos)
-		var modifiedState: BlockState? = null
-		if (blockState.properties.contains(Properties.HORIZONTAL_FACING)) {
-			if (newDirection == Direction.UP || newDirection == Direction.DOWN)
-				return
-			modifiedState = blockState.with(Properties.HORIZONTAL_FACING, newDirection)
-		}
-		if (blockState.properties.contains(Properties.VERTICAL_DIRECTION)) {
-			if (newDirection == Direction.EAST || newDirection == Direction.WEST || newDirection == Direction.NORTH || newDirection == Direction.SOUTH)
-				return
-			modifiedState = blockState.with(Properties.VERTICAL_DIRECTION, newDirection)
-		}
-		if (blockState.properties.contains(Properties.AXIS)) {
-			modifiedState = blockState.with(Properties.VERTICAL_DIRECTION, newDirection)
-		}
-
-		if (modifiedState == null)
-			return
-		world.setBlockState(blockPos, modifiedState)
-		world.updateNeighbors(blockPos, modifiedState.block)
 	}
 }
