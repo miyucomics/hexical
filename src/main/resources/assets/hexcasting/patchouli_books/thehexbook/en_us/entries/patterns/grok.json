@@ -6,10 +6,6 @@
 	"sortnum": 7,
 	"pages": [
 		{
-			"type": "patchouli:text",
-			"text": "hexical.page.grok.0"
-		},
-		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:grok_pull",
 			"anchor": "hexical:grok_pull",
@@ -21,7 +17,7 @@
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:grok_push",
 			"anchor": "hexical:grok_push",
-			"input": "any",
+			"input": "list, list",
 			"output": "",
 			"text": "hexical.page.grok_push.summary"
 		}
