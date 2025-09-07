@@ -14,7 +14,7 @@
 			"op_id": "hexical:grok_pull",
 			"anchor": "hexical:grok_pull",
 			"input": "",
-			"output": "any",
+			"output": "list, list",
 			"text": "hexical.page.grok_pull.summary"
 		},
 		{
