@@ -417,9 +417,9 @@
 
 	"hexical.page.grok.title": "Grok",
 	"hexical.page.grok.0": "Whereas $(l:patterns/telepathy)Telepathy$() is concerned with reading my intentions and allowing my _Hexes to inform me, $(thing)Grokking$() deals with transferring iotas. The stack accessible with my $(l:items/staff)$(item)Staff$() is persistent, unlike the ones of $(l:items/hexcasting)$(item)casting devices$(). These two patterns allow me to push and pull iotas directly to it.",
-	"hexcasting.action.hexical:grok_pull": "Grokking Reflection",
-	"hexical.page.grok_pull.summary": "Pushes the top iota from my $(l:items/staff)$(thing)staff stack$() and removes it or pushes $(l:casting/influences)$(thing)Garbage$(). Subject to the Transgress Others mishap.",
-	"hexcasting.action.hexical:grok_push": "Grokking Gambit",
+	"hexcasting.action.hexical:grok_pull": "Grok Reflection",
+	"hexical.page.grok_pull.summary": "Pushes two lists; one of the stack and one of the unfinished list building after an unclosed $(l:patterns/patterns_as_iotas#hexcasting:open_paren)Introspection$(). Entity references to players that are not me become $(l:casting/influences)$(thing)Null$().",
+	"hexcasting.action.hexical:grok_push": "Grok Gambit",
 	"hexical.page.grok_push.summary": "Pops an iota and pushes it onto my $(l:items/staff)$(thing)staff stack$(). Subject to the Transgress Others mishap.",
 
 	"hexical.page.telepathy.title": "Telepathy",
