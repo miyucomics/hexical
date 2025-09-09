@@ -102,7 +102,7 @@ import net.minecraft.sound.SoundEvents
 object HexicalActions {
 	fun init() {
 		register("normalize_scroll", "wqwawqwqawawa", HexDir.SOUTH_WEST, OpAlterScroll { it.setState(0) })
-		register("age_scroll", "wqwawqwqawwwdwdwwwa", HexDir.SOUTH_WEST, OpAlterScroll { it.setState(1) })
+		register("age_scroll", "wqwawqwqawwddwwa", HexDir.SOUTH_WEST, OpAlterScroll { it.setState(1) })
 		register("vanish_scroll", "wqwawqwqaqqa", HexDir.SOUTH_WEST, OpAlterScroll { it.setState(2) })
 		register("color_scroll", "wqwawqwqawawaedd", HexDir.SOUTH_WEST, OpColorScroll)
 		register("glow_scroll", "wqwawqwqawawaewdwdw", HexDir.SOUTH_WEST, OpAlterScroll { it.toggleGlow() })
