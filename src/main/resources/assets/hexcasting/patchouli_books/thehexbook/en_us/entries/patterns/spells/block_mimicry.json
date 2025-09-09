@@ -15,6 +15,18 @@
 		},
 		{
 			"type": "hexcasting:pattern",
+			"op_id": "hexical:piston",
+			"anchor": "hexical:piston",
+			"input": "vector, vector",
+			"output": "",
+			"text": "hexical.page.piston.summary"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.piston.description"
+		},
+		{
+			"type": "hexcasting:pattern",
 			"op_id": "hexical:dispense",
 			"anchor": "hexical:dispense",
 			"input": "item entity, vector, vector",
