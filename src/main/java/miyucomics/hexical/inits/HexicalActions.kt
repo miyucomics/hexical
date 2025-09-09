@@ -36,7 +36,6 @@ import miyucomics.hexical.features.confetti.OpConfetti
 import miyucomics.hexical.features.conjure.OpConjureEntity
 import miyucomics.hexical.features.conjure.OpConjureFlower
 import miyucomics.hexical.features.conjure.OpConjureLight
-import miyucomics.hexical.features.conjure.OpConjureSpike
 import miyucomics.hexical.features.dyes.OpDye
 import miyucomics.hexical.features.dyes.OpGetDye
 import miyucomics.hexical.features.dyes.OpTranslateDye
@@ -72,6 +71,7 @@ import miyucomics.hexical.features.periwinkle.OpCompelSniffer
 import miyucomics.hexical.features.pigments.OpSamplePigment
 import miyucomics.hexical.features.pigments.OpTakeOnPigment
 import miyucomics.hexical.features.pigments.OpToPigment
+import miyucomics.hexical.features.piston.OpPiston
 import miyucomics.hexical.features.prestidigitation.OpPrestidigitation
 import miyucomics.hexical.features.pyrotechnics.OpConjureFirework
 import miyucomics.hexical.features.pyrotechnics.OpSimulateFirework
@@ -87,6 +87,7 @@ import miyucomics.hexical.features.specklikes.mesh.OpReadMesh
 import miyucomics.hexical.features.specklikes.mesh.OpWeaveMesh
 import miyucomics.hexical.features.specklikes.speck.OpConjureSpeck
 import miyucomics.hexical.features.specklikes.speck.OpIotaSpeck
+import miyucomics.hexical.features.spike.OpConjureSpike
 import miyucomics.hexical.features.telepathy.*
 import miyucomics.hexical.features.wristpocket.*
 import net.minecraft.entity.EntityType
@@ -249,6 +250,7 @@ object HexicalActions {
 
 		register("spike", "qdqdqdqdww", HexDir.NORTH_EAST, OpConjureSpike)
 
+		register("piston", "wqwawqwqqqeqq", HexDir.SOUTH_WEST, OpPiston)
 		register("dispense", "wqwawqwddaeeead", HexDir.SOUTH_WEST, OpDispense)
 		register("smelt", "qwqqadadadewewewe", HexDir.SOUTH_EAST, OpCook(RecipeType.SMELTING, "target.smelting"))
 		register("roast", "aqqwwqqawdadedad", HexDir.NORTH_WEST, OpCook(RecipeType.CAMPFIRE_COOKING, "target.roasting"))
