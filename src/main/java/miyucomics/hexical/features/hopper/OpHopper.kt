@@ -23,7 +23,7 @@ object OpHopper : Action {
 		var inputSlot: Int? = null
 		var outputSlot: Int? = null
 		if (stack.isNotEmpty() && stack.last() is DoubleIota) {
-			outputSlot = (stack.removeAt(0) as DoubleIota).double.toInt()
+			outputSlot = (stack.removeAt(stack.lastIndex) as DoubleIota).double.toInt()
 			inputsConsumed += 1
 		}
 
@@ -50,12 +50,8 @@ object OpHopper : Action {
 
 		return OperationResult(
 			image.withUsedOp().copy(stack = stack), listOf(
-				OperatorSideEffect.ConsumeMedia(totalItems * MediaConstants.DUST_UNIT * 3/64),
-				OperatorSideEffect.AttemptSpell(
-					Spell(source, destination, itemsToMove),
-					hasCastingSound = true,
-					awardStat = true
-				)
+				OperatorSideEffect.ConsumeMedia(totalItems * MediaConstants.DUST_UNIT * 3 / 64),
+				OperatorSideEffect.AttemptSpell(Spell(source, destination, itemsToMove), hasCastingSound = true, awardStat = true)
 			), continuation, HexEvalSounds.SPELL
 		)
 	}
