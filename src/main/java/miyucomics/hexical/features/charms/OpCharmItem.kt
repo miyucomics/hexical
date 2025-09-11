@@ -30,7 +30,6 @@ object OpCharmItem : SpellAction {
 			if (it !is DoubleIota) throw MishapInvalidIota.of(args[3], 1, "number_list")
 			it.double.toInt()
 		}
-		if (normalInputs.isEmpty()) throw MishapInvalidIota.of(args[3], 1, "number_list")
 
 		val sneakInputs = args.getList(4, argc).map {
 			if (it !is DoubleIota) throw MishapInvalidIota.of(args[4], 0, "number_list")
