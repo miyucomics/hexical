@@ -12,12 +12,12 @@ import at.petrak.hexcasting.common.lib.HexBlocks
 object OpClearAkashicShelf : SpellAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
-		val position = args.getBlockPos(0, argc)
-		env.assertPosInRange(position)
-		val block = env.world.getBlockState(position)
-		if (!block.isOf(HexBlocks.AKASHIC_BOOKSHELF))
-			throw MishapBadBlock.of(position, "akashic_bookshelf")
-		return SpellAction.Result(Spell(env.world.getBlockEntity(position)!! as BlockEntityAkashicBookshelf), 0, listOf())
+		val pos = args.getBlockPos(0, argc)
+		env.assertPosInRange(pos)
+		val state = env.world.getBlockState(pos)
+		if (!state.isOf(HexBlocks.AKASHIC_BOOKSHELF))
+			throw MishapBadBlock.of(pos, "akashic_bookshelf")
+		return SpellAction.Result(Spell(env.world.getBlockEntity(pos)!! as BlockEntityAkashicBookshelf), 0, listOf())
 	}
 
 	private data class Spell(val shelf: BlockEntityAkashicBookshelf) : RenderedSpell {
