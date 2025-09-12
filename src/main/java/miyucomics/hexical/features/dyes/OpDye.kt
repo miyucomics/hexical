@@ -40,23 +40,23 @@ object OpDye : SpellAction {
 				env.assertEntityInRange(entity)
 				return when (entity) {
 					is CatEntity -> {
-						val trueDye = args.getTrueDye(1, argc)
+						val trueDye = args.getColoredDye(1, argc)
 						SpellAction.Result(CatSpell(entity, trueDye), COST, listOf(ParticleSpray.cloud(entity.pos, 1.0)))
 					}
 					is SheepEntity -> {
-						val trueDye = args.getTrueDye(1, argc)
+						val trueDye = args.getColoredDye(1, argc)
 						SpellAction.Result(SheepSpell(entity, trueDye), COST, listOf(ParticleSpray.cloud(entity.pos, 1.0)))
 					}
 					is ShulkerEntity -> {
-						val trueDye = args.getTrueDye(1, argc)
+						val trueDye = args.getColoredDye(1, argc)
 						SpellAction.Result(ShulkerSpell(entity, trueDye), COST, listOf(ParticleSpray.cloud(entity.pos, 1.0)))
 					}
 					is Specklike -> {
-						val trueDye = args.getTrueDye(1, argc)
+						val trueDye = args.getColoredDye(1, argc)
 						SpellAction.Result(SpecklikeSpell(entity, trueDye), COST, listOf(ParticleSpray.cloud(entity.pos, 1.0)))
 					}
 					is WolfEntity -> {
-						val trueDye = args.getTrueDye(1, argc)
+						val trueDye = args.getColoredDye(1, argc)
 						SpellAction.Result(WolfSpell(entity, trueDye), COST, listOf(ParticleSpray.cloud(entity.pos, 1.0)))
 					}
 					is ItemEntity -> {
