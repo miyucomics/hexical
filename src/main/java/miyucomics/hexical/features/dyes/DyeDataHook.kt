@@ -29,10 +29,10 @@ object DyeDataHook : InitHook() {
 
 	fun isDyeable(block: Block): Boolean = blockDyeLookup.containsKey(block)
 	fun isDyeable(item: Item): Boolean = itemDyeLookup.containsKey(item)
-	fun getDye(block: Block): DyeOptions? = blockDyeLookup[block]
-	fun getDye(item: Item): DyeOptions? = itemDyeLookup[item]
+	fun getDye(block: Block): DyeOption? = blockDyeLookup[block]
+	fun getDye(item: Item): DyeOption? = itemDyeLookup[item]
 
-	fun getNewBlock(block: Block, dye: DyeOptions): BlockState? {
+	fun getNewBlock(block: Block, dye: DyeOption): BlockState? {
 		blockGroups.forEach { (_, group) ->
 			if (group.containsValue(block) && group.containsKey(dye))
 				return group[dye]!!.defaultState
@@ -40,7 +40,7 @@ object DyeDataHook : InitHook() {
 		return null
 	}
 
-	fun getNewItem(item: Item, dye: DyeOptions): Item? {
+	fun getNewItem(item: Item, dye: DyeOption): Item? {
 		itemGroups.forEach { (_, group) ->
 			if (group.containsValue(item) && group.containsKey(dye))
 				return group[dye]!!
@@ -48,10 +48,10 @@ object DyeDataHook : InitHook() {
 		return null
 	}
 
-	private val blockGroups: HashMap<String, HashMap<DyeOptions, Block>> = HashMap()
-	private val itemGroups: HashMap<String, HashMap<DyeOptions, Item>> = HashMap()
-	private val blockDyeLookup = HashMap<Block, DyeOptions>()
-	private val itemDyeLookup = HashMap<Item, DyeOptions>()
+	private val blockGroups: HashMap<String, HashMap<DyeOption, Block>> = HashMap()
+	private val itemGroups: HashMap<String, HashMap<DyeOption, Item>> = HashMap()
+	private val blockDyeLookup = HashMap<Block, DyeOption>()
+	private val itemDyeLookup = HashMap<Item, DyeOption>()
 
 	private fun loadData(stream: InputStream) {
 		val json = JsonParser.parseReader(InputStreamReader(stream, "UTF-8")) as JsonObject
@@ -59,8 +59,8 @@ object DyeDataHook : InitHook() {
 		val blocks = json.getAsJsonObject("blocks")
 		blocks.keySet().forEach { groupName ->
 			val pattern = blocks.getAsJsonPrimitive(groupName).asString
-			val group = HashMap<DyeOptions, Block>()
-			DyeOptions.values().forEach { dye -> resolvePattern(Registries.BLOCK, pattern, dye)?.let {
+			val group = HashMap<DyeOption, Block>()
+			DyeOption.values().forEach { dye -> resolvePattern(Registries.BLOCK, pattern, dye)?.let {
 				group[dye] = it
 				blockDyeLookup[it] = dye
 			} }
@@ -71,8 +71,8 @@ object DyeDataHook : InitHook() {
 		val items = json.getAsJsonObject("items")
 		items.keySet().forEach { groupName ->
 			val pattern = items.getAsJsonPrimitive(groupName).asString
-			val group = HashMap<DyeOptions, Item>()
-			DyeOptions.values().forEach { dye -> resolvePattern(Registries.ITEM, pattern, dye)?.let {
+			val group = HashMap<DyeOption, Item>()
+			DyeOption.values().forEach { dye -> resolvePattern(Registries.ITEM, pattern, dye)?.let {
 				group[dye] = it
 				itemDyeLookup[it] = dye
 			} }
@@ -81,28 +81,8 @@ object DyeDataHook : InitHook() {
 		}
 	}
 
-	private fun <T : Any> resolvePattern(registry: Registry<T>, pattern: String, dye: DyeOptions) = listOfNotNull(
-		registry.get(RegistryKey.of<T>(registry.key, Identifier(pattern.replace("{color}", dye.title)))),
-		registry.get(RegistryKey.of<T>(registry.key, Identifier(pattern.replace("{color}", dye.title + "_"))))
+	private fun <T : Any> resolvePattern(registry: Registry<T>, pattern: String, dye: DyeOption) = listOfNotNull(
+		registry.get(RegistryKey.of<T>(registry.key, Identifier(pattern.replace("{color}", dye.replacement)))),
+		registry.get(RegistryKey.of<T>(registry.key, Identifier(pattern.replace("{color}", dye.replacement + "_"))))
 	).firstOrNull()
-}
-
-enum class DyeOptions(val title: String) {
-	UNCOLORED(""),
-    WHITE("white"),
-    ORANGE("orange"),
-    MAGENTA("magenta"),
-    LIGHT_BLUE("light_blue"),
-    YELLOW("yellow"),
-    LIME("lime"),
-    PINK("pink"),
-    GRAY("gray"),
-    LIGHT_GRAY("light_gray"),
-    CYAN("cyan"),
-    PURPLE("purple"),
-    BLUE("blue"),
-    BROWN("brown"),
-    GREEN("green"),
-    RED("red"),
-    BLACK("black")
 }

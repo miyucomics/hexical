@@ -32,7 +32,7 @@ object OpConjureFirework : SpellAction {
 		val trueColors = mutableListOf<Int>()
 		for (color in colors) {
 			if (color.type != DyeIota.TYPE)
-				throw MishapInvalidIota.of(args[3], 4, "true_dye_list")
+				throw MishapInvalidIota.of(args[3], 4, "colored_dye")
 			trueColors.add(DyeColor.byName((color as DyeIota).dye, DyeColor.WHITE)!!.fireworkColor)
 		}
 
@@ -40,7 +40,7 @@ object OpConjureFirework : SpellAction {
 		val trueFades = mutableListOf<Int>()
 		for (fade in fades) {
 			if (fade.type != DyeIota.TYPE)
-				throw MishapInvalidIota.of(args[4], 3, "true_dye_list")
+				throw MishapInvalidIota.of(args[4], 3, "colored_dye")
 			trueFades.add(DyeColor.byName((fade as DyeIota).dye, DyeColor.WHITE)!!.fireworkColor)
 		}
 

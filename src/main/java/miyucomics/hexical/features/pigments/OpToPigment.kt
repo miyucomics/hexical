@@ -13,7 +13,7 @@ import at.petrak.hexcasting.api.pigment.FrozenPigment
 import at.petrak.hexcasting.common.lib.HexItems
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.features.dyes.DyeIota
-import miyucomics.hexical.features.dyes.getTrueDye
+import miyucomics.hexical.features.dyes.getColoredDye
 import miyucomics.hexpose.iotas.IdentifierIota
 import miyucomics.hexpose.iotas.getIdentifier
 import net.minecraft.entity.ItemEntity
@@ -30,7 +30,7 @@ object OpToPigment : ConstMediaAction {
 		val caster = env.castingEntity as LivingEntity
 
 		val colorizer = when (args[0]) {
-			is DyeIota -> FrozenPigment(ItemStack(HexItems.DYE_PIGMENTS[args.getTrueDye(0, argc)]), caster.uuid)
+			is DyeIota -> FrozenPigment(ItemStack(HexItems.DYE_PIGMENTS[args.getColoredDye(0, argc)]), caster.uuid)
 			is EntityIota -> {
 				when (val entity = args.getEntity(0, argc)) {
 					is PlayerEntity -> IXplatAbstractions.INSTANCE.getPigment(entity)
