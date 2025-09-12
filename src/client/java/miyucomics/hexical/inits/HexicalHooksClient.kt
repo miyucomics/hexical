@@ -6,6 +6,7 @@ import miyucomics.hexical.features.confetti.ClientConfettiReceiver
 import miyucomics.hexical.features.curios.CompassCurioModelHook
 import miyucomics.hexical.features.curios.FluteCurioItemModel
 import miyucomics.hexical.features.curios.HandbellCurioItemModel
+import miyucomics.hexical.features.dyes.DyeDataHook
 import miyucomics.hexical.features.evocation.ClientEvocationReceiver
 import miyucomics.hexical.features.jailbreak.JailbrokenItemTooltip
 import miyucomics.hexical.features.lamps.ArchLampModelProvider
@@ -51,6 +52,7 @@ object HexicalHooksClient {
 		register(MageBlockScryingOverlay)
 		register(PedestalRenderHooks)
 		register(MageBlockModelLoadingHook)
+		register(DyeDataHook)
 
 		for (hook in hooks)
 			hook.init()

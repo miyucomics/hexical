@@ -10,6 +10,8 @@ import net.minecraft.block.Block
 import net.minecraft.block.BlockState
 import net.minecraft.item.Item
 import net.minecraft.registry.Registries
+import net.minecraft.registry.Registry
+import net.minecraft.registry.RegistryKey
 import net.minecraft.resource.ResourceManager
 import net.minecraft.resource.ResourceType
 import net.minecraft.util.Identifier
@@ -17,11 +19,6 @@ import java.io.InputStream
 import java.io.InputStreamReader
 
 object DyeDataHook : InitHook() {
-	private val flatBlockLookup = HashMap<String, String>()
-	private val flatItemLookup = HashMap<String, String>()
-	private val blockFamilies = HashMap<String, MutableMap<String, String>>()
-	private val itemFamilies = HashMap<String, MutableMap<String, String>>()
-
 	override fun init() {
 		ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(object :
 			SimpleSynchronousResourceReloadListener {
@@ -30,50 +27,82 @@ object DyeDataHook : InitHook() {
 		})
 	}
 
-	fun isDyeable(block: Block): Boolean = flatBlockLookup.containsKey(Registries.BLOCK.getId(block).toString())
-	fun isDyeable(item: Item): Boolean = flatItemLookup.containsKey(Registries.ITEM.getId(item).toString())
-	fun getDye(block: Block): String? = flatBlockLookup[Registries.BLOCK.getId(block).toString()]
-	fun getDye(item: Item): String? = flatItemLookup[Registries.ITEM.getId(item).toString()]
+	fun isDyeable(block: Block): Boolean = blockDyeLookup.containsKey(block)
+	fun isDyeable(item: Item): Boolean = itemDyeLookup.containsKey(item)
+	fun getDye(block: Block): DyeOptions? = blockDyeLookup[block]
+	fun getDye(item: Item): DyeOptions? = itemDyeLookup[item]
 
-	fun getNewBlock(block: Block, dye: String): BlockState {
-		blockFamilies.forEach { (_, family) ->
-			if (family.containsValue(Registries.BLOCK.getId(block).toString()) && family.containsKey(dye))
-				return Registries.BLOCK.get(Identifier(family[dye])).defaultState
+	fun getNewBlock(block: Block, dye: DyeOptions): BlockState? {
+		blockGroups.forEach { (_, group) ->
+			if (group.containsValue(block) && group.containsKey(dye))
+				return group[dye]!!.defaultState
 		}
-		return block.defaultState
+		return null
 	}
 
-	fun getNewItem(item: Item, dye: String): Item {
-		itemFamilies.forEach { (_, family) ->
-			if (family.containsValue(Registries.ITEM.getId(item).toString()) && family.containsKey(dye))
-				return Registries.ITEM.get(Identifier(family[dye]))
+	fun getNewItem(item: Item, dye: DyeOptions): Item? {
+		itemGroups.forEach { (_, group) ->
+			if (group.containsValue(item) && group.containsKey(dye))
+				return group[dye]!!
 		}
-		return item
+		return null
 	}
+
+	private val blockGroups: HashMap<String, HashMap<DyeOptions, Block>> = HashMap()
+	private val itemGroups: HashMap<String, HashMap<DyeOptions, Item>> = HashMap()
+	private val blockDyeLookup = HashMap<Block, DyeOptions>()
+	private val itemDyeLookup = HashMap<Item, DyeOptions>()
 
 	private fun loadData(stream: InputStream) {
 		val json = JsonParser.parseReader(InputStreamReader(stream, "UTF-8")) as JsonObject
 
 		val blocks = json.getAsJsonObject("blocks")
-		blocks.keySet().forEach { familyKey ->
-			val family = blocks.getAsJsonObject(familyKey)
-			family.keySet().forEach { block ->
-				flatBlockLookup[block] = family.get(block).asString
-				if (!blockFamilies.containsKey(familyKey))
-					blockFamilies[familyKey] = mutableMapOf()
-				blockFamilies[familyKey]!![family.get(block).asString] = block
-			}
+		blocks.keySet().forEach { groupName ->
+			val pattern = blocks.getAsJsonPrimitive(groupName).asString
+			val group = HashMap<DyeOptions, Block>()
+			DyeOptions.values().forEach { dye -> resolvePattern(Registries.BLOCK, pattern, dye)?.let {
+				group[dye] = it
+				blockDyeLookup[it] = dye
+			} }
+			if (group.isNotEmpty())
+				blockGroups[groupName] = group
 		}
 
 		val items = json.getAsJsonObject("items")
-		items.keySet().forEach { familyKey ->
-			val family = items.getAsJsonObject(familyKey)
-			family.keySet().forEach { item ->
-				flatItemLookup[item] = family.get(item).asString
-				if (!itemFamilies.containsKey(familyKey))
-					itemFamilies[familyKey] = mutableMapOf()
-				itemFamilies[familyKey]!![family.get(item).asString] = item
-			}
+		items.keySet().forEach { groupName ->
+			val pattern = items.getAsJsonPrimitive(groupName).asString
+			val group = HashMap<DyeOptions, Item>()
+			DyeOptions.values().forEach { dye -> resolvePattern(Registries.ITEM, pattern, dye)?.let {
+				group[dye] = it
+				itemDyeLookup[it] = dye
+			} }
+			if (group.isNotEmpty())
+				itemGroups[groupName] = group
 		}
 	}
+
+	private fun <T : Any> resolvePattern(registry: Registry<T>, pattern: String, dye: DyeOptions) = listOfNotNull(
+		registry.get(RegistryKey.of<T>(registry.key, Identifier(pattern.replace("{color}", dye.title)))),
+		registry.get(RegistryKey.of<T>(registry.key, Identifier(pattern.replace("{color}", dye.title + "_"))))
+	).firstOrNull()
+}
+
+enum class DyeOptions(val title: String) {
+	UNCOLORED(""),
+    WHITE("white"),
+    ORANGE("orange"),
+    MAGENTA("magenta"),
+    LIGHT_BLUE("light_blue"),
+    YELLOW("yellow"),
+    LIME("lime"),
+    PINK("pink"),
+    GRAY("gray"),
+    LIGHT_GRAY("light_gray"),
+    CYAN("cyan"),
+    PURPLE("purple"),
+    BLUE("blue"),
+    BROWN("brown"),
+    GREEN("green"),
+    RED("red"),
+    BLACK("black")
 }

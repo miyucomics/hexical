@@ -11,22 +11,28 @@ import miyucomics.hexical.features.media_jar.MediaJarBlock
 import miyucomics.hexical.features.transmuting.TransmutingHelper
 import miyucomics.hexical.inits.HexicalBlocks
 import net.minecraft.item.ItemStack
+import net.minecraft.item.Items
 import net.minecraft.nbt.NbtCompound
 
 class HexicalEmi : EmiPlugin {
 	override fun register(registry: EmiRegistry) {
+		registry.addCategory(DYEING_CATEGORY)
 		registry.addCategory(TRANSMUTING_CATEGORY)
-		registry.addWorkstation(TRANSMUTING_CATEGORY, ICON)
+
+		registry.addWorkstation(TRANSMUTING_CATEGORY, TRANSMUTING_ICON)
+
 		for (recipe in registry.recipeManager.listAllOfType(TransmutingHelper.TRANSMUTING_RECIPE))
 			registry.addRecipe(TransmutingEmi(recipe))
 	}
 
 	companion object {
-		val ICON: EmiStack = EmiStack.of(ItemStack(HexicalBlocks.MEDIA_JAR_ITEM).also {
+		val DYEING_CATEGORY = EmiRecipeCategory(HexicalMain.id("dyeing"), EmiStack.of(ItemStack(Items.RED_DYE)), EmiTexture(HexicalMain.id("textures/gui/dyeing_simplified.png"), 0, 0, 16, 16, 16, 16, 16, 16))
+
+		val TRANSMUTING_ICON: EmiStack = EmiStack.of(ItemStack(HexicalBlocks.MEDIA_JAR_ITEM).also {
 			val compound = NbtCompound()
 			compound.putLong("media", MediaJarBlock.MAX_CAPACITY)
 			it.orCreateNbt.putCompound("BlockEntityTag", compound)
 		})
-		val TRANSMUTING_CATEGORY: EmiRecipeCategory = EmiRecipeCategory(HexicalMain.id("transmuting"), ICON, EmiTexture(HexicalMain.id("textures/gui/transmuting_simplified.png"), 0, 0, 16, 16, 16, 16, 16, 16))
+		val TRANSMUTING_CATEGORY = EmiRecipeCategory(HexicalMain.id("transmuting"), TRANSMUTING_ICON, EmiTexture(HexicalMain.id("textures/gui/transmuting_simplified.png"), 0, 0, 16, 16, 16, 16, 16, 16))
 	}
 }
