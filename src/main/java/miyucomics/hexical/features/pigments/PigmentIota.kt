@@ -25,7 +25,7 @@ class PigmentIota(pigment: FrozenPigment) : Iota(TYPE, pigment) {
 	}
 
 	companion object {
-		var TYPE: IotaType<PigmentIota> = object : IotaType<PigmentIota>() {
+		val TYPE: IotaType<PigmentIota> = object : IotaType<PigmentIota>() {
 			override fun color() = 0xff_c466e3.toInt()
 			override fun deserialize(tag: NbtElement, world: ServerWorld) = PigmentIota(FrozenPigment.fromNBT((tag as NbtCompound).getCompound("pigment")))
 			override fun display(tag: NbtElement): Text {

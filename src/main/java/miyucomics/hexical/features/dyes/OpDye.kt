@@ -14,8 +14,8 @@ import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.pigment.FrozenPigment
 import at.petrak.hexcasting.common.lib.HexItems
 import miyucomics.hexical.features.specklikes.Specklike
-import net.minecraft.block.*
-import net.minecraft.block.entity.ShulkerBoxBlockEntity
+import net.minecraft.block.Block
+import net.minecraft.block.BlockState
 import net.minecraft.entity.ItemEntity
 import net.minecraft.entity.mob.ShulkerEntity
 import net.minecraft.entity.passive.CatEntity
@@ -24,6 +24,7 @@ import net.minecraft.entity.passive.WolfEntity
 import net.minecraft.item.BlockItem
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
+import net.minecraft.state.property.Property
 import net.minecraft.util.DyeColor
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d
@@ -90,76 +91,21 @@ object OpDye : SpellAction {
 		}
 	}
 
-	private data class BlockSpell(val position: BlockPos, val state: BlockState, val dye: String) : RenderedSpell {
+	private data class BlockSpell(val position: BlockPos, val state: BlockState, val dye: DyeOption) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			when (state.block) {
-				is CandleBlock -> env.world.setBlockState(
-					position,
-					DyeDataHook.getNewBlock(state.block, dye)
-						.with(CandleBlock.LIT, state.get(CandleBlock.LIT))
-						.with(CandleBlock.CANDLES, state.get(CandleBlock.CANDLES))
-				)
-				is CandleCakeBlock -> env.world.setBlockState(
-					position,
-					DyeDataHook.getNewBlock(state.block, dye)
-						.with(CandleCakeBlock.LIT, state.get(CandleCakeBlock.LIT))
-				)
-				is GlazedTerracottaBlock -> env.world.setBlockState(
-					position,
-					DyeDataHook.getNewBlock(state.block, dye)
-						.with(GlazedTerracottaBlock.FACING, state.get(GlazedTerracottaBlock.FACING))
-				)
-				is SlabBlock -> env.world.setBlockState(
-					position,
-					DyeDataHook.getNewBlock(state.block, dye)
-						.with(SlabBlock.TYPE, state.get(SlabBlock.TYPE))
-						.with(SlabBlock.WATERLOGGED, state.get(SlabBlock.WATERLOGGED))
-				)
-				is StairsBlock -> env.world.setBlockState(
-					position,
-					DyeDataHook.getNewBlock(state.block, dye)
-						.with(StairsBlock.FACING, state.get(StairsBlock.FACING))
-						.with(StairsBlock.HALF, state.get(StairsBlock.HALF))
-						.with(StairsBlock.SHAPE, state.get(StairsBlock.SHAPE))
-						.with(StairsBlock.WATERLOGGED, state.get(StairsBlock.WATERLOGGED))
-				)
-				is WallBlock -> env.world.setBlockState(
-					position,
-					DyeDataHook.getNewBlock(state.block, dye)
-						.with(WallBlock.NORTH_SHAPE, state.get(WallBlock.NORTH_SHAPE))
-						.with(WallBlock.EAST_SHAPE, state.get(WallBlock.EAST_SHAPE))
-						.with(WallBlock.SOUTH_SHAPE, state.get(WallBlock.SOUTH_SHAPE))
-						.with(WallBlock.WEST_SHAPE, state.get(WallBlock.WEST_SHAPE))
-						.with(WallBlock.WATERLOGGED, state.get(WallBlock.WATERLOGGED))
-						.with(WallBlock.UP, state.get(WallBlock.UP))
-				)
-				is ShulkerBoxBlock -> {
-					val blockEntity = env.world.getBlockEntity(position)!! as ShulkerBoxBlockEntity
-					val nbt = blockEntity.createNbt()
-					env.world.setBlockState(
-						position,
-						DyeDataHook.getNewBlock(state.block, dye)
-							.with(ShulkerBoxBlock.FACING, state.get(ShulkerBoxBlock.FACING))
-					)
-					(env.world.getBlockEntity(position)!! as ShulkerBoxBlockEntity).readNbt(nbt)
-				}
-				is StainedGlassPaneBlock -> env.world.setBlockState(
-					position,
-					DyeDataHook.getNewBlock(state.block, dye)
-						.with(StainedGlassPaneBlock.NORTH, state.get(StainedGlassPaneBlock.NORTH))
-						.with(StainedGlassPaneBlock.EAST, state.get(StainedGlassPaneBlock.EAST))
-						.with(StainedGlassPaneBlock.SOUTH, state.get(StainedGlassPaneBlock.SOUTH))
-						.with(StainedGlassPaneBlock.WEST, state.get(StainedGlassPaneBlock.WEST))
-						.with(StainedGlassPaneBlock.WATERLOGGED, state.get(StainedGlassPaneBlock.WATERLOGGED))
-				)
-				else -> env.world.setBlockState(position, DyeDataHook.getNewBlock(state.block, dye))
+			var newState = DyeDataHook.getNewBlock(state.block, dye)!!
+			state.properties.filter(newState.properties::contains).forEach { property ->
+				@Suppress("UNCHECKED_CAST")
+				val typedProperty: Property<Comparable<Any>> = property as Property<Comparable<Any>>
+				newState = newState.with(typedProperty, state.get(typedProperty))
 			}
+			env.world.setBlockState(position, newState)
 		}
 	}
 
-	private data class BlockItemSpell(val item: ItemEntity, val block: Block, val dye: String) : RenderedSpell {
+	private data class BlockItemSpell(val item: ItemEntity, val block: Block, val dye: DyeOption) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			val newStack = ItemStack(DyeDataHook.getNewBlock(block, dye).block.asItem(), item.stack.count)
+			val newStack = ItemStack(DyeDataHook.getNewBlock(block, dye)!!.block.asItem(), item.stack.count)
 			newStack.nbt = item.stack.nbt
 			item.stack = newStack
 		}
@@ -171,7 +117,7 @@ object OpDye : SpellAction {
 		}
 	}
 
-	private data class ItemSpell(val entity: ItemEntity, val item: Item, val dye: String) : RenderedSpell {
+	private data class ItemSpell(val entity: ItemEntity, val item: Item, val dye: DyeOption) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
 			val newStack = ItemStack(DyeDataHook.getNewItem(item, dye), entity.stack.count)
 			newStack.nbt = entity.stack.nbt

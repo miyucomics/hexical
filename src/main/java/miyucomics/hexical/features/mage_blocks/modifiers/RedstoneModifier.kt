@@ -22,7 +22,7 @@ class RedstoneModifier : MageBlockModifier {
 	override fun serialize(): NbtElement = NbtInt.of(power)
 
 	companion object {
-		var TYPE: MageBlockModifierType<RedstoneModifier> = object : MageBlockModifierType<RedstoneModifier>() {
+		val TYPE: MageBlockModifierType<RedstoneModifier> = object : MageBlockModifierType<RedstoneModifier>() {
 			override val argc: Int = 1
 			override val id = HexicalMain.id("redstone")
 			override fun construct(args: List<Iota>) = RedstoneModifier().also { it.power = args.getPositiveIntUnderInclusive(1, 15, 2) }

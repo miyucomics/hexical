@@ -19,7 +19,7 @@ class VolatileModifier : MageBlockModifier {
 	override fun serialize(): NbtElement = NbtByte.of(false)
 
 	companion object {
-		var TYPE: MageBlockModifierType<VolatileModifier> = object : MageBlockModifierType<VolatileModifier>() {
+		val TYPE: MageBlockModifierType<VolatileModifier> = object : MageBlockModifierType<VolatileModifier>() {
 			override val argc: Int = 0
 			override val id = HexicalMain.id("volatile")
 			override fun construct(args: List<Iota>) = VolatileModifier()

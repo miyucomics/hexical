@@ -31,7 +31,7 @@ class LifespanModifier : MageBlockModifier {
 	}
 
 	companion object {
-		var TYPE: MageBlockModifierType<LifespanModifier> = object : MageBlockModifierType<LifespanModifier>() {
+		val TYPE: MageBlockModifierType<LifespanModifier> = object : MageBlockModifierType<LifespanModifier>() {
 			override val argc: Int = 1
 			override val id = HexicalMain.id("lifespan")
 			override fun construct(args: List<Iota>) = LifespanModifier().also { it.lifespan = args.getPositiveInt(1, 2) }

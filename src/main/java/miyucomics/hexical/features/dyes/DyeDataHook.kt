@@ -23,7 +23,14 @@ object DyeDataHook : InitHook() {
 		ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(object :
 			SimpleSynchronousResourceReloadListener {
 			override fun getFabricId() = HexicalMain.id("dyes")
-			override fun reload(manager: ResourceManager) = manager.findResources("dyes") { path -> path.path.endsWith(".json") }.keys.forEach { id -> loadData(manager.getResource(id).get().inputStream) }
+			override fun reload(manager: ResourceManager) {
+				blockGroups.clear()
+				itemGroups.clear()
+				blockDyeLookup.clear()
+				itemDyeLookup.clear()
+				manager.findResources("dyes") { path -> path.path.endsWith(".json") }.keys.forEach { id -> loadData(manager.getResource(id).get().inputStream) }
+				println(blockDyeLookup)
+			}
 		})
 	}
 
