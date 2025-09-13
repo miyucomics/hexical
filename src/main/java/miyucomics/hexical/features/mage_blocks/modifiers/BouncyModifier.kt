@@ -19,7 +19,7 @@ class BouncyModifier : MageBlockModifier {
 	override fun serialize(): NbtElement = NbtByte.of(false)
 
 	companion object {
-		var TYPE: MageBlockModifierType<BouncyModifier> = object : MageBlockModifierType<BouncyModifier>() {
+		val TYPE: MageBlockModifierType<BouncyModifier> = object : MageBlockModifierType<BouncyModifier>() {
 			override val argc: Int = 0
 			override val id = HexicalMain.id("bouncy")
 			override fun construct(args: List<Iota>) = BouncyModifier()
