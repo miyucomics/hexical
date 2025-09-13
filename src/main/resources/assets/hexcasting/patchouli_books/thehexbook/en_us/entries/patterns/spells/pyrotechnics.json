@@ -21,7 +21,7 @@
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:conjure_firework",
 			"anchor": "hexical:conjure_firework",
-			"input": "vec, vec, num, num, list of dyes, list of dyes, bool, bool",
+			"input": "vec, vec, num, num, list of vec, list of vec, bool, bool",
 			"output": "",
 			"text": "hexical.page.conjure_firework.summary"
 		},
