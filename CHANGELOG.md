@@ -115,6 +115,7 @@
 - removed limitation on arch lamps per person
 - removed Alteration Purification
 - removed Pocket Reflection II
+- reworked dyeing backend
 - reworked prestidigitation backend
 - reworked mage block modifier backend
 
