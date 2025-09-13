@@ -29,10 +29,10 @@ object CharmUtilities {
 	}
 
 	@JvmStatic
-	fun shouldIntercept(stack: ItemStack, button: Int, sneaking: Boolean): Boolean {
+	fun shouldIntercept(stack: ItemStack, button: Int, sneaking: Boolean, release: Boolean): Boolean {
 		val charmed = getCompound(stack)
-		val inputs = if (sneaking) charmed.getIntArray("sneak_inputs") else charmed.getIntArray("normal_inputs")
-		return inputs.contains(button)
+		val inputs = charmed.getIntArray("${if (sneaking) "sneak" else "normal"}_${if (release) "release" else "inputs"}")
+		return inputs != null && inputs.contains(button)
 	}
 
 	fun removeCharm(stack: ItemStack) {
