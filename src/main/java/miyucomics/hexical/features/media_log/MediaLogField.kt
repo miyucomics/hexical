@@ -52,7 +52,7 @@ class MediaLogField : PlayerField {
 	}
 
 	fun fromNbt(log: NbtCompound) {
-		log.getList("patterns", NbtCompound.COMPOUND_TYPE.toInt()).forEach { pattern -> patterns.add(HexPattern.fromNBT(pattern as NbtCompound)) }
+		log.getList("patterns", NbtCompound.COMPOUND_TYPE.toInt()).forEach { pattern -> try { patterns.add(HexPattern.fromNBT(pattern as NbtCompound)) } catch (e: Exception) {} }
 		log.getList("stack", NbtCompound.STRING_TYPE.toInt()).forEach { iota -> Text.Serializer.fromJson((iota as NbtString).asString())?.let { stack.add(it) } }
 		this.mishap = Text.Serializer.fromJson(log.getString("mishap")) ?: Text.empty()
 	}

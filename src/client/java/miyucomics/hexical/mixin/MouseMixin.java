@@ -29,25 +29,12 @@ public class MouseMixin {
 	private void onMouseButton(long window, int button, int action, int mods, CallbackInfo ci) {
 		if (client.currentScreen != null || client.getOverlay() != null) return;
 		if (client.player == null || client.player.isSpectator()) return;
-		if (action != GLFW.GLFW_PRESS) return;
-
-		int buttonPressed = switch (button) {
-			case GLFW.GLFW_MOUSE_BUTTON_1 -> 0; // left
-			case GLFW.GLFW_MOUSE_BUTTON_2 -> 1; // right
-			case GLFW.GLFW_MOUSE_BUTTON_3 -> 2; // middle
-			case GLFW.GLFW_MOUSE_BUTTON_4 -> 3;
-			case GLFW.GLFW_MOUSE_BUTTON_5 -> 4;
-			case GLFW.GLFW_MOUSE_BUTTON_6 -> 5;
-			case GLFW.GLFW_MOUSE_BUTTON_7 -> 6;
-			case GLFW.GLFW_MOUSE_BUTTON_8 -> 7;
-			default -> -1;
-		};
-
-		if (buttonPressed == -1)
-			return;
+		if (action != GLFW.GLFW_PRESS && action != GLFW.GLFW_RELEASE) return;
+		if (button > GLFW.GLFW_MOUSE_BUTTON_8) return;
+		int pressed = button - GLFW.GLFW_MOUSE_BUTTON_1;
 
 		for (Pair<Hand, ItemStack> pair : CharmUtilities.getUseableCharmedItems(client.player)) {
-			if (!CharmUtilities.shouldIntercept(pair.getSecond(), buttonPressed, client.player.isSneaking()))
+			if (!CharmUtilities.shouldIntercept(pair.getSecond(), pressed, client.player.isSneaking(), action == GLFW.GLFW_RELEASE))
 				continue;
 
 			if (!(pair.getSecond().getItem() instanceof CurioItem)) {
@@ -56,10 +43,10 @@ public class MouseMixin {
 			}
 
 			PacketByteBuf buf = PacketByteBufs.create();
-			buf.writeInt(buttonPressed);
+			buf.writeInt(pressed);
 			buf.writeInt(pair.getFirst().ordinal());
 			ClientPlayNetworking.send(ServerCharmedUseReceiver.CHARMED_ITEM_USE_CHANNEL, buf);
-			ci.cancel();
+			if (action == GLFW.GLFW_PRESS) ci.cancel();
 			return;
 		}
 	}

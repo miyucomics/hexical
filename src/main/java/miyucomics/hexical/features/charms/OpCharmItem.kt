@@ -23,34 +23,39 @@ object OpCharmItem : SpellAction {
 		if (CharmUtilities.isStackCharmed(item.stack))
 			throw MishapBadEntity.of(item, "uncharmed_item")
 		val hex = args.getList(1, argc).toList()
-		CastingUtils.assertNoTruename(args[1], env)
+		CastingUtils.assertNoTruename(args[1], env) // no fun allowed :Ɛ
 		val battery = args.getPositiveDouble(2, argc)
 
-		val normalInputs = args.getList(3, argc).map {
+		val normalValues = args.getList(3, argc).map {
 			if (it !is DoubleIota) throw MishapInvalidIota.of(args[3], 1, "number_list")
-			it.double.toInt()
+			it.double
 		}
 
-		val sneakInputs = args.getList(4, argc).map {
+		val sneakValues = args.getList(4, argc).map {
 			if (it !is DoubleIota) throw MishapInvalidIota.of(args[4], 0, "number_list")
-			it.double.toInt()
+			it.double
 		}
+
+		val (normalInputs, releaseInputs) = normalValues.partition { 1 / it >= 0 }
+		val (sneakInputs, sneakReleaseInputs) = sneakValues.partition { 1 / it >= 0 }
 
 		return SpellAction.Result(
-			Spell(item.stack, hex, (battery * MediaConstants.DUST_UNIT).toLong(), normalInputs, sneakInputs),
+			Spell(item.stack, hex, (battery * MediaConstants.DUST_UNIT).toLong(), normalInputs.map { it.toInt() }, sneakInputs.map { it.toInt() }, releaseInputs.map { (-it).toInt() }, sneakReleaseInputs.map { (-it).toInt() }),
 			(3 * MediaConstants.CRYSTAL_UNIT + MediaConstants.DUST_UNIT * battery.toInt()) * item.stack.count,
 			listOf(ParticleSpray.burst(item.pos, 1.0))
 		)
 	}
 
-	private data class Spell(val stack: ItemStack, val hex: List<Iota>, val battery: Long, val normalInputs: List<Int>, val sneakInputs: List<Int>) : RenderedSpell {
+	private data class Spell(val stack: ItemStack, val hex: List<Iota>, val battery: Long, val normalInputs: List<Int>, val sneakInputs: List<Int>, val releaseInputs: List<Int>, val sneakReleaseInputs: List<Int>) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
 			stack.orCreateNbt.putCompound("charmed", NbtCompound().also {
 				it.putLong("media", battery)
 				it.putLong("max_media", battery)
 				it.putList("hex", HexSerialization.serializeHex(hex))
-				it.putIntArray("normal_inputs", normalInputs)
-				it.putIntArray("sneak_inputs", sneakInputs)
+				if (!normalInputs.isEmpty()) it.putIntArray("normal_inputs", normalInputs)
+				if (!sneakInputs.isEmpty()) it.putIntArray("sneak_inputs", sneakInputs)
+				if (!releaseInputs.isEmpty()) it.putIntArray("normal_release", releaseInputs)
+				if (!sneakReleaseInputs.isEmpty()) it.putIntArray("sneak_inputs", sneakReleaseInputs)
 			})
 		}
 	}
