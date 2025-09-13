@@ -24,4 +24,8 @@ enum class DyeOption(val replacement: String, val color: Int, val dyeColor: DyeC
 	BLACK("black", 0x1D1D21, DyeColor.BLACK);
 
 	val coloredText: Text get() = Text.translatable("dye.hexical.${name.lowercase()}").setStyle(Style.EMPTY.withColor(color))
+
+	companion object {
+		fun fromDyeColor(dyeColor: DyeColor?) = enumValues<DyeOption>().first { it.dyeColor == dyeColor }
+	}
 }

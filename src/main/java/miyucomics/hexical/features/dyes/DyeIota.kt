@@ -18,7 +18,7 @@ class DyeIota(dye: DyeOption) : Iota(TYPE, dye) {
 	override fun serialize(): NbtElement = NbtInt.of(dye.ordinal)
 
 	companion object {
-		var TYPE: IotaType<DyeIota> = object : IotaType<DyeIota>() {
+		val TYPE: IotaType<DyeIota> = object : IotaType<DyeIota>() {
 			override fun color() = -1
 			override fun deserialize(tag: NbtElement, world: ServerWorld) = DyeIota(enumValues<DyeOption>()[tag.asInt])
 			override fun display(tag: NbtElement): Text = enumValues<DyeOption>()[tag.asInt].coloredText
