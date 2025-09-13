@@ -87,6 +87,7 @@
 - changed lamp recharge patterns to not need a mind
 - changed book layout slightly
 - changed some textures
+- changed firework spell to use vectors for colors rather than dyes
 - changed Conjure Spike cost from five dust to one dust
 - fixed bug where small animated scrolls do not render
 - fixed bug where grimoire does not work in non-hotbar
