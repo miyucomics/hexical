@@ -124,6 +124,7 @@ object HopperEndpointRegistry : InitHook() {
 	private inline fun <reified T : Entity> registerInventoryEntity(crossinline getInventory: (T) -> Inventory) {
 		register { iota, env, slot ->
 			val entity = (iota as? EntityIota)?.entity as? T ?: return@register null
+			if (entity.isRemoved) return@register null
 			env.assertEntityInRange(entity)
 			getSlottedInventory(getInventory(entity), slot, iota)
 		}
@@ -132,6 +133,7 @@ object HopperEndpointRegistry : InitHook() {
 	private inline fun <reified T : Entity> registerEntityEndpoint(crossinline endpoint: (T) -> HopperEndpoint) {
 		register { iota, env, _ ->
 			val entity = (iota as? EntityIota)?.entity as? T ?: return@register null
+			if (entity.isRemoved) return@register null
 			env.assertEntityInRange(entity)
 			endpoint(entity)
 		}
