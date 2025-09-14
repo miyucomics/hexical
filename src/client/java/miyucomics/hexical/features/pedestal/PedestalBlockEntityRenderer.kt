@@ -23,7 +23,7 @@ class PedestalBlockEntityRenderer(context: BlockEntityRendererFactory.Context) :
 
 		val time = pedestal.world!!.time + tickDelta
 		val offset = Vec3d.of(pedestal.normalVector).multiply(PedestalBlockEntity.HEIGHT)
-		val lightAbove = WorldRenderer.getLightmapCoordinates(pedestal.world, pedestal.pos.up())
+		val light = WorldRenderer.getLightmapCoordinates(pedestal.world, pedestal.pos.add(pedestal.normalVector))
 		random.setSeed((if (pedestal.heldStack.isEmpty) 187 else Item.getRawId(pedestal.heldStack.item) + pedestal.heldStack.damage).toLong())
 		val bakedModel = itemRenderer.getModel(pedestal.heldStack, pedestal.world, null, 0)
 		val hasDepth = bakedModel.hasDepth()
@@ -57,7 +57,7 @@ class PedestalBlockEntityRenderer(context: BlockEntityRendererFactory.Context) :
 				}
 			}
 
-			itemRenderer.renderItem(pedestal.heldStack, ModelTransformationMode.GROUND, lightAbove, OverlayTexture.DEFAULT_UV, matrices, vertices, pedestal.world, 0)
+			itemRenderer.renderItem(pedestal.heldStack, ModelTransformationMode.GROUND, light, OverlayTexture.DEFAULT_UV, matrices, vertices, pedestal.world, 0)
 			matrices.pop()
 			if (!hasDepth)
 				matrices.translate(0.0f * scaleX, 0.0f * scaleY, Z_LAYER_OFFSET * scaleZ)
