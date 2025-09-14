@@ -33,7 +33,7 @@ class AnimatedPatternTooltipComponent(tooltip: AnimatedPatternTooltip) : Tooltip
 		matrices.translate(0f, 0f, 100f)
 		matrices.scale(RENDER_SIZE, RENDER_SIZE, 1f)
 
-		val patternlike = HexPatternLike.of(patterns[ClientStorage.ticks % patterns.size])
+		val patternlike = HexPatternLike.of(patterns[(ClientStorage.ticks / 20) % patterns.size])
 		val patternSettings = WorldlyPatternRenderHelpers.WORLDLY_SETTINGS_WOBBLY
 		val oldShader = RenderSystem.getShader()
 		val staticPoints = HexPatternPoints.getStaticPoints(patternlike, patternSettings, 0.0)
