@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack
 import net.minecraft.item.Items
 import net.minecraft.recipe.Ingredient
 
-object Transmutations {
+object TransmutationProvider {
 	val transmutationRecipeJsons = mutableListOf<TransmutingJsonProvider>()
 	val transmutationRecipePages = mutableListOf<JsonObject>()
 
@@ -26,15 +26,11 @@ object Transmutations {
 
 	fun makeTransmutation(name: String, original: Item, new: Item, cost: Long) {
 		transmutationRecipeJsons.add(TransmutingJsonProvider(HexicalMain.id("transmuting/$name"), Ingredient.ofItems(original), listOf(ItemStack(new)), cost))
-		transmutationRecipePages.add(createTransmutingPage(name))
-	}
-
-	fun createTransmutingPage(name: String): JsonObject {
-		val obj = JsonObject()
-		obj.addProperty("type", "hexcasting:transmuting")
-		obj.addProperty("recipe", "hexical:transmuting/$name")
-		obj.addProperty("title", "hexical.recipe.$name.header")
-		obj.addProperty("text", "hexical.recipe.$name.text")
-		return obj
+		transmutationRecipePages.add(JsonObject().apply {
+			addProperty("type", "hexcasting:transmuting")
+			addProperty("recipe", "hexical:transmuting/$name")
+			addProperty("title", "hexical.recipe.$name.header")
+			addProperty("text", "hexical.recipe.$name.text")
+		})
 	}
 }

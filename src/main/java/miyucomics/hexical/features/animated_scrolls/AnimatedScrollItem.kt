@@ -22,7 +22,6 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
 import net.minecraft.world.event.GameEvent
 import java.util.*
-import kotlin.collections.map
 
 class AnimatedScrollItem(private val size: Int) : Item(Settings()), IotaHolderItem {
 	private fun canPlaceOn(player: PlayerEntity, side: Direction, stack: ItemStack, pos: BlockPos) = !side.axis.isVertical && player.canPlaceOn(pos, side, stack)

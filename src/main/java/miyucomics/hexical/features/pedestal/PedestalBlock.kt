@@ -8,10 +8,12 @@ import net.minecraft.block.*
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.block.entity.BlockEntityTicker
 import net.minecraft.block.entity.BlockEntityType
+import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.ai.pathing.NavigationType
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.inventory.Inventory
 import net.minecraft.item.ItemPlacementContext
+import net.minecraft.item.ItemStack
 import net.minecraft.screen.ScreenHandler
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.state.StateManager
@@ -19,6 +21,7 @@ import net.minecraft.state.property.DirectionProperty
 import net.minecraft.state.property.Properties
 import net.minecraft.util.ActionResult
 import net.minecraft.util.Hand
+import net.minecraft.util.ItemScatterer
 import net.minecraft.util.hit.BlockHitResult
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
@@ -35,19 +38,31 @@ class PedestalBlock : BlockCircleComponent(Settings.copy(Blocks.DEEPSLATE_TILES)
 			.with(FACING, Direction.NORTH)
 	}
 
+	override fun onPlaced(world: World, pos: BlockPos, state: BlockState, placer: LivingEntity?, stack: ItemStack) {
+		(world.getBlockEntity(pos) as PedestalBlockEntity).onBlockPlace()
+		super.onPlaced(world, pos, state, placer, stack)
+	}
+
 	override fun onStateReplaced(state: BlockState, world: World, pos: BlockPos, newState: BlockState, moved: Boolean) {
-		val blockEntity = world.getBlockEntity(pos)
-		if (blockEntity is PedestalBlockEntity && newState.block != this)
-			blockEntity.onBlockBreak()
+		if (state.isOf(newState.block))
+			return
+		val pedestal = world.getBlockEntity(pos)
+		if (pedestal is PedestalBlockEntity) {
+			ItemScatterer.spawn(world, pos, pedestal)
+			world.updateComparators(pos, this)
+			pedestal.onBlockBreak()
+		}
 		super.onStateReplaced(state, world, pos, newState, moved)
 	}
 
 	override fun canPathfindThrough(state: BlockState, world: BlockView, pos: BlockPos, navigationType: NavigationType) = false
 
 	override fun onUse(state: BlockState, world: World, pos: BlockPos, player: PlayerEntity, hand: Hand, hit: BlockHitResult): ActionResult {
-		val blockEntity = world.getBlockEntity(pos)
-		if (blockEntity is PedestalBlockEntity)
-			return blockEntity.onUse(player, hand)
+		val pedestal = world.getBlockEntity(pos)
+		if (pedestal is PedestalBlockEntity) {
+			pedestal.onUse(player, hand)
+			return ActionResult.SUCCESS
+		}
 		return ActionResult.PASS
 	}
 
@@ -72,7 +87,7 @@ class PedestalBlock : BlockCircleComponent(Settings.copy(Blocks.DEEPSLATE_TILES)
 		return exits
 	}
 
-	override fun particleHeight(pos: BlockPos, state: BlockState, world: World) = PedestalBlockEntity.HEIGHT
+	override fun particleHeight(pos: BlockPos, state: BlockState, world: World) = PedestalBlockEntity.HEIGHT.toFloat()
 	override fun normalDir(pos: BlockPos, state: BlockState, world: World, recursionLeft: Int): Direction = state.get(FACING)
 
 	override fun getPlacementState(ctx: ItemPlacementContext): BlockState = super.getPlacementState(ctx)!!.with(FACING, ctx.side)
@@ -86,7 +101,7 @@ class PedestalBlock : BlockCircleComponent(Settings.copy(Blocks.DEEPSLATE_TILES)
 	}
 
 	override fun createBlockEntity(pos: BlockPos, state: BlockState) = PedestalBlockEntity(pos, state)
-	override fun <T : BlockEntity> getTicker(world: World, state: BlockState, type: BlockEntityType<T>): BlockEntityTicker<T> = BlockEntityTicker { world1, pos, _, blockEntity -> (blockEntity as PedestalBlockEntity).tick(world1) }
+	override fun <T : BlockEntity> getTicker(world: World, state: BlockState, type: BlockEntityType<T>): BlockEntityTicker<T> = BlockEntityTicker { world1, _, _, blockEntity -> (blockEntity as PedestalBlockEntity).tick(world1) }
 
 	companion object {
 		val FACING: DirectionProperty = Properties.FACING

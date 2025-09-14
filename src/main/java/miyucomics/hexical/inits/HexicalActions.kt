@@ -36,7 +36,6 @@ import miyucomics.hexical.features.confetti.OpConfetti
 import miyucomics.hexical.features.conjure.OpConjureEntity
 import miyucomics.hexical.features.conjure.OpConjureFlower
 import miyucomics.hexical.features.conjure.OpConjureLight
-import miyucomics.hexical.features.conjure.OpConjureSpike
 import miyucomics.hexical.features.dyes.OpDye
 import miyucomics.hexical.features.dyes.OpGetDye
 import miyucomics.hexical.features.dyes.OpTranslateDye
@@ -59,8 +58,12 @@ import miyucomics.hexical.features.lore.OpItemLore
 import miyucomics.hexical.features.lore.OpItemName
 import miyucomics.hexical.features.mage_blocks.OpConfigureMageBlock
 import miyucomics.hexical.features.mage_blocks.OpConjureMageBlock
+import miyucomics.hexical.features.mage_blocks.OpDisguiseMageBlock
 import miyucomics.hexical.features.mage_blocks.OpResetMageBlock
-import miyucomics.hexical.features.mage_blocks.modifiers.*
+import miyucomics.hexical.features.mage_blocks.modifiers.BouncyModifier
+import miyucomics.hexical.features.mage_blocks.modifiers.LifespanModifier
+import miyucomics.hexical.features.mage_blocks.modifiers.RedstoneModifier
+import miyucomics.hexical.features.mage_blocks.modifiers.VolatileModifier
 import miyucomics.hexical.features.magic_missile.OpMagicMissile
 import miyucomics.hexical.features.misc_actions.*
 import miyucomics.hexical.features.pattern_manipulation.*
@@ -68,6 +71,7 @@ import miyucomics.hexical.features.periwinkle.OpCompelSniffer
 import miyucomics.hexical.features.pigments.OpSamplePigment
 import miyucomics.hexical.features.pigments.OpTakeOnPigment
 import miyucomics.hexical.features.pigments.OpToPigment
+import miyucomics.hexical.features.piston.OpPiston
 import miyucomics.hexical.features.prestidigitation.OpPrestidigitation
 import miyucomics.hexical.features.pyrotechnics.OpConjureFirework
 import miyucomics.hexical.features.pyrotechnics.OpSimulateFirework
@@ -83,6 +87,7 @@ import miyucomics.hexical.features.specklikes.mesh.OpReadMesh
 import miyucomics.hexical.features.specklikes.mesh.OpWeaveMesh
 import miyucomics.hexical.features.specklikes.speck.OpConjureSpeck
 import miyucomics.hexical.features.specklikes.speck.OpIotaSpeck
+import miyucomics.hexical.features.spike.OpConjureSpike
 import miyucomics.hexical.features.telepathy.*
 import miyucomics.hexical.features.wristpocket.*
 import net.minecraft.entity.EntityType
@@ -98,7 +103,7 @@ import net.minecraft.sound.SoundEvents
 object HexicalActions {
 	fun init() {
 		register("normalize_scroll", "wqwawqwqawawa", HexDir.SOUTH_WEST, OpAlterScroll { it.setState(0) })
-		register("age_scroll", "wqwawqwqawwwdwdwwwa", HexDir.SOUTH_WEST, OpAlterScroll { it.setState(1) })
+		register("age_scroll", "wqwawqwqawwddwwa", HexDir.SOUTH_WEST, OpAlterScroll { it.setState(1) })
 		register("vanish_scroll", "wqwawqwqaqqa", HexDir.SOUTH_WEST, OpAlterScroll { it.setState(2) })
 		register("color_scroll", "wqwawqwqawawaedd", HexDir.SOUTH_WEST, OpColorScroll)
 		register("glow_scroll", "wqwawqwqawawaewdwdw", HexDir.SOUTH_WEST, OpAlterScroll { it.toggleGlow() })
@@ -146,7 +151,7 @@ object HexicalActions {
 		register("send_telepathy", "qqqqwaqa", HexDir.EAST, OpSendTelepathy)
 		register("shout_telepathy", "daqqqqwa", HexDir.EAST, OpShoutTelepathy)
 		register("pling", "eqqqada", HexDir.NORTH_EAST, OpHallucinateSound(Registries.SOUND_EVENT.getEntry(SoundEvents.ENTITY_PLAYER_LEVELUP)))
-		register("click", "eqqadaq", HexDir.NORTH_EAST, OpHallucinateSound(Registries.SOUND_EVENT.getEntry(SoundEvents.UI_BUTTON_CLICK.comp_349())))
+		register("click", "eqqadaq", HexDir.NORTH_EAST, OpHallucinateSound(Registries.SOUND_EVENT.getEntry(SoundEvents.UI_BUTTON_CLICK.value())))
 		register("left_click", "qadee", HexDir.NORTH_EAST, OpGetKeybind("key.attack"))
 		register("right_click", "edaqq", HexDir.NORTH_WEST, OpGetKeybind("key.use"))
 		register("moving_up", "aqaddq", HexDir.SOUTH_EAST, OpGetKeybind("key.forward"))
@@ -163,11 +168,12 @@ object HexicalActions {
 		register("clear_shelf", "edeedade", HexDir.SOUTH_WEST, OpClearAkashicShelf)
 
 		register("conjure_mage_block", "dee", HexDir.NORTH_WEST, OpConjureMageBlock)
-		register("reset_mage_block", "deeaw", HexDir.NORTH_WEST, OpResetMageBlock)
+		register("reset_mage_block", "deeeaw", HexDir.NORTH_WEST, OpResetMageBlock)
+		register("disguise_mage_block", "deeadw", HexDir.NORTH_WEST, OpDisguiseMageBlock)
+		register("tweak_mage_block", "deeadwd", HexDir.NORTH_WEST, OpDisguiseMageBlock)
 		register("modify_block_bouncy", "deeqa", HexDir.NORTH_WEST, OpConfigureMageBlock(BouncyModifier.TYPE))
 		register("modify_block_ephemeral", "deewwaawd", HexDir.NORTH_WEST, OpConfigureMageBlock(LifespanModifier.TYPE))
 		register("modify_block_energized", "deewad", HexDir.NORTH_WEST, OpConfigureMageBlock(RedstoneModifier.TYPE))
-		register("modify_block_replaceable", "deewqaqqqqq", HexDir.NORTH_WEST, OpConfigureMageBlock(ReplaceableModifier.TYPE))
 		register("modify_block_volatile", "deewedeeeee", HexDir.NORTH_WEST, OpConfigureMageBlock(VolatileModifier.TYPE))
 
 		register("autograph", "eeeeeww", HexDir.WEST, OpAutograph)
@@ -244,6 +250,7 @@ object HexicalActions {
 
 		register("spike", "qdqdqdqdww", HexDir.NORTH_EAST, OpConjureSpike)
 
+		register("piston", "wqwawqwqqqeqq", HexDir.SOUTH_WEST, OpPiston)
 		register("dispense", "wqwawqwddaeeead", HexDir.SOUTH_WEST, OpDispense)
 		register("smelt", "qwqqadadadewewewe", HexDir.SOUTH_EAST, OpCook(RecipeType.SMELTING, "target.smelting"))
 		register("roast", "aqqwwqqawdadedad", HexDir.NORTH_WEST, OpCook(RecipeType.CAMPFIRE_COOKING, "target.roasting"))

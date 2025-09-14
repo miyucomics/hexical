@@ -61,7 +61,7 @@ data class DimensionalLesserSentinelInstance(var lesserSentinels: MutableList<Ve
 			val lesserSentinels = mutableListOf<Vec3d>()
 			val positions = compound.getList("positional", NbtElement.DOUBLE_TYPE.toInt()).toMutableList()
 			while (positions.isNotEmpty())
-				lesserSentinels.add(Vec3d(positions.removeFirst().asDouble, positions.removeFirst().asDouble, positions.removeFirst().asDouble))
+				lesserSentinels.add(Vec3d(positions.removeAt(0).asDouble, positions.removeAt(0).asDouble, positions.removeAt(0).asDouble))
 			return DimensionalLesserSentinelInstance(lesserSentinels, RegistryKey.of(RegistryKeys.WORLD, Identifier(compound.getString("dimension"))))
 		}
 	}

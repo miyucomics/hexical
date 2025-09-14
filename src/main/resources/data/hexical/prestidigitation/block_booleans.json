@@ -1,6 +1,6 @@
 {
-	"minecraft:daylight_dector": "inverted",
-	"minecraft:redstone_repeater": "locked",
+	"minecraft:daylight_detector": "inverted",
+	"minecraft:repeater": "locked",
 	"minecraft:redstone_lamp": "lit",
 	"minecraft:lever": "powered"
 }
