@@ -24,17 +24,15 @@ class OpCook<T : AbstractCookingRecipe>(private val recipeType: RecipeType<T>, p
 			.firstOrNull()
 			?: throw MishapBadItem.of(item, mishapMessage)
 
-		return SpellAction.Result(Spell(recipe, item), MediaConstants.DUST_UNIT * recipe.cookTime / 200, listOf())
+		return SpellAction.Result(Spell(recipe, item), MediaConstants.DUST_UNIT * recipe.cookTime / 200 * item.stack.count, listOf())
 	}
 
 	private data class Spell(val recipe: AbstractCookingRecipe, val item: ItemEntity) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			val stack = item.stack
-			val result = recipe.craft(SimpleInventory(stack), DynamicRegistryManager.EMPTY)
-			result.count *= stack.count
-			stack.count = 0
-			val resultItem = ItemEntity(env.world, item.x, item.y, item.z, result)
-			env.world.spawnEntity(resultItem)
+			val input = item.stack.copyAndEmpty()
+			val result = recipe.craft(SimpleInventory(input), DynamicRegistryManager.EMPTY)
+			result.count *= input.count
+			env.world.spawnEntity(ItemEntity(env.world, item.x, item.y, item.z, result))
 		}
 	}
 }
