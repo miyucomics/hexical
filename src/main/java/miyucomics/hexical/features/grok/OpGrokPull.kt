@@ -3,9 +3,11 @@ package miyucomics.hexical.features.grok
 import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.eval.env.PlayerBasedCastEnv
-import at.petrak.hexcasting.api.casting.iota.GarbageIota
 import at.petrak.hexcasting.api.casting.iota.Iota
+import at.petrak.hexcasting.api.casting.iota.ListIota
+import at.petrak.hexcasting.api.casting.iota.NullIota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster
+import at.petrak.hexcasting.api.casting.mishaps.MishapOthersName
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.Hand
@@ -17,19 +19,8 @@ object OpGrokPull : ConstMediaAction {
 			throw MishapBadCaster()
 		val player = env.castingEntity as ServerPlayerEntity
 		val image = IXplatAbstractions.INSTANCE.getStaffcastVM(player, Hand.MAIN_HAND).image
-
-		var newIota: Iota
-		val newImage = if (image.parenCount == 0) {
-			val stack = image.stack.toMutableList()
-			newIota = stack.removeLastOrNull() ?: GarbageIota()
-			image.copy(stack = stack)
-		} else {
-			val parenthesized = image.parenthesized.toMutableList()
-			newIota = parenthesized.removeLastOrNull()?.iota ?: GarbageIota()
-			image.copy(parenthesized = parenthesized)
-		}
-		IXplatAbstractions.INSTANCE.setStaffcastImage(player, newImage)
-
-		return listOf(newIota)
+		val stack = image.stack.map { if (MishapOthersName.getTrueNameFromDatum(it, env.castingEntity as? ServerPlayerEntity) == null) it else NullIota() }
+		val parentheized = image.parenthesized.map { if (MishapOthersName.getTrueNameFromDatum(it.iota, env.castingEntity as? ServerPlayerEntity) == null) it.iota else NullIota() }
+		return listOf(ListIota(stack), ListIota(parentheized))
 	}
 }

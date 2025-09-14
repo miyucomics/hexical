@@ -51,10 +51,10 @@ class MediaLogField : PlayerField {
 		compound.putCompound("media_log", toNbt())
 	}
 
-	fun fromNbt(mediaLog: NbtCompound) {
-		mediaLog.getList("patterns", NbtCompound.COMPOUND_TYPE.toInt()).forEach { pattern -> patterns.add(HexPattern.fromNBT(pattern as NbtCompound)) }
-		mediaLog.getList("stack", NbtCompound.STRING_TYPE.toInt()).forEach { iota -> stack.add(Text.Serializer.fromJson((iota as NbtString).asString())!!) }
-		this.mishap = Text.Serializer.fromJson(mediaLog.getString("mishap")) ?: Text.empty()
+	fun fromNbt(log: NbtCompound) {
+		log.getList("patterns", NbtCompound.COMPOUND_TYPE.toInt()).forEach { pattern -> patterns.add(HexPattern.fromNBT(pattern as NbtCompound)) }
+		log.getList("stack", NbtCompound.STRING_TYPE.toInt()).forEach { iota -> Text.Serializer.fromJson((iota as NbtString).asString())?.let { stack.add(it) } }
+		this.mishap = Text.Serializer.fromJson(log.getString("mishap")) ?: Text.empty()
 	}
 
 	fun toNbt(): NbtCompound {

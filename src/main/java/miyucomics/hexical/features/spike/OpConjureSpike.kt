@@ -1,4 +1,4 @@
-package miyucomics.hexical.features.conjure
+package miyucomics.hexical.features.spike
 
 import at.petrak.hexcasting.api.casting.ParticleSpray
 import at.petrak.hexcasting.api.casting.RenderedSpell
@@ -10,7 +10,6 @@ import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadBlock
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.misc.MediaConstants
-import miyucomics.hexical.features.spike.SpikeEntity
 import miyucomics.hexical.inits.HexicalEntities
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.util.math.BlockPos

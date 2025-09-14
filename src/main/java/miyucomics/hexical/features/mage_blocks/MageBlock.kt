@@ -1,34 +1,27 @@
 package miyucomics.hexical.features.mage_blocks
 
-import at.petrak.hexcasting.common.blocks.BlockConjured
 import miyucomics.hexical.features.mage_blocks.modifiers.BouncyModifier
 import miyucomics.hexical.features.mage_blocks.modifiers.RedstoneModifier
-import miyucomics.hexical.features.mage_blocks.modifiers.ReplaceableModifier
 import miyucomics.hexical.features.mage_blocks.modifiers.VolatileModifier
 import miyucomics.hexical.inits.HexicalBlocks
-import net.minecraft.block.BlockState
-import net.minecraft.block.Blocks
-import net.minecraft.block.MapColor
+import net.minecraft.block.*
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.block.entity.BlockEntityTicker
 import net.minecraft.block.entity.BlockEntityType
 import net.minecraft.entity.Entity
 import net.minecraft.entity.player.PlayerEntity
-import net.minecraft.item.BlockItem
-import net.minecraft.item.ItemPlacementContext
 import net.minecraft.sound.BlockSoundGroup
 import net.minecraft.sound.SoundCategory
 import net.minecraft.sound.SoundEvents
-import net.minecraft.util.ActionResult
-import net.minecraft.util.Hand
-import net.minecraft.util.hit.BlockHitResult
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
+import net.minecraft.util.shape.VoxelShape
+import net.minecraft.util.shape.VoxelShapes
 import net.minecraft.world.BlockView
 import net.minecraft.world.World
 import net.minecraft.world.event.GameEvent
 
-class MageBlock : BlockConjured(Settings.create().nonOpaque().dropsNothing().breakInstantly().mapColor(MapColor.CLEAR).suffocates { _, _, _ -> false }.blockVision { _, _, _ -> false }.allowsSpawning { _, _, _, _ -> false }.sounds(BlockSoundGroup.AMETHYST_CLUSTER)) {
+class MageBlock : Block(Settings.create().nonOpaque().dropsNothing().breakInstantly().mapColor(MapColor.CLEAR).suffocates { _, _, _ -> false }.blockVision { _, _, _ -> false }.allowsSpawning { _, _, _, _ -> false }.sounds(BlockSoundGroup.AMETHYST_CLUSTER)), BlockEntityProvider {
 	override fun emitsRedstonePower(state: BlockState) = true
 	override fun getWeakRedstonePower(state: BlockState, world: BlockView, pos: BlockPos, direction: Direction): Int {
 		val blockEntity = world.getBlockEntity(pos)
@@ -38,6 +31,7 @@ class MageBlock : BlockConjured(Settings.create().nonOpaque().dropsNothing().bre
 			return blockEntity.getModifier(RedstoneModifier.TYPE).power
 		return 0
 	}
+
 
 	override fun onLandedUpon(world: World, state: BlockState, pos: BlockPos, entity: Entity, fallDistance: Float) {
 		val blockEntity = world.getBlockEntity(pos) as MageBlockEntity
@@ -59,27 +53,9 @@ class MageBlock : BlockConjured(Settings.create().nonOpaque().dropsNothing().bre
 			super.onEntityLand(world, entity)
 	}
 
-	override fun onUse(state: BlockState, world: World, pos: BlockPos, player: PlayerEntity, hand: Hand, hit: BlockHitResult): ActionResult {
-		val blockEntity = world.getBlockEntity(pos) as MageBlockEntity
-		if (!blockEntity.hasModifier(ReplaceableModifier.TYPE))
-			return ActionResult.PASS
-		val stack = player.getStackInHand(hand)
-		val item = stack.item
-		if (item !is BlockItem)
-			return ActionResult.PASS
-		if (!player.isCreative)
-			stack.decrement(1)
-		world.playSound(pos.x.toDouble(), pos.y.toDouble(), pos.z.toDouble(), SoundEvents.BLOCK_AMETHYST_BLOCK_BREAK, SoundCategory.BLOCKS, 1f, 1f, true)
-		world.setBlockState(pos, item.block.getPlacementState(ItemPlacementContext(player, hand, stack, hit)))
-		return ActionResult.SUCCESS
-	}
-
 	override fun onBreak(world: World, position: BlockPos, state: BlockState, player: PlayerEntity?) {
 		val blockEntity = world.getBlockEntity(position) as MageBlockEntity
-		world.playSound(position.x.toDouble(), position.y.toDouble(), position.z.toDouble(), SoundEvents.BLOCK_AMETHYST_BLOCK_BREAK, SoundCategory.BLOCKS, 1f, 1f, true)
-		world.emitGameEvent(GameEvent.BLOCK_DESTROY, position, GameEvent.Emitter.of(player, state))
 		world.setBlockState(position, Blocks.AIR.defaultState)
-		world.removeBlockEntity(position)
 
 		if (blockEntity.hasModifier(VolatileModifier.TYPE)) {
 			for (offset in Direction.stream()) {
@@ -90,10 +66,30 @@ class MageBlock : BlockConjured(Settings.create().nonOpaque().dropsNothing().bre
 					block.onBreak(world, positionToTest, otherState, player)
 			}
 		}
+
+		super.onBreak(world, position, state, player)
 	}
 
 	override fun createBlockEntity(pos: BlockPos, state: BlockState) = MageBlockEntity(pos, state)
 	override fun <T : BlockEntity> getTicker(pworld: World, pstate: BlockState, type: BlockEntityType<T>): BlockEntityTicker<T> = BlockEntityTicker { world, position, state, blockEntity ->
 		(blockEntity as MageBlockEntity).modifiers.forEach { it -> it.value.tick(world, position, state) }
 	}
+
+	// defer shapes to disguise
+	private fun getBlockDisguise(world: BlockView, pos: BlockPos): BlockState? = (world.getBlockEntity(pos) as? MageBlockEntity)?.disguise
+
+	override fun getOutlineShape(state: BlockState, world: BlockView, pos: BlockPos, context: ShapeContext): VoxelShape =
+		getBlockDisguise(world, pos)?.getOutlineShape(world, pos, context) ?: VoxelShapes.fullCube()
+
+	override fun getCullingShape(state: BlockState, world: BlockView, pos: BlockPos): VoxelShape =
+		getBlockDisguise(world, pos)?.getCullingShape(world, pos) ?: VoxelShapes.fullCube()
+
+	override fun getRaycastShape(state: BlockState, world: BlockView, pos: BlockPos): VoxelShape =
+		getBlockDisguise(world, pos)?.getRaycastShape(world, pos) ?: VoxelShapes.fullCube()
+
+	override fun getCollisionShape(state: BlockState, world: BlockView, pos: BlockPos, context: ShapeContext): VoxelShape =
+		getBlockDisguise(world, pos)?.getCollisionShape(world, pos, context) ?: VoxelShapes.fullCube()
+
+	override fun getCameraCollisionShape(state: BlockState, world: BlockView, pos: BlockPos, context: ShapeContext): VoxelShape =
+		getBlockDisguise(world, pos)?.getCameraCollisionShape(world, pos, context) ?: VoxelShapes.fullCube()
 }
