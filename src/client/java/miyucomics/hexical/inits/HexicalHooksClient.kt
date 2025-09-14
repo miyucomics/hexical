@@ -7,10 +7,11 @@ import miyucomics.hexical.features.curios.CompassCurioModelHook
 import miyucomics.hexical.features.curios.FluteCurioItemModel
 import miyucomics.hexical.features.curios.HandbellCurioItemModel
 import miyucomics.hexical.features.evocation.ClientEvocationReceiver
-import miyucomics.hexical.features.jailbreak.CrackedItemTooltip
+import miyucomics.hexical.features.jailbreak.JailbrokenItemTooltip
 import miyucomics.hexical.features.lamps.ArchLampModelProvider
 import miyucomics.hexical.features.lesser_sentinels.ClientLesserSentinelReceiver
 import miyucomics.hexical.features.lesser_sentinels.LesserSentinelRenderer
+import miyucomics.hexical.features.mage_blocks.MageBlockModelLoadingHook
 import miyucomics.hexical.features.mage_blocks.MageBlockScryingOverlay
 import miyucomics.hexical.features.media_jar.MediaJarRenderHooks
 import miyucomics.hexical.features.media_jar.MediaJarShader
@@ -37,7 +38,7 @@ object HexicalHooksClient {
 		register(MediaLogRenderer)
 		register(AutographTooltip)
 		register(CharmedItemTooltip)
-		register(CrackedItemTooltip)
+		register(JailbrokenItemTooltip)
 		register(ClientShaderReceiver)
 		register(ScarabWingRenderer)
 		register(MediaJarRenderHooks)
@@ -49,6 +50,7 @@ object HexicalHooksClient {
 		register(PlayerAnimatorHook)
 		register(MageBlockScryingOverlay)
 		register(PedestalRenderHooks)
+		register(MageBlockModelLoadingHook)
 
 		for (hook in hooks)
 			hook.init()

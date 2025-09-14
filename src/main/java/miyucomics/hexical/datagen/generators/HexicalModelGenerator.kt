@@ -8,6 +8,7 @@ import net.minecraft.data.client.*
 
 class HexicalModelGenerator(generator: FabricDataOutput) : FabricModelProvider(generator) {
 	override fun generateBlockStateModels(generator: BlockStateModelGenerator) {
+		generator.registerSimpleCubeAll(HexicalBlocks.MAGE_BLOCK)
 		generator.registerCandle(HexicalBlocks.HEX_CANDLE_BLOCK, HexicalBlocks.HEX_CANDLE_CAKE_BLOCK)
 		generator.blockStateCollector.accept(VariantsBlockStateSupplier.create(HexicalBlocks.SENTINEL_BED_BLOCK, BlockStateVariant.create().put(VariantSettings.MODEL, ModelIds.getBlockModelId(HexicalBlocks.SENTINEL_BED_BLOCK))).coordinate(BlockStateModelGenerator.createNorthDefaultRotationStates()))
 	}

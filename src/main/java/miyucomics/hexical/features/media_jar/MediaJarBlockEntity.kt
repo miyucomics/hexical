@@ -93,7 +93,7 @@ class MediaJarBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 			}
 			is TransmutationResult.TransmutedItems -> {
 				val outputs = result.output.toMutableList()
-				heldStack = outputs.removeFirst().copy()
+				heldStack = outputs.removeAt(0).copy()
 				val spawnPosition = pos.down().toCenterPos()
 				outputs.forEach { world!!.spawnEntity(ItemEntity(world!!, spawnPosition.x, spawnPosition.y, spawnPosition.z, it.copy(), 0.0, 0.0, 0.0)) }
 				world!!.playSound(null, pos, HexicalSounds.ITEM_DUNKS, SoundCategory.BLOCKS, 1f, 1f)

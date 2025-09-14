@@ -13,14 +13,14 @@ import net.minecraft.nbt.NbtList
 import net.minecraft.text.Text
 import net.minecraft.util.Formatting
 
-object CrackedItemTooltip : InitHook() {
+object JailbrokenItemTooltip : InitHook() {
 	override fun init() {
 		ItemTooltipCallback.EVENT.register { stack, _, lines ->
 			val nbt = stack.nbt ?: return@register
 			if (stack.item !is ItemPackagedHex || !nbt.getBoolean("cracked"))
 				return@register
 			if (nbt.contains(ItemPackagedHex.TAG_PROGRAM))
-				lines.add("hexical.cracked.hex".asTranslatedComponent(nbt.getList(ItemPackagedHex.TAG_PROGRAM, NbtElement.COMPOUND_TYPE.toInt())))
+				lines.add("hexical.cracked.hex".asTranslatedComponent(getText(nbt.getList(ItemPackagedHex.TAG_PROGRAM, NbtElement.COMPOUND_TYPE.toInt()))))
 			else
 				lines.add("hexical.cracked.cracked".asTranslatedComponent.formatted(Formatting.GOLD))
 		}

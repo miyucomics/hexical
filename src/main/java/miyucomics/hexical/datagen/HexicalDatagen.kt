@@ -6,7 +6,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator
 
 class HexicalDatagen : DataGeneratorEntrypoint {
 	override fun onInitializeDataGenerator(generator: FabricDataGenerator) {
-		Transmutations.init()
+		TransmutationProvider.init()
 
 		val pack = generator.createPack()
 		pack.addProvider(::HexicalAdvancementGenerator)
