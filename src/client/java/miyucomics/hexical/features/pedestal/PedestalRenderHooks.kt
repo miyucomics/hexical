@@ -6,6 +6,6 @@ import net.minecraft.client.render.block.entity.BlockEntityRendererFactories
 
 object PedestalRenderHooks : InitHook() {
 	override fun init() {
-		BlockEntityRendererFactories.register(PEDESTAL_BLOCK_ENTITY) { PedestalBlockEntityRenderer() }
+		BlockEntityRendererFactories.register(PEDESTAL_BLOCK_ENTITY, ::PedestalBlockEntityRenderer)
 	}
 }

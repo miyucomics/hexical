@@ -9,6 +9,7 @@
 - added Vibrate spell
 - added pattern to pull iota from staff stack
 - added pattern to push iota to staff stack
+- added mage block disguising spell
 - added spell to set model position
 - added tooltips to hexbursts
 - added tooltips to hextito
@@ -83,7 +84,6 @@
 - changed Greater Blink to not move feet to eyes
 - changed lamps deactivating to only be when they are picked up
 - changed shader spells to no longer require a media jar
-- changed grimoire packet syncing to reduce strain on servers
 - changed lamp recharge patterns to not need a mind
 - changed book layout slightly
 - changed some textures

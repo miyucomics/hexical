@@ -19,18 +19,21 @@ class SpeckRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<SpeckEn
 	override fun render(entity: SpeckEntity?, yaw: Float, tickDelta: Float, matrices: MatrixStack, vertexConsumers: VertexConsumerProvider, light: Int) {
 		matrices.push()
 		matrices.translate(0.0, 0.25, 0.0)
+
 		if (entity!!.clientIsText)
 			matrices.translate(0.0, 0.125, 0.0)
+
 		matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-entity.yaw))
 		matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(entity.pitch))
 		matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(entity.clientRoll))
 		matrices.scale(entity.clientSize, entity.clientSize, entity.clientSize)
 
 		if (entity.clientIsText) {
-			matrices.scale(0.025f, -0.025f, 0.025f)
+			val scale = 0.02f
+			matrices.scale(scale, -scale, scale)
 			val top = matrices.peek()
 			val xOffset = -textRenderer.getWidth(entity.clientText) / 2f
-			textRenderer.draw(entity.clientText, xOffset, 0f, -0x1, false, top.positionMatrix, vertexConsumers, TextRenderer.TextLayerType.NORMAL, 0x00000000, light)
+			textRenderer.draw(entity.clientText, xOffset, 0f, 0xff_ffffff.toInt(), true, top.positionMatrix, vertexConsumers, TextRenderer.TextLayerType.NORMAL, 0, LightmapTextureManager.MAX_LIGHT_COORDINATE)
 		} else {
 			val top = matrices.peek()
 			val buffer = vertexConsumers.getBuffer(renderLayer)

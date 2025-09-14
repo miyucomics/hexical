@@ -3,6 +3,7 @@ package miyucomics.hexical.features.confection
 import at.petrak.hexcasting.api.casting.iota.GarbageIota
 import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.utils.asTranslatedComponent
+import at.petrak.hexcasting.api.utils.containsTag
 import miyucomics.hexical.misc.CastingUtils
 import net.minecraft.client.item.TooltipContext
 import net.minecraft.entity.LivingEntity
@@ -30,6 +31,10 @@ class HexburstItem : Item(Settings().maxCount(16).food(FoodComponent.Builder().a
 	}
 
 	override fun appendTooltip(stack: ItemStack, world: World?, list: MutableList<Text>, context: TooltipContext) {
-		list.add("hexical.hexburst.iota".asTranslatedComponent(IotaType.getDisplay(stack.orCreateNbt.getCompound("iota"))).formatted(Formatting.GRAY))
+		if (stack.nbt == null || !stack.containsTag("iota"))
+			return
+		list.add("hexical.hexburst.iota".asTranslatedComponent(
+			IotaType.getDisplay(stack.orCreateNbt.getCompound("iota"))
+		).formatted(Formatting.GRAY))
 	}
 }

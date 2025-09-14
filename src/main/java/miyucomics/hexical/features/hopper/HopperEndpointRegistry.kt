@@ -44,8 +44,8 @@ object HopperEndpointRegistry : InitHook() {
 
 		registerInventoryEntity<ArmorStandEntity> { ArmorStandInventory(it.armorItems as DefaultedList<ItemStack>, it.handItems as DefaultedList<ItemStack>) }
 		registerInventoryEntity<ChestBoatEntity> { ListBackedInventory(it.inventory) }
-		registerInventoryEntity<ChestMinecartEntity> { ListBackedInventory(it.inventory) }
-		registerInventoryEntity<HopperMinecartEntity> { ListBackedInventory(it.inventory) }
+		registerInventoryEntity<ChestMinecartEntity> { ListBackedInventory(it.inventory, size = 27) }
+		registerInventoryEntity<HopperMinecartEntity> { ListBackedInventory(it.inventory, size = 5) }
 		registerEntityEndpoint<ItemEntity> { DroppedItemEndpoint(it) }
 		registerEntityEndpoint<ItemFrameEntity> { ItemFrameEndpoint(it) }
 
@@ -92,7 +92,7 @@ object HopperEndpointRegistry : InitHook() {
 			null
 		}
 
-		register { iota, env, slot ->
+		register { iota, env, _ ->
 			if (iota is Vec3Iota) {
 				env.assertVecInRange(iota.vec3)
 				return@register DispenseEndpoint(iota.vec3, env.world)

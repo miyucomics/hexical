@@ -8,7 +8,6 @@ import at.petrak.hexcasting.api.casting.getBlockPos
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadBlock
 import miyucomics.hexical.inits.HexicalAdvancements
-import miyucomics.hexical.inits.HexicalBlocks
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d
@@ -29,7 +28,6 @@ class OpConfigureMageBlock(private val modifier: MageBlockModifierType<*>) : Spe
 			if (env.castingEntity is ServerPlayerEntity)
 				HexicalAdvancements.DIY.trigger(env.castingEntity as ServerPlayerEntity)
 			(env.world.getBlockEntity(pos) as MageBlockEntity).addModifier(modifier)
-			env.world.updateNeighborsAlways(pos, HexicalBlocks.MAGE_BLOCK)
 		}
 	}
 }

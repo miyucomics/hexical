@@ -1,6 +1,8 @@
-package miyucomics.hexical.features.transmuting
+package miyucomics.hexical.features.integrations
 
+import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.common.items.magic.ItemMediaHolder
+import miyucomics.hexical.features.transmuting.TransmutingRecipe
 import net.minecraft.client.MinecraftClient
 import net.minecraft.item.ItemStack
 import net.minecraft.text.MutableText
@@ -45,7 +47,7 @@ class TransmutingPatchouli : IComponentProcessor {
 }
 
 fun costText(media: Long): MutableText {
-	val loss = media.toFloat() / 10000f
+	val loss = media.toFloat() / MediaConstants.DUST_UNIT
 	if (loss > 0f)
 		return Text.translatable("hexical.recipe.transmute.media_cost", loss)
 	if (loss < 0f)
