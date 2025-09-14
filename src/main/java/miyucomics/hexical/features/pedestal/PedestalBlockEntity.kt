@@ -188,7 +188,7 @@ class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 
 	fun configureItemEntity() {
 		this.heldEntity?.let {
-			it.setPosition(Vec3d.ofCenter(this.pos))
+			it.setPosition(getItemPosition().subtract(Vec3d.of(normalVector).multiply(0.1)))
 			it.boundingBox = Box(getItemPosition(), getItemPosition()).expand(0.25)
 			it.noClip = true
 			it.setNeverDespawn()
