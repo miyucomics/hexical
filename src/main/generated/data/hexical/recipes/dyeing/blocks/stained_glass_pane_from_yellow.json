@@ -1,0 +1,73 @@
+{
+  "type": "hexical:dye_block",
+  "dye": 5,
+  "inputs": [
+    {
+      "type": "block",
+      "block": "minecraft:white_stained_glass_pane"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:orange_stained_glass_pane"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:magenta_stained_glass_pane"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:light_blue_stained_glass_pane"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:yellow_stained_glass_pane"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:lime_stained_glass_pane"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:pink_stained_glass_pane"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:gray_stained_glass_pane"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:light_gray_stained_glass_pane"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:cyan_stained_glass_pane"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:purple_stained_glass_pane"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:blue_stained_glass_pane"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:brown_stained_glass_pane"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:green_stained_glass_pane"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:red_stained_glass_pane"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:black_stained_glass_pane"
+    }
+  ],
+  "output": {
+    "name": "minecraft:yellow_stained_glass_pane"
+  }
+}

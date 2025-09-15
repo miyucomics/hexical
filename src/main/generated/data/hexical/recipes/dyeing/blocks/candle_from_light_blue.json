@@ -1,0 +1,77 @@
+{
+  "type": "hexical:dye_block",
+  "dye": 4,
+  "inputs": [
+    {
+      "type": "block",
+      "block": "minecraft:candle"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:white_candle"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:orange_candle"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:magenta_candle"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:light_blue_candle"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:yellow_candle"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:lime_candle"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:pink_candle"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:gray_candle"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:light_gray_candle"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:cyan_candle"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:purple_candle"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:blue_candle"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:brown_candle"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:green_candle"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:red_candle"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:black_candle"
+    }
+  ],
+  "output": {
+    "name": "minecraft:light_blue_candle"
+  }
+}

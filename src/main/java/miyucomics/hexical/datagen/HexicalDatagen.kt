@@ -7,12 +7,13 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator
 class HexicalDatagen : DataGeneratorEntrypoint {
 	override fun onInitializeDataGenerator(generator: FabricDataGenerator) {
 		TransmutationProvider.init()
-
-		val pack = generator.createPack()
-		pack.addProvider(::HexicalAdvancementGenerator)
-		pack.addProvider(::HexicalBlockLootTableGenerator)
-		pack.addProvider(::HexicalModelGenerator)
-		pack.addProvider(::HexicalPatchouliGenerator)
-		pack.addProvider(::HexicalRecipeGenerator)
+		generator.createPack().apply {
+			addProvider(::HexicalAdvancementGenerator)
+			addProvider(::HexicalBlockLootTableGenerator)
+			addProvider(::HexicalModelGenerator)
+			addProvider(::HexicalPatchouliGenerator)
+			addProvider(::HexicalRecipeGenerator)
+			addProvider(::HexicalDyeingRecipeGenerator)
+		}
 	}
 }

@@ -1,0 +1,17 @@
+{
+  "type": "hexical:dye_block",
+  "dye": 15,
+  "inputs": [
+    {
+      "type": "block",
+      "block": "minecraft:smooth_sandstone"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:smooth_red_sandstone"
+    }
+  ],
+  "output": {
+    "name": "minecraft:smooth_red_sandstone"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "hexical:dye_block",
+  "dye": 0,
+  "inputs": [
+    {
+      "type": "block",
+      "block": "minecraft:cut_sandstone"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:cut_red_sandstone"
+    }
+  ],
+  "output": {
+    "name": "minecraft:cut_sandstone"
+  }
+}

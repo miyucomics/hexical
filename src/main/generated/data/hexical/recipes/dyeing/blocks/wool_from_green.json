@@ -1,0 +1,73 @@
+{
+  "type": "hexical:dye_block",
+  "dye": 14,
+  "inputs": [
+    {
+      "type": "block",
+      "block": "minecraft:white_wool"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:orange_wool"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:magenta_wool"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:light_blue_wool"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:yellow_wool"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:lime_wool"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:pink_wool"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:gray_wool"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:light_gray_wool"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:cyan_wool"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:purple_wool"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:blue_wool"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:brown_wool"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:green_wool"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:red_wool"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:black_wool"
+    }
+  ],
+  "output": {
+    "name": "minecraft:green_wool"
+  }
+}

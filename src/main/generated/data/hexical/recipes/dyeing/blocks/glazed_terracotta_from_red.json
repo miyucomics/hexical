@@ -1,0 +1,73 @@
+{
+  "type": "hexical:dye_block",
+  "dye": 15,
+  "inputs": [
+    {
+      "type": "block",
+      "block": "minecraft:white_glazed_terracotta"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:orange_glazed_terracotta"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:magenta_glazed_terracotta"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:light_blue_glazed_terracotta"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:yellow_glazed_terracotta"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:lime_glazed_terracotta"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:pink_glazed_terracotta"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:gray_glazed_terracotta"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:light_gray_glazed_terracotta"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:cyan_glazed_terracotta"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:purple_glazed_terracotta"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:blue_glazed_terracotta"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:brown_glazed_terracotta"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:green_glazed_terracotta"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:red_glazed_terracotta"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:black_glazed_terracotta"
+    }
+  ],
+  "output": {
+    "name": "minecraft:red_glazed_terracotta"
+  }
+}

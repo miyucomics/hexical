@@ -18,11 +18,10 @@ import net.minecraft.world.World
 import kotlin.math.min
 
 object TransmutingHelper : InitHook() {
-	lateinit var TRANSMUTING_RECIPE: RecipeType<TransmutingRecipe>
+	val TRANSMUTING_RECIPE: RecipeType<TransmutingRecipe> = Registry.register(Registries.RECIPE_TYPE, HexicalMain.id("transmuting"), Type.INSTANCE)
 
 	override fun init() {
 		Registry.register(Registries.RECIPE_SERIALIZER, HexicalMain.id("transmuting"), TransmutingSerializer.INSTANCE)
-		TRANSMUTING_RECIPE = Registry.register(Registries.RECIPE_TYPE, HexicalMain.id("transmuting"), Type.INSTANCE)
 	}
 
 	fun transmuteItem(world: World, stack: ItemStack, media: Long, insertMedia: (Long) -> Long, withdrawMedia: (Long) -> Boolean): TransmutationResult {
