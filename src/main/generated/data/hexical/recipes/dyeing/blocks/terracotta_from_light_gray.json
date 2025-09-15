@@ -1,0 +1,77 @@
+{
+  "type": "hexical:dye_block",
+  "dye": 9,
+  "inputs": [
+    {
+      "type": "block",
+      "block": "minecraft:terracotta"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:white_terracotta"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:orange_terracotta"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:magenta_terracotta"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:light_blue_terracotta"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:yellow_terracotta"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:lime_terracotta"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:pink_terracotta"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:gray_terracotta"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:light_gray_terracotta"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:cyan_terracotta"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:purple_terracotta"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:blue_terracotta"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:brown_terracotta"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:green_terracotta"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:red_terracotta"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:black_terracotta"
+    }
+  ],
+  "output": {
+    "name": "minecraft:light_gray_terracotta"
+  }
+}

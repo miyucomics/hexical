@@ -27,6 +27,6 @@
 	},
 	"items": {
 		"dyes": "minecraft:{color}dye",
-		"pigments": "minecraft:dye_colorizer_{color}"
+		"pigments": "hexcasting:dye_colorizer_{color}"
 	}
 }
