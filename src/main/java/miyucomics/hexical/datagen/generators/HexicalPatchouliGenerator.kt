@@ -12,7 +12,7 @@ import net.minecraft.util.Identifier
 import java.util.concurrent.CompletableFuture
 
 class HexicalPatchouliGenerator(val output: FabricDataOutput) : DataProvider {
-	override fun getName(): String = "Hexical Patchouli Pages"
+	override fun getName() = "Hexical Patchouli Pages"
 	override fun run(writer: DataWriter): CompletableFuture<*> = CompletableFuture.allOf(
 		generateCurioPages(writer),
 		generateMediaJarPages(writer)

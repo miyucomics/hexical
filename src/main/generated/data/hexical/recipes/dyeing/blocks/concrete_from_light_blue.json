@@ -1,0 +1,73 @@
+{
+  "type": "hexical:dye_block",
+  "dye": 4,
+  "inputs": [
+    {
+      "type": "block",
+      "block": "minecraft:white_concrete"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:orange_concrete"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:magenta_concrete"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:light_blue_concrete"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:yellow_concrete"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:lime_concrete"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:pink_concrete"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:gray_concrete"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:light_gray_concrete"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:cyan_concrete"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:purple_concrete"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:blue_concrete"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:brown_concrete"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:green_concrete"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:red_concrete"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:black_concrete"
+    }
+  ],
+  "output": {
+    "name": "minecraft:light_blue_concrete"
+  }
+}
