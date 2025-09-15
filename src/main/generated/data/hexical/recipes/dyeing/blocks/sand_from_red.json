@@ -1,0 +1,17 @@
+{
+  "type": "hexical:dye_block",
+  "dye": 15,
+  "inputs": [
+    {
+      "type": "block",
+      "block": "minecraft:sand"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:red_sand"
+    }
+  ],
+  "output": {
+    "name": "minecraft:red_sand"
+  }
+}

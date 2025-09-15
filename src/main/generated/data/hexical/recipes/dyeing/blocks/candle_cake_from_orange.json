@@ -1,0 +1,77 @@
+{
+  "type": "hexical:dye_block",
+  "dye": 2,
+  "inputs": [
+    {
+      "type": "block",
+      "block": "minecraft:candle_cake"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:white_candle_cake"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:orange_candle_cake"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:magenta_candle_cake"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:light_blue_candle_cake"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:yellow_candle_cake"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:lime_candle_cake"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:pink_candle_cake"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:gray_candle_cake"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:light_gray_candle_cake"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:cyan_candle_cake"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:purple_candle_cake"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:blue_candle_cake"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:brown_candle_cake"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:green_candle_cake"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:red_candle_cake"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:black_candle_cake"
+    }
+  ],
+  "output": {
+    "name": "minecraft:orange_candle_cake"
+  }
+}

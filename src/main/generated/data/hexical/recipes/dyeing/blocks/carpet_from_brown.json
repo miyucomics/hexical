@@ -1,0 +1,73 @@
+{
+  "type": "hexical:dye_block",
+  "dye": 13,
+  "inputs": [
+    {
+      "type": "block",
+      "block": "minecraft:white_carpet"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:orange_carpet"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:magenta_carpet"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:light_blue_carpet"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:yellow_carpet"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:lime_carpet"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:pink_carpet"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:gray_carpet"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:light_gray_carpet"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:cyan_carpet"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:purple_carpet"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:blue_carpet"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:brown_carpet"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:green_carpet"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:red_carpet"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:black_carpet"
+    }
+  ],
+  "output": {
+    "name": "minecraft:brown_carpet"
+  }
+}

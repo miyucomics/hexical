@@ -16,7 +16,7 @@ class TransmutingRecipe(private val id: Identifier, val input: Ingredient, val c
 	override fun getSerializer() = TransmutingSerializer.INSTANCE
 	override fun getOutput(dynamicRegistryManager: DynamicRegistryManager) = output[0]
 	override fun matches(inventory: Inventory, world: World) = input.test(inventory.getStack(0))
-	override fun craft(inventory: Inventory, dynamicRegistryManager: DynamicRegistryManager): ItemStack = ItemStack.EMPTY
+	override fun craft(inventory: Inventory, dynamicRegistryManager: DynamicRegistryManager): ItemStack = ItemStack.EMPTY.copy()
 
 	class Type : RecipeType<TransmutingRecipe> {
 		companion object {
