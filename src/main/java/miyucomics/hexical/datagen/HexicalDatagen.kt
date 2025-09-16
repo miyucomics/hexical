@@ -13,7 +13,7 @@ class HexicalDatagen : DataGeneratorEntrypoint {
 			addProvider(::HexicalModelGenerator)
 			addProvider(::HexicalPatchouliGenerator)
 			addProvider(::HexicalRecipeGenerator)
-			addProvider(::HexicalDyeingRecipeGenerator)
+			addProvider(::HexicalDyeingGenerator)
 		}
 	}
 }

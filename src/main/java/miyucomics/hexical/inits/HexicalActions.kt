@@ -36,9 +36,9 @@ import miyucomics.hexical.features.confetti.OpConfetti
 import miyucomics.hexical.features.conjure.OpConjureEntity
 import miyucomics.hexical.features.conjure.OpConjureFlower
 import miyucomics.hexical.features.conjure.OpConjureLight
-import miyucomics.hexical.features.dyes.OpDye
-import miyucomics.hexical.features.dyes.OpGetDye
-import miyucomics.hexical.features.dyes.OpTranslateDye
+import miyucomics.hexical.features.dyes.actions.OpDye
+import miyucomics.hexical.features.dyes.actions.OpGetDye
+import miyucomics.hexical.features.dyes.actions.OpTranslateDye
 import miyucomics.hexical.features.evocation.OpGetEvocation
 import miyucomics.hexical.features.evocation.OpSetEvocation
 import miyucomics.hexical.features.grimoires.OpGrimoireErase
