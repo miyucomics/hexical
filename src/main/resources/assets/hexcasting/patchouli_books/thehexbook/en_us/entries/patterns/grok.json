@@ -1,6 +1,6 @@
 {
 	"name": "hexical.page.grok.title",
-	"icon": "minecraft:glow_berry",
+	"icon": "minecraft:glow_berries",
 	"category": "hexcasting:patterns",
 	"advancement": "hexcasting:root",
 	"sortnum": 7,
