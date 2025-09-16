@@ -1,10 +1,13 @@
-package miyucomics.hexical.features.dyes
+package miyucomics.hexical.features.dyes.actions
 
 import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.getBlockPos
 import at.petrak.hexcasting.api.casting.getEntity
 import at.petrak.hexcasting.api.casting.iota.*
+import miyucomics.hexical.features.dyes.DyeIota
+import miyucomics.hexical.features.dyes.DyeOption
+import miyucomics.hexical.features.dyes.DyeingUtils
 import miyucomics.hexpose.iotas.IdentifierIota
 import miyucomics.hexpose.iotas.getIdentifier
 import net.minecraft.block.Block
@@ -34,8 +37,8 @@ object OpGetDye : ConstMediaAction {
 				when (val item = Registries.ITEM.get(args.getIdentifier(0, argc))) {
 					is BlockItem -> getDyeFromBlock(item.block)
 					else -> {
-						if (DyeDataHook.getDye(item) != null)
-							DyeIota(DyeDataHook.getDye(item)!!)
+						if (DyeingUtils.getDye(item) != null)
+							DyeIota(DyeingUtils.getDye(item)!!)
 						else
 							NullIota()
 					}
@@ -57,8 +60,8 @@ object OpGetDye : ConstMediaAction {
 				when (val item = entity.stack.item) {
 					is BlockItem -> getDyeFromBlock(item.block)
 					else -> {
-						if (DyeDataHook.getDye(item) != null)
-							DyeIota(DyeDataHook.getDye(item)!!)
+						if (DyeingUtils.getDye(item) != null)
+							DyeIota(DyeingUtils.getDye(item)!!)
 						else
 							NullIota()
 					}
@@ -75,13 +78,16 @@ object OpGetDye : ConstMediaAction {
 		val state = world.getBlockState(position)
 		if (state.block is SignBlock) {
 			val sign = world.getBlockEntity(position) as SignBlockEntity
-			return ListIota(listOf(DyeIota(DyeOption.fromDyeColor(sign.frontText.color)), DyeIota(DyeOption.fromDyeColor(sign.backText.color))))
+			return ListIota(listOf(
+				DyeIota(DyeOption.fromDyeColor(sign.frontText.color)),
+				DyeIota(DyeOption.fromDyeColor(sign.backText.color))
+			))
 		}
 		return getDyeFromBlock(world.getBlockState(position).block)
 	}
 
 	private fun getDyeFromBlock(block: Block): Iota {
-		val dye = DyeDataHook.getDye(block) ?: return NullIota()
+		val dye = DyeingUtils.getDye(block) ?: return NullIota()
 		return DyeIota(dye)
 	}
 }

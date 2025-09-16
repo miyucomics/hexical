@@ -14,13 +14,13 @@ import net.minecraft.util.Identifier
 
 class TransmutingSerializer : RecipeSerializer<TransmutingRecipe> {
 	override fun read(recipeId: Identifier, json: JsonObject): TransmutingRecipe {
-		val recipeJson: TransmutingFormat = Gson().fromJson(json, TransmutingFormat::class.java)
+		val recipeJson: DataFormat = Gson().fromJson(json, DataFormat::class.java)
 		if (recipeJson.input == null)
 			throw JsonSyntaxException("Input is missing in recipe $recipeId")
 		if (recipeJson.output == null)
 			throw JsonSyntaxException("Output is missing in recipe $recipeId")
 
-		val outputs = when (val output = recipeJson.output!!) {
+		val outputs = when (val output = recipeJson.output) {
 			is JsonArray -> output.map { deriveSingleItem(it, recipeId) }
 			else -> listOf(deriveSingleItem(output, recipeId))
 		}
@@ -84,8 +84,8 @@ class TransmutingSerializer : RecipeSerializer<TransmutingRecipe> {
 	}
 }
 
-class TransmutingFormat {
-	var input: JsonObject? = null
-	var output: JsonElement? = null
-	var cost: Long = 0
+private class DataFormat {
+	val input: JsonObject? = null
+	val output: JsonElement? = null
+	val cost: Long = 0
 }
