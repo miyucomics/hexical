@@ -13,8 +13,8 @@ import net.minecraft.registry.RegistryKey
 import net.minecraft.util.Identifier
 import java.util.concurrent.CompletableFuture
 
-class HexicalDyeingRecipeGenerator(val output: FabricDataOutput) : DataProvider {
-	override fun getName() = "Hexical Dyeing Recipes"
+class HexicalDyeingGenerator(val output: FabricDataOutput) : DataProvider {
+	override fun getName() = "Hexical Dyeing"
 	override fun run(writer: DataWriter): CompletableFuture<*> = CompletableFuture.allOf(
 		*generateBlocks(writer).toTypedArray(),
 		*generateItems(writer).toTypedArray()
@@ -22,12 +22,15 @@ class HexicalDyeingRecipeGenerator(val output: FabricDataOutput) : DataProvider 
 
 	private fun generateBlocks(writer: DataWriter): List<CompletableFuture<*>> {
 		val tasks = mutableListOf<CompletableFuture<*>>()
-		val path = output.getResolver(DataOutput.OutputType.DATA_PACK, "recipes/dyeing/blocks")
+		val recipePath = output.getResolver(DataOutput.OutputType.DATA_PACK, "recipes/dyeing/blocks")
+		val dyeLookup = JsonObject()
 
 		blockPatterns.forEach { (groupName, pattern) ->
 			val blocks = DyeOption.values().mapNotNull { dye -> resolvePattern(Registries.BLOCK, pattern, dye)?.let { dye to it } }.toMap()
 			blocks.keys.forEach { dye ->
-				val producedJson = JsonObject().apply {
+				val blockId = Registries.BLOCK.getId(blocks[dye]).toString()
+				dyeLookup.addProperty(blockId, dye.ordinal)
+				tasks.add(DataProvider.writeToPath(writer, JsonObject().apply {
 					addProperty("type", "hexical:dye_block")
 					addProperty("dye", dye.ordinal)
 					add("inputs", JsonArray().apply {
@@ -38,37 +41,36 @@ class HexicalDyeingRecipeGenerator(val output: FabricDataOutput) : DataProvider 
 							})
 						}
 					})
-					add("output", JsonObject().apply {
-						addProperty("name", Registries.BLOCK.getId(blocks[dye]).toString())
-					})
-				}
-
-				tasks.add(DataProvider.writeToPath(writer, producedJson, path.resolve(Identifier("hexical", "${groupName}_from_${dye.replacement}"), "json")))
+					add("output", JsonObject().apply { addProperty("name", blockId) })
+				}, recipePath.resolve(Identifier("hexical", "${groupName}_${dye.replacement}"), "json")))
 			}
 		}
+
+		tasks.add(DataProvider.writeToPath(writer, dyeLookup, output.getResolver(DataOutput.OutputType.DATA_PACK, "dyeing/block").resolve(Identifier("hexical", "default"), "json")))
 
 		return tasks
 	}
 
 	private fun generateItems(writer: DataWriter): List<CompletableFuture<*>> {
 		val tasks = mutableListOf<CompletableFuture<*>>()
-		val path = output.getResolver(DataOutput.OutputType.DATA_PACK, "recipes/dyeing/items")
+		val recipePath = output.getResolver(DataOutput.OutputType.DATA_PACK, "recipes/dyeing/items")
+		val dyeLookup = JsonObject()
 
 		itemPatterns.forEach { (groupName, pattern) ->
 			val items = DyeOption.values().mapNotNull { dye -> resolvePattern(Registries.ITEM, pattern, dye)?.let { dye to it } }.toMap()
 			items.keys.forEach { dye ->
-				val producedJson = JsonObject().apply {
+				val itemId = Registries.ITEM.getId(items[dye]).toString()
+				dyeLookup.addProperty(itemId, dye.ordinal)
+				tasks.add(DataProvider.writeToPath(writer, JsonObject().apply {
 					addProperty("type", "hexical:dye_item")
 					addProperty("dye", dye.ordinal)
-					add("inputs", JsonArray().apply {
-						items.values.forEach { add(Registries.ITEM.getId(it).toString()) }
-					})
-					addProperty("output", Registries.ITEM.getId(items[dye]).toString())
-				}
-
-				tasks.add(DataProvider.writeToPath(writer, producedJson, path.resolve(Identifier("hexical", "${groupName}_${dye.replacement}"), "json")))
+					add("inputs", JsonArray().apply { items.values.forEach { add(Registries.ITEM.getId(it).toString()) } })
+					addProperty("output", itemId)
+				}, recipePath.resolve(Identifier("hexical", "${groupName}_${dye.replacement}"), "json")))
 			}
 		}
+
+		tasks.add(DataProvider.writeToPath(writer, dyeLookup, output.getResolver(DataOutput.OutputType.DATA_PACK, "dyeing/item").resolve(Identifier("hexical", "default"), "json")))
 
 		return tasks
 	}
