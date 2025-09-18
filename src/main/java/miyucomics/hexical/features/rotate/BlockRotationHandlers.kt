@@ -5,10 +5,8 @@ import net.minecraft.block.BlockState
 import net.minecraft.state.property.Properties
 import net.minecraft.util.math.Direction
 
-object BlockRotationHandlerRegistry : InitHook() {
+object BlockRotationHandlers : InitHook() {
     private val handlers = mutableListOf<BlockRotationHandler>()
-
-    fun modify(state: BlockState, direction: Direction) = handlers.firstOrNull { it.canHandle(state, direction) }?.handle(state, direction)
 
     override fun init() {
         register(object : BlockRotationHandler {
@@ -40,4 +38,6 @@ object BlockRotationHandlerRegistry : InitHook() {
     fun register(handler: BlockRotationHandler) {
         handlers += handler
     }
+
+    fun modify(state: BlockState, direction: Direction) = handlers.firstOrNull { it.canHandle(state, direction) }?.handle(state, direction)
 }
