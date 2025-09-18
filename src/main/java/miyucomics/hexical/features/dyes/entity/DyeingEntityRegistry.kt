@@ -74,9 +74,9 @@ object DyeingEntityRegistry : InitHook() {
 		})
 	}
 
-	fun resolve(entity: Entity, dye: DyeOption) = handlers.firstOrNull { it.canAffectEntity(entity, dye) }
-
 	fun register(handler: DyeEntityHandler<*>) {
 		handlers += handler
 	}
+
+	fun resolve(entity: Entity, dye: DyeOption) = handlers.firstOrNull { it.canAffectEntity(entity, dye) }
 }
