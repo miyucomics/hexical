@@ -25,7 +25,7 @@ object OpRotateBlock : SpellAction {
 		val rotation = args.getVec3(1, argc)
 		val direction = Direction.fromVector(rotation.x.toInt(), rotation.y.toInt(), rotation.z.toInt()) ?: throw MishapInvalidIota.of(args[1], 0, "axis_vector")
 
-		when (val result = BlockRotationHandlerRegistry.modify(state, direction)) {
+		when (val result = BlockRotationHandlers.modify(state, direction)) {
 			null -> throw MishapBadBlock.of(pos, "rotatable")
 			else -> return SpellAction.Result(Spell(pos, result), MediaConstants.DUST_UNIT / 8, listOf(ParticleSpray.burst(pos.toCenterPos(), 1.0)))
 		}
