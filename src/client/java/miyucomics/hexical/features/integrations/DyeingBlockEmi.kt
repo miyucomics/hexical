@@ -9,7 +9,7 @@ import miyucomics.hexical.features.dyes.block.DyeingBlockRecipe
 import net.minecraft.recipe.Ingredient
 import net.minecraft.util.Identifier
 
-class DyeingEmi(recipe: DyeingBlockRecipe) : BasicEmiRecipe(HexicalEmi.DYEING_CATEGORY, recipe.getId(), 134, 52) {
+class DyeingBlockEmi(recipe: DyeingBlockRecipe) : BasicEmiRecipe(HexicalEmi.DYEING_CATEGORY, recipe.getId(), 134, 52) {
 	init {
 		this.inputs.add(EmiIngredient.of(Ingredient.ofStacks(recipe.inputs.flatMap { it.displayedStacks }.stream())))
 		this.outputs.add(EmiStack.of(recipe.output.block.asItem()))

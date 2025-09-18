@@ -22,10 +22,10 @@ class HexicalEmi : EmiPlugin {
 
 		registry.addWorkstation(TRANSMUTING_CATEGORY, TRANSMUTING_ICON)
 
-		for (recipe in registry.recipeManager.listAllOfType(DyeingUtils.DYEING_BLOCK_RECIPE)) {
-			println(recipe)
-			registry.addRecipe(DyeingEmi(recipe))
-		}
+		for (recipe in registry.recipeManager.listAllOfType(DyeingUtils.DYEING_BLOCK_RECIPE))
+			registry.addRecipe(DyeingBlockEmi(recipe))
+		for (recipe in registry.recipeManager.listAllOfType(DyeingUtils.DYEING_ITEM_RECIPE))
+			registry.addRecipe(DyeingItemEmi(recipe))
 		for (recipe in registry.recipeManager.listAllOfType(TransmutingHelper.TRANSMUTING_RECIPE))
 			registry.addRecipe(TransmutingEmi(recipe))
 	}
