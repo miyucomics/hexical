@@ -1,6 +1,7 @@
 package miyucomics.hexical.features.dyes.item
 
 import com.google.gson.Gson
+import com.google.gson.JsonElement
 import com.google.gson.JsonObject
 import com.google.gson.JsonSyntaxException
 import miyucomics.hexical.features.dyes.DyeOption
@@ -17,20 +18,18 @@ class DyeingItemSerializer : RecipeSerializer<DyeingItemRecipe> {
 			throw JsonSyntaxException("Possible inputs are missing in recipe $recipeId")
 		if (raw.output == null)
 			throw JsonSyntaxException("Output is missing in recipe $recipeId")
-		return DyeingItemRecipe(recipeId, enumValues<DyeOption>()[raw.dye], raw.inputs.map(Ingredient::fromJson), TransmutingSerializer.deriveSingleItem(raw.output, recipeId))
+		return DyeingItemRecipe(recipeId, enumValues<DyeOption>()[raw.dye], Ingredient.fromJson(raw.inputs), TransmutingSerializer.deriveSingleItem(raw.output, recipeId))
 	}
 
 	override fun write(buf: PacketByteBuf, recipe: DyeingItemRecipe) {
 		buf.writeInt(recipe.dye.ordinal)
-		buf.writeInt(recipe.inputs.size)
-		recipe.inputs.forEach { it.write(buf) }
+		recipe.inputs.write(buf)
 		buf.writeItemStack(recipe.output)
 	}
 
 	override fun read(id: Identifier, buf: PacketByteBuf): DyeingItemRecipe {
 		val color = enumValues<DyeOption>()[buf.readInt()]
-		val inputs = (0..buf.readInt()).map { Ingredient.fromPacket(buf) }
-		return DyeingItemRecipe(id, color, inputs, buf.readItemStack())
+		return DyeingItemRecipe(id, color, Ingredient.fromPacket(buf), buf.readItemStack())
 	}
 
 	companion object {
@@ -40,6 +39,6 @@ class DyeingItemSerializer : RecipeSerializer<DyeingItemRecipe> {
 
 private class DataFormat {
 	val dye: Int = 0
-	val inputs: List<JsonObject>? = null
-	val output: JsonObject? = null
+	val inputs: JsonElement? = null
+	val output: JsonElement? = null
 }
