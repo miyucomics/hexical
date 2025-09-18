@@ -10,7 +10,7 @@ import miyucomics.hexical.features.media_log.ServerSpyingHooks
 import miyucomics.hexical.features.periwinkle.WooleyedEffectRegister
 import miyucomics.hexical.features.player.RespawnPersistHook
 import miyucomics.hexical.features.prestidigitation.PrestidigitationHandlersHook
-import miyucomics.hexical.features.rotate.BlockRotationHandlerRegistry
+import miyucomics.hexical.features.rotate.BlockRotationHandlers
 import miyucomics.hexical.features.scarabs.ScarabHandler
 import miyucomics.hexical.features.sentinel_beds.SentinelBedAmbitHook
 import miyucomics.hexical.features.sentinel_beds.SentinelBedPoi
@@ -38,7 +38,7 @@ object HexicalHooksServer {
 		register(WooleyedEffectRegister)
 		register(SentinelBedPoi)
 		register(MageBlockModifierRegistry)
-		register(BlockRotationHandlerRegistry)
+		register(BlockRotationHandlers)
 		register(DyeingUtils)
 		register(DyeingEntityRegistry)
 
