@@ -45,8 +45,9 @@ object DyeingUtils : InitHook() {
 			override fun reload(manager: ResourceManager) {
 				flatBlockColorLookup.clear()
 				flatItemColorLookup.clear()
-				manager.findResources("dyes/block") { path -> path.path.endsWith(".json") }.keys.forEach { load(manager.getResource(it).get().inputStream, Registries.BLOCK, flatBlockColorLookup) }
-				manager.findResources("dyes/item") { path -> path.path.endsWith(".json") }.keys.forEach { load(manager.getResource(it).get().inputStream, Registries.ITEM, flatItemColorLookup) }
+				manager.findResources("dyeing/blocks") { path -> path.path.endsWith(".json") }.keys.forEach { load(manager.getResource(it).get().inputStream, Registries.BLOCK, flatBlockColorLookup) }
+				manager.findResources("dyeing/items") { path -> path.path.endsWith(".json") }.keys.forEach { load(manager.getResource(it).get().inputStream, Registries.ITEM, flatItemColorLookup) }
+				println(flatBlockColorLookup)
 			}
 		})
 	}

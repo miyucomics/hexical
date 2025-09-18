@@ -10,10 +10,10 @@ class HexicalDatagen : DataGeneratorEntrypoint {
 		generator.createPack().apply {
 			addProvider(::HexicalAdvancementGenerator)
 			addProvider(::HexicalBlockLootTableGenerator)
+			addProvider(::HexicalDyeingGenerator)
 			addProvider(::HexicalModelGenerator)
 			addProvider(::HexicalPatchouliGenerator)
 			addProvider(::HexicalRecipeGenerator)
-			addProvider(::HexicalDyeingGenerator)
 		}
 	}
 }

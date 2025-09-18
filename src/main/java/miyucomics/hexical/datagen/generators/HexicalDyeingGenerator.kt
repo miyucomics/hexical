@@ -46,7 +46,7 @@ class HexicalDyeingGenerator(val output: FabricDataOutput) : DataProvider {
 			}
 		}
 
-		tasks.add(DataProvider.writeToPath(writer, dyeLookup, output.getResolver(DataOutput.OutputType.DATA_PACK, "dyeing/block").resolve(Identifier("hexical", "default"), "json")))
+		tasks.add(DataProvider.writeToPath(writer, dyeLookup, output.getResolver(DataOutput.OutputType.DATA_PACK, "dyeing/blocks").resolve(Identifier("hexical", "default"), "json")))
 
 		return tasks
 	}
@@ -72,7 +72,7 @@ class HexicalDyeingGenerator(val output: FabricDataOutput) : DataProvider {
 			}
 		}
 
-		tasks.add(DataProvider.writeToPath(writer, dyeLookup, output.getResolver(DataOutput.OutputType.DATA_PACK, "dyeing/item").resolve(Identifier("hexical", "default"), "json")))
+		tasks.add(DataProvider.writeToPath(writer, dyeLookup, output.getResolver(DataOutput.OutputType.DATA_PACK, "dyeing/items").resolve(Identifier("hexical", "default"), "json")))
 
 		return tasks
 	}
