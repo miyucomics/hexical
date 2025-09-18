@@ -5,14 +5,14 @@ import dev.emi.emi.api.stack.EmiIngredient
 import dev.emi.emi.api.stack.EmiStack
 import dev.emi.emi.api.widget.WidgetHolder
 import miyucomics.hexical.HexicalMain
-import net.minecraft.block.Block
-import net.minecraft.registry.tag.TagKey
+import miyucomics.hexical.features.dyes.block.DyeingBlockRecipe
+import net.minecraft.recipe.Ingredient
 import net.minecraft.util.Identifier
 
-class DyeingEmi(input: TagKey<*>, output: Block, val dye: String, recipeId: Identifier) : BasicEmiRecipe(HexicalEmi.DYEING_CATEGORY, recipeId, 134, 52) {
+class DyeingEmi(recipe: DyeingBlockRecipe) : BasicEmiRecipe(HexicalEmi.DYEING_CATEGORY, recipe.getId(), 134, 52) {
 	init {
-		this.inputs.add(EmiIngredient.of(input))
-		this.outputs.add(EmiStack.of(output))
+		this.inputs.add(EmiIngredient.of(Ingredient.ofStacks(recipe.inputs.flatMap { it.displayedStacks }.stream())))
+		this.outputs.add(EmiStack.of(recipe.output.block.asItem()))
 	}
 
 	override fun addWidgets(widgets: WidgetHolder) {
