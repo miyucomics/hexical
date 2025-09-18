@@ -64,7 +64,9 @@ class HexicalDyeingGenerator(val output: FabricDataOutput) : DataProvider {
 				tasks.add(DataProvider.writeToPath(writer, JsonObject().apply {
 					addProperty("type", "hexical:dye_item")
 					addProperty("dye", dye.ordinal)
-					add("inputs", JsonArray().apply { items.values.forEach { add(Registries.ITEM.getId(it).toString()) } })
+					add("inputs", JsonArray().apply { items.values.forEach { add(JsonObject().apply {
+						addProperty("item", Registries.ITEM.getId(it).toString())
+					}) } })
 					addProperty("output", itemId)
 				}, recipePath.resolve(Identifier("hexical", "${groupName}_${dye.replacement}"), "json")))
 			}

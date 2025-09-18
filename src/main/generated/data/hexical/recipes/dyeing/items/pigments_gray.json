@@ -2,22 +2,54 @@
   "type": "hexical:dye_item",
   "dye": 8,
   "inputs": [
-    "hexcasting:dye_colorizer_white",
-    "hexcasting:dye_colorizer_orange",
-    "hexcasting:dye_colorizer_magenta",
-    "hexcasting:dye_colorizer_light_blue",
-    "hexcasting:dye_colorizer_yellow",
-    "hexcasting:dye_colorizer_lime",
-    "hexcasting:dye_colorizer_pink",
-    "hexcasting:dye_colorizer_gray",
-    "hexcasting:dye_colorizer_light_gray",
-    "hexcasting:dye_colorizer_cyan",
-    "hexcasting:dye_colorizer_purple",
-    "hexcasting:dye_colorizer_blue",
-    "hexcasting:dye_colorizer_brown",
-    "hexcasting:dye_colorizer_green",
-    "hexcasting:dye_colorizer_red",
-    "hexcasting:dye_colorizer_black"
+    {
+      "item": "hexcasting:dye_colorizer_white"
+    },
+    {
+      "item": "hexcasting:dye_colorizer_orange"
+    },
+    {
+      "item": "hexcasting:dye_colorizer_magenta"
+    },
+    {
+      "item": "hexcasting:dye_colorizer_light_blue"
+    },
+    {
+      "item": "hexcasting:dye_colorizer_yellow"
+    },
+    {
+      "item": "hexcasting:dye_colorizer_lime"
+    },
+    {
+      "item": "hexcasting:dye_colorizer_pink"
+    },
+    {
+      "item": "hexcasting:dye_colorizer_gray"
+    },
+    {
+      "item": "hexcasting:dye_colorizer_light_gray"
+    },
+    {
+      "item": "hexcasting:dye_colorizer_cyan"
+    },
+    {
+      "item": "hexcasting:dye_colorizer_purple"
+    },
+    {
+      "item": "hexcasting:dye_colorizer_blue"
+    },
+    {
+      "item": "hexcasting:dye_colorizer_brown"
+    },
+    {
+      "item": "hexcasting:dye_colorizer_green"
+    },
+    {
+      "item": "hexcasting:dye_colorizer_red"
+    },
+    {
+      "item": "hexcasting:dye_colorizer_black"
+    }
   ],
   "output": "hexcasting:dye_colorizer_gray"
 }
