@@ -34,7 +34,7 @@ object PrestidigitationBlockTransformations {
 			}
 		})
 
-		PrestidigitationHandlersHook.register("transform_block", object : PrestidigitationHandlerBlock() {
+		PrestidigitationHandlersHook.register(object : PrestidigitationHandlerBlock() {
 			override fun canAffectBlock(env: CastingEnvironment, pos: BlockPos) = map.containsKey(getBlock(env, pos))
 			override fun affect(env: CastingEnvironment, pos: BlockPos) {
 				setBlockState(env, pos, map[getBlock(env, pos)]!!)

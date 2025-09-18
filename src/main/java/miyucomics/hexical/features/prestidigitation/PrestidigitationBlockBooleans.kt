@@ -33,7 +33,7 @@ object PrestidigitationBlockBooleans {
 			}
 		})
 
-		PrestidigitationHandlersHook.register("boolean_block", object : PrestidigitationHandlerBlock() {
+		PrestidigitationHandlersHook.register(object : PrestidigitationHandlerBlock() {
 			override fun canAffectBlock(env: CastingEnvironment, pos: BlockPos) = map.containsKey(getBlock(env, pos))
 			override fun affect(env: CastingEnvironment, pos: BlockPos) {
 				val state = getBlockState(env, pos)
