@@ -7,6 +7,7 @@ import dev.emi.emi.api.recipe.EmiRecipeCategory
 import dev.emi.emi.api.render.EmiTexture
 import dev.emi.emi.api.stack.EmiStack
 import miyucomics.hexical.HexicalMain
+import miyucomics.hexical.features.dyes.DyeingUtils
 import miyucomics.hexical.features.media_jar.MediaJarBlock
 import miyucomics.hexical.features.transmuting.TransmutingHelper
 import miyucomics.hexical.inits.HexicalBlocks
@@ -21,6 +22,10 @@ class HexicalEmi : EmiPlugin {
 
 		registry.addWorkstation(TRANSMUTING_CATEGORY, TRANSMUTING_ICON)
 
+		for (recipe in registry.recipeManager.listAllOfType(DyeingUtils.DYEING_BLOCK_RECIPE)) {
+			println(recipe)
+			registry.addRecipe(DyeingEmi(recipe))
+		}
 		for (recipe in registry.recipeManager.listAllOfType(TransmutingHelper.TRANSMUTING_RECIPE))
 			registry.addRecipe(TransmutingEmi(recipe))
 	}
