@@ -78,9 +78,7 @@ class SpikeEntity(entityType: EntityType<SpikeEntity>, world: World) : Entity(en
 			return (this.timer / EMERGE_LENGTH.toFloat()).pow(5f)
 		if (this.timer in EMERGE_LENGTH..<EMERGE_LENGTH + STAY_LENGTH)
 			return 1f
-		if (this.timer >= EMERGE_LENGTH + STAY_LENGTH)
-			return 1f - (this.timer - EMERGE_LENGTH - STAY_LENGTH) / DISAPPEAR_LENGTH.toFloat()
-		return 1f
+		return 1f - (this.timer - EMERGE_LENGTH - STAY_LENGTH) / DISAPPEAR_LENGTH.toFloat()
 	}
 
 	override fun readCustomDataFromNbt(nbt: NbtCompound) {
