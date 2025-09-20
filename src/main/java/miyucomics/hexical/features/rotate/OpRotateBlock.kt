@@ -12,6 +12,7 @@ import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import net.minecraft.block.BlockState
+import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
 
@@ -33,7 +34,7 @@ object OpRotateBlock : SpellAction {
 
 	private data class Spell(val pos: BlockPos, val state: BlockState) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			if (!env.canEditBlockAt(pos) || !IXplatAbstractions.INSTANCE.isBreakingAllowed(env.world, pos, env.world.getBlockState(pos), env.caster))
+			if (!env.canEditBlockAt(pos) || !IXplatAbstractions.INSTANCE.isBreakingAllowed(env.world, pos, env.world.getBlockState(pos), env.castingEntity as? ServerPlayerEntity))
 				return
 			env.world.setBlockState(pos, state)
 			env.world.updateNeighbors(pos, state.block)
