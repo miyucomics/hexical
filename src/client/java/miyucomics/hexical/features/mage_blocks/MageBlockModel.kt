@@ -29,7 +29,7 @@ class MageBlockModel : BakedModel, UnbakedModel, FabricBakedModel {
         val targetState = (world.getBlockEntity(pos) as MageBlockEntity).disguise
         val targetModel = MinecraftClient.getInstance().blockRenderManager.getModel(targetState)
         if (targetModel is FabricBakedModel)
-            targetModel.emitBlockQuads(world, targetState, pos, random, context);
+            targetModel.emitBlockQuads(world, targetState, pos, random, context)
     }
 
     override fun bake(baker: Baker, textureGetter: Function<SpriteIdentifier, Sprite>, rotationContainer: ModelBakeSettings, modelId: Identifier): BakedModel {
