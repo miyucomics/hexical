@@ -19,7 +19,7 @@ import net.minecraft.util.TypedActionResult
 import net.minecraft.world.GameMode
 import net.minecraft.world.World
 
-class ArchLampItem : ItemPackagedHex(Settings().maxCount(1).rarity(Rarity.EPIC)) {
+object ArchLampItem : ItemPackagedHex(Settings().maxCount(1).rarity(Rarity.EPIC)) {
 	override fun use(world: World, user: PlayerEntity, hand: Hand): TypedActionResult<ItemStack> {
 		val stack = user.getStackInHand(hand)
 		if (!hasHex(stack))
