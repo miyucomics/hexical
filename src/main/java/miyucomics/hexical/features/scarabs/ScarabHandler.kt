@@ -15,9 +15,9 @@ import at.petrak.hexcasting.common.lib.hex.HexEvalSounds
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.inits.HexicalItems
+import miyucomics.hexical.misc.HexItemsFinder
 import miyucomics.hexical.misc.HexSerialization
 import miyucomics.hexical.misc.InitHook
-import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtElement
 import net.minecraft.registry.Registry
 import net.minecraft.server.network.ServerPlayerEntity
@@ -44,7 +44,7 @@ object ScarabHandler : InitHook() {
 		val program = if (vm.image.userData.contains("scarab_hex"))
 			HexSerialization.deserializeHex(vm.image.userData.getList("hex", NbtElement.COMPOUND_TYPE.toInt()), world)
 		else {
-			val scarab = getScarab(env.castingEntity!! as ServerPlayerEntity) ?: return null
+			val scarab = HexItemsFinder.getMatchingItem(env.castingEntity!! as ServerPlayerEntity) { stack -> stack.isOf(HexicalItems.SCARAB_BEETLE_ITEM) && stack.hasNbt() && stack.nbt!!.getBoolean("active") } ?: return null
 			val program = scarab.getList("hex", NbtElement.COMPOUND_TYPE.toInt()) ?: return null
 			vm.image.userData.put("scarab_hex", program)
 			HexSerialization.deserializeHex(program, world)
@@ -73,17 +73,5 @@ object ScarabHandler : InitHook() {
 			cont = cont.next
 		}
 		return false
-	}
-
-	private fun getScarab(player: ServerPlayerEntity): ItemStack? {
-		val inventory = player.inventory
-		for (smallInventory in listOf(inventory.main, inventory.armor, inventory.offHand)) {
-			for (stack in smallInventory) {
-				val nbt = stack.nbt
-				if (stack.isOf(HexicalItems.SCARAB_BEETLE_ITEM) && nbt != null && nbt.getBoolean("active"))
-					return stack
-			}
-		}
-		return null
 	}
 }
