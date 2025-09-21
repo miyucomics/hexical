@@ -6,8 +6,10 @@ import at.petrak.hexcasting.api.casting.eval.vm.CastingVM
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.PatternIota
 import at.petrak.hexcasting.api.casting.math.HexPattern
+import at.petrak.hexcasting.api.utils.getCompound
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import miyucomics.hexical.inits.HexicalItems
+import miyucomics.hexical.misc.HexItemsFinder
 import miyucomics.hexical.misc.HexSerialization
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld
@@ -27,15 +29,10 @@ object GrimoireHandler {
 	}
 
 	private fun getExpansion(player: ServerPlayerEntity, pattern: HexPattern): List<Iota>? {
-		val inventory = player.inventory
-		inventory.offHand.toMutableList().also {
-			it.addAll(inventory.main)
-			it.addAll(inventory.armor)
-		}.forEach {
-			val nbt = it.nbt?.getCompound("expansions")
-			if (it.isOf(HexicalItems.GRIMOIRE_ITEM) && nbt != null && nbt.contains(pattern.anglesSignature()))
-				return HexSerialization.backwardsCompatibleReadHex(it.getOrCreateNbt().getCompound("expansions"), pattern.anglesSignature(), player.serverWorld)
-		}
-		return null
+		val grimoire = HexItemsFinder.getMatchingItem(player) { stack ->
+			val expansions = stack.nbt?.getCompound("expansions")
+			stack.isOf(HexicalItems.GRIMOIRE_ITEM) && expansions != null && expansions.contains(pattern.anglesSignature())
+		} ?: return null
+		return HexSerialization.backwardsCompatibleReadHex(grimoire.getCompound("expansions")!!, pattern.anglesSignature(), player.serverWorld)
 	}
 }
