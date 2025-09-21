@@ -32,7 +32,7 @@ import net.minecraft.state.property.Properties
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.event.GameEvent
 
-object PrestidigitationHandlersHook : InitHook() {
+object PrestidigitationHandlers : InitHook() {
 	private val handlers = mutableListOf<PrestidigitationHandler>()
 
 	override fun init() {
@@ -141,7 +141,7 @@ object PrestidigitationHandlersHook : InitHook() {
 				val state = getBlockState(env, pos)
 				env.world.playSound(null, pos, SoundEvents.BLOCK_BEEHIVE_SHEAR, SoundCategory.BLOCKS, 1f, 1f)
 				BeehiveBlock.dropHoneycomb(env.world, pos)
-				(state.block as BeehiveBlock).takeHoney(env.world, state, pos, null, BeehiveBlockEntity.BeeState.BEE_RELEASED)
+				(state.block as BeehiveBlock).takeHoney(env.world, state, pos, env.castingEntity as? ServerPlayerEntity, BeehiveBlockEntity.BeeState.BEE_RELEASED)
 				env.world.emitGameEvent(null, GameEvent.SHEAR, pos)
 			}
 		})
