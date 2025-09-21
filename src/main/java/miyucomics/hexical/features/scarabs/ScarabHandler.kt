@@ -41,8 +41,14 @@ object ScarabHandler : InitHook() {
 
 		if (wouldBeRecursive(pattern.anglesSignature(), continuation))
 			return null
-		val scarab = getScarab(env.castingEntity!! as ServerPlayerEntity) ?: return null
-		val program = HexSerialization.deserializeHex(scarab.getList("hex", NbtElement.COMPOUND_TYPE.toInt()) ?: return null, world)
+		val program = if (vm.image.userData.contains("scarab_hex"))
+			HexSerialization.deserializeHex(vm.image.userData.getList("hex", NbtElement.COMPOUND_TYPE.toInt()), world)
+		else {
+			val scarab = getScarab(env.castingEntity!! as ServerPlayerEntity) ?: return null
+			val program = scarab.getList("hex", NbtElement.COMPOUND_TYPE.toInt()) ?: return null
+			vm.image.userData.put("scarab_hex", program)
+			HexSerialization.deserializeHex(program, world)
+		}
 
 		val newStack = vm.image.stack.toMutableList()
 		newStack.add(iota)
