@@ -20,7 +20,7 @@ import net.minecraft.util.Rarity
 import net.minecraft.util.TypedActionResult
 import net.minecraft.world.World
 
-class ScarabBeetleItem : Item(Settings().maxCount(1).rarity(Rarity.UNCOMMON)), IotaHolderItem {
+object ScarabBeetleItem : Item(Settings().maxCount(1).rarity(Rarity.UNCOMMON)), IotaHolderItem {
 	override fun use(world: World, user: PlayerEntity, hand: Hand): TypedActionResult<ItemStack> {
 		val stack = user.getStackInHand(hand)
 		val nbt = stack.orCreateNbt
