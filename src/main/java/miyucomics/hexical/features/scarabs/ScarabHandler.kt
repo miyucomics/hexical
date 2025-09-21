@@ -42,7 +42,7 @@ object ScarabHandler : InitHook() {
 		if (wouldBeRecursive(pattern.anglesSignature(), continuation))
 			return null
 		val program = if (vm.image.userData.contains("scarab_hex"))
-			HexSerialization.deserializeHex(vm.image.userData.getList("hex", NbtElement.COMPOUND_TYPE.toInt()), world)
+			HexSerialization.deserializeHex(vm.image.userData.getList("scarab_hex", NbtElement.COMPOUND_TYPE.toInt()), world)
 		else {
 			val scarab = HexItemsFinder.getMatchingItem(env.castingEntity!! as ServerPlayerEntity) { stack -> stack.isOf(HexicalItems.SCARAB_BEETLE_ITEM) && stack.hasNbt() && stack.nbt!!.getBoolean("active") } ?: return null
 			val program = scarab.getList("hex", NbtElement.COMPOUND_TYPE.toInt()) ?: return null
