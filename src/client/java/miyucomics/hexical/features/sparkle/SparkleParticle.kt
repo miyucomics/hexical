@@ -1,6 +1,9 @@
 package miyucomics.hexical.features.sparkle
 
-import net.minecraft.client.particle.*
+import net.minecraft.client.particle.ParticleFactory
+import net.minecraft.client.particle.ParticleTextureSheet
+import net.minecraft.client.particle.SpriteBillboardParticle
+import net.minecraft.client.particle.SpriteProvider
 import net.minecraft.client.world.ClientWorld
 
 class SparkleParticle(world: ClientWorld?, x: Double, y: Double, z: Double, velocityX: Double, velocityY: Double, velocityZ: Double, provider: SpriteProvider) : SpriteBillboardParticle(world, x, y, z, velocityX, velocityY, velocityZ) {
@@ -28,17 +31,12 @@ class SparkleParticle(world: ClientWorld?, x: Double, y: Double, z: Double, velo
 		return 240 or (k shl 16)
 	}
 
-	override fun getType(): ParticleTextureSheet {
-		return ParticleTextureSheet.PARTICLE_SHEET_TRANSLUCENT
-	}
+	override fun getType(): ParticleTextureSheet = ParticleTextureSheet.PARTICLE_SHEET_TRANSLUCENT
 
-	@JvmRecord
 	data class Factory(val spriteProvider: SpriteProvider) : ParticleFactory<SparkleParticleEffect> {
-		override fun createParticle(effect: SparkleParticleEffect, world: ClientWorld, d: Double, e: Double, f: Double, g: Double, h: Double, i: Double): Particle {
-			val sparkleParticle = SparkleParticle(world, d, e, f, g, h, i, this.spriteProvider)
-			sparkleParticle.setColor(effect.color.x, effect.color.y, effect.color.z)
-			sparkleParticle.setMaxAge(effect.lifespan)
-			return sparkleParticle
+		override fun createParticle(effect: SparkleParticleEffect, world: ClientWorld, d: Double, e: Double, f: Double, g: Double, h: Double, i: Double) = SparkleParticle(world, d, e, f, g, h, i, this.spriteProvider).apply {
+			setColor(effect.color.x, effect.color.y, effect.color.z)
+			setMaxAge(effect.lifespan)
 		}
 	}
 }
