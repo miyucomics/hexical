@@ -11,9 +11,7 @@ import java.util.*
 
 class SparkleParticleEffect(val color: Vector3f, val lifespan: Int) : ParticleEffect {
 	object Factory : ParticleEffect.Factory<SparkleParticleEffect> {
-		override fun read(type: ParticleType<SparkleParticleEffect>, buf: PacketByteBuf): SparkleParticleEffect {
-			return SparkleParticleEffect(AbstractDustParticleEffect.readColor(buf), buf.readInt())
-		}
+		override fun read(type: ParticleType<SparkleParticleEffect>, buf: PacketByteBuf) = SparkleParticleEffect(AbstractDustParticleEffect.readColor(buf), buf.readInt())
 
 		override fun read(particleType: ParticleType<SparkleParticleEffect>, stringReader: StringReader): SparkleParticleEffect {
 			val color = AbstractDustParticleEffect.readColor(stringReader)
@@ -24,7 +22,7 @@ class SparkleParticleEffect(val color: Vector3f, val lifespan: Int) : ParticleEf
 	}
 
 	override fun getType() = HexicalParticles.SPARKLE_PARTICLE
-	override fun asString() = String.format(Locale.ROOT, "sparkle_particle %.2f %.2f %.2f", color.x(), color.y(), color.z())
+	override fun asString() = String.format(Locale.ROOT, "sparkle %.2f %.2f %.2f", color.x(), color.y(), color.z())
 
 	override fun write(packet: PacketByteBuf) {
 		packet.writeFloat(color.x())
