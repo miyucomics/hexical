@@ -9,7 +9,7 @@ import net.minecraft.util.TypedActionResult
 import net.minecraft.util.UseAction
 import net.minecraft.world.World
 
-class MediaLogItem : Item(Settings().maxCount(1)) {
+object MediaLogItem : Item(Settings().maxCount(1)) {
 	override fun use(world: World, player: PlayerEntity, hand: Hand): TypedActionResult<ItemStack> {
 		val stack = player.getStackInHand(hand)
 		if (!world.isClient)
