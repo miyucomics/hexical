@@ -47,17 +47,17 @@ object HexicalItems {
 	val SMALL_ANIMATED_SCROLL_ITEM = registerItem("animated_scroll_small", AnimatedScrollItem(1))
 	val MEDIUM_ANIMATED_SCROLL_ITEM = registerItem("animated_scroll_medium", AnimatedScrollItem(2))
 	val LARGE_ANIMATED_SCROLL_ITEM = registerItem("animated_scroll_large", AnimatedScrollItem(3))
-	@JvmField val HAND_LAMP_ITEM = registerItem("hand_lamp", HandLampItem())
-	@JvmField val ARCH_LAMP_ITEM = registerItem("arch_lamp", ArchLampItem())
+	@JvmField val HAND_LAMP_ITEM = registerItem("hand_lamp", HandLampItem)
+	@JvmField val ARCH_LAMP_ITEM = registerItem("arch_lamp", ArchLampItem)
 
-	val SCARAB_BEETLE_ITEM = registerItem("scarab_beetle", ScarabBeetleItem())
-	@JvmField val GRIMOIRE_ITEM = registerItem("grimoire", GrimoireItem())
+	val SCARAB_BEETLE_ITEM = registerItem("scarab_beetle", ScarabBeetleItem)
+	@JvmField val GRIMOIRE_ITEM = registerItem("grimoire", GrimoireItem)
 
 	val HEX_GUMMY = registerItem("hex_gummy", Item(Settings().food(FoodComponent.Builder().hunger(2).saturationModifier(0.5f).alwaysEdible().snack().build())))
-	val HEXBURST_ITEM = registerItem("hexburst", HexburstItem())
-	val HEXTITO_ITEM = registerItem("hextito", HextitoItem())
+	val HEXBURST_ITEM = registerItem("hexburst", HexburstItem)
+	val HEXTITO_ITEM = registerItem("hextito", HextitoItem)
 
-	private val MEDIA_LOG_ITEM = registerItem("media_log", MediaLogItem())
+	private val MEDIA_LOG_ITEM = registerItem("media_log", MediaLogItem)
 
 	@JvmField
 	val LEI = registerItem("lei", LeiItem)

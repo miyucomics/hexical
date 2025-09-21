@@ -10,7 +10,7 @@ import net.minecraft.text.Text
 import net.minecraft.util.Formatting
 import net.minecraft.world.World
 
-class GrimoireItem : Item(Settings().maxCount(1)) {
+object GrimoireItem : Item(Settings().maxCount(1)) {
 	override fun appendTooltip(stack: ItemStack, world: World?, list: MutableList<Text>, tooltipContext: TooltipContext) {
 		if (!stack.hasNbt()) {
 			super.appendTooltip(stack, world, list, tooltipContext)
