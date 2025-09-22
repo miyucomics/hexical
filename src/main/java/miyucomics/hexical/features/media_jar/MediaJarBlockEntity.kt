@@ -1,5 +1,6 @@
 package miyucomics.hexical.features.media_jar
 
+import at.petrak.hexcasting.api.addldata.ADMediaHolder
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.api.utils.serializeToNBT
 import miyucomics.hexical.features.transmuting.TransmutationResult
@@ -20,17 +21,23 @@ import net.minecraft.util.math.BlockPos
 import kotlin.math.max
 import kotlin.math.min
 
-class MediaJarBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(HexicalBlocks.MEDIA_JAR_BLOCK_ENTITY, pos, state), Inventory {
+class MediaJarBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(HexicalBlocks.MEDIA_JAR_BLOCK_ENTITY, pos, state), Inventory, ADMediaHolder {
 	private var media: Long = 0
 	private var heldStack = ItemStack.EMPTY
 
-	fun getMedia() = this.media
-	private fun setMedia(media: Long) {
+	override fun canRecharge() = true
+	override fun canProvide() = true
+	override fun canConstructBattery() = true
+	override fun getConsumptionPriority() = 10000
+	override fun getMedia() = this.media
+	override fun getMaxMedia() = MediaJarBlock.MAX_CAPACITY
+	override fun setMedia(media: Long) {
 		this.media = max(min(media, MediaJarBlock.MAX_CAPACITY), 0)
 		markDirty()
 		if (!world!!.isClient)
 			world!!.updateListeners(pos, cachedState, cachedState, Block.NOTIFY_ALL)
 	}
+
 	fun insertMedia(media: Long): Long {
 		val currentMedia = this.media
 		setMedia(currentMedia + media)
