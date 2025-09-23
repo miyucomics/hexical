@@ -7,19 +7,35 @@
 	"pages": [
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:grok_pull",
-			"anchor": "hexical:grok_pull",
+			"op_id": "hexical:grok_get_stack",
+			"anchor": "hexical:grok_get_stack",
 			"input": "",
-			"output": "list, list",
-			"text": "hexical.page.grok_pull.summary"
+			"output": "list",
+			"text": "hexical.page.grok_get_stack.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:grok_push",
-			"anchor": "hexical:grok_push",
-			"input": "list, list",
+			"op_id": "hexical:grok_set_stack",
+			"anchor": "hexical:grok_set_stack",
+			"input": "list",
 			"output": "",
-			"text": "hexical.page.grok_push.summary"
+			"text": "hexical.page.grok_set_stack.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:grok_get_parenthesized",
+			"anchor": "hexical:grok_get_parenthesized",
+			"input": "",
+			"output": "list",
+			"text": "hexical.page.grok_get_parenthesized.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:grok_set_parenthesized",
+			"anchor": "hexical:grok_set_parenthesized",
+			"input": "list",
+			"output": "",
+			"text": "hexical.page.grok_set_parenthesized.summary"
 		}
 	]
 }
