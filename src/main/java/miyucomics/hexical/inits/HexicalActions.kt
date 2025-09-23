@@ -44,8 +44,10 @@ import miyucomics.hexical.features.evocation.OpSetEvocation
 import miyucomics.hexical.features.grimoires.OpGrimoireErase
 import miyucomics.hexical.features.grimoires.OpGrimoireIndex
 import miyucomics.hexical.features.grimoires.OpGrimoireWrite
-import miyucomics.hexical.features.grok.OpGrokPull
-import miyucomics.hexical.features.grok.OpGrokPush
+import miyucomics.hexical.features.grok.OpGrokGetParenthesized
+import miyucomics.hexical.features.grok.OpGrokGetStack
+import miyucomics.hexical.features.grok.OpGrokSetParenthesized
+import miyucomics.hexical.features.grok.OpGrokSetStack
 import miyucomics.hexical.features.hopper.OpHopper
 import miyucomics.hexical.features.hopper.OpIndexHopper
 import miyucomics.hexical.features.hotbar.OpGetHotbar
@@ -144,8 +146,10 @@ object HexicalActions {
 		register("deserialize_pattern", "wqqqaqwd", HexDir.EAST, OpDeserializePattern)
 		register("draw_pattern", "eadqqqa", HexDir.NORTH_EAST, OpDrawPattern)
 
-		register("grok_pull", "aqawwqaw", HexDir.EAST, OpGrokPull)
-		register("grok_push", "ewdewwde", HexDir.EAST, OpGrokPush)
+		register("grok_get_stack", "aqawwqaw", HexDir.EAST, OpGrokGetStack)
+		register("grok_set_stack", "ewdewwde", HexDir.EAST, OpGrokSetStack)
+		register("grok_get_parenthesized", "waqwawwqwaw", HexDir.EAST, OpGrokGetParenthesized)
+		register("grok_set_parenthesized", "wewdwewwdwe", HexDir.EAST, OpGrokSetParenthesized)
 
 		register("get_telepathy", "wqqadaw", HexDir.EAST, OpGetKeybind("key.hexical.telepathy"))
 		register("send_telepathy", "qqqqwaqa", HexDir.EAST, OpSendTelepathy)
