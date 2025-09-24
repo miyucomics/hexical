@@ -10,21 +10,22 @@
 			"text": "hexical.page.animated_scroll.0"
 		},
 		{
-			"type": "patchouli:text",
+			"type": "hexcasting:transmuting",
+			"recipe": "hexical:transmuting/animated_scroll_small",
+			"title": "item.hexical.animated_scroll_small",
 			"text": "hexical.page.animated_scroll.1"
 		},
 		{
-			"type": "patchouli:crafting",
-			"recipe": "hexical:animated_scroll_small",
-			"recipe2": "hexical:animated_scroll_medium"
-		},
-		{
-			"type": "patchouli:crafting",
-			"recipe": "hexical:animated_scroll_large"
-		},
-		{
-			"type": "patchouli:text",
+			"type": "hexcasting:transmuting",
+			"recipe": "hexical:transmuting/animated_scroll_medium",
+			"title": "item.hexical.animated_scroll_medium",
 			"text": "hexical.page.animated_scroll.2"
+		},
+		{
+			"type": "hexcasting:transmuting",
+			"recipe": "hexical:transmuting/animated_scroll_large",
+			"title": "item.hexical.animated_scroll_large",
+			"text": "hexical.page.animated_scroll.3"
 		},
 		{
 			"type": "hexcasting:pattern",

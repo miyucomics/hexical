@@ -86,6 +86,7 @@
 - changed wristpocket reflection to return an item stack
 - changed hex candles to not be extinguished by water
 - changed Greater Blink to not move feet to eyes
+- changed animated scroll recipe to use media jar
 - changed prestidigitation to anger bees when you extract honey
 - changed grimoires to work in ender chest
 - changed lamps deactivating to only be when they are picked up

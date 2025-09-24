@@ -7,6 +7,7 @@ import com.google.gson.JsonObject
 import com.mojang.serialization.JsonOps
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.features.transmuting.TransmutingSerializer
+import miyucomics.hexical.inits.HexicalItems
 import net.minecraft.data.server.recipe.RecipeJsonProvider
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
@@ -29,16 +30,20 @@ object TransmutationProvider {
 		makeTransmutation("unthoughtknot", HexItems.THOUGHT_KNOT, Items.STRING, MediaConstants.DUST_UNIT / -2)
 		makeTransmutation("fossil_fuel", Items.CHARCOAL, Items.COAL, MediaConstants.DUST_UNIT / 2)
 		makeTransmutation("renewable_fuel", Items.COAL, Items.CHARCOAL, MediaConstants.DUST_UNIT / -4)
+		makeTransmutation("animated_scroll_small", HexItems.SCROLL_SMOL, HexicalItems.SMALL_ANIMATED_SCROLL_ITEM, MediaConstants.DUST_UNIT, false)
+		makeTransmutation("animated_scroll_medium", HexItems.SCROLL_MEDIUM, HexicalItems.MEDIUM_ANIMATED_SCROLL_ITEM, MediaConstants.DUST_UNIT, false)
+		makeTransmutation("animated_scroll_large", HexItems.SCROLL_LARGE, HexicalItems.LARGE_ANIMATED_SCROLL_ITEM, MediaConstants.DUST_UNIT, false)
 	}
 
-	fun makeTransmutation(name: String, original: Item, new: Item, cost: Long) {
+	fun makeTransmutation(name: String, original: Item, new: Item, cost: Long, addToTransmutationsPage: Boolean = true) {
 		transmutationRecipeJsons.add(TransmutingJsonGenerator(HexicalMain.id("transmuting/$name"), Ingredient.ofItems(original), listOf(ItemStack(new)), cost))
-		transmutationRecipePages.add(JsonObject().apply {
-			addProperty("type", "hexcasting:transmuting")
-			addProperty("recipe", "hexical:transmuting/$name")
-			addProperty("title", "hexical.recipe.$name.header")
-			addProperty("text", "hexical.recipe.$name.text")
-		})
+		if (addToTransmutationsPage)
+			transmutationRecipePages.add(JsonObject().apply {
+				addProperty("type", "hexcasting:transmuting")
+				addProperty("recipe", "hexical:transmuting/$name")
+				addProperty("title", "hexical.recipe.$name.header")
+				addProperty("text", "hexical.recipe.$name.text")
+			})
 	}
 }
 
