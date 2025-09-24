@@ -1,0 +1,10 @@
+{
+  "type": "hexical:transmuting",
+  "cost": 10000,
+  "input": {
+    "item": "hexcasting:scroll_small"
+  },
+  "output": {
+    "item": "hexical:animated_scroll_small"
+  }
+}
