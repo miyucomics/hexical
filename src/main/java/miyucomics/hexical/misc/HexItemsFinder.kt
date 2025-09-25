@@ -1,5 +1,6 @@
 package miyucomics.hexical.misc
 
+import miyucomics.hexical.features.wristpocket.wristpocket
 import net.minecraft.item.ItemStack
 import net.minecraft.server.network.ServerPlayerEntity
 
@@ -11,6 +12,7 @@ object HexItemsFinder {
 			.plus(inventory.armor)
 			.plus(inventory.offHand)
 			.plus(player.enderChestInventory.stacks)
+			.plus(player.wristpocket)
 			.firstOrNull(predicate)
 	}
 }

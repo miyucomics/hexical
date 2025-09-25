@@ -74,6 +74,7 @@
 - added pattern to test if an item stack has an autograph
 - added pattern to check if an item has been autographed by a specific person
 - added Unautograph spell to unautograph an item ( still erases it )
+- changed grimoires to work in the wristpocket
 - changed cost of Refuel Lamp
 - changed Displace to cost half a dust
 - changed Autograph and Unautograph's pattern by swapping them
