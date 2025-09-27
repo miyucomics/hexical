@@ -10,7 +10,7 @@ import at.petrak.hexcasting.api.casting.mishaps.MishapOthersName
 import net.minecraft.server.network.ServerPlayerEntity
 
 object OpGrokSetStack : SpellAction {
-	override val argc = 2
+	override val argc = 1
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		if (env.castingEntity !is ServerPlayerEntity)
 			throw MishapBadCaster()
