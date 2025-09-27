@@ -18,7 +18,7 @@ object OpGrokSetParenthesized : SpellAction {
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		if (env.castingEntity !is ServerPlayerEntity)
 			throw MishapBadCaster()
-		val new = args.getList(1, argc).map { if (MishapOthersName.getTrueNameFromDatum(it, env.castingEntity as ServerPlayerEntity) == null) it else NullIota() }
+		val new = args.getList(0, argc).map { if (MishapOthersName.getTrueNameFromDatum(it, env.castingEntity as ServerPlayerEntity) == null) it else NullIota() }
 		return SpellAction.Result(Spell { image -> image.copy(parenthesized = new.map { CastingImage.ParenthesizedIota(it, true) }) }, 0, listOf())
 	}
 
