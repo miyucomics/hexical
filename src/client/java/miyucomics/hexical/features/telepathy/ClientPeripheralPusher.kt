@@ -17,15 +17,14 @@ object ClientPeripheralPusher : InitHook() {
 				return@register
 
 			for (key in listOf(client.options.forwardKey, client.options.leftKey, client.options.rightKey, client.options.backKey, client.options.jumpKey, client.options.sneakKey, client.options.useKey, client.options.attackKey, HexicalKeybinds.TELEPATHY_KEYBIND, HexicalKeybinds.EVOKE_KEYBIND)) {
-				if (previousState.keys.contains(key.translationKey)) {
-					if (previousState[key.translationKey] == true && !key.isPressed) {
-						ClientPlayNetworking.send(ServerPeripheralReceiver.RELEASED_KEY_CHANNEL, PacketByteBufs.create().also { it.writeString(key.translationKey) })
-					} else if (previousState[key.translationKey] == false && key.isPressed) {
-						ClientPlayNetworking.send(ServerPeripheralReceiver.PRESSED_KEY_CHANNEL, PacketByteBufs.create().also { it.writeString(key.translationKey) })
+				if (previousState[key.translationKey] != key.isPressed) {
+					val channel = when (key.isPressed) {
+						true -> ServerPeripheralReceiver.PRESSED_KEY_CHANNEL
+						false -> ServerPeripheralReceiver.RELEASED_KEY_CHANNEL
 					}
+					ClientPlayNetworking.send(channel, PacketByteBufs.create().also { it.writeString(key.translationKey) })
+					previousState[key.translationKey] = key.isPressed
 				}
-
-				previousState[key.translationKey] = key.isPressed
 			}
 		}
 
