@@ -5,12 +5,12 @@ import net.minecraft.inventory.Inventory
 import net.minecraft.item.ItemStack
 import net.minecraft.util.collection.DefaultedList
 
-class ArmorStandInventory(private val armorItems: DefaultedList<ItemStack>, private val heldItems: DefaultedList<ItemStack>) : Inventory {
+class ArmorStandEndpoint(private val armorItems: DefaultedList<ItemStack>, private val heldItems: DefaultedList<ItemStack>) : Inventory {
 	override fun getStack(slot: Int): ItemStack {
 		return when (slot) {
 			in 0..3 -> armorItems[slot]
 			in 4..5 -> heldItems[slot - 4]
-			else -> throw IndexOutOfBoundsException("$slot out of bounds for ArmorStandInventory")
+			else -> throw IndexOutOfBoundsException("$slot out of bounds for ArmorStandEndpoint")
 		}
 	}
 
