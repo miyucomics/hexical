@@ -17,7 +17,7 @@
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:charm",
 			"anchor": "hexical:charm",
-			"input": "entity, list, num, list of num, list of num",
+			"input": "list, num, list of num, list of num",
 			"output": "",
 			"text": "hexical.page.charm.summary"
 		},
