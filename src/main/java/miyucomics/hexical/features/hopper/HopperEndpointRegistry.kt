@@ -42,7 +42,7 @@ object HopperEndpointRegistry : InitHook() {
 			null
 		}
 
-		registerInventoryEntity<ArmorStandEntity> { ArmorStandInventory(it.armorItems as DefaultedList<ItemStack>, it.handItems as DefaultedList<ItemStack>) }
+		registerInventoryEntity<ArmorStandEntity> { ArmorStandEndpoint(it.armorItems as DefaultedList<ItemStack>, it.handItems as DefaultedList<ItemStack>) }
 		registerInventoryEntity<ChestBoatEntity> { ListBackedInventory(it.inventory) }
 		registerInventoryEntity<ChestMinecartEntity> { ListBackedInventory(it.inventory, size = 27) }
 		registerInventoryEntity<HopperMinecartEntity> { ListBackedInventory(it.inventory, size = 5) }
