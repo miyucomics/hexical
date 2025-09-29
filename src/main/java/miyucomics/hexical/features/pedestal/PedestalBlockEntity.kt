@@ -1,7 +1,9 @@
 package miyucomics.hexical.features.pedestal
 
+import at.petrak.hexcasting.api.addldata.ADIotaHolder
 import at.petrak.hexcasting.api.casting.eval.vm.CastingImage
 import at.petrak.hexcasting.api.casting.eval.vm.CastingImage.ParenthesizedIota
+import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.inits.HexicalBlocks
@@ -20,7 +22,7 @@ import net.minecraft.world.World
 import java.util.*
 import kotlin.math.min
 
-class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(HexicalBlocks.PEDESTAL_BLOCK_ENTITY, pos, state), Inventory {
+class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(HexicalBlocks.PEDESTAL_BLOCK_ENTITY, pos, state), Inventory, ADIotaHolder {
 	var heldStack: ItemStack = ItemStack.EMPTY
 	private var heldEntity: ItemEntity? = null
 	private var persistentUUID: UUID? = null
@@ -220,6 +222,11 @@ class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 		world?.updateListeners(pos, cachedState, cachedState, 3)
 		super.markDirty()
 	}
+
+
+	override fun writeable() = true
+	override fun readIotaTag() = IXplatAbstractions.INSTANCE.findDataHolder(this.heldStack)?.readIotaTag()
+	override fun writeIota(iota: Iota?, simulate: Boolean) = IXplatAbstractions.INSTANCE.findDataHolder(this.heldStack)?.writeIota(iota, simulate) ?: false
 
 	fun getItemPosition(): Vec3d = Vec3d.ofCenter(this.pos).add(Vec3d.of(normalVector).multiply(HEIGHT))
 
