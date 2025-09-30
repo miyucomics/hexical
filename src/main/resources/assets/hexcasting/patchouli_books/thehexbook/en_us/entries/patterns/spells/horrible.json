@@ -15,7 +15,7 @@
 			"op_id": "hexical:horrible",
 			"anchor": "hexical:horrible",
 			"input": "vector",
-			"output": "entity",
+			"output": "",
 			"text": "hexical.page.horrible.summary"
 		}
 	]
