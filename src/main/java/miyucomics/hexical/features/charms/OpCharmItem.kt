@@ -20,13 +20,13 @@ import net.minecraft.nbt.NbtCompound
 object OpCharmItem : SpellAction {
 	override val argc = 4
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
-		val stack = env.getHeldItemToOperateOn(CharmUtilities::isStackCharmed)?.stack ?: throw MishapBadOffhandItem.of(null, "uncharmed")
+		val stack = env.getHeldItemToOperateOn { !it.isEmpty && !CharmUtilities.isStackCharmed(it) }?.stack ?: throw MishapBadOffhandItem.of(null, "uncharmed")
 		val hex = args.getList(0, argc).toList()
 		CastingUtils.assertNoTruename(args[0], env)
 		val battery = args.getPositiveDouble(1, argc)
 
-		val normalInputs = args.getList(3, argc).map { (it as? DoubleIota)?.double?.toInt() ?: throw MishapInvalidIota.of(args[2], 1, "number_list") }
-		val sneakInputs = args.getList(4, argc).map { (it as? DoubleIota)?.double?.toInt() ?: throw MishapInvalidIota.of(args[3], 0, "number_list") }
+		val normalInputs = args.getList(2, argc).map { (it as? DoubleIota)?.double?.toInt() ?: throw MishapInvalidIota.of(args[2], 1, "number_list") }
+		val sneakInputs = args.getList(3, argc).map { (it as? DoubleIota)?.double?.toInt() ?: throw MishapInvalidIota.of(args[3], 0, "number_list") }
 
 		return SpellAction.Result(
 			Spell(stack, hex, (battery * MediaConstants.DUST_UNIT).toLong(), normalInputs, sneakInputs),
