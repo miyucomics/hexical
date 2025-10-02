@@ -13,6 +13,7 @@ import net.minecraft.item.ItemStack
 import net.minecraft.item.Items
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.nbt.NbtList
+import net.minecraft.util.math.ColorHelper
 import net.minecraft.util.math.Vec3d
 
 object OpConjureFirework : SpellAction {
@@ -46,7 +47,7 @@ object OpConjureFirework : SpellAction {
 		return SpellAction.Result(Spell(position, velocity, duration, shape, trueColors, fades, flicker, trail), MediaConstants.SHARD_UNIT, listOf(ParticleSpray.burst(position, 1.0)))
 	}
 
-	private data class Spell(val position: Vec3d, val velocity: Vec3d, val duration: Int, val shape: Int, val colors: List<Int>, val fades: List<Int>, val flicker: Boolean, val trail: Boolean) : RenderedSpell {
+	private data class Spell(val position: Vec3d, val desiredVelocity: Vec3d, val duration: Int, val shape: Int, val colors: List<Int>, val fades: List<Int>, val flicker: Boolean, val trail: Boolean) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
 			val fireworkNbt = NbtCompound().apply {
 				put(FireworkRocketItem.EXPLOSIONS_KEY, NbtList().apply {
@@ -66,14 +67,12 @@ object OpConjureFirework : SpellAction {
 			}
 
 			env.world.spawnEntity(FireworkRocketEntity(env.world, fireworkStack, position.x, position.y, position.z, true).apply {
-				setVelocity(velocity.x, velocity.y, velocity.z)
+				setVelocity(desiredVelocity.x, desiredVelocity.y, desiredVelocity.z)
 			})
 		}
 	}
 
 	private fun translateVectorToColor(vector: Vec3d): Int {
-		return (vector.x.coerceIn(0.0, 1.0) * 255).toInt() shl 16 or
-		(vector.y.coerceIn(0.0, 1.0) * 255).toInt() shl 8 or
-		(vector.z.coerceIn(0.0, 1.0) * 255).toInt()
+		return ColorHelper.Argb.getArgb(255, (vector.x.coerceIn(0.0, 1.0) * 255).toInt(), (vector.y.coerceIn(0.0, 1.0) * 255).toInt(), (vector.z.coerceIn(0.0, 1.0) * 255).toInt())
 	}
 }
