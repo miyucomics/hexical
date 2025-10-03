@@ -17,10 +17,10 @@ import kotlin.math.sin
 
 @OptIn(ExperimentalStdlibApi::class)
 class MeshRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<MeshEntity>(ctx) {
-	override fun getTexture(entity: MeshEntity?): Identifier? = null
-	override fun shouldRender(entity: MeshEntity?, frustum: Frustum?, x: Double, y: Double, z: Double) = true
-	override fun render(entity: MeshEntity?, yaw: Float, tickDelta: Float, matrices: MatrixStack, vertexConsumers: VertexConsumerProvider, light: Int) {
-		val vertices = entity!!.clientVertices
+	override fun getTexture(entity: MeshEntity): Identifier? = null
+	override fun shouldRender(entity: MeshEntity, frustum: Frustum?, x: Double, y: Double, z: Double) = true
+	override fun render(entity: MeshEntity, yaw: Float, tickDelta: Float, matrices: MatrixStack, vertexConsumers: VertexConsumerProvider, light: Int) {
+		val vertices = entity.clientVertices
 		if (vertices.size < 2)
 			return
 
