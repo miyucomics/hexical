@@ -5,12 +5,10 @@ import at.petrak.hexcasting.api.casting.castables.SpellAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.eval.env.StaffCastEnv
 import at.petrak.hexcasting.api.casting.iota.Iota
-import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadOffhandItem
 import at.petrak.hexcasting.api.utils.getOrCreateList
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.xplat.IXplatAbstractions
-import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.server.network.ServerPlayerEntity
@@ -18,13 +16,9 @@ import net.minecraft.server.network.ServerPlayerEntity
 object OpAutograph : SpellAction {
 	override val argc = 0
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
-		if (env.castingEntity !is PlayerEntity)
-			throw MishapBadCaster()
 		if (env !is StaffCastEnv)
 			throw NeedsStaffMishap()
-		val stack = env.getHeldItemToOperateOn { true }
-		if (stack == null)
-			throw MishapBadOffhandItem.of(null, "anything")
+		val stack = env.getHeldItemToOperateOn { !it.isEmpty } ?: throw MishapBadOffhandItem.of(null, "anything")
 		return SpellAction.Result(Spell(stack.stack), 0, listOf())
 	}
 
@@ -33,11 +27,10 @@ object OpAutograph : SpellAction {
 			val caster = env.castingEntity as ServerPlayerEntity
 			val list = stack.orCreateNbt.getOrCreateList("autographs", NbtCompound.COMPOUND_TYPE.toInt())
 			list.removeIf { compound -> (compound as NbtCompound).getString("name") == caster.entityName }
-
-			val compound = NbtCompound()
-			compound.putString("name", caster.entityName)
-			compound.putCompound("pigment", IXplatAbstractions.INSTANCE.getPigment(caster).serializeToNBT())
-			list.add(0, compound)
+			list.add(0, NbtCompound().apply {
+				putString("name", caster.entityName)
+				putCompound("pigment", IXplatAbstractions.INSTANCE.getPigment(caster).serializeToNBT())
+			})
 		}
 	}
 }
