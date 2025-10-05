@@ -11,6 +11,7 @@ class HexicalDatagen : DataGeneratorEntrypoint {
 			addProvider(::HexicalAdvancementGenerator)
 			addProvider(::HexicalBlockLootTableGenerator)
 			addProvider(::HexicalDyeingGenerator)
+			addProvider(::HexicalFloraGenerator)
 			addProvider(::HexicalModelGenerator)
 			addProvider(::HexicalPatchouliGenerator)
 			addProvider(::HexicalRecipeGenerator)
