@@ -4,7 +4,7 @@ import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import net.minecraft.entity.Entity
 
 abstract class PrestidigitationHandlerEntity<T>(private val handledClass: Class<T>) : PrestidigitationHandler {
-	fun canAffectEntity(env: CastingEnvironment, entity: Entity): Boolean = handledClass.isInstance(entity)
+	open fun canAffectEntity(env: CastingEnvironment, entity: Entity): Boolean = handledClass.isInstance(entity)
 	abstract fun affect(env: CastingEnvironment, entity: T)
 
 	fun affectSafely(env: CastingEnvironment, entity: Entity) {
