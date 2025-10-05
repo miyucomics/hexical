@@ -11,6 +11,7 @@
 		"CatSitOnBlockGoalMixin",
 		"CircleCastEnvMixin",
 		"DispenserBlockInvoker",
+		"EntityMixin",
 		"ItemAbacusMixin",
 		"ItemEntityMixin",
 		"ItemStackMixin",
