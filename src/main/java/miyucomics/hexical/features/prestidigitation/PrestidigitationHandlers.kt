@@ -220,6 +220,7 @@ object PrestidigitationHandlers : InitHook() {
 		})
 
 		register(object : PrestidigitationHandlerEntity<Shearable>(Shearable::class.java) {
+			override fun canAffectEntity(env: CastingEnvironment, entity: Entity) = super.canAffectEntity(env, entity) && (entity as Shearable).isShearable
 			override fun affect(env: CastingEnvironment, entity: Shearable) {
 				entity.sheared(SoundCategory.MASTER)
 			}
