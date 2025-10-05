@@ -18,7 +18,7 @@ import net.minecraft.util.hit.BlockHitResult
 import net.minecraft.util.hit.EntityHitResult
 import net.minecraft.world.World
 
-class MagicMissileEntity(entityType: EntityType<out MagicMissileEntity?>, world: World) : PersistentProjectileEntity(entityType, world) {
+class MagicMissileEntity(entityType: EntityType<out MagicMissileEntity>, world: World) : PersistentProjectileEntity(entityType, world) {
 	constructor(world: World) : this(HexicalEntities.MAGIC_MISSILE_ENTITY, world)
 
 	override fun handleStatus(status: Byte) {
