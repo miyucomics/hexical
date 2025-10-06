@@ -7,8 +7,7 @@
   - player stores data now; not persistent state
   - removed Myodesopsia spell
 - added Vibrate spell
-- added pattern to pull iota from staff stack
-- added pattern to push iota to staff stack
+- added grok patterns to push and pull from staff stack
 - added mage block disguising spell
 - added spell to set model position
 - added tooltips to hexbursts
@@ -18,6 +17,8 @@
 - added lesser sentinels
 - added plushies
 - added Horrible
+- added zap spell - creates a zapping particle
+- added piston spell to push blocks
 - added 512 pattern cap to grimoires
 - added name and lore spell that uses text iota
 - added HexGloop's Dispense spell
@@ -57,6 +58,9 @@
 - added Wooleyed status effect
   - acts as a coping saw
 - added spell to break block with fortune
+- added recipe files for dyeing spell
+- added Emi support for dyeing spell
+- added Emi support for media jar
 - added spell to break block with silk touch
 - added left and right-click telepathy patterns
 - added telepathy pattern for scrolling
@@ -70,6 +74,7 @@
 - added pattern to test if an item stack has an autograph
 - added pattern to check if an item has been autographed by a specific person
 - added Unautograph spell to unautograph an item ( still erases it )
+- changed grimoires to work in the wristpocket
 - changed cost of Refuel Lamp
 - changed Displace to cost half a dust
 - changed Autograph and Unautograph's pattern by swapping them
@@ -82,6 +87,9 @@
 - changed wristpocket reflection to return an item stack
 - changed hex candles to not be extinguished by water
 - changed Greater Blink to not move feet to eyes
+- changed animated scroll recipe to use media jar
+- changed prestidigitation to anger bees when you extract honey
+- changed grimoires to work in ender chest
 - changed lamps deactivating to only be when they are picked up
 - changed shader spells to no longer require a media jar
 - changed lamp recharge patterns to not need a mind

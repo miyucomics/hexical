@@ -26,6 +26,7 @@ class HexicalDyeingGenerator(val output: FabricDataOutput) : DataProvider {
 		val dyeLookup = JsonObject()
 
 		blockPatterns.forEach { (groupName, pattern) ->
+			val groupName = Identifier(groupName)
 			val blocks = DyeOption.values().mapNotNull { dye -> resolvePattern(Registries.BLOCK, pattern, dye)?.let { dye to it } }.toMap()
 			blocks.keys.forEach { dye ->
 				val blockId = Registries.BLOCK.getId(blocks[dye]).toString()
@@ -42,7 +43,7 @@ class HexicalDyeingGenerator(val output: FabricDataOutput) : DataProvider {
 						}
 					})
 					add("output", JsonObject().apply { addProperty("name", blockId) })
-				}, recipePath.resolve(Identifier("hexical", "${groupName}_${dye.replacement}"), "json")))
+				}, recipePath.resolve(Identifier(groupName.namespace, "${groupName.path}_${dye.replacement}"), "json")))
 			}
 		}
 
@@ -57,6 +58,7 @@ class HexicalDyeingGenerator(val output: FabricDataOutput) : DataProvider {
 		val dyeLookup = JsonObject()
 
 		itemPatterns.forEach { (groupName, pattern) ->
+			val groupName = Identifier(groupName)
 			val items = DyeOption.values().mapNotNull { dye -> resolvePattern(Registries.ITEM, pattern, dye)?.let { dye to it } }.toMap()
 			items.keys.forEach { dye ->
 				val itemId = Registries.ITEM.getId(items[dye]).toString()
@@ -68,7 +70,7 @@ class HexicalDyeingGenerator(val output: FabricDataOutput) : DataProvider {
 						addProperty("item", Registries.ITEM.getId(it).toString())
 					}) } })
 					addProperty("output", itemId)
-				}, recipePath.resolve(Identifier("hexical", "${groupName}_${dye.replacement}"), "json")))
+				}, recipePath.resolve(Identifier(groupName.namespace, "${groupName.path}_${dye.replacement}"), "json")))
 			}
 		}
 
@@ -79,35 +81,35 @@ class HexicalDyeingGenerator(val output: FabricDataOutput) : DataProvider {
 
 	companion object {
 		val blockPatterns = mapOf(
-			"bed" to "minecraft:{color}bed",
-			"candle" to "minecraft:{color}candle",
-			"candle_cake" to "minecraft:{color}candle_cake",
-			"carpet" to "minecraft:{color}carpet",
-			"concrete" to "minecraft:{color}concrete",
-			"concrete_powder" to "minecraft:{color}concrete_powder",
-			"glazed_terracotta" to "minecraft:{color}glazed_terracotta",
-			"sand" to "minecraft:{color}sand",
-			"sandstone" to "minecraft:{color}sandstone",
-			"cut_sandstone" to "minecraft:cut_{color}sandstone",
-			"smooth_sandstone" to "minecraft:smooth_{color}sandstone",
-			"chiseled_sandstone" to "minecraft:chiseled_{color}sandstone",
-			"sandstone_slab" to "minecraft:{color}sandstone_slab",
-			"cut_sandstone_slab" to "minecraft:cut_{color}sandstone_slab",
-			"smooth_sandstone_slab" to "minecraft:smooth_{color}sandstone_slab",
-			"sandstone_stairs" to "minecraft:{color}sandstone_stairs",
-			"smooth_sandstone_stairs" to "minecraft:smooth_{color}sandstone_stairs",
-			"sandstone_walls" to "minecraft:{color}sandstone_walls",
-			"shulker_box" to "minecraft:{color}shulker_box",
-			"stained_glass" to "minecraft:{color}stained_glass",
-			"stained_glass_pane" to "minecraft:{color}stained_glass_pane",
-			"terracotta" to "minecraft:{color}terracotta",
-			"tulip" to "minecraft:{color}tulip",
-			"wool" to "minecraft:{color}wool"
+			"minecraft:bed" to "minecraft:{color}bed",
+			"minecraft:candle" to "minecraft:{color}candle",
+			"minecraft:candle_cake" to "minecraft:{color}candle_cake",
+			"minecraft:carpet" to "minecraft:{color}carpet",
+			"minecraft:concrete" to "minecraft:{color}concrete",
+			"minecraft:concrete_powder" to "minecraft:{color}concrete_powder",
+			"minecraft:glazed_terracotta" to "minecraft:{color}glazed_terracotta",
+			"minecraft:sand" to "minecraft:{color}sand",
+			"minecraft:sandstone" to "minecraft:{color}sandstone",
+			"minecraft:cut_sandstone" to "minecraft:cut_{color}sandstone",
+			"minecraft:smooth_sandstone" to "minecraft:smooth_{color}sandstone",
+			"minecraft:chiseled_sandstone" to "minecraft:chiseled_{color}sandstone",
+			"minecraft:sandstone_slab" to "minecraft:{color}sandstone_slab",
+			"minecraft:cut_sandstone_slab" to "minecraft:cut_{color}sandstone_slab",
+			"minecraft:smooth_sandstone_slab" to "minecraft:smooth_{color}sandstone_slab",
+			"minecraft:sandstone_stairs" to "minecraft:{color}sandstone_stairs",
+			"minecraft:smooth_sandstone_stairs" to "minecraft:smooth_{color}sandstone_stairs",
+			"minecraft:sandstone_walls" to "minecraft:{color}sandstone_walls",
+			"minecraft:shulker_box" to "minecraft:{color}shulker_box",
+			"minecraft:stained_glass" to "minecraft:{color}stained_glass",
+			"minecraft:stained_glass_pane" to "minecraft:{color}stained_glass_pane",
+			"minecraft:terracotta" to "minecraft:{color}terracotta",
+			"minecraft:tulip" to "minecraft:{color}tulip",
+			"minecraft:wool" to "minecraft:{color}wool"
 		)
 
 		val itemPatterns = mapOf(
-			"dyes" to "minecraft:{color}dye",
-			"pigments" to "hexcasting:dye_colorizer_{color}"
+			"minecraft:dye" to "minecraft:{color}dye",
+			"hexcasting:pigment" to "hexcasting:dye_colorizer_{color}"
 		)
 
 		private fun <T : Any> resolvePattern(registry: Registry<T>, pattern: String, dye: DyeOption) = listOfNotNull(
