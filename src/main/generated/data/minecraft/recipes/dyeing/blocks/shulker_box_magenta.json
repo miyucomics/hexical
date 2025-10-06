@@ -1,6 +1,7 @@
 {
   "type": "hexical:dye_block",
   "dye": 3,
+  "group": "minecraft:shulker_box",
   "inputs": [
     {
       "type": "block",

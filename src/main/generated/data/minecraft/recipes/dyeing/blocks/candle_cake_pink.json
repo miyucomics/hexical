@@ -1,6 +1,7 @@
 {
   "type": "hexical:dye_block",
   "dye": 7,
+  "group": "minecraft:candle_cake",
   "inputs": [
     {
       "type": "block",

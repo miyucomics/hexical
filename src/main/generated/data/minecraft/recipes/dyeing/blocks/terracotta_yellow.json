@@ -1,6 +1,7 @@
 {
   "type": "hexical:dye_block",
   "dye": 5,
+  "group": "minecraft:terracotta",
   "inputs": [
     {
       "type": "block",

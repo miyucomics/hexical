@@ -1,6 +1,7 @@
 {
   "type": "hexical:dye_block",
   "dye": 2,
+  "group": "minecraft:stained_glass_pane",
   "inputs": [
     {
       "type": "block",

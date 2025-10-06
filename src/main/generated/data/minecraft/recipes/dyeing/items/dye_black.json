@@ -1,6 +1,7 @@
 {
   "type": "hexical:dye_item",
   "dye": 16,
+  "group": "minecraft:dye",
   "inputs": [
     {
       "item": "minecraft:white_dye"

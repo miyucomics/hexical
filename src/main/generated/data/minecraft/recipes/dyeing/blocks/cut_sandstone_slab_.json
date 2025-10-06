@@ -1,6 +1,7 @@
 {
   "type": "hexical:dye_block",
   "dye": 0,
+  "group": "minecraft:cut_sandstone_slab",
   "inputs": [
     {
       "type": "block",
