@@ -3,6 +3,7 @@ package miyucomics.hexical.inits
 import miyucomics.hexical.features.charms.ServerCharmedUseReceiver
 import miyucomics.hexical.features.dyes.DyeingUtils
 import miyucomics.hexical.features.dyes.entity.DyeingEntityRegistry
+import miyucomics.hexical.features.flora.ConjureFloraHook
 import miyucomics.hexical.features.hopper.HopperEndpointRegistry
 import miyucomics.hexical.features.lesser_sentinels.ServerLesserSentinelPusher
 import miyucomics.hexical.features.mage_blocks.MageBlockModifierRegistry
@@ -41,6 +42,7 @@ object HexicalHooksServer {
 		register(BlockRotationHandlers)
 		register(DyeingUtils)
 		register(DyeingEntityRegistry)
+		register(ConjureFloraHook)
 
 		for (hook in hooks)
 			hook.init()
