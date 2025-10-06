@@ -10,7 +10,7 @@ import net.minecraft.registry.DynamicRegistryManager
 import net.minecraft.util.Identifier
 import net.minecraft.world.World
 
-class DyeingItemRecipe(private val id: Identifier, val dye: DyeOption, val inputs: Ingredient, val output: ItemStack) : Recipe<Inventory> {
+class DyeingItemRecipe(private val id: Identifier, val group: Identifier, val dye: DyeOption, val inputs: Ingredient, val output: ItemStack) : Recipe<Inventory> {
 	override fun getId() = this.id
 	override fun getType() = Type.INSTANCE
 	override fun fits(width: Int, height: Int) = false

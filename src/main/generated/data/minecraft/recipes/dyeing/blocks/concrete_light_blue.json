@@ -1,6 +1,7 @@
 {
   "type": "hexical:dye_block",
   "dye": 4,
+  "group": "minecraft:concrete",
   "inputs": [
     {
       "type": "block",
