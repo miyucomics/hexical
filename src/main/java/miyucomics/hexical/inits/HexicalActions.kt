@@ -34,13 +34,13 @@ import miyucomics.hexical.features.confection.OpConjureHexburst
 import miyucomics.hexical.features.confection.OpConjureHextito
 import miyucomics.hexical.features.confetti.OpConfetti
 import miyucomics.hexical.features.conjure.OpConjureEntity
-import miyucomics.hexical.features.conjure.OpConjureFlower
 import miyucomics.hexical.features.conjure.OpConjureLight
 import miyucomics.hexical.features.dyes.actions.OpDye
 import miyucomics.hexical.features.dyes.actions.OpGetDye
 import miyucomics.hexical.features.dyes.actions.OpTranslateDye
 import miyucomics.hexical.features.evocation.OpGetEvocation
 import miyucomics.hexical.features.evocation.OpSetEvocation
+import miyucomics.hexical.features.flora.OpConjureFlora
 import miyucomics.hexical.features.grimoires.OpGrimoireErase
 import miyucomics.hexical.features.grimoires.OpGrimoireIndex
 import miyucomics.hexical.features.grimoires.OpGrimoireWrite
@@ -240,7 +240,7 @@ object HexicalActions {
 		register("vibration", "wwawawwd", HexDir.EAST, OpVibrate)
 		register("sparkle", "dqa", HexDir.NORTH_EAST, OpSparkle)
 		register("jailbreak", "wwaqqqqqeqdedwqeaeqwdedwqeaeq", HexDir.EAST, OpJailbreakDevice)
-		register("flower", "weqqqqqwaeaeaeaeaea", HexDir.NORTH_EAST, OpConjureFlower)
+		register("conjure_flora", "weqqqqqwaeaeaeaeaea", HexDir.NORTH_EAST, OpConjureFlora)
 		register("light", "aeaeaeaeaeawqqqqq", HexDir.SOUTH_EAST, OpConjureLight)
 		register("gasp", "aweeeeewaweeeee", HexDir.NORTH_WEST, OpGasp)
 		register("parrot", "wweedadw", HexDir.NORTH_EAST, OpImitateParrot)
