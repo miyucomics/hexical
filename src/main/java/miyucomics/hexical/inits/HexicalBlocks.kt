@@ -14,7 +14,6 @@ import miyucomics.hexical.features.pedestal.PedestalBlock
 import miyucomics.hexical.features.pedestal.PedestalBlockEntity
 import miyucomics.hexical.features.sentinel_beds.SentinelBedBlock
 import net.minecraft.block.AbstractBlock.Settings
-import net.minecraft.block.Block
 import net.minecraft.block.DyedCarpetBlock
 import net.minecraft.block.FlowerbedBlock
 import net.minecraft.block.MapColor
@@ -24,14 +23,10 @@ import net.minecraft.item.BlockItem
 import net.minecraft.item.Item
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
-import net.minecraft.registry.RegistryKeys
-import net.minecraft.registry.tag.TagKey
 import net.minecraft.sound.BlockSoundGroup
 import net.minecraft.util.DyeColor
 
 object HexicalBlocks {
-	val CONJURABLE_FLOWERS: TagKey<Block> = TagKey.of(RegistryKeys.BLOCK, HexicalMain.id("conjurable_flower"))
-
 	val HEX_CANDLE_BLOCK: HexCandleBlock = HexCandleBlock()
 	val HEX_CANDLE_CAKE_BLOCK: HexCandleCakeBlock = HexCandleCakeBlock()
 
