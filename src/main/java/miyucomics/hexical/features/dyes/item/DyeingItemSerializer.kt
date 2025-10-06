@@ -18,19 +18,17 @@ class DyeingItemSerializer : RecipeSerializer<DyeingItemRecipe> {
 			throw JsonSyntaxException("Possible inputs are missing in recipe $recipeId")
 		if (raw.output == null)
 			throw JsonSyntaxException("Output is missing in recipe $recipeId")
-		return DyeingItemRecipe(recipeId, enumValues<DyeOption>()[raw.dye], Ingredient.fromJson(raw.inputs), TransmutingSerializer.deriveSingleItem(raw.output, recipeId))
+		return DyeingItemRecipe(recipeId, Identifier(raw.group), enumValues<DyeOption>()[raw.dye], Ingredient.fromJson(raw.inputs), TransmutingSerializer.deriveSingleItem(raw.output, recipeId))
 	}
 
 	override fun write(buf: PacketByteBuf, recipe: DyeingItemRecipe) {
+		buf.writeIdentifier(recipe.group)
 		buf.writeInt(recipe.dye.ordinal)
 		recipe.inputs.write(buf)
 		buf.writeItemStack(recipe.output)
 	}
 
-	override fun read(id: Identifier, buf: PacketByteBuf): DyeingItemRecipe {
-		val color = enumValues<DyeOption>()[buf.readInt()]
-		return DyeingItemRecipe(id, color, Ingredient.fromPacket(buf), buf.readItemStack())
-	}
+	override fun read(id: Identifier, buf: PacketByteBuf) = DyeingItemRecipe(id, buf.readIdentifier(), enumValues<DyeOption>()[buf.readInt()], Ingredient.fromPacket(buf), buf.readItemStack())
 
 	companion object {
 		val INSTANCE: DyeingItemSerializer = DyeingItemSerializer()
@@ -38,6 +36,7 @@ class DyeingItemSerializer : RecipeSerializer<DyeingItemRecipe> {
 }
 
 private class DataFormat {
+	val group: String = ""
 	val dye: Int = 0
 	val inputs: JsonElement? = null
 	val output: JsonElement? = null

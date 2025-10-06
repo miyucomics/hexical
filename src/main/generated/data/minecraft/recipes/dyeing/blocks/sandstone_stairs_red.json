@@ -1,6 +1,7 @@
 {
   "type": "hexical:dye_block",
   "dye": 15,
+  "group": "minecraft:sandstone_stairs",
   "inputs": [
     {
       "type": "block",

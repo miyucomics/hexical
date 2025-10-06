@@ -1,6 +1,7 @@
 {
   "type": "hexical:dye_block",
   "dye": 8,
+  "group": "minecraft:carpet",
   "inputs": [
     {
       "type": "block",

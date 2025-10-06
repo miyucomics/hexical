@@ -1,6 +1,7 @@
 {
   "type": "hexical:dye_block",
   "dye": 9,
+  "group": "minecraft:wool",
   "inputs": [
     {
       "type": "block",
