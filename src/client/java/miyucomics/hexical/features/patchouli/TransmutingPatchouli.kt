@@ -1,4 +1,4 @@
-package miyucomics.hexical.features.integrations
+package miyucomics.hexical.features.patchouli
 
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.common.items.magic.ItemMediaHolder
@@ -33,14 +33,14 @@ class TransmutingPatchouli : IComponentProcessor {
 	override fun process(world: World, key: String): IVariable? {
 		if (key.length > 6 && key.take(6) == "output") {
 			val index = Integer.parseInt(key.substring(6))
-			if (index < recipe.output.size)
-				return IVariable.from(recipe.output[index])
+			if (index < TransmutingPatchouli.recipe.output.size)
+				return IVariable.from(TransmutingPatchouli.recipe.output[index])
 			return IVariable.from(ItemStack.EMPTY)
 		}
 
 		return when (key) {
-			"input" -> IVariable.from(recipe.input)
-			"cost" -> IVariable.from(costText(recipe.cost).setStyle(Style.EMPTY.withColor(ItemMediaHolder.HEX_COLOR)))
+			"input" -> IVariable.from(TransmutingPatchouli.recipe.input)
+			"cost" -> IVariable.from(costText(TransmutingPatchouli.recipe.cost).setStyle(Style.EMPTY.withColor(ItemMediaHolder.HEX_COLOR)))
 			else -> null
 		}
 	}

@@ -1,10 +1,11 @@
-package miyucomics.hexical.features.integrations
+package miyucomics.hexical.features.emi
 
 import dev.emi.emi.api.recipe.BasicEmiRecipe
 import dev.emi.emi.api.stack.EmiIngredient
 import dev.emi.emi.api.stack.EmiStack
 import dev.emi.emi.api.widget.WidgetHolder
 import miyucomics.hexical.HexicalMain
+import miyucomics.hexical.features.patchouli.costText
 import miyucomics.hexical.features.transmuting.TransmutingRecipe
 import net.minecraft.util.Identifier
 

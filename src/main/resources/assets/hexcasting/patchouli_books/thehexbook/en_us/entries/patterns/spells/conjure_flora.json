@@ -16,6 +16,9 @@
 		{
 			"type": "patchouli:text",
 			"text": "hexical.page.conjure_flora.description"
+		},
+		{
+			"type": "hexical:conjure_flora_entry"
 		}
 	]
 }
