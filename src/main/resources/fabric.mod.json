@@ -37,7 +37,7 @@
 			"miyucomics.hexical.HexicalCardinalComponents"
 		],
 		"emi": [
-			"miyucomics.hexical.features.integrations.HexicalEmi"
+			"miyucomics.hexical.features.emi.HexicalEmi"
 		]
 	},
 	"accessWidener" : "hexical.accesswidener",
