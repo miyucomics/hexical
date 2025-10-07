@@ -24,7 +24,7 @@ class ConjureFloraPatchouli : IComponentProcessor {
 			return null
 
 		return when (key) {
-			"input" -> IVariable.from(recipe!!.state)
+			"block" -> IVariable.from(recipe!!.state.block.asItem())
 			"cost" -> IVariable.from(costText(recipe!!.cost).setStyle(Style.EMPTY.withColor(ItemMediaHolder.HEX_COLOR)))
 			else -> null
 		}
