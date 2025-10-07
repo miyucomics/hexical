@@ -1,5 +1,10 @@
 {
   "type": "hexical:conjure_flora",
-  "block": "minecraft:pitcher_plant",
+  "block": {
+    "name": "minecraft:pitcher_plant",
+    "properties": {
+      "half": "lower"
+    }
+  },
   "cost": 15000
 }

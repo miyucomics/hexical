@@ -1,5 +1,10 @@
 {
   "type": "hexical:conjure_flora",
-  "block": "minecraft:nether_wart",
+  "block": {
+    "name": "minecraft:nether_wart",
+    "properties": {
+      "age": "0"
+    }
+  },
   "cost": 7500
 }
