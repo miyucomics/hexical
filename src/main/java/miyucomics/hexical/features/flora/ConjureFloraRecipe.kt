@@ -10,7 +10,7 @@ import net.minecraft.registry.DynamicRegistryManager
 import net.minecraft.util.Identifier
 import net.minecraft.world.World
 
-class ConjureFloraRecipe(private val id: Identifier, val block: BlockState, val cost: Long) : Recipe<Inventory> {
+class ConjureFloraRecipe(private val id: Identifier, val state: BlockState, val cost: Long) : Recipe<Inventory> {
 	override fun getId() = this.id
 	override fun getType() = Type.INSTANCE
 	override fun fits(width: Int, height: Int) = false

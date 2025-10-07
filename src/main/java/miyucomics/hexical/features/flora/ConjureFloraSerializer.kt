@@ -18,7 +18,7 @@ class ConjureFloraSerializer : RecipeSerializer<ConjureFloraRecipe> {
 	}
 
 	override fun write(buf: PacketByteBuf, recipe: ConjureFloraRecipe) {
-		buf.writeVarInt(Block.getRawIdFromState(recipe.block))
+		buf.writeVarInt(Block.getRawIdFromState(recipe.state))
 		buf.writeLong(recipe.cost)
 	}
 
