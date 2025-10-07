@@ -9,25 +9,26 @@
 		},
 		{
 			"type": "patchouli:item",
-			"x": 8,
-			"y": 36,
-			"item": "#output"
+			"x": 50,
+			"y": 20,
+			"framed": true,
+			"item": "#block"
 		},
 		{
 			"type": "patchouli:item",
 			"item": "hexcasting:amethyst_dust",
-			"y": 79
+			"y": 48
 		},
 		{
 			"type": "patchouli:text",
 			"text": "#cost",
 			"x": 20,
-			"y": 83
+			"y": 52
 		},
 		{
 			"type": "patchouli:text",
 			"text": "#text",
-			"y": 96
+			"y": 65
 		}
 	]
 }
