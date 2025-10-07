@@ -10,7 +10,7 @@ import net.minecraft.server.world.ServerWorld
 
 object ConjureFloraHook : InitHook() {
 	val CONJURE_FLORA_RECIPE: RecipeType<ConjureFloraRecipe> = Registry.register(Registries.RECIPE_TYPE, HexicalMain.id("conjure_flora"), ConjureFloraRecipe.Type.INSTANCE)
-	fun getRecipe(world: ServerWorld, target: Block): ConjureFloraRecipe? = world.recipeManager.listAllOfType(CONJURE_FLORA_RECIPE).firstOrNull { it.block == target }
+	fun getRecipe(world: ServerWorld, target: Block): ConjureFloraRecipe? = world.recipeManager.listAllOfType(CONJURE_FLORA_RECIPE).firstOrNull { it.state == target }
 
 	override fun init() {
 		Registry.register(Registries.RECIPE_SERIALIZER, HexicalMain.id("conjure_flora"), ConjureFloraSerializer.INSTANCE)
