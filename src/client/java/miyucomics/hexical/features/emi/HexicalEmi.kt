@@ -1,4 +1,4 @@
-package miyucomics.hexical.features.integrations
+package miyucomics.hexical.features.emi
 
 import at.petrak.hexcasting.api.utils.putCompound
 import dev.emi.emi.api.EmiPlugin
