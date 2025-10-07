@@ -41,7 +41,7 @@ class HexicalPatchouliGenerator(val output: FabricDataOutput) : DataProvider {
 				})
 				(0..128).forEach { i ->
 					add(JsonObject().apply {
-						addProperty("type", "hexical:conjure_flora")
+						addProperty("type", "hexcasting:conjure_flora")
 						addProperty("index", i)
 					})
 				}
