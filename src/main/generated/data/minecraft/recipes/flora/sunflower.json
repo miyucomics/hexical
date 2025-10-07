@@ -1,5 +1,10 @@
 {
   "type": "hexical:conjure_flora",
-  "block": "minecraft:sunflower",
+  "block": {
+    "name": "minecraft:sunflower",
+    "properties": {
+      "half": "lower"
+    }
+  },
   "cost": 5000
 }

@@ -1,5 +1,7 @@
 {
   "type": "hexical:conjure_flora",
-  "block": "minecraft:dandelion",
+  "block": {
+    "name": "minecraft:dandelion"
+  },
   "cost": 5000
 }
