@@ -1,16 +1,6 @@
 {
-	"processor": "miyucomics.hexical.features.patchouli.TransmutingPatchouli",
+	"processor": "miyucomics.hexical.features.patchouli.ConjureFloraPatchouli",
 	"components": [
-		{
-			"type": "patchouli:image",
-			"image": "hexical:textures/gui/transmuting.png",
-			"width": 112,
-			"x": 1,
-			"y": 4,
-			"height": 80,
-			"texture_width": 112,
-			"texture_height": 80
-		},
 		{
 			"type": "patchouli:header",
 			"text": "#title",
@@ -21,28 +11,7 @@
 			"type": "patchouli:item",
 			"x": 8,
 			"y": 36,
-			"item": "#input"
-		},
-		{
-			"type": "patchouli:item",
-			"x": 49,
-			"y": 36,
-			"item": "#output0",
-			"link_recipe": true
-		},
-		{
-			"type": "patchouli:item",
-			"x": 70,
-			"y": 36,
-			"item": "#output1",
-			"link_recipe": true
-		},
-		{
-			"type": "patchouli:item",
-			"x": 91,
-			"y": 36,
-			"item": "#output2",
-			"link_recipe": true
+			"item": "#output"
 		},
 		{
 			"type": "patchouli:item",

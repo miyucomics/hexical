@@ -1,0 +1,537 @@
+{
+  "advancement": "hexcasting:root",
+  "category": "hexcasting:patterns/spells",
+  "icon": "minecraft:poppy",
+  "name": "hexcasting.action.hexical:conjure_flora",
+  "pages": [
+    {
+      "type": "hexcasting:pattern",
+      "anchor": "hexical:conjure_flora",
+      "input": "vector, identifier",
+      "op_id": "hexical:conjure_flora",
+      "output": "",
+      "text": "hexical.page.conjure_flora.summary"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "hexical.page.conjure_flora.description"
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 0
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 1
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 2
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 3
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 4
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 5
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 6
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 7
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 8
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 9
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 10
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 11
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 12
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 13
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 14
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 15
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 16
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 17
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 18
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 19
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 20
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 21
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 22
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 23
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 24
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 25
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 26
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 27
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 28
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 29
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 30
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 31
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 32
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 33
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 34
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 35
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 36
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 37
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 38
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 39
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 40
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 41
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 42
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 43
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 44
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 45
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 46
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 47
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 48
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 49
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 50
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 51
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 52
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 53
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 54
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 55
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 56
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 57
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 58
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 59
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 60
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 61
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 62
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 63
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 64
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 65
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 66
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 67
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 68
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 69
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 70
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 71
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 72
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 73
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 74
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 75
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 76
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 77
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 78
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 79
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 80
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 81
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 82
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 83
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 84
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 85
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 86
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 87
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 88
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 89
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 90
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 91
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 92
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 93
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 94
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 95
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 96
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 97
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 98
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 99
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 100
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 101
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 102
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 103
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 104
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 105
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 106
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 107
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 108
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 109
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 110
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 111
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 112
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 113
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 114
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 115
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 116
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 117
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 118
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 119
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 120
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 121
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 122
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 123
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 124
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 125
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 126
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 127
+    },
+    {
+      "type": "hexical:conjure_flora",
+      "index": 128
+    }
+  ],
+  "sortnum": 10
+}
