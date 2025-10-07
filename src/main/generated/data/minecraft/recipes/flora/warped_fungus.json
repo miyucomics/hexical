@@ -1,5 +1,7 @@
 {
   "type": "hexical:conjure_flora",
-  "block": "minecraft:warped_fungus",
+  "block": {
+    "name": "minecraft:warped_fungus"
+  },
   "cost": 6000
 }

@@ -1,5 +1,7 @@
 {
   "type": "hexical:conjure_flora",
-  "block": "minecraft:crimson_fungus",
+  "block": {
+    "name": "minecraft:crimson_fungus"
+  },
   "cost": 6000
 }

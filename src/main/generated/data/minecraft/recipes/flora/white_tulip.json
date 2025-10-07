@@ -1,5 +1,7 @@
 {
   "type": "hexical:conjure_flora",
-  "block": "minecraft:white_tulip",
+  "block": {
+    "name": "minecraft:white_tulip"
+  },
   "cost": 5000
 }

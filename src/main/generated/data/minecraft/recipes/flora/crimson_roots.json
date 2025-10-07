@@ -1,5 +1,7 @@
 {
   "type": "hexical:conjure_flora",
-  "block": "minecraft:crimson_roots",
+  "block": {
+    "name": "minecraft:crimson_roots"
+  },
   "cost": 6000
 }

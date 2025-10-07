@@ -1,5 +1,7 @@
 {
   "type": "hexical:conjure_flora",
-  "block": "minecraft:fern",
+  "block": {
+    "name": "minecraft:fern"
+  },
   "cost": 5500
 }
