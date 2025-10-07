@@ -1,5 +1,7 @@
 {
   "type": "hexical:conjure_flora",
-  "block": "minecraft:wither_rose",
+  "block": {
+    "name": "minecraft:wither_rose"
+  },
   "cost": 100000
 }

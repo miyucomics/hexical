@@ -1,5 +1,11 @@
 {
   "type": "hexical:conjure_flora",
-  "block": "minecraft:pink_petals",
+  "block": {
+    "name": "minecraft:pink_petals",
+    "properties": {
+      "facing": "north",
+      "flower_amount": "1"
+    }
+  },
   "cost": 2500
 }

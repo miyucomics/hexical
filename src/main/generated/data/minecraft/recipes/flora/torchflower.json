@@ -1,5 +1,7 @@
 {
   "type": "hexical:conjure_flora",
-  "block": "minecraft:torchflower",
+  "block": {
+    "name": "minecraft:torchflower"
+  },
   "cost": 15000
 }

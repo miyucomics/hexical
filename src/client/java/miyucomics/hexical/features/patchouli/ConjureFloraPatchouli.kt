@@ -1,57 +1,32 @@
 package miyucomics.hexical.features.patchouli
 
-import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.common.items.magic.ItemMediaHolder
 import miyucomics.hexical.features.flora.ConjureFloraRecipe
-import miyucomics.hexical.features.transmuting.TransmutingRecipe
-import net.minecraft.client.MinecraftClient
-import net.minecraft.item.ItemStack
-import net.minecraft.text.MutableText
 import net.minecraft.text.Style
-import net.minecraft.text.Text
-import net.minecraft.util.Identifier
 import net.minecraft.world.World
 import vazkii.patchouli.api.IComponentProcessor
 import vazkii.patchouli.api.IVariable
 import vazkii.patchouli.api.IVariableProvider
 
 @Suppress("unused")
-class TransmutingPatchouli : IComponentProcessor {
-	lateinit var recipe: ConjureFloraRecipe
+class ConjureFloraPatchouli : IComponentProcessor {
+	var recipe: ConjureFloraRecipe? = null
 
 	override fun setup(world: World, vars: IVariableProvider) {
-		val id = Identifier(vars["recipe"].asString())
-		val recman = MinecraftClient.getInstance().world!!.recipeManager
-		val transmutingRecipes = recman.listAllOfType(TransmutingRecipe.Type.INSTANCE)
-		for (recipe in transmutingRecipes) {
-			if (recipe.getId() == id) {
-				this.recipe = recipe
-				break
-			}
-		}
+		val id = vars["index"].asNumber().toInt()
+		val recipes = world.recipeManager.listAllOfType(ConjureFloraRecipe.Type.INSTANCE)
+		recipes.sortBy { it.cost }
+		this.recipe = recipes[id]
 	}
 
 	override fun process(world: World, key: String): IVariable? {
-		if (key.length > 6 && key.take(6) == "output") {
-			val index = Integer.parseInt(key.substring(6))
-			if (index < recipe.output.size)
-				return IVariable.from(recipe.output[index])
-			return IVariable.from(ItemStack.EMPTY)
-		}
+		if (recipe == null)
+			return null
 
 		return when (key) {
-			"input" -> IVariable.from(recipe.input)
-			"cost" -> IVariable.from(costText(recipe.cost).setStyle(Style.EMPTY.withColor(ItemMediaHolder.HEX_COLOR)))
+			"input" -> IVariable.from(recipe!!.block)
+			"cost" -> IVariable.from(costText(recipe!!.cost).setStyle(Style.EMPTY.withColor(ItemMediaHolder.HEX_COLOR)))
 			else -> null
 		}
 	}
-}
-
-fun costText(media: Long): MutableText {
-	val loss = media.toFloat() / MediaConstants.DUST_UNIT
-	if (loss > 0f)
-		return Text.translatable("hexical.recipe.transmute.media_cost", loss)
-	if (loss < 0f)
-		return Text.translatable("hexical.recipe.transmute.media_yield", -loss)
-	return Text.translatable("hexical.recipe.transmute.media_free")
 }

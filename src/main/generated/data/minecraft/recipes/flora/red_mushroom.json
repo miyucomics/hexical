@@ -1,5 +1,7 @@
 {
   "type": "hexical:conjure_flora",
-  "block": "minecraft:red_mushroom",
+  "block": {
+    "name": "minecraft:red_mushroom"
+  },
   "cost": 6000
 }

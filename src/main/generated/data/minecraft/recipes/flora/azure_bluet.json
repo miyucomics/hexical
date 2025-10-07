@@ -1,5 +1,7 @@
 {
   "type": "hexical:conjure_flora",
-  "block": "minecraft:azure_bluet",
+  "block": {
+    "name": "minecraft:azure_bluet"
+  },
   "cost": 5000
 }

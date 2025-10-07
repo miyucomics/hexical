@@ -1,5 +1,7 @@
 {
   "type": "hexical:conjure_flora",
-  "block": "minecraft:cornflower",
+  "block": {
+    "name": "minecraft:cornflower"
+  },
   "cost": 5000
 }

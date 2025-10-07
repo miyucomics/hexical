@@ -1,10 +1,12 @@
 package miyucomics.hexical.datagen.generators
 
+import at.petrak.hexcasting.common.recipe.ingredient.StateIngredientHelper
 import com.google.gson.JsonObject
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.minecraft.data.DataOutput
 import net.minecraft.data.DataProvider
 import net.minecraft.data.DataWriter
+import net.minecraft.registry.Registries
 import net.minecraft.util.Identifier
 import java.util.concurrent.CompletableFuture
 
@@ -15,8 +17,8 @@ class HexicalFloraGenerator(val output: FabricDataOutput) : DataProvider {
 		return CompletableFuture.allOf(*defaultRecipes.map { (flower, cost) ->
 			DataProvider.writeToPath(writer, JsonObject().apply {
 				addProperty("type", "hexical:conjure_flora")
-				addProperty("block", flower)
 				addProperty("cost", cost)
+				add("block", StateIngredientHelper.serializeBlockState(Registries.BLOCK.get(Identifier(flower)).defaultState))
 			}, recipePath.resolve(Identifier(flower), "json"))
 		}.toTypedArray())
 	}

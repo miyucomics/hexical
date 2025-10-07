@@ -1,5 +1,11 @@
 {
   "type": "hexical:conjure_flora",
-  "block": "hexical:periwinkle",
+  "block": {
+    "name": "hexical:periwinkle",
+    "properties": {
+      "facing": "north",
+      "flower_amount": "1"
+    }
+  },
   "cost": 10000
 }

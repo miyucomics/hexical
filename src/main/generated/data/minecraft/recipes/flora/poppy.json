@@ -1,5 +1,7 @@
 {
   "type": "hexical:conjure_flora",
-  "block": "minecraft:poppy",
+  "block": {
+    "name": "minecraft:poppy"
+  },
   "cost": 5000
 }

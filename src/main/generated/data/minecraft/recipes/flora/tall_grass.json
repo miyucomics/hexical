@@ -1,5 +1,10 @@
 {
   "type": "hexical:conjure_flora",
-  "block": "minecraft:tall_grass",
+  "block": {
+    "name": "minecraft:tall_grass",
+    "properties": {
+      "half": "lower"
+    }
+  },
   "cost": 3000
 }
