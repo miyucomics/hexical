@@ -42,7 +42,7 @@ object ShaderRenderer {
         val client = MinecraftClient.getInstance()
         val width = client.window.width
         val height = client.window.height
-        if (width != lastWidth || height != lastHeight) {
+        if ((width != lastWidth || height != lastHeight) && width != 0 && height != 0) {
             lastWidth = width
             lastHeight = height
             effect.setupDimensions(width, height)
