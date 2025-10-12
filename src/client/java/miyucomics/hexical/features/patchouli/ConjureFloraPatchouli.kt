@@ -17,10 +17,7 @@ class ConjureFloraPatchouli : IComponentProcessor {
 	var recipe: ConjureFloraRecipe? = null
 
 	override fun setup(world: World, vars: IVariableProvider) {
-		val id = vars["index"].asNumber().toInt()
-		val recipes = world.recipeManager.listAllOfType(ConjureFloraRecipe.Type.INSTANCE).toMutableList()
-		recipes.sortBy { it.cost }
-		this.recipe = recipes.getOrNull(id)
+		recipe = world.recipeManager.listAllOfType(ConjureFloraRecipe.Type.INSTANCE).toMutableList().sortedBy { it.cost }.getOrNull(vars["index"].asNumber().toInt())
 	}
 
 	override fun process(world: World, key: String): IVariable? {

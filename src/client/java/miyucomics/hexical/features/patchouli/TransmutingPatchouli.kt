@@ -18,14 +18,7 @@ class TransmutingPatchouli : IComponentProcessor {
 	lateinit var recipe: TransmutingRecipe
 
 	override fun setup(world: World, vars: IVariableProvider) {
-		val id = Identifier(vars["recipe"].asString())
-		val transmutingRecipes = world.recipeManager.listAllOfType(TransmutingRecipe.Type.INSTANCE)
-		for (recipe in transmutingRecipes) {
-			if (recipe.getId() == id) {
-				this.recipe = recipe
-				break
-			}
-		}
+		this.recipe = world.recipeManager.listAllOfType(TransmutingRecipe.Type.INSTANCE).firstOrNull { it.id == Identifier(vars["recipe"].asString()) } ?: return
 	}
 
 	override fun process(world: World, key: String): IVariable? {
