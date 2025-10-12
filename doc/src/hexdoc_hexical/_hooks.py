@@ -1,9 +1,4 @@
-from importlib.resources import Package
-from typing_extensions import override
-
-from .book.page import pages
-from .book import hexical_recipe
-
+import hexdoc_hexical
 from hexdoc.plugin import (
     HookReturn,
     ModPlugin,
@@ -11,12 +6,14 @@ from hexdoc.plugin import (
     ModPluginWithBook,
     hookimpl,
 )
-
-import hexdoc_hexical
+from importlib.resources import Package
+from typing_extensions import override
 
 from .__gradle_version__ import FULL_VERSION, GRADLE_VERSION
 from .__version__ import PY_VERSION
-
+from .book import conjure_flora_recipe
+from .book import transmuting_recipe
+from .book.page import pages
 
 class HexicalPlugin(ModPluginImpl):
     @staticmethod
@@ -27,8 +24,7 @@ class HexicalPlugin(ModPluginImpl):
     @staticmethod
     @hookimpl
     def hexdoc_load_tagged_unions() -> HookReturn[Package]:
-        return [hexical_recipe, pages]
-
+        return [conjure_flora_recipe, transmuting_recipe, pages]
 
 class HexicalModPlugin(ModPluginWithBook):
     @property

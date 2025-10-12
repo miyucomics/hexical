@@ -1,7 +1,7 @@
-from typing import Annotated, Any
 from hexdoc.core import ResourceLocation
 from hexdoc.minecraft.recipe import ItemIngredient, Recipe, ItemResult
 from pydantic import BeforeValidator, model_validator
+from typing import Annotated, Any
 
 class TransmutingResult(ItemResult):
     nbt: Any | None = None
@@ -35,10 +35,10 @@ class TransmutingRecipe(Recipe, type="hexical:transmuting"):
     @property
     def cost_translation_key(self) -> str:
         if self.cost == 0:
-            return "hexical.recipe.transmute.media_free"
+            return "hexical.recipe.media_free"
         if self.cost > 0:
-            return "hexical.recipe.transmute.media_cost"
-        return "hexical.recipe.transmute.media_yield"
+            return "hexical.recipe.media_cost"
+        return "hexical.recipe.media_yield"
 
     @property
     def cost_translation_number(self) -> float:
