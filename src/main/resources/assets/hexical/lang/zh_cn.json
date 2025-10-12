@@ -292,7 +292,7 @@
 	"hexcasting.action.hexical:periwinkle": "引发挖掘",
 	"hexical.page.periwinkle.summary": "好在，$(hex)咒法学$()是门适用面很广的技艺，有寻回几乎任何事物的能力。",
 	"hexical.page.periwinkle.1": "我认为有一种生物能够$(o)嗅探$()出这种花。我可以对这些$(thing)嗅探兽$()施放前页的法术，让它们立刻低头挖出这种花。$(br2)对自由意志的扭曲有代价，需要消耗大约 3 个$(l:items/amethyst)$(item)充能紫水晶$()。这么做偶尔会产生无害的精神$(o)错误$()；毕竟人无完人，在处理和意识一样复杂的事物时就更是这样了。",
-	"hexical.page.periwinkle.2": "挖掘的过程一定有魔法的参与：$(thing)嗅探兽$()能从所有方块里挖出$(item)长春花$()，无机物方块、甚至连来自其他现实位面的方块都可以。$(br2)我猜，这个法术并不只是“让”$(thing)嗅探兽$()挖出了花，而是$(o)构筑$()了花。法术从大脑中搜出有关$(item)长春花$()的记忆，再据找到的模板实际创造出花朵，$(thing)嗅探兽$()才能挖出来。而如果它能挖到，那$(l:patterns/spells/hexical_spells#hexical:flower)我也可以$()。",
+	"hexical.page.periwinkle.2": "挖掘的过程一定有魔法的参与：$(thing)嗅探兽$()能从所有方块里挖出$(item)长春花$()，无机物方块、甚至连来自其他现实位面的方块都可以。$(br2)我猜，这个法术并不只是“让”$(thing)嗅探兽$()挖出了花，而是$(o)构筑$()了花。法术从大脑中搜出有关$(item)长春花$()的记忆，再据找到的模板实际创造出花朵，$(thing)嗅探兽$()才能挖出来。而如果它能挖到，那$(l:patterns/spells/conjure_flora)我也可以$()。",
 	
 	"hexical.page.lei.summary": "成功复原几簇$(l:items/periwinkle)$(item)长春花$()之后，就能拿它们编$(item)花冠$()了！$(item)花冠$()的增益和$(l:items/lens)$(item)探知透镜$()比较像，只不过相比之下明显偏弱。",
 	"hexical.page.lei.description": "佩戴后，$(l:items/periwinkle)$(item)长春花$()的安神功效可防止我坠入疯狂。最明显的作用就是能阻止自然把我的生命抽去施放$(hex)咒术$()。$(br2)如果其他玩家没有穿戴头盔，就可为他们戴上$(item)花冠$()。$(hex)咒术师$()将这种行为视作表达亲昵和爱慕；这既是因为$(item)花冠$()具有防御功能，也是因为采长春花本身就需要费一番功夫。",
