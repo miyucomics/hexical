@@ -2,8 +2,8 @@
 {% import "macros/formatting.html.jinja" as fmt with context %}
 
 {% block body %}
-  {% with recipe=page.recipe %}
-    {% include "recipes/hexical/transmuting.html.jinja" %}
-  {% endwith +%}
-  {{ fmt.styled(page.text) }}
+    {% with recipe=page.recipe %}
+        {% include "recipes/hexical/transmuting.html.jinja" %}
+    {% endwith +%}
+    {{ fmt.styled(page.text) }}
 {% endblock body %}
