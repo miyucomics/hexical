@@ -17,6 +17,10 @@
       "text": "hexical.page.conjure_flora.description"
     },
     {
+      "type": "patchouli:text",
+      "text": "hexical.page.conjure_flora.0"
+    },
+    {
       "type": "hexcasting:conjure_flora",
       "index": 0
     },
