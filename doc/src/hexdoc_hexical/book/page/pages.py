@@ -2,7 +2,6 @@ from hexdoc.minecraft import LocalizedStr
 from hexdoc.patchouli.page import Page
 from hexdoc.patchouli.text import FormatTree
 
-from ..conjure_flora_recipe import ConjureFloraRecipe
 from ..transmuting_recipe import TransmutingRecipe
 
 class ConjureFloraPage(Page, type="hexcasting:conjure_flora"):
