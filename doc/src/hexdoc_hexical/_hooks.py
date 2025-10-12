@@ -55,7 +55,7 @@ class HexicalModPlugin(ModPluginWithBook):
         from ._export import generated
 
         return generated
-    
+
     @override
     def jinja_template_root(self) -> tuple[Package, str]:
         return hexdoc_hexical, "_templates"
