@@ -1,0 +1,10 @@
+{
+  "type": "hexical:conjure_flora",
+  "block": {
+    "name": "minecraft:cactus",
+    "properties": {
+      "age": "0"
+    }
+  },
+  "cost": 100000
+}

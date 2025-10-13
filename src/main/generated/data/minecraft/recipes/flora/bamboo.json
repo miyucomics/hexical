@@ -1,0 +1,12 @@
+{
+  "type": "hexical:conjure_flora",
+  "block": {
+    "name": "minecraft:bamboo",
+    "properties": {
+      "age": "0",
+      "leaves": "none",
+      "stage": "0"
+    }
+  },
+  "cost": 50000
+}
