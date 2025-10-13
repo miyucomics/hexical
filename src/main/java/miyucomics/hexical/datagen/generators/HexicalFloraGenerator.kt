@@ -2,12 +2,13 @@ package miyucomics.hexical.datagen.generators
 
 import at.petrak.hexcasting.common.recipe.ingredient.StateIngredientHelper
 import com.google.gson.JsonObject
+import miyucomics.hexical.inits.HexicalBlocks
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
+import net.minecraft.block.Blocks
 import net.minecraft.data.DataOutput
 import net.minecraft.data.DataProvider
 import net.minecraft.data.DataWriter
 import net.minecraft.registry.Registries
-import net.minecraft.util.Identifier
 import java.util.concurrent.CompletableFuture
 
 class HexicalFloraGenerator(val output: FabricDataOutput) : DataProvider {
@@ -15,46 +16,55 @@ class HexicalFloraGenerator(val output: FabricDataOutput) : DataProvider {
 	override fun run(writer: DataWriter): CompletableFuture<*> {
 		val recipePath = output.getResolver(DataOutput.OutputType.DATA_PACK, "recipes/flora/")
 		return CompletableFuture.allOf(*defaultRecipes.map { (flower, cost) ->
+			val identifier = Registries.BLOCK.getId(flower)
 			DataProvider.writeToPath(writer, JsonObject().apply {
 				addProperty("type", "hexical:conjure_flora")
 				addProperty("cost", cost)
-				add("block", StateIngredientHelper.serializeBlockState(Registries.BLOCK.get(Identifier(flower)).defaultState))
-			}, recipePath.resolve(Identifier(flower), "json"))
+				add("block", StateIngredientHelper.serializeBlockState(flower.defaultState))
+			}, recipePath.resolve(identifier, "json"))
 		}.toTypedArray())
 	}
 
 	companion object {
 		val defaultRecipes = mapOf(
-			"minecraft:pink_petals" to 2500,
-			"minecraft:tall_grass" to 3000,
-			"minecraft:grass" to 3000,
-			"minecraft:dandelion" to 5000,
-			"minecraft:poppy" to 5000,
-			"minecraft:blue_orchid" to 5000,
-			"minecraft:allium" to 5000,
-			"minecraft:azure_bluet" to 5000,
-			"minecraft:red_tulip" to 5000,
-			"minecraft:orange_tulip" to 5000,
-			"minecraft:white_tulip" to 5000,
-			"minecraft:pink_tulip" to 5000,
-			"minecraft:oxeye_daisy" to 5000,
-			"minecraft:cornflower" to 5000,
-			"minecraft:lily_of_the_valley" to 5000,
-			"minecraft:sunflower" to 5000,
-			"minecraft:rose_bush" to 5000,
-			"minecraft:fern" to 5500,
-			"minecraft:red_mushroom" to 6000,
-			"minecraft:brown_mushroom" to 6000,
-			"minecraft:crimson_fungus" to 6000,
-			"minecraft:warped_fungus" to 6000,
-			"minecraft:crimson_roots" to 6000,
-			"minecraft:warped_roots" to 6000,
-			"minecraft:dead_bush" to 7500,
-			"minecraft:nether_wart" to 7500,
-			"hexical:periwinkle" to 10000,
-			"minecraft:torchflower" to 15000,
-			"minecraft:pitcher_plant" to 15000,
-			"minecraft:wither_rose" to 100000
+			Blocks.PINK_PETALS to 2500,
+
+			Blocks.GRASS to 3000,
+			Blocks.TALL_GRASS to 3000,
+
+			Blocks.FERN to 3500,
+			Blocks.LARGE_FERN to 3500,
+
+			Blocks.DANDELION to 5000,
+			Blocks.POPPY to 5000,
+			Blocks.BLUE_ORCHID to 5000,
+			Blocks.ALLIUM to 5000,
+			Blocks.AZURE_BLUET to 5000,
+			Blocks.RED_TULIP to 5000,
+			Blocks.PINK_TULIP to 5000,
+			Blocks.ORANGE_TULIP to 5000,
+			Blocks.WHITE_TULIP to 5000,
+			Blocks.OXEYE_DAISY to 5000,
+			Blocks.CORNFLOWER to 5000,
+			Blocks.LILY_OF_THE_VALLEY to 5000,
+			Blocks.SUNFLOWER to 5000,
+			Blocks.ROSE_BUSH to 5000,
+
+			Blocks.RED_MUSHROOM to 6000,
+			Blocks.BROWN_MUSHROOM to 6000,
+			Blocks.CRIMSON_FUNGUS to 6000,
+			Blocks.WARPED_FUNGUS to 6000,
+			Blocks.CRIMSON_ROOTS to 6000,
+			Blocks.WARPED_ROOTS to 6000,
+
+			Blocks.DEAD_BUSH to 7500,
+			Blocks.NETHER_WART to 7500,
+
+			HexicalBlocks.PERIWINKLE_FLOWER to 10000,
+			Blocks.TORCHFLOWER to 15000,
+			Blocks.PITCHER_PLANT to 15000,
+
+			Blocks.WITHER_ROSE to 100000
 		)
 	}
 }
