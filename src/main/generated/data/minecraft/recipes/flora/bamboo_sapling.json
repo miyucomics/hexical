@@ -1,7 +1,0 @@
-{
-  "type": "hexical:conjure_flora",
-  "block": {
-    "name": "minecraft:bamboo_sapling"
-  },
-  "cost": 50000
-}
