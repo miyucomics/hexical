@@ -1,0 +1,10 @@
+{
+  "type": "hexical:conjure_flora",
+  "block": {
+    "name": "minecraft:large_fern",
+    "properties": {
+      "half": "lower"
+    }
+  },
+  "cost": 3500
+}
