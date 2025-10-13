@@ -57,7 +57,6 @@ class HexicalFloraGenerator(val output: FabricDataOutput) : DataProvider {
 			Blocks.CRIMSON_ROOTS to 6000,
 			Blocks.WARPED_ROOTS to 6000,
 
-			Blocks.BIG_DRIPLEAF_STEM to 6500,
 			Blocks.SMALL_DRIPLEAF to 7000,
 			Blocks.BIG_DRIPLEAF to 7000,
 
