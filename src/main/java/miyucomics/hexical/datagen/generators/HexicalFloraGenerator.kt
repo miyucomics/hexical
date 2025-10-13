@@ -57,12 +57,25 @@ class HexicalFloraGenerator(val output: FabricDataOutput) : DataProvider {
 			Blocks.CRIMSON_ROOTS to 6000,
 			Blocks.WARPED_ROOTS to 6000,
 
+			Blocks.BIG_DRIPLEAF_STEM to 6500,
+			Blocks.SMALL_DRIPLEAF to 7000,
+			Blocks.BIG_DRIPLEAF to 7000,
+
 			Blocks.DEAD_BUSH to 7500,
 			Blocks.NETHER_WART to 7500,
 
 			HexicalBlocks.PERIWINKLE_FLOWER to 10000,
 			Blocks.TORCHFLOWER to 15000,
 			Blocks.PITCHER_PLANT to 15000,
+
+			Blocks.ACACIA_SAPLING to 50000,
+			Blocks.BAMBOO_SAPLING to 50000,
+			Blocks.BIRCH_SAPLING to 50000,
+			Blocks.CHERRY_SAPLING to 50000,
+			Blocks.DARK_OAK_SAPLING to 50000,
+			Blocks.JUNGLE_SAPLING to 50000,
+			Blocks.OAK_SAPLING to 50000,
+			Blocks.SPRUCE_SAPLING to 50000,
 
 			Blocks.WITHER_ROSE to 100000
 		)

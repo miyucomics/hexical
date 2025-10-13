@@ -1,0 +1,10 @@
+{
+  "type": "hexical:conjure_flora",
+  "block": {
+    "name": "minecraft:acacia_sapling",
+    "properties": {
+      "stage": "0"
+    }
+  },
+  "cost": 50000
+}
