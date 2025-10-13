@@ -1,18 +1,18 @@
-from json import loads
+from typing import Any
 
-from hexdoc.core import ModResourceLoader, ResourceLocation
+from hexdoc.core import ModResourceLoader
 from hexdoc.model import ValidationContextModel
-from pydantic import Field
 
 from .book.conjure_flora_recipe import ConjureFloraRecipe
 
 class HexicalContext(ValidationContextModel):
-    conjure_flora_recipes: dict[ResourceLocation, ConjureFloraRecipe] = Field(default_factory=dict)
+    conjure_flora_recipes: list[ConjureFloraRecipe] = []
 
-    def load_flora(self, loader: ModResourceLoader):
-        for resource_dir, flora_id, path in loader.find_resources("data", folder="recipes", namespace="*", glob="**/*.json", internal_only=True, allow_missing=True):
-            recipe = loads(path.read_text("utf-8"))
-            if recipe["type"] != "hexical:conjure_flora":
-                continue
-
-            # do something with recipe??
+    def load_flora(self, loader: ModResourceLoader, context: dict[str, Any]):
+        recipes = [
+            ConjureFloraRecipe.load(resource_dir, flora_id, path, context)
+            for resource_dir, flora_id, path in loader.load_resources("data", folder="recipes/flora", namespace="*")
+        ]
+        recipes.sort(key=lambda x: x.cost)
+        self.conjure_flora_recipes = recipes
+        return self
