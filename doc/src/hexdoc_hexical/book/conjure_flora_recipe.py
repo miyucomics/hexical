@@ -2,7 +2,7 @@ from hexdoc.minecraft.recipe import Recipe
 from hexdoc_hexcasting.book.recipes import BlockState
 
 class ConjureFloraRecipe(Recipe, type="hexical:conjure_flora"):
-    output: BlockState
+    block: BlockState
     cost: int = 0
 
     @property
