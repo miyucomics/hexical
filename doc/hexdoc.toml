@@ -35,8 +35,10 @@ _pattern_regex = { "!Raw" = 'register\("(?P<name>[^"]+)"?,\s"(?P<signature>[qwea
 "hexical:gauntlet_staff" = { texture="hexical:textures/item/gauntlet_staff.png" }
 "hexical:lightning_rod_staff" = { texture="hexical:textures/item/lightning_rod_staff.png" }
 "hexical:media_jar" = { texture="hexical:textures/item/media_jar.png" }
-"hexical:held_curio_flute" = { texture="hexical:textures/item/gauntlet_staff.png" }
-"hexical:held_curio_handbell" = { texture="hexical:textures/item/gauntlet_staff.png" }
+
+# doesn't really matter since they are never rendered
+"hexical:held_curio_flute" = { texture="hexical:textures/item/curio_flute.png" }
+"hexical:held_curio_handbell" = { texture="hexical:textures/item/curio_handbell.png" }
 
 [[extra.hexcasting.pattern_stubs]]
 path = "{^^^_common.package}/inits/HexicalActions.kt"
