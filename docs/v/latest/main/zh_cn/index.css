@@ -530,6 +530,9 @@ canvas.spell-viz {
 .transmuting-recipe {
     position: relative;
 }
+.conjure-flora-recipe {
+    position: relative;
+}
 .transmuting-background {
 	width: 256px;
 }
@@ -553,7 +556,7 @@ canvas.spell-viz {
     left: 208px;
     top: 74px;
 }
-.transmuting-cost-icon {
+.cost-icon {
 	width: 32px;
 	height: 32px;
 }
