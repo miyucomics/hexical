@@ -28,7 +28,7 @@ class HexicalPlugin(ModPluginImpl):
     @hookimpl
     def hexdoc_update_context(context: dict[str, Any]) -> HookReturn[ValidationContext]:
         loader = ModResourceLoader.of(context)
-        return HexicalContext().load_flora(loader)
+        return HexicalContext().load_flora(loader, context)
 
 class HexicalModPlugin(ModPluginWithBook):
     @property
