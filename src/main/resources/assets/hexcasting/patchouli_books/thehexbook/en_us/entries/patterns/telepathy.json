@@ -104,6 +104,74 @@
 			"input": "",
 			"output": "number",
 			"text": "hexical.page.scroll.summary"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.telepathy.1"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:left_click_other",
+			"anchor": "hexical:left_click_other",
+			"input": "entity",
+			"output": "number",
+			"text": "hexical.page.left_click_other.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:right_click_other",
+			"anchor": "hexical:right_click_other",
+			"input": "entity",
+			"output": "number",
+			"text": "hexical.page.right_click_other.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:moving_up_other",
+			"anchor": "hexical:moving_up_other",
+			"input": "entity",
+			"output": "number",
+			"text": "hexical.page.moving_up_other.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:moving_down_other",
+			"anchor": "hexical:moving_down_other",
+			"input": "entity",
+			"output": "number",
+			"text": "hexical.page.moving_down_other.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:moving_left_other",
+			"anchor": "hexical:moving_left_other",
+			"input": "entity",
+			"output": "number",
+			"text": "hexical.page.moving_left_other.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:moving_right_other",
+			"anchor": "hexical:moving_right_other",
+			"input": "entity",
+			"output": "number",
+			"text": "hexical.page.moving_right_other.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:jumping_other",
+			"anchor": "hexical:jumping_other",
+			"input": "entity",
+			"output": "number",
+			"text": "hexical.page.jumping_other.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:sneaking_other",
+			"anchor": "hexical:sneaking_other",
+			"input": "entity",
+			"output": "number",
+			"text": "hexical.page.sneaking_other.summary"
 		}
 	]
 }

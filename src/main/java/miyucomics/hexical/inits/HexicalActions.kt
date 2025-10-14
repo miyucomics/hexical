@@ -90,10 +90,7 @@ import miyucomics.hexical.features.specklikes.mesh.OpWeaveMesh
 import miyucomics.hexical.features.specklikes.speck.OpConjureSpeck
 import miyucomics.hexical.features.specklikes.speck.OpIotaSpeck
 import miyucomics.hexical.features.spike.OpConjureSpike
-import miyucomics.hexical.features.telepathy.OpGetKeybindSelf
-import miyucomics.hexical.features.telepathy.OpGetScroll
-import miyucomics.hexical.features.telepathy.OpSendTelepathy
-import miyucomics.hexical.features.telepathy.OpShoutTelepathy
+import miyucomics.hexical.features.telepathy.*
 import miyucomics.hexical.features.wristpocket.*
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.projectile.FireballEntity
@@ -164,6 +161,14 @@ object HexicalActions {
 		register("jumping", "qaqdaqqa", HexDir.SOUTH_WEST, OpGetKeybindSelf("key.jump"))
 		register("sneaking", "wede", HexDir.NORTH_WEST, OpGetKeybindSelf("key.sneak"))
 		register("scroll", "qadeeee", HexDir.NORTH_EAST, OpGetScroll)
+		register("left_click_other", "wqadee", HexDir.NORTH_EAST, OpGetKeybindOther("key.attack"))
+		register("right_click_other", "wedaqq", HexDir.NORTH_WEST, OpGetKeybindOther("key.use"))
+		register("moving_up_other", "aqaddqw", HexDir.SOUTH_EAST, OpGetKeybindOther("key.forward"))
+		register("moving_down_other", "dedwdqw", HexDir.SOUTH_WEST, OpGetKeybindOther("key.back"))
+		register("moving_left_other", "edeadw", HexDir.SOUTH_EAST, OpGetKeybindOther("key.left"))
+		register("moving_right_other", "qaqdaw", HexDir.SOUTH_WEST, OpGetKeybindOther("key.right"))
+		register("jumping_other", "qaqdawawa", HexDir.SOUTH_WEST, OpGetKeybindOther("key.jump"))
+		register("sneaking_other", "wwede", HexDir.NORTH_WEST, OpGetKeybindOther("key.sneak"))
 
 		register("key_shelf", "qaqqadaq", HexDir.EAST, OpKeyAkashicShelf)
 		register("read_shelf", "qaqqqada", HexDir.EAST, OpReadAkashicShelf)
