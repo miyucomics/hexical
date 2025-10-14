@@ -90,7 +90,10 @@ import miyucomics.hexical.features.specklikes.mesh.OpWeaveMesh
 import miyucomics.hexical.features.specklikes.speck.OpConjureSpeck
 import miyucomics.hexical.features.specklikes.speck.OpIotaSpeck
 import miyucomics.hexical.features.spike.OpConjureSpike
-import miyucomics.hexical.features.telepathy.*
+import miyucomics.hexical.features.telepathy.OpGetKeybindSelf
+import miyucomics.hexical.features.telepathy.OpGetScroll
+import miyucomics.hexical.features.telepathy.OpSendTelepathy
+import miyucomics.hexical.features.telepathy.OpShoutTelepathy
 import miyucomics.hexical.features.wristpocket.*
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.projectile.FireballEntity
@@ -98,9 +101,7 @@ import net.minecraft.entity.projectile.LlamaSpitEntity
 import net.minecraft.entity.projectile.thrown.EggEntity
 import net.minecraft.entity.projectile.thrown.SnowballEntity
 import net.minecraft.recipe.RecipeType
-import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
-import net.minecraft.sound.SoundEvents
 
 object HexicalActions {
 	fun init() {
@@ -151,19 +152,17 @@ object HexicalActions {
 		register("grok_get_parenthesized", "waqwawwqwaw", HexDir.EAST, OpGrokGetParenthesized)
 		register("grok_set_parenthesized", "wewdwewwdwe", HexDir.EAST, OpGrokSetParenthesized)
 
-		register("get_telepathy", "wqqadaw", HexDir.EAST, OpGetKeybind("key.hexical.telepathy"))
+		register("get_telepathy", "wqqadaw", HexDir.EAST, OpGetKeybindSelf("key.hexical.telepathy"))
 		register("send_telepathy", "qqqqwaqa", HexDir.EAST, OpSendTelepathy)
 		register("shout_telepathy", "daqqqqwa", HexDir.EAST, OpShoutTelepathy)
-		register("pling", "eqqqada", HexDir.NORTH_EAST, OpHallucinateSound(Registries.SOUND_EVENT.getEntry(SoundEvents.ENTITY_PLAYER_LEVELUP)))
-		register("click", "eqqadaq", HexDir.NORTH_EAST, OpHallucinateSound(Registries.SOUND_EVENT.getEntry(SoundEvents.UI_BUTTON_CLICK.value())))
-		register("left_click", "qadee", HexDir.NORTH_EAST, OpGetKeybind("key.attack"))
-		register("right_click", "edaqq", HexDir.NORTH_WEST, OpGetKeybind("key.use"))
-		register("moving_up", "aqaddq", HexDir.SOUTH_EAST, OpGetKeybind("key.forward"))
-		register("moving_down", "dedwdq", HexDir.SOUTH_WEST, OpGetKeybind("key.back"))
-		register("moving_left", "edead", HexDir.SOUTH_EAST, OpGetKeybind("key.left"))
-		register("moving_right", "qaqda", HexDir.SOUTH_WEST, OpGetKeybind("key.right"))
-		register("jumping", "qaqdaqqa", HexDir.SOUTH_WEST, OpGetKeybind("key.jump"))
-		register("sneaking", "wede", HexDir.NORTH_WEST, OpGetKeybind("key.sneak"))
+		register("left_click", "qadee", HexDir.NORTH_EAST, OpGetKeybindSelf("key.attack"))
+		register("right_click", "edaqq", HexDir.NORTH_WEST, OpGetKeybindSelf("key.use"))
+		register("moving_up", "aqaddq", HexDir.SOUTH_EAST, OpGetKeybindSelf("key.forward"))
+		register("moving_down", "dedwdq", HexDir.SOUTH_WEST, OpGetKeybindSelf("key.back"))
+		register("moving_left", "edead", HexDir.SOUTH_EAST, OpGetKeybindSelf("key.left"))
+		register("moving_right", "qaqda", HexDir.SOUTH_WEST, OpGetKeybindSelf("key.right"))
+		register("jumping", "qaqdaqqa", HexDir.SOUTH_WEST, OpGetKeybindSelf("key.jump"))
+		register("sneaking", "wede", HexDir.NORTH_WEST, OpGetKeybindSelf("key.sneak"))
 		register("scroll", "qadeeee", HexDir.NORTH_EAST, OpGetScroll)
 
 		register("key_shelf", "qaqqadaq", HexDir.EAST, OpKeyAkashicShelf)
@@ -258,7 +257,7 @@ object HexicalActions {
 
 		register("get_evocation", "wwdeeeeeqeaqawwewewwaqawwewew", HexDir.EAST, OpGetEvocation)
 		register("set_evocation", "wwaqqqqqeqdedwwqwqwwdedwwqwqw", HexDir.EAST, OpSetEvocation)
-		register("is_evoking", "wwaqqqqqeeaqawwewewwaqawwewew", HexDir.EAST, OpGetKeybind("key.hexical.evoke"))
+		register("is_evoking", "wwaqqqqqeeaqawwewewwaqawwewew", HexDir.EAST, OpGetKeybindSelf("key.hexical.evoke"))
 
 		register("conjure_firework", "dedwaqwwawwqa", HexDir.SOUTH_WEST, OpConjureFirework)
 		register("simulate_firework", "dedwaqwqqwqa", HexDir.SOUTH_WEST, OpSimulateFirework)

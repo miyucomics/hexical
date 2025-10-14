@@ -17,7 +17,6 @@ object HexicalAdvancements {
 	val CONJURE_CAKE: ConjureCakeCriterion = Criteria.register(ConjureCakeCriterion())
 	val HEXXY: HexxyCriterion = Criteria.register(HexxyCriterion())
 	val DIY: DIYCriterion = Criteria.register(DIYCriterion())
-	val HALLUCINATE: HallucinateCriterion = Criteria.register(HallucinateCriterion())
 	val EDUCATE_GENIE: EducateGenieCriterion = Criteria.register(EducateGenieCriterion())
 	val RELOAD_LAMP: ReloadLampCriterion = Criteria.register(ReloadLampCriterion())
 
@@ -49,11 +48,6 @@ class DIYCriterion : BaseCriterion<DIYCriterion.Condition>(HexicalMain.id("diy_c
 class HexxyCriterion : BaseCriterion<HexxyCriterion.Condition>(HexicalMain.id("summon_hexxy")) {
 	override fun createCondition() = Condition()
 	class Condition : BaseCondition(HexicalMain.id("summon_hexxy"))
-}
-
-class HallucinateCriterion : BaseCriterion<HallucinateCriterion.Condition>(HexicalMain.id("hallucinate")) {
-	override fun createCondition() = Condition()
-	class Condition : BaseCondition(HexicalMain.id("hallucinate"))
 }
 
 class EducateGenieCriterion : BaseCriterion<EducateGenieCriterion.Condition>(HexicalMain.id("educate_genie")) {
