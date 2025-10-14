@@ -75,6 +75,7 @@
 - added pattern to check if an item has been autographed by a specific person
 - added Unautograph spell to unautograph an item ( still erases it )
 - added automatic population of conjure flora possibilities
+- added patterns to read other peoples' inputs
 - changed Conjure Flower to Conjure Flora - recipe files can handle it now!
 - changed grimoires to work in the wristpocket
 - changed cost of Refuel Lamp
