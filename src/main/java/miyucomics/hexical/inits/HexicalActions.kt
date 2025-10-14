@@ -34,13 +34,13 @@ import miyucomics.hexical.features.confection.OpConjureHexburst
 import miyucomics.hexical.features.confection.OpConjureHextito
 import miyucomics.hexical.features.confetti.OpConfetti
 import miyucomics.hexical.features.conjure.OpConjureEntity
-import miyucomics.hexical.features.conjure.OpConjureFlower
 import miyucomics.hexical.features.conjure.OpConjureLight
 import miyucomics.hexical.features.dyes.actions.OpDye
 import miyucomics.hexical.features.dyes.actions.OpGetDye
 import miyucomics.hexical.features.dyes.actions.OpTranslateDye
 import miyucomics.hexical.features.evocation.OpGetEvocation
 import miyucomics.hexical.features.evocation.OpSetEvocation
+import miyucomics.hexical.features.flora.OpConjureFlora
 import miyucomics.hexical.features.grimoires.OpGrimoireErase
 import miyucomics.hexical.features.grimoires.OpGrimoireIndex
 import miyucomics.hexical.features.grimoires.OpGrimoireWrite
@@ -214,33 +214,23 @@ object HexicalActions {
 		register("pigment_specklike", "adeqqaq", HexDir.SOUTH_WEST, OpSpecklikeProperty(6))
 		register("zone_specklike", "qqqqqwdeddwqde", HexDir.SOUTH_EAST, OpGetEntitiesBy({ entity -> entity is Specklike }, false))
 
-		register("egg", "qqqwaqaaqeeewdedde", HexDir.SOUTH_EAST, OpConjureEntity(MediaConstants.DUST_UNIT * 2) { world, position, caster ->
-			val egg = EggEntity(world, position.x, position.y, position.z)
-			egg.owner = caster
-			return@OpConjureEntity egg
-		})
-		register("llama_spit", "dwqaqw", HexDir.EAST, OpConjureEntity(MediaConstants.DUST_UNIT / 4) { world, position, caster ->
-			val spit = LlamaSpitEntity(EntityType.LLAMA_SPIT, world)
-			spit.setPosition(position)
-			spit.owner = caster
-			return@OpConjureEntity spit
-		})
-		register("snowball", "ddeeeeewd", HexDir.NORTH_EAST, OpConjureEntity(MediaConstants.DUST_UNIT / 2) { world, position, caster ->
-			val snowball = SnowballEntity(world, position.x, position.y, position.z)
-			snowball.owner = caster
-			return@OpConjureEntity snowball
-		})
-		register("ghast_fireball", "wqqqqqwaeaeaeaeae", HexDir.SOUTH_EAST, OpConjureEntity(MediaConstants.DUST_UNIT * 3) { world, position, caster ->
-			val fireball = FireballEntity(world, caster, 0.0, 0.0, 0.0, 1)
-			fireball.setPosition(position)
-			return@OpConjureEntity fireball
-		})
+		register("egg", "qqqwaqaaqeeewdedde", HexDir.SOUTH_EAST, OpConjureEntity(MediaConstants.DUST_UNIT * 2) { world, position, caster -> EggEntity(world, position.x, position.y, position.z).apply { owner = caster } })
+		register("llama_spit", "dwqaqw", HexDir.EAST, OpConjureEntity(MediaConstants.DUST_UNIT / 4) { world, position, caster -> LlamaSpitEntity(EntityType.LLAMA_SPIT, world).apply {
+			setPosition(position)
+			owner = caster
+		}})
+		register("snowball", "ddeeeeewd", HexDir.NORTH_EAST, OpConjureEntity(MediaConstants.DUST_UNIT / 2) { world, position, caster -> SnowballEntity(world, position.x, position.y, position.z).apply {
+			owner = caster
+		}})
+		register("ghast_fireball", "wqqqqqwaeaeaeaeae", HexDir.SOUTH_EAST, OpConjureEntity(MediaConstants.DUST_UNIT * 3) { world, position, caster -> FireballEntity(world, caster, 0.0, 0.0, 0.0, 1).apply {
+			setPosition(position)
+		}})
 
 		register("confetti", "awddeqaedd", HexDir.EAST, OpConfetti)
 		register("vibration", "wwawawwd", HexDir.EAST, OpVibrate)
 		register("sparkle", "dqa", HexDir.NORTH_EAST, OpSparkle)
 		register("jailbreak", "wwaqqqqqeqdedwqeaeqwdedwqeaeq", HexDir.EAST, OpJailbreakDevice)
-		register("flower", "weqqqqqwaeaeaeaeaea", HexDir.NORTH_EAST, OpConjureFlower)
+		register("conjure_flora", "weqqqqqwaeaeaeaeaea", HexDir.NORTH_EAST, OpConjureFlora)
 		register("light", "aeaeaeaeaeawqqqqq", HexDir.SOUTH_EAST, OpConjureLight)
 		register("gasp", "aweeeeewaweeeee", HexDir.NORTH_WEST, OpGasp)
 		register("parrot", "wweedadw", HexDir.NORTH_EAST, OpImitateParrot)

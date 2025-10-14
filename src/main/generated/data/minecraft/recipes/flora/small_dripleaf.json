@@ -1,0 +1,12 @@
+{
+  "type": "hexical:conjure_flora",
+  "block": {
+    "name": "minecraft:small_dripleaf",
+    "properties": {
+      "facing": "north",
+      "half": "lower",
+      "waterlogged": "false"
+    }
+  },
+  "cost": 7000
+}

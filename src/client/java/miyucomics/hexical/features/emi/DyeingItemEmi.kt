@@ -1,18 +1,17 @@
-package miyucomics.hexical.features.integrations
+package miyucomics.hexical.features.emi
 
 import dev.emi.emi.api.recipe.BasicEmiRecipe
 import dev.emi.emi.api.stack.EmiIngredient
 import dev.emi.emi.api.stack.EmiStack
 import dev.emi.emi.api.widget.WidgetHolder
 import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.features.dyes.block.DyeingBlockRecipe
-import net.minecraft.recipe.Ingredient
+import miyucomics.hexical.features.dyes.item.DyeingItemRecipe
 import net.minecraft.util.Identifier
 
-class DyeingBlockEmi(recipe: DyeingBlockRecipe) : BasicEmiRecipe(HexicalEmi.DYEING_CATEGORY, recipe.getId(), 134, 52) {
+class DyeingItemEmi(recipe: DyeingItemRecipe) : BasicEmiRecipe(HexicalEmi.DYEING_CATEGORY, recipe.getId(), 134, 52) {
 	init {
-		this.inputs.add(EmiIngredient.of(Ingredient.ofStacks(recipe.inputs.flatMap { it.displayedStacks }.stream())))
-		this.outputs.add(EmiStack.of(recipe.output.block.asItem()))
+		this.inputs.add(EmiIngredient.of(recipe.inputs))
+		this.outputs.add(EmiStack.of(recipe.output))
 	}
 
 	override fun addWidgets(widgets: WidgetHolder) {

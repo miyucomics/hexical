@@ -55,18 +55,6 @@
 		},
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:flower",
-			"anchor": "hexical:flower",
-			"input": "vector, identifer",
-			"output": "",
-			"text": "hexical.page.flower.summary"
-		},
-		{
-			"type": "patchouli:text",
-			"text": "hexical.page.flower.description"
-		},
-		{
-			"type": "hexcasting:pattern",
 			"op_id": "hexical:light",
 			"anchor": "hexical:light",
 			"input": "vector, number",

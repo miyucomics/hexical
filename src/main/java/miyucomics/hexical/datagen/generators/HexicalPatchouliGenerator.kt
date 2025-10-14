@@ -14,9 +14,47 @@ import java.util.concurrent.CompletableFuture
 class HexicalPatchouliGenerator(val output: FabricDataOutput) : DataProvider {
 	override fun getName() = "Hexical Patchouli Pages"
 	override fun run(writer: DataWriter): CompletableFuture<*> = CompletableFuture.allOf(
+		generateConjurableFlora(writer),
 		generateCurioPages(writer),
 		generateMediaJarPages(writer)
 	)
+
+	private fun generateConjurableFlora(writer: DataWriter): CompletableFuture<*> {
+		val finalJson = JsonObject().apply {
+			addProperty("name", "hexcasting.action.hexical:conjure_flora")
+			addProperty("icon", "minecraft:poppy")
+			addProperty("advancement", "hexcasting:root")
+			addProperty("category", "hexcasting:patterns/spells")
+			addProperty("sortnum", 10)
+			add("pages", JsonArray().apply {
+				add(JsonObject().apply {
+					addProperty("type", "hexcasting:pattern")
+					addProperty("op_id", "hexical:conjure_flora")
+					addProperty("anchor", "hexical:conjure_flora")
+					addProperty("input", "vector, identifier")
+					addProperty("output", "")
+					addProperty("text", "hexical.page.conjure_flora.summary")
+				})
+				add(JsonObject().apply {
+					addProperty("type", "patchouli:text")
+					addProperty("text", "hexical.page.conjure_flora.description")
+				})
+				add(JsonObject().apply {
+					addProperty("type", "patchouli:text")
+					addProperty("text", "hexical.page.conjure_flora.0")
+				})
+				(0..128).forEach { i ->
+					add(JsonObject().apply {
+						addProperty("type", "hexcasting:conjure_flora")
+						addProperty("index", i)
+					})
+				}
+			})
+		}
+
+		val path = output.getResolver(DataOutput.OutputType.RESOURCE_PACK, "patchouli_books/thehexbook/en_us/entries/patterns/spells")
+		return DataProvider.writeToPath(writer, finalJson, path.resolve(Identifier("hexcasting", "conjure_flora"), "json"))
+	}
 
 	private fun generateCurioPages(writer: DataWriter): CompletableFuture<*> {
 		val finalJson = JsonObject().apply {

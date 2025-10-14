@@ -11,7 +11,7 @@ import net.minecraft.registry.DynamicRegistryManager
 import net.minecraft.util.Identifier
 import net.minecraft.world.World
 
-class DyeingBlockRecipe(private val id: Identifier, val dye: DyeOption, val inputs: List<StateIngredient>, val output: BlockState) : Recipe<Inventory> {
+class DyeingBlockRecipe(private val id: Identifier, val group: Identifier, val dye: DyeOption, val inputs: List<StateIngredient>, val output: BlockState) : Recipe<Inventory> {
 	override fun getId() = this.id
 	override fun getType() = Type.INSTANCE
 	override fun fits(width: Int, height: Int) = false

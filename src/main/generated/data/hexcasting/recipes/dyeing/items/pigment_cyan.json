@@ -1,6 +1,7 @@
 {
   "type": "hexical:dye_item",
   "dye": 10,
+  "group": "hexcasting:pigment",
   "inputs": [
     {
       "item": "hexcasting:dye_colorizer_white"

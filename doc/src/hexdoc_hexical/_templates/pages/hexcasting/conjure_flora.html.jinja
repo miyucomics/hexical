@@ -1,0 +1,20 @@
+{% extends "pages/patchouli/page.html.jinja" %}
+{% import "macros/formatting.html.jinja" as fmt with context %}
+{% import "macros/textures.html.jinja" as texture_macros with context -%}
+
+{% block body %}
+    {% if page.should_render %}
+        <div style="display: flex; align-items: center;">
+            {{ texture_macros.render_item(page.recipe.block.name) }}
+            <div style="margin-left: 10px;">
+                <h5 style="margin: 0;">{{ page.recipe.block.name.name }}</h5>
+                <div>
+                    <img class="cost-icon pixelated" alt="{{ _('item.hexcasting.amethyst_dust') }}" src="{{ 'hexcasting:textures/item/amethyst_dust.png'|hexdoc_texture }}" style="width: 16px; height:16px" >
+                    <i>{{ _(page.recipe.cost_translation_key) % (page.recipe.cost_translation_number) }}</i>
+                </div>
+            </div>
+        </div>
+        {{ fmt.styled(_(page.text)) }}
+        <br>
+    {% endif %}
+{% endblock body %}

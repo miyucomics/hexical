@@ -15,10 +15,13 @@ import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.features.dyes.DyeIota
 import miyucomics.hexical.features.dyes.getColoredDye
 import miyucomics.hexpose.iotas.IdentifierIota
+import miyucomics.hexpose.iotas.ItemStackIota
 import miyucomics.hexpose.iotas.getIdentifier
+import miyucomics.hexpose.iotas.getItemStack
 import net.minecraft.entity.ItemEntity
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.player.PlayerEntity
+import net.minecraft.item.DyeItem
 import net.minecraft.item.ItemStack
 import net.minecraft.registry.Registries
 
@@ -46,12 +49,18 @@ object OpToPigment : ConstMediaAction {
 					else -> null
 				}
 			}
-			is IdentifierIota -> {
-				val item = Registries.ITEM.get(args.getIdentifier(0, argc))
-				if (item is PigmentItem)
-					FrozenPigment(ItemStack(item), caster.uuid)
-				else
-					null
+			is IdentifierIota -> when (val item = Registries.ITEM.get(args.getIdentifier(0, argc))) {
+				is PigmentItem -> FrozenPigment(ItemStack(item), caster.uuid)
+				is DyeItem -> FrozenPigment(ItemStack(HexItems.DYE_PIGMENTS[item.color]), caster.uuid)
+				else -> null
+			}
+			is ItemStackIota -> {
+				val stack = args.getItemStack(0, argc)
+				when (stack.item) {
+					is PigmentItem -> FrozenPigment(stack, caster.uuid)
+					is DyeItem -> FrozenPigment(ItemStack(HexItems.DYE_PIGMENTS[(stack.item as DyeItem).color]), caster.uuid)
+					else -> null
+				}
 			}
 			else -> null
 		}
