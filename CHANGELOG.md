@@ -126,6 +126,7 @@
 - removed limitation on arch lamps per person
 - removed Alteration Purification
 - removed Pocket Reflection II
+- removed Hallucinate Sound spells
 - reworked dyeing backend
 - reworked prestidigitation backend
 - reworked mage block modifier backend

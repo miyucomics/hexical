@@ -42,7 +42,6 @@ class HexicalAdvancementGenerator(generator: FabricDataOutput) : FabricAdvanceme
 
 		registerAdvancement("conjure_cake", AdvancementFrame.CHALLENGE, Items.CAKE, true, ConjureCakeCriterion.Condition())
 		registerAdvancement("conjure_hexxy", AdvancementFrame.CHALLENGE, HexItems.SCRYING_LENS, true, HexxyCriterion.Condition())
-		registerAdvancement("hallucinate", AdvancementFrame.TASK, Items.WHITE_BANNER, false, HallucinateCriterion.Condition())
 		registerAdvancement("diy_conjuring", AdvancementFrame.TASK, Items.SCAFFOLDING, false, DIYCriterion.Condition())
 		registerAdvancement("specklike", AdvancementFrame.TASK, Items.BEACON, false, SpecklikeCriterion.Condition())
 
