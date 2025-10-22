@@ -25,7 +25,7 @@ object OpVibrate : SpellAction {
 			is Vec3Iota -> BlockPositionSource(args.getBlockPos(1, argc))
 			else -> throw MishapInvalidIota.of(args[0], 1, "entity_or_vector")
 		}
-		return SpellAction.Result(Spell(args.getVec3(0, argc), to, args.getPositiveDoubleUnderInclusive(2, 10.0, argc) * 20), MediaConstants.DUST_UNIT / 16, listOf())
+		return SpellAction.Result(Spell(args.getVec3(0, argc), to, args.getPositiveDoubleUnderInclusive(2, 10.0, argc) * 20), MediaConstants.DUST_UNIT / 100, listOf())
 	}
 
 	private data class Spell(val from: Vec3d, val to: PositionSource, val duration: Double) : RenderedSpell {
