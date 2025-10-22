@@ -21,14 +21,14 @@ object OpConfetti : SpellAction {
 		when (args[1]) {
 			is DoubleIota -> {
 				val speed = args.getPositiveDoubleUnderInclusive(1, 2.0, argc) / 2
-				return SpellAction.Result(Spell(position, Vec3d.ZERO, speed), MediaConstants.DUST_UNIT / 2, listOf())
+				return SpellAction.Result(Spell(position, Vec3d.ZERO, speed), MediaConstants.DUST_UNIT / 100, listOf())
 			}
 			is Vec3Iota -> {
 				val velocity = args.getVec3(1, argc)
 				val speed = velocity.length()
 				if (speed > 2)
 					throw MishapInvalidIota.of(args[1], 0, "small_vector")
-				return SpellAction.Result(Spell(position, velocity.normalize(), speed), MediaConstants.DUST_UNIT / 2, listOf())
+				return SpellAction.Result(Spell(position, velocity.normalize(), speed), MediaConstants.DUST_UNIT / 100, listOf())
 			}
 			else -> throw MishapInvalidIota.of(args[1], 0, "number_or_vector")
 		}
