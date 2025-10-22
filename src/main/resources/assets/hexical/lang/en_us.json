@@ -625,10 +625,10 @@
 
 	"hexical.page.hexical_spells.title": "Hexical Spells",
 	"hexcasting.action.hexical:confetti": "Confetti",
-	"hexical.page.confetti.summary": "Creates a loud bang similar to that of $(l:patterns/spells/pyrotechnics)Fireworks$() and a burst of colorful particles, either in a direction or in a radial blast. Costs about half of one $(l:items/amethyst)$(item)Amethyst Dust$().",
+	"hexical.page.confetti.summary": "Creates a loud bang similar to that of $(l:patterns/spells/pyrotechnics)Fireworks$() and a burst of colorful particles, either in a direction or in a radial blast. Costs a negligible amount of _media.",
 	"hexical.page.confetti.description": "The particles are harmless and flutter through the air for quite long until they reach the ground. The first vector is a position and the second controls direction. If it is a number, it indicates speed to explode in in all directions; a vector makes the particles tend towards the given direction. Both the number and the vector's magnitude may not exceed 2.$(br2)$(o)The rest is confetti.$()",
 	"hexcasting.action.hexical:vibration": "Vibrate",
-	"hexical.page.vibration.summary": "Causes a visible pulse of vibration from a vector to an entity or vector over a number of seconds. Costs about a sixteenth of one $(l:items/amethyst)$(item)Amethyst Dust$().",
+	"hexical.page.vibration.summary": "Causes a visible pulse of vibration from a vector to an entity or vector over a number of seconds. Costs a negligible amount of _media.",
 	"hexical.page.vibration.description": "The effect, while resembling the pulses produced by $(item)Sculk Sensors$(), is entirely distinct. It is a purely visual effect.$(br2)The duration can range anywhere from zero seconds to ten seconds.$(br2)$(o)If a tree falls in a forest and no one is around to hear it, does it make a sound?$()",
 	"hexcasting.action.hexical:sparkle": "Sparkle",
 	"hexical.page.sparkle.summary": "Produces a small sparkling particle of my desired position, color, and lifespan. Costs a negligible amount of _media.",
