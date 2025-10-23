@@ -35,6 +35,7 @@ import miyucomics.hexical.features.confection.OpConjureHextito
 import miyucomics.hexical.features.confetti.OpConfetti
 import miyucomics.hexical.features.conjure.OpConjureEntity
 import miyucomics.hexical.features.conjure.OpConjureLight
+import miyucomics.hexical.features.dda.OpDda
 import miyucomics.hexical.features.dyes.actions.OpDye
 import miyucomics.hexical.features.dyes.actions.OpGetDye
 import miyucomics.hexical.features.dyes.actions.OpTranslateDye
@@ -148,6 +149,8 @@ object HexicalActions {
 		register("grok_set_stack", "ewdewwde", HexDir.EAST, OpGrokSetStack)
 		register("grok_get_parenthesized", "waqwawwqwaw", HexDir.EAST, OpGrokGetParenthesized)
 		register("grok_set_parenthesized", "wewdwewwdwe", HexDir.EAST, OpGrokSetParenthesized)
+
+		register("dda", "wdqqdwewdqqdwdqdadedaddww", HexDir.NORTH_EAST, OpDda)
 
 		register("get_telepathy", "wqqadaw", HexDir.EAST, OpGetKeybindSelf("key.hexical.telepathy"))
 		register("send_telepathy", "qqqqwaqa", HexDir.EAST, OpSendTelepathy)
