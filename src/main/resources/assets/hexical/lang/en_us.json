@@ -444,6 +444,13 @@
 	"hexcasting.action.hexical:grok_set_parenthesized": "Grok Gambit II",
 	"hexical.page.grok_set_parenthesized.summary": "Sets my unfinished parenthesized list. Entity references to other _Hexcasters become $(l:casting/influences)$(thing)Null$().",
 
+	"hexical.page.dda.title": "Spelunking",
+	"hexical.page.dda.0": "What blocks lie along a line? I have been wrestling with this for days. I can inch forwards and check but by how much? One block? I skip blocks at angles, miss things. A tenth of a block? Now I am overchecking blocks and I $(o)still$() miss blocks at specific angles. If I could just—$(br2)All the treasures of the earth would be within my grasp.",
+	"hexical.page.dda.1": "The world is already a grid. There is an $(o)exact$() sequence of blocks between any two points. I don't need to guess the step size if I just walk the grid itself.$(br2)When searching for a specific block along a path, or checking what lies between two points, exact coordinates don't matter—I could find those myself. I just need the general block and face, some way of dynamically adjusting my step size depending on how deeply buried the ray is.",
+	"hexical.page.dda.2": "That is what this pattern achieves. I define a line's start and direction, give it a number n, and it returns the first n blocks the line intersects along with the normal vector of each entry face. I can scan straight lines perfectly. I could generate bridges between any two points if I'm clever enough. I can invent raycasts that find liquids, buried rooms, $(l:items/amethyst)$(item)$(o)Amethyst$().$(br2)Praise linear algebra.",
+	"hexcasting.action.hexical:dda": "Spelunking Gambit",
+	"hexical.page.dda.summary": "Derives from pure mathematics the block positions and entry faces that a perfect ray would intersect.",
+
 	"hexical.page.telepathy.title": "Telepathy",
 	"hexical.page.telepathy.0": "_Media is the energy of thought and consequently, it can interact with thoughts as well. Unfortunately or perhaps fortunately for me, the minds of _Hexcasters are too resistant to be swayed by _Hexes and even the minds of villagers resist tampering. There is a notable exception though: my own mind is open to my own _media, allowing me to read my own intentions and write thoughts to myself.",
 	"hexcasting.action.hexical:get_telepathy": "Telepathic Reflection",

@@ -1,0 +1,29 @@
+{
+	"name": "hexical.page.dda.title",
+	"icon": "minecraft:spectral_arrow",
+	"category": "hexcasting:patterns",
+	"advancement": "hexcasting:root",
+	"sortnum": 7,
+	"pages": [
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.dda.0"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.dda.1"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.dda.2"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:dda",
+			"anchor": "hexical:dda",
+			"input": "vec, vec, num",
+			"output": "list, list",
+			"text": "hexical.page.dda.summary"
+		}
+	]
+}
