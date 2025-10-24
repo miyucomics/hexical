@@ -74,6 +74,9 @@
 - added pattern to test if an item stack has an autograph
 - added pattern to check if an item has been autographed by a specific person
 - added Unautograph spell to unautograph an item ( still erases it )
+- added automatic population of conjure flora possibilities
+- added patterns to read other peoples' inputs
+- changed Conjure Flower to Conjure Flora - recipe files can handle it now!
 - changed grimoires to work in the wristpocket
 - changed cost of Refuel Lamp
 - changed Displace to cost half a dust
@@ -124,6 +127,7 @@
 - removed limitation on arch lamps per person
 - removed Alteration Purification
 - removed Pocket Reflection II
+- removed Hallucinate Sound spells
 - reworked dyeing backend
 - reworked prestidigitation backend
 - reworked mage block modifier backend

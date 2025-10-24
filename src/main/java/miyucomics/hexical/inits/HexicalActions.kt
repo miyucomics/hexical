@@ -98,9 +98,7 @@ import net.minecraft.entity.projectile.LlamaSpitEntity
 import net.minecraft.entity.projectile.thrown.EggEntity
 import net.minecraft.entity.projectile.thrown.SnowballEntity
 import net.minecraft.recipe.RecipeType
-import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
-import net.minecraft.sound.SoundEvents
 
 object HexicalActions {
 	fun init() {
@@ -151,20 +149,26 @@ object HexicalActions {
 		register("grok_get_parenthesized", "waqwawwqwaw", HexDir.EAST, OpGrokGetParenthesized)
 		register("grok_set_parenthesized", "wewdwewwdwe", HexDir.EAST, OpGrokSetParenthesized)
 
-		register("get_telepathy", "wqqadaw", HexDir.EAST, OpGetKeybind("key.hexical.telepathy"))
+		register("get_telepathy", "wqqadaw", HexDir.EAST, OpGetKeybindSelf("key.hexical.telepathy"))
 		register("send_telepathy", "qqqqwaqa", HexDir.EAST, OpSendTelepathy)
 		register("shout_telepathy", "daqqqqwa", HexDir.EAST, OpShoutTelepathy)
-		register("pling", "eqqqada", HexDir.NORTH_EAST, OpHallucinateSound(Registries.SOUND_EVENT.getEntry(SoundEvents.ENTITY_PLAYER_LEVELUP)))
-		register("click", "eqqadaq", HexDir.NORTH_EAST, OpHallucinateSound(Registries.SOUND_EVENT.getEntry(SoundEvents.UI_BUTTON_CLICK.value())))
-		register("left_click", "qadee", HexDir.NORTH_EAST, OpGetKeybind("key.attack"))
-		register("right_click", "edaqq", HexDir.NORTH_WEST, OpGetKeybind("key.use"))
-		register("moving_up", "aqaddq", HexDir.SOUTH_EAST, OpGetKeybind("key.forward"))
-		register("moving_down", "dedwdq", HexDir.SOUTH_WEST, OpGetKeybind("key.back"))
-		register("moving_left", "edead", HexDir.SOUTH_EAST, OpGetKeybind("key.left"))
-		register("moving_right", "qaqda", HexDir.SOUTH_WEST, OpGetKeybind("key.right"))
-		register("jumping", "qaqdaqqa", HexDir.SOUTH_WEST, OpGetKeybind("key.jump"))
-		register("sneaking", "wede", HexDir.NORTH_WEST, OpGetKeybind("key.sneak"))
+		register("left_click", "qadee", HexDir.NORTH_EAST, OpGetKeybindSelf("key.attack"))
+		register("right_click", "edaqq", HexDir.NORTH_WEST, OpGetKeybindSelf("key.use"))
+		register("moving_up", "aqaddq", HexDir.SOUTH_EAST, OpGetKeybindSelf("key.forward"))
+		register("moving_down", "dedwdq", HexDir.SOUTH_WEST, OpGetKeybindSelf("key.back"))
+		register("moving_left", "edead", HexDir.SOUTH_EAST, OpGetKeybindSelf("key.left"))
+		register("moving_right", "qaqda", HexDir.SOUTH_WEST, OpGetKeybindSelf("key.right"))
+		register("jumping", "qaqdaqqa", HexDir.SOUTH_WEST, OpGetKeybindSelf("key.jump"))
+		register("sneaking", "wede", HexDir.NORTH_WEST, OpGetKeybindSelf("key.sneak"))
 		register("scroll", "qadeeee", HexDir.NORTH_EAST, OpGetScroll)
+		register("left_click_other", "wqadee", HexDir.NORTH_EAST, OpGetKeybindOther("key.attack"))
+		register("right_click_other", "wedaqq", HexDir.NORTH_WEST, OpGetKeybindOther("key.use"))
+		register("moving_up_other", "aqaddqw", HexDir.SOUTH_EAST, OpGetKeybindOther("key.forward"))
+		register("moving_down_other", "dedwdqw", HexDir.SOUTH_WEST, OpGetKeybindOther("key.back"))
+		register("moving_left_other", "edeadw", HexDir.SOUTH_EAST, OpGetKeybindOther("key.left"))
+		register("moving_right_other", "qaqdaw", HexDir.SOUTH_WEST, OpGetKeybindOther("key.right"))
+		register("jumping_other", "qaqdawawa", HexDir.SOUTH_WEST, OpGetKeybindOther("key.jump"))
+		register("sneaking_other", "wwede", HexDir.NORTH_WEST, OpGetKeybindOther("key.sneak"))
 
 		register("key_shelf", "qaqqadaq", HexDir.EAST, OpKeyAkashicShelf)
 		register("read_shelf", "qaqqqada", HexDir.EAST, OpReadAkashicShelf)
@@ -258,7 +262,7 @@ object HexicalActions {
 
 		register("get_evocation", "wwdeeeeeqeaqawwewewwaqawwewew", HexDir.EAST, OpGetEvocation)
 		register("set_evocation", "wwaqqqqqeqdedwwqwqwwdedwwqwqw", HexDir.EAST, OpSetEvocation)
-		register("is_evoking", "wwaqqqqqeeaqawwewewwaqawwewew", HexDir.EAST, OpGetKeybind("key.hexical.evoke"))
+		register("is_evoking", "wwaqqqqqeeaqawwewewwaqawwewew", HexDir.EAST, OpGetKeybindSelf("key.hexical.evoke"))
 
 		register("conjure_firework", "dedwaqwwawwqa", HexDir.SOUTH_WEST, OpConjureFirework)
 		register("simulate_firework", "dedwaqwqqwqa", HexDir.SOUTH_WEST, OpSimulateFirework)
