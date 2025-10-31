@@ -1,0 +1,10 @@
+{
+  "type": "hexical:conjure_flora",
+  "block": {
+    "name": "minecraft:kelp",
+    "properties": {
+      "age": "0"
+    }
+  },
+  "cost": 5000
+}

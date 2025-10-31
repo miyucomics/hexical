@@ -1,0 +1,10 @@
+{
+  "type": "hexical:conjure_flora",
+  "block": {
+    "name": "minecraft:lilac",
+    "properties": {
+      "half": "lower"
+    }
+  },
+  "cost": 5000
+}

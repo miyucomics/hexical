@@ -1,0 +1,10 @@
+{
+  "type": "hexical:conjure_flora",
+  "block": {
+    "name": "minecraft:sweet_berry_bush",
+    "properties": {
+      "age": "0"
+    }
+  },
+  "cost": 50000
+}
