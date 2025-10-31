@@ -34,6 +34,9 @@ class HexicalFloraGenerator(val output: FabricDataOutput) : DataProvider {
 
 			Blocks.FERN to 3500,
 			Blocks.LARGE_FERN to 3500,
+			Blocks.NETHER_SPROUTS to 3500,
+			Blocks.SEAGRASS to 3500,
+			Blocks.TALL_SEAGRASS to 3500,
 
 			Blocks.DANDELION to 5000,
 			Blocks.POPPY to 5000,
@@ -49,6 +52,9 @@ class HexicalFloraGenerator(val output: FabricDataOutput) : DataProvider {
 			Blocks.LILY_OF_THE_VALLEY to 5000,
 			Blocks.SUNFLOWER to 5000,
 			Blocks.ROSE_BUSH to 5000,
+			Blocks.PEONY to 5000,
+			Blocks.LILAC to 5000,
+			Blocks.KELP to 5000,
 
 			Blocks.RED_MUSHROOM to 6000,
 			Blocks.BROWN_MUSHROOM to 6000,
@@ -56,6 +62,7 @@ class HexicalFloraGenerator(val output: FabricDataOutput) : DataProvider {
 			Blocks.WARPED_FUNGUS to 6000,
 			Blocks.CRIMSON_ROOTS to 6000,
 			Blocks.WARPED_ROOTS to 6000,
+			Blocks.SEA_PICKLE to 6000,
 
 			Blocks.SMALL_DRIPLEAF to 7000,
 			Blocks.BIG_DRIPLEAF to 7000,
@@ -75,6 +82,9 @@ class HexicalFloraGenerator(val output: FabricDataOutput) : DataProvider {
 			Blocks.JUNGLE_SAPLING to 50000,
 			Blocks.OAK_SAPLING to 50000,
 			Blocks.SPRUCE_SAPLING to 50000,
+			Blocks.MANGROVE_PROPAGULE to 50000,
+			Blocks.SWEET_BERRY_BUSH to 50000,
+			Blocks.SUGAR_CANE to 50000,
 
 			Blocks.WITHER_ROSE to 100000,
 			Blocks.CACTUS to 100000

@@ -1,0 +1,10 @@
+{
+  "type": "hexical:conjure_flora",
+  "block": {
+    "name": "minecraft:tall_seagrass",
+    "properties": {
+      "half": "lower"
+    }
+  },
+  "cost": 3500
+}

@@ -1,0 +1,7 @@
+{
+  "type": "hexical:conjure_flora",
+  "block": {
+    "name": "minecraft:nether_sprouts"
+  },
+  "cost": 3500
+}
