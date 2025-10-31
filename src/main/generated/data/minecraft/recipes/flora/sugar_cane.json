@@ -1,0 +1,10 @@
+{
+  "type": "hexical:conjure_flora",
+  "block": {
+    "name": "minecraft:sugar_cane",
+    "properties": {
+      "age": "0"
+    }
+  },
+  "cost": 50000
+}

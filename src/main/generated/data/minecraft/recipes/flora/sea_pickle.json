@@ -1,0 +1,11 @@
+{
+  "type": "hexical:conjure_flora",
+  "block": {
+    "name": "minecraft:sea_pickle",
+    "properties": {
+      "pickles": "1",
+      "waterlogged": "true"
+    }
+  },
+  "cost": 6000
+}
