@@ -28,7 +28,15 @@ class DyeingBlockSerializer : RecipeSerializer<DyeingBlockRecipe> {
 		buf.writeVarInt(Block.getRawIdFromState(recipe.output))
 	}
 
-	override fun read(id: Identifier, buf: PacketByteBuf) = DyeingBlockRecipe(id, buf.readIdentifier(), enumValues<DyeOption>()[buf.readInt()], (0..buf.readInt()).map { StateIngredientHelper.read(buf) }, Block.getStateFromRawId(buf.readVarInt()))
+	override fun read(id: Identifier, buf: PacketByteBuf) = DyeingBlockRecipe(
+        id,
+        buf.readIdentifier(),
+        enumValues<DyeOption>()[buf.readInt()],
+        (0 until buf.readInt()).map{
+            StateIngredientHelper.read(buf)
+        },
+        Block.getStateFromRawId(buf.readVarInt())
+    )
 
 	companion object {
 		val INSTANCE: DyeingBlockSerializer = DyeingBlockSerializer()
