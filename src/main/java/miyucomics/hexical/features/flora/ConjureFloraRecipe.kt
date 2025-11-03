@@ -14,7 +14,7 @@ class ConjureFloraRecipe(private val id: Identifier, val state: BlockState, val 
 	override fun getId() = this.id
 	override fun getType() = Type.INSTANCE
 	override fun fits(width: Int, height: Int) = false
-	override fun getSerializer() = DyeingBlockSerializer.INSTANCE
+	override fun getSerializer() = ConjureFloraSerializer.INSTANCE
 	override fun matches(inventory: Inventory, world: World) = false
 	override fun getOutput(dynamicRegistryManager: DynamicRegistryManager): ItemStack = ItemStack.EMPTY.copy()
 	override fun craft(inventory: Inventory, dynamicRegistryManager: DynamicRegistryManager): ItemStack = ItemStack.EMPTY.copy()
