@@ -20,7 +20,6 @@ object LeiItem : ArmorItem(LeiArmorMaterial.INSTANCE, Type.HELMET, Settings()) {
 	init {
 		val attributes = ImmutableMultimap.builder<EntityAttribute, EntityAttributeModifier>()
 		attributes.put(HexAttributes.GRID_ZOOM, EntityAttributeModifier(UUID.fromString("9794eabc-2eec-42ee-b10a-c7d1fcd3de74"), "Scrying Lens Zoom", 0.25, EntityAttributeModifier.Operation.MULTIPLY_TOTAL))
-		attributes.put(HexAttributes.SCRY_SIGHT, EntityAttributeModifier(UUID.fromString("d7e97f0c-3a57-4be6-aee2-7e4913b6dc1f"), "Scrying Lens Sight", 1.0, EntityAttributeModifier.Operation.ADDITION))
 		bakedAttributes = attributes.build()
 	}
 

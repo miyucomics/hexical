@@ -8,6 +8,7 @@ import miyucomics.hexical.features.hopper.HopperEndpointRegistry
 import miyucomics.hexical.features.lesser_sentinels.ServerLesserSentinelPusher
 import miyucomics.hexical.features.mage_blocks.MageBlockModifierRegistry
 import miyucomics.hexical.features.media_log.ServerSpyingHooks
+import miyucomics.hexical.features.periwinkle.LeiEnchantmentsHook
 import miyucomics.hexical.features.periwinkle.WooleyedEffectRegister
 import miyucomics.hexical.features.player.RespawnPersistHook
 import miyucomics.hexical.features.prestidigitation.PrestidigitationHandlers
@@ -43,6 +44,7 @@ object HexicalHooksServer {
 		register(DyeingUtils)
 		register(DyeingEntityRegistry)
 		register(ConjureFloraHook)
+		register(LeiEnchantmentsHook)
 
 		for (hook in hooks)
 			hook.init()
