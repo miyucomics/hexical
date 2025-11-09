@@ -10,7 +10,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.TooltipComponentCallback
 
 class HexicalClient : ClientModInitializer {
 	override fun onInitializeClient() {
-		HexicalBlocksClient.clientInit()
+		HexicalRenderLayers.clientInit()
 		HexicalEntitiesClient.clientInit()
 		HexicalHooksClient.init()
 		HexicalKeybinds.clientInit()

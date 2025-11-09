@@ -1,5 +1,6 @@
 package miyucomics.hexical.features.media_jar
 
+import miyucomics.hexical.inits.HexicalRenderLayers
 import net.minecraft.client.render.VertexConsumer
 import net.minecraft.client.render.VertexConsumerProvider
 import net.minecraft.client.util.math.MatrixStack
@@ -9,11 +10,11 @@ import org.joml.Quaternionf
 import org.joml.Vector3f
 import kotlin.math.abs
 
-object MediaJarRenderStuffs {
+object MediaJarRenderer {
 	fun renderFluid(matrices: MatrixStack, vertexConsumers: VertexConsumerProvider, filled: Float, offset: Vector3f = Vector3f(0f)) {
 		if (filled == 0f)
 			return
-		val consumer = vertexConsumers.getBuffer(MediaJarShader.mediaJarRenderLayer)
+		val consumer = vertexConsumers.getBuffer(HexicalRenderLayers.mediaJarRenderLayer)
 		matrices.push()
 		matrices.translate(0.5f, 1f / 16f, 0.5f)
 		addRectangularPrism(consumer, matrices, height = filled * 12f / 16f, offset)

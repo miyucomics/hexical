@@ -8,7 +8,6 @@
   - removed Myodesopsia spell
 - added Vibrate spell
 - added grok patterns to push and pull from staff stack
-- added mage block disguising spell
 - added spell to set model position
 - added tooltips to hexbursts
 - added tooltips to hextito

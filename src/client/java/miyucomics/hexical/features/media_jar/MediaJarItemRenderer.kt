@@ -13,6 +13,6 @@ class MediaJarItemRenderer : BuiltinItemRendererRegistry.DynamicItemRenderer {
 		MinecraftClient.getInstance().blockRenderManager.renderBlockAsEntity(HexicalBlocks.MEDIA_JAR_BLOCK.defaultState, matrices, vertexConsumers, light, overlay)
 		val tag = stack.nbt?.getCompound("BlockEntityTag")
 		val media = tag?.getLong("media") ?: 0
-		MediaJarRenderStuffs.renderFluid(matrices, vertexConsumers, media.toFloat() / MediaJarBlock.MAX_CAPACITY.toFloat())
+		MediaJarRenderer.renderFluid(matrices, vertexConsumers, media.toFloat() / MediaJarBlock.MAX_CAPACITY.toFloat())
 	}
 }
