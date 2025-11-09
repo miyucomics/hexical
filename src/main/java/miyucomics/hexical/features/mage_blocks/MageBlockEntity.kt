@@ -4,20 +4,16 @@ import at.petrak.hexcasting.api.utils.putCompound
 import com.mojang.datafixers.util.Pair
 import miyucomics.hexical.inits.HexicalBlocks
 import net.minecraft.block.BlockState
-import net.minecraft.block.Blocks
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
-import net.minecraft.nbt.NbtHelper
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket
-import net.minecraft.registry.Registries
 import net.minecraft.text.Text
 import net.minecraft.util.Identifier
 import net.minecraft.util.math.BlockPos
 
 class MageBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(HexicalBlocks.MAGE_BLOCK_ENTITY, pos, state) {
 	val modifiers: MutableMap<Identifier, MageBlockModifier> = mutableMapOf()
-	var disguise: BlockState = Blocks.AMETHYST_BLOCK.defaultState
 
 	fun addModifier(modifier: MageBlockModifier) {
 		modifiers[modifier.type.id] = modifier
@@ -26,11 +22,6 @@ class MageBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(HexicalBlo
 
 	fun clearModifiers() {
 		modifiers.clear()
-		this.sync()
-	}
-
-	fun setBlockState(state: BlockState) {
-		this.disguise = state
 		this.sync()
 	}
 
@@ -55,7 +46,6 @@ class MageBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(HexicalBlo
 	}
 
 	override fun writeNbt(compound: NbtCompound) {
-		compound.putCompound("disguise", NbtHelper.fromBlockState(disguise))
 		compound.putCompound("modifiers", NbtCompound().apply {
 			modifiers.forEach {
 				put(it.key.toString(), it.value.serialize())
@@ -64,7 +54,6 @@ class MageBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(HexicalBlo
 	}
 
 	override fun readNbt(compound: NbtCompound) {
-		this.disguise = NbtHelper.toBlockState(Registries.BLOCK.getReadOnlyWrapper(), compound.getCompound("disguise"))
 		val serializedModifiers = compound.getCompound("modifiers")
 		serializedModifiers.keys.forEach { key ->
 			val modifierType = MageBlockModifierRegistry.MODIFIER_REGISTRY.get(Identifier(key))!!
