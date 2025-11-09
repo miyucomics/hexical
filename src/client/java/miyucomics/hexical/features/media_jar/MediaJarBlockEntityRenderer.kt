@@ -8,7 +8,7 @@ import org.joml.Vector3f
 
 class MediaJarBlockEntityRenderer : BlockEntityRenderer<MediaJarBlockEntity> {
 	override fun render(jar: MediaJarBlockEntity, tickDelta: Float, matrices: MatrixStack, vertexConsumers: VertexConsumerProvider, light: Int, overlay: Int) {
-		MediaJarRenderStuffs.renderFluid(matrices, vertexConsumers, jar.getMedia().toFloat() / MediaJarBlock.MAX_CAPACITY.toFloat(), hashBlockPos(jar.pos))
+		MediaJarRenderer.renderFluid(matrices, vertexConsumers, jar.getMedia().toFloat() / MediaJarBlock.MAX_CAPACITY.toFloat(), hashBlockPos(jar.pos))
 	}
 
 	companion object {
