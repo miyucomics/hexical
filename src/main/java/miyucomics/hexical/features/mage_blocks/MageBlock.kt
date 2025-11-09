@@ -13,8 +13,6 @@ import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.sound.BlockSoundGroup
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
-import net.minecraft.util.shape.VoxelShape
-import net.minecraft.util.shape.VoxelShapes
 import net.minecraft.world.BlockView
 import net.minecraft.world.World
 
@@ -66,22 +64,4 @@ class MageBlock : Block(Settings.create().nonOpaque().dropsNothing().breakInstan
 	override fun <T : BlockEntity> getTicker(pworld: World, pstate: BlockState, type: BlockEntityType<T>): BlockEntityTicker<T> = BlockEntityTicker { world, position, state, blockEntity ->
 		(blockEntity  as? MageBlockEntity)?.modifiers?.forEach { it -> it.value.tick(world, position, state) }
 	}
-
-	// defer shapes to disguise
-	private fun getBlockDisguise(world: BlockView, pos: BlockPos): BlockState? = (world.getBlockEntity(pos) as? MageBlockEntity)?.disguise
-
-	override fun getOutlineShape(state: BlockState, world: BlockView, pos: BlockPos, context: ShapeContext): VoxelShape =
-		getBlockDisguise(world, pos)?.getOutlineShape(world, pos, context) ?: VoxelShapes.fullCube()
-
-	override fun getCullingShape(state: BlockState, world: BlockView, pos: BlockPos): VoxelShape =
-		getBlockDisguise(world, pos)?.getCullingShape(world, pos) ?: VoxelShapes.fullCube()
-
-	override fun getRaycastShape(state: BlockState, world: BlockView, pos: BlockPos): VoxelShape =
-		getBlockDisguise(world, pos)?.getRaycastShape(world, pos) ?: VoxelShapes.fullCube()
-
-	override fun getCollisionShape(state: BlockState, world: BlockView, pos: BlockPos, context: ShapeContext): VoxelShape =
-		getBlockDisguise(world, pos)?.getCollisionShape(world, pos, context) ?: VoxelShapes.fullCube()
-
-	override fun getCameraCollisionShape(state: BlockState, world: BlockView, pos: BlockPos, context: ShapeContext): VoxelShape =
-		getBlockDisguise(world, pos)?.getCameraCollisionShape(world, pos, context) ?: VoxelShapes.fullCube()
 }
