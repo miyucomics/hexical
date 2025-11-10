@@ -6,6 +6,7 @@ import miyucomics.hexical.inits.HexicalBlocks.PERIWINKLE_FLOWER
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap
 import net.fabricmc.fabric.api.client.rendering.v1.CoreShaderRegistrationCallback
 import net.minecraft.client.render.RenderLayer
+import net.minecraft.client.render.RenderLayer.MultiPhaseParameters
 import net.minecraft.client.render.RenderPhase
 import net.minecraft.client.render.VertexFormat
 import net.minecraft.client.render.VertexFormats
@@ -13,6 +14,8 @@ import net.minecraft.util.Identifier
 
 object HexicalRenderLayers {
 	lateinit var mediaJarRenderLayer: RenderLayer
+	lateinit var mageBlockRenderLayer: RenderLayer
+
 	val PERLIN_NOISE: Identifier = HexicalMain.id("textures/misc/perlin.png")
 
 	fun clientInit() {
@@ -20,7 +23,7 @@ object HexicalRenderLayers {
 			context.register(HexicalMain.id("media_jar"), VertexFormats.POSITION_TEXTURE_COLOR_NORMAL) { shader ->
 				mediaJarRenderLayer = RenderLayer.of(
 					"media_jar_shader", VertexFormats.POSITION_TEXTURE_COLOR_NORMAL, VertexFormat.DrawMode.QUADS, 512,
-					RenderLayer.MultiPhaseParameters.builder()
+					MultiPhaseParameters.builder()
 						.program(RenderPhase.ShaderProgram { shader })
 						.texture(RenderPhase.Textures.create().add(PERLIN_NOISE, false, false).build())
 						.transparency(RenderPhase.NO_TRANSPARENCY)
@@ -29,10 +32,13 @@ object HexicalRenderLayers {
 						.overlay(RenderPhase.DISABLE_OVERLAY_COLOR)
 						.build(true)
 				)
+
+				mageBlockRenderLayer = RenderLayer.of("mage_block", VertexFormats.POSITION_COLOR_TEXTURE_LIGHT_NORMAL, VertexFormat.DrawMode.QUADS, 0x200000, true, false, MultiPhaseParameters.builder().lightmap(RenderPhase.ENABLE_LIGHTMAP).program(RenderPhase.CUTOUT_PROGRAM).texture(RenderPhase.Textures.create().add(PERLIN_NOISE, false, false).build()).build(true))
+
+				BlockRenderLayerMap.INSTANCE.putBlock(MAGE_BLOCK, mageBlockRenderLayer)
 			}
 		}
 
 		BlockRenderLayerMap.INSTANCE.putBlock(PERIWINKLE_FLOWER, RenderLayer.getCutout())
-		BlockRenderLayerMap.INSTANCE.putBlock(MAGE_BLOCK, mediaJarRenderLayer)
 	}
 }
