@@ -12,6 +12,7 @@
 		"ItemEntityRendererMixin",
 		"ItemRendererMixin",
 		"MouseMixin",
+		"RenderLayerMixin",
 		"ScreenMixin",
 		"ScryingLensOverlaysMixin"
 	],
