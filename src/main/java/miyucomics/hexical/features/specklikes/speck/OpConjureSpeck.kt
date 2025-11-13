@@ -7,9 +7,6 @@ import at.petrak.hexcasting.api.casting.eval.vm.CastingImage
 import at.petrak.hexcasting.api.casting.getVec3
 import at.petrak.hexcasting.api.casting.iota.EntityIota
 import at.petrak.hexcasting.api.casting.iota.Iota
-import at.petrak.hexcasting.api.casting.iota.PatternIota
-import at.petrak.hexcasting.api.casting.math.HexDir
-import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.misc.MediaConstants
 import miyucomics.hexical.inits.HexicalAdvancements
 import net.minecraft.command.argument.EntityAnchorArgumentType
@@ -27,17 +24,15 @@ object OpConjureSpeck : SpellAction {
 	private data class Spell(val position: Vec3d, val rotation: Vec3d, val iota: Iota) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {}
 		override fun cast(env: CastingEnvironment, image: CastingImage): CastingImage {
-			if (env.castingEntity is ServerPlayerEntity) {
+			if (env.castingEntity is ServerPlayerEntity)
 				HexicalAdvancements.AR.trigger(env.castingEntity as ServerPlayerEntity)
-				if (iota is PatternIota && iota.pattern == HexPattern.fromAngles("deaqq", HexDir.SOUTH_EAST))
-					HexicalAdvancements.HEXXY.trigger(env.castingEntity as ServerPlayerEntity)
+
+			val speck = SpeckEntity(env.world).apply {
+				setPosition(position.subtract(0.0, standingEyeHeight.toDouble(), 0.0))
+				lookAt(EntityAnchorArgumentType.EntityAnchor.FEET, pos.add(rotation))
+				setText(iota.display())
 			}
 
-			val speck = SpeckEntity(env.world)
-			speck.setPosition(position.subtract(0.0, speck.standingEyeHeight.toDouble(), 0.0))
-			speck.lookAt(EntityAnchorArgumentType.EntityAnchor.FEET, speck.pos.add(rotation))
-			speck.setPigment(env.pigment)
-			speck.setIota(iota)
 			env.world.spawnEntity(speck)
 
 			return image.copy(stack = image.stack.toList().plus(EntityIota(speck)))
