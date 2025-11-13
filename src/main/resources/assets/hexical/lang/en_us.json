@@ -598,8 +598,6 @@
 	"hexical.page.rotate_specklike.summary": "Rotates a speck entity to face the vector.",
 	"hexcasting.action.hexical:roll_specklike": "Roll Speck",
 	"hexical.page.roll_specklike.summary": "Accepts a number between 0 and 1, representing a fraction of a full rotation, and rotates the speck's image by that amount.",
-	"hexcasting.action.hexical:iota_speck": "Alter Speck",
-	"hexical.page.iota_speck.summary": "Changes the speck's iota.",
 	"hexcasting.action.hexical:lifetime_specklike": "Time Speck",
 	"hexical.page.lifetime_specklike.summary": "Commands the speck to disappear after that many twentieths of a second.",
 	"hexcasting.action.hexical:size_specklike": "Resize Speck",
