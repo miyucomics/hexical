@@ -5,8 +5,12 @@ import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.api.utils.putList
 import dev.kosmx.playerAnim.core.util.Vec3f
 import miyucomics.hexical.features.specklikes.BaseSpecklike
+import miyucomics.hexical.features.specklikes.PigmentedSpecklike
 import miyucomics.hexical.inits.HexicalEntities
 import net.minecraft.entity.EntityType
+import net.minecraft.entity.data.DataTracker
+import net.minecraft.entity.data.TrackedData
+import net.minecraft.entity.data.TrackedDataHandlerRegistry
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.nbt.NbtElement
 import net.minecraft.nbt.NbtFloat
@@ -14,23 +18,23 @@ import net.minecraft.nbt.NbtList
 import net.minecraft.util.math.Vec3d
 import net.minecraft.world.World
 
-class MeshEntity(entityType: EntityType<out MeshEntity>, world: World) : BaseSpecklike(entityType, world) {
+class MeshEntity(entityType: EntityType<out MeshEntity>, world: World) : PigmentedSpecklike(entityType, world) {
 	constructor(world: World) : this(HexicalEntities.MESH_ENTITY, world)
 
 	var clientVertices: MutableList<Vec3f> = mutableListOf()
 
 	override fun readCustomDataFromNbt(nbt: NbtCompound) {
 		super.readCustomDataFromNbt(nbt)
-		dataTracker.set(stateDataTracker, nbt.getCompound("shape"))
+		dataTracker.set(shapeDataTracker, nbt.getCompound("shape"))
 	}
 
 	override fun writeCustomDataToNbt(nbt: NbtCompound) {
 		super.writeCustomDataToNbt(nbt)
-		nbt.putCompound("shape", dataTracker.get(stateDataTracker))
+		nbt.putCompound("shape", dataTracker.get(shapeDataTracker))
 	}
 
 	fun getShape(): List<Vec3Iota> {
-		val list = dataTracker.get(stateDataTracker).getList("shape", NbtElement.FLOAT_TYPE.toInt())
+		val list = dataTracker.get(shapeDataTracker).getList("shape", NbtElement.FLOAT_TYPE.toInt())
 		val deserializedVertices = mutableListOf<Vec3Iota>()
 		for (i in 0 until (list.size / 3))
 			deserializedVertices.add(Vec3Iota(Vec3d(list.getFloat(3 * i).toDouble(), list.getFloat(3 * i + 1).toDouble(), list.getFloat(3 * i + 2).toDouble())))
@@ -46,13 +50,25 @@ class MeshEntity(entityType: EntityType<out MeshEntity>, world: World) : BaseSpe
 			list.add(NbtFloat.of(vertex.z))
 		}
 		compound.putList("shape", list)
-		this.dataTracker.set(stateDataTracker, compound)
+		this.dataTracker.set(shapeDataTracker, compound)
 	}
 
-	override fun processState() {
-		val list = this.dataTracker.get(stateDataTracker).getList("shape", NbtElement.FLOAT_TYPE.toInt())
-		this.clientVertices = mutableListOf()
-		for (i in 0 until (list.size / 3))
-			clientVertices.add(Vec3f(list.getFloat(3 * i), list.getFloat(3 * i + 1), list.getFloat(3 * i + 2)))
+	override fun initDataTracker() {
+		super.initDataTracker()
+		dataTracker.startTracking(shapeDataTracker, NbtCompound())
+	}
+
+	override fun onTrackedDataSet(data: TrackedData<*>) {
+		if (data == shapeDataTracker) {
+			val list = this.dataTracker.get(shapeDataTracker).getList("shape", NbtElement.FLOAT_TYPE.toInt())
+			this.clientVertices = mutableListOf()
+			for (i in 0 until (list.size / 3))
+				clientVertices.add(Vec3f(list.getFloat(3 * i), list.getFloat(3 * i + 1), list.getFloat(3 * i + 2)))
+		}
+		super.onTrackedDataSet(data)
+	}
+
+	companion object {
+		private val shapeDataTracker: TrackedData<NbtCompound> = DataTracker.registerData(BaseSpecklike::class.java, TrackedDataHandlerRegistry.NBT_COMPOUND)
 	}
 }

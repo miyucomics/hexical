@@ -5,7 +5,6 @@ import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadEntity
-import miyucomics.hexical.features.pigments.getPigment
 import net.minecraft.command.argument.EntityAnchorArgumentType
 
 class OpSpecklikeProperty(private val mode: Int) : ConstMediaAction {
@@ -25,7 +24,6 @@ class OpSpecklikeProperty(private val mode: Int) : ConstMediaAction {
 			3 -> specklike.setSize(args.getPositiveDoubleUnderInclusive(1, 10.0, argc).toFloat())
 			4 -> specklike.setThickness(args.getPositiveDoubleUnderInclusive(1, 10.0, argc).toFloat())
 			5 -> specklike.setLifespan(args.getInt(1, argc))
-			6 -> specklike.setPigment(args.getPigment(1, argc))
 		}
 		return emptyList()
 	}
