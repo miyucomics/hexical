@@ -1,53 +1,38 @@
 package miyucomics.hexical.features.specklikes.speck
 
-import at.petrak.hexcasting.api.casting.iota.Iota
-import at.petrak.hexcasting.api.casting.iota.PatternIota
-import at.petrak.hexcasting.api.casting.math.HexPattern
-import at.petrak.hexcasting.api.utils.putCompound
 import miyucomics.hexical.features.specklikes.BaseSpecklike
 import miyucomics.hexical.inits.HexicalEntities
-import miyucomics.hexical.misc.PatternUtils
 import net.minecraft.entity.EntityType
+import net.minecraft.entity.data.DataTracker
+import net.minecraft.entity.data.TrackedData
+import net.minecraft.entity.data.TrackedDataHandlerRegistry
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.text.Text
-import net.minecraft.util.math.Vec2f
 import net.minecraft.world.World
 
 class SpeckEntity(entityType: EntityType<out SpeckEntity>, world: World) : BaseSpecklike(entityType, world) {
 	constructor(world: World) : this(HexicalEntities.SPECK_ENTITY, world)
 
-	var clientIsText = false
-	var clientText: Text = Text.empty()
-	var clientVerts: List<Vec2f> = listOf()
-
 	override fun readCustomDataFromNbt(nbt: NbtCompound) {
 		super.readCustomDataFromNbt(nbt)
-		dataTracker.set(stateDataTracker, nbt.getCompound("display"))
+		dataTracker.set(textDataTracker, Text.Serializer.fromJson("text"))
 	}
 
 	override fun writeCustomDataToNbt(nbt: NbtCompound) {
 		super.writeCustomDataToNbt(nbt)
-		nbt.putCompound("display", dataTracker.get(stateDataTracker))
+		nbt.putString("text", Text.Serializer.toJson(dataTracker.get(textDataTracker)))
 	}
 
-	fun setIota(iota: Iota) {
-		if (iota is PatternIota) {
-			dataTracker.set(stateDataTracker, iota.pattern.serializeToNBT())
-		} else {
-			val compound = NbtCompound()
-			compound.putString("text", Text.Serializer.toJson(iota.display()))
-			dataTracker.set(stateDataTracker, compound)
-		}
+	fun setText(text: Text) {
+		dataTracker.set(textDataTracker, text)
 	}
 
-	override fun processState() {
-		val raw = dataTracker.get(stateDataTracker)
-		if (raw.contains("text")) {
-			this.clientIsText = true
-			this.clientText = Text.Serializer.fromJson(raw.getString("text"))!!
-		} else {
-			this.clientIsText = false
-			this.clientVerts = PatternUtils.getNormalizedStrokes(HexPattern.fromNBT(raw))
-		}
+	override fun initDataTracker() {
+		super.initDataTracker()
+		dataTracker.startTracking(textDataTracker, Text.empty())
+	}
+
+	companion object {
+		val textDataTracker: TrackedData<Text> = DataTracker.registerData(SpeckEntity::class.java, TrackedDataHandlerRegistry.TEXT_COMPONENT)
 	}
 }

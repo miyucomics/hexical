@@ -12,7 +12,7 @@ object OpIotaSpeck : ConstMediaAction {
 		val speck = args.getEntity(0, argc)
 		if (speck !is SpeckEntity)
 			throw MishapBadEntity.of(speck, "speck")
-		speck.setIota(args[1])
+		speck.setText(args[1].display())
 		return emptyList()
 	}
 }
