@@ -88,7 +88,6 @@ import miyucomics.hexical.features.specklikes.mesh.OpConjureMesh
 import miyucomics.hexical.features.specklikes.mesh.OpReadMesh
 import miyucomics.hexical.features.specklikes.mesh.OpWeaveMesh
 import miyucomics.hexical.features.specklikes.speck.OpConjureSpeck
-import miyucomics.hexical.features.specklikes.speck.OpIotaSpeck
 import miyucomics.hexical.features.spike.OpConjureSpike
 import miyucomics.hexical.features.telepathy.*
 import miyucomics.hexical.features.wristpocket.*
@@ -207,7 +206,6 @@ object HexicalActions {
 		register("mage_mouth", "aaqqadaa", HexDir.WEST, OpMageMouth)
 
 		register("conjure_speck", "ade", HexDir.SOUTH_WEST, OpConjureSpeck)
-		register("iota_speck", "adeeaqa", HexDir.SOUTH_WEST, OpIotaSpeck)
 		register("kill_specklike", "adeaqde", HexDir.SOUTH_WEST, OpKillSpecklike)
 		register("move_specklike", "adeqaa", HexDir.SOUTH_WEST, OpSpecklikeProperty(0))
 		register("rotate_specklike", "adeaw", HexDir.SOUTH_WEST, OpSpecklikeProperty(1))
