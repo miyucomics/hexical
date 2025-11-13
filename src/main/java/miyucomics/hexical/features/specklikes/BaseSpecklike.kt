@@ -11,7 +11,7 @@ import net.minecraft.nbt.NbtCompound
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket
 import net.minecraft.world.World
 
-abstract class BaseSpecklike(entityType: EntityType<out BaseSpecklike>, world: World) : Entity(entityType, world), Specklike {
+abstract class BaseSpecklike(entityType: EntityType<out BaseSpecklike>, world: World) : Entity(entityType, world) {
 	private var lifespan = -1
 
 	var clientSize = 1f
@@ -40,13 +40,13 @@ abstract class BaseSpecklike(entityType: EntityType<out BaseSpecklike>, world: W
 		nbt.putInt("lifespan", lifespan)
 	}
 
-	override fun setLifespan(lifespan: Int) {
+	fun setLifespan(lifespan: Int) {
 		this.lifespan = lifespan
 	}
 
-	override fun setSize(size: Float) = dataTracker.set(sizeDataTracker, size)
-	override fun setRoll(rotation: Float) = dataTracker.set(rollDataTracker, rotation)
-	override fun setThickness(thickness: Float) = dataTracker.set(thicknessDataTracker, thickness)
+	fun setSize(size: Float) = dataTracker.set(sizeDataTracker, size)
+	fun setRoll(rotation: Float) = dataTracker.set(rollDataTracker, rotation)
+	fun setThickness(thickness: Float) = dataTracker.set(thicknessDataTracker, thickness)
 	override fun getEyeHeight(pose: EntityPose, dimensions: EntityDimensions) = 0.25f
 	override fun createSpawnPacket() = EntitySpawnS2CPacket(this)
 

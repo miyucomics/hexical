@@ -11,7 +11,7 @@ class OpSpecklikeProperty(private val mode: Int) : ConstMediaAction {
 	override val argc = 2
 	override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
 		val specklike = args.getEntity(0, argc)
-		if (specklike !is Specklike)
+		if (specklike !is BaseSpecklike)
 			throw MishapBadEntity.of(specklike, "specklike")
 		when (mode) {
 			0 -> {

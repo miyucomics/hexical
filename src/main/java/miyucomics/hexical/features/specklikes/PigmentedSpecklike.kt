@@ -9,7 +9,7 @@ import net.minecraft.entity.data.TrackedDataHandlerRegistry
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.world.World
 
-abstract class PigmentedSpecklike(entityType: EntityType<out PigmentedSpecklike>, world: World) : BaseSpecklike(entityType, world), Specklike {
+abstract class PigmentedSpecklike(entityType: EntityType<out PigmentedSpecklike>, world: World) : BaseSpecklike(entityType, world) {
 	var clientPigment: FrozenPigment = FrozenPigment.DEFAULT.get()
 
 	fun setPigment(pigment: FrozenPigment) = dataTracker.set(pigmentDataTracker, pigment.serializeToNBT())

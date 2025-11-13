@@ -81,9 +81,9 @@ import miyucomics.hexical.features.rotate.OpRotateBlock
 import miyucomics.hexical.features.rotate.OpRotateEntity
 import miyucomics.hexical.features.shaders.OpShader
 import miyucomics.hexical.features.sparkle.OpSparkle
+import miyucomics.hexical.features.specklikes.BaseSpecklike
 import miyucomics.hexical.features.specklikes.OpKillSpecklike
 import miyucomics.hexical.features.specklikes.OpSpecklikeProperty
-import miyucomics.hexical.features.specklikes.Specklike
 import miyucomics.hexical.features.specklikes.mesh.OpConjureMesh
 import miyucomics.hexical.features.specklikes.mesh.OpReadMesh
 import miyucomics.hexical.features.specklikes.mesh.OpWeaveMesh
@@ -215,7 +215,7 @@ object HexicalActions {
 		register("size_specklike", "adeeqed", HexDir.SOUTH_WEST, OpSpecklikeProperty(3))
 		register("thickness_specklike", "adeeqw", HexDir.SOUTH_WEST, OpSpecklikeProperty(4))
 		register("lifetime_specklike", "adeqqaawdd", HexDir.SOUTH_WEST, OpSpecklikeProperty(5))
-		register("zone_specklike", "qqqqqwdeddwqde", HexDir.SOUTH_EAST, OpGetEntitiesBy({ entity -> entity is Specklike }, false))
+		register("zone_specklike", "qqqqqwdeddwqde", HexDir.SOUTH_EAST, OpGetEntitiesBy({ it is BaseSpecklike }, false))
 
 		register("egg", "qqqwaqaaqeeewdedde", HexDir.SOUTH_EAST, OpConjureEntity(MediaConstants.DUST_UNIT * 2) { world, position, caster -> EggEntity(world, position.x, position.y, position.z).apply { owner = caster } })
 		register("llama_spit", "dwqaqw", HexDir.EAST, OpConjureEntity(MediaConstants.DUST_UNIT / 4) { world, position, caster -> LlamaSpitEntity(EntityType.LLAMA_SPIT, world).apply {
