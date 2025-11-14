@@ -85,8 +85,6 @@ import miyucomics.hexical.features.specklikes.BaseSpecklike
 import miyucomics.hexical.features.specklikes.OpKillSpecklike
 import miyucomics.hexical.features.specklikes.OpSpecklikeProperty
 import miyucomics.hexical.features.specklikes.mesh.OpConjureMesh
-import miyucomics.hexical.features.specklikes.mesh.OpReadMesh
-import miyucomics.hexical.features.specklikes.mesh.OpWeaveMesh
 import miyucomics.hexical.features.specklikes.speck.OpConjureSpeck
 import miyucomics.hexical.features.spike.OpConjureSpike
 import miyucomics.hexical.features.telepathy.*
@@ -296,8 +294,6 @@ object HexicalActions {
 		register("greater_blink", "wqawawaqwqwqawawaqw", HexDir.SOUTH_WEST, OpGreaterBlink)
 
 		register("conjure_mesh", "qaqqqqqwqqqdeeweweeaeewewee", HexDir.EAST, OpConjureMesh)
-		register("weave_mesh", "qaqqqqqwqqqdeewewee", HexDir.EAST, OpWeaveMesh)
-		register("read_mesh", "edeeeeeweeeaqqwqwqq", HexDir.SOUTH_WEST, OpReadMesh)
 	}
 
 	private fun register(name: String, signature: String, startDir: HexDir, action: Action) =
