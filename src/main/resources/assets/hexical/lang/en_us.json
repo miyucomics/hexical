@@ -182,7 +182,6 @@
 	"hexcasting.mishap.invalid_value.hopper_destination": "an iota that represents a receiver of items",
 	"hexcasting.mishap.invalid_value.inventory": "an iota that represents an inventory",
 	"hexcasting.mishap.invalid_value.lesser_sentinel_list": "a list of vectors",
-	"hexcasting.mishap.invalid_value.mesh_design": "a list of up to 32 vectors with magnitudes less than 10",
 	"hexcasting.mishap.invalid_value.nonempty_list": "a non-empty list",
 	"hexcasting.mishap.invalid_value.number_list": "a list of numbers",
 	"hexcasting.mishap.invalid_value.number_or_vector": "a number or a vector",
@@ -802,9 +801,5 @@
 	"hexical.page.meshes.0": "Meshes are the natural evolution of $(l:patterns/spells/specks)specks$(). Rather than being restricted to iotas and patterns on a two-dimensional plane, meshes accept a list of vectors in three-dimensional space and connect them with lines, allowing for infinite creative constructions. It's also responsive to most patterns used for manipulation of specks.",
 	"hexcasting.action.hexical:conjure_mesh": "Conjure Mesh",
 	"hexical.page.conjure_mesh.summary": "Conjures a mesh with the location and leaves a mesh entity on the stack. Costs about one $(l:items/amethyst)$(item)Amethyst Dust$().",
-	"hexical.page.meshes.1": "When initally conjured, the mesh is invisible and must be woven to gain form. The constraints for the list of vectors provided to a mesh are quite minimal. The list must be no more than 32 vectors long, and those vectors must have magnitudes less than 10. The mesh will then connect each of those points.",
-	"hexcasting.action.hexical:weave_mesh": "Weave Mesh",
-	"hexical.page.weave_mesh.summary": "Takes a list of vectors, with constraints defined on the prior page, and weaves the mesh into that shape. Free.",
-	"hexcasting.action.hexical:read_mesh": "Tangle Purification",
-	"hexical.page.read_mesh.summary": "Pushes the shape of a mesh as a list of vectors."
+	"hexical.page.meshes.1": "When initally conjured, the mesh is invisible and a design must be written to it for it to gain form. The design must be a list of vectors with no more than 32 vectors, and those vectors must have magnitudes no greater than 10. A line will then connect every point."
 }
