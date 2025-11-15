@@ -798,8 +798,8 @@
 	"hexical.page.greater_blink.2": "$(o)I felt three numerical axes perfectly pierce all six faces of my head. For a moment, I was skewered—suspended midair—and then at my specifications, I was violently dragged along the geometrical scaffolds at speeds indistinguishable from instantaneousness.$(br2)I must have been no longer a part of the world, for I was yanked through walls without causing even the smallest disturbance.$()",
 
 	"hexical.page.meshes.title": "Meshes",
-	"hexical.page.meshes.0": "Meshes are the natural evolution of $(l:patterns/spells/specks)specks$(). Rather than being restricted to iotas and patterns on a two-dimensional plane, meshes accept a list of vectors in three-dimensional space and connect them with lines, allowing for infinite creative constructions. It's also responsive to most patterns used for manipulation of specks.",
+	"hexical.page.meshes.0": "Rather than being restricted to iotas on a two-dimensional plane like $(l:patterns/spells/specks)specks$(), meshes connect arbitrary points with lines in three-dimensional space. Like with all specklikes, it is receptive to the patterns used for manipulation of specks for thickness, width, and so on.",
+	"hexical.page.meshes.1": "A mesh initially has no shape to display, so it is entirely invisible. A design must be $(l:patterns/readwrite#hexcasting:write/entity)written to it$() for it in order to see it. A design is a list of vectors with no more than 32 vectors, and those vectors must have magnitudes no greater than 10.",
 	"hexcasting.action.hexical:conjure_mesh": "Conjure Mesh",
-	"hexical.page.conjure_mesh.summary": "Conjures a mesh with the location and leaves a mesh entity on the stack. Costs about one $(l:items/amethyst)$(item)Amethyst Dust$().",
-	"hexical.page.meshes.1": "When initally conjured, the mesh is invisible and a design must be written to it for it to gain form. The design must be a list of vectors with no more than 32 vectors, and those vectors must have magnitudes no greater than 10. A line will then connect every point."
+	"hexical.page.conjure_mesh.summary": "Conjures a mesh with the location and pushes the created mesh to the stack. Costs about one $(l:items/amethyst)$(item)Amethyst Dust$()."
 }
