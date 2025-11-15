@@ -22,7 +22,7 @@ object OpConjureHextito : SpellAction {
 		val position = args.getVec3(0, argc)
 		env.assertVecInRange(position)
 		CastingUtils.assertNoTruename(args[1], env)
-		return SpellAction.Result(Spell(position, args.getList(1, argc).toList()), MediaConstants.DUST_UNIT * 2, listOf(ParticleSpray.burst(position, 1.0)))
+		return SpellAction.Result(Spell(position, args.getList(1, argc).toList()), MediaConstants.DUST_UNIT / 2, listOf(ParticleSpray.burst(position, 1.0)))
 	}
 
 	private data class Spell(val position: Vec3d, val hex: List<Iota>) : RenderedSpell {

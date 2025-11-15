@@ -99,6 +99,7 @@
 - changed some textures
 - changed firework spell to use vectors for colors rather than dyes
 - changed Conjure Spike cost from five dust to one dust
+- changed cost of both hexburst and hextito conjuration to half a dust
 - fixed bug where small animated scrolls do not render
 - fixed bug where grimoire does not work in non-hotbar
 - fixed bug where Chromatic Purification breaks for vectors
