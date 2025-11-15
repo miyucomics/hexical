@@ -22,7 +22,7 @@ object OpConjureHexburst : SpellAction {
 		env.assertVecInRange(position)
 		val iota = args[1]
 		CastingUtils.assertNoTruename(iota, env)
-		return SpellAction.Result(Spell(position, iota), MediaConstants.DUST_UNIT, listOf(ParticleSpray.burst(position, 1.0)))
+		return SpellAction.Result(Spell(position, iota), MediaConstants.DUST_UNIT / 2, listOf(ParticleSpray.burst(position, 1.0)))
 	}
 
 	private data class Spell(val position: Vec3d, val iota: Iota) : RenderedSpell {
