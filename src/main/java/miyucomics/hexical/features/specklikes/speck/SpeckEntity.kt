@@ -15,7 +15,7 @@ class SpeckEntity(entityType: EntityType<out SpeckEntity>, world: World) : BaseS
 
 	override fun readCustomDataFromNbt(nbt: NbtCompound) {
 		super.readCustomDataFromNbt(nbt)
-		dataTracker.set(textDataTracker, Text.Serializer.fromJson("text"))
+		dataTracker.set(textDataTracker, Text.Serializer.fromJson(nbt.getString("text")))
 	}
 
 	override fun writeCustomDataToNbt(nbt: NbtCompound) {
@@ -33,6 +33,6 @@ class SpeckEntity(entityType: EntityType<out SpeckEntity>, world: World) : BaseS
 	}
 
 	companion object {
-		val textDataTracker: TrackedData<Text> = DataTracker.registerData(SpeckEntity::class.java, TrackedDataHandlerRegistry.TEXT_COMPONENT)
+		val textDataTracker: TrackedData<Text> = DataTracker.registerData(BaseSpecklike::class.java, TrackedDataHandlerRegistry.TEXT_COMPONENT)
 	}
 }

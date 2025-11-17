@@ -15,12 +15,12 @@ abstract class PigmentedSpecklike(entityType: EntityType<out PigmentedSpecklike>
 	fun setPigment(pigment: FrozenPigment) = dataTracker.set(pigmentDataTracker, pigment.serializeToNBT())
 
 	override fun readCustomDataFromNbt(nbt: NbtCompound) {
-		super.readNbt(nbt)
+		super.readCustomDataFromNbt(nbt)
 		dataTracker.set(pigmentDataTracker, nbt.getCompound("pigment"))
 	}
 
 	override fun writeCustomDataToNbt(nbt: NbtCompound) {
-		super.writeNbt(nbt)
+		super.writeCustomDataToNbt(nbt)
 		nbt.putCompound("pigment", dataTracker.get(pigmentDataTracker))
 	}
 
@@ -36,6 +36,6 @@ abstract class PigmentedSpecklike(entityType: EntityType<out PigmentedSpecklike>
 	}
 
 	companion object {
-		private val pigmentDataTracker: TrackedData<NbtCompound> = DataTracker.registerData(PigmentedSpecklike::class.java, TrackedDataHandlerRegistry.NBT_COMPOUND)
+		private val pigmentDataTracker: TrackedData<NbtCompound> = DataTracker.registerData(BaseSpecklike::class.java, TrackedDataHandlerRegistry.NBT_COMPOUND)
 	}
 }
