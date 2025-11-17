@@ -30,7 +30,6 @@ object OpConjureStrand : SpellAction {
 			val speck = StrandEntity(env.world).apply {
 				setPosition(position.subtract(0.0, standingEyeHeight.toDouble(), 0.0))
 				lookAt(EntityAnchorArgumentType.EntityAnchor.FEET, pos.add(rotation))
-				setText(iota.display())
 			}
 
 			env.world.spawnEntity(speck)
