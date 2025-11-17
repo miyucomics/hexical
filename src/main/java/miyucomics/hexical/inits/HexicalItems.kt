@@ -54,7 +54,7 @@ object HexicalItems {
 	@JvmField val GRIMOIRE_ITEM = registerItem("grimoire", GrimoireItem)
 
 	val HEX_GUMMY = registerItem("hex_gummy", Item(Settings().food(FoodComponent.Builder().hunger(2).saturationModifier(0.5f).alwaysEdible().snack().build())))
-	val HEXBURST_ITEM = registerItem("hexburst", HexburstItem)
+	@JvmField val HEXBURST_ITEM = registerItem("hexburst", HexburstItem)
 	val HEXTITO_ITEM = registerItem("hextito", HextitoItem)
 
 	private val MEDIA_LOG_ITEM = registerItem("media_log", MediaLogItem)
