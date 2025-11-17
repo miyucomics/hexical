@@ -5,7 +5,7 @@ import at.petrak.hexcasting.fabric.cc.adimpl.CCItemIotaHolder
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
 
-class HexburstChronicler(val hexburst: ItemStack) : CCItemIotaHolder(hexburst) {
+class HexburstIotaHolder(val hexburst: ItemStack) : CCItemIotaHolder(hexburst) {
 	override fun writeable() = false
 	override fun writeIota(iota: Iota?, simulate: Boolean) = false
 	override fun readIotaTag(): NbtCompound {
