@@ -16,12 +16,15 @@ import miyucomics.hexical.features.specklikes.mesh.MeshChronicler
 import miyucomics.hexical.features.specklikes.mesh.MeshEntity
 import miyucomics.hexical.features.specklikes.speck.SpeckChronicler
 import miyucomics.hexical.features.specklikes.speck.SpeckEntity
+import miyucomics.hexical.features.specklikes.strand.StrandChronicler
+import miyucomics.hexical.features.specklikes.strand.StrandEntity
 import miyucomics.hexical.inits.HexicalItems
 
 class HexicalCardinalComponents : EntityComponentInitializer, ItemComponentInitializer {
 	override fun registerEntityComponentFactories(registry: EntityComponentFactoryRegistry) {
 		registry.registerFor(AnimatedScrollEntity::class.java, HexCardinalComponents.IOTA_HOLDER) { CCEntityIotaHolder.Wrapper(AnimatedScrollReader(it)) }
 		registry.registerFor(SpeckEntity::class.java, HexCardinalComponents.IOTA_HOLDER, ::SpeckChronicler)
+		registry.registerFor(StrandEntity::class.java, HexCardinalComponents.IOTA_HOLDER, ::StrandChronicler)
 		registry.registerFor(MeshEntity::class.java, HexCardinalComponents.IOTA_HOLDER, ::MeshChronicler)
 	}
 

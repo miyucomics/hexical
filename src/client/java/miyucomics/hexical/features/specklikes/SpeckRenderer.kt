@@ -21,7 +21,7 @@ class SpeckRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<SpeckEn
 		matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-entity.yaw))
 		matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(entity.pitch))
 		matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(entity.clientRoll))
-		matrices.scale(entity.clientSize * 0.02f, entity.clientSize * 0.02f, entity.clientSize * 0.02f)
+		matrices.scale(entity.clientSize * 0.02f, -entity.clientSize * 0.02f, entity.clientSize * 0.02f)
 
 		val text = entity.dataTracker.get(SpeckEntity.textDataTracker)
 		textRenderer.draw(text, -textRenderer.getWidth(text) / 2f, 0f, 0xff_ffffff.toInt(), true, matrices.peek().positionMatrix, vertexConsumers, TextRenderer.TextLayerType.NORMAL, 0, LightmapTextureManager.MAX_LIGHT_COORDINATE)

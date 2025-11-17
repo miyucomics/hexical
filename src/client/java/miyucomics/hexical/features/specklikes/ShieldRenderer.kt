@@ -12,7 +12,7 @@ import net.minecraft.util.math.Vec3d
 import org.joml.Matrix3f
 import org.joml.Matrix4f
 
-class ShieldEntityRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<ShieldEntity>(ctx) {
+class ShieldRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<ShieldEntity>(ctx) {
 	override fun getTexture(entity: ShieldEntity): Identifier? = null
 
 	override fun render(shield: ShieldEntity, yaw: Float, deltaTick: Float, matrices: MatrixStack, vertexConsumers: VertexConsumerProvider, light: Int) {
