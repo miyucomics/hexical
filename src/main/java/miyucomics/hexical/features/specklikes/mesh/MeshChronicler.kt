@@ -21,7 +21,7 @@ class MeshChronicler(val mesh: MeshEntity) : SimpleEntityIotaHolder() {
 			if (it !is Vec3Iota)
 				return false
 			val vector = it.vec3
-			if (vector.length() > 10)
+			if (vector.lengthSquared() > 100)
 				return false
 			Vec3f(vector.x.toFloat(), vector.y.toFloat(), vector.z.toFloat())
 		}
