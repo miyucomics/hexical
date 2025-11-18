@@ -1,6 +1,7 @@
 package miyucomics.hexical.features.specklikes.mesh
 
 import at.petrak.hexcasting.api.casting.iota.Vec3Iota
+import at.petrak.hexcasting.api.utils.asFloat
 import at.petrak.hexcasting.api.utils.putList
 import dev.kosmx.playerAnim.core.util.Vec3f
 import miyucomics.hexical.features.specklikes.FigureSpecklike
@@ -19,10 +20,10 @@ class MeshEntity(entityType: EntityType<out MeshEntity>, world: World) : FigureS
 	var clientVertices: MutableList<Vec3f> = mutableListOf()
 
 	fun getShape(): List<Vec3Iota> {
-		val list = dataTracker.get(shapeDataTracker).getList("shape", NbtElement.FLOAT_TYPE.toInt())
+		val list = dataTracker.get(shapeDataTracker).getList("shape", NbtElement.FLOAT_TYPE.toInt()).iterator()
 		val deserializedVertices = mutableListOf<Vec3Iota>()
-		for (i in 0 until (list.size / 3))
-			deserializedVertices.add(Vec3Iota(Vec3d(list.getFloat(3 * i).toDouble(), list.getFloat(3 * i + 1).toDouble(), list.getFloat(3 * i + 2).toDouble())))
+		while (list.hasNext())
+			deserializedVertices.add(Vec3Iota(Vec3d(list.next().asFloat.toDouble(), list.next().asFloat.toDouble(), list.next().asFloat.toDouble())))
 		return deserializedVertices
 	}
 
@@ -39,9 +40,9 @@ class MeshEntity(entityType: EntityType<out MeshEntity>, world: World) : FigureS
 	}
 
 	override fun processShape(shape: NbtCompound) {
-		val list = shape.getList("shape", NbtElement.FLOAT_TYPE.toInt())
-		this.clientVertices = mutableListOf()
-		for (i in 0 until (list.size / 3))
-			clientVertices.add(Vec3f(list.getFloat(3 * i), list.getFloat(3 * i + 1), list.getFloat(3 * i + 2)))
+		this.clientVertices.clear()
+		val list = shape.getList("shape", NbtElement.FLOAT_TYPE.toInt()).iterator()
+		while (list.hasNext())
+			clientVertices.add(Vec3f(list.next().asFloat, list.next().asFloat, list.next().asFloat))
 	}
 }
