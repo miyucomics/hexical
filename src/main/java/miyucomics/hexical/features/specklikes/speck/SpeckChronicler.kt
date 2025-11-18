@@ -12,7 +12,8 @@ class SpeckChronicler(val speck: SpeckEntity) : SimpleEntityIotaHolder() {
 	override fun writeIota(iota: Iota?, simulate: Boolean): Boolean {
 		if (iota == null)
 			return false
-		speck.setText(iota.display())
+		if (!simulate)
+			speck.setText(iota.display())
 		return true
 	}
 }

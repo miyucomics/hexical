@@ -25,7 +25,9 @@ class MeshChronicler(val mesh: MeshEntity) : SimpleEntityIotaHolder() {
 				return false
 			Vec3f(vector.x.toFloat(), vector.y.toFloat(), vector.z.toFloat())
 		}
-		mesh.setShape(points)
+
+		if (!simulate)
+			mesh.setShape(points)
 
 		return true
 	}
