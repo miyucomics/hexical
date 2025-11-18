@@ -4,7 +4,7 @@ import at.petrak.hexcasting.api.pigment.FrozenPigment
 import at.petrak.hexcasting.common.lib.HexItems
 import miyucomics.hexical.features.dyes.DyeOption
 import miyucomics.hexical.features.dyes.DyeingUtils
-import miyucomics.hexical.features.specklikes.PigmentedSpecklike
+import miyucomics.hexical.features.specklikes.FigureSpecklike
 import miyucomics.hexical.misc.InitHook
 import net.minecraft.entity.Entity
 import net.minecraft.entity.ItemEntity
@@ -64,9 +64,9 @@ object DyeingEntityRegistry : InitHook() {
 			override fun affect(entity: SheepEntity, dye: DyeOption) { entity.color = dye.dyeColor!! }
 		})
 
-		register(object : DyeEntityHandler<PigmentedSpecklike>(PigmentedSpecklike::class.java) {
+		register(object : DyeEntityHandler<FigureSpecklike>(FigureSpecklike::class.java) {
 			override fun canAffectEntity(entity: Entity, dye: DyeOption) = dye != DyeOption.UNCOLORED
-			override fun affect(entity: PigmentedSpecklike, dye: DyeOption) { entity.setPigment(FrozenPigment(ItemStack(HexItems.DYE_PIGMENTS[dye.dyeColor]!!), UUID.randomUUID())) }
+			override fun affect(entity: FigureSpecklike, dye: DyeOption) { entity.setPigment(FrozenPigment(ItemStack(HexItems.DYE_PIGMENTS[dye.dyeColor]!!), UUID.randomUUID())) }
 		})
 
 		register(object : DyeEntityHandler<ShulkerEntity>(ShulkerEntity::class.java) {
