@@ -16,14 +16,18 @@ class StrandRenderer(ctx: EntityRendererFactory.Context) : EntityRenderer<Strand
 	override fun getTexture(entity: StrandEntity): Identifier? = null
 	override fun shouldRender(entity: StrandEntity, frustum: Frustum?, x: Double, y: Double, z: Double) = true
 	override fun render(entity: StrandEntity, yaw: Float, tickDelta: Float, matrices: MatrixStack, vertexConsumers: VertexConsumerProvider, light: Int) {
+		val vertices = entity.clientVertices
+		if (vertices.size < 2)
+			return
+
 		matrices.push()
 		matrices.translate(0.0, 0.25, 0.0)
 		matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-entity.yaw))
 		matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(entity.pitch))
 		matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(entity.clientRoll))
 		matrices.scale(entity.clientSize, entity.clientSize, entity.clientSize)
-		val top = matrices.peek()
 
+		val top = matrices.peek()
 		val buffer = vertexConsumers.getBuffer(renderLayer)
 		fun makeVertex(pos: Vec2f) = buffer.vertex(top.positionMatrix, pos.x, pos.y, 0f)
 			.color(entity.clientPigment.colorProvider.getColor(0f, Vec3d(pos.x.toDouble(), pos.y.toDouble(), 0.0).multiply(2.0).add(entity.pos)))
