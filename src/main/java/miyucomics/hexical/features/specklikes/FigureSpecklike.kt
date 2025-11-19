@@ -21,12 +21,14 @@ abstract class FigureSpecklike(entityType: EntityType<out FigureSpecklike>, worl
 
 	override fun readCustomDataFromNbt(nbt: NbtCompound) {
 		super.readCustomDataFromNbt(nbt)
+		dataTracker.set(shapeDataTracker, nbt.getCompound("shape"))
 		dataTracker.set(pigmentDataTracker, nbt.getCompound("pigment"))
 		dataTracker.set(thicknessDataTracker, nbt.getFloat("thickness"))
 	}
 
 	override fun writeCustomDataToNbt(nbt: NbtCompound) {
 		super.writeCustomDataToNbt(nbt)
+		nbt.putCompound("shape", dataTracker.get(shapeDataTracker))
 		nbt.putCompound("pigment", dataTracker.get(pigmentDataTracker))
 		nbt.putFloat("thickness", dataTracker.get(thicknessDataTracker))
 	}

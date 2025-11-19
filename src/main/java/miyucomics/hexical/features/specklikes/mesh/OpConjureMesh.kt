@@ -29,8 +29,6 @@ object OpConjureMesh : SpellAction {
 			val mesh = MeshEntity(env.world)
 			mesh.setPosition(position)
 			mesh.setPigment(env.pigment)
-			mesh.setSize(1f)
-			mesh.setThickness(1f)
 			env.world.spawnEntity(mesh)
 
 			return image.copy(stack = image.stack.toList().plus(EntityIota(mesh)))
