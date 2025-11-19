@@ -82,8 +82,7 @@ import miyucomics.hexical.features.rotate.OpRotateEntity
 import miyucomics.hexical.features.shaders.OpShader
 import miyucomics.hexical.features.sparkle.OpSparkle
 import miyucomics.hexical.features.specklikes.BaseSpecklike
-import miyucomics.hexical.features.specklikes.OpKillSpecklike
-import miyucomics.hexical.features.specklikes.OpSpecklikeProperty
+import miyucomics.hexical.features.specklikes.actions.*
 import miyucomics.hexical.features.specklikes.mesh.OpConjureMesh
 import miyucomics.hexical.features.specklikes.speck.OpConjureSpeck
 import miyucomics.hexical.features.spike.OpConjureSpike
@@ -205,12 +204,13 @@ object HexicalActions {
 
 		register("conjure_speck", "ade", HexDir.SOUTH_WEST, OpConjureSpeck)
 		register("kill_specklike", "adeaqde", HexDir.SOUTH_WEST, OpKillSpecklike)
-		register("move_specklike", "adeqaa", HexDir.SOUTH_WEST, OpSpecklikeProperty(0))
-		register("rotate_specklike", "adeaw", HexDir.SOUTH_WEST, OpSpecklikeProperty(1))
-		register("roll_specklike", "adeqqqqq", HexDir.SOUTH_WEST, OpSpecklikeProperty(2))
-		register("size_specklike", "adeeqed", HexDir.SOUTH_WEST, OpSpecklikeProperty(3))
-		register("thickness_specklike", "adeeqw", HexDir.SOUTH_WEST, OpSpecklikeProperty(4))
-		register("lifetime_specklike", "adeqqaawdd", HexDir.SOUTH_WEST, OpSpecklikeProperty(5))
+		register("move_specklike", "adeqaa", HexDir.SOUTH_WEST, OpSetSpecklikePos)
+		register("rotate_specklike", "adeaw", HexDir.SOUTH_WEST, OpSetSpecklikeRotation)
+		register("roll_specklike", "adeqqqqq", HexDir.SOUTH_WEST, OpSetSpecklikeRoll)
+		register("size_specklike", "adeeqed", HexDir.SOUTH_WEST, OpSetSpecklikeSize)
+		register("thickness_specklike", "adeeqw", HexDir.SOUTH_WEST, OpSetSpecklikeThickness)
+		register("lifetime_specklike", "adeqqaawdd", HexDir.SOUTH_WEST, OpSetSpecklikeLifespan)
+		register("pigment_specklike", "adeqqaq", HexDir.SOUTH_WEST, OpSetSpecklikePigment)
 		register("zone_specklike", "qqqqqwdeddwqde", HexDir.SOUTH_EAST, OpGetEntitiesBy({ it is BaseSpecklike }, false))
 
 		register("egg", "qqqwaqaaqeeewdedde", HexDir.SOUTH_EAST, OpConjureEntity(MediaConstants.DUST_UNIT * 2) { world, position, caster -> EggEntity(world, position.x, position.y, position.z).apply { owner = caster } })
