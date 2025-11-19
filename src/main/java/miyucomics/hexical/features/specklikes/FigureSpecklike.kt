@@ -16,6 +16,7 @@ abstract class FigureSpecklike(entityType: EntityType<out FigureSpecklike>, worl
 	var clientPigment: FrozenPigment = FrozenPigment.DEFAULT.get()
 	var clientThickness = 1f
 
+	fun setThickness(thickness: Float) = dataTracker.set(thicknessDataTracker, thickness)
 	fun setPigment(pigment: FrozenPigment) = dataTracker.set(pigmentDataTracker, pigment.serializeToNBT())
 
 	override fun readCustomDataFromNbt(nbt: NbtCompound) {
