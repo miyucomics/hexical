@@ -17,7 +17,7 @@ object OpConjureStrand : SpellAction {
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val position = args.getVec3(0, argc)
 		env.assertVecInRange(position)
-		return SpellAction.Result(Spell(position), MediaConstants.DUST_UNIT, listOf())
+		return SpellAction.Result(Spell(position), MediaConstants.DUST_UNIT / 4, listOf())
 	}
 
 	private data class Spell(val position: Vec3d) : RenderedSpell {
