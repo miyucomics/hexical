@@ -8,7 +8,6 @@ import at.petrak.hexcasting.api.casting.math.HexDir
 import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.utils.vecFromNBT
-import at.petrak.hexcasting.common.casting.actions.selectors.OpGetEntitiesBy
 import at.petrak.hexcasting.common.lib.hex.HexActions
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.features.akashic.OpClearAkashicShelf
@@ -81,7 +80,6 @@ import miyucomics.hexical.features.rotate.OpRotateBlock
 import miyucomics.hexical.features.rotate.OpRotateEntity
 import miyucomics.hexical.features.shaders.OpShader
 import miyucomics.hexical.features.sparkle.OpSparkle
-import miyucomics.hexical.features.specklikes.BaseSpecklike
 import miyucomics.hexical.features.specklikes.actions.*
 import miyucomics.hexical.features.specklikes.mesh.OpConjureMesh
 import miyucomics.hexical.features.specklikes.speck.OpConjureSpeck
@@ -203,19 +201,6 @@ object HexicalActions {
 		register("mage_hand", "aaqqaeea", HexDir.WEST, OpMageHand)
 		register("mage_mouth", "aaqqadaa", HexDir.WEST, OpMageMouth)
 
-		register("conjure_speck", "ade", HexDir.SOUTH_WEST, OpConjureSpeck)
-		register("kill_specklike", "adeaqde", HexDir.SOUTH_WEST, OpKillSpecklike)
-		register("move_specklike", "adeqaa", HexDir.SOUTH_WEST, OpSetSpecklikePos)
-		register("rotate_specklike", "adeaw", HexDir.SOUTH_WEST, OpSetSpecklikeRotation)
-		register("roll_specklike", "adeqqqqq", HexDir.SOUTH_WEST, OpSetSpecklikeRoll)
-		register("size_specklike", "adeeqed", HexDir.SOUTH_WEST, OpSetSpecklikeSize)
-		register("thickness_specklike", "adeeqw", HexDir.SOUTH_WEST, OpSetSpecklikeThickness)
-		register("lifetime_specklike", "adeqqaawdd", HexDir.SOUTH_WEST, OpSetSpecklikeLifespan)
-		register("pigment_specklike", "adeqqaq", HexDir.SOUTH_WEST, OpSetSpecklikePigment)
-		register("zone_specklike", "qqqqqwdeddwqde", HexDir.SOUTH_EAST, OpGetEntitiesBy({ it is BaseSpecklike }, false))
-
-		register("conjure_strand", "dqa", HexDir.SOUTH_EAST, OpConjureStrand)
-
 		register("egg", "qqqwaqaaqeeewdedde", HexDir.SOUTH_EAST, OpConjureEntity(MediaConstants.DUST_UNIT * 2) { world, position, caster -> EggEntity(world, position.x, position.y, position.z).apply { owner = caster } })
 		register("llama_spit", "dwqaqw", HexDir.EAST, OpConjureEntity(MediaConstants.DUST_UNIT / 4) { world, position, caster -> LlamaSpitEntity(EntityType.LLAMA_SPIT, world).apply {
 			setPosition(position)
@@ -287,6 +272,19 @@ object HexicalActions {
 
 		register("horrible", "wedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqeedqawqeewdeaqqewdeaqeewdeaqeedqawqqedqawqqewdeaqeedqawqeewdeaqqewdeaqeewdeaqeedqawqqedqawqqewdeaqqedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqqedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqeedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqqedqawqeewdeaqqewdeaqeewdeaqeedqawqqedqawqqewdeaqe", HexDir.EAST, OpHorrible)
 
+		register("conjure_speck", "ade", HexDir.SOUTH_WEST, OpConjureSpeck)
+		register("conjure_strand", "dqa", HexDir.SOUTH_EAST, OpConjureStrand)
+		register("conjure_mesh", "qaqqqqqwqqqdeeweweeaeewewee", HexDir.EAST, OpConjureMesh)
+
+		register("kill_specklike", "adeaqde", HexDir.SOUTH_WEST, OpKillSpecklike)
+		register("move_specklike", "adeqaa", HexDir.SOUTH_WEST, OpSetSpecklikePos)
+		register("rotate_specklike", "adeaw", HexDir.SOUTH_WEST, OpSetSpecklikeRotation)
+		register("roll_specklike", "adeqqqqq", HexDir.SOUTH_WEST, OpSetSpecklikeRoll)
+		register("size_specklike", "adeeqed", HexDir.SOUTH_WEST, OpSetSpecklikeSize)
+		register("thickness_specklike", "adeeqw", HexDir.SOUTH_WEST, OpSetSpecklikeThickness)
+		register("lifetime_specklike", "adeqqaawdd", HexDir.SOUTH_WEST, OpSetSpecklikeLifespan)
+		register("pigment_specklike", "adeqqaq", HexDir.SOUTH_WEST, OpSetSpecklikePigment)
+
 		register("charm", "edeeeeeqaaqeeeadweeqeeqdqeeqeeqde", HexDir.SOUTH_EAST, OpCharmItem)
 		register("write_charmed", "waqqqqqedeqdqdqdqdqe", HexDir.NORTH_EAST, OpWriteCharmed)
 		register("read_charmed", "waqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpReadCharmed)
@@ -295,8 +293,6 @@ object HexicalActions {
 		register("discharm", "qaqwddaaeawaea", HexDir.NORTH_EAST, OpDischarmItem)
 
 		register("greater_blink", "wqawawaqwqwqawawaqw", HexDir.SOUTH_WEST, OpGreaterBlink)
-
-		register("conjure_mesh", "qaqqqqqwqqqdeeweweeaeewewee", HexDir.EAST, OpConjureMesh)
 	}
 
 	private fun register(name: String, signature: String, startDir: HexDir, action: Action) =

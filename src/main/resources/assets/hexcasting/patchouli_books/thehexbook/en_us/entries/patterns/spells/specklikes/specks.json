@@ -1,0 +1,25 @@
+{
+	"name": "hexical.page.specks.title",
+	"icon": "minecraft:oak_sign",
+	"category": "hexcasting:specklikes",
+	"advancement": "hexcasting:root",
+	"sortnum": 0,
+	"pages": [
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.specks.0"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:conjure_speck",
+			"anchor": "hexical:conjure_speck",
+			"input": "any, vector, vector",
+			"output": "entity",
+			"text": "hexical.page.conjure_speck.summary"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.specks.1"
+		}
+	]
+}
