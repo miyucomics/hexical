@@ -1,9 +1,9 @@
 {
 	"name": "hexical.page.meshes.title",
 	"icon": "minecraft:cobweb",
-	"category": "hexcasting:patterns/great_spells",
+	"category": "hexcasting:specklikes",
 	"advancement": "hexcasting:root",
-	"sortnum": 17,
+	"sortnum": 3,
 	"pages": [
 		{
 			"type": "patchouli:text",
@@ -16,10 +16,6 @@
 			"input": "vector",
 			"output": "entity",
 			"text": "hexical.page.conjure_mesh.summary"
-		},
-		{
-			"type": "patchouli:text",
-			"text": "hexical.page.meshes.1"
 		}
 	]
 }

@@ -1,0 +1,7 @@
+{
+	"name": "hexical.category.specklikes",
+	"icon": "minecraft:beacon",
+	"sortnum": 2,
+	"description": "hexical.category.specklikes.desc",
+	"parent": "hexcasting:patterns/spells"
+}
