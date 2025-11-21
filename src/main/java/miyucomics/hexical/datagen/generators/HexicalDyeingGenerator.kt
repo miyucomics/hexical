@@ -27,7 +27,7 @@ class HexicalDyeingGenerator(val output: FabricDataOutput) : DataProvider {
 
 		blockPatterns.forEach { (groupName, pattern) ->
 			val groupName = Identifier(groupName)
-			val blocks = DyeOption.values().mapNotNull { dye -> resolvePattern(Registries.BLOCK, pattern, dye)?.let { dye to it } }.toMap()
+			val blocks = DyeOption.entries.mapNotNull { dye -> resolvePattern(Registries.BLOCK, pattern, dye)?.let { dye to it } }.toMap()
 			blocks.keys.forEach { dye ->
 				val blockId = Registries.BLOCK.getId(blocks[dye]).toString()
 				dyeLookup.addProperty(blockId, dye.ordinal)
@@ -60,7 +60,7 @@ class HexicalDyeingGenerator(val output: FabricDataOutput) : DataProvider {
 
 		itemPatterns.forEach { (groupName, pattern) ->
 			val groupName = Identifier(groupName)
-			val items = DyeOption.values().mapNotNull { dye -> resolvePattern(Registries.ITEM, pattern, dye)?.let { dye to it } }.toMap()
+			val items = DyeOption.entries.mapNotNull { dye -> resolvePattern(Registries.ITEM, pattern, dye)?.let { dye to it } }.toMap()
 			items.keys.forEach { dye ->
 				val itemId = Registries.ITEM.getId(items[dye]).toString()
 				dyeLookup.addProperty(itemId, dye.ordinal)
