@@ -28,6 +28,7 @@ class HexicalCardinalComponents : EntityComponentInitializer, ItemComponentIniti
 		registry.registerFor(MeshEntity::class.java, HexCardinalComponents.IOTA_HOLDER, ::MeshChronicler)
 	}
 
+	@Suppress("UnstableApiUsage")
 	override fun registerItemComponentFactories(registry: ItemComponentFactoryRegistry) {
 		registry.register(HexicalItems.HEX_GUMMY, HexCardinalComponents.MEDIA_HOLDER) { CCMediaHolder.Static({ MediaConstants.DUST_UNIT / 10 }, ADMediaHolder.AMETHYST_DUST_PRIORITY, it) }
 		registry.register(HexicalItems.HEXBURST_ITEM, HexCardinalComponents.IOTA_HOLDER, ::HexburstIotaHolder)

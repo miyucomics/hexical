@@ -84,6 +84,7 @@ import miyucomics.hexical.features.specklikes.actions.*
 import miyucomics.hexical.features.specklikes.mesh.OpConjureMesh
 import miyucomics.hexical.features.specklikes.speck.OpConjureSpeck
 import miyucomics.hexical.features.specklikes.strand.OpConjureStrand
+import miyucomics.hexical.features.specklikes.strand.OpDrawPattern
 import miyucomics.hexical.features.spike.OpConjureSpike
 import miyucomics.hexical.features.telepathy.*
 import miyucomics.hexical.features.wristpocket.*
@@ -137,7 +138,6 @@ object HexicalActions {
 		register("similar", "aedd", HexDir.EAST, OpSimilarPattern)
 		register("serialize_pattern", "wqaedeqd", HexDir.EAST, OpSerializePattern)
 		register("deserialize_pattern", "wqqqaqwd", HexDir.EAST, OpDeserializePattern)
-		register("draw_pattern", "eadqqqa", HexDir.NORTH_EAST, OpDrawPattern)
 
 		register("grok_get_stack", "aqawwqaw", HexDir.EAST, OpGrokGetStack)
 		register("grok_set_stack", "ewdewwde", HexDir.EAST, OpGrokSetStack)
@@ -273,8 +273,6 @@ object HexicalActions {
 		register("horrible", "wedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqeedqawqeewdeaqqewdeaqeewdeaqeedqawqqedqawqqewdeaqeedqawqeewdeaqqewdeaqeewdeaqeedqawqqedqawqqewdeaqqedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqqedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqeedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqqedqawqeewdeaqqewdeaqeewdeaqeedqawqqedqawqqewdeaqe", HexDir.EAST, OpHorrible)
 
 		register("conjure_speck", "ade", HexDir.SOUTH_WEST, OpConjureSpeck)
-		register("conjure_strand", "dqa", HexDir.SOUTH_EAST, OpConjureStrand)
-		register("conjure_mesh", "qaqqqqqwqqqdeeweweeaeewewee", HexDir.EAST, OpConjureMesh)
 
 		register("kill_specklike", "adeaqde", HexDir.SOUTH_WEST, OpKillSpecklike)
 		register("move_specklike", "adeqaa", HexDir.SOUTH_WEST, OpSetSpecklikePos)
@@ -284,6 +282,11 @@ object HexicalActions {
 		register("thickness_specklike", "adeeqw", HexDir.SOUTH_WEST, OpSetSpecklikeThickness)
 		register("lifetime_specklike", "adeqqaawdd", HexDir.SOUTH_WEST, OpSetSpecklikeLifespan)
 		register("pigment_specklike", "adeqqaq", HexDir.SOUTH_WEST, OpSetSpecklikePigment)
+
+		register("conjure_strand", "dqa", HexDir.SOUTH_EAST, OpConjureStrand)
+		register("draw_pattern", "eadqqqa", HexDir.NORTH_EAST, OpDrawPattern)
+
+		register("conjure_mesh", "qaqqqqqwqqqdeeweweeaeewewee", HexDir.EAST, OpConjureMesh)
 
 		register("charm", "edeeeeeqaaqeeeadweeqeeqdqeeqeeqde", HexDir.SOUTH_EAST, OpCharmItem)
 		register("write_charmed", "waqqqqqedeqdqdqdqdqe", HexDir.NORTH_EAST, OpWriteCharmed)

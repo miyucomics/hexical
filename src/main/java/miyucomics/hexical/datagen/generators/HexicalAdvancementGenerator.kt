@@ -1,7 +1,6 @@
 package miyucomics.hexical.datagen.generators
 
 import at.petrak.hexcasting.api.mod.HexTags
-import at.petrak.hexcasting.common.lib.HexItems
 import miyucomics.hexical.inits.*
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricAdvancementProvider
@@ -41,7 +40,6 @@ class HexicalAdvancementGenerator(generator: FabricDataOutput) : FabricAdvanceme
 		}
 
 		registerAdvancement("conjure_cake", AdvancementFrame.CHALLENGE, Items.CAKE, true, ConjureCakeCriterion.Condition())
-		registerAdvancement("conjure_hexxy", AdvancementFrame.CHALLENGE, HexItems.SCRYING_LENS, true, HexxyCriterion.Condition())
 		registerAdvancement("diy_conjuring", AdvancementFrame.TASK, Items.SCAFFOLDING, false, DIYCriterion.Condition())
 		registerAdvancement("specklike", AdvancementFrame.TASK, Items.BEACON, false, SpecklikeCriterion.Condition())
 

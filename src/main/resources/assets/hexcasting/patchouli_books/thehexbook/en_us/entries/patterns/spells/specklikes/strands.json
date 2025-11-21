@@ -16,6 +16,14 @@
 			"input": "vector",
 			"output": "entity",
 			"text": "hexical.page.conjure_strand.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:draw_pattern",
+			"anchor": "hexical:draw_pattern",
+			"input": "pattern",
+			"output": "list of vectors",
+			"text": "hexical.page.draw_pattern.summary"
 		}
 	]
 }

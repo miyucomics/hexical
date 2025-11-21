@@ -31,7 +31,7 @@ object MediaJarRenderer {
 		matrices.push()
 		matrices.translate(0f, halfHeight, 0f)
 
-		for (direction in Direction.values()) {
+		for (direction in Direction.entries) {
 			var depth = halfWidth
 			var y0 = -halfHeight
 			var y1 = halfHeight

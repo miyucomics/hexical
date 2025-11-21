@@ -23,7 +23,7 @@ object GrimoireItem : Item(Settings().maxCount(1)) {
 		val components = metadata.keys.map { key -> PatternIota(
 			HexPattern.fromAngles(
 				key,
-				HexDir.values()[metadata.getCompound(key).getInt("direction")]
+				HexDir.entries[metadata.getCompound(key).getInt("direction")]
 			)
 		).display() }
 
