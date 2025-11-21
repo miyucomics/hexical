@@ -15,7 +15,6 @@ import net.minecraft.util.Identifier
 object HexicalAdvancements {
 	val AR: SpecklikeCriterion = Criteria.register(SpecklikeCriterion())
 	val CONJURE_CAKE: ConjureCakeCriterion = Criteria.register(ConjureCakeCriterion())
-	val HEXXY: HexxyCriterion = Criteria.register(HexxyCriterion())
 	val DIY: DIYCriterion = Criteria.register(DIYCriterion())
 	val EDUCATE_GENIE: EducateGenieCriterion = Criteria.register(EducateGenieCriterion())
 	val RELOAD_LAMP: ReloadLampCriterion = Criteria.register(ReloadLampCriterion())
@@ -43,11 +42,6 @@ class ConjureCakeCriterion : BaseCriterion<ConjureCakeCriterion.Condition>(Hexic
 class DIYCriterion : BaseCriterion<DIYCriterion.Condition>(HexicalMain.id("diy_conjuring")) {
 	override fun createCondition() = Condition()
 	class Condition : BaseCondition(HexicalMain.id("diy_conjuring"))
-}
-
-class HexxyCriterion : BaseCriterion<HexxyCriterion.Condition>(HexicalMain.id("summon_hexxy")) {
-	override fun createCondition() = Condition()
-	class Condition : BaseCondition(HexicalMain.id("summon_hexxy"))
 }
 
 class EducateGenieCriterion : BaseCriterion<EducateGenieCriterion.Condition>(HexicalMain.id("educate_genie")) {

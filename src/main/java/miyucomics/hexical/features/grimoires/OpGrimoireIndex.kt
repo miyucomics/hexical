@@ -27,7 +27,7 @@ object OpGrimoireIndex : ConstMediaAction {
 
 		val result = mutableListOf<PatternIota>()
 		for (pattern in metadata.keys)
-			result.add(PatternIota(HexPattern.fromAngles(pattern, HexDir.values()[metadata.getCompound(pattern).getInt("direction")])))
+			result.add(PatternIota(HexPattern.fromAngles(pattern, HexDir.entries[metadata.getCompound(pattern).getInt("direction")])))
 		return listOf(ListIota(result.toList()))
 	}
 

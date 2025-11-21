@@ -431,8 +431,6 @@
 	"hexical.page.deserialize_pattern.summary": "Turns a list of numbers into a pattern for my viewing and execution. The inverse of $(l:patterns/pattern_manipulation#hexical:serialize_pattern)$(action)Chirographer's Purification$().",
 	"hexical.page.patterns.1": "The numbers returned by $(l:patterns/pattern_manipulation#hexical:serialize_pattern)$(action)Chirographer's Purification$() correspond to individual strokes in the pattern. The diagonal stroke that travels upwards and rightwards is labeled 0 and all the other strokes are labelled incrementally in a clockwise manner.$(br2)If I pass in a list of numbers outside the 0-5 range into $(l:patterns/pattern_manipulation#hexical:deserialize_pattern)$(action)Calligrapher's Purification$(), it will apply a $(l:patterns/math#hexcasting:modulo)modulo$() to coerce numbers into the 0-5 range.",
 	"hexical.page.patterns.2": "These lists have multiple fascinating properties. By adding or subtracting constant values, I can rotate the pattern. I can splice off the beginning and ends to check for pattern prefixes and suffixes. In cyclical patterns, I can rotate the list by moving the first element to the end or vice versa to cycle the starting position. By carefully altering numbers with list manipulation, I can also make some kind of $(o)backwards stroke$().",
-	"hexcasting.action.hexical:draw_pattern": "Handwriting Distillation",
-	"hexical.page.draw_pattern.summary": "Takes a pattern and produces a normalized list of vectors. The z-component of these vectors is zero. I feel this may be useful for artistic _Hexes.",
 
 	"hexical.page.grok.title": "Grok",
 	"hexcasting.action.hexical:grok_get_stack": "Grok Reflection",
@@ -787,6 +785,8 @@
 	"hexical.page.strands.0": "$(thing)Strands$() are a figure that are flat and intangible like $(l:patterns/spells/specklikes/specks)$(thing)Specks$() but draw pigmented lines connecting points on a plane.$(br2)A freshly created $(thing)Strand$() has no image. I must $(l:patterns/readwrite#hexcasting:write/entity)write to it$() a list of no more than 32 vectors, each of which no longer than 10 blocks. The z-component of the vectors is ignored for $(thing)Strands$(). I can later $(l:patterns/readwrite#hexcasting:read/entity)read$() out this image.",
 	"hexcasting.action.hexical:conjure_strand": "Conjure Strand",
 	"hexical.page.conjure_strand.summary": "Conjures a $(thing)Strand$() at the location and pushes the entity to the stack. Costs about a quarter of an $(l:items/amethyst)$(item)Amethyst Dust$().",
+	"hexcasting.action.hexical:draw_pattern": "Handwriting Purification",
+	"hexical.page.draw_pattern.summary": "Takes a pattern and produces a normalized list of vectors that draw it out, useful for creating $(thing)Strands$().",
 
 	"hexical.page.meshes.title": "Meshes",
 	"hexical.page.meshes.0": "$(thing)Meshes$() are practically identical to $(l:patterns/spells/specklikes/strand)$(thing)Strands$() but they connect points in three-dimensional space with thin hexagonal prisms.$(br2)The method of reading and writing and the requirements of the image are nearly identical to $(l:patterns/spells/specklikes/strand)$(thing)Strands$(), except the z-component is considered in length calculations and is used for depth.",
