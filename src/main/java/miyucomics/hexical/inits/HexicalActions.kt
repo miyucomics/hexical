@@ -35,6 +35,7 @@ import miyucomics.hexical.features.confetti.OpConfetti
 import miyucomics.hexical.features.conjure.OpConjureEntity
 import miyucomics.hexical.features.conjure.OpConjureLight
 import miyucomics.hexical.features.dda.OpDda
+import miyucomics.hexical.features.driver_dots.OpProgramDriver
 import miyucomics.hexical.features.dyes.actions.OpDye
 import miyucomics.hexical.features.dyes.actions.OpGetDye
 import miyucomics.hexical.features.dyes.actions.OpTranslateDye
@@ -103,6 +104,8 @@ object HexicalActions {
 		register("vanish_scroll", "wqwawqwqaqqa", HexDir.SOUTH_WEST, OpAlterScroll { it.setState(2) })
 		register("color_scroll", "wqwawqwqawawaedd", HexDir.SOUTH_WEST, OpColorScroll)
 		register("glow_scroll", "wqwawqwqawawaewdwdw", HexDir.SOUTH_WEST, OpAlterScroll { it.toggleGlow() })
+
+		register("program_driver", "aqqqqaw", HexDir.NORTH_WEST, OpProgramDriver)
 
 		register("write_grimoire", "aqwqaeaqa", HexDir.WEST, OpGrimoireWrite)
 		register("erase_grimoire", "aqwqaqded", HexDir.WEST, OpGrimoireErase)

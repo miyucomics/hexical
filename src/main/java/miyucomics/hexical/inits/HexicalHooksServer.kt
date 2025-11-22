@@ -13,7 +13,6 @@ import miyucomics.hexical.features.periwinkle.WooleyedEffectRegister
 import miyucomics.hexical.features.player.RespawnPersistHook
 import miyucomics.hexical.features.prestidigitation.PrestidigitationHandlers
 import miyucomics.hexical.features.rotate.BlockRotationHandlers
-import miyucomics.hexical.features.scarabs.ScarabHandler
 import miyucomics.hexical.features.sentinel_beds.SentinelBedAmbitHook
 import miyucomics.hexical.features.sentinel_beds.SentinelBedPoi
 import miyucomics.hexical.features.shaders.ServerShaderManager
@@ -36,7 +35,6 @@ object HexicalHooksServer {
 		register(PrestidigitationHandlers)
 		register(HopperEndpointRegistry)
 		register(TransmutingHelper)
-		register(ScarabHandler)
 		register(WooleyedEffectRegister)
 		register(SentinelBedPoi)
 		register(MageBlockModifierRegistry)

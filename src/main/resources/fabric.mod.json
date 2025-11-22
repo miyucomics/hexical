@@ -34,7 +34,7 @@
 			}
 		],
 		"cardinal-components": [
-			"miyucomics.hexical.HexicalCardinalComponents"
+			"miyucomics.hexical.inits.HexicalCardinalComponents"
 		],
 		"emi": [
 			"miyucomics.hexical.features.emi.HexicalEmi"

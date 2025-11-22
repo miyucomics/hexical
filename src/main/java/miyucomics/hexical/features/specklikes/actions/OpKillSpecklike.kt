@@ -13,7 +13,7 @@ object OpKillSpecklike : SpellAction {
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val specklike = args.getEntity(0, argc)
 		if (specklike !is BaseSpecklike)
-			throw MishapBadEntity.of(specklike, "speck")
+			throw MishapBadEntity.of(specklike, "specklike")
 		return SpellAction.Result(Spell(specklike), 0, listOf())
 	}
 

@@ -1,4 +1,4 @@
-package miyucomics.hexical
+package miyucomics.hexical.inits
 
 import at.petrak.hexcasting.api.addldata.ADMediaHolder
 import at.petrak.hexcasting.api.misc.MediaConstants
@@ -18,7 +18,6 @@ import miyucomics.hexical.features.specklikes.speck.SpeckChronicler
 import miyucomics.hexical.features.specklikes.speck.SpeckEntity
 import miyucomics.hexical.features.specklikes.strand.StrandChronicler
 import miyucomics.hexical.features.specklikes.strand.StrandEntity
-import miyucomics.hexical.inits.HexicalItems
 
 class HexicalCardinalComponents : EntityComponentInitializer, ItemComponentInitializer {
 	override fun registerEntityComponentFactories(registry: EntityComponentFactoryRegistry) {
