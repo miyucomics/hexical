@@ -239,6 +239,14 @@
 	"hexical.page.gauntlet_staff.0": "$(l:items/staff)$(item)Staves$() are quite heavy to wield and finnicky to hold. Should I tire of them, I can construct a gauntlet-like device that will allow me to grasp and warp the _media to my will with my own hands.",
 	"hexical.page.gauntlet_staff.1": "$(o)Even the wand itself seems impractical to me. If you need something to grasp and shape the aura, it should be something appropriate. Something like a glove.$()$(br2)- Strange notes I have recovered from an odd book. Clearly this \"aura\" they speak of is _media.",
 
+	"hexical.page.driver_dot.title": "Driver Dots",
+	"hexical.page.driver_dot.0": "$(item)Driver Dots$()—dots for short—are small golden beads that can hold a pattern and a _Hex. Whenever a _Hex connected to my person casts a pattern that has no meaning to Nature, any $(item)Dots$() on my person attuned for that pattern will cast their _Hex and prevent the usual mishap.$(br2)$(o)A tiny engraved metal bead on a simple loop of wire through her left earlobe. A driver dot.$()",
+	"hexical.page.driver_dot.1": "$(item)Dots$() allow for shareable _Hexes that must be cast in their unaltered current entirety, e.g. a $(item)Dot$() that explodes an entity $(o)only if it isn't me$().$(br2)Alternatively, they can be used to quickly swap out functionality by switching between $(item)Dots$(), changing the function of casting devices that use those patterns.",
+	"hexical.recipe.driver_dot.header": "Attune Dot",
+	"hexical.page.driver_dot.summary": "The $(item)Driver Dot$() is comparable to a $(l:items/scarab)$(item)Scarab Beetle$() but attuned for a specific pattern. It also processes first before $(l:items/scarab)$(item)Scarabs$().",
+	"hexcasting.action.hexical:program_driver": "Program Driver",
+	"hexical.page.program_driver.summary": "Programs the $(item)Driver Dot$() in my offhand with the given pattern and _Hex. Free.",
+
 	"hexical.page.grimoire.title": "Grimoires",
 	"hexical.page.grimoire.0": "By encrusting an $(item)Enchanted Book$() with $(l:items/amethyst)$(item)Charged Amethyst$() and $(l:items/edified)$(item)Edified Wood$()$(), it traps _media within the pages like an echo chamber. I can then introduce up to 512 pattern-to-pattern-list bindings for the $(item)Grimoire$() to keep bouncing endlessly inside.",
 	"hexical.page.grimoire.1": "When I cast a $(l:patterns/patterns_as_iotas)pattern$() that has been associated with a list using my $(l:items/staff)$(item)Staff$() with the $(item)Grimoire$() in my inventory or my $(thing)Ender Chest$(), Nature pretends I had drawn the full list, allowing me to create shortcuts for common mantras or large patterns. The $(item)Grimoire$() can even overwrite Nature's $(l:patterns/patterns_as_iotas)patterns$().$(br2)$(o)If there's a book that you want to read, but it hasn't been written yet, then you must write it.$()",
@@ -249,7 +257,7 @@
 	"hexcasting.action.hexical:index_grimoire": "Archivist Reflection",
 	"hexical.page.index_grimoire.summary": "Gets a list of all patterns modified by the $(item)Grimoire$() in my offhand.",
 
-	"hexical.page.scarab.title": "Scarab Beetle",
+	"hexical.page.scarab.title": "Scarab Beetles",
 	"hexical.page.scarab.0": "A $(item)Scarab Beetle$() is an amulet that can intercept patterns rejected by Nature.$(br2)When activated and in my inventory or $(thing)Ender Chest$(), whenever a _Hex connected to my person casts a pattern that has no meaning to Nature, it prevents the mishap and casts its own _Hex.$(br2)$(o)Whatever. Go my scarab.$()",
 	"hexical.page.scarab.1": "I can instruct my scarab how to judge these \"illegal\" patterns and how to replace it with a different set of patterns instead. This allows me to make $(o)new$() patterns that work seamlessly for only me, even in $(l:items/hexcasting)$(item)casting devices$().",
 	"hexical.page.scarab.2": "I can teach them a _Hex to use by using $(l:patterns/readwrite#hexcasting:write)$(action)Scribe's Gambit$(). I can see their learned _Hex by hovering over them, but it can not be read with $(l:patterns/readwrite#hexcasting:read)$(action)Scribe's Reflection$(). I can reteach them at any time.$(br2)When an illegal pattern is cast, it is pushed to the stack as an iota rather than mishapping. The $(item)Scarab$() then casts its learned _Hex, and the remainder of the original _Hex continues.",

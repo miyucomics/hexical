@@ -1,0 +1,32 @@
+{
+	"name": "hexical.page.driver_dot.title",
+	"icon": "hexical:driver_dot",
+	"advancement": "hexcasting:root",
+	"category": "hexcasting:items",
+	"sortnum": 3,
+	"pages": [
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.driver_dot.0"
+		},
+		{
+			"type": "patchouli:spotlight",
+			"item": "hexical:driver_dot",
+			"text": "hexical.page.driver_dot.1"
+		},
+		{
+			"type": "hexcasting:transmuting",
+			"recipe": "hexical:driver_dot",
+			"title": "hexical.recipe.driver_dot.header",
+			"text": "hexical.page.driver_dot.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:program_driver",
+			"anchor": "hexical:program_driver",
+			"input": "pattern, list",
+			"output": "",
+			"text": "hexical.page.program_driver.summary"
+		}
+	]
+}
