@@ -10,6 +10,7 @@ class HexicalMain : ModInitializer {
 		HexicalActions.init()
 		HexicalAdvancements.init()
 		HexicalBlocks.init()
+		HexicalContinuations.init()
 		HexicalEntities.init()
 		HexicalIota.init()
 		HexicalItems.init()

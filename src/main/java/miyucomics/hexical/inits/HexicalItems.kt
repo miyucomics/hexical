@@ -11,6 +11,7 @@ import miyucomics.hexical.features.animated_scrolls.AnimatedScrollItem
 import miyucomics.hexical.features.confection.HexburstItem
 import miyucomics.hexical.features.confection.HextitoItem
 import miyucomics.hexical.features.curios.CurioItem
+import miyucomics.hexical.features.driver_dots.DriverDotItem
 import miyucomics.hexical.features.grimoires.GrimoireItem
 import miyucomics.hexical.features.lamps.ArchLampItem
 import miyucomics.hexical.features.lamps.HandLampItem
@@ -50,8 +51,9 @@ object HexicalItems {
 	@JvmField val HAND_LAMP_ITEM = registerItem("hand_lamp", HandLampItem)
 	@JvmField val ARCH_LAMP_ITEM = registerItem("arch_lamp", ArchLampItem)
 
-	val SCARAB_BEETLE_ITEM = registerItem("scarab_beetle", ScarabBeetleItem)
+	val DRIVER_DOT_ITEM = registerItem("driver_dot", DriverDotItem)
 	@JvmField val GRIMOIRE_ITEM = registerItem("grimoire", GrimoireItem)
+	val SCARAB_BEETLE_ITEM = registerItem("scarab_beetle", ScarabBeetleItem)
 
 	val HEX_GUMMY = registerItem("hex_gummy", Item(Settings().food(FoodComponent.Builder().hunger(2).saturationModifier(0.5f).alwaysEdible().snack().build())))
 	@JvmField val HEXBURST_ITEM = registerItem("hexburst", HexburstItem)
@@ -89,6 +91,7 @@ object HexicalItems {
 
 			entries.add(ItemStack(HEX_GUMMY))
 
+			entries.add(ItemStack(DRIVER_DOT_ITEM))
 			entries.add(ItemStack(GRIMOIRE_ITEM))
 			entries.add(ItemStack(SCARAB_BEETLE_ITEM))
 			entries.add(ItemStack(LEI))
