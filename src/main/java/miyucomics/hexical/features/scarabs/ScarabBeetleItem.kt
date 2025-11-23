@@ -16,9 +16,8 @@ import at.petrak.hexcasting.api.item.IotaHolderItem
 import at.petrak.hexcasting.api.utils.*
 import at.petrak.hexcasting.common.casting.PatternRegistryManifest
 import at.petrak.hexcasting.common.lib.hex.HexEvalSounds
-import miyucomics.hexical.inits.HexicalItems
+import miyucomics.hexical.features.item_cache.itemCache
 import miyucomics.hexical.inits.HexicalSounds
-import miyucomics.hexical.misc.HexItemsFinder
 import miyucomics.hexical.misc.HexSerialization
 import miyucomics.hexical.misc.RecursiveFrame
 import miyucomics.hexical.misc.RecursiveFrame.Companion.wouldBeRecursive
@@ -77,15 +76,7 @@ object ScarabBeetleItem : Item(Settings().maxCount(1).rarity(Rarity.UNCOMMON)), 
 		if (wouldBeRecursive(pattern.anglesSignature(), continuation))
 			return null
 
-		val program = if (vm.image.userData.contains("scarab_hex"))
-			HexSerialization.deserializeHex(vm.image.userData.getList("scarab_hex", NbtElement.COMPOUND_TYPE.toInt()), world)
-		else {
-			val scarab = HexItemsFinder.getMatchingItem(env.castingEntity!! as ServerPlayerEntity) { stack -> stack.isOf(HexicalItems.SCARAB_BEETLE_ITEM) && stack.hasNbt() && stack.nbt!!.getBoolean("active") } ?: return null
-			val program = scarab.getList("hex", NbtElement.COMPOUND_TYPE.toInt()) ?: return null
-			vm.image.userData.put("scarab_hex", program)
-			HexSerialization.deserializeHex(program, world)
-		}
-
+		val program = (env.caster as ServerPlayerEntity).itemCache().scarabProgram ?: return null
 		val newStack = vm.image.stack.toMutableList()
 		newStack.add(iota)
 
