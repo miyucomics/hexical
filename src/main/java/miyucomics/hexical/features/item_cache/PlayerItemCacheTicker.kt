@@ -32,7 +32,7 @@ class PlayerItemCacheTicker : PlayerTicker {
 					expansions.keys.forEach { player.itemCache().grimoireMacros[it] = HexSerialization.backwardsCompatibleReadHex(expansions, it, player.serverWorld) }
 				}
 				stack.isOf(HexicalItems.DRIVER_DOT_ITEM) && stack.hasNbt() && stack.nbt!!.contains("pattern") -> {
-					player.itemCache().driverDotsMacros[stack.getString("pattern")!!] = HexSerialization.deserializeHex(stack.getList("program", NbtElement.COMPOUND_TYPE.toInt())!!, player.serverWorld)
+					player.itemCache().driverDotsMacros[stack.getString("pattern") ?: return@forEach] = HexSerialization.deserializeHex(stack.getList("program", NbtElement.COMPOUND_TYPE.toInt()) ?: return@forEach, player.serverWorld)
 				}
 				stack.isOf(HexicalItems.SCARAB_BEETLE_ITEM) && stack.hasNbt() && stack.nbt!!.getBoolean("active") -> {
 					val program = stack.getList("hex", NbtElement.COMPOUND_TYPE.toInt()) ?: return@forEach
