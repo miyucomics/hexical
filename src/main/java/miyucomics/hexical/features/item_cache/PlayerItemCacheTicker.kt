@@ -24,6 +24,7 @@ class PlayerItemCacheTicker : PlayerTicker {
 
 		player.itemCache().driverDotsMacros.clear()
 		player.itemCache().grimoireMacros.clear()
+		player.itemCache().scarabProgram = null
 		val inventory = player.inventory
 		inventory.offHand.plus(inventory.main).plus(inventory.armor).plus(player.wristpocket).plus(player.enderChestInventory.stacks).reversed().forEach { stack ->
 			when {

@@ -33,7 +33,7 @@ object DriverDotItem : Item(Settings().maxCount(1).rarity(Rarity.UNCOMMON)) {
 		val nbt = stack.nbt ?: return
 		if (!nbt.contains("program"))
 			return
-		tooltip.add("hexical.driver_dot.pattern".asTranslatedComponent(PatternIota.display(HexPattern.fromNBT(stack.getCompound("pattern")!!))).styledWith(Formatting.GRAY))
+		tooltip.add("hexical.driver_dot.pattern".asTranslatedComponent(PatternIota.display(HexPattern.fromNBT(stack.getCompound("display")!!))).styledWith(Formatting.GRAY))
 		tooltip.add("hexical.driver_dot.program".asTranslatedComponent(stack.getList("program", NbtElement.COMPOUND_TYPE.toInt())!!.fold(Text.empty()) { acc, curr -> acc.append(IotaType.getDisplay(curr.asCompound)) }).styledWith(Formatting.GRAY))
 	}
 
