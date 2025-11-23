@@ -8,6 +8,7 @@ import at.petrak.hexcasting.api.casting.getPattern
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadOffhandItem
+import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.api.utils.putList
 import miyucomics.hexical.inits.HexicalItems
 import miyucomics.hexical.misc.CastingUtils
@@ -28,6 +29,7 @@ object OpProgramDriver : SpellAction {
 		override fun cast(env: CastingEnvironment) {
 			dot.orCreateNbt.apply {
 				putString("pattern", pattern.anglesSignature())
+				putCompound("display", pattern.serializeToNBT())
 				putList("program", HexSerialization.serializeHex(program))
 			}
 		}
