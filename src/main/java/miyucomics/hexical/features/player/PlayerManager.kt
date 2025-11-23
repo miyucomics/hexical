@@ -2,7 +2,7 @@ package miyucomics.hexical.features.player
 
 import miyucomics.hexical.features.evocation.EvocationField
 import miyucomics.hexical.features.evocation.EvocationTicker
-import miyucomics.hexical.features.item_cache.PlayerItemCache
+import miyucomics.hexical.features.item_cache.PlayerItemCacheField
 import miyucomics.hexical.features.item_cache.PlayerItemCacheTicker
 import miyucomics.hexical.features.lamps.ArchLampField
 import miyucomics.hexical.features.lesser_sentinels.LesserSentinelField
@@ -31,7 +31,7 @@ class PlayerManager {
 		registerField(KeybindField())
 		registerField(MediaLogField())
 		registerField(LesserSentinelField())
-		registerField(PlayerItemCache())
+		registerField(PlayerItemCacheField())
 		registerField(WristpocketField())
 		registerTicker(EvocationTicker())
 		registerTicker(KeybindTicker())

@@ -11,10 +11,10 @@ import net.minecraft.entity.player.PlayerEntity
 // Then, it is trivial to look up whether a driver dot hex is registered for a given pattern
 // or if a given pattern has a grimoire expansion associated with it
 // or if the player has a scarab
-class PlayerItemCache : PlayerField {
+class PlayerItemCacheField : PlayerField {
 	val driverDotsMacros: HashMap<String, List<Iota>> = HashMap()
 	val grimoireMacros: HashMap<String, List<Iota>> = HashMap()
 	var scarabProgram: List<Iota>? = null
 }
 
-fun PlayerEntity.itemCache(): PlayerItemCache = this.getHexicalPlayerManager().get(PlayerItemCache::class)
+fun PlayerEntity.itemCache(): PlayerItemCacheField = this.getHexicalPlayerManager().get(PlayerItemCacheField::class)
