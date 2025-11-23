@@ -6,6 +6,7 @@
   - migrated patterns out
   - player stores data now; not persistent state
   - removed Myodesopsia spell
+- added driver dots
 - added strands
 - added Vibrate spell
 - added grok patterns to push and pull from staff stack
