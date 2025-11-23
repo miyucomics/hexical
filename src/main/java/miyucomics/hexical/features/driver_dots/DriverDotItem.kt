@@ -14,9 +14,7 @@ import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.utils.*
 import at.petrak.hexcasting.common.casting.PatternRegistryManifest
 import at.petrak.hexcasting.common.lib.hex.HexEvalSounds
-import miyucomics.hexical.inits.HexicalItems
-import miyucomics.hexical.misc.HexItemsFinder
-import miyucomics.hexical.misc.HexSerialization
+import miyucomics.hexical.features.item_cache.itemCache
 import miyucomics.hexical.misc.RecursiveFrame
 import miyucomics.hexical.misc.RecursiveFrame.Companion.wouldBeRecursive
 import net.minecraft.client.item.TooltipContext
@@ -52,8 +50,7 @@ object DriverDotItem : Item(Settings().maxCount(1).rarity(Rarity.UNCOMMON)) {
 		if (wouldBeRecursive(pattern.anglesSignature(), continuation))
 			return null
 
-		val driverDot = HexItemsFinder.getMatchingItem(env.castingEntity!! as ServerPlayerEntity) { it.isOf(HexicalItems.DRIVER_DOT_ITEM) && getPattern(it) == pattern } ?: return null
-		val program = HexSerialization.deserializeHex(driverDot.getList("program", NbtElement.COMPOUND_TYPE.toInt()) ?: return null, world)
+		val program = (env.caster as ServerPlayerEntity).itemCache().driverDotsMacros[pattern.anglesSignature()] ?: return null
 
 		return CastResult(
 			iota,
@@ -65,9 +62,5 @@ object DriverDotItem : Item(Settings().maxCount(1).rarity(Rarity.UNCOMMON)) {
 			ResolvedPatternType.EVALUATED,
 			HexEvalSounds.NOTHING
 		)
-	}
-
-	private fun getPattern(stack: ItemStack): HexPattern? {
-		return HexPattern.fromNBT(stack.getCompound("pattern") ?: return null)
 	}
 }
