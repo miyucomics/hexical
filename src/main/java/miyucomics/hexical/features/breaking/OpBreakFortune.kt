@@ -35,9 +35,8 @@ object OpBreakFortune : SpellAction {
                 && IXplatAbstractions.INSTANCE.isCorrectTierForDrops(tier, state)
                 && IXplatAbstractions.INSTANCE.isBreakingAllowed(env.world, pos, state, env.castingEntity as? ServerPlayerEntity)
 			) {
-				val tool = ItemStack(Items.DIAMOND_PICKAXE)
-				tool.addEnchantment(Enchantments.FORTUNE, level + 1)
-				Block.dropStacks(state, env.world, pos, null, null, tool)
+				val blockEntity = env.world.getBlockEntity(pos)
+				Block.dropStacks(state, env.world, pos, blockEntity, null, ItemStack(Items.DIAMOND_PICKAXE).apply { addEnchantment(Enchantments.FORTUNE, level + 1) })
 				env.world.breakBlock(pos, false)
 			}
 		}
