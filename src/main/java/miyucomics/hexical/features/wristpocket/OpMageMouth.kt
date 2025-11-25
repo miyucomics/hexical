@@ -6,6 +6,7 @@ import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster
 import at.petrak.hexcasting.api.misc.MediaConstants
+import miyucomics.hexical.inits.HexicalItems
 import net.minecraft.item.ItemStack
 import net.minecraft.item.Items
 import net.minecraft.server.network.ServerPlayerEntity
@@ -17,7 +18,7 @@ object OpMageMouth : SpellAction {
 			throw MishapBadCaster()
 
 		val wristpocket = (env.castingEntity as ServerPlayerEntity).wristpocket
-		if (wristpocket.isOf(Items.POTION) || wristpocket.isOf(Items.HONEY_BOTTLE) || wristpocket.isOf(Items.MILK_BUCKET) || wristpocket.item.isFood)
+		if ((wristpocket.isOf(Items.POTION) || wristpocket.isOf(Items.HONEY_BOTTLE) || wristpocket.isOf(Items.MILK_BUCKET) || wristpocket.item.isFood) && !wristpocket.isIn(HexicalItems.CAN_NOT_MAGE_MOUTH_TAG))
 			return SpellAction.Result(Spell(wristpocket), MediaConstants.DUST_UNIT, listOf())
 		throw InedibleWristpocketMishap()
 	}

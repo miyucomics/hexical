@@ -29,6 +29,8 @@ import net.minecraft.nbt.NbtCompound
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.registry.RegistryKey
+import net.minecraft.registry.RegistryKeys
+import net.minecraft.registry.tag.TagKey
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.text.Text
 import net.minecraft.util.Formatting
@@ -36,8 +38,10 @@ import net.minecraft.util.Hand
 import net.minecraft.util.TypedActionResult
 import net.minecraft.world.World
 
+
 object HexicalItems {
 	private val HEXICAL_GROUP_KEY: RegistryKey<ItemGroup> = RegistryKey.of(Registries.ITEM_GROUP.key, HexicalMain.id("general"))
+	val CAN_NOT_MAGE_MOUTH_TAG: TagKey<Item> = TagKey.of(RegistryKeys.ITEM, HexicalMain.id("can_not_mage_mouth"))
 
 	private fun <T : Item> registerItem(path: String, item: T): T {
 		val id = HexicalMain.id(path)
