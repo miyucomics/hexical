@@ -1,18 +1,10 @@
 {
-	"name": "hexical.page.hexical_changes.title",
-	"icon": "hexical:grimoire",
+	"name": "hexical.page.hexical_staves.title",
+	"icon": "hexical:lightning_rod_staff",
 	"category": "hexcasting:basics",
 	"sortnum": 1,
 	"advancement": "hexcasting:root",
 	"pages": [
-		{
-			"type": "patchouli:text",
-			"text": "hexical.page.hexical_changes.0"
-		},
-		{
-			"type": "patchouli:text",
-			"text": "hexical.page.hexical_changes.1"
-		},
 		{
 			"type": "patchouli:crafting",
 			"recipe": "hexical:lightning_rod_staff",

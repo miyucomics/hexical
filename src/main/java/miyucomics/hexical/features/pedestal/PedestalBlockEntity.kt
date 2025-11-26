@@ -223,7 +223,6 @@ class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hexica
 		super.markDirty()
 	}
 
-
 	override fun writeable() = true
 	override fun readIotaTag() = IXplatAbstractions.INSTANCE.findDataHolder(this.heldStack)?.readIotaTag()
 	override fun writeIota(iota: Iota?, simulate: Boolean) = IXplatAbstractions.INSTANCE.findDataHolder(this.heldStack)?.writeIota(iota, simulate) ?: false

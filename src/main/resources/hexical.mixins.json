@@ -12,7 +12,6 @@
 		"CircleCastEnvMixin",
 		"DispenserBlockInvoker",
 		"EntityMixin",
-		"ItemAbacusMixin",
 		"ItemEntityMixin",
 		"ItemStackMixin",
 		"LivingEntityMixin",
