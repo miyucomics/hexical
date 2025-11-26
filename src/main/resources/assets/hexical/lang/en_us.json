@@ -231,9 +231,7 @@
 	"hexcasting.action.book.hexical:modify_block_invisible": "Invisible",
 	"hexcasting.action.book.hexical:modify_block_volatile": "Volatile",
 
-	"hexical.page.hexical_changes.title": "Hexical Changes",
-	"hexical.page.hexical_changes.0": "I feel strangely more in tune with the ambient _media around me. It feels $(o)friendlier$() somehow. I can even feel it rippling around me, responding to my actions, as if engaging with me. The _media also feels more malleable, more $(o)workable$(); I sense I am able to manipulate it into more precise and specific specialized effects. I can also bring up my $(item)Hex Notebook$() by pressing $(thing)$(k:hexical.open_hexbook).",
-	"hexical.page.hexical_changes.1": "I also find my tools more familiar. I don't require the same level of caution with my $(l:items/staff)$(item)Staff$() and can move around during casting, handy for chasing down targets that get out of my line of sight before I can finish my raycast. I shouldn't become too inattentive though, Nature has not become more forgiving of my miscalculations. I can also write directly into my $(l:items/abacus)$(item)Abacus$() with $(l:patterns/readwrite#hexcasting:write)$(action)Scribe's Gambit$().",
+	"hexical.page.hexical_staves.title": "Hexical Staves",
 	"hexical.page.lightning_rod_staff.0": "By fixing a $(item)Block of Amethyst$() to some $(item)Lightning Rods$(), I can make quite the impressive $(l:items/staff)$(item)Staff$(). It is quite weighty to wield but feels absolutely $(o)electrifying$() to use.",
 	"hexical.page.lightning_rod_staff.1": "$(o)I learned there are troubles$(br)Of more than one kind.$(br)Some come from ahead$(br)And some come from behind.$(br2)But I've bought a big bat.$(br)I'm all ready, you see.$(br)Now my troubles are going$(br)To have troubles with $(l)me!$()",
 	"hexical.page.gauntlet_staff.0": "$(l:items/staff)$(item)Staves$() are quite heavy to wield and finnicky to hold. Should I tire of them, I can construct a gauntlet-like device that will allow me to grasp and warp the _media to my will with my own hands.",

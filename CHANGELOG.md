@@ -2,10 +2,6 @@
 
 ## 2.0.0
 - major version bump due to breaking changes
-  - Greater Blink bug fixed
-  - migrated patterns out
-  - player stores data now; not persistent state
-  - removed Myodesopsia spell
 - added driver dots
 - added strands
 - added Vibrate spell
@@ -132,6 +128,10 @@
 - removed Alteration Purification
 - removed Pocket Reflection II
 - removed Hallucinate Sound spells
+- removed convenience features that would make sense in User Hexperience
+  - removed walking in staff screen
+  - removed keybind to open spellbook
+  - removed writing to abacus
 - reworked dyeing backend
 - reworked prestidigitation backend
 - reworked mage block modifier backend
