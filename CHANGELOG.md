@@ -97,6 +97,7 @@
 - changed lamp recharge patterns to not need a mind
 - changed book layout slightly
 - changed some textures
+- changed pattern manipulation entirely
 - changed firework spell to use vectors for colors rather than dyes
 - changed Conjure Spike cost from five dust to one dust
 - changed cost of both hexburst and hextito conjuration to half a dust
