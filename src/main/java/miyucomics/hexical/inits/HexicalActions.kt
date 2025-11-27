@@ -9,6 +9,7 @@ import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.utils.vecFromNBT
 import at.petrak.hexcasting.common.lib.hex.HexActions
+import at.petrak.hexcasting.common.lib.hex.HexArithmetics
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.features.akashic.OpClearAkashicShelf
 import miyucomics.hexical.features.akashic.OpKeyAkashicShelf
@@ -99,6 +100,8 @@ import net.minecraft.registry.Registry
 
 object HexicalActions {
 	fun init() {
+		Registry.register(HexArithmetics.REGISTRY, HexicalMain.id("patterns"), PatternArithmetic)
+
 		register("normalize_scroll", "wqwawqwqawawa", HexDir.SOUTH_WEST, OpAlterScroll { it.setState(0) })
 		register("age_scroll", "wqwawqwqawwddwwa", HexDir.SOUTH_WEST, OpAlterScroll { it.setState(1) })
 		register("vanish_scroll", "wqwawqwqaqqa", HexDir.SOUTH_WEST, OpAlterScroll { it.setState(2) })
@@ -139,8 +142,8 @@ object HexicalActions {
 		register("shuffle_pattern", "aqqqdae", HexDir.NORTH_EAST, OpShufflePattern)
 		register("congruent", "aaqd", HexDir.EAST, OpCongruentPattern)
 		register("similar", "aedd", HexDir.EAST, OpSimilarPattern)
-		register("serialize_pattern", "wqaedeqd", HexDir.EAST, OpSerializePattern)
-		register("deserialize_pattern", "wqqqaqwd", HexDir.EAST, OpDeserializePattern)
+		register("serialize_pattern", "wqaedeqd", HexDir.EAST, OpDisintegratePattern)
+		register("deserialize_pattern", "wqqqaqwd", HexDir.EAST, OpIntegratePattern)
 
 		register("grok_get_stack", "aqawwqaw", HexDir.EAST, OpGrokGetStack)
 		register("grok_set_stack", "ewdewwde", HexDir.EAST, OpGrokSetStack)
