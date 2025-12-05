@@ -9,6 +9,7 @@ import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadLocation
 import at.petrak.hexcasting.api.misc.MediaConstants
+import at.petrak.hexcasting.api.mod.HexConfig
 import net.minecraft.util.math.MathHelper
 import net.minecraft.util.math.Vec3d
 
@@ -35,6 +36,10 @@ object OpGreaterBlink : SpellAction {
 		val destination = caster.pos.add(worldOffset)
 		if (worldOffset.length() > 128)
 			throw MishapBadLocation(destination)
+
+		if(!HexConfig.server().canTeleportInThisDimension(env.world.registryKey))
+			throw MishapBadLocation(destination, "bad_dimension")
+
 		return SpellAction.Result(Spell(destination), MediaConstants.DUST_UNIT * 2, listOf(ParticleSpray.cloud(destination, 1.0)))
 	}
 
