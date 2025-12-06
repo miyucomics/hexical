@@ -47,7 +47,6 @@ object DyeingUtils : InitHook() {
 				flatItemColorLookup.clear()
 				manager.findResources("dyeing/blocks") { path -> path.path.endsWith(".json") }.keys.forEach { load(manager.getResource(it).get().inputStream, Registries.BLOCK, flatBlockColorLookup) }
 				manager.findResources("dyeing/items") { path -> path.path.endsWith(".json") }.keys.forEach { load(manager.getResource(it).get().inputStream, Registries.ITEM, flatItemColorLookup) }
-				println(flatBlockColorLookup)
 			}
 		})
 	}
