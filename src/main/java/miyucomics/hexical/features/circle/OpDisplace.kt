@@ -8,8 +8,10 @@ import at.petrak.hexcasting.api.casting.eval.env.CircleCastEnv
 import at.petrak.hexcasting.api.casting.getEntity
 import at.petrak.hexcasting.api.casting.getVec3
 import at.petrak.hexcasting.api.casting.iota.Iota
+import at.petrak.hexcasting.api.casting.mishaps.MishapBadLocation
 import at.petrak.hexcasting.api.casting.mishaps.circle.MishapNoSpellCircle
 import at.petrak.hexcasting.api.misc.MediaConstants
+import at.petrak.hexcasting.api.mod.HexConfig
 import net.minecraft.entity.Entity
 import net.minecraft.util.math.Vec3d
 
@@ -27,6 +29,8 @@ object OpDisplace : SpellAction {
 			throw OutsideCircleMishap()
 
 		val destination = args.getVec3(1, argc)
+		if (!HexConfig.server().canTeleportInThisDimension(env.world.registryKey))
+			throw MishapBadLocation(destination, "bad_dimension")
 		if (!bounds.contains(destination))
 			throw OutsideCircleMishap()
 
