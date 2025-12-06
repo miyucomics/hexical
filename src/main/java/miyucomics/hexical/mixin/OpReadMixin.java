@@ -28,7 +28,7 @@ public class OpReadMixin {
 
 	@Inject(method = "execute", at = @At("HEAD"), cancellable = true)
 	private void readCompass(List<? extends Iota> args, CastingEnvironment env, CallbackInfoReturnable<List<Iota>> cir) {
-		CastingEnvironment.HeldItemInfo data = env.getHeldItemToOperateOn(item -> item.isOf(HexicalItems.CURIO_COMPASS));
+		CastingEnvironment.HeldItemInfo data = env.getHeldItemToOperateOn(item -> item.isOf(HexicalItems.CURIO_COMPASS) && item.hasNbt() && item.getNbt().contains("needle"));
 		if (data == null)
 			return;
 
