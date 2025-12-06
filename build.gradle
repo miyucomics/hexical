@@ -51,13 +51,13 @@ dependencies {
 	modImplementation "miyucomics.hexpose:hexpose:$hexpose_version"
 	modCompileOnly "dev.emi:emi-fabric:$emi_version:api"
 	modLocalRuntime "dev.emi:emi-fabric:$emi_version"
+	modImplementation "com.samsthenerd.inline:inline-fabric:$minecraft_version-$inline_version"
 	modImplementation("at.petra-k.hexcasting:hexcasting-fabric-$minecraft_version:$hexcasting_version") {
 		exclude module: "phosphor"
         exclude module: "lithium"
 	}
 
 	modLocalRuntime "me.shedaniel.cloth:cloth-config-fabric:$cloth_config_version"
-	modLocalRuntime "com.samsthenerd.inline:inline-fabric:$minecraft_version-$inline_version"
 	modLocalRuntime "at.petra-k.paucal:paucal-fabric-$minecraft_version:$paucal_version"
 	modLocalRuntime "io.github.tropheusj:serialization-hooks:0.4.99999"
 }
