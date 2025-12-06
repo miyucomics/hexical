@@ -193,6 +193,7 @@
 	"hexcasting.mishap.invalid_value.colored_dye": "a colored dye",
 	"hexcasting.mishap.invalid_value.colored_dye_list": "a list of colored dyes",
 	"hexcasting.mishap.invalid_value.vector_list": "a list of vectors",
+	"hexcasting.mishap.invalid_value.vector_or_null": "a vector or null",
 	"hexcasting.mishap.hexical:active_arch_lamp": "Expected to be cast by an Archgenie Lamp or an Archgenie Lamp in the caster's inventory.",
 	"hexcasting.mishap.hexical:can_not_dye": "Can not dye target or target can not support that color",
 	"hexcasting.mishap.hexical:inedible_wristpocket": "Wristpocketed item is not edible or too complex for Mage Mouth.",
@@ -816,6 +817,8 @@
 	"hexical.page.write_charmed_proxy.summary": "If the item charged features an iota storage by default, such as a $(l:items/focus)$(item)Focus$(), writes an iota into it.",
 	"hexcasting.action.hexical:read_charmed_proxy": "Charmed Reflection II",
 	"hexical.page.read_charmed_proxy.summary": "If the item charged features an iota storage by default, such as a $(l:items/focus)$(item)Focus$(), reads an iota from it.",
+	"hexcasting.action.hexical:icon_charmed": "LED Gambit",
+	"hexical.page.icon_charmed.summary": "Sets a color to render as a small dot in the corner of the charmed item, or $(l:casting/influences)$(thing)Null$() to clear the dot.",
 	"hexcasting.action.hexical:discharm": "Discharm",
 	"hexical.page.discharm.summary": "Removes a charm from an item without affecting any other property. Costs about one $(l:items/amethyst)$(item)Amethyst Dust$().",
 

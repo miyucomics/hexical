@@ -56,6 +56,11 @@ object CharmUtilities {
 	fun getHex(stack: ItemStack, world: ServerWorld) = HexSerialization.backwardsCompatibleReadHex(getCompound(stack), "hex", world)
 	fun getMedia(stack: ItemStack) = getCompound(stack).getLong("media")
 	fun getMaxMedia(stack: ItemStack) = getCompound(stack).getLong("max_media")
+	fun getIcon(stack: ItemStack): Int? {
+        if (!getCompound(stack).contains("icon"))
+			return null
+		return getCompound(stack).getInt("icon")
+    }
 
 	fun getInternalStorage(stack: ItemStack, world: ServerWorld): Iota {
 		val nbt = getCompound(stack)
