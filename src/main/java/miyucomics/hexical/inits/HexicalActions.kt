@@ -299,6 +299,7 @@ object HexicalActions {
 		register("read_charmed", "waqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpReadCharmed)
 		register("write_charmed_proxy", "edewqaqqdeeeee", HexDir.SOUTH_EAST, OpProxyWriteCharmed)
 		register("read_charmed_proxy", "qaqwedeeaqqqqq", HexDir.NORTH_EAST, OpProxyReadCharmed)
+		register("icon_charmed", "qaqqdwdwd", HexDir.NORTH_EAST, OpIconCharmed)
 		register("discharm", "qaqwddaaeawaea", HexDir.NORTH_EAST, OpDischarmItem)
 
 		register("greater_blink", "wqawawaqwqwqawawaqw", HexDir.SOUTH_WEST, OpGreaterBlink)
