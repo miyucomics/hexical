@@ -36,6 +36,7 @@ object OpGreaterBlink : SpellAction {
 		val destination = caster.pos.add(worldOffset)
 		if (!HexConfig.server().canTeleportInThisDimension(env.world.registryKey))
 			throw MishapBadLocation(destination, "bad_dimension")
+		env.assertVecInWorld(destination)
 
 		if (worldOffset.length() > 128)
 			throw MishapBadLocation(destination)
