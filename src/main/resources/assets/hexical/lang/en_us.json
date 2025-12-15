@@ -404,7 +404,7 @@
 
 	"hexical.page.arch_lamps.title": "Archgenie Lamps",
 	"hexical.page.arch_lamps.0": "The $(l:lamp/hand_lamps)$(item)Hand Lamp$() $(o)merged with$() the sacrifice. I can feel it still breathing. I shall refer to my creation as an $(item)Archgenie Lamp$().$(br2)Now that I've.. upgraded the processing component of my $(item)Lamp$(), it requires far less supervision: I can simply command it to be active and while in my inventory, they will cast every instant, as though I were always holding down on a $(l:lamp/hand_lamps)$(item)Hand Lamp$().",
-	"hexical.page.arch_lamps.1": "The genie stops casting when it determine when it is in the hands of new casters. No one can force me to cast.$(br2)$(o)I am a great soft jelly thing. Smoothly rounded, with no mouth, with pulsing white holes filled by fog where my eyes used to be. Rubbery appendages that were once my arms; bulks rounding down into legless humps of soft slippery matter.$(br2)I have no mouth. And I must scream.$()",
+	"hexical.page.arch_lamps.1": "The genie stops casting when it determines when it is in the hands of new casters. No one can force me to cast.$(br2)$(o)I am a great soft jelly thing. Smoothly rounded, with no mouth, with pulsing white holes filled by fog where my eyes used to be. Rubbery appendages that were once my arms; bulks rounding down into legless humps of soft slippery matter.$(br2)I have no mouth. And I must scream.$()",
 	"hexcasting.action.hexical:has_arch_lamp": "Archgenie Purification",
 	"hexical.page.has_arch_lamp.summary": "Pushes whether the given person currently has an active $(l:lamp/arch_lamps)$(item)Archgenie Lamp$().",
 	"hexcasting.action.hexical:get_arch_lamp_position": "Archgenie Reflection: Spatial",
