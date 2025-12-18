@@ -8,9 +8,5 @@ import at.petrak.hexcasting.api.casting.iota.Iota
 
 object OpCongruentPattern : ConstMediaAction {
 	override val argc = 2
-	override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
-		val a = args.getPattern(0, argc)
-		val b = args.getPattern(1, argc)
-		return (a.anglesSignature() == b.anglesSignature() && a.startDir == b.startDir).asActionResult
-	}
+	override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> = (args.getPattern(0, argc) == args.getPattern(1, argc)).asActionResult
 }
