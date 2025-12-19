@@ -58,8 +58,6 @@ import miyucomics.hexical.features.jailbreak.OpJailbreakDevice
 import miyucomics.hexical.features.lamps.*
 import miyucomics.hexical.features.lesser_sentinels.OpLesserSentinelGet
 import miyucomics.hexical.features.lesser_sentinels.OpLesserSentinelSet
-import miyucomics.hexical.features.lore.OpItemLore
-import miyucomics.hexical.features.lore.OpItemName
 import miyucomics.hexical.features.mage_blocks.OpConfigureMageBlock
 import miyucomics.hexical.features.mage_blocks.OpConjureMageBlock
 import miyucomics.hexical.features.mage_blocks.OpResetMageBlock
@@ -261,9 +259,6 @@ object HexicalActions {
 
 		register("set_lesser_sentinels", "aeaae", HexDir.EAST, OpLesserSentinelSet)
 		register("get_lesser_sentinels", "dqddq", HexDir.WEST, OpLesserSentinelGet)
-
-		register("item_name", "qwawqwaadwa", HexDir.SOUTH_EAST, OpItemName)
-		register("item_lore", "dwewdweedwa", HexDir.NORTH_WEST, OpItemLore)
 
 		register("shader_clear", "eeeeeqaqeeeee", HexDir.WEST, OpShader(null))
 		register("shader_owl", "edewawede", HexDir.WEST, OpShader(HexicalMain.id("shaders/post/night_vision.json")))
