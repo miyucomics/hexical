@@ -55,5 +55,10 @@
 		"fabric-language-kotlin": ">=1.10.10+kotlin.1.9.10",
 		"hexcasting": ">=0.11.1-7-pre-646",
 		"hexpose": ">=1.0.0"
+	},
+	"custom": {
+		"cardinal-components": [
+			"hexical:muted"
+		]
 	}
 }
