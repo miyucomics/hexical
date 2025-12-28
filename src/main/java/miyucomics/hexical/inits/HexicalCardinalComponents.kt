@@ -5,19 +5,24 @@ import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.fabric.cc.HexCardinalComponents
 import at.petrak.hexcasting.fabric.cc.adimpl.CCEntityIotaHolder
 import at.petrak.hexcasting.fabric.cc.adimpl.CCMediaHolder
+import dev.onyxstudios.cca.api.v3.component.ComponentKey
+import dev.onyxstudios.cca.api.v3.component.ComponentRegistryV3
 import dev.onyxstudios.cca.api.v3.entity.EntityComponentFactoryRegistry
 import dev.onyxstudios.cca.api.v3.entity.EntityComponentInitializer
 import dev.onyxstudios.cca.api.v3.item.ItemComponentFactoryRegistry
 import dev.onyxstudios.cca.api.v3.item.ItemComponentInitializer
+import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.features.animated_scrolls.AnimatedScrollEntity
 import miyucomics.hexical.features.animated_scrolls.AnimatedScrollReader
 import miyucomics.hexical.features.confection.HexburstIotaHolder
+import miyucomics.hexical.features.mute.MutedComponent
 import miyucomics.hexical.features.specklikes.mesh.MeshChronicler
 import miyucomics.hexical.features.specklikes.mesh.MeshEntity
 import miyucomics.hexical.features.specklikes.speck.SpeckChronicler
 import miyucomics.hexical.features.specklikes.speck.SpeckEntity
 import miyucomics.hexical.features.specklikes.strand.StrandChronicler
 import miyucomics.hexical.features.specklikes.strand.StrandEntity
+import net.minecraft.entity.Entity
 
 class HexicalCardinalComponents : EntityComponentInitializer, ItemComponentInitializer {
 	override fun registerEntityComponentFactories(registry: EntityComponentFactoryRegistry) {
@@ -25,11 +30,17 @@ class HexicalCardinalComponents : EntityComponentInitializer, ItemComponentIniti
 		registry.registerFor(SpeckEntity::class.java, HexCardinalComponents.IOTA_HOLDER, ::SpeckChronicler)
 		registry.registerFor(StrandEntity::class.java, HexCardinalComponents.IOTA_HOLDER, ::StrandChronicler)
 		registry.registerFor(MeshEntity::class.java, HexCardinalComponents.IOTA_HOLDER, ::MeshChronicler)
+		registry.registerFor(Entity::class.java, MUTED_COMPONENT, ::MutedComponent)
 	}
 
 	@Suppress("UnstableApiUsage")
 	override fun registerItemComponentFactories(registry: ItemComponentFactoryRegistry) {
 		registry.register(HexicalItems.HEX_GUMMY, HexCardinalComponents.MEDIA_HOLDER) { CCMediaHolder.Static({ MediaConstants.DUST_UNIT / 10 }, ADMediaHolder.AMETHYST_DUST_PRIORITY, it) }
 		registry.register(HexicalItems.HEXBURST_ITEM, HexCardinalComponents.IOTA_HOLDER, ::HexburstIotaHolder)
+	}
+
+	companion object {
+		@JvmField
+		val MUTED_COMPONENT: ComponentKey<MutedComponent> = ComponentRegistryV3.INSTANCE.getOrCreate(HexicalMain.id("muted"), MutedComponent::class.java)
 	}
 }
