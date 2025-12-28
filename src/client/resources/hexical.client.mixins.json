@@ -5,6 +5,7 @@
 	"client": [
 		"ClientPlayNetworkHandlerMixin",
 		"ClientWorldMixin",
+		"EntityRendererMixin",
 		"GameRendererMixin",
 		"GuiSpellcastingMixin",
 		"InGameHudMixin",
