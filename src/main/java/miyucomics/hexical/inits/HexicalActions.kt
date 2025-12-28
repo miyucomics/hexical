@@ -67,6 +67,7 @@ import miyucomics.hexical.features.mage_blocks.modifiers.RedstoneModifier
 import miyucomics.hexical.features.mage_blocks.modifiers.VolatileModifier
 import miyucomics.hexical.features.magic_missile.OpMagicMissile
 import miyucomics.hexical.features.misc_actions.*
+import miyucomics.hexical.features.mute.OpMute
 import miyucomics.hexical.features.pattern_manipulation.*
 import miyucomics.hexical.features.periwinkle.OpCompelSniffer
 import miyucomics.hexical.features.pigments.OpSamplePigment
@@ -218,6 +219,7 @@ object HexicalActions {
 		}})
 
 		register("confetti", "awddeqaedd", HexDir.EAST, OpConfetti)
+		register("mute", "wddaq", HexDir.EAST, OpMute)
 		register("vibration", "wwawawwd", HexDir.EAST, OpVibrate)
 		register("sparkle", "dqa", HexDir.NORTH_EAST, OpSparkle)
 		register("jailbreak", "wwaqqqqqeqdedwqeaeqwdedwqeaeq", HexDir.EAST, OpJailbreakDevice)

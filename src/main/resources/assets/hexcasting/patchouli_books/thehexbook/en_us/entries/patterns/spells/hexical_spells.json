@@ -19,6 +19,18 @@
 		},
 		{
 			"type": "hexcasting:pattern",
+			"op_id": "hexical:mute",
+			"anchor": "hexical:mute",
+			"input": "entity",
+			"output": "",
+			"text": "hexical.page.mute.summary"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.mute.description"
+		},
+		{
+			"type": "hexcasting:pattern",
 			"op_id": "hexical:vibration",
 			"anchor": "hexical:vibration",
 			"input": "vector, entity/vector, number",
