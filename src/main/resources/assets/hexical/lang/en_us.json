@@ -759,9 +759,9 @@
 	"hexical.page.index_hopper.description": "While the slot number is generally fairly logical, it can feel arbitrary for storages such as a person's inventory.$(br2)This pattern will be useful in ascertaining the slot number of any given location in a $(thing)source$() or $(thing)destination$()'s inventory. It can also be useful for processing: scanning a $(thing)source$() for what items it contains, evaluating them based on some metrics, and from there deciding whether and where to move them.",
 
 	"hexical.page.horrible.title": "Horrible",
-	"hexical.page.horrible.0": "Of all the spells I have discovered in my exploration of ancient _Hexcasting notes, there has not been a single pattern remotely like this one. I believe its existence is proof of some greater force that had compelled _Hexcasters to draw it.$(br2)$(o)How does one even begin to draw this, let alone discover it?$()",
+	"hexical.page.horrible.0": "Of all the patterns I have discovered, no other pattern comes close to this one. Written records alone are proof that some greater power exists and had compelled _Hexcasters to draw it.$(br2)$(o)How does one even begin to draw this?$() I suppose I'd best look into $(l:patterns/pattern_manipulation)pattern manipulation$().",
 	"hexcasting.action.hexical:horrible": "Horrible",
-	"hexical.page.horrible.summary": "Judging by the pattern signature, I can only imagine that it summons something.",
+	"hexical.page.horrible.summary": "Judging by the pattern signature, I can only hazard a guess that it affects a location somehow?",
 
 	"hexical.category.specklikes": "Specks",
 	"hexical.category.specklikes.desc": "I can precisely manipulate _media to conjure visible and intangible constructs into the world, called $(o)specklikes$().$(br2)They come in a variety of shapes and Nature is quite generous with their pricing; it is often cheap to create one and free to manipulate it after the fact.",
