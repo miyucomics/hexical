@@ -800,7 +800,7 @@
 	"hexical.page.draw_pattern.summary": "Takes a pattern and produces a normalized list of vectors that draw it out, useful for creating $(thing)Strands$().",
 
 	"hexical.page.meshes.title": "Meshes",
-	"hexical.page.meshes.0": "$(thing)Meshes$() are practically identical to $(l:patterns/spells/specklikes/strand)$(thing)Strands$() but they connect points in three-dimensional space with thin hexagonal prisms.$(br2)The method of reading and writing and the requirements of the image are nearly identical to $(l:patterns/spells/specklikes/strand)$(thing)Strands$(), except the z-component is considered in length calculations and is used for depth.",
+	"hexical.page.meshes.0": "$(thing)Meshes$() are practically identical to $(l:patterns/spells/specklikes/strands)$(thing)Strands$() but they connect points in three-dimensional space with thin hexagonal prisms.$(br2)The method of reading and writing and the requirements of the image are nearly identical to $(l:patterns/spells/specklikes/strands)$(thing)Strands$(), except the z-component is considered in length calculations and is used for depth.",
 	"hexcasting.action.hexical:conjure_mesh": "Conjure Mesh",
 	"hexical.page.conjure_mesh.summary": "Conjures a mesh with the location and pushes the entity to the stack. Costs about one $(l:items/amethyst)$(item)Amethyst Dust$().",
 
