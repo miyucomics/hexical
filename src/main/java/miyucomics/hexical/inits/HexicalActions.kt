@@ -286,7 +286,7 @@ object HexicalActions {
 		register("lifetime_specklike", "adeqqaawdd", HexDir.SOUTH_WEST, OpSetSpecklikeLifespan)
 		register("pigment_specklike", "adeqqaq", HexDir.SOUTH_WEST, OpSetSpecklikePigment)
 
-		register("conjure_strand", "dqa", HexDir.SOUTH_EAST, OpConjureStrand)
+		register("conjure_strand", "daq", HexDir.SOUTH_EAST, OpConjureStrand)
 		register("draw_pattern", "eadqqqa", HexDir.NORTH_EAST, OpDrawPattern)
 
 		register("conjure_mesh", "qaqqqqqwqqqdeeweweeaeewewee", HexDir.EAST, OpConjureMesh)
