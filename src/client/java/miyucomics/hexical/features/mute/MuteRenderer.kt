@@ -21,7 +21,7 @@ object MuteRenderer {
 		val time = entity.world.time + MinecraftClient.getInstance().tickDelta
 
 		matrices.push()
-		matrices.translate(0f, entity.height + MathHelper.sin(time * 0.05f) * 0.1f + 0.5f, 0f)
+		matrices.translate(0f, entity.height + MathHelper.sin(time * 0.05f) * 0.05f + 0.5f, 0f)
 		matrices.multiply(dispatcher.rotation)
 		matrices.scale(0.5f, 0.5f, 0.5f)
 
