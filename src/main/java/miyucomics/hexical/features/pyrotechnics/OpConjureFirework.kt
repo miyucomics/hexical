@@ -28,16 +28,16 @@ object OpConjureFirework : SpellAction {
 
 		val colors = args.getList(4, argc)
 		if (!colors.nonEmpty)
-			throw MishapInvalidIota.of(args[3], 4, "nonempty_list")
+			throw MishapInvalidIota.of(args[3], 3, "nonempty_list")
 		val trueColors = colors.map {
 			if (it !is Vec3Iota)
-				throw MishapInvalidIota.of(args[3], 4, "vector_list")
+				throw MishapInvalidIota.of(args[3], 3, "vector_list")
 			translateVectorToColor(it.vec3)
 		}
 
 		val fades = args.getList(5, argc).map {
 			if (it !is Vec3Iota)
-				throw MishapInvalidIota.of(args[3], 4, "vector_list")
+				throw MishapInvalidIota.of(args[3], 2, "vector_list")
 			translateVectorToColor(it.vec3)
 		}
 
