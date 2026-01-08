@@ -18,6 +18,7 @@ import miyucomics.hexical.features.sentinel_beds.SentinelBedPoi
 import miyucomics.hexical.features.shaders.ServerShaderManager
 import miyucomics.hexical.features.telepathy.ServerPeripheralReceiver
 import miyucomics.hexical.features.transmuting.TransmutingHelper
+import miyucomics.hexical.features.zap.ZapManager
 import miyucomics.hexical.misc.InitHook
 
 object HexicalHooksServer {
@@ -43,6 +44,7 @@ object HexicalHooksServer {
 		register(DyeingEntityRegistry)
 		register(ConjureFloraHook)
 		register(LeiEnchantmentsHook)
+		register(ZapManager)
 
 		for (hook in hooks)
 			hook.init()

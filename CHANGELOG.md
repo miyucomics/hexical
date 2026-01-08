@@ -14,7 +14,6 @@
 - added lesser sentinels
 - added plushies
 - added Horrible
-- added zap spell - creates a zapping particle
 - added piston spell to push blocks
 - added 512 pattern cap to grimoires
 - added name and lore spell that uses text iota
@@ -26,13 +25,14 @@
 - added spell to make a circle use a pedestal as its other hand
 - added spell to let a circle conjure dust
 - added all variants of cooking blocks as spells
-- added Hopper spell - transport of items from almost any source to almost any other
 - added Conjure Flower spell - conjure a flower of your choosing
+- added Crack Device spell - crack an unwritten casting device which will reveal its Hex when eventually written
+- added Hopper spell - transport of items from almost any source to almost any other
 - added Illuminate spell - conjure an invisible light of your chosen strength
-- added Sparkle spell to create a sparkle ( my mod advertised in another mod!! )
 - added Scarab Beetle item - catches uncaught patterns for your handling
+- added Sparkle spell to create a sparkle ( my mod advertised in another mod!! )
+- added Zap spell - powers a block with Redstone
 - added tooltip to grimoire, need to cast any grimoire pattern on old grimoires in order to force it to show up
-- added Crack Device - a spell to crack an unwritten casting device and reveal its Hex when it is eventually written
 - added more prestidigitation effects - cause soul fire, used more block tags
 - added Projectiles chapter
   - added Snowball spell for fun
