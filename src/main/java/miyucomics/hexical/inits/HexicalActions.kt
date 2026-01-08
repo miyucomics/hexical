@@ -90,6 +90,7 @@ import miyucomics.hexical.features.specklikes.strand.OpDrawPattern
 import miyucomics.hexical.features.spike.OpConjureSpike
 import miyucomics.hexical.features.telepathy.*
 import miyucomics.hexical.features.wristpocket.*
+import miyucomics.hexical.features.zap.OpZap
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.projectile.FireballEntity
 import net.minecraft.entity.projectile.LlamaSpitEntity
@@ -100,6 +101,8 @@ import net.minecraft.registry.Registry
 
 object HexicalActions {
 	fun init() {
+		register("zap", "qad", HexDir.WEST, OpZap)
+
 		Registry.register(HexArithmetics.REGISTRY, HexicalMain.id("patterns"), PatternArithmetic)
 
 		register("normalize_scroll", "wqwawqwqawawa", HexDir.SOUTH_WEST, OpAlterScroll { it.setState(0) })
