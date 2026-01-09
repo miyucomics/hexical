@@ -9,6 +9,7 @@ import at.petrak.hexcasting.api.casting.getVec3
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.utils.putList
+import miyucomics.hexical.inits.HexicalAdvancements
 import miyucomics.hexical.inits.HexicalItems
 import miyucomics.hexical.misc.CastingUtils
 import miyucomics.hexical.misc.HexSerialization
@@ -30,8 +31,11 @@ object OpConjureHextito : SpellAction {
 			val stack = ItemStack(HexicalItems.HEXTITO_ITEM, 1)
 			stack.orCreateNbt.putList("hex", HexSerialization.serializeHex(hex))
 			val entity = ItemEntity(env.world, position.x, position.y, position.z, stack)
-			entity.setPickupDelay(1) // should be nearly imperceptible but allows for hextito quines
+			entity.setPickupDelay(1) // nearly imperceptible but allows for hextito quines, otherwise Minecraft vanishes the item
 			env.world.spawnEntity(entity)
+
+			if (env is HextitoCastEnv)
+				HexicalAdvancements.HEXTITO_QUINE.trigger(env.caster!!)
 		}
 	}
 }

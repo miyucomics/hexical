@@ -41,6 +41,7 @@ class HexicalAdvancementGenerator(generator: FabricDataOutput) : FabricAdvanceme
 
 		registerAdvancement("conjure_cake", AdvancementFrame.CHALLENGE, Items.CAKE, true, ConjureCakeCriterion.Condition())
 		registerAdvancement("diy_conjuring", AdvancementFrame.TASK, Items.SCAFFOLDING, false, DIYCriterion.Condition())
+		registerAdvancement("hextito_quine", AdvancementFrame.TASK, HexicalItems.HEXTITO_ITEM, false, HextitoQuineCriterion.Condition())
 		registerAdvancement("specklike", AdvancementFrame.TASK, Items.BEACON, false, SpecklikeCriterion.Condition())
 
 		val baseLamp = registerAdvancement("acquire_hand_lamp", AdvancementFrame.TASK, HexicalItems.HAND_LAMP_ITEM, false, InventoryChangedCriterion.Conditions.items(HexicalItems.HAND_LAMP_ITEM))

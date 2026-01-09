@@ -1,0 +1,30 @@
+{
+  "parent": "hexical:root",
+  "criteria": {
+    "hextito_quine": {
+      "conditions": {},
+      "trigger": "hexical:hextito_quine"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.hexical.hextito_quine.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "hexical:hextito"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.hexical.hextito_quine.title"
+    }
+  },
+  "requirements": [
+    [
+      "hextito_quine"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
