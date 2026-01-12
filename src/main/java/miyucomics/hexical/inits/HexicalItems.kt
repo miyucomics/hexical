@@ -2,9 +2,7 @@ package miyucomics.hexical.inits
 
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.utils.putCompound
-import at.petrak.hexcasting.api.utils.putList
 import at.petrak.hexcasting.common.items.ItemStaff
-import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.features.animated_scrolls.AnimatedScrollItem
@@ -19,25 +17,19 @@ import miyucomics.hexical.features.media_jar.MediaJarBlock
 import miyucomics.hexical.features.media_log.MediaLogItem
 import miyucomics.hexical.features.periwinkle.LeiItem
 import miyucomics.hexical.features.scarabs.ScarabBeetleItem
-import miyucomics.hexical.misc.HexSerialization
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup
-import net.minecraft.client.item.TooltipContext
-import net.minecraft.entity.player.PlayerEntity
-import net.minecraft.item.*
+import net.minecraft.item.FoodComponent
+import net.minecraft.item.Item
 import net.minecraft.item.Item.Settings
+import net.minecraft.item.ItemGroup
+import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.registry.RegistryKey
 import net.minecraft.registry.RegistryKeys
 import net.minecraft.registry.tag.TagKey
-import net.minecraft.server.world.ServerWorld
 import net.minecraft.text.Text
-import net.minecraft.util.Formatting
-import net.minecraft.util.Hand
-import net.minecraft.util.TypedActionResult
-import net.minecraft.world.World
-
 
 object HexicalItems {
 	private val HEXICAL_GROUP_KEY: RegistryKey<ItemGroup> = RegistryKey.of(Registries.ITEM_GROUP.key, HexicalMain.id("general"))
@@ -124,36 +116,5 @@ object HexicalItems {
 
 	fun init() {
 		Registry.register(Registries.ITEM_GROUP, HEXICAL_GROUP_KEY, HEXICAL_GROUP)
-		registerItem("tchotchke", TchotchkeItem())
-	}
-}
-
-class TchotchkeItem : ItemPackagedHex(Settings().maxCount(1)) {
-	override fun canDrawMediaFromInventory(stack: ItemStack) = false
-	override fun isItemBarVisible(stack: ItemStack) = false
-	override fun canRecharge(stack: ItemStack) = false
-	override fun breakAfterDepletion() = true
-	override fun cooldown() = 0
-
-	override fun use(world: World, player: PlayerEntity, usedHand: Hand): TypedActionResult<ItemStack> {
-		if (world.isClient)
-			return TypedActionResult.success(player.getStackInHand(usedHand))
-		val stack = player.getStackInHand(usedHand)
-		if (hasHex(stack) && getMedia(stack) > 0) {
-			val charmed = ItemStack(Items.STICK)
-			charmed.orCreateNbt.putCompound("charmed", NbtCompound().also {
-				it.putLong("media", getMedia(stack))
-				it.putLong("max_media", getMaxMedia(stack))
-				it.putList("hex", HexSerialization.serializeHex(getHex(stack, world as ServerWorld)!!))
-				it.putIntArray("normal_inputs", listOf(0, 1))
-				it.putIntArray("sneak_inputs", listOf(0, 1))
-			})
-			player.setStackInHand(usedHand, charmed)
-		}
-		return TypedActionResult.success(player.getStackInHand(usedHand))
-	}
-
-	override fun appendTooltip(stack: ItemStack, world: World?, lines: MutableList<Text>, advanced: TooltipContext) {
-		lines.add(Text.literal("Right-click this item to get a charmed stick.").formatted(Formatting.RED))
 	}
 }
