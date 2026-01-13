@@ -76,8 +76,6 @@ import miyucomics.hexical.features.pigments.OpTakeOnPigment
 import miyucomics.hexical.features.pigments.OpToPigment
 import miyucomics.hexical.features.piston.OpPiston
 import miyucomics.hexical.features.prestidigitation.OpPrestidigitation
-import miyucomics.hexical.features.pyrotechnics.OpConjureFirework
-import miyucomics.hexical.features.pyrotechnics.OpSimulateFirework
 import miyucomics.hexical.features.rotate.OpRotateBlock
 import miyucomics.hexical.features.rotate.OpRotateEntity
 import miyucomics.hexical.features.shaders.OpShader
@@ -260,7 +258,6 @@ object HexicalActions {
 		register("is_evoking", "wwaqqqqqeeaqawwewewwaqawwewew", HexDir.EAST, OpGetKeybindSelf("key.hexical.evoke"))
 
 		register("conjure_firework", "dedwaqwwawwqa", HexDir.SOUTH_WEST, OpConjureFirework)
-		register("simulate_firework", "dedwaqwqqwqa", HexDir.SOUTH_WEST, OpSimulateFirework)
 
 		register("get_hotbar", "qwawqwa", HexDir.EAST, OpGetHotbar)
 		register("set_hotbar", "dwewdwe", HexDir.WEST, OpSetHotbar)
