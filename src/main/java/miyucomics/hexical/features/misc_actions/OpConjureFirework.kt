@@ -1,4 +1,4 @@
-package miyucomics.hexical.features.pyrotechnics
+package miyucomics.hexical.features.misc_actions
 
 import at.petrak.hexcasting.api.casting.*
 import at.petrak.hexcasting.api.casting.castables.SpellAction
@@ -28,26 +28,28 @@ object OpConjureFirework : SpellAction {
 
 		val colors = args.getList(4, argc)
 		if (!colors.nonEmpty)
-			throw MishapInvalidIota.of(args[3], 3, "nonempty_list")
+			throw MishapInvalidIota.Companion.of(args[3], 3, "nonempty_list")
 		val trueColors = colors.map {
 			if (it !is Vec3Iota)
-				throw MishapInvalidIota.of(args[3], 3, "vector_list")
+				throw MishapInvalidIota.Companion.of(args[3], 3, "vector_list")
 			translateVectorToColor(it.vec3)
 		}
 
 		val fades = args.getList(5, argc).map {
 			if (it !is Vec3Iota)
-				throw MishapInvalidIota.of(args[3], 2, "vector_list")
+				throw MishapInvalidIota.Companion.of(args[3], 2, "vector_list")
 			translateVectorToColor(it.vec3)
 		}
 
 		val flicker = args.getBool(6, argc)
 		val trail = args.getBool(7, argc)
 
-		return SpellAction.Result(Spell(position, velocity, duration, shape, trueColors, fades, flicker, trail), MediaConstants.SHARD_UNIT, listOf(ParticleSpray.burst(position, 1.0)))
+		return SpellAction.Result(Spell(position, velocity, duration, shape, trueColors, fades, flicker, trail), MediaConstants.SHARD_UNIT, listOf(
+			ParticleSpray.Companion.burst(position, 1.0)))
 	}
 
-	private data class Spell(val position: Vec3d, val desiredVelocity: Vec3d, val duration: Int, val shape: Int, val colors: List<Int>, val fades: List<Int>, val flicker: Boolean, val trail: Boolean) : RenderedSpell {
+	private data class Spell(val position: Vec3d, val desiredVelocity: Vec3d, val duration: Int, val shape: Int, val colors: List<Int>, val fades: List<Int>, val flicker: Boolean, val trail: Boolean) :
+		RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
 			val fireworkNbt = NbtCompound().apply {
 				put(FireworkRocketItem.EXPLOSIONS_KEY, NbtList().apply {
@@ -66,7 +68,15 @@ object OpConjureFirework : SpellAction {
 				stack.orCreateNbt.put(FireworkRocketItem.FIREWORKS_KEY, fireworkNbt)
 			}
 
-			env.world.spawnEntity(FireworkRocketEntity(env.world, fireworkStack, position.x, position.y, position.z, true).apply {
+			env.world.spawnEntity(
+				FireworkRocketEntity(
+					env.world,
+					fireworkStack,
+					position.x,
+					position.y,
+					position.z,
+					true
+				).apply {
 				setVelocity(desiredVelocity.x, desiredVelocity.y, desiredVelocity.z)
 			})
 		}

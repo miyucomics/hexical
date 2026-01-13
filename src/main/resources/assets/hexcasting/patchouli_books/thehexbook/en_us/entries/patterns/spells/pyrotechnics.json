@@ -11,14 +11,6 @@
 		},
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:simulate_firework",
-			"anchor": "hexical:simulate_firework",
-			"input": "vector, vector, number",
-			"output": "",
-			"text": "hexical.page.simulate_firework.summary"
-		},
-		{
-			"type": "hexcasting:pattern",
 			"op_id": "hexical:conjure_firework",
 			"anchor": "hexical:conjure_firework",
 			"input": "vec, vec, num, num, list of vec, list of vec, bool, bool",
