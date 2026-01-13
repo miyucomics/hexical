@@ -22,13 +22,13 @@ public abstract class PatternIotaMixin {
 	void expandRuntimeMacros(CastingVM vm, ServerWorld world, SpellContinuation continuation, CallbackInfoReturnable<CastResult> cir) {
 		PatternIota pattern = (PatternIota) (Object) this;
 
-		CastResult driverDotResult = DriverDotItem.handleDriverDot(vm, pattern, continuation, world);
+		CastResult driverDotResult = DriverDotItem.handleDriverDot(vm, pattern, continuation);
 		if (driverDotResult != null) {
 			cir.setReturnValue(driverDotResult);
 			return;
 		}
 
-		CastResult scarabResult = ScarabBeetleItem.handleScarab(vm, pattern, continuation, world);
+		CastResult scarabResult = ScarabBeetleItem.handleScarab(vm, pattern, continuation);
 		if (scarabResult != null)
 			cir.setReturnValue(scarabResult);
 	}
