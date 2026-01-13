@@ -14,8 +14,7 @@ import net.minecraft.server.world.ServerWorld
 // continuation frame used by scarabs and driver dots to prevent recursive macros
 data class RecursiveFrame(val signature: String) : ContinuationFrame {
 	override val type: ContinuationFrame.Type<*> = TYPE
-	override fun evaluate(continuation: SpellContinuation, level: ServerWorld, harness: CastingVM) =
-		CastResult(NullIota(), continuation, null, listOf(), ResolvedPatternType.EVALUATED, HexEvalSounds.NOTHING,)
+	override fun evaluate(continuation: SpellContinuation, level: ServerWorld, harness: CastingVM) = CastResult(NullIota(), continuation, null, listOf(), ResolvedPatternType.EVALUATED, HexEvalSounds.NOTHING)
 	override fun serializeToNBT() = NbtCompound().apply { putString("signature", signature) }
 	override fun breakDownwards(stack: List<Iota>) = true to stack
 	override fun size() = 0

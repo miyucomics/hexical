@@ -22,7 +22,6 @@ import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtElement
 import net.minecraft.server.network.ServerPlayerEntity
-import net.minecraft.server.world.ServerWorld
 import net.minecraft.text.Text
 import net.minecraft.util.Formatting
 import net.minecraft.util.Rarity
@@ -38,7 +37,7 @@ object DriverDotItem : Item(Settings().maxCount(1).rarity(Rarity.UNCOMMON)) {
 	}
 
 	@JvmStatic
-	fun handleDriverDot(vm: CastingVM, iota: PatternIota, continuation: SpellContinuation, world: ServerWorld): CastResult? {
+	fun handleDriverDot(vm: CastingVM, iota: PatternIota, continuation: SpellContinuation): CastResult? {
 		val env = vm.env
 		if (env !is PlayerBasedCastEnv)
 			return null
