@@ -17,13 +17,29 @@
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:charm",
 			"anchor": "hexical:charm",
-			"input": "list, num, list of num, list of num",
+			"input": "list, num, list, list, any",
 			"output": "",
 			"text": "hexical.page.charm.summary"
 		},
 		{
 			"type": "patchouli:text",
 			"text": "hexical.page.charm.description"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:icon_charmed",
+			"anchor": "hexical:icon_charmed",
+			"input": "vector/null",
+			"output": "",
+			"text": "hexical.page.icon_charmed.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:discharm",
+			"anchor": "hexical:discharm",
+			"input": "entity",
+			"output": "",
+			"text": "hexical.page.discharm.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -56,22 +72,6 @@
 			"input": "",
 			"output": "any",
 			"text": "hexical.page.read_charmed_proxy.summary"
-		},
-		{
-			"type": "hexcasting:pattern",
-			"op_id": "hexical:icon_charmed",
-			"anchor": "hexical:icon_charmed",
-			"input": "vector/null",
-			"output": "",
-			"text": "hexical.page.icon_charmed.summary"
-		},
-		{
-			"type": "hexcasting:pattern",
-			"op_id": "hexical:discharm",
-			"anchor": "hexical:discharm",
-			"input": "entity",
-			"output": "",
-			"text": "hexical.page.discharm.summary"
 		}
 	]
 }
