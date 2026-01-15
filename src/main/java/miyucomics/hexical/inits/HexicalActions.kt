@@ -99,8 +99,6 @@ import net.minecraft.registry.Registry
 
 object HexicalActions {
 	fun init() {
-		register("zap", "qad", HexDir.WEST, OpZap)
-
 		Registry.register(HexArithmetics.REGISTRY, HexicalMain.id("patterns"), PatternArithmetic)
 
 		register("normalize_scroll", "wqwawqwqawawa", HexDir.SOUTH_WEST, OpAlterScroll { it.setState(0) })
@@ -234,6 +232,8 @@ object HexicalActions {
 
 		register("break_fortune", "qaqqqqqdeeeqeee", HexDir.EAST, OpBreakFortune)
 		register("break_silk", "aqaeaqdeeweweedq", HexDir.EAST, OpBreakSilk)
+
+		register("zap", "qad", HexDir.WEST, OpZap)
 
 		register("conjure_gummy", "eeewdw", HexDir.SOUTH_WEST, OpConjureGummy)
 		register("conjure_hexburst", "aadaadqaq", HexDir.EAST, OpConjureHexburst)
