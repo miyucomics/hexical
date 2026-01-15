@@ -21,7 +21,7 @@ object OpZap : SpellAction {
 
 	private data class Spell(val pos: BlockPos, val power: Int, val time: Int) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			ZapManager.triggerRedstone(env.world, pos, power, time)
+			ZapManager.zap(env.world, pos, power, time)
 		}
 	}
 }
