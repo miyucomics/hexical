@@ -655,6 +655,11 @@
 	"hexcasting.action.hexical:break_silk": "Collect Block",
 	"hexical.page.break_silk.summary": "Breaks a block gently, perserving the block better than standard mining. Costs about half of an $(l:items/amethyst)$(item)Amethyst Dust$().",
 
+	"hexical.page.zap.title": "Redstone Zapping",
+	"hexcasting.action.hexical:zap": "Zap",
+	"hexical.page.zap.summary": "Forces the Redstone power at a block to a given value of my choosing for a given duration in twentieths of a second. Costs a negligible amount of _media.",
+	"hexical.page.zap.description": "This spell derives power out of nowhere and directs into just the target. A single cast can last up to five seconds and output the full 0 to 15 spectrum. Interestingly, if the block is receiving a higher power from external sources, this spell forces its value downwards.$(br2)Some ancient _Hexcasters referred to this spell as an $(o)ideal voltage source$(), whatever that means.",
+
 	"hexical.page.conjurable_delights.title": "Conjurable Delights",
 	"hexical.page.conjurable_delights.0": "Ancient _Hexcasters seem to have devised spells to conjure a multitude of items, to both further their Art and to convenience their collaboration. I can only link these items together by their being $(o)vaguely$() edible.$(br2)$(o)What nicer thing can you do for somebody than make them breakfast?$()",
 	"hexcasting.action.hexical:conjure_gummy": "Conjure Hex Gummy",
