@@ -149,6 +149,11 @@
 	"hexical.mage_block.redstone": "Energized: %d",
 	"hexical.mage_block.volatile": "Volatile",
 
+	"hexcasting.iota.hexical:dye": "Dye",
+	"hexcasting.iota.hexical:dye.desc": "a dye",
+	"hexcasting.iota.hexical:pigment": "Pigment",
+	"hexcasting.iota.hexical:pigment.desc": "a pigment",
+	
 	"hexcasting.mishap.bad_block.akashic_bookshelf": "an akashic bookshelf",
 	"hexcasting.mishap.bad_block.mage_block": "a mage block",
 	"hexcasting.mishap.bad_block.pedestal": "a pedestal",
