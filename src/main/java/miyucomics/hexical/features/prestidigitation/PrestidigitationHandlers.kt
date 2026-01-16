@@ -3,11 +3,11 @@ package miyucomics.hexical.features.prestidigitation
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import miyucomics.hexical.features.prestidigitation.handlers.PrestidigitationBlockBooleans
 import miyucomics.hexical.features.prestidigitation.handlers.PrestidigitationBlockTransformations
-import miyucomics.hexical.features.prestidigitation.handlers.PrestidigitationHandlerBlock
-import miyucomics.hexical.features.prestidigitation.handlers.PrestidigitationHandlerEntity
+import miyucomics.hexical.features.prestidigitation.handlers.PrestidigitationHandlersBlock
+import miyucomics.hexical.features.prestidigitation.handlers.PrestidigitationHandlersEntity
 import miyucomics.hexical.features.prestidigitation.interfaces.PrestidigitationHandler
-import miyucomics.hexical.features.prestidigitation.interfaces.PrestidigitationHandlersBlock
-import miyucomics.hexical.features.prestidigitation.interfaces.PrestidigitationHandlersEntity
+import miyucomics.hexical.features.prestidigitation.interfaces.PrestidigitationHandlerBlock
+import miyucomics.hexical.features.prestidigitation.interfaces.PrestidigitationHandlerEntity
 import miyucomics.hexical.misc.InitHook
 import net.minecraft.entity.Entity
 import net.minecraft.util.math.BlockPos

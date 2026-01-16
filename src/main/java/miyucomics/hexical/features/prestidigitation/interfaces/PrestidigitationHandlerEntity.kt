@@ -1,7 +1,6 @@
-package miyucomics.hexical.features.prestidigitation.handlers
+package miyucomics.hexical.features.prestidigitation.interfaces
 
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
-import miyucomics.hexical.features.prestidigitation.interfaces.PrestidigitationHandler
 import net.minecraft.entity.Entity
 
 abstract class PrestidigitationHandlerEntity<T>(private val handledClass: Class<T>) : PrestidigitationHandler {
@@ -14,6 +13,12 @@ abstract class PrestidigitationHandlerEntity<T>(private val handledClass: Class<
 			affect(env, entity as T)
 		} else {
 			throw IllegalStateException("Spent media but unable to affect entity?")
+		}
+	}
+
+	companion object {
+		fun <T : Entity> simple(handledClass: Class<T>, effect: (T) -> Unit): PrestidigitationHandlerEntity<T> = object : PrestidigitationHandlerEntity<T>(handledClass) {
+			override fun affect(env: CastingEnvironment, entity: T) = effect(entity)
 		}
 	}
 }

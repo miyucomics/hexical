@@ -1,7 +1,6 @@
-package miyucomics.hexical.features.prestidigitation.handlers
+package miyucomics.hexical.features.prestidigitation.interfaces
 
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
-import miyucomics.hexical.features.prestidigitation.interfaces.PrestidigitationHandler
 import net.minecraft.block.Block
 import net.minecraft.block.BlockState
 import net.minecraft.util.math.BlockPos
