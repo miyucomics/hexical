@@ -1,4 +1,4 @@
-package miyucomics.hexical.features.prestidigitation.interfaces
+package miyucomics.hexical.features.prestidigitation.handlers
 
 import at.petrak.hexcasting.api.casting.circles.BlockEntityAbstractImpetus
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
@@ -6,7 +6,8 @@ import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.mod.HexTags
 import at.petrak.hexcasting.common.blocks.akashic.BlockEntityAkashicBookshelf
 import at.petrak.hexcasting.common.lib.HexBlocks
-import miyucomics.hexical.features.prestidigitation.handlers.PrestidigitationHandlerBlock
+import miyucomics.hexical.features.prestidigitation.interfaces.PrestidigitationHandler
+import miyucomics.hexical.features.prestidigitation.interfaces.PrestidigitationHandlerBlock
 import miyucomics.hexical.misc.CastingUtils
 import net.minecraft.block.*
 import net.minecraft.block.entity.BeehiveBlockEntity
