@@ -1,6 +1,7 @@
-package miyucomics.hexical.features.prestidigitation
+package miyucomics.hexical.features.prestidigitation.handlers
 
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
+import miyucomics.hexical.features.prestidigitation.interfaces.PrestidigitationHandler
 import net.minecraft.entity.Entity
 
 abstract class PrestidigitationHandlerEntity<T>(private val handledClass: Class<T>) : PrestidigitationHandler {
