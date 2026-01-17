@@ -6,7 +6,6 @@ import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationAccess
 import miyucomics.hexical.features.curios.FluteCurioPlayerModel
 import miyucomics.hexical.features.curios.HandbellCurioPlayerModel
 import miyucomics.hexical.features.curios.curios.HandbellCurio
-import miyucomics.hexical.features.dance.DanceAnimation
 import miyucomics.hexical.features.evocation.EvocationAnimation
 import miyucomics.hexical.inits.HexicalItems
 import miyucomics.hexical.misc.InitHook
@@ -16,25 +15,20 @@ import net.minecraft.util.Hand
 object PlayerAnimatorHook : InitHook() {
 	override fun init() {
 		PlayerAnimationAccess.REGISTER_ANIMATION_EVENT.register { player, stack ->
-			stack.addAnimLayer(300, DanceAnimation(player))
-
 			stack.addAnimLayer(200, EvocationAnimation(player))
 
 			stack.addAnimLayer(100, ModifierLayer(FluteCurioPlayerModel(player)).also {
 				it.addModifierBefore(object : MirrorModifier() {
-					override fun isEnabled() = (player.mainArm == Arm.LEFT) xor (player.getStackInHand(Hand.OFF_HAND).isOf(
-						HexicalItems.CURIO_FLUTE) && !player.getStackInHand(Hand.MAIN_HAND).isOf(HexicalItems.CURIO_FLUTE))
+					override fun isEnabled() = (player.mainArm == Arm.LEFT) xor (player.getStackInHand(Hand.OFF_HAND).isOf(HexicalItems.CURIO_FLUTE) && !player.getStackInHand(Hand.MAIN_HAND).isOf(HexicalItems.CURIO_FLUTE))
 				})
 			})
 
-			val handbellAnimation = ModifierLayer(HandbellCurioPlayerModel(player)).also {
+			stack.addAnimLayer(100, ModifierLayer(HandbellCurioPlayerModel(player)).also {
 				it.addModifierBefore(object : MirrorModifier() {
-					override fun isEnabled() = (player.mainArm == Arm.LEFT) xor (player.getStackInHand(Hand.OFF_HAND).isOf(
-						HexicalItems.CURIO_HANDBELL) && !player.getStackInHand(Hand.MAIN_HAND).isOf(HexicalItems.CURIO_HANDBELL))
+					override fun isEnabled() = (player.mainArm == Arm.LEFT) xor (player.getStackInHand(Hand.OFF_HAND).isOf(HexicalItems.CURIO_HANDBELL) && !player.getStackInHand(Hand.MAIN_HAND).isOf(HexicalItems.CURIO_HANDBELL))
 				})
-			}
-			PlayerAnimationAccess.getPlayerAssociatedData(player).set(HandbellCurio.CHANNEL, handbellAnimation)
-			stack.addAnimLayer(100, handbellAnimation)
+				PlayerAnimationAccess.getPlayerAssociatedData(player).set(HandbellCurio.CHANNEL, it)
+			})
 		}
 	}
 }
