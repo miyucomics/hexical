@@ -30,7 +30,9 @@ object HandbellCurio : CurioItem() {
 	}
 
 	private fun playSound(world: ServerWorld, user: ServerPlayerEntity) {
-		ServerPlayNetworking.send(user, CHANNEL, PacketByteBufs.create().also { it.writeUuid(user.uuid) })
+		world.players.forEach {
+			world.sendToPlayerIfNearby(it, false, user.x, user.y, user.z, ServerPlayNetworking.createS2CPacket(CHANNEL, PacketByteBufs.create().apply { writeUuid(user.uuid) }))
+		}
 		world.playSound(null, user.x, user.y, user.z, HexicalSounds.HANDBELL_CHIMES, SoundCategory.MASTER, 1f, 0.8f + HexicalMain.RANDOM.nextFloat() * 0.3f)
 	}
 }
