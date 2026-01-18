@@ -16,6 +16,7 @@ import net.minecraft.util.TypedActionResult
 import net.minecraft.world.World
 
 object HandbellCurio : CurioItem() {
+	@JvmField
 	val CHANNEL = HexicalMain.id("handbell")
 
 	override fun use(world: World, user: PlayerEntity, hand: Hand): TypedActionResult<ItemStack> {

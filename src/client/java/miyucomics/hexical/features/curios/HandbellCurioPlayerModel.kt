@@ -20,18 +20,20 @@ class HandbellCurioPlayerModel(val player: PlayerEntity) : IAnimation {
 			shakingBellTimer -= 1
 	}
 
+	fun getRoll(tickDelta: Float): Float {
+		if (shakingBellTimer == 0)
+			return 0f
+		val progress = ((1f - shakingBellTimer + tickDelta) / 10f)
+		val eased = (1f - MathHelper.cos(progress * MathHelper.PI)) / 2f
+		return MathHelper.sin(eased * MathHelper.PI * 2) * 20f
+	}
+
 	override fun get3DTransform(modelName: String, type: TransformType, tickDelta: Float, original: Vec3f): Vec3f {
 		if (modelName == "rightArm" && type == TransformType.ROTATION) {
 			val time = ClientStorage.ticks + tickDelta
 			val pitch = MathHelper.sin(time * 0.08f + 0.8f) * 2f
 			val yaw = MathHelper.sin(time * 0.06f + 0.2f) * 2f
-			var roll = MathHelper.sin(time * 0.07f) * 2f
-
-			if (shakingBellTimer > 0) {
-				val progress = ((1f - shakingBellTimer + tickDelta) / 10f)
-				val eased = (1f - MathHelper.cos(progress * MathHelper.PI)) / 2f
-				roll += MathHelper.sin(eased * MathHelper.PI * 2) * 20f
-			}
+			val roll = MathHelper.sin(time * 0.07f) * 2f + getRoll(tickDelta)
 			return Vec3f(-90f + pitch, yaw, roll).scale(MathHelper.RADIANS_PER_DEGREE)
 		}
 		return original
