@@ -8,6 +8,7 @@
 		"EntityRendererMixin",
 		"GameRendererMixin",
 		"GuiSpellcastingMixin",
+		"HeldItemRendererMixin",
 		"InGameHudMixin",
 		"ItemEntityRendererMixin",
 		"ItemRendererMixin",
