@@ -1,10 +1,7 @@
 package miyucomics.hexical.features.curios
 
 import at.petrak.hexcasting.api.casting.iota.Iota
-import miyucomics.hexical.features.curios.curios.BaseCurio
-import miyucomics.hexical.features.curios.curios.CompassCurio
-import miyucomics.hexical.features.curios.curios.FluteCurio
-import miyucomics.hexical.features.curios.curios.HandbellCurio
+import miyucomics.hexical.features.curios.curios.*
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.server.network.ServerPlayerEntity
@@ -18,7 +15,8 @@ abstract class CurioItem : Item(Settings().maxCount(1)) {
 		private val specialCurios = mapOf(
 			"compass" to CompassCurio,
 			"handbell" to HandbellCurio,
-			"flute" to FluteCurio
+			"flute" to FluteCurio,
+			"staff" to StaffCurio
 		)
 
 		fun getCurioFromName(name: String): CurioItem {
