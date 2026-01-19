@@ -10,6 +10,7 @@ import miyucomics.hexical.features.prestidigitation.interfaces.PrestidigitationH
 import miyucomics.hexical.features.prestidigitation.interfaces.PrestidigitationHandlerBlock
 import miyucomics.hexical.misc.CastingUtils
 import net.minecraft.block.*
+import net.minecraft.block.entity.AbstractFurnaceBlockEntity
 import net.minecraft.block.entity.BeehiveBlockEntity
 import net.minecraft.block.entity.BellBlockEntity
 import net.minecraft.block.enums.Attachment
@@ -191,6 +192,13 @@ object PrestidigitationHandlersBlock {
 			override fun affect(env: CastingEnvironment, pos: BlockPos) {
 				(env.world.getBlockEntity(pos) as BlockEntityAbstractImpetus).startExecution(env.castingEntity as ServerPlayerEntity)
 			}
+		})
+
+		register(PrestidigitationHandlerBlock.blockEntity(AbstractFurnaceBlockEntity::class.java) { world, pos, furnace ->
+			furnace.burnTime += AbstractFurnaceBlockEntity.DEFAULT_COOK_TIME
+			furnace.fuelTime = furnace.burnTime
+			world.setBlockState(pos, world.getBlockState(pos).with(AbstractFurnaceBlock.LIT, true))
+			furnace.markDirty()
 		})
 	}
 }

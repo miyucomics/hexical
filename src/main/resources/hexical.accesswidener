@@ -16,3 +16,5 @@ accessible method net/minecraft/client/render/VertexConsumerProvider$Immediate <
 accessible field net/minecraft/item/AxeItem STRIPPED_BLOCKS Ljava/util/Map;
 accessible field net/minecraft/item/ShovelItem PATH_STATES Ljava/util/Map;
 accessible method net/minecraft/block/ButtonBlock playClickSound (Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/world/WorldAccess;Lnet/minecraft/util/math/BlockPos;Z)V
+accessible field net/minecraft/block/entity/AbstractFurnaceBlockEntity burnTime I
+accessible field net/minecraft/block/entity/AbstractFurnaceBlockEntity fuelTime I

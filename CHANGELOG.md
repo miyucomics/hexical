@@ -15,6 +15,7 @@
 - added plushies
 - added Horrible
 - added piston spell to push blocks
+- added more prestidigitation effects
 - added 512 pattern cap to grimoires
 - added name and lore spell that uses text iota
 - added HexGloop's Dispense spell
