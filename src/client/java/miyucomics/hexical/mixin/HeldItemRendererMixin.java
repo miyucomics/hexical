@@ -23,6 +23,7 @@ public class HeldItemRendererMixin {
 	void shakeBell(AbstractClientPlayerEntity player, float tickDelta, float pitch, Hand hand, float swingProgress, ItemStack item, float equipProgress, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, CallbackInfo ci) {
 		if (!item.isOf(HexicalItems.CURIO_HANDBELL))
 			return;
+		@SuppressWarnings("unchecked")
 		float roll = ((ModifierLayer<HandbellCurioPlayerModel>) PlayerAnimationAccess.getPlayerAssociatedData(player).get(HandbellCurio.CHANNEL)).getAnimation().getRoll(tickDelta);
 		matrices.translate(0f, 0.25f, -0.25f);
 		if (hand == Hand.MAIN_HAND)
