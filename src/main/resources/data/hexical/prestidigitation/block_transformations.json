@@ -2,5 +2,7 @@
 	"minecraft:mud": "minecraft:clay",
 	"minecraft:dirt_path": "minecraft:farmland",
 	"minecraft:sponge": "minecraft:wet_sponge",
-	"minecraft:wet_sponge": "minecraft:sponge"
+	"minecraft:wet_sponge": "minecraft:sponge",
+	"minecraft:brown_mushroom": "minecraft:red_mushroom",
+	"minecraft:red_mushroom": "minecraft:brown_mushroom"
 }
