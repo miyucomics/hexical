@@ -1,4 +1,6 @@
 {
 	"minecraft:mud": "minecraft:clay",
-	"minecraft:dirt_path": "minecraft:farmland"
+	"minecraft:dirt_path": "minecraft:farmland",
+	"minecraft:sponge": "minecraft:wet_sponge",
+	"minecraft:wet_sponge": "minecraft:sponge"
 }
