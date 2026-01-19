@@ -43,7 +43,7 @@ class EvocationTicker : PlayerTicker {
 			val hand = if(!player.getStackInHand(Hand.MAIN_HAND).isEmpty && player.getStackInHand(Hand.OFF_HAND).isEmpty){ Hand.OFF_HAND } else { Hand.MAIN_HAND }
 			val vm = CastingVM(CastingImage(), EvocationCastEnv(player, hand))
 			vm.queueExecuteAndWrapIotas(HexSerialization.deserializeHex(player.evocation, player.world as ServerWorld), player.serverWorld)
-			player.world.playSound(null, player.x, player.y, player.z, HexicalSounds.EVOKING_CAST, SoundCategory.PLAYERS, 1f, 1f)
+			player.world.playSound(null, player.x, player.y, player.z, HexicalSounds.MAGIC_WOOSHES, SoundCategory.PLAYERS, 1f, 1f)
 		}
 	}
 }
