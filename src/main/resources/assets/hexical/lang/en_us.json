@@ -741,6 +741,14 @@
 	"hexical.page.conjure_firework.2": "$(o)Colors$()$(br2)The fifth and sixth parameters are lists of vectors, representing colors. The first list maps to the colors of the initial explosions, while the second maps to the colors that the particles fade into. There must be at least one vector specified for the first list, but the second list may be empty.$(br2)The vector components represent redness, greenness, and blueness on a scale of 0 to 1 respectively.",
 	"hexical.page.conjure_firework.3": "$(o)Special Effects$()$(br2)The seventh parameter controls whether the particles of the firework flicker, as if adding glowstone to the $(item)virtual Firework Star$().$(br2)The eighth parameter controls whether the particles of the firework leave trails, as if adding a diamond to the $(item)virtual Firework Star$().",
 
+	"hexical.page.sentinel_defense.title": "Sentinel Defense",
+	"hexical.page.sentinel_defense.0": "$(l:patterns/great_spells/greater_sentinel)$(thing)Greater Sentinels$() allow _Hexcasters to attack me from afar, and worse, they are invisible and can stalk after me without me being any the wiser.$(br2)Fortunately, their ambit-producing creates a very distinct and detectable _media signature. If I could find the core, a concentrated blast of _media should exorcise them.",
+	"hexical.page.sentinel_defense.1": "Unfortunately, their signature only extends so far as their ambit, so to detect it, I must sample at a location already under its influence, i.e. within sixteen blocks. Using that reading, I can find the unit vector pointing towards the core and with multiple readings, divine its exact position.$(br2)A sudden focused discharge of _media at that point should completely dissolve it; it is just a construct of _media after all.",
+	"hexcasting.action.hexical:hunt_sentinel": "Vigilance Purification",
+	"hexical.page.hunt_sentinel.summary": "Pushes a unit vector towards the nearest $(l:patterns/great_spells/greater_sentinel)$(thing)Greater Sentinel$() within sixteen blocks from the given position or $(l:casting/influences)$(thing)Null$() if there is not one. Costs a negligible amount of _media.",
+	"hexcasting.action.hexical:exorcise_sentinel": "Exorcise Sentinel",
+	"hexical.page.exorcise_sentinel.summary": "Destroys the closest $(l:patterns/great_spells/greater_sentinel)$(thing)Greater Sentinel$() within a tenth of a block of the given position. Costs about three $(l:items/amethyst)$(item)Charged Amethyst$() whether there is one or not.",
+
 	"hexical.page.shaders.title": "Shaders",
 	"hexical.page.shaders.0": "These spells revolve around manipulating my light receptors, allowing me to alter my vision for utility and fun. These spells break upon death or me leaving this world and returning at a later date.$(br2)$(o)You sense that something is off. You feel in harmony with the magic. Maan, that color smells interesting. Usual concepts don't apply.$()",
 	"hexcasting.action.hexical:shader_clear": "Clear Vision",

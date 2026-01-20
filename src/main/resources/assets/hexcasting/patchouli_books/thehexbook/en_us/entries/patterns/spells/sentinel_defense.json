@@ -1,0 +1,33 @@
+{
+	"name": "hexical.page.sentinel_defense.title",
+	"icon": "minecraft:iron_sword",
+	"category": "hexcasting:patterns/spells",
+	"advancement": "hexcasting:root",
+	"sortnum": 30,
+	"pages": [
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.sentinel_defense.0"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.sentinel_defense.1"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:hunt_sentinel",
+			"anchor": "hexical:hunt_sentinel",
+			"input": "vector",
+			"output": "vector/null",
+			"text": "hexical.page.hunt_sentinel.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:exorcise_sentinel",
+			"anchor": "hexical:exorcise_sentinel",
+			"input": "vector",
+			"output": "",
+			"text": "hexical.page.exorcise_sentinel.summary"
+		}
+	]
+}

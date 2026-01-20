@@ -78,6 +78,8 @@ import miyucomics.hexical.features.piston.OpPiston
 import miyucomics.hexical.features.prestidigitation.OpPrestidigitation
 import miyucomics.hexical.features.rotate.OpRotateBlock
 import miyucomics.hexical.features.rotate.OpRotateEntity
+import miyucomics.hexical.features.sentinel_defense.OpExorciseSentinel
+import miyucomics.hexical.features.sentinel_defense.OpHuntSentinel
 import miyucomics.hexical.features.shaders.OpShader
 import miyucomics.hexical.features.sparkle.OpSparkle
 import miyucomics.hexical.features.specklikes.actions.*
@@ -206,6 +208,16 @@ object HexicalActions {
 		register("mage_hand", "aaqqaeea", HexDir.WEST, OpMageHand)
 		register("mage_mouth", "aaqqadaa", HexDir.WEST, OpMageMouth)
 
+		register("conjure_flora", "weqqqqqwaeaeaeaeaea", HexDir.NORTH_EAST, OpConjureFlora)
+
+		register("confetti", "awddeqaedd", HexDir.EAST, OpConfetti)
+		register("vibration", "wwawawwd", HexDir.EAST, OpVibrate)
+		register("sparkle", "dqa", HexDir.NORTH_EAST, OpSparkle)
+		register("jailbreak", "wwaqqqqqeqdedwqeaeqwdedwqeaeq", HexDir.EAST, OpJailbreakDevice)
+		register("light", "aeaeaeaeaeawqqqqq", HexDir.SOUTH_EAST, OpConjureLight)
+		register("gasp", "aweeeeewaweeeee", HexDir.NORTH_WEST, OpGasp)
+		register("parrot", "wweedadw", HexDir.NORTH_EAST, OpImitateParrot)
+
 		register("egg", "qqqwaqaaqeeewdedde", HexDir.SOUTH_EAST, OpConjureEntity(MediaConstants.DUST_UNIT * 2) { world, position, caster -> EggEntity(world, position.x, position.y, position.z).apply { owner = caster } })
 		register("llama_spit", "dwqaqw", HexDir.EAST, OpConjureEntity(MediaConstants.DUST_UNIT / 4) { world, position, caster -> LlamaSpitEntity(EntityType.LLAMA_SPIT, world).apply {
 			setPosition(position)
@@ -217,15 +229,6 @@ object HexicalActions {
 		register("ghast_fireball", "wqqqqqwaeaeaeaeae", HexDir.SOUTH_EAST, OpConjureEntity(MediaConstants.DUST_UNIT * 3) { world, position, caster -> FireballEntity(world, caster, 0.0, 0.0, 0.0, 1).apply {
 			setPosition(position)
 		}})
-
-		register("confetti", "awddeqaedd", HexDir.EAST, OpConfetti)
-		register("vibration", "wwawawwd", HexDir.EAST, OpVibrate)
-		register("sparkle", "dqa", HexDir.NORTH_EAST, OpSparkle)
-		register("jailbreak", "wwaqqqqqeqdedwqeaeqwdedwqeaeq", HexDir.EAST, OpJailbreakDevice)
-		register("conjure_flora", "weqqqqqwaeaeaeaeaea", HexDir.NORTH_EAST, OpConjureFlora)
-		register("light", "aeaeaeaeaeawqqqqq", HexDir.SOUTH_EAST, OpConjureLight)
-		register("gasp", "aweeeeewaweeeee", HexDir.NORTH_WEST, OpGasp)
-		register("parrot", "wweedadw", HexDir.NORTH_EAST, OpImitateParrot)
 
 		register("mute", "wddaq", HexDir.EAST, OpMute)
 		register("is_mute", "edaaw", HexDir.NORTH_WEST, OpIsMute)
@@ -257,13 +260,19 @@ object HexicalActions {
 		register("set_evocation", "wwaqqqqqeqdedwwqwqwwdedwwqwqw", HexDir.EAST, OpSetEvocation)
 		register("is_evoking", "wwaqqqqqeeaqawwewewwaqawwewew", HexDir.EAST, OpGetKeybindSelf("key.hexical.evoke"))
 
-		register("conjure_firework", "dedwaqwwawwqa", HexDir.SOUTH_WEST, OpConjureFirework)
+		register("hopper", "qwawqwaeqqq", HexDir.SOUTH_EAST, OpHopper)
+		register("index_hopper", "qqqeawqwawq", HexDir.SOUTH_WEST, OpIndexHopper)
 
 		register("get_hotbar", "qwawqwa", HexDir.EAST, OpGetHotbar)
 		register("set_hotbar", "dwewdwe", HexDir.WEST, OpSetHotbar)
 
 		register("set_lesser_sentinels", "aeaae", HexDir.EAST, OpLesserSentinelSet)
 		register("get_lesser_sentinels", "dqddq", HexDir.WEST, OpLesserSentinelGet)
+
+		register("conjure_firework", "dedwaqwwawwqa", HexDir.SOUTH_WEST, OpConjureFirework)
+
+		register("hunt_sentinel", "dwqwaeawaeqqqwqwqqw", HexDir.NORTH_EAST, OpHuntSentinel)
+		register("exorcise_sentinel", "wdqdwdqedwewaawewd", HexDir.EAST, OpExorciseSentinel)
 
 		register("shader_clear", "eeeeeqaqeeeee", HexDir.WEST, OpShader(null))
 		register("shader_owl", "edewawede", HexDir.WEST, OpShader(HexicalMain.id("shaders/post/night_vision.json")))
@@ -272,9 +281,6 @@ object HexicalActions {
 		register("shader_media", "eewdweqaqewdwee", HexDir.WEST, OpShader(HexicalMain.id("shaders/post/media.json")))
 		register("shader_spider", "qaqdedaedqqdedaqaedeqd", HexDir.NORTH_EAST, OpShader(HexicalMain.id("shaders/post/spider.json")))
 		// color shift - edqdeqaqedqde
-
-		register("hopper", "qwawqwaeqqq", HexDir.SOUTH_EAST, OpHopper)
-		register("index_hopper", "qqqeawqwawq", HexDir.SOUTH_WEST, OpIndexHopper)
 
 		register("horrible", "wedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqeedqawqeewdeaqqewdeaqeewdeaqeedqawqqedqawqqewdeaqeedqawqeewdeaqqewdeaqeewdeaqeedqawqqedqawqqewdeaqqedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqqedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqeedqawqeewdeaqeewdeaqqedqawqqedqawqeedqawqqewdeaqqedqawqeewdeaqqewdeaqeewdeaqeedqawqqedqawqqewdeaqe", HexDir.EAST, OpHorrible)
 
