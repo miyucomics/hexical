@@ -15,6 +15,7 @@
 - added plushies
 - added Horrible
 - added piston spell to push blocks
+- added more prestidigitation effects
 - added 512 pattern cap to grimoires
 - added name and lore spell that uses text iota
 - added HexGloop's Dispense spell
@@ -125,6 +126,7 @@
 - refactored code massively; split sources, no more server errors hopefully
 - removed tchotchkes
 - removed the Myodesopsia spell
+- removed the Simulate Firework spell, just acted really strangely
 - removed limitation on arch lamps per person
 - removed Alteration Purification
 - removed Pocket Reflection II

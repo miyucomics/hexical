@@ -20,8 +20,7 @@ object HandbellCurioItemModel : InitHook() {
 
 		ClientPlayNetworking.registerGlobalReceiver(HandbellCurio.CHANNEL) { client, _, buf, _ ->
 			val player = client.world!!.getPlayerByUuid(buf.readUuid()) ?: return@registerGlobalReceiver
-			val handbellAnimation = (PlayerAnimationAccess.getPlayerAssociatedData(player as AbstractClientPlayerEntity).get(
-				HandbellCurio.CHANNEL) as ModifierLayer<HandbellCurioPlayerModel>).animation
+			val handbellAnimation = (PlayerAnimationAccess.getPlayerAssociatedData(player as AbstractClientPlayerEntity).get(HandbellCurio.CHANNEL) as ModifierLayer<HandbellCurioPlayerModel>).animation
 			handbellAnimation!!.shakingBellTimer = 10
 		}
 	}

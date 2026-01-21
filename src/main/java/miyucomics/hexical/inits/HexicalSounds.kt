@@ -9,9 +9,9 @@ object HexicalSounds {
 	val AMETHYST_MELT: SoundEvent = register("amethyst_melt")
 	val ITEM_DUNKS: SoundEvent = register("item_dunks")
 	val EVOKING_MURMUR: SoundEvent = register("evoking_murmur")
-	val EVOKING_CAST: SoundEvent = register("evoking_casts")
 	val LAMP_ACTIVATE: SoundEvent = register("lamp_activate")
 	val LAMP_DEACTIVATE: SoundEvent = register("lamp_deactivate")
+	val MAGIC_WOOSHES: SoundEvent = register("magic_wooshes")
 	@JvmField
 	val SUDDEN_REALIZATION: SoundEvent = register("sudden_realization")
 	val REPLENISH_AIR: SoundEvent = register("replenish_air")

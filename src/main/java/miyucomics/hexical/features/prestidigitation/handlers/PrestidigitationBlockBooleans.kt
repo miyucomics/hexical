@@ -1,9 +1,11 @@
-package miyucomics.hexical.features.prestidigitation
+package miyucomics.hexical.features.prestidigitation.handlers
 
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import miyucomics.hexical.HexicalMain
+import miyucomics.hexical.features.prestidigitation.interfaces.PrestidigitationHandler
+import miyucomics.hexical.features.prestidigitation.interfaces.PrestidigitationHandlerBlock
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper
 import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener
 import net.minecraft.block.Block
@@ -18,7 +20,7 @@ import java.io.InputStreamReader
 object PrestidigitationBlockBooleans {
 	private val map: MutableMap<Block, BooleanProperty> = mutableMapOf()
 
-	fun init() {
+	fun init(register: (PrestidigitationHandler) -> Unit) {
 		ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(object : SimpleSynchronousResourceReloadListener {
 			override fun getFabricId() = HexicalMain.id("prestidigitation_block_boolean")
 			override fun reload(manager: ResourceManager) {
@@ -33,7 +35,7 @@ object PrestidigitationBlockBooleans {
 			}
 		})
 
-		PrestidigitationHandlers.register(object : PrestidigitationHandlerBlock() {
+		register(object : PrestidigitationHandlerBlock() {
 			override fun canAffectBlock(env: CastingEnvironment, pos: BlockPos) = map.containsKey(getBlock(env, pos))
 			override fun affect(env: CastingEnvironment, pos: BlockPos) {
 				val state = getBlockState(env, pos)

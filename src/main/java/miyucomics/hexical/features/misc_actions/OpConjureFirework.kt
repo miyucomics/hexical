@@ -1,4 +1,4 @@
-package miyucomics.hexical.features.pyrotechnics
+package miyucomics.hexical.features.misc_actions
 
 import at.petrak.hexcasting.api.casting.*
 import at.petrak.hexcasting.api.casting.castables.SpellAction
@@ -47,7 +47,8 @@ object OpConjureFirework : SpellAction {
 		return SpellAction.Result(Spell(position, velocity, duration, shape, trueColors, fades, flicker, trail), MediaConstants.SHARD_UNIT, listOf(ParticleSpray.burst(position, 1.0)))
 	}
 
-	private data class Spell(val position: Vec3d, val desiredVelocity: Vec3d, val duration: Int, val shape: Int, val colors: List<Int>, val fades: List<Int>, val flicker: Boolean, val trail: Boolean) : RenderedSpell {
+	private data class Spell(val position: Vec3d, val desiredVelocity: Vec3d, val duration: Int, val shape: Int, val colors: List<Int>, val fades: List<Int>, val flicker: Boolean, val trail: Boolean) :
+		RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
 			val fireworkNbt = NbtCompound().apply {
 				put(FireworkRocketItem.EXPLOSIONS_KEY, NbtList().apply {
@@ -66,7 +67,15 @@ object OpConjureFirework : SpellAction {
 				stack.orCreateNbt.put(FireworkRocketItem.FIREWORKS_KEY, fireworkNbt)
 			}
 
-			env.world.spawnEntity(FireworkRocketEntity(env.world, fireworkStack, position.x, position.y, position.z, true).apply {
+			env.world.spawnEntity(
+				FireworkRocketEntity(
+					env.world,
+					fireworkStack,
+					position.x,
+					position.y,
+					position.z,
+					true
+				).apply {
 				setVelocity(desiredVelocity.x, desiredVelocity.y, desiredVelocity.z)
 			})
 		}

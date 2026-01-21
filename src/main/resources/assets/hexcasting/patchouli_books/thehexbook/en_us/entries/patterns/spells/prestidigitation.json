@@ -24,6 +24,10 @@
 		{
 			"type": "patchouli:text",
 			"text": "hexical.page.prestidigitation.2"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.prestidigitation.3"
 		}
 	]
 }
