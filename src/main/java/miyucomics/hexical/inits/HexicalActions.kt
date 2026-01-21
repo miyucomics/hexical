@@ -27,7 +27,6 @@ import miyucomics.hexical.features.breaking.OpBreakFortune
 import miyucomics.hexical.features.breaking.OpBreakSilk
 import miyucomics.hexical.features.charms.*
 import miyucomics.hexical.features.circle.OpAbsorbArm
-import miyucomics.hexical.features.circle.OpCreateDust
 import miyucomics.hexical.features.circle.OpDisplace
 import miyucomics.hexical.features.confection.OpConjureGummy
 import miyucomics.hexical.features.confection.OpConjureHexburst
@@ -254,7 +253,6 @@ object HexicalActions {
 
 		register("displace", "qaqqqqeedaqqqa", HexDir.NORTH_EAST, OpDisplace)
 		register("absorb_arm", "aaqqadaqwqa", HexDir.WEST, OpAbsorbArm)
-		register("create_dust", "eaqwedqdqddqqwae", HexDir.SOUTH_WEST, OpCreateDust)
 
 		register("get_evocation", "wwdeeeeeqeaqawwewewwaqawwewew", HexDir.EAST, OpGetEvocation)
 		register("set_evocation", "wwaqqqqqeqdedwwqwqwwdedwwqwqw", HexDir.EAST, OpSetEvocation)
