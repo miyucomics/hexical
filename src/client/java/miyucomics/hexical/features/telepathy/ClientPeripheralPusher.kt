@@ -16,7 +16,7 @@ object ClientPeripheralPusher : InitHook() {
 			if (client.player == null)
 				return@register
 
-			for (key in listOf(client.options.forwardKey, client.options.leftKey, client.options.rightKey, client.options.backKey, client.options.jumpKey, client.options.sneakKey, client.options.useKey, client.options.attackKey, HexicalKeybinds.TELEPATHY_KEYBIND, HexicalKeybinds.EVOKE_KEYBIND)) {
+			for (key in listOf(client.options.forwardKey, client.options.leftKey, client.options.rightKey, client.options.backKey, client.options.jumpKey, client.options.sneakKey, client.options.useKey, client.options.attackKey, client.options.sprintKey, HexicalKeybinds.TELEPATHY_KEYBIND, HexicalKeybinds.EVOKE_KEYBIND)) {
 				if (previousState[key.translationKey] != key.isPressed) {
 					val channel = when (key.isPressed) {
 						true -> ServerPeripheralReceiver.PRESSED_KEY_CHANNEL
