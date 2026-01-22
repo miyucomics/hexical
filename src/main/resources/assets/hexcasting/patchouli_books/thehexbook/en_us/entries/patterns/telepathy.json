@@ -83,19 +83,27 @@
 		},
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:jumping",
-			"anchor": "hexical:jumping",
-			"input": "",
-			"output": "number",
-			"text": "hexical.page.jumping.summary"
-		},
-		{
-			"type": "hexcasting:pattern",
 			"op_id": "hexical:sneaking",
 			"anchor": "hexical:sneaking",
 			"input": "",
 			"output": "number",
 			"text": "hexical.page.sneaking.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:sprinting",
+			"anchor": "hexical:sprinting",
+			"input": "",
+			"output": "number",
+			"text": "hexical.page.sprinting.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:jumping",
+			"anchor": "hexical:jumping",
+			"input": "",
+			"output": "number",
+			"text": "hexical.page.jumping.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
