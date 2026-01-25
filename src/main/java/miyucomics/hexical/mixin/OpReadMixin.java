@@ -46,7 +46,7 @@ public class OpReadMixin {
 		}
 	}
 
-	@Inject(method = "execute", at = @At(value = "INVOKE", target = "Lat/petrak/hexcasting/api/addldata/ADIotaHolder;readIota(Lnet/minecraft/server/world/ServerWorld;)Lat/petrak/hexcasting/api/casting/iota/Iota;"))
+	@Inject(method = "execute", at = @At(value = "INVOKE", target = "Lat/petrak/hexcasting/api/addldata/ADIotaHolder;readIota(Lnet/minecraft/server/world/ServerWorld;)Lat/petrak/hexcasting/api/casting/iota/Iota;"), remap = true)
 	private static void dontEatTwoHexbursts(List<? extends Iota> args, CastingEnvironment env, CallbackInfoReturnable<List<Iota>> cir, @Local ItemStack handStack) {
 		if (handStack.isOf(HexicalItems.HEXBURST_ITEM))
 			handStack.increment(1);
