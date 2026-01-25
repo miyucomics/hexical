@@ -11,11 +11,14 @@ import at.petrak.hexcasting.api.casting.iota.Vec3Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.misc.MediaConstants
+import net.fabricmc.fabric.api.event.player.UseBlockCallback
+import net.fabricmc.fabric.api.event.player.UseEntityCallback
 import net.minecraft.entity.Entity
 import net.minecraft.entity.LivingEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.item.ItemUsageContext
 import net.minecraft.server.network.ServerPlayerEntity
+import net.minecraft.util.ActionResult
 import net.minecraft.util.hit.BlockHitResult
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
@@ -51,7 +54,10 @@ object OpMageHand : SpellAction {
 
 			caster.setStackInHand(env.castingHand, wristpocket)
 			val block = env.world.getBlockState(position)
-			val result = block.onUse(env.world, caster, env.castingHand, BlockHitResult(Vec3d.ofCenter(position), Direction.UP, position, false))
+            var result = UseBlockCallback.EVENT.invoker().interact(caster, env.world, env.castingHand, BlockHitResult(Vec3d.ofCenter(position), Direction.UP, position, false))
+
+            if (result == ActionResult.PASS)
+                result = block.onUse(env.world, caster, env.castingHand, BlockHitResult(Vec3d.ofCenter(position), Direction.UP, position, false))
 			if (!result.isAccepted)
 				wristpocket.useOnBlock(ItemUsageContext(caster, env.castingHand, BlockHitResult(Vec3d.ofCenter(position), Direction.UP, position, false)))
 
@@ -66,7 +72,9 @@ object OpMageHand : SpellAction {
 			val originalItem = caster.getStackInHand(env.castingHand)
 
 			caster.setStackInHand(env.castingHand, wristpocket)
-			val result = entity.interact(caster, env.castingHand)
+            var result = UseEntityCallback.EVENT.invoker().interact(caster, env.world, env.castingHand, entity, null)
+            if (result == ActionResult.PASS)
+                result = entity.interact(caster, env.castingHand)
 			if (!result.isAccepted && entity is LivingEntity)
 				wristpocket.useOnEntity(caster, entity, env.castingHand)
 
