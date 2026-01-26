@@ -1,21 +1,21 @@
 package miyucomics.hexical.features.animated_scrolls
 
-import at.petrak.hexcasting.api.casting.iota.*
+import at.petrak.hexcasting.api.casting.iota.Iota
+import at.petrak.hexcasting.api.casting.iota.IotaType
+import at.petrak.hexcasting.api.casting.iota.NullIota
+import at.petrak.hexcasting.api.casting.iota.PatternIota
 import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.item.IotaHolderItem
 import at.petrak.hexcasting.api.utils.*
 import at.petrak.hexcasting.common.blocks.akashic.BlockEntityAkashicBookshelf
 import at.petrak.hexcasting.common.lib.HexBlocks
 import at.petrak.hexcasting.common.lib.HexSounds
-import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import net.minecraft.client.item.TooltipData
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.item.ItemUsageContext
 import net.minecraft.nbt.NbtCompound
-import net.minecraft.nbt.NbtElement
-import net.minecraft.nbt.NbtList
 import net.minecraft.sound.SoundCategory
 import net.minecraft.util.ActionResult
 import net.minecraft.util.math.BlockPos
@@ -46,14 +46,9 @@ class AnimatedScrollItem(private val size: Int) : Item(Settings()), IotaHolderIt
 		if (player != null && !canPlaceOn(player, direction, stack, position))
 			return ActionResult.FAIL
 
-		val patterns = if (stack.containsTag("patterns"))
-			stack.getList("patterns", NbtElement.COMPOUND_TYPE.toInt())!!.map { it.asCompound }
-		else
-			listOf()
-
 		val scrollStack = stack.copy()
 		scrollStack.count = 1
-		val scroll = AnimatedScrollEntity(world, position, direction, size, patterns, scrollStack)
+		val scroll = AnimatedScrollEntity(world, position, direction, size, stack.getCompound("pattern")?.let(HexPattern::fromNBT), scrollStack)
 
 		scroll.setState(stack.orCreateNbt.getInt("state"))
 		if (stack.orCreateNbt.getBoolean("glow"))
@@ -75,46 +70,29 @@ class AnimatedScrollItem(private val size: Int) : Item(Settings()), IotaHolderIt
 	}
 
 	override fun getTooltipData(stack: ItemStack): Optional<TooltipData> {
-		val patterns = stack.getList("patterns", NbtElement.COMPOUND_TYPE.toInt())
-		if (patterns != null)
-			return Optional.of(AnimatedPatternTooltip(if (stack.containsTag("color")) stack.orCreateNbt.getInt("color") else 0xff_000000.toInt(), (patterns as List<NbtCompound>).map(HexPattern::fromNBT), stack.getInt("state"), stack.getBoolean("glow")))
-		return Optional.empty()
+		val pattern = stack.getCompound("pattern") ?: return Optional.empty()
+		return Optional.of(AnimatedPatternTooltip(if (stack.containsTag("color")) stack.orCreateNbt.getInt("color") else 0xff_000000.toInt(), HexPattern.fromNBT(pattern), stack.getInt("state")))
 	}
 
 	override fun readIotaTag(stack: ItemStack): NbtCompound {
-		val patterns =
-			stack.getList("patterns", NbtElement.COMPOUND_TYPE.toInt()) ?: return IotaType.serialize(NullIota())
-		return IotaType.serialize(ListIota(patterns.map { PatternIota(HexPattern.fromNBT(it.asCompound)) }))
+		val pattern = stack.getCompound("pattern") ?: return IotaType.serialize(NullIota())
+		return IotaType.serialize(PatternIota(HexPattern.fromNBT(pattern)))
 	}
 
 	override fun writeable(stack: ItemStack) = true
 
 	override fun canWrite(stack: ItemStack, iota: Iota?): Boolean {
 		if (iota == null)
-			return stack.containsTag("patterns")
-		if (iota is PatternIota)
-			return true
-		if (iota !is ListIota)
-			return false
-
-		iota.list.forEach {
-			if (it.type != HexIotaTypes.PATTERN)
-				return false
-		}
-		return true
+			return stack.containsTag("pattern")
+		return iota is PatternIota
 	}
 
 	override fun writeDatum(stack: ItemStack, iota: Iota?) {
 		if (iota == null) {
-			stack.orCreateNbt.remove("patterns")
+			stack.orCreateNbt.remove("pattern")
 			return
 		}
 
-		val list = NbtList()
-		when (iota) {
-			is PatternIota -> list.add(iota.pattern.serializeToNBT())
-			is ListIota -> iota.list.forEach { list.add((it as PatternIota).pattern.serializeToNBT()) }
-		}
-		stack.orCreateNbt.putList("patterns", list)
+		stack.orCreateNbt.putCompound("pattern", (iota as PatternIota).pattern.serializeToNBT())
 	}
 }

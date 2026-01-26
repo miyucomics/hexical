@@ -8,6 +8,7 @@ import net.minecraft.client.render.entity.EntityRenderer
 import net.minecraft.client.render.entity.EntityRendererFactory
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.util.Identifier
+import net.minecraft.util.math.ColorHelper
 import net.minecraft.util.math.RotationAxis
 import net.minecraft.util.math.Vec2f
 import org.joml.Matrix3f
@@ -18,10 +19,14 @@ class AnimatedScrollRenderer(ctx: EntityRendererFactory.Context) : EntityRendere
 		matrices.push()
 		matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(scroll!!.pitch))
 		matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180.0f - scroll.yaw))
+
 		val worldLight = WorldRenderer.getLightmapCoordinates(scroll.world, scroll.blockPos)
 		if (scroll.dataTracker.get(AnimatedScrollEntity.stateDataTracker) != 2)
 			drawFrame(matrices, vertexConsumers, getTexture(scroll), scroll.dataTracker.get(AnimatedScrollEntity.sizeDataTracker).toFloat(), worldLight)
-		drawPattern(matrices, vertexConsumers, scroll, worldLight)
+		if (scroll.dataTracker.get(AnimatedScrollEntity.stateDataTracker) != 2)
+			matrices.translate(0.0, 0.0, -0.75 / 16)
+
+		drawPattern(matrices, vertexConsumers, scroll, scroll.dataTracker.get(AnimatedScrollEntity.colorDataTracker), if (scroll.dataTracker.get(AnimatedScrollEntity.glowDataTracker)) LightmapTextureManager.MAX_LIGHT_COORDINATE else worldLight)
 		matrices.pop()
 	}
 
@@ -87,9 +92,7 @@ class AnimatedScrollRenderer(ctx: EntityRendererFactory.Context) : EntityRendere
 			matrices.pop()
 		}
 
-		private fun drawPattern(matrices: MatrixStack, vertexConsumers: VertexConsumerProvider, scroll: AnimatedScrollEntity, light: Int) {
-			if (scroll.dataTracker.get(AnimatedScrollEntity.stateDataTracker) != 2)
-				matrices.translate(0.0, 0.0, -0.75 / 16.0)
+		private fun drawPattern(matrices: MatrixStack, vertexConsumers: VertexConsumerProvider, scroll: AnimatedScrollEntity, regularColor: Int, light: Int) {
 			val scale = when (scroll.dataTracker.get(AnimatedScrollEntity.sizeDataTracker)) {
 				1 -> 0.5f
 				2 -> 1.25f
@@ -99,17 +102,19 @@ class AnimatedScrollRenderer(ctx: EntityRendererFactory.Context) : EntityRendere
 			matrices.scale(scale, scale, 1f)
 			val peek = matrices.peek()
 			val buffer = vertexConsumers.getBuffer(RenderLayer.getEntityCutout(WHITE))
-			val zappy = makeZappy(scroll.cachedVerts, null, 10, 1f, 0.1f, 0f, 0.1f, 0.9f, 0.0)
+			val zappy = makeZappy(scroll.cachedVerts, null, 10, 1f, 0.05f, 0f, 0.1f, 0.9f, 0.0)
 
-			fun makeVertex(pos: Vec2f) = buffer.vertex(peek.positionMatrix, pos.x, pos.y, 0f)
-				.color(scroll.dataTracker.get(AnimatedScrollEntity.colorDataTracker))
+			fun makeVertex(pos: Vec2f, color: Int) = buffer.vertex(peek.positionMatrix, pos.x, pos.y, 0f)
+				.color(color)
 				.texture(0f, 0f)
 				.overlay(OverlayTexture.DEFAULT_UV)
-				.light(if (scroll.dataTracker.get(AnimatedScrollEntity.glowDataTracker)) LightmapTextureManager.MAX_LIGHT_COORDINATE else light)
+				.light(light)
 				.normal(peek.normalMatrix, 0f, 1f, 0f)
 				.next()
 
-			RenderUtils.quadifyLines(::makeVertex, 0.025f / scroll.dataTracker.get(AnimatedScrollEntity.sizeDataTracker), zappy)
+			RenderUtils.quadifyLines({ makeVertex(it, ColorHelper.Argb.lerp(0.75f, regularColor, 0xff_ffffff.toInt())) }, 0.05f / scroll.dataTracker.get(AnimatedScrollEntity.sizeDataTracker), zappy)
+			matrices.translate(0.0, 0.0, -0.01)
+			RenderUtils.quadifyLines({ makeVertex(it, regularColor) }, 0.025f / scroll.dataTracker.get(AnimatedScrollEntity.sizeDataTracker), zappy)
 		}
 	}
 }

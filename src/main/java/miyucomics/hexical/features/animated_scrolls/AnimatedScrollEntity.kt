@@ -1,15 +1,8 @@
 package miyucomics.hexical.features.animated_scrolls
 
-import at.petrak.hexcasting.api.addldata.ADIotaHolder
-import at.petrak.hexcasting.api.casting.iota.Iota
-import at.petrak.hexcasting.api.casting.iota.IotaType
-import at.petrak.hexcasting.api.casting.iota.ListIota
-import at.petrak.hexcasting.api.casting.iota.PatternIota
 import at.petrak.hexcasting.api.casting.math.HexPattern
-import at.petrak.hexcasting.api.utils.asCompound
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.api.utils.serializeToNBT
-import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import miyucomics.hexical.inits.HexicalEntities
 import miyucomics.hexical.inits.HexicalItems
 import miyucomics.hexical.misc.PatternUtils
@@ -24,8 +17,6 @@ import net.minecraft.entity.data.TrackedDataHandlerRegistry
 import net.minecraft.entity.decoration.AbstractDecorationEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
-import net.minecraft.nbt.NbtElement
-import net.minecraft.nbt.NbtList
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket
 import net.minecraft.sound.SoundEvents
 import net.minecraft.util.math.BlockPos
@@ -35,27 +26,19 @@ import net.minecraft.util.math.Vec3d
 import net.minecraft.world.GameRules
 import net.minecraft.world.World
 
-class AnimatedScrollEntity(entityType: EntityType<AnimatedScrollEntity>, world: World) : AbstractDecorationEntity(entityType, world), ADIotaHolder {
-	var patterns: List<NbtCompound> = listOf()
+class AnimatedScrollEntity(entityType: EntityType<AnimatedScrollEntity>, world: World) : AbstractDecorationEntity(entityType, world) {
+	var pattern: HexPattern? = null
 	var cachedVerts: List<Vec2f> = listOf()
 	lateinit var scroll: ItemStack
 
 	constructor(world: World) : this(HexicalEntities.ANIMATED_SCROLL_ENTITY, world)
 
-	constructor(world: World, position: BlockPos, dir: Direction, size: Int, patterns: List<NbtCompound>, scroll: ItemStack) : this(world) {
+	constructor(world: World, position: BlockPos, dir: Direction, size: Int, pattern: HexPattern?, scroll: ItemStack) : this(world) {
 		this.attachmentPos = position
-		this.patterns = patterns
 		this.dataTracker.set(sizeDataTracker, size)
 		this.scroll = scroll
+		setPatternAndUpdate(pattern)
 		setFacing(dir)
-		if (!world.isClient)
-			updateRender()
-	}
-
-	override fun tick() {
-		super.tick()
-		if (!world.isClient && (world.time % 20).toInt() == 0)
-			updateRender()
 	}
 
 	override fun canStayAttached(): Boolean {
@@ -92,16 +75,6 @@ class AnimatedScrollEntity(entityType: EntityType<AnimatedScrollEntity>, world: 
 		updateAttachmentPosition()
 	}
 
-	fun updateRender() {
-		if (this.patterns.isNotEmpty())
-			this.dataTracker.set(patternDataTracker, patterns[((world.time / 20).toInt() % patterns.size)])
-		else {
-			val compound = NbtCompound()
-			compound.putBoolean("empty", true)
-			this.dataTracker.set(patternDataTracker, compound)
-		}
-	}
-
 	override fun writeCustomDataToNbt(nbt: NbtCompound) {
 		nbt.putInt("direction", facing.id)
 		nbt.putInt("state", this.dataTracker.get(stateDataTracker))
@@ -109,11 +82,7 @@ class AnimatedScrollEntity(entityType: EntityType<AnimatedScrollEntity>, world: 
 		nbt.putBoolean("glow", this.dataTracker.get(glowDataTracker))
 		nbt.putInt("size", this.dataTracker.get(sizeDataTracker))
 		nbt.putCompound("scroll", this.scroll.serializeToNBT())
-
-		val data = NbtList()
-		for (pattern in this.patterns)
-			data.add(pattern)
-		nbt.put("patterns", data)
+		this.pattern?.also { nbt.putCompound("pattern", it.serializeToNBT()) }
 
 		super.writeCustomDataToNbt(nbt)
 	}
@@ -125,12 +94,10 @@ class AnimatedScrollEntity(entityType: EntityType<AnimatedScrollEntity>, world: 
 		this.dataTracker.set(colorDataTracker, nbt.getInt("color"))
 		this.dataTracker.set(sizeDataTracker, nbt.getInt("size"))
 		this.scroll = ItemStack.fromNbt(nbt.getCompound("scroll"))
+		this.pattern = nbt.getCompound("pattern")?.let(HexPattern::fromNBT)
+
 		setFacing(this.facing)
 		updateAttachmentPosition()
-
-		this.patterns = nbt.getList("patterns", NbtElement.COMPOUND_TYPE.toInt()).map { it.asCompound }
-		updateRender()
-
 		super.readCustomDataFromNbt(nbt)
 	}
 
@@ -175,6 +142,10 @@ class AnimatedScrollEntity(entityType: EntityType<AnimatedScrollEntity>, world: 
 		this.dataTracker.set(glowDataTracker, !this.dataTracker.get(glowDataTracker))
 		scroll.orCreateNbt.putBoolean("glow", this.dataTracker.get(glowDataTracker))
 	}
+	fun setPatternAndUpdate(pattern: HexPattern?) {
+		this.pattern = pattern
+		this.dataTracker.set(patternDataTracker, pattern?.serializeToNBT() ?: NbtCompound())
+	}
 
 	override fun initDataTracker() {
 		this.dataTracker.startTracking(colorDataTracker, (0xff_000000).toInt())
@@ -189,9 +160,8 @@ class AnimatedScrollEntity(entityType: EntityType<AnimatedScrollEntity>, world: 
 			sizeDataTracker -> this.updateAttachmentPosition()
 			patternDataTracker -> {
 				val nbt = dataTracker.get(patternDataTracker)
-				this.cachedVerts = if (nbt.contains("empty")) listOf() else PatternUtils.getNormalizedStrokes(HexPattern.fromNBT(nbt), true)
+				this.cachedVerts = if (nbt.contains(HexPattern.TAG_START_DIR)) PatternUtils.getNormalizedStrokes(HexPattern.fromNBT(nbt), true) else listOf()
 			}
-			else -> {}
 		}
 	}
 
@@ -202,36 +172,4 @@ class AnimatedScrollEntity(entityType: EntityType<AnimatedScrollEntity>, world: 
 		val sizeDataTracker: TrackedData<Int> = DataTracker.registerData(AnimatedScrollEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
 		val stateDataTracker: TrackedData<Int> = DataTracker.registerData(AnimatedScrollEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
 	}
-
-	override fun readIotaTag(): NbtCompound? {
-		val constructed = mutableListOf<PatternIota>()
-		for (pattern in this.patterns)
-			constructed.add(PatternIota(HexPattern.fromNBT(pattern)))
-		return IotaType.serialize(ListIota(constructed.toList()))
-	}
-
-	override fun writeIota(iota: Iota?, simulate: Boolean): Boolean {
-		if (iota == null) {
-			this.patterns = mutableListOf()
-			this.updateRender()
-			return true
-		} else if (iota.type == HexIotaTypes.PATTERN) {
-			this.patterns = mutableListOf((iota as PatternIota).pattern.serializeToNBT())
-			this.updateRender()
-			return true
-		} else if (iota.type == HexIotaTypes.LIST) {
-			val new = mutableListOf<NbtCompound>()
-			(iota as ListIota).list.forEach {
-				if (it.type != HexIotaTypes.PATTERN)
-					return false
-				new.add((it as PatternIota).pattern.serializeToNBT())
-			}
-			this.patterns = new
-			this.updateRender()
-			return true
-		}
-		return false
-	}
-
-	override fun writeable() = true
 }

@@ -18,14 +18,12 @@
 		{
 			"type": "hexcasting:transmuting",
 			"recipe": "hexical:transmuting/animated_scroll_medium",
-			"title": "item.hexical.animated_scroll_medium",
-			"text": "hexical.page.animated_scroll.2"
+			"title": "item.hexical.animated_scroll_medium"
 		},
 		{
 			"type": "hexcasting:transmuting",
 			"recipe": "hexical:transmuting/animated_scroll_large",
-			"title": "item.hexical.animated_scroll_large",
-			"text": "hexical.page.animated_scroll.3"
+			"title": "item.hexical.animated_scroll_large"
 		},
 		{
 			"type": "hexcasting:pattern",
