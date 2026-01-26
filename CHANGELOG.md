@@ -6,7 +6,7 @@
 - added strands
 - added Vibrate spell
 - added grok patterns to push and pull from staff stack
-- added spell to set model position
+- added shadow to animated scrolls just like regular scrolls
 - added tooltips to hexbursts
 - added tooltips to hextito
 - added pattern preview to animated scrolls
@@ -131,6 +131,7 @@
 - removed Alteration Purification
 - removed Pocket Reflection II
 - removed Hallucinate Sound spells
+- removed animated scroll automatic switching
 - removed convenience features that would make sense in User Hexperience
   - removed walking in staff screen
   - removed keybind to open spellbook
