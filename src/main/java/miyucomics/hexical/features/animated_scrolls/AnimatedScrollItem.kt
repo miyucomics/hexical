@@ -27,8 +27,6 @@ class AnimatedScrollItem(private val size: Int) : Item(Settings()), IotaHolderIt
 	private fun canPlaceOn(player: PlayerEntity, side: Direction, stack: ItemStack, pos: BlockPos) = !side.axis.isVertical && player.canPlaceOn(pos, side, stack)
 
 	override fun useOnBlock(context: ItemUsageContext): ActionResult {
-		val direction = context.side
-		val position = context.blockPos.offset(direction)
 		val player = context.player
 		val stack = context.stack
 		val world = context.world
@@ -43,18 +41,19 @@ class AnimatedScrollItem(private val size: Int) : Item(Settings()), IotaHolderIt
 			}
 		}
 
+		val direction = context.side
+		val position = context.blockPos.offset(direction)
 		if (player != null && !canPlaceOn(player, direction, stack, position))
 			return ActionResult.FAIL
 
-		val scrollStack = stack.copy()
-		scrollStack.count = 1
-		val scroll = AnimatedScrollEntity(world, position, direction, size, stack.getCompound("pattern")?.let(HexPattern::fromNBT), scrollStack)
-
-		scroll.setState(stack.orCreateNbt.getInt("state"))
-		if (stack.orCreateNbt.getBoolean("glow"))
-			scroll.toggleGlow()
-		if (stack.orCreateNbt.hasInt("color"))
-			scroll.setColor(stack.orCreateNbt.getInt("color"))
+		val nbt = stack.orCreateNbt
+		val scroll = AnimatedScrollEntity(world, position, direction, size, stack.getCompound("pattern")?.let(HexPattern::fromNBT), stack.copyWithCount(1)).apply {
+			setState(nbt.getInt("state"))
+			if (nbt.getBoolean("glow"))
+				toggleGlow()
+			if (nbt.hasInt("color"))
+				setColor(nbt.getInt("color"))
+		}
 
 		if (scroll.canStayAttached()) {
 			if (!world.isClient) {
