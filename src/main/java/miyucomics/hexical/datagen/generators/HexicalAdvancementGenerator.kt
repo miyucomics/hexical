@@ -19,15 +19,17 @@ import java.util.function.Consumer
 class HexicalAdvancementGenerator(generator: FabricDataOutput) : FabricAdvancementProvider(generator) {
 	override fun generateAdvancement(consumer: Consumer<Advancement>) {
 		val root = Advancement.Builder.create()
-			.display(ItemStack(HexicalItems.CURIO_COMPASS),
+			.display(
+				ItemStack(HexicalItems.CURIO_COMPASS),
 				Text.translatable("advancement.hexical:root.title"),
 				Text.translatable("advancement.hexical:root.description"),
 				Identifier("minecraft", "textures/block/blackstone.png"),
-				AdvancementFrame.TASK, true, true, true)
+				AdvancementFrame.TASK, true, true, true
+			)
 			.criterion("start_hexcasting", InventoryChangedCriterion.Conditions.items(ItemPredicate.Builder.create().tag(HexTags.Items.GRANTS_ROOT_ADVANCEMENT).build()))
 			.build(consumer, "hexical:root")
 
-		fun registerAdvancement(name: String, frame: AdvancementFrame, icon: Item, hidden: Boolean, condition: CriterionConditions, parent: Advancement = root): Advancement {
+		fun registerAdvancement(name: String, icon: Item, condition: CriterionConditions, frame: AdvancementFrame = AdvancementFrame.TASK, hidden: Boolean = false, parent: Advancement = root): Advancement {
 			return Advancement.Builder.create()
 				.parent(parent)
 				.display(ItemStack(icon),
@@ -39,14 +41,15 @@ class HexicalAdvancementGenerator(generator: FabricDataOutput) : FabricAdvanceme
 				.build(consumer, "hexical:$name")
 		}
 
-		registerAdvancement("conjure_cake", AdvancementFrame.CHALLENGE, Items.CAKE, true, ConjureCakeCriterion.Condition())
-		registerAdvancement("diy_conjuring", AdvancementFrame.TASK, Items.SCAFFOLDING, false, DIYCriterion.Condition())
-		registerAdvancement("hextito_quine", AdvancementFrame.TASK, HexicalItems.HEXTITO_ITEM, false, HextitoQuineCriterion.Condition())
-		registerAdvancement("specklike", AdvancementFrame.TASK, Items.BEACON, false, SpecklikeCriterion.Condition())
+		registerAdvancement("conjure_cake", Items.CAKE, ConjureCakeCriterion.Condition(), frame = AdvancementFrame.CHALLENGE, hidden = true)
+		registerAdvancement("diy_conjuring", Items.SCAFFOLDING, DIYCriterion.Condition())
+		registerAdvancement("hextito_quine", HexicalItems.HEXTITO_ITEM, HextitoQuineCriterion.Condition())
+		registerAdvancement("specklike", Items.BEACON, SpecklikeCriterion.Condition())
 
-		val baseLamp = registerAdvancement("acquire_hand_lamp", AdvancementFrame.TASK, HexicalItems.HAND_LAMP_ITEM, false, InventoryChangedCriterion.Conditions.items(HexicalItems.HAND_LAMP_ITEM))
-		registerAdvancement("educate_lamp", AdvancementFrame.TASK, Items.ENCHANTED_BOOK, false, EducateGenieCriterion.Condition(), baseLamp)
-		registerAdvancement("reload_lamp", AdvancementFrame.TASK, Items.LIGHTNING_ROD, false, ReloadLampCriterion.Condition(), baseLamp)
-		registerAdvancement("acquire_arch_lamp", AdvancementFrame.GOAL, HexicalItems.ARCH_LAMP_ITEM, false, InventoryChangedCriterion.Conditions.items(HexicalItems.ARCH_LAMP_ITEM), baseLamp)
+		registerAdvancement("acquire_hand_lamp", HexicalItems.HAND_LAMP_ITEM, InventoryChangedCriterion.Conditions.items(HexicalItems.HAND_LAMP_ITEM)).also {
+			registerAdvancement("educate_lamp", Items.ENCHANTED_BOOK, EducateGenieCriterion.Condition(), parent = it)
+			registerAdvancement("reload_lamp", Items.LIGHTNING_ROD, ReloadLampCriterion.Condition(), parent = it)
+			registerAdvancement("acquire_arch_lamp", HexicalItems.ARCH_LAMP_ITEM, InventoryChangedCriterion.Conditions.items(HexicalItems.ARCH_LAMP_ITEM), frame = AdvancementFrame.GOAL, parent = it)
+		}
 	}
 }
