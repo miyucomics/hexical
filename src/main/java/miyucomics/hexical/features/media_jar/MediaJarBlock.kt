@@ -15,8 +15,7 @@ import net.minecraft.item.ItemStack
 import net.minecraft.sound.BlockSoundGroup
 import net.minecraft.sound.SoundCategory
 import net.minecraft.state.StateManager
-import net.minecraft.state.property.BooleanProperty
-import net.minecraft.state.property.Properties
+import net.minecraft.state.property.Properties.WATERLOGGED
 import net.minecraft.util.ActionResult
 import net.minecraft.util.Hand
 import net.minecraft.util.hit.BlockHitResult
@@ -101,7 +100,6 @@ class MediaJarBlock : Block(
 	}
 
 	companion object {
-		val WATERLOGGED: BooleanProperty = Properties.WATERLOGGED
 		const val MAX_CAPACITY = MediaConstants.CRYSTAL_UNIT * 64
 	}
 }
