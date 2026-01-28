@@ -2,9 +2,9 @@
 	"type": "hexical:transmuting",
 	"cost": 100000,
 	"input": {
-		"item": "minecraft:gold_nugget"
+		"item": "minecraft:gold_ingot"
 	},
 	"output": {
-		"item": "hexical:driver_dot"
+		"item": "hexical:gold_driver_dot"
 	}
 }

@@ -4,7 +4,8 @@ import at.petrak.hexcasting.api.casting.eval.CastResult;
 import at.petrak.hexcasting.api.casting.eval.vm.CastingVM;
 import at.petrak.hexcasting.api.casting.eval.vm.SpellContinuation;
 import at.petrak.hexcasting.api.casting.iota.PatternIota;
-import miyucomics.hexical.features.driver_dots.DriverDotItem;
+import miyucomics.hexical.features.driver_dots.GoldDriverDot;
+import miyucomics.hexical.features.driver_dots.IronDriverDot;
 import miyucomics.hexical.features.scarabs.ScarabBeetleItem;
 import net.minecraft.server.world.ServerWorld;
 import org.spongepowered.asm.mixin.Mixin;
@@ -18,9 +19,15 @@ public abstract class PatternIotaMixin {
 	void expandRuntimeMacros(CastingVM vm, ServerWorld world, SpellContinuation continuation, CallbackInfoReturnable<CastResult> cir) {
 		PatternIota pattern = (PatternIota) (Object) this;
 
-		CastResult driverDotResult = DriverDotItem.handleDriverDot(vm, pattern, continuation);
-		if (driverDotResult != null) {
-			cir.setReturnValue(driverDotResult);
+		CastResult ironDriverDotResult = IronDriverDot.handleIronDriverDot(vm, pattern, continuation);
+		if (ironDriverDotResult != null) {
+			cir.setReturnValue(ironDriverDotResult);
+			return;
+		}
+
+		CastResult goldDriverDotResult = GoldDriverDot.handleGoldDriverDot(vm, pattern, continuation);
+		if (goldDriverDotResult != null) {
+			cir.setReturnValue(goldDriverDotResult);
 			return;
 		}
 

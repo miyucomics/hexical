@@ -22,22 +22,29 @@ class PlayerItemCacheTicker : PlayerTicker {
 		if (player !is ServerPlayerEntity)
 			return
 
-		player.itemCache().driverDotsMacros.clear()
-		player.itemCache().grimoireMacros.clear()
-		player.itemCache().scarabProgram = null
+		val cache = player.itemCache()
+
+		cache.ironDriverDotMacros.clear()
+		cache.goldDriverDotMacros.clear()
+		cache.grimoireMacros.clear()
+		cache.scarabProgram = null
+
 		val inventory = player.inventory
 		inventory.offHand.plus(inventory.main).plus(inventory.armor).plus(player.wristpocket).plus(player.enderChestInventory.stacks).reversed().forEach { stack ->
 			when {
 				stack.isOf(HexicalItems.GRIMOIRE_ITEM) -> {
 					val expansions = stack.getCompound("expansions") ?: return@forEach
-					expansions.keys.forEach { player.itemCache().grimoireMacros[it] = HexSerialization.backwardsCompatibleReadHex(expansions, it, player.serverWorld) }
+					expansions.keys.forEach { cache.grimoireMacros[it] = HexSerialization.backwardsCompatibleReadHex(expansions, it, player.serverWorld) }
 				}
-				stack.isOf(HexicalItems.DRIVER_DOT_ITEM) && stack.hasNbt() && stack.nbt!!.contains("pattern") -> {
-					player.itemCache().driverDotsMacros[stack.getString("pattern") ?: return@forEach] = HexSerialization.deserializeHex(stack.getList("program", NbtElement.COMPOUND_TYPE.toInt()) ?: return@forEach, player.serverWorld)
+				stack.isOf(HexicalItems.IRON_DRIVER_DOT_ITEM) && stack.hasNbt() && stack.nbt!!.contains("pattern") -> {
+					cache.ironDriverDotMacros[stack.getString("pattern") ?: return@forEach] = HexSerialization.deserializeHex(stack.getList("program", NbtElement.COMPOUND_TYPE.toInt()) ?: return@forEach, player.serverWorld)
+				}
+				stack.isOf(HexicalItems.GOLD_DRIVER_DOT_ITEM) && stack.hasNbt() && stack.nbt!!.contains("pattern") -> {
+					cache.goldDriverDotMacros[stack.getString("pattern") ?: return@forEach] = HexSerialization.deserializeHex(stack.getList("program", NbtElement.COMPOUND_TYPE.toInt()) ?: return@forEach, player.serverWorld)
 				}
 				stack.isOf(HexicalItems.SCARAB_BEETLE_ITEM) && stack.hasNbt() && stack.nbt!!.getBoolean("active") -> {
 					val program = stack.getList("hex", NbtElement.COMPOUND_TYPE.toInt()) ?: return@forEach
-					player.itemCache().scarabProgram = HexSerialization.deserializeHex(program, player.serverWorld)
+					cache.scarabProgram = HexSerialization.deserializeHex(program, player.serverWorld)
 				}
 			}
 		}
