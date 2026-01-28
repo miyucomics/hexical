@@ -76,15 +76,13 @@ object ScarabBeetleItem : Item(Settings().maxCount(1).rarity(Rarity.UNCOMMON)), 
 			return null
 
 		val program = (env.caster as ServerPlayerEntity).itemCache().scarabProgram ?: return null
-		val newStack = vm.image.stack.toMutableList()
-		newStack.add(iota)
 
 		return CastResult(
 			iota,
 			continuation
 				.pushFrame(RecursiveFrame(pattern.anglesSignature()))
 				.pushFrame(FrameEvaluate(SpellList.LList(program), false)),
-			vm.image.copy(stack = newStack),
+			vm.image.copy(stack = vm.image.stack.plus(iota)),
 			listOf(),
 			ResolvedPatternType.EVALUATED,
 			HexEvalSounds.NOTHING

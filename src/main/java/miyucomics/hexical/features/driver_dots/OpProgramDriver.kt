@@ -10,7 +10,6 @@ import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadOffhandItem
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.api.utils.putList
-import miyucomics.hexical.inits.HexicalItems
 import miyucomics.hexical.misc.CastingUtils
 import miyucomics.hexical.misc.HexSerialization
 import net.minecraft.item.ItemStack
@@ -18,7 +17,7 @@ import net.minecraft.item.ItemStack
 object OpProgramDriver : SpellAction {
 	override val argc = 2
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
-		val dot = env.getHeldItemToOperateOn { it.isOf(HexicalItems.DRIVER_DOT_ITEM) } ?: throw MishapBadOffhandItem.of(null, "driver_dot")
+		val dot = env.getHeldItemToOperateOn { it.item is AbstractDriverDot } ?: throw MishapBadOffhandItem.of(null, "driver_dot")
 		val pattern = args.getPattern(0, argc)
 		val program = args.getList(1, argc).toList()
 		CastingUtils.assertNoTruename(args[0], env)
