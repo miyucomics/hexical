@@ -2,7 +2,7 @@ package miyucomics.hexical.inits
 
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.misc.RecursiveFrame
+import miyucomics.hexical.features.driver_dots.RecursiveFrame
 import net.minecraft.registry.Registry
 
 object HexicalContinuations {
