@@ -17,7 +17,7 @@ import net.minecraft.item.ItemStack
 object OpProgramDriver : SpellAction {
 	override val argc = 2
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
-		val dot = env.getHeldItemToOperateOn { it.item is AbstractDriverDot } ?: throw MishapBadOffhandItem.of(null, "driver_dot")
+		val dot = env.getHeldItemToOperateOn { it.item is DriverDotItem } ?: throw MishapBadOffhandItem.of(null, "driver_dot")
 		val pattern = args.getPattern(0, argc)
 		val program = args.getList(1, argc).toList()
 		CastingUtils.assertNoTruename(args[0], env)
@@ -27,9 +27,11 @@ object OpProgramDriver : SpellAction {
 	private data class Spell(val dot: ItemStack, val pattern: HexPattern, val program: List<Iota>) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
 			dot.orCreateNbt.apply {
-				putString("pattern", pattern.anglesSignature())
-				putCompound("display", pattern.serializeToNBT())
 				putList("program", HexSerialization.serializeHex(program))
+				if ((dot.item as DriverDotItem).hasKey) {
+					putString("pattern", pattern.anglesSignature())
+					putCompound("display", pattern.serializeToNBT())
+				}
 			}
 		}
 	}

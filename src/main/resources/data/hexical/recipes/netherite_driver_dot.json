@@ -1,0 +1,12 @@
+{
+	"type": "hexical:transmuting",
+	"cost": 100000,
+	"input": {
+		"item": "minecraft:netherite_ingot"
+	},
+	"output": [
+		"hexical:netherite_driver_dot",
+		"hexical:netherite_driver_dot",
+		"hexical:netherite_driver_dot"
+	]
+}

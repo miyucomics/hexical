@@ -28,6 +28,12 @@
 			"recipe": "hexical:gold_driver_dot",
 			"title": "hexical.recipe.gold_driver_dot.header",
 			"text": "hexical.page.gold_driver_dot.summary"
+		},
+		{
+			"type": "hexcasting:transmuting",
+			"recipe": "hexical:netherite_driver_dot",
+			"title": "hexical.recipe.netherite_driver_dot.header",
+			"text": "hexical.page.netherite_driver_dot.summary"
 		}
 	]
 }
