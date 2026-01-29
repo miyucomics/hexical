@@ -4,7 +4,9 @@
 	"input": {
 		"item": "minecraft:iron_ingot"
 	},
-	"output": {
-		"item": "hexical:iron_driver_dot"
-	}
+	"output": [
+		"hexical:iron_driver_dot",
+		"hexical:iron_driver_dot",
+		"hexical:iron_driver_dot"
+	]
 }

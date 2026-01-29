@@ -27,12 +27,13 @@ import net.minecraft.util.Formatting
 import net.minecraft.util.Rarity
 import net.minecraft.world.World
 
-open class AbstractDriverDot : Item(Settings().maxCount(1).rarity(Rarity.UNCOMMON)) {
+open class DriverDotItem(val hasKey: Boolean) : Item(Settings().maxCount(1).rarity(Rarity.UNCOMMON)) {
 	override fun appendTooltip(stack: ItemStack, world: World?, tooltip: MutableList<Text>, context: TooltipContext) {
 		val nbt = stack.nbt ?: return
 		if (!nbt.contains("program"))
 			return
-		tooltip.add("hexical.driver_dot.pattern".asTranslatedComponent(PatternIota.display(HexPattern.fromNBT(stack.getCompound("display")!!))).styledWith(Formatting.GRAY))
+		if (hasKey)
+			tooltip.add("hexical.driver_dot.pattern".asTranslatedComponent(PatternIota.display(HexPattern.fromNBT(stack.getCompound("display")!!))).styledWith(Formatting.GRAY))
 		tooltip.add("hexical.driver_dot.program".asTranslatedComponent(stack.getList("program", NbtElement.COMPOUND_TYPE.toInt())!!.fold(Text.empty()) { acc, curr -> acc.append(IotaType.getDisplay(curr.asCompound)) }).styledWith(Formatting.GRAY))
 	}
 
@@ -52,7 +53,7 @@ open class AbstractDriverDot : Item(Settings().maxCount(1).rarity(Rarity.UNCOMMO
 				constructCastResult(vm, continuation, iota, (env.caster as ServerPlayerEntity).itemCache().goldDriverDotMacros[prefix]!!, vm.image.stack.plus(iota))
 			},
 			{ vm, iota, continuation ->
-				val program = (vm.env.caster as ServerPlayerEntity).itemCache().scarabProgram ?: return@listOf null
+				val program = (vm.env.caster as ServerPlayerEntity).itemCache().netheriteDriverDotProgram ?: return@listOf null
 				constructCastResult(vm, continuation, iota, program, vm.image.stack.plus(iota))
 			}
 		)

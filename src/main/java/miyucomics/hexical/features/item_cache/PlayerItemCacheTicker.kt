@@ -24,10 +24,10 @@ class PlayerItemCacheTicker : PlayerTicker {
 
 		val cache = player.itemCache()
 
+		cache.grimoireMacros.clear()
 		cache.ironDriverDotMacros.clear()
 		cache.goldDriverDotMacros.clear()
-		cache.grimoireMacros.clear()
-		cache.scarabProgram = null
+		cache.netheriteDriverDotProgram = null
 
 		val inventory = player.inventory
 		inventory.offHand.plus(inventory.main).plus(inventory.armor).plus(player.wristpocket).plus(player.enderChestInventory.stacks).reversed().forEach { stack ->
@@ -42,9 +42,8 @@ class PlayerItemCacheTicker : PlayerTicker {
 				stack.isOf(HexicalItems.GOLD_DRIVER_DOT_ITEM) && stack.hasNbt() && stack.nbt!!.contains("pattern") -> {
 					cache.goldDriverDotMacros[stack.getString("pattern") ?: return@forEach] = HexSerialization.deserializeHex(stack.getList("program", NbtElement.COMPOUND_TYPE.toInt()) ?: return@forEach, player.serverWorld)
 				}
-				stack.isOf(HexicalItems.SCARAB_BEETLE_ITEM) && stack.hasNbt() && stack.nbt!!.getBoolean("active") -> {
-					val program = stack.getList("hex", NbtElement.COMPOUND_TYPE.toInt()) ?: return@forEach
-					cache.scarabProgram = HexSerialization.deserializeHex(program, player.serverWorld)
+				stack.isOf(HexicalItems.NETHERITE_DRIVER_DOT_ITEM) && stack.hasNbt() && stack.nbt!!.contains("program") -> {
+					cache.netheriteDriverDotProgram = HexSerialization.deserializeHex(stack.getList("program", NbtElement.COMPOUND_TYPE.toInt()) ?: return@forEach, player.serverWorld)
 				}
 			}
 		}

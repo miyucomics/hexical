@@ -12,10 +12,10 @@ import net.minecraft.entity.player.PlayerEntity
 // or if a given pattern has a grimoire expansion associated with it
 // or if the player has a scarab
 class PlayerItemCacheField : PlayerField {
+	val grimoireMacros: HashMap<String, List<Iota>> = HashMap()
 	val ironDriverDotMacros: HashMap<String, List<Iota>> = HashMap()
 	val goldDriverDotMacros: HashMap<String, List<Iota>> = HashMap()
-	val grimoireMacros: HashMap<String, List<Iota>> = HashMap()
-	var scarabProgram: List<Iota>? = null
+	var netheriteDriverDotProgram: List<Iota>? = null
 }
 
 fun PlayerEntity.itemCache(): PlayerItemCacheField = this.getHexicalPlayerManager().get(PlayerItemCacheField::class)

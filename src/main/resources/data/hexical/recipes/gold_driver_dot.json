@@ -4,7 +4,9 @@
 	"input": {
 		"item": "minecraft:gold_ingot"
 	},
-	"output": {
-		"item": "hexical:gold_driver_dot"
-	}
+	"output": [
+		"hexical:gold_driver_dot",
+		"hexical:gold_driver_dot",
+		"hexical:gold_driver_dot"
+	]
 }
