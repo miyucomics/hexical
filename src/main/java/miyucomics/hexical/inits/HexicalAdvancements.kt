@@ -18,7 +18,6 @@ object HexicalAdvancements {
 	val DIY: DIYCriterion = Criteria.register(DIYCriterion())
 	val EDUCATE_GENIE: EducateGenieCriterion = Criteria.register(EducateGenieCriterion())
 	val HEXTITO_QUINE: HextitoQuineCriterion = Criteria.register(HextitoQuineCriterion())
-	val RELOAD_LAMP: ReloadLampCriterion = Criteria.register(ReloadLampCriterion())
 
 	val EVOCATION_STATISTIC: Identifier = HexicalMain.id("evocation")
 
@@ -53,11 +52,6 @@ class EducateGenieCriterion : BaseCriterion<EducateGenieCriterion.Condition>(Hex
 class HextitoQuineCriterion : BaseCriterion<HextitoQuineCriterion.Condition>(HexicalMain.id("hextito_quine")) {
 	override fun createCondition() = Condition()
 	class Condition : BaseCondition(HexicalMain.id("hextito_quine"))
-}
-
-class ReloadLampCriterion : BaseCriterion<ReloadLampCriterion.Condition>(HexicalMain.id("reload_lamp")) {
-	override fun createCondition() = Condition()
-	class Condition : BaseCondition(HexicalMain.id("reload_lamp"))
 }
 
 class SpecklikeCriterion : BaseCriterion<SpecklikeCriterion.Condition>(HexicalMain.id("specklike")) {

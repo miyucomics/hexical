@@ -1,33 +1,25 @@
 {
 	"name": "hexical.page.hand_lamps.title",
 	"icon": "hexical:hand_lamp",
-	"category": "hexcasting:lamp",
-	"advancement": "hexcasting:root",
-	"sortnum": 0,
+	"advancement": "hexical:root",
+	"category": "hexcasting:items",
+	"sortnum": 12,
 	"pages": [
 		{
 			"type": "patchouli:text",
 			"text": "hexical.page.hand_lamps.0"
 		},
 		{
-			"type": "patchouli:text",
-			"text": "hexical.page.hand_lamps.1"
-		},
-		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:wish",
 			"anchor": "hexical:wish",
-			"input": "list of patterns",
+			"input": "list, number",
 			"output": "",
 			"text": "hexical.page.wish.summary"
 		},
 		{
 			"type": "patchouli:text",
-			"text": "hexical.page.hand_lamps.2"
-		},
-		{
-			"type": "patchouli:text",
-			"text": "hexical.page.hand_lamps.3"
+			"text": "hexical.page.hand_lamps.1"
 		},
 		{
 			"type": "hexcasting:pattern",
