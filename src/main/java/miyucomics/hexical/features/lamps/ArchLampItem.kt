@@ -4,8 +4,9 @@ import at.petrak.hexcasting.api.casting.eval.vm.CastingImage
 import at.petrak.hexcasting.api.casting.eval.vm.CastingVM
 import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.casting.iota.NullIota
+import at.petrak.hexcasting.api.utils.putCompound
+import at.petrak.hexcasting.api.utils.serializeToNBT
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex
-import miyucomics.hexical.inits.HexicalItems
 import miyucomics.hexical.inits.HexicalSounds
 import net.minecraft.entity.Entity
 import net.minecraft.entity.player.PlayerEntity
@@ -35,20 +36,18 @@ object ArchLampItem : ItemPackagedHex(Settings().maxCount(1).rarity(Rarity.EPIC)
 		}
 
 		if (stackNbt.getBoolean("active")) {
-			val vm = CastingVM(CastingImage(), ArchLampCastEnv(user as ServerPlayerEntity, hand, true, stack))
+			val vm = CastingVM(CastingImage(), LampCastEnv(user as ServerPlayerEntity, hand, true, stack))
 			vm.queueExecuteAndWrapIotas((stack.item as ArchLampItem).getHex(stack, world as ServerWorld)!!, world)
 			stackNbt.putBoolean("active", false)
 			return TypedActionResult.success(stack)
 		}
 
 		stackNbt.putBoolean("active", true)
-
-		val state = user.getArchLampField()
-		state.position = user.eyePos
-		state.rotation = user.rotationVector
-		state.velocity = user.velocity
-		state.storage = IotaType.serialize(NullIota())
-		state.time = world.time
+		stackNbt.putCompound("position", user.eyePos.serializeToNBT())
+		stackNbt.putCompound("rotation", user.rotationVector.serializeToNBT())
+		stackNbt.putCompound("velocity", user.velocity.serializeToNBT())
+		stackNbt.putCompound("storage", IotaType.serialize(NullIota()))
+		stackNbt.putLong("start_time", world.time)
 
 		return TypedActionResult.success(stack)
 	}
@@ -59,7 +58,7 @@ object ArchLampItem : ItemPackagedHex(Settings().maxCount(1).rarity(Rarity.EPIC)
 		if (user !is ServerPlayerEntity) return
 		if (!stack.orCreateNbt.getBoolean("active")) return
 		if (user.interactionManager.gameMode == GameMode.SPECTATOR) return
-		val vm = CastingVM(CastingImage(), ArchLampCastEnv(user, Hand.MAIN_HAND, false, stack))
+		val vm = CastingVM(CastingImage(), LampCastEnv(user, Hand.MAIN_HAND, false, stack))
 		vm.queueExecuteAndWrapIotas((stack.item as ArchLampItem).getHex(stack, world as ServerWorld)!!, world)
 	}
 
@@ -67,14 +66,4 @@ object ArchLampItem : ItemPackagedHex(Settings().maxCount(1).rarity(Rarity.EPIC)
 	override fun canRecharge(stack: ItemStack) = false
 	override fun breakAfterDepletion() = false
 	override fun cooldown() = 0
-}
-
-fun hasActiveArchLamp(player: ServerPlayerEntity): Boolean {
-	for (stack in player.inventory.main)
-		if (stack.item == HexicalItems.ARCH_LAMP_ITEM && stack.orCreateNbt.getBoolean("active"))
-			return true
-	for (stack in player.inventory.offHand)
-		if (stack.item == HexicalItems.ARCH_LAMP_ITEM && stack.orCreateNbt.getBoolean("active"))
-			return true
-	return false
 }

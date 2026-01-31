@@ -23,59 +23,59 @@
 		},
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:get_hand_lamp_position",
-			"anchor": "hexical:get_hand_lamp_position",
+			"op_id": "hexical:get_lamp_position",
+			"anchor": "hexical:get_lamp_position",
 			"input": "",
 			"output": "vector",
-			"text": "hexical.page.get_hand_lamp_position.summary"
+			"text": "hexical.page.get_lamp_position.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:get_hand_lamp_rotation",
-			"anchor": "hexical:get_hand_lamp_rotation",
+			"op_id": "hexical:get_lamp_rotation",
+			"anchor": "hexical:get_lamp_rotation",
 			"input": "",
 			"output": "vector",
-			"text": "hexical.page.get_hand_lamp_rotation.summary"
+			"text": "hexical.page.get_lamp_rotation.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:get_hand_lamp_velocity",
-			"anchor": "hexical:get_hand_lamp_velocity",
+			"op_id": "hexical:get_lamp_velocity",
+			"anchor": "hexical:get_lamp_velocity",
 			"input": "",
 			"output": "vector",
-			"text": "hexical.page.get_hand_lamp_velocity.summary"
+			"text": "hexical.page.get_lamp_velocity.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:get_hand_lamp_use_time",
-			"anchor": "hexical:get_hand_lamp_use_time",
+			"op_id": "hexical:get_lamp_use_time",
+			"anchor": "hexical:get_lamp_use_time",
 			"input": "",
 			"output": "number",
-			"text": "hexical.page.get_hand_lamp_use_time.summary"
+			"text": "hexical.page.get_lamp_use_time.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:get_hand_lamp_media",
-			"anchor": "hexical:get_hand_lamp_media",
+			"op_id": "hexical:get_lamp_media",
+			"anchor": "hexical:get_lamp_media",
 			"input": "",
 			"output": "number",
-			"text": "hexical.page.get_hand_lamp_media.summary"
+			"text": "hexical.page.get_lamp_media.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:set_hand_lamp_storage",
-			"anchor": "hexical:set_hand_lamp_storage",
+			"op_id": "hexical:set_lamp_storage",
+			"anchor": "hexical:set_lamp_storage",
 			"input": "any",
 			"output": "",
-			"text": "hexical.page.set_hand_lamp_storage.summary"
+			"text": "hexical.page.set_lamp_storage.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexical:get_hand_lamp_storage",
-			"anchor": "hexical:get_hand_lamp_storage",
+			"op_id": "hexical:get_lamp_storage",
+			"anchor": "hexical:get_lamp_storage",
 			"input": "",
 			"output": "any",
-			"text": "hexical.page.get_hand_lamp_storage.summary"
+			"text": "hexical.page.get_lamp_storage.summary"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -83,7 +83,12 @@
 			"anchor": "hexical:lamp_finale",
 			"input": "",
 			"output": "boolean",
-			"text": "hexical.page.lamp_finale.hand"
+			"text": "hexical.page.lamp_finale.summary"
+		},
+		{
+			"type": "patchouli:spotlight",
+			"item": "hexical:arch_lamp",
+			"text": "hexical.page.lamps.2"
 		}
 	]
 }
