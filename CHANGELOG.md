@@ -126,6 +126,7 @@
 - refactored code massively; split sources, no more server errors hopefully
 - removed tchotchkes
 - removed the Myodesopsia spell
+- removed mystification around lamps, now just a casting device
 - removed the Simulate Firework spell, just acted really strangely
 - removed limitation on arch lamps per person
 - removed Alteration Purification

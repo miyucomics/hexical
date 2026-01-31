@@ -4,16 +4,14 @@ import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.NullIota
-import net.minecraft.server.network.ServerPlayerEntity
+import net.minecraft.nbt.NbtCompound
 
-class OpGetArchLampData(private val process: (CastingEnvironment, ArchLampField) -> List<Iota>) : ConstMediaAction {
+class OpGetLampData(private val process: (CastingEnvironment, NbtCompound) -> List<Iota>) : ConstMediaAction {
 	override val argc = 0
 	override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
-		val caster = env.castingEntity
-		if (caster !is ServerPlayerEntity)
-			return listOf(NullIota())
-		if (!hasActiveArchLamp(caster))
-			throw NeedsArchLampMishap()
-		return process(env, caster.getArchLampField())
+		if (env !is LampCastEnv)
+			throw NeedsLampMishap()
+		val nbt = env.castingEntity!!.activeItem.nbt ?: return listOf(NullIota())
+		return process(env, nbt)
 	}
 }

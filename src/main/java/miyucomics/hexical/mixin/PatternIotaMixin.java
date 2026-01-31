@@ -16,9 +16,7 @@ public abstract class PatternIotaMixin {
 	@Inject(method = "execute", at = @At("HEAD"), cancellable = true)
 	void substituteDuringRuntime(CastingVM vm, ServerWorld world, SpellContinuation continuation, CallbackInfoReturnable<CastResult> cir) {
 		CastResult replacement = DriverDotItem.applySubstitution(vm, (PatternIota) (Object) this, continuation);
-		if (replacement != null) {
+		if (replacement != null)
 			cir.setReturnValue(replacement);
-			return;
-		}
 	}
 }

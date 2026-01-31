@@ -40,13 +40,13 @@ object HandLampItem : ItemPackagedHex(Settings().maxCount(1).rarity(Rarity.RARE)
 	override fun usageTick(world: World, user: LivingEntity, stack: ItemStack, remainingUseTicks: Int) {
 		if (world.isClient) return
 		if (getMedia(stack) == 0L) return
-		val vm = CastingVM(CastingImage(), HandLampCastEnv(user as ServerPlayerEntity, Hand.MAIN_HAND, false, stack))
+		val vm = CastingVM(CastingImage(), LampCastEnv(user as ServerPlayerEntity, user.activeHand, false, stack))
 		vm.queueExecuteAndWrapIotas((stack.item as HandLampItem).getHex(stack, world as ServerWorld)!!, world)
 	}
 
 	override fun onStoppedUsing(stack: ItemStack, world: World, user: LivingEntity, remainingUseTicks: Int) {
 		if (!world.isClient) {
-			val vm = CastingVM(CastingImage(), HandLampCastEnv(user as ServerPlayerEntity, Hand.MAIN_HAND, true, stack))
+			val vm = CastingVM(CastingImage(), LampCastEnv(user as ServerPlayerEntity, user.activeHand, true, stack))
 			vm.queueExecuteAndWrapIotas((stack.item as HandLampItem).getHex(stack, world as ServerWorld)!!, world)
 		}
 		world.playSound(user.x, user.y, user.z, HexicalSounds.LAMP_DEACTIVATE, SoundCategory.MASTER, 1f, 1f, true)
@@ -55,7 +55,7 @@ object HandLampItem : ItemPackagedHex(Settings().maxCount(1).rarity(Rarity.RARE)
 	override fun getMaxUseTime(stack: ItemStack) = Int.MAX_VALUE
 	override fun canDrawMediaFromInventory(stack: ItemStack) = false
 	override fun getUseAction(stack: ItemStack) = UseAction.BOW
-	override fun canRecharge(stack: ItemStack?) = false
+	override fun canRecharge(stack: ItemStack) = false
 	override fun breakAfterDepletion() = false
 	override fun cooldown() = 0
 }
