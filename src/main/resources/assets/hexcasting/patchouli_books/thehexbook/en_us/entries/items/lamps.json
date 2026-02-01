@@ -1,5 +1,5 @@
 {
-	"name": "hexical.page.hand_lamps.title",
+	"name": "hexical.page.lamps.title",
 	"icon": "hexical:hand_lamp",
 	"advancement": "hexical:root",
 	"category": "hexcasting:items",
@@ -7,7 +7,7 @@
 	"pages": [
 		{
 			"type": "patchouli:text",
-			"text": "hexical.page.hand_lamps.0"
+			"text": "hexical.page.lamps.0"
 		},
 		{
 			"type": "hexcasting:pattern",
@@ -19,7 +19,7 @@
 		},
 		{
 			"type": "patchouli:text",
-			"text": "hexical.page.hand_lamps.1"
+			"text": "hexical.page.lamps.1"
 		},
 		{
 			"type": "hexcasting:pattern",

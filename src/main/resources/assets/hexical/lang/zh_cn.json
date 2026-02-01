@@ -417,7 +417,7 @@
 	"hexical.page.pedestal_circles.1": "$(l:greatwork/spellcircles)$(item)促动石$()会将$(l:items/pedestals)$(item)支座$()$(l:patterns/spells/circle_spells#hexical:absorb_arm)用作$()法术环的$(o)另一只手$()，适用于$(l:patterns/spells/hexcasting)合成施法物品等法术$()、$(l:patterns/spells/hexcasting#hexcasting:recharge)$(action)重新充能$()，以及$(l:patterns/spells/hexcasting#hexcasting:erase)$(action)清除物品$()。$(br2)很适合用于自动为$(l:items/hexcasting)施法物品$()$(l:patterns/spells/hexcasting#hexcasting:recharge)充能$()。",
 
 	"hexical.page.patterns.title": "图案操作",
-	"hexical.page.patterns.0": "我发现了一系列图案，主要用于操纵及构造$(l:patterns/patterns_as_iotas)图案$()。奇怪的是，这些图案也能构造出$(l:items/staff)$(item)法杖$()$(o)无法$()绘制的图案，好在自然应该不会为这些“非法”图案分配实际作用。可以认为$(l:items/scarab)$(item)圣甲虫$()能随意使用它们。",
+	"hexical.page.patterns.0": "我发现了一系列图案，主要用于操纵及构造$(l:patterns/patterns_as_iotas)图案$()。奇怪的是，这些图案也能构造出$(l:items/staff)$(item)法杖$()$(o)无法$()绘制的图案，好在自然应该不会为这些“非法”图案分配实际作用。可以认为$(item)圣甲虫$()能随意使用它们。",
 	"hexcasting.action.hexical:shuffle_pattern": "图案制作师之馏化",
 	"hexical.page.shuffle_pattern.summary": "接受一个图案和一个数，返回同外形不同笔顺的图案。我找到的一些笔记中称古代的$(hex)咒术师$()会把这些图案用在某种$(o)庞大的图书馆$()中。",
 	"hexcasting.action.hexical:congruent": "全等之馏化",
