@@ -4,7 +4,7 @@ rules = {
 }
 
 path = "A"
-for _ in range(5):
+for _ in range(6):
     path = "".join(rules.get(char, char) for char in path)
 
 angle_map = "aqwed"  # W should never happen but just in case
