@@ -1,4 +1,4 @@
-package miyucomics.hexical.features.akashic
+package miyucomics.hexical.features.akashic_shelves
 
 import at.petrak.hexcasting.api.casting.RenderedSpell
 import at.petrak.hexcasting.api.casting.castables.SpellAction
