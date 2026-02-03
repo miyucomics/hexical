@@ -19,7 +19,6 @@ class LampCastEnv(caster: ServerPlayerEntity, castingHand: Hand, val finale: Boo
 	override fun getCastingHand(): Hand = this.castingHand
 	override fun getPigment(): FrozenPigment = IXplatAbstractions.INSTANCE.getPigment(this.caster)
 
-	fun getFinale() = finale
 	fun setInternalIota(iota: Iota) {
 		stack.orCreateNbt.putCompound("storage", IotaType.serialize(iota))
 	}
