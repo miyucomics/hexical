@@ -3,7 +3,6 @@
     "values": [
         "hexical:charm",
         "hexical:conjure_mesh",
-        "hexical:greater_blink",
-        "hexical:promote_lamp"
+        "hexical:greater_blink"
     ]
 }
