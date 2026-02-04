@@ -1,0 +1,21 @@
+{
+	"name": "hexical.page.amber_seal.title",
+	"icon": "minecraft:wax",
+	"category": "hexcasting:patterns/spells",
+	"advancement": "hexcasting:root",
+	"sortnum": 2,
+	"pages": [
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.amber_seal.0"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:amber_seal",
+			"anchor": "hexical:amber_seal",
+			"input": "vector",
+			"output": "",
+			"text": "hexical.page.amber_seal.summary"
+		}
+	]
+}
