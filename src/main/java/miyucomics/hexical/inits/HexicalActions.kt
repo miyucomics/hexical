@@ -11,10 +11,11 @@ import at.petrak.hexcasting.api.utils.vecFromNBT
 import at.petrak.hexcasting.common.lib.hex.HexActions
 import at.petrak.hexcasting.common.lib.hex.HexArithmetics
 import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.features.akashic.OpClearAkashicShelf
-import miyucomics.hexical.features.akashic.OpKeyAkashicShelf
-import miyucomics.hexical.features.akashic.OpReadAkashicShelf
-import miyucomics.hexical.features.akashic.OpWriteAkashicShelf
+import miyucomics.hexical.features.akashic_shelves.OpClearAkashicShelf
+import miyucomics.hexical.features.akashic_shelves.OpKeyAkashicShelf
+import miyucomics.hexical.features.akashic_shelves.OpReadAkashicShelf
+import miyucomics.hexical.features.akashic_shelves.OpWriteAkashicShelf
+import miyucomics.hexical.features.amber_seal.OpAmberSeal
 import miyucomics.hexical.features.animated_scrolls.OpAlterScroll
 import miyucomics.hexical.features.animated_scrolls.OpColorScroll
 import miyucomics.hexical.features.autographs.OpAutograph
@@ -189,6 +190,8 @@ object HexicalActions {
 		register("to_pigment", "aqwedeweeeewweeew", HexDir.NORTH_WEST, OpToPigment)
 		register("sample_pigment", "edewqaqqqqqwqqq", HexDir.SOUTH_EAST, OpSamplePigment)
 		register("take_on_pigment", "weeeweeqeeeewqaqweeee", HexDir.EAST, OpTakeOnPigment)
+
+		register("amber_seal", "qaqeaqwqwqa", HexDir.EAST, OpAmberSeal)
 
 		register("prestidigitation", "wedewedew", HexDir.NORTH_EAST, OpPrestidigitation)
 

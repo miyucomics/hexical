@@ -554,6 +554,11 @@
 	"hexical.page.mage_mouth.summary": "Makes me eat my wristpocketed item, nourishing me or applying potions to me. Costs about one $(l:items/amethyst)$(item)Amethyst Dust$() and mishaps if the item is not edible.",
 	"hexical.page.mage_mouth.description": "Regardless of the time required to usually eat the item, its special effects, my own dietary restrictions, cooldowns on eating the item, or if I'm full, this spell makes me consume it instantly.$(br2)$(o)Let food be thy medicine and medicine be thy food.$()",
 
+	"hexical.page.amber_seal.title": "Amber Preservation",
+	"hexical.page.amber_seal.0": "This spell seals a block, preventing it from being used or even flowing through time normally. Sealed blocks can be broken, where the outer shell prevents the inner contents from being disturbed. It can then be moved elsewhere and unsealed by right-clicking it.",
+	"hexcasting.action.hexical:amber_seal": "Amber Seal",
+	"hexical.page.amber_seal.summary": "Seals the block at the given location. Costs about one $(l:items/amethyst)$(item)Charged Amethyst$().",
+
 	"hexical.page.projectiles.title": "Projectiles",
 	"hexical.page.projectiles.0": "While conjuring projectiles from pure _media manipulation should be prohibitively expensive, Nature offers a set of cheaper spells to create certain projectiles.$(br2)These spells push the conjured entity to the stack, which I must manually $(l:patterns/spells/basic#hexcasting:add_motion)$(action)propel$() in my desired direction.$(br2)$(o)Can I offer you a nice egg in this trying time?$()",
 	"hexcasting.action.hexical:egg": "Conjure Egg",
