@@ -56,7 +56,7 @@ object HexicalBlocks {
 
 	val AMBER_SEAL_BLOCK = AmberSealBlock
 	@JvmField
-	val AMBER_SEAL_ITEM = BlockItem(AMBER_SEAL_BLOCK, Item.Settings())
+	val AMBER_SEAL_ITEM = BlockItem(AMBER_SEAL_BLOCK, Item.Settings().maxCount(1))
 
 	@JvmField
 	val MAGE_BLOCK_ENTITY: BlockEntityType<MageBlockEntity> = BlockEntityType.Builder.create(::MageBlockEntity, MAGE_BLOCK).build(null)

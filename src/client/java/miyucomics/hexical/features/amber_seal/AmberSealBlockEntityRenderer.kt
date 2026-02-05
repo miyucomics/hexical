@@ -12,14 +12,12 @@ class AmberSealBlockEntityRenderer(ctx: BlockEntityRendererFactory.Context) : Bl
 	private val renderDispatcher: BlockEntityRenderDispatcher = ctx.renderDispatcher
 
 	override fun render(seal: AmberSealBlockEntity, tickDelta: Float, matrices: MatrixStack, consumers: VertexConsumerProvider, light: Int, overlay: Int) {
-		if (seal.encasedState == null)
-			return
-
 		matrices.push()
 		matrices.translate(0.0625, 0.0625, 0.0625)
 		matrices.scale(0.875f, 0.875f, 0.875f)
 		renderManager.renderBlockAsEntity(seal.encasedState, matrices, consumers, light, overlay)
-		renderDispatcher.render(seal.encasedEntity, tickDelta, matrices, consumers)
+		if (seal.encasedEntity != null)
+			renderDispatcher.render(seal.encasedEntity, tickDelta, matrices, consumers)
 		matrices.pop()
 	}
 }

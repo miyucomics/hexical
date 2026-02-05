@@ -45,14 +45,14 @@ object AmberSealBlock : BlockWithEntity(FabricBlockSettings.copyOf(Blocks.AMETHY
 
 	override fun onUse(state: BlockState, world: World, position: BlockPos, player: PlayerEntity, hand: Hand, hit: BlockHitResult): ActionResult {
 		val seal = world.getBlockEntity(position) as? AmberSealBlockEntity ?: return ActionResult.PASS
-		val newState = seal.encasedState ?: return ActionResult.FAIL
+		val newState = seal.encasedState
 		DanglingState.queuedBlockEntity = seal.encasedEntity
 		world.setBlockState(position, newState, NOTIFY_ALL or REDRAW_ON_MAIN_THREAD)
 		world.playSound(player, position, HexicalSounds.MAGIC_WOOSHES, SoundCategory.BLOCKS, 1.0f, world.getRandom().nextFloat() * 0.4f + 0.8f)
 		return ActionResult.success(world.isClient)
 	}
 
-	override fun getRenderType(state: BlockState) = BlockRenderType.INVISIBLE
+	override fun getRenderType(state: BlockState) = BlockRenderType.MODEL
 	override fun isTransparent(state: BlockState, world: BlockView, pos: BlockPos) = true
 	override fun createBlockEntity(pos: BlockPos, state: BlockState) = AmberSealBlockEntity(pos, state)
 
