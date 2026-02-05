@@ -21,7 +21,7 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.world.BlockView
 import net.minecraft.world.World
 
-object AmberSealBlock : BlockWithEntity(FabricBlockSettings.copyOf(Blocks.AMETHYST_BLOCK)) {
+object AmberSealBlock : BlockWithEntity(FabricBlockSettings.copyOf(Blocks.AMETHYST_BLOCK).nonOpaque().blockVision(Blocks::never)) {
 	override fun onBreak(world: World, pos: BlockPos, state: BlockState?, player: PlayerEntity) {
 		val seal = world.getBlockEntity(pos)
 		if (!player.isCreative || seal !is AmberSealBlockEntity) {
