@@ -10,6 +10,7 @@ import net.minecraft.item.ItemPlacementContext
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.nbt.NbtHelper
+import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket
 import net.minecraft.registry.Registries
 import net.minecraft.state.property.Properties
 import net.minecraft.util.math.BlockPos
@@ -60,4 +61,7 @@ class AmberSealBlockEntity(pos: BlockPos, state: BlockState, var encasedState: B
 			}
 		}
 	}
+
+	override fun toInitialChunkDataNbt(): NbtCompound = createNbt()
+	override fun toUpdatePacket(): BlockEntityUpdateS2CPacket = BlockEntityUpdateS2CPacket.create(this)
 }

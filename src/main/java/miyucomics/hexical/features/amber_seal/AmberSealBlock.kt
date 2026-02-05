@@ -52,7 +52,7 @@ object AmberSealBlock : BlockWithEntity(FabricBlockSettings.copyOf(Blocks.AMETHY
 		return ActionResult.success(world.isClient)
 	}
 
-	override fun getRenderType(state: BlockState) = BlockRenderType.MODEL
+	override fun getRenderType(state: BlockState) = BlockRenderType.ENTITYBLOCK_ANIMATED
 	override fun isTransparent(state: BlockState, world: BlockView, pos: BlockPos) = true
 	override fun createBlockEntity(pos: BlockPos, state: BlockState) = AmberSealBlockEntity(pos, state)
 
