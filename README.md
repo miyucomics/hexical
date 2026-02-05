@@ -8,4 +8,5 @@ Hexical is my passion project. It is my own additions and spins to a mod I great
 ---
 Credits to [Affinity](https://github.com/wisp-forest/affinity) for reference on how to wrap and restore block entities. Files were not copied wholesale, but code that was helped by Affinity can be found in:
 - `src/main/java/miyucomics/hexical/features/amber_seal`
+- `src/client/java/miyucomics/hexical/features/amber_seal`
 - `src/main/java/miyucomics/hexical/mixin/WorldChunkMixin.java`
