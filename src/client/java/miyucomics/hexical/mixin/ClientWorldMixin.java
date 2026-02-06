@@ -14,6 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class ClientWorldMixin {
 	@Inject(method = "getBlockParticle", at = @At("HEAD"), cancellable = true)
 	public void showLights(CallbackInfoReturnable<Block> cir) {
+		assert MinecraftClient.getInstance().player != null;
 		if (MinecraftClient.getInstance().player.isHolding(HexItems.SCRYING_LENS))
 			cir.setReturnValue(Blocks.LIGHT);
 	}

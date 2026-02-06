@@ -21,6 +21,7 @@ import java.util.ArrayList;
 
 @Mixin(WanderingTraderEntity.class)
 public abstract class WanderingTraderEntityMixin extends MerchantEntity {
+	@SuppressWarnings("unused")
 	public WanderingTraderEntityMixin(EntityType<? extends MerchantEntity> entityType, World world) {
 		super(entityType, world);
 	}

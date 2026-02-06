@@ -22,6 +22,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(SnifferEntity.class)
 @SuppressWarnings("AddedMixinMembersNamePattern")
 public abstract class SnifferEntityMixin implements SnifferEntityMinterface {
+	@SuppressWarnings("UnusedReturnValue")
 	@Shadow public abstract SnifferEntity startState(SnifferEntity.State state);
 	@Shadow public abstract Brain<SnifferEntity> getBrain();
 	@Unique private ItemStack customItem = null;
@@ -44,7 +45,8 @@ public abstract class SnifferEntityMixin implements SnifferEntityMinterface {
 
 		getBrain().remember(MemoryModuleType.SNIFFER_DIGGING, true);
 
-		getBrain().stopAllTasks((ServerWorld) ((SnifferEntity) (Object) this).getWorld(), ((SnifferEntity) (Object) this));
+		SnifferEntity sniffer = (SnifferEntity) (Object) this;
+		getBrain().stopAllTasks((ServerWorld) sniffer.getWorld(), sniffer);
 		getBrain().resetPossibleActivities();
 		startState(SnifferEntity.State.DIGGING);
 	}

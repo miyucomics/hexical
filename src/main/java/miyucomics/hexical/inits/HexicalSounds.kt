@@ -18,6 +18,7 @@ object HexicalSounds {
 	val SCARAB_CHIRPS: SoundEvent = register("scarab_chirps")
 	val HANDBELL_CHIMES: SoundEvent = register("handbell_chimes")
 
+	@Suppress("EmptyMethod")
 	fun init() {}
 
 	private fun register(name: String): SoundEvent {

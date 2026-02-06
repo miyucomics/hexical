@@ -17,6 +17,7 @@ import net.minecraft.registry.Registry
 import net.minecraft.world.World
 import kotlin.math.min
 
+@Suppress("OverrideOnly")
 object TransmutingHelper : InitHook() {
 	val TRANSMUTING_RECIPE: RecipeType<TransmutingRecipe> = Registry.register(Registries.RECIPE_TYPE, HexicalMain.id("transmuting"), Type.INSTANCE)
 

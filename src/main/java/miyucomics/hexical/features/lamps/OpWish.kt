@@ -1,3 +1,5 @@
+@file:Suppress("OverrideOnly", "OverrideOnly")
+
 package miyucomics.hexical.features.lamps
 
 import at.petrak.hexcasting.api.casting.RenderedSpell
@@ -16,6 +18,7 @@ import net.minecraft.item.ItemStack
 import net.minecraft.server.network.ServerPlayerEntity
 import kotlin.math.min
 
+@Suppress("OverrideOnly")
 object OpWish : SpellAction {
 	private const val MAX_LAMP_CAPACITY = 100000 * MediaConstants.DUST_UNIT
 
