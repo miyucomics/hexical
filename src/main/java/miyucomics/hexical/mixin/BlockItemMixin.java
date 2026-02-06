@@ -18,10 +18,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class BlockItemMixin {
     @Inject(method = "setBlockEntityNbt", at = @At("RETURN"))
     private static void stripPedestalUUID(ItemStack stack, BlockEntityType<?> blockEntityType, NbtCompound tag, CallbackInfo ci) {
-        if (stack.hasNbt() && stack.getNbt().contains("BlockEntityTag")) {
-            NbtCompound beTag = stack.getSubNbt("BlockEntityTag");
-            if (beTag != null && beTag.contains("persistent_uuid"))
-                beTag.remove("persistent_uuid");
+        if (stack.hasNbt()) {
+	        assert stack.getNbt() != null;
+	        if (stack.getNbt().contains("BlockEntityTag")) {
+		        NbtCompound beTag = stack.getSubNbt("BlockEntityTag");
+		        if (beTag != null && beTag.contains("persistent_uuid"))
+			        beTag.remove("persistent_uuid");
+	        }
         }
     }
 

@@ -30,8 +30,9 @@ public class PlayerBasedCastEnvMixin {
 
 	@Inject(method = "sendMishapMsgToPlayer(Lat/petrak/hexcasting/api/casting/eval/sideeffects/OperatorSideEffect$DoMishap;)V", at = @At("HEAD"))
 	private void captureMishap(OperatorSideEffect.DoMishap mishap, CallbackInfo ci) {
-		Text message = mishap.getMishap().errorMessageWithName((CastingEnvironment) (Object) this, mishap.getErrorCtx());
-		if (message != null && MediaLogField.isEnvCompatible((CastingEnvironment) (Object) this))
+		CastingEnvironment env = (CastingEnvironment) (Object) this;
+		Text message = mishap.getMishap().errorMessageWithName(env, mishap.getErrorCtx());
+		if (message != null && MediaLogField.isEnvCompatible(env))
 			MediaLogFieldKt.getMediaLog(caster).saveMishap(message);
 	}
 }

@@ -22,7 +22,7 @@ object OpAmberSeal : SpellAction {
 		override fun cast(env: CastingEnvironment) {
 			val originalState = env.world.getBlockState(position)
 			val originalEntity = env.world.getBlockEntity(position)
-			env.world.removeBlockEntity(position);
+			env.world.removeBlockEntity(position)
 			env.world.setBlockState(position, AmberSealBlock.copyRotationParameters(HexicalBlocks.AMBER_SEAL_BLOCK.defaultState, env.world.getBlockState(position)), Block.NOTIFY_ALL or Block.REDRAW_ON_MAIN_THREAD)
 			(env.world.getBlockEntity(position) as AmberSealBlockEntity).init(originalState, originalEntity)
 		}

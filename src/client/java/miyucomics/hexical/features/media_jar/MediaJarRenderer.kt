@@ -52,6 +52,7 @@ object MediaJarRenderer {
 		matrices.pop()
 	}
 
+	@Suppress("SameParameterValue")
 	private fun addQuad(consumer: VertexConsumer, matrices: MatrixStack, x0: Float, y0: Float, x1: Float, y1: Float, offset: Vector3f) {
 		val quadWidth = (abs(x0 - x1) * 255).toInt()
 		val quadHeight = (abs(y0 - y1) * 255).toInt()

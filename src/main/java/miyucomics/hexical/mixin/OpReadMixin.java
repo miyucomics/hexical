@@ -28,7 +28,7 @@ public class OpReadMixin {
 		try {
 			return original.call(args, env);
 		} catch (Throwable exception) { // Java does not know how to handle Kotlin not needing to specify that it throws something, so we just need to be general and just use Throwable
-			CastingEnvironment.HeldItemInfo data = env.getHeldItemToOperateOn(
+			@SuppressWarnings("DataFlowIssue") CastingEnvironment.HeldItemInfo data = env.getHeldItemToOperateOn(
 				item -> item.isOf(HexicalItems.CURIO_COMPASS)
 					&& item.hasNbt()
 					&& item.getNbt().contains("needle", NbtElement.INT_ARRAY_TYPE)
@@ -41,13 +41,13 @@ public class OpReadMixin {
 			if (caster == null)
 				return List.of(new GarbageIota());
 
-			int[] coordinates = data.stack().getNbt().getIntArray("needle");
+			@SuppressWarnings("DataFlowIssue") int[] coordinates = data.stack().getNbt().getIntArray("needle");
 			return List.of(new Vec3Iota(new Vec3d(coordinates[0], coordinates[1], coordinates[2]).subtract(caster.getEyePos()).normalize()));
 		}
 	}
 
 	@Inject(method = "execute", at = @At(value = "INVOKE", target = "Lat/petrak/hexcasting/api/addldata/ADIotaHolder;readIota(Lnet/minecraft/server/world/ServerWorld;)Lat/petrak/hexcasting/api/casting/iota/Iota;"))
-	private static void dontEatTwoHexbursts(List<? extends Iota> args, CastingEnvironment env, CallbackInfoReturnable<List<Iota>> cir, @Local ItemStack handStack) {
+	private static void dontEatTwoHexbursts(List<? extends Iota> args, CastingEnvironment env, CallbackInfoReturnable<List<Iota>> cir, @Local(name = "handStack") ItemStack handStack) {
 		if (handStack.isOf(HexicalItems.HEXBURST_ITEM))
 			handStack.increment(1);
 	}

@@ -23,6 +23,7 @@ public class EntityRendererMixin {
 	@Inject(method = "render", at = @At("HEAD"))
 	void renderMuteIcon(Entity entity, float yaw, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertices, int light, CallbackInfo ci) {
 		ClientPlayerEntity player = MinecraftClient.getInstance().player;
+		assert player != null;
 		if (player.getAttributeValue(HexAttributes.SCRY_SIGHT) <= 0.0)
 			return;
 
