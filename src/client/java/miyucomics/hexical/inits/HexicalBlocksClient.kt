@@ -11,6 +11,7 @@ import miyucomics.hexical.inits.HexicalBlocks.AMBER_SEAL_BLOCK
 import miyucomics.hexical.inits.HexicalBlocks.AMBER_SEAL_BLOCK_ENTITY
 import miyucomics.hexical.inits.HexicalBlocks.MEDIA_JAR_BLOCK
 import miyucomics.hexical.inits.HexicalBlocks.MEDIA_JAR_BLOCK_ENTITY
+import miyucomics.hexical.inits.HexicalBlocks.PERIWINKLE_FLOWER
 import miyucomics.hexical.misc.TextUtilities
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap
 import net.minecraft.client.render.RenderLayer
@@ -22,6 +23,7 @@ object HexicalBlocksClient {
 	fun clientInit() {
 		BlockRenderLayerMap.INSTANCE.putBlock(AMBER_SEAL_BLOCK, RenderLayer.getCutout())
 		BlockRenderLayerMap.INSTANCE.putBlock(MEDIA_JAR_BLOCK, RenderLayer.getCutout())
+		BlockRenderLayerMap.INSTANCE.putBlock(PERIWINKLE_FLOWER, RenderLayer.getCutout())
 
 		BlockEntityRendererFactories.register(AMBER_SEAL_BLOCK_ENTITY, ::AmberSealBlockEntityRenderer)
 		BlockEntityRendererFactories.register(MEDIA_JAR_BLOCK_ENTITY, ::MediaJarBlockEntityRenderer)

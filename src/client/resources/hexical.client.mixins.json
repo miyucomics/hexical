@@ -12,7 +12,6 @@
 		"ItemEntityRendererMixin",
 		"ItemRendererMixin",
 		"MouseMixin",
-		"RenderLayerMixin",
 		"ScryingLensOverlaysMixin"
 	],
 	"injectors": {
