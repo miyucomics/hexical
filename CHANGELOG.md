@@ -6,10 +6,8 @@
 - added strands
 - added Vibrate spell
 - added grok patterns to push and pull from staff stack
-- added shadow to animated scrolls just like regular scrolls
 - added tooltips to hexbursts
 - added tooltips to hextito
-- added pattern preview to animated scrolls
 - added hotbar spells
 - added lesser sentinels
 - added plushies
@@ -81,7 +79,6 @@
 - changed cost of Refuel Lamp
 - changed Displace to cost half a dust
 - changed Autograph and Unautograph's pattern by swapping them
-- changed Promote Genie to be a great spell
 - changed media jar
   - pretty shader
   - custom recipe type to transmute with media
@@ -90,7 +87,6 @@
 - changed wristpocket reflection to return an item stack
 - changed hex candles to not be extinguished by water
 - changed Greater Blink to not move feet to eyes
-- changed animated scroll recipe to use media jar
 - changed prestidigitation to anger bees when you extract honey
 - changed grimoires to work in ender chest
 - changed lamps deactivating to only be when they are picked up
@@ -102,7 +98,6 @@
 - changed firework spell to use vectors for colors rather than dyes
 - changed Conjure Spike cost from five dust to one dust
 - changed cost of both hexburst and hextito conjuration to half a dust
-- fixed bug where small animated scrolls do not render
 - fixed bug where grimoire does not work in non-hotbar
 - fixed bug where Chromatic Purification breaks for vectors
 - fixed lack of cost in Mage Hand documentation
@@ -129,10 +124,11 @@
 - removed mystification around lamps, now just a casting device
 - removed the Simulate Firework spell, just acted really strangely
 - removed limitation on arch lamps per person
+- removed shared arch lamp state
 - removed Alteration Purification
 - removed Pocket Reflection II
 - removed Hallucinate Sound spells
-- removed animated scroll automatic switching
+- removed animated scrolls
 - removed convenience features that would make sense in User Hexperience
   - removed walking in staff screen
   - removed keybind to open spellbook

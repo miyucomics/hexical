@@ -5,7 +5,6 @@ import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.common.items.ItemStaff
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.features.animated_scrolls.AnimatedScrollItem
 import miyucomics.hexical.features.confection.HexburstItem
 import miyucomics.hexical.features.confection.HextitoItem
 import miyucomics.hexical.features.curios.CurioItem
@@ -41,9 +40,6 @@ object HexicalItems {
 		return item
 	}
 
-	val SMALL_ANIMATED_SCROLL_ITEM = registerItem("animated_scroll_small", AnimatedScrollItem(1))
-	val MEDIUM_ANIMATED_SCROLL_ITEM = registerItem("animated_scroll_medium", AnimatedScrollItem(2))
-	val LARGE_ANIMATED_SCROLL_ITEM = registerItem("animated_scroll_large", AnimatedScrollItem(3))
 	@JvmField val HAND_LAMP_ITEM = registerItem("hand_lamp", HandLampItem)
 	@JvmField val ARCH_LAMP_ITEM = registerItem("arch_lamp", ArchLampItem)
 
@@ -83,10 +79,6 @@ object HexicalItems {
 		.entries { _, entries ->
 			entries.add(ItemStack(HAND_LAMP_ITEM).also { IXplatAbstractions.INSTANCE.findHexHolder(it)!!.writeHex(listOf(), null, 32000 * MediaConstants.DUST_UNIT) })
 			entries.add(ItemStack(ARCH_LAMP_ITEM).also { IXplatAbstractions.INSTANCE.findHexHolder(it)!!.writeHex(listOf(), null, 32000 * MediaConstants.DUST_UNIT) })
-
-			entries.add(ItemStack(SMALL_ANIMATED_SCROLL_ITEM))
-			entries.add(ItemStack(MEDIUM_ANIMATED_SCROLL_ITEM))
-			entries.add(ItemStack(LARGE_ANIMATED_SCROLL_ITEM))
 
 			entries.add(ItemStack(HEX_GUMMY))
 
