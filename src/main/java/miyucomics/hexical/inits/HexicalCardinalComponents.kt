@@ -11,8 +11,6 @@ import dev.onyxstudios.cca.api.v3.entity.EntityComponentInitializer
 import dev.onyxstudios.cca.api.v3.item.ItemComponentFactoryRegistry
 import dev.onyxstudios.cca.api.v3.item.ItemComponentInitializer
 import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.features.animated_scrolls.AnimatedScrollChronicler
-import miyucomics.hexical.features.animated_scrolls.AnimatedScrollEntity
 import miyucomics.hexical.features.confection.HexburstIotaHolder
 import miyucomics.hexical.features.mute.MutedComponent
 import miyucomics.hexical.features.specklikes.mesh.MeshChronicler
@@ -25,7 +23,6 @@ import net.minecraft.entity.Entity
 
 class HexicalCardinalComponents : EntityComponentInitializer, ItemComponentInitializer {
 	override fun registerEntityComponentFactories(registry: EntityComponentFactoryRegistry) {
-		registry.registerFor(AnimatedScrollEntity::class.java, HexCardinalComponents.IOTA_HOLDER, ::AnimatedScrollChronicler)
 		registry.registerFor(SpeckEntity::class.java, HexCardinalComponents.IOTA_HOLDER, ::SpeckChronicler)
 		registry.registerFor(StrandEntity::class.java, HexCardinalComponents.IOTA_HOLDER, ::StrandChronicler)
 		registry.registerFor(MeshEntity::class.java, HexCardinalComponents.IOTA_HOLDER, ::MeshChronicler)

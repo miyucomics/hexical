@@ -16,8 +16,6 @@ import miyucomics.hexical.features.akashic_shelves.OpKeyAkashicShelf
 import miyucomics.hexical.features.akashic_shelves.OpReadAkashicShelf
 import miyucomics.hexical.features.akashic_shelves.OpWriteAkashicShelf
 import miyucomics.hexical.features.amber_seal.OpAmberSeal
-import miyucomics.hexical.features.animated_scrolls.OpAlterScroll
-import miyucomics.hexical.features.animated_scrolls.OpColorScroll
 import miyucomics.hexical.features.autographs.OpAutograph
 import miyucomics.hexical.features.autographs.OpHasAutograph
 import miyucomics.hexical.features.autographs.OpUnautograph
@@ -102,12 +100,6 @@ import net.minecraft.registry.Registry
 object HexicalActions {
 	fun init() {
 		Registry.register(HexArithmetics.REGISTRY, HexicalMain.id("patterns"), PatternArithmetic)
-
-		register("normalize_scroll", "wqwawqwqawawa", HexDir.SOUTH_WEST, OpAlterScroll { it.setState(0) })
-		register("age_scroll", "wqwawqwqawwddwwa", HexDir.SOUTH_WEST, OpAlterScroll { it.setState(1) })
-		register("vanish_scroll", "wqwawqwqaqqa", HexDir.SOUTH_WEST, OpAlterScroll { it.setState(2) })
-		register("color_scroll", "wqwawqwqawawaedd", HexDir.SOUTH_WEST, OpColorScroll)
-		register("glow_scroll", "wqwawqwqawawaewdwdw", HexDir.SOUTH_WEST, OpAlterScroll { it.toggleGlow() })
 
 		register("program_driver", "aqqqqaw", HexDir.NORTH_WEST, OpProgramDriver)
 
