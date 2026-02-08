@@ -1,6 +1,7 @@
 package miyucomics.hexical
 
 import com.samsthenerd.inline.impl.extrahooks.ItemOverlayManager
+import miyucomics.hexical.features.amber_seal.AmberSealItemRenderer
 import miyucomics.hexical.features.charms.CharmedItemIconRenderer
 import miyucomics.hexical.features.media_jar.MediaJarItemRenderer
 import miyucomics.hexical.inits.*
@@ -18,7 +19,8 @@ class HexicalClient : ClientModInitializer {
 		HexicalParticlesClient.clientInit()
 
 		ClientTickEvents.END_CLIENT_TICK.register { ClientStorage.ticks += 1 }
-		BuiltinItemRendererRegistry.INSTANCE.register(HexicalBlocks.MEDIA_JAR_ITEM, MediaJarItemRenderer())
+		BuiltinItemRendererRegistry.INSTANCE.register(HexicalBlocks.AMBER_SEAL_ITEM, AmberSealItemRenderer)
+		BuiltinItemRendererRegistry.INSTANCE.register(HexicalBlocks.MEDIA_JAR_ITEM, MediaJarItemRenderer)
 		ItemOverlayManager.addRenderer(CharmedItemIconRenderer)
 	}
 }
