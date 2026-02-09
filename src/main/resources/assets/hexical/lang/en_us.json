@@ -17,6 +17,7 @@
 	"advancements.hexical.conjure_hexxy.description": "Give Hexxy a physical form in your world.",
 	"advancements.hexical.conjure_cake.title": "The Cake is a Lie",
 	"advancements.hexical.conjure_cake.description": "Summon a free cake from a mysterious benefactor.",
+	"block.hexical.amber_seal": "Amber Sealed Block",
 	"block.hexical.hex_candle_cake": "Hex Candle Cake",
 	"block.hexical.casting_carpet": "Casting Carpet",
 	"block.hexical.hex_candle": "Hex Candle",
@@ -541,9 +542,10 @@
 	"hexical.page.mage_mouth.description": "Regardless of the time required to usually eat the item, its special effects, my own dietary restrictions, cooldowns on eating the item, or if I'm full, this spell makes me consume it instantly.$(br2)$(o)Let food be thy medicine and medicine be thy food.$()",
 
 	"hexical.page.amber_seal.title": "Amber Preservation",
-	"hexical.page.amber_seal.0": "This spell seals a block, preventing it from being used or even flowing through time normally. Sealed blocks can be broken, where the outer shell prevents the inner contents from being disturbed. It can then be moved elsewhere and unsealed by right-clicking it.",
+	"hexical.page.amber_seal.0": "I can not simply pick up a $(item)Chest$() and move it under most circumstances; the contents would spill everywhere. Fortunately, there is a spell for that. Inspired by a strange material called amber that is able to preserve moments of history, this spell encases a block in a shell of amethyst and cuts it off from the external world.",
+	"hexical.page.amber_seal.1": "Sealed blocks demonstrate two main properties. The first is that they are frozen in the moment they were sealed. A $(item)Furnace$() will have the appearance of burning but its items do not cook.$(br2)The second, more useful, property is that I can break them with just my bare hands without disturbing the inner contents, place them elsewhere, and unwrap them. No items spill out and most blocks seem entirely unaltered.",
 	"hexcasting.action.hexical:amber_seal": "Amber Seal",
-	"hexical.page.amber_seal.summary": "Seals the block at the given location. Costs about one $(l:items/amethyst)$(item)Charged Amethyst$().",
+	"hexical.page.amber_seal.summary": "Preserves the block at the given location in amethyst. Costs about one $(l:items/amethyst)$(item)Charged Amethyst$().",
 
 	"hexical.page.projectiles.title": "Projectiles",
 	"hexical.page.projectiles.0": "While conjuring projectiles from pure _media manipulation should be prohibitively expensive, Nature offers a set of cheaper spells to create certain projectiles.$(br2)These spells push the conjured entity to the stack, which I must manually $(l:patterns/spells/basic#hexcasting:add_motion)$(action)propel$() in my desired direction.$(br2)$(o)Can I offer you a nice egg in this trying time?$()",
