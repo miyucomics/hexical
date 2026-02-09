@@ -15,11 +15,11 @@ import net.minecraft.util.math.BlockPos
 object AmberSealItemRenderer : BuiltinItemRendererRegistry.DynamicItemRenderer {
 	override fun render(stack: ItemStack, mode: ModelTransformationMode, matrices: MatrixStack, consumers: VertexConsumerProvider, light: Int, overlay: Int) {
 		val client = MinecraftClient.getInstance()
-		client.blockRenderManager.renderBlockAsEntity(HexicalBlocks.AMBER_SEAL_BLOCK.defaultState, matrices, consumers, light, overlay)
+		MinecraftClient.getInstance().blockRenderManager.renderBlockAsEntity(HexicalBlocks.AMBER_SEAL_BLOCK.defaultState, matrices, consumers, light, overlay)
 
 		val nbt = stack.nbt?.getCompound("BlockEntityTag") ?: return
 		val state = NbtHelper.toBlockState(Registries.BLOCK.readOnlyWrapper, nbt.getCompound("EncasedBlockState"))
-		val blockEntity = BlockEntity.createFromNbt(client.cameraEntity?.blockPos ?: BlockPos.ORIGIN, state, nbt.getCompound("EncasedBlockEntity")) ?: return
+		val blockEntity = BlockEntity.createFromNbt(BlockPos.ORIGIN, state, nbt.getCompound("EncasedBlockEntity")) ?: return
 		blockEntity.setWorld(client.world)
 		AmberSealBlockEntityRenderer.renderAmberSealInnerContents(client.blockRenderManager, client.blockEntityRenderDispatcher, state, blockEntity, client.tickDelta, matrices, consumers, light, overlay)
 	}
