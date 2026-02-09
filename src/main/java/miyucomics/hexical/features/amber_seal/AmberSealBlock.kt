@@ -1,6 +1,5 @@
 package miyucomics.hexical.features.amber_seal
 
-import miyucomics.hexical.inits.HexicalSounds
 import net.fabricmc.fabric.api.`object`.builder.v1.block.FabricBlockSettings
 import net.minecraft.block.BlockRenderType
 import net.minecraft.block.BlockState
@@ -12,6 +11,7 @@ import net.minecraft.item.ItemStack
 import net.minecraft.loot.context.LootContextParameterSet
 import net.minecraft.loot.context.LootContextParameters
 import net.minecraft.sound.SoundCategory
+import net.minecraft.sound.SoundEvents
 import net.minecraft.state.property.Properties
 import net.minecraft.state.property.Property
 import net.minecraft.util.ActionResult
@@ -21,7 +21,7 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.world.BlockView
 import net.minecraft.world.World
 
-object AmberSealBlock : BlockWithEntity(FabricBlockSettings.copyOf(Blocks.AMETHYST_BLOCK).nonOpaque().blockVision(Blocks::never)) {
+object AmberSealBlock : BlockWithEntity(FabricBlockSettings.copyOf(Blocks.GLASS)) {
 	override fun onBreak(world: World, pos: BlockPos, state: BlockState?, player: PlayerEntity) {
 		val seal = world.getBlockEntity(pos)
 		if (!player.isCreative || seal !is AmberSealBlockEntity) {
@@ -48,11 +48,11 @@ object AmberSealBlock : BlockWithEntity(FabricBlockSettings.copyOf(Blocks.AMETHY
 		val newState = seal.encasedState
 		DanglingState.queuedBlockEntity = seal.encasedEntity
 		world.setBlockState(position, newState, NOTIFY_ALL or REDRAW_ON_MAIN_THREAD)
-		world.playSound(player, position, HexicalSounds.MAGIC_WOOSHES, SoundCategory.BLOCKS, 1.0f, world.getRandom().nextFloat() * 0.4f + 0.8f)
+		world.playSound(player, position, SoundEvents.BLOCK_GLASS_BREAK, SoundCategory.BLOCKS, 1.0f, world.getRandom().nextFloat() * 0.4f + 0.8f)
 		return ActionResult.success(world.isClient)
 	}
 
-	override fun getRenderType(state: BlockState) = BlockRenderType.ENTITYBLOCK_ANIMATED
+	override fun getRenderType(state: BlockState) = BlockRenderType.MODEL
 	override fun isTransparent(state: BlockState, world: BlockView, pos: BlockPos) = true
 	override fun createBlockEntity(pos: BlockPos, state: BlockState) = AmberSealBlockEntity(pos, state)
 
