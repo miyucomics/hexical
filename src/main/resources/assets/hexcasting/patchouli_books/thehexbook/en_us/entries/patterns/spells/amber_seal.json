@@ -1,6 +1,6 @@
 {
 	"name": "hexical.page.amber_seal.title",
-	"icon": "minecraft:wax",
+	"icon": "hexical:amber_seal{BlockEntityTag:{id:'hexical:amber_seal',EncasedBlockState:{Name:'minecraft:chest',Properties:{type:'single'}},EncasedBlockEntity:{id:'minecraft:chest',Items:[]}}}",
 	"category": "hexcasting:patterns/spells",
 	"advancement": "hexcasting:root",
 	"sortnum": 2,
@@ -8,6 +8,10 @@
 		{
 			"type": "patchouli:text",
 			"text": "hexical.page.amber_seal.0"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.amber_seal.1"
 		},
 		{
 			"type": "hexcasting:pattern",
