@@ -10,14 +10,14 @@ import net.minecraft.util.math.ColorHelper
 import kotlin.math.max
 import kotlin.math.min
 
-object OpIconCharmed : ConstMediaAction {
+object OpMediaColorCharmed : ConstMediaAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
 		if (env !is CharmCastEnv)
 			throw NeedsCharmedItemMishap()
 		when (val iota = args[0]) {
-			is NullIota -> CharmUtilities.getCompound(env.stack).remove("icon")
-			is Vec3Iota -> CharmUtilities.getCompound(env.stack).putInt("icon", ColorHelper.Argb.getArgb(
+			is NullIota -> CharmUtilities.getCompound(env.stack).remove("media_bar_color")
+			is Vec3Iota -> CharmUtilities.getCompound(env.stack).putInt("media_bar_color", ColorHelper.Argb.getArgb(
 				255,
 				(max(min(iota.vec3.x, 1.0), 0.0) * 255).toInt(),
 				(max(min(iota.vec3.y, 1.0), 0.0) * 255).toInt(),

@@ -4,6 +4,7 @@
 	"compatibilityLevel": "JAVA_17",
 	"client": [
 		"ClientWorldMixin",
+		"DrawContextMixin",
 		"EntityRendererMixin",
 		"GameRendererMixin",
 		"GuiSpellcastingMixin",

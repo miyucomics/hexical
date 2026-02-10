@@ -285,12 +285,12 @@ object HexicalActions {
 		register("conjure_mesh", "qaqqqqqwqqqdeeweweeaeewewee", HexDir.EAST, OpConjureMesh)
 
 		register("charm", "edeeeeeqaaqeeeadweeqeeqdqeeqeeqde", HexDir.SOUTH_EAST, OpCharmItem)
+		register("media_color_charmed", "qaqqdwdwd", HexDir.NORTH_EAST, OpMediaColorCharmed)
+		register("discharm", "qaqwddaaeawaea", HexDir.NORTH_EAST, OpDischarmItem)
 		register("write_charmed", "waqqqqqedeqdqdqdqdqe", HexDir.NORTH_EAST, OpWriteCharmed)
 		register("read_charmed", "waqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpReadCharmed)
 		register("write_charmed_proxy", "edewqaqqdeeeee", HexDir.SOUTH_EAST, OpProxyWriteCharmed)
 		register("read_charmed_proxy", "qaqwedeeaqqqqq", HexDir.NORTH_EAST, OpProxyReadCharmed)
-		register("icon_charmed", "qaqqdwdwd", HexDir.NORTH_EAST, OpIconCharmed)
-		register("discharm", "qaqwddaaeawaea", HexDir.NORTH_EAST, OpDischarmItem)
 
 		register("greater_blink", "wqawawaqwqwqawawaqw", HexDir.SOUTH_WEST, OpGreaterBlink)
 	}

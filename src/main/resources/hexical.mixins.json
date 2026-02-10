@@ -13,7 +13,6 @@
 		"DispenserBlockInvoker",
 		"EntityMixin",
 		"ItemEntityMixin",
-		"ItemStackMixin",
 		"LivingEntityMixin",
 		"MediaHelperMixin",
 		"OpEraseMixin",
