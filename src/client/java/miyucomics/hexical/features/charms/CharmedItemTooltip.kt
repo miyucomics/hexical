@@ -17,14 +17,10 @@ object CharmedItemTooltip : InitHook() {
 			val media = CharmUtilities.getMedia(stack)
 			val maxMedia = CharmUtilities.getMaxMedia(stack)
 			lines.add(Text.translatable("hexical.charmed").styled { style -> style.withColor(CharmUtilities.CHARMED_COLOR) })
-			lines.add(
-				Text.translatable("hexcasting.tooltip.media_amount.advanced",
-				Text.literal(TextUtilities.DUST_AMOUNT.format((media / MediaConstants.DUST_UNIT.toFloat()).toDouble())).styled { style -> style.withColor(
-					ItemMediaHolder.HEX_COLOR) },
-				Text.translatable("hexcasting.tooltip.media", TextUtilities.DUST_AMOUNT.format((maxMedia / MediaConstants.DUST_UNIT.toFloat()).toDouble())).styled { style -> style.withColor(
-					ItemMediaHolder.HEX_COLOR) },
-				Text.literal(TextUtilities.PERCENTAGE.format((100f * media / maxMedia).toDouble()) + "%").styled { style -> style.withColor(
-					TextColor.fromRgb(mediaBarColor(media, maxMedia))) }
+			lines.add(Text.translatable("hexcasting.tooltip.media_amount.advanced",
+				Text.literal(TextUtilities.DUST_AMOUNT.format((media / MediaConstants.DUST_UNIT.toFloat()).toDouble())).styled { style -> style.withColor(ItemMediaHolder.HEX_COLOR) },
+				Text.translatable("hexcasting.tooltip.media", TextUtilities.DUST_AMOUNT.format((maxMedia / MediaConstants.DUST_UNIT.toFloat()).toDouble())).styled { style -> style.withColor(ItemMediaHolder.HEX_COLOR) },
+				Text.literal(TextUtilities.PERCENTAGE.format((100f * media / maxMedia).toDouble()) + "%").styled { style -> style.withColor(TextColor.fromRgb(mediaBarColor(media, maxMedia))) }
 			))
 		}
 	}

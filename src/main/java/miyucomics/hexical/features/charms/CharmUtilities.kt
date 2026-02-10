@@ -3,6 +3,7 @@ package miyucomics.hexical.features.charms
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.casting.iota.NullIota
+import at.petrak.hexcasting.api.utils.mediaBarColor
 import at.petrak.hexcasting.api.utils.putCompound
 import miyucomics.hexical.features.curios.CurioItem
 import miyucomics.hexical.misc.HexSerialization
@@ -51,15 +52,21 @@ object CharmUtilities {
 			getCompound(stack).putLong("media", oldMedia - cost)
 	}
 
+	@JvmStatic
 	fun isStackCharmed(stack: ItemStack) = stack.hasNbt() && stack.nbt!!.contains("charmed")
 	fun getCompound(stack: ItemStack): NbtCompound = stack.nbt!!.getCompound("charmed")
 	fun getHex(stack: ItemStack, world: ServerWorld) = HexSerialization.backwardsCompatibleReadHex(getCompound(stack), "hex", world)
+
+	@JvmStatic
 	fun getMedia(stack: ItemStack) = getCompound(stack).getLong("media")
+	@JvmStatic
 	fun getMaxMedia(stack: ItemStack) = getCompound(stack).getLong("max_media")
-	fun getIcon(stack: ItemStack): Int? {
-        if (!getCompound(stack).contains("icon"))
-			return null
-		return getCompound(stack).getInt("icon")
+
+	@JvmStatic
+	fun getBarColor(stack: ItemStack): Int {
+        if (!getCompound(stack).contains("media_bar_color"))
+			return mediaBarColor(getMedia(stack), getMaxMedia(stack))
+		return getCompound(stack).getInt("media_bar_color")
     }
 
 	fun getInternalStorage(stack: ItemStack, world: ServerWorld): Iota {
