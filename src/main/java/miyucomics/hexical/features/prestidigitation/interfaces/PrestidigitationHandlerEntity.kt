@@ -20,5 +20,9 @@ abstract class PrestidigitationHandlerEntity<T>(private val handledClass: Class<
 		fun <T : Entity> simple(handledClass: Class<T>, effect: (T) -> Unit): PrestidigitationHandlerEntity<T> = object : PrestidigitationHandlerEntity<T>(handledClass) {
 			override fun affect(env: CastingEnvironment, entity: T) = effect(entity)
 		}
+
+		fun <T : Entity> simple(handledClass: Class<T>, effect: (env: CastingEnvironment, T) -> Unit): PrestidigitationHandlerEntity<T> = object : PrestidigitationHandlerEntity<T>(handledClass) {
+			override fun affect(env: CastingEnvironment, entity: T) = effect(env, entity)
+		}
 	}
 }
