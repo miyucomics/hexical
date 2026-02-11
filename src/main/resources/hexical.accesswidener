@@ -18,3 +18,4 @@ accessible field net/minecraft/item/ShovelItem PATH_STATES Ljava/util/Map;
 accessible method net/minecraft/block/ButtonBlock playClickSound (Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/world/WorldAccess;Lnet/minecraft/util/math/BlockPos;Z)V
 accessible field net/minecraft/block/entity/AbstractFurnaceBlockEntity burnTime I
 accessible field net/minecraft/block/entity/AbstractFurnaceBlockEntity fuelTime I
+accessible method net/minecraft/entity/passive/FoxEntity spit (Lnet/minecraft/item/ItemStack;)V
