@@ -19,3 +19,4 @@ accessible method net/minecraft/block/ButtonBlock playClickSound (Lnet/minecraft
 accessible field net/minecraft/block/entity/AbstractFurnaceBlockEntity burnTime I
 accessible field net/minecraft/block/entity/AbstractFurnaceBlockEntity fuelTime I
 accessible method net/minecraft/entity/passive/FoxEntity spit (Lnet/minecraft/item/ItemStack;)V
+accessible method net/minecraft/entity/passive/LlamaEntity spitAt (Lnet/minecraft/entity/LivingEntity;)V
