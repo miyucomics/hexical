@@ -200,5 +200,12 @@ object PrestidigitationHandlersBlock {
 			world.setBlockState(pos, world.getBlockState(pos).with(AbstractFurnaceBlock.LIT, true))
 			furnace.markDirty()
 		})
+
+		register(object : PrestidigitationHandlerBlock() {
+			override fun canAffectBlock(env: CastingEnvironment, pos: BlockPos) = getBlockState(env, pos).isOf(Blocks.DRAGON_EGG)
+			override fun affect(env: CastingEnvironment, pos: BlockPos) {
+				getBlock(env, pos).onBlockBreakStart(getBlockState(env, pos), env.world, pos, null)
+			}
+		})
 	}
 }
