@@ -7,6 +7,8 @@
 - added Vibrate spell
 - added grok patterns to push and pull from staff stack
 - added tooltips to hexbursts
+- added amber seal
+- added spell to create a toast
 - added tooltips to hextito
 - added hotbar spells
 - added lesser sentinels
