@@ -19,6 +19,7 @@ import miyucomics.hexical.features.player.PlayerAnimatorHook
 import miyucomics.hexical.features.scarabs.ScarabWingRenderer
 import miyucomics.hexical.features.shaders.ClientShaderReceiver
 import miyucomics.hexical.features.telepathy.ClientPeripheralPusher
+import miyucomics.hexical.features.toast.ToastReceiver
 import miyucomics.hexical.misc.InitHook
 
 object HexicalHooksClient {
@@ -45,6 +46,7 @@ object HexicalHooksClient {
 		register(PlayerAnimatorHook)
 		register(MageBlockScryingOverlay)
 		register(PedestalRenderHooks)
+		register(ToastReceiver)
 
 		for (hook in hooks)
 			hook.init()

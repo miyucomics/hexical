@@ -86,7 +86,12 @@ import miyucomics.hexical.features.specklikes.speck.OpConjureSpeck
 import miyucomics.hexical.features.specklikes.strand.OpConjureStrand
 import miyucomics.hexical.features.specklikes.strand.OpDrawPattern
 import miyucomics.hexical.features.spike.OpConjureSpike
-import miyucomics.hexical.features.telepathy.*
+import miyucomics.hexical.features.telepathy.OpGetKeybindOther
+import miyucomics.hexical.features.telepathy.OpGetKeybindSelf
+import miyucomics.hexical.features.telepathy.OpGetScroll
+import miyucomics.hexical.features.toast.OpSendTelepathy
+import miyucomics.hexical.features.toast.OpShoutTelepathy
+import miyucomics.hexical.features.toast.OpToast
 import miyucomics.hexical.features.wristpocket.*
 import miyucomics.hexical.features.zap.OpZap
 import net.minecraft.entity.EntityType
@@ -136,8 +141,6 @@ object HexicalActions {
 		register("dda", "wdqqdwewdqqdwdqdadedaddww", HexDir.NORTH_EAST, OpDda)
 
 		register("get_telepathy", "wqqadaw", HexDir.EAST, OpGetKeybindSelf("key.hexical.telepathy"))
-		register("send_telepathy", "qqqqwaqa", HexDir.EAST, OpSendTelepathy)
-		register("shout_telepathy", "daqqqqwa", HexDir.EAST, OpShoutTelepathy)
 		register("left_click", "qadee", HexDir.NORTH_EAST, OpGetKeybindSelf("key.attack"))
 		register("right_click", "edaqq", HexDir.NORTH_WEST, OpGetKeybindSelf("key.use"))
 		register("moving_up", "aqaddq", HexDir.SOUTH_EAST, OpGetKeybindSelf("key.forward"))
@@ -156,6 +159,10 @@ object HexicalActions {
 		register("moving_right_other", "qaqdaw", HexDir.SOUTH_WEST, OpGetKeybindOther("key.right"))
 		register("jumping_other", "qaqdawawa", HexDir.SOUTH_WEST, OpGetKeybindOther("key.jump"))
 		register("sneaking_other", "wwede", HexDir.NORTH_WEST, OpGetKeybindOther("key.sneak"))
+
+		register("toast", "ewqqqwqqaee", HexDir.NORTH_EAST, OpToast)
+		register("send_telepathy", "qqqqwaqa", HexDir.EAST, OpSendTelepathy)
+		register("shout_telepathy", "daqqqqwa", HexDir.EAST, OpShoutTelepathy)
 
 		register("key_shelf", "qaqqadaq", HexDir.EAST, OpKeyAkashicShelf)
 		register("read_shelf", "qaqqqada", HexDir.EAST, OpReadAkashicShelf)
