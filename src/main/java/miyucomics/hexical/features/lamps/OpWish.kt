@@ -1,5 +1,3 @@
-@file:Suppress("OverrideOnly", "OverrideOnly")
-
 package miyucomics.hexical.features.lamps
 
 import at.petrak.hexcasting.api.casting.RenderedSpell
