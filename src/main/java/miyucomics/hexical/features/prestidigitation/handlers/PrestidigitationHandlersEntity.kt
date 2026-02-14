@@ -5,15 +5,14 @@ import miyucomics.hexical.features.prestidigitation.interfaces.PrestidigitationH
 import miyucomics.hexical.features.prestidigitation.interfaces.PrestidigitationHandlerEntity
 import net.minecraft.block.Blocks
 import net.minecraft.entity.Entity
+import net.minecraft.entity.EquipmentSlot
 import net.minecraft.entity.Shearable
 import net.minecraft.entity.TntEntity
 import net.minecraft.entity.decoration.ArmorStandEntity
 import net.minecraft.entity.mob.CreeperEntity
 import net.minecraft.entity.mob.EndermanEntity
-import net.minecraft.entity.passive.LlamaEntity
-import net.minecraft.entity.passive.PandaEntity
-import net.minecraft.entity.passive.PufferfishEntity
-import net.minecraft.entity.passive.SquidEntity
+import net.minecraft.entity.passive.*
+import net.minecraft.item.ItemStack
 import net.minecraft.sound.SoundCategory
 import net.minecraft.sound.SoundEvents
 
@@ -49,7 +48,10 @@ object PrestidigitationHandlersEntity {
 		register(PrestidigitationHandlerEntity.simple(PandaEntity::class.java) { it.isSneezing = true })
 		register(PrestidigitationHandlerEntity.simple(SquidEntity::class.java, SquidEntity::squirt))
 		register(PrestidigitationHandlerEntity.simple(EndermanEntity::class.java) { env, enderman -> enderman.target = env.castingEntity })
-		//register(PrestidigitationHandlerEntity.simple(FoxEntity::class.java, FoxEntity::spit))
+		register(PrestidigitationHandlerEntity.simple(FoxEntity::class.java) { fox ->
+			fox.spit(fox.getEquippedStack(EquipmentSlot.MAINHAND))
+			fox.equipStack(EquipmentSlot.MAINHAND, ItemStack.EMPTY)
+		})
 
 		register(PrestidigitationHandlerEntity.simple(LlamaEntity::class.java) { env, llama ->
 			if (env.castingEntity != null)
@@ -58,8 +60,8 @@ object PrestidigitationHandlersEntity {
 
 		register(object : PrestidigitationHandlerEntity<Shearable>(Shearable::class.java) {
 			override fun canAffectEntity(env: CastingEnvironment, entity: Entity) = super.canAffectEntity(env, entity) && (entity as Shearable).isShearable
-			override fun affect(env: CastingEnvironment, shearable: Shearable) {
-				shearable.sheared(SoundCategory.MASTER)
+			override fun affect(env: CastingEnvironment, entity: Shearable) {
+				entity.sheared(SoundCategory.MASTER)
 			}
 		})
 	}
