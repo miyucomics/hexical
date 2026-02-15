@@ -1,7 +1,6 @@
 package miyucomics.hexical.features.lesser_sentinels
 
 import at.petrak.hexcasting.api.utils.asCompound
-import at.petrak.hexcasting.api.utils.asDouble
 import at.petrak.hexcasting.api.utils.putList
 import miyucomics.hexical.features.player.getHexicalPlayerManager
 import miyucomics.hexical.features.player.types.PlayerField
@@ -58,10 +57,13 @@ data class DimensionalLesserSentinelInstance(var lesserSentinels: MutableList<Ve
 
 	companion object {
 		fun createFromNbt(compound: NbtCompound): DimensionalLesserSentinelInstance {
+			val raw = compound.getList("positional", NbtElement.DOUBLE_TYPE.toInt())
 			val lesserSentinels = mutableListOf<Vec3d>()
-			val positions = compound.getList("positional", NbtElement.DOUBLE_TYPE.toInt()).toMutableList()
-			while (positions.isNotEmpty())
-				lesserSentinels.add(Vec3d(positions.removeAt(0).asDouble, positions.removeAt(0).asDouble, positions.removeAt(0).asDouble))
+			var i = 0
+			while (i + 2 < raw.size) {
+				lesserSentinels.add(Vec3d(raw.getDouble(i), raw.getDouble(i + 1), raw.getDouble(i + 2)))
+				i += 3
+			}
 			return DimensionalLesserSentinelInstance(lesserSentinels, RegistryKey.of(RegistryKeys.WORLD, Identifier(compound.getString("dimension"))))
 		}
 	}
