@@ -3,7 +3,6 @@ package miyucomics.hexical.features.specklikes.mesh
 import at.petrak.hexcasting.api.casting.iota.Vec3Iota
 import at.petrak.hexcasting.api.utils.asFloat
 import at.petrak.hexcasting.api.utils.putList
-import dev.kosmx.playerAnim.core.util.Vec3f
 import miyucomics.hexical.features.specklikes.FigureSpecklike
 import miyucomics.hexical.inits.HexicalEntities
 import net.minecraft.entity.EntityType
@@ -13,11 +12,12 @@ import net.minecraft.nbt.NbtFloat
 import net.minecraft.nbt.NbtList
 import net.minecraft.util.math.Vec3d
 import net.minecraft.world.World
+import org.joml.Vector3f
 
 class MeshEntity(entityType: EntityType<out MeshEntity>, world: World) : FigureSpecklike(entityType, world) {
 	constructor(world: World) : this(HexicalEntities.MESH_ENTITY, world)
 
-	var clientVertices: MutableList<Vec3f> = mutableListOf()
+	var clientVertices: MutableList<Vector3f> = mutableListOf()
 
 	fun getShape(): List<Vec3Iota> {
 		val list = dataTracker.get(shapeDataTracker).getList("shape", NbtElement.FLOAT_TYPE.toInt()).iterator()
@@ -27,7 +27,7 @@ class MeshEntity(entityType: EntityType<out MeshEntity>, world: World) : FigureS
 		return deserializedVertices
 	}
 
-	fun setShape(shape: List<Vec3f>) {
+	fun setShape(shape: List<Vector3f>) {
 		val compound = NbtCompound()
 		val list = NbtList()
 		for (vertex in shape) {
@@ -43,6 +43,6 @@ class MeshEntity(entityType: EntityType<out MeshEntity>, world: World) : FigureS
 		this.clientVertices.clear()
 		val list = shape.getList("shape", NbtElement.FLOAT_TYPE.toInt()).iterator()
 		while (list.hasNext())
-			clientVertices.add(Vec3f(list.next().asFloat, list.next().asFloat, list.next().asFloat))
+			clientVertices.add(Vector3f(list.next().asFloat, list.next().asFloat, list.next().asFloat))
 	}
 }

@@ -4,9 +4,9 @@ import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.casting.iota.ListIota
 import at.petrak.hexcasting.api.casting.iota.Vec3Iota
-import dev.kosmx.playerAnim.core.util.Vec3f
 import miyucomics.hexical.misc.SimpleEntityIotaHolder
 import net.minecraft.nbt.NbtCompound
+import org.joml.Vector3f
 
 class MeshChronicler(val mesh: MeshEntity) : SimpleEntityIotaHolder() {
 	override fun writeable() = true
@@ -23,7 +23,7 @@ class MeshChronicler(val mesh: MeshEntity) : SimpleEntityIotaHolder() {
 			val vector = it.vec3
 			if (vector.lengthSquared() > 100)
 				return false
-			Vec3f(vector.x.toFloat(), vector.y.toFloat(), vector.z.toFloat())
+			Vector3f(vector.x.toFloat(), vector.y.toFloat(), vector.z.toFloat())
 		}
 
 		if (!simulate)
