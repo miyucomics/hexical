@@ -28,6 +28,7 @@ object ShaderRenderer {
     }
 
     fun setEffect(location: Identifier?) {
+        activeShader?.close()
         if (location == null) {
             activeShader = null
             return
