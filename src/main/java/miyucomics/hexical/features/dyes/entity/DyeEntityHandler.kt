@@ -4,7 +4,8 @@ import miyucomics.hexical.features.dyes.DyeOption
 import net.minecraft.entity.Entity
 
 abstract class DyeEntityHandler<T>(private val handledClass: Class<T>) {
-	open fun canAffectEntity(entity: Entity, dye: DyeOption): Boolean = handledClass.isInstance(entity)
+	fun canAffectEntity(entity: Entity, dye: DyeOption): Boolean = handledClass.isInstance(entity) && extraConditions(entity as T, dye)
+	open fun extraConditions(entity: T, dye: DyeOption) = true
 	abstract fun affect(entity: T, dye: DyeOption)
 
 	fun affectSafely(entity: Entity, dye: DyeOption) {
