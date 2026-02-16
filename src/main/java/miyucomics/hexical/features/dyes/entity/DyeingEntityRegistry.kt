@@ -22,10 +22,8 @@ object DyeingEntityRegistry : InitHook() {
 
 	override fun init() {
 		register(object : DyeEntityHandler<ItemEntity>(ItemEntity::class.java) {
-			override fun canAffectEntity(entity: Entity, dye: DyeOption): Boolean {
-				if (!super.canAffectEntity(entity, dye))
-					return false
-				val stack = (entity as ItemEntity).stack
+			override fun extraConditions(entity: ItemEntity, dye: DyeOption): Boolean {
+				val stack = entity.stack
 				if (DyeingUtils.getRecipe(entity.world as ServerWorld, stack, dye) != null)
 					return true
 				if (stack.item is BlockItem && DyeingUtils.getRecipe(entity.world as ServerWorld, (stack.item as BlockItem).block.defaultState, dye) != null)
@@ -50,22 +48,22 @@ object DyeingEntityRegistry : InitHook() {
 		})
 
 		register(object : DyeEntityHandler<CatEntity>(CatEntity::class.java) {
-			override fun canAffectEntity(entity: Entity, dye: DyeOption) = dye != DyeOption.UNCOLORED
+			override fun extraConditions(entity: CatEntity, dye: DyeOption): Boolean = dye != DyeOption.UNCOLORED
 			override fun affect(entity: CatEntity, dye: DyeOption) { entity.collarColor = dye.dyeColor!! }
 		})
 
 		register(object : DyeEntityHandler<WolfEntity>(WolfEntity::class.java) {
-			override fun canAffectEntity(entity: Entity, dye: DyeOption) = dye != DyeOption.UNCOLORED
+			override fun extraConditions(entity: WolfEntity, dye: DyeOption): Boolean = dye != DyeOption.UNCOLORED
 			override fun affect(entity: WolfEntity, dye: DyeOption) { entity.collarColor = dye.dyeColor!! }
 		})
 
 		register(object : DyeEntityHandler<SheepEntity>(SheepEntity::class.java) {
-			override fun canAffectEntity(entity: Entity, dye: DyeOption) = dye != DyeOption.UNCOLORED
+			override fun extraConditions(entity: SheepEntity, dye: DyeOption): Boolean = dye != DyeOption.UNCOLORED
 			override fun affect(entity: SheepEntity, dye: DyeOption) { entity.color = dye.dyeColor!! }
 		})
 
 		register(object : DyeEntityHandler<FigureSpecklike>(FigureSpecklike::class.java) {
-			override fun canAffectEntity(entity: Entity, dye: DyeOption) = dye != DyeOption.UNCOLORED
+			override fun extraConditions(entity: FigureSpecklike, dye: DyeOption): Boolean = dye != DyeOption.UNCOLORED
 			override fun affect(entity: FigureSpecklike, dye: DyeOption) { entity.setPigment(FrozenPigment(ItemStack(HexItems.DYE_PIGMENTS[dye.dyeColor]!!), UUID.randomUUID())) }
 		})
 
