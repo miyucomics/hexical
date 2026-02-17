@@ -570,8 +570,8 @@
 	"hexcasting.action.hexical:conjure_flora": "Conjure Flora",
 	"hexical.page.conjure_flora.summary": "Conjures flora of my choosing at a specified location. Costs depending on the specific species.",
 	"hexical.page.conjure_flora.description": "The block beneath the target position must have a flat top surface, but does not need to be able to support the plant naturally. Any little movement may cause it to break if conjured on an unnatural block. Alternatively, the spell can fill a flower pot if the flower is compatible.$(br2)$(o)There was a fool who praised me for the magic I acquired. That's all.$()",
-	"hexical.page.conjure_flora.0": "Documented on the next few pages are all the species I can conjure, their price, and a small description. It seems there are a great number of empty pages at the end; perhaps Nature or other forces plan to introduce new species.$(br2)It seems the ancient _Hexcasters who recorded this spell had a poor understanding of biology. Mushrooms are $(o)clearly$() not flora yet can be summoned regardless.",
-	"hexical.page.conjure_flora.minecraft:pink_petals": "This species is surprisingly cheaper than most others; perhaps Nature is being uncharacteristically nice due to the large quantities of these I may want to create.",
+	"hexical.page.conjure_flora.0": "Documented on the next few pages are the species, prices, and short descriptions (recording useful notes, amusing details, or just an appreciation for the species) for all the possible options that I have discovered so far.$(br2)",
+	"hexical.page.conjure_flora.pink_petals": "This species is surprisingly cheaper than most others; perhaps Nature is being uncharacteristically nice due to the large quantities of these I may want to create.",
 
 	"hexical.page.hexical_spells.title": "Hexical Spells",
 	"hexcasting.action.hexical:confetti": "Confetti",

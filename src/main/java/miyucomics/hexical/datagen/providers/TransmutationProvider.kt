@@ -1,4 +1,4 @@
-package miyucomics.hexical.datagen
+package miyucomics.hexical.datagen.providers
 
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.common.lib.HexItems
@@ -31,15 +31,14 @@ object TransmutationProvider {
 		makeTransmutation("renewable_fuel", Items.COAL, Items.CHARCOAL, MediaConstants.DUST_UNIT / -4)
 	}
 
-	fun makeTransmutation(name: String, original: Item, new: Item, cost: Long, addToTransmutationsPage: Boolean = true) {
+	fun makeTransmutation(name: String, original: Item, new: Item, cost: Long) {
 		transmutationRecipeJsons.add(TransmutingJsonGenerator(HexicalMain.id("transmuting/$name"), Ingredient.ofItems(original), listOf(ItemStack(new)), cost))
-		if (addToTransmutationsPage)
-			transmutationRecipePages.add(JsonObject().apply {
-				addProperty("type", "hexcasting:transmuting")
-				addProperty("recipe", "hexical:transmuting/$name")
-				addProperty("title", "hexical.recipe.$name.header")
-				addProperty("text", "hexical.recipe.$name.text")
-			})
+		transmutationRecipePages.add(JsonObject().apply {
+			addProperty("type", "hexcasting:transmuting")
+			addProperty("recipe", "hexical:transmuting/$name")
+			addProperty("title", "hexical.recipe.$name.header")
+			addProperty("text", "hexical.recipe.$name.text")
+		})
 	}
 }
 
