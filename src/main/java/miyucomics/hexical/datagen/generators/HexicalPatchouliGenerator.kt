@@ -2,7 +2,8 @@ package miyucomics.hexical.datagen.generators
 
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
-import miyucomics.hexical.datagen.TransmutationProvider
+import miyucomics.hexical.datagen.providers.FloraProvider
+import miyucomics.hexical.datagen.providers.TransmutationProvider
 import miyucomics.hexical.inits.HexicalItems
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.minecraft.data.DataOutput
@@ -43,12 +44,7 @@ class HexicalPatchouliGenerator(val output: FabricDataOutput) : DataProvider {
 					addProperty("type", "patchouli:text")
 					addProperty("text", "hexical.page.conjure_flora.0")
 				})
-				(0..128).forEach { i ->
-					add(JsonObject().apply {
-						addProperty("type", "hexcasting:conjure_flora")
-						addProperty("index", i)
-					})
-				}
+				FloraProvider.floraRecipePages.forEach(::add)
 			})
 		}
 
@@ -103,7 +99,7 @@ class HexicalPatchouliGenerator(val output: FabricDataOutput) : DataProvider {
 					addProperty("type", "patchouli:text")
 					addProperty("text", "hexical.page.media_jar.1")
 				})
-				TransmutationProvider.transmutationRecipePages.forEach { add(it) }
+				TransmutationProvider.transmutationRecipePages.forEach(::add)
 			})
 		}
 
