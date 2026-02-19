@@ -13,14 +13,14 @@ import net.minecraft.registry.Registries
 import net.minecraft.util.Identifier
 
 object FloraProvider {
-	val floraRecipeJsons = mutableListOf<FloraJsonGenerator>()
-	val floraRecipePages = mutableListOf<JsonObject>()
+	val recipeJsons = mutableListOf<FloraJsonGenerator>()
+	val recipePages = mutableListOf<JsonObject>()
 
 	fun init() {
 		defaultRecipes.forEach { (flower, cost) ->
 			val name = Registries.BLOCK.getId(flower).path
-			floraRecipeJsons.add(FloraJsonGenerator(HexicalMain.id("flora/$name"), flower, cost))
-			floraRecipePages.add(JsonObject().apply {
+			recipeJsons.add(FloraJsonGenerator(HexicalMain.id("flora/$name"), flower, cost))
+			recipePages.add(JsonObject().apply {
 				addProperty("type", "hexcasting:flora")
 				addProperty("recipe", "hexical:flora/$name")
 				addProperty("title", flower.translationKey)

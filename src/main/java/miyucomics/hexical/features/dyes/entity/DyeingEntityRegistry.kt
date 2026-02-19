@@ -41,7 +41,7 @@ object DyeingEntityRegistry : InitHook() {
 
 				if (stack.item is BlockItem) {
 					val recipe = DyeingUtils.getRecipe(entity.world as ServerWorld, (stack.item as BlockItem).block.defaultState, dye)!!
-					entity.stack = ItemStack(recipe.output.block.asItem(), stack.count)
+					entity.stack = ItemStack(recipe.output.asItem(), stack.count)
 					return
 				}
 			}

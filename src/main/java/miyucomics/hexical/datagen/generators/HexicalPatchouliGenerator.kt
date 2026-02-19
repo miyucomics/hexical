@@ -44,7 +44,7 @@ class HexicalPatchouliGenerator(val output: FabricDataOutput) : DataProvider {
 					addProperty("type", "patchouli:text")
 					addProperty("text", "hexical.page.conjure_flora.0")
 				})
-				FloraProvider.floraRecipePages.forEach(::add)
+				FloraProvider.recipePages.forEach(::add)
 			})
 		}
 
@@ -99,7 +99,7 @@ class HexicalPatchouliGenerator(val output: FabricDataOutput) : DataProvider {
 					addProperty("type", "patchouli:text")
 					addProperty("text", "hexical.page.media_jar.1")
 				})
-				TransmutationProvider.transmutationRecipePages.forEach(::add)
+				TransmutationProvider.recipePages.forEach(::add)
 			})
 		}
 

@@ -1,0 +1,15 @@
+{
+  "type": "hexical:dye_block",
+  "dye": 0,
+  "input": [
+    {
+      "type": "block",
+      "block": "minecraft:sandstone"
+    },
+    {
+      "type": "block",
+      "block": "minecraft:red_sandstone"
+    }
+  ],
+  "output": "minecraft:sandstone"
+}

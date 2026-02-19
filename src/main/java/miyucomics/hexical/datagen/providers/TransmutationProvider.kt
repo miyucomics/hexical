@@ -18,8 +18,8 @@ import net.minecraft.registry.Registries
 import net.minecraft.util.Identifier
 
 object TransmutationProvider {
-	val transmutationRecipeJsons = mutableListOf<TransmutingJsonGenerator>()
-	val transmutationRecipePages = mutableListOf<JsonObject>()
+	val recipeJsons = mutableListOf<TransmutingJsonGenerator>()
+	val recipePages = mutableListOf<JsonObject>()
 
 	fun init() {
 		makeTransmutation("alchemists_take_this", Items.COPPER_INGOT, Items.GOLD_INGOT, MediaConstants.SHARD_UNIT)
@@ -32,8 +32,8 @@ object TransmutationProvider {
 	}
 
 	fun makeTransmutation(name: String, original: Item, new: Item, cost: Long) {
-		transmutationRecipeJsons.add(TransmutingJsonGenerator(HexicalMain.id("transmuting/$name"), Ingredient.ofItems(original), listOf(ItemStack(new)), cost))
-		transmutationRecipePages.add(JsonObject().apply {
+		recipeJsons.add(TransmutingJsonGenerator(HexicalMain.id("transmuting/$name"), Ingredient.ofItems(original), listOf(ItemStack(new)), cost))
+		recipePages.add(JsonObject().apply {
 			addProperty("type", "hexcasting:transmuting")
 			addProperty("recipe", "hexical:transmuting/$name")
 			addProperty("title", "hexical.recipe.$name.header")
