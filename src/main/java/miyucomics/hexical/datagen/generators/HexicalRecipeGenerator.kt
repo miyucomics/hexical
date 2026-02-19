@@ -3,6 +3,7 @@ package miyucomics.hexical.datagen.generators
 import at.petrak.hexcasting.common.lib.HexItems
 import miyucomics.hexical.datagen.providers.FloraProvider
 import miyucomics.hexical.datagen.providers.TransmutationProvider
+import miyucomics.hexical.datagen.providers.dyeing.DyeingProvider
 import miyucomics.hexical.inits.HexicalItems
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider
@@ -22,9 +23,8 @@ class HexicalRecipeGenerator(generator: FabricDataOutput) : FabricRecipeProvider
 				.offerTo(exporter, Identifier("curio/${Registries.ITEM.getId(curio).path}_from_stonecutting"))
 		}
 
-		for (provider in FloraProvider.floraRecipeJsons)
-			exporter.accept(provider)
-		for (provider in TransmutationProvider.transmutationRecipeJsons)
-			exporter.accept(provider)
+		DyeingProvider.recipeJsons.forEach(exporter::accept)
+		FloraProvider.recipeJsons.forEach(exporter::accept)
+		TransmutationProvider.recipeJsons.forEach(exporter::accept)
 	}
 }

@@ -5,9 +5,9 @@ import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.JsonSyntaxException
 import miyucomics.hexical.features.dyes.DyeOption
-import net.minecraft.block.Block
 import net.minecraft.network.PacketByteBuf
 import net.minecraft.recipe.RecipeSerializer
+import net.minecraft.registry.Registries
 import net.minecraft.util.Identifier
 
 class DyeingBlockSerializer : RecipeSerializer<DyeingBlockRecipe> {
@@ -15,20 +15,17 @@ class DyeingBlockSerializer : RecipeSerializer<DyeingBlockRecipe> {
 		val raw: DataFormat = Gson().fromJson(json, DataFormat::class.java)
 		if (raw.inputs == null)
 			throw JsonSyntaxException("Possible inputs are missing in recipe $recipeId")
-		if (raw.output == null)
-			throw JsonSyntaxException("Output is missing in recipe $recipeId")
-		return DyeingBlockRecipe(recipeId, Identifier(raw.group), enumValues<DyeOption>()[raw.dye], raw.inputs.map(StateIngredientHelper::deserialize), StateIngredientHelper.readBlockState(raw.output))
+		return DyeingBlockRecipe(recipeId, enumValues<DyeOption>()[raw.dye], raw.inputs.map(StateIngredientHelper::deserialize), Registries.BLOCK.get(Identifier(raw.output)))
 	}
 
 	override fun write(buf: PacketByteBuf, recipe: DyeingBlockRecipe) {
-		buf.writeIdentifier(recipe.group)
 		buf.writeInt(recipe.dye.ordinal)
 		buf.writeInt(recipe.inputs.size)
 		recipe.inputs.forEach { it.write(buf) }
-		buf.writeVarInt(Block.getRawIdFromState(recipe.output))
+		buf.writeIdentifier(Registries.BLOCK.getId(recipe.output))
 	}
 
-	override fun read(id: Identifier, buf: PacketByteBuf) = DyeingBlockRecipe(id, buf.readIdentifier(), enumValues<DyeOption>()[buf.readInt()], (0 until buf.readInt()).map{ StateIngredientHelper.read(buf) }, Block.getStateFromRawId(buf.readVarInt()))
+	override fun read(id: Identifier, buf: PacketByteBuf) = DyeingBlockRecipe(id, enumValues<DyeOption>()[buf.readInt()], (0 until buf.readInt()).map{ StateIngredientHelper.read(buf) }, Registries.BLOCK.get(buf.readIdentifier()))
 
 	companion object {
 		val INSTANCE: DyeingBlockSerializer = DyeingBlockSerializer()
@@ -36,8 +33,7 @@ class DyeingBlockSerializer : RecipeSerializer<DyeingBlockRecipe> {
 }
 
 private class DataFormat {
-	val group: String = ""
 	val dye: Int = 0
 	val inputs: List<JsonObject>? = null
-	val output: JsonObject? = null
+	val output: String = ""
 }

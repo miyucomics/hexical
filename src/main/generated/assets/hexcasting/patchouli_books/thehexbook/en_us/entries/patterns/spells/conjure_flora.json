@@ -21,520 +21,304 @@
       "text": "hexical.page.conjure_flora.0"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 0
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/pink_petals",
+      "text": "hexical.page.flora.pink_petals",
+      "title": "block.minecraft.pink_petals"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 1
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/grass",
+      "text": "hexical.page.flora.grass",
+      "title": "block.minecraft.grass"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 2
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/tall_grass",
+      "text": "hexical.page.flora.tall_grass",
+      "title": "block.minecraft.tall_grass"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 3
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/fern",
+      "text": "hexical.page.flora.fern",
+      "title": "block.minecraft.fern"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 4
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/large_fern",
+      "text": "hexical.page.flora.large_fern",
+      "title": "block.minecraft.large_fern"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 5
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/nether_sprouts",
+      "text": "hexical.page.flora.nether_sprouts",
+      "title": "block.minecraft.nether_sprouts"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 6
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/seagrass",
+      "text": "hexical.page.flora.seagrass",
+      "title": "block.minecraft.seagrass"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 7
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/dandelion",
+      "text": "hexical.page.flora.dandelion",
+      "title": "block.minecraft.dandelion"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 8
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/poppy",
+      "text": "hexical.page.flora.poppy",
+      "title": "block.minecraft.poppy"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 9
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/blue_orchid",
+      "text": "hexical.page.flora.blue_orchid",
+      "title": "block.minecraft.blue_orchid"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 10
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/allium",
+      "text": "hexical.page.flora.allium",
+      "title": "block.minecraft.allium"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 11
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/azure_bluet",
+      "text": "hexical.page.flora.azure_bluet",
+      "title": "block.minecraft.azure_bluet"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 12
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/red_tulip",
+      "text": "hexical.page.flora.red_tulip",
+      "title": "block.minecraft.red_tulip"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 13
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/pink_tulip",
+      "text": "hexical.page.flora.pink_tulip",
+      "title": "block.minecraft.pink_tulip"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 14
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/orange_tulip",
+      "text": "hexical.page.flora.orange_tulip",
+      "title": "block.minecraft.orange_tulip"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 15
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/white_tulip",
+      "text": "hexical.page.flora.white_tulip",
+      "title": "block.minecraft.white_tulip"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 16
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/oxeye_daisy",
+      "text": "hexical.page.flora.oxeye_daisy",
+      "title": "block.minecraft.oxeye_daisy"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 17
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/cornflower",
+      "text": "hexical.page.flora.cornflower",
+      "title": "block.minecraft.cornflower"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 18
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/lily_of_the_valley",
+      "text": "hexical.page.flora.lily_of_the_valley",
+      "title": "block.minecraft.lily_of_the_valley"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 19
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/sunflower",
+      "text": "hexical.page.flora.sunflower",
+      "title": "block.minecraft.sunflower"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 20
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/rose_bush",
+      "text": "hexical.page.flora.rose_bush",
+      "title": "block.minecraft.rose_bush"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 21
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/peony",
+      "text": "hexical.page.flora.peony",
+      "title": "block.minecraft.peony"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 22
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/lilac",
+      "text": "hexical.page.flora.lilac",
+      "title": "block.minecraft.lilac"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 23
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/kelp",
+      "text": "hexical.page.flora.kelp",
+      "title": "block.minecraft.kelp"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 24
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/red_mushroom",
+      "text": "hexical.page.flora.red_mushroom",
+      "title": "block.minecraft.red_mushroom"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 25
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/brown_mushroom",
+      "text": "hexical.page.flora.brown_mushroom",
+      "title": "block.minecraft.brown_mushroom"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 26
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/crimson_fungus",
+      "text": "hexical.page.flora.crimson_fungus",
+      "title": "block.minecraft.crimson_fungus"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 27
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/warped_fungus",
+      "text": "hexical.page.flora.warped_fungus",
+      "title": "block.minecraft.warped_fungus"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 28
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/crimson_roots",
+      "text": "hexical.page.flora.crimson_roots",
+      "title": "block.minecraft.crimson_roots"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 29
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/warped_roots",
+      "text": "hexical.page.flora.warped_roots",
+      "title": "block.minecraft.warped_roots"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 30
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/sea_pickle",
+      "text": "hexical.page.flora.sea_pickle",
+      "title": "block.minecraft.sea_pickle"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 31
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/small_dripleaf",
+      "text": "hexical.page.flora.small_dripleaf",
+      "title": "block.minecraft.small_dripleaf"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 32
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/big_dripleaf",
+      "text": "hexical.page.flora.big_dripleaf",
+      "title": "block.minecraft.big_dripleaf"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 33
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/dead_bush",
+      "text": "hexical.page.flora.dead_bush",
+      "title": "block.minecraft.dead_bush"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 34
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/nether_wart",
+      "text": "hexical.page.flora.nether_wart",
+      "title": "block.minecraft.nether_wart"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 35
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/periwinkle",
+      "text": "hexical.page.flora.periwinkle",
+      "title": "block.hexical.periwinkle"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 36
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/torchflower",
+      "text": "hexical.page.flora.torchflower",
+      "title": "block.minecraft.torchflower"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 37
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/pitcher_plant",
+      "text": "hexical.page.flora.pitcher_plant",
+      "title": "block.minecraft.pitcher_plant"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 38
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/acacia_sapling",
+      "text": "hexical.page.flora.acacia_sapling",
+      "title": "block.minecraft.acacia_sapling"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 39
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/bamboo",
+      "text": "hexical.page.flora.bamboo",
+      "title": "block.minecraft.bamboo"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 40
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/birch_sapling",
+      "text": "hexical.page.flora.birch_sapling",
+      "title": "block.minecraft.birch_sapling"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 41
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/cherry_sapling",
+      "text": "hexical.page.flora.cherry_sapling",
+      "title": "block.minecraft.cherry_sapling"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 42
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/dark_oak_sapling",
+      "text": "hexical.page.flora.dark_oak_sapling",
+      "title": "block.minecraft.dark_oak_sapling"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 43
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/jungle_sapling",
+      "text": "hexical.page.flora.jungle_sapling",
+      "title": "block.minecraft.jungle_sapling"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 44
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/oak_sapling",
+      "text": "hexical.page.flora.oak_sapling",
+      "title": "block.minecraft.oak_sapling"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 45
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/spruce_sapling",
+      "text": "hexical.page.flora.spruce_sapling",
+      "title": "block.minecraft.spruce_sapling"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 46
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/mangrove_propagule",
+      "text": "hexical.page.flora.mangrove_propagule",
+      "title": "block.minecraft.mangrove_propagule"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 47
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/sugar_cane",
+      "text": "hexical.page.flora.sugar_cane",
+      "title": "block.minecraft.sugar_cane"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 48
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/wither_rose",
+      "text": "hexical.page.flora.wither_rose",
+      "title": "block.minecraft.wither_rose"
     },
     {
-      "type": "hexcasting:conjure_flora",
-      "index": 49
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 50
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 51
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 52
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 53
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 54
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 55
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 56
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 57
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 58
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 59
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 60
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 61
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 62
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 63
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 64
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 65
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 66
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 67
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 68
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 69
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 70
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 71
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 72
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 73
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 74
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 75
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 76
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 77
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 78
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 79
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 80
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 81
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 82
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 83
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 84
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 85
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 86
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 87
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 88
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 89
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 90
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 91
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 92
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 93
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 94
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 95
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 96
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 97
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 98
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 99
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 100
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 101
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 102
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 103
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 104
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 105
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 106
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 107
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 108
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 109
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 110
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 111
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 112
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 113
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 114
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 115
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 116
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 117
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 118
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 119
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 120
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 121
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 122
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 123
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 124
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 125
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 126
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 127
-    },
-    {
-      "type": "hexcasting:conjure_flora",
-      "index": 128
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/cactus",
+      "text": "hexical.page.flora.cactus",
+      "title": "block.minecraft.cactus"
     }
   ],
   "sortnum": 10

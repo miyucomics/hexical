@@ -55,7 +55,7 @@ object OpDye : SpellAction {
 
 	private data class BlockSpell(val position: BlockPos, val old: BlockState, val recipe: DyeingBlockRecipe) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			var newState = recipe.output
+			var newState = recipe.output.defaultState
 			old.properties.filter(newState.properties::contains).forEach {
 				@Suppress("UNCHECKED_CAST")
 				val prop = it as Property<Comparable<Any>>

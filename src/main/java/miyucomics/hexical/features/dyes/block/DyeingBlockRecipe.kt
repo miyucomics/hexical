@@ -2,6 +2,7 @@ package miyucomics.hexical.features.dyes.block
 
 import at.petrak.hexcasting.common.recipe.ingredient.StateIngredient
 import miyucomics.hexical.features.dyes.DyeOption
+import net.minecraft.block.Block
 import net.minecraft.block.BlockState
 import net.minecraft.inventory.Inventory
 import net.minecraft.item.ItemStack
@@ -11,7 +12,7 @@ import net.minecraft.registry.DynamicRegistryManager
 import net.minecraft.util.Identifier
 import net.minecraft.world.World
 
-class DyeingBlockRecipe(private val id: Identifier, val group: Identifier, val dye: DyeOption, val inputs: List<StateIngredient>, val output: BlockState) : Recipe<Inventory> {
+class DyeingBlockRecipe(private val id: Identifier, val dye: DyeOption, val inputs: List<StateIngredient>, val output: Block) : Recipe<Inventory> {
 	override fun getId() = this.id
 	override fun getType() = Type.INSTANCE
 	override fun fits(width: Int, height: Int) = false
