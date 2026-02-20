@@ -23,8 +23,8 @@ public class ItemStackMixin {
 		NbtCompound nbt = stack.getNbt();
 		if (nbt != null && nbt.contains("charmed")) {
 			NbtCompound charm = nbt.getCompound("charmed");
-			int maxMedia = charm.getInt("max_media");
-			int media = charm.getInt("media");
+			long maxMedia = charm.getLong("max_media");
+            long media = charm.getLong("media");
 			cir.setReturnValue(MediaHelper.mediaBarWidth(media, maxMedia));
 		}
 	}
