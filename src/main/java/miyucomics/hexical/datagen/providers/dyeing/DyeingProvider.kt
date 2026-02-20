@@ -16,25 +16,15 @@ object DyeingProvider {
 	val patchouliPages = mutableListOf<JsonObject>()
 
 	fun init() {
-		val blockLookup = JsonObject()
 		blockPatterns.forEach { (group, pattern) ->
-			val json = JsonObject().apply { DyeOption.entries.mapNotNull { resolve(Registries.BLOCK, pattern, it) }.forEach { (dye, identifier) ->
-				addProperty(dye.toString(), identifier)
-				blockLookup.addProperty(identifier, dye)
-			} }
-			generateFiles(json, "dyeing/groups/block/", group)
+			val json = JsonObject().apply { DyeOption.entries.mapNotNull { resolve(Registries.BLOCK, pattern, it) }.forEach { (dye, identifier) -> addProperty(dye.toString(), identifier) } }
+			generateFiles(json, "dyeing/block/", group)
 		}
-		generateFiles(blockLookup, "dyeing/lookup/block/", "default")
 
-		val itemLookup = JsonObject()
 		itemPatterns.forEach { (group, pattern) ->
-			val json = JsonObject().apply { DyeOption.entries.mapNotNull { resolve(Registries.ITEM, pattern, it) }.forEach { (dye, identifier) ->
-				addProperty(dye.toString(), identifier)
-				itemLookup.addProperty(identifier, dye)
-			} }
-			generateFiles(json, "dyeing/groups/item/", group)
+			val json = JsonObject().apply { DyeOption.entries.mapNotNull { resolve(Registries.ITEM, pattern, it) }.forEach { (dye, identifier) -> addProperty(dye.toString(), identifier) } }
+			generateFiles(json, "dyeing/item/", group)
 		}
-		generateFiles(itemLookup, "dyeing/lookup/item/", "default")
 	}
 
 	val blockPatterns = mapOf(

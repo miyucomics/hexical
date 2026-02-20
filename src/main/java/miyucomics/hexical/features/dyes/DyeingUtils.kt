@@ -3,10 +3,6 @@ package miyucomics.hexical.features.dyes
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.features.dyes.block.DyeingBlockRecipe
-import miyucomics.hexical.features.dyes.block.DyeingBlockSerializer
-import miyucomics.hexical.features.dyes.item.DyeingItemRecipe
-import miyucomics.hexical.features.dyes.item.DyeingItemSerializer
 import miyucomics.hexical.misc.InitHook
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper
 import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener
@@ -14,46 +10,59 @@ import net.minecraft.block.Block
 import net.minecraft.block.BlockState
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
-import net.minecraft.recipe.RecipeType
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.resource.ResourceManager
 import net.minecraft.resource.ResourceType
-import net.minecraft.server.world.ServerWorld
+import net.minecraft.state.property.Property
 import net.minecraft.util.Identifier
 import java.io.InputStream
 import java.io.InputStreamReader
 
 object DyeingUtils : InitHook() {
-	val DYEING_BLOCK_RECIPE: RecipeType<DyeingBlockRecipe> = Registry.register(Registries.RECIPE_TYPE, HexicalMain.id("dye_block"), DyeingBlockRecipe.Type.INSTANCE)
-	val DYEING_ITEM_RECIPE: RecipeType<DyeingItemRecipe> = Registry.register(Registries.RECIPE_TYPE, HexicalMain.id("dye_item"), DyeingItemRecipe.Type.INSTANCE)
+	val blockDyeLookup = mutableMapOf<Block, DyeOption>()
+	val itemDyeLookup = mutableMapOf<Item, DyeOption>()
+	val blockConvertLookup = mutableMapOf<Block, Map<DyeOption, Block>>()
+	val itemConvertLookup = mutableMapOf<Item, Map<DyeOption, Item>>()
 
-	val flatBlockColorLookup = mutableMapOf<Block, DyeOption>()
-	val flatItemColorLookup = mutableMapOf<Item, DyeOption>()
+	fun getDye(block: Block) = blockDyeLookup[block]
+	fun getDye(item: Item) = itemDyeLookup[item]
 
-	fun getDye(block: Block) = flatBlockColorLookup[block]
-	fun getDye(item: Item) = flatItemColorLookup[item]
-	fun getRecipe(world: ServerWorld, state: BlockState, dye: DyeOption): DyeingBlockRecipe? = world.recipeManager.listAllOfType(DYEING_BLOCK_RECIPE).firstOrNull { it.canDye(state, dye) }
-	fun getRecipe(world: ServerWorld, stack: ItemStack, dye: DyeOption): DyeingItemRecipe? = world.recipeManager.listAllOfType(DYEING_ITEM_RECIPE).firstOrNull { it.canDye(stack, dye) }
+	fun getResult(block: Block, dye: DyeOption): Block? = blockConvertLookup[block]?.get(dye)
+
+	fun getResult(stack: ItemStack, dye: DyeOption): ItemStack? {
+		val newStack = ItemStack(itemConvertLookup[stack.item]?.get(dye) ?: return null, stack.count)
+		if (stack.hasNbt())
+			newStack.nbt = stack.nbt
+		return newStack
+	}
 
 	override fun init() {
-		Registry.register(Registries.RECIPE_SERIALIZER, HexicalMain.id("dye_block"), DyeingBlockSerializer.INSTANCE)
-		Registry.register(Registries.RECIPE_SERIALIZER, HexicalMain.id("dye_item"), DyeingItemSerializer.INSTANCE)
-
 		ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(object : SimpleSynchronousResourceReloadListener {
 			override fun getFabricId() = HexicalMain.id("dyes")
 			override fun reload(manager: ResourceManager) {
-				flatBlockColorLookup.clear()
-				flatItemColorLookup.clear()
-				manager.findResources("dyeing/blocks") { path -> path.path.endsWith(".json") }.keys.forEach { load(manager.getResource(it).get().inputStream, Registries.BLOCK, flatBlockColorLookup) }
-				manager.findResources("dyeing/items") { path -> path.path.endsWith(".json") }.keys.forEach { load(manager.getResource(it).get().inputStream, Registries.ITEM, flatItemColorLookup) }
+				blockDyeLookup.clear()
+				blockConvertLookup.clear()
+				manager.findResources("dyeing/block") { it.path.endsWith(".json") }.values.forEach { load(it.inputStream, Registries.BLOCK, blockDyeLookup, blockConvertLookup) }
+
+				itemDyeLookup.clear()
+				itemConvertLookup.clear()
+				manager.findResources("dyeing/item") { it.path.endsWith(".json") }.values.forEach { load(it.inputStream, Registries.ITEM, itemDyeLookup, itemConvertLookup) }
 			}
 		})
 	}
 
-	private fun <T : Any> load(stream: InputStream, registry: Registry<T>, map: MutableMap<T, DyeOption>) {
-		(JsonParser.parseReader(InputStreamReader(stream, "UTF-8")) as JsonObject).asMap().forEach { (id, dye) ->
-			map[registry.get(Identifier(id))!!] = enumValues<DyeOption>()[dye.asInt]
-		}
+	private fun <T : Any> load(stream: InputStream, registry: Registry<T>, dyeLookup: MutableMap<T, DyeOption>, convertLookup: MutableMap<T, Map<DyeOption, T>>) {
+		val allMatches = (JsonParser.parseReader(InputStreamReader(stream, Charsets.UTF_8)) as JsonObject).asMap().filterKeys { registry.containsId(Identifier(it)) }.map { (id, dyeElement) ->
+			val obj = registry.get(Identifier(id))!!
+			val dye = enumValues<DyeOption>()[dyeElement.asInt]
+			dyeLookup[obj] = dye
+			dye to obj
+		}.toMap()
+		allMatches.values.forEach { convertLookup[it] = allMatches }
+	}
+
+	private fun <T : Comparable<T>> copyProperty(property: Property<T>, from: BlockState, to: BlockState): BlockState {
+		return if (to.contains(property)) to.with(property, from.get(property)) else to
 	}
 }

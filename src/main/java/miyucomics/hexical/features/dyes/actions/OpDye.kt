@@ -14,10 +14,10 @@ import at.petrak.hexcasting.api.misc.MediaConstants
 import miyucomics.hexical.features.dyes.DyeOption
 import miyucomics.hexical.features.dyes.DyeableMishap
 import miyucomics.hexical.features.dyes.DyeingUtils
-import miyucomics.hexical.features.dyes.block.DyeingBlockRecipe
 import miyucomics.hexical.features.dyes.entity.DyeEntityHandler
 import miyucomics.hexical.features.dyes.entity.DyeingEntityRegistry
 import miyucomics.hexical.features.dyes.getDye
+import net.minecraft.block.Block
 import net.minecraft.block.BlockState
 import net.minecraft.entity.Entity
 import net.minecraft.state.property.Property
@@ -40,8 +40,8 @@ object OpDye : SpellAction {
 				val position = args.getBlockPos(0, argc)
 				env.assertPosInRange(position)
 				val state = env.world.getBlockState(position)
-				val recipe = DyeingUtils.getRecipe(env.world, state, dye) ?: throw DyeableMishap(position.toCenterPos())
-				return SpellAction.Result(BlockSpell(position, state, recipe), COST, listOf(ParticleSpray.cloud(Vec3d.ofCenter(position), 1.0)))
+				val result = DyeingUtils.getResult(state.block, dye) ?: throw DyeableMishap(position.toCenterPos())
+				return SpellAction.Result(BlockSpell(position, state, result), COST, listOf(ParticleSpray.cloud(Vec3d.ofCenter(position), 1.0)))
 			}
 			else -> throw MishapInvalidIota.of(args[0], 1, "entity_or_vector")
 		}
@@ -53,9 +53,9 @@ object OpDye : SpellAction {
 		}
 	}
 
-	private data class BlockSpell(val position: BlockPos, val old: BlockState, val recipe: DyeingBlockRecipe) : RenderedSpell {
+	private data class BlockSpell(val position: BlockPos, val old: BlockState, val result: Block) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			var newState = recipe.output.defaultState
+			var newState = result.defaultState
 			old.properties.filter(newState.properties::contains).forEach {
 				@Suppress("UNCHECKED_CAST")
 				val prop = it as Property<Comparable<Any>>
