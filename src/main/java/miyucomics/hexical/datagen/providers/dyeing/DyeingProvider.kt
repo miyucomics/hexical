@@ -1,43 +1,83 @@
 package miyucomics.hexical.datagen.providers.dyeing
 
-import at.petrak.hexcasting.common.recipe.ingredient.StateIngredientHelper
 import com.google.gson.JsonObject
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.features.dyes.DyeOption
-import net.minecraft.item.ItemStack
-import net.minecraft.recipe.Ingredient
+import net.minecraft.data.DataOutput
+import net.minecraft.data.DataProvider
+import net.minecraft.data.DataWriter
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.registry.RegistryKey
 import net.minecraft.util.Identifier
+import java.util.concurrent.CompletableFuture
 
 object DyeingProvider {
-	val recipeJsons = mutableListOf<DyeRecipeJsonGenerator>()
-	val recipePages = mutableListOf<JsonObject>()
+	val patchouliPages = mutableListOf<JsonObject>()
 
 	fun init() {
-		blockFamilies.forEach { pattern ->
-			val blocks = DyeOption.entries.mapNotNull { dye -> resolvePattern(Registries.BLOCK, pattern, dye)?.let { dye to it } }.toMap()
-			blocks.forEach { (dye, block) ->
-				val name = Registries.BLOCK.getId(block).path
-				recipeJsons.add(DyeBlockGenerator(HexicalMain.id("dyeing/block/$name"), dye, blocks.values.map(StateIngredientHelper::of), block))
-			}
+		val blockLookup = JsonObject()
+		blockPatterns.forEach { (group, pattern) ->
+			val json = JsonObject().apply { DyeOption.entries.mapNotNull { resolve(Registries.BLOCK, pattern, it) }.forEach { (dye, identifier) ->
+				addProperty(dye.toString(), identifier)
+				blockLookup.addProperty(identifier, dye)
+			} }
+			generateFiles(json, "dyeing/groups/block/", group)
 		}
+		generateFiles(blockLookup, "dyeing/lookup/block/", "default")
 
-		itemFamilies.forEach { pattern ->
-			val items = DyeOption.entries.mapNotNull { dye -> resolvePattern(Registries.ITEM, pattern, dye)?.let { dye to it } }.toMap()
-			items.forEach { (dye, item) ->
-				val name = Registries.ITEM.getId(item).path
-				recipeJsons.add(DyeItemGenerator(HexicalMain.id("dyeing/item/$name"), dye, Ingredient.ofStacks(items.values.map(::ItemStack).stream()), ItemStack(item)))
-			}
+		val itemLookup = JsonObject()
+		itemPatterns.forEach { (group, pattern) ->
+			val json = JsonObject().apply { DyeOption.entries.mapNotNull { resolve(Registries.ITEM, pattern, it) }.forEach { (dye, identifier) ->
+				addProperty(dye.toString(), identifier)
+				itemLookup.addProperty(identifier, dye)
+			} }
+			generateFiles(json, "dyeing/groups/item/", group)
 		}
+		generateFiles(itemLookup, "dyeing/lookup/item/", "default")
 	}
 
-	val blockFamilies = listOf("minecraft:{color}bed", "minecraft:{color}candle", "minecraft:{color}candle_cake", "minecraft:{color}carpet", "minecraft:{color}concrete", "minecraft:{color}concrete_powder", "minecraft:{color}glazed_terracotta", "minecraft:{color}sand", "minecraft:{color}sandstone", "minecraft:cut_{color}sandstone", "minecraft:smooth_{color}sandstone", "minecraft:chiseled_{color}sandstone", "minecraft:{color}sandstone_slab", "minecraft:cut_{color}sandstone_slab", "minecraft:smooth_{color}sandstone_slab", "minecraft:{color}sandstone_stairs", "minecraft:smooth_{color}sandstone_stairs", "minecraft:{color}sandstone_walls", "minecraft:{color}shulker_box", "minecraft:{color}stained_glass", "minecraft:{color}stained_glass_pane", "minecraft:{color}terracotta", "minecraft:{color}tulip", "minecraft:{color}wool")
-	val itemFamilies = listOf("minecraft:{color}dye", "hexcasting:dye_colorizer_{color}")
+	val blockPatterns = mapOf(
+		"bed" to "minecraft:{color}bed",
+		"candle" to "minecraft:{color}candle",
+		"candle_cake" to "minecraft:{color}candle_cake",
+		"carpet" to "minecraft:{color}carpet",
+		"concrete" to "minecraft:{color}concrete",
+		"concrete_powder" to "minecraft:{color}concrete_powder",
+		"glazed_terracotta" to "minecraft:{color}glazed_terracotta",
+		"sand" to "minecraft:{color}sand",
+		"sandstone" to "minecraft:{color}sandstone",
+		"cut_sandstone" to "minecraft:cut_{color}sandstone",
+		"smooth_sandstone" to "minecraft:smooth_{color}sandstone",
+		"chiseled_sandstone" to "minecraft:chiseled_{color}sandstone",
+		"sandstone_slab" to "minecraft:{color}sandstone_slab",
+		"cut_sandstone_slab" to "minecraft:cut_{color}sandstone_slab",
+		"smooth_sandstone_slab" to "minecraft:smooth_{color}sandstone_slab",
+		"sandstone_stairs" to "minecraft:{color}sandstone_stairs",
+		"smooth_sandstone_stairs" to "minecraft:smooth_{color}sandstone_stairs",
+		"sandstone_walls" to "minecraft:{color}sandstone_walls",
+		"shulker_box" to "minecraft:{color}shulker_box",
+		"stained_glass" to "minecraft:{color}stained_glass",
+		"stained_glass_pane" to "minecraft:{color}stained_glass_pane",
+		"terracotta" to "minecraft:{color}terracotta",
+		"tulip" to "minecraft:{color}tulip",
+		"wool" to "minecraft:{color}wool"
+	)
 
-	private fun <T : Any> resolvePattern(registry: Registry<T>, pattern: String, dye: DyeOption) = listOfNotNull(
-		registry.get(RegistryKey.of<T>(registry.key, Identifier(pattern.replace("{color}", dye.replacement)))),
-		registry.get(RegistryKey.of<T>(registry.key, Identifier(pattern.replace("{color}", dye.replacement + "_"))))
-	).firstOrNull()
+	val itemPatterns = mapOf(
+		"dye" to "minecraft:{color}dye",
+		"pigment" to "hexcasting:dye_colorizer_{color}"
+	)
+
+	private fun <T : Any> resolve(registry: Registry<T>, pattern: String, dye: DyeOption) =
+		when {
+			registry.get(RegistryKey.of<T>(registry.key, Identifier(pattern.replace("{color}", dye.replacement)))) != null -> dye.ordinal to pattern.replace("{color}", dye.replacement)
+			registry.get(RegistryKey.of<T>(registry.key, Identifier(pattern.replace("{color}", dye.replacement + "_")))) != null -> dye.ordinal to pattern.replace("{color}", dye.replacement + "_")
+			else -> null
+		}
+
+	val tasks = mutableListOf<(DataWriter, DataOutput) -> CompletableFuture<*>>()
+	private fun generateFiles(json: JsonObject, path: String, name: String) {
+		tasks.add { writer, output -> DataProvider.writeToPath(writer, json, output.getResolver(DataOutput.OutputType.DATA_PACK, path).resolve(HexicalMain.id(name), "json")) }
+	}
 }
