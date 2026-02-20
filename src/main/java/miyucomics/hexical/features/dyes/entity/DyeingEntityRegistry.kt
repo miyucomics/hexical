@@ -14,7 +14,6 @@ import net.minecraft.entity.passive.SheepEntity
 import net.minecraft.entity.passive.WolfEntity
 import net.minecraft.item.BlockItem
 import net.minecraft.item.ItemStack
-import net.minecraft.server.world.ServerWorld
 import java.util.*
 
 object DyeingEntityRegistry : InitHook() {
@@ -22,28 +21,24 @@ object DyeingEntityRegistry : InitHook() {
 
 	override fun init() {
 		register(object : DyeEntityHandler<ItemEntity>(ItemEntity::class.java) {
-			override fun extraConditions(entity: ItemEntity, dye: DyeOption): Boolean {
-				val stack = entity.stack
-				if (DyeingUtils.getRecipe(entity.world as ServerWorld, stack, dye) != null)
-					return true
-				if (stack.item is BlockItem && DyeingUtils.getRecipe(entity.world as ServerWorld, (stack.item as BlockItem).block.defaultState, dye) != null)
-					return true
-				return false
-			}
+			override fun extraConditions(entity: ItemEntity, dye: DyeOption) = DyeingUtils.getResult(entity.stack, dye) != null
 
 			override fun affect(entity: ItemEntity, dye: DyeOption) {
 				val stack = entity.stack.copyAndEmpty()
-				val itemRecipe = DyeingUtils.getRecipe(entity.world as ServerWorld, stack, dye)
-				if (itemRecipe != null) {
-					entity.stack = itemRecipe.output.copyWithCount(stack.count)
-					return
-				}
+				entity.stack = DyeingUtils.getResult(stack, dye)
+			}
+		})
 
-				if (stack.item is BlockItem) {
-					val recipe = DyeingUtils.getRecipe(entity.world as ServerWorld, (stack.item as BlockItem).block.defaultState, dye)!!
-					entity.stack = ItemStack(recipe.output.asItem(), stack.count)
-					return
-				}
+		register(object : DyeEntityHandler<ItemEntity>(ItemEntity::class.java) {
+			override fun extraConditions(entity: ItemEntity, dye: DyeOption): Boolean {
+				val stack = entity.stack
+				return stack.item is BlockItem && DyeingUtils.getResult((stack.item as BlockItem).block, dye) != null
+			}
+
+			override fun affect(entity: ItemEntity, dye: DyeOption) {
+				val stack = entity.stack
+				val result = DyeingUtils.getResult((stack.item as BlockItem).block, dye)!!
+				entity.stack = ItemStack(result.asItem(), stack.count)
 			}
 		})
 
