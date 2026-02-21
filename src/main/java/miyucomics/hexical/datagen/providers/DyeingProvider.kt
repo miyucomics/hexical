@@ -87,7 +87,7 @@ object DyeingProvider {
 			addProperty("type", "hexcasting:dyeing")
 			addProperty("title", "hexical.recipe.dyeing.$name.header")
 			addProperty("text", "hexical.recipe.dyeing.$name.text")
-			collection.forEach { (dye, item) -> addProperty(dye.replacement, item) }
+			collection.forEach { (dye, item) -> addProperty(dye.replacement.ifEmpty { "uncolored" }, item) }
 		})
 	}
 }

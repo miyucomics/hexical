@@ -47,7 +47,6 @@
     },
     {
       "type": "hexcasting:dyeing",
-      "": "minecraft:candle",
       "black": "minecraft:black_candle",
       "blue": "minecraft:blue_candle",
       "brown": "minecraft:brown_candle",
@@ -64,12 +63,12 @@
       "red": "minecraft:red_candle",
       "text": "hexical.recipe.dyeing.candle.text",
       "title": "hexical.recipe.dyeing.candle.header",
+      "uncolored": "minecraft:candle",
       "white": "minecraft:white_candle",
       "yellow": "minecraft:yellow_candle"
     },
     {
       "type": "hexcasting:dyeing",
-      "": "minecraft:candle_cake",
       "black": "minecraft:black_candle_cake",
       "blue": "minecraft:blue_candle_cake",
       "brown": "minecraft:brown_candle_cake",
@@ -86,6 +85,7 @@
       "red": "minecraft:red_candle_cake",
       "text": "hexical.recipe.dyeing.candle_cake.text",
       "title": "hexical.recipe.dyeing.candle_cake.header",
+      "uncolored": "minecraft:candle_cake",
       "white": "minecraft:white_candle_cake",
       "yellow": "minecraft:yellow_candle_cake"
     },
@@ -175,73 +175,73 @@
     },
     {
       "type": "hexcasting:dyeing",
-      "": "minecraft:sand",
       "red": "minecraft:red_sand",
       "text": "hexical.recipe.dyeing.sand.text",
-      "title": "hexical.recipe.dyeing.sand.header"
+      "title": "hexical.recipe.dyeing.sand.header",
+      "uncolored": "minecraft:sand"
     },
     {
       "type": "hexcasting:dyeing",
-      "": "minecraft:sandstone",
       "red": "minecraft:red_sandstone",
       "text": "hexical.recipe.dyeing.sandstone.text",
-      "title": "hexical.recipe.dyeing.sandstone.header"
+      "title": "hexical.recipe.dyeing.sandstone.header",
+      "uncolored": "minecraft:sandstone"
     },
     {
       "type": "hexcasting:dyeing",
-      "": "minecraft:cut_sandstone",
       "red": "minecraft:cut_red_sandstone",
       "text": "hexical.recipe.dyeing.cut_sandstone.text",
-      "title": "hexical.recipe.dyeing.cut_sandstone.header"
+      "title": "hexical.recipe.dyeing.cut_sandstone.header",
+      "uncolored": "minecraft:cut_sandstone"
     },
     {
       "type": "hexcasting:dyeing",
-      "": "minecraft:smooth_sandstone",
       "red": "minecraft:smooth_red_sandstone",
       "text": "hexical.recipe.dyeing.smooth_sandstone.text",
-      "title": "hexical.recipe.dyeing.smooth_sandstone.header"
+      "title": "hexical.recipe.dyeing.smooth_sandstone.header",
+      "uncolored": "minecraft:smooth_sandstone"
     },
     {
       "type": "hexcasting:dyeing",
-      "": "minecraft:chiseled_sandstone",
       "red": "minecraft:chiseled_red_sandstone",
       "text": "hexical.recipe.dyeing.chiseled_sandstone.text",
-      "title": "hexical.recipe.dyeing.chiseled_sandstone.header"
+      "title": "hexical.recipe.dyeing.chiseled_sandstone.header",
+      "uncolored": "minecraft:chiseled_sandstone"
     },
     {
       "type": "hexcasting:dyeing",
-      "": "minecraft:sandstone_slab",
       "red": "minecraft:red_sandstone_slab",
       "text": "hexical.recipe.dyeing.sandstone_slab.text",
-      "title": "hexical.recipe.dyeing.sandstone_slab.header"
+      "title": "hexical.recipe.dyeing.sandstone_slab.header",
+      "uncolored": "minecraft:sandstone_slab"
     },
     {
       "type": "hexcasting:dyeing",
-      "": "minecraft:cut_sandstone_slab",
       "red": "minecraft:cut_red_sandstone_slab",
       "text": "hexical.recipe.dyeing.cut_sandstone_slab.text",
-      "title": "hexical.recipe.dyeing.cut_sandstone_slab.header"
+      "title": "hexical.recipe.dyeing.cut_sandstone_slab.header",
+      "uncolored": "minecraft:cut_sandstone_slab"
     },
     {
       "type": "hexcasting:dyeing",
-      "": "minecraft:smooth_sandstone_slab",
       "red": "minecraft:smooth_red_sandstone_slab",
       "text": "hexical.recipe.dyeing.smooth_sandstone_slab.text",
-      "title": "hexical.recipe.dyeing.smooth_sandstone_slab.header"
+      "title": "hexical.recipe.dyeing.smooth_sandstone_slab.header",
+      "uncolored": "minecraft:smooth_sandstone_slab"
     },
     {
       "type": "hexcasting:dyeing",
-      "": "minecraft:sandstone_stairs",
       "red": "minecraft:red_sandstone_stairs",
       "text": "hexical.recipe.dyeing.sandstone_stairs.text",
-      "title": "hexical.recipe.dyeing.sandstone_stairs.header"
+      "title": "hexical.recipe.dyeing.sandstone_stairs.header",
+      "uncolored": "minecraft:sandstone_stairs"
     },
     {
       "type": "hexcasting:dyeing",
-      "": "minecraft:smooth_sandstone_stairs",
       "red": "minecraft:smooth_red_sandstone_stairs",
       "text": "hexical.recipe.dyeing.smooth_sandstone_stairs.text",
-      "title": "hexical.recipe.dyeing.smooth_sandstone_stairs.header"
+      "title": "hexical.recipe.dyeing.smooth_sandstone_stairs.header",
+      "uncolored": "minecraft:smooth_sandstone_stairs"
     },
     {
       "type": "hexcasting:dyeing",
@@ -250,7 +250,6 @@
     },
     {
       "type": "hexcasting:dyeing",
-      "": "minecraft:shulker_box",
       "black": "minecraft:black_shulker_box",
       "blue": "minecraft:blue_shulker_box",
       "brown": "minecraft:brown_shulker_box",
@@ -267,6 +266,7 @@
       "red": "minecraft:red_shulker_box",
       "text": "hexical.recipe.dyeing.shulker_box.text",
       "title": "hexical.recipe.dyeing.shulker_box.header",
+      "uncolored": "minecraft:shulker_box",
       "white": "minecraft:white_shulker_box",
       "yellow": "minecraft:yellow_shulker_box"
     },
@@ -314,7 +314,6 @@
     },
     {
       "type": "hexcasting:dyeing",
-      "": "minecraft:terracotta",
       "black": "minecraft:black_terracotta",
       "blue": "minecraft:blue_terracotta",
       "brown": "minecraft:brown_terracotta",
@@ -331,6 +330,7 @@
       "red": "minecraft:red_terracotta",
       "text": "hexical.recipe.dyeing.terracotta.text",
       "title": "hexical.recipe.dyeing.terracotta.header",
+      "uncolored": "minecraft:terracotta",
       "white": "minecraft:white_terracotta",
       "yellow": "minecraft:yellow_terracotta"
     },
