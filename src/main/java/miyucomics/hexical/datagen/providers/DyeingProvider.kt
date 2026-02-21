@@ -1,4 +1,4 @@
-package miyucomics.hexical.datagen.providers.dyeing
+package miyucomics.hexical.datagen.providers
 
 import com.google.gson.JsonObject
 import miyucomics.hexical.HexicalMain
@@ -13,16 +13,26 @@ import net.minecraft.util.Identifier
 import java.util.concurrent.CompletableFuture
 
 object DyeingProvider {
-	val patchouliPages = mutableListOf<JsonObject>()
-
 	fun init() {
 		blockPatterns.forEach { (group, pattern) ->
-			val json = JsonObject().apply { DyeOption.entries.mapNotNull { resolve(Registries.BLOCK, pattern, it) }.forEach { (dye, identifier) -> addProperty(dye.toString(), identifier) } }
+			val json = JsonObject().apply {
+				val collection = DyeOption.entries.mapNotNull { resolve(Registries.BLOCK, pattern, it) }.associate { (dye, identifier) ->
+					addProperty(dye.toString(), identifier)
+					DyeOption.entries[dye] to identifier
+				}
+				generatePage(group, collection)
+			}
 			generateFiles(json, "dyeing/block/", group)
 		}
 
 		itemPatterns.forEach { (group, pattern) ->
-			val json = JsonObject().apply { DyeOption.entries.mapNotNull { resolve(Registries.ITEM, pattern, it) }.forEach { (dye, identifier) -> addProperty(dye.toString(), identifier) } }
+			val json = JsonObject().apply {
+				val collection = DyeOption.entries.mapNotNull { resolve(Registries.ITEM, pattern, it) }.associate { (dye, identifier) ->
+					addProperty(dye.toString(), identifier)
+					DyeOption.entries[dye] to identifier
+				}
+				generatePage(group, collection)
+			}
 			generateFiles(json, "dyeing/item/", group)
 		}
 	}
@@ -68,6 +78,16 @@ object DyeingProvider {
 
 	val tasks = mutableListOf<(DataWriter, DataOutput) -> CompletableFuture<*>>()
 	private fun generateFiles(json: JsonObject, path: String, name: String) {
-		tasks.add { writer, output -> DataProvider.writeToPath(writer, json, output.getResolver(DataOutput.OutputType.DATA_PACK, path).resolve(HexicalMain.id(name), "json")) }
+		tasks.add { writer, output -> DataProvider.writeToPath(writer, json, output.getResolver(DataOutput.OutputType.DATA_PACK, path).resolve(HexicalMain.Companion.id(name), "json")) }
+	}
+
+	val patchouliPages = mutableListOf<JsonObject>()
+	private fun generatePage(name: String, collection: Map<DyeOption, String>) {
+		patchouliPages.add(JsonObject().apply {
+			addProperty("type", "hexcasting:dyeing")
+			addProperty("title", "hexical.recipe.dyeing.$name.header")
+			addProperty("text", "hexical.recipe.dyeing.$name.text")
+			collection.forEach { (dye, item) -> addProperty(dye.replacement, item) }
+		})
 	}
 }

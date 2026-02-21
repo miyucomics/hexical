@@ -2,6 +2,7 @@ package miyucomics.hexical.datagen.generators
 
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
+import miyucomics.hexical.datagen.providers.DyeingProvider
 import miyucomics.hexical.datagen.providers.FloraProvider
 import miyucomics.hexical.datagen.providers.TransmutationProvider
 import miyucomics.hexical.inits.HexicalItems
@@ -15,12 +16,75 @@ import java.util.concurrent.CompletableFuture
 class HexicalPatchouliGenerator(val output: FabricDataOutput) : DataProvider {
 	override fun getName() = "Hexical Patchouli Pages"
 	override fun run(writer: DataWriter): CompletableFuture<*> = CompletableFuture.allOf(
-		generateConjurableFlora(writer),
 		generateCurioPages(writer),
+		generateDyeingPages(writer),
+		generateFloraPages(writer),
 		generateMediaJarPages(writer)
 	)
 
-	private fun generateConjurableFlora(writer: DataWriter): CompletableFuture<*> {
+	private fun generateCurioPages(writer: DataWriter): CompletableFuture<*> {
+		val finalJson = JsonObject().apply {
+			addProperty("name", "hexical.page.curios.title")
+			addProperty("icon", "hexical:curio_clover")
+			addProperty("advancement", "hexcasting:root")
+			addProperty("category", "hexcasting:items")
+			addProperty("sortnum", 10)
+			add("pages", JsonArray().apply {
+				add(JsonObject().apply {
+					addProperty("type", "patchouli:text")
+					addProperty("text", "hexical.page.curios.0")
+				})
+				for (name in HexicalItems.CURIO_NAMES) {
+					add(JsonObject().apply {
+						addProperty("type", "patchouli:spotlight")
+						addProperty("item", "hexical:curio_$name")
+						addProperty("text", "hexical.page.curio_$name.summary")
+					})
+				}
+			})
+		}
+
+		val path = output.getResolver(DataOutput.OutputType.RESOURCE_PACK, "patchouli_books/thehexbook/en_us/entries/items")
+		return DataProvider.writeToPath(writer, finalJson, path.resolve(Identifier("hexcasting", "curios"), "json"))
+	}
+
+	private fun generateDyeingPages(writer: DataWriter): CompletableFuture<*> {
+		val finalJson = JsonObject().apply {
+			addProperty("name", "hexical.page.dyes.title")
+			addProperty("icon", "minecraft:red_dye")
+			addProperty("advancement", "hexcasting:root")
+			addProperty("category", "hexcasting:patterns/spells")
+			addProperty("sortnum", 2)
+			add("pages", JsonArray().apply {
+				add(JsonObject().apply {
+					addProperty("type", "patchouli:text")
+					addProperty("text", "hexical.page.dyes.0")
+				})
+				add(JsonObject().apply {
+					addProperty("type", "hexcasting:pattern")
+					addProperty("op_id", "hexical:get_dye")
+					addProperty("anchor", "hexical:get_dye")
+					addProperty("input", "id/vector/entity")
+					addProperty("output", "dye/null")
+					addProperty("text", "hexical.page.get_dye.summary")
+				})
+				add(JsonObject().apply {
+					addProperty("type", "hexcasting:pattern")
+					addProperty("op_id", "hexical:dye")
+					addProperty("anchor", "hexical:dye")
+					addProperty("input", "vector/entity, dye")
+					addProperty("output", "")
+					addProperty("text", "hexical.page.dye.summary")
+				})
+				DyeingProvider.patchouliPages.forEach(::add)
+			})
+		}
+
+		val path = output.getResolver(DataOutput.OutputType.RESOURCE_PACK, "patchouli_books/thehexbook/en_us/entries/patterns/spells")
+		return DataProvider.writeToPath(writer, finalJson, path.resolve(Identifier("hexcasting", "dyeing"), "json"))
+	}
+
+	private fun generateFloraPages(writer: DataWriter): CompletableFuture<*> {
 		val finalJson = JsonObject().apply {
 			addProperty("name", "hexcasting.action.hexical:conjure_flora")
 			addProperty("icon", "minecraft:poppy")
@@ -50,32 +114,6 @@ class HexicalPatchouliGenerator(val output: FabricDataOutput) : DataProvider {
 
 		val path = output.getResolver(DataOutput.OutputType.RESOURCE_PACK, "patchouli_books/thehexbook/en_us/entries/patterns/spells")
 		return DataProvider.writeToPath(writer, finalJson, path.resolve(Identifier("hexcasting", "conjure_flora"), "json"))
-	}
-
-	private fun generateCurioPages(writer: DataWriter): CompletableFuture<*> {
-		val finalJson = JsonObject().apply {
-			addProperty("name", "hexical.page.curios.title")
-			addProperty("icon", "hexical:curio_clover")
-			addProperty("advancement", "hexcasting:root")
-			addProperty("category", "hexcasting:items")
-			addProperty("sortnum", 10)
-			add("pages", JsonArray().apply {
-				add(JsonObject().apply {
-					addProperty("type", "patchouli:text")
-					addProperty("text", "hexical.page.curios.0")
-				})
-				for (name in HexicalItems.CURIO_NAMES) {
-					add(JsonObject().apply {
-						addProperty("type", "patchouli:spotlight")
-						addProperty("item", "hexical:curio_$name")
-						addProperty("text", "hexical.page.curio_$name.summary")
-					})
-				}
-			})
-		}
-
-		val path = output.getResolver(DataOutput.OutputType.RESOURCE_PACK, "patchouli_books/thehexbook/en_us/entries/items")
-		return DataProvider.writeToPath(writer, finalJson, path.resolve(Identifier("hexcasting", "curios"), "json"))
 	}
 
 	private fun generateMediaJarPages(writer: DataWriter): CompletableFuture<*> {

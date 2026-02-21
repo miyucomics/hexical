@@ -495,7 +495,6 @@
 	"hexical.page.get_dye.summary": "Gets the dye of a block, entity, or block/item identifier.",
 	"hexcasting.action.hexical:dye": "Dye",
 	"hexical.page.dye.summary": "Dyes a dyeable block or entity. Costs about an eighth of one $(l:items/amethyst)$(item)Amethyst Dust$().",
-	"hexical.page.dyes.1": "The valid block targets for this spell include beds, candles, cakes with candles, carpets, concrete, concrete powder, glazed terracotta, sand into red sand and vice versa, sandstone and all blocks derived from it into its red variant and vice versa, shulker boxes, stained glass, stained glass panes, terracotta, tulips into their multiple colors, and wool blocks. As for entities, cat collars, dog collars, specklikes, shulkers, and item entities of all of the above blocks are valid.",
 	"hexcasting.action.hexical:translate_dye": "Vision Purification",
 	"hexical.page.translate_dye.summary": "Translates a dye color into a vector, where each component is from 0 to 1 and represents the red, green, and blueness of the dye respectively.",
 
