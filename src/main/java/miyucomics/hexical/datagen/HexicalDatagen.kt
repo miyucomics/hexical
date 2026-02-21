@@ -1,9 +1,9 @@
 package miyucomics.hexical.datagen
 
 import miyucomics.hexical.datagen.generators.*
+import miyucomics.hexical.datagen.providers.DyeingProvider
 import miyucomics.hexical.datagen.providers.FloraProvider
 import miyucomics.hexical.datagen.providers.TransmutationProvider
-import miyucomics.hexical.datagen.providers.dyeing.DyeingProvider
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator
 

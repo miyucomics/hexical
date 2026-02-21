@@ -1,0 +1,27 @@
+{
+	"components": [
+		{
+			"type": "patchouli:header",
+			"text": "#title",
+			"x": -1,
+			"y": -1
+		},
+		{
+			"type": "patchouli:item",
+			"x": 50,
+			"y": 20,
+			"item": "#red"
+		},
+		{
+			"type": "patchouli:item",
+			"x": 50,
+			"y": 40,
+			"item": "#blue"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "#text",
+			"y": 65
+		}
+	]
+}

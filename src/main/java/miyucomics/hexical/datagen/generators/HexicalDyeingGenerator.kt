@@ -1,6 +1,6 @@
 package miyucomics.hexical.datagen.generators
 
-import miyucomics.hexical.datagen.providers.dyeing.DyeingProvider
+import miyucomics.hexical.datagen.providers.DyeingProvider
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.minecraft.data.DataProvider
 import net.minecraft.data.DataWriter
