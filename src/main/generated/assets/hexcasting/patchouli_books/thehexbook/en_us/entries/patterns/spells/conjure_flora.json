@@ -2,7 +2,7 @@
   "advancement": "hexcasting:root",
   "category": "hexcasting:patterns/spells",
   "icon": "minecraft:poppy",
-  "name": "hexcasting.action.hexical:conjure_flora",
+  "name": "hexical.page.flora.title",
   "pages": [
     {
       "type": "hexcasting:pattern",

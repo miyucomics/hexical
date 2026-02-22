@@ -72,7 +72,6 @@
 - added pattern to test if an item stack has an autograph
 - added pattern to check if an item has been autographed by a specific person
 - added Unautograph spell to unautograph an item ( still erases it )
-- added automatic population of conjure flora possibilities
 - added patterns to read other peoples' inputs
 - added ability to read from hexburst, which consumes the hexburst
 - added Chronicler's support for meshes and specks; replaces the old tangle purification, weave mesh, and iota speck spells

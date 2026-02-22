@@ -1,7 +1,7 @@
 {
   "advancement": "hexcasting:root",
   "category": "hexcasting:items",
-  "icon": "hexical:curio_clover",
+  "icon": "hexical:curio_staff",
   "name": "hexical.page.curios.title",
   "pages": [
     {
