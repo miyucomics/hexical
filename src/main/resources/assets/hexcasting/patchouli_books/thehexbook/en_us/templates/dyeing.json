@@ -7,21 +7,31 @@
 			"y": -1
 		},
 		{
-			"type": "patchouli:item",
-			"x": 50,
-			"y": 20,
-			"item": "#red"
-		},
-		{
-			"type": "patchouli:item",
-			"x": 50,
-			"y": 40,
-			"item": "#blue"
+			"type": "patchouli:custom",
+			"class": "miyucomics.hexical.features.patchouli.DyeingComponent",
+			"uncolored": "#uncolored",
+			"white": "#white",
+			"orange": "#orange",
+			"magenta": "#magenta",
+			"light_blue": "#light_blue",
+			"yellow": "#yellow",
+			"lime": "#lime",
+			"pink": "#pink",
+			"gray": "#gray",
+			"light_gray": "#light_gray",
+			"cyan": "#cyan",
+			"purple": "#purple",
+			"blue": "#blue",
+			"brown": "#brown",
+			"green": "#green",
+			"red": "#red",
+			"black": "#black",
+			"y": 60
 		},
 		{
 			"type": "patchouli:text",
 			"text": "#text",
-			"y": 65
+			"y": 118
 		}
 	]
 }
