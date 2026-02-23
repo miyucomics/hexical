@@ -2,6 +2,7 @@ package miyucomics.hexical.features.patchouli
 
 import at.petrak.hexcasting.common.items.magic.ItemMediaHolder
 import miyucomics.hexical.features.flora.ConjureFloraRecipe
+import miyucomics.hexical.misc.TextUtilities
 import net.minecraft.item.ItemStack
 import net.minecraft.text.Style
 import net.minecraft.util.Identifier
@@ -11,7 +12,7 @@ import vazkii.patchouli.api.IVariable
 import vazkii.patchouli.api.IVariableProvider
 
 @Suppress("unused")
-class ConjureFloraPatchouli : IComponentProcessor {
+class FloraProcessor : IComponentProcessor {
 	lateinit var recipe: ConjureFloraRecipe
 
 	override fun setup(world: World, vars: IVariableProvider) {
@@ -21,7 +22,7 @@ class ConjureFloraPatchouli : IComponentProcessor {
 	override fun process(world: World, key: String): IVariable? {
 		return when (key) {
 			"block" -> IVariable.from(ItemStack(recipe.state.block.asItem()))
-			"cost" -> IVariable.from(costText(recipe.cost).setStyle(Style.EMPTY.withColor(ItemMediaHolder.HEX_COLOR)))
+			"cost" -> IVariable.from(TextUtilities.getCostText(recipe.cost).setStyle(Style.EMPTY.withColor(ItemMediaHolder.HEX_COLOR)))
 			else -> null
 		}
 	}

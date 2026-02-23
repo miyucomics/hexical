@@ -1,12 +1,10 @@
 package miyucomics.hexical.features.patchouli
 
-import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.common.items.magic.ItemMediaHolder
 import miyucomics.hexical.features.transmuting.TransmutingRecipe
+import miyucomics.hexical.misc.TextUtilities
 import net.minecraft.item.ItemStack
-import net.minecraft.text.MutableText
 import net.minecraft.text.Style
-import net.minecraft.text.Text
 import net.minecraft.util.Identifier
 import net.minecraft.world.World
 import vazkii.patchouli.api.IComponentProcessor
@@ -14,7 +12,7 @@ import vazkii.patchouli.api.IVariable
 import vazkii.patchouli.api.IVariableProvider
 
 @Suppress("unused")
-class TransmutingPatchouli : IComponentProcessor {
+class TransmutingProcessor : IComponentProcessor {
 	lateinit var recipe: TransmutingRecipe
 
 	override fun setup(world: World, vars: IVariableProvider) {
@@ -31,17 +29,8 @@ class TransmutingPatchouli : IComponentProcessor {
 
 		return when (key) {
 			"input" -> IVariable.from(this.recipe.input)
-			"cost" -> IVariable.from(costText(this.recipe.cost).setStyle(Style.EMPTY.withColor(ItemMediaHolder.HEX_COLOR)))
+			"cost" -> IVariable.from(TextUtilities.getCostText(this.recipe.cost).setStyle(Style.EMPTY.withColor(ItemMediaHolder.HEX_COLOR)))
 			else -> null
 		}
 	}
-}
-
-fun costText(media: Long): MutableText {
-	val loss = media.toFloat() / MediaConstants.DUST_UNIT
-	if (loss > 0f)
-		return Text.translatable("hexical.recipe.media_cost", loss)
-	if (loss < 0f)
-		return Text.translatable("hexical.recipe.media_yield", -loss)
-	return Text.translatable("hexical.recipe.media_free")
 }

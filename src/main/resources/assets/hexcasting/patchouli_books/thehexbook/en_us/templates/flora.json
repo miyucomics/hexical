@@ -1,5 +1,5 @@
 {
-	"processor": "miyucomics.hexical.features.patchouli.ConjureFloraPatchouli",
+	"processor": "miyucomics.hexical.features.patchouli.FloraProcessor",
 	"components": [
 		{
 			"type": "patchouli:header",
