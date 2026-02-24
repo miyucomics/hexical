@@ -84,8 +84,7 @@ object DyeingProvider {
 	val patchouliPages = mutableListOf<JsonObject>()
 	private fun generatePage(name: String, collection: Map<DyeOption, String>) {
 		patchouliPages.add(JsonObject().apply {
-			addProperty("type", "hexcasting:dyeing")
-			addProperty("title", "hexical.recipe.dyeing.$name.header")
+			addProperty("type", "hexical:dyeing")
 			addProperty("text", "hexical.recipe.dyeing.$name.text")
 			collection.forEach { (dye, item) -> addProperty(dye.replacement.ifEmpty { "uncolored" }, item) }
 		})
