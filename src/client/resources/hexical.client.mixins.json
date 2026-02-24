@@ -3,6 +3,7 @@
 	"package": "miyucomics.hexical.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"client": [
+		"ClientBookRegistryMixin",
 		"ClientWorldMixin",
 		"DrawContextMixin",
 		"EntityRendererMixin",

@@ -25,7 +25,7 @@
       "text": "hexical.page.dye.summary"
     },
     {
-      "type": "hexcasting:dyeing",
+      "type": "hexical:dyeing",
       "black": "minecraft:black_bed",
       "blue": "minecraft:blue_bed",
       "brown": "minecraft:brown_bed",
@@ -41,12 +41,11 @@
       "purple": "minecraft:purple_bed",
       "red": "minecraft:red_bed",
       "text": "hexical.recipe.dyeing.bed.text",
-      "title": "hexical.recipe.dyeing.bed.header",
       "white": "minecraft:white_bed",
       "yellow": "minecraft:yellow_bed"
     },
     {
-      "type": "hexcasting:dyeing",
+      "type": "hexical:dyeing",
       "black": "minecraft:black_candle",
       "blue": "minecraft:blue_candle",
       "brown": "minecraft:brown_candle",
@@ -62,13 +61,33 @@
       "purple": "minecraft:purple_candle",
       "red": "minecraft:red_candle",
       "text": "hexical.recipe.dyeing.candle.text",
-      "title": "hexical.recipe.dyeing.candle.header",
       "uncolored": "minecraft:candle",
       "white": "minecraft:white_candle",
       "yellow": "minecraft:yellow_candle"
     },
     {
-      "type": "hexcasting:dyeing",
+      "type": "hexical:dyeing",
+      "black": "minecraft:black_candle_cake",
+      "blue": "minecraft:blue_candle_cake",
+      "brown": "minecraft:brown_candle_cake",
+      "cyan": "minecraft:cyan_candle_cake",
+      "gray": "minecraft:gray_candle_cake",
+      "green": "minecraft:green_candle_cake",
+      "light_blue": "minecraft:light_blue_candle_cake",
+      "light_gray": "minecraft:light_gray_candle_cake",
+      "lime": "minecraft:lime_candle_cake",
+      "magenta": "minecraft:magenta_candle_cake",
+      "orange": "minecraft:orange_candle_cake",
+      "pink": "minecraft:pink_candle_cake",
+      "purple": "minecraft:purple_candle_cake",
+      "red": "minecraft:red_candle_cake",
+      "text": "hexical.recipe.dyeing.candle_cake.text",
+      "uncolored": "minecraft:candle_cake",
+      "white": "minecraft:white_candle_cake",
+      "yellow": "minecraft:yellow_candle_cake"
+    },
+    {
+      "type": "hexical:dyeing",
       "black": "minecraft:black_carpet",
       "blue": "minecraft:blue_carpet",
       "brown": "minecraft:brown_carpet",
@@ -84,12 +103,11 @@
       "purple": "minecraft:purple_carpet",
       "red": "minecraft:red_carpet",
       "text": "hexical.recipe.dyeing.carpet.text",
-      "title": "hexical.recipe.dyeing.carpet.header",
       "white": "minecraft:white_carpet",
       "yellow": "minecraft:yellow_carpet"
     },
     {
-      "type": "hexcasting:dyeing",
+      "type": "hexical:dyeing",
       "black": "minecraft:black_concrete",
       "blue": "minecraft:blue_concrete",
       "brown": "minecraft:brown_concrete",
@@ -105,12 +123,11 @@
       "purple": "minecraft:purple_concrete",
       "red": "minecraft:red_concrete",
       "text": "hexical.recipe.dyeing.concrete.text",
-      "title": "hexical.recipe.dyeing.concrete.header",
       "white": "minecraft:white_concrete",
       "yellow": "minecraft:yellow_concrete"
     },
     {
-      "type": "hexcasting:dyeing",
+      "type": "hexical:dyeing",
       "black": "minecraft:black_concrete_powder",
       "blue": "minecraft:blue_concrete_powder",
       "brown": "minecraft:brown_concrete_powder",
@@ -126,12 +143,11 @@
       "purple": "minecraft:purple_concrete_powder",
       "red": "minecraft:red_concrete_powder",
       "text": "hexical.recipe.dyeing.concrete_powder.text",
-      "title": "hexical.recipe.dyeing.concrete_powder.header",
       "white": "minecraft:white_concrete_powder",
       "yellow": "minecraft:yellow_concrete_powder"
     },
     {
-      "type": "hexcasting:dyeing",
+      "type": "hexical:dyeing",
       "black": "minecraft:black_glazed_terracotta",
       "blue": "minecraft:blue_glazed_terracotta",
       "brown": "minecraft:brown_glazed_terracotta",
@@ -147,87 +163,75 @@
       "purple": "minecraft:purple_glazed_terracotta",
       "red": "minecraft:red_glazed_terracotta",
       "text": "hexical.recipe.dyeing.glazed_terracotta.text",
-      "title": "hexical.recipe.dyeing.glazed_terracotta.header",
       "white": "minecraft:white_glazed_terracotta",
       "yellow": "minecraft:yellow_glazed_terracotta"
     },
     {
-      "type": "hexcasting:dyeing",
+      "type": "hexical:dyeing",
       "red": "minecraft:red_sand",
       "text": "hexical.recipe.dyeing.sand.text",
-      "title": "hexical.recipe.dyeing.sand.header",
       "uncolored": "minecraft:sand"
     },
     {
-      "type": "hexcasting:dyeing",
+      "type": "hexical:dyeing",
       "red": "minecraft:red_sandstone",
       "text": "hexical.recipe.dyeing.sandstone.text",
-      "title": "hexical.recipe.dyeing.sandstone.header",
       "uncolored": "minecraft:sandstone"
     },
     {
-      "type": "hexcasting:dyeing",
+      "type": "hexical:dyeing",
       "red": "minecraft:cut_red_sandstone",
       "text": "hexical.recipe.dyeing.cut_sandstone.text",
-      "title": "hexical.recipe.dyeing.cut_sandstone.header",
       "uncolored": "minecraft:cut_sandstone"
     },
     {
-      "type": "hexcasting:dyeing",
+      "type": "hexical:dyeing",
       "red": "minecraft:smooth_red_sandstone",
       "text": "hexical.recipe.dyeing.smooth_sandstone.text",
-      "title": "hexical.recipe.dyeing.smooth_sandstone.header",
       "uncolored": "minecraft:smooth_sandstone"
     },
     {
-      "type": "hexcasting:dyeing",
+      "type": "hexical:dyeing",
       "red": "minecraft:chiseled_red_sandstone",
       "text": "hexical.recipe.dyeing.chiseled_sandstone.text",
-      "title": "hexical.recipe.dyeing.chiseled_sandstone.header",
       "uncolored": "minecraft:chiseled_sandstone"
     },
     {
-      "type": "hexcasting:dyeing",
+      "type": "hexical:dyeing",
       "red": "minecraft:red_sandstone_slab",
       "text": "hexical.recipe.dyeing.sandstone_slab.text",
-      "title": "hexical.recipe.dyeing.sandstone_slab.header",
       "uncolored": "minecraft:sandstone_slab"
     },
     {
-      "type": "hexcasting:dyeing",
+      "type": "hexical:dyeing",
       "red": "minecraft:cut_red_sandstone_slab",
       "text": "hexical.recipe.dyeing.cut_sandstone_slab.text",
-      "title": "hexical.recipe.dyeing.cut_sandstone_slab.header",
       "uncolored": "minecraft:cut_sandstone_slab"
     },
     {
-      "type": "hexcasting:dyeing",
+      "type": "hexical:dyeing",
       "red": "minecraft:smooth_red_sandstone_slab",
       "text": "hexical.recipe.dyeing.smooth_sandstone_slab.text",
-      "title": "hexical.recipe.dyeing.smooth_sandstone_slab.header",
       "uncolored": "minecraft:smooth_sandstone_slab"
     },
     {
-      "type": "hexcasting:dyeing",
+      "type": "hexical:dyeing",
       "red": "minecraft:red_sandstone_stairs",
       "text": "hexical.recipe.dyeing.sandstone_stairs.text",
-      "title": "hexical.recipe.dyeing.sandstone_stairs.header",
       "uncolored": "minecraft:sandstone_stairs"
     },
     {
-      "type": "hexcasting:dyeing",
+      "type": "hexical:dyeing",
       "red": "minecraft:smooth_red_sandstone_stairs",
       "text": "hexical.recipe.dyeing.smooth_sandstone_stairs.text",
-      "title": "hexical.recipe.dyeing.smooth_sandstone_stairs.header",
       "uncolored": "minecraft:smooth_sandstone_stairs"
     },
     {
-      "type": "hexcasting:dyeing",
-      "text": "hexical.recipe.dyeing.sandstone_walls.text",
-      "title": "hexical.recipe.dyeing.sandstone_walls.header"
+      "type": "hexical:dyeing",
+      "text": "hexical.recipe.dyeing.sandstone_walls.text"
     },
     {
-      "type": "hexcasting:dyeing",
+      "type": "hexical:dyeing",
       "black": "minecraft:black_shulker_box",
       "blue": "minecraft:blue_shulker_box",
       "brown": "minecraft:brown_shulker_box",
@@ -243,13 +247,12 @@
       "purple": "minecraft:purple_shulker_box",
       "red": "minecraft:red_shulker_box",
       "text": "hexical.recipe.dyeing.shulker_box.text",
-      "title": "hexical.recipe.dyeing.shulker_box.header",
       "uncolored": "minecraft:shulker_box",
       "white": "minecraft:white_shulker_box",
       "yellow": "minecraft:yellow_shulker_box"
     },
     {
-      "type": "hexcasting:dyeing",
+      "type": "hexical:dyeing",
       "black": "minecraft:black_stained_glass",
       "blue": "minecraft:blue_stained_glass",
       "brown": "minecraft:brown_stained_glass",
@@ -265,12 +268,11 @@
       "purple": "minecraft:purple_stained_glass",
       "red": "minecraft:red_stained_glass",
       "text": "hexical.recipe.dyeing.stained_glass.text",
-      "title": "hexical.recipe.dyeing.stained_glass.header",
       "white": "minecraft:white_stained_glass",
       "yellow": "minecraft:yellow_stained_glass"
     },
     {
-      "type": "hexcasting:dyeing",
+      "type": "hexical:dyeing",
       "black": "minecraft:black_stained_glass_pane",
       "blue": "minecraft:blue_stained_glass_pane",
       "brown": "minecraft:brown_stained_glass_pane",
@@ -286,12 +288,11 @@
       "purple": "minecraft:purple_stained_glass_pane",
       "red": "minecraft:red_stained_glass_pane",
       "text": "hexical.recipe.dyeing.stained_glass_pane.text",
-      "title": "hexical.recipe.dyeing.stained_glass_pane.header",
       "white": "minecraft:white_stained_glass_pane",
       "yellow": "minecraft:yellow_stained_glass_pane"
     },
     {
-      "type": "hexcasting:dyeing",
+      "type": "hexical:dyeing",
       "black": "minecraft:black_terracotta",
       "blue": "minecraft:blue_terracotta",
       "brown": "minecraft:brown_terracotta",
@@ -307,22 +308,20 @@
       "purple": "minecraft:purple_terracotta",
       "red": "minecraft:red_terracotta",
       "text": "hexical.recipe.dyeing.terracotta.text",
-      "title": "hexical.recipe.dyeing.terracotta.header",
       "uncolored": "minecraft:terracotta",
       "white": "minecraft:white_terracotta",
       "yellow": "minecraft:yellow_terracotta"
     },
     {
-      "type": "hexcasting:dyeing",
+      "type": "hexical:dyeing",
       "orange": "minecraft:orange_tulip",
       "pink": "minecraft:pink_tulip",
       "red": "minecraft:red_tulip",
       "text": "hexical.recipe.dyeing.tulip.text",
-      "title": "hexical.recipe.dyeing.tulip.header",
       "white": "minecraft:white_tulip"
     },
     {
-      "type": "hexcasting:dyeing",
+      "type": "hexical:dyeing",
       "black": "minecraft:black_wool",
       "blue": "minecraft:blue_wool",
       "brown": "minecraft:brown_wool",
@@ -338,12 +337,11 @@
       "purple": "minecraft:purple_wool",
       "red": "minecraft:red_wool",
       "text": "hexical.recipe.dyeing.wool.text",
-      "title": "hexical.recipe.dyeing.wool.header",
       "white": "minecraft:white_wool",
       "yellow": "minecraft:yellow_wool"
     },
     {
-      "type": "hexcasting:dyeing",
+      "type": "hexical:dyeing",
       "black": "minecraft:black_dye",
       "blue": "minecraft:blue_dye",
       "brown": "minecraft:brown_dye",
@@ -359,12 +357,11 @@
       "purple": "minecraft:purple_dye",
       "red": "minecraft:red_dye",
       "text": "hexical.recipe.dyeing.dye.text",
-      "title": "hexical.recipe.dyeing.dye.header",
       "white": "minecraft:white_dye",
       "yellow": "minecraft:yellow_dye"
     },
     {
-      "type": "hexcasting:dyeing",
+      "type": "hexical:dyeing",
       "black": "hexcasting:dye_colorizer_black",
       "blue": "hexcasting:dye_colorizer_blue",
       "brown": "hexcasting:dye_colorizer_brown",
@@ -380,7 +377,6 @@
       "purple": "hexcasting:dye_colorizer_purple",
       "red": "hexcasting:dye_colorizer_red",
       "text": "hexical.recipe.dyeing.pigment.text",
-      "title": "hexical.recipe.dyeing.pigment.header",
       "white": "hexcasting:dye_colorizer_white",
       "yellow": "hexcasting:dye_colorizer_yellow"
     }
