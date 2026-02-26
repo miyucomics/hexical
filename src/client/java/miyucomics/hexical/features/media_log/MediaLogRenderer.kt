@@ -113,4 +113,3 @@ object MediaLogRenderer : InitHook() {
 		val render: (DrawContext, Float) -> Unit
 	)
 }
-
