@@ -40,7 +40,7 @@ object DyeingProvider {
 	val blockPatterns = mapOf(
 		"bed" to "minecraft:{color}bed",
 		"candle" to "minecraft:{color}candle",
-		"candle_cake" to "minecraft:{color}candle_cake",
+		// "candle_cake" to "minecraft:{color}candle_cake",
 		"carpet" to "minecraft:{color}carpet",
 		"concrete" to "minecraft:{color}concrete",
 		"concrete_powder" to "minecraft:{color}concrete_powder",
