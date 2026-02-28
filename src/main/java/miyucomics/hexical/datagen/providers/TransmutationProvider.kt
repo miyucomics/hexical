@@ -22,7 +22,7 @@ object TransmutationProvider {
 	val recipePages = mutableListOf<JsonObject>()
 
 	fun init() {
-		makeTransmutation("alchemists_take_this", Items.COPPER_INGOT, Items.GOLD_INGOT, MediaConstants.SHARD_UNIT)
+		makeTransmutation("enchant_apple", Items.GOLDEN_APPLE, Items.ENCHANTED_GOLDEN_APPLE, MediaConstants.CRYSTAL_UNIT * 10)
 		makeTransmutation("cry_obsidian", Items.OBSIDIAN, Items.CRYING_OBSIDIAN, MediaConstants.SHARD_UNIT)
 		makeTransmutation("uncry_obsidian", Items.CRYING_OBSIDIAN, Items.OBSIDIAN, -2 * MediaConstants.DUST_UNIT)
 		makeTransmutation("thoughtknot", Items.STRING, HexItems.THOUGHT_KNOT, (0.75 * MediaConstants.DUST_UNIT).toLong())

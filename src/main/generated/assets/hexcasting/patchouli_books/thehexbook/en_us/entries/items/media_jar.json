@@ -19,9 +19,9 @@
     },
     {
       "type": "hexcasting:transmuting",
-      "recipe": "hexical:transmuting/alchemists_take_this",
-      "text": "hexical.recipe.alchemists_take_this.text",
-      "title": "hexical.recipe.alchemists_take_this.header"
+      "recipe": "hexical:transmuting/enchant_apple",
+      "text": "hexical.recipe.enchant_apple.text",
+      "title": "hexical.recipe.enchant_apple.header"
     },
     {
       "type": "hexcasting:transmuting",
