@@ -1,0 +1,10 @@
+{
+  "type": "hexical:transmuting",
+  "cost": 1000000,
+  "input": {
+    "item": "minecraft:golden_apple"
+  },
+  "output": {
+    "item": "minecraft:enchanted_golden_apple"
+  }
+}
