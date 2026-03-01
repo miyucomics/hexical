@@ -25,6 +25,7 @@ class PlayerItemCacheTicker : PlayerTicker {
 		val cache = player.itemCache()
 
 		cache.grimoireMacros.clear()
+		cache.copperDriverDotMacros.clear()
 		cache.ironDriverDotMacros.clear()
 		cache.goldDriverDotMacros.clear()
 		cache.netheriteDriverDotProgram = null
@@ -35,6 +36,9 @@ class PlayerItemCacheTicker : PlayerTicker {
 				stack.isOf(HexicalItems.GRIMOIRE_ITEM) -> {
 					val expansions = stack.getCompound("expansions") ?: return@forEach
 					expansions.keys.forEach { cache.grimoireMacros[it] = HexSerialization.backwardsCompatibleReadHex(expansions, it, player.serverWorld) }
+				}
+				stack.isOf(HexicalItems.COPPER_DRIVER_DOT_ITEM) && stack.hasNbt() && stack.nbt!!.contains("pattern") -> {
+					cache.copperDriverDotMacros[stack.getString("pattern") ?: return@forEach] = HexSerialization.deserializeHex(stack.getList("program", NbtElement.COMPOUND_TYPE.toInt()) ?: return@forEach, player.serverWorld)
 				}
 				stack.isOf(HexicalItems.IRON_DRIVER_DOT_ITEM) && stack.hasNbt() && stack.nbt!!.contains("pattern") -> {
 					cache.ironDriverDotMacros[stack.getString("pattern") ?: return@forEach] = HexSerialization.deserializeHex(stack.getList("program", NbtElement.COMPOUND_TYPE.toInt()) ?: return@forEach, player.serverWorld)

@@ -42,18 +42,24 @@ open class DriverDotItem(val hasKey: Boolean) : Item(Settings().maxCount(1).rari
 			{ vm, iota, continuation ->
 				val env = vm.env
 				val pattern = iota.pattern
-				val program = (env.caster as ServerPlayerEntity).itemCache().ironDriverDotMacros[pattern.anglesSignature()] ?: return@listOf null
+				val iotaList = (env.castingEntity as ServerPlayerEntity).itemCache().copperDriverDotMacros[pattern.anglesSignature()] ?: return@listOf null
+				CastResult(iota, continuation, vm.image.copy(stack = vm.image.stack.plus(iotaList)), listOf(), ResolvedPatternType.EVALUATED, HexEvalSounds.NOTHING)
+			},
+			{ vm, iota, continuation ->
+				val env = vm.env
+				val pattern = iota.pattern
+				val program = (env.castingEntity as ServerPlayerEntity).itemCache().ironDriverDotMacros[pattern.anglesSignature()] ?: return@listOf null
 				constructCastResult(vm, continuation, iota, program)
 			},
 			{ vm, iota, continuation ->
 				val env = vm.env
 				val pattern = iota.pattern
 				val targetSignature = pattern.anglesSignature()
-				val prefix = (env.caster as ServerPlayerEntity).itemCache().goldDriverDotMacros.keys.firstOrNull(targetSignature::startsWith) ?: return@listOf null
-				constructCastResult(vm, continuation, iota, (env.caster as ServerPlayerEntity).itemCache().goldDriverDotMacros[prefix]!!, vm.image.stack.plus(iota))
+				val prefix = (env.castingEntity as ServerPlayerEntity).itemCache().goldDriverDotMacros.keys.firstOrNull(targetSignature::startsWith) ?: return@listOf null
+				constructCastResult(vm, continuation, iota, (env.castingEntity as ServerPlayerEntity).itemCache().goldDriverDotMacros[prefix]!!, vm.image.stack.plus(iota))
 			},
 			{ vm, iota, continuation ->
-				val program = (vm.env.caster as ServerPlayerEntity).itemCache().netheriteDriverDotProgram ?: return@listOf null
+				val program = (vm.env.castingEntity as ServerPlayerEntity).itemCache().netheriteDriverDotProgram ?: return@listOf null
 				constructCastResult(vm, continuation, iota, program, vm.image.stack.plus(iota))
 			}
 		)

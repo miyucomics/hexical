@@ -1,0 +1,12 @@
+{
+	"type": "hexical:transmuting",
+	"cost": 100000,
+	"input": {
+		"item": "minecraft:copper_ingot"
+	},
+	"output": [
+		"hexical:copper_driver_dot",
+		"hexical:copper_driver_dot",
+		"hexical:copper_driver_dot"
+	]
+}
