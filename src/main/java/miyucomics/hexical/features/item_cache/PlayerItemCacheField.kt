@@ -13,6 +13,7 @@ import net.minecraft.entity.player.PlayerEntity
 // or if the player has a scarab
 class PlayerItemCacheField : PlayerField {
 	val grimoireMacros: HashMap<String, List<Iota>> = HashMap()
+	val copperDriverDotMacros: HashMap<String, List<Iota>> = HashMap()
 	val ironDriverDotMacros: HashMap<String, List<Iota>> = HashMap()
 	val goldDriverDotMacros: HashMap<String, List<Iota>> = HashMap()
 	var netheriteDriverDotProgram: List<Iota>? = null

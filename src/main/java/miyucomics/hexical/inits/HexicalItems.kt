@@ -44,6 +44,7 @@ object HexicalItems {
 	@JvmField val ARCH_LAMP_ITEM = registerItem("arch_lamp", ArchLampItem)
 
 	val GRIMOIRE_ITEM = registerItem("grimoire", GrimoireItem)
+	val COPPER_DRIVER_DOT_ITEM = registerItem("copper_driver_dot", DriverDotItem(true))
 	val IRON_DRIVER_DOT_ITEM = registerItem("iron_driver_dot", DriverDotItem(true))
 	val GOLD_DRIVER_DOT_ITEM = registerItem("gold_driver_dot", DriverDotItem(true))
 	val NETHERITE_DRIVER_DOT_ITEM = registerItem("netherite_driver_dot", DriverDotItem(false))
@@ -83,6 +84,7 @@ object HexicalItems {
 			entries.add(ItemStack(HEX_GUMMY))
 
 			entries.add(ItemStack(GRIMOIRE_ITEM))
+			entries.add(ItemStack(COPPER_DRIVER_DOT_ITEM))
 			entries.add(ItemStack(IRON_DRIVER_DOT_ITEM))
 			entries.add(ItemStack(GOLD_DRIVER_DOT_ITEM))
 			entries.add(ItemStack(NETHERITE_DRIVER_DOT_ITEM))
