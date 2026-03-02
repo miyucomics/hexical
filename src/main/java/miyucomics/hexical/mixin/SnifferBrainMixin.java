@@ -14,15 +14,15 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(targets = "net.minecraft.entity.passive.SnifferBrain$DiggingTask")
 public class SnifferBrainMixin {
 	@Inject(method = "shouldKeepRunning(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/entity/passive/SnifferEntity;J)Z", at = @At("HEAD"), cancellable = true)
-	private void allowCustomDigging(ServerWorld world, SnifferEntity sniffer, long l, CallbackInfoReturnable<Boolean> cir) {
-		if (((SnifferEntityMinterface) sniffer).isDiggingCustom())
+	private void allowCustomDigging(ServerWorld serverWorld, SnifferEntity snifferEntity, long l, CallbackInfoReturnable<Boolean> cir) {
+		if (((SnifferEntityMinterface) snifferEntity).isDiggingCustom())
 			cir.setReturnValue(true);
 	}
 
 	@Inject(method = "finishRunning(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/entity/passive/SnifferEntity;J)V", at = @At("HEAD"), cancellable = true)
-	private void forceDiggingSuccess(ServerWorld world, SnifferEntity sniffer, long l, CallbackInfo ci) {
-		if (((SnifferEntityMinterface) sniffer).isDiggingCustom()) {
-			sniffer.getBrain().remember(MemoryModuleType.SNIFF_COOLDOWN, Unit.INSTANCE, 9600L);
+	private void forceDiggingSuccess(ServerWorld serverWorld, SnifferEntity snifferEntity, long l, CallbackInfo ci) {
+		if (((SnifferEntityMinterface) snifferEntity).isDiggingCustom()) {
+			snifferEntity.getBrain().remember(MemoryModuleType.SNIFF_COOLDOWN, Unit.INSTANCE, 9600L);
 			ci.cancel();
 		}
 	}

@@ -64,7 +64,7 @@ public abstract class SnifferEntityMixin implements SnifferEntityMinterface {
 	}
 
 	@WrapOperation(method = "dropSeeds", at = @At(value = "INVOKE", target = "Lnet/minecraft/loot/LootTable;generateLoot(Lnet/minecraft/loot/context/LootContextParameterSet;)Lit/unimi/dsi/fastutil/objects/ObjectArrayList;"))
-	public ObjectArrayList<ItemStack> alterDrops(LootTable instance, LootContextParameterSet lootContextParameterSet, Operation<ObjectArrayList<ItemStack>> original) {
+	public ObjectArrayList<ItemStack> alterDrops(LootTable instance, LootContextParameterSet parameters, Operation<ObjectArrayList<ItemStack>> original) {
 		if (isDiggingCustom) {
 			ObjectArrayList<ItemStack> newDrops = new ObjectArrayList<>();
 			newDrops.add(customItem);
@@ -72,6 +72,6 @@ public abstract class SnifferEntityMixin implements SnifferEntityMinterface {
 			isDiggingCustom = false;
 			return newDrops;
 		}
-		return original.call(instance, lootContextParameterSet);
+		return original.call(instance, parameters);
 	}
 }

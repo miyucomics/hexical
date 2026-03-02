@@ -8,6 +8,7 @@ import net.minecraft.util.math.Direction
 import net.minecraft.util.math.RotationAxis
 import org.joml.Quaternionf
 import org.joml.Vector3f
+import kotlin.enums.enumEntries
 import kotlin.math.abs
 
 object MediaJarRenderer {
@@ -22,7 +23,7 @@ object MediaJarRenderer {
 	}
 
 	private val NEGATIVE_X_ROTATION: Quaternionf = RotationAxis.POSITIVE_X.rotationDegrees(-90f)
-	private val DIR2ROT: Map<Direction, Quaternionf> = enumValues<Direction>().associateWith { it.opposite.rotationQuaternion.mul(NEGATIVE_X_ROTATION) }
+	private val DIR2ROT: Map<Direction, Quaternionf> = enumEntries<Direction>().associateWith { it.opposite.rotationQuaternion.mul(NEGATIVE_X_ROTATION) }
 
 	private fun addRectangularPrism(consumer: VertexConsumer, matrices: MatrixStack, height: Float, offset: Vector3f) {
 		val halfWidth = 0.5f / 2f

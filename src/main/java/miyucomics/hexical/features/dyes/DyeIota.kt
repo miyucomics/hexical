@@ -10,6 +10,7 @@ import net.minecraft.nbt.NbtInt
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.text.Text
 import net.minecraft.util.DyeColor
+import kotlin.enums.enumEntries
 
 class DyeIota(dye: DyeOption) : Iota(TYPE, dye) {
 	override fun isTruthy() = true
@@ -20,8 +21,8 @@ class DyeIota(dye: DyeOption) : Iota(TYPE, dye) {
 	companion object {
 		val TYPE: IotaType<DyeIota> = object : IotaType<DyeIota>() {
 			override fun color() = -1
-			override fun deserialize(tag: NbtElement, world: ServerWorld) = DyeIota(enumValues<DyeOption>()[tag.asInt])
-			override fun display(tag: NbtElement): Text = enumValues<DyeOption>()[tag.asInt].coloredText
+			override fun deserialize(tag: NbtElement, world: ServerWorld) = DyeIota(enumEntries<DyeOption>()[tag.asInt])
+			override fun display(tag: NbtElement): Text = enumEntries<DyeOption>()[tag.asInt].coloredText
 		}
 	}
 }

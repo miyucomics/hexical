@@ -27,10 +27,10 @@ public class ItemRendererMixin {
 	@Shadow @Final private ItemModels models;
 
 	@Inject(method = "getModel", at = @At("HEAD"), cancellable = true)
-	private void injectModel(ItemStack itemStack, World world, LivingEntity livingEntity, int i, CallbackInfoReturnable<BakedModel> cir) {
-		if (itemStack.isOf(HexicalItems.CURIO_FLUTE))
+	private void injectModel(ItemStack stack, World world, LivingEntity entity, int seed, CallbackInfoReturnable<BakedModel> cir) {
+		if (stack.isOf(HexicalItems.CURIO_FLUTE))
 			cir.setReturnValue(this.models.getModelManager().getModel(FluteCurioItemModel.heldFluteModel));
-		if (itemStack.isOf(HexicalItems.CURIO_HANDBELL))
+		if (stack.isOf(HexicalItems.CURIO_HANDBELL))
 			cir.setReturnValue(this.models.getModelManager().getModel(HandbellCurioItemModel.heldHandbellModel));
 	}
 

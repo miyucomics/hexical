@@ -26,11 +26,11 @@ import static net.minecraft.sound.SoundCategory.BLOCKS;
 @Mixin(BlockAkashicBookshelf.class)
 public class BlockAkashicBookshelfMixin {
 	@Inject(method = "onUse", at = @At("TAIL"))
-	private void copyIota(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit, CallbackInfoReturnable<ActionResult> cir) {
-		if (world.isClient || player.isSneaking() || hand == Hand.OFF_HAND || !player.getMainHandStack().isEmpty())
+	private void copyIota(BlockState pState, World pLevel, BlockPos pPos, PlayerEntity pPlayer, Hand pHand, BlockHitResult pHit, CallbackInfoReturnable<ActionResult> cir) {
+		if (pLevel.isClient || pPlayer.isSneaking() || pHand == Hand.OFF_HAND || !pPlayer.getMainHandStack().isEmpty())
 			return;
 
-		BlockEntity shelf = world.getBlockEntity(pos);
+		BlockEntity shelf = pLevel.getBlockEntity(pPos);
 		if (!(shelf instanceof BlockEntityAkashicBookshelf))
 			return;
 
@@ -38,8 +38,8 @@ public class BlockAkashicBookshelfMixin {
 		if (nbt == null)
 			return;
 
-		CastingUtils.giveIota((ServerPlayerEntity) player, IotaType.deserialize(nbt, (ServerWorld) world));
-		world.playSound(null, pos, HexicalSounds.SUDDEN_REALIZATION, BLOCKS, 1f, 1f);
-		player.swingHand(hand, true);
+		CastingUtils.giveIota((ServerPlayerEntity) pPlayer, IotaType.deserialize(nbt, (ServerWorld) pLevel));
+		pLevel.playSound(null, pPos, HexicalSounds.SUDDEN_REALIZATION, BLOCKS, 1f, 1f);
+		pPlayer.swingHand(pHand, true);
 	}
 }
