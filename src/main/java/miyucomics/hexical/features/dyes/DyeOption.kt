@@ -3,6 +3,7 @@ package miyucomics.hexical.features.dyes
 import net.minecraft.text.Style
 import net.minecraft.text.Text
 import net.minecraft.util.DyeColor
+import kotlin.enums.enumEntries
 
 enum class DyeOption(val replacement: String, val color: Int, val dyeColor: DyeColor?) {
 	UNCOLORED("", 0xFF00FF, null),
@@ -26,6 +27,6 @@ enum class DyeOption(val replacement: String, val color: Int, val dyeColor: DyeC
 	val coloredText: Text get() = Text.translatable("dye.hexical.${name.lowercase()}").setStyle(Style.EMPTY.withColor(color))
 
 	companion object {
-		fun fromDyeColor(dyeColor: DyeColor?) = enumValues<DyeOption>().first { it.dyeColor == dyeColor }
+		fun fromDyeColor(dyeColor: DyeColor?) = enumEntries<DyeOption>().first { it.dyeColor == dyeColor }
 	}
 }

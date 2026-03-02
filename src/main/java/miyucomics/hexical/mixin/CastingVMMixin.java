@@ -29,8 +29,8 @@ public class CastingVMMixin {
 	}
 
 	@Inject(method = "performSideEffects", at = @At(value = "INVOKE", target = "Lat/petrak/hexcasting/api/casting/eval/sideeffects/OperatorSideEffect;performEffect(Lat/petrak/hexcasting/api/casting/eval/vm/CastingVM;)V"))
-	void captureStack(List<? extends OperatorSideEffect> sideEffects, CallbackInfo ci, @Local(name = "haskellProgrammersShakingandCryingRN") OperatorSideEffect sideEffect) {
-		if (sideEffect instanceof OperatorSideEffect.DoMishap) {
+	void captureStack(List<? extends OperatorSideEffect> sideEffects, CallbackInfo ci, @Local(name = "haskellProgrammersShakingandCryingRN") OperatorSideEffect haskellProgrammersShakingandCryingRN) {
+		if (haskellProgrammersShakingandCryingRN instanceof OperatorSideEffect.DoMishap) {
 			CastingVM vm = (CastingVM) (Object) this;
 			CastingEnvironment env = vm.getEnv();
 			if (!MediaLogField.isEnvCompatible(env))

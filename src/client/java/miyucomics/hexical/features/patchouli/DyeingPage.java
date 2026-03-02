@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Stream;
 
+@SuppressWarnings("unused")
 public class DyeingPage extends PageWithText {
 	IVariable uncolored, white, orange, magenta, light_blue, yellow, lime, pink, gray, light_gray, cyan, purple, blue, brown, green, red, black;
 	private final transient List<Pair<ItemStack, Vector2i>> renders = new ArrayList<>();

@@ -13,9 +13,9 @@ import org.spongepowered.asm.mixin.Mixin;
 @Mixin(PistonBlock.class)
 public class PistonBlockMixin {
 	@WrapMethod(method = "shouldExtend")
-	private boolean addRedstonePower(RedstoneView world, BlockPos pos, Direction face, Operation<Boolean> original) {
+	private boolean addRedstonePower(RedstoneView world, BlockPos pos, Direction pistonFace, Operation<Boolean> original) {
 		if (!(world instanceof ServerWorld))
-			return original.call(world, pos, face);
-		return original.call(world, pos, face) || ZapManager.hasMagicalPower((ServerWorld) world, pos);
+			return original.call(world, pos, pistonFace);
+		return original.call(world, pos, pistonFace) || ZapManager.hasMagicalPower((ServerWorld) world, pos);
 	}
 }

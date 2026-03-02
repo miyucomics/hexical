@@ -23,13 +23,13 @@ public class PlayerEntityMixin implements PlayerEntityMinterface {
 	}
 
 	@Inject(method = "readCustomDataFromNbt", at = @At("HEAD"))
-	void reaadPlayerData(NbtCompound compound, CallbackInfo ci) {
-		hexicalPlayerManager.readNbt(compound);
+	void reaadPlayerData(NbtCompound nbt, CallbackInfo ci) {
+		hexicalPlayerManager.readNbt(nbt);
 	}
 
 	@Inject(method = "writeCustomDataToNbt", at = @At("HEAD"))
-	void writePlayerData(NbtCompound compound, CallbackInfo ci) {
-		hexicalPlayerManager.writeNbt(compound);
+	void writePlayerData(NbtCompound nbt, CallbackInfo ci) {
+		hexicalPlayerManager.writeNbt(nbt);
 	}
 
 	@Override

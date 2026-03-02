@@ -9,6 +9,7 @@ import miyucomics.hexical.misc.InitHook
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
 import net.minecraft.util.Hand
 import net.minecraft.util.Identifier
+import kotlin.enums.enumEntries
 
 object ServerCharmedUseReceiver : InitHook() {
 	@JvmField
@@ -17,7 +18,7 @@ object ServerCharmedUseReceiver : InitHook() {
 	override fun init() {
 		ServerPlayNetworking.registerGlobalReceiver(CHARMED_ITEM_USE_CHANNEL) { server, player, _, buf, _ ->
 			val inputMethod = buf.readInt()
-			val hand = enumValues<Hand>()[buf.readInt()]
+			val hand = enumEntries<Hand>()[buf.readInt()]
 			val stack = player.getStackInHand(hand)
 			server.execute {
 				val vm = CastingVM(CastingImage().copy(stack = inputMethod.asActionResult), CharmCastEnv(player, hand, stack))

@@ -21,7 +21,7 @@ public class EntityRendererMixin {
 	@Shadow @Final protected EntityRenderDispatcher dispatcher;
 
 	@Inject(method = "render", at = @At("HEAD"))
-	void renderMuteIcon(Entity entity, float yaw, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertices, int light, CallbackInfo ci) {
+	void renderMuteIcon(Entity entity, float yaw, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, CallbackInfo ci) {
 		ClientPlayerEntity player = MinecraftClient.getInstance().player;
 		assert player != null;
 		if (player.getAttributeValue(HexAttributes.SCRY_SIGHT) <= 0.0)
@@ -29,6 +29,6 @@ public class EntityRendererMixin {
 
 		double distance = this.dispatcher.getSquaredDistanceToCamera(entity);
 		if (distance <= 4096.0)
-			MuteRenderer.render(entity, matrices, vertices, this.dispatcher);
+			MuteRenderer.render(entity, matrices, vertexConsumers, this.dispatcher);
 	}
 }

@@ -7,17 +7,16 @@ import miyucomics.hexical.misc.InitHook
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper
 import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener
 import net.minecraft.block.Block
-import net.minecraft.block.BlockState
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.resource.ResourceManager
 import net.minecraft.resource.ResourceType
-import net.minecraft.state.property.Property
 import net.minecraft.util.Identifier
 import java.io.InputStream
 import java.io.InputStreamReader
+import kotlin.enums.enumEntries
 
 object DyeingUtils : InitHook() {
 	val blockDyeLookup = mutableMapOf<Block, DyeOption>()
@@ -55,14 +54,10 @@ object DyeingUtils : InitHook() {
 	private fun <T : Any> load(stream: InputStream, registry: Registry<T>, dyeLookup: MutableMap<T, DyeOption>, convertLookup: MutableMap<T, Map<DyeOption, T>>) {
 		val allMatches = (JsonParser.parseReader(InputStreamReader(stream, Charsets.UTF_8)) as JsonObject).asMap().filterKeys { registry.containsId(Identifier(it)) }.map { (id, dyeElement) ->
 			val obj = registry.get(Identifier(id))!!
-			val dye = enumValues<DyeOption>()[dyeElement.asInt]
+			val dye = enumEntries<DyeOption>()[dyeElement.asInt]
 			dyeLookup[obj] = dye
 			dye to obj
 		}.toMap()
 		allMatches.values.forEach { convertLookup[it] = allMatches }
-	}
-
-	private fun <T : Comparable<T>> copyProperty(property: Property<T>, from: BlockState, to: BlockState): BlockState {
-		return if (to.contains(property)) to.with(property, from.get(property)) else to
 	}
 }

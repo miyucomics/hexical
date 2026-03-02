@@ -78,7 +78,7 @@ object DyeingProvider {
 
 	val tasks = mutableListOf<(DataWriter, DataOutput) -> CompletableFuture<*>>()
 	private fun generateFiles(json: JsonObject, path: String, name: String) {
-		tasks.add { writer, output -> DataProvider.writeToPath(writer, json, output.getResolver(DataOutput.OutputType.DATA_PACK, path).resolve(HexicalMain.Companion.id(name), "json")) }
+		tasks.add { writer, output -> DataProvider.writeToPath(writer, json, output.getResolver(DataOutput.OutputType.DATA_PACK, path).resolve(HexicalMain.id(name), "json")) }
 	}
 
 	val patchouliPages = mutableListOf<JsonObject>()
