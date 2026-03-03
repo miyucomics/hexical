@@ -56,9 +56,8 @@
 - added Wooleyed status effect
   - acts as a coping saw
 - added spell to break block with fortune
-- added recipe files for dyeing spell
-- added Emi support for dyeing spell
 - added Emi support for media jar
+- added golden apple enchantment transmutation
 - added spell to break block with silk touch
 - added left and right-click telepathy patterns
 - added telepathy pattern for scrolling
@@ -129,6 +128,7 @@
 - removed Alteration Purification
 - removed Pocket Reflection II
 - removed Hallucinate Sound spells
+- removed transmutation for turning copper to gold
 - removed animated scrolls
 - removed convenience features that would make sense in User Hexperience
   - removed walking in staff screen
