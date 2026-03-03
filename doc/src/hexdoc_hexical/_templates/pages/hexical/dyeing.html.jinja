@@ -1,0 +1,13 @@
+{% extends "pages/patchouli/page.html.jinja" %}
+{% import "macros/formatting.html.jinja" as fmt with context %}
+{% import "macros/textures.html.jinja" as texture_macros with context -%}
+
+{% block body %}
+    <br>
+    <div style="display: flex; flex-wrap: wrap; gap: 4px;">
+        {% for item in page.colored_items %}
+            {{ texture_macros.render_item(item.item) }}
+        {% endfor %}
+    </div>
+    {{ fmt.styled(page.text) }}
+{% endblock body %}

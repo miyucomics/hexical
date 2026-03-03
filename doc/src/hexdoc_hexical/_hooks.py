@@ -1,17 +1,12 @@
 from importlib.resources import Package
-from typing import Any
 
 import hexdoc_hexical
-from hexdoc.core.loader import ModResourceLoader
 from hexdoc.plugin import (HookReturn, ModPlugin, ModPluginImpl, ModPluginWithBook, hookimpl)
-from hexdoc.utils import ValidationContext
 from typing_extensions import override
 
 from .__gradle_version__ import FULL_VERSION, GRADLE_VERSION
 from .__version__ import PY_VERSION
-from .book import conjure_flora_recipe, transmuting_recipe
-from .book.page import pages
-from .metadata import HexicalContext
+from .book import dyeing_page, flora_page, transmuting_page
 
 class HexicalPlugin(ModPluginImpl):
     @staticmethod
@@ -22,13 +17,7 @@ class HexicalPlugin(ModPluginImpl):
     @staticmethod
     @hookimpl
     def hexdoc_load_tagged_unions() -> HookReturn[Package]:
-        return [conjure_flora_recipe, transmuting_recipe, pages]
-
-    @staticmethod
-    @hookimpl
-    def hexdoc_update_context(context: dict[str, Any]) -> HookReturn[ValidationContext]:
-        loader = ModResourceLoader.of(context)
-        return HexicalContext().load_flora(loader, context)
+        return [dyeing_page, flora_page, transmuting_page]
 
 class HexicalModPlugin(ModPluginWithBook):
     @property
@@ -53,11 +42,7 @@ class HexicalModPlugin(ModPluginWithBook):
 
     @override
     def resource_dirs(self) -> HookReturn[Package]:
-        # lazy import because generated may not exist when this file is loaded
-        # eg. when generating the contents of generated
-        # so we only want to import it if we actually need it
         from ._export import generated
-
         return generated
 
     @override

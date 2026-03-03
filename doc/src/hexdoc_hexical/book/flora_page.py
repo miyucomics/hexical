@@ -1,7 +1,11 @@
+from hexdoc.minecraft import LocalizedStr
 from hexdoc.minecraft.recipe import Recipe
+from hexdoc.patchouli.page import Page
+from hexdoc.patchouli.text import FormatTree
+
 from hexdoc_hexcasting.book.recipes import BlockState
 
-class ConjureFloraRecipe(Recipe, type="hexical:conjure_flora"):
+class FloraRecipe(Recipe, type="hexical:conjure_flora"):
     block: BlockState
     cost: int = 0
 
@@ -18,3 +22,8 @@ class ConjureFloraRecipe(Recipe, type="hexical:conjure_flora"):
         if self.cost == 0:
             return 0
         return round(abs(self.cost) / 10000, 2)
+
+class FloraPage(Page, type="hexcasting:flora"):
+    title: LocalizedStr
+    recipe: FloraRecipe
+    text: FormatTree

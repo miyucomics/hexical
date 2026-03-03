@@ -1,5 +1,8 @@
 from hexdoc.core import ResourceLocation
+from hexdoc.minecraft import LocalizedStr
 from hexdoc.minecraft.recipe import ItemIngredient, Recipe, ItemResult
+from hexdoc.patchouli.page import Page
+from hexdoc.patchouli.text import FormatTree
 from pydantic import BeforeValidator, model_validator
 from typing import Annotated, Any
 
@@ -45,3 +48,8 @@ class TransmutingRecipe(Recipe, type="hexical:transmuting"):
         if self.cost == 0:
             return 0
         return round(abs(self.cost) / 10000, 2)
+
+class TransmutingPage(Page, type="hexcasting:transmuting"):
+    title: LocalizedStr
+    recipe: TransmutingRecipe
+    text: FormatTree

@@ -542,7 +542,7 @@
 	"hexical.page.translate_dye.summary": "将染料的颜色转换为向量，各分量对应红、绿、蓝，取值范围为 0 到 1。",
 
 	"hexical.page.pigments.title": "染色剂操纵",
-	"hexical.page.pigments.0": "和通过$(hex)咒法学$()操纵$(l:patterns/spells/dyes)染料$()一样，染色剂也可操纵。比如说，我甚至能存储多个染色剂，再让$(hex)咒术$()随机挑选一个给我。",
+	"hexical.page.pigments.0": "和通过$(hex)咒法学$()操纵$(l:patterns/spells/dyeing)染料$()一样，染色剂也可操纵。比如说，我甚至能存储多个染色剂，再让$(hex)咒术$()随机挑选一个给我。",
 	"hexcasting.action.hexical:to_pigment": "染色剂之纯化",
 	"hexical.page.to_pigment.summary": "接受一个有色染料 iota，并转换为染色剂；接受一个人类并返回其染色剂；或是接受一个内含染色剂的物品，并返回其染色剂。",
 	"hexcasting.action.hexical:sample_pigment": "染色剂之提整",
