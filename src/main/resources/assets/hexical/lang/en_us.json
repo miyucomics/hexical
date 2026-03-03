@@ -261,7 +261,7 @@
 	"hexical.page.media_jar.title": "Media Jar",
 	"hexical.page.media_jar.0": "I can melt down all my $(l:items/amethyst)$(item)Amethyst$() in this little jar! Unfortunately, the glass is too thick for me to draw _media through it, although I have read tales that ancient _Hexcasters were able to solve this issue and were able to bottle up liquid _media in some kind of flask to use in their _Hexes. However, this $(item)Media Jar$() also has some fascinating properties for recycling _media.",
 	"hexical.page.media_jar.description": "$(o)There, sure enough, she saw the faint translucent outline of something aboout the size of a hen's egg. There was just a touch of color in it, a pale sea-green, soft and shimmering and very beautiful.",
-	"hexical.page.media_jar.1": "I can dunk items into the liquid for various purposes. Items designed for holding _media like $(l:items/phial)$(item)Phials$() are filled. For many unprotected items, the _media soaks in and $(o)transmute$() the item in unpredictable and often surprising ways.$(br2)Transmuting can be done in-world by using an item on the jar, in my inventory similar to a $(item)Bundle$(), fed via a $(item)Hopper$(), or using the $(l:patterns/spells/hopper)$(action)Hopper$() spell.",
+	"hexical.page.media_jar.1": "I can dunk items into the liquid for various purposes. Items designed for holding _media like $(l:items/phials)$(item)Phials$() are filled. For many unprotected items, the _media soaks in and $(o)transmute$() the item in unpredictable and often surprising ways.$(br2)Transmuting can be done in-world by using an item on the jar, in my inventory similar to a $(item)Bundle$(), fed via a $(item)Hopper$(), or using the $(l:patterns/spells/hopper)$(action)Hopper$() spell.",
 	"hexical.recipe.enchant_apple.header": "Enchant Apple",
 	"hexical.recipe.enchant_apple.text": "Imbues a $(item)Golden Apple$() with a tremendeous amount of _media, transforming it into the rare and more potent $(item)Enchanted Golden Apple$().",
 	"hexical.recipe.thoughtknot.header": "Weave Thought-Knot",
@@ -499,7 +499,7 @@
 	"hexical.page.translate_dye.summary": "Translates a dye color into a vector, where each component is from 0 to 1 and represents the red, green, and blueness of the dye respectively.",
 
 	"hexical.page.pigments.title": "Pigment Manipulation",
-	"hexical.page.pigments.0": "Like how I can manipulate $(l:patterns/spells/dyes)dyes$() with _Hexcasting, I can also manipulate pigments. I can even store multiple of them and have my _Hexes randomly choose one to me.",
+	"hexical.page.pigments.0": "Like how I can manipulate $(l:patterns/spells/dyeing)dyes$() with _Hexcasting, I can also manipulate pigments. I can even store multiple of them and have my _Hexes randomly choose one to me.",
 	"hexcasting.action.hexical:to_pigment": "Pigment Purification",
 	"hexical.page.to_pigment.summary": "Takes a colored dye iota and transforms it into a pigment, takes a person and returns their pigment, or takes an item containing a pigment and returns its pigment.",
 	"hexcasting.action.hexical:sample_pigment": "Pigment Exaltation",
