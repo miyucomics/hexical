@@ -250,15 +250,15 @@
     },
     {
       "type": "hexcasting:flora",
-      "recipe": "hexical:flora/acacia_sapling",
-      "text": "hexical.page.flora.acacia_sapling",
-      "title": "block.minecraft.acacia_sapling"
-    },
-    {
-      "type": "hexcasting:flora",
       "recipe": "hexical:flora/bamboo",
       "text": "hexical.page.flora.bamboo",
       "title": "block.minecraft.bamboo"
+    },
+    {
+      "type": "hexcasting:flora",
+      "recipe": "hexical:flora/acacia_sapling",
+      "text": "hexical.page.flora.acacia_sapling",
+      "title": "block.minecraft.acacia_sapling"
     },
     {
       "type": "hexcasting:flora",
