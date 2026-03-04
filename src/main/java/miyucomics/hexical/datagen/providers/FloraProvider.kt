@@ -76,8 +76,8 @@ object FloraProvider {
 		Blocks.TORCHFLOWER to 15000,
 		Blocks.PITCHER_PLANT to 15000,
 
-		Blocks.ACACIA_SAPLING to 50000,
 		Blocks.BAMBOO to 50000,
+		Blocks.ACACIA_SAPLING to 50000,
 		Blocks.BIRCH_SAPLING to 50000,
 		Blocks.CHERRY_SAPLING to 50000,
 		Blocks.DARK_OAK_SAPLING to 50000,
