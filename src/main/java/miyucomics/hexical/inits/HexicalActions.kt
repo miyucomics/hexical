@@ -63,6 +63,7 @@ import miyucomics.hexical.features.mage_blocks.modifiers.BouncyModifier
 import miyucomics.hexical.features.mage_blocks.modifiers.LifespanModifier
 import miyucomics.hexical.features.mage_blocks.modifiers.RedstoneModifier
 import miyucomics.hexical.features.mage_blocks.modifiers.VolatileModifier
+import miyucomics.hexical.features.mage_hand.OpMageHand
 import miyucomics.hexical.features.magic_missile.OpMagicMissile
 import miyucomics.hexical.features.misc_actions.*
 import miyucomics.hexical.features.mute.OpIsMute
@@ -92,7 +93,10 @@ import miyucomics.hexical.features.telepathy.OpGetScroll
 import miyucomics.hexical.features.toast.OpSendTelepathy
 import miyucomics.hexical.features.toast.OpShoutTelepathy
 import miyucomics.hexical.features.toast.OpToast
-import miyucomics.hexical.features.wristpocket.*
+import miyucomics.hexical.features.wristpocket.OpGetWristpocket
+import miyucomics.hexical.features.wristpocket.OpMageMouth
+import miyucomics.hexical.features.wristpocket.OpSleight
+import miyucomics.hexical.features.wristpocket.OpWristpocket
 import miyucomics.hexical.features.zap.OpZap
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.projectile.FireballEntity
@@ -192,13 +196,15 @@ object HexicalActions {
 
 		register("amber_seal", "qaqeaqwqwqa", HexDir.EAST, OpAmberSeal)
 
+		register("mage_hand", "aaqqaeea", HexDir.WEST, OpMageHand)
+
+		register("mage_mouth", "aaqqadaa", HexDir.WEST, OpMageMouth)
+
 		register("prestidigitation", "wedewedew", HexDir.NORTH_EAST, OpPrestidigitation)
 
 		register("wristpocket", "aaqqa", HexDir.WEST, OpWristpocket)
 		register("wristpocket_item", "aaqqada", HexDir.WEST, OpGetWristpocket)
 		register("sleight", "aaqqadeeeq", HexDir.WEST, OpSleight)
-		register("mage_hand", "aaqqaeea", HexDir.WEST, OpMageHand)
-		register("mage_mouth", "aaqqadaa", HexDir.WEST, OpMageMouth)
 
 		register("conjure_flora", "weqqqqqwaeaeaeaeaea", HexDir.NORTH_EAST, OpConjureFlora)
 

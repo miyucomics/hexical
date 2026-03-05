@@ -186,6 +186,7 @@
 	"hexcasting.mishap.invalid_value.hopper_source": "an iota that represents a source of items",
 	"hexcasting.mishap.invalid_value.hopper_destination": "an iota that represents a receiver of items",
 	"hexcasting.mishap.invalid_value.inventory": "an iota that represents an inventory",
+	"hexcasting.mishap.invalid_value.item_entity_or_null": "an item entity or null",
 	"hexcasting.mishap.invalid_value.lesser_sentinel_list": "a list of vectors",
 	"hexcasting.mishap.invalid_value.nonempty_list": "a non-empty list",
 	"hexcasting.mishap.invalid_value.number_or_vector": "a number or a vector",
@@ -507,6 +508,16 @@
 	"hexcasting.action.hexical:take_on_pigment": "Internalize Pigment II",
 	"hexical.page.take_on_pigment.summary": "Internalizes a pigment iota.",
 
+	"hexical.page.mage_hand.title": "Mage Hand",
+	"hexical.page.mage_hand.description": "An essential spell interacts with blocks and creatures through telekinetic means. It takes either a block position or an entity as the target, and then it takes an item entity to use as a tool. The tool can be null to just interact emptyhanded.$(br2)$(o)A spectral, floating hand appears at a point you choose within range.$()",
+	"hexcasting.action.hexical:mage_hand": "Mage Hand",
+	"hexical.page.mage_hand.summary": "Magically interacts with the world by conjuring an unseen hand. Costs about one $(l:items/amethyst)$(item)Amethyst Dust$().",
+
+	"hexical.page.mage_mouth.title": "Mage Mouth",
+	"hexical.page.mage_mouth.description": "A bizzare counterpart to the $(l:patterns/spells/mage_hand)$(action)Mage Hand$() spell. It makes me eat a given item entity instantly, regardless of the time required to normally consume it, any cooldowns on it, my own dietary restrictions, or if I am full.$(br2)$(o)Let food be thy medicine and medicine be thy food.$()",
+	"hexcasting.action.hexical:mage_mouth": "Mage Mouth",
+	"hexical.page.mage_mouth.summary": "Makes me eat an item, nourishing me or applying status effects to me. Costs about one $(l:items/amethyst)$(item)Amethyst Dust$() and mishaps if the item is not edible.",
+
 	"hexcasting.action.hexical:magic_missile": "Magic Missile",
 	"hexical.page.magic_missile.summary": "Conjures a small silver of amethyst that always deals a full heart of damage and forces the target backwards. Costs about one $(l:items/amethyst)$(item)Amethyst Dust$().",
 	"hexical.page.magic_missile.0": "The projectile has a few interesting properties. It automatically disappears after roughly ten seconds or shatters upon hitting an entity or block. It pierces all forms of armor and protection. It is also unaffected by gravity and water drag.$(br2)$(o)A weak but enchanting sparkling projectile.$()",
@@ -541,12 +552,6 @@
 	"hexcasting.action.hexical:sleight": "Sleight",
 	"hexical.page.sleight.summary": "Performs an act of magical sleight of hand to steal items into my wristpocket or expel my wristpocket back into the world. Costs about a fourth of one $(l:items/amethyst)$(item)Amethyst Dust$().",
 	"hexical.page.sleight.description": "If given a vector, it conjures my wristpocketed item at that vector. If given an item entity, my wristpocket either pulls in or swaps with the item, depending on whether it is empty.$(br2)$(o)If your sleight of hand causes you to break eye contact with your audience, it is too advanced for your skill level.$()",
-	"hexcasting.action.hexical:mage_hand": "Mage Hand",
-	"hexical.page.mage_hand.summary": "Projects my mind's hand forward to use my wristpocketed item and interact with the world. If my wristpocket is empty, acts as though a plain hand had reached out. Costs about one $(l:items/amethyst)$(item)Amethyst Dust$().",
-	"hexical.page.mage_hand.description": "If given an entity, it interacts with the entity using the wristpocketed item. If given a vector, it interacts with the block or $(o)space$() with the item.$(br2)Because it only brings forth a mind's hand, it is still tied to me and will not work for casting methods not attached to a person.$(br2)$(o)A spectral, floating hand appears at a point you choose within range.$()",
-	"hexcasting.action.hexical:mage_mouth": "Mage Mouth",
-	"hexical.page.mage_mouth.summary": "Makes me eat my wristpocketed item, nourishing me or applying potions to me. Costs about one $(l:items/amethyst)$(item)Amethyst Dust$() and mishaps if the item is not edible.",
-	"hexical.page.mage_mouth.description": "Regardless of the time required to usually eat the item, its special effects, my own dietary restrictions, cooldowns on eating the item, or if I'm full, this spell makes me consume it instantly.$(br2)$(o)Let food be thy medicine and medicine be thy food.$()",
 
 	"hexical.page.amber_seal.title": "Amber Preservation",
 	"hexical.page.amber_seal.0": "I can not simply pick up a $(item)Chest$() and move it under most circumstances; the contents would spill everywhere. Fortunately, there is a spell for that. Inspired by a strange material called amber that is able to preserve moments of history, this spell encases a block in a shell of amethyst and cuts it off from the external world.",

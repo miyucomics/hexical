@@ -1,0 +1,21 @@
+{
+	"name": "hexical.page.mage_mouth.title",
+	"icon": "minecraft:golden_carrot",
+	"category": "hexcasting:patterns/spells",
+	"advancement": "hexcasting:root",
+	"sortnum": 2,
+	"pages": [
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.mage_mouth.description"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:mage_mouth",
+			"anchor": "hexical:mage_mouth",
+			"input": "entity",
+			"output": "",
+			"text": "hexical.page.mage_mouth.summary"
+		}
+	]
+}
