@@ -64,6 +64,7 @@ import miyucomics.hexical.features.mage_blocks.modifiers.LifespanModifier
 import miyucomics.hexical.features.mage_blocks.modifiers.RedstoneModifier
 import miyucomics.hexical.features.mage_blocks.modifiers.VolatileModifier
 import miyucomics.hexical.features.mage_hand.OpMageHand
+import miyucomics.hexical.features.mage_mouth.OpMageMouth
 import miyucomics.hexical.features.magic_missile.OpMagicMissile
 import miyucomics.hexical.features.misc_actions.*
 import miyucomics.hexical.features.mute.OpIsMute
@@ -94,7 +95,6 @@ import miyucomics.hexical.features.toast.OpSendTelepathy
 import miyucomics.hexical.features.toast.OpShoutTelepathy
 import miyucomics.hexical.features.toast.OpToast
 import miyucomics.hexical.features.wristpocket.OpGetWristpocket
-import miyucomics.hexical.features.wristpocket.OpMageMouth
 import miyucomics.hexical.features.wristpocket.OpSleight
 import miyucomics.hexical.features.wristpocket.OpWristpocket
 import miyucomics.hexical.features.zap.OpZap

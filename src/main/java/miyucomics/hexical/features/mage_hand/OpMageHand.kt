@@ -22,7 +22,10 @@ object OpMageHand : SpellAction {
 	override val argc = 2
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val heldItem = when (val tool = args[1]) {
-			is EntityIota if tool.entity is ItemEntity -> (tool.entity as ItemEntity).stack
+			is EntityIota if tool.entity is ItemEntity -> {
+				env.assertEntityInRange(tool.entity)
+				(tool.entity as ItemEntity).stack
+			}
 			is NullIota -> ItemStack.EMPTY
 			else -> throw MishapInvalidIota.of(tool, 0, "item_entity_or_null")
 		}
