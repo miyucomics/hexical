@@ -94,6 +94,8 @@
 - changed lamp recharge patterns to not need a mind
 - changed book layout slightly
 - changed some textures
+- changed mage hand to no longer need a player
+- changed mage hand and mage mouth to operate on items in the world rather than wristpocket
 - changed pattern manipulation entirely
 - changed firework spell to use vectors for colors rather than dyes
 - changed Conjure Spike cost from five dust to one dust

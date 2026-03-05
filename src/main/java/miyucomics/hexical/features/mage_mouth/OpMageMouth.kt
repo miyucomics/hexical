@@ -23,7 +23,7 @@ object OpMageMouth : SpellAction {
 		val attemptToEat = itemEntity.stack
 		if ((attemptToEat.isOf(Items.POTION) || attemptToEat.isOf(Items.HONEY_BOTTLE) || attemptToEat.isOf(Items.MILK_BUCKET) || attemptToEat.item.isFood) && !attemptToEat.isIn(HexicalItems.CAN_NOT_MAGE_MOUTH_TAG))
 			return SpellAction.Result(Spell(itemEntity, attemptToEat), MediaConstants.DUST_UNIT, listOf())
-		throw InedibleWristpocketMishap()
+		throw InedibleItemMishap()
 	}
 
 	private data class Spell(val itemEntity: ItemEntity, val toEat: ItemStack) : RenderedSpell {
