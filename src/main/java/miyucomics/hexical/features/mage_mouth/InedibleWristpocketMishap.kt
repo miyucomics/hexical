@@ -1,4 +1,4 @@
-package miyucomics.hexical.features.wristpocket
+package miyucomics.hexical.features.mage_mouth
 
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.iota.Iota
