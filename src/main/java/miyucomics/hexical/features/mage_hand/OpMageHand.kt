@@ -11,7 +11,6 @@ import at.petrak.hexcasting.api.casting.iota.NullIota
 import at.petrak.hexcasting.api.casting.iota.Vec3Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.misc.MediaConstants
-import miyucomics.hexical.features.wristpocket.WristpocketUtils
 import net.minecraft.entity.Entity
 import net.minecraft.entity.ItemEntity
 import net.minecraft.item.ItemStack
@@ -21,12 +20,12 @@ import net.minecraft.util.math.BlockPos
 object OpMageHand : SpellAction {
 	override val argc = 2
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
-		val heldItem = when (val tool = args[1]) {
+		val toUse = when (val tool = args[1]) {
 			is EntityIota if tool.entity is ItemEntity -> {
 				env.assertEntityInRange(tool.entity)
-				(tool.entity as ItemEntity).stack
+				tool.entity as ItemEntity
 			}
-			is NullIota -> ItemStack.EMPTY
+			is NullIota -> null
 			else -> throw MishapInvalidIota.of(tool, 0, "item_entity_or_null")
 		}
 
@@ -34,28 +33,30 @@ object OpMageHand : SpellAction {
 			is EntityIota -> {
 				val entity = args.getEntity(0, argc)
 				env.assertEntityInRange(entity)
-				return SpellAction.Result(EntitySpell(entity, heldItem), MediaConstants.DUST_UNIT, listOf())
+				return SpellAction.Result(EntitySpell(entity, toUse), MediaConstants.DUST_UNIT, listOf())
 			}
 			is Vec3Iota -> {
 				val position = args.getBlockPos(0, argc)
 				env.assertPosInRange(position)
-				return SpellAction.Result(BlockSpell(position, heldItem), MediaConstants.DUST_UNIT, listOf())
+				return SpellAction.Result(BlockSpell(position, toUse), MediaConstants.DUST_UNIT, listOf())
 			}
 			else -> throw MishapInvalidIota.of(iota, 1, "entity_or_vector")
 		}
 	}
 
-	private data class BlockSpell(val position: BlockPos, val item: ItemStack) : RenderedSpell {
+	private data class BlockSpell(val position: BlockPos, val item: ItemEntity?) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			val resultantStack = FakePlayerUtils.useItemAt(env.world, item, env.castingEntity as? ServerPlayerEntity, position)
-			WristpocketUtils.setWristpocketStack(env, resultantStack)
+			val tool = item?.stack ?: ItemStack.EMPTY
+			val resultantStack = FakePlayerUtils.useItemAt(env.world, tool, env.castingEntity as? ServerPlayerEntity, position)
+			item?.stack = resultantStack
 		}
 	}
 
-	private data class EntitySpell(val entity: Entity, val item: ItemStack) : RenderedSpell {
+	private data class EntitySpell(val entity: Entity, val item: ItemEntity?) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			val resultantStack = FakePlayerUtils.useItemOnEntity(env.world, item, env.castingEntity as? ServerPlayerEntity, entity)
-			WristpocketUtils.setWristpocketStack(env, resultantStack)
+			val tool = item?.stack ?: ItemStack.EMPTY
+			val resultantStack = FakePlayerUtils.useItemOnEntity(env.world, tool, env.castingEntity as? ServerPlayerEntity, entity)
+			item?.stack = resultantStack
 		}
 	}
 }
