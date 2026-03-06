@@ -6,16 +6,16 @@
 	"sortnum": 2,
 	"pages": [
 		{
+			"type": "patchouli:text",
+			"text": "hexical.page.mage_hand.description"
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:mage_hand",
 			"anchor": "hexical:mage_hand",
-			"input": "entity/vector, entity/null",
+			"input": "entity/vector, entity/null, boolean",
 			"output": "",
 			"text": "hexical.page.mage_hand.summary"
-		},
-		{
-			"type": "patchouli:text",
-			"text": "hexical.page.mage_hand.description"
 		}
 	]
 }

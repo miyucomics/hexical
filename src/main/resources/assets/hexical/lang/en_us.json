@@ -509,9 +509,9 @@
 	"hexical.page.take_on_pigment.summary": "Internalizes a pigment iota.",
 
 	"hexical.page.mage_hand.title": "Mage Hand",
-	"hexical.page.mage_hand.description": "An essential spell interacts with blocks and creatures through telekinetic means. It takes either a block position or an entity as the target, and then it takes an item entity to use as a tool. The tool can be null to just interact emptyhanded.$(br2)$(o)A spectral, floating hand appears at a point you choose within range.$()",
+	"hexical.page.mage_hand.description": "An essential spell to interact with blocks and creatures through a telekinetic force. It targets either a position or an entity, and takes an optional item entity to use as a tool or simply act emptyhanded. It also takes in a boolean for whether the force should be $(o)sneaking$(), which raises all sorts of questions...$(br2)$(o)A spectral, floating hand appears at a point you choose within range.$()",
 	"hexcasting.action.hexical:mage_hand": "Mage Hand",
-	"hexical.page.mage_hand.summary": "Magically interacts with the world by conjuring an unseen hand. Costs about one $(l:items/amethyst)$(item)Amethyst Dust$().",
+	"hexical.page.mage_hand.summary": "Magically interacts with the world by conjuring an unseen force. Costs about one $(l:items/amethyst)$(item)Amethyst Dust$().",
 
 	"hexical.page.mage_mouth.title": "Mage Mouth",
 	"hexical.page.mage_mouth.description": "A bizzare counterpart to the $(l:patterns/spells/mage_hand)$(action)Mage Hand$() spell. It makes me eat a given item entity instantly, regardless of the time required to normally consume it, any cooldowns on it, my own dietary restrictions, or if I am full.$(br2)$(o)Let food be thy medicine and medicine be thy food.$()",
