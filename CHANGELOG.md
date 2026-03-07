@@ -101,6 +101,7 @@
 - changed firework spell to use vectors for colors rather than dyes
 - changed Conjure Spike cost from five dust to one dust
 - changed cost of both hexburst and hextito conjuration to half a dust
+- changed various patterns to be more 'reasonable' now that I have more sensible pattern design
 - fixed bug where grimoire does not work in non-hotbar
 - fixed bug where Chromatic Purification breaks for vectors
 - fixed lack of cost in Mage Hand documentation
