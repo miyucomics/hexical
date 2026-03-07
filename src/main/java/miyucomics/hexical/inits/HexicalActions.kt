@@ -196,7 +196,7 @@ object HexicalActions {
 
 		register("amber_seal", "qaqeaqwqwqa", HexDir.EAST, OpAmberSeal)
 
-		register("mage_hand", "dqq", HexDir.NORTH_EAST, OpMageHand)
+		register("mage_hand", "dqq", HexDir.NORTH_WEST, OpMageHand)
 
 		register("mage_mouth", "eeede", HexDir.EAST, OpMageMouth)
 
