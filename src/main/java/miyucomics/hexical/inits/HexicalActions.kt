@@ -204,7 +204,7 @@ object HexicalActions {
 
 		register("wristpocket", "aaqqa", HexDir.WEST, OpWristpocket)
 		register("wristpocket_item", "aaqqada", HexDir.WEST, OpGetWristpocket)
-		register("sleight", "aaqqadeeeq", HexDir.WEST, OpSleight)
+		register("sleight", "aaqqaded", HexDir.WEST, OpSleight)
 
 		register("conjure_flora", "weqqqqqwaeaeaeaeaea", HexDir.NORTH_EAST, OpConjureFlora)
 
