@@ -509,7 +509,7 @@
 	"hexical.page.take_on_pigment.summary": "Internalizes a pigment iota.",
 
 	"hexical.page.mage_hand.title": "Mage Hand",
-	"hexical.page.mage_hand.description": "An essential spell to interact with blocks and creatures through a telekinetic force. It targets either a position or an entity, and takes an optional item entity to use as a tool or simply act emptyhanded. It also takes in a boolean for whether the force should be $(o)sneaking$(), which raises all sorts of questions...$(br2)$(o)A spectral, floating hand appears at a point you choose within range.$()",
+	"hexical.page.mage_hand.description": "Interacts with either a position or an entity through a telekinetic force. It takes an optional item entity to use as a tool or can simply act emptyhanded. It also takes in a boolean for whether the force should be $(o)sneaking$(), which raises all sorts of questions...$(br2)$(o)A spectral, floating hand appears at a point you choose within range.$()",
 	"hexcasting.action.hexical:mage_hand": "Mage Hand",
 	"hexical.page.mage_hand.summary": "Magically interacts with the world by conjuring an unseen force. Costs about one $(l:items/amethyst)$(item)Amethyst Dust$().",
 
