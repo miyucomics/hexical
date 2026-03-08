@@ -23,12 +23,14 @@ object FakePlayerUtils {
 		{ world, player, _, hitresult -> UseBlockCallback.EVENT.invoker().interact(player, world, Hand.MAIN_HAND, hitresult) },
 		{ world, player, blockstate, hitresult -> blockstate.onUse(world, player, Hand.MAIN_HAND, hitresult) },
 		{ _, player, _, hitresult -> player.getStackInHand(Hand.MAIN_HAND).useOnBlock(ItemUsageContext(player, Hand.MAIN_HAND, hitresult)) },
+		{ world, player, _, _ -> player.getStackInHand(Hand.MAIN_HAND).use(world, player, Hand.MAIN_HAND).result }
 	)
 
 	private val entityAgenda: List<(ServerWorld, FakePlayer, Entity) -> ActionResult> = listOf(
 		{ world, player, target -> UseEntityCallback.EVENT.invoker().interact(player, world, Hand.MAIN_HAND, target, null) },
 		{ _, player, target -> target.interact(player, Hand.MAIN_HAND) },
 		{ _, player, target -> if (target is LivingEntity) player.getStackInHand(Hand.MAIN_HAND).useOnEntity(player, target, Hand.MAIN_HAND) else ActionResult.PASS },
+		{ world, player, _ -> player.getStackInHand(Hand.MAIN_HAND).use(world, player, Hand.MAIN_HAND).result }
 	)
 
 	private fun createFakePlayer(world: ServerWorld, x: Double, y: Double, z: Double, stack: ItemStack, owner: ServerPlayerEntity?, sneak: Boolean): FakePlayer {
@@ -39,7 +41,7 @@ object FakePlayerUtils {
 		return fakePlayer
 	}
 
-	fun useItemAt(world: ServerWorld, stack: ItemStack, owner: ServerPlayerEntity?, position: BlockPos, sneak: Boolean = false): ItemStack {
+	fun useItemAt(world: ServerWorld, stack: ItemStack, owner: ServerPlayerEntity?, position: BlockPos, sneak: Boolean): ItemStack {
 		val fakePlayer = createFakePlayer(world, position.x + 0.5, position.y + 0.5, position.z + 0.5, stack, owner, sneak)
 		val hitresult = BlockHitResult(Vec3d.ofCenter(position), Direction.UP, position, false)
 		val block = world.getBlockState(position)
@@ -52,7 +54,7 @@ object FakePlayerUtils {
 		return fakePlayer.getStackInHand(Hand.MAIN_HAND)
 	}
 
-	fun useItemOnEntity(world: ServerWorld, stack: ItemStack, owner: ServerPlayerEntity?, entity: Entity, sneak: Boolean = false): ItemStack {
+	fun useItemOnEntity(world: ServerWorld, stack: ItemStack, owner: ServerPlayerEntity?, entity: Entity, sneak: Boolean): ItemStack {
 		val fakePlayer = createFakePlayer(world, entity.x, entity.y, entity.z, stack, owner, sneak)
 		for (task in entityAgenda) {
 			val result = task(world, fakePlayer, entity)
