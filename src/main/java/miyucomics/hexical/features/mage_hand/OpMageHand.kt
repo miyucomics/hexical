@@ -17,6 +17,7 @@ import net.minecraft.entity.ItemEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.math.BlockPos
+import net.minecraft.util.math.Vec3d
 
 object OpMageHand : SpellAction {
 	override val argc = 3
@@ -45,19 +46,25 @@ object OpMageHand : SpellAction {
 		}
 	}
 
-	private data class BlockSpell(val position: BlockPos, val item: ItemEntity?, val sneak: Boolean) : RenderedSpell {
+	private data class BlockSpell(val position: BlockPos, val toUse: ItemEntity?, val sneak: Boolean) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			val tool = item?.stack ?: ItemStack.EMPTY
-			val resultantStack = FakePlayerUtils.useItemAt(env.world, tool, env.castingEntity as? ServerPlayerEntity, position, sneak)
-			item?.stack = resultantStack
+			val tool = toUse?.stack ?: ItemStack.EMPTY
+			val dispense = toUse?.pos ?: Vec3d.ofCenter(position)
+			FakePlayerUtils.useItemAt(env.world, tool, env.castingEntity as? ServerPlayerEntity, position, sneak).forEach {
+				env.world.spawnEntity(ItemEntity(env.world, dispense.x, dispense.y, dispense.z, it, 0.0, 0.0, 0.0))
+			}
+			toUse?.discard()
 		}
 	}
 
-	private data class EntitySpell(val entity: Entity, val item: ItemEntity?, val sneak: Boolean) : RenderedSpell {
+	private data class EntitySpell(val entity: Entity, val toUse: ItemEntity?, val sneak: Boolean) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			val tool = item?.stack ?: ItemStack.EMPTY
-			val resultantStack = FakePlayerUtils.useItemOnEntity(env.world, tool, env.castingEntity as? ServerPlayerEntity, entity, sneak)
-			item?.stack = resultantStack
+			val tool = toUse?.stack ?: ItemStack.EMPTY
+			val dispense = toUse?.pos ?: entity.pos
+			FakePlayerUtils.useItemOnEntity(env.world, tool, env.castingEntity as? ServerPlayerEntity, entity, sneak).forEach {
+				env.world.spawnEntity(ItemEntity(env.world, dispense.x, dispense.y, dispense.z, it, 0.0, 0.0, 0.0))
+			}
+			toUse?.discard()
 		}
 	}
 }
