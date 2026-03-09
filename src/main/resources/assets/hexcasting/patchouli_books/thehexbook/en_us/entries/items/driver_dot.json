@@ -40,6 +40,10 @@
 			"recipe": "hexical:netherite_driver_dot",
 			"title": "hexical.recipe.driver_dot.header",
 			"text": "hexical.page.netherite_driver_dot.summary"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.driver_dot.1"
 		}
 	]
 }

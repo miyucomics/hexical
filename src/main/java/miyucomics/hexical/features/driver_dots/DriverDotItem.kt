@@ -15,7 +15,6 @@ import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.utils.*
 import at.petrak.hexcasting.common.casting.PatternRegistryManifest
 import at.petrak.hexcasting.common.lib.hex.HexEvalSounds
-import miyucomics.hexical.features.driver_dots.RecursiveFrame.Companion.wouldBeRecursive
 import miyucomics.hexical.features.item_cache.itemCache
 import net.minecraft.client.item.TooltipContext
 import net.minecraft.item.Item
@@ -67,9 +66,7 @@ open class DriverDotItem(val hasKey: Boolean) : Item(Settings().maxCount(1).rari
 		private fun constructCastResult(vm: CastingVM, continuation: SpellContinuation, iota: PatternIota, program: List<Iota>, newStack: List<Iota>? = null): CastResult {
 			return CastResult(
 				iota,
-				continuation
-					.pushFrame(RecursiveFrame(iota.pattern.anglesSignature()))
-					.pushFrame(FrameEvaluate(SpellList.LList(program), false)),
+				continuation.pushFrame(FrameEvaluate(SpellList.LList(program), false)),
 				if (newStack != null) vm.image.copy(stack = newStack) else vm.image,
 				listOf(),
 				ResolvedPatternType.EVALUATED,
@@ -84,8 +81,6 @@ open class DriverDotItem(val hasKey: Boolean) : Item(Settings().maxCount(1).rari
 
 			val patternTest = PatternRegistryManifest.matchPattern(iota.pattern, vm.env, false)
 			if (patternTest !is PatternShapeMatch.Nothing)
-				return null
-			if (wouldBeRecursive(iota.pattern.anglesSignature(), continuation))
 				return null
 
 			substitutionRules.forEach { handler ->
