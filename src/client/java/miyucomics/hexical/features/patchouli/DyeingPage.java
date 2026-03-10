@@ -2,11 +2,12 @@ package miyucomics.hexical.features.patchouli;
 
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.item.ItemStack;
+import net.minecraft.registry.Registries;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.Pair;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import org.joml.Vector2i;
-import vazkii.patchouli.api.IVariable;
 import vazkii.patchouli.client.book.BookContentsBuilder;
 import vazkii.patchouli.client.book.BookEntry;
 import vazkii.patchouli.client.book.gui.GuiBook;
@@ -18,7 +19,7 @@ import java.util.Objects;
 import java.util.stream.Stream;
 
 public class DyeingPage extends PageWithText {
-	IVariable uncolored, white, orange, magenta, light_blue, yellow, lime, pink, gray, light_gray, cyan, purple, blue, brown, green, red, black;
+	String uncolored, white, orange, magenta, light_blue, yellow, lime, pink, gray, light_gray, cyan, purple, blue, brown, green, red, black;
 	private final transient List<Pair<ItemStack, Vector2i>> renders = new ArrayList<>();
 	private transient int minY = 0;
 	private transient int maxY = 0;
@@ -26,10 +27,8 @@ public class DyeingPage extends PageWithText {
 	@Override
 	public void build(World level, BookEntry entry, BookContentsBuilder builder, int pageNum) {
 		super.build(level, entry, builder, pageNum);
-		List<ItemStack> validOptions = Stream.of(uncolored, white, orange, magenta, light_blue, yellow, lime, pink, gray, light_gray, cyan, purple, blue, brown, green, red, black)
-			.filter(Objects::nonNull)
-			.map(var -> var.as(ItemStack.class))
-			.toList();
+		List<ItemStack> validOptions = Stream.of(uncolored, white, orange, magenta, light_blue, yellow, lime, pink, gray, light_gray, cyan, purple, blue, brown, green, red, black).filter(Objects::nonNull)
+			.map(var -> Registries.ITEM.get(new Identifier(var)).getDefaultStack()).toList();
 
 		int index = 0;
 		minY = 0;
