@@ -1,6 +1,7 @@
 package miyucomics.hexical.mixin;
 
 import miyucomics.hexical.HexicalMain;
+import miyucomics.hexical.features.patchouli.BlockPage;
 import miyucomics.hexical.features.patchouli.DyeingPage;
 import net.minecraft.util.Identifier;
 import org.spongepowered.asm.mixin.Final;
@@ -22,6 +23,7 @@ public class ClientBookRegistryMixin {
 
 	@Inject(method = "addPageTypes", at = @At("HEAD"))
 	public void showLights(CallbackInfo ci) {
+		pageTypes.put(HexicalMain.id("block"), BlockPage.class);
 		pageTypes.put(HexicalMain.id("dyeing"), DyeingPage.class);
 	}
 }
