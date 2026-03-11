@@ -1,62 +1,74 @@
-package miyucomics.hexical.features.patchouli;
+package miyucomics.hexical.features.patchouli
 
-import net.minecraft.client.gui.DrawContext;
-import net.minecraft.item.ItemStack;
-import net.minecraft.registry.Registries;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.Pair;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.World;
-import org.joml.Vector2i;
-import vazkii.patchouli.client.book.BookContentsBuilder;
-import vazkii.patchouli.client.book.BookEntry;
-import vazkii.patchouli.client.book.gui.GuiBook;
-import vazkii.patchouli.client.book.page.abstr.PageWithText;
+import com.google.gson.annotations.SerializedName
+import net.minecraft.client.gui.DrawContext
+import net.minecraft.item.ItemStack
+import net.minecraft.registry.Registries
+import net.minecraft.util.Identifier
+import net.minecraft.util.math.MathHelper
+import net.minecraft.world.World
+import org.joml.Vector2i
+import vazkii.patchouli.client.book.BookContentsBuilder
+import vazkii.patchouli.client.book.BookEntry
+import vazkii.patchouli.client.book.gui.GuiBook
+import vazkii.patchouli.client.book.page.abstr.PageWithText
+import kotlin.math.cos
+import kotlin.math.max
+import kotlin.math.min
+import kotlin.math.sin
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Stream;
+class DyeingPage : PageWithText() {
+	var uncolored: String? = null
+	var white: String? = null
+	var orange: String? = null
+	var magenta: String? = null
+	@SerializedName("light_blue") var lightBlue: String? = null
+	var yellow: String? = null
+	var lime: String? = null
+	var pink: String? = null
+	var gray: String? = null
+	@SerializedName("light_gray") var lightGray: String? = null
+	var cyan: String? = null
+	var purple: String? = null
+	var blue: String? = null
+	var brown: String? = null
+	var green: String? = null
+	var red: String? = null
+	var black: String? = null
 
-public class DyeingPage extends PageWithText {
-	String uncolored, white, orange, magenta, light_blue, yellow, lime, pink, gray, light_gray, cyan, purple, blue, brown, green, red, black;
-	private final transient List<Pair<ItemStack, Vector2i>> renders = new ArrayList<>();
-	private transient int minY = 0;
-	private transient int maxY = 0;
+	@Transient private val renders: MutableList<Pair<ItemStack, Vector2i>> = mutableListOf()
+	@Transient private var minY = 0
+	@Transient private var maxY = 0
 
-	@Override
-	public void build(World level, BookEntry entry, BookContentsBuilder builder, int pageNum) {
-		super.build(level, entry, builder, pageNum);
-		List<ItemStack> validOptions = Stream.of(uncolored, white, orange, magenta, light_blue, yellow, lime, pink, gray, light_gray, cyan, purple, blue, brown, green, red, black).filter(Objects::nonNull)
-			.map(var -> Registries.ITEM.get(new Identifier(var)).getDefaultStack()).toList();
+	override fun build(level: World, entry: BookEntry, builder: BookContentsBuilder, pageNum: Int) {
+		super.build(level, entry, builder, pageNum)
 
-		int index = 0;
-		minY = 0;
-		maxY = 0;
-		int numberOfOptions = validOptions.size();
-		float radius = Math.max(10, numberOfOptions * 18 / MathHelper.TAU);
+		val validOptions = listOfNotNull(uncolored, white, orange, magenta, lightBlue, yellow, lime, pink, gray, lightGray, cyan, purple, blue, brown, green, red, black)
+			.map { Registries.ITEM.get(Identifier(it)).defaultStack }
 
-		renders.clear();
-		for (ItemStack stack : validOptions) {
-			double angle = (double) index * MathHelper.TAU / numberOfOptions;
-			int x = (int) (Math.cos(angle) * radius);
-			int y = (int) (Math.sin(angle) * radius);
-			renders.add(new Pair<>(stack, new Vector2i(x - 8, y - 8)));
-			minY = Math.min(minY, y);
-			maxY = Math.max(maxY, y);
-			index++;
+		minY = 0
+		maxY = 0
+		renders.clear()
+
+		val numberOfOptions = validOptions.size
+		val radius = max(10f, numberOfOptions * 18 / MathHelper.TAU)
+		validOptions.forEachIndexed { index, stack ->
+			val angle = index.toDouble() * MathHelper.TAU / numberOfOptions
+			val x = (cos(angle) * radius).toInt()
+			val y = (sin(angle) * radius).toInt()
+			renders.add(stack to Vector2i(x - 8, y - 8))
+			minY = min(minY, y)
+			maxY = max(maxY, y)
 		}
 	}
 
-	@Override
-	public void render(DrawContext graphics, int mouseX, int mouseY, float pticks) {
-		for (Pair<ItemStack, Vector2i> pair : this.renders)
-			parent.renderItemStack(graphics, pair.getRight().x + GuiBook.PAGE_WIDTH / 2, pair.getRight().y - minY + 5, mouseX, mouseY, pair.getLeft());
-		super.render(graphics, mouseX, mouseY, pticks);
+	override fun render(graphics: DrawContext, mouseX: Int, mouseY: Int, pticks: Float) {
+		super.render(graphics, mouseX, mouseY, pticks)
+		for (pair in this.renders)
+			parent.renderItemStack(graphics, pair.second.x + GuiBook.PAGE_WIDTH / 2, pair.second.y - minY + 5, mouseX, mouseY, pair.first)
 	}
 
-	@Override
-	public int getTextHeight() {
-		return maxY - minY + 20;
+	override fun getTextHeight(): Int {
+		return maxY - minY + 20
 	}
 }
