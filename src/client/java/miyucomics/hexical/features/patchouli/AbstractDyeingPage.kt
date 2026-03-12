@@ -38,7 +38,7 @@ abstract class AbstractDyeingPage<T> : PageWithText() {
 	@Transient private var maxY = 0
 
 	abstract fun parseProvided(name: String): T
-	abstract fun renderCustom(graphics: DrawContext, thing: T, x: Int, y: Int, mouseX: Int, mouseY: Int)
+	abstract fun renderCustom(graphics: DrawContext, thing: T, x: Int, y: Int, mouseX: Int, mouseY: Int, tickDelta: Float)
 
 	override fun build(level: World, entry: BookEntry, builder: BookContentsBuilder, pageNum: Int) {
 		super.build(level, entry, builder, pageNum)
@@ -62,7 +62,7 @@ abstract class AbstractDyeingPage<T> : PageWithText() {
 	override fun render(graphics: DrawContext, mouseX: Int, mouseY: Int, pticks: Float) {
 		super.render(graphics, mouseX, mouseY, pticks)
 		for (pair in this.renders)
-			renderCustom(graphics, pair.first, pair.second.x + GuiBook.PAGE_WIDTH / 2, pair.second.y - minY + 5, mouseX, mouseY)
+			renderCustom(graphics, pair.first, pair.second.x + GuiBook.PAGE_WIDTH / 2, pair.second.y - minY + 5, mouseX, mouseY, pticks)
 	}
 
 	override fun getTextHeight() = this.maxY - this.minY + 20
