@@ -14,33 +14,33 @@ import java.util.concurrent.CompletableFuture
 
 object DyeingProvider {
 	fun init() {
-		blockPatterns.forEach { (group, pattern) ->
-			val json = JsonObject().apply {
-				val collection = DyeOption.entries.mapNotNull { resolve(Registries.BLOCK, pattern, it) }.associate { (dye, identifier) ->
-					addProperty(dye.toString(), identifier)
-					DyeOption.entries[dye] to identifier
-				}
-				generatePage(group, collection)
-			}
-			generateFiles(json, "dyeing/block/", group)
-		}
-
 		itemPatterns.forEach { (group, pattern) ->
 			val json = JsonObject().apply {
 				val collection = DyeOption.entries.mapNotNull { resolve(Registries.ITEM, pattern, it) }.associate { (dye, identifier) ->
 					addProperty(dye.toString(), identifier)
 					DyeOption.entries[dye] to identifier
 				}
-				generatePage(group, collection)
+				generateItemPage(group, collection)
 			}
 			generateFiles(json, "dyeing/item/", group)
+		}
+
+		blockPatterns.forEach { (group, pattern) ->
+			val json = JsonObject().apply {
+				val collection = DyeOption.entries.mapNotNull { resolve(Registries.BLOCK, pattern, it) }.associate { (dye, identifier) ->
+					addProperty(dye.toString(), identifier)
+					DyeOption.entries[dye] to identifier
+				}
+				generateBlockPage(group, collection)
+			}
+			generateFiles(json, "dyeing/block/", group)
 		}
 	}
 
 	val blockPatterns = mapOf(
 		"bed" to "minecraft:{color}bed",
 		"candle" to "minecraft:{color}candle",
-		// "candle_cake" to "minecraft:{color}candle_cake",
+		"candle_cake" to "minecraft:{color}candle_cake",
 		"carpet" to "minecraft:{color}carpet",
 		"concrete" to "minecraft:{color}concrete",
 		"concrete_powder" to "minecraft:{color}concrete_powder",
@@ -82,9 +82,18 @@ object DyeingProvider {
 	}
 
 	val patchouliPages = mutableListOf<JsonObject>()
-	private fun generatePage(name: String, collection: Map<DyeOption, String>) {
+
+	private fun generateBlockPage(name: String, collection: Map<DyeOption, String>) {
 		patchouliPages.add(JsonObject().apply {
-			addProperty("type", "hexical:dyeing")
+			addProperty("type", "hexical:dyeing_block")
+			addProperty("text", "hexical.recipe.dyeing.$name.text")
+			collection.forEach { (dye, item) -> addProperty(dye.replacement.ifEmpty { "uncolored" }, item) }
+		})
+	}
+
+	private fun generateItemPage(name: String, collection: Map<DyeOption, String>) {
+		patchouliPages.add(JsonObject().apply {
+			addProperty("type", "hexical:dyeing_item")
 			addProperty("text", "hexical.recipe.dyeing.$name.text")
 			collection.forEach { (dye, item) -> addProperty(dye.replacement.ifEmpty { "uncolored" }, item) }
 		})

@@ -2,7 +2,8 @@ package miyucomics.hexical.mixin;
 
 import miyucomics.hexical.HexicalMain;
 import miyucomics.hexical.features.patchouli.BlockPage;
-import miyucomics.hexical.features.patchouli.DyeingPage;
+import miyucomics.hexical.features.patchouli.DyeingBlockPage;
+import miyucomics.hexical.features.patchouli.DyeingItemPage;
 import net.minecraft.util.Identifier;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -22,8 +23,9 @@ public class ClientBookRegistryMixin {
 	public Map<Identifier, Class<? extends BookPage>> pageTypes;
 
 	@Inject(method = "addPageTypes", at = @At("HEAD"))
-	public void showLights(CallbackInfo ci) {
+	public void addHexicalPageTypes(CallbackInfo ci) {
 		pageTypes.put(HexicalMain.id("block"), BlockPage.class);
-		pageTypes.put(HexicalMain.id("dyeing"), DyeingPage.class);
+		pageTypes.put(HexicalMain.id("dyeing_block"), DyeingBlockPage.class);
+		pageTypes.put(HexicalMain.id("dyeing_item"), DyeingItemPage.class);
 	}
 }
