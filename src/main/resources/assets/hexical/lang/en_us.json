@@ -842,9 +842,9 @@
 	"hexcasting.action.hexical:read_charmed": "Charmed Reflection",
 	"hexical.page.read_charmed.summary": "Pushes the stored iota from the charmed item’s internal storage.",
 	"hexcasting.action.hexical:write_charmed_proxy": "Charmed Gambit II",
-	"hexical.page.write_charmed_proxy.summary": "If the item charged features an iota storage by default, such as a $(l:items/focus)$(item)Focus$(), writes an iota into it.",
+	"hexical.page.write_charmed_proxy.summary": "If the item charmed features an iota storage by default, such as a $(l:items/focus)$(item)Focus$(), writes an iota into it.",
 	"hexcasting.action.hexical:read_charmed_proxy": "Charmed Reflection II",
-	"hexical.page.read_charmed_proxy.summary": "If the item charged features an iota storage by default, such as a $(l:items/focus)$(item)Focus$(), reads an iota from it.",
+	"hexical.page.read_charmed_proxy.summary": "If the item charmed features an iota storage by default, such as a $(l:items/focus)$(item)Focus$(), reads an iota from it.",
 
 	"hexcasting.action.hexical:greater_blink": "Greater Blink",
 	"hexical.page.greater_blink.0": "Greater Blink is a significantly cheaper alternative to $(l:patterns/great_spells/teleport)$(action)Greater Teleport$(). It also does not carry the risk of splattering my items upon arrival. However, it only has pitiful range compared to $(l:patterns/great_spells/teleport)$(action)Greater Teleport$() and its destination calculations are... esoteric. Its target is also exclusively myself.",
