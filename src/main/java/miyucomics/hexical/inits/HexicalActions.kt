@@ -21,6 +21,7 @@ import miyucomics.hexical.features.autographs.OpHasAutograph
 import miyucomics.hexical.features.autographs.OpUnautograph
 import miyucomics.hexical.features.block_mimicry.OpCook
 import miyucomics.hexical.features.block_mimicry.OpDispense
+import miyucomics.hexical.features.block_mimicry.OpPiston
 import miyucomics.hexical.features.block_mimicry.OpStonecut
 import miyucomics.hexical.features.breaking.OpBreakFortune
 import miyucomics.hexical.features.breaking.OpBreakSilk
@@ -74,7 +75,6 @@ import miyucomics.hexical.features.periwinkle.OpCompelSniffer
 import miyucomics.hexical.features.pigments.OpSamplePigment
 import miyucomics.hexical.features.pigments.OpTakeOnPigment
 import miyucomics.hexical.features.pigments.OpToPigment
-import miyucomics.hexical.features.piston.OpPiston
 import miyucomics.hexical.features.prestidigitation.OpPrestidigitation
 import miyucomics.hexical.features.rotate.OpRotateBlock
 import miyucomics.hexical.features.rotate.OpRotateEntity
