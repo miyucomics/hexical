@@ -3,144 +3,146 @@
 ## 2.0.0
 - major version bump due to breaking changes
 - added driver dots
+  - driver dots are runtime macros in item form. They are named that way because I thought they were kind of like device drivers in computer science. There are four types for each of the four metals
+    - copper - programmed with a pattern, when that pattern is cast, it pushes the iotas it was given to the stack
+    - iron - programmed with a pattern, when that pattern is cast, the casting engine will cast its given hex
+    - gold - programmed with a pattern, when any pattern prefixed with it is cast, the casting engine will cast its given hex with the offending pattern on the stack
+    - netherite - programmed with a pattern, when any pattern uncaught by the previous variants is cast, the casting engine will cast its hex with the offending pattern on the stack
 - added strands
-- added Vibrate spell
+  - like specks but for drawing 2D lines specifically
+  - specks will now only be used to render the iota text, jsut as it appears on the stack
+  - strands can take a list of vectors and they will draw it in space
+    - comes with a patttern to turn a pattern into a list of vectors for your convenience
+  - they can be made to wiggle
+- added amber seal spell
+  - mechanism cardboard box in a spell
+  - you can seal a block with a block entity, transport it elsewhere, and unwrap it
+- added mute spell to mute a mob, and added pattern to get whether a mob is currently muted
+- added block mimicry spells
+  - these spells mimic the behavior of blocks
+  - four spells to mimic the furnace, blast furnace, smoker, and campfire recipes, cost scales with time saved
+  - dispense spell, dispenses an item entity into the world
+  - piston spell, pushes a block in a direction, also works with slime and honey as expected
+  - stonecutter spell, takes an item stack and an intended item type and cuts it into that item type
 - added grok patterns to push and pull from staff stack
 - added tooltips to hexbursts
-- added amber seal
-- added spell to create a toast
 - added tooltips to hextito
-- added hotbar spells
-- added lesser sentinels
-- added plushies
+- added spell to create a toast
+- added lesser sentinels, just hexagons that you can conjure in the world to mark locations
+- added many different plushies for many different patterns
+- added pattern to detect greater sentinels around you, and a spell to destroy them
 - added Horrible
-- added piston spell to push blocks
+  - it is quite horrible indeed, if you've looked at the pattern
+  - please use pattern manipulation to create it
 - added more prestidigitation effects
-- added 512 pattern cap to grimoires
-- added name and lore spell that uses text iota
-- added HexGloop's Dispense spell
+- added 512 pattern cap to grimoires to prevent possible chunkbans from a hex automating adding millions of macros
 - added pedestals - holds your items for you!
   - if used in a circle, it pushes the iota from the item on the pedestal
-- added ability to transmute items in the inventory like a bundle with the media jar
-- added curios - amethyst items meant to be charmed with animations and sound effects
-- added spell to make a circle use a pedestal as its other hand
-- added spell to let a circle conjure dust
-- added all variants of cooking blocks as spells
-- added Conjure Flower spell - conjure a flower of your choosing
+- added curios - items designed to be charmed. They often have special animations and sound effects
+- added Conjure Flora spell - conjure flora of your choosing at a location, datapackable
+- added Spelunking Gambit - a cool pattern that returns the blocks along a direction, useful for scanning hexes
 - added Crack Device spell - crack an unwritten casting device which will reveal its Hex when eventually written
-- added Hopper spell - transport of items from almost any source to almost any other
-- added Illuminate spell - conjure an invisible light of your chosen strength
-- added Scarab Beetle item - catches uncaught patterns for your handling
+- added spell to make a circle use a pedestal as its other hand
+- added Illuminate spell - conjure an invisible light of your chosen strength at a location
 - added Sparkle spell to create a sparkle ( my mod advertised in another mod!! )
-- added Zap spell - powers a block with Redstone
-- added tooltip to grimoire, need to cast any grimoire pattern on old grimoires in order to force it to show up
-- added more prestidigitation effects - cause soul fire, used more block tags
+- added Zap spell - powers a block with Redstone for a duration, forces redstone power to be a certain level
+- added tooltip to grimoire for what patterns are registered, need to cast any grimoire pattern on old grimoires in order to force it to show up
+- added more prestidigitation effects, too many to document
 - added Projectiles chapter
   - added Snowball spell for fun
   - added Egg spell for fun
   - moved Spit and Fireball here
 - added ability to use phials in wristpocket
 - added Squawk spell for fun - play mob sounds
-- added Confetti spell for fun - creates a bang and confetti particles
-- added HexGloop's Cut Stone spell
+- added Confetti spell for fun - creates a bang and confetti particles in either a certain direction or in a radius
 - added media log - a strange item useful for debugging hexes in staves and casting devices
-- added Similarity Purification - tests if two patterns have the same shape but different stroke order
-- added sentinel bed - always have ambit inside
+- added Sentinel Bed from HexGloop - always have ambit inside it
 - added rotation spells for blocks and entities
 - added periwinkle, a flower that can only be created via Hexcasting
   - obtained by casting a spell on sniffer
   - it is the core ingredient of the Wooleyed potion
+    - added Wooleyed status effect
+      - acts as a coping saw
   - it can be used to craft a lei
     - lei gives a small little grid size boost but mostly just looks adorable
     - you can right-click other players to put the lei on them
-- added Wooleyed status effect
-  - acts as a coping saw
-- added spell to break block with fortune
 - added Emi support for media jar
-- added golden apple enchantment transmutation
-- added spell to break block with silk touch
-- added left and right-click telepathy patterns
-- added telepathy pattern for scrolling
-- added pattern to get evocation hex
-- added more documentation to magic missile
-- added beautiful little shader to media jars
-- added Hex Candle cakes
-- added Hex Gummies
-- added charmed items - replaces tchotchke, lets you charm anything
+- added two spells to break blocks with Fortune or Silk Touch
+- added more telepathy patterns
+  - added left and right-click telepathy patterns
+  - added telepathy pattern for scrolling, only works when you are holding telepathy because it cancels the scroll event
+  - added telepathy patterns to read other peoples' inputs, costs a bit of media to do it
+- added reflection to get evocation hex
+- added more documentation to Magic Missile
+- added Hex Candle cakes to complement Hex Candles
+- added Hex Gummies from HexGloop to complement the other conjurable edibles
+- added Charm - highly overpowered great spell that lets you turn any item into a cypher
 - added Casting Carpet - carpet that boosts your ambit a little
 - added pattern to test if an item stack has an autograph
 - added pattern to check if an item has been autographed by a specific person
-- added Unautograph spell to unautograph an item ( still erases it )
-- added patterns to read other peoples' inputs
-- added ability to read from hexburst, which consumes the hexburst
+- added ability to read from hexburst with Scribe's Gambit or Chronicler's Gambit, which consumes the hexburst
 - added Chronicler's support for meshes and specks; replaces the old tangle purification, weave mesh, and iota speck spells
-- changed Conjure Flower to Conjure Flora - recipe files can handle it now!
-- changed grimoires to work in the wristpocket
-- changed cost of Refuel Lamp
-- changed Displace to cost half a dust
-- changed Autograph and Unautograph's pattern by swapping them
+- added an item cache that makes certain spells and processes that involve locating items much much faster
+- added depowered and powered textures for arch lamps to distinguish at an instant
+- added scrying overlay for mage blocks to determine what has been added to it
+- added many specialized Patchouli pages for some of the spells
+- changed Displace to cost half a dust rather than free, people were making worldwide circles which was mildly scary
 - changed media jar
-  - pretty shader
-  - custom recipe type to transmute with media
-  - bigger collision and model
-- changed players to store wristpocket, evocation, and such data
-- changed wristpocket reflection to return an item stack
+  - custom recipe type to transmute items with media inside the jar, can be done in-world, via hopper, or by using it in your inventory like a bundle
+  - added beautiful lava lamp shader to media jars
+  - changed it to have a bigger collision and model
+- changed players to store wristpocket, evocation, and such data rather than stashing it in a global state
+- changed Wristpocket Reflection to return an item stack
 - changed hex candles to not be extinguished by water
 - changed Greater Blink to not move feet to eyes
-- changed prestidigitation to anger bees when you extract honey
-- changed grimoires to work in ender chest
 - changed lamps deactivating to only be when they are picked up
 - changed shader spells to no longer require a media jar
-- changed lamp recharge patterns to not need a mind
-- changed book layout slightly
-- changed some textures
-- changed mage hand to no longer need a player
+- changed mage hand to no longer need a player, now conjures a fake player to do the work
 - changed mage hand and mage mouth to operate on items in the world rather than wristpocket
-- changed mage hand and mage mouth's patterns to loudly break
-- changed pattern manipulation entirely
-- changed firework spell to use vectors for colors rather than dyes
+- changed mage hand and mage mouth's patterns to loudly break due to their new behavior
+- changed pattern manipulation entirely to feel more like building a pattern
+- changed firework spell to use vectors for colors rather than dyes for more creativity
 - changed Conjure Spike cost from five dust to one dust
+- changed dye spell to be datapackable
 - changed cost of both hexburst and hextito conjuration to half a dust
 - changed various patterns to be more 'reasonable' now that I have more sensible pattern design
-- fixed bug where grimoire does not work in non-hotbar
 - fixed bug where Chromatic Purification breaks for vectors
+- fixed bug where grimoire does not work when not in the hotbar, now it can be used in the inventory as well as ender chest
 - fixed lack of cost in Mage Hand documentation
 - fixed bug where Fireball would fly off in some random direction
 - fixed getting to document Ghast Fireball pushing an entity
-- fixed swapped documentation of Calligrapher's and Chirographer's Purification
 - fixed bug where wristpocket does not cancel the interaction when interacting with a block
-- migrated scrying to Hexpose, a new addon
-  - added scrying pattern for moon phase
-  - added scrying pattern for projectile shooter
-  - added scrying pattern for riding entities
-  - added Media Reflection - gets media of casting environment
-  - added Media Purification - gets media of player, allay, impetus, or item on floor
-  - added Potential Purification - max media that something can hold
-  - added item scrying patterns
-  - moved piercing raycasts to Hexpose
-  - fixed Ambit Purification returning true for out-of-world positions
-  - fixed poor translation of Tool and Accessory Purification
-- migrated metaeval patterns and soroban to Overevaluate, a new addon
-- optimized Greater Blink to not load chunks in between
-- refactored code massively; split sources, no more server errors hopefully
+- fixed Greater Blink to not load chunks in between if chaining them, can now be used for long-distance teleportation
+- migrated scrying to Hexpose, which also adds more scrying patterns and is now a dependency of this mod
+- migrated metaeval patterns and soroban to Overevaluate, which also adds more metaevaluation patterns and iotas
+- migrated convenience features to User Hexperience
+  - walking in staff screen
+  - keybind to open spellbook
+  - writing to abacus
+- refactored code massively
+  - split sources, this should mean no more server errors ever again
+  - reorganized files into a neater system
+  - reworked the backends of so many systems to be elegant
+    - reworked dyeing backend
+    - reworked prestidigitation backend
+    - reworked mage block modifier backend
 - removed tchotchkes
-- removed the Myodesopsia spell
-- removed mystification around lamps, now just a casting device
-- removed the Simulate Firework spell, just acted really strangely
-- removed limitation on arch lamps per person
-- removed shared arch lamp state
-- removed Alteration Purification
+  - replaced by charms which have the exact same abilities but can be applied to any item
+- removed myodesopsia spell
+  - no one was even using it and it was inefficient and wasteful
+- removed mystification around lamps
+  - it was just a bit overdramatic and involved for an item that really isn't all that important to Hexical
+- removed limitation on one arch lamps per person and shared arch lamp state
+  - part of the demystification, also now you can have multiple arch lamps
+  - this did come with the side effect of having to remove the shared global state of arch lamps, which is a shame
+- removed Simulate Firework spell, just acted really strangely
+  - it had a bug and just seemed so incredibly niche, and I wanted to incentivize people to work with the complex firework spell
 - removed Pocket Reflection II
+  - now that it just returns an item stack iota, this seems unnecessary
 - removed Hallucinate Sound spells
-- removed transmutation for turning copper to gold
+  - Special Efhexs now covers the niche of playing sounds and particles and such, so this felt unnecessary and didn't fit in with the rest of telepathy
 - removed animated scrolls
-- removed convenience features that would make sense in User Hexperience
-  - removed walking in staff screen
-  - removed keybind to open spellbook
-  - removed writing to abacus
-- reworked dyeing backend
-- reworked prestidigitation backend
-- reworked mage block modifier backend
+  - strands now cover the niche of having a wiggling pattern in space (or a non-wiggling one!) and animated scrolls were just a mess code-wise
 
 ## 1.5.0
 - added spell to conjure llama spit
