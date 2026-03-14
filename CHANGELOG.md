@@ -98,6 +98,7 @@
 - changed lamps deactivating to only be when they are picked up
 - changed shader spells to no longer require a media jar
 - changed mage hand to no longer need a player, now conjures a fake player to do the work
+- changed mage hand to take a position and rotation, as well as a sneaking vector
 - changed mage hand and mage mouth to operate on items in the world rather than wristpocket
 - changed mage hand and mage mouth's patterns to loudly break due to their new behavior
 - changed pattern manipulation entirely to feel more like building a pattern

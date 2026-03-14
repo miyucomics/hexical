@@ -3,26 +3,22 @@ package miyucomics.hexical.features.mage_hand
 import at.petrak.hexcasting.api.casting.RenderedSpell
 import at.petrak.hexcasting.api.casting.castables.SpellAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
-import at.petrak.hexcasting.api.casting.getBlockPos
 import at.petrak.hexcasting.api.casting.getBool
-import at.petrak.hexcasting.api.casting.getEntity
+import at.petrak.hexcasting.api.casting.getVec3
 import at.petrak.hexcasting.api.casting.iota.EntityIota
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.NullIota
-import at.petrak.hexcasting.api.casting.iota.Vec3Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.misc.MediaConstants
-import net.minecraft.entity.Entity
 import net.minecraft.entity.ItemEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.server.network.ServerPlayerEntity
-import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d
 
 object OpMageHand : SpellAction {
-	override val argc = 3
+	override val argc = 4
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
-		val toUse = when (val tool = args[1]) {
+		val toUse = when (val tool = args[0]) {
 			is EntityIota if tool.entity is ItemEntity -> {
 				env.assertEntityInRange(tool.entity)
 				tool.entity as ItemEntity
@@ -31,39 +27,18 @@ object OpMageHand : SpellAction {
 			else -> throw MishapInvalidIota.of(tool, 1, "item_entity_or_null")
 		}
 
-		when (val iota = args[0]) {
-			is EntityIota -> {
-				val entity = args.getEntity(0, argc)
-				env.assertEntityInRange(entity)
-				return SpellAction.Result(EntitySpell(entity, toUse, args.getBool(2, argc)), MediaConstants.DUST_UNIT, listOf())
-			}
-			is Vec3Iota -> {
-				val position = args.getBlockPos(0, argc)
-				env.assertPosInRange(position)
-				return SpellAction.Result(BlockSpell(position, toUse, args.getBool(2, argc)), MediaConstants.DUST_UNIT, listOf())
-			}
-			else -> throw MishapInvalidIota.of(iota, 2, "entity_or_vector")
-		}
+		val position = args.getVec3(1, argc)
+		env.assertVecInRange(position)
+		val rotation = args.getVec3(2, argc).normalize()
+
+		return SpellAction.Result(Spell(toUse, position, rotation, args.getBool(3, argc)), MediaConstants.DUST_UNIT, listOf())
 	}
 
-	private data class BlockSpell(val position: BlockPos, val toUse: ItemEntity?, val sneak: Boolean) : RenderedSpell {
+	private data class Spell(val toUse: ItemEntity?, val position: Vec3d, val rotation: Vec3d, val sneak: Boolean) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
 			val tool = toUse?.stack ?: ItemStack.EMPTY
-			val dispense = toUse?.pos ?: Vec3d.ofCenter(position)
-			FakePlayerUtils.useItemAt(env.world, tool, env.castingEntity as? ServerPlayerEntity, position, sneak).forEach {
-				env.world.spawnEntity(ItemEntity(env.world, dispense.x, dispense.y, dispense.z, it, 0.0, 0.0, 0.0))
-			}
-			toUse?.discard()
-		}
-	}
-
-	private data class EntitySpell(val entity: Entity, val toUse: ItemEntity?, val sneak: Boolean) : RenderedSpell {
-		override fun cast(env: CastingEnvironment) {
-			val tool = toUse?.stack ?: ItemStack.EMPTY
-			val dispense = toUse?.pos ?: entity.pos
-			FakePlayerUtils.useItemOnEntity(env.world, tool, env.castingEntity as? ServerPlayerEntity, entity, sneak).forEach {
-				env.world.spawnEntity(ItemEntity(env.world, dispense.x, dispense.y, dispense.z, it, 0.0, 0.0, 0.0))
-			}
+			val dispense = toUse?.pos ?: position
+			FakeInteractionUtils.rightClickAt(env.world, tool, env.castingEntity as? ServerPlayerEntity, position, rotation, sneak = sneak).forEach { env.world.spawnEntity(ItemEntity(env.world, dispense.x, dispense.y, dispense.z, it, 0.0, 0.0, 0.0)) }
 			toUse?.discard()
 		}
 	}

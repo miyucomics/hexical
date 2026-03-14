@@ -240,8 +240,8 @@
 	"hexcasting.action.hexical:program_driver": "Program Driver",
 	"hexical.page.program_driver.summary": "Attunes the $(item)Driver Dot$() in my offhand to the given pattern and _Hex. Free. $(item)Netherite Driver Dots$() disregard the pattern given.",
 	"hexical.recipe.driver_dot.header": "Create Dot",
-	"hexical.page.copper_driver_dot.summary": "Matches on invalid that match $(o)exactly$() its attuned pattern, and pushes the list of iotas to the stack.",
-	"hexical.page.iron_driver_dot.summary": "Matches on invalid that match $(o)exactly$() its attuned pattern, and casts its _Hex rather than allow the mishap.",
+	"hexical.page.copper_driver_dot.summary": "Matches on invalid patterns that match $(o)exactly$() its attuned pattern, and pushes the list of iotas to the stack.",
+	"hexical.page.iron_driver_dot.summary": "Matches on invalid patterns that match $(o)exactly$() its attuned pattern, and casts its _Hex rather than allow the mishap.",
 	"hexical.page.gold_driver_dot.summary": "Matches on invalid patterns that prefix with its attuned pattern, and pushes the offending pattern to the stack before casting its _Hex.",
 	"hexical.page.netherite_driver_dot.summary": "Matches on all invalid patterns not caught by its predecessors, and pushes the offending pattern to the stack before casting its _Hex.",
 	"hexical.page.driver_dot.1": "Something of note: it appears that all $(item)Driver Dots$() that cast (all $(item)Driver Dots$() above copper) can $(o)recurse$(). That is to say, they can theoretically invoke an iota and trigger themselves again with a new stack.$(br2)$(o)It's turtles all the way down.$()",
@@ -510,9 +510,9 @@
 	"hexical.page.take_on_pigment.summary": "Internalizes a pigment iota.",
 
 	"hexical.page.mage_hand.title": "Mage Hand",
-	"hexical.page.mage_hand.description": "Interacts with either a position or an entity through a telekinetic force. It takes an optional item entity to use as a tool or can simply act emptyhanded. It also takes in a boolean for whether the force should be $(o)sneaking$(), which raises all sorts of questions...$(br2)$(o)A spectral, floating hand appears at a point you choose within range.$()",
+	"hexical.page.mage_hand.description": "An immensely useful spell that can interact with the world as though a person were there, even able to use items and be cast by mechanisms without a bound person. It can even take in a boolean to determine whether it is sneaking, which may change how certain items behave.$(br2)$(o)A spectral, floating hand appears at a point you choose within range.$()",
 	"hexcasting.action.hexical:mage_hand": "Mage Hand",
-	"hexical.page.mage_hand.summary": "Magically interacts with the world by conjuring an unseen force. Costs about one $(l:items/amethyst)$(item)Amethyst Dust$().",
+	"hexical.page.mage_hand.summary": "Takes an optional item entity and magically uses it while standing at a given position and rotation. Also takes in whether it should be sneaking. Costs about one $(l:items/amethyst)$(item)Amethyst Dust$().",
 
 	"hexical.page.mage_mouth.title": "Mage Mouth",
 	"hexical.page.mage_mouth.description": "A bizzare counterpart to the $(l:patterns/spells/mage_hand)$(action)Mage Hand$() spell. It makes me eat a given item entity instantly, regardless of the time required to normally consume it, any cooldowns on it, my own dietary restrictions, or if I am full.$(br2)$(o)Let food be thy medicine and medicine be thy food.$()",
