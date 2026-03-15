@@ -51,8 +51,6 @@ import miyucomics.hexical.features.grok.OpGrokSetParenthesized
 import miyucomics.hexical.features.grok.OpGrokSetStack
 import miyucomics.hexical.features.hopper.OpHopper
 import miyucomics.hexical.features.hopper.OpIndexHopper
-import miyucomics.hexical.features.hotbar.OpGetHotbar
-import miyucomics.hexical.features.hotbar.OpSetHotbar
 import miyucomics.hexical.features.jailbreak.OpJailbreakDevice
 import miyucomics.hexical.features.lamps.*
 import miyucomics.hexical.features.lesser_sentinels.OpLesserSentinelGet
@@ -72,6 +70,9 @@ import miyucomics.hexical.features.mute.OpIsMute
 import miyucomics.hexical.features.mute.OpMute
 import miyucomics.hexical.features.pattern_manipulation.*
 import miyucomics.hexical.features.periwinkle.OpCompelSniffer
+import miyucomics.hexical.features.personal_inventory.OpAbsorbItem
+import miyucomics.hexical.features.personal_inventory.OpExpelItem
+import miyucomics.hexical.features.personal_inventory.OpListPossessions
 import miyucomics.hexical.features.pigments.OpSamplePigment
 import miyucomics.hexical.features.pigments.OpTakeOnPigment
 import miyucomics.hexical.features.pigments.OpToPigment
@@ -260,11 +261,12 @@ object HexicalActions {
 		register("hopper", "qwawqwaeqqq", HexDir.SOUTH_EAST, OpHopper)
 		register("index_hopper", "qqqeawqwawq", HexDir.SOUTH_WEST, OpIndexHopper)
 
-		register("get_hotbar", "qwawqwa", HexDir.EAST, OpGetHotbar)
-		register("set_hotbar", "dwewdwe", HexDir.WEST, OpSetHotbar)
-
 		register("set_lesser_sentinels", "aeaae", HexDir.EAST, OpLesserSentinelSet)
 		register("get_lesser_sentinels", "dqddq", HexDir.WEST, OpLesserSentinelGet)
+
+		register("list_possessions", "qqadawaawd", HexDir.EAST, OpListPossessions)
+		register("absorb_item", "eeeewddwa", HexDir.EAST, OpAbsorbItem)
+		register("expel_item", "qqqqwaawd", HexDir.EAST, OpExpelItem)
 
 		register("conjure_firework", "dedwaqwwawwqa", HexDir.SOUTH_WEST, OpConjureFirework)
 

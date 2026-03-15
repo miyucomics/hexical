@@ -724,12 +724,6 @@
 	"hexical.page.is_evoking.summary": "Pushes how long I have been evoking. Is -1 if I am not currently evoking.",
 	"hexical.page.evocation.1": "The ancient texts I have learned this technique from reveals many other interesting trifles: _Hexcasters used to perform evocation without any a _Hex, as a greeting or group ritual by waving their arms and chanting in unison. Experiments have also been done to see if a villager could be granted the ability to shift _media but the results of those experiments were either never documented or have been lost to time.",
 
-	"hexical.page.hotbar.title": "Hotbar",
-	"hexcasting.action.hexical:get_hotbar": "Handy Reflection",
-	"hexical.page.get_hotbar.summary": "Pushes a number relating to which of my current items I am currently holding.",
-	"hexcasting.action.hexical:set_hotbar": "Switch",
-	"hexical.page.set_hotbar.summary": "Takes a number 0 to 8 and switches my current item to it.$(br2)$(o)Remember, switching to your pistol is always faster than reloading.$()",
-
 	"hexical.page.lesser_sentinels.title": "Lesser Sentinels",
 	"hexical.page.lesser_sentinels.0": "A bit of sentinel theory: a $(l:patterns/spells/sentinels)$(thing)Sentinel$() is metaphysically-detached shard of my $(thing)Self$(). I can banish, query, and summon it via link but each interaction requires a bit of _media to facilitate the \"handshake\". I can $(l:patterns/great_spells/greater_sentinel)$(action)give even more of my $(thing)Self$(), essentially creating a separate yet near-equally conscious fragment that can cast _Hexes beyond my regular reach and even \"walk\".",
 	"hexical.page.lesser_sentinels.1": "$(thing)Lesser Sentinels$() are a more diminutive construction: little more than a tagged pocket of _media blessed with a whisper of my $(thing)Self$(). They are just enough to hold their ground where deployed and to be visible to me.$(br2)Due to their lesser sentience, I can establish connections, reposition, banish, and bring forth more of them with ease. I can only have one $(l:patterns/spells/sentinels)$(thing)Sentinel$() out at once; I can have a virtually endless number of $(thing)Lesser Sentinels$().",
@@ -737,6 +731,15 @@
 	"hexical.page.set_lesser_sentinels.summary": "Dismisses any existing $(thing)Lesser Sentinels$() and deploys a $(thing)Lesser Sentinel$() at every position in the list.",
 	"hexcasting.action.hexical:get_lesser_sentinels": "Infiltration Reflection",
 	"hexical.page.get_lesser_sentinels.summary": "Returns a list of vectors corresponding to the positions of all my $(thing)Lesser Sentinels$().",
+
+	"hexical.page.personal_inventory.title": "Inventory",
+	"hexical.page.personal_inventory.0": "In all the excitement of _Hexcasting, I seem to have neglected to manage my inventory. Not to mention, some spells require items dropped on the floor, others require items in my offhand, and others just scan my inventory for an item to use; it's a hassle getting them to work with each other. Fortunately, I can solve both these problems with _Hexcasting.",
+	"hexcasting.action.hexical:list_possessions": "Possessions Reflection",
+	"hexical.page.list_possessions.summary": "Pushes a list of items that I have on my person. The index of each item is the slot number; this is useful for later spells.",
+	"hexcasting.action.hexical:absorb_item": "Absorb Item",
+	"hexical.page.absorb_item.summary": "Pulls an item in the world into a given slot in my inventory, pushing a boolean for whether it succeeded. Free.",
+	"hexcasting.action.hexical:expel_item": "Expel Item",
+	"hexical.page.expel_item.summary": "Ejects an item at a given slot in my inventory, pushing the item entity or $(l:casting/influences)$(thing)Null$() if it could not find an item or failed to eject it. Free.",
 
 	"hexical.page.pyrotechnics.title": "Pyrotechnics",
 	"hexical.page.pyrotechnics.0": "I have stumbled a pattern that may be one of the most complex spells in existence. The _media hums quite festively, as if it were once used for grand celebrations, although I shudder to imagine how effective the projectile would be as a weapon.$(br2)$(o)You don’t need to say anything. Just watch the fireworks.$()",

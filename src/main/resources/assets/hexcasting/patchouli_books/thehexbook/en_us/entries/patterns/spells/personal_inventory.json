@@ -1,0 +1,37 @@
+{
+	"name": "hexical.page.personal_inventory.title",
+	"icon": "minecraft:item_frame",
+	"category": "hexcasting:patterns/spells",
+	"advancement": "hexcasting:root",
+	"sortnum": 30,
+	"pages": [
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.personal_inventory.0"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:list_possessions",
+			"anchor": "hexical:list_possessions",
+			"input": "",
+			"output": "list",
+			"text": "hexical.page.list_possessions.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:absorb_item",
+			"anchor": "hexical:absorb_item",
+			"input": "entity, number",
+			"output": "boolean",
+			"text": "hexical.page.absorb_item.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:expel_item",
+			"anchor": "hexical:expel_item",
+			"input": "number",
+			"output": "entity/null",
+			"text": "hexical.page.expel_item.summary"
+		}
+	]
+}

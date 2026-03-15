@@ -86,6 +86,7 @@
 - added depowered and powered textures for arch lamps to distinguish at an instant
 - added scrying overlay for mage blocks to determine what has been added to it
 - added many specialized Patchouli pages for some of the spells
+- added personal inventory management spells to eject, pull in, and move around items in your inventory slot
 - changed Displace to cost half a dust rather than free, people were making worldwide circles which was mildly scary
 - changed media jar
   - custom recipe type to transmute items with media inside the jar, can be done in-world, via hopper, or by using it in your inventory like a bundle
