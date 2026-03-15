@@ -1,7 +1,7 @@
 # Hexical
 At time of writing, I believe Hexical is most feature-rich, extensive, and fleshed-out Hexcasting addon in existence. It started as wanting to fill in various gaps I saw in Hexcasting; things a Hexcaster should be able to do, like conjure floating text, compile a grimoire to cast faster, and cast Hexes by waving their arms.
 
-Over time, Hexical came to include my feelings; Conjure Flower for a person I liked; Greater Blink that required matrix operations to successfully used but paid you back for it in versatility, reliability, and cheapness. It grew to include D&D references like Magic Missile, Prestidigitation, and Wristpocket. Then, I made spells to fill my needs; Hopper to transfer items between all types of endpoints from the wristpocket to items in the world to the ender chest to block inventories to the caster's inventory.
+Over time, Hexical came to include my feelings; Conjure Flower for a person I liked; Greater Blink that required matrix operations to successfully used but paid you back for it in versatility, reliability, and cheapness. It grew to include D&D references like Magic Missile, Prestidigitation, and Wristpocket.
 
 Hexical is my passion project. It is my own additions and spins to a mod I greatly enjoyed for a game that I dearly adore. While I do have a philosophy about what Hexcasting _should_ be, for the most part, Hexical is a kitchen sink of whatever I feel will be most fun in the moment. I wanted to make an addon that filled in the holes of the Hexcasting experience for me. Based on its popularity, it seems it has filled that gap for other people too. Enjoy :]
 

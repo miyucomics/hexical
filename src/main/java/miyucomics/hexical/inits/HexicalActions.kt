@@ -49,8 +49,6 @@ import miyucomics.hexical.features.grok.OpGrokGetParenthesized
 import miyucomics.hexical.features.grok.OpGrokGetStack
 import miyucomics.hexical.features.grok.OpGrokSetParenthesized
 import miyucomics.hexical.features.grok.OpGrokSetStack
-import miyucomics.hexical.features.hopper.OpHopper
-import miyucomics.hexical.features.hopper.OpIndexHopper
 import miyucomics.hexical.features.jailbreak.OpJailbreakDevice
 import miyucomics.hexical.features.lamps.*
 import miyucomics.hexical.features.lesser_sentinels.OpLesserSentinelGet
@@ -257,9 +255,6 @@ object HexicalActions {
 		register("get_evocation", "wwdeeeeeqeaqawwewewwaqawwewew", HexDir.EAST, OpGetEvocation)
 		register("set_evocation", "wwaqqqqqeqdedwwqwqwwdedwwqwqw", HexDir.EAST, OpSetEvocation)
 		register("is_evoking", "wwaqqqqqeeaqawwewewwaqawwewew", HexDir.EAST, OpGetKeybindSelf("key.hexical.evoke"))
-
-		register("hopper", "qwawqwaeqqq", HexDir.SOUTH_EAST, OpHopper)
-		register("index_hopper", "qqqeawqwawq", HexDir.SOUTH_WEST, OpIndexHopper)
 
 		register("set_lesser_sentinels", "aeaae", HexDir.EAST, OpLesserSentinelSet)
 		register("get_lesser_sentinels", "dqddq", HexDir.WEST, OpLesserSentinelGet)

@@ -4,7 +4,6 @@ import miyucomics.hexical.features.charms.ServerCharmedUseReceiver
 import miyucomics.hexical.features.dyes.DyeingUtils
 import miyucomics.hexical.features.dyes.entity.DyeingEntityRegistry
 import miyucomics.hexical.features.flora.ConjureFloraHook
-import miyucomics.hexical.features.hopper.HopperEndpointRegistry
 import miyucomics.hexical.features.lesser_sentinels.ServerLesserSentinelPusher
 import miyucomics.hexical.features.mage_blocks.MageBlockModifierRegistry
 import miyucomics.hexical.features.media_log.ServerSpyingHooks
@@ -34,7 +33,6 @@ object HexicalHooksServer {
 		register(RespawnPersistHook)
 		register(SentinelBedAmbitHook)
 		register(PrestidigitationHandlers)
-		register(HopperEndpointRegistry)
 		register(TransmutingHelper)
 		register(WooleyedEffectRegister)
 		register(SentinelBedPoi)

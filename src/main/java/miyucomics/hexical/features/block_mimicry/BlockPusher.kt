@@ -10,9 +10,6 @@ import net.minecraft.sound.SoundEvents
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
 import net.minecraft.world.event.GameEvent
-import kotlin.collections.HashMap
-import kotlin.collections.List
-import kotlin.collections.MutableMap
 
 object BlockPusher {
 	fun pushBlocks(world: ServerWorld, start: BlockPos, direction: Direction): Boolean {
