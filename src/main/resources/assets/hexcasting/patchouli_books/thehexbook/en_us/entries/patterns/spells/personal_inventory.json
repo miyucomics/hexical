@@ -18,6 +18,18 @@
 			"text": "hexical.page.list_possessions.summary"
 		},
 		{
+			"type": "patchouli:text",
+			"text": "hexical.page.personal_inventory.1"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:move_item",
+			"anchor": "hexical:move_item",
+			"input": "number, number",
+			"output": "boolean",
+			"text": "hexical.page.move_item.summary"
+		},
+		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexical:absorb_item",
 			"anchor": "hexical:absorb_item",

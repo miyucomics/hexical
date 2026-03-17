@@ -71,6 +71,7 @@ import miyucomics.hexical.features.periwinkle.OpCompelSniffer
 import miyucomics.hexical.features.personal_inventory.OpAbsorbItem
 import miyucomics.hexical.features.personal_inventory.OpExpelItem
 import miyucomics.hexical.features.personal_inventory.OpListPossessions
+import miyucomics.hexical.features.personal_inventory.OpMoveItem
 import miyucomics.hexical.features.pigments.OpSamplePigment
 import miyucomics.hexical.features.pigments.OpTakeOnPigment
 import miyucomics.hexical.features.pigments.OpToPigment
@@ -259,9 +260,10 @@ object HexicalActions {
 		register("set_lesser_sentinels", "aeaae", HexDir.EAST, OpLesserSentinelSet)
 		register("get_lesser_sentinels", "dqddq", HexDir.WEST, OpLesserSentinelGet)
 
-		register("list_possessions", "qqadawaawd", HexDir.EAST, OpListPossessions)
-		register("absorb_item", "eeeewddwa", HexDir.EAST, OpAbsorbItem)
-		register("expel_item", "qqqqwaawd", HexDir.EAST, OpExpelItem)
+		register("list_possessions", "eeeewddwa", HexDir.EAST, OpListPossessions)
+		register("move_item", "qqqqwaawd", HexDir.EAST, OpMoveItem)
+		register("absorb_item", "qqadawaawd", HexDir.EAST, OpAbsorbItem)
+		register("expel_item", "eedadwddwa", HexDir.EAST, OpExpelItem)
 
 		register("conjure_firework", "dedwaqwwawwqa", HexDir.SOUTH_WEST, OpConjureFirework)
 
