@@ -59,8 +59,8 @@ class MediaLogField : PlayerField {
 
 	fun toNbt(): NbtCompound {
 		return NbtCompound().also { compound ->
-			compound.putList("patterns", NbtList().also { patterns.buffer().forEach { pattern -> it.add(pattern.serializeToNBT()) } })
-			compound.putList("stack", NbtList().also { stack.buffer().forEach { iota -> it.add(NbtString.of(Text.Serializer.toJson(iota))) } })
+			compound.putList("patterns", NbtList().also { patterns.buffer.forEach { pattern -> it.add(pattern.serializeToNBT()) } })
+			compound.putList("stack", NbtList().also { stack.buffer.forEach { iota -> it.add(NbtString.of(Text.Serializer.toJson(iota))) } })
 			compound.putString("mishap", Text.Serializer.toJson(mishap))
 		}
 	}

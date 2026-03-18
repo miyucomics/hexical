@@ -57,11 +57,11 @@ object MediaLogRenderer : InitHook() {
 		val y = (index / 8)
 		matrices.translate(x * 50f, y * 50f, 0f)
 
-		if (ClientStorage.mediaLog.patterns.buffer().size > index) {
+		if (ClientStorage.mediaLog.patterns.buffer.size > index) {
 			matrices.translate(-12.5f, -12.5f, 0f)
 			matrices.scale(25f, 25f, 25f)
 			val color = ColorHelper.Argb.getArgb((alpha * 255).toInt(), 255, 255, 255)
-			val patternlike = HexPatternLike.of(ClientStorage.mediaLog.patterns.buffer()[index])
+			val patternlike = HexPatternLike.of(ClientStorage.mediaLog.patterns.buffer[index])
 			val patternSettings = WorldlyPatternRenderHelpers.READABLE_SCROLL_SETTINGS
 			val staticPoints = HexPatternPoints.getStaticPoints(patternlike, patternSettings, 0.0)
 			val nonzappyLines = patternlike.nonZappyPoints
@@ -75,10 +75,10 @@ object MediaLogRenderer : InitHook() {
 	}
 
 	fun drawStackItem(context: DrawContext, index: Int, alpha: Float) {
-		if (index >= ClientStorage.mediaLog.stack.buffer().size || alpha == 0f)
+		if (index >= ClientStorage.mediaLog.stack.buffer.size || alpha == 0f)
 			return
 		context.matrices.push()
-		val iotas = ClientStorage.mediaLog.stack.buffer()
+		val iotas = ClientStorage.mediaLog.stack.buffer
 		context.drawCenteredTextWithShadow(MinecraftClient.getInstance().textRenderer, iotas[index], 17, 16 * (4 - index), ColorHelper.Argb.getArgb((alpha * 255).toInt(), 255, 255, 255))
 		context.matrices.pop()
 	}
