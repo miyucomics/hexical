@@ -5,6 +5,7 @@ import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.common.items.ItemStaff
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.HexicalMain
+import miyucomics.hexical.features.babelbug.BabelbugItem
 import miyucomics.hexical.features.confection.HexburstItem
 import miyucomics.hexical.features.confection.HextitoItem
 import miyucomics.hexical.features.curios.CurioItem
@@ -15,7 +16,6 @@ import miyucomics.hexical.features.lamps.HandLampItem
 import miyucomics.hexical.features.media_jar.MediaJarBlock
 import miyucomics.hexical.features.media_log.MediaLogItem
 import miyucomics.hexical.features.periwinkle.LeiItem
-import miyucomics.hexical.features.scarabs.ScarabBeetleItem
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup
 import net.minecraft.item.FoodComponent
 import net.minecraft.item.Item
@@ -49,7 +49,7 @@ object HexicalItems {
 	val GOLD_DRIVER_DOT_ITEM = registerItem("gold_driver_dot", DriverDotItem(true))
 	val NETHERITE_DRIVER_DOT_ITEM = registerItem("netherite_driver_dot", DriverDotItem(false))
 
-	val SCARAB_BEETLE_ITEM = registerItem("scarab_beetle", ScarabBeetleItem)
+	val BABELBUG_ITEM = registerItem("babelbug", BabelbugItem)
 
 	val HEX_GUMMY = registerItem("hex_gummy", Item(Settings().food(FoodComponent.Builder().hunger(2).saturationModifier(0.5f).alwaysEdible().snack().build())))
 	@JvmField val HEXBURST_ITEM = registerItem("hexburst", HexburstItem)
@@ -89,7 +89,7 @@ object HexicalItems {
 			entries.add(ItemStack(GOLD_DRIVER_DOT_ITEM))
 			entries.add(ItemStack(NETHERITE_DRIVER_DOT_ITEM))
 
-			entries.add(ItemStack(SCARAB_BEETLE_ITEM))
+			entries.add(ItemStack(BABELBUG_ITEM))
 
 			entries.add(ItemStack(LEI))
 			entries.add(ItemStack(MEDIA_LOG_ITEM))

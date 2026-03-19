@@ -44,14 +44,14 @@
 			}
 		]
 	},
-	"scarab_chirps": {
-		"subtitle": "subtitles.hexical.scarab_chirps",
+	"babelbug_chirps": {
+		"subtitle": "subtitles.hexical.babelbug_chirps",
 		"sounds": [
-			"hexical:scarab_chirps_0",
-			"hexical:scarab_chirps_1",
-			"hexical:scarab_chirps_2",
-			"hexical:scarab_chirps_3",
-			"hexical:scarab_chirps_4"
+			"hexical:babelbug_chirps_0",
+			"hexical:babelbug_chirps_1",
+			"hexical:babelbug_chirps_2",
+			"hexical:babelbug_chirps_3",
+			"hexical:babelbug_chirps_4"
 		]
 	},
 	"sudden_realization": {

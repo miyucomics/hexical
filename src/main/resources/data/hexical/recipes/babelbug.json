@@ -13,6 +13,6 @@
 	},
 	"pattern": ["A A", "CSC", " C "],
 	"result": {
-		"item": "hexical:scarab_beetle"
+		"item": "hexical:babelbug"
 	}
 }

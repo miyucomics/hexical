@@ -5,13 +5,14 @@ import miyucomics.hexical.features.player.getHexicalPlayerManager
 import miyucomics.hexical.features.player.types.PlayerField
 import net.minecraft.entity.player.PlayerEntity
 
-// Hexical adds a lot of items that require quick and easy access, e.g. driver dots, scarabs, and grimoires
+// Hexical adds a lot of items that require quick and easy access, e.g. driver dots, babelbugs, and grimoires
 // Rather than do an inventory scan *per-pattern* which would outrageously tank performance,
 // there is an item cache that is mixined into every player and updates at the start of every tick
 // Then, it is trivial to look up whether a driver dot hex is registered for a given pattern
 // or if a given pattern has a grimoire expansion associated with it
-// or if the player has a scarab
+// or if the player has a babelbug
 class PlayerItemCacheField : PlayerField {
+	var babelbugProgram: List<Iota>? = null
 	val grimoireMacros: HashMap<String, List<Iota>> = HashMap()
 	val copperDriverDotMacros: HashMap<String, List<Iota>> = HashMap()
 	val ironDriverDotMacros: HashMap<String, List<Iota>> = HashMap()

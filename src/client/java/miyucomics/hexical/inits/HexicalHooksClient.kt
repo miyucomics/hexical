@@ -1,6 +1,7 @@
 package miyucomics.hexical.inits
 
 import miyucomics.hexical.features.autographs.AutographTooltip
+import miyucomics.hexical.features.babelbug.BabelBugWingRenderer
 import miyucomics.hexical.features.charms.CharmedItemTooltip
 import miyucomics.hexical.features.confetti.ClientConfettiReceiver
 import miyucomics.hexical.features.curios.CompassCurioModelHook
@@ -16,7 +17,6 @@ import miyucomics.hexical.features.media_log.ClientMediaLogReceiver
 import miyucomics.hexical.features.media_log.MediaLogRenderer
 import miyucomics.hexical.features.pedestal.PedestalRenderHooks
 import miyucomics.hexical.features.player.PlayerAnimatorHook
-import miyucomics.hexical.features.scarabs.ScarabWingRenderer
 import miyucomics.hexical.features.shaders.ClientShaderReceiver
 import miyucomics.hexical.features.telepathy.ClientPeripheralPusher
 import miyucomics.hexical.features.toast.ToastReceiver
@@ -38,7 +38,7 @@ object HexicalHooksClient {
 		register(CharmedItemTooltip)
 		register(JailbrokenItemTooltip)
 		register(ClientShaderReceiver)
-		register(ScarabWingRenderer)
+		register(BabelBugWingRenderer)
 		register(ArchLampModelProvider)
 		register(CompassCurioModelHook)
 		register(FluteCurioItemModel)
