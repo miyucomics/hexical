@@ -29,6 +29,7 @@
 - added tooltips to hexbursts
 - added tooltips to hextito
 - added spell to create a toast
+- added the itemmind, a single iota storage that any casting item or charmed holds, useful for remembering things between hexes
 - added lesser sentinels, just hexagons that you can conjure in the world to mark locations
 - added many different plushies for many different patterns
 - added pattern to detect greater sentinels around you, and a spell to destroy them

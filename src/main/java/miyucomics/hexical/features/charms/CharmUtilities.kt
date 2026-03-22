@@ -1,10 +1,6 @@
 package miyucomics.hexical.features.charms
 
-import at.petrak.hexcasting.api.casting.iota.Iota
-import at.petrak.hexcasting.api.casting.iota.IotaType
-import at.petrak.hexcasting.api.casting.iota.NullIota
 import at.petrak.hexcasting.api.utils.mediaBarColor
-import at.petrak.hexcasting.api.utils.putCompound
 import miyucomics.hexical.features.curios.CurioItem
 import miyucomics.hexical.misc.HexSerialization
 import net.minecraft.entity.player.PlayerEntity
@@ -68,15 +64,4 @@ object CharmUtilities {
 			return mediaBarColor(getMedia(stack), getMaxMedia(stack))
 		return getCompound(stack).getInt("media_bar_color")
     }
-
-	fun getInternalStorage(stack: ItemStack, world: ServerWorld): Iota {
-		val nbt = getCompound(stack)
-		if (nbt.contains("storage"))
-			return IotaType.deserialize(nbt.getCompound("storage"), world)
-		return NullIota()
-	}
-
-	fun setInternalStorage(stack: ItemStack, iota: Iota) {
-		getCompound(stack).putCompound("storage", IotaType.serialize(iota))
-	}
 }

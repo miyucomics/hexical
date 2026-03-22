@@ -49,6 +49,8 @@ import miyucomics.hexical.features.grok.OpGrokGetParenthesized
 import miyucomics.hexical.features.grok.OpGrokGetStack
 import miyucomics.hexical.features.grok.OpGrokSetParenthesized
 import miyucomics.hexical.features.grok.OpGrokSetStack
+import miyucomics.hexical.features.itemmind.OpReadItemmind
+import miyucomics.hexical.features.itemmind.OpWriteItemmind
 import miyucomics.hexical.features.jailbreak.OpJailbreakDevice
 import miyucomics.hexical.features.lamps.*
 import miyucomics.hexical.features.lesser_sentinels.OpLesserSentinelGet
@@ -141,6 +143,9 @@ object HexicalActions {
 		register("grok_set_stack", "ewdewwde", HexDir.EAST, OpGrokSetStack)
 		register("grok_get_parenthesized", "waqwawwqwaw", HexDir.EAST, OpGrokGetParenthesized)
 		register("grok_set_parenthesized", "wewdwewwdwe", HexDir.EAST, OpGrokSetParenthesized)
+
+		register("read_itemmind", "aadaqada", HexDir.EAST, OpReadItemmind)
+		register("write_itemmind", "ddadedad", HexDir.EAST, OpWriteItemmind)
 
 		register("dda", "wdqqdwewdqqdwdqdadedaddww", HexDir.NORTH_EAST, OpDda)
 
@@ -299,10 +304,8 @@ object HexicalActions {
 		register("charm", "edeeeeeqaaqeeeadweeqeeqdqeeqeeqde", HexDir.SOUTH_EAST, OpCharmItem)
 		register("media_color_charmed", "qaqqdwdwd", HexDir.NORTH_EAST, OpMediaColorCharmed)
 		register("discharm", "qaqwddaaeawaea", HexDir.NORTH_EAST, OpDischarmItem)
-		register("write_charmed", "waqqqqqedeqdqdqdqdqe", HexDir.NORTH_EAST, OpWriteCharmed)
-		register("read_charmed", "waqqqqqeaqeaeaeaeaeq", HexDir.NORTH_EAST, OpReadCharmed)
-		register("write_charmed_proxy", "edewqaqqdeeeee", HexDir.SOUTH_EAST, OpProxyWriteCharmed)
-		register("read_charmed_proxy", "qaqwedeeaqqqqq", HexDir.NORTH_EAST, OpProxyReadCharmed)
+		register("write_charmed", "edewqaqqdeeeee", HexDir.SOUTH_EAST, OpWriteCharmedProxy)
+		register("read_charmed", "qaqwedeeaqqqqq", HexDir.NORTH_EAST, OpReadCharmedProxy)
 
 		register("greater_blink", "wqawawaqwqwqawawaqw", HexDir.SOUTH_WEST, OpGreaterBlink)
 	}

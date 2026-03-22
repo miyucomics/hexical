@@ -1,0 +1,29 @@
+{
+	"name": "hexical.page.itemmind.title",
+	"icon": "minecraft:iron_nugget",
+	"category": "hexcasting:patterns",
+	"advancement": "hexcasting:root",
+	"sortnum": 7,
+	"pages": [
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.itemmind.0"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:write_itemmind",
+			"anchor": "hexical:write_itemmind",
+			"input": "any",
+			"output": "",
+			"text": "hexical.page.write_itemmind.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexical:read_itemmind",
+			"anchor": "hexical:read_itemmind",
+			"input": "",
+			"output": "any",
+			"text": "hexical.page.read_itemmind.summary"
+		}
+	]
+}

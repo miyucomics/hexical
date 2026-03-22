@@ -1,7 +1,6 @@
 package miyucomics.hexical.features.charms
 
 import at.petrak.hexcasting.api.casting.eval.env.PlayerBasedCastEnv
-import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.pigment.FrozenPigment
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import net.minecraft.item.ItemStack
@@ -22,7 +21,4 @@ class CharmCastEnv(caster: ServerPlayerEntity, castingHand: Hand, val stack: Ite
 
 	override fun getCastingHand(): Hand = this.castingHand
 	override fun getPigment(): FrozenPigment = IXplatAbstractions.INSTANCE.getPigment(this.caster)
-
-	fun getInternalStorage() = CharmUtilities.getInternalStorage(this.stack, this.world)
-	fun setInternalStorage(iota: Iota) = CharmUtilities.setInternalStorage(this.stack, iota)
 }
