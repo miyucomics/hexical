@@ -5,7 +5,6 @@
 	"client": [
 		"ClientBookRegistryMixin",
 		"ClientWorldMixin",
-		"DrawContextMixin",
 		"EntityRendererMixin",
 		"GameRendererMixin",
 		"GuiSpellcastingMixin",
