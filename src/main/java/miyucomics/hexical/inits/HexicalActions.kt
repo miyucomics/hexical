@@ -25,7 +25,10 @@ import miyucomics.hexical.features.block_mimicry.OpPiston
 import miyucomics.hexical.features.block_mimicry.OpStonecut
 import miyucomics.hexical.features.breaking.OpBreakFortune
 import miyucomics.hexical.features.breaking.OpBreakSilk
-import miyucomics.hexical.features.charms.*
+import miyucomics.hexical.features.charms.OpCharmItem
+import miyucomics.hexical.features.charms.OpDischarmItem
+import miyucomics.hexical.features.charms.OpReadCharmedProxy
+import miyucomics.hexical.features.charms.OpWriteCharmedProxy
 import miyucomics.hexical.features.circle.OpAbsorbArm
 import miyucomics.hexical.features.circle.OpDisplace
 import miyucomics.hexical.features.confection.OpConjureGummy
@@ -302,7 +305,6 @@ object HexicalActions {
 		register("conjure_mesh", "qaqqqqqwqqqdeeweweeaeewewee", HexDir.EAST, OpConjureMesh)
 
 		register("charm", "edeeeeeqaaqeeeadweeqeeqdqeeqeeqde", HexDir.SOUTH_EAST, OpCharmItem)
-		register("media_color_charmed", "qaqqdwdwd", HexDir.NORTH_EAST, OpMediaColorCharmed)
 		register("discharm", "qaqwddaaeawaea", HexDir.NORTH_EAST, OpDischarmItem)
 		register("write_charmed", "edewqaqqdeeeee", HexDir.SOUTH_EAST, OpWriteCharmedProxy)
 		register("read_charmed", "qaqwedeeaqqqqq", HexDir.NORTH_EAST, OpReadCharmedProxy)
