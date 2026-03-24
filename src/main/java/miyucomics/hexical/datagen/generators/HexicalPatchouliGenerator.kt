@@ -5,7 +5,6 @@ import miyucomics.hexical.datagen.entry
 import miyucomics.hexical.datagen.providers.DyeingProvider
 import miyucomics.hexical.datagen.providers.FloraProvider
 import miyucomics.hexical.datagen.providers.TransmutationProvider
-import miyucomics.hexical.inits.HexicalBlocks
 import miyucomics.hexical.inits.HexicalItems
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.minecraft.data.DataOutput
@@ -55,7 +54,7 @@ class HexicalPatchouliGenerator(val output: FabricDataOutput) : DataProvider {
 	}
 
 	private fun generateMediaJarPages(writer: DataWriter): CompletableFuture<*> {
-		return saveEntry(writer, entry("hexical.page.media_jar.title", HexicalBlocks.MEDIA_JAR_ITEM) {
+		return saveEntry(writer, entry("hexical.page.media_jar.title", "hexical:media_jar{BlockEntityTag:{media:6400000,id:'hexical:media_jar'}}") {
 			sortnum = 4
 			textPage("hexical.page.media_jar.0")
 			craftPage("hexical:media_jar", "hexical.page.media_jar.description")

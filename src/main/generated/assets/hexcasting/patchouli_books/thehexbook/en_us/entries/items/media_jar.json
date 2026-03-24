@@ -1,7 +1,7 @@
 {
   "advancement": "hexcasting:root",
   "category": "hexcasting:items",
-  "icon": "hexical:media_jar",
+  "icon": "hexical:media_jar{BlockEntityTag:{media:6400000,id:'hexical:media_jar'}}",
   "name": "hexical.page.media_jar.title",
   "pages": [
     {
