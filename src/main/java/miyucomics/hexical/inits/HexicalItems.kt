@@ -107,10 +107,9 @@ object HexicalItems {
 			entries.add(ItemStack(HexicalBlocks.PERIWINKLE_FLOWER_ITEM))
 			entries.add(ItemStack(HexicalBlocks.PEDESTAL_ITEM))
 
-			for (item in CURIOS)
-				entries.add(item)
-			for (item in PLUSHIES)
-				entries.add(item)
+			CURIOS.forEach(entries::add)
+			PLUSHIES.forEach(entries::add)
+			HexicalBlocks.PEDESTAL_BLOCK_ITEMS.forEach(entries::add)
 		}
 		.build()
 

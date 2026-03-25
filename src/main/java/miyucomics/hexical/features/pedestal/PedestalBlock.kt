@@ -35,7 +35,7 @@ import net.minecraft.world.World
 import net.minecraft.world.WorldAccess
 import java.util.*
 
-class PedestalBlock : BlockCircleComponent(Settings.copy(Blocks.DEEPSLATE_TILES).strength(4f, 4f)), BlockEntityProvider, Waterloggable {
+open class PedestalBlock : BlockCircleComponent(Settings.copy(Blocks.DEEPSLATE_TILES).strength(4f, 4f)), BlockEntityProvider, Waterloggable {
 	init {
 		defaultState = stateManager.defaultState
 			.with(ENERGIZED, false)
@@ -44,7 +44,7 @@ class PedestalBlock : BlockCircleComponent(Settings.copy(Blocks.DEEPSLATE_TILES)
 	}
 
 	override fun onPlaced(world: World, pos: BlockPos, state: BlockState, placer: LivingEntity?, stack: ItemStack) {
-		(world.getBlockEntity(pos) as PedestalBlockEntity).onBlockPlace()
+		(world.getBlockEntity(pos) as PedestalBlockEntity).createItemEntityFromPending()
 		super.onPlaced(world, pos, state, placer, stack)
 	}
 
@@ -64,10 +64,8 @@ class PedestalBlock : BlockCircleComponent(Settings.copy(Blocks.DEEPSLATE_TILES)
 
 	override fun onUse(state: BlockState, world: World, pos: BlockPos, player: PlayerEntity, hand: Hand, hit: BlockHitResult): ActionResult {
 		val pedestal = world.getBlockEntity(pos)
-		if (pedestal is PedestalBlockEntity) {
-			pedestal.onUse(player, hand)
-			return ActionResult.SUCCESS
-		}
+		if (pedestal is PedestalBlockEntity)
+			return pedestal.onUse(player, hand)
 		return ActionResult.PASS
 	}
 

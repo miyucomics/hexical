@@ -12,6 +12,7 @@ import miyucomics.hexical.features.mage_blocks.MageBlockEntity
 import miyucomics.hexical.features.media_jar.MediaJarBlock
 import miyucomics.hexical.features.media_jar.MediaJarBlockEntity
 import miyucomics.hexical.features.media_jar.MediaJarItem
+import miyucomics.hexical.features.pedestal.CarpetedPedestalBlock
 import miyucomics.hexical.features.pedestal.PedestalBlock
 import miyucomics.hexical.features.pedestal.PedestalBlockEntity
 import miyucomics.hexical.features.sentinel_beds.SentinelBedBlock
@@ -46,13 +47,9 @@ object HexicalBlocks {
 	val PERIWINKLE_FLOWER = FlowerbedBlock(Settings.create().mapColor(MapColor.PURPLE).noCollision().sounds(BlockSoundGroup.PINK_PETALS).pistonBehavior(PistonBehavior.DESTROY))
 	val PERIWINKLE_FLOWER_ITEM = BlockItem(PERIWINKLE_FLOWER, Item.Settings())
 
-	@JvmField
 	val MEDIA_JAR_ITEM = MediaJarItem()
 	val HEX_CANDLE_ITEM = BlockItem(HEX_CANDLE_BLOCK, Item.Settings())
 	val SENTINEL_BED_ITEM = BlockItem(SENTINEL_BED_BLOCK, Item.Settings())
-
-	val PEDESTAL_BLOCK = PedestalBlock()
-	val PEDESTAL_ITEM = BlockItem(PEDESTAL_BLOCK, Item.Settings())
 
 	val AMBER_SEAL_BLOCK = AmberSealBlock
 	@JvmField
@@ -64,6 +61,11 @@ object HexicalBlocks {
 	val HEX_CANDLE_BLOCK_ENTITY: BlockEntityType<HexCandleBlockEntity> = BlockEntityType.Builder.create(::HexCandleBlockEntity, HEX_CANDLE_BLOCK).build(null)
 	val HEX_CANDLE_CAKE_BLOCK_ENTITY: BlockEntityType<HexCandleCakeBlockEntity> = BlockEntityType.Builder.create(::HexCandleCakeBlockEntity, HEX_CANDLE_CAKE_BLOCK).build(null)
 	val MEDIA_JAR_BLOCK_ENTITY: BlockEntityType<MediaJarBlockEntity> = BlockEntityType.Builder.create(::MediaJarBlockEntity, MEDIA_JAR_BLOCK).build(null)
+
+	val PEDESTAL_BLOCK = PedestalBlock()
+	val PEDESTAL_ITEM = BlockItem(PEDESTAL_BLOCK, Item.Settings())
+	val PEDESTAL_BLOCKS: MutableList<Pair<String, PedestalBlock>> = mutableListOf()
+	val PEDESTAL_BLOCK_ITEMS: MutableList<BlockItem> = mutableListOf()
 	val PEDESTAL_BLOCK_ENTITY: BlockEntityType<PedestalBlockEntity> = BlockEntityType.Builder.create(::PedestalBlockEntity, PEDESTAL_BLOCK).build(null)
 
 	fun init() {
@@ -92,5 +94,18 @@ object HexicalBlocks {
 		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("media_jar"), MEDIA_JAR_BLOCK_ENTITY)
 		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("mage_block"), MAGE_BLOCK_ENTITY)
 		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("pedestal"), PEDESTAL_BLOCK_ENTITY)
+
+		PEDESTAL_BLOCKS.add(Pair("pedestal", PEDESTAL_BLOCK))
+		DyeColor.entries.forEach { color ->
+			val name = color.getName() + "_carpeted_pedestal"
+			val id = HexicalMain.id(name)
+			val block = CarpetedPedestalBlock()
+			val item = BlockItem(block, Item.Settings())
+			PEDESTAL_BLOCKS.add(Pair(name, block))
+			PEDESTAL_BLOCK_ITEMS.add(item)
+			Registry.register(Registries.BLOCK, id, block)
+			Registry.register(Registries.ITEM, id, item)
+			Registry.register(Registries.BLOCK_ENTITY_TYPE, id, BlockEntityType.Builder.create(::PedestalBlockEntity, block).build(null))
+		}
 	}
 }
