@@ -9,8 +9,8 @@ class HexicalBlockLootTableGenerator(generator: FabricDataOutput) : FabricBlockL
 		addDrop(HexicalBlocks.CASTING_CARPET)
 		addDrop(HexicalBlocks.HEX_CANDLE_BLOCK, candleDrops(HexicalBlocks.HEX_CANDLE_BLOCK))
 		addDrop(HexicalBlocks.HEX_CANDLE_CAKE_BLOCK, candleCakeDrops(HexicalBlocks.HEX_CANDLE_CAKE_BLOCK))
-		addDrop(HexicalBlocks.PEDESTAL_BLOCK)
 		addDrop(HexicalBlocks.PERIWINKLE_FLOWER, flowerbedDrops(HexicalBlocks.PERIWINKLE_FLOWER))
 		addDrop(HexicalBlocks.SENTINEL_BED_BLOCK)
+		HexicalBlocks.PEDESTAL_BLOCKS.forEach { (_, pedestal) -> addDrop(pedestal) }
 	}
 }

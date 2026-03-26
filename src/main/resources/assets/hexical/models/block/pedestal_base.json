@@ -1,10 +1,5 @@
 {
 	"parent": "block/cube_bottom_top",
-	"textures": {
-		"side": "hexical:block/pedestal_side",
-		"top": "hexical:block/pedestal_top",
-		"bottom": "hexical:block/pedestal_bottom"
-	},
 	"elements": [
 		{
 			"from": [0, 0, 0],
