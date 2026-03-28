@@ -6,12 +6,13 @@ import at.petrak.hexcasting.api.casting.iota.EntityIota
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.casting.iota.NullIota
+import miyucomics.hexical.inits.HexicalBlocks
 import net.minecraft.block.BlockState
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Box
 
-class CarpetedPedestalBlockEntity(pos: BlockPos, state: BlockState) : PedestalBlockEntity(pos, state) {
+class CarpetedPedestalBlockEntity(pos: BlockPos, state: BlockState) : PedestalBlockEntity(HexicalBlocks.CARPETED_PEDESTAL_BLOCK_ENTITY, pos, state) {
 	override fun modifyImage(image: CastingImage): CastingImage {
 		val iota = getIota()
 		return if (image.parenCount == 0) {

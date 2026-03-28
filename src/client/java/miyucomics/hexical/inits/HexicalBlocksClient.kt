@@ -7,10 +7,13 @@ import com.mojang.datafixers.util.Pair
 import miyucomics.hexical.features.amber_seal.AmberSealBlockEntityRenderer
 import miyucomics.hexical.features.media_jar.MediaJarBlockEntity
 import miyucomics.hexical.features.media_jar.MediaJarBlockEntityRenderer
+import miyucomics.hexical.features.pedestal.PedestalBlockEntityRenderer
 import miyucomics.hexical.inits.HexicalBlocks.AMBER_SEAL_BLOCK
 import miyucomics.hexical.inits.HexicalBlocks.AMBER_SEAL_BLOCK_ENTITY
+import miyucomics.hexical.inits.HexicalBlocks.CARPETED_PEDESTAL_BLOCK_ENTITY
 import miyucomics.hexical.inits.HexicalBlocks.MEDIA_JAR_BLOCK
 import miyucomics.hexical.inits.HexicalBlocks.MEDIA_JAR_BLOCK_ENTITY
+import miyucomics.hexical.inits.HexicalBlocks.PEDESTAL_BLOCK_ENTITY
 import miyucomics.hexical.inits.HexicalBlocks.PERIWINKLE_FLOWER
 import miyucomics.hexical.misc.TextUtilities
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap
@@ -27,6 +30,8 @@ object HexicalBlocksClient {
 
 		BlockEntityRendererFactories.register(AMBER_SEAL_BLOCK_ENTITY, ::AmberSealBlockEntityRenderer)
 		BlockEntityRendererFactories.register(MEDIA_JAR_BLOCK_ENTITY, ::MediaJarBlockEntityRenderer)
+		BlockEntityRendererFactories.register(PEDESTAL_BLOCK_ENTITY, ::PedestalBlockEntityRenderer)
+		BlockEntityRendererFactories.register(CARPETED_PEDESTAL_BLOCK_ENTITY, ::PedestalBlockEntityRenderer)
 
 		ScryingLensOverlayRegistry.addDisplayer(MEDIA_JAR_BLOCK) { lines, _, pos, _, world, _ ->
 			val jar = world.getBlockEntity(pos) as MediaJarBlockEntity

@@ -4,6 +4,7 @@ import at.petrak.hexcasting.api.block.circle.BlockCircleComponent
 import at.petrak.hexcasting.api.casting.circles.ICircleComponent.ControlFlow
 import at.petrak.hexcasting.api.casting.eval.env.CircleCastEnv
 import at.petrak.hexcasting.api.casting.eval.vm.CastingImage
+import miyucomics.hexical.inits.HexicalBlocks
 import net.minecraft.block.*
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.block.entity.BlockEntityTicker
@@ -44,7 +45,7 @@ open class PedestalBlock : BlockCircleComponent(Settings.copy(Blocks.DEEPSLATE_T
 	}
 
 	override fun onPlaced(world: World, pos: BlockPos, state: BlockState, placer: LivingEntity?, stack: ItemStack) {
-		(world.getBlockEntity(pos) as PedestalBlockEntity).createItemEntityFromPending()
+		(world.getBlockEntity(pos) as PedestalBlockEntity).onBlockPlace()
 		super.onPlaced(world, pos, state, placer, stack)
 	}
 
@@ -110,7 +111,7 @@ open class PedestalBlock : BlockCircleComponent(Settings.copy(Blocks.DEEPSLATE_T
 		return ScreenHandler.calculateComparatorOutput(blockEntity as Inventory)
 	}
 
-	override fun createBlockEntity(pos: BlockPos, state: BlockState) = PedestalBlockEntity(pos, state)
+	override fun createBlockEntity(pos: BlockPos, state: BlockState) = PedestalBlockEntity(HexicalBlocks.PEDESTAL_BLOCK_ENTITY, pos, state)
 	override fun <T : BlockEntity> getTicker(world: World, state: BlockState, type: BlockEntityType<T>): BlockEntityTicker<T> = BlockEntityTicker { world1, _, _, blockEntity -> (blockEntity as PedestalBlockEntity).tick(world1) }
 
 	companion object {

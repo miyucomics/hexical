@@ -15,7 +15,6 @@ import miyucomics.hexical.features.lesser_sentinels.LesserSentinelRenderer
 import miyucomics.hexical.features.mage_blocks.MageBlockScryingOverlay
 import miyucomics.hexical.features.media_log.ClientMediaLogReceiver
 import miyucomics.hexical.features.media_log.MediaLogRenderer
-import miyucomics.hexical.features.pedestal.PedestalRenderHooks
 import miyucomics.hexical.features.player.PlayerAnimatorHook
 import miyucomics.hexical.features.shaders.ClientShaderReceiver
 import miyucomics.hexical.features.telepathy.ClientPeripheralPusher
@@ -45,7 +44,6 @@ object HexicalHooksClient {
 		register(HandbellCurioItemModel)
 		register(PlayerAnimatorHook)
 		register(MageBlockScryingOverlay)
-		register(PedestalRenderHooks)
 		register(ToastReceiver)
 
 		for (hook in hooks)

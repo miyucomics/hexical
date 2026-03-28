@@ -13,6 +13,7 @@ import miyucomics.hexical.features.media_jar.MediaJarBlock
 import miyucomics.hexical.features.media_jar.MediaJarBlockEntity
 import miyucomics.hexical.features.media_jar.MediaJarItem
 import miyucomics.hexical.features.pedestal.CarpetedPedestalBlock
+import miyucomics.hexical.features.pedestal.CarpetedPedestalBlockEntity
 import miyucomics.hexical.features.pedestal.PedestalBlock
 import miyucomics.hexical.features.pedestal.PedestalBlockEntity
 import miyucomics.hexical.features.sentinel_beds.SentinelBedBlock
@@ -64,9 +65,11 @@ object HexicalBlocks {
 
 	val PEDESTAL_BLOCK = PedestalBlock()
 	val PEDESTAL_ITEM = BlockItem(PEDESTAL_BLOCK, Item.Settings())
+	val PEDESTAL_BLOCK_ENTITY: BlockEntityType<PedestalBlockEntity> = BlockEntityType.Builder.create({ pos, state -> PedestalBlockEntity(PEDESTAL_BLOCK_ENTITY, pos, state) }, PEDESTAL_BLOCK).build(null)
+	lateinit var CARPETED_PEDESTAL_BLOCK_ENTITY: BlockEntityType<CarpetedPedestalBlockEntity>
+
 	val PEDESTAL_BLOCKS: MutableList<Pair<String, PedestalBlock>> = mutableListOf()
 	val PEDESTAL_BLOCK_ITEMS: MutableList<BlockItem> = mutableListOf()
-	val PEDESTAL_BLOCK_ENTITY: BlockEntityType<PedestalBlockEntity> = BlockEntityType.Builder.create(::PedestalBlockEntity, PEDESTAL_BLOCK).build(null)
 
 	fun init() {
 		Registry.register(Registries.BLOCK, HexicalMain.id("amber_seal"), AMBER_SEAL_BLOCK)
@@ -77,7 +80,6 @@ object HexicalBlocks {
 		Registry.register(Registries.BLOCK, HexicalMain.id("sentinel_bed"), SENTINEL_BED_BLOCK)
 		Registry.register(Registries.BLOCK, HexicalMain.id("periwinkle"), PERIWINKLE_FLOWER)
 		Registry.register(Registries.BLOCK, HexicalMain.id("casting_carpet"), CASTING_CARPET)
-		Registry.register(Registries.BLOCK, HexicalMain.id("pedestal"), PEDESTAL_BLOCK)
 
 		Registry.register(Registries.ITEM, HexicalMain.id("amber_seal"), AMBER_SEAL_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("mage_block"), BlockItem(MAGE_BLOCK, Item.Settings()))
@@ -86,26 +88,27 @@ object HexicalBlocks {
 		Registry.register(Registries.ITEM, HexicalMain.id("media_jar"), MEDIA_JAR_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("periwinkle"), PERIWINKLE_FLOWER_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("casting_carpet"), CASTING_CARPET_ITEM)
-		Registry.register(Registries.ITEM, HexicalMain.id("pedestal"), PEDESTAL_ITEM)
 
 		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("amber_seal"), AMBER_SEAL_BLOCK_ENTITY)
 		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("hex_candle"), HEX_CANDLE_BLOCK_ENTITY)
 		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("hex_candle_cake"), HEX_CANDLE_CAKE_BLOCK_ENTITY)
 		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("media_jar"), MEDIA_JAR_BLOCK_ENTITY)
 		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("mage_block"), MAGE_BLOCK_ENTITY)
-		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("pedestal"), PEDESTAL_BLOCK_ENTITY)
 
 		PEDESTAL_BLOCKS.add(Pair("pedestal", PEDESTAL_BLOCK))
+		Registry.register(Registries.BLOCK, HexicalMain.id("pedestal"), PEDESTAL_BLOCK)
+		Registry.register(Registries.ITEM, HexicalMain.id("pedestal"), PEDESTAL_ITEM)
+		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("pedestal"), PEDESTAL_BLOCK_ENTITY)
+
 		DyeColor.entries.forEach { color ->
 			val name = color.getName() + "_carpeted_pedestal"
 			val id = HexicalMain.id(name)
 			val block = CarpetedPedestalBlock()
-			val item = BlockItem(block, Item.Settings())
-			PEDESTAL_BLOCKS.add(Pair(name, block))
-			PEDESTAL_BLOCK_ITEMS.add(item)
 			Registry.register(Registries.BLOCK, id, block)
-			Registry.register(Registries.ITEM, id, item)
-			Registry.register(Registries.BLOCK_ENTITY_TYPE, id, BlockEntityType.Builder.create(::PedestalBlockEntity, block).build(null))
+			PEDESTAL_BLOCKS.add(Pair(name, block))
+			PEDESTAL_BLOCK_ITEMS.add(Registry.register(Registries.ITEM, id, BlockItem(block, Item.Settings())))
 		}
+
+		CARPETED_PEDESTAL_BLOCK_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("carpeted_pedestal"), BlockEntityType.Builder.create(::CarpetedPedestalBlockEntity, *PEDESTAL_BLOCKS.map { (_, block) -> block }.toTypedArray()).build(null))
 	}
 }

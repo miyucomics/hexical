@@ -105,10 +105,10 @@ object HexicalItems {
 			entries.add(ItemStack(HexicalBlocks.CASTING_CARPET_ITEM))
 			entries.add(ItemStack(HexicalBlocks.SENTINEL_BED_ITEM))
 			entries.add(ItemStack(HexicalBlocks.PERIWINKLE_FLOWER_ITEM))
-			entries.add(ItemStack(HexicalBlocks.PEDESTAL_ITEM))
 
 			CURIOS.forEach(entries::add)
 			PLUSHIES.forEach(entries::add)
+			entries.add(ItemStack(HexicalBlocks.PEDESTAL_ITEM))
 			HexicalBlocks.PEDESTAL_BLOCK_ITEMS.forEach(entries::add)
 		}
 		.build()

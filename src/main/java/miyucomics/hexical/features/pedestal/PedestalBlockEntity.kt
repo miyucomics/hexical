@@ -6,9 +6,9 @@ import at.petrak.hexcasting.api.casting.eval.vm.CastingImage.ParenthesizedIota
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.xplat.IXplatAbstractions
-import miyucomics.hexical.inits.HexicalBlocks
 import net.minecraft.block.BlockState
 import net.minecraft.block.entity.BlockEntity
+import net.minecraft.block.entity.BlockEntityType
 import net.minecraft.entity.ItemEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.inventory.Inventory
@@ -22,7 +22,7 @@ import net.minecraft.util.math.*
 import net.minecraft.world.World
 import kotlin.math.min
 
-open class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(HexicalBlocks.PEDESTAL_BLOCK_ENTITY, pos, state), Inventory, ADIotaHolder {
+open class PedestalBlockEntity(entity: BlockEntityType<*>, pos: BlockPos, state: BlockState) : BlockEntity(entity, pos, state), Inventory, ADIotaHolder {
 	var heldEntity: ItemEntity? = null
 	val heldStack: ItemStack
 		get() = this.heldEntity?.stack ?: ItemStack.EMPTY
@@ -62,10 +62,13 @@ open class PedestalBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(H
 		this.heldEntity?.discard()
 	}
 
-	fun createItemEntityFromPending() {
-		this.heldEntity = ItemEntity(this.world, this.pos.x + 0.5, this.pos.y + 0.5, this.pos.z + 0.5, this.pendingStack)
-		this.heldEntity?.renewPermanence()
-		this.world?.spawnEntity(this.heldEntity)
+	fun onBlockPlace() {
+		if (this.pendingStack != null) {
+			this.heldEntity = ItemEntity(this.world, this.pos.x + 0.5, this.pos.y + 0.5, this.pos.z + 0.5, this.pendingStack)
+			this.heldEntity?.renewPermanence()
+			this.world?.spawnEntity(this.heldEntity)
+			this.pendingStack = null
+		}
 	}
 
 	fun onUse(player: PlayerEntity, hand: Hand): ActionResult {
