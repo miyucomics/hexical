@@ -1,0 +1,113 @@
+{
+  "parent": "hexical:root",
+  "criteria": {
+    "0": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hexical:plush_hexxy"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "1": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hexical:plush_irissy"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "2": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hexical:plush_pentxxy"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "3": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hexical:plush_quadxxy"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "4": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hexical:plush_thothy"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "5": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hexical:plush_flexxy"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.hexical.collect_all_plushies.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "hexical:plush_hexxy"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.hexical.collect_all_plushies.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ],
+    [
+      "1"
+    ],
+    [
+      "2"
+    ],
+    [
+      "3"
+    ],
+    [
+      "4"
+    ],
+    [
+      "5"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
