@@ -23,11 +23,14 @@ import net.minecraft.world.World
 import kotlin.math.min
 
 open class PedestalBlockEntity(entity: BlockEntityType<*>, pos: BlockPos, state: BlockState) : BlockEntity(entity, pos, state), Inventory, ADIotaHolder {
+	// has to hold an actual item entity for Hexcasting to refer to, since Hexcasting works with real entities primarily
+	// so much complexity here is just meant to keep the held entity in sync and serialize it and all that stuff
 	var heldEntity: ItemEntity? = null
 	val heldStack: ItemStack
 		get() = this.heldEntity?.stack ?: ItemStack.EMPTY
 
-	private var pendingStack: ItemStack? = null
+	// used for deserialization and client rendering purposes
+	var pendingStack: ItemStack? = null
 	val normalVector: Vec3i = cachedState.get(PedestalBlock.FACING).vector
 
 	fun getItemPosition(): Vec3d = Vec3d.ofCenter(this.pos).add(Vec3d.of(normalVector).multiply(HEIGHT))
@@ -44,7 +47,26 @@ open class PedestalBlockEntity(entity: BlockEntityType<*>, pos: BlockPos, state:
 			return
 		}
 
-		val held = this.heldEntity
+		var held = this.heldEntity
+
+		// If heldEntity reference was lost ( e.g. across server restarts/world reloads ), scan for an existing ItemEntity matching the item stack before spawning a new one
+		if (held == null || held.isRemoved) {
+			val targetPos = getItemPosition()
+			val searchBox = Box(targetPos, targetPos).expand(0.5)
+
+			val foundEntity = world.getEntitiesByClass(
+				ItemEntity::class.java,
+				searchBox
+			) { entity ->
+				!entity.isRemoved && ItemStack.canCombine(entity.stack, stack)
+			}.firstOrNull()
+
+			if (foundEntity != null) {
+				held = foundEntity
+				this.heldEntity = foundEntity
+			}
+		}
+
 		if (held != null && !held.isRemoved) {
 			held.stack = stack
 		} else {

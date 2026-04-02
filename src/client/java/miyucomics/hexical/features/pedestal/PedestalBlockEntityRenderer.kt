@@ -18,16 +18,17 @@ class PedestalBlockEntityRenderer(context: BlockEntityRendererFactory.Context) :
 	private val random = Random.create()
 
 	override fun render(pedestal: PedestalBlockEntity, tickDelta: Float, matrices: MatrixStack, vertices: VertexConsumerProvider, light: Int, overlay: Int) {
-		if (pedestal.heldStack.isEmpty)
+		if (pedestal.pendingStack == null || pedestal.pendingStack!!.isEmpty)
 			return
+		val stack = pedestal.pendingStack!!
 
 		val time = pedestal.world!!.time + tickDelta
 		val offset = Vec3d.of(pedestal.normalVector).multiply(PedestalBlockEntity.HEIGHT)
 		val light = WorldRenderer.getLightmapCoordinates(pedestal.world, pedestal.pos.add(pedestal.normalVector))
-		random.setSeed((if (pedestal.heldStack.isEmpty) 187 else Item.getRawId(pedestal.heldStack.item) + pedestal.heldStack.damage).toLong())
-		val bakedModel = itemRenderer.getModel(pedestal.heldStack, pedestal.world, null, 0)
+		random.setSeed((Item.getRawId(stack.item) + stack.damage).toLong())
+		val bakedModel = itemRenderer.getModel(stack, pedestal.world, null, 0)
 		val hasDepth = bakedModel.hasDepth()
-		val renderedAmount = getRenderedAmount(pedestal.heldStack)
+		val renderedAmount = getRenderedAmount(stack)
 		val scaleX = bakedModel.transformation.ground.scale.x()
 		val scaleY = bakedModel.transformation.ground.scale.y()
 		val scaleZ = bakedModel.transformation.ground.scale.z()
@@ -57,7 +58,7 @@ class PedestalBlockEntityRenderer(context: BlockEntityRendererFactory.Context) :
 				}
 			}
 
-			itemRenderer.renderItem(pedestal.heldStack, ModelTransformationMode.GROUND, light, OverlayTexture.DEFAULT_UV, matrices, vertices, pedestal.world, 0)
+			itemRenderer.renderItem(stack, ModelTransformationMode.GROUND, light, OverlayTexture.DEFAULT_UV, matrices, vertices, pedestal.world, 0)
 			matrices.pop()
 			if (!hasDepth)
 				matrices.translate(0.0f * scaleX, 0.0f * scaleY, Z_LAYER_OFFSET * scaleZ)
