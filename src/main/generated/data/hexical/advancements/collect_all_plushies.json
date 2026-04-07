@@ -30,7 +30,7 @@
         "items": [
           {
             "items": [
-              "hexical:plush_pentxxy"
+              "hexical:plush_trixxy"
             ]
           }
         ]
@@ -42,7 +42,7 @@
         "items": [
           {
             "items": [
-              "hexical:plush_quadxxy"
+              "hexical:plush_pentxxy"
             ]
           }
         ]
@@ -54,7 +54,7 @@
         "items": [
           {
             "items": [
-              "hexical:plush_thothy"
+              "hexical:plush_quadxxy"
             ]
           }
         ]
@@ -62,6 +62,18 @@
       "trigger": "minecraft:inventory_changed"
     },
     "5": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hexical:plush_thothy"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "6": {
       "conditions": {
         "items": [
           {
@@ -107,6 +119,9 @@
     ],
     [
       "5"
+    ],
+    [
+      "6"
     ]
   ],
   "sends_telemetry_event": true

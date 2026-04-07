@@ -69,7 +69,7 @@ object HexicalItems {
 	@JvmField val CURIO_HANDBELL = CURIOS[CURIO_NAMES.indexOf("handbell")]
 	@JvmField val CURIO_STAFF = CURIOS[CURIO_NAMES.indexOf("staff")]
 
-	val PLUSHIE_NAMES: List<String> = listOf("hexxy", "irissy", "pentxxy", "quadxxy", "thothy", "flexxy")
+	val PLUSHIE_NAMES: List<String> = listOf("hexxy", "irissy", "trixxy", "pentxxy", "quadxxy", "thothy", "flexxy")
 	val PLUSHIES: List<Item> = PLUSHIE_NAMES.map { registerItem("plush_$it", Item(Settings().maxCount(1))) }
 	@JvmStatic
 	fun randomPlush() = ItemStack(PLUSHIES.random())
