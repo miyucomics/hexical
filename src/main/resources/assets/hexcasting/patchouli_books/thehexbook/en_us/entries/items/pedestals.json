@@ -13,6 +13,28 @@
 			"type": "patchouli:crafting",
 			"recipe": "hexical:pedestal",
 			"text": "hexical.page.pedestal.1"
+		},
+		{
+			"type": "hexcasting:crafting_multi",
+			"heading": "hexical.page.carpeted_pedestal.header",
+			"text": "hexical.page.carpeted_pedestal.text",
+			"recipes": [
+				"hexical:carpeted_pedestal/white_carpeted_pedestal",
+				"hexical:carpeted_pedestal/orange_carpeted_pedestal",
+				"hexical:carpeted_pedestal/magenta_carpeted_pedestal",
+				"hexical:carpeted_pedestal/light_blue_carpeted_pedestal",
+				"hexical:carpeted_pedestal/yellow_carpeted_pedestal",
+				"hexical:carpeted_pedestal/lime_carpeted_pedestal",
+				"hexical:carpeted_pedestal/pink_carpeted_pedestal",
+				"hexical:carpeted_pedestal/gray_carpeted_pedestal",
+				"hexical:carpeted_pedestal/light_gray_carpeted_pedestal",
+				"hexical:carpeted_pedestal/cyan_carpeted_pedestal",
+				"hexical:carpeted_pedestal/purple_carpeted_pedestal",
+				"hexical:carpeted_pedestal/blue_carpeted_pedestal",
+				"hexical:carpeted_pedestal/brown_carpeted_pedestal",
+				"hexical:carpeted_pedestal/green_carpeted_pedestal",
+				"hexical:carpeted_pedestal/red_carpeted_pedestal"
+			]
 		}
 	]
 }

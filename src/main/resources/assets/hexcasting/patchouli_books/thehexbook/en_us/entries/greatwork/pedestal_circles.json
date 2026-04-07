@@ -12,6 +12,10 @@
 		{
 			"type": "patchouli:text",
 			"text": "hexical.page.pedestal_circles.1"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexical.page.pedestal_circles.2"
 		}
 	]
 }

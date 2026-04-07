@@ -19,6 +19,7 @@
   - you can seal a block with a block entity, transport it elsewhere, and unwrap it
 - added mute spell to mute a mob, and added pattern to get whether a mob is currently muted
 - added babelbugs, cute little items that can intercept a message before it even leaves your window and process a hex on it
+- added carpeted pedestals of every single color, which push entity iotas rather than pushing the iota of the item it is holding
 - added block mimicry spells
   - these spells mimic the behavior of blocks
   - four spells to mimic the furnace, blast furnace, smoker, and campfire recipes, cost scales with time saved
