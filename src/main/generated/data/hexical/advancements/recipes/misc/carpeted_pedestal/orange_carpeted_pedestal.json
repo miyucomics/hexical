@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hexical:pedestal"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:carpeted_pedestal/orange_carpeted_pedestal"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_pedestal",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:carpeted_pedestal/orange_carpeted_pedestal"
+    ]
+  },
+  "sends_telemetry_event": false
+}
