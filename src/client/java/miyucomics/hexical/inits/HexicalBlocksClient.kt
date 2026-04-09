@@ -4,12 +4,9 @@ import at.petrak.hexcasting.api.client.ScryingLensOverlayRegistry
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.common.lib.HexItems
 import com.mojang.datafixers.util.Pair
-import miyucomics.hexical.features.amber_seal.AmberSealBlockEntityRenderer
 import miyucomics.hexical.features.media_jar.MediaJarBlockEntity
 import miyucomics.hexical.features.media_jar.MediaJarBlockEntityRenderer
 import miyucomics.hexical.features.pedestal.PedestalBlockEntityRenderer
-import miyucomics.hexical.inits.HexicalBlocks.AMBER_SEAL_BLOCK
-import miyucomics.hexical.inits.HexicalBlocks.AMBER_SEAL_BLOCK_ENTITY
 import miyucomics.hexical.inits.HexicalBlocks.CARPETED_PEDESTAL_BLOCK_ENTITY
 import miyucomics.hexical.inits.HexicalBlocks.MEDIA_JAR_BLOCK
 import miyucomics.hexical.inits.HexicalBlocks.MEDIA_JAR_BLOCK_ENTITY
@@ -24,11 +21,9 @@ import net.minecraft.text.Text
 
 object HexicalBlocksClient {
 	fun clientInit() {
-		BlockRenderLayerMap.INSTANCE.putBlock(AMBER_SEAL_BLOCK, RenderLayer.getCutout())
 		BlockRenderLayerMap.INSTANCE.putBlock(MEDIA_JAR_BLOCK, RenderLayer.getCutout())
 		BlockRenderLayerMap.INSTANCE.putBlock(PERIWINKLE_FLOWER, RenderLayer.getCutout())
 
-		BlockEntityRendererFactories.register(AMBER_SEAL_BLOCK_ENTITY, ::AmberSealBlockEntityRenderer)
 		BlockEntityRendererFactories.register(MEDIA_JAR_BLOCK_ENTITY, ::MediaJarBlockEntityRenderer)
 		BlockEntityRendererFactories.register(PEDESTAL_BLOCK_ENTITY, ::PedestalBlockEntityRenderer)
 		BlockEntityRendererFactories.register(CARPETED_PEDESTAL_BLOCK_ENTITY, ::PedestalBlockEntityRenderer)

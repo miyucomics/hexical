@@ -15,7 +15,6 @@ import miyucomics.hexical.features.akashic_shelves.OpClearAkashicShelf
 import miyucomics.hexical.features.akashic_shelves.OpKeyAkashicShelf
 import miyucomics.hexical.features.akashic_shelves.OpReadAkashicShelf
 import miyucomics.hexical.features.akashic_shelves.OpWriteAkashicShelf
-import miyucomics.hexical.features.amber_seal.OpAmberSeal
 import miyucomics.hexical.features.autographs.OpAutograph
 import miyucomics.hexical.features.autographs.OpHasAutograph
 import miyucomics.hexical.features.autographs.OpUnautograph
@@ -187,8 +186,6 @@ object HexicalActions {
 		register("to_pigment", "aqwedeweeeewweeew", HexDir.NORTH_WEST, OpToPigment)
 		register("sample_pigment", "edewqaqqqqqwqqq", HexDir.SOUTH_EAST, OpSamplePigment)
 		register("take_on_pigment", "weeeweeqeeeewqaqweeee", HexDir.EAST, OpTakeOnPigment)
-
-		register("amber_seal", "qaqeaqwqwqa", HexDir.EAST, OpAmberSeal)
 
 		register("mage_hand", "dqq", HexDir.NORTH_WEST, OpMageHand)
 

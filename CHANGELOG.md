@@ -14,9 +14,6 @@
   - strands can take a list of vectors and they will draw it in space
     - comes with a patttern to turn a pattern into a list of vectors for your convenience
   - they can be made to wiggle
-- added amber seal spell
-  - mechanism cardboard box in a spell
-  - you can seal a block with a block entity, transport it elsewhere, and unwrap it
 - added mute spell to mute a mob, and added pattern to get whether a mob is currently muted
 - added babelbugs, cute little items that can intercept a message before it even leaves your window and process a hex on it
 - added carpeted pedestals of every single color, which push entity iotas rather than pushing the iota of the item it is holding

@@ -17,7 +17,6 @@
 	"advancements.hexical.conjure_cake.description": "Summon a free cake from a mysterious benefactor.",
 	"advancements.hexical.collect_all_plushies.title": "Stuffed to the Brim",
 	"advancements.hexical.collect_all_plushies.description": "Have held one of every single plushie!",
-	"block.hexical.amber_seal": "Amber Sealed Block",
 	"block.hexical.hex_candle_cake": "Hex Candle Cake",
 	"block.hexical.casting_carpet": "Casting Carpet",
 	"block.hexical.hex_candle": "Hex Candle",
@@ -559,12 +558,6 @@
 	"hexcasting.action.hexical:sleight": "Sleight",
 	"hexical.page.sleight.summary": "Performs an act of magical sleight of hand to steal items into my wristpocket or expel my wristpocket back into the world. Costs about a fourth of one $(l:items/amethyst)$(item)Amethyst Dust$().",
 	"hexical.page.sleight.description": "If given a vector, it conjures my wristpocketed item at that vector. If given an item entity, my wristpocket either pulls in or swaps with the item, depending on whether it is empty.$(br2)$(o)If your sleight of hand causes you to break eye contact with your audience, it is too advanced for your skill level.$()",
-
-	"hexical.page.amber_seal.title": "Amber Preservation",
-	"hexical.page.amber_seal.0": "I can not simply pick up a $(item)Chest$() and move it under most circumstances; the contents would spill everywhere. Fortunately, there is a spell for that. Inspired by a strange material called amber that is able to preserve moments of history, this spell encases a block in a shell of amethyst and cuts it off from the external world.",
-	"hexical.page.amber_seal.1": "Sealed blocks demonstrate two main properties. The first is that they are frozen in the moment they were sealed. A $(item)Furnace$() will have the appearance of burning but its items do not cook.$(br2)The second, more useful, property is that I can break them with just my bare hands without disturbing the inner contents, place them elsewhere, and unwrap them. No items spill out and most blocks seem entirely unaltered.",
-	"hexcasting.action.hexical:amber_seal": "Amber Seal",
-	"hexical.page.amber_seal.summary": "Preserves the block at the given location in amethyst. Costs about one $(l:items/amethyst)$(item)Charged Amethyst$().",
 
 	"hexical.page.projectiles.title": "Projectiles",
 	"hexical.page.projectiles.0": "While conjuring projectiles from pure _media manipulation should be prohibitively expensive, Nature offers a set of cheaper spells to create certain projectiles.$(br2)These spells push the conjured entity to the stack, which I must manually $(l:patterns/spells/basic#hexcasting:add_motion)$(action)propel$() in my desired direction.$(br2)$(o)Can I offer you a nice egg in this trying time?$()",

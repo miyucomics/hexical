@@ -1,8 +1,6 @@
 package miyucomics.hexical.inits
 
 import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.features.amber_seal.AmberSealBlock
-import miyucomics.hexical.features.amber_seal.AmberSealBlockEntity
 import miyucomics.hexical.features.hex_candles.HexCandleBlock
 import miyucomics.hexical.features.hex_candles.HexCandleBlockEntity
 import miyucomics.hexical.features.hex_candles.HexCandleCakeBlock
@@ -48,11 +46,6 @@ object HexicalBlocks {
 	val HEX_CANDLE_ITEM = BlockItem(HEX_CANDLE_BLOCK, Item.Settings())
 	val SENTINEL_BED_ITEM = BlockItem(SENTINEL_BED_BLOCK, Item.Settings())
 
-	val AMBER_SEAL_BLOCK = AmberSealBlock
-	@JvmField
-	val AMBER_SEAL_ITEM = BlockItem(AMBER_SEAL_BLOCK, Item.Settings().maxCount(1))
-
-	val AMBER_SEAL_BLOCK_ENTITY: BlockEntityType<AmberSealBlockEntity> = BlockEntityType.Builder.create(::AmberSealBlockEntity, AMBER_SEAL_BLOCK).build(null)
 	val HEX_CANDLE_BLOCK_ENTITY: BlockEntityType<HexCandleBlockEntity> = BlockEntityType.Builder.create(::HexCandleBlockEntity, HEX_CANDLE_BLOCK).build(null)
 	val HEX_CANDLE_CAKE_BLOCK_ENTITY: BlockEntityType<HexCandleCakeBlockEntity> = BlockEntityType.Builder.create(::HexCandleCakeBlockEntity, HEX_CANDLE_CAKE_BLOCK).build(null)
 	val MEDIA_JAR_BLOCK_ENTITY: BlockEntityType<MediaJarBlockEntity> = BlockEntityType.Builder.create(::MediaJarBlockEntity, MEDIA_JAR_BLOCK).build(null)
@@ -66,7 +59,6 @@ object HexicalBlocks {
 	val PEDESTAL_BLOCK_ITEMS: MutableList<BlockItem> = mutableListOf()
 
 	fun init() {
-		Registry.register(Registries.BLOCK, HexicalMain.id("amber_seal"), AMBER_SEAL_BLOCK)
 		Registry.register(Registries.BLOCK, HexicalMain.id("hex_candle"), HEX_CANDLE_BLOCK)
 		Registry.register(Registries.BLOCK, HexicalMain.id("hex_candle_cake"), HEX_CANDLE_CAKE_BLOCK)
 		Registry.register(Registries.BLOCK, HexicalMain.id("media_jar"), MEDIA_JAR_BLOCK)
@@ -74,14 +66,12 @@ object HexicalBlocks {
 		Registry.register(Registries.BLOCK, HexicalMain.id("periwinkle"), PERIWINKLE_FLOWER)
 		Registry.register(Registries.BLOCK, HexicalMain.id("casting_carpet"), CASTING_CARPET)
 
-		Registry.register(Registries.ITEM, HexicalMain.id("amber_seal"), AMBER_SEAL_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("hex_candle"), HEX_CANDLE_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("sentinel_bed"), SENTINEL_BED_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("media_jar"), MEDIA_JAR_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("periwinkle"), PERIWINKLE_FLOWER_ITEM)
 		Registry.register(Registries.ITEM, HexicalMain.id("casting_carpet"), CASTING_CARPET_ITEM)
 
-		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("amber_seal"), AMBER_SEAL_BLOCK_ENTITY)
 		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("hex_candle"), HEX_CANDLE_BLOCK_ENTITY)
 		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("hex_candle_cake"), HEX_CANDLE_CAKE_BLOCK_ENTITY)
 		Registry.register(Registries.BLOCK_ENTITY_TYPE, HexicalMain.id("media_jar"), MEDIA_JAR_BLOCK_ENTITY)

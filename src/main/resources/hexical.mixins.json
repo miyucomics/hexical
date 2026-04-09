@@ -24,8 +24,7 @@
 		"RedstoneViewMixin",
 		"SnifferBrainMixin",
 		"SnifferEntityMixin",
-		"WanderingTraderEntityMixin",
-		"WorldChunkMixin"
+		"WanderingTraderEntityMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
