@@ -53,7 +53,6 @@ class HexicalAdvancementGenerator(generator: FabricDataOutput) : FabricAdvanceme
 			return advancement.build(consumer, "hexical:$name")
 		}
 
-		registerAdvancement("diy_conjuring", Items.SCAFFOLDING, DIYCriterion.Condition())
 		registerAdvancement("hextito_quine", HexicalItems.HEXTITO_ITEM, HextitoQuineCriterion.Condition())
 		registerAdvancement("specklike", Items.BEACON, SpecklikeCriterion.Condition())
 

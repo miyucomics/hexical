@@ -87,7 +87,6 @@
 - added Chronicler's support for meshes and specks; replaces the old tangle purification, weave mesh, and iota speck spells
 - added an item cache that makes certain spells and processes that involve locating items much much faster
 - added depowered and powered textures for arch lamps to distinguish at an instant
-- added scrying overlay for mage blocks to determine what has been added to it
 - added many specialized Patchouli pages for some of the spells
 - added personal inventory management spells to eject, pull in, and move around items in your inventory slot
 - changed Displace to cost half a dust rather than free, people were making worldwide circles which was mildly scary
@@ -130,7 +129,11 @@
   - reworked the backends of so many systems to be elegant
     - reworked dyeing backend
     - reworked prestidigitation backend
-    - reworked mage block modifier backend
+- removed mage block
+  - just an old feature that I am not super happy with
+  - it was also laggy and inefficient and invisible because I didn't know what to texture them
+  - there is so much technical debt to them, and they also felt kind of out of place in Hexical
+  - they might become an addon of their own if I ever get the motivation
 - removed tchotchkes
   - replaced by charms which have the exact same abilities but can be applied to any item
 - removed myodesopsia spell

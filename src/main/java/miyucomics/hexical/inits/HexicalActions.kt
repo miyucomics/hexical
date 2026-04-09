@@ -58,13 +58,6 @@ import miyucomics.hexical.features.jailbreak.OpJailbreakDevice
 import miyucomics.hexical.features.lamps.*
 import miyucomics.hexical.features.lesser_sentinels.OpLesserSentinelGet
 import miyucomics.hexical.features.lesser_sentinels.OpLesserSentinelSet
-import miyucomics.hexical.features.mage_blocks.OpConfigureMageBlock
-import miyucomics.hexical.features.mage_blocks.OpConjureMageBlock
-import miyucomics.hexical.features.mage_blocks.OpResetMageBlock
-import miyucomics.hexical.features.mage_blocks.modifiers.BouncyModifier
-import miyucomics.hexical.features.mage_blocks.modifiers.LifespanModifier
-import miyucomics.hexical.features.mage_blocks.modifiers.RedstoneModifier
-import miyucomics.hexical.features.mage_blocks.modifiers.VolatileModifier
 import miyucomics.hexical.features.mage_hand.OpMageHand
 import miyucomics.hexical.features.mage_mouth.OpMageMouth
 import miyucomics.hexical.features.magic_missile.OpMagicMissile
@@ -180,13 +173,6 @@ object HexicalActions {
 		register("read_shelf", "qaqqqada", HexDir.EAST, OpReadAkashicShelf)
 		register("write_shelf", "edeeedad", HexDir.SOUTH_WEST, OpWriteAkashicShelf)
 		register("clear_shelf", "edeedade", HexDir.SOUTH_WEST, OpClearAkashicShelf)
-
-		register("conjure_mage_block", "dee", HexDir.NORTH_WEST, OpConjureMageBlock)
-		register("reset_mage_block", "deeeaw", HexDir.NORTH_WEST, OpResetMageBlock)
-		register("modify_block_bouncy", "deeqa", HexDir.NORTH_WEST, OpConfigureMageBlock(BouncyModifier.TYPE))
-		register("modify_block_ephemeral", "deewwaawd", HexDir.NORTH_WEST, OpConfigureMageBlock(LifespanModifier.TYPE))
-		register("modify_block_energized", "deewad", HexDir.NORTH_WEST, OpConfigureMageBlock(RedstoneModifier.TYPE))
-		register("modify_block_volatile", "deewedeeeee", HexDir.NORTH_WEST, OpConfigureMageBlock(VolatileModifier.TYPE))
 
 		register("autograph", "eeeeeww", HexDir.WEST, OpAutograph)
 		register("unautograph", "wwqqqqq", HexDir.NORTH_EAST, OpUnautograph)

@@ -10,7 +10,6 @@ import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadBlock
 import at.petrak.hexcasting.common.blocks.akashic.BlockEntityAkashicBookshelf
 import at.petrak.hexcasting.common.lib.HexBlocks
-import miyucomics.hexical.inits.HexicalBlocks
 import miyucomics.hexical.misc.CastingUtils
 import net.minecraft.block.BlockState
 import net.minecraft.util.math.BlockPos
@@ -35,7 +34,7 @@ object OpWriteAkashicShelf : SpellAction {
 			shelf.clearIota()
 			shelf.setNewMapping(key, iota)
 			shelf.markDirty()
-			env.world!!.updateNeighborsAlways(pos, HexicalBlocks.MAGE_BLOCK)
+			env.world!!.updateNeighborsAlways(pos, HexBlocks.AKASHIC_BOOKSHELF)
 			env.world!!.updateListeners(pos, state, state, 3)
 		}
 	}

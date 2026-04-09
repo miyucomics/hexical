@@ -12,8 +12,7 @@
 		"InGameHudMixin",
 		"ItemEntityRendererMixin",
 		"ItemRendererMixin",
-		"MouseMixin",
-		"ScryingLensOverlaysMixin"
+		"MouseMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

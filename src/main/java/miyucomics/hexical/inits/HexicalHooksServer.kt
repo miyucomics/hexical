@@ -6,7 +6,6 @@ import miyucomics.hexical.features.dyes.DyeingUtils
 import miyucomics.hexical.features.dyes.entity.DyeingEntityRegistry
 import miyucomics.hexical.features.flora.ConjureFloraHook
 import miyucomics.hexical.features.lesser_sentinels.ServerLesserSentinelPusher
-import miyucomics.hexical.features.mage_blocks.MageBlockModifierRegistry
 import miyucomics.hexical.features.media_log.ServerSpyingHooks
 import miyucomics.hexical.features.periwinkle.LeiEnchantmentsHook
 import miyucomics.hexical.features.periwinkle.WooleyedEffectRegister
@@ -37,7 +36,6 @@ object HexicalHooksServer {
 		register(TransmutingHelper)
 		register(WooleyedEffectRegister)
 		register(SentinelBedPoi)
-		register(MageBlockModifierRegistry)
 		register(BlockRotationHandlers)
 		register(DyeingUtils)
 		register(DyeingEntityRegistry)

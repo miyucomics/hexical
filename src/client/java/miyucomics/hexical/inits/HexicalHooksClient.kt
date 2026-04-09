@@ -12,7 +12,6 @@ import miyucomics.hexical.features.jailbreak.JailbrokenItemTooltip
 import miyucomics.hexical.features.lamps.ArchLampModelProvider
 import miyucomics.hexical.features.lesser_sentinels.ClientLesserSentinelReceiver
 import miyucomics.hexical.features.lesser_sentinels.LesserSentinelRenderer
-import miyucomics.hexical.features.mage_blocks.MageBlockScryingOverlay
 import miyucomics.hexical.features.media_log.ClientMediaLogReceiver
 import miyucomics.hexical.features.media_log.MediaLogRenderer
 import miyucomics.hexical.features.player.PlayerAnimatorHook
@@ -43,7 +42,6 @@ object HexicalHooksClient {
 		register(FluteCurioItemModel)
 		register(HandbellCurioItemModel)
 		register(PlayerAnimatorHook)
-		register(MageBlockScryingOverlay)
 		register(ToastReceiver)
 
 		for (hook in hooks)
