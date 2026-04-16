@@ -13,9 +13,12 @@ import net.minecraft.block.*
 import net.minecraft.block.entity.AbstractFurnaceBlockEntity
 import net.minecraft.block.entity.BeehiveBlockEntity
 import net.minecraft.block.entity.BellBlockEntity
+import net.minecraft.block.entity.JukeboxBlockEntity
 import net.minecraft.block.enums.Attachment
 import net.minecraft.block.enums.ComparatorMode
 import net.minecraft.item.AxeItem
+import net.minecraft.item.ItemStack
+import net.minecraft.item.Items
 import net.minecraft.item.ShovelItem
 import net.minecraft.registry.tag.BlockTags
 import net.minecraft.server.network.ServerPlayerEntity
@@ -194,6 +197,14 @@ object PrestidigitationHandlersBlock {
 			}
 		})
 
+		register(object : PrestidigitationHandlerBlock() {
+			override fun canAffectBlock(env: CastingEnvironment, pos: BlockPos) = env.castingEntity is ServerPlayerEntity && getBlock(env, pos) is ConcretePowderBlock
+			override fun affect(env: CastingEnvironment, pos: BlockPos) {
+				val powder = getBlock(env, pos) as ConcretePowderBlock
+				env.world.setBlockState(pos, powder.hardenedState)
+			}
+		})
+
 		register(PrestidigitationHandlerBlock.blockEntity(AbstractFurnaceBlockEntity::class.java) { world, pos, furnace ->
 			furnace.burnTime += AbstractFurnaceBlockEntity.DEFAULT_COOK_TIME
 			furnace.fuelTime = furnace.burnTime
@@ -205,6 +216,30 @@ object PrestidigitationHandlersBlock {
 			override fun canAffectBlock(env: CastingEnvironment, pos: BlockPos) = getBlockState(env, pos).isOf(Blocks.DRAGON_EGG)
 			override fun affect(env: CastingEnvironment, pos: BlockPos) {
 				getBlock(env, pos).onBlockBreakStart(getBlockState(env, pos), env.world, pos, null)
+			}
+		})
+
+		register(object : PrestidigitationHandlerBlock() {
+			override fun canAffectBlock(env: CastingEnvironment, pos: BlockPos) = getBlockState(env, pos).isOf(Blocks.SWEET_BERRY_BUSH)
+			override fun affect(env: CastingEnvironment, pos: BlockPos) {
+				val state = getBlockState(env, pos)
+				val fullyGrown = state.get(SweetBerryBushBlock.AGE) == 3
+				Block.dropStack(env.world, pos, ItemStack(Items.SWEET_BERRIES, 1 + env.world.random.nextInt(2) + (if (fullyGrown) 1 else 0)))
+				env.world.playSound(null, pos, SoundEvents.BLOCK_SWEET_BERRY_BUSH_PICK_BERRIES, SoundCategory.BLOCKS, 1.0f, 0.8f + env.world.random.nextFloat() * 0.4f)
+
+				val newState = state.with(SweetBerryBushBlock.AGE, 1)
+				env.world.setBlockState(pos, newState, Block.NOTIFY_LISTENERS)
+				env.world.emitGameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Emitter.of(env.castingEntity, newState))
+			}
+		})
+
+		register(object : PrestidigitationHandlerBlock() {
+			override fun canAffectBlock(env: CastingEnvironment, pos: BlockPos) = getBlockState(env, pos).isOf(Blocks.JUKEBOX)
+			override fun affect(env: CastingEnvironment, pos: BlockPos) {
+				val state = getBlockState(env, pos)
+				val jukebox = env.world.getBlockEntity(pos)
+				if (state.get(JukeboxBlock.HAS_RECORD) && jukebox is JukeboxBlockEntity)
+					jukebox.dropRecord()
 			}
 		})
 	}

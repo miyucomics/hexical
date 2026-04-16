@@ -9,6 +9,7 @@ import net.minecraft.entity.EquipmentSlot
 import net.minecraft.entity.Shearable
 import net.minecraft.entity.TntEntity
 import net.minecraft.entity.decoration.ArmorStandEntity
+import net.minecraft.entity.decoration.LeashKnotEntity
 import net.minecraft.entity.mob.CreeperEntity
 import net.minecraft.entity.mob.EndermanEntity
 import net.minecraft.entity.passive.*
@@ -46,6 +47,8 @@ object PrestidigitationHandlersEntity {
 		})
 
 		register(PrestidigitationHandlerEntity.simple(PandaEntity::class.java) { it.isSneezing = true })
+		register(PrestidigitationHandlerEntity.simple(WolfEntity::class.java) { it.furWet = true })
+		register(PrestidigitationHandlerEntity.simple(CatEntity::class.java, CatEntity::hiss))
 		register(PrestidigitationHandlerEntity.simple(SquidEntity::class.java, SquidEntity::squirt))
 		register(PrestidigitationHandlerEntity.simple(EndermanEntity::class.java) { env, enderman -> enderman.target = env.castingEntity })
 		register(PrestidigitationHandlerEntity.simple(FoxEntity::class.java) { fox ->
@@ -56,6 +59,11 @@ object PrestidigitationHandlersEntity {
 		register(PrestidigitationHandlerEntity.simple(LlamaEntity::class.java) { env, llama ->
 			if (env.castingEntity != null)
 				llama.spitAt(env.castingEntity)
+		})
+
+		register(PrestidigitationHandlerEntity.simple(LeashKnotEntity::class.java) { env, knot ->
+			knot.onBreak(env.castingEntity)
+			knot.kill()
 		})
 
 		register(object : PrestidigitationHandlerEntity<Shearable>(Shearable::class.java) {
