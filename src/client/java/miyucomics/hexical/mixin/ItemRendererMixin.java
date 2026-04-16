@@ -2,9 +2,9 @@ package miyucomics.hexical.mixin;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import com.llamalad7.mixinextras.sugar.ref.LocalRef;
-import miyucomics.hexical.features.curios.FluteCurioItemModel;
-import miyucomics.hexical.features.curios.HandbellCurioItemModel;
-import miyucomics.hexical.inits.HexicalItems;
+import miyucomics.hexical.feature.curio.FluteCurioItemModel;
+import miyucomics.hexical.feature.curio.HandbellCurioItemModel;
+import miyucomics.hexical.init.HexicalItems;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.item.ItemModels;
 import net.minecraft.client.render.item.ItemRenderer;

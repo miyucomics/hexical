@@ -1,8 +1,8 @@
 package miyucomics.hexical.datagen.generators
 
 import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.inits.HexicalBlocks
-import miyucomics.hexical.inits.HexicalItems
+import miyucomics.hexical.init.HexicalBlocks
+import miyucomics.hexical.init.HexicalItems
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider
 import net.minecraft.data.client.*

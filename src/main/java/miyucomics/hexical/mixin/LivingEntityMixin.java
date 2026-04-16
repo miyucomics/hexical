@@ -2,7 +2,7 @@ package miyucomics.hexical.mixin;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import miyucomics.hexical.features.wristpocket.WristpocketFieldKt;
+import miyucomics.hexical.feature.wristpocket.WristpocketFieldKt;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityStatuses;

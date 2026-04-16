@@ -2,7 +2,7 @@ package miyucomics.hexical.mixin;
 
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
-import miyucomics.hexical.features.zap.ZapManager;
+import miyucomics.hexical.feature.redstone_pin.RedstonePinManager;
 import net.minecraft.block.PistonBlock;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
@@ -16,6 +16,6 @@ public class PistonBlockMixin {
 	private boolean addRedstonePower(RedstoneView world, BlockPos pos, Direction pistonFace, Operation<Boolean> original) {
 		if (!(world instanceof ServerWorld))
 			return original.call(world, pos, pistonFace);
-		return original.call(world, pos, pistonFace) || ZapManager.hasMagicalPower((ServerWorld) world, pos);
+		return original.call(world, pos, pistonFace) || RedstonePinManager.hasMagicalPower((ServerWorld) world, pos);
 	}
 }

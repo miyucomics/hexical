@@ -1,6 +1,6 @@
 package miyucomics.hexical.datagen.generators
 
-import miyucomics.hexical.inits.HexicalBlocks
+import miyucomics.hexical.init.HexicalBlocks
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider
 

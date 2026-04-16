@@ -3,8 +3,8 @@ package miyucomics.hexical.datagen.providers
 import at.petrak.hexcasting.common.recipe.ingredient.StateIngredientHelper
 import com.google.gson.JsonObject
 import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.features.flora.ConjureFloraSerializer
-import miyucomics.hexical.inits.HexicalBlocks
+import miyucomics.hexical.feature.flora.ConjureFloraSerializer
+import miyucomics.hexical.init.HexicalBlocks
 import net.minecraft.block.Block
 import net.minecraft.block.Blocks
 import net.minecraft.data.server.recipe.RecipeJsonProvider

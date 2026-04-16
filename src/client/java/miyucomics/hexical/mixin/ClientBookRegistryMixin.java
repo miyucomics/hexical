@@ -1,9 +1,9 @@
 package miyucomics.hexical.mixin;
 
 import miyucomics.hexical.HexicalMain;
-import miyucomics.hexical.features.patchouli.BlockPage;
-import miyucomics.hexical.features.patchouli.DyeingBlockPage;
-import miyucomics.hexical.features.patchouli.DyeingItemPage;
+import miyucomics.hexical.feature.dyeing.DyeingBlockPage;
+import miyucomics.hexical.feature.dyeing.DyeingItemPage;
+import miyucomics.hexical.feature.patchouli.BlockPage;
 import net.minecraft.util.Identifier;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;

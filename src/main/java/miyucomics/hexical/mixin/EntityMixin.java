@@ -2,7 +2,7 @@ package miyucomics.hexical.mixin;
 
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
-import miyucomics.hexical.inits.HexicalCardinalComponents;
+import miyucomics.hexical.init.HexicalCardinalComponents;
 import net.minecraft.entity.Entity;
 import org.spongepowered.asm.mixin.Mixin;
 

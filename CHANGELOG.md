@@ -44,8 +44,8 @@
 - added Crack Device spell - crack an unwritten casting device which will reveal its Hex when eventually written
 - added spell to make a circle use a pedestal as its other hand
 - added Illuminate spell - conjure an invisible light of your chosen strength at a location
+- added Redstone Pinning spell - powers a block with Redstone for a duration, pins the redstone power to a certain level
 - added Sparkle spell to create a sparkle ( my mod advertised in another mod!! )
-- added Zap spell - powers a block with Redstone for a duration, forces redstone power to be a certain level
 - added tooltip to grimoire for what patterns are registered, need to cast any grimoire pattern on old grimoires in order to force it to show up
 - added more prestidigitation effects, too many to document
 - added Projectiles chapter

@@ -1,8 +1,8 @@
 package miyucomics.hexical.mixin;
 
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment;
-import miyucomics.hexical.features.periwinkle.WooleyedEffect;
-import miyucomics.hexical.inits.HexicalItems;
+import miyucomics.hexical.feature.periwinkle.WooleyedEffect;
+import miyucomics.hexical.init.HexicalItems;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;

@@ -1,8 +1,8 @@
 package miyucomics.hexical.mixin;
 
 import miyucomics.hexical.HexicalMain;
-import miyucomics.hexical.features.charms.CharmUtilities;
-import miyucomics.hexical.features.periwinkle.WooleyedEffect;
+import miyucomics.hexical.feature.charming.CharmUtilities;
+import miyucomics.hexical.feature.periwinkle.WooleyedEffect;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.InGameHud;

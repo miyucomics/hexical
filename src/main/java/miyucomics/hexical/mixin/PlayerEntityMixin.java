@@ -1,7 +1,7 @@
 package miyucomics.hexical.mixin;
 
-import miyucomics.hexical.features.player.PlayerEntityMinterface;
-import miyucomics.hexical.features.player.PlayerManager;
+import miyucomics.hexical.feature.player_state.HexicalPlayerState;
+import miyucomics.hexical.feature.player_state.PlayerEntityMinterface;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import org.jetbrains.annotations.NotNull;
@@ -15,25 +15,25 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @SuppressWarnings("AddedMixinMembersNamePattern")
 public class PlayerEntityMixin implements PlayerEntityMinterface {
 	@Unique
-	private final PlayerManager hexicalPlayerManager = new PlayerManager();
+	private final HexicalPlayerState hexicalPlayerState = new HexicalPlayerState();
 
 	@Inject(method = "tick", at = @At("TAIL"))
 	void tick(CallbackInfo ci) {
-		hexicalPlayerManager.tick((PlayerEntity) (Object) this);
+		hexicalPlayerState.tick((PlayerEntity) (Object) this);
 	}
 
 	@Inject(method = "readCustomDataFromNbt", at = @At("HEAD"))
 	void reaadPlayerData(NbtCompound nbt, CallbackInfo ci) {
-		hexicalPlayerManager.readNbt(nbt);
+		hexicalPlayerState.readNbt(nbt);
 	}
 
 	@Inject(method = "writeCustomDataToNbt", at = @At("HEAD"))
 	void writePlayerData(NbtCompound nbt, CallbackInfo ci) {
-		hexicalPlayerManager.writeNbt(nbt);
+		hexicalPlayerState.writeNbt(nbt);
 	}
 
 	@Override
-	public @NotNull PlayerManager getPlayerManager() {
-		return hexicalPlayerManager;
+	public @NotNull HexicalPlayerState getHexicalPlayerState() {
+		return hexicalPlayerState;
 	}
 }

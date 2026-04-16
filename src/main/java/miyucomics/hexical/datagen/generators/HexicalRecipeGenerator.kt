@@ -3,8 +3,8 @@ package miyucomics.hexical.datagen.generators
 import at.petrak.hexcasting.common.lib.HexItems
 import miyucomics.hexical.datagen.providers.FloraProvider
 import miyucomics.hexical.datagen.providers.TransmutationProvider
-import miyucomics.hexical.inits.HexicalBlocks
-import miyucomics.hexical.inits.HexicalItems
+import miyucomics.hexical.init.HexicalBlocks
+import miyucomics.hexical.init.HexicalItems
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider
 import net.minecraft.data.server.recipe.RecipeJsonProvider

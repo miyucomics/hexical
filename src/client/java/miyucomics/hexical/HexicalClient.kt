@@ -1,7 +1,8 @@
 package miyucomics.hexical
 
-import miyucomics.hexical.features.media_jar.MediaJarItemRenderer
-import miyucomics.hexical.inits.*
+import miyucomics.hexical.feature.media_jar.MediaJarItemRenderer
+import miyucomics.hexical.init.*
+import miyucomics.hexical.misc.ClientStorage
 import net.fabricmc.api.ClientModInitializer
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
 import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry

@@ -34,10 +34,10 @@
 			}
 		],
 		"cardinal-components": [
-			"miyucomics.hexical.inits.HexicalCardinalComponents"
+			"miyucomics.hexical.init.HexicalCardinalComponents"
 		],
 		"emi": [
-			"miyucomics.hexical.features.emi.HexicalEmi"
+			"miyucomics.hexical.feature.emi.HexicalEmi"
 		]
 	},
 	"accessWidener" : "hexical.accesswidener",

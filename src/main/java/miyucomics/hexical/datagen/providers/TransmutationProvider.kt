@@ -6,7 +6,7 @@ import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import com.mojang.serialization.JsonOps
 import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.features.transmuting.TransmutingSerializer
+import miyucomics.hexical.feature.transmuting.TransmutingSerializer
 import net.minecraft.data.server.recipe.RecipeJsonProvider
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack

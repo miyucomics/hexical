@@ -1,0 +1,13 @@
+package miyucomics.hexical.feature.pigment
+
+import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
+import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
+import at.petrak.hexcasting.api.casting.iota.Iota
+
+object OpTakeOnPigment : ConstMediaAction {
+	override val argc = 1
+	override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
+		env.pigment = args.getPigment(0, 1)
+		return emptyList()
+	}
+}

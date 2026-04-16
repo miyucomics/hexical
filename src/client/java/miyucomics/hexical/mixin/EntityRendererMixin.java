@@ -1,7 +1,7 @@
 package miyucomics.hexical.mixin;
 
 import at.petrak.hexcasting.common.lib.HexAttributes;
-import miyucomics.hexical.features.mute.MuteRenderer;
+import miyucomics.hexical.feature.mute.MuteRenderer;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.render.VertexConsumerProvider;

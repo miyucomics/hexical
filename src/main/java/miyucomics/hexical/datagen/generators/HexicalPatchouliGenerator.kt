@@ -5,7 +5,7 @@ import miyucomics.hexical.datagen.entry
 import miyucomics.hexical.datagen.providers.DyeingProvider
 import miyucomics.hexical.datagen.providers.FloraProvider
 import miyucomics.hexical.datagen.providers.TransmutationProvider
-import miyucomics.hexical.inits.HexicalItems
+import miyucomics.hexical.init.HexicalItems
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.minecraft.data.DataOutput
 import net.minecraft.data.DataProvider

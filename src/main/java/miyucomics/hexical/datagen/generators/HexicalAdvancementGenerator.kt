@@ -1,7 +1,7 @@
 package miyucomics.hexical.datagen.generators
 
 import at.petrak.hexcasting.api.mod.HexTags
-import miyucomics.hexical.inits.*
+import miyucomics.hexical.init.*
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricAdvancementProvider
 import net.minecraft.advancement.Advancement
