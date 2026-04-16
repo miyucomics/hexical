@@ -7,8 +7,8 @@ import net.minecraft.block.BlockWithEntity
 import net.minecraft.block.Blocks
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.client.gui.DrawContext
+import net.minecraft.command.argument.BlockArgumentParser
 import net.minecraft.registry.Registries
-import net.minecraft.util.Identifier
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 import vazkii.patchouli.client.book.BookContentsBuilder
@@ -24,8 +24,9 @@ class BlockPage : PageWithText() {
 
 	override fun build(level: World, entry: BookEntry, builder: BookContentsBuilder, pageNum: Int) {
 		super.build(level, entry, builder, pageNum)
-		val block = Registries.BLOCK.get(Identifier(blockId))
-		state = Registries.BLOCK.get(Identifier(blockId)).defaultState
+		val parsedBlock = BlockArgumentParser.block(Registries.BLOCK.readOnlyWrapper, blockId, true)
+		val block = parsedBlock.blockState.block
+		state = parsedBlock.blockState
 		if (block is BlockWithEntity) {
 			this.entity = block.createBlockEntity(BlockPos.ORIGIN, state)
 			this.entity?.world = level
@@ -36,8 +37,8 @@ class BlockPage : PageWithText() {
 		RenderSystem.enableBlend()
 		RenderSystem.setShaderColor(1f, 1f, 1f, 1f)
 		super.render(graphics, mouseX, mouseY, pticks)
-		PageUtils.renderBlock(graphics, state, null, GuiBook.PAGE_WIDTH / 2, 25, 25f, pticks)
+		PageUtils.renderBlock(graphics, state, null, GuiBook.PAGE_WIDTH / 2, 20, 20f, pticks)
 	}
 
-	override fun getTextHeight() = 55
+	override fun getTextHeight() = 45
 }
