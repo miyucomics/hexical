@@ -2,11 +2,12 @@ package miyucomics.hexical.mixin;
 
 import miyucomics.hexical.HexicalMain;
 import miyucomics.hexical.feature.charming.CharmUtilities;
-import miyucomics.hexical.feature.periwinkle.WooleyedEffect;
+import miyucomics.hexical.init.HexicalItems;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.InGameHud;
 import net.minecraft.client.network.ClientPlayerEntity;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
@@ -49,9 +50,7 @@ public abstract class InGameHudMixin {
 	@Inject(method = "drawHeart", at = @At("HEAD"), cancellable = true)
 	private void amethystHearts(DrawContext context, InGameHud.HeartType type, int x, int y, int v, boolean blinking, boolean halfHeart, CallbackInfo ci) {
 		ClientPlayerEntity player = MinecraftClient.getInstance().player;
-		if (player == null)
-			return;
-		if (!player.hasStatusEffect(WooleyedEffect.INSTANCE))
+		if (player == null || !player.getEquippedStack(EquipmentSlot.HEAD).isOf(HexicalItems.LEI))
 			return;
 		if (type == InGameHud.HeartType.NORMAL) {
 			context.drawTexture(HEXICAL_UI, x, y, halfHeart ? 9 : 0, v, 9, 9);

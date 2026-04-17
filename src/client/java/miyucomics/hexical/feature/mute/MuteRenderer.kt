@@ -38,5 +38,5 @@ object MuteRenderer {
 		matrices.pop()
 	}
 
-	private val ICON: Identifier = HexicalMain.id("textures/mob_effect/muted.png")
+	private val ICON: Identifier = HexicalMain.id("textures/misc/muted.png")
 }

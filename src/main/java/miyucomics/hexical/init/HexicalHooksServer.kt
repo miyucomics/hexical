@@ -7,8 +7,6 @@ import miyucomics.hexical.feature.dyeing.entity.DyeingEntityRegistry
 import miyucomics.hexical.feature.flora.ConjureFloraHook
 import miyucomics.hexical.feature.lesser_sentinel.ServerLesserSentinelPusher
 import miyucomics.hexical.feature.media_log.ServerSpyingHooks
-import miyucomics.hexical.feature.periwinkle.LeiEnchantmentsHook
-import miyucomics.hexical.feature.periwinkle.WooleyedEffectRegister
 import miyucomics.hexical.feature.player_state.RespawnPersistHook
 import miyucomics.hexical.feature.prestidigitation.PrestidigitationHandlers
 import miyucomics.hexical.feature.redstone_pin.RedstonePinManager
@@ -34,13 +32,11 @@ object HexicalHooksServer {
 		register(SentinelBedAmbitHook)
 		register(PrestidigitationHandlers)
 		register(TransmutingHelper)
-		register(WooleyedEffectRegister)
 		register(SentinelBedPoi)
 		register(BlockRotationHandlers)
 		register(DyeingUtils)
 		register(DyeingEntityRegistry)
 		register(ConjureFloraHook)
-		register(LeiEnchantmentsHook)
 		register(RedstonePinManager)
 		register(BabelbugListener)
 

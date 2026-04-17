@@ -60,9 +60,6 @@
 - added rotation spells for blocks and entities
 - added periwinkle, a flower that can only be created via Hexcasting
   - obtained by casting a spell on sniffer
-  - it is the core ingredient of the Wooleyed potion
-    - added Wooleyed status effect
-      - acts as a coping saw
   - it can be used to craft a lei
     - lei gives a small little grid size boost but mostly just looks adorable
     - you can right-click other players to put the lei on them

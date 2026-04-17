@@ -61,8 +61,8 @@ abstract class AbstractDyeingPage<T> : PageWithText() {
 
 	override fun render(graphics: DrawContext, mouseX: Int, mouseY: Int, pticks: Float) {
 		super.render(graphics, mouseX, mouseY, pticks)
-		for (pair in this.renders)
-			renderCustom(graphics, pair.first, pair.second.x + GuiBook.PAGE_WIDTH / 2, pair.second.y - minY + 5, mouseX, mouseY, pticks)
+		for ((thing, pos) in this.renders)
+			renderCustom(graphics, thing, pos.x + GuiBook.PAGE_WIDTH / 2, pos.y - minY + 5, mouseX, mouseY, pticks)
 	}
 
 	override fun getTextHeight() = this.maxY - this.minY + 20
