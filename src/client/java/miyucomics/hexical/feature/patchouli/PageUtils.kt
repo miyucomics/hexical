@@ -27,7 +27,6 @@ object PageUtils {
 			dispatcher.render(entity, tickDelta, matrices, consumers)
 
 		consumers.draw()
-
 		matrices.pop()
 	}
 }

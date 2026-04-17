@@ -7,7 +7,6 @@ import net.minecraft.world.World
 import org.joml.Vector2i
 import vazkii.patchouli.client.book.BookContentsBuilder
 import vazkii.patchouli.client.book.BookEntry
-import vazkii.patchouli.client.book.gui.GuiBook
 import vazkii.patchouli.client.book.page.abstr.PageWithText
 import kotlin.math.cos
 import kotlin.math.max
@@ -46,24 +45,35 @@ abstract class AbstractDyeingPage<T> : PageWithText() {
 		maxY = 0
 		renders.clear()
 
-		val validOptions = listOfNotNull(uncolored, white, orange, magenta, lightBlue, yellow, lime, pink, gray, lightGray, cyan, purple, blue, brown, green, red, black).map(::parseProvided)
-		val numberOfOptions = validOptions.size
-		val radius = max(10f, numberOfOptions * 18 / MathHelper.TAU)
-		validOptions.forEachIndexed { index, thing ->
-			val angle = index.toDouble() * MathHelper.TAU / numberOfOptions
-			val x = (cos(angle) * radius).toInt()
+		//val validOptions = listOfNotNull(uncolored, white, orange, magenta, lightBlue, yellow, lime, pink, gray, lightGray, cyan, purple, blue, brown, green, red, black).map(::parseProvided)
+		val hues = listOfNotNull(red, orange, brown, yellow, lime, green, cyan, lightBlue, blue, purple, magenta, pink).map(::parseProvided)
+		val numberOfHues = hues.size
+		val radius = max(10f, numberOfHues * 18 / MathHelper.TAU)
+		hues.forEachIndexed { index, thing ->
+			val angle = index.toDouble() * MathHelper.TAU / numberOfHues
+			val x = (cos(angle) * radius).toInt() + 68
 			val y = (sin(angle) * radius).toInt()
 			renders.add(thing to Vector2i(x, y))
 			minY = min(minY, y)
 			maxY = max(maxY, y)
+		}
+
+		if (uncolored != null)
+			renders.add(parseProvided(uncolored!!) to Vector2i(68, (maxY + minY) / 2))
+
+		val shades = listOfNotNull(black, gray, lightGray, white).map(::parseProvided)
+		val numberOfShades = shades.size
+		shades.forEachIndexed { index, thing ->
+			val y = (index.toFloat() / (numberOfShades - 1)) * (maxY - minY) + minY
+			renders.add(thing to Vector2i(13, y.toInt()))
 		}
 	}
 
 	override fun render(graphics: DrawContext, mouseX: Int, mouseY: Int, pticks: Float) {
 		super.render(graphics, mouseX, mouseY, pticks)
 		for ((thing, pos) in this.renders)
-			renderCustom(graphics, thing, pos.x + GuiBook.PAGE_WIDTH / 2, pos.y - minY + 5, mouseX, mouseY, pticks)
+			renderCustom(graphics, thing, pos.x, pos.y - minY + 5, mouseX, mouseY, pticks)
 	}
 
-	override fun getTextHeight() = this.maxY - this.minY + 20
+	override fun getTextHeight() = this.maxY - this.minY + 18
 }
