@@ -7,6 +7,7 @@ import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.casting.math.HexDir
 import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.misc.MediaConstants
+import at.petrak.hexcasting.api.utils.getLong
 import at.petrak.hexcasting.api.utils.vecFromNBT
 import at.petrak.hexcasting.common.lib.hex.HexActions
 import at.petrak.hexcasting.common.lib.hex.HexArithmetics
@@ -40,7 +41,10 @@ import miyucomics.hexical.feature.dyeing.actions.OpTranslateDye
 import miyucomics.hexical.feature.evocation.OpGetEvocation
 import miyucomics.hexical.feature.evocation.OpSetEvocation
 import miyucomics.hexical.feature.flora.OpConjureFlora
-import miyucomics.hexical.feature.genie_lamp.*
+import miyucomics.hexical.feature.genie_lamp.OpGetFinale
+import miyucomics.hexical.feature.genie_lamp.OpGetLampData
+import miyucomics.hexical.feature.genie_lamp.OpSetLampStorage
+import miyucomics.hexical.feature.genie_lamp.OpWish
 import miyucomics.hexical.feature.grimoire.OpGrimoireErase
 import miyucomics.hexical.feature.grimoire.OpGrimoireIndex
 import miyucomics.hexical.feature.grimoire.OpGrimoireWrite
@@ -120,7 +124,7 @@ object HexicalActions {
 		register("get_lamp_rotation", "qaqwddedadw", HexDir.NORTH_EAST, OpGetLampData { _, nbt -> vecFromNBT(nbt.getCompound("rotation")).asActionResult })
 		register("get_lamp_velocity", "qaqwddedqew", HexDir.NORTH_EAST, OpGetLampData { _, nbt -> vecFromNBT(nbt.getCompound("velocity")).asActionResult })
 		register("get_lamp_use_time", "qaqwddedqwddwa", HexDir.NORTH_EAST, OpGetLampData { env, nbt -> (env.world.time - (nbt.getDouble("start_time") + 1.0)).asActionResult })
-		register("get_lamp_media", "qaqwddedaeeeee", HexDir.NORTH_EAST, OpGetLampData { env, _ -> ((env.castingEntity!!.activeItem.item as HandLampItem).getMedia(env.castingEntity!!.activeItem).toDouble() / MediaConstants.DUST_UNIT).asActionResult })
+		register("get_lamp_media", "qaqwddedaeeeee", HexDir.NORTH_EAST, OpGetLampData { env, _ -> (env.stack.getLong("media") / MediaConstants.DUST_UNIT).asActionResult })
 		register("get_lamp_storage", "qaqwddedqwaqqqqq", HexDir.NORTH_EAST, OpGetLampData { env, nbt -> listOf(IotaType.deserialize(nbt.getCompound("storage"), env.world)) })
 		register("set_lamp_storage", "qaqwddedqedeeeee", HexDir.NORTH_EAST, OpSetLampStorage)
 		register("lamp_finale", "aaddaddad", HexDir.EAST, OpGetFinale)

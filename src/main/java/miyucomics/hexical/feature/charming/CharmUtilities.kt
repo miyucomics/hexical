@@ -15,12 +15,10 @@ object CharmUtilities {
 	@JvmStatic
 	fun getUseableCharmedItems(player: PlayerEntity): List<Pair<Hand, ItemStack>> {
 		val options = mutableListOf<Pair<Hand, ItemStack>>()
-		if (isStackCharmed(player.getStackInHand(Hand.MAIN_HAND))) options.add(Pair(
-			Hand.MAIN_HAND, player.getStackInHand(
-				Hand.MAIN_HAND)))
-		if (isStackCharmed(player.getStackInHand(Hand.OFF_HAND))) options.add(Pair(
-			Hand.OFF_HAND, player.getStackInHand(
-				Hand.OFF_HAND)))
+		if (isStackCharmed(player.getStackInHand(Hand.MAIN_HAND)))
+			options.add(Pair(Hand.MAIN_HAND, player.getStackInHand(Hand.MAIN_HAND)))
+		if (isStackCharmed(player.getStackInHand(Hand.OFF_HAND)))
+			options.add(Pair(Hand.OFF_HAND, player.getStackInHand(Hand.OFF_HAND)))
 		return options
 	}
 

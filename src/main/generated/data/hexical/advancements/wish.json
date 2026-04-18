@@ -1,15 +1,15 @@
 {
   "parent": "hexical:acquire_hand_lamp",
   "criteria": {
-    "educate_lamp": {
+    "wish": {
       "conditions": {},
-      "trigger": "hexical:educate_genie"
+      "trigger": "hexical:wish"
     }
   },
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "advancements.hexical.educate_lamp.description"
+      "translate": "advancements.hexical.wish.description"
     },
     "frame": "task",
     "hidden": false,
@@ -18,12 +18,12 @@
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.hexical.educate_lamp.title"
+      "translate": "advancements.hexical.wish.title"
     }
   },
   "requirements": [
     [
-      "educate_lamp"
+      "wish"
     ]
   ],
   "sends_telemetry_event": true

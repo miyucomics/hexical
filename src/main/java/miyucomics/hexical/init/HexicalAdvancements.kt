@@ -15,8 +15,8 @@ import net.minecraft.util.Identifier
 object HexicalAdvancements {
 	val AR: SpecklikeCriterion = Criteria.register(SpecklikeCriterion())
 	val CONJURE_CAKE: ConjureCakeCriterion = Criteria.register(ConjureCakeCriterion())
-	val EDUCATE_GENIE: EducateGenieCriterion = Criteria.register(EducateGenieCriterion())
 	val HEXTITO_QUINE: HextitoQuineCriterion = Criteria.register(HextitoQuineCriterion())
+	val WISH: WishCriterion = Criteria.register(WishCriterion())
 
 	val EVOCATION_STATISTIC: Identifier = HexicalMain.id("evocation")
 
@@ -38,11 +38,6 @@ class ConjureCakeCriterion : BaseCriterion<ConjureCakeCriterion.Condition>(Hexic
 	class Condition : BaseCondition(HexicalMain.id("conjure_cake"))
 }
 
-class EducateGenieCriterion : BaseCriterion<EducateGenieCriterion.Condition>(HexicalMain.id("educate_genie")) {
-	override fun createCondition() = Condition()
-	class Condition : BaseCondition(HexicalMain.id("educate_genie"))
-}
-
 class HextitoQuineCriterion : BaseCriterion<HextitoQuineCriterion.Condition>(HexicalMain.id("hextito_quine")) {
 	override fun createCondition() = Condition()
 	class Condition : BaseCondition(HexicalMain.id("hextito_quine"))
@@ -51,4 +46,9 @@ class HextitoQuineCriterion : BaseCriterion<HextitoQuineCriterion.Condition>(Hex
 class SpecklikeCriterion : BaseCriterion<SpecklikeCriterion.Condition>(HexicalMain.id("specklike")) {
 	override fun createCondition() = Condition()
 	class Condition : BaseCondition(HexicalMain.id("specklike"))
+}
+
+class WishCriterion : BaseCriterion<WishCriterion.Condition>(HexicalMain.id("wish")) {
+	override fun createCondition() = Condition()
+	class Condition : BaseCondition(HexicalMain.id("wish"))
 }

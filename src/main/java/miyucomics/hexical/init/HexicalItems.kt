@@ -1,9 +1,7 @@
 package miyucomics.hexical.init
 
-import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.common.items.ItemStaff
-import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexical.HexicalMain
 import miyucomics.hexical.feature.babelbug.BabelbugItem
 import miyucomics.hexical.feature.confection.HexburstItem
@@ -78,8 +76,8 @@ object HexicalItems {
 		.icon { ItemStack(CURIO_COMPASS) }
 		.displayName(Text.translatable("itemGroup.hexical.general"))
 		.entries { _, entries ->
-			entries.add(ItemStack(HAND_LAMP_ITEM).also { IXplatAbstractions.INSTANCE.findHexHolder(it)!!.writeHex(listOf(), null, 32000 * MediaConstants.DUST_UNIT) })
-			entries.add(ItemStack(ARCH_LAMP_ITEM).also { IXplatAbstractions.INSTANCE.findHexHolder(it)!!.writeHex(listOf(), null, 32000 * MediaConstants.DUST_UNIT) })
+			entries.add(ItemStack(HAND_LAMP_ITEM))
+			entries.add(ItemStack(ARCH_LAMP_ITEM))
 
 			entries.add(ItemStack(HEX_GUMMY))
 

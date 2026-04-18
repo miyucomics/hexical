@@ -57,7 +57,7 @@ class HexicalAdvancementGenerator(generator: FabricDataOutput) : FabricAdvanceme
 		registerAdvancement("specklike", Items.BEACON, SpecklikeCriterion.Condition())
 
 		registerAdvancement("acquire_hand_lamp", HexicalItems.HAND_LAMP_ITEM, InventoryChangedCriterion.Conditions.items(HexicalItems.HAND_LAMP_ITEM)).also {
-			registerAdvancement("educate_lamp", Items.ENCHANTED_BOOK, EducateGenieCriterion.Condition(), parent = it)
+			registerAdvancement("wish", Items.ENCHANTED_BOOK, WishCriterion.Condition(), parent = it)
 			registerAdvancement("acquire_arch_lamp", HexicalItems.ARCH_LAMP_ITEM, InventoryChangedCriterion.Conditions.items(HexicalItems.ARCH_LAMP_ITEM), frame = AdvancementFrame.GOAL, parent = it)
 		}
 
