@@ -99,6 +99,7 @@ import miyucomics.hexical.feature.toasting.OpToast
 import miyucomics.hexical.feature.wristpocket.OpGetWristpocket
 import miyucomics.hexical.feature.wristpocket.OpSleight
 import miyucomics.hexical.feature.wristpocket.OpWristpocket
+import miyucomics.hexical.feature.zap.OpZap
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.projectile.FireballEntity
 import net.minecraft.entity.projectile.LlamaSpitEntity
@@ -203,9 +204,10 @@ object HexicalActions {
 
 		register("conjure_flora", "weqqqqqwaeaeaeaeaea", HexDir.NORTH_EAST, OpConjureFlora)
 
+		register("sparkle", "dqa", HexDir.NORTH_EAST, OpSparkle)
+		register("zap", "aedwaqd", HexDir.SOUTH_WEST, OpZap)
 		register("confetti", "awddeqaedd", HexDir.EAST, OpConfetti)
 		register("vibration", "wwawawwd", HexDir.EAST, OpVibrate)
-		register("sparkle", "dqa", HexDir.NORTH_EAST, OpSparkle)
 		register("jailbreak", "wwaqqqqqeqdedwqeaeqwdedwqeaeq", HexDir.EAST, OpJailbreakDevice)
 		register("light", "aeaeaeaeaeawqqqqq", HexDir.SOUTH_EAST, OpConjureLight)
 		register("gasp", "aweeeeewaweeeee", HexDir.NORTH_WEST, OpGasp)
