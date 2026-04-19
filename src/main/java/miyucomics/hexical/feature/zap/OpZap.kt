@@ -10,18 +10,19 @@ import net.minecraft.util.math.Vec3d
 import org.joml.Vector3f
 
 object OpZap : SpellAction {
-	override val argc = 2
+	override val argc = 3
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val a = args.getVec3(0, argc)
 		env.assertVecInRange(a)
 		val b = args.getVec3(1, argc)
 		env.assertVecInRange(b)
-		return SpellAction.Result(Spell(a, b.subtract(a)), MediaConstants.DUST_UNIT / 100, listOf())
+		val color = args.getVec3(2, argc)
+		return SpellAction.Result(Spell(a, b.subtract(a), color), MediaConstants.DUST_UNIT / 100, listOf())
 	}
 
-	private data class Spell(val position: Vec3d, val offset: Vec3d) : RenderedSpell {
+	private data class Spell(val position: Vec3d, val offset: Vec3d, val color: Vec3d) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			env.world.spawnParticles(ZapParticleEffect(Vector3f(offset.x.toFloat(), offset.y.toFloat(), offset.z.toFloat())), position.x, position.y, position.z, 1, 0.0, 0.0, 0.0, 0.0)
+			env.world.spawnParticles(ZapParticleEffect(Vector3f(offset.x.toFloat(), offset.y.toFloat(), offset.z.toFloat()), Vector3f(color.x.toFloat(), color.y.toFloat(), color.z.toFloat())), position.x, position.y, position.z, 1, 0.0, 0.0, 0.0, 0.0)
 		}
 	}
 }

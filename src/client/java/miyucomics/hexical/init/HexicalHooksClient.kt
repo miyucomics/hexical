@@ -18,6 +18,7 @@ import miyucomics.hexical.feature.player_animation.PlayerAnimatorHook
 import miyucomics.hexical.feature.shader.ClientShaderReceiver
 import miyucomics.hexical.feature.telepathy.ClientPeripheralPusher
 import miyucomics.hexical.feature.toasting.ToastReceiver
+import miyucomics.hexical.feature.zap.ZapShaderHook
 import miyucomics.hexical.misc.InitHook
 
 object HexicalHooksClient {
@@ -43,6 +44,7 @@ object HexicalHooksClient {
 		register(HandbellCurioItemModel)
 		register(PlayerAnimatorHook)
 		register(ToastReceiver)
+		register(ZapShaderHook)
 
 		for (hook in hooks)
 			hook.init()
