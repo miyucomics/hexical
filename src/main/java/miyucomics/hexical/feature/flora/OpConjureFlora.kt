@@ -8,12 +8,11 @@ import at.petrak.hexcasting.api.casting.getBlockPos
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadBlock
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
-import miyucomics.hexpose.iotas.getIdentifier
+import miyucomics.hexpose.iotas.getBlockType
 import net.minecraft.block.Block
 import net.minecraft.block.BlockState
 import net.minecraft.block.FlowerPotBlock
 import net.minecraft.block.TallPlantBlock
-import net.minecraft.registry.Registries
 import net.minecraft.registry.tag.BlockTags
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
@@ -25,11 +24,7 @@ object OpConjureFlora : SpellAction {
 		val position = args.getBlockPos(0, argc)
 		env.assertPosInRange(position)
 
-		val id = args.getIdentifier(1, argc)
-		if (!Registries.BLOCK.containsId(id))
-			throw MishapInvalidIota.of(args[1], 0, "conjurable_flora_id")
-
-		val recipe = ConjureFloraHook.getRecipe(env.world, Registries.BLOCK.get(id)) ?: throw MishapInvalidIota.of(args[1], 0, "conjurable_flora_id")
+		val recipe = ConjureFloraHook.getRecipe(env.world, args.getBlockType(1, argc)) ?: throw MishapInvalidIota.of(args[1], 0, "conjurable_flora_id")
 
 		if (env.world.getBlockState(position).isIn(BlockTags.FLOWER_POTS) && FlowerPotBlock.CONTENT_TO_POTTED.contains(recipe.state.block))
 			return SpellAction.Result(PotPlant(position, recipe.state), recipe.cost, listOf(ParticleSpray.cloud(Vec3d.ofCenter(position), 1.0)))

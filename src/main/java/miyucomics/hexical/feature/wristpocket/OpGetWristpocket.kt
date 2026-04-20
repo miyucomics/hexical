@@ -3,7 +3,7 @@ package miyucomics.hexical.feature.wristpocket
 import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.iota.Iota
-import miyucomics.hexpose.iotas.asActionResult
+import ram.talia.moreiotas.api.asActionResult
 
 object OpGetWristpocket : ConstMediaAction {
 	override val argc = 0

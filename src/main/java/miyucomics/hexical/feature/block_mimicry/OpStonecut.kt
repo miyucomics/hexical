@@ -6,15 +6,13 @@ import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.getItemEntity
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadItem
-import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.misc.MediaConstants
-import miyucomics.hexpose.iotas.getIdentifier
+import miyucomics.hexpose.iotas.getItemType
 import net.minecraft.entity.ItemEntity
 import net.minecraft.inventory.SimpleInventory
 import net.minecraft.recipe.RecipeType
 import net.minecraft.recipe.StonecuttingRecipe
 import net.minecraft.registry.DynamicRegistryManager
-import net.minecraft.registry.Registries
 
 object OpStonecut : SpellAction {
 	override val argc = 2
@@ -22,11 +20,7 @@ object OpStonecut : SpellAction {
 		val item = args.getItemEntity(0, argc)
 		env.assertEntityInRange(item)
 
-		val id = args.getIdentifier(1, argc)
-		if (!Registries.ITEM.containsId(id))
-			throw MishapInvalidIota.of(args[1], 0, "item_id")
-		val type = Registries.ITEM.get(id)
-
+		val type = args.getItemType(1, argc)
 		val recipe = env.world.recipeManager
 			.getAllMatches(RecipeType.STONECUTTING, SimpleInventory(item.stack), env.world)
 			.firstOrNull { it.getOutput(DynamicRegistryManager.EMPTY).isOf(type) }

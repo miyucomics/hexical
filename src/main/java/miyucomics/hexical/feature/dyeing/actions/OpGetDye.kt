@@ -8,8 +8,7 @@ import at.petrak.hexcasting.api.casting.iota.*
 import miyucomics.hexical.feature.dyeing.DyeIota
 import miyucomics.hexical.feature.dyeing.DyeOption
 import miyucomics.hexical.feature.dyeing.DyeingUtils
-import miyucomics.hexpose.iotas.IdentifierIota
-import miyucomics.hexpose.iotas.getIdentifier
+import miyucomics.hexpose.iotas.getItemType
 import net.minecraft.block.Block
 import net.minecraft.block.SignBlock
 import net.minecraft.block.entity.SignBlockEntity
@@ -20,9 +19,9 @@ import net.minecraft.entity.passive.CatEntity
 import net.minecraft.entity.passive.SheepEntity
 import net.minecraft.entity.passive.WolfEntity
 import net.minecraft.item.BlockItem
-import net.minecraft.registry.Registries
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.util.math.BlockPos
+import ram.talia.moreiotas.api.casting.iota.ItemTypeIota
 
 object OpGetDye : ConstMediaAction {
 	override val argc = 1
@@ -33,8 +32,8 @@ object OpGetDye : ConstMediaAction {
 				env.assertEntityInRange(entity)
 				processEntity(entity)
 			}
-			is IdentifierIota -> {
-				when (val item = Registries.ITEM.get(args.getIdentifier(0, argc))) {
+			is ItemTypeIota -> {
+				when (val item = args.getItemType(0, argc)) {
 					is BlockItem -> getDyeFromBlock(item.block)
 					else -> {
 						if (DyeingUtils.getDye(item) != null)
