@@ -36,6 +36,7 @@ repositories {
     maven { url = "https://maven.ladysnake.org/releases" }
     maven { url = "https://mvn.devos.one/snapshots/" }
 	maven { url = "https://maven.hexxy.media" }
+	mavenLocal()
 }
 
 dependencies {
