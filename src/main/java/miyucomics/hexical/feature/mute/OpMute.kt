@@ -14,7 +14,7 @@ object OpMute : SpellAction {
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val target = args.getEntity(0, argc)
 		env.assertEntityInRange(target)
-		val component = target.getComponent(HexicalCardinalComponents.MUTED_COMPONENT)
+		val component = HexicalCardinalComponents.MUTED_COMPONENT.get(target)
 		return SpellAction.Result(Spell(component), if (component.muted) 0L else MediaConstants.CRYSTAL_UNIT, listOf(ParticleSpray.cloud(target.pos, 1.0)))
 	}
 
