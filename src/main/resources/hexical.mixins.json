@@ -11,6 +11,7 @@
 		"CircleCastEnvMixin",
 		"DispenserBlockInvoker",
 		"EntityMixin",
+		"IotaMixin",
 		"ItemEntityMixin",
 		"LivingEntityMixin",
 		"MediaHelperMixin",

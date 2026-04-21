@@ -63,19 +63,25 @@ open class DriverDotItem(val hasKey: Boolean) : Item(Settings().maxCount(1).rari
 			}
 		)
 
-		private fun constructCastResult(vm: CastingVM, continuation: SpellContinuation, iota: PatternIota, program: List<Iota>, newStack: List<Iota>? = null): CastResult {
-			return CastResult(
-				iota,
-				continuation.pushFrame(FrameEvaluate(SpellList.LList(program), false)),
-				if (newStack != null) vm.image.copy(stack = newStack) else vm.image,
-				listOf(),
-				ResolvedPatternType.EVALUATED,
-				HexEvalSounds.NOTHING
-			)
+		private fun constructCastResult(vm: CastingVM, continuation: SpellContinuation, iota: Iota, program: List<Iota>, newStack: List<Iota>? = null) = CastResult(
+			iota,
+			continuation.pushFrame(FrameEvaluate(SpellList.LList(program), false)),
+			if (newStack != null) vm.image.copy(stack = newStack) else vm.image,
+			listOf(),
+			ResolvedPatternType.EVALUATED,
+			HexEvalSounds.NOTHING
+		)
+
+		@JvmStatic
+		fun applyNonexecutableSubstituion(vm: CastingVM, iota: Iota, continuation: SpellContinuation): CastResult? {
+			if (vm.env !is PlayerBasedCastEnv)
+				return null
+			val program = (vm.env.castingEntity as ServerPlayerEntity).itemCache().netheriteDriverDotProgram ?: return null
+			return constructCastResult(vm, continuation, iota, program, vm.image.stack.plus(iota))
 		}
 
 		@JvmStatic
-		fun applySubstitution(vm: CastingVM, iota: PatternIota, continuation: SpellContinuation): CastResult? {
+		fun applyPatternSubstitution(vm: CastingVM, iota: PatternIota, continuation: SpellContinuation): CastResult? {
 			if (vm.env !is PlayerBasedCastEnv)
 				return null
 
