@@ -1,10 +1,11 @@
-package miyucomics.hexical.feature.dyeing.entity
+package miyucomics.hexical.feature.dyeing
 
-import miyucomics.hexical.feature.dyeing.DyeOption
 import net.minecraft.entity.Entity
 
 abstract class DyeEntityHandler<T>(private val handledClass: Class<T>) {
 	fun canAffectEntity(entity: Entity, dye: DyeOption): Boolean = handledClass.isInstance(entity) && extraConditions(entity as T, dye)
+
+	open fun getColor(entity: T): DyeOption? = null
 	open fun extraConditions(entity: T, dye: DyeOption) = true
 	abstract fun affect(entity: T, dye: DyeOption)
 

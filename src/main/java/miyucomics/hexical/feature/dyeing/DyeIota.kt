@@ -22,7 +22,7 @@ class DyeIota(dye: DyeOption) : Iota(TYPE, dye) {
 		val TYPE: IotaType<DyeIota> = object : IotaType<DyeIota>() {
 			override fun color() = -1
 			override fun deserialize(tag: NbtElement, world: ServerWorld) = DyeIota(enumEntries<DyeOption>()[tag.asInt])
-			override fun display(tag: NbtElement): Text = enumEntries<DyeOption>()[tag.asInt].coloredText
+			override fun display(tag: NbtElement): Text = enumEntries<DyeOption>()[tag.asInt].text
 		}
 	}
 }
@@ -37,6 +37,6 @@ fun List<Iota>.getDye(idx: Int, argc: Int = 0): DyeOption {
 fun List<Iota>.getColoredDye(idx: Int, argc: Int = 0): DyeColor {
 	val dye = getDye(idx, argc)
 	if (dye != DyeOption.UNCOLORED)
-		return dye.dyeColor!!
+		return dye.dye!!
 	throw MishapInvalidIota.of(this[idx], if (argc == 0) idx else argc - (idx + 1), "colored_dye")
 }

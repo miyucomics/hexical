@@ -1,9 +1,7 @@
-package miyucomics.hexical.feature.dyeing.entity
+package miyucomics.hexical.feature.dyeing
 
 import at.petrak.hexcasting.api.pigment.FrozenPigment
 import at.petrak.hexcasting.common.lib.HexItems
-import miyucomics.hexical.feature.dyeing.DyeOption
-import miyucomics.hexical.feature.dyeing.DyeingUtils
 import miyucomics.hexical.feature.specklike.FigureSpecklike
 import miyucomics.hexical.misc.InitHook
 import net.minecraft.entity.Entity
@@ -43,27 +41,31 @@ object DyeingEntityRegistry : InitHook() {
 		})
 
 		register(object : DyeEntityHandler<CatEntity>(CatEntity::class.java) {
+			override fun getColor(entity: CatEntity) = DyeOption.fromDyeColor(entity.collarColor)
 			override fun extraConditions(entity: CatEntity, dye: DyeOption): Boolean = dye != DyeOption.UNCOLORED
-			override fun affect(entity: CatEntity, dye: DyeOption) { entity.collarColor = dye.dyeColor!! }
+			override fun affect(entity: CatEntity, dye: DyeOption) { entity.collarColor = dye.dye!! }
 		})
 
 		register(object : DyeEntityHandler<WolfEntity>(WolfEntity::class.java) {
+			override fun getColor(entity: WolfEntity) = DyeOption.fromDyeColor(entity.collarColor)
 			override fun extraConditions(entity: WolfEntity, dye: DyeOption): Boolean = dye != DyeOption.UNCOLORED
-			override fun affect(entity: WolfEntity, dye: DyeOption) { entity.collarColor = dye.dyeColor!! }
+			override fun affect(entity: WolfEntity, dye: DyeOption) { entity.collarColor = dye.dye!! }
 		})
 
 		register(object : DyeEntityHandler<SheepEntity>(SheepEntity::class.java) {
+			override fun getColor(entity: SheepEntity) = DyeOption.fromDyeColor(entity.color)
 			override fun extraConditions(entity: SheepEntity, dye: DyeOption): Boolean = dye != DyeOption.UNCOLORED
-			override fun affect(entity: SheepEntity, dye: DyeOption) { entity.color = dye.dyeColor!! }
+			override fun affect(entity: SheepEntity, dye: DyeOption) { entity.color = dye.dye!! }
 		})
 
 		register(object : DyeEntityHandler<FigureSpecklike>(FigureSpecklike::class.java) {
 			override fun extraConditions(entity: FigureSpecklike, dye: DyeOption): Boolean = dye != DyeOption.UNCOLORED
-			override fun affect(entity: FigureSpecklike, dye: DyeOption) { entity.setPigment(FrozenPigment(ItemStack(HexItems.DYE_PIGMENTS[dye.dyeColor]!!), UUID.randomUUID())) }
+			override fun affect(entity: FigureSpecklike, dye: DyeOption) { entity.setPigment(FrozenPigment(ItemStack(HexItems.DYE_PIGMENTS[dye.dye]!!), UUID.randomUUID())) }
 		})
 
 		register(object : DyeEntityHandler<ShulkerEntity>(ShulkerEntity::class.java) {
-			override fun affect(entity: ShulkerEntity, dye: DyeOption) { entity.variant = dye.dyeColor?.let { Optional.of(it) } ?: Optional.empty() }
+			override fun getColor(entity: ShulkerEntity) = DyeOption.fromDyeColor(entity.variant.orElse(null))
+			override fun affect(entity: ShulkerEntity, dye: DyeOption) { entity.variant = dye.dye?.let { Optional.of(it) } ?: Optional.empty() }
 		})
 	}
 

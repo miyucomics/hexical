@@ -2,8 +2,8 @@ package miyucomics.hexical.init
 
 import miyucomics.hexical.feature.babelbug.BabelbugListener
 import miyucomics.hexical.feature.charming.ServerCharmedUseReceiver
+import miyucomics.hexical.feature.dyeing.DyeingEntityRegistry
 import miyucomics.hexical.feature.dyeing.DyeingUtils
-import miyucomics.hexical.feature.dyeing.entity.DyeingEntityRegistry
 import miyucomics.hexical.feature.flora.ConjureFloraHook
 import miyucomics.hexical.feature.lesser_sentinel.ServerLesserSentinelPusher
 import miyucomics.hexical.feature.player_state.RespawnPersistHook

@@ -11,12 +11,7 @@ import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.Vec3Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.misc.MediaConstants
-import miyucomics.hexical.feature.dyeing.DyeOption
-import miyucomics.hexical.feature.dyeing.DyeableMishap
-import miyucomics.hexical.feature.dyeing.DyeingUtils
-import miyucomics.hexical.feature.dyeing.entity.DyeEntityHandler
-import miyucomics.hexical.feature.dyeing.entity.DyeingEntityRegistry
-import miyucomics.hexical.feature.dyeing.getDye
+import miyucomics.hexical.feature.dyeing.*
 import net.minecraft.block.Block
 import net.minecraft.block.BlockState
 import net.minecraft.entity.Entity
@@ -26,7 +21,6 @@ import net.minecraft.util.math.Vec3d
 
 object OpDye : SpellAction {
 	override val argc = 2
-	private const val COST = MediaConstants.DUST_UNIT / 8
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val dye = args.getDye(1, argc)
 		when (args[0]) {
@@ -34,14 +28,14 @@ object OpDye : SpellAction {
 				val entity = args.getEntity(0, argc)
 				env.assertEntityInRange(entity)
 				val handler = DyeingEntityRegistry.resolve(entity, dye) ?: throw DyeableMishap(entity.pos)
-				return SpellAction.Result(EntitySpell(entity, dye, handler), COST, listOf(ParticleSpray.cloud(entity.pos, 1.0)))
+				return SpellAction.Result(EntitySpell(entity, dye, handler), MediaConstants.DUST_UNIT / 8, listOf(ParticleSpray.cloud(entity.pos, 1.0)))
 			}
 			is Vec3Iota -> {
 				val position = args.getBlockPos(0, argc)
 				env.assertPosInRange(position)
 				val state = env.world.getBlockState(position)
 				val result = DyeingUtils.getResult(state.block, dye) ?: throw DyeableMishap(position.toCenterPos())
-				return SpellAction.Result(BlockSpell(position, state, result), COST, listOf(ParticleSpray.cloud(Vec3d.ofCenter(position), 1.0)))
+				return SpellAction.Result(BlockSpell(position, state, result), MediaConstants.DUST_UNIT / 8, listOf(ParticleSpray.cloud(Vec3d.ofCenter(position), 1.0)))
 			}
 			else -> throw MishapInvalidIota.of(args[0], 1, "entity_or_vector")
 		}
