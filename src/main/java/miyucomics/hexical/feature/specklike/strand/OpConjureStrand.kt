@@ -29,8 +29,8 @@ object OpConjureStrand : SpellAction {
 			val strand = StrandEntity(env.world)
 			strand.setPosition(position)
 			strand.setPigment(env.pigment)
-			env.world.spawnEntity(strand)
 
+			env.world.spawnEntity(strand)
 			return image.copy(stack = image.stack.toList().plus(EntityIota(strand)))
 		}
 	}

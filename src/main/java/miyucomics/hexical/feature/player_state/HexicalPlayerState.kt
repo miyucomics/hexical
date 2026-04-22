@@ -5,7 +5,6 @@ import miyucomics.hexical.feature.evocation.EvocationTicker
 import miyucomics.hexical.feature.item_cache.PlayerItemCacheField
 import miyucomics.hexical.feature.item_cache.PlayerItemCacheTicker
 import miyucomics.hexical.feature.lesser_sentinel.LesserSentinelField
-import miyucomics.hexical.feature.media_log.MediaLogField
 import miyucomics.hexical.feature.player_state.types.PlayerField
 import miyucomics.hexical.feature.player_state.types.PlayerTicker
 import miyucomics.hexical.feature.telepathy.KeybindField
@@ -27,7 +26,6 @@ class HexicalPlayerState {
 	init {
 		registerField(EvocationField())
 		registerField(KeybindField())
-		registerField(MediaLogField())
 		registerField(LesserSentinelField())
 		registerField(PlayerItemCacheField())
 		registerField(WristpocketField())
@@ -52,8 +50,8 @@ class HexicalPlayerState {
 	}
 
 	fun handleRespawn(new: PlayerEntity, old: PlayerEntity) {
-		for (field in fields)
-			field.value.handleRespawn(new, old)
+		for (field in fields.values)
+			field.handleRespawn(new, old)
 	}
 }
 

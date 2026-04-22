@@ -34,7 +34,6 @@ object OpConjureSpeck : SpellAction {
 			}
 
 			env.world.spawnEntity(speck)
-
 			return image.copy(stack = image.stack.toList().plus(EntityIota(speck)))
 		}
 	}

@@ -82,7 +82,7 @@ import miyucomics.hexical.feature.shader.OpShader
 import miyucomics.hexical.feature.sparkle.OpSparkle
 import miyucomics.hexical.feature.specialized_breaking.OpBreakFortune
 import miyucomics.hexical.feature.specialized_breaking.OpBreakSilk
-import miyucomics.hexical.feature.specklike.actions.*
+import miyucomics.hexical.feature.specklike.general.*
 import miyucomics.hexical.feature.specklike.mesh.OpConjureMesh
 import miyucomics.hexical.feature.specklike.speck.OpConjureSpeck
 import miyucomics.hexical.feature.specklike.strand.OpConjureStrand

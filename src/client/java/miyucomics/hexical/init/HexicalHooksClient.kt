@@ -12,8 +12,6 @@ import miyucomics.hexical.feature.genie_lamp.ArchLampModelProvider
 import miyucomics.hexical.feature.jailbreak.JailbrokenItemTooltip
 import miyucomics.hexical.feature.lesser_sentinel.ClientLesserSentinelReceiver
 import miyucomics.hexical.feature.lesser_sentinel.LesserSentinelRenderer
-import miyucomics.hexical.feature.media_log.ClientMediaLogReceiver
-import miyucomics.hexical.feature.media_log.MediaLogRenderer
 import miyucomics.hexical.feature.player_animation.PlayerAnimatorHook
 import miyucomics.hexical.feature.shader.ClientShaderReceiver
 import miyucomics.hexical.feature.telepathy.ClientPeripheralPusher
@@ -31,8 +29,6 @@ object HexicalHooksClient {
 		register(ClientLesserSentinelReceiver)
 		register(LesserSentinelRenderer)
 		register(ClientPeripheralPusher)
-		register(ClientMediaLogReceiver)
-		register(MediaLogRenderer)
 		register(AutographTooltip)
 		register(CharmedItemTooltip)
 		register(JailbrokenItemTooltip)

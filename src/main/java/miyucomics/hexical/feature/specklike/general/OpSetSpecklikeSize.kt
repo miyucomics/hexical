@@ -1,28 +1,27 @@
-package miyucomics.hexical.feature.specklike.actions
+package miyucomics.hexical.feature.specklike.general
 
 import at.petrak.hexcasting.api.casting.RenderedSpell
 import at.petrak.hexcasting.api.casting.castables.SpellAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.getEntity
+import at.petrak.hexcasting.api.casting.getPositiveDoubleUnderInclusive
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadEntity
-import at.petrak.hexcasting.api.pigment.FrozenPigment
-import miyucomics.hexical.feature.pigment.getPigment
-import miyucomics.hexical.feature.specklike.FigureSpecklike
+import miyucomics.hexical.feature.specklike.BaseSpecklike
 
-object OpSetSpecklikePigment : SpellAction {
+object OpSetSpecklikeSize : SpellAction {
 	override val argc = 2
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
 		val specklike = args.getEntity(0, argc)
-		if (specklike !is FigureSpecklike)
+		if (specklike !is BaseSpecklike)
 			throw MishapBadEntity.of(specklike, "specklike")
-		val pigment = args.getPigment(1, argc)
-		return SpellAction.Result(Spell(specklike, pigment), 0, listOf())
+		val size = args.getPositiveDoubleUnderInclusive(1, 10.0, argc).toFloat()
+		return SpellAction.Result(Spell(specklike, size), 0, listOf())
 	}
 
-	private data class Spell(val specklike: FigureSpecklike, val pigment: FrozenPigment) : RenderedSpell {
+	private data class Spell(val specklike: BaseSpecklike, val size: Float) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			specklike.setPigment(pigment)
+			specklike.setSize(size)
 		}
 	}
 }

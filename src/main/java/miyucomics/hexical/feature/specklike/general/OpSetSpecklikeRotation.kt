@@ -1,4 +1,4 @@
-package miyucomics.hexical.feature.specklike.actions
+package miyucomics.hexical.feature.specklike.general
 
 import at.petrak.hexcasting.api.casting.RenderedSpell
 import at.petrak.hexcasting.api.casting.castables.SpellAction

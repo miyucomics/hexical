@@ -12,7 +12,6 @@ import miyucomics.hexical.feature.genie_lamp.ArchLampItem
 import miyucomics.hexical.feature.genie_lamp.HandLampItem
 import miyucomics.hexical.feature.grimoire.GrimoireItem
 import miyucomics.hexical.feature.media_jar.MediaJarBlock
-import miyucomics.hexical.feature.media_log.MediaLogItem
 import miyucomics.hexical.feature.periwinkle.LeiItem
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup
 import net.minecraft.item.FoodComponent
@@ -53,8 +52,6 @@ object HexicalItems {
 	@JvmField val HEXBURST_ITEM = registerItem("hexburst", HexburstItem)
 	val HEXTITO_ITEM = registerItem("hextito", HextitoItem)
 
-	private val MEDIA_LOG_ITEM = registerItem("media_log", MediaLogItem)
-
 	@JvmField
 	val LEI = registerItem("lei", LeiItem)
 	private val GAUNTLET_STAFF = registerItem("gauntlet_staff", ItemStaff(Settings().maxCount(1)))
@@ -90,7 +87,6 @@ object HexicalItems {
 			entries.add(ItemStack(BABELBUG_ITEM))
 
 			entries.add(ItemStack(LEI))
-			entries.add(ItemStack(MEDIA_LOG_ITEM))
 			entries.add(ItemStack(GAUNTLET_STAFF))
 			entries.add(ItemStack(LIGHTNING_ROD_STAFF))
 

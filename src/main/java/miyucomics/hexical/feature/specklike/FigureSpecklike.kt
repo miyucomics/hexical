@@ -9,8 +9,8 @@ import net.minecraft.entity.data.TrackedDataHandlerRegistry
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.world.World
 
-// A subclass of specks that is meant for drawing figures, comes with utilities like thickness, storing and automatic compatibility with pigments and the pigment splashing pattern
-// Generally if your speck does not render text or blocks or entities and just renders lines, polygons, etc... there is a good chance this is the thing for it
+// Specks that do not render text or blocks or entities, and instead just render lines, polygons, etc...
+// Comes with utilities like thickness, storing and automatic compatibility with pigments and the pigment splashing pattern
 // Also comes with an NBT compound data tracker for storing information and a utility method to update client-sided caches
 abstract class FigureSpecklike(entityType: EntityType<out FigureSpecklike>, world: World) : BaseSpecklike(entityType, world) {
 	var clientPigment: FrozenPigment = FrozenPigment.DEFAULT.get()

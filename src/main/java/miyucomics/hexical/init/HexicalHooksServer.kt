@@ -6,7 +6,6 @@ import miyucomics.hexical.feature.dyeing.DyeingUtils
 import miyucomics.hexical.feature.dyeing.entity.DyeingEntityRegistry
 import miyucomics.hexical.feature.flora.ConjureFloraHook
 import miyucomics.hexical.feature.lesser_sentinel.ServerLesserSentinelPusher
-import miyucomics.hexical.feature.media_log.ServerSpyingHooks
 import miyucomics.hexical.feature.player_state.RespawnPersistHook
 import miyucomics.hexical.feature.prestidigitation.PrestidigitationHandlers
 import miyucomics.hexical.feature.redstone_pin.RedstonePinManager
@@ -26,7 +25,6 @@ object HexicalHooksServer {
 		register(ServerCharmedUseReceiver)
 		register(ServerLesserSentinelPusher)
 		register(ServerPeripheralReceiver)
-		register(ServerSpyingHooks)
 		register(ServerShaderManager)
 		register(RespawnPersistHook)
 		register(SentinelBedAmbitHook)

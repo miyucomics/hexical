@@ -106,9 +106,6 @@
 	"item.hexical.netherite_driver_dot": "Netherite Driver Dot",
 	"item.hexical.lei": "Lei",
 	"item.hexical.lightning_rod_staff": "Lightning Rod Staff",
-	"item.hexical.media_log": "Media Log",
-	"item.hexical.media_log.0": "Media Log",
-	"item.hexical.media_log.1": "Error Log",
 	"item.hexical.plush_hexxy": "Hexxy",
 	"item.hexical.plush_irissy": "Irissy",
 	"item.hexical.plush_trixxy": "Trixxy",
@@ -277,12 +274,6 @@
 	"hexical.page.casting_carpet.title": "Casting Carpets",
 	"hexical.page.casting_carpet.0": "I can weave $(l:items/amethyst)$(item)Amethyst$() into any ordinary rug to create this wonderfully comfy rug. Stepping on the carpet, I can feel the _media coursing under my feet. It feels disorienting but surprisingly puts me at peace.$(br2)I feel very inspired, as if I were wearing a $(l:items/lens)$(item)Scrying Lens$() although weaker. My _Hexcasting vision seems to have been expanded.",
 	"hexical.page.casting_carpet.1": "$(o)Why is the red carpet red? It can be any color.$()",
-
-	"hexical.page.media_log.title": "Media Logs",
-	"hexical.page.media_log.0": "_Hexcasting is an Art just waiting for me to lose track of my casting and Nature is all too ready to punish my carelessness the moment it happens.$(br2)Fortunately, Nature also provides a method for me to reflect on my folly... only after suffering the consequences of them, of course.",
-	"hexical.page.media_log.1": "They call it the $(item)$(m)Error$() $(item)Media Log$(). I simply stab a shard of $(l:items/amethyst)$(item)Amethyst$() through an $(l:items/edified)$(item)Edified Log$() and for some reason, Nature is now ready to spill my errors straight into my mind.",
-	"hexical.page.media_log.2": "The $(item)Media Log$() will only capture mistakes cast by my $(l:items/staff)$(item)Staff$() and the $(l:items/hexcasting)casting devices$() I use.$(br2)By holding it tightly and meditating on it, it reveals to me the last handful of patterns cast sequentially (even by other $(l:patterns/meta)patterns$(), all flattened out into a linear stream), the mishap that occured, and the top few iotas of the stack right before mishap.",
-	"hexical.page.media_log.3": "I could hypothetically use it as a method of examining the contents of a $(l:items/hexcasting)casting device$() after casting it, although the short backlog of patterns makes getting a complete _Hex out of anything but the simplest items impossible.$(br2)$(o)Now you may only see a pile of receipts, but I see a story. I can see where this story is going. It does not look good.$()",
 
 	"hexical.page.sentinel_bed.title": "Sentinel Beds",
 	"hexical.page.sentinel_bed.0": "The $(item)Lodestone$() inside seems to make this block $(o)and the entities shoved in it$() always within my _Hexes' ambit, although I prefer to believe the $(item)Wool$() invites my $(l:patterns/spells/sentinels)$(thing)Sentinel$(). Cats seem to find it cozy too, like a lit furnace or a bed.$(br2)I hear rumors of ancient _Hexcasters using this as some kind of iota storage from any range but I struggle to imagine how.",
