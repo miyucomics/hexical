@@ -15,7 +15,7 @@
 		"ItemEntityMixin",
 		"LivingEntityMixin",
 		"MediaHelperMixin",
-		"OpEraseMixin",
+		"OpEraseSpellMixin",
 		"OpReadMixin",
 		"PatternIotaMixin",
 		"PistonBlockMixin",

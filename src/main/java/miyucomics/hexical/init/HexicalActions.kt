@@ -18,7 +18,6 @@ import miyucomics.hexical.feature.akashic_shelf.OpReadAkashicShelf
 import miyucomics.hexical.feature.akashic_shelf.OpWriteAkashicShelf
 import miyucomics.hexical.feature.autograph.OpAutograph
 import miyucomics.hexical.feature.autograph.OpHasAutograph
-import miyucomics.hexical.feature.autograph.OpUnautograph
 import miyucomics.hexical.feature.block_mimicry.OpCook
 import miyucomics.hexical.feature.block_mimicry.OpDispense
 import miyucomics.hexical.feature.block_mimicry.OpPiston
@@ -179,7 +178,6 @@ object HexicalActions {
 		register("clear_shelf", "edeedade", HexDir.SOUTH_WEST, OpClearAkashicShelf)
 
 		register("autograph", "eeeeeww", HexDir.WEST, OpAutograph)
-		register("unautograph", "wwqqqqq", HexDir.NORTH_EAST, OpUnautograph)
 		register("has_autograph", "wwqqqqqaw", HexDir.NORTH_EAST, OpHasAutograph)
 
 		register("get_dye", "weedwa", HexDir.NORTH_EAST, OpGetDye)
