@@ -8,6 +8,7 @@ import at.petrak.hexcasting.api.casting.iota.EntityIota
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.NullIota
 import at.petrak.hexcasting.api.casting.iota.Vec3Iota
+import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import miyucomics.hexical.feature.dyeing.DyeIota
 import miyucomics.hexical.feature.dyeing.DyeOption
 import miyucomics.hexical.feature.dyeing.DyeingEntityRegistry
@@ -31,7 +32,7 @@ object OpGetDye : ConstMediaAction {
 				env.assertPosInRange(pos)
 				wrap(DyeingUtils.getDye(env.world.getBlockState(pos).block))
 			}
-			else -> NullIota()
+			else -> throw MishapInvalidIota.of(args[0], 0, "containing_dye")
 		}
 	)
 

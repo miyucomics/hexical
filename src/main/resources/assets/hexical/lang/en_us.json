@@ -175,6 +175,7 @@
 	"hexcasting.mishap.invalid_value.class.dye": "a dye",
 	"hexcasting.mishap.invalid_value.class.pigment": "a pigment",
 	"hexcasting.mishap.invalid_value.conjurable_flora_id": "an identifier of a conjurable flower type",
+	"hexcasting.mishap.invalid_value.containing_dye": "a block, an entity, or an item type",
 	"hexcasting.mishap.invalid_value.entity_or_vector": "an entity or a vector",
 	"hexcasting.mishap.invalid_value.inventory": "an iota that represents an inventory",
 	"hexcasting.mishap.invalid_value.item_entity_or_null": "an item entity or null",
