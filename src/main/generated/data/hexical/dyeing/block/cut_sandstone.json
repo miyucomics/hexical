@@ -1,4 +1,4 @@
 {
-  "0": "minecraft:cut_sandstone",
-  "15": "minecraft:cut_red_sandstone"
+  "red": "minecraft:cut_red_sandstone",
+  "uncolored": "minecraft:cut_sandstone"
 }

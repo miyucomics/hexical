@@ -1,4 +1,4 @@
 {
-  "0": "minecraft:smooth_sandstone",
-  "15": "minecraft:smooth_red_sandstone"
+  "red": "minecraft:smooth_red_sandstone",
+  "uncolored": "minecraft:smooth_sandstone"
 }

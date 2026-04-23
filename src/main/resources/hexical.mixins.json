@@ -19,7 +19,6 @@
 		"OpReadMixin",
 		"PatternIotaMixin",
 		"PistonBlockMixin",
-		"PlayerBasedCastEnvMixin",
 		"PlayerEntityMixin",
 		"RedstoneViewMixin",
 		"SnifferBrainMixin",

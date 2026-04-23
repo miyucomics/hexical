@@ -1,4 +1,4 @@
 {
-  "0": "minecraft:sand",
-  "15": "minecraft:red_sand"
+  "red": "minecraft:red_sand",
+  "uncolored": "minecraft:sand"
 }

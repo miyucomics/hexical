@@ -4,81 +4,36 @@ import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.getBlockPos
 import at.petrak.hexcasting.api.casting.getEntity
-import at.petrak.hexcasting.api.casting.iota.*
+import at.petrak.hexcasting.api.casting.iota.EntityIota
+import at.petrak.hexcasting.api.casting.iota.Iota
+import at.petrak.hexcasting.api.casting.iota.NullIota
+import at.petrak.hexcasting.api.casting.iota.Vec3Iota
 import miyucomics.hexical.feature.dyeing.DyeIota
 import miyucomics.hexical.feature.dyeing.DyeOption
+import miyucomics.hexical.feature.dyeing.DyeingEntityRegistry
 import miyucomics.hexical.feature.dyeing.DyeingUtils
 import miyucomics.hexpose.iotas.getItemType
-import net.minecraft.block.Block
-import net.minecraft.block.SignBlock
-import net.minecraft.block.entity.SignBlockEntity
-import net.minecraft.entity.Entity
-import net.minecraft.entity.ItemEntity
-import net.minecraft.item.BlockItem
-import net.minecraft.server.world.ServerWorld
-import net.minecraft.util.math.BlockPos
 import ram.talia.moreiotas.api.casting.iota.ItemTypeIota
 
 object OpGetDye : ConstMediaAction {
 	override val argc = 1
-	override fun execute(args: List<Iota>, env: CastingEnvironment) = listOf(
+
+	override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> = listOf(
 		when (args[0]) {
 			is EntityIota -> {
 				val entity = args.getEntity(0, argc)
 				env.assertEntityInRange(entity)
-				processEntity(entity)
+				wrap(DyeingEntityRegistry.getColor(entity))
 			}
-			is ItemTypeIota -> {
-				when (val item = args.getItemType(0, argc)) {
-					is BlockItem -> getDyeFromBlock(item.block)
-					else -> {
-						if (DyeingUtils.getDye(item) != null)
-							DyeIota(DyeingUtils.getDye(item)!!)
-						else
-							NullIota()
-					}
-				}
-			}
+			is ItemTypeIota -> wrap(DyeingUtils.getDye(args.getItemType(0, argc)))
 			is Vec3Iota -> {
-				val position = args.getBlockPos(0, argc)
-				env.assertPosInRange(position)
-				processVec3d(position, env.world)
+				val pos = args.getBlockPos(0, argc)
+				env.assertPosInRange(pos)
+				wrap(DyeingUtils.getDye(env.world.getBlockState(pos).block))
 			}
 			else -> NullIota()
 		}
 	)
 
-	private fun processEntity(entity: Entity): Iota {
-		return when (entity) {
-			is ItemEntity -> {
-				when (val item = entity.stack.item) {
-					is BlockItem -> getDyeFromBlock(item.block)
-					else -> {
-						if (DyeingUtils.getDye(item) != null)
-							DyeIota(DyeingUtils.getDye(item)!!)
-						else
-							NullIota()
-					}
-				}
-			}
-			else -> NullIota()
-		}
-	}
-
-	private fun processVec3d(position: BlockPos, world: ServerWorld): Iota {
-		val state = world.getBlockState(position)
-		if (state.block is SignBlock) {
-			val sign = world.getBlockEntity(position) as SignBlockEntity
-			return ListIota(listOf(
-				DyeIota(DyeOption.fromDyeColor(sign.frontText.color)),
-				DyeIota(DyeOption.fromDyeColor(sign.backText.color))
-			))
-		}
-		return getDyeFromBlock(world.getBlockState(position).block)
-	}
-
-	private fun getDyeFromBlock(block: Block): Iota {
-		val dye = DyeingUtils.getDye(block) ?: return NullIota()
-		return DyeIota(dye)
-	}
+	private fun wrap(dye: DyeOption?): Iota = dye?.let(::DyeIota) ?: NullIota()
 }

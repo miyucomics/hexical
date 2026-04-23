@@ -288,7 +288,9 @@
     },
     {
       "type": "hexical:dyeing_block",
-      "text": "hexical.recipe.dyeing.sandstone_walls.text"
+      "red": "minecraft:red_sandstone_wall",
+      "text": "hexical.recipe.dyeing.sandstone_wall.text",
+      "uncolored": "minecraft:sandstone_wall"
     },
     {
       "type": "hexical:dyeing_block",

@@ -10,68 +10,51 @@ import net.minecraft.entity.mob.ShulkerEntity
 import net.minecraft.entity.passive.CatEntity
 import net.minecraft.entity.passive.SheepEntity
 import net.minecraft.entity.passive.WolfEntity
-import net.minecraft.item.BlockItem
 import net.minecraft.item.ItemStack
 import java.util.*
 
 object DyeingEntityRegistry : InitHook() {
 	private val handlers = mutableListOf<DyeEntityHandler<*>>()
+	private fun <T> notUncolored(): (T, DyeOption) -> Boolean = { _, dye -> dye != DyeOption.UNCOLORED }
 
 	override fun init() {
-		register(object : DyeEntityHandler<ItemEntity>(ItemEntity::class.java) {
-			override fun extraConditions(entity: ItemEntity, dye: DyeOption) = DyeingUtils.getResult(entity.stack, dye) != null
+		register(dyeHandler<ItemEntity>(
+			color = { DyeingUtils.getDye(it.stack.item) },
+			canDye = { entity, dye -> DyeingUtils.getResult(entity.stack, dye) != null },
+			dye = { entity, dye -> entity.stack = DyeingUtils.getResult(entity.stack, dye)!! }
+		))
 
-			override fun affect(entity: ItemEntity, dye: DyeOption) {
-				val stack = entity.stack.copyAndEmpty()
-				entity.stack = DyeingUtils.getResult(stack, dye)
-			}
-		})
+		register(dyeHandler<CatEntity>(
+			color = { DyeOption.fromDyeColor(it.collarColor) },
+			canDye = notUncolored(),
+			dye = { entity, dye -> entity.collarColor = dye.dye!! }
+		))
 
-		register(object : DyeEntityHandler<ItemEntity>(ItemEntity::class.java) {
-			override fun extraConditions(entity: ItemEntity, dye: DyeOption): Boolean {
-				val stack = entity.stack
-				return stack.item is BlockItem && DyeingUtils.getResult((stack.item as BlockItem).block, dye) != null
-			}
+		register(dyeHandler<WolfEntity>(
+			color = { DyeOption.fromDyeColor(it.collarColor) },
+			canDye = notUncolored(),
+			dye = { entity, dye -> entity.collarColor = dye.dye!! }
+		))
 
-			override fun affect(entity: ItemEntity, dye: DyeOption) {
-				val stack = entity.stack
-				val result = DyeingUtils.getResult((stack.item as BlockItem).block, dye)!!
-				entity.stack = ItemStack(result.asItem(), stack.count)
-			}
-		})
+		register(dyeHandler<SheepEntity>(
+			color = { DyeOption.fromDyeColor(it.color) },
+			canDye = notUncolored(),
+			dye = { entity, dye -> entity.color = dye.dye!! }
+		))
 
-		register(object : DyeEntityHandler<CatEntity>(CatEntity::class.java) {
-			override fun getColor(entity: CatEntity) = DyeOption.fromDyeColor(entity.collarColor)
-			override fun extraConditions(entity: CatEntity, dye: DyeOption): Boolean = dye != DyeOption.UNCOLORED
-			override fun affect(entity: CatEntity, dye: DyeOption) { entity.collarColor = dye.dye!! }
-		})
+		register(dyeHandler<ShulkerEntity>(
+			color = { DyeOption.fromDyeColor(it.variant.orElse(null)) },
+			dye = { entity, dye -> entity.variant = Optional.ofNullable(dye.dye) }
+		))
 
-		register(object : DyeEntityHandler<WolfEntity>(WolfEntity::class.java) {
-			override fun getColor(entity: WolfEntity) = DyeOption.fromDyeColor(entity.collarColor)
-			override fun extraConditions(entity: WolfEntity, dye: DyeOption): Boolean = dye != DyeOption.UNCOLORED
-			override fun affect(entity: WolfEntity, dye: DyeOption) { entity.collarColor = dye.dye!! }
-		})
-
-		register(object : DyeEntityHandler<SheepEntity>(SheepEntity::class.java) {
-			override fun getColor(entity: SheepEntity) = DyeOption.fromDyeColor(entity.color)
-			override fun extraConditions(entity: SheepEntity, dye: DyeOption): Boolean = dye != DyeOption.UNCOLORED
-			override fun affect(entity: SheepEntity, dye: DyeOption) { entity.color = dye.dye!! }
-		})
-
-		register(object : DyeEntityHandler<FigureSpecklike>(FigureSpecklike::class.java) {
-			override fun extraConditions(entity: FigureSpecklike, dye: DyeOption): Boolean = dye != DyeOption.UNCOLORED
-			override fun affect(entity: FigureSpecklike, dye: DyeOption) { entity.setPigment(FrozenPigment(ItemStack(HexItems.DYE_PIGMENTS[dye.dye]!!), UUID.randomUUID())) }
-		})
-
-		register(object : DyeEntityHandler<ShulkerEntity>(ShulkerEntity::class.java) {
-			override fun getColor(entity: ShulkerEntity) = DyeOption.fromDyeColor(entity.variant.orElse(null))
-			override fun affect(entity: ShulkerEntity, dye: DyeOption) { entity.variant = dye.dye?.let { Optional.of(it) } ?: Optional.empty() }
-		})
+		// TODO: figure out how to coerce a dye pigment back into a pigment efficiently
+		register(dyeHandler<FigureSpecklike>(
+			canDye = notUncolored(),
+			dye = { e, dye -> e.setPigment(FrozenPigment(ItemStack(HexItems.DYE_PIGMENTS[dye.dye]!!), UUID.randomUUID())) }
+		))
 	}
 
-	fun register(handler: DyeEntityHandler<*>) {
-		handlers += handler
-	}
-
-	fun resolve(entity: Entity, dye: DyeOption) = handlers.firstOrNull { it.canAffectEntity(entity, dye) }
+	fun register(handler: DyeEntityHandler<*>) { handlers += handler }
+	fun resolve(entity: Entity, dye: DyeOption) = handlers.firstOrNull { it.appliesTo(entity, dye) }
+	fun getColor(entity: Entity) = handlers.firstNotNullOfOrNull { it.colorOf(entity) }
 }

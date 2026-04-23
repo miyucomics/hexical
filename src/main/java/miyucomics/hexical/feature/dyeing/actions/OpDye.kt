@@ -43,7 +43,7 @@ object OpDye : SpellAction {
 
 	private data class EntitySpell(val entity: Entity, val dye: DyeOption, val handler: DyeEntityHandler<*>) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			handler.affectSafely(entity, dye)
+			handler.applyTo(entity, dye)
 		}
 	}
 

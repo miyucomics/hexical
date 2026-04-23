@@ -1,4 +1,4 @@
 {
-  "0": "minecraft:sandstone_stairs",
-  "15": "minecraft:red_sandstone_stairs"
+  "red": "minecraft:red_sandstone_stairs",
+  "uncolored": "minecraft:sandstone_stairs"
 }

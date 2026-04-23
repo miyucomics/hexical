@@ -1,4 +1,4 @@
 {
-  "0": "minecraft:chiseled_sandstone",
-  "15": "minecraft:chiseled_red_sandstone"
+  "red": "minecraft:chiseled_red_sandstone",
+  "uncolored": "minecraft:chiseled_sandstone"
 }
