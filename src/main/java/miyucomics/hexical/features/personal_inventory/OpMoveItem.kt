@@ -35,8 +35,8 @@ object OpMoveItem : SpellAction {
 
 		when {
 			to.isEmpty -> {
-				player.inventory.setStack(a, ItemStack.EMPTY);
-				player.inventory.setStack(b, from);
+				player.inventory.setStack(a, ItemStack.EMPTY)
+				player.inventory.setStack(b, from)
 				return true
 			}
 			ItemStack.canCombine(from, to) -> {

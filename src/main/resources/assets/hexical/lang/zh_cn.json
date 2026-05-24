@@ -661,5 +661,5 @@
 	"hexical.page.meshes.title": "网斑",
 	"hexical.page.meshes.0": "网斑是$(l:patterns/spells/specklikes/specks)视斑$()的进化形态。不会再受 iota 和图案的限制，也无需屈居于二维平面，网斑接受三维空间中的向量列表并在其间连线，由此带来的创意无穷无尽。网斑也会对大多数操纵视斑的图案产生反应。",
 	"hexcasting.action.hexical:conjure_mesh": "构筑网斑",
-	"hexical.page.conjure_mesh.summary": "在所给位置构筑一个网斑，并压入一个网斑实体。消耗大约 1 个$(l:items/amethyst)$(item)紫水晶粉$()。",
+	"hexical.page.conjure_mesh.summary": "在所给位置构筑一个网斑，并压入一个网斑实体。消耗大约 1 个$(l:items/amethyst)$(item)紫水晶粉$()。"
 }
