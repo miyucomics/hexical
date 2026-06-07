@@ -17,6 +17,7 @@
 		"MediaHelperMixin",
 		"OpEraseMixin",
 		"OpReadMixin",
+		"OpReadMixin2",
 		"PatternIotaMixin",
 		"PistonBlockMixin",
 		"PlayerBasedCastEnvMixin",
