@@ -10,9 +10,13 @@ import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import miyucomics.hexical.inits.HexicalItems;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtElement;
 import net.minecraft.util.math.Vec3d;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.List;
 
@@ -39,5 +43,11 @@ public class OpReadMixin {
 			@SuppressWarnings("DataFlowIssue") int[] coordinates = data.stack().getNbt().getIntArray("needle");
 			return List.of(new Vec3Iota(new Vec3d(coordinates[0], coordinates[1], coordinates[2]).subtract(caster.getEyePos()).normalize()));
 		}
+	}
+
+	@Inject(method = "execute$lambda$0", at = @At("HEAD"))
+	private static void dontEatTwoHexbursts(CastingEnvironment env, ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
+		if (stack.isOf(HexicalItems.HEXBURST_ITEM))
+			stack.increment(1);
 	}
 }
