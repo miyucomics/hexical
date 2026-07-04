@@ -1,5 +1,6 @@
 package miyucomics.hexical.inits
 
+import miyucomics.hexical.features.babelbug.BabelbugListener
 import miyucomics.hexical.features.charms.ServerCharmedUseReceiver
 import miyucomics.hexical.features.dyes.DyeingUtils
 import miyucomics.hexical.features.dyes.entity.DyeingEntityRegistry
@@ -43,6 +44,7 @@ object HexicalHooksServer {
 		register(ConjureFloraHook)
 		register(LeiEnchantmentsHook)
 		register(ZapManager)
+		register(BabelbugListener)
 
 		for (hook in hooks)
 			hook.init()

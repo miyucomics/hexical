@@ -1,6 +1,6 @@
 {
 	"parent": "minecraft:item/generated",
 	"textures": {
-		"layer0": "hexical:item/scarab_beetle_active"
+		"layer0": "hexical:item/babelbug_active"
 	}
 }

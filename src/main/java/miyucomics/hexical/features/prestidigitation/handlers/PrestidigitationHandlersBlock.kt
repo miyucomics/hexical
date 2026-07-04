@@ -49,7 +49,7 @@ object PrestidigitationHandlersBlock {
 		register(object : PrestidigitationHandlerBlock() {
 			override fun canAffectBlock(env: CastingEnvironment, pos: BlockPos) = AxeItem.STRIPPED_BLOCKS.containsKey(getBlock(env, pos))
 			override fun affect(env: CastingEnvironment, pos: BlockPos) {
-				setBlockState(env, pos, AxeItem.STRIPPED_BLOCKS[getBlock(env, pos)]!!.defaultState)
+				setBlockState(env, pos, AxeItem.STRIPPED_BLOCKS[getBlock(env, pos)]!!.defaultState.with(PillarBlock.AXIS, env.world.getBlockState(pos).get(PillarBlock.AXIS)))
 			}
 		})
 
