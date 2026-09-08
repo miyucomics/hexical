@@ -1,6 +1,6 @@
 {
 	"name": "hexical.page.mute.title",
-	"icon": "hexical:textures/mob_effect/muted.png",
+	"icon": "hexical:textures/misc/muted.png",
 	"category": "hexcasting:patterns/spells",
 	"advancement": "hexcasting:root",
 	"sortnum": 11,

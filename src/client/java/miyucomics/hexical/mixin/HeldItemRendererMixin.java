@@ -2,9 +2,9 @@ package miyucomics.hexical.mixin;
 
 import dev.kosmx.playerAnim.api.layered.ModifierLayer;
 import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationAccess;
-import miyucomics.hexical.features.curios.HandbellCurioPlayerModel;
-import miyucomics.hexical.features.curios.curios.HandbellCurio;
-import miyucomics.hexical.inits.HexicalItems;
+import miyucomics.hexical.feature.curio.HandbellCurioPlayerModel;
+import miyucomics.hexical.feature.curio.curios.HandbellCurio;
+import miyucomics.hexical.init.HexicalItems;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.item.HeldItemRenderer;

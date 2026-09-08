@@ -6,7 +6,10 @@ import at.petrak.hexcasting.api.casting.eval.vm.CastingImage.ParenthesizedIota
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapOthersName
 import at.petrak.hexcasting.xplat.IXplatAbstractions
+import net.minecraft.nbt.NbtCompound
+import net.minecraft.nbt.NbtElement
 import net.minecraft.server.network.ServerPlayerEntity
+import net.minecraft.server.world.ServerWorld
 import net.minecraft.util.Hand
 
 object CastingUtils {
@@ -19,9 +22,7 @@ object CastingUtils {
 	fun isEnlightened(player: ServerPlayerEntity): Boolean {
 		val advancement = player.getServer()!!.advancementLoader[HexAPI.modLoc("enlightenment")]
 		val tracker = player.advancementTracker
-		if (tracker.getProgress(advancement) != null)
-			return tracker.getProgress(advancement).isDone
-		return false
+		return tracker.getProgress(advancement) != null && tracker.getProgress(advancement).isDone
 	}
 
 	@JvmStatic
@@ -38,4 +39,9 @@ object CastingUtils {
 		}
 		IXplatAbstractions.INSTANCE.setStaffcastImage(player, newImage)
 	}
+
+
+	fun getHex(nbt: NbtCompound, world: ServerWorld) = HexSerialization.deserializeHex(nbt.getList("hex", NbtElement.COMPOUND_TYPE.toInt()), world)
+	fun getMedia(nbt: NbtCompound) = nbt.getLong("media")
+	fun getMaxMedia(nbt: NbtCompound) = nbt.getLong("max_media")
 }

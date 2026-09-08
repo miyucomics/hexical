@@ -3,7 +3,7 @@ package miyucomics.hexical.mixin;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import miyucomics.hexical.features.periwinkle.SnifferEntityMinterface;
+import miyucomics.hexical.feature.periwinkle.SnifferEntityMinterface;
 import net.minecraft.entity.ai.brain.Brain;
 import net.minecraft.entity.ai.brain.MemoryModuleType;
 import net.minecraft.entity.passive.SnifferEntity;
@@ -37,13 +37,13 @@ public abstract class SnifferEntityMixin implements SnifferEntityMinterface {
 	public void produceItem(@NotNull ItemStack stack) {
 		this.customItem = stack;
 		this.isDiggingCustom = true;
+
+		getBrain().remember(MemoryModuleType.SNIFFER_DIGGING, true);
 		getBrain().forget(MemoryModuleType.SNIFF_COOLDOWN);
 		getBrain().forget(MemoryModuleType.DIG_COOLDOWN);
 		getBrain().forget(MemoryModuleType.WALK_TARGET);
 		getBrain().forget(MemoryModuleType.SNIFFER_SNIFFING_TARGET);
 		getBrain().forget(MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE);
-
-		getBrain().remember(MemoryModuleType.SNIFFER_DIGGING, true);
 
 		SnifferEntity sniffer = (SnifferEntity) (Object) this;
 		getBrain().stopAllTasks((ServerWorld) sniffer.getWorld(), sniffer);
@@ -72,6 +72,7 @@ public abstract class SnifferEntityMixin implements SnifferEntityMinterface {
 			isDiggingCustom = false;
 			return newDrops;
 		}
+
 		return original.call(instance, parameters);
 	}
 }

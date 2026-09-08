@@ -1,0 +1,41 @@
+package miyucomics.hexical.feature.telepathy
+
+import at.petrak.hexcasting.fabric.event.MouseScrollCallback
+import miyucomics.hexical.init.HexicalKeybinds
+import miyucomics.hexical.misc.InitHook
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
+import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
+import net.minecraft.client.MinecraftClient
+
+object ClientPeripheralPusher : InitHook() {
+	private var previousState = mutableMapOf<String, Boolean>()
+
+	override fun init() {
+		ClientTickEvents.END_CLIENT_TICK.register { client: MinecraftClient ->
+			if (client.player == null)
+				return@register
+
+			for (key in listOf(client.options.forwardKey, client.options.leftKey, client.options.rightKey, client.options.backKey, client.options.jumpKey, client.options.sneakKey, client.options.useKey, client.options.attackKey, client.options.sprintKey, HexicalKeybinds.TELEPATHY_KEYBIND, HexicalKeybinds.EVOKE_KEYBIND)) {
+				if (previousState[key.translationKey] != key.isPressed) {
+					val channel = when (key.isPressed) {
+						true -> ServerPeripheralReceiver.PRESSED_KEY_CHANNEL
+						false -> ServerPeripheralReceiver.RELEASED_KEY_CHANNEL
+					}
+					ClientPlayNetworking.send(channel, PacketByteBufs.create().also { it.writeString(key.translationKey) })
+					previousState[key.translationKey] = key.isPressed
+				}
+			}
+		}
+
+		MouseScrollCallback.EVENT.register { delta ->
+			if (HexicalKeybinds.TELEPATHY_KEYBIND.isPressed) {
+				val buf = PacketByteBufs.create()
+				buf.writeInt(delta.toInt())
+				ClientPlayNetworking.send(ServerPeripheralReceiver.SCROLL_CHANNEL, buf)
+				return@register true
+			}
+			return@register false
+		}
+	}
+}

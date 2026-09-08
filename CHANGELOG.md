@@ -14,11 +14,9 @@
   - strands can take a list of vectors and they will draw it in space
     - comes with a patttern to turn a pattern into a list of vectors for your convenience
   - they can be made to wiggle
-- added amber seal spell
-  - mechanism cardboard box in a spell
-  - you can seal a block with a block entity, transport it elsewhere, and unwrap it
 - added mute spell to mute a mob, and added pattern to get whether a mob is currently muted
 - added babelbugs, cute little items that can intercept a message before it even leaves your window and process a hex on it
+- added carpeted pedestals of every single color, which push entity iotas rather than pushing the iota of the item it is holding
 - added block mimicry spells
   - these spells mimic the behavior of blocks
   - four spells to mimic the furnace, blast furnace, smoker, and campfire recipes, cost scales with time saved
@@ -29,6 +27,7 @@
 - added tooltips to hexbursts
 - added tooltips to hextito
 - added spell to create a toast
+- added the itemmind, a single iota storage that any casting item or charmed holds, useful for remembering things between hexes
 - added lesser sentinels, just hexagons that you can conjure in the world to mark locations
 - added many different plushies for many different patterns
 - added pattern to detect greater sentinels around you, and a spell to destroy them
@@ -45,8 +44,8 @@
 - added Crack Device spell - crack an unwritten casting device which will reveal its Hex when eventually written
 - added spell to make a circle use a pedestal as its other hand
 - added Illuminate spell - conjure an invisible light of your chosen strength at a location
+- added Redstone Pinning spell - powers a block with Redstone for a duration, pins the redstone power to a certain level
 - added Sparkle spell to create a sparkle ( my mod advertised in another mod!! )
-- added Zap spell - powers a block with Redstone for a duration, forces redstone power to be a certain level
 - added tooltip to grimoire for what patterns are registered, need to cast any grimoire pattern on old grimoires in order to force it to show up
 - added more prestidigitation effects, too many to document
 - added Projectiles chapter
@@ -61,9 +60,6 @@
 - added rotation spells for blocks and entities
 - added periwinkle, a flower that can only be created via Hexcasting
   - obtained by casting a spell on sniffer
-  - it is the core ingredient of the Wooleyed potion
-    - added Wooleyed status effect
-      - acts as a coping saw
   - it can be used to craft a lei
     - lei gives a small little grid size boost but mostly just looks adorable
     - you can right-click other players to put the lei on them
@@ -85,7 +81,6 @@
 - added Chronicler's support for meshes and specks; replaces the old tangle purification, weave mesh, and iota speck spells
 - added an item cache that makes certain spells and processes that involve locating items much much faster
 - added depowered and powered textures for arch lamps to distinguish at an instant
-- added scrying overlay for mage blocks to determine what has been added to it
 - added many specialized Patchouli pages for some of the spells
 - added personal inventory management spells to eject, pull in, and move around items in your inventory slot
 - changed Displace to cost half a dust rather than free, people were making worldwide circles which was mildly scary
@@ -128,7 +123,11 @@
   - reworked the backends of so many systems to be elegant
     - reworked dyeing backend
     - reworked prestidigitation backend
-    - reworked mage block modifier backend
+- removed mage block
+  - just an old feature that I am not super happy with
+  - it was also laggy and inefficient and invisible because I didn't know what to texture them
+  - there is so much technical debt to them, and they also felt kind of out of place in Hexical
+  - they might become an addon of their own if I ever get the motivation
 - removed tchotchkes
   - replaced by charms which have the exact same abilities but can be applied to any item
 - removed myodesopsia spell

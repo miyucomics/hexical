@@ -9,7 +9,7 @@ import at.petrak.hexcasting.common.casting.actions.rw.OpRead;
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.sugar.Local;
-import miyucomics.hexical.inits.HexicalItems;
+import miyucomics.hexical.init.HexicalItems;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtElement;

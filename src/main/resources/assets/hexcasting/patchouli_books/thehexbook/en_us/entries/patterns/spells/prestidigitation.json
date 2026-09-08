@@ -30,9 +30,64 @@
 			"text": "hexical.page.prestidigitation.3"
 		},
 		{
+			"type": "patchouli:entity",
+			"entity": "minecraft:sheep",
+			"scale": 0.5,
+			"text": "hexical.page.prestidigitation.sheep"
+		},
+		{
+			"type": "patchouli:entity",
+			"entity": "minecraft:creeper",
+			"scale": 0.5,
+			"text": "hexical.page.prestidigitation.creeper"
+		},
+		{
+			"type": "patchouli:entity",
+			"entity": "minecraft:squid",
+			"scale": 0.3,
+			"text": "hexical.page.prestidigitation.squid"
+		},
+		{
+			"type": "patchouli:entity",
+			"entity": "minecraft:glow_squid",
+			"scale": 0.3,
+			"text": "hexical.page.prestidigitation.glow_squid"
+		},
+		{
+			"type": "patchouli:entity",
+			"entity": "minecraft:panda",
+			"scale": 0.5,
+			"text": "hexical.page.prestidigitation.panda"
+		},
+		{
 			"type": "hexical:block",
-			"block": "minecraft:lever",
+			"block": "minecraft:lever[facing=west]",
 			"text": "hexical.page.prestidigitation.lever"
+		},
+		{
+			"type": "hexical:block",
+			"block": "minecraft:redstone_lamp",
+			"text": "hexical.page.prestidigitation.redstone_lamp"
+		},
+		{
+			"type": "hexical:block",
+			"block": "minecraft:tnt",
+			"text": "hexical.page.prestidigitation.tnt"
+		},
+		{
+			"type": "hexical:block",
+			"block": "minecraft:pumpkin",
+			"text": "hexical.page.prestidigitation.pumpkin"
+		},
+		{
+			"type": "hexical:block",
+			"block": "minecraft:note_block",
+			"text": "hexical.page.prestidigitation.note_block"
+		},
+		{
+			"type": "hexical:block",
+			"block": "minecraft:cauldron",
+			"text": "hexical.page.prestidigitation.cauldron"
 		}
 	]
 }

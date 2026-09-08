@@ -27,6 +27,11 @@
 		},
 		{
 			"type": "patchouli:spotlight",
+			"text": "hexical.page.plushies.trixxy",
+			"item": "hexical:plush_trixxy"
+		},
+		{
+			"type": "patchouli:spotlight",
 			"text": "hexical.page.plushies.quadxxy",
 			"item": "hexical:plush_quadxxy"
 		},

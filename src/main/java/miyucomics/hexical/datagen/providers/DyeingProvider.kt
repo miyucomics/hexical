@@ -2,7 +2,7 @@ package miyucomics.hexical.datagen.providers
 
 import com.google.gson.JsonObject
 import miyucomics.hexical.HexicalMain
-import miyucomics.hexical.features.dyes.DyeOption
+import miyucomics.hexical.feature.dyeing.DyeOption
 import net.minecraft.data.DataOutput
 import net.minecraft.data.DataProvider
 import net.minecraft.data.DataWriter
@@ -42,6 +42,7 @@ object DyeingProvider {
 		"candle" to "minecraft:{color}candle",
 		"candle_cake" to "minecraft:{color}candle_cake",
 		"carpet" to "minecraft:{color}carpet",
+		"carpeted_pedestal" to "hexical:{color}_carpeted_pedestal",
 		"concrete" to "minecraft:{color}concrete",
 		"concrete_powder" to "minecraft:{color}concrete_powder",
 		"glazed_terracotta" to "minecraft:{color}glazed_terracotta",

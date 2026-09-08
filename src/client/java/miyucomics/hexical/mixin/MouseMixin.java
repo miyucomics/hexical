@@ -2,9 +2,9 @@ package miyucomics.hexical.mixin;
 
 import at.petrak.hexcasting.common.lib.HexSounds;
 import kotlin.Pair;
-import miyucomics.hexical.features.charms.CharmUtilities;
-import miyucomics.hexical.features.charms.ServerCharmedUseReceiver;
-import miyucomics.hexical.features.curios.CurioItem;
+import miyucomics.hexical.feature.charming.CharmUtilities;
+import miyucomics.hexical.feature.charming.ServerCharmedUseReceiver;
+import miyucomics.hexical.feature.curio.CurioItem;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.client.MinecraftClient;

@@ -5,7 +5,6 @@
 	"client": [
 		"ClientBookRegistryMixin",
 		"ClientWorldMixin",
-		"DrawContextMixin",
 		"EntityRendererMixin",
 		"GameRendererMixin",
 		"GuiSpellcastingMixin",
@@ -13,8 +12,7 @@
 		"InGameHudMixin",
 		"ItemEntityRendererMixin",
 		"ItemRendererMixin",
-		"MouseMixin",
-		"ScryingLensOverlaysMixin"
+		"MouseMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

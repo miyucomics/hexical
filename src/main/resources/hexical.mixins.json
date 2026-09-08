@@ -5,13 +5,13 @@
 	"minVersion": "0.8",
 	"mixins": [
 		"BlockAkashicBookshelfMixin",
-		"BlockItemMixin",
 		"CastingEnvironmentMixin",
 		"CastingVMMixin",
 		"CatSitOnBlockGoalMixin",
 		"CircleCastEnvMixin",
 		"DispenserBlockInvoker",
 		"EntityMixin",
+		"IotaMixin",
 		"ItemEntityMixin",
 		"LivingEntityMixin",
 		"MediaHelperMixin",
@@ -24,8 +24,7 @@
 		"RedstoneViewMixin",
 		"SnifferBrainMixin",
 		"SnifferEntityMixin",
-		"WanderingTraderEntityMixin",
-		"WorldChunkMixin"
+		"WanderingTraderEntityMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

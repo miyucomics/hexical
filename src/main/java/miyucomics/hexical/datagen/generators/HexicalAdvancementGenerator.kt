@@ -1,7 +1,7 @@
 package miyucomics.hexical.datagen.generators
 
 import at.petrak.hexcasting.api.mod.HexTags
-import miyucomics.hexical.inits.*
+import miyucomics.hexical.init.*
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricAdvancementProvider
 import net.minecraft.advancement.Advancement
@@ -41,14 +41,27 @@ class HexicalAdvancementGenerator(generator: FabricDataOutput) : FabricAdvanceme
 				.build(consumer, "hexical:$name")
 		}
 
-		registerAdvancement("conjure_cake", Items.CAKE, ConjureCakeCriterion.Condition(), frame = AdvancementFrame.CHALLENGE, hidden = true)
-		registerAdvancement("diy_conjuring", Items.SCAFFOLDING, DIYCriterion.Condition())
+		fun registerAdvancement(name: String, icon: Item, addCriterion: (Advancement.Builder) -> Unit, frame: AdvancementFrame = AdvancementFrame.TASK, hidden: Boolean = false, parent: Advancement = root): Advancement {
+			val advancement = Advancement.Builder.create()
+				.parent(parent)
+				.display(ItemStack(icon),
+					Text.translatable("advancements.hexical.$name.title"),
+					Text.translatable("advancements.hexical.$name.description"),
+					null, frame, true, true, hidden
+				)
+			addCriterion(advancement)
+			return advancement.build(consumer, "hexical:$name")
+		}
+
 		registerAdvancement("hextito_quine", HexicalItems.HEXTITO_ITEM, HextitoQuineCriterion.Condition())
 		registerAdvancement("specklike", Items.BEACON, SpecklikeCriterion.Condition())
 
 		registerAdvancement("acquire_hand_lamp", HexicalItems.HAND_LAMP_ITEM, InventoryChangedCriterion.Conditions.items(HexicalItems.HAND_LAMP_ITEM)).also {
-			registerAdvancement("educate_lamp", Items.ENCHANTED_BOOK, EducateGenieCriterion.Condition(), parent = it)
+			registerAdvancement("wish", Items.ENCHANTED_BOOK, WishCriterion.Condition(), parent = it)
 			registerAdvancement("acquire_arch_lamp", HexicalItems.ARCH_LAMP_ITEM, InventoryChangedCriterion.Conditions.items(HexicalItems.ARCH_LAMP_ITEM), frame = AdvancementFrame.GOAL, parent = it)
 		}
+
+		registerAdvancement("conjure_cake", Items.CAKE, ConjureCakeCriterion.Condition(), frame = AdvancementFrame.CHALLENGE)
+		registerAdvancement("collect_all_plushies", HexicalItems.PLUSHIES[0], { builder -> HexicalItems.PLUSHIES.forEachIndexed { i, plushie -> builder.criterion(i.toString(), InventoryChangedCriterion.Conditions.items(plushie)) } }, frame = AdvancementFrame.CHALLENGE)
 	}
 }

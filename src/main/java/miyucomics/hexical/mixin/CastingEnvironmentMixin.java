@@ -1,10 +1,8 @@
 package miyucomics.hexical.mixin;
 
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment;
-import miyucomics.hexical.features.periwinkle.WooleyedEffect;
-import miyucomics.hexical.inits.HexicalItems;
+import miyucomics.hexical.init.HexicalItems;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
@@ -23,8 +21,5 @@ public abstract class CastingEnvironmentMixin {
 			return;
 		if (this.getCastingEntity() instanceof PlayerEntity player && player.getInventory().armor.get(3).isOf(HexicalItems.LEI))
 			cir.setReturnValue(true);
-		StatusEffectInstance wooleye = this.getCastingEntity().getStatusEffect(WooleyedEffect.INSTANCE);
-		if (wooleye != null)
-			cir.setReturnValue(wooleye.getAmplifier() < 1);
 	}
 }

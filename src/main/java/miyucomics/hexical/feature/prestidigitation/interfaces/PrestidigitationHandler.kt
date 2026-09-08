@@ -1,0 +1,3 @@
+package miyucomics.hexical.feature.prestidigitation.interfaces
+
+interface PrestidigitationHandler

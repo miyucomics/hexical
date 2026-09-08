@@ -1,0 +1,17 @@
+package miyucomics.hexical.feature.genie_lamp
+
+import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
+import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
+import at.petrak.hexcasting.api.casting.iota.Iota
+import at.petrak.hexcasting.api.casting.iota.NullIota
+import net.minecraft.nbt.NbtCompound
+
+class OpGetLampData(private val process: (LampCastEnv, NbtCompound) -> List<Iota>) : ConstMediaAction {
+	override val argc = 0
+	override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
+		if (env !is LampCastEnv)
+			throw NeedsLampMishap()
+		val nbt = env.castingEntity!!.activeItem.nbt ?: return listOf(NullIota())
+		return process(env, nbt)
+	}
+}

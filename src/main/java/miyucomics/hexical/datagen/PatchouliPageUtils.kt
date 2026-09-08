@@ -5,11 +5,10 @@ import com.google.gson.JsonObject
 import net.minecraft.item.Item
 import net.minecraft.registry.Registries
 
-fun entry(title: String, icon: Item, block: EntryBuilder.() -> Unit): JsonObject {
-	return EntryBuilder(title, icon).apply(block).build()
-}
+fun entry(title: String, icon: Item, block: EntryBuilder.() -> Unit) = EntryBuilder(title, Registries.ITEM.getId(icon).toString()).apply(block).build()
+fun entry(title: String, icon: String, block: EntryBuilder.() -> Unit) = EntryBuilder(title, icon).apply(block).build()
 
-class EntryBuilder(val title: String, val icon: Item) {
+class EntryBuilder(val title: String, val icon: String) {
 	var category: String = "hexcasting:items"
 	var advancement: String = "hexcasting:root"
 	var sortnum: Int = 0
@@ -55,7 +54,7 @@ class EntryBuilder(val title: String, val icon: Item) {
 
 	fun build(): JsonObject = JsonObject().apply {
 		addProperty("name", title)
-		addProperty("icon", Registries.ITEM.getId(icon).toString())
+		addProperty("icon", icon)
 		addProperty("category", category)
 		addProperty("advancement", advancement)
 		addProperty("sortnum", sortnum)
